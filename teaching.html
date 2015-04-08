@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>Teaching Resources</title>
+  <meta name="description" content="heath blackmon teaching resources" />
+  <meta name="keywords" content="evolution teaching heath blackmon" />
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="js/jquery.lavalamp.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("#lava_menu").lavaLamp({
+        fx: "backout",
+        speed: 700
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">    
+      <h1>Heath <span>Blackmon</span></h1>	
+	  <h2>Evolutionary Biology</h2>
+    </div><!--close header-->			 
+    <div class="container_header"><p>&nbsp;</p></div>
+	<div id="site_background"> 
+      <div id="banner">  
+		<div id="banner_content">
+		</div><!--close banner_content-->	
+      </div><!--close banner-->	
+      <div id="site_content">
+	    <div id="menubar">
+          <ul class="lavaLampWithImage" id="lava_menu">
+            <li class="current"><a href="index.html">Home</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="software.html">Software and Databases</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+	    </div><!--close menubar-->	
+        <div id="content">
+          <div class="content_item">
+            <h2>Teaching Resources</h2>
+            <br>
+            <div style="width:150px; float:left;"><img src="images/rlogo.png" alt="work"/></div>
+	        <p>I believe that R is currently an essential tool for most evolutionary biologists.  I built a seminar course to teach graduate students the basics of working in R.  Each week had a tutorial covering a core set of essential R skills that the participants learned. This <a href="rseminar/index.html" target="_blank">website</a> contains all of the tutorials and associated datafiles required for the course.</p><br>
+            <br>
+            <div style="width:150px; float:left;"><img src="images/fisher.png" alt="work"/></div>
+	        <p>An understanding of the foundational ideas that the modern synthesis of evolutionary biology is built on is essential for asking intelligent questions and understanding how your research fits into a larger understanding of life.  I offered a seminar course for graduate students that provided a structured environment to discuss some of the most important papers in evolutionary biology. This <a href="reading.group/index.html" target="_blank">website</a> contains a schedule and PDF files for all of the readings in this course.</p><br>
+            <br>
+            <div style="width:150px; float:left;"><img src="images/wf.png" alt="work"/></div>
+	        <p>Wright-Fisher simulators perform population genetic simulations that include both selection and drift.  Interactive simulators like this one can be particularly helpful in teaching students about the impact that population size has on the efficiency of selection. This <a href="https://evobir.shinyapps.io/wf_model/" target="_blank">website</a> uses the R package shiny to create an interactive simulation that allows users to control mutation rates, selection coefficients, and population sizes.</p><br>
+            <br>
+            <div style="width:150px; float:left;"><img src="images/dist.png" alt="work"/></div>
+	        <p>Many bayesian phylogenetics programs require specification of statistical distributions to describe the prior probability of parameters. This <a href="http://evobir.shinyapps.io/dist_model" target="_blank">website</a> allows users to select a statistical distribution and then vary the parameter values that specify its shape.</p><br>
+            <br>
+            <div style="width:150px; float:left;"><img src="images/bd.jpg" alt="work"/></div>
+	        <p>A birth-death model is often assumed as a generating model for phylogenies. One challenge in detecting shifts in diversification is the high variance in trees generated under this model.  This <a href="http://evobir.shinyapps.io/bd_model" target="_blank">website</a> allows users to set values for the birth and death parameters and then generates a collection of trees to illustrate the high variance that is often exhibited.</p><br>
+	        
+
+      
+        </div><!--close content-->	
+      </div><!--close site_content-->	
+	</div><!--close site_background-->	
+    <div id="footer">  
+	  <div id="footer_content">
+        website template by <a href="http://www.araynordesign.co.uk">ARaynorDesign</a>
+      </div><!--close footer_content-->	
+    </div><!--close footer-->	
+  </div><!--close main-->	
+</body>
+</html>

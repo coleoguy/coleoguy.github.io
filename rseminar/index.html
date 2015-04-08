@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>R Seminar</title>
+<meta name="description" content="Using R in Evolutionary Biology and Ecology" />
+<style type="text/css">
+<!--
+div.dropdown_container {
+    width:300px;
+    font-size: 90%;
+}
+select.my_dropdown {
+    width:auto;
+}
+/*IE FIX */
+select#my_dropdown {
+    width:100%;
+}
+select:focus#my_dropdown {
+    width:auto\9;
+}
+body {
+	margin: 10px 10px 10px 10px;
+	padding: 0;
+	color: #000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	line-height: 1.4;
+}
+body3 {
+	margin: 10px 10px 10px 10px;
+	padding: 0;
+	color: #000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 70%;
+	line-height: 1.4;
+}
+body4 {
+	margin: 10px 10px 10px 10px;
+	padding: 0;
+	color: #000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 85%;
+	line-height: 1.4;
+}
+body5 {
+	margin: 10px 10px 10px 10px;
+	padding: 0;
+	color: #000;
+	font-family: Verdana;
+	font-size: 70%;
+}
+body6 {
+	margin: 10px 10px 10px 10px;
+	padding: 0;
+	color: #000;
+	font-family: Verdana;
+	font-size: 70%;
+	text-align: center;
+}
+a img {border: none;}
+</style>
+</head>
+<br>
+<body>
+<br>
+<meta name="description" content="An introductory course in R.  This course was delivered in 2013 to a group of first year graduate students.  It is continually being updated.">
+<img alt="r-logo" src="rlogo.png" style="border-style: solid; border-width: 0px; width: 95px; height: 95px; margin-left: 10px; margin-right: 10px; float: left;" /><font size="5"><strong>R Graduate Seminar<br />
+Biology 5101</strong></font><br />
+University of Texas at Arlington<br />
+Heath Blackmon<br /><br />
+<table style="width: 700px;" border="3" cellpadding="1" cellspacing="1">
+  <tbody>
+    <tr>
+      <td style="font-weight: bold;">Topics</td>
+      <td style="font-weight: bold;">Files and Links</td>
+    </tr>
+    <tr>
+      <td>Install R and RStudio</td>
+      <td><a href="http://www.uta.edu/karyodb/r-install.html" target="_blank">instructions</a><br />
+      <a href="syllabus.pdf" target="_blank">syllabus</a></td>
+    </tr>
+    <tr>
+      <td>Navigating in R &amp; R Studio<br />
+Basics of R syntax<br />
+Data structures in R<br />
+      </td>
+      <td><a href="wksheet1.pdf" target="_blank">worksheet 1</a><br />
+      <a href="ex.1.R" target="_blank">script for ex. 1</a><br />
+      <a href="finch.csv" target="_blank">finch data</a><br />
+      <a href="R.refcard.pdf" target="_blank">R cheat sheet</a><br />
+      <a href="R.style.sheet.pdf" target="_blank">R style sheet</a><br />
+      </td>
+    </tr>
+    <tr>
+      <td>Subsetting<br />
+Plotting<br />
+      </td>
+      <td><a href="wksheet2.pdf" target="_blank">worksheet 2</a><br />
+      <a href="par.pdf" target="_blank">plotting arguments</a><br />
+      <a href="div.csv" target="_blank">divergence data</a><br />
+      <a href="ex.2.R" target="_blank">script for ex. 2</a></td>
+    </tr>
+    <tr>
+      <td>MK models of Trait Evolution</td>
+      <td><a href="wksheet3.pdf" target="_blank">worksheet 3</a><br />
+      <a href="ex.3.R" target="_blank">script for ex. 3</a><br />
+      </td>
+    </tr>
+    <tr>
+      <td>Continuous Trait Evolution</td>
+      <td><a href="wksheet4.pdf" target="_blank">worksheet</a><br />
+      <a href="tree.nex" target="_blank">tree</a><br />
+      <a href="chromnum.csv" target="_blank">chromosome numbers</a><br />
+      <a href="ex.4.R" target="_blank">script for ex. 4</a></td>
+    </tr>
+    <tr>
+      <td>Custom Functions</td>
+      <td><a href="wksheet5.pdf" target="_blank">worksheet</a><br />
+      <a href="ex.5.R" target="_blank">func. for ex. 5</a><br />
+      <a href="ex.5b.R" target="_blank">script for ex. 5</a></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Birth Death Processes<br />
+      </td>
+      <td style="vertical-align: top;"><a href="bd.proc.pdf" target="_blank">worksheet</a><br />
+      <a href="bd.proc.R" target="_blank">script for ex. 6</a><br />
+      </td>
+    </tr>
+    <tr>
+      <td>PCA<br />
+      <a href="http://www.uta.edu/faculty/ensmith/Elijah" target="_blank">Elijah Wostl</a></td>
+      <td><a href="PCA-worksheet.pdf" target="_blank">worksheet</a><br />
+      <a href="I2.csv" target="_blank">data</a><br />
+      </td>
+    </tr>
+    <tr>
+      <td>Time Series Analysis<br />
+      <a href="http://ashleyasmus.weebly.com" target="_blank" >Ashley
+Asmus</a><br />
+      </td>
+      <td><a href="time-series-worksheet.pdf" target="_blank" >worksheet</a><br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+One of the best things about learning R is that there is an amazing
+amount of material available online.&nbsp; Almost any problem that you
+will experience has been seen before.&nbsp; <br />
+<br />
+Lots of additional resources are available at the <a href="http://www.r-project.org/" target="_blank">R website</a><br />
+Additional courses focussing on R are available: <a href="http://www.codeschool.com/" target="_blank">code school</a> <a href="https://www.coursera.org/" target="_blank">coursera</a>
+<br />
+<br />
+<font size="1"><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width: 0pt;" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type"> R Seminar Resources</span> by Heath Blackmon are
+licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative
+Commons Attribution-NonCommercial 3.0 Unported License</a></font>
+</div>
+</div>
+
+</body></html>
