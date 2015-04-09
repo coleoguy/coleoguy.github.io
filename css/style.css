@@ -49,7 +49,8 @@ h6
 a, a:hover
 { background: transparent;
   outline: none;
-  color: #5D5D5D;}
+  text-decoration: none;
+  color: #36B304;}
 
 a:hover
 { text-decoration: underline;
