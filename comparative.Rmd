@@ -235,7 +235,7 @@ for(i in 1:length(tip)){
   text(3+.7, 4, labels=round(pmat2[2,2], digits=3), pos=2,cex=.5)
 ```
 
-This brings us to a point where we no longer have any node where both daugther branches are tips.  So our next step is to combine the bottom two boxes with one another to set up a pair of probabilites just before the node indicated in red below. Since the evolution in any branch is independent of all other branches when we will combine these by multiplication
+This brings us to a point where we no longer have any node where both daugther branches are tips.  So our next step is to combine the bottom two boxes with one another to set up a pair of probabilites just before the node indicated in red below. Since the evolution in any branch is independent of all other branches we will combine these by multiplication
 
 ```{r echo=F}
 phytools::plotTree(phy, ylim=c(-1,6),xlim=c(0,10))
@@ -446,7 +446,7 @@ for(i in 1:length(tip)){
   text(0+.7, 3.75, labels=round(.446*.033, digits=3), pos=2,cex=.5)
 ```
 
-So now we have to decide how to sum over the two probabilities at the bottom of the tree into a single likelihood for the data given our Q-matrix, tree, and observed species.  There are a number of ways to do this we could simply take the average of these giving each equal weight.  Or we could weight them by the stationary distribution.  Here we will use an approach developed by Rich Fitzjohn that is presented appendix 1 of this  [paper](http://sysbio.oxfordjournals.org/content/58/6/595.short).  Here we treat the root state as a nuisence parameter and weight the probabilities by how well they explain the data.  In our case this yields the following equation for the final likelihood:
+So now we have to decide how to sum over the two probabilities at the bottom of the tree into a single likelihood for the data given our Q-matrix, tree, and observed species.  There are a number of ways to do this we could simply take the average of these giving each equal weight.  Or we could weight them by the stationary distribution.  Here we will use an approach developed by Rich Fitzjohn that is presented appendix 1 of this 2009 [paper](http://sysbio.oxfordjournals.org/content/58/6/595.short).  Here we treat the root state as a nuisence parameter and weight the probabilities by how well they explain the data.  In our case this yields the following equation for the final likelihood:
 
 $0.032\frac{0.032}{.032+.015}+0.015\frac{0.015}{.032+.015}=3.62$
 
@@ -457,6 +457,8 @@ lnL <- diversitree::make.mk2(phy, states)
 -lnL(pars)
 ```
 
-So we know that we can step by step calculate the likelihood of a trait.  If this were DNA sequences then we could simply repeat this process for each site and take the product of all of the site likelihoods.  However, this is laborious and what we want is to make a useful function that takes th tree, data, and the qmatrix and returns the likelihood.
+So we can see that it looks like I have a small math error somehwere relative to Rich's implementation.  Can't work on this anymore right now but will come back to it later this week.
 
-#Code to calculate the likelihood of discrete data
+Cheers
+
+Heath
