@@ -1,3 +1,8 @@
+---
+title: "Study of comparative methods"
+author: "Heath Blackmon"
+output: html_document
+---
 One of the Goldberg lab project for the semester is to make sure we all have a solid understanding of the nuts and bolts of comparative methods.  We started this journey by digging into models of discrete trait evolution.  I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woodshole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire R markdown document is available via github.
 
 #The model of discrete character evolution
