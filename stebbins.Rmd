@@ -38,19 +38,40 @@ We all like Stebbins swipe at the "mathematicians who have no experience with ac
 
 Next we spent quite a bit of time going over the five corollaries that Stebbins ascribes to genetical uniformitarianism (Stebbins term for gradualism).
 
-1. "Adaptive radiation is the primary basis for diversification both for current groups and those that gave rise to higher orders in the past" I took issue with this when I first read this because I don't feel like there is any inherent reason that adaptive radiation is necessarily required.
+1. "Adaptive radiation is the primary basis for diversification both for current groups and those that gave rise to higher orders in the past" I took issue with this when I first read this because I don't feel like there is any inherent reason that adaptive radiation is necessarily required.  If the word primary above was removed I would agree with this statement completely.  Personally I think the jury is out on whether or not MOST extant diversity was generated as part of adaptive radiations.  And perhaps this is a bias due to my background with beetles, but it seems that it is possible that a great deal of the observed diversity that we observe is generated through rare long distance dispersal events that create isolated populations.  These isolated populations could then evolve by drift to have small differences in phenotype.  Taxonomists now come in and recognize these as unique species - which depending on the length of time that they have been separated they may be.  But the question remains are they "good species" because they have adapted to their new locality or because they have been isolated long enough to develop DMIs through drift mediated processes (e.g. differential resolution of duplicated genes). 
 
-2. 
+2. "The origin of major categories, such as genera and families, does not require the evolution of distinctive characters that are qualitatively different from those that separate at least some populations and species."  To me this seems  like a very reasonable assertion and I think that most people with a organismic background can think of good examples of this in just about any group of interest.
 
-3. 
+3. "The initial divergence that led to major categories took place under conditions similar to those that promote maximal diversity in the modern world." Again this seems like a fairly straight forward assertion.  The one thing that bothers me a bit about this is that you could imagine that its not the condition that drives diversification but instead maybe its a change in condition that is most important. Additionally I think we still have a great deal of difficulty identifying what is linked to diversification.  So it is a high bar to try and say that the forces important recently are the same as those that were important long ago.
 
-4. 
+4. "Archaic forms...are most likely to exist in 'museums' that are least favorable for the origin of new species that could compete and cause their extinction"  This is an interesting idea; Stebbins goes on to discuss that no area is likely a cradle, museum, or lab for all species it contains.  It seems like the most important thing in determining if an area is a museum for a species is instead its taxonomic/morphological isolation.  To me this means that the fact that these species that are on an isolated lonely branch of the phylogeny may be the determining factor and not the environment that they are in.  One would expect these species to be phenotypically/physiologically very different from any other species.  If we think of the possible species that can exist being distributed across some multipeak landscape of genotypes we would expect these species to be a peak that is very distant from any other peaks.  This would mean that it would take a great many mutations for any species to be an effective competitor.
 
-5. 
+5. "Transspecific (macro) evolution is not best studied by focusing on relictual modern phenotypes, instead focus on the differences between modern forms regardless of their phylogenetic position,"  This is really just the forgone conclusion of accepting gradualism.  If the macro and micro are the same then study the micro because this is easier and should reveal what is going on over long time scales as well.
 
 
 _______
 ## Evolutionary processes and the origin of higher categories
+
+Stebbins have several arguments in this chapter
+
+1. The categories that differentiate higher categories are not special.  They vary at least in some cases at the level of species or populations.  Stebbins spends quite a bit of time here and does a good job of illustrating that almost anything that can separate families varies at least in some species somewhere.  He also gives some experimental evidence that in traits that don't vary much in nature can vary under selection.  Specifically he shows a picture from the 1968 thesis of Carl Huether [3] that shows that even though corolla lobe number is largely invariant 98% are pentamorous either environmental stress or selection can lead to great variation:
+![linanthus](images/linanthus.jpg)
+
+This provides a convenient transition into Stebbins discussion of canalization.  Stebbins wants to link this study in *Linanthus* which is canalization in the sense of Waddington 1962[4]: A trait that is extremely important to fitness develops a variety of buffering characteristics that insure its proper development despite underlying genetic variability. To what he calls evolutionary canalization.
+
+2. The basis of evolutionary canalization
+
+    a. Selective inertia
+
+    b. Conservation of organization
+
+    c. Adaptive modification along the lines of least resistance
+
+3. Evolutionary canalization and alternative pathways of adaptation
+
+4. Evolutionary success and evolutionary opportunity
+
+5. The significance of extinctions and alterations of distribution patterns
 
 _______
 ## Adaptations for survival
@@ -94,3 +115,7 @@ _______
 [1] Stebbins, George Ledyard. "Flowering plants: evolution above the species level." London: Arnold xviii, 399p.. Illustrations. General (KR, 197500089) (1974).
 
 [2] Stebbins Jr, C. L. "Variation and evolution in plants." Variation and evolution in plants. (1950).
+
+[3] Huether, C. A. "The extent of variability for a canalized character (corolla lobe number) in natural populations Linanthus (Benth.)." PhD diss., Ph. D. Thesis, Univ. of California, Davis, 1966.
+
+[4] Waddington, Conrad Hal. "New patterns in genetics and development." New patterns in genetics and development. (1962).
