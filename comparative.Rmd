@@ -3,11 +3,12 @@ title: "Study of comparative methods"
 author: "Heath Blackmon"
 output: html_document
 ---
-One of the Goldberg lab project for the semester is to make sure we all have a solid understanding of the nuts and bolts of comparative methods.  We started this journey by digging into models of discrete trait evolution.  I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woodshole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire R markdown document is available via github.
+
+One of the Goldberg lab project for the semester is to make sure we all have a solid understanding of the nuts and bolts of comparative methods.  We started this journey by digging into models of discrete trait evolution.  I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woods hole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire R markdown document is available via github.
 
 #The model of discrete character evolution
 When we think about the evolution of discrete characters (either DNA
-or other traits).  We usually think of a continuous time markov model
+or other traits).  We usually think of a continuous time Markov model
 that describes the probability of changes in our character as it evolves
 over our phylogeny.  At the heart of this type of model is the
 Q-matrix.  This matrix contains transition rates.  For illustration
@@ -21,10 +22,10 @@ qmat
 ```
 
 On the left of the matrix we have the current state and on the top of the
-matrix we have the ending state.  So in this case the rate of transtion 
-from state 0 to state 1 is 0.3 while the rate of transition from state 1 to state 0 is .4.  These rates will usually be reffered to as q01 and q10 respectively.  The diagonal of the matrix is set so each row is equal to 0.
+matrix we have the ending state.  So in this case the rate of transition 
+from state 0 to state 1 is 0.3 while the rate of transition from state 1 to state 0 is .4.  These rates will usually be referred to as q01 and q10 respectively.  The diagonal of the matrix is set so each row is equal to 0.
 
-What these rates actually descirbe is the exponentially distributed expected waiting time till we see a transition in our trait.  For instance we could use this formula to calculate the waiting time for a transition from state 0 to state 1.
+What these rates actually describe is the exponentially distributed expected waiting time till we see a transition in our trait.  For instance we could use this formula to calculate the waiting time for a transition from state 0 to state 1.
 $t=-\frac{1}{\lambda} log_e(u)$
 Where $u$ is a random number between 0 and 1, and in our example $\lambda$ will equal .3.
 ```{r echo=F}
@@ -52,7 +53,7 @@ plot(density(-log(1:100/100)/0.4),
 ```
 
 The transition rates in a Q-matrix tell us about the probability of a transition in our trait over very short periods of times but not over longer periods of time where we may have had multiple transitions on a branch for this we must convert our Q-matrix to a probability matrix or P-matrix that is specific to the time period (or branch length) of interest.  We could do this my simulating the evolution of our trait 
-using the Q-matrix.  For instance lets say we have a branch in our tree that is 1 unit long and we want to know the probability of experencing transitions between our states given a branch length of 1.  The code below will perform this simulation 10000 times to calculate that probability.
+using the Q-matrix.  For instance lets say we have a branch in our tree that is 1 unit long and we want to know the probability of experiencing transitions between our states given a branch length of 1.  The code below will perform this simulation 10000 times to calculate that probability.
 ```{r}
 initial.st <- c(rep(0,times=5000), rep(1,times=5000))
 changes <- final.st <- vector()
@@ -94,13 +95,13 @@ colnames(pmat) <- rownames(pmat) <- c(0,1)
 print(pmat)
 ```
 
-This means that given that we start in state 0 we have approximately 22% chance of ending in state 1.  This would be tedious and annoying to have to do for every length of branch in a tree and fortunately is not necessary.  Instead we can matrix exponenitiation to calculate the probability matrix for any branch length needed.
+This means that given that we start in state 0 we have approximately 22% chance of ending in state 1.  This would be tedious and annoying to have to do for every length of branch in a tree and fortunately is not necessary.  Instead we can matrix exponentiation to calculate the probability matrix for any branch length needed.
 ```{r}
 # we will use the package ape which includes a matrix exponentiation function
 library(ape)
 matexpo(qmat*1)
 ```
-Here we see that although the Monte Carlo simulation approach is laborious it does indeed produce very similar results to the analytical solution provided by matrix exponentiation.
+Here we see that although the Monte Carlo simulation approach is laborious it does indeed produce very similar results to the solution provided by matrix exponentiation.
 
 # Calculating the likelihood of data on a tree
 Lets build a tree to use as an example for the remainder of this project. 
@@ -113,7 +114,7 @@ tiplabels(states,frame="none",adj=-1.5,col="red")
 nodelabels(frame="none",adj=-1)
 ```
 
-As a first step in calculating the probability of our data lets assign the probabilities of our data at the tips of our tree.  We can think of this as the probability of observing our tips if we were to go back and record the phenotype for each of our species a second time.  For todays purposes we are assuming that we know the state of each species with no uncertainty.  However, this approach allows us to assign whatever probability we believe appropriate for each tip state allowing us to easily incorporate various types of uncertainty.  The boxes that we have added show the probability of either state 0 (left) or state 1 (right).
+As a first step in calculating the probability of our data lets assign the probabilities of our data at the tips of our tree.  We can think of this as the probability of observing our tips if we were to go back and record the phenotype for each of our species a second time.  For today's purposes we are assuming that we know the state of each species with no uncertainty.  However, this approach allows us to assign whatever probability we believe appropriate for each tip state allowing us to easily incorporate various types of uncertainty.  The boxes that we have added show the probability of either state 0 (left) or state 1 (right).
 
 ```{r echo=F}
 phytools::plotTree(phy, ylim=c(-1,6),xlim=c(0,10))
@@ -132,7 +133,7 @@ for(i in 1:length(tip)){
 }
 ```
 
-Now we will go through our tree and for each node where both daughter branches lead to tips we will calculate the probability of the data at the tip assuming that the node was in state 0 and in state 1. So for the first branch at the bottom of the tree we need to solve $P_{01}(1)$ and $P_{11}(1)$ the 1 in paranthesis is the branch length of the branch.
+Now we will go through our tree and for each node where both daughter branches lead to tips we will calculate the probability of the data at the tip assuming that the node was in state 0 and in state 1. So for the first branch at the bottom of the tree we need to solve $P_{01}(1)$ and $P_{11}(1)$ the 1 in parentheses is the branch length of the branch.
 
 ```{r echo=F}
 phytools::plotTree(phy, ylim=c(-1,6),xlim=c(0,10))
@@ -240,7 +241,7 @@ for(i in 1:length(tip)){
   text(3+.7, 4, labels=round(pmat2[2,2], digits=3), pos=2,cex=.5)
 ```
 
-This brings us to a point where we no longer have any node where both daugther branches are tips.  So our next step is to combine the bottom two boxes with one another to set up a pair of probabilites just before the node indicated in red below. Since the evolution in any branch is independent of all other branches we will combine these by multiplication
+This brings us to a point where we no longer have any node where both daughter branches are tips.  So our next step is to combine the bottom two boxes with one another to set up a pair of probabilities just before the node indicated in red below. Since the evolution in any branch is independent of all other branches we will combine these by multiplication
 
 ```{r echo=F}
 phytools::plotTree(phy, ylim=c(-1,6),xlim=c(0,10))
@@ -355,7 +356,7 @@ for(i in 1:length(tip)){
   text(2+.7, 3.5, labels=round(.569*.431, digits=3), pos=2,cex=.5)
 ```
 
-Conceptually we are now in a simalar position as we were at the begining, but we now have a tree with three tips (the tip at the top plus the green and red node).  So now we simply work our way down the tree till we have a single box at the root of the tree.
+Conceptually we are now in a similar position as we were at the beginning, but we now have a tree with three tips (the tip at the top plus the green and red node).  So now we simply work our way down the tree till we have a single box at the root of the tree.
 
 ```{r echo=F}
 pmat3 <- matexpo(qmat*3)
@@ -451,7 +452,7 @@ for(i in 1:length(tip)){
   text(0+.7, 3.75, labels=round(.446*.033, digits=3), pos=2,cex=.5)
 ```
 
-So now we have to decide how to sum over the two probabilities at the bottom of the tree into a single likelihood for the data given our Q-matrix, tree, and observed species.  There are a number of ways to do this we could simply take the average of these giving each equal weight.  Or we could weight them by the stationary distribution.  Here we will use an approach developed by Rich Fitzjohn that is presented appendix 1 of this 2009 [paper](http://sysbio.oxfordjournals.org/content/58/6/595.short).  Here we treat the root state as a nuisence parameter and weight the probabilities by how well they explain the data.  In our case this yields the following equation for the final likelihood:
+So now we have to decide how to sum over the two probabilities at the bottom of the tree into a single likelihood for the data given our Q-matrix, tree, and observed species.  There are a number of ways to do this we could simply take the average of these giving each equal weight.  Or we could weight them by the stationary distribution.  Here we will use an approach developed by Rich Fitzjohn that is presented appendix 1 of this 2009 [paper](http://sysbio.oxfordjournals.org/content/58/6/595.short).  Here we treat the root state as a nuisance parameter and weight the probabilities by how well they explain the data.  In our case this yields the following equation for the final likelihood:
 
 $0.032\frac{0.032}{.032+.015}+0.015\frac{0.015}{.032+.015}=3.62$
 
@@ -462,7 +463,7 @@ lnL <- diversitree::make.mk2(phy, states)
 -lnL(pars)
 ```
 
-So we can see that it looks like I have a small math error somehwere relative to Rich's implementation.  Can't work on this anymore right now but will come back to it later this week.
+So we can see that it looks like I have a small math error somewhere relative to Rich's implementation.  Can't work on this anymore right now but will come back to it later this week.
 
 Cheers
 
