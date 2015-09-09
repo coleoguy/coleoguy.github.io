@@ -1,12 +1,15 @@
 ---
 title: "Study of comparative methods"
 author: "Heath Blackmon"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
 ---
 
-One of the Goldberg lab project for the semester is to make sure we all have a solid understanding of the nuts and bolts of comparative methods.  We started this journey by digging into models of discrete trait evolution.  I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woods hole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire R markdown document is available via github.
-
 #The model of discrete character evolution
+I'm using this page to explore comparative methods begining with models of discrete trait evolution. I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woods Hole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire [R markdown document](https://github.com/coleoguy/coleoguy.github.io/blob/master/comparative.Rmd) is available via github.
+
 When we think about the evolution of discrete characters (either DNA
 or other traits).  We usually think of a continuous time Markov model
 that describes the probability of changes in our character as it evolves
@@ -432,7 +435,7 @@ for(i in 1:length(tip)){
   rect(.9-.3, 2.5-.2, .9+.6, 2.5+.26, col="white", border = "blue")
   lines(x=c(.9+.17, .9+.17), y=c(2.5-.2, 2.5+.26), col="blue", lty=3)
   text(.9+.2, 2.5, labels=round(.227*.415, digits=4), pos=2,cex=.35)
-  text(.9+.7, 2.5, labels=round(.035*.234, digits=4), pos=2,cex=.35)
+  text(.9+.7, 2.5, labels=round(.35*.234, digits=4), pos=2,cex=.35)
   
     rect(0-.3, 5-.2, 0+.6, 5+.26, col="white", border = "blue")
   lines(x=c(0+.17, 0+.17), y=c(5-.2, 5+.26), col="blue", lty=3)
@@ -442,19 +445,19 @@ for(i in 1:length(tip)){
   
   rect(.0-.3, 2.5-.2, .0+.6, 2.5+.26, col="white", border = "blue")
   lines(x=c(0+.17, 0+.17), y=c(2.5-.2, 2.5+.26), col="blue", lty=3)
-  text(0+.2, 2.5, labels=round(pmat1[1,1] * .0942 + pmat1[1,2] * .0082, digits=3), pos=2,cex=.5)
-  text(0+.7, 2.5, labels=round(pmat1[2,1] * .0942 + pmat1[2,2] * .0082, digits=3), pos=2,cex=.5)
+  text(0+.2, 2.5, labels=round(pmat1[1,1] * .0942 + pmat1[1,2] * .082, digits=3), pos=2,cex=.5)
+  text(0+.7, 2.5, labels=round(pmat1[2,1] * .0942 + pmat1[2,2] * .082, digits=3), pos=2,cex=.5)
 
  
    rect(.0-.3, 3.75-.2, .0+.6, 3.75+.26, col="white", border = "blue")
    lines(x=c(0+.17, 0+.17), y=c(3.75-.2, 3.75+.26), col="blue", lty=3)
-  text(0+.2, 3.75, labels=round(.416*.076, digits=3), pos=2,cex=.5)
-  text(0+.7, 3.75, labels=round(.446*.033, digits=3), pos=2,cex=.5)
+  text(0+.2, 3.75, labels=round(.416*.092, digits=3), pos=2,cex=.5)
+  text(0+.7, 3.75, labels=round(.446*.086, digits=3), pos=2,cex=.5)
 ```
 
 So now we have to decide how to sum over the two probabilities at the bottom of the tree into a single likelihood for the data given our Q-matrix, tree, and observed species.  There are a number of ways to do this we could simply take the average of these giving each equal weight.  Or we could weight them by the stationary distribution.  Here we will use an approach developed by Rich Fitzjohn that is presented appendix 1 of this 2009 [paper](http://sysbio.oxfordjournals.org/content/58/6/595.short).  Here we treat the root state as a nuisance parameter and weight the probabilities by how well they explain the data.  In our case this yields the following equation for the final likelihood:
 
-$0.032\frac{0.032}{.032+.015}+0.015\frac{0.015}{.032+.015}=3.62$
+$-\log(0.038\frac{0.038}{.038+.038}+0.038\frac{0.038}{.038+.038})=3.27$
 
 Now we can compare this to a known good implementation such as from diversitree.
 ```{r}
@@ -463,7 +466,26 @@ lnL <- diversitree::make.mk2(phy, states)
 -lnL(pars)
 ```
 
-So we can see that it looks like I have a small math error somewhere relative to Rich's implementation.  Can't work on this anymore right now but will come back to it later this week.
+The slight difference that we see is due to the effects of rounding at the base of the tree; without rounding we find that:
+
+probability of data given state 0 = 0.03805276
+
+probability of data given state 1 = 0.03804541
+
+If we use these probabilities then we find that:
+```{r}
+# weighted probability of data given state 0
+state0 <- 0.03805276 * (0.03805276 / (0.03805276 + 0.03804541))
+# weighted probability of data given state 1
+state1 <- 0.03804541 * (0.03804541 / (0.03805276 + 0.03804541))
+# sum and return the -ln
+-log(state0 + state1)
+```
+
+
+#Maddison and Fitzjohn 2015
+
+#The pseudo and real code for calculating the likelihood of a discrete trait
 
 Cheers
 
