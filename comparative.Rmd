@@ -8,7 +8,7 @@ output:
 ---
 
 #The model of discrete character evolution
-I'm using this page to explore comparative methods begining with models of discrete trait evolution. I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woods Hole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire [R markdown document](https://github.com/coleoguy/coleoguy.github.io/blob/master/comparative.Rmd) is available via github.
+I'm using this page to explore comparative methods beginning with models of discrete trait evolution. I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woods Hole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire [R markdown document](https://github.com/coleoguy/coleoguy.github.io/blob/master/comparative.Rmd) is available via github.
 
 When we think about the evolution of discrete characters (either DNA
 or other traits).  We usually think of a continuous time Markov model
@@ -483,9 +483,27 @@ state1 <- 0.03804541 * (0.03804541 / (0.03805276 + 0.03804541))
 ```
 
 
-#Maddison and Fitzjohn 2015
+#Maddison and Fitzjohn 2015 [1]
+
+In my opinion this is one of those kind of instantly important papers.  It doesn't present anything that I feel was terribly surprising but it is well written and for those that are just beginning to get into comparative methods I think it is a good paper to make you appropriately paranoid and suspect of significant results arising from a lot of the methods that we employ commonly.  I also like this paper because for me it does a great job of why you should visually explore your data.  They first show possible outcomes that we can all agree more less should and should not produce significant results for tests of correlation.  Below is a screen shot of their figure 1:
+
+![trees](images/mf-fig.png)
+
+So A and B are examples that are clearly suggestive of an interesting pattern and the type of thing that we would want our methods to flag as possibly being significant.  However, we can see that C shouldn't be considered a correlation these two traits could have evolved with out any reciprocal effects and simply inherited by all of the descendants due to shared inheritance.  Finally, example D what they call an unreplicated burst is also not a situation where we should find significance. Any trait that evolved on the first black branch of the tree on the left would show a strong correlation with the trait on the right so in this case we likely have a very strong bias due to our choice of characters.
+
+Next they present the results of simulation studies that show that Pagel 1994 [2] approach will return many significant results for both structures like C and D. In fact all simulations of Darwin's scenario (C) result in highly significant results using Pagel’s test.
+
+The problem here is pseudoreplication.  The amount of shared branch length largely determines the significance of the result rather than the number of independent occurences.
+
+So how can we move forward - in addition to looking at our trees and seeing what going on.
 
 #The pseudo and real code for calculating the likelihood of a discrete trait
+
+#Citations
+[1] FitzJohn, Richard G., Wayne P. Maddison, and Sarah P. Otto. "Estimating trait-dependent speciation and extinction rates from incompletely resolved phylogenies." Systematic biology 58, no. 6 (2009): 595-611.
+
+[2] Pagel, Mark. "Detecting correlated evolution on phylogenies: a general method for the comparative analysis of discrete characters." Proceedings of the Royal Society of London B: Biological Sciences 255, no. 1342 (1994): 37-45.
+
 
 Cheers
 
