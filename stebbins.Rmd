@@ -60,13 +60,17 @@ Stebbins have several arguments in this chapter
 
 This provides a convenient transition into Stebbins discussion of canalization.  Stebbins wants to link this study in *Linanthus* which is canalization in the sense of Waddington 1962[4]: A trait that is extremely important to fitness develops a variety of buffering characteristics that insure its proper development despite underlying genetic variability. To what he calls evolutionary canalization.
 
-2. The basis of evolutionary canalization
+2. The basis of evolutionary canalization: First, full disclosure,  I found his discussion of evolutionary canalization as more difficult to follow than anything else in chapters 1 & 2.  He describes the hypothesis of evolutionary canalization as "at every level...natural selection has included both an internal and external phase...for the kinds of adaptive shifts that give rise to higher categories the internal has been more important than the external"  This "internal selection" is his way of describing that a mutation must work with the rest of the genome to produce a coherent funtional organism.  He posits that many of the traits that we use to define higher categories are part of complex structures (genetic pathways) and likely require many concerted changes.  Therefor these are unlikely to all occur often hence they are useful to seperate very large clades of species from one another.  Stebbins also explains his choice of the word canalization as being purposeful because like developmental canalization he is suggesting that previous steps matter.. previous steps (adaptations) depend on previous steps (adaptations).  He next goes on to describe 3 principles that evolutionary canalization depends on:
 
-    a. Selective inertia
+    a. Selective inertia - asserts that selection to establish a adaptive gene combination is times greater than that required to maintain it.. I don't know that I agree he provides a simple math model but I need to code it up and see it for myself i feel like he is making some assumptions that don't feel right?
 
-    b. Conservation of organization
+    b. Conservation of organization - Stebbins argues this is a necessary result of selective inertia however it seems to hinge on the idea of pleiotropic gene action and that you cant easily lose a complex structure he mentions a number of examples of apparently frivilous structures that have been maintained for long periods.  I wonder though if this isn't simply a failure of imagination and that these structures hae some unappreciated importance that we are missing.
 
-    c. Adaptive modification along the lines of least resistance
+    c. Adaptive modification (evolution) along the lines of least resistance - This is a topic that should be familiar to most modern readers as it has received lots of attention over the last decade in evolutionary biology.  For that reason I'm going to digress and discuss a citation that Stebbins gives: [Ganong 1901](pdfs/ganong-1901.pdf) [5] This caught my eye and I was curious who [Ganong](https://en.wikipedia.org/wiki/William_Francis_Ganong) was and what he had to say about this 100+ years ago. 
+    
+    ![ganong](images/ganong.jpg)
+    
+    Reading the article it ends up that Ganong was attempting to correct what he thought was a lagging American botanical outlook on the morphology of plants.  At the very bottom of page 428 Ganong discusses "metamorphosis along lines of least resistance".
 
 3. Evolutionary canalization and alternative pathways of adaptation
 
