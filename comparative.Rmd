@@ -497,7 +497,10 @@ The problem here is pseudoreplication.  The amount of shared branch length large
 
 So where do we go from here... well a quick first thing to do would be to run felsensteins approach on this data and just see does it work better?  And this brings me to my one complaint about this article the simulated datasets nor the code that generated them seems to be available.... not sure why that is. So many easy ways to make data/code available these days.
 
-#Function to calculate lh of a discrete trait
+
+
+# pseduo code for Lh calculation
+# what is correlated evolution
 
 #Citations
 [1] FitzJohn, Richard G., Wayne P. Maddison, and Sarah P. Otto. "Estimating trait-dependent speciation and extinction rates from incompletely resolved phylogenies." Systematic biology 58, no. 6 (2009): 595-611.
