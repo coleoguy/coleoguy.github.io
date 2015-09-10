@@ -491,20 +491,21 @@ In my opinion this is one of those kind of instantly important papers.  It doesn
 
 So A and B are examples that are clearly suggestive of an interesting pattern and the type of thing that we would want our methods to flag as possibly being significant.  However, we can see that C shouldn't be considered a correlation these two traits could have evolved with out any reciprocal effects and simply inherited by all of the descendants due to shared inheritance.  Finally, example D what they call an unreplicated burst is also not a situation where we should find significance. Any trait that evolved on the first black branch of the tree on the left would show a strong correlation with the trait on the right so in this case we likely have a very strong bias due to our choice of characters.
 
-Next they present the results of simulation studies that show that Pagel 1994 [2] approach will return many significant results for both structures like C and D. In fact all simulations of Darwin's scenario (C) result in highly significant results using Pagel’s test.
+Next they present the results of simulation studies that show that Pagel 1994 [2] approach will return many significant results for both structures like C and D. In fact all simulations of Darwin's scenario (C) result in highly significant results using Pagel’s test.  The authors briefly mention Felsenstein's phylogenetic extension [3] of Sewell Wright's threshold model [4] for discrete traits.  I find it odd that they didn't test this method.  I haven't played with it much but it seems that it fits the bill in that it would correctly account for true sample size and should not be led astray the way that these other methods are. 
 
-The problem here is pseudoreplication.  The amount of shared branch length largely determines the significance of the result rather than the number of independent occurences.
+The problem here is pseudoreplication.  The amount of shared branch length largely determines the significance of the result based on Maddison's, Pagel's and Huelsenbeck's approaches rather than the number of independent occurences.  Also cant write about this article without mentioing the final section where Maddison and Fitzjohn launch into nearly a full page analogy between space time and phylogenies - - Its just awesome.
 
-So how can we move forward - in addition to looking at our trees and seeing what going on.
+So where do we go from here... well a quick first thing to do would be to run felsensteins approach on this data and just see does it work better?  And this brings me to my one complaint about this article the simulated datasets nor the code that generated them seems to be available.... not sure why that is. So many easy ways to make data/code available these days.
 
-#The pseudo and real code for calculating the likelihood of a discrete trait
+#Function to calculate lh of a discrete trait
 
 #Citations
 [1] FitzJohn, Richard G., Wayne P. Maddison, and Sarah P. Otto. "Estimating trait-dependent speciation and extinction rates from incompletely resolved phylogenies." Systematic biology 58, no. 6 (2009): 595-611.
 
 [2] Pagel, Mark. "Detecting correlated evolution on phylogenies: a general method for the comparative analysis of discrete characters." Proceedings of the Royal Society of London B: Biological Sciences 255, no. 1342 (1994): 37-45.
 
-
+[3] Felsenstein, Joseph. "A comparative method for both discrete and continuous characters using the threshold model." The American Naturalist 179, no. 2 (2012): 145-156.
 Cheers
 
+[4] Wright, Sewall. "An analysis of variability in number of digits in an inbred strain of guinea pigs." Genetics 19, no. 6 (1934): 506.
 Heath
