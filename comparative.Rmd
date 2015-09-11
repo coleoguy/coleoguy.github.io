@@ -6,6 +6,7 @@ output:
     toc: true
     toc_depth: 2
 ---
+[Return to main website](http://coleoguy.github.io/resources.html)
 
 #The model of discrete character evolution
 I'm using this page to explore comparative methods beginning with models of discrete trait evolution. I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woods Hole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire [R markdown document](https://github.com/coleoguy/coleoguy.github.io/blob/master/comparative.Rmd) is available via github.
@@ -482,7 +483,7 @@ state1 <- 0.03804541 * (0.03804541 / (0.03805276 + 0.03804541))
 -log(state0 + state1)
 ```
 
-
+____
 #Maddison and Fitzjohn 2015 [1]
 
 In my opinion this is one of those kind of instantly important papers.  It doesn't present anything that I feel was terribly surprising but it is well written and for those that are just beginning to get into comparative methods I think it is a good paper to make you appropriately paranoid and suspect of significant results arising from a lot of the methods that we employ commonly.  I also like this paper because for me it does a great job of why you should visually explore your data.  They first show possible outcomes that we can all agree more less should and should not produce significant results for tests of correlation.  Below is a screen shot of their figure 1:
@@ -498,11 +499,17 @@ The problem here is pseudoreplication.  The amount of shared branch length large
 So where do we go from here... well a quick first thing to do would be to run felsensteins approach on this data and just see does it work better?  And this brings me to my one complaint about this article the simulated datasets nor the code that generated them seems to be available.... not sure why that is. So many easy ways to make data/code available these days.
 
 
+____
+# Our goals for next week
+(1)  Begin coding a pruning algorithm to calculate the likelihood of a discrete trait on a phylogeny.  Start with pseudo-code, moving on to real code if you want.  Even with pseudo-code, do think about data structures (how to represent the tree, variables for calculation bookkeeppiinngg) and how to traverse the tree.  A functioning program is not expected!!  It will be useful to discuss strategies before getting too deep into any implementation.
 
-# pseduo code for Lh calculation
-# what is correlated evolution
+(2)  Think about new ideas for a phylogenetic model of correlated trait evolution.  Moving beyond Pagel's model of dependent rates, how else can we express the biological idea of two traits evolving together?  We didn't discuss the Maddison & FitzJohn paper much, but my take is that we need to find mathematical/statistical models that align better with the biological view of correlation.  So I think it would be fun and potentially extremely useful to argue through what those could be, beginning at the verbal/pictoral level.
 
+(3) Heath will reread "Is your phylogeny informative"[5] to try and see if there might be a way to apply that approach to our current problems
+
+____
 #Citations
+
 [1] FitzJohn, Richard G., Wayne P. Maddison, and Sarah P. Otto. "Estimating trait-dependent speciation and extinction rates from incompletely resolved phylogenies." Systematic biology 58, no. 6 (2009): 595-611.
 
 [2] Pagel, Mark. "Detecting correlated evolution on phylogenies: a general method for the comparative analysis of discrete characters." Proceedings of the Royal Society of London B: Biological Sciences 255, no. 1342 (1994): 37-45.
@@ -511,4 +518,9 @@ So where do we go from here... well a quick first thing to do would be to run fe
 Cheers
 
 [4] Wright, Sewall. "An analysis of variability in number of digits in an inbred strain of guinea pigs." Genetics 19, no. 6 (1934): 506.
+
+[5] Boettiger, Carl, Graham Coop, and Peter Ralph. "Is your phylogeny informative? Measuring the power of comparative methods." Evolution 66, no. 7 (2012): 2240-2251.
+
+Cheers
+
 Heath

@@ -70,12 +70,12 @@ img {
 <li><a href="#the-model-of-discrete-character-evolution">The model of discrete character evolution</a></li>
 <li><a href="#calculating-the-likelihood-of-data-on-a-tree">Calculating the likelihood of data on a tree</a></li>
 <li><a href="#maddison-and-fitzjohn-2015-1">Maddison and Fitzjohn 2015 [1]</a></li>
-<li><a href="#pseduo-code-for-lh-calculation">pseduo code for Lh calculation</a></li>
-<li><a href="#what-is-correlated-evolution">what is correlated evolution</a></li>
+<li><a href="#our-goals-for-next-week">Our goals for next week</a></li>
 <li><a href="#citations">Citations</a></li>
 </ul>
 </div>
 
+<p><a href="http://coleoguy.github.io/resources.html">Return to main website</a></p>
 <div id="the-model-of-discrete-character-evolution" class="section level1">
 <h1>The model of discrete character evolution</h1>
 <p>I’m using this page to explore comparative methods beginning with models of discrete trait evolution. I think one of the best presentations that I’ve seen of this was John Huelsenbeck’s lecture at the <a href="http://treethinkers.org/">Bodega Phylogenetics workshop</a>. He also has a <a href="https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf">great tutorial</a> available online for the Woods Hole course which is very similar. This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this. The entire <a href="https://github.com/coleoguy/coleoguy.github.io/blob/master/comparative.Rmd">R markdown document</a> is available via github.</p>
@@ -196,6 +196,7 @@ state1 &lt;- 0.03804541 * (0.03804541 / (0.03805276 + 0.03804541))
 # sum and return the -ln
 -log(state0 + state1)</code></pre>
 <pre><code>## [1] 3.268878</code></pre>
+<hr />
 </div>
 <div id="maddison-and-fitzjohn-2015-1" class="section level1">
 <h1>Maddison and Fitzjohn 2015 [1]</h1>
@@ -205,19 +206,26 @@ state1 &lt;- 0.03804541 * (0.03804541 / (0.03805276 + 0.03804541))
 <p>Next they present the results of simulation studies that show that Pagel 1994 [2] approach will return many significant results for both structures like C and D. In fact all simulations of Darwin’s scenario (C) result in highly significant results using Pagel’s test. The authors briefly mention Felsenstein’s phylogenetic extension [3] of Sewell Wright’s threshold model [4] for discrete traits. I find it odd that they didn’t test this method. I haven’t played with it much but it seems that it fits the bill in that it would correctly account for true sample size and should not be led astray the way that these other methods are.</p>
 <p>The problem here is pseudoreplication. The amount of shared branch length largely determines the significance of the result based on Maddison’s, Pagel’s and Huelsenbeck’s approaches rather than the number of independent occurences. Also cant write about this article without mentioing the final section where Maddison and Fitzjohn launch into nearly a full page analogy between space time and phylogenies - - Its just awesome.</p>
 <p>So where do we go from here… well a quick first thing to do would be to run felsensteins approach on this data and just see does it work better? And this brings me to my one complaint about this article the simulated datasets nor the code that generated them seems to be available…. not sure why that is. So many easy ways to make data/code available these days.</p>
+<hr />
 </div>
-<div id="pseduo-code-for-lh-calculation" class="section level1">
-<h1>pseduo code for Lh calculation</h1>
-</div>
-<div id="what-is-correlated-evolution" class="section level1">
-<h1>what is correlated evolution</h1>
+<div id="our-goals-for-next-week" class="section level1">
+<h1>Our goals for next week</h1>
+<ol style="list-style-type: decimal">
+<li><p>Begin coding a pruning algorithm to calculate the likelihood of a discrete trait on a phylogeny. Start with pseudo-code, moving on to real code if you want. Even with pseudo-code, do think about data structures (how to represent the tree, variables for calculation bookkeeppiinngg) and how to traverse the tree. A functioning program is not expected!! It will be useful to discuss strategies before getting too deep into any implementation.</p></li>
+<li><p>Think about new ideas for a phylogenetic model of correlated trait evolution. Moving beyond Pagel’s model of dependent rates, how else can we express the biological idea of two traits evolving together? We didn’t discuss the Maddison &amp; FitzJohn paper much, but my take is that we need to find mathematical/statistical models that align better with the biological view of correlation. So I think it would be fun and potentially extremely useful to argue through what those could be, beginning at the verbal/pictoral level.</p></li>
+<li><p>Heath will reread “Is your phylogeny informative”[5] to try and see if there might be a way to apply that approach to our current problems</p></li>
+</ol>
+<hr />
 </div>
 <div id="citations" class="section level1">
 <h1>Citations</h1>
 <p>[1] FitzJohn, Richard G., Wayne P. Maddison, and Sarah P. Otto. “Estimating trait-dependent speciation and extinction rates from incompletely resolved phylogenies.” Systematic biology 58, no. 6 (2009): 595-611.</p>
 <p>[2] Pagel, Mark. “Detecting correlated evolution on phylogenies: a general method for the comparative analysis of discrete characters.” Proceedings of the Royal Society of London B: Biological Sciences 255, no. 1342 (1994): 37-45.</p>
 <p>[3] Felsenstein, Joseph. “A comparative method for both discrete and continuous characters using the threshold model.” The American Naturalist 179, no. 2 (2012): 145-156. Cheers</p>
-<p>[4] Wright, Sewall. “An analysis of variability in number of digits in an inbred strain of guinea pigs.” Genetics 19, no. 6 (1934): 506. Heath</p>
+<p>[4] Wright, Sewall. “An analysis of variability in number of digits in an inbred strain of guinea pigs.” Genetics 19, no. 6 (1934): 506.</p>
+<p>[5] Boettiger, Carl, Graham Coop, and Peter Ralph. “Is your phylogeny informative? Measuring the power of comparative methods.” Evolution 66, no. 7 (2012): 2240-2251.</p>
+<p>Cheers</p>
+<p>Heath</p>
 </div>
 
 
