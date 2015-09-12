@@ -1,0 +1,47 @@
+---
+title: "Lab Notebook - 2015"
+
+author: "Heath Blackmon"
+
+output: 
+  html_document:
+    theme: spacelab
+    toc: true
+    toc_depth: 2
+---
+
+[back to main page](http://coleoguy.github.io/index.html)
+
+____
+## Introduction
+11 September 2015
+
+As a graduate student the majority of my work was dry.  As such I had a relatively incomplete record of my work since I only recorded wetlab work in a traditional lab notebook.  This is an attempt at trying a new approach where I will record all work in an online labnotebook.  I would like to make this open but at least initially while I experiment with the best approach I will be keeping it largely unadvertised and without any obvious links from my main web portals.  I would like to have a complete record of all my science related activities.  As such I envision it including notes from talks, meetings, conferences.  Thoughts on manuscripts or outstanding problems that are troubling me.  I already keep code for each project that I am working on in individual github repositories for work involving large pieces of code I will simply link to these for smaller experiments the code will likely be embedded into the notebook itself.
+
+One of the vital characteristics of this approach is that I have to be able to do it without costing a large amount of time.  To that end I am currently recording this all in markdown - within R studio.  I am familiar with this type of document and since I use R for almost all of my analyses (at least initially) it makes including code super easy.
+
+_______
+## SSR in vertebrates
+12 September 2015
+
+Read and provided edits to Rich Adams on a manuscript that I am a coauthor on.  The manuscript focuses on the evolution of short sequence repeats (SSR) in vertebrates.  My contribution to the manuscript was phylogeny infrence and comparative method reccomendations.  Specifically reccomending the use of a censored rate test to evaluate whether different clades have significantly different rates of SSR evolution.  Rich hopes to submit in the next week or two.
+
+## Stebbins - adaptation for survivial
+
+check out [my notes](http://coleoguy.github.io/stebbins.html#adaptations-for-survival) on chapter 3 of stebbins' book
+
+## Collecting data on polyploidy in plants
+
+I am working to collect all available inferences of polyploidy in plants that are based either on paralog Ks distributions or anytype of genomic linkage mapping.
+
+_______
+## Example
+11 September 2015
+
+Hoc est illud , tuumque nugarum me ut rememorarentur iniquitates meae cupio extensione lab ullamcorper.
+
+_______
+## Citations
+
+[1] Stebbins, George Ledyard. "Flowering plants: evolution above the species level." London: Arnold xviii, 399p.. Illustrations. General (KR, 197500089) (1974).
+
