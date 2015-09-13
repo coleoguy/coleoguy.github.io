@@ -3,6 +3,8 @@ title: "Study of comparative methods"
 author: "Heath Blackmon"
 output: 
   html_document:
+    theme: cosmo
+    highlight: kate
     toc: true
     toc_depth: 2
 ---

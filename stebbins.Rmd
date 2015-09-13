@@ -5,10 +5,13 @@ author: "Heath Blackmon"
 
 output: 
   html_document:
+    theme: cosmo
+    highlight: zenburn
     toc: true
     toc_depth: 2
 ---
 Notes from reading *Flowering Plants: Evolution above the Species Level*
+    <!---“cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, “cosmo”--->
 
 [back to main page](http://coleoguy.github.io/index.html)
 
