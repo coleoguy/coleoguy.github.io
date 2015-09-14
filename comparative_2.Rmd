@@ -1,0 +1,282 @@
+---
+title: "Study of comparative methods -- coding a likelihood function"
+author: "Heath Blackmon"
+date: "September 14, 2015"
+output: 
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_depth: 2
+---
+
+[Return to main website](http://coleoguy.github.io/resources.html)
+
+[Return to page 1 of comparative methods](http://coleoguy.github.io/comparative.html)
+
+
+___
+#pseudocode
+
+arguments:
+
+1. **phy** *a phylo object with t tips*
+
+2. **k** *number of states*
+
+3. **states** *matrix of probabilities with t rows and k columns*
+
+4. **q-matrix** *matrix with k rows and k columns*
+
+5. **root.treatment** *character string indicating approach either equal, steady, or fitz*
+
+Steps in function
+
+1. check that input is self consistent i.e. q-matrix is k\*k, tip.states is t\*k etc
+
+2. locate in pair of terminal sister species (A and B) and calculate the lh of data just before their common ancestor
+
+3. prune tips A and B
+
+4. reform tip.states matrix to match new tree
+
+5. repeat steps 2-4 until tree has two tips
+
+6. calculate likelihood at the root
+
+
+___
+#example data
+
+lets go ahead and get some example data built
+
+```{r}
+qmat <- matrix(c(-.3,.4,.3,-.4),2,2)
+rownames(qmat) <- colnames(qmat) <- c("A","B")
+phy <- ape::read.tree(text = "(((Sewell:1,Sarah:1):3,(Rosalind:2,Joe:2):2):1,Nettie:5);")
+k <- 2
+states <- matrix(c(1,1,1,0,0,0,0,0,1,1),length(phy$tip.label), k)
+row.names(states) <- phy$tip.label
+colnames(states) <- c("A", "B")
+```
+
+and now we will plot it just to make sure it looks the way we expect
+
+```{r}
+plot(phy, main="Tree with nodes (black) and tip states (red)", cex=.6)
+ape::tiplabels(states[,1],frame="none",adj=-7,col="red", cex=.6)
+ape::tiplabels(states[,2],frame="none",adj=-8,col="red", cex=.6)
+ape::nodelabels(frame="none",adj=-1)
+```
+
+
+___
+#function wrapprer
+
+OK, lets get the beginning of the function out of the way.  I always like to include at least a few basic checks to make sure that I am giving the function what i think it needs
+
+```{r}
+hlbLH <- function(phy,k,states,qmat,root.treatment){
+  
+  if(nrow(qmat) != k || ncol(qmat) != k) stop('The q-matrix should have the same number of rows and columns as there are states in the character')
+  
+    if(sum(!phy$tip.label == row.names(states))>0) stop('the tree tip labels and the row names of the state matrix must match')
+  
+  if(nrow(states) != length(phy$tip.label) || ncol(states) != k) stop('The  state matrix should have the same number of rows as species on the tree and columns as there are states in the character')
+  
+  return("no obvious inconsistancy")
+}
+```
+
+
+___
+# the phylo object
+
+How we write this function is largely determined by the data structure that we are working with in this example that is a phylo object.  So lets look at the components of this type of data structure in R.  We can find the topology in the edge matrix:
+
+```{r}
+phy$edge
+```
+
+here the row names are the names of the branches and the two columns are the nodes that they connect.  For my purposes I will assume that all trees I deal with are strictly bifurcating.  With this assumption we can see that terminal sister species can be easily picked out.
+
+1. ID all tip nodes - occur only once and only in column 2
+
+2. share a common ancestor - value in column 1
+
+But what about branch lengths? They reside in a vector names edge.length it will have the same number of elements as edge had rows. The branch information in these two objects are stored in the same order.
+
+```{r}
+phy$edge.length
+```
+
+In fact i like to see them together like this
+```{r}
+cbind(phy$edge, phy$edge.length)
+```
+
+
+___
+#dropping tips
+
+Part of this function will be pruning a tree of terminal sister species as they are evaluated.  We can use the ape function drop.tip if we set the argument trim.internal to false. For example:
+
+```{r}
+foo <- ape::drop.tip(phy, 1:2, trim.internal=F)
+par(mfcol=c(1,2))
+plot(phy, cex=.6)
+plot(foo, cex=.6)
+```
+
+___
+#the full function in R
+
+```{r}
+# uses:
+# ape::matexpo
+# ape::drop.tip
+# evobiR::Mode
+hlbLH <- function(phy,k,states,qmat,root.treatment){
+  # 3 checking functions
+  if(nrow(qmat) != k || ncol(qmat) != k) stop('The q-matrix should have the same number of rows and columns as there are states in the character')
+  if(sum(!phy$tip.label == row.names(states))>0) stop('the tree tip labels and the row names of the state matrix must match')
+  if(nrow(states) != length(phy$tip.label) || ncol(states) != k) stop('The  state matrix should have the same number of rows as species on the tree and columns as there are states in the character')
+  # calculates the equuilibrium state frequency for later use at the root if desired
+  steady.state <- c(sum(states[,1])/nrow(states), sum(states[,2])/nrow(states))
+  # just a counter and a flag
+  i <- 0
+  done <- F
+  while(done == F){
+    i <- i + 1
+    # this gives me rows of tips
+    tip.rows <- !phy$edge[,2] %in% phy$edge[,1]
+    # this gives me the rows of the first pair
+    sister.rows <- which(phy$edge[, 1] == evobiR::Mode(phy$edge[,1][tip.rows]))
+    # this holds the associated data
+    data <- states[phy$tip.label[phy$edge[sister.rows, 2]], ]
+    # this holds the associated bl
+    bl <- phy$edge.length[sister.rows]
+    # here we make the pmats
+    pmat1 <- ape::matexpo(qmat*bl[1])
+    pmat2 <- ape::matexpo(qmat*bl[2])
+    ## probability of branch 1
+    # starting in state A
+    #        pAA    *    pA     +     pAB    *    pB     
+    A1 <- pmat1[1,1] * data[1,1] + pmat1[1,2] * data[1,2]
+    # starting in stabe B
+    #        pBA    *    PA     +     pBB     *   pB 
+    B1 <- pmat1[2,1] * data[1,1] + pmat1[2,2] * data[1,2] 
+    ## probability of branch 2
+    # starting in state A
+    #         pAA    *    pA     +     pAB    *    pB     
+    A2 <- pmat2[1,1] * data[2,1] + pmat2[1,2] * data[2,2]
+    # starting in state B
+    #         pBA    *    PA     +     pBB     *   pB 
+    B2 <- pmat2[2,1] * data[2,1] + pmat2[2,2] * data[2,2] 
+    # here are the state values (aka prob.) for the MRCA of sister pair
+    A <- A1 * A2
+    B <- B1 * B2
+    # check to see if we have reached the root
+    if(length(phy$tip.label) == 2){
+      break()
+    }
+    # make the new tree
+    new.phy <- ape::drop.tip(phy, tip=row.names(data), trim.internal=F)
+    new.phy$tip.label[new.phy$tip.label == "NA"] <- paste(row.names(data)[1], i, sep="")
+    # make the new state matrix
+    new.states <- rbind(states[!row.names(states) %in% phy$tip.label[phy$edge[sister.rows, 2]], ],c(A, B))
+    row.names(new.states) <- c(rownames(states)[!row.names(states) %in% phy$tip.label[phy$edge[sister.rows, 2]]], paste(row.names(data)[1], i, sep=""))
+    phy <- new.phy
+    states <- new.states
+  }
+  ## now perform the calculation at the root
+  if(root.treatment == "equal"){
+    prob <- A * .5 + B * .5
+  }
+  if(root.treatment == "steady"){
+    prob <- A * steady.state[1] + B * steady.state[2]
+  }
+  if(root.treatment == "fitz"){
+    prob <- A * A/(A+B) + B * B/(A+B) 
+  }
+  return(-log(prob))
+}
+```
+
+___
+#testing my own likelihood function
+
+```{r, echo=F}
+# little helper function
+vec.to.mat <- function(x){
+  z <- matrix(0,length(x), length(unique(x)))
+  for(i in 1:nrow(z)){
+    if(x[i]==0) z[i,1] <- 1
+    if(x[i]==1) z[i,2] <- 1
+  }
+  return(z)
+}
+```
+
+
+
+
+```{r}
+# first lets load our data
+qmat <- matrix(c(-.3,.4,.3,-.4),2,2)
+rownames(qmat) <- colnames(qmat) <- c("A","B")
+phy <- ape::read.tree(text = "(((Sewell:1,Sarah:1):3,(Rosalind:2,Joe:2):2):1,Nettie:5);")
+k <- 2
+states <- matrix(c(1,1,1,0,0,0,0,0,1,1),length(phy$tip.label), k)
+row.names(states) <- phy$tip.label
+colnames(states) <- c("A", "B")
+hlbLH(phy=phy, k=2, states=states, qmat=qmat, root.treatment="fitz")
+pars <- c(0.3, 0.4)
+lnL <- diversitree::make.mkn(phy, states, k=2)
+-lnL(pars)
+
+states[1,1:2] <- c(0,1)
+hlbLH(phy=phy, k=2, states=states, qmat=qmat, root.treatment="fitz")
+lnL <- diversitree::make.mkn(phy, states, k=2)
+-lnL(pars)
+
+phy2 <- ape::rcoal(n=6)
+states2 <- matrix(c(1,1,1,0,0,1,0,0,0,1,1,0),length(phy2$tip.label), k)
+row.names(states2) <- phy2$tip.label
+colnames(states2) <- c("A", "B")
+hlbLH(phy=phy2, k=2, states=states2, qmat=qmat, root.treatment="fitz")
+pars <- c(0.3, 0.4)
+lnL <- diversitree::make.mkn(phy2, states=states2, k=2)
+-lnL(pars)
+
+```
+
+___
+#alternative root treatments
+Lots of times people pay little attention to how they combine the probabilities that we get at the bottom of the tree.  This is important though so lets make sure that the approaches I implemented are working.
+
+```{r}
+# first lets load our data
+qmat <- matrix(c(-.3,.4,.3,-.4),2,2)
+rownames(qmat) <- colnames(qmat) <- c("A","B")
+k <- 2
+phy2 <- ape::rcoal(n=6)
+states2 <- matrix(c(1,1,1,0,0,1,0,0,0,1,1,0),length(phy2$tip.label), k)
+row.names(states2) <- phy2$tip.label
+colnames(states2) <- c("A", "B")
+hlbLH(phy=phy2, k=2, states=states2, qmat=qmat, root.treatment="fitz")
+pars <- c(0.3, 0.4)
+# my fitz treatment is the default in diversitree
+lnL <- diversitree::make.mkn(phy2, states=states2, k=2)
+-lnL(pars)
+
+#now for equal probabilities
+hlbLH(phy=phy2, k=2, states=states2, qmat=qmat, root.treatment="equal")
+pars <- c(0.3, 0.4)
+lnL <- diversitree::make.mkn(phy2, states=states2, k=2)
+-lnL(pars, root=diversitree::ROOT.GIVEN, root.p=c(.5,.5))
+```
+
+[Return to main website](http://coleoguy.github.io/resources.html)
+
+[Return to page 1 of comparative methods](http://coleoguy.github.io/comparative.html)
+

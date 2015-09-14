@@ -1,5 +1,5 @@
 ---
-title: "Study of comparative methods"
+title: "Study of comparative methods-1"
 author: "Heath Blackmon"
 output: 
   html_document:
@@ -8,7 +8,11 @@ output:
     toc: true
     toc_depth: 2
 ---
+
 [Return to main website](http://coleoguy.github.io/resources.html)
+
+[Go to page 2 of comparative methods -- coding a likelihood function](http://coleoguy.github.io/comparative_2.html)
+
 
 #The model of discrete character evolution
 I'm using this page to explore comparative methods beginning with models of discrete trait evolution. I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woods Hole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire [R markdown document](https://github.com/coleoguy/coleoguy.github.io/blob/master/comparative.Rmd) is available via github.
@@ -523,6 +527,8 @@ Cheers
 
 [5] Boettiger, Carl, Graham Coop, and Peter Ralph. "Is your phylogeny informative? Measuring the power of comparative methods." Evolution 66, no. 7 (2012): 2240-2251.
 
-Cheers
 
-Heath
+[Return to main website](http://coleoguy.github.io/resources.html)
+
+[Go to page 2 of comparative methods -- coding a likelihood function](http://coleoguy.github.io/comparative_2.html)
+
