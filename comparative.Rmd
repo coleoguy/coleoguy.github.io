@@ -490,7 +490,7 @@ state1 <- 0.03804541 * (0.03804541 / (0.03805276 + 0.03804541))
 ```
 
 ____
-#Maddison and Fitzjohn 2015 [1]
+#Maddison and Fitzjohn 2015 [6]
 
 In my opinion this is one of those kind of instantly important papers.  It doesn't present anything that I feel was terribly surprising but it is well written and for those that are just beginning to get into comparative methods I think it is a good paper to make you appropriately paranoid and suspect of significant results arising from a lot of the methods that we employ commonly.  I also like this paper because for me it does a great job of why you should visually explore your data.  They first show possible outcomes that we can all agree more less should and should not produce significant results for tests of correlation.  Below is a screen shot of their figure 1:
 
@@ -527,6 +527,7 @@ Cheers
 
 [5] Boettiger, Carl, Graham Coop, and Peter Ralph. "Is your phylogeny informative? Measuring the power of comparative methods." Evolution 66, no. 7 (2012): 2240-2251.
 
+[6] Maddison, Wayne P., and Richard G. FitzJohn. "The unsolved challenge to phylogenetic correlation tests for categorical characters." Systematic biology 64, no. 1 (2015): 127-136.
 
 [Return to main website](http://coleoguy.github.io/resources.html)
 

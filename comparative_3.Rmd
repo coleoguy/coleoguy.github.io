@@ -1,0 +1,167 @@
+---
+title: "Study of comparative methods -- parametric bootstrapping"
+author: "Heath Blackmon"
+date: "September 15, 2015"
+output: 
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_depth: 2
+---
+
+[Return to main website](http://coleoguy.github.io/resources.html)
+
+[Return to page 1 of comparative methods](http://coleoguy.github.io/comparative.html)
+
+
+___
+#Boettiger's approach
+
+Carl Boettiger published a paper in Evolution in early 2012 titled ["Is your phylogeny informative? Measuring the power of comparative methods."](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3448289/)[1]  In this paper the authors argue that a Monte Carlo-based approach can be used to appropriately evaluate the uncertainty present in our comparative analyses. The manuscript focuses on continuous trait evolution and uses a data set consisting of a tree and body size data for 23 species of _Anolis sp._. They then show the application of their approach in comparing various models for body size evolution.
+
+My interest in this approach is to determine whether it would alleviate the problems that were highlighted in Maddison and Fitzjohn's recent paper [2].  I would argue that it should since I believe that the central issue driving the result in Maddison and Fitzjohn is a lack of penalty for the uncertainty in our estimates.  Below I'll attempt to show this.
+
+#simulated data
+```{r}
+### Generate trees and traits that mimics "Darwin's scenario"
+set.phy <- set.state <- list()
+for(i in 1:100){
+  #cat(".")
+  tree.good <- data.good <- F
+  # this conditions on the tree haveing 101-199 tips
+  while(tree.good == F){
+    phy <- diversitree::tree.bd(pars = c(1, 0.2), max.t=6)
+    if(length(phy$tip.label) > 100 & length(phy$tip.label) < 200){
+      set.phy[[i]] <- phy
+      tree.good <- T
+    }
+  }
+  # this conditions on the node where our trait changes having
+  # between 25 and 50% of the species on the tree
+  node.counter <- length(phy$tip.label) + 2
+  while(data.good == F){
+    descendents <- phangorn::Descendants(phy, node=node.counter, type="tips")[[1]]
+    node.counter <- node.counter + 1
+    if(length(descendents) < (length(phy$tip.label) / 2) & 
+       length(descendents) > (length(phy$tip.label) / 4)){
+      data.good <- T
+      states <- vector(mode="numeric", length=length(phy$tip.label))
+      states[descendents] <- 1
+      set.state[[i]] <- states
+    }
+  }
+}
+```
+
+Lets plot 3 of our datasets and make sure that they look the way that we are expecting them to:
+
+```{r}
+par(mfcol=c(1,3))
+for(i in 1:3){
+  pick <- sample(1:100, size=1)
+  plot(set.phy[[pick]], type = "fan", show.tip.label = F)
+  tip.cols <- c("red", "blue")
+  ape::tiplabels(pch = 20, col = tip.cols[set.state[[pick]] + 1])
+}
+```
+
+That looks great just like we want it to!
+
+```{r, echo = F}
+## function fits Pagel '94 model of correlated evolution of two binary characters
+## uses ape::ace or geiger::fitDiscrete internally
+## written by Liam J. Revell 2014
+fitPagel<-function(tree,x,y,...){
+	if(hasArg(method)) method<-list(...)$method
+	else method<-"ace"
+	if(method=="fitDiscrete"){
+		chk<-.check.pkg("geiger")
+		if(!chk){
+			cat("  method = \"fitDiscrete\" requires the package \"geiger\"\n")
+			cat("  Defaulting to method = \"ace\"\n\n")
+			method<-"ace"
+			fitDiscrete<-function(...) NULL
+		}
+	}
+	if(!is.factor(x)) x<-as.factor(x)
+	levels.x<-levels(x)
+	if(!is.factor(y)) y<-as.factor(y)
+	levels.y<-levels(y)
+	y<-y[names(x)]
+	if(length(levels.x)!=2||length(levels.y)!=2)
+		stop("Only binary characters for x & y currently permitted.")
+	xy<-setNames(factor(paste(x,y,sep="|"),
+		levels=sapply(levels.x,paste,levels.y,sep="|")),
+		names(x))
+	## fit independent model
+	iQ<-matrix(c(0,1,2,0,3,0,0,2,4,0,0,1,0,4,3,0),4,4,byrow=TRUE)
+	rownames(iQ)<-colnames(iQ)<-levels(xy)
+	fit.iQ<-if(method=="fitDiscrete") fitDiscrete(tree,xy,model=iQ) else ace(xy,tree,type="discrete",model=iQ)
+	## fit dependendent model
+	dQ<-matrix(c(0,1,2,0,3,0,0,4,5,0,0,6,0,7,8,0),4,4,byrow=TRUE)
+	rownames(dQ)<-colnames(dQ)<-levels(xy)
+	fit.dQ<-if(method=="fitDiscrete") fitDiscrete(tree,xy,model=dQ) else ace(xy,tree,type="discrete",model=dQ)
+	## back translate independent model
+	if(method=="fitDiscrete") iQ<-geiger:::.Qmatrix.from.gfit(fit.iQ)
+	else {
+		I<-fit.iQ$index.matrix
+		I[I==0]<-NA
+		iQ<-apply(I,2,function(i,x) x[i],x=fit.iQ$rates)
+		iQ[is.na(iQ)]<-0
+		diag(iQ)<--rowSums(iQ)
+		rownames(iQ)<-colnames(iQ)
+	}
+	## dependent model
+	if(method=="fitDiscrete") dQ<-geiger:::.Qmatrix.from.gfit(fit.dQ)
+	else {
+		I<-fit.dQ$index.matrix
+		I[I==0]<-NA
+		dQ<-apply(I,2,function(i,x) x[i],x=fit.dQ$rates)
+		dQ[is.na(dQ)]<-0
+		diag(dQ)<--rowSums(dQ)
+		rownames(dQ)<-colnames(dQ)
+	}
+	## assemble object to return
+	obj<-list(independent.Q=iQ,
+		dependent.Q=dQ,
+		independent.logL=logLik(fit.iQ),
+		dependent.logL=logLik(fit.dQ),
+		lik.ratio=2*(logLik(fit.dQ)-logLik(fit.iQ)),
+		P=pchisq(2*(logLik(fit.dQ)-logLik(fit.iQ)),
+		df=length(levels(x))+length(levels(y)),
+		lower.tail=FALSE))
+	class(obj)<-"fitPagel"
+	obj
+}
+print.fitPagel<-function(x,...){
+	cat("\n  Pagel's binary character correlation test:\n")
+	cat("\nIndepedent model rate matrix:\n")
+	print(x$independent.Q)
+	cat("\nDependent model rate matrix:\n")
+	print(x$dependent.Q)
+	cat("\nModel fit:\n")
+	obj<-matrix(c(x$independent.logL,x$dependent.logL),2,1)
+	rownames(obj)<-c("independent","dependent")
+	colnames(obj)<-"log-likelihood"
+	print(obj)
+	cat("\nHypothesis test result:\n")
+	cat(paste("  likelihood-ratio: ",signif(x$lik.ratio,7),"\n"))
+	cat(paste("  p-value: ",signif(x$P,7),"\n"))
+}
+```
+
+#the Pagel test in R
+Its late and lab meeting is quickly approaching so rather than doing all the processing of the output from ace or fitdiscrete I'm going to borrow some code that Liam wrote last year that does the same.  Here is a link to his [blog post](http://blog.phytools.org/2014/12/r-function-for-pagels-1994-correlation.html) on the topic.  Additionally here is a direct link to [the code](http://www.phytools.org/fitPagel/v0.1/fitPagel.R) that I am borrowing.
+
+I'm tired more work tomorrow!
+
+[Return to main website](http://coleoguy.github.io/resources.html)
+
+[Return to page 1 of comparative methods](http://coleoguy.github.io/comparative.html)
+
+___
+#citations
+
+[1] Boettiger, Carl, Graham Coop, and Peter Ralph. "Is your phylogeny informative? Measuring the power of comparative methods." Evolution 66, no. 7 (2012): 2240-2251.
+
+[2] Maddison, Wayne P., and Richard G. FitzJohn. "The unsolved challenge to phylogenetic correlation tests for categorical characters." Systematic biology 64, no. 1 (2015): 127-136.
