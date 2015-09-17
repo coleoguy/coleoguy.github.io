@@ -9,9 +9,10 @@ output:
     toc_depth: 2
 ---
 
+
 [Return to main website](http://coleoguy.github.io/resources.html)
 
-Return to of comparative methods page [1](http://coleoguy.github.io/comparative.html) [2](http://coleoguy.github.io/comparative_2.html) [3](http://coleoguy.github.io/comparative_3.html)
+Return to of comparative methods [outline](http://coleoguy.github.io/comparative/methods.html) page 
 
 ___
 #simulated data - trees
@@ -43,7 +44,7 @@ used.nodes <- vector()
 for(i in 1:100){
   data.good <- F
   # this conditions on the node where our trait changes having
-  # between 40 and 60% of the species on the tree
+  # between 30 and 70% of the species on the tree
   node.counter <- length(set.phy[[i]]$tip.label) + 1
   while(data.good == F){
     node.counter <- node.counter + 1
@@ -114,12 +115,10 @@ My interest in this approach is to determine whether it would alleviate the prob
 
 
 
-
-
-
 [Return to main website](http://coleoguy.github.io/resources.html)
 
-[Return to page 1 of comparative methods](http://coleoguy.github.io/comparative.html)
+Return to of comparative methods [outline](http://coleoguy.github.io/comparative/methods.html) page 
+
 
 ___
 #citations

@@ -9,9 +9,12 @@ output:
     toc_depth: 2
 ---
 
+
+
 [Return to main website](http://coleoguy.github.io/resources.html)
 
-[Return to page 1 of comparative methods](http://coleoguy.github.io/comparative.html)
+Return to of comparative methods [outline](http://coleoguy.github.io/comparative/methods.html) page 
+
 
 
 ___
@@ -276,7 +279,10 @@ lnL <- diversitree::make.mkn(phy2, states=states2, k=2)
 -lnL(pars, root=diversitree::ROOT.GIVEN, root.p=c(.5,.5))
 ```
 
+
+
 [Return to main website](http://coleoguy.github.io/resources.html)
 
-[Return to page 1 of comparative methods](http://coleoguy.github.io/comparative.html)
+Return to of comparative methods [outline](http://coleoguy.github.io/comparative/methods.html) page 
+
 

@@ -204,4 +204,7 @@ In the above simulation every individual has a PAR that grows or shrinks by a sm
 I've added points to the graph above to indicate the minimum PAR size in the population at each generation.  Each color indicates a differnt itteration.  What we can see here very clearly is that purifying selection due to aneuploidy (given our aneuploidy function) is sufficient to stop PAR size from getting smaller.
 
 ___
-# Adding realism to adult fitness calculations
+# Predicting aneuploidy rate in other species.
+
+One approach that we could take is to determine the strength of selection to reduce recombination that produces a PAR size that we see in humans. We could then use that model to predict the aneuploidy rate we expect in other species.  Obviously this is simplistic but it would provide a nice first approximation.
+
