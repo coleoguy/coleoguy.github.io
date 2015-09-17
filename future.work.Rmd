@@ -1,0 +1,39 @@
+---
+title: "Things to explore later"
+author: "Heath Blackmon"
+output: 
+  html_document:
+    theme: cosmo
+    highlight: kate
+    toc: true
+    toc_depth: 2
+---
+
+
+[Return to main website](http://coleoguy.github.io/resources.html)
+
+___
+#Distribution of subtree sizes.
+
+The distribution of sub-tree sizes seems to be largely a function of tree balance.  I believe a lot of work was done on this in the 80s but not sure.  For instance  a completely ladderized tree and a completely symmetric tree have very different distributions.
+
+```{r}
+par(mfcol=(c(1,2)))
+phy <- ape::read.tree(text = "(H:7,(G:6,(F:5,(E:4,(D:3,(C:2,(A:1,B:1):1):1):1):1):1):1);")
+phy2 <- ape::read.tree(text = "(((A:1,B:1):1,(C:1,D:1):1):1,((E:1,F:1):1,(G:1,H:1):1):1);")
+plot(phy)
+plot(phy2)
+phycount <- 2:128
+phy2count <- c(128,rep(64,2),rep(32,4),rep(16,8),rep(8,16),rep(4,32),rep(2,64))
+```
+
+If we think about trees like this but expand it out to say 128 tips we can start to get an idea of the distributions of sub-trees:
+
+```{r}
+plot(density(phycount), main="ladderized tree", xlab="subtree sizes")
+plot(density(phy2count), main="symmetric tree", xlab="subtree sizes")
+```
+
+So does this difference tell us anything about the generating process?  Tonjana has probably looked at this a little bit should probably talk to him about it.
+
+
