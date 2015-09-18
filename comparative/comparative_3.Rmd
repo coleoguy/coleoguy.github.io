@@ -1,5 +1,5 @@
 ---
-title: "Study of comparative methods -- parametric bootstrapping"
+title: "Study of comparative methods -- Simulating data for pseudoreplication problem."
 author: "Heath Blackmon"
 date: "September 15, 2015"
 output: 
@@ -42,7 +42,7 @@ for(i in 1:3) plot(set.phy[[sample(1:100, 1)]], type="fan", show.tip.label = F)
 ```
 
 ___
-#simulated data states - Darwin's scenario
+#simulated data - Darwin's scenario states 
 ```{r}
 ### Generate traits that mimics "Darwin's scenario"
 set.state <- list()
@@ -94,7 +94,7 @@ rm(i, picked, tip.cols)
 For Darwin's scenario we only have to simulate a single dataset for each itteration and we simply duplicate it for the second trait.
 
 ___
-#simulated data states - unreplicated burst
+#simulated data - unreplicated burst states 
 
 This type of dataset describes a situation where 1 trait has experienced a single transition on the tree (as in Darwin's scenario) while the second trait shows many origins but only within the subtree that experienced the transition in the other trait.  To simulate this data my first trait will be simulated in the same fashion as I did for Darwin's scenario datasets above.  For the second datest I will extract the subtree chosen for the first trait and evolve a trait under an Mk model with only transition out of state 0 into state 1 allowed.  Acceptance of these datasets will be conditioned on 40-60% of the tips being in the derived state.
 
@@ -148,7 +148,7 @@ rm(qmat, current.tree, data.good, i, max.tip, min.tip, picked, result, set.state
 ```
 
 ___
-#simulated data - perfectly replicated evolution
+#simulated data - perfectly replicated evolution states 
 
 For the next type of data that we need to generate we want a situation where two traits show perfect co-distribution with multiple origins.  The one decision that we have to make here is picking the number of origins.  I feel like this is somewhat subjective but I will go with 6 origins each of which have at least 5-10 tips 
 
@@ -199,7 +199,7 @@ ape::tiplabels(col=tip.cols[perfrep2[[picked]]+3],pch=15, cex=.5)
 ```
 
 ___
-#simulated data - dependant evolution
+#simulated data - dependant evolution states 
 
 So this is the  model that we are assuming when using Pagel's test.  One of the difficulties in simulating this dataset is that you have to pick values for 8 rates in the Mk model.  I thought about drawing them randomly but then your choice of the distribution to draw from can be tweaked to make significance easier to achieve. I decided to borrow some [code from Liam](http://blog.phytools.org/2014/12/r-function-for-pagels-1994-correlation.html) where he simulated under this type of model.  I think that the choice of these rates is something that should be considered in more depth later. 
 
@@ -238,7 +238,7 @@ ape::tiplabels(col=tip.cols[dependant.data2[[picked]]+3],pch=15, cex=.5)
 ```
 
 ___
-#simulated data - independant evolution
+#simulated data - independant evolution states 
 
 ```{r}
 independant.data1 <- independant.data2 <- list()
