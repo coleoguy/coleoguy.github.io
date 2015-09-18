@@ -9,7 +9,6 @@ output:
     toc_depth: 2
 ---
 
-
 [Return to main website](http://coleoguy.github.io/resources.html)
 
 Return to of comparative methods [outline](http://coleoguy.github.io/comparative/methods.html) page 
@@ -24,8 +23,8 @@ for(i in 1:100){
   tree.good <- F
   # this conditions on the tree haveing 101-199 tips
   while(tree.good == F){
-    set.seed(seed.counter)
-    phy <- diversitree::tree.bd(pars = c(1, 0.1), max.t=6)
+    set.seed(seed.counter*3)
+    phy <- diversitree::tree.bd(pars = c(1, 0.4), max.t=6)
     if(length(phy$tip.label) > 100 & length(phy$tip.label) < 200){
       set.phy[[i]] <- phy
       tree.good <- T
@@ -33,25 +32,32 @@ for(i in 1:100){
     seed.counter <- seed.counter + 1
   }
 }
+rm(i, phy, seed.counter, tree.good)
+```
+Here is a random sample of 3 of our trees:
+
+```{r, echo=F, , fig.width=6, fig.height=2.5}
+par(mfcol=c(1,3))
+for(i in 1:3) plot(set.phy[[sample(1:100, 1)]], type="fan", show.tip.label = F)
 ```
 
 ___
-#simulated data - states - Darwin's scenario
+#simulated data states - Darwin's scenario
 ```{r}
-### Generate trees and traits that mimics "Darwin's scenario"
+### Generate traits that mimics "Darwin's scenario"
 set.state <- list()
 used.nodes <- vector()
 for(i in 1:100){
   data.good <- F
   # this conditions on the node where our trait changes having
-  # between 30 and 70% of the species on the tree
+  # between 30 and 60% of the species on the tree
   node.counter <- length(set.phy[[i]]$tip.label) + 1
   while(data.good == F){
     node.counter <- node.counter + 1
     descendents <- phangorn::Descendants(set.phy[[i]], 
                                          node=node.counter, 
                                          type="tips")[[1]]
-    max.tip <- length(set.phy[[i]]$tip.label) * .70
+    max.tip <- length(set.phy[[i]]$tip.label) * .60
     min.tip <- length(set.phy[[i]]$tip.label) * .30
     if(length(descendents) < max.tip & length(descendents) > min.tip){
       states <- vector(mode="numeric", length=length(set.phy[[i]]$tip.label))
@@ -62,62 +68,233 @@ for(i in 1:100){
     }
   }
 }
-state.darwin <- set.state
+state.darwin1 <- state.darwin2 <- set.state
+rm(data.good, descendents, i, max.tip, min.tip, node.counter, set.state, states)
 ```
 
+Here is a random sample of 3 of our trees with Darwin's scenario data for two traits:
+
+```{r, echo=F, , fig.width=4, fig.height=7.5}
+par(mfcol=c(3,2))
+library(viridis)
+tip.cols <- viridis(4)
+set.seed(1)
+picked <- sample(1:100, 3)
+for(i in 1:3){ 
+  plot(set.phy[[picked[i]]], type="fan", show.tip.label = F, main=paste("Trait:1 Dataset:", picked[i], sep=""))
+  ape::tiplabels(col=tip.cols[state.darwin1[[picked[i]]]+1],pch=16)
+}
+for(i in 1:3){ 
+  plot(set.phy[[picked[i]]], type="fan", show.tip.label = F, main=paste("Trait:2 Dataset:", picked[i], sep=""))
+  ape::tiplabels(col=tip.cols[state.darwin2[[picked[i]]]+3],pch=16)
+}
+rm(i, picked, tip.cols)
+```
+
+For Darwin's scenario we only have to simulate a single dataset for each itteration and we simply duplicate it for the second trait.
 
 ___
-#simulated data - dependent evolution
+#simulated data states - unreplicated burst
 
-Lets plot 3 of our datasets and make sure that they look the way that we are expecting them to:
+This type of dataset describes a situation where 1 trait has experienced a single transition on the tree (as in Darwin's scenario) while the second trait shows many origins but only within the subtree that experienced the transition in the other trait.  To simulate this data my first trait will be simulated in the same fashion as I did for Darwin's scenario datasets above.  For the second datest I will extract the subtree chosen for the first trait and evolve a trait under an Mk model with only transition out of state 0 into state 1 allowed.  Acceptance of these datasets will be conditioned on 40-60% of the tips being in the derived state.
 
 ```{r}
-par(mfcol=c(1,3))
-for(i in 1:3){
-  pick <- sample(1:100, size=1)
-  plot(set.phy[[pick]], show.tip.label = F)
-  tip.cols <- c("red", "blue")
-  ape::tiplabels(pch = 20, col = tip.cols[set.state[[pick]] + 1])
+### Generate traits that mimics "unreplicated burst scenario"
+# first I'll take care of the trait with a single transition
+set.state <- list()
+for(i in 1:100){
+  data.good <- F
+  # this conditions on the node where our trait changes having
+  # between 30 and 70% of the species on the tree
+  current.tree <- ape::extract.clade(set.phy[[i]], used.nodes[i])
+  while(data.good == F){
+    qmat <- matrix(c(-.2,0,.2,0),2,2)
+    result <- diversitree::sim.character(current.tree, 
+                                         c(.5,0), x0=0, model="mk2")
+    transitioned <- names(which(result== 1))
+    max.tip <- length(current.tree$tip.label) * .60
+    min.tip <- length(current.tree$tip.label) * .40
+    if(length(transitioned) < max.tip & 
+       length(transitioned) > min.tip){
+      states <- vector(mode="numeric", length=length(set.phy[[i]]$tip.label))
+      transitioned <- which(set.phy[[i]]$tip.label %in% transitioned)
+      states[transitioned] <- 1
+      set.state[[i]] <- states
+      data.good <- T
+    }
+  }
+}
+unrepburst1 <- state.darwin1
+unrepburst2 <- set.state
+
+```
+
+Here is a randomly chosen pair of traits for the unreplicated burst type of data:
+
+```{r, echo=F, , fig.width=4, fig.height=7.5}
+par(mfcol=c(1,2))
+library(viridis)
+tip.cols <- viridis(4)
+set.seed(i)
+picked <- sample(1:100, 1)
+# trait1
+plot(set.phy[[picked]], show.tip.label = F, no.margin=T)
+ape::tiplabels(col=tip.cols[unrepburst1[[picked]]+1],pch=15, cex=.5)
+#trait2
+plot(set.phy[[picked]], show.tip.label = F, 
+     direction = "leftwards")
+ape::tiplabels(col=tip.cols[unrepburst2[[picked]]+3],pch=15, cex=.5)
+rm(qmat, current.tree, data.good, i, max.tip, min.tip, picked, result, set.state, states, tip.cols, transitioned, used.nodes)
+```
+
+___
+#simulated data - perfectly replicated evolution
+
+For the next type of data that we need to generate we want a situation where two traits show perfect co-distribution with multiple origins.  The one decision that we have to make here is picking the number of origins.  I feel like this is somewhat subjective but I will go with 6 origins each of which have at least 5-10 tips 
+
+```{r}
+### Generate traits that mimics "perfect replicated scenario"
+set.state <- list()
+for(i in 1:100){
+  data.good <- F
+  counter <- i
+  current.tree <- set.phy[[i]]
+  min.node <- length(current.tree$tip.label) + 2
+  max.node <- length(current.tree$tip.label) + length(current.tree$node.label)
+  # this conditions on the selected 6 
+  # origins each having at least 5-10 tips
+  while(data.good == F){
+    counter <- counter + 1
+    set.seed(counter)
+    picked.nodes <- sample(min.node:max.node, size=6)
+    descendants <- phangorn::Descendants(set.phy[[i]], node=picked.nodes, type="tips")
+    foo <- c(F,F,F,F,F,F)
+    for(j in 1:6){
+      if(length(descendants[[j]]) <= 15 & length(descendants[[j]]) >= 2) foo[j] <- T
+    }
+    if(sum(foo) == 6) data.good <- T
+  }
+  states <- vector(mode="numeric", length=length(set.phy[[i]]$tip.label))
+  states[unlist(descendants)] <- 1
+  set.state[[i]] <- states
+}
+perfrep1 <- perfrep2 <- set.state
+```
+
+Here is a look at what the perfectly replicated changes datasets look like:
+
+```{r, echo=F, , fig.width=4, fig.height=7.5}
+par(mfcol=c(1,2))
+library(viridis)
+tip.cols <- viridis(4)
+set.seed(32)
+picked <- sample(1:100, 1)
+# trait1
+plot(set.phy[[picked]], show.tip.label = F, no.margin=T)
+ape::tiplabels(col=tip.cols[perfrep1[[picked]]+1],pch=15, cex=.5)
+#trait2
+plot(set.phy[[picked]], show.tip.label = F, 
+     direction = "leftwards")
+ape::tiplabels(col=tip.cols[perfrep2[[picked]]+3],pch=15, cex=.5)
+```
+
+___
+#simulated data - dependant evolution
+
+So this is the  model that we are assuming when using Pagel's test.  One of the difficulties in simulating this dataset is that you have to pick values for 8 rates in the Mk model.  I thought about drawing them randomly but then your choice of the distribution to draw from can be tweaked to make significance easier to achieve. I decided to borrow some [code from Liam](http://blog.phytools.org/2014/12/r-function-for-pagels-1994-correlation.html) where he simulated under this type of model.  I think that the choice of these rates is something that should be considered in more depth later. 
+
+```{r}
+# next ten lines of code are largely borrowed from Liams blog post on this topic 
+dependant.data1 <- dependant.data2 <- list()
+Q<-matrix(c(0,0.5,0.5,0,2,0,0,2,2,0,0,2,0,0.5,0.5,0),4,4,byrow=TRUE)
+rownames(Q)<-colnames(Q)<-c("aa","ab","ba","bb")
+diag(Q)<--rowSums(Q)
+for(i in 1:100){
+  tt<-phytools::sim.history(set.phy[[i]],t(Q), anc="aa", message=F)
+  states1 <- vector(mode="numeric", length=length(set.phy[[i]]$tip.label))
+  states2 <- vector(mode="numeric", length=length(set.phy[[i]]$tip.label))
+  states1[which(tt$states == "ba" | tt$states == "bb")] <- 1
+  states2[which(tt$states == "ab" | tt$states == "bb")] <- 1
+  dependant.data1[[i]] <- states1
+  dependant.data2[[i]] <- states2
 }
 ```
 
-That looks great just like we want it to!
+Here is a look at what the dependant datasets look like:
 
-#the Pagel test in R
-We will use diversitree to fit our models of trait evolution in diversitree. To do this we will need two models an independent and dependent.
-iQ<-matrix(c(0,1,2,0,3,0,0,2,4,0,0,1,0,4,3,0),4,4,byrow=TRUE)
-	rownames(iQ)<-colnames(iQ)<-levels(xy)
-	fit.iQ<-if(method=="fitDiscrete") fitDiscrete(tree,xy,model=iQ) else ace(xy,tree,type="discrete",model=iQ)
-	## fit dependendent model
-	dQ<-matrix(c(0,1,2,0,3,0,0,4,5,0,0,6,0,7,8,0),4,4,byrow=TRUE)
-
-
-So first lets try it out on 
-x<- y <- set.state[[1]]
-phy <- set.phy[[1]]
-names(x) <- names(y) <- phy$tip.label
-fit.ape<-fitPagel(tree=phy,x=x, y=y, method="fitDiscrete")
-fit.ape
-
-
-
-
-
-
-
+```{r, echo=F, , fig.width=4, fig.height=7.5}
+par(mfcol=c(1,2))
+library(viridis)
+tip.cols <- viridis(4)
+set.seed(32)
+picked <- sample(1:100, 1)
+# trait1
+plot(set.phy[[picked]], show.tip.label = F, no.margin=T)
+ape::tiplabels(col=tip.cols[dependant.data1[[picked]]+1],pch=15, cex=.5)
+#trait2
+plot(set.phy[[picked]], show.tip.label = F, 
+     direction = "leftwards")
+ape::tiplabels(col=tip.cols[dependant.data2[[picked]]+3],pch=15, cex=.5)
+```
 
 ___
-#Boettiger's approach
+#simulated data - independant evolution
 
-Carl Boettiger published a paper in Evolution in early 2012 titled ["Is your phylogeny informative? Measuring the power of comparative methods."](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3448289/)[1]  In this paper the authors argue that a Monte Carlo-based approach can be used to appropriately evaluate the uncertainty present in our comparative analyses. The manuscript focuses on continuous trait evolution and uses a data set consisting of a tree and body size data for 23 species of _Anolis sp._. They then show the application of their approach in comparing various models for body size evolution.
+```{r}
+independant.data1 <- independant.data2 <- list()
+for(i in 1:100){
+  current.tree <- set.phy[[i]]
+  result1 <- diversitree::sim.character(current.tree, c(.5,.5), x0=0, model="mk2")
+  result2 <- diversitree::sim.character(current.tree, c(.5,.5), x0=0, model="mk2")
+  transitioned1 <- names(which(result1== 1))
+  transitioned2 <- names(which(result2== 1))
+  states1 <- vector(mode="numeric", length=length(current.tree$tip.label))
+  states2 <- vector(mode="numeric", length=length(current.tree$tip.label))
+  transitioned1 <- which(current.tree$tip.label %in% transitioned1)
+  transitioned2 <- which(current.tree$tip.label %in% transitioned2)
+  states1[transitioned1] <- 1
+  states2[transitioned2] <- 1
+  independant.data1[[i]] <- states1
+  independant.data2[[i]] <- states2
+}
+```
 
-My interest in this approach is to determine whether it would alleviate the problems that were highlighted in Maddison and Fitzjohn's recent paper [2].  I would argue that it should since I believe that the central issue driving the result in Maddison and Fitzjohn is a lack of penalty for the uncertainty in our estimates.  Below I'll attempt to show this.
+Here is a look at what the independant datasets look like:
+
+```{r, echo=F, , fig.width=4, fig.height=7.5}
+par(mfcol=c(1,2))
+library(viridis)
+tip.cols <- viridis(4)
+set.seed(32)
+picked <- sample(1:100, 1)
+# trait1
+plot(set.phy[[picked]], show.tip.label = F, no.margin=T)
+ape::tiplabels(col=tip.cols[independant.data1[[picked]]+1],pch=15, cex=.5)
+#trait2
+plot(set.phy[[picked]], show.tip.label = F, 
+     direction = "leftwards")
+ape::tiplabels(col=tip.cols[independant.data2[[picked]]+3],pch=15, cex=.5)
+rm(Q, counter, current.tree, data.good, descendants, foo, i, j, max.node, min.node, picked, picked.nodes, result1, result2, set.state, states,states1,states2,tip.cols, tt)
+```
+
+Ok lets review what we now have:  
+
+1. trees: 100 trees with 100-200 tips
+
+2. darwins scenario data: two traits single origin identical for both traits
+
+3. unreplicated burst data: two traits one with single origin one with many within that subtree
+
+4. replicated evolution data = 6 identical orgins of each trait 
+
+5. dependant data = the rate of both characters are unique based on the state of the other 
+
+6. independant data = no correlation between characters
 
 
-
-[Return to main website](http://coleoguy.github.io/resources.html)
-
-Return to of comparative methods [outline](http://coleoguy.github.io/comparative/methods.html) page 
+```{r, eval=F}
+save.image(file="pagel.data.sets.RData")
+```
 
 
 ___
