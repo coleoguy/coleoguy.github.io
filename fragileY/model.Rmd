@@ -10,6 +10,9 @@ output:
     toc_depth: 2
 ---
 
+___
+# __SECTION 1__
+
 ____
 # PAR size and fitness
 
@@ -148,7 +151,7 @@ In the above simulation every individual has a PAR that grows or shrinks by a sm
 ```{r}
   genotypes <- list()
   colors <- rainbow(20)
-  for(k in 1:250){
+  for(k in 1:5){
     par.sizes <- vector(mode="numeric", length=1000)
     par.sizes <- rep(3000, 1000)
     fitness <- vector(mode="numeric", length=1000)
@@ -202,6 +205,196 @@ In the above simulation every individual has a PAR that grows or shrinks by a sm
 ```
 
 I've added points to the graph above to indicate the minimum PAR size in the population at each generation.  Each color indicates a differnt itteration.  What we can see here very clearly is that purifying selection due to aneuploidy (given our aneuploidy function) is sufficient to stop PAR size from getting smaller.
+
+
+___
+# __SECTION 2__
+
+___
+# Fine tuning the aneuploidy rate based on real data.
+
+Perhaps the best available data for helping to inform model paramters comes from:
+
+*Spriggs, E. L., A. W. Rademaker, and R. H. Martin. "Aneuploidy in human sperm: results of two-and three-color fluorescence in situ hybridization using centromeric probes for chromosomes 1, 12, 15, 18, X, and Y." Cytogenetic and Genome Research 71, no. 1 (1995): 47-53*
+
+from this we can extract the table below:
+
+failure of meiosis 1 + failure of meiosis 2
+```{r, echo=F}
+  autosomes <- matrix(c(1, 12, 15, 18,  .1,.16,.11,.11), 4, 2)
+  colnames(autosomes) <- c("chromosome","%disomy")
+  autosomes
+```
+
+
+failure of meiosis 1
+
+```{r, echo=F}
+  gonosomes1 <- matrix(c("XY",  .15), 1, 2)
+  colnames(gonosomes1) <- c("chromosome","% disomy")
+  gonosomes1
+```
+
+failure of meiosis 2
+  
+```{r, echo=F}
+  gonosomes2 <- matrix(c("XX", "YY", .07, .21), 2, 2)
+  colnames(gonosomes2) <- c("chromosome","% disomy")
+  gonosomes2
+```
+
+With autosomes failures at meiosis one and two are confounded however, we might use the failure rates of X chromosomes to properly segregate at meiosis two as a stand-in.  If this is true then we could expect meiosis one failure rate for autosomes to be ~ `r colMeans(autosomes)[2] - as.numeric(gonosomes2[1,2])`%.  Meanwhile if .15% of sperm are XY (sterile) then another .15% will lack either the X or the Y (essentially inviable) leading to a total of .3% sperm being sterile/inviable due to failures of meiosis 1.
+
+So now lets refit the exponintial function describing risk of aneuploidy with 3 data points now:
+
+1. no par 50% aneuploidy
+of the time should still segregate properly just by chance
+
+2. 3,000 kb par (humans) .3% aneuploidy
+
+3. large par (based on autosomes) .05% aneuploidy
+
+**blah blah blah blah**
+
+can't find a good equation to fit all the data that i want to use reasons why??
+
+trying to combine biological data from two different processes meiosis 1+2 for 3rd point
+
+meiosis 1 for point 2
+
+and just basic logic for point 1
+
+come back and work later.....
+
+
+```{r echo=F}
+x<- 0:20000
+y <- .5 * exp(-.00095*x)
+plot(x,y,cex=.2, xlab="PAR size in kb", ylab="probability of aneuploidy")
+points(x=c(1,3000,20000), y=c(.5,.03,.005), col="red", pch=16)
+text(x=c(25,2800,4825), y=c(.49,.07,.04), 
+     labels=c("No PAR", "Human XY", "Autosomes"),
+     pos=4, cex=.7)
+    
+```
+-0.03*log(x) + 0.5
+
+```{r echo=F}
+x<- 0:20000
+y <- .5 * exp(-.00095*x)
+y2 <- -0.03 * log(x) + 0.5
+plot(x,y,cex=.2, xlab="PAR size in kb", ylab="probability of aneuploidy")
+lines(x,y2,col="red")
+points(x=c(1,3000,20000), y=c(.5,.03,.005), col="red", pch=16)
+text(x=c(25,2800,4825), y=c(.49,.07,.04), 
+     labels=c("No PAR", "Human XY", "Autosomes"),
+     pos=4, cex=.7)
+    
+```
+
+
+
+
+
+
+cow = 9000kb
+dog = 6600kb
+human = 3000kb
+horse = 900kb
+mouse = 700kb
+
+
+Given this very simpified model of the probability of aneuploidy at meiosis one lets see what strength of selection to reduce recombination leads to an equilibrium par size of 3,000 kb (what we see in humans).
+
+
+
+```{r, eval=F, echo=F}
+# lets write a quick simulate function
+sexC.evolve <- function(gen = 5000 
+                        initial.par = 150000
+                        pop.size = 1000
+                        step.size = 400
+                        mut.rate = 1 # average number per generation){
+  
+  aneu.prob <- function(x){
+    y <- .5 * exp(-.00095*x)
+    return(y)
+  }
+
+for(k in 1:5){
+    par.sizes <- vector(mode="numeric", length=pop.size)
+    par.sizes <- rep(initial.par, pop.size)
+    fitness <- vector(mode="numeric", length=pop.size)
+    fitness <- rep(1, pop.size)
+    for(i in 1:gens){
+      # pick the mutants with smaller PARs
+      mutants <- sample(1:length(par.sizes), size=rpois(1, mut.rate))
+      # allow "inversions of any size with uniform distribution"
+      if(length(mutants) > 0){
+        par.sizes[mutants] <- par.sizes[mutants] - runif(n=mutants.pergen, min=0, max=max(par.sizes))
+      }
+      par.sizes[par.sizes < 0] <- 0
+      # now for the males that have these new par
+      # sizes we want to award males that have less
+      # par on the grounds that these males can have
+      # resolved sexual antagonism
+      fitness <- -0.0001666667*par.sizes + 1
+      fitness[fitness < 0] <- 0
+      # lets have a round of selection on adult males
+      # based on this fitness function
+      par.sizes <- sample(par.sizes, size = 1000, prob = fitness, replace=T)
+      # now we add aneuploidy
+    aneuploidy.risk <- exp(-.001168*par.sizes)
+      par.sizes <- par.sizes[!aneuploidy.risk > runif(n=1000, min=0, max=1)]
+       # since we are treating aneuploides as fitness = 0 we can just drop them the
+      # population is brought back up to the constant size in line:
+      # par.sizes <- sample(par.sizes, size = 1000, prob = fitness, replace=T)
+      result[i] <- mean(par.sizes)
+      result2[i] <- min(par.sizes)
+    }
+    genotypes[[k]] <- par.sizes
+    if(k == 1) plot(x=1:gens,y=result, type="l", 
+                      lwd=1, main="PAR and Aneuploidy", 
+                      xlim=c(0,gens),ylim=c(0,3100),
+                      xlab="generations", ylab="PAR (kb)", col=colors[k])
+    if(k/3 == round(k/3)){
+      points(x=1:gens,y=result2, cex=.1, pch=20, col=colors[k])
+    }
+    if(k>1) points(x=1:gens,y=result, type="l",lwd=1, col=colors[k])
+
+  }
+  text(600,3000,labels="Y loss rate in humans = .03", cex=.6, pos=4)
+  
+  lines(x=c(580,600), y=c(2800,2800),col="red", lwd=3)
+  text(600,2800,labels="Mean PAR size", cex=.6, pos=4)
+  
+  points(x=c(580,590,600),y=c(2900,2900,2900), pch=20, col="red", cex=.2)
+  text(600,2900,labels="Min PAR size in population", cex=.6, pos=4)
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+                        }
+```
+
+
+
+
 
 ___
 # Predicting aneuploidy rate in other species.
