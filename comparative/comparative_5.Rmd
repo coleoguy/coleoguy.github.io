@@ -1,0 +1,50 @@
+---
+title: "Study of comparative methods -- Functions for comparative tests:"
+author: "Heath Blackmon"
+date: "September 19, 2015"
+output: 
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_depth: 2
+---
+
+[Return to main website](http://coleoguy.github.io/resources.html)
+
+Return to of comparative methods [outline](http://coleoguy.github.io/comparative/methods.html) page 
+
+___
+#Pagel's
+```{r}
+mark <- function(phy, x, y){
+  
+}
+```
+
+___
+#Huelsenbeck's
+```{r}
+john <- function(phy, x, y){
+  
+}
+```
+
+___
+#Maddison's
+```{r}
+wayne <- function(phy, x, y){
+  
+}
+```
+
+___
+#Blackmon's
+```{r}
+heath <- function(phy, x, y){
+  
+}
+```
+
+___
+#citations
+
