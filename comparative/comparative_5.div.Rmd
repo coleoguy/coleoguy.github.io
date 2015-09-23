@@ -65,7 +65,23 @@ I think that looking at a plot like this for your dataset would be a good idea. 
 ___
 #Implementation of Pagel's Test [1]
 ```{r}
-mark <- function(phy, x, y, strict=F, pars=0.01, method="nlminb"){
+StartMK <- function(np){
+		x <- runif(np, 0, 5);
+	return(x);
+}
+lrt <- function (dep, ind) {
+  L.dep <- dep$value
+  L.ind <- ind$value
+  L01 <- as.vector(- 2 * (L.dep - L.ind))
+  df <- length(ind$par) - length(dep$par)
+  pvalue <- pchisq(L01, df, lower.tail = FALSE)
+  return(pvalue)
+}
+	
+
+
+
+Pagel94 <- function(phy, x, y, maxbad=5000, opt=5){
   # first we have to combine our two binary traits into one 4 state trait
   z <- paste(x, y, sep="")
   z[z=="00"] <- 1
@@ -74,19 +90,86 @@ mark <- function(phy, x, y, strict=F, pars=0.01, method="nlminb"){
   z[z=="11"] <- 4
   z <- as.numeric(z)
   names(z) <- phy$tip.label
+  
   lk1 <- diversitree::make.mkn(phy, z, k=4, strict=F)
-  lk.ind <- diversitree::constrain(lk.ind, q14~0, q23~0, q32~0, q41~0)
-  lk.dep <- diversitree::constrain(lk.dep, q13~q24, q31~q42, q21~q43, q12~q34)
-  m.comp <- anova(fit1, fit2)[2,5]
+  lk.ind <- diversitree::constrain(lk1, q14~0, q23~0, q32~0, q41~0) #pars=8
+  lk.dep <- diversitree::constrain(lk.ind, q13~q24, q31~q42, q21~q43, q12~q34) #pars=4
+  #  lk.ind(StartMK(8))
+  #  lk.dep(StartMK(4))
+	minb <- rep(0, 8)
+	maxb <- rep(50, 8)
+	
+	# Fit the independent model
+	for (i in 1:opt){
+		badcount <- 0
+		pp <- StartMK(8)
+		resx <- try(optim(pp, lk.ind, method='L-BFGS-B', 
+		                  lower=minb, upper=maxb, 
+		                  control=list(maxit=5000, fnscale=-1)), silent=T);
+		while (class(resx) == 'try-error'){
+		  pp <- StartMK(8)
+		  resx <- try(optim(pp, lk.ind, method='L-BFGS-B', 
+		                    lower=minb, upper=maxb, 
+		                    control=list(maxit=5000, fnscale=-1)), silent=T);
+			if (badcount > maxbad){
+				stop("too many fails to optimize independant model")
+			}
+			badcount <- badcount + 1
+		}
+ 
+		if (i == 1){
+			best.ind <- resx
+		}else{
+			if (best.ind$value < resx$value){
+				best.ind <- resx
+			}
+		}
+	}
+
+	minb <- rep(0, 4)
+	maxb <- rep(50, 4)
+	
+	# Fit the dependent model
+	
+	for (i in 1:opt){
+		badcount <- 0
+		pp <- StartMK(4)
+		resx <- try(optim(pp, lk.dep, method='L-BFGS-B', 
+		                  lower=minb, upper=maxb, 
+		                  control=list(maxit=5000, fnscale=-1)), silent=T);
+		while (class(resx) == 'try-error'){
+		  pp <- StartMK(4);
+		  resx <- try(optim(pp, lk.dep, method='L-BFGS-B', 
+		                    lower=minb, upper=maxb, 
+		                    control=list(maxit=5000, fnscale=-1)), silent=T);
+			if (badcount > maxbad){
+				stop("too many fails to optimize dependant model")
+			}
+			badcount <- badcount + 1;
+		}
+		if (i == 1){
+			best.dep <- resx;
+		}else{
+			if (best.dep$value < resx$value){
+				best.dep <- resx;
+			}
+		}
+	}
+  m.comp <- lrt(best.dep, best.ind)
   return(m.comp)
 }
 ```
-
+lrt(foo.dep,foo.ind)
 ```{r}
 mark(phy, x=dd1, y=dd2)
 mark(phy, x=ds1, y=ds2)
 mark(phy, x=id1, y=id2)
 mark(phy, x=rb1, y=rb2)
+mark(phy, x=ub1, y=ub2)
+Pagel94(phy, x=dd1, y=dd2)
+Pagel94(phy, x=ds1, y=ds2)
+Pagel94(phy, x=id1, y=id2)
+Pagel94(phy, x=rb1, y=rb2)
 mark(phy, x=ub1, y=ub2)
 ```
 

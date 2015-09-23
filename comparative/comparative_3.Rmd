@@ -244,18 +244,8 @@ ___
 independant.data1 <- independant.data2 <- list()
 for(i in 1:100){
   current.tree <- set.phy[[i]]
-  result1 <- diversitree::sim.character(current.tree, c(.5,.5), x0=0, model="mk2")
-  result2 <- diversitree::sim.character(current.tree, c(.5,.5), x0=0, model="mk2")
-  transitioned1 <- names(which(result1== 1))
-  transitioned2 <- names(which(result2== 1))
-  states1 <- vector(mode="numeric", length=length(current.tree$tip.label))
-  states2 <- vector(mode="numeric", length=length(current.tree$tip.label))
-  transitioned1 <- which(current.tree$tip.label %in% transitioned1)
-  transitioned2 <- which(current.tree$tip.label %in% transitioned2)
-  states1[transitioned1] <- 1
-  states2[transitioned2] <- 1
-  independant.data1[[i]] <- states1
-  independant.data2[[i]] <- states2
+  independant.data1[[i]] <- diversitree::sim.character(current.tree, c(.5,.5), x0=0, model="mk2")
+  independant.data2[[i]] <- diversitree::sim.character(current.tree, c(.5,.5), x0=0, model="mk2")
 }
 ```
 
@@ -274,7 +264,7 @@ ape::tiplabels(col=tip.cols[independant.data1[[picked]]+1],pch=15, cex=.5)
 plot(set.phy[[picked]], show.tip.label = F, 
      direction = "leftwards")
 ape::tiplabels(col=tip.cols[independant.data2[[picked]]+3],pch=15, cex=.5)
-rm(Q, counter, current.tree, data.good, descendants, foo, i, j, max.node, min.node, picked, picked.nodes, result1, result2, set.state, states,states1,states2,tip.cols, tt)
+rm(Q, counter, current.tree, data.good, descendants, foo, i, j, max.node, min.node, picked, picked.nodes, set.state, states,states1,states2,tip.cols, tt)
 ```
 
 Ok lets review what we now have:  
