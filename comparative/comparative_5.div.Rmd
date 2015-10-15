@@ -1,5 +1,5 @@
 ---
-title: "Implementing Pagel's test in diversitree:"
+title: "Applying Pagel's test to Maddison and Fitzjohn datasets:"
 author: "Heath Blackmon"
 date: "September 19, 2015"
 output: 
@@ -14,33 +14,43 @@ output:
 Return to of comparative methods 
 [outline](http://coleoguy.github.io/comparative/methods.html) page 
 
-```{r, echo=F}
-load("~/Desktop/pagel.data.sets.RData")
-num <- 3
-phy <- set.phy[[num]]
-dd1 <- dependant.data1[[num]]
-dd2 <- dependant.data2[[num]]
-id1 <- independant.data1[[num]]
-id2 <- independant.data2[[num]]
-rb1 <- perfrep1[[num]]
-rb2 <- perfrep2[[num]]
-ds1 <- state.darwin1[[num]]
-ds2 <- state.darwin2[[num]]
-ub1 <- unrepburst1[[num]]
-ub2 <- unrepburst2[[num]]
-rm(dependant.data1, dependant.data2, independant.data1, independant.data2,
-   perfrep1, perfrep2, set.phy, state.darwin1, state.darwin2, transitioned1,
-   transitioned2, unrepburst1, unrepburst2)
-```
 
 ___
-# Starting points in diversitree
+# Load data and brief description
+
+A [previous page](http://coleoguy.github.io/comparative/comparative_4.html) illustrates the simulation of each of the types of datasets that Maddison and Fitzjohn mention in their paper.  So as a first step lets just load those up.
+
+```{r}
+setwd("~/Desktop/Dropbox/gitrepos/coleoguy.github.io/comparative")
+load("pagel.data.sets.RData")
+```
+
+Briefly what we now have in memory is:
+
+100 trees (list of Phylo objects) - I generated the trees with a birth death process using a birth rate of 1 and a death rate of .4.  Acceptance of simulated trees was conditioned on having 100-200 extant species at t=6.  These trees were used as a backbone for the creation of all of the data that I describe below. The trees and the datasets are in the same order. i.e. tree 22 was used to simulate datasets that are in element 22 of the data lists.
+
+The structure for all datasets is the same.  The file name describes the evolutionary scenerio they represent and then they have either a 1 or 2 appended to the end to represent whether they are trait 1 or 2.  Each of these objects is a list of 100 vectors each vector consists of the character states for that trait and are indicated by either a 1 or 0.  The vector of tip states matches the order of tipstates on the tree.
+
+Darwin’s scenario - single origin exact matches between traits
+
+unreplicated burst - single origin of derived state in one trait multiple origins of derived state in second trait but always within subtree that experienced transiton in first trait.
+
+perfectly replicated evolution - same as darwins scenario but replicated on tree
+
+dependant evolution - parameter rich version where the rates depend on the state of the other charachter.
+
+independant evolution - the parameter poor model where the rates of transition in a character do not depend on the state of the other character.
+
+
+___
+# Using Diversitree
 
 One issue with using diversitree is the need to pick a starting point for the parameters prior to optimization.  We could just try multiple times picking numbers from a random uniform distribution that ranges from zero to some very large number. In fact [Dan Rabosky](http://www-personal.umich.edu/~drabosky/Home.html) even has a function in the supplemental materials from his paper with [Emma Goldberg](http://eeg.github.io/lab/home.html) [*Model Inadequacy and Mistaken Inferences of Trait-Dependent Speciation*](http://sysbio.oxfordjournals.org/content/64/2/340.short) that does just this.
 
 It feels inelligant to pick some number that you "think" is to big.  We could do this in a bit more of a quantitative method by picking a max value based on the kinds of branch length present in out tree.
 ```{r}
 # first lets find the average length of a terminal branch
+phy <- set.phy[[1]]
 avg.branch <-mean(phy$edge.length[which(!phy$edge[,2] %in% phy$edge[,1])])
 ```
 
@@ -60,28 +70,62 @@ plot(x,y, pch=16,cex=.3,xlab="Rate in Q-matrix", ylab="Prob. of root state 0", m
 
 ```
 
-I think that looking at a plot like this for your dataset would be a good idea. It would let you pick a good value for the high end of possible starting points.
+I think that looking at a plot like this for your dataset would be a good idea. In this case for instance it tells us that we can't really expect to have a lot of information about rates that are much higher than 5. If the true rate was higher than this I believe that we would tend to simply estimate any very high set of rates that was proportional to the number of taxa in each tip state.
 
 ___
-#Implementation of Pagel's Test [1]
+#Starting point function for diversitree
+
+Using either the type of information we have above or simply by picking a likely far too large number we could use a little function like this to get a random starting point for our diversitree analysis.
+
 ```{r}
 StartMK <- function(np){
 		x <- runif(np, 0, 5);
 	return(x);
 }
-lrt <- function (dep, ind) {
-  L.dep <- dep$value
-  L.ind <- ind$value
-  L01 <- as.vector(- 2 * (L.dep - L.ind))
-  df <- length(ind$par) - length(dep$par)
-  pvalue <- pchisq(L01, df, lower.tail = FALSE)
-  return(pvalue)
-}
-	
+```
 
+___
+# Pagel's test in diversitree
+So now we are ready to code up Pagel's test in diversitree.  To do this we will just create a stand mkn likelihood function.  The only constraints that we want to apply to this are restricting the double changes where both character change state simulataniously.
 
+```
+lk1 <- diversitree::make.mkn(phy, z, k=4, strict=F)
+lk.dep <- diversitree::constrain(lk1, q14~0, q23~0, q32~0, q41~0) #pars=8
+```
 
-Pagel94 <- function(phy, x, y, maxbad=5000, opt=5){
+This creates a transition matrix that looks like this:
+```{r, echo=F}
+foo <- matrix(c("-","A","B","0","C","-","0","D",
+              "E","0","-","F","0","G","H","-"),
+              4,4, byrow=T)
+colnames(foo) <- row.names(foo) <- c("00","01","10","11")
+foo
+```
+
+We then further constrain the model to represent the scenario where these traits have no interaction.  For instance rates A and F above both represent character 2 transitioning from 0 to 1.  So the constrained model would force these two to be equal.  We do this with this line of code:
+
+```
+lk.ind <- diversitree::constrain(lk.ind, q13~q24, q31~q42, q21~q43, q12~q34)
+```
+
+This yields a transition matrix that looks like this:
+
+```{r, echo=F}
+foo <- matrix(c("-","A","B","0","C","-","0","D",
+              "E","0","-","F","0","G","H","-"),
+              4,4, byrow=T)
+colnames(foo) <- row.names(foo) <- c("00","01","10","11")
+foo[1,3]->foo[2,4]
+foo[3,1]->foo[4,2]
+foo[2,1]->foo[4,3]
+foo[1,2]->foo[3,4]
+foo
+```
+
+Now we have the actual whole set of functions coded up 
+
+```{r}
+Pagel94 <- function(phy, x, y, maxbad=500, opt=2, maxit=1000, method="optim"){
   # first we have to combine our two binary traits into one 4 state trait
   z <- paste(x, y, sep="")
   z[z=="00"] <- 1
@@ -90,78 +134,91 @@ Pagel94 <- function(phy, x, y, maxbad=5000, opt=5){
   z[z=="11"] <- 4
   z <- as.numeric(z)
   names(z) <- phy$tip.label
-  
   lk1 <- diversitree::make.mkn(phy, z, k=4, strict=F)
-  lk.ind <- diversitree::constrain(lk1, q14~0, q23~0, q32~0, q41~0) #pars=8
-  lk.dep <- diversitree::constrain(lk.ind, q13~q24, q31~q42, q21~q43, q12~q34) #pars=4
-  #  lk.ind(StartMK(8))
-  #  lk.dep(StartMK(4))
-	minb <- rep(0, 8)
-	maxb <- rep(50, 8)
-	
+  lk.dep <- diversitree::constrain(lk1, q14~0, q23~0, q32~0, q41~0) #pars=8
+  lk.ind <- diversitree::constrain(lk.dep, q13~q24, q31~q42, q21~q43, q12~q34) #pars=4
+  #  lk.ind(StartMK(4))
+  #  lk.dep(StartMK(8))
 	# Fit the independent model
 	for (i in 1:opt){
+	  print(paste("working on 4 param model: optimization:", i))
 		badcount <- 0
-		pp <- StartMK(8)
-		resx <- try(optim(pp, lk.ind, method='L-BFGS-B', 
-		                  lower=minb, upper=maxb, 
-		                  control=list(maxit=5000, fnscale=-1)), silent=T);
-		while (class(resx) == 'try-error'){
-		  pp <- StartMK(8)
-		  resx <- try(optim(pp, lk.ind, method='L-BFGS-B', 
-		                    lower=minb, upper=maxb, 
-		                    control=list(maxit=5000, fnscale=-1)), silent=T);
+		pp <- StartMK(4)
+		resx <- try(diversitree::find.mle(lk.ind, pp,method=method, control=list(maxit=maxit)))
+		while (resx[4] == -1){
+		  print(paste("failure:", badcount))
+		  pp <- StartMK(4)
+		  resx <- try(diversitree::find.mle(lk.ind, pp,method=method, control=list(maxit=maxit)))
 			if (badcount > maxbad){
 				stop("too many fails to optimize independant model")
 			}
 			badcount <- badcount + 1
 		}
- 
 		if (i == 1){
 			best.ind <- resx
 		}else{
-			if (best.ind$value < resx$value){
+			if (best.ind$lnLik < resx$lnLik){
 				best.ind <- resx
 			}
 		}
 	}
-
-	minb <- rep(0, 4)
-	maxb <- rep(50, 4)
-	
 	# Fit the dependent model
-	
 	for (i in 1:opt){
+    print(paste("working on 8 param model: optimization:", i))
 		badcount <- 0
-		pp <- StartMK(4)
-		resx <- try(optim(pp, lk.dep, method='L-BFGS-B', 
-		                  lower=minb, upper=maxb, 
-		                  control=list(maxit=5000, fnscale=-1)), silent=T);
-		while (class(resx) == 'try-error'){
-		  pp <- StartMK(4);
-		  resx <- try(optim(pp, lk.dep, method='L-BFGS-B', 
-		                    lower=minb, upper=maxb, 
-		                    control=list(maxit=5000, fnscale=-1)), silent=T);
+		#pp <- StartMK(8)
+		pp <- rep(mean(pp), 8)
+		resx <- try(diversitree::find.mle(lk.dep, pp, method=method, control=list(maxit=maxit)))
+		while (resx[4] == -1){
+		  print(paste("failure:", badcount))
+		  pp <- StartMK(8);
+		  resx <- try(diversitree::find.mle(lk.dep, pp, method=method, control=list(maxit=maxit)))
 			if (badcount > maxbad){
+			  print("failed to fim ML solution")
 				stop("too many fails to optimize dependant model")
 			}
-			badcount <- badcount + 1;
+			badcount <- badcount + 1
 		}
 		if (i == 1){
-			best.dep <- resx;
+			best.dep <- resx
 		}else{
-			if (best.dep$value < resx$value){
-				best.dep <- resx;
+			if (best.dep$lnLik < resx$lnLik){
+				best.dep <- resx
 			}
 		}
 	}
-  m.comp <- lrt(best.dep, best.ind)
+  m.comp <- anova(best.ind, best.dep)[2,5]
   return(m.comp)
 }
 ```
-lrt(foo.dep,foo.ind)
-```{r}
-mark(phy, x=dd1, y=dd2)
+
+Next we can use this function to test each of our 100 simulated datasets that represent each of our 5 evolutionary scenarios: a good number of these datasets are difficult for optimization functions to find the ML solution on.  Because of this the code is shown below but not evaluated when the markdown document is compiled.
+
+```
+results <- matrix(,100,5)
+colnames(results) <- c("dep", "ind", "darwins", "unrepburst", "repburst")
+for(i in 1:100){
+  print(i)
+  print("dependant dataset")
+  results[i, 1] <- Pagel94(phy=set.phy[[i]], x=dependant.data1[[i]], y=dependant.data2[[i]], opt=2, maxbad=500, maxit=500)
+  print("independant dataset")
+  results[i, 2] <- Pagel94(phy=set.phy[[i]], x=independant.data1[[i]], y=independant.data2[[i]], opt=2, maxbad=500, maxit=500)
+  print("unreplicated burst dataset")
+  results[i, 4] <- Pagel94(phy=set.phy[[i]], x=unrepburst1[[i]], y=unrepburst2[[i]], opt=2, maxbad=500, maxit=500)
+  print("replicated burst dataset")
+  results[i, 5] <- Pagel94(phy=set.phy[[i]], x=perfrep1[[i]], y=perfrep2[[i]], opt=2, maxbad=500, maxit=500)
+  print("darwins dataset")
+  results[i, 3] <- Pagel94(phy=set.phy[[i]], x=state.darwin1[[i]], y=state.darwin2[[i]], opt=2, maxbad=500, maxit=500)
+  write.csv(results,file=paste("result", i, ".csv"))
+}
+par(mfcol=c(3,2))
+for(i in 1:5) hist(results[,i], xlim=c(0,1), main=paste(colnames(results)[i]), breaks=10)
+
+```
+
+
+
+So this function seems to work and does what we want to but it doesn't always have much luck in optimiztion.
 mark(phy, x=ds1, y=ds2)
 mark(phy, x=id1, y=id2)
 mark(phy, x=rb1, y=rb2)
@@ -181,4 +238,18 @@ ___
 
 [3] Maddison, Wayne P. "A method for testing the correlated evolution of two binary characters: are gains or losses concentrated on certain branches of a phylogenetic tree?." Evolution (1990): 539-557.
 
+
+
+
+library(phytools)
+i <- 1
+tree <- set.phy[[1]]
+x<- state.darwin1[[1]]
+y<- state.darwin2[[1]]
+names(x) <- names(y) <- tree$tip.label
+foo <- fitPagel(tree, x, y, method="fitDiscrete")
+x<- dependant.data1[[1]]
+y<- dependant.data2[[1]]
+names(x) <- names(y) <- tree$tip.label
+foo <- fitPagel(tree, x, y, method="fitDiscrete")
 
