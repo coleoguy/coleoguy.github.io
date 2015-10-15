@@ -188,11 +188,32 @@ _______
 ## Gene action, development, and evolution
 
 
+
+
 [back to top](#TOC)
 
 _______
 ## Methods for recognizing evolutionary trends
 
+In some parts this is a bit of a difficult chapter to read since many of the issues that Stebbin struggles with have been changed significantly by the advent of modern comparative methods and statistical phylogenetics - especially the implementation of bayesian approaches to capturing uncertainty in topology and branch lengths.  Despite this there were several items that Stebbins raises that I found particularly interesting.
+
+First I think that Stebbin does a great job on page 126 of describing the short comings of frequent is primitive/general and rare is specialized/novel.  Although he doesn't articulate state dependant speciation and extinction he does come close as he discusses the shortcomings of this approach:
+
+__*the fallacy of this deduction lies in the hidden assumption that the present members of a group are representative of the group as it ... formed ... early stages of the evolution of group ... many characters undergo changes ... many species go extinct ... what we observe today are the characters present as the group first achieved success.*__
+
+If we think of first achieving success as an increase in net diversification he has explained how we might see biased distributions of character states regardless of which is old or new but rather simply because they were at least statistically associated with a character contributing to differences in diversification.
+
+Because of my own interests the most fascinating part of this chapter was page 134 where he makes an intersting series of statements but falls just short of making the strong prediction that is inevitable if we accept his other statements:
+
+1) fusion or translocatoins create increased linkage allowing for the possibility of adaptive gene combinations.
+
+2) colonization of new pioneer habitats depends on new linked combinations
+
+3) genera that exhibit aneuploid series are adapted to pioneer habitats in arid or semiarid regions
+
+If we accept this we should be able to show decreased chromosome number when plants move to new pioneer habitats (islands?)
+
+Actually more broadly my prediction would be that we would could fit the hidden state version of chromevol - specifically here the hidden state could be - pioneer(island) or not (continental). I would predict all rates higher for island species than continental but reductions be particularly higher.
 
 [back to top](#TOC)
 
