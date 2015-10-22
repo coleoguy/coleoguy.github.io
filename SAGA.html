@@ -413,16 +413,17 @@ DisplayCmatrix(table = &quot;MP&quot;)</code></pre>
 </div>
 <div id="editing-the-c-matrix" class="section level4">
 <h4>Editing the c-matrix</h4>
-<p>Some organisms would need a different c-matrix than what is supplied with SAGA. For instance, if your organism had environmental sex determination(ESD) all sex chromosome effects would need to be removed. To illustrate this we will load the default c-matrix and then edit it to match such a case.</p>
+<p>Some organisms would need a different c-matrix than what is supplied with SAGA. For instance, if your organism had environmental sex determination(ESD) all sex chromosome effects would need to be removed. To illustrate this we will load the default c-matrix and then edit it to match such a case:</p>
 <pre class="sourceCode r"><code class="sourceCode r">ESD.cmat &lt;-<span class="st"> </span>SAGA::<span class="kw">DisplayCmatrix</span>(<span class="dt">table =</span> <span class="st">&quot;MP&quot;</span>)</code></pre>
-<p>Now lets print the CGEs so we can determine which ones we need</p>
+<p>Now lets print the CGEs so we can determine which ones we need:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(ESD.cmat)</code></pre>
 <pre><code>##  [1] &quot;M&quot;    &quot;Aa&quot;   &quot;Ad&quot;   &quot;Xa&quot;   &quot;Xd&quot;   &quot;Ya&quot;   &quot;Ca&quot;   &quot;Mea&quot;  &quot;Med&quot;  &quot;AaAa&quot;
 ## [11] &quot;AaAd&quot; &quot;AdAd&quot; &quot;XaAa&quot; &quot;XaAd&quot; &quot;XdAa&quot; &quot;XdAd&quot; &quot;YaAa&quot; &quot;YaAd&quot; &quot;YaXa&quot; &quot;CaAa&quot;
 ## [21] &quot;CaAd&quot; &quot;CaXa&quot; &quot;CaXd&quot; &quot;CaYa&quot;</code></pre>
-<p>We will reduce the c-matrix to only CGEs that do not have sex chromosome in them</p>
+<p>We will reduce the c-matrix to only CGEs that do not have sex chromosomes in them:</p>
 <pre class="sourceCode r"><code class="sourceCode r">ESD.cmat &lt;-<span class="st"> </span>ESD.cmat[, <span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">3</span>,<span class="dv">6</span>:<span class="dv">12</span>,<span class="dv">20</span>:<span class="dv">21</span>)]</code></pre>
-<p>Now we have a c-matrix appropriate for a ESD species.</p>
+<p>Now we have a c-matrix appropriate for a ESD species that can be used as normal:</p>
+<pre><code>AnalyzeCrossesMM(data, Cmatrix=ESD.cmat)</code></pre>
 <p> </p>
 </div>
 </div>
