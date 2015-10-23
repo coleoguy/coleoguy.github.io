@@ -63,7 +63,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="#installation">Installation</a></li>
 <li><a href="#fitting-lca-models">Fitting LCA models</a><ul>
 <li><a href="#matrix-of-composite-genetic-effects">Matrix of composite genetic effects</a><ul>
-<li><a href="#the-supplied-c-matrix-of-composite-genetic-effects">The supplied C-matrix of composite genetic effects</a></li>
+<li><a href="#the-supplied-c-matrix-of-composite-genetic-effects">The supplied c-matrix of composite genetic effects</a></li>
 <li><a href="#editing-the-c-matrix">Editing the c-matrix</a></li>
 </ul></li>
 <li><a href="#prepare-lca-data-for-input">Prepare LCA Data for input</a></li>
@@ -89,7 +89,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><strong>AnalyzeCrossesMM</strong>: Primary function that generates and tests all models of genetic architecture possible for a given set of cohorts.</li>
 <li><strong>EvaluateModel</strong>: Returns parameter estimates conditional on a single model.</li>
 <li><strong>VisModelSpace</strong>: Plots the distribution of Akaike weights across model space.</li>
-<li><strong>DisplayCmatrix</strong>: Loads the default C-matrix as a dataframe.</li>
+<li><strong>DisplayCmatrix</strong>: Loads the default c-matrix as a dataframe.</li>
 <li><strong>plotObserved</strong>: provides a traditional plot of observed line cross analysis data as well as the expectation under an additive model.</li>
 <li><strong>plot.genarch</strong>: An S3 method for plotting genarch objects. Can be used to produce publication quality plots with control over most aspects of the plot including the CGEs included.</li>
 <li><strong>cohortID</strong>: Loads a dataframe with cohort IDs and descriptions. Allowing users to look up their own cohorts and prepare their data for analysis.</li>
@@ -157,11 +157,11 @@ install_github(&quot;coleoguy/SAGA&quot;, build_vignettes = TRUE)</code></pre>
 <div id="matrix-of-composite-genetic-effects" class="section level2">
 <h2>Matrix of composite genetic effects</h2>
 <div id="the-supplied-c-matrix-of-composite-genetic-effects" class="section level3">
-<h3>The supplied C-matrix of composite genetic effects</h3>
-<p>The first step in analysis of line cross data is choice of a C-matrix that describes the expected contribution of different types of gene action to cohort phenotypes. By default SAGA will use a C-matrix that is scaled to the midparent mean (equivalent to <span class="math">\(F_{\infty}\)</span>), and includes 23 potential CGEs. For each CGE we have calculated coefficients for 24 potential crosses; each of which is divided into male, female, or mixed sex cohorts. This C-matrix has 72 rows and the row numbers are used to identify the cohorts being used in an experiment. The function DisplayCmatrix is available so you can decide if the supplied version has all of the CGEs and cohorts you are interested in.</p>
-<pre><code># print the C-matrix to the terminal
+<h3>The supplied c-matrix of composite genetic effects</h3>
+<p>The first step in analysis of line cross data is choice of a c-matrix that describes the expected contribution of different types of gene action to cohort phenotypes. By default SAGA will use a c-matrix that is scaled to the midparent mean (equivalent to <span class="math">\(F_{\infty}\)</span>), and includes 23 potential CGEs. For each CGE we have calculated coefficients for 24 potential crosses; each of which is divided into male, female, or mixed sex cohorts. This c-matrix has 72 rows and the row numbers are used to identify the cohorts being used in an experiment. The function DisplayCmatrix is available so you can decide if the supplied version has all of the CGEs and cohorts you are interested in.</p>
+<pre><code># print the c-matrix to the terminal
 DisplayCmatrix(table = &quot;MP&quot;)</code></pre>
-<p><strong>Table 1.</strong> The first 15 rows and 13 columns of the C-matrix supplied with SAGA.</p>
+<p><strong>Table 1.</strong> The first 15 rows and 13 columns of the c-matrix supplied with SAGA.</p>
 <table>
 <thead>
 <tr class="header">
@@ -446,7 +446,7 @@ DisplayCmatrix(table = &quot;MP&quot;)</code></pre>
 <h2>Prepare LCA Data for input</h2>
 <p>Data that will be analyzed with SAGA should be in a dataframe with three columns:</p>
 <ul>
-<li><p>id of the cohort which should match the appropriate row of the C-matrix you are using</p></li>
+<li><p>id of the cohort which should match the appropriate row of the c-matrix you are using</p></li>
 <li><p>mean phenotype measure of the cohort</p></li>
 <li><p>standard error of the cohort’s mean phenotype.</p></li>
 </ul>
@@ -1101,7 +1101,7 @@ EvaluateModel(results, good.models[2], cex.names=.7, cex.main=.7)</code></pre>
 </div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
-<p>Users should consider the presence of linear dependencies in C-matrices. Depending on your choice of cohorts some CGEs will likely be linearly dependent. This means that they can not be distinguished from each other and can not be estimated simultaneously. SAGA deals with this first by dropping any higher order CGEs that are perfectly correlated with a lower order effect from the C-matrix being used. However some combinations of CGEs may still be highly correlated (colinear) with each other. SAGA deals with this by dropping any model that includes the CGEs that are highly correlated. The importance and magnitude of each particular CGE involved in the colinearity is estimated only by the subset of models where it still appears. In our experience a strong signal of the importance of CGEs remains, but not surprisingly the parameter estimates become less accurate and the variable importance scores will be lower. When variables with high <span class="math">\(v_i\)</span> scores do not appear jointly in the equations included in the confidence set, it is a strong indication that there is a colinearity, and warrants additional investigation. Often the only solution to this problem will be a careful examination of the C-matrix to determine what type of additional cohort(s) could be measured to most effectively demonstrate the difference in the contributions of the CGEs that are confounded.</p>
+<p>Users should consider the presence of linear dependencies in c-matrices. Depending on your choice of cohorts some CGEs will likely be linearly dependent. This means that they can not be distinguished from each other and can not be estimated simultaneously. SAGA deals with this first by dropping any higher order CGEs that are perfectly correlated with a lower order effect from the c-matrix being used. However some combinations of CGEs may still be highly correlated (colinear) with each other. SAGA deals with this by dropping any model that includes the CGEs that are highly correlated. The importance and magnitude of each particular CGE involved in the colinearity is estimated only by the subset of models where it still appears. In our experience a strong signal of the importance of CGEs remains, but not surprisingly the parameter estimates become less accurate and the variable importance scores will be lower. When variables with high <span class="math">\(v_i\)</span> scores do not appear jointly in the equations included in the confidence set, it is a strong indication that there is a colinearity, and warrants additional investigation. Often the only solution to this problem will be a careful examination of the c-matrix to determine what type of additional cohort(s) could be measured to most effectively demonstrate the difference in the contributions of the CGEs that are confounded.</p>
 <p>Despite the improvements provided by implementing an I-T approach in SAGA, we would caution users that in our analysis of simulated datasets we have found that spurious variables are often included in models that are part of the confidence set. These spurious variables are likely included because they are able to explain some stochastic noise in the dataset. However, these are usually easily identified by small parameter estimates with standard errors overlapping zero.</p>
 <p>In reporting the results of line cross analysis experiments we recommend reporting estimates and standard errors from model averaged results unless a single model has greater than 95% <span class="math">\(w_i\)</span>. It is also important to report <span class="math">\(v_i\)</span> scores since these give an indication of our certainty that a particular composite genetic effect is important in the genetic architecture of the trait in question. Finally, although one of the benefits of our approach is a move away from strict arbitrarily defined p-values we have found that as a rule of thumb across all simulated datasets that we have analyzed <span class="math">\(v_i\)</span> scores of greater than 50% have only been associated with CGEs that were included in the generating model.</p>
 <hr />
