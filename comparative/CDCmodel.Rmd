@@ -1,5 +1,5 @@
 ---
-title: "BSF Preliminary results"
+title: "BSF Preliminary results-2"
 author: "Heath Blackmon"
 date: "last updated: `r Sys.Date()`"
 
@@ -13,7 +13,20 @@ output:
 ____
 # Introduction and Data
 
-We need to generate some preliminary results for the BSF grant we might be able to use some of this for January NSF grant apps too.  Ideally we would show that one of our ideas seems to work better than Pagel or maybe just that it works for some weird model that we know Pagel fails for.  The two best bets for this are the threshold and hidden state approaches.  We don't really need to recreate data for this; at least at this stage.  We can use what I created when I began looking at this.  These datasets are in my website comparative methods folder http://coleoguy.github.io/comparative/pagel.data.sets.RData
+Part of the BSF grant is our idea for a non-Markovian model of discrete trait evolution we have called this the hidden state approach, or maybe we should call it the CDCe model (change dependent character evolution).
+
+For illustrative purposes lets imagine that our first trait is ploidy and or second trait is self-compatability.  We know from some previous work that there is a _correlation_ here but perhaps we want to show that the _correlation_ is of a very specific nature that is that it is the time just after we transition to polyploidy that we switch to self compatible and that after some time has passed these polyploids drop back to the background rate observed in dipoids can we? Lets see.
+
+Simulating this data is a little less straight forward than we might like.  The approach that I will take is to first simulate two traits evolving by  standard mk model.  
+
+Trait 1 = diploid/polyploid
+
+root will be diploid rate will be sufficient to produce XXXX number of changes
+
+Trait 2 = Self-incompatible/Self-compatible
+
+we will have two rate here one for 
+
 
 I'm not going to repeat the discussion of the simulation conditions on this page that is all available right here:
 http://coleoguy.github.io/comparative/comparative_3.html
@@ -33,124 +46,4 @@ rm(perfrep1, perfrep2, set.phy, state.darwin1, state.darwin2, transitioned1, tra
 
 ____
 # Phylogenetic logistic regression
-
-Simultaneously I have been working through the "macroevolutionry self destruction" paper and that made me wonder how phylogenetic logistic regression sensu Garland and Ives 2010 sysbio would handle to correlated discrete traits.  I assume it will fail in a similar fashion.  Here is the result of running it on the first 10 of each of our datasets.
-
-```{r, warning=FALSE}
-library(phylolm)
-iters <- 50
-results <- as.data.frame(matrix(0,iters,3))
-colnames(results)<- c("dep.data", "ind.data", "unrep.burst")
-print("dependent data")
-for(i in 1:iters){
-  dat = data.frame(trait01 = dependant.data1[[i]], predictor = dependant.data2[[i]])
-  row.names(dat) <- trees[[i]]$tip.label
-  results[i,1] = summary(phyloglm(trait01~predictor,phy=trees[[i]],data=dat,boot=100))$coefficients[2,4]
-}
-print("independent data")
-for(i in 1:iters){
-  dat = data.frame(trait01 = independant.data1[[i]], predictor = independant.data2[[i]])
-  row.names(dat) <- trees[[i]]$tip.label
-  results[i,2] = summary(phyloglm(trait01~predictor,phy=trees[[i]],data=dat,boot=100))$coefficients[2,4]
-}
-print("unrepburst data")
-for(i in 1:iters){
-  dat = data.frame(trait01 = unrepburst1[[i]], predictor = unrepburst1[[i]])
-  row.names(dat) <- trees[[i]]$tip.label
-  results[i,3] = summary(phyloglm(trait01~predictor,phy=trees[[i]],data=dat,boot=100))$coefficients[2,4]
-}
-knitr::kable(results)
-```
-
-So now we can see that indeed phylogenetic logistic regression does not appear to offer any solution to our problem.  Also like so many other approaches `phyloglm` has a lot of difficulties in fitting the heuristicly assigned trait data sets.  The last section of code actually has warnings suppressed otherwise we would have a long series of these:
-
-```
-1: glm.fit: algorithm did not converge 
-2: In phyloglm(trait01 ~ predictor, phy = trees[[i]], data = dat, boot = 100) :
-  The estimated coefficients in the absence of phylogenetic signal lead
-  to some linear predictors beyond 'btol'. Increase btol?
-  Starting from beta=0 other than intercept.
-```
-
-I've played around a bit with the different parameters that we can use here and we can get things to converge sometimes but convergence doesnt lead to less significant results.
-
-&nbsp;
-
-
-____
-# Threshold model.  
-
-The threshold model for discrete tratis has a long and interesting history:
-  
-- **Originally conceived of by Sewell Wright:**
-  
-- Wright, S. 1934. An analysis of variability in the number of digits in
-an inbred strain of guinea pigs. Genetics 19:506–536.
-
-- **Suggested and later developed as a phylogenetic approach**
-
-- Felsenstein, J. 2005. Using the quantitative genetic threshold model for
-inferences between and within species. Philosophical Transactions
-of the Royal Society B: Biological Sciences 360:1427–1434.
-
-- Felsenstein, J. 2012. A comparative method for both discrete and continuous characters using the threshold model. American Naturalist, 179, 145-156.
-
-- **Tweaked and implemented in R**
-- Revell, L. J. 2014. Ancestral character estimation under the threshold model from quantitative genetics. Evolution, 743-759.
-
-&nbsp;
-
-So to start with we need to calculate tip liabilities for our traits the functions that do this both Felsenstein's and Liam's are bayesian and use an MCMC to sample the liabilities.  I have to think a bit how you work that into the down stream part.  To start with though lets just use the mean from the these and see if we are even on the right track.
-
-```{r, error=TRUE, fig.show='hide', warning=FALSE, message=F}
-ngens <- 25000
-samp.frq <- ngens/200
-library(phytools)
-library(ape)
-thresh.res <- as.data.frame(matrix(,iters,3))
-colnames(thresh.res) <- c("dep.data", "ind.data", "unrep.burst")
-for(i in 1:iters){
-  tree <- trees[[i]]
-  ntips <- length(tree$tip.label)
-  # some of the functions we use will required named vectors
-  names(dependant.data1[[i]]) <- names(dependant.data2[[i]]) <- tree$tip.label 
-  names(independant.data1[[i]]) <- names(independant.data2[[i]]) <- tree$tip.label
-  names(unrepburst1[[i]]) <- names(unrepburst2[[i]]) <- tree$tip.label
-  # dependent data
-  d.char1 <- ancThresh(tree, x = dependant.data1[[i]], ngen = ngens,
-                       control = list(sample = samp.frq, model =
-                                      "BM"))$liab[1:ntips]
-  d.char2 <- ancThresh(trees[[i]], x = dependant.data2[[i]], ngen = ngens, 
-                       control = list(sample = samp.frq, model =
-                                      "BM"))$liab[1:ntips]
-  # store result
-  thresh.res[i, 1] <- cor.test(pic(tree, x = colMeans(d.char1)), 
-                               pic(tree, x = colMeans(d.char2)))$p.value
-  # independent data
-  i.char1 <- ancThresh(tree, x = independant.data1[[i]], ngen = ngens, 
-                       control = list(sample = samp.frq,model =
-                                      "BM"))$liab[1:ntips]
-  i.char2 <- ancThresh(tree, x = independant.data2[[i]], ngen = ngens, 
-                       control = list(sample=samp.frq, model = 
-                                      "BM"))$liab[1:ntips]
-  thresh.res[i, 2] <- cor.test(pic(tree, x=colMeans(i.char1)), 
-                               pic(tree, x=colMeans(i.char2)))$p.value
-
-  # unreplicated burst data
-  u.char1 <- ancThresh(tree, x = unrepburst1[[i]], ngen = ngens, 
-                       control = list(sample = samp.frq,model =
-                                      "BM"))$liab[1:ntips]
-  u.char2 <- ancThresh(tree, x = unrepburst2[[i]], ngen = ngens, 
-                       control = list(sample=samp.frq, model = 
-                                      "BM"))$liab[1:ntips]
-  thresh.res[i, 3] <- cor.test(pic(tree, x=colMeans(u.char1)), 
-                               pic(tree, x=colMeans(u.char2)))$p.value
-}
-```
-
-```{r}
-knitr::kable(thresh.res)
-write.csv(thresh.res,file="thresh.csv")
-```
-
 
