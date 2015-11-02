@@ -1,0 +1,69 @@
+---
+title: "Prelim. data & stochastic mapping approach"
+author: "Heath Blackmon"
+date: "November 2, 2015"
+output: html_document
+---
+
+
+_____
+#Results
+
+__Percent of datasets testing positive for a signifcant correlation:__
+
+| Test        |Dependent traits sensu Pagel   |Independent traits  |Unreplicated burst    |
+|-----        |-----                          |-----               |-----                 |
+|Pagel        |100                            |7                   |83                    |
+|PGLS         |100                            |0                   |100                   |
+|Threshold    |99                             |8                   |62                    |
+|Hidden State |100                            |60                  |100                   |
+
+
+
+
+_____
+#Stochastic Mapping Observed vs Null
+
+
+## Observed
+
+We can use stochastic mapping and to ask about correlated evolution and assess significance of our observations following the steps below:
+
+First for the "statistic" we will calculate from the observed data:
+
+1) infer q-matrices for each of our traits
+
+2) create 1,000 stochastic maps for each trait
+
+3) process stochastic maps by treating one character as the background and the other as the focal trait.  The stochastic map of the focal trait is cut based on the state of the background trait.  This lead to a collection of tree pieces representing portions where the background was in one of the two possible states (easily extended to multistate).  Next we simply count the number of these tree pieces that show one or more transitions in the focal trait (giving a max of one to each of these tree pieces correct pseudoreplication).  We then swap background and focal traits and repeat the process.  This will produce a table with 8 observed values:
+
+our traits will be A-a and B-b
+
+|      |B     |b     |      |      |A     |a     |
+|----  |----  |----  |----  |----  |----  |----  |
+|A->a  |      |      |      |B->b  |      |      |      
+|a->A  |      |      |      |b->B  |      |      | 
+
+
+
+## Null distribution
+
+Next we need to calculate the expected distribution of the values in these cells when there is no relationship between the evolution of our traits:
+
+1) simulate 1,000 sets of tip data for trait A and trait B based on empirical qmatrices above.
+
+2) perform stochastic mappings with each of these and process them as described above.
+
+3) compare the mean values for each cell in the observed table with the distribution of all cell values found with the simulated data (have to correct for making 8 tests).
+
+
+
+## Final thoughts
+
+ - Finally, the big difference with what I've done before and why this feels quite inelegant is in part because we are coming in with no a priori hypothesis.  For instance with the stuff I did with mites I had a very clear hypothesis and one trait was obviously the background and the other trait was obviously the foreground.  In that situation you could remain with the the observed data for the background trait and just simulate the foreground trait based on the q-matrix of the observed data.
+
+ - If this doesn't make sense I have it all on the chalkboard and we can go over it tomorrow I can try to explain myself better.
+ 
+ - This is nice too because extension to 1) a posterior of trees, 2) tip uncertainty, 3) more states all seem trivial
+ 
+ - As mentioned above this is really designed for a user to just drop data in.  I think there would be subversions of this that would have more power if asking a well formed question a priori.
