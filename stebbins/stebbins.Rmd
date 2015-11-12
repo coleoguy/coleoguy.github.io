@@ -195,17 +195,17 @@ _______
 _______
 ## Methods for recognizing evolutionary trends
 
-In some parts this is a bit of a difficult chapter to read since many of the issues that Stebbin struggles with have been changed significantly by the advent of modern comparative methods and statistical phylogenetics - especially the implementation of bayesian approaches to capturing uncertainty in topology and branch lengths.  Despite this there were several items that Stebbins raises that I found particularly interesting.
+In some parts this is a bit of a difficult chapter to read since many of the issues that Stebbin struggles with have been changed significantly by the advent of modern comparative methods and statistical phylogenetics - especially the implementation of Bayesian approaches to capturing uncertainty in topology and branch lengths.  Despite this there were several items that Stebbins raises that I found particularly interesting.
 
-First I think that Stebbin does a great job on page 126 of describing the short comings of frequent is primitive/general and rare is specialized/novel.  Although he doesn't articulate state dependant speciation and extinction he does come close as he discusses the shortcomings of this approach:
+First I think that Stebbin does a great job on page 126 of describing the short comings of frequent is primitive/general and rare is specialized/novel.  Although he doesn't articulate state dependent speciation and extinction he does come close as he discusses the shortcomings of this approach:
 
 __*the fallacy of this deduction lies in the hidden assumption that the present members of a group are representative of the group as it ... formed ... early stages of the evolution of group ... many characters undergo changes ... many species go extinct ... what we observe today are the characters present as the group first achieved success.*__
 
 If we think of first achieving success as an increase in net diversification he has explained how we might see biased distributions of character states regardless of which is old or new but rather simply because they were at least statistically associated with a character contributing to differences in diversification.
 
-Because of my own interests the most fascinating part of this chapter was page 134 where he makes an intersting series of statements but falls just short of making the strong prediction that is inevitable if we accept his other statements:
+Because of my own interests the most fascinating part of this chapter was page 134 where he makes an interesting series of statements but falls just short of making the strong prediction that is inevitable if we accept his other statements:
 
-1) fusion or translocatoins create increased linkage allowing for the possibility of adaptive gene combinations.
+1) fusion or translocations create increased linkage allowing for the possibility of adaptive gene combinations.
 
 2) colonization of new pioneer habitats depends on new linked combinations
 
@@ -220,11 +220,14 @@ Actually more broadly my prediction would be that we would could fit the hidden 
 _______
 ## The ecological basis for diversity
 
+Too busy with higher priority items this week.
 
 [back to top](#TOC)
 
 _______
 ## Adaptive radiations and ecological differentiation
+
+Too busy with higher priority items this week.
 
 
 [back to top](#TOC)
@@ -232,11 +235,31 @@ _______
 _______
 ## The nature and origin of primitive angiosperms
 
+Too busy with higher priority items this week.
+
 
 [back to top](#TOC)
 
 _______
 ## Trends of specialization within the angiosperms
+
+Stebbin starts this chapter with an interesting figure his 11-1:
+
+![relationships](../images/fig11-1.jpeg)
+
+He describes it as an alternative to traditional tree depictions and posits that it allows a better view of the nature and degree of specialization  among groups while still showing some higher level relationships as well.  It does take a bit of decoding though.  First the radial distance from the center is representative of the degree of specialization.  The radial length of a groups shape gives a general impression of the variation in degree of specialization.  For instance a group like Ranunculales has a wide range in degree of specialization.  In contrast Nympheales (1) has a relatively narrow range of specialization that falls well within that of Ranunculales.  Some shapes such as that for Rosales have multiple lobes on the external side.  This is indicative of distinctly different types of specialization.
+
+While I think that this figure is interesting and conveys a great deal of information my biggest issue with it is that I feel that a great deal of it is subjective.  You could imagine a modern quantitative version of this.  The shape volumes could be exact the radial axis could represent PCAs, and the ancestral states could be maximum likelihood estimates.
+
+The first topic that Stebbin attacks is that of growth habit evolution. He discusses his belief that original angiosperm was a shrub but that evolution towards tree or herb are quite possible.  He says that the accepted view is that evolution from shrub to herb is more probable than from herb to tree or shrub.  However, he goes on to give excellent examples and adaptive explanations for this less probably pathway found on islands.  He also goes on to discuss how _Mimulus_ might inform this discussion.  He includes a great sentence that you could never get away with today: "In a plastic and genetically rich genus like _Mimulus_  the evolution ... in a direction counter to the usual trend would be a not unexpected occurrence."  While first put forward as a continental example of evolution in this less likely direction the argument is weakened since these _Mimulus_ might well have evolved on islands that later became accreted to the mainland.
+
+Next Stebbin moves to the evolution of the deciduous condition.  I have to devote a bit more time to this.  I could swear that I have read/watched something on this recently.  However quite a bit of googling keeps bringing back to Axelrod 1966 which is what Stebbin discusses.  I've already looked through all 162 citations to Axelrod's paper and what I'm looking for isn't there so likely a talk...
+
+Stebbin then transitions into a discussion of geophytes.  This is a growth form characterized by the movement of buds or rhizomes closer to the ground and eventually underground giving us cryptophytes.  The actual structures that are formed to allow growth when conditions improve is highly variable.  Stebbin returns to his earlier argument about the evolution along lines of least resistance and discusses how this diversity supports his earlier argument.
+
+Finally Stebbin discusses the nature of inflorescence... and I have too many other things to get done to do it justice.  The most interesting point that I feel like he makes though is that the structure of the inflorescence may be largely driven by the environment i.e. how quickly conditions become suitable/unsuitable for reproduction.
+
+
 
 
 [back to top](#TOC)
