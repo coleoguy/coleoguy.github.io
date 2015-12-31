@@ -1,0 +1,222 @@
+__Heath Blackmon__  
+29 December 2015
+
+This page summarizes the results of preliminary testing of the TSSSE model.  This model represents a biological case where we have binary trait where transition into the derived state causes a different diversification rate.  However this effect is limited to a short time period, eventually the derived state will return to the diversification rate that the ancestral state exhibited.
+
+As the very first test of this approach we would like to make sure that when we simulate under this model we are able to recover the simulating model/parameters.  To do this we will simulate the underlying data with this code:
+
+```{}
+library(diversitree)
+musse.data <- vector(mode="list", length=100)
+pars <- c(0.10, 0.20, 0.10,  # lambda 1, 2, 3
+          0.01, 0.01, 0.01,  # mu 1, 2, 3
+          0.01, 0.00,        # q12, q13
+          0.00, 0.05,        # q21, q23
+          0.00, 0.00)        # q31, q32
+for(i in 1:100){
+  check <- F
+  while(check == F){
+    print(i)
+    foo <- tree.musse(pars, max.taxa = 200, x0 = 1)
+    if(sum(foo$tip.state == 1) > 30 & sum(foo$tip.state == 1) < 170) check <- T
+  }
+  musse.data[[i]] <- foo
+}
+```
+
+This data will work for our purposes and represents a case where the transition results in only a relativeley small change in diversification (relative to the types of differences in diversification that are often inferred in emprical studies).  The one caveat is that currently it has 3 character states we will need to collapse states 2 and 3 into a single state (the derived state discussed above.)  This code will do this for us:
+
+```{}
+for(i in 1:100){
+  musse.data[[i]]$tip.state[musse.data[[i]]$tip.state == 3] <- 2
+}
+```
+
+Now we want to analyze this data with our new model TSSSE but also for comparison purposes lets also analyze under the traditional BiSSE model.  First we will do the simple analysis assuming the BiSSE model:
+
+```{}
+pars <- c(0.10, 0.10,  # lambda 1, 2
+          0.01, 0.01,  # mu 1, 2
+          0.01, 0.01)  # q12, q21
+test.res <- vector()
+for(i in 1:100){
+  # we have to include the -1 below to deal with the fact 
+  # that BiSSE expects 0 and 1 not 1 and 2
+  BIS.lik <- make.bisse(musse.data[[i]], musse.data[[i]]$tip.state-1)
+  BIS.lik.c <- constrain(BIS.lik, lambda0 ~ lambda1)
+  fit <- find.mle(BIS.lik, pars)
+  fit.l <- find.mle(BIS.lik.c, pars[c(1,3:6)])
+  test.res[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+  # print(i)
+}
+hist(test.res, xlab="P-value", main="Prob. of TSSSE data \ngiven BiSSE model")
+```
+
+Now we can go ahead and do the analysis assuming the TSSSE model.  We need to convert our binary state character with states 1 and 2 into a matrix where each species has a defined probability of being in states 1, 2a, or 2b.  All species observed as being in state 1 will have a probability of 1 for state 1 and 0 for all other states.  Species in state 2 will have a proability of 0 for state 1 and a probability of 1 for both states 2a and 2b.
+
+```{}
+test.res2 <- vector()
+for(i in 1:100){
+  print(i)
+  # this is the matrix setup part
+  data.mat <- matrix(0,200,3)
+  data.mat[musse.data[[i]]$tip.state == 1, 1] <- 1
+  data.mat[musse.data[[i]]$tip.state == 2, 2] <- 1
+  data.mat[musse.data[[i]]$tip.state == 2, 3] <- 1
+  row.names(data.mat) <- names(musse.data[[i]]$tip.state)
+  # now we can analyze under the TSSSE model by using a constrained version
+  # of the MUSSE model implemented in diversitree
+  MUSS.lik <- make.musse(musse.data[[i]], states=data.mat, strict=F, k=3)  
+  TSS.lik <- constrain(MUSS.lik, lambda1 ~ lambda3, 
+                       q13 ~ 0, q21 ~ 0, 
+                       q31 ~ 0, q32 ~ 0)
+  TSS.likl <- constrain(MUSS.lik, lambda1 ~ lambda3, lambda2 ~ lambda3, 
+                        q13 ~ 0, q21 ~ 0, 
+                        q31 ~ 0, q32 ~ 0)
+  pars <- c(0.10, 0.10,    # lambda 2, 3
+          0.01, 0.01, 0.01,# mu 1, 2, 3
+          0.01,            # q12
+          0.05)            # q23
+  print("fitting full model")        
+  fit <- find.mle(TSS.lik, pars)
+  print("fitting constrained model")        
+  fit.l <- find.mle(TSS.likl, pars[c(1,3:7)])
+  test.res2[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+}
+hist(test.res2, xlab="P-value", main="Prob. of TSSSE data \ngiven TSSSE model")
+foo <- test.res2[!is.na(test.res2)]
+sum(foo <= .05)/length(foo) * 100
+```
+
+So a note here the constrained version of the TSSSE model does give the find.mle function a bit of trouble.  The results that are presented below are from those datasets where the find.mle fucntion appeared to successfuly find a global optimum.
+
+Because the simulations here take quite a while to run we will load the results from the first time that I ran these scripts.  This Rdata file actually has the final results for all the simulations discussed on this page:
+
+```{r}
+data <- read.csv(
+
+
+
+
+
+
+```
+
+Here is the first graph:
+
+```{}
+bisse.res <- test.res[!is.na(test.res2)]
+tssse.res <- test.res2[!is.na(test.res2)]
+plot(x=log(bisse.res), y=log(tssse.res), xaxt="n", yaxt="n", 
+ylab="TSSSE model sig.", 
+xlab="BiSSE model sig.", cex.main=.7,
+main="Comparison of fitting TSSSE and BiSSE \nmodel to data simulated with TSSSE")
+spots <- c(-12,-10,-8,-6,-4,-2,0)
+axis(side=1, at=spots, labels=round(exp(spots), digits=5), cex.axis=.5)
+axis(side=2, at=spots, labels=round(exp(spots), digits=5), cex.axis=.5)
+abline(v=log(.05), col="red")
+abline(h=log(.05), col="blue")
+text(x=-12,0,"TSSSE recovers different lambda in 65% of simulations", pos=4, col="blue", cex=.6)
+text(x=-12,-.5,"BiSSE recovers different lambda in 51% of simulations", pos=4, col="red", cex=.6)
+sum(tssse.res <=.05)/77
+sum(bisse.res <=.05)/77
+
+```
+
+My take home at this point is that TSSSE will work at a reasonable rate when we data generated under the TSSSE model with a moderately sized effect.  We should make sure that we don't get anything weird when we simulate data with all equal rates.
+
+```{}
+null.data <- vector(mode="list", length=100)
+pars <- c(0.10, 0.10, 0.10,  # lambda 1, 2, 3
+          0.01, 0.01, 0.01,  # mu 1, 2, 3
+          0.01, 0.00,        # q12, q13
+          0.00, 0.05,        # q21, q23
+          0.00, 0.00)        # q31, q32
+for(i in 1:100){
+  check <- F
+  while(check ==F){
+    print(i)
+    foo <- tree.musse(pars, max.taxa=200, x0=1)
+    if(sum(foo$tip.state==1) > 30 & sum(foo$tip.state==1) < 170) check <- T
+  }
+  null.data[[i]] <- foo
+}
+# Now we need a litt bit of code to convert the 
+# three states above two just two states that we actually observe:
+for(i in 1:100){
+  null.data[[i]]$tip.state[null.data[[i]]$tip.state == 3] <- 2
+}
+# Now we want to analyze this data under BiSSE model:
+pars <- c(0.10, 0.10,  # lambda 1, 2
+          0.01, 0.01,  # mu 1, 2
+          0.01, 0.01)  # q12, q21
+test.res <- vector()
+for(i in 1:100){
+  BIS.lik <- make.bisse(null.data[[i]], null.data[[i]]$tip.state-1)
+  BIS.lik.c <- constrain(BIS.lik, lambda0 ~ lambda1)
+  fit <- find.mle(BIS.lik, pars)
+  fit.l <- find.mle(BIS.lik.c, pars[c(1,3:6)])
+  test.res[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+  print(i)
+}
+test.res2 <- vector()
+for(i in 70:100){
+  print(i)
+  data.mat <- matrix(0,200,3)
+  data.mat[null.data[[i]]$tip.state == 1, 1] <- 1
+  data.mat[null.data[[i]]$tip.state == 2, 2] <- 1
+  data.mat[null.data[[i]]$tip.state == 2, 3] <- 1
+  row.names(data.mat) <- names(null.data[[i]]$tip.state)
+  MUSS.lik <- make.musse(null.data[[i]], states=data.mat, strict=F, k=3)  
+  TSS.lik <- constrain(MUSS.lik, lambda1 ~ lambda3, q13 ~ 0, q21 ~ 0, 
+                       q31 ~ 0, q32 ~ 0)
+  TSS.likl <- constrain(MUSS.lik, lambda1 ~ lambda3, lambda2 ~ lambda3, 
+                        q13 ~ 0, q21 ~ 0, q31 ~ 0, q32 ~ 0)
+  pars <- c(0.10, 0.10,    # lambda 2, 3
+          0.01, 0.01, 0.01,# mu 1, 2, 3
+          0.01,            # q12
+          0.05)            # q23
+  print("fitting full model")        
+  fit <- find.mle(TSS.lik, pars)
+  print("fitting constrained model")        
+  fit.l <- find.mle(TSS.likl, pars[c(1,3:7)])
+  test.res2[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+}
+```
+
+These simulations show that we get 2% false positives (infer a difference in diversification) when we assume the underlying model is BiSSE.  When we analyze assuming that TSSSE is the true model we get a false positive rate of 8%.  This is based on a small sample but isn't terribly high.
+
+
+The next thing to do might be to look at what happens when we model a neutral binary trait on a tree that has variation in diversification.  For this we will use the same whale tree that Emma and Dan used in their paper.  Like we did above we will condition our simulations on having at least some taxa in each state.
+
+```{}
+setwd("~/Desktop/TSSSE")
+tree <- read.tree("whales.tre")
+library(geiger)
+tree <- rescale(tree, model="depth", depth=1)
+q <- list(rbind(c(-.2, .2, .0), 
+                c(.0, -.9, .9), 
+                c(.0, .0, .0)))
+foo <- sim.char(tree, q, model="discrete", n=400)[,1,]
+# We simulated 400 datasets lets just pull out 100 that have a good mix of states
+check <- vector()
+for(i in 1:400){
+  check[i] <- sum(foo[,i]==1) < 70 & sum(foo[,i]==1) > 10 
+}
+foo <- foo[,which(check)[1:100]]
+# and we will rename something sensible
+neut.data <- foo
+```
+
+Now we need a litt bit of code to convert the three states above two just two states that we actually observe:
+```{r}
+for(i in 1:100){
+  neut.data[, i][neut.data[, i] == 3] <- 2
+}
+```
+
+Next we will analyze this data under both BiSSE and TSSSE.
+
+First BiSSE
+
+

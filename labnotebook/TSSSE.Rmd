@@ -1,0 +1,310 @@
+---
+title: "Comparison of TSSSE model and BiSSE"
+author: "Heath Blackmon"
+date: "December 12, 2015"
+output: html_document
+---
+
+# Introduction and Data
+
+Part of the NSF grant is our idea for a semi-non-Markovian model of discrete trait evolution we will call this the temporary state approach (TSSSE).  We are thinking that we might be able to sell this as a biologically more realistic model that might mitigate some of the high false positive rate that we are currently producing using BiSSE.  The goal here then is just to simulate some data under this model and analyze under TSSSE and BiSSE.  What happens when we have the wrong model?  Also compare data where we have a real tree with heterogeniety and we evolve some binary traits (fast and slow) then analyze with both does BiSSE or TSSSE perform much better/worse? (if we want to think about a trait like this perhaps ploidy or selfcompatability make sense)
+
+lets simulate data under TSSSE
+
+```{r}
+library(diversitree)
+musse.data <- vector(mode="list", length=100)
+pars <- c(0.10, 0.20, 0.10,  # lambda 1, 2, 3
+          0.01, 0.01, 0.01,  # mu 1, 2, 3
+          0.01, 0.00,        # q12, q13
+          0.00, 0.05,        # q21, q23
+          0.00, 0.00)        # q31, q32
+
+for(i in 1:100){
+  check <- F
+  while(check ==F){
+    print(i)
+    foo <- tree.musse(pars, max.taxa=200, x0=1)
+    if(sum(foo$tip.state==1) > 30 & sum(foo$tip.state==1) < 170) check <- T
+  }
+  musse.data[[i]] <- foo
+}
+```
+
+Now we need a litt bit of code to convert the three states above two just two states that we actually observe:
+```{r}
+for(i in 1:100){
+  musse.data[[i]]$tip.state[musse.data[[i]]$tip.state == 3] <- 2
+}
+```
+
+
+Now we want to analyze this data under both models.  First we will do a simple analysis assuming the BiSSE model:
+```{}
+pars <- c(0.10, 0.10,  # lambda 1, 2
+          0.01, 0.01,  # mu 1, 2
+          0.01, 0.01)  # q12, q21
+test.res <- vector()
+for(i in 1:100){
+  BIS.lik <- make.bisse(musse.data[[i]], musse.data[[i]]$tip.state-1)
+  BIS.lik.c <- constrain(BIS.lik, lambda0 ~ lambda1)
+  fit <- find.mle(BIS.lik, pars)
+  fit.l <- find.mle(BIS.lik.c, pars[c(1,3:6)])
+  test.res[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+  # print(i)
+}
+hist(test.res, xlab="P-value", main="Prob. of TSSSE data \ngiven BiSSE model")
+```
+
+So this shows us that simulating at these parameter values (lambda right after transition is twice normal value) under the TSSSE model and then analyzing under BiSSE we infer adifference in speciation rate `r sum(test.re<.05)`% of the time.
+
+Now we need to convert our vector of trait values to a matrix with the presence of state 2a and 2b unobserved
+```{}
+test.res2 <- vector()
+
+
+
+
+
+
+for(i in 100:100){
+  print(i)
+  data.mat <- matrix(0,200,3)
+  data.mat[musse.data[[i]]$tip.state == 1, 1] <- 1
+  data.mat[musse.data[[i]]$tip.state == 2, 2] <- 1
+  data.mat[musse.data[[i]]$tip.state == 2, 3] <- 1
+  row.names(data.mat) <- names(musse.data[[i]]$tip.state)
+  MUSS.lik <- make.musse(musse.data[[i]], states=data.mat, strict=F, k=3)  
+  TSS.lik <- constrain(MUSS.lik, lambda1 ~ lambda3, 
+                       q13 ~ 0, q21 ~ 0, 
+                       q31 ~ 0, q32 ~ 0)
+  TSS.likl <- constrain(MUSS.lik, lambda1 ~ lambda3, lambda2 ~ lambda3, 
+                        q13 ~ 0, q21 ~ 0, 
+                        q31 ~ 0, q32 ~ 0)
+  pars <- c(0.10, 0.10,    # lambda 2, 3
+          0.01, 0.01, 0.01,# mu 1, 2, 3
+          0.01,            # q12
+          0.05)            # q23
+  print("fitting full model")        
+  fit <- find.mle(TSS.lik, pars)
+  print("fitting constrained model")        
+  fit.l <- find.mle(TSS.likl, pars[c(1,3:7)])
+  test.res2[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+}
+hist(test.res2, xlab="P-value", main="Prob. of TSSSE data \ngiven TSSSE model")
+foo <- test.res2[!is.na(test.res2)]
+sum(foo <= .05)/length(foo) * 100
+```
+
+
+
+here we will make a pretty plot of the results above
+```{r}
+bisse.res <- test.res[!is.na(test.res2)]
+tssse.res <- test.res2[!is.na(test.res2)]
+plot(x=log(bisse.res), y=log(tssse.res), xaxt="n", yaxt="n", 
+ylab="TSSSE model sig.", 
+xlab="BiSSE model sig.", cex.main=.7,
+main="Comparison of fitting TSSSE and BiSSE \nmodel to data simulated with TSSSE")
+spots <- c(-12,-10,-8,-6,-4,-2,0)
+axis(side=1, at=spots, labels=round(exp(spots), digits=5), cex.axis=.5)
+axis(side=2, at=spots, labels=round(exp(spots), digits=5), cex.axis=.5)
+abline(v=log(.05), col="red")
+abline(h=log(.05), col="blue")
+text(x=-12,0,"TSSSE recovers different lambda in 65% of simulations", pos=4, col="blue", cex=.6)
+text(x=-12,-.5,"BiSSE recovers different lambda in 51% of simulations", pos=4, col="red", cex=.6)
+sum(tssse.res <=.05)/77
+sum(bisse.res <=.05)/77
+
+```
+
+My take home at this point is that what I am doing will work at a reasonable rate when we have a moderately sized effect.  The next thing to do might be to look at what happens when 
+
+
+
+
+```{r}
+null.data <- vector(mode="list", length=100)
+pars <- c(0.10, 0.10, 0.10,  # lambda 1, 2, 3
+          0.01, 0.01, 0.01,  # mu 1, 2, 3
+          0.01, 0.00,        # q12, q13
+          0.00, 0.05,        # q21, q23
+          0.00, 0.00)        # q31, q32
+
+for(i in 1:100){
+  check <- F
+  while(check ==F){
+    print(i)
+    foo <- tree.musse(pars, max.taxa=200, x0=1)
+    if(sum(foo$tip.state==1) > 30 & sum(foo$tip.state==1) < 170) check <- T
+  }
+  null.data[[i]] <- foo
+}
+
+
+```
+
+Now we need a litt bit of code to convert the three states above two just two states that we actually observe:
+```{r}
+for(i in 1:100){
+  null.data[[i]]$tip.state[null.data[[i]]$tip.state == 3] <- 2
+}
+```
+
+Now we want to analyze this data under BiSSE model:
+```{r}
+pars <- c(0.10, 0.10,  # lambda 1, 2
+          0.01, 0.01,  # mu 1, 2
+          0.01, 0.01)  # q12, q21
+test.res <- vector()
+for(i in 1:100){
+  BIS.lik <- make.bisse(null.data[[i]], null.data[[i]]$tip.state-1)
+  BIS.lik.c <- constrain(BIS.lik, lambda0 ~ lambda1)
+  fit <- find.mle(BIS.lik, pars)
+  fit.l <- find.mle(BIS.lik.c, pars[c(1,3:6)])
+  test.res[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+  print(i)
+}
+hist(test.res, xlab="P-value", main="Prob. of TSSSE data \ngiven BiSSE model")
+```
+
+So only two sig. results. thats good now lets lookat the TSSSE
+
+```{r}
+test.res2 <- vector()
+
+
+
+for(i in 90:100){
+  print(i)
+  data.mat <- matrix(0,200,3)
+  data.mat[null.data[[i]]$tip.state == 1, 1] <- 1
+  data.mat[null.data[[i]]$tip.state == 2, 2] <- 1
+  data.mat[null.data[[i]]$tip.state == 2, 3] <- 1
+  row.names(data.mat) <- names(null.data[[i]]$tip.state)
+  MUSS.lik <- make.musse(null.data[[i]], states=data.mat, strict=F, k=3)  
+  TSS.lik <- constrain(MUSS.lik, lambda1 ~ lambda3, q13 ~ 0, q21 ~ 0, 
+                       q31 ~ 0, q32 ~ 0)
+  TSS.likl <- constrain(MUSS.lik, lambda1 ~ lambda3, lambda2 ~ lambda3, 
+                        q13 ~ 0, q21 ~ 0, q31 ~ 0, q32 ~ 0)
+  pars <- c(0.10, 0.10,    # lambda 2, 3
+          0.01, 0.01, 0.01,# mu 1, 2, 3
+          0.01,            # q12
+          0.05)            # q23
+  print("fitting full model")        
+  fit <- find.mle(TSS.lik, pars)
+  print("fitting constrained model")        
+  fit.l <- find.mle(TSS.likl, pars[c(1,3:7)])
+  test.res2[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+}
+
+
+
+hist(test.res2, xlab="P-value", main="Prob. of TSSSE data \ngiven TSSSE model")
+foo <- test.res2[!is.na(test.res2)]
+sum(foo <= .05)/length(foo) * 100
+```
+
+
+bisse.resN <- test.res[!is.na(test.res2)]
+tssse.resN <- test.res2[!is.na(test.res2)]
+
+final.results <- matrix(,100,6)
+cbind(tssse.res, bisse.res, foo, foo2)
+
+
+sum(tssse.resN<=.05)
+sum(bisse.resN<=.05)
+
+
+
+```{r}
+setwd("~/Desktop/TSSSE")
+tree <- read.tree("whales.tre")
+library(geiger)
+tree <- rescale(tree, model="depth", depth=1)
+q <- list(rbind(c(-.2, .2, .0), 
+                c(.0, -.9, .9), 
+                c(.0, .0, .0)))
+foo <- sim.char(tree, q, model="discrete", n=400)[,1,]
+# We simulated 400 datasets lets just pull out 100 that have a good mix of states
+check <- vector()
+for(i in 1:400){
+  check[i] <- sum(foo[,i]==1) < 70 & sum(foo[,i]==1) > 10 
+}
+foo <- foo[,which(check)[1:100]]
+# and we will rename something sensible
+neut.data <- foo
+```
+
+Now we need a litt bit of code to convert the three states above two just two states that we actually observe:
+
+```{r}
+for(i in 1:100){
+  neut.data[, i][neut.data[, i] == 3] <- 2
+}
+```
+
+Next we will analyze this data under both BiSSE and TSSSE.
+
+First BiSSE
+
+```{r}
+pars <- c(0.10, 0.10,  # lambda 1, 2
+          0.01, 0.01,  # mu 1, 2
+          0.01, 0.01)  # q12, q21
+bis.W.res <- vector()
+for(i in 1:100){
+  BIS.lik <- make.bisse(tree, neut.data[,i]-1)
+  BIS.lik.c <- constrain(BIS.lik, lambda0 ~ lambda1)
+  fit <- find.mle(BIS.lik, pars)
+  fit.l <- find.mle(BIS.lik.c, pars[c(1,3:6)])
+  bis.W.res[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+  print(i)
+}
+```
+
+
+Next TSSSE
+
+```{r}
+tss.W.res <- vector()
+
+for(i in 100:100){
+  print(i)
+  data.mat <- matrix(0,87,3)
+  data.mat[neut.data[,i] == 1, 1] <- 1
+  data.mat[neut.data[,i] == 2, 2] <- 1
+  data.mat[neut.data[,i] == 2, 3] <- 1
+  row.names(data.mat) <- row.names(neut.data)
+  MUSS.lik <- make.musse(tree, states=data.mat, strict=F, k=3)  
+  TSS.lik <- constrain(MUSS.lik, lambda1 ~ lambda3, q13 ~ 0, q21 ~ 0, 
+                       q31 ~ 0, q32 ~ 0)
+  TSS.likl <- constrain(MUSS.lik, lambda1 ~ lambda3, lambda2 ~ lambda3, 
+                        q13 ~ 0, q21 ~ 0, q31 ~ 0, q32 ~ 0)
+  pars <- c(1, 1,    # lambda 2, 3
+          0.01, 0.01, 0.01,# mu 1, 2, 3
+          0.1,            # q12
+          0.5)            # q23
+  print("fitting full model")        
+  fit <- find.mle(TSS.lik, pars)
+  print("fitting constrained model")        
+  fit.l <- find.mle(TSS.likl, pars[c(1,3:7)])
+  tss.W.res[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
+}
+```
+
+bis.W.res<-bis.W.res[!is.na(bis.W.res)]
+tss.W.res<-tss.W.res[!is.na(tss.W.res)]
+
+
+final.results <- matrix(,100,6)
+
+final.results[1:length(tssse.res),1] <- tssse.res
+final.results[1:length(bisse.res),2] <- bisse.res
+final.results[1:length(tssse.resN),3] <- tssse.resN
+final.results[1:length(bisse.resN),4] <- bisse.resN
+final.results[1:length(bis.W.res),5] <- bis.W.res
+final.results[1:length(tss.W.res),6] <- tss.W.res
+results <- final.results
+write.csv(results, file="TSSSE.results.csv")
