@@ -259,6 +259,8 @@ data <- read.csv("http://coleoguy.github.io/labnotebook/TSSSE.results.csv", row.
 
 &nbsp;
 
+&nbsp;
+
 ## Temporary state model
 
 First we can look at the power of this approach:
@@ -273,6 +275,8 @@ text(.5, 30, paste(round(sum(data[1:77, 2]<=.05)/77*100), "% Significant", sep="
 
 &nbsp;
 
+&nbsp;
+
 
 We can also compare this to what happens when we analyze this same dataset assuming the BiSSE model.
 ```{r, fig.cap="__Assesment of power when just after transition diversification is twice the background rate. Generating model TSSSE and inference model BiSSE.__", echo = F}
@@ -281,6 +285,8 @@ hist(data[, 1], main = "",
      col = c("red", rep("black", 19)))
 text(.5, 40, paste(sum(data[, 1]<=.05)/100*100, "% Significant", sep=""))
 ```
+
+&nbsp;
 
 &nbsp;
 
@@ -300,6 +306,8 @@ text(.475, 8, paste(round(sum(data[1:86, 3]<=.05)/86*100), "% Significant", sep=
 
 &nbsp;
 
+&nbsp;
+
 
 Next lets see what happens when the trait is neutral with no effect on diversification.
 ```{r, fig.cap="__Assesment of type 1 error rate. Generating model TSSSE and inference model BiSSE.__", echo = F}
@@ -308,6 +316,8 @@ hist(data[, 4], main = "",
      col = c("red", rep("black", 19)))
 text(.51, 8, paste(round(sum(data[1:86, 4]<=.05)/86*100), "% Significant", sep=""))
 ```
+
+&nbsp;
 
 &nbsp;
 
@@ -327,13 +337,27 @@ text(.475, 8, paste(round(sum(data[1:67, 6]<=.05)/67*100), "% Significant", sep=
 
 &nbsp;
 
+&nbsp;
 
-Next lets see what happens when the trait is neutral with no effect on diversification.
 ```{r, fig.cap="__Assesment of type 1 error rate. Neutral trait and BiSSE inference model.__", echo = F}
 hist(data[, 5], main = "", 
      breaks = 20, xlab = "p-value from LRT",
      col = c("red", rep("black", 19)))
 text(.51, 8, paste(round(sum(data[1:100, 5]<=.05)/100*100), "% Significant", sep=""))
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+```{r, fig.cap="__Assesment of type 1 error rate. Neutral trait and TSSSE inference with fixed rate for transition out of temporary state model.__", echo = F}
+data2 <- read.csv("TSSE.result2.csv", row.names = 1)
+hist(data2[,1], main = "", 
+     breaks = 20, xlab = "p-value from LRT",
+     col = c("red", rep("black", 19)))
+text(.51, 8, paste(round(sum(data2[,1]<=.05)/100*100), "% Significant", sep=""))
 ```
 
 

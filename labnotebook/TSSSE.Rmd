@@ -219,7 +219,7 @@ sum(bisse.resN<=.05)
 
 
 ```{r}
-setwd("~/Desktop/TSSSE")
+setwd("~/Desktop/Dropbox/gitrepos/coleoguy.github.io/labnotebook")
 tree <- read.tree("whales.tre")
 library(geiger)
 tree <- rescale(tree, model="depth", depth=1)
@@ -270,7 +270,7 @@ Next TSSSE
 ```{r}
 tss.W.res <- vector()
 
-for(i in 100:100){
+for(i in 1:100){
   print(i)
   data.mat <- matrix(0,87,3)
   data.mat[neut.data[,i] == 1, 1] <- 1
@@ -279,20 +279,39 @@ for(i in 100:100){
   row.names(data.mat) <- row.names(neut.data)
   MUSS.lik <- make.musse(tree, states=data.mat, strict=F, k=3)  
   TSS.lik <- constrain(MUSS.lik, lambda1 ~ lambda3, q13 ~ 0, q21 ~ 0, 
-                       q31 ~ 0, q32 ~ 0)
+                       q31 ~ 0, q32 ~ 0, q23 ~ 2)
   TSS.likl <- constrain(MUSS.lik, lambda1 ~ lambda3, lambda2 ~ lambda3, 
-                        q13 ~ 0, q21 ~ 0, q31 ~ 0, q32 ~ 0)
+                        q13 ~ 0, q21 ~ 0, q31 ~ 0, q32 ~ 0, q23 ~ 2)
   pars <- c(1, 1,    # lambda 2, 3
           0.01, 0.01, 0.01,# mu 1, 2, 3
-          0.1,            # q12
-          0.5)            # q23
+          0.1)            # q12
+          #0.5)            # q23
   print("fitting full model")        
   fit <- find.mle(TSS.lik, pars)
   print("fitting constrained model")        
-  fit.l <- find.mle(TSS.likl, pars[c(1,3:7)])
+  fit.l <- find.mle(TSS.likl, pars[c(1,3:6)])
   tss.W.res[i] <- anova(fit, equal.lambda=fit.l)[5]$`Pr(>|Chi|)`[2]
 }
 ```
+27
+
+
+30* = 30 sig
+res.30 <- tss.W.res
+
+10* = 28 sig
+res.10 <- tss.W.res
+
+2* = 41 sig
+res.2 <- tss.W.res
+
+hist(res.2, main = "", 
+     breaks = 20, xlab = "p-value from LRT",
+     col = c("red", rep("black", 19)))
+text(.51, 8, paste(round(sum(data[1:100, 5]<=.05)/100*100), "% Significant", sep=""))
+
+
+sum(tss.W.res<=.05)
 
 bis.W.res<-bis.W.res[!is.na(bis.W.res)]
 tss.W.res<-tss.W.res[!is.na(tss.W.res)]
