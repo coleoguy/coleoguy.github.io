@@ -1,0 +1,45 @@
+---
+title: "Williams Works"
+
+author: "Heath Blackmon"
+
+output: 
+  html_document:
+    theme: cosmo
+    highlight: zenburn
+    toc: true
+    toc_depth: 2
+---
+Notes from reading *Adaptation and Natural Selection* and *Levels of Selection*
+    <!---“cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”, “cosmo”--->
+
+[back to main page](http://coleoguy.github.io/index.html)
+
+____
+## Background
+
+![George Williams](../reading.group/williams.png)
+
+A photo of George C. Williams
+
+*Adaptation and Natural Selection*[1] was published by Williams in 1966 while at Stony Brook though it was largely written during the summer of 1963 while he was at Berkeley.  It is essentially a reaction to adaptationist story telling and lack of rigor in contemporary explanations for the origins of traits. Williams felt that all too often people explained the origin of a trait as being through selection acting at the level of the species or community.  Williams will argue that this is largely unnecessary and should only be resorted to when individual selection can not explain the phenomenon.
+
+____
+## 1. Introduction
+
+Williams is basically relating why he got frustrated enough to write the book.  The most important part of this chapter is Williams setting up the thesis of the book which is:
+
+> Adaptation is a special and onerous concept that should be used only where it is really necessary. When it must be recognized, it should be attributed to no higher a level of organization than is demanded by the evidence. In explaining adaptation, one should assume the adequacy of the simplest form of natural selection, that of alternative alleles in Mendelian populations, unless the evidence clearly shows that this theory does not suffice.
+
+Doesn't seem like this would have been necessary its basically Occam's razor for evolutionary biologists, and if my memory serves me right that is really the central theme of this book over and over again.  In this introductory chapter he does have one humorous example where he discusses the origin of the occasional exceptionally intelligent human.  He describes the argument that has been made that:  
+
+1. Being particularly intelligent is not associated with higher fitness. 
+2. Having a low percentage of geniuses would provide an advantage to a tribe or group of humans.  
+3. These tribes or groups would do better and replace groups that lacked the occasional genius.  
+
+He argues that we have no facts that demand this explanation.  He argues that instead it could be that selection for simple and early understanding of basic instructions has selected for a brain sufficient to produce the occasional genius.  The story that he tells to illustrate this is of two young prehistoric children they are warned and spanked for several transgressions.  Then one day they are told to stay in the cave because a *Smilodon* is outside.  One boy is intelligent enough to understand this the other is not and gets eaten.  Williams argues that selection like this is just as likely to be sufficient to produce the observed distribution of intelligence.  He would argue that to resort to the argument for groups needs some compelling evidence that simply can't be explained by selection on individuals.  To me it seems that he is imploring us to use our wit to search for the simplest explanation rather than the sexiest.
+
+[1] Williams, George C. "Adaptation and natural selection: a critique of some current evolutionary thought" Princeton University Press. Princeton, NJ (1966).
+
+[back to top](#TOC)
+

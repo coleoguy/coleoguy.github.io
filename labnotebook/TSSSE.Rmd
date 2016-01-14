@@ -279,9 +279,9 @@ for(i in 1:100){
   row.names(data.mat) <- row.names(neut.data)
   MUSS.lik <- make.musse(tree, states=data.mat, strict=F, k=3)  
   TSS.lik <- constrain(MUSS.lik, lambda1 ~ lambda3, q13 ~ 0, q21 ~ 0, 
-                       q31 ~ 0, q32 ~ 0, q23 ~ 2)
+                       q31 ~ 0, q32 ~ 0, q23 ~ 100)
   TSS.likl <- constrain(MUSS.lik, lambda1 ~ lambda3, lambda2 ~ lambda3, 
-                        q13 ~ 0, q21 ~ 0, q31 ~ 0, q32 ~ 0, q23 ~ 2)
+                        q13 ~ 0, q21 ~ 0, q31 ~ 0, q32 ~ 0, q23 ~ 100)
   pars <- c(1, 1,    # lambda 2, 3
           0.01, 0.01, 0.01,# mu 1, 2, 3
           0.1)            # q12
