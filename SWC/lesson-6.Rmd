@@ -1,0 +1,33 @@
+---
+title: "Publication quality plots"
+author: "Heath Blackmon"
+date: "last updated: `r Sys.Date()`"
+output: 
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_depth: 3
+  
+---
+
+
+###1. Start your code with a header (who, what, when, & **why**):
+```{r}
+# Heath Blackmon
+# coleoguy@gmail.com
+# This script explores the frequency of eruptions at the Old Faithful geyser
+# 28 Jan 2016
+```
+
+&nbsp;
+
+###2. Run all of your import statments (`library`):
+  
+```{r, eval=FALSE}
+library(ggplot2)
+library(reshape)
+library(vegan)
+```
+
+&nbsp;
+
