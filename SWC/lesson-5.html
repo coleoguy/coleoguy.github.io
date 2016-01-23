@@ -88,12 +88,14 @@ img {
 # coleoguy@gmail.com
 # This script explores the frequency of eruptions at the Old Faithful geyser
 # 28 Jan 2016</code></pre>
+<p> </p>
 </div>
 <div id="run-all-of-your-import-statments-library" class="section level3">
 <h3>2. Run all of your import statments (<code>library</code>):</h3>
 <pre class="r"><code>library(ggplot2)
 library(reshape)
 library(vegan)</code></pre>
+<p> </p>
 </div>
 <div id="one-should-exercise-caution-when-using-setwd." class="section level3">
 <h3>3. One should exercise caution when using <code>setwd()</code>.</h3>
@@ -101,23 +103,28 @@ library(vegan)</code></pre>
 <p>The following error message indicates that R has failed to set the working directory you specified:</p>
 <pre><code>Error in setwd(&quot;~/path/to/working/directory&quot;) : cannot change working directory</code></pre>
 <p>Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below).</p>
+<p> </p>
 </div>
 <div id="use-or---to-set-off-sections-of-your-code" class="section level3">
 <h3>4. Use <code>#</code> or <code>#-</code> to set off sections of your code</h3>
 <p><a href="https://github.com/coleoguy/evobir/blob/master/R/AncCond.R">complex R function</a></p>
+<p> </p>
 </div>
 <div id="if-you-have-functions-segregate-them" class="section level3">
 <h3>5. If you have functions segregate them</h3>
 <p>If you just have a few put them at the top of your code, so they are among the first things run. If you written many functions, put them all in their own .R file, and <code>source</code> them. Source will run all of these functions so that you can use them as you need them.</p>
 <pre class="r"><code>source(&quot;my_genius_fxns.R&quot;)</code></pre>
+<p> </p>
 </div>
 <div id="use-consistent-style-within-your-code." class="section level3">
 <h3>6. Use consistent style within your code.</h3>
 <p>I largely follow <a href="https://google.github.io/styleguide/Rguide.xml" class="uri">https://google.github.io/styleguide/Rguide.xml</a> the most important thing is to be consistant.</p>
+<p> </p>
 </div>
 <div id="keep-your-code-modular." class="section level3">
 <h3>7. Keep your code modular.</h3>
 <p>If a single function or loop gets too long, consider breaking it into smaller pieces. If your script is over 100 lines long you might consider how writing functions might make it simpler. Don’t repeat yourself. Automate! If you are repeating the same piece of code on multiple objects or files, use a loop or a function to do the same thing. The more you repeat yourself, the more likely you are to make a mistake.</p>
+<p> </p>
 </div>
 <div id="develop-a-simple-directory-structure-for-projectsmanuscripts." class="section level3">
 <h3>8. Develop a simple directory structure for projects/manuscripts.</h3>
@@ -127,14 +134,18 @@ library(vegan)</code></pre>
 
 rather than:
 
-dat &lt;- read.csv(file = &quot;/Users/Karthik/files/dataset-2013-01.csv&quot;)</code></pre>
+dat &lt;- read.csv(file = &quot;/Users/heath/files/dataset-2013-01.csv&quot;)</code></pre>
+<p> </p>
 </div>
 <div id="peer-review" class="section level3">
 <h3>9. peer review</h3>
 <p>We do it for methods and papers, why not code? Our code is a major scientific product and the result of a lot of hard work! Find a friend and review each others code look for mistakes and ways to be more efficient.</p>
+<p> </p>
 </div>
 <div id="develop-your-code-using-version-control-and-frequent-updates" class="section level3">
 <h3>10. Develop your code using version control and frequent updates!</h3>
+<p> </p>
+<p> </p>
 </div>
 <div id="challenges" class="section level2">
 <h2>Challenges</h2>
@@ -142,6 +153,7 @@ dat &lt;- read.csv(file = &quot;/Users/Karthik/files/dataset-2013-01.csv&quot;)<
 <li>What other suggestions do you have?</li>
 <li>Apply this advice to this script: <a href="http://coleoguy.github.io/SWC/bad-script.R">ugly-script</a></li>
 </ol>
+<p> </p>
 </div>
 
 

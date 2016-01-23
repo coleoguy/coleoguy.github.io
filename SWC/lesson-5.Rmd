@@ -19,6 +19,8 @@ output:
 # 28 Jan 2016
 ```
 
+&nbsp;
+
 ###2. Run all of your import statments (`library`):
   
 ```{r, eval=FALSE}
@@ -26,6 +28,9 @@ library(ggplot2)
 library(reshape)
 library(vegan)
 ```
+
+&nbsp;
+
 
 ###3. One should exercise caution when using `setwd()`. 
 
@@ -40,9 +45,13 @@ Error in setwd("~/path/to/working/directory") : cannot change working directory
 
 Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below). 
 
+&nbsp;
+
 ###4. Use `#` or `#-` to set off sections of your code 
 [complex R function](https://github.com/coleoguy/evobir/blob/master/R/AncCond.R)
 
+
+&nbsp;
 
 ###5. If you have functions segregate them
 If you just have a few put them at the top of your code, so they are among the first things run. If you written many functions, put them all in their own .R file, and `source` them. Source will run all of these functions so that you can use them as you need them.
@@ -51,11 +60,17 @@ If you just have a few put them at the top of your code, so they are among the f
 source("my_genius_fxns.R")
 ```
 
+&nbsp;
+
 ###6. Use consistent style within your code.
 I largely follow <https://google.github.io/styleguide/Rguide.xml> the most important thing is to be consistant.
 
+&nbsp;
+
 ###7. Keep your code modular. 
 If a single function or loop gets too long, consider breaking it into smaller pieces. If your script is over 100 lines long you might consider how writing functions might make it simpler. Don't repeat yourself. Automate! If you are repeating the same piece of code on multiple objects or files, use a loop or a function to do the same thing. The more you repeat yourself, the more likely you are to make a mistake.
+
+&nbsp;
 
 ###8. Develop a simple directory structure for projects/manuscripts.  
 
@@ -68,15 +83,27 @@ dat <- read.csv(url("http://coleoguy.github.io/SWC/geyser.csv"))
 
 rather than:
 
-dat <- read.csv(file = "/Users/Karthik/files/dataset-2013-01.csv")
+dat <- read.csv(file = "/Users/heath/files/dataset-2013-01.csv")
 ```
+
+&nbsp;
 
 ###9. peer review 
 We do it for methods and papers, why not code? Our code is a major scientific product and the result of a lot of hard work!  Find a friend and review each others code look for mistakes and ways to be more efficient.
 
+&nbsp;
+
 ###10. Develop your code using version control and frequent updates!
+
+&nbsp;
+
+&nbsp;
 
 ## Challenges
 
 1. What other suggestions do you have?
 2. Apply this advice to this script: [ugly-script](http://coleoguy.github.io/SWC/bad-script.R)
+
+&nbsp;
+
+
