@@ -10,23 +10,21 @@ output:
   
 ---
 
+Plotting our data is one of the best ways to quickly explore it and the various relationships between variables, and is integral to telling a compelling story in your manuscripts.
 
-###1. Start your code with a header (who, what, when, & **why**):
-```{r}
-# Heath Blackmon
-# coleoguy@gmail.com
-# This script explores the frequency of eruptions at the Old Faithful geyser
-# 28 Jan 2016
-```
+###1. Graphing environments in R
+R has three frequently used graphing environments.  Each of these (`base`, `lattice`, `ggplot2`) has strengths and weaknesses. Most of the graphs that you see in publications can be produced using the base package and that is what we will focus on learning today.
 
 &nbsp;
 
-###2. Run all of your import statments (`library`):
-  
+###2. Types of graphs
+
+###2. Generating basic graphs
+First we will load in some example data to work with
 ```{r, eval=FALSE}
-library(ggplot2)
-library(reshape)
-library(vegan)
+data(ChickWeight)
+head(ChickWeight)
+
 ```
 
 &nbsp;
