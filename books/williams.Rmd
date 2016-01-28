@@ -65,6 +65,43 @@ Our group disagreed on what we should take away from the discussion that William
 The final topic that we discussed from this chapter was the gene as the target of selection.  William tries to discuss this with an awkward discussion of Socrates.  In this chapter William paints a very Fisherian view of the world.  Because of this our discussion careened off into a 10 minute discussion of the Wright-Fisher debate.  Perhaps the one important distinction that came up during this discussion.  Was the Wrigth vs Fisher view of epistasis. Some of our group members felt that part of the debate was caused because the kind of traits that the two were interested in were characterized by different importances for epistasis.  I disagreed with this.  I think that both viewpoints allow for various amounts of epistasis the difference is whether 1) the role of epistasis can be disregarded because of panmixis (fisherian view) or 2) the role of epistasis must be considered because of population subdivision.
 
 
+____
+## 3. Natural Selection, Ecology, and Morphogenesis
+![bithorax](../images/bithorax.jpg)  
+
+I feel like Williams spends far too long trying to describe the way that we can have "environments" at multiple levels.  Perhaps at the time this was less intuitive than it is now. This discussion is also complicated a bit simply because of the lack of information that he was facing.  Specifically, mitocondrial DNA was only discovered in 1963-1964 so the implications for mitochondrial nuclear interactions was not appreciated nor the role of maternally encoded RNAs. This has the unfortunate effect of creating some odd sections where he is discussing the soma as an environment.  We have a much better way of understanding these interactions and experimental results now that we know what is going on.  This section does have an analogy that I had forgotten and enjoyed.
+
+> If a message to someone who can understand only Chinese produced the same response as a message given to someone who can only understand Japanese then the messages must be different.
+
+Williams uses this while relating the results of nuclear transplant experiments that showed that the same nuclear genome in different somas A and B produced different phenotypes, eventhough the natural populations of A and B are indistinguishable.
+
+I also really like the way that Williams discusses selection on traits presented at different stages in the life cycle.  Specifically, it is the frequency and duration of a life stage that determines the degree of selection on the traits presented at that time.  We should really extend this a bit and specify that at any given stage it is also multiplied by the proportion of life-time reproduction that will occur in the future.  This then allows for senesence.
+
+Next Williams deals with Waddington. It becomes quite clear that Williams thinks that common interpretations of genetic assimilation are incorrect.  At there heart the question is whether or not the kind of variation that is revealed in the ether experiment is the type of variation that is important in adaptation.
+
+First lets look at how Waddington interpreted his own experiment.  Briefly Waddington exposed developing flies to a sublethal dose of ether.  This would cause a proportion of the flies to develop a bithorax phenotype where instead of halters behind the front wings a second pair of wings would grow.  Waddington would then select flies that expressed this phenotype to breed the next generation and repeat the process.  After 30 generations Waddington has succeeded in producing a line of flies that would produce a high proportion of bithorax individuals without ether treatment.  Waddington believed that this demonstrated that there was inherent "adaptable" variation hidden from selection that only was revealed when an organism was under stress.  He used the figure below to describe what he believed was happening (I added the phenotypes at the bottom).  When everything is normal the development passess down the path of least resistance (the deepest canal).  But when stresses are present then other phenotypes are expressed and can be selected if they are more fit.
+![canalization](../images/dev.canalization.png)  
+
+Williams attacks this interpretation in 3 diffferent ways.
+
+1. He argues that bithorax and other subsequent examples are failures of development and unlikely to be adaptive.
+
+2. Changes from faculative to obligate expression are examples of loss of information. - I think that this is not necessarily true. At a minimum Williams fails to provide any evidence of this that I buy.
+
+3. Faculative traits are more likely to be adaptive solutions than obligate muations.
+
+On page 83 Williams says "instinct costs less than learned behavior in the currency of genetic information" - - Not sure what he was thinking here.  No genetic cost to learned behavior once ability to learn evolved??
+
+Finally, Willaims spends a bit of time knocking down a few minor claims of characteristics that "can't be explained via natural selection".  One of these is the ability of organisms to deal with historically unique conditions in an adaptively successful way.  In a discussion of Trichoptera he cites [Russell 1945](https://archive.org/details/directivenessofo035049mbp).  This book then cites Dembowski 1933 <small>(I tried to track this article down but had little success.  I'm pretty sure it was published in a German journal but the citation is greatly abbreviated so I had no luck).</small>  But even judging from the sections of Russell's book that I read Dembowski spent hundreds of hours carefully recording the response of caddisfly larvae essentially being screwed with.  He would flip them over cut their shells and otherwise molest them and then record all of the actions that the individuals would take to restore their condition to a normal state.  The insects are successful in doing this regardles of how odd or unnatural the molestation is.  Although Williams doesn't disucss this in Russell's book we also see disucssion of the more famous experiments that John-Henri Fabre performed using Nicrophorus burying beetles.  These beetle normally bury a small mammal to raise young in.  Fabre tried all manner of methods to stop the beetles (using twine, sticks and mats to block or stop the beetles) in all cases the beetles just bite through the offending materials and bury the carcas.  Russell and others said that something other than natural selection must have produced these adaptations since they have never experienced them before.  Williams argues that the organisms use adaptative behavior that has been selected for other purposes to deal with these issues.
+
+
+
+
+
+
+
+
+
 
 
 [1] Williams, George C. "Adaptation and natural selection: a critique of some current evolutionary thought" Princeton University Press. Princeton, NJ (1966).
