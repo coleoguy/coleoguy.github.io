@@ -44,7 +44,18 @@ The following error message indicates that R has failed to set the working direc
 Error in setwd("~/path/to/working/directory") : cannot change working directory
 ```
 
-Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below). 
+Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths.
+
+If your collaborating consider having source files online. This way your collaborators can run your code without making changes.
+
+```{r, eval=FALSE}
+dat <- read.csv(url("http://coleoguy.github.io/SWC/geyser.csv"))
+
+rather than:
+
+dat <- read.csv(file = "/Users/heath/files/dataset-2013-01.csv")
+```
+
 
 &nbsp;
 
@@ -77,15 +88,6 @@ If a single function or loop gets too long, consider breaking it into smaller pi
 
 ![folder.structure](./images/dummy.png)
 
-If your collaborating consider having source files online. This way your collaborators can run your code without making changes.
-
-```{r, eval=FALSE}
-dat <- read.csv(url("http://coleoguy.github.io/SWC/geyser.csv"))
-
-rather than:
-
-dat <- read.csv(file = "/Users/heath/files/dataset-2013-01.csv")
-```
 
 &nbsp;
 
@@ -100,10 +102,65 @@ We do it for methods and papers, why not code? Our code is a major scientific pr
 
 &nbsp;
 
+### Lets try it!
+
+```
+data("faithful")
+head(faithful)
+foo <- faithful[ ,2]
+mode(foo)
+help(mode)
+Mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+Mode(foo)
+hist(foo)
+```
+
+a better version:
+
+```
+# Heath Blackmon
+# 30 Jan 2016
+# This is a script to .......
+# coleoguy@gmail.com
+
+# a function to return the numeric mode of a vector
+Mode <- function(x) {
+  ux <- unique(x)
+  matches <- match(x, ux)
+  counts <- tabulate(matches)
+  ux[which.max(counts)]
+}
+
+# loading data from old faithful
+data("faithful")
+
+# peaking at the begining
+head(faithful)
+
+# pull out waiting time
+waiting.time <- faithful$waiting
+
+# calculate the mode
+mode(waiting.time)
+
+# get help on mode function
+help(mode)
+
+# calculate the numeric mode
+Mode(waiting.time)
+
+# checking graphically that Mode works
+hist(waiting.time, breaks=40)
+
+```
+
 ## Challenges
 
 1. What other suggestions do you have?
-2. Apply this advice to this script: [ugly-script](http://coleoguy.github.io/SWC/bad-script.R)
+2. Apply this advice to one of the script that you have already written.
 
 &nbsp;
 

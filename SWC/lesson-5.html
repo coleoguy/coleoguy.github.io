@@ -78,6 +78,7 @@ img {
 <li><a href="#develop-a-simple-directory-structure-for-projectsmanuscripts.">8. Develop a simple directory structure for projects/manuscripts.</a></li>
 <li><a href="#peer-review">9. peer review</a></li>
 <li><a href="#develop-your-code-using-version-control-and-frequent-updates">10. Develop your code using version control and frequent updates!</a></li>
+<li><a href="#lets-try-it">Lets try it!</a></li>
 <li><a href="#challenges">Challenges</a></li>
 </ul>
 </div>
@@ -102,7 +103,13 @@ library(vegan)</code></pre>
 <p>Changing directories in your script can limit reproducibility: <code>setwd()</code> will throw an error if the directory you’re trying to change to doesn’t exit, or the user doesn’t have the correct permissions to access it. This becomes a problem when sharing scripts between users who have organized their directories differently. * If/when your script terminates with an error, you might leave the user in a different directory to where they started, and if they call the script again this will cause further problems. If you must use <code>setwd()</code>, it is best to put it at the top of the script to avoid this problem.</p>
 <p>The following error message indicates that R has failed to set the working directory you specified:</p>
 <pre><code>Error in setwd(&quot;~/path/to/working/directory&quot;) : cannot change working directory</code></pre>
-<p>Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths (see below).</p>
+<p>Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths.</p>
+<p>If your collaborating consider having source files online. This way your collaborators can run your code without making changes.</p>
+<pre class="r"><code>dat &lt;- read.csv(url(&quot;http://coleoguy.github.io/SWC/geyser.csv&quot;))
+
+rather than:
+
+dat &lt;- read.csv(file = &quot;/Users/heath/files/dataset-2013-01.csv&quot;)</code></pre>
 <p> </p>
 </div>
 <div id="use-or---to-set-off-sections-of-your-code" class="section level3">
@@ -129,12 +136,6 @@ library(vegan)</code></pre>
 <div id="develop-a-simple-directory-structure-for-projectsmanuscripts." class="section level3">
 <h3>8. Develop a simple directory structure for projects/manuscripts.</h3>
 <p><img src="data:image/png;base64,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" alt="folder.structure" /></p>
-<p>If your collaborating consider having source files online. This way your collaborators can run your code without making changes.</p>
-<pre class="r"><code>dat &lt;- read.csv(url(&quot;http://coleoguy.github.io/SWC/geyser.csv&quot;))
-
-rather than:
-
-dat &lt;- read.csv(file = &quot;/Users/heath/files/dataset-2013-01.csv&quot;)</code></pre>
 <p> </p>
 </div>
 <div id="peer-review" class="section level3">
@@ -147,11 +148,60 @@ dat &lt;- read.csv(file = &quot;/Users/heath/files/dataset-2013-01.csv&quot;)</c
 <p> </p>
 <p> </p>
 </div>
+<div id="lets-try-it" class="section level3">
+<h3>Lets try it!</h3>
+<pre><code>data(&quot;faithful&quot;)
+head(faithful)
+foo &lt;- faithful[ ,2]
+mode(foo)
+help(mode)
+Mode &lt;- function(x) {
+  ux &lt;- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+Mode(foo)
+hist(foo)</code></pre>
+<p>a better version:</p>
+<pre><code># Heath Blackmon
+# 30 Jan 2016
+# This is a script to .......
+# coleoguy@gmail.com
+
+# a function to return the numeric mode of a vector
+Mode &lt;- function(x) {
+  ux &lt;- unique(x)
+  matches &lt;- match(x, ux)
+  counts &lt;- tabulate(matches)
+  ux[which.max(counts)]
+}
+
+# loading data from old faithful
+data(&quot;faithful&quot;)
+
+# peaking at the begining
+head(faithful)
+
+# pull out waiting time
+waiting.time &lt;- faithful$waiting
+
+# calculate the mode
+mode(waiting.time)
+
+# get help on mode function
+help(mode)
+
+# calculate the numeric mode
+Mode(waiting.time)
+
+# checking graphically that Mode works
+hist(waiting.time, breaks=40)
+</code></pre>
+</div>
 <div id="challenges" class="section level2">
 <h2>Challenges</h2>
 <ol style="list-style-type: decimal">
 <li>What other suggestions do you have?</li>
-<li>Apply this advice to this script: <a href="http://coleoguy.github.io/SWC/bad-script.R">ugly-script</a></li>
+<li>Apply this advice to one of the script that you have already written.</li>
 </ol>
 <p> </p>
 </div>

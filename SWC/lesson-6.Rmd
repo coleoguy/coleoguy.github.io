@@ -3,12 +3,12 @@ title: "Publication quality plots"
 author: "Heath Blackmon"
 date: 'last updated: `r Sys.Date()`'
 output:
-  pdf_document:
-    toc: yes
   html_document:
     theme: cosmo
     toc: yes
     toc_depth: 3
+  pdf_document:
+    toc: yes
 ---
 
 Plotting our data is one of the best ways to quickly explore it and the various relationships between variables, and is integral to telling a compelling story in your manuscripts.
