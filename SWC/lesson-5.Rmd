@@ -1,14 +1,14 @@
 ---
-title: "Best Practices in R"
+title: 'Best practices in R: 10 rules'
 author: "Heath Blackmon"
 date: 'last updated: `r Sys.Date()`'
 output:
-  pdf_document:
-    toc: yes
   html_document:
     theme: cosmo
     toc: yes
     toc_depth: 3
+  pdf_document:
+    toc: yes
 ---
 
 

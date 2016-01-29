@@ -1,6 +1,6 @@
-foo <- read.csv(url("http://coleoguy.github.io/SWC/geyser.csv"))
-head(foo)
-foo <- foo[ ,3]
+data("faithful")
+head(faithful)
+foo <- faithful[ ,2]
 mode(foo)
 help(mode)
 Mode <- function(x) {

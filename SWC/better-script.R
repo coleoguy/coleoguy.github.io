@@ -5,18 +5,18 @@
 
 # ok lets write a function that we will need
 Mode <- function(x) {
-  ux <- unique(x)
-  ux[which.max(tabulate(match(x, ux)))]
+  ux <- unique(x) # finds the unique values of x
+  ux[which.max(tabulate(match(x, ux)))] # counts the unique occurances in x
 }
 
-# read in our data
-OF.data <- read.csv(url("http://coleoguy.github.io/SWC/geyser.csv"))
+# get our data
+data("faithful")
 
 # lets take a look at our data
-head(OF.data)
+head(faithful)
 
 # it looks like we want the information from column 3
-waiting.time <- OF.data[ ,3]
+waiting.time <- faithful[ ,2]
 
 # lets determine the most frequent waiting time
 mode(waiting.time)
@@ -26,8 +26,8 @@ mode(waiting.time)
 help(mode)
 
 # now we can use our own Mode function
-Mode(foo)
+Mode(waiting.time)
 
 # lets look at our data to make sure we aren't missing anything
-hist(foo)
+hist(waiting.time)
 # good thing we did it looks like it is multimodal
