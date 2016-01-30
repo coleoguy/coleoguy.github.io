@@ -1,0 +1,52 @@
+---
+title: "Challenge 1"
+author: "Heath Blackmon"
+date: 'last compiled: `r Sys.Date()`'
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    theme: cosmo
+    toc: yes
+---
+# Loading data
+R comes with many cool datasets; lets use the `chickwts` dataset today. In these experiment chicks were randomly allocated into groups, and each group was given a different feed supplement.
+```{r}
+data("chickwts")
+```
+
+# Data exploration and cleaning
+First lets look at what this dataset looks like:
+```{r}
+knitr::kable(head(chickwts))
+```
+
+OK now lets look and see what the distribution of all chick weights looks like:
+```{r}
+hist(chickwts$weight)
+```
+
+That looks like something interesting might be going on. Lets try plotting this parsed by the type of feed. The `boxplot` has this built in using the `~` symbol to specify what we are parsing by. 
+```{r}
+boxplot(weight ~ feed, data = chickwts, col = "lightgray",
+main = "chickwt data", ylab = "Weight at six weeks (gm)")
+```
+
+# Figures for manuscript
+Now that we know what our data looks like lets produce figures for a manuscript. First we will use the `pdf` command this creates and opens the pdf file and that subsequent plotting commands are sent to. Once are plot is complete then we use the `dev.off` command to close the file:
+
+this will be our figure 1 that is the distribution of all chick weights at 6 weeks:
+```{r}
+pdf(file="fig1.pdf", width = 4, height = 4)
+hist(chickwts$weight, main = "Chick weights at 6 weeks",
+xlab = "grams", ylab = "count")
+dev.off()
+```
+
+next we will make our figure 2 that is the chick weights at 6 weeks parsed by feed type:
+```{r}
+pdf(file="fig2.pdf", width = 4, height = 4)
+boxplot(weight ~ feed, data = chickwts, col = "lightgray",
+main = "chickwt data", cex.axis=.5, ylab = "Weight at six weeks (gm)")
+dev.off()
+```

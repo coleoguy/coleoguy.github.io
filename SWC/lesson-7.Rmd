@@ -1,0 +1,68 @@
+---
+title: "Open Science Tools"
+author: "Heath Blackmon"
+date: '`r Sys.Date()`'
+output: ioslides_presentation
+---
+
+## Goals
+>- literate programming
+>- Rmarkdown - documents/figures
+>- Rmarkdown - slideshows
+
+## Literate programming
+
+![Donald Knuth](images/knuth.jpg)
+
+
+
+## Normal "good" script
+better-script.R
+
+[literate code](https://raw.githubusercontent.com/coleoguy/markdown/master/code.good.txt)
+
+[literate code -> html ](http://coleoguy.github.io/comparative/comparative.html)
+
+  >- *easy for others to understand (including you later)*  
+  >- *easy to incorportate new data*  
+  >- *easy to deal with reviewers comments*  
+
+## Why Rmarkdown?
+  >- *increasingly wide usage*
+  >- *plain text*
+  >- *using knitr gives simple and effective products: [pdf](http://coleoguy.github.io/saga.pdf), html, slideshows*
+
+## Parts of a Rmarkdown document
+ >- header
+ >- text
+ >- code blocks
+ >- sections with #, ##, ###
+
+
+## Activity 1
+
+ >- File -> New File -> R Markdown -> html -> OK 
+ >- Using the template you have opened make an R markdown file that generates an html file and saves two pdf figures when you click the Knit button.
+ >- 1. read in `chickwts` data
+    2. make a histogram of chick weights
+    3. make a barplot of chick weights parsed by feed
+    4. send both of these graphs to pdf files
+    ```{}
+    data()
+    hist()
+    boxplot()
+    pdf()
+    dev.off()
+    ```
+ 
+ 
+## Challenge 1
+ >- Save a second copy of your markdown file and change it into a slideshow
+ >- 1. output: ioslides_presentation
+    2. use the `echo = F` argument in your code blocks
+    3. delete the pdf saves
+
+## Conclusion
+ >- comment/document/organize
+ >- Collaboration is one of the most fun/productive ways of doing science.
+

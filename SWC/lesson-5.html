@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">Best practices in R: 10 rules</h1>
 <h4 class="author"><em>Heath Blackmon</em></h4>
-<h4 class="date"><em>last updated: 2016-01-29</em></h4>
+<h4 class="date"><em>last updated: 2016-01-30</em></h4>
 </div>
 
 <div id="TOC">
@@ -104,7 +104,7 @@ library(vegan)</code></pre>
 <p>The following error message indicates that R has failed to set the working directory you specified:</p>
 <pre><code>Error in setwd(&quot;~/path/to/working/directory&quot;) : cannot change working directory</code></pre>
 <p>Consider using the convention that the user running the script should begin in the relevant directory on their machine and then use relative file paths.</p>
-<p>If your collaborating consider having source files online. This way your collaborators can run your code without making changes.</p>
+<p>If you’re collaborating consider having source files online. This way your collaborators can run your code without making changes.</p>
 <pre class="r"><code>dat &lt;- read.csv(url(&quot;http://coleoguy.github.io/SWC/geyser.csv&quot;))
 
 rather than:
@@ -119,7 +119,7 @@ dat &lt;- read.csv(file = &quot;/Users/heath/files/dataset-2013-01.csv&quot;)</c
 </div>
 <div id="if-you-have-functions-segregate-them" class="section level3">
 <h3>5. If you have functions segregate them</h3>
-<p>If you just have a few put them at the top of your code, so they are among the first things run. If you written many functions, put them all in their own .R file, and <code>source</code> them. Source will run all of these functions so that you can use them as you need them.</p>
+<p>If you just have a few put them at the top of your code, so they are among the first things run. If you have written many functions, put them all in their own .R file, and <code>source</code> them. Source will run all of these functions so that you can use them as you need them.</p>
 <pre class="r"><code>source(&quot;my_genius_fxns.R&quot;)</code></pre>
 <p> </p>
 </div>
@@ -201,7 +201,7 @@ hist(waiting.time, breaks=40)
 <h2>Challenges</h2>
 <ol style="list-style-type: decimal">
 <li>What other suggestions do you have?</li>
-<li>Apply this advice to one of the script that you have already written.</li>
+<li>Apply this advice to one of the scripts that you have already written.</li>
 </ol>
 <p> </p>
 </div>

@@ -1,5 +1,5 @@
 ---
-title: "Best practices in R: 10 rules"
+title: "Best practices in R"
 author: "Heath Blackmon"
 date: 'last updated: `r Sys.Date()`'
 output: ioslides_presentation
@@ -33,7 +33,7 @@ Error in setwd("~/path/to/working/directory") : cannot change working directory
 ```
 ## better option
 
-If your collaborating consider having source files online. This way your collaborators can run your code without making changes.
+If you're collaborating consider having source files online. This way your collaborators can run your code without making changes.
 
 ```{r, eval=FALSE}
 dat <- read.csv(url("http://coleoguy.github.io/SWC/geyser.csv"))
@@ -49,7 +49,7 @@ dat <- read.csv(file = "/Users/heath/files/dataset-2013-01.csv")
 
 
 ## 5. If you have functions segregate them
-If you just have a few put them at the top of your code, so they are among the first things run. If you written many functions, put them all in their own .R file, and `source` them. Source will run all of these functions so that you can use them as you need them.
+If you just have a few put them at the top of your code, so they are among the first things run. If you have written many functions, put them all in their own .R file, and `source` them. Source will run all of these functions so that you can use them as you need them.
 
 ```{r, eval=FALSE}
 source("my_genius_fxns.R")
@@ -91,7 +91,7 @@ hist(foo)
 ## Challenges
 
 1. What other suggestions do you have?
-2. Apply this advice to one of the script that you have already written.
+2. Apply this advice to one of the scripts that you have already written.
 
 &nbsp;
 
