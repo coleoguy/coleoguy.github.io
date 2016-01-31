@@ -24,7 +24,7 @@ We want to calculate a value for every row so lets create a vector for those res
 result <- vector()
 ```
 
-Now we are ready to use a control structure and itterate through a dataset.
+Now we are ready to use a control structure and iterate through a dataset.
 
 ```{r}
 for(i in 1:nrow(iris)){
@@ -39,7 +39,7 @@ lets plot the results:
 plot(result)
 ```
 
-Thats interesting looks like there might be unique different groups.  If we look at the last collumn we see that there are actually 3 species.  The species are in grouped species 1 is on rows 1-50 two is 51-100 and the last one is on rows 101-150.  Lets draw some lines to seperate the species and see if that makes sense.
+That is interesting looks like there might be unique different groups.  If we look at the last column we see that there are actually 3 species.  The species are in grouped species 1 is on rows 1-50 two is 51-100 and the last one is on rows 101-150.  Lets draw some lines to separate the species and see if that makes sense.
 
 ```{r}
 plot(result)

@@ -17,4 +17,4 @@ output: ioslides_presentation
 
 load the cool iris dataset:
 `data(iris)`
-and use a `for` loop and an `if` statement to calaclate the average petal w/l ratio.
+and use a `for` loop and an `if` statement to calculate the average petal w/l ratio.

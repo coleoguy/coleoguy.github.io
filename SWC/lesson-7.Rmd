@@ -1,10 +1,8 @@
 ---
-title: "Challenge 1"
+title: "Open Science"
 author: "Heath Blackmon"
 date: 'last compiled: `r Sys.Date()`'
 output:
-  pdf_document:
-    toc: yes
   html_document:
     theme: cosmo
     toc: yes
