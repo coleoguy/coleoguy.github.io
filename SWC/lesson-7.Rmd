@@ -16,10 +16,11 @@ output: ioslides_presentation
 
 
 
-## Normal "good" script
-better-script.R
+## Degrees of goodness
 
-[literate code](https://raw.githubusercontent.com/coleoguy/markdown/master/code.good.txt)
+good code ex:better-script.R
+
+literate code ex:code.good.Rmd
 
 [literate code -> html ](http://coleoguy.github.io/comparative/comparative.html)
 

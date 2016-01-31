@@ -5,9 +5,17 @@ date: 'last updated: `r Sys.Date()`'
 output: ioslides_presentation
 ---
 
+## Goals
+>- Explore a cool dataset and discover something interesting.
+>- Make an awesome graph that show the interesting characteristic
+>- Make two awesome plots
+
+
 ## Visualization = Exploration
 
 Plotting our data is one of the best ways to quickly explore it and the various relationships between variables, and is integral to telling a compelling story in your manuscripts.
+
+![TOS](images/TOS.png)
 
 ## Graphing environments in R
 

@@ -5,6 +5,12 @@ date: 'last updated: `r Sys.Date()`'
 output: ioslides_presentation
 ---
 
+## Goals
+
+>- Learn 10 basic rules to make your code more awesome.
+>- Apply to an existing script
+
+
 
 ## 1. Start your code with a header (who, what, when, & **why**):
 ```{r}
