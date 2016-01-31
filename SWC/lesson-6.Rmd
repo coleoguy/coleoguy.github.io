@@ -150,6 +150,6 @@ data(faithful)
 pchs <- vector(mode="numeric", length=272)
 pchs[1:272] <- 16
 pchs[faithful$eruptions < 3] <- 17
-plot(faithful$eruptions, faithful$waiting, xlab="Number of eruptions", ylab="Waiting time (min)", main="Geyser eruption patterns", pch=pchs)
+plot(faithful$eruptions, faithful$waiting, xlab="Length of eruption (min)", ylab="Waiting time (min)", main="Geyser eruption patterns", pch=pchs)
 abline(lm(faithful$waiting~faithful$eruptions), col="red", lwd=3)
 

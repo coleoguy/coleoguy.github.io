@@ -16,7 +16,7 @@ Return to of comparative methods [outline](http://coleoguy.github.io/comparative
 
 
 
-#The model of discrete character evolution
+# The model of discrete character evolution
 I think one of the best presentations that I've seen of this was John Huelsenbeck's lecture at the [Bodega Phylogenetics workshop](http://treethinkers.org/).  He also has a [great tutorial](https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf) available online for the Woods Hole course which is very similar.  This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this.  The entire [R markdown document](https://github.com/coleoguy/coleoguy.github.io/blob/master/comparative.Rmd) is available via github.
 
 When we think about the evolution of discrete characters (either DNA
@@ -27,7 +27,7 @@ Q-matrix.  This matrix contains transition rates.  For illustration
 we can use a matrix like this which represents the evolution of a binary
 trait that can have states 0 or 1:
   
-  ```{r echo=F}
+```{r echo=F}
 qmat <- matrix(c(-.3,.4,.3,-.4),2,2)
 rownames(qmat) <- colnames(qmat) <- c(0,1)
 qmat

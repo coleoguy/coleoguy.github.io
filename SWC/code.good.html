@@ -85,7 +85,9 @@ true
 <h1>The model of discrete character evolution</h1>
 <p>I think one of the best presentations that I’ve seen of this was John Huelsenbeck’s lecture at the <a href="http://treethinkers.org/">Bodega Phylogenetics workshop</a>. He also has a <a href="https://molevol.mbl.edu/images/3/37/WoodsHoleHandout.pdf">great tutorial</a> available online for the Woods Hole course which is very similar. This post is the result of R markdown document that I have created in an attempt to make sure that I understand all of this. The entire <a href="https://github.com/coleoguy/coleoguy.github.io/blob/master/comparative.Rmd">R markdown document</a> is available via github.</p>
 <p>When we think about the evolution of discrete characters (either DNA or other traits). We usually think of a continuous time Markov model that describes the probability of changes in our character as it evolves over our phylogeny. At the heart of this type of model is the Q-matrix. This matrix contains transition rates. For illustration we can use a matrix like this which represents the evolution of a binary trait that can have states 0 or 1:</p>
-<p><code>##      0    1   ## 0 -0.3  0.3   ## 1  0.4 -0.4</code></p>
+<pre><code>##      0    1
+## 0 -0.3  0.3
+## 1  0.4 -0.4</code></pre>
 <p>On the left of the matrix we have the current state and on the top of the matrix we have the ending state. So in this case the rate of transition from state 0 to state 1 is 0.3 while the rate of transition from state 1 to state 0 is .4. These rates will usually be referred to as q01 and q10 respectively. The diagonal of the matrix is set so each row is equal to 0.</p>
 <p>What these rates actually describe is the exponentially distributed expected waiting time till we see a transition in our trait. For instance we could use this formula to calculate the waiting time for a transition from state 0 to state 1. <span class="math">\(t=-\frac{1}{\lambda} log_e(u)\)</span> Where <span class="math">\(u\)</span> is a random number between 0 and 1, and in our example <span class="math">\(\lambda\)</span> will equal .3.</p>
 <pre><code>## [1] &quot;We draw a random number = 0.2655086631421&quot;</code></pre>

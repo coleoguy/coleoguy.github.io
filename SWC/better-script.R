@@ -3,19 +3,19 @@
 # This script explores the frequency of eruptions at the Old Faithful geyser
 # 28 Jan 2016
 
-# ok lets write a function that we will need
+# ok lets write a function to return the mode
 Mode <- function(x) {
   ux <- unique(x) # finds the unique values of x
   ux[which.max(tabulate(match(x, ux)))] # counts the unique occurances in x
 }
 
-# get our data
+# get our data on old faithful
 data("faithful")
 
 # lets take a look at our data
 head(faithful)
 
-# it looks like we want the information from column 3
+# it looks like we want the waiting times from column 3
 waiting.time <- faithful[ ,2]
 
 # lets determine the most frequent waiting time

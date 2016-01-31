@@ -138,40 +138,39 @@
 
 </article></slide><slide class=''><hgroup><h2>Activity 1</h2></hgroup><article  id="activity-1">
 
-<ul class = 'build'>
-<li>File -&gt; New File -&gt; R Markdown -&gt; html -&gt; OK</li>
-<li>Using the template you have opened make an R markdown file that explores the <code>chickwts</code> dataset. Make sure that you explain the logic behind what your are doing.</li>
-<li><ol>
-<li>read in <code>chickwts</code> data</li>
-<li>make an awesome histogram of chick weights</li>
-<li>make an awesome barplot of chick weights parsed by feed</li>
-</ol></li>
-</ul>
+<p>File -&gt; New File -&gt; R Markdown -&gt; html -&gt; OK</p>
+
+<p>Using the template you have opened make an R markdown file that explores the <code>chickwts</code> dataset.</p>
+
+<p>Make an awesome histogram of chick weights</p>
+
+<p>Make an awesome barplot of chick weights parsed by feed</p>
 
 <pre >```{}
 data()
 hist()
 boxplot()
-
 ```</pre>
 
 </article></slide><slide class=''><hgroup><h2>Activity 2</h2></hgroup><article  id="activity-2">
 
-<ul class = 'build'>
-<li>Save a second copy of your markdown file and change it into a slideshow</li>
-<li><ol>
-<li>output: ioslides_presentation</li>
-<li>use the <code>echo = F</code> argument in your code blocks</li>
-<li>delete the pdf saves</li>
-</ol></li>
-</ul>
+<p>Generate a pdf file for submission to a journal</p>
+
+<p><code>pdf(file=&quot;fig1.pdf&quot;, width = 4, height = 4)</code></p>
+
+<p><code>dev.off()</code></p>
+
+</article></slide><slide class=''><hgroup><h2>Activity 3</h2></hgroup><article  id="activity-3">
+
+<p>Save a second copy of your markdown file and change it into a slideshow</p>
+
+<p>in the header: <code>output: ioslides_presentation</code></p>
+
+<p>in code blocks use the <code>echo = F</code> argument in your code blocks</p>
 
 </article></slide><slide class=''><hgroup><h2>Conclusion</h2></hgroup><article  id="conclusion">
 
-<ul class = 'build'>
-<li>comment/document/organize</li>
-<li>Collaboration is one of the most fun/productive ways of doing science.</li>
-</ul></article></slide>
+<p>You have all the tools you need go do awesome things!</p></article></slide>
 
 
   <slide class="backdrop"></slide>

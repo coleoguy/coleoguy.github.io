@@ -42,28 +42,38 @@ literate code ex:code.good.Rmd
 
 ## Activity 1
 
- >- File -> New File -> R Markdown -> html -> OK 
- >- Using the template you have opened make an R markdown file that generates an html file and saves two pdf figures when you click the Knit button.
- >- 1. read in `chickwts` data
-    2. make a histogram of chick weights
-    3. make a barplot of chick weights parsed by feed
-    4. send both of these graphs to pdf files
+File -> New File -> R Markdown -> html -> OK 
+
+Using the template you have opened make an R markdown file that explores the `chickwts` dataset.
+
+Make an awesome histogram of chick weights
+
+Make an awesome barplot of chick weights parsed by feed
+
     ```{}
     data()
     hist()
     boxplot()
-    pdf()
-    dev.off()
     ```
  
- 
-## Challenge 1
- >- Save a second copy of your markdown file and change it into a slideshow
- >- 1. output: ioslides_presentation
-    2. use the `echo = F` argument in your code blocks
-    3. delete the pdf saves
+## Activity 2
+
+Generate a pdf file for submission to a journal
+
+`pdf(file="fig1.pdf", width = 4, height = 4)`
+
+`dev.off()`
+
+
+## Activity 3
+Save a second copy of your markdown file and change it into a slideshow
+
+in the header:
+`output: ioslides_presentation`
+
+in code blocks
+use the `echo = F` argument in your code blocks
+
 
 ## Conclusion
- >- comment/document/organize
- >- Collaboration is one of the most fun/productive ways of doing science.
-
+You have all the tools you need go do awesome things!
