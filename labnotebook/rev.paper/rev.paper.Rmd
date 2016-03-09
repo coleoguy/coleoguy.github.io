@@ -7,9 +7,8 @@ output: html_document
 We need to add a few analyses to this paper and since we first started a nice tree has become available: [Phylogenomics resolves the timing and pattern of insect evolution](http://science.sciencemag.org.ezp1.lib.umn.edu/content/346/6210/763.full.pdf+html?) this paper includes a consensus tree with node dates equal to the median of from their bayesian analysis.  This tree has 1-4 tips for each order.
 
 ```{r}
-library(diversitree)
-library(ape)
 library(geiger)
+library(phytools)
 tree <- read.nexus("insects.nex")
 plot(tree, cex = .4)
 ```
@@ -38,8 +37,17 @@ for(i in 1:length(new.tree$tip.label)){
 # now plot new tree
 plot(new.tree, cex = .75)
 # that looks good, lets clean up some
-rm(filter, taxa, foo, hit, i, nums, tree)
+rm(taxa, hit, i, nums, tree)
+
 ```
+
+Many of our methods are sensitive and perform poorly with trees that have long branches for this reason lets go ahead scale are tree to unit length.  This wont effect relative rates nor transition inference but if we want to report actual rates we will need to untransform.
+
+```{r}
+
+new.tree <-rescale(new.tree, model="depth", 1)
+```
+
 
 Ok now that we have a dated consensus phylogeny we can do several analyses that I felt unsure of previously.  For the first one lets do the reconstruction of the sex chromosome system.  The first problem that we face in this case is that we have variation in some groups however, for most groups there is a clear consensus.  The approach that we will use is to simply take the probability of being in each tip state as being equal to the frequency of that state in an order.  For instance if 90% of records are XY and 10% of records are XO we would place a prior probability of 90% on the state XY and a 10% prior probability on the state XO.
 
@@ -54,7 +62,8 @@ rm(scs.states)
 
 Now we will fill this in
 ```{r}
-data <- read.csv("tos.data.csv", as.is = T)
+setwd("~/Desktop/Dropbox/projects/SexChromosomes (1)/invertebrates/InsectReview/new.version/data")
+data <- read.csv("tos.data.old.csv", as.is = T)
 for(i in 1:nrow(states)){
   temp.data <- data[tolower(data$Order) == row.names(states)[i], 6]
   states[i, 1] <- sum(temp.data == "XY" | temp.data == "complex XY|homomorphic" | 
@@ -65,20 +74,15 @@ for(i in 1:nrow(states)){
   temp.data <- data[tolower(data$Order) == row.names(states)[i], 9]
   states[i, 5] <- sum(temp.data == "paternal genome elimination" | temp.data == "arrhenotoky")
 }
-
+# fix notoptera and hemiptera
+# hemiptera is based on Laura's data from 12 Feb.
+states[17,1] <- 2
+states[4, c(1,2)] <- c(1061, 299)
 knitr::kable(states)
-
+rowSums(states)
 ```
 
 
-One problem with our current dataset is the numbers in Hemiptera.  In our database this order is made up almost strictly of scale insects.  This heavily biases the distribution towards PGE/HD.  Other workers in this field report that XY and XO are both common with XY most common.  I've requested some papers and have others being delivered I should be able to supplement our current dataset with 200-300 new datapoints prior to publication.  Judging from the distribution of the first 100 it looks like the eventual distribution of systems in our dataset will be 
-XY=228
-XO=92
-PGE/HD=247
-```{r}
-states[row.names(states) == "hemiptera", c(1, 2)] <- c(228,  92) 
-```
-I'll update these numbers as the data rolls in but this should get things started.
 
 First step in the ancestral state reconstruction is changing these counts into proportions.  Three orders have no data so they will have equal probability of being in any state.
 ```{r}
@@ -88,71 +92,106 @@ for(i in 1:nrow(states)){
 }
 knitr::kable(states)
 rm(i, temp.data, data)
+#colnames(states) <- 1:5
 ```
+
+Now lets try doing the ancestral state reconstruction using an ML approach.  I am going to use Liam's stochastic mapping approach becuase it will allow me to have uncertainty in the tip states.  This will allow me to use the information that we have for thousands of tips while still using our order backbone tree.
 
 ```{r}
-lik <- make.musse(new.tree, states, 5, strict=F)
-argnames(lik)
-con.lik <- constrain(lik, 
-                     lambda5 ~ lambda1, lambda4 ~ lambda1, lambda3 ~ lambda1, lambda2 ~ lambda1,
-                     mu5 ~ mu1, mu4 ~ mu1, mu3 ~ mu1, mu2 ~ mu1, 
-          # transitions in SDSs should not start w/o a W/Y
-                    q32 ~ 0, q42 ~ 0, q14 ~ 0, q24 ~ 0, 
-          # transitions from all XY = 
-                    q13 ~ q23, 
-          # transitions from all ZW =
-                    q31 ~ q41,
-          # loss of Y or W single rate
-                    q12 ~ q34,
-          # single rate of Y or W gain
-                    q21 ~ q43,
-          # ZW and ZO single rate to HD
-                    q35 ~ q45,
-          # XY and XO single rate to HD
-                    q15 ~ q25,
-          # single rate of HD to XY or ZW
-                    q51 ~ q54, q52 ~ q54, q53 ~ q54)
-argnames(con.lik)
-starting.p <- c(.001, .001, .001, .001, 10, .001, 10, .001, .001)
-find.mle(con.lik, x.init=starting.p, root=ROOT.OBS)
-find.mle(lik, x.init=rep(.01,30), root=ROOT.OBS)
+# also we dont have data for archaegnatha and diplura so lets drop those from the analysis
+new.tree <- drop.tip(new.tree, tip = c("diplura", "archaeognatha"))
+states <- states[!row.names(states) %in% c("diplura", "archaeognatha"),]
 
-
-
-
-
-new.states <- states[,c(1,3,5)]
-new.states[,1] <- states[,1] + states[,2]
-new.states[,2] <- states[,3] + states[,4]
-new.states[,3] <- states[,5]
-lik <- make.mkn(new.tree, new.states, 3, strict=F)
-argnames(lik)
-con.lik <- constrain(lik, q13 ~ q23, q31 ~ q32)
-argnames(con.lik)
-find.mle(con.lik, x.init=rep(.01,4), root=ROOT.OBS)
-
-
-
-
-
-
-library(phytools)
-foo <- make.simmap(tree = new.tree, x = states, model="ARD", pi=c(1,0,0,0,0), q="mcmc", nsims=100)
-foo <- make.simmap(tree = new.tree, x = states, model="ARD", pi="estimated")
-plotSimmap(foo)
-
-
+reconstruction <- make.simmap(tree = new.tree, x = states, Q="mcmc",
+                              model="ARD", pi="estimated", nsim=100)
+#plotSimmap(reconstruction)
+describe.simmap(reconstruction, plot=T)
 
 ```
 
+This actually isn't bad as an unconstrained first approximation.  However, we would like to build several assumptions into our model that will reduce the number of parameters and make use of what we know from other sources of data.
 
+1. transitions out of HD are likely ~ 0
+2. transitions between between the two heterogametic systems would likely go through a 2 sex chromosome systems.  For example no transition from XY to ZO you would go from XY to ZW then from ZW to ZO.
+3. we have very few transitions from between XY and ZW and few origins of HD so we will set XO and XY to ZW as a single rate, ZO and ZW to XY as a single rate, and XO, XY, ZO, ZW to HD as a single rate.
 
+Here is the matrix form of those assumptions:
 
+```{r}
+my.mod <- matrix(c(0,4,0,0,0,
+                   1,0,0,0,0,
+                   2,2,0,5,0,
+                   0,0,6,0,0,
+                   3,3,3,3,0), 5)
 
+```
 
+Now lets try rerunning the reconstruction in this first one we will say that we know the root is either XY or XO.
 
+```{r}
+reconstruction <- make.simmap(tree = new.tree, x = states, Q="mcmc",
+                              model=my.mod, pi=c(1,1,0,0,0), nsim=100)
+#plotSimmap(reconstruction)
+describe.simmap(reconstruction, plot=T)
+```
 
+Now we can compare how our root treatment effects our conclusions impact our reconstructed states. This time we will allow the roots to be estimated from the steady state distribution.
 
+Now lets try rerunning the reconstruction in this first one we will say that we know the root is either XY or XO.
 
+```{r}
+reconstruction2 <- make.simmap(tree = new.tree, x = states, Q="mcmc",
+                              model=my.mod, pi="estimated", nsim=1000, message=F)
+```
+
+now lets put these two constructions side by side and see what they look like
+
+```{r}
+par(mfcol=c(1,2))
+describe.simmap(reconstruction, plot=T)
+describe.simmap(reconstruction2, plot=T)
+
+```
+
+So we see that the extra constraint doesnt greatly change our ancestral states.  With that in mind lets focus on the second reconstruction which does not constrain the root and allows it to be estimated from the Q matrix.
+
+Now let build a nice plot for the manuscript so we can talk about it.
+
+```{r}
+#first exctract out the values we want
+for(i in 1:length(new.tree$tip.label)){
+  name<- new.tree$tip.label[i]
+  new.tree$tip.label[i] <- paste0(toupper(substr(name, 1, 1)), 
+                                  substr(name, 2, nchar(name)))
+}
+hist <- summary(reconstruction2, plot=F)
+plot(new.tree,cex=0.5, label.offset=.02)
+#             HD           XO          XY       ZO         ZW
+cols <- c("#ef6548", "#a1d99b", "#005a32", "#084594", "#9ecae1")
+nodelabels(pie=hist$ace,piecol=cols,cex=0.5, width=2, height=1)
+#             HD           XO          XY       ZO         ZW
+cols <- c("#ef6548", "#005a32", "#a1d99b", "#084594"  ,"#9ecae1")
+tiplabels(pie=states[,c(5, 1:4)],piecol=cols,cex=0.5)
+
+#legend
+text(x=rep(0.05, 5), y=c(30,29,28,27,26),
+     label=c("XY", "XO", "ZW", "ZO", "HD/PGE"),
+     cex=.7, pos=4)
+points(x=rep(0.05, 5), y=c(30,29,28,27,26), cex=1.4,
+       pch=16, col=cols[c(2:5, 1)])
+
+foobar <- hist$ace
+nodelabels()
+#origin of insecs
+hist$ace[rownames(hist$ace)==33,]
+#origin of lep XO
+hist$ace[rownames(hist$ace)==47,]
+#origin of orthoptera
+hist$ace[rownames(hist$ace)==54,]
+#origin of blatodea
+hist$ace[rownames(hist$ace)==57,]
+#origin of mantodea
+hist$ace[rownames(hist$ace)==56,]
+```
 
 
