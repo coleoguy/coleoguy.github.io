@@ -19,7 +19,7 @@ img
 
 h1, h2, h3, h4, h5, h6 
 { font: bold 175% 'liberation sans', arial, sans-serif;
-  color: #36B304;
+  color: #1f6802;
   margin: 0 0 5px 0;
   padding: 15px 0 0 0;}
 
@@ -29,7 +29,7 @@ h2
 h3
 { font: bold 125% 'liberation sans', arial, sans-serif;
   padding: 0 0 5px 0;
-  color: #36B304;}
+  color: #1f6802;}
 
 h4, h5, h6
 { margin: 0;
@@ -50,7 +50,7 @@ a, a:hover
 { background: transparent;
   outline: none;
   text-decoration: none;
-  color: #36B304;}
+  color: #1f6802;}
 
 a:hover
 { text-decoration: underline;
@@ -97,7 +97,7 @@ ol li
   color: #FFF;}
 
 span
-{ color: #36B304;}
+{ color: #1f6802;}
 
 #header H2
 { font: italic 160% Arial, Helvetica, sans-serif;
@@ -150,7 +150,7 @@ span
   width: 201px;}
 
 .sidebar h2
-{ color: #36B304;}  
+{ color: #1f6802;}  
   
 .sidebar h4
 { font-size: 125%;
