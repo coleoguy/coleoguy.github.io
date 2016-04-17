@@ -1,0 +1,173 @@
+
+  Hybrid Breakdown
+
+
+        /Heath Blackmon/
+
+
+        /April 13, 2016/
+
+  * First we simulate some data <#first-we-simulate-some-data>
+  * Analyze data <#analyze-data>
+  * Conclusions <#conclusions>
+
+When can we say anything about the cause of hybrid breakdown using a
+line cross analysis approach? What data should we collect to be able to
+identify the cause of the breakdown? A friend and I were discussing how
+hard it can be to intuitevely have a good feel for the expected genetic
+architecture even when the pattern is quite simple. In this instance we
+were discussing a paper (Edmands and Deimler 2004 /Local adaptation,
+intrinsic coadaptation and the effects of environmental stress on
+interpopulation hybrids in the copepod Tigriopus californicus/ . This
+paper reported that P1 and P2 are both fit but F1 crosses have reduced
+fitness and F2 crosses are even less fit. The paper was looking for
+local adaptation - so a pattern where each of these cohorts exhibits
+higher fitness under conditions that “most” of its genome was selected
+for. Akin to the idea of Rundle and Whitlock 2001 - Evolution paper
+(Something that I hope to add to my LCA software soon). But for
+simplicity here I am going to assume we don’t have local adaptation and
+just think about intrinsic genetic incompatability. Since the paper
+didn’t have any published data that I could crunch, I decided to just
+make some up that would fit the pattern described.
+
+We can use the R package SAGA to do the analysis and it will let us play
+around with the assumed species characteristics quite easily. For
+instance, is it XY or ZW or ESD? Do we really have P1, P2, F1, and F2 or
+might we have P1, P2, rF1, and rF2.
+
+
+    First we simulate some data
+
+The standard dataset will be dataset one with P1, P2, F1, F2:
+
+id 	fitness 	se.fit
+3 	10 	0.2
+6 	10 	0.2
+9 	9 	0.2
+15 	8 	0.2
+
+Our alternate will be dataset two with P1, P2, rF1, rF2:
+
+id 	fitness 	se.fit
+3 	10 	0.2
+6 	10 	0.2
+12 	9 	0.2
+24 	8 	0.2
+
+
+    Analyze data
+
+We have a total of 6 analyses we would like to do:
+
+ 1. XY sex determination
+      * cohorts have equal sex ratio
+      * cohorts include F1 and F2
+ 2. ESD sex determination
+      * cohorts have equal sex ratio
+      * cohorts include F1 and F2
+ 3. XY sex determination
+      * cohorts have equal sex ratio
+      * cohorts include rF1 and rF2
+ 4. ESD sex determination
+      * cohorts have equal sex ratio
+      * cohorts include rF1 and rF2
+ 5. XY sex determination cohorts
+      * have unknown sex ratio
+      * cohorts include F1 and F2
+ 6. ESD sex determination cohorts are unknown sex ratio
+      * have unknown sex ratio
+      * cohorts include F1 and F2
+
+Briefly, the idea of ESD in the saga framework really just means that
+their is no sex chromosome linked pattern of inheritance present in the
+genome (though we do have maternal effects and cytotype effects).
+
+Here is the code to run these six analyses
+
+|res1 <- SAGA::AnalyzeCrossesMM(data1, Cmatrix="XY", even.sex = T)
+res2 <- SAGA::AnalyzeCrossesMM(data1, Cmatrix="esd", even.sex = T)
+res3 <- SAGA::AnalyzeCrossesMM(data2, Cmatrix="XY", even.sex = T)
+res4 <- SAGA::AnalyzeCrossesMM(data2, Cmatrix="esd", even.sex = T)
+res5 <- SAGA::AnalyzeCrossesMM(data1, Cmatrix="XY", even.sex = F)
+res6 <- SAGA::AnalyzeCrossesMM(data1, Cmatrix="esd", even.sex = F)|
+
+First thing we might want to do is see if very simplistic datasets like
+this even have a signal that supports one model more than another. As an
+example the plot below shows the model weight across the 129 models that
+can be examined under scenerio 1.
+
+So now lets look at what our data would allow us to infer under each
+scenario:
+
+ 1. XY sex determination - 129 models evaluated
+      * cohorts have equal sex ratio
+      * cohorts include F1 and F2
+
+ 
+
+ 
+
+ 2. ESD sex determination - 28 models evaluated
+      * cohorts have equal sex ratio
+      * cohorts include F1 and F2
+
+ 
+
+ 
+
+ 3. XY sex determination - 159 models evaluated
+      * cohorts have equal sex ratio
+      * cohorts include rF1 and rF2
+
+ 
+
+ 
+
+ 4. ESD sex determination - 35 models evaluated
+      * cohorts have equal sex ratio
+      * cohorts include rF1 and rF2
+
+ 
+
+ 
+
+ 5. XY sex determination cohorts - 28 models evaluated
+      * have unknown sex ratio
+      * cohorts include F1 and F2
+
+ 
+
+ 
+
+ 6. ESD sex determination cohorts are unknown sex ratio- 28 models
+    evaluated
+      * have unknown sex ratio
+      * cohorts include F1 and F2
+
+ 
+
+ 
+
+
+  Conclusions
+
+First thing to notice is that we get a very different results in the
+case where we assume no sex chromosomes but have F1 and F2 (dataset 2)
+vs rF1 and rF2 (dataset 4). Dataset 2 suggests that we have dominant
+maternal effect while datset 4 suggests that we have epistasis but with
+no certainty.
+
+When we make this same comparison under the assumptions of an XY sex
+determination system we see that regardless of the type of F1 and F2 an
+epistatic interaction between the mitochondria and an X are the best
+explanation. This makes since if we think about how the genomes present
+in F1 and F2 change.
+
+The final problem that this little exploration illustrates is the
+dangers of evaluating a tiny set of models in an information theory
+framework. I’ve done some simulations previously and it seems that as
+you attempt to use these approaches on an ever smaller set of models you
+start putting too much support on the best of the remaining models.
+Their isn’t an absolute measure of model fit but this might be a nice
+extension is to report some general measure of % variance explained.
+
