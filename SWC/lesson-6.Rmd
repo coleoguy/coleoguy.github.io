@@ -55,7 +55,6 @@ Now we do have a difference in our two groups. This is interesting and is someth
 
 Lets slowly build up a nice graph that illustrates the variance and mean of our data.
 ```{r}
-#
 plot(data$score)
 ```
 
@@ -63,51 +62,51 @@ Lets try coloring those circles based on note taking method:
 ```{r}
 data$method
 colors <- c("red", "blue")[data$method]
-plot(data$score, col=colors)
-plot(data$score, col=colors, pch=16)
+plot(data$score, col = colors)
+plot(data$score, col = colors, pch = 16)
 ```
 
 Well that's kind of interesting but we probably want to split these two sets of numbers apart from each other.  A good option here might be a strip chart where we have boxplots and individual points combined.
 
 ```{r}
-comp <- data$score[data$method=="comp."]
-paper <- data$score[data$method=="paper"]
-
-#
-boxplot(comp, paper)
-
-#
-boxplot(comp, paper)
-points(x=rep(1, 30), y=comp)
-
-
+comp <- data$score[data$method == "comp."]
+paper <- data$score[data$method == "paper"]
 
 boxplot(comp, paper)
-noise <- jitter(rep(1, 30), factor=5)
-points(x=0+noise, y=comp)
-
 
 boxplot(comp, paper)
-points(x=0+noise, y=comp, col="red")
+points(x=rep(1, 30), y = comp)
 
+boxplot(comp, paper)
+noise <- jitter(rep(1, 30), factor = 5)
+points(x = 0 + noise, y = comp)
 
-boxplot(comp, paper, outline=F, ylim=c(0,1))
-points(x=0+noise, y=comp, col="red", pch=16)
-points(x=1+noise, y=paper, col="blue", pch=16)
+boxplot(comp, paper)
+points(x = 0 + noise, y = comp, col = "red")
 
-boxplot(comp, paper, outline=F, xlab="Note Method", ylab="Score", main="Student Performance", names=c("computer", "paper"), ylim=c(0,1))
-points(x=0+noise, y=comp, col="red", pch=16)
-points(x=1+noise, y=paper, col="blue", pch=16)
+boxplot(comp, paper, outline = F, ylim = c(0, 1))
+points(x = 0 + noise, y = comp, col = "red", pch = 16)
+points(x = 1 + noise, y = paper, col = "blue", pch = 16)
 
+boxplot(comp, paper, outline = F, 
+        xlab = "Note Method", 
+        ylab = "Score", 
+        main = "Student Performance", 
+        names = c("computer", "paper"), 
+        ylim = c(0, 1))
+points(x = 0 + noise, y = comp, col = "red", pch = 16)
+points(x = 1 + noise, y = paper, col = "blue", pch = 16)
 ```
 
 We might even want to add the results of our statistical test to the plot as well:
 
 ```{r}
-results <- t.test(x=comp, y=paper)
-boxplot(comp, paper, outline=F, xlab="Note Method", ylab="Score", main="Student Performance", names=c("computer", "paper"), ylim=c(0,1))
-points(x=0+noise, y=comp, col="darkgray", pch=16)
-points(x=1+noise, y=paper, col="darkgray", pch=16)
+results <- t.test(x = comp, y = paper)
+boxplot(comp, paper, outline = F, xlab = "Note Method", 
+        ylab = "Score", main = "Student Performance", 
+        names = c("computer", "paper"), ylim = c(0, 1))
+points(x = 0 + noise, y = comp, col = "darkgray", pch = 16)
+points(x = 1 + noise, y = paper, col = "darkgray", pch = 16)
 text(x=.8,y=.95, paste("t=", round(results$statistic,digits=2), " p-val<.01", sep=""))
 ```
 
@@ -115,14 +114,18 @@ So now we have a plot that we like and we need to get it out of R and into our L
 
 1. If you use latex I recommend exporting pdf files:
 ```{r}
-pdf(file="fig1.pdf", width = 6, height = 4)
+pdf(file = "fig1.pdf", width = 6, height = 4)
 
-results <- t.test(x=comp, y=paper)
-boxplot(comp, paper, outline=F, xlab="Note Method", ylab="Score", main="Student Performance", names=c("computer", "paper"), ylim=c(0,1))
-points(x=0+noise, y=comp, col="darkgray", pch=16)
-points(x=1+noise, y=paper, col="darkgray", pch=16)
-text(x=.8,y=.95, paste("t=", round(results$statistic,digits=2), " p-val<.01", sep=""))
-
+results <- t.test(x = comp, y = paper)
+boxplot(comp, paper, outline = F, 
+        xlab = "Note Method", 
+        ylab = "Score", 
+        main = "Student Performance", 
+        names = c("computer", "paper"), 
+        ylim = c(0, 1))
+points(x = 0 + noise, y = comp, col = "darkgray", pch = 16)
+points(x = 1 + noise, y = paper, col = "darkgray", pch = 16)
+text(x = .8, y = .95, paste("t=", round(results$statistic,digits = 2), " p-val<.01", sep = ""))
 dev.off()
 ```
 
@@ -132,14 +135,15 @@ dev.off()
 Make a mosaic plot that shows the relationship between passing (at least 70%) and using a computer. You will have to munge your data to make a contingency table and then use `mosaicplot`
 
 ```{r, echo=FALSE}
-results <- matrix(,2,2)
+results <- matrix(, 2, 2)
 colnames(results) <- c("passing", "failing")
 rownames(results) <- c("computer", "paper")
 results[1,1] <- sum(data$score >=.7 & data$method == "comp.")
 results[1,2] <- sum(data$score <.7 & data$method == "comp.")
 results[2,1] <- sum(data$score >=.7 & data$method == "paper")
 results[2,2] <- sum(data$score <.7 & data$method == "paper")
-mosaicplot(results,las=1, col=c("blue", "red"), main="Effect of note taking methods")
+mosaicplot(results, las = 1, col = c("blue", "red"), 
+           main = "Effect of note taking methods")
 ```
 
 ###4. Challenge 2
@@ -147,9 +151,13 @@ Load the old faithful dataset `data(faithful)` and use what you have learned to 
 
 ```{r, echo=FALSE}
 data(faithful)
-pchs <- vector(mode="numeric", length=272)
+pchs <- vector(mode = "numeric", length = 272)
 pchs[1:272] <- 16
 pchs[faithful$eruptions < 3] <- 17
-plot(faithful$eruptions, faithful$waiting, xlab="Length of eruption (min)", ylab="Waiting time (min)", main="Geyser eruption patterns", pch=pchs)
+plot(faithful$eruptions, 
+     faithful$waiting, xlab = "Length of eruption (min)", 
+     ylab = "Waiting time (min)", 
+     main = "Geyser eruption patterns", 
+     pch = pchs)
 abline(lm(faithful$waiting~faithful$eruptions), col="red", lwd=3)
 
