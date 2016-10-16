@@ -2,7 +2,7 @@
 title: "Open Science Tools"
 author: "Heath Blackmon"
 date: '`r Sys.Date()`'
-output: ioslides_presentation
+output: beamer_presentation
 ---
 
 ## Goals
@@ -23,8 +23,6 @@ output: ioslides_presentation
 [good clean code](http://coleoguy.github.io/SWC/better-script.txt)
 
 [literate code](http://coleoguy.github.io/SWC/code.good.html)
-
-[literate code -> html ](http://coleoguy.github.io/comparative/comparative.html)
 
   >- *easy for others to understand (including you later)*  
   >- *easy to incorportate new data*  

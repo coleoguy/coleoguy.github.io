@@ -1,0 +1,35 @@
+BEST PRACTICES IN R PASTE IN WHEN WE GET READY TO GO
+
+1) start code with a header
+2) run import statements directly after the header
+3) setwd() breaks stuff
+4) use # to section of code
+5) if you have functions put them up at the top don't bury them in your code
+6) be consistent
+7) if you have a script >100 lines your doing it wrong
+8) have a directory structure that all projects have
+9) peer review
+10) use git and version control for your code
+
+ok your turn copy this code and fix it up all pretty
+
+data("faithful")
+head(faithful)
+foo <- faithful[ ,2]
+mode(foo)
+help(mode)
+Mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+Mode(foo)
+hist(foo)
+
+
+
+
+
+
+http://coleoguy.github.io/SWC/scores.csv
+
+SW
