@@ -7,7 +7,7 @@ output:
     highlight: kate
 ---
 
-The pages below were created in preparation for my first course as software carpentry instructor.  I ended up teaching control structures, best practices, plotting, and R markdown.  The control structures were a last minute addition when we ran overtime on our first day.  In the future, I would love to teach this again but with fewer topics.  In particular, I feel like most of the students at this would have enjoyed 2 hours just focused on plotting in R.  Feel free to use or adapt anything that is here.  I have included links to both the html pages and the R markdown pages that created the html pages.  If you have any questions please don't hesitate to email me: <coleoguy@gmail.com>
+The pages below are associated with workshops that I have given as software carpentry instructor and similar short lessons on R.  The most common feedback that I have received from students is that they want more time spent on plotting.  To that end I have added a bit more about exploratory data analysis.  Feel free to use or adapt anything that is here.  I have included links to both the html pages and the R markdown pages that created the html pages.  If you have any questions please don't hesitate to email me: <coleoguy@gmail.com>
 
 **Control structures**
 

@@ -1,0 +1,6 @@
+savehistory("~/Desktop/Dropbox/gitrepos/coleoguy.github.io/SWC/Heath.Rhistory")
+x <- norm(100)
+x <- rnorm(100)
+mean(x)
+mode(x)
+savehistory("~/Desktop/Dropbox/gitrepos/coleoguy.github.io/SWC/heath.txt")

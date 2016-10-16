@@ -59,7 +59,11 @@ dat <- read.csv(file = "/Users/heath/files/dataset-2013-01.csv")
 
 &nbsp;
 
-###4. Use `#` or `#-` to set off sections of your code 
+###4. Use `#` or
+
+&nbsp;
+
+to set off sections of your code 
 [complex R function](https://github.com/coleoguy/evobir/blob/master/R/AncCond.R)
 
 
