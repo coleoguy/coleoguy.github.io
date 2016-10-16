@@ -18,9 +18,11 @@ output: ioslides_presentation
 
 ## Degrees of goodness
 
-good code ex:better-script.R
+[sad code](http://coleoguy.github.io/SWC/bad-script.txt)
 
-literate code ex:code.good.Rmd
+[good clean code](http://coleoguy.github.io/SWC/better-script.txt)
+
+[literate code](http://coleoguy.github.io/SWC/code.good.html)
 
 [literate code -> html ](http://coleoguy.github.io/comparative/comparative.html)
 
