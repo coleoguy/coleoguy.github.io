@@ -3,7 +3,8 @@ title: 'Reading tracker: Heath Blackmon'
 date: "last updated: `r Sys.Date()`"
 output: html_document
 ---
-This is just a quick little website to keep track of my reading:
+This is just a quick little website to keep track of my reading.  If you are interested in the code used to generate it and why I am tracking my reading check out this blog post. 
+
 ```{r echo=FALSE}
 library(knitr)
 dat = read.csv("reads.csv", as.is=T, header=F, fileEncoding = "latin1")
