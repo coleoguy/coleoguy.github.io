@@ -7,7 +7,7 @@ This is just a quick little website to keep track of my reading.  If you are int
 
 ```{r echo=FALSE}
 library(knitr)
-dat = read.csv("reads.csv", as.is=T, header=F, fileEncoding = "latin1")
+dat = read.csv("reads.csv", as.is=T, header=F, fileEncoding = "macintosh")
 dat = cbind(1:nrow(dat),dat)
 kable(dat, col.names=c("Count", "Paper", "Notes"))
 ```
