@@ -1,0 +1,49 @@
+---
+title: "BSF Preliminary results-2"
+author: "Heath Blackmon"
+date: "last updated: `r Sys.Date()`"
+
+output: 
+  html_document:
+    theme: cosmo
+    highlight: zenburn
+    toc: true
+---
+
+____
+# Introduction and Data
+
+Part of the BSF grant is our idea for a non-Markovian model of discrete trait evolution we have called this the hidden state approach, or maybe we should call it the CDCe model (change dependent character evolution).
+
+For illustrative purposes lets imagine that our first trait is ploidy and or second trait is self-compatability.  We know from some previous work that there is a _correlation_ here but perhaps we want to show that the _correlation_ is of a very specific nature that is that it is the time just after we transition to polyploidy that we switch to self compatible and that after some time has passed these polyploids drop back to the background rate observed in dipoids can we? Lets see.
+
+Simulating this data is a little less straight forward than we might like.  The approach that I will take is to first simulate two traits evolving by  standard mk model.  
+
+Trait 1 = diploid/polyploid
+
+root will be diploid rate will be sufficient to produce XXXX number of changes
+
+Trait 2 = Self-incompatible/Self-compatible
+
+we will have two rate here one for 
+
+
+I'm not going to repeat the discussion of the simulation conditions on this page that is all available right here:
+http://coleoguy.github.io/comparative/comparative_3.html
+
+```{r}
+load(url("http://coleoguy.github.io/comparative/pagel.data.sets.RData"))
+# lets just keep the basics
+# 1) trees
+# 2) dependent data
+# 3) independent data
+# 4) unrepplicatd burst
+trees <- set.phy
+rm(perfrep1, perfrep2, set.phy, state.darwin1, state.darwin2, transitioned1, transitioned2)
+```
+
+
+
+____
+# Phylogenetic logistic regression
+

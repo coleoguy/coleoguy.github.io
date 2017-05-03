@@ -1,0 +1,101 @@
+---
+title: "Implementing Pagel's test in diversitree:"
+author: "Heath Blackmon"
+date: "September 19, 2015"
+output: 
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_depth: 2
+---
+
+[Return to main website](http://coleoguy.github.io/resources.html)
+
+Return to of comparative methods 
+[outline](http://coleoguy.github.io/comparative/methods.html) page 
+
+```{r, echo=F}
+load("~/Desktop/pagel.data.sets.RData")
+num <- 3
+phy <- set.phy[[num]]
+dd1 <- dependant.data1[[num]]
+dd2 <- dependant.data2[[num]]
+id1 <- independant.data1[[num]]
+id2 <- independant.data2[[num]]
+rb1 <- perfrep1[[num]]
+rb2 <- perfrep2[[num]]
+ds1 <- state.darwin1[[num]]
+ds2 <- state.darwin2[[num]]
+ub1 <- unrepburst1[[num]]
+ub2 <- unrepburst2[[num]]
+rm(dependant.data1, dependant.data2, independant.data1, independant.data2,
+   perfrep1, perfrep2, set.phy, state.darwin1, state.darwin2, transitioned1,
+   transitioned2, unrepburst1, unrepburst2)
+```
+
+___
+# Starting points in diversitree
+
+One issue with using diversitree is the need to pick a starting point for the parameters prior to optimization.  We could just try multiple times picking numbers from a random uniform distribution that ranges from zero to some very large number. In fact [Dan Rabosky](http://www-personal.umich.edu/~drabosky/Home.html) even has a function in the supplemental materials from his paper with [Emma Goldberg](http://eeg.github.io/lab/home.html) [*Model Inadequacy and Mistaken Inferences of Trait-Dependent Speciation*](http://sysbio.oxfordjournals.org/content/64/2/340.short) that does just this.
+
+It feels inelligant to pick some number that you "think" is to big.  We could do this in a bit more of a quantitative method by picking a max value based on the kinds of branch length present in out tree.
+```{r}
+# first lets find the average length of a terminal branch
+avg.branch <-mean(phy$edge.length[which(!phy$edge[,2] %in% phy$edge[,1])])
+```
+
+Now lets look at the way that information about the base of a branch with a length of `avg.branch ` decays as the rate of evolution increases.
+
+```{r}
+x <- y <- vector()
+for(i in 1:1000){
+  rate <- i/100
+  Q <- matrix(rate,2,2)
+  diag(Q) <- -rate
+  P <- ape::matexpo(Q*avg.branch)
+  y[i] <- P[2,1]
+  x[i] <- i/100
+}
+plot(x,y, pch=16,cex=.3,xlab="Rate in Q-matrix", ylab="Prob. of root state 0", main=paste("avg. terminal branch=", round(avg.branch,3), sep=""))
+
+```
+
+I think that looking at a plot like this for your dataset would be a good idea. It would let you pick a good value for the high end of possible starting points.
+
+___
+#Implementation of Pagel's Test [1]
+```{r}
+mark <- function(phy, x, y, strict=F, pars=0.01, method="nlminb"){
+  # first we have to combine our two binary traits into one 4 state trait
+  z <- paste(x, y, sep="")
+  z[z=="00"] <- 1
+  z[z=="01"] <- 2
+  z[z=="10"] <- 3
+  z[z=="11"] <- 4
+  z <- as.numeric(z)
+  names(z) <- phy$tip.label
+  lk1 <- diversitree::make.mkn(phy, z, k=4, strict=F)
+  lk.ind <- diversitree::constrain(lk.ind, q14~0, q23~0, q32~0, q41~0)
+  lk.dep <- diversitree::constrain(lk.dep, q13~q24, q31~q42, q21~q43, q12~q34)
+  m.comp <- anova(fit1, fit2)[2,5]
+  return(m.comp)
+}
+```
+
+```{r}
+mark(phy, x=dd1, y=dd2)
+mark(phy, x=ds1, y=ds2)
+mark(phy, x=id1, y=id2)
+mark(phy, x=rb1, y=rb2)
+mark(phy, x=ub1, y=ub2)
+```
+
+___
+#citations
+[1] Pagel, Mark. "Detecting correlated evolution on phylogenies: a general method for the comparative analysis of discrete characters." Proceedings of the Royal Society of London B: Biological Sciences 255, no. 1342 (1994): 37-45.
+
+[2] Huelsenbeck, John P., Rasmus Nielsen, and Jonathan P. Bollback. "Stochastic mapping of morphological characters." Systematic Biology 52, no. 2 (2003): 131-158.
+
+[3] Maddison, Wayne P. "A method for testing the correlated evolution of two binary characters: are gains or losses concentrated on certain branches of a phylogenetic tree?." Evolution (1990): 539-557.
+
+
