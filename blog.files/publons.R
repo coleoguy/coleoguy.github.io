@@ -1,4 +1,5 @@
 library(car)
+library(plotrix)
 pub.dat <- read.csv("publons.csv",row.names=1, as.is=T)
 dist.dat <- read.csv("distances.csv",row.names=1, as.is=T)
 wfc.dat <- read.csv("wfc.csv",row.names=1, as.is=T)
@@ -102,60 +103,27 @@ plot((rev.count+yjit) ~ dist.WFC,xlab="weighted distance",
 axis(side=1,at=c(0,5.29,9.9),labels=c(1,200,20000))
 axis(side=2,at=c(1,3.4,8),labels=c(1,30,3000))
 
+prop <- as.numeric(pub.dat[1,])/sum(as.numeric(pub.dat[1,]))
+plot(prop ~ as.numeric(dist.dat[1,]),
+     ylab="proportion of reviews",
+     xlab="distance to reviewing country", 
+     pch=16,cex=.75,col=rgb(1,0,0,.5),
+     ylim=c(0,.33))
 
-library(lme4)
-library(arm)
-fit <- lmer(count ~ pred + (1 + pred|editor), 
-            data = lmm.dat)
-display(fit)
-summary(fit)
-??display
+prop <- as.numeric(pub.dat[52,])/sum(as.numeric(pub.dat[52,]))
+points(prop ~ as.numeric(dist.dat[52,]),cex=.75,pch=16, col=rgb(0,0,1,.5))
+draw.ellipse(x=16000,y=.066,a = 300,b=.02)
+text(x=15000,y=.1,"Australia")
+draw.ellipse(x=5700,y=.082,a = 500,b=.01)
+text(x=5700,y=.11,"UK")
+points(x=rep(10000,2),y=c(.3,.28),pch=16,col=c(rgb(1,0,0,.5), rgb(0,0,1,.5)))
+text(x=rep(10000,2),y=c(.3,.28),labels=c("Canada","US"),pos=4)
 
-table(lmm.dat$editor)
+z.us<-round(sort(pub.dat[52,]/sum(pub.dat[52,]),decreasing = T),digits=2)
+z.ca<-round(sort(pub.dat[1,]/sum(pub.dat[1,]),decreasing = T),digits=2)
 
+totals <- rowSums(pub.dat)
+sum(totals > 100)
+self <- diag(as.matrix(pub.dat))
 
-
-reg.conf.intervals <- function(x, y) {
-  n <- length(y) # Find length of y to use as sample size
-  lm.model <- lm(y ~ x) # Fit linear model
-  
-  # Extract fitted coefficients from model object
-  b0 <- lm.model$coefficients[1]
-  b1 <- lm.model$coefficients[2]
-  
-  # Find SSE and MSE
-  sse <- sum((y - lm.model$fitted.values)^2)
-  mse <- sse / (n - 2)
-  
-  t.val <- qt(0.975, n - 2) # Calculate critical t-value
-  
-  # Fit linear model with extracted coefficients
-  x_new <- 1:max(x)
-  y.fit <- b1 * x_new + b0
-  
-  # Find the standard error of the regression line
-  se <- sqrt(sum((y - y.fit)^2) / (n - 2)) * sqrt(1 / n + (x - mean(x))^2 / sum((x - mean(x))^2))
-  
-  # Fit a new linear model that extends past the given data points (for plotting)
-  x_new2 <- 1:max(x + 100)
-  y.fit2 <- b1 * x_new2 + b0
-  
-  # Warnings of mismatched lengths are suppressed
-  slope.upper <- suppressWarnings(y.fit2 + t.val * se)
-  slope.lower <- suppressWarnings(y.fit2 - t.val * se)
-  
-  # Collect the computed confidence bands into a data.frame and name the colums
-  bands <- data.frame(cbind(slope.lower, slope.upper))
-  colnames(bands) <- c('Lower Confidence Band', 'Upper Confidence Band')
-  
-  # Plot the fitted linear regression line and the computed confidence bands
-  plot(x, y, cex = 1.75, pch = 21, bg = 'gray')
-  lines(y.fit2, col = 'black', lwd = 2)
-  lines(bands[1], col = 'blue', lty = 2, lwd = 2)
-  lines(bands[2], col = 'blue', lty = 2, lwd = 2)
-  
-  return(bands)
-}
-pred <- as.numeric(wfc.dat$WFC*dist.dat[1,])
-reg.conf.intervals(y=as.numeric(pub.dat[1,]), x=pred)
-
+hist() / )
