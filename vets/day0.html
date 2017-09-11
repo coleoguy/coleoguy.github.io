@@ -17,11 +17,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
 </head>
-<body>
-    
-    This is a test
-    
-  <script src="js/scripts.js"></script>
-    
-</body>
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 20px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 20px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+<body class="w3-black">
+    <div class="w3-padding-large" id="main">
+        <h2 class="w3-text-light-grey">Day 0</h2>
+    R is a free software environment and programming language designed for statistical analyses, but it is also a very powerful environment for data exploration and visualization.  RStudio is an IDE (Integrated Development Environment) - basically a program that makes it easier to code.  Both of these programs work on MacOS, Windows, and Unix.  
+        <br>
+        <br>
+        Prior to our first meeting please install these programs.
+        <br>
+        <br>
+        <p class="w3-text-light-grey">Installing R</p>
+        <ul style="list-style-type:circle">
+            <li>Go to the <a href="https://www.r-project.org/" target="_blank" class="w3-hover-text-red">R homepage</a> and click download R.</li>
+            <li>Pick a mirror that is in Texas or at least in the United States.</li>
+            <li>Select the correct version for your system and follow the prompts.</li>
+        </ul>
+        Installing RStudio
+        <ul style="list-style-type:circle">
+            <li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/" target="_blank" class="w3-hover-text-red">RStudio homepage</a> and click on the download link below the free version of RStudio.</li>
+            <li>Select the correct version for your system and follow the prompts.</li>
+        </ul>
+        Once both programs are installed you can simply open RStudio (R will start automatically).
+        <script src="js/scripts.js"></script>
+    </div>
+    </body>
 </html>
