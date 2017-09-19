@@ -241,7 +241,7 @@ Our first step is to read the iris data into R.  To do this we use a function th
 iris <- read.csv("iris.csv")
 ```
 
-To get a feel for this data we can use the head commmand to look at the first few lines of the file
+To get a feel for this data we can use the head command to look at the first few lines of the file
 
 ```{r}
 head(iris)
@@ -278,7 +278,7 @@ plot(L ~ W, ylab = "Petal length",
      xlab = "Petal width", main = "Irises")
 ```
 
-Now lets add a color to it. Since we are at A&M we should probably use maroon.  Unfortunately R uses a very odd color for maroon so we will need to specify the exact aggie maroon with an RGB code (80,0,0)
+Now lets add a color to it. Since we are at A&M we should probably use maroon.  Unfortunately R uses a very odd color for maroon so we will need to specify the exact Aggie maroon with an RGB code (80,0,0)
 
 ```{r}
 plot(L ~ W, ylab = "Petal length",
@@ -294,7 +294,7 @@ plot(L ~ W, ylab = "Petal length",
      col = rgb(.314,0,0), main = "Irises")
 ```
 
-Now lets draw a divider between the first species setosa and the others using the command abline.  We can also use this same command to add a line representing our regression.
+Now lets draw a divider between the first species setosa and the others using the command `abline`.  We can also use this same command to add a line representing our regression.
 
 ```{r}
 plot(L ~ W, ylab = "Petal length",
@@ -304,7 +304,7 @@ abline(mod1, lty = 2)
 abline(v = .75, col = "red", lwd = 3)
 ```
 
-Now lets add a litte text in our plot to show which species are which:
+Now lets add a little text in our plot to show which species are which:
 
 ```{r}
 plot(L ~ W, xlab = "Petal length",
@@ -316,7 +316,7 @@ text(x=.38,y=3,"setosa")
 text(x=1.75,y=3,"other species")
 ```
 
-If we really wanted to just focus on the fact that setos is smaller another way to do it would be to plot the distribution of petal length in each species.  We can do this by combining the functions `density` and `plot`.
+If we really wanted to just focus on the fact that setosa is smaller another way to do it would be to plot the distribution of petal length in each species.  We can do this by combining the functions `density` and `plot`.
 
 ```{r}
 # first we subset the data by species
