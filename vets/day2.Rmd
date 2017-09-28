@@ -2,7 +2,10 @@
 title: "Logical Operators and Control Structures"
 author: "Heath Blackmon"
 date: "9/22/2017"
-output: html_document
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
 ---
 
 An algorithm is defined as: **a process or set of rules to be followed in calculations or other problem-solving operations**
