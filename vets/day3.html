@@ -151,12 +151,12 @@ for(i in 1:nrow(data)){
   grades1[i] &lt;- mean(data[i, ])
 }
 grades1</code></pre>
-<pre><code>## [1] 72.15222 76.87585 82.02975 76.48461 71.59508 76.58475 67.83663 82.48311</code></pre>
+<pre><code>## [1] 68.08665 81.69150 70.54844 80.82001 84.93627 74.08017 72.46838 73.74964</code></pre>
 <pre class="r"><code># now we can see how to use an apply statement instead
 grades2 &lt;- apply(X=data, MARGIN = 1, FUN = mean)
 grades2</code></pre>
 <pre><code>##  richard    kathy   martha   joseph kristina    heath   leslie abbigail 
-## 72.15222 76.87585 82.02975 76.48461 71.59508 76.58475 67.83663 82.48311</code></pre>
+## 68.08665 81.69150 70.54844 80.82001 84.93627 74.08017 72.46838 73.74964</code></pre>
 <pre class="r"><code># we can compare these with ==
 grades1 == grades2</code></pre>
 <pre><code>##  richard    kathy   martha   joseph kristina    heath   leslie abbigail 
@@ -175,7 +175,7 @@ for(i in 1:1000){
 }
 proc.time() - ptm</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.110   0.009   0.120</code></pre>
+##   0.111   0.009   0.120</code></pre>
 <pre class="r"><code># with pre allocation
 ptm &lt;- proc.time()
 result &lt;- as.data.frame(matrix(, 1000, 2))
@@ -185,7 +185,7 @@ for(i in 1:1000){
 }
 proc.time() - ptm</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.049   0.002   0.051</code></pre>
+##   0.045   0.001   0.046</code></pre>
 <pre class="r"><code># now with apply
 ptm &lt;- proc.time()
 result &lt;- cbind(apply(X = x, MARGIN = 2, FUN = min),
