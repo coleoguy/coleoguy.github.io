@@ -1,0 +1,100 @@
+---
+title: "Symmetrical Selection"
+author: "Heath Blackmon"
+date: "10/26/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1+s or 1-s or 1/1+s or 1/1-s
+
+First lets look at a system where we have genotypes that have fitness defined as $1+s$.  However, we might want $s$ to have both positive and negative values so that we can have beneficial and deleterious mutations.  Will the same absolute value of $s$ have a proportionally strong impact whether it is positive or negative?  Below we see what happens:
+
+```{r}
+f <- function(s) 1+s
+s <- seq(from = 0, to = 0.9, length.out = 100)
+par(mfcol=c(1,2))
+plot(x = s, y = 1/f(s),
+     col ="blue",
+     ylim = c(0, 1),
+     ylab = "proportional change in fitness", 
+     pch = 16, cex = .6,
+     main="s>0")
+plot(x = s, y = f(-s)/1,
+     col ="red",
+     ylim = c(0, 1),
+     ylab = "proportional change in fitness", 
+     pch = 16, cex = .6,
+     main="s<0")
+```
+
+Because fitness is always normalized the same absolute values of $s$ cause differences in the relative deviation from a fitness of 1.  In this case deleterious mutations have a larger effect than beneficial mutations particularly as $s$ becomes large.
+
+There is pretty straight forward fix for this problem.  Instead of having $1+s$ and varying $s$ to include both positive and negative we instead us $1+s$ for beneficial mutations and $\frac{1}{1+s}$ for deleterious mutations
+
+
+```{r}
+f1 <- function(s) 1+s
+f2 <- function(s) 1/(1+s)
+s <- seq(from = 0, to = 0.9, length.out = 100)
+par(mfcol=c(1,2))
+plot(x = s, y = 1/f1(s),
+     col ="blue",
+     ylim = c(0, 1),
+     ylab = "proportional change in fitness", 
+     pch = 16, cex = .6,
+     main="s>0")
+plot(x = s, y = f2(s)/1,
+     col ="red",
+     ylim = c(0, 1),
+     ylab = "proportional change in fitness", 
+     pch = 16, cex = .6,
+     main="s<0")
+```
+
+What if the original formulation was in 1-s? The same problem would exist
+
+```{r}
+f <- function(s) 1-s
+s <- seq(from = 0, to = 0.9, length.out = 100)
+par(mfcol=c(1,2))
+plot(x = s, y = f(s)/1,
+     col ="blue",
+     ylim = c(0, 1),
+     ylab = "proportional change in fitness", 
+     pch = 16, cex = .6,
+     main="s>0")
+plot(x = s, y = 1/f(-s),
+     col ="red",
+     ylim = c(0, 1),
+     ylab = "proportional change in fitness", 
+     pch = 16, cex = .6,
+     main="s<0")
+```
+
+However we can fix it in exactly the same way: we will now use $1-s$ for deleterious and $\frac{1}{1-s}$ for beneficial.
+
+
+```{r}
+f1 <- function(s) 1-s
+f2 <- function(s) 1/(1-s)
+s <- seq(from = 0, to = 0.9, length.out = 100)
+par(mfcol=c(1,2))
+plot(x = s, y = f1(s)/1,
+     col ="blue",
+     ylim = c(0, 1),
+     ylab = "proportional change in fitness", 
+     pch = 16, cex = .6,
+     main="s>0")
+plot(x = s, y = 1/f2(s),
+     col ="red",
+     ylim = c(0, 1),
+     ylab = "proportional change in fitness", 
+     pch = 16, cex = .6,
+     main="s<0")
+```
+
+We now have a way to give beneficial and deleterious mutations symmetrical strength using either the $1-s$ or $1+s$ starting point.  It should be noted though that in the case of the $1+s$ approach as $s$ becomes large its impact on fitness plateaus. in contrast the $1-s$ the effect is linear across values of $s$.
