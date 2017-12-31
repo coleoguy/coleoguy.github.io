@@ -1,0 +1,214 @@
+---
+title: "Experimental Design"
+subtitle: "Biology 683 - Lecture 1"
+author: "Heath Blackmon"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  ioslides_presentation:
+    incremental: true
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Today
+
+- [Syllabus](http://coleoguy.github.io/teaching/expdes/syllabus.pdf)  
+- Introductions  
+- Pretest  
+- Big problems in stats  
+- Why you need this class  
+- Prep for Thursday  
+
+
+
+
+
+## The public impression of statistics  
+  
+- *Figures will not lie but liars will figure*  
+
+- *There are three kinds of lies: lies, damned lies, and statistics*    
+
+- *You can make statistics say anything*    
+
+- *Statistics are no substitute for good judgement*  
+
+
+
+
+
+## Your response
+
+- Misuse of statistics is unethical  
+- Poor training and maleficence are both responsible for failures  
+- Statistical literacy in the general public is essential  
+- Do your part: learn science of important topics and help friends and family understand them!
+
+
+
+
+
+
+## Reproducibility crisis
+
+Started in the social sciences but some problems are widespread  
+
+- pressure to publish  
+-	file drawer problem  
+-	small sample sizes  
+-	p-hacking  
+-	unethical researchers
+
+
+
+
+
+
+
+## Reproducibility crisis
+
+Solutions  
+
+-	Study preregistration  
+-	PeerJ / PLOS ONE  
+-	Preprint Servers  
+
+
+
+
+
+
+
+## Why do biologists need statistics
+
+- We want to test hypotheses.  
+- To test a hypothesis we have to design an experiment  
+- Not all experiments have a traditional control and experimental treatment  
+- It is quite possible to design a study or collect data that cannot answer the questions that we have  
+- This leads to poor manuscripts and can lead to bad practices like p-hacking  
+
+
+
+
+
+
+
+## Experimental Design
+
+So, to design an experiment you need to understand how the data will be analyzed statistically.
+
+- How can you sample the population in which you are interested?  
+- What tests are appropriate for your data?    
+- What biases must be controlled for?  
+- What sample size will be necessary?   
+
+
+
+
+
+
+
+## Collaborating with a statistician has challenges
+
+- In some cases this is a great option.  
+- You have to understand enough to know how to communicate.  
+- If you publish a study you are responsible for its validity.  
+- For most experiments that you will do the methods in WS will more than suffice.  
+- In many fields of biology there are sets of statistical tests that are expected for certain types of data.  
+- For all of these reasons statistical analysis **needs to involve people who understand the biological problem**  
+
+
+
+
+
+
+## My stats philosophy
+
+- Statistics is a tool  
+- Statistics works for me, not the other way around  
+- My responsibility as a scientists is to report the truth as accurately as possible and statistics help me in this regard   
+- We may NEED statistics to discern patterns in our data   
+- Bayesian statistics offer a way to build on our past and ask the questions we are really interested in.  
+
+
+
+
+
+
+## What is R
+
+- R is a statistical programming language   
+- It works very similarly on all major operating systems   
+- It is free and open source  
+- The focus is on statistics and graphics  
+- It’s also a full-fledged high level programming language (similar to Python)  
+- *FYI: It can get you a job. - Dell, Lab Tech, Core Facility*
+
+
+
+
+
+## Why use R
+
+- Many statistical approaches have been implemented in the R environment  
+- Because it’s open source, there are no proprietary secrets, as might be hiding in commercially available statistical packages   
+- Any program written in R will have access to all of R’s tools for statistics and graphing   
+- New methods of analysis are being implemented in R by the scientists developing the methods   
+- IMHO: Make beautiful presentations like this one.
+
+
+
+## Why use R
+
+- If you use R you can include a script with your manuscript  
+- Reproducibility  
+- Reviewing  
+- Open Science  
+- Running analyses with scripts facilitates revision of manuscripts   
+- Many methods (mixed models, quantitative genetics, etc.) are only available in R.  
+
+
+
+
+
+
+
+## Installing R and RStudio
+
+- **Installing R**  
+- Go to the [R homepage](https://www.r-project.org/) and click download R.  
+- Pick a mirror that is in Texas or at least in the United States.  
+- Select the correct version for your system and follow the prompts.
+
+- **Installing Rstudio**  
+- Go to the [RStudio homepage](https://www.rstudio.com/products/rstudio/download/) and click on the download link below the free version of RStudio Desktop.  
+- Select the correct version for your system and follow the prompts.
+
+
+
+
+
+## For Thursday
+
+- Read chapters 1 and 2 of WS   
+- Install R and Rstudio on a laptop  
+-	Come and see me <font color="red">**BEFORE**</font> class on Thursday if you run into problems  
+- <font color="red">**Bring laptop to class!**</font>   
+
+
+
+
+## Contact Info
+
+Heath Blackmon  
+BSBW 309A  
+coleoguy@gmail.com  
+
+
+
+
+
+
