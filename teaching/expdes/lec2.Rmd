@@ -19,20 +19,12 @@ knitr::opts_chunk$set(echo = FALSE)
 - What makes R awesome?  
 
 
-
-
-
-
 ## Today
 
 - Terminology  
 - Summarizing Data  
 - Central Limit Theorem  
 - Covariance and Correlation  
-
-
-
-
 
 
 ## Populations and Samples
@@ -56,8 +48,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 *In the period between January 1, 1998 and December 12, 2001 at the Clinic of Surgery, Orthopaedics and Ophthalmology of the Veterinary Faculty, 119 cats were treated after a fall or jump from a balcony or window, where the owners saw the fall, or where there was a reasonable suspicion that a fall had occurred. Only those cats that fell from the second or higher stories were included. The owners brought the cats for treatment within varying periods of time after the fall (from 30 min to over a month).*
 
-
 <font size="4"> Vnuk, et al. "Feline high-rise syndrome: 119 cases (1998–2001). *Journal of Feline Medicine & Surgery* 6.5 (2004): 305-312.</font> 
+
 
 ## Sampling Considerations
 
@@ -67,7 +59,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - **Sampling Error** 
 - Chance alone will cause your sample to depart from the population
-
 
 
 ## Parameter, estimates, sampling considerations
@@ -85,9 +76,6 @@ knitr::opts_chunk$set(echo = FALSE)
 - How tightly grouped are the estimates? 
 
 
-
-
-
 ## Accuracy vs Precision
 
 ```{r echo=FALSE}
@@ -101,18 +89,10 @@ grid.raster(img)
 - Accuracy is a measure of bias  
 
 
-
-
-
 ## Random Sampling
 
 - Every unit in a population should have an equal chance of being sampled  
 - The selection of units must be independent   
-
-
-
-
-
 
 
 ## Your big idea should be a hypothesis
@@ -120,10 +100,6 @@ grid.raster(img)
 - A statistical hypothesis is a specific claim about a 	population parameter 
 - *Caloric restriction increases the lifespan of Drosophila melanogaster*  
 - *Pesticide exposure causes feminization of amphibian males*
-
-
-
-
 
 
 ## Data
@@ -138,9 +114,6 @@ grid.raster(img)
 - Individuals are in qualitative categories 
 
 
-
-
-
 ## Data
 
 - **Numerical Variables** 
@@ -153,12 +126,6 @@ grid.raster(img)
 - The categories have no inherent order
 
 
-
-
-
-
-
-
 ## Continuous vs Discrete
 
 - **Continuous variables**  
@@ -166,9 +133,6 @@ grid.raster(img)
 
 - **Discrete variables**  
 - a variable that has a finite number of possible values  
-
-
-
 
 
 ## Explanatory and Response Variables
@@ -195,14 +159,10 @@ text(x=-2, y=2,pos=4, "y=mx+b\ny is response variable\nx is explanatory variable
 - Do sex chromosomes increase the rate of speciation? 
 
 
-
-
 ## Summarizing data is necessary and prefered
 
 - Many datasets are simply too big to look at all values and form an impression? 
 - Our impressions of small datasets are often misled by our tendency to look for patterns.
-
-
 
 
 ## Typical summary statistics
@@ -235,7 +195,6 @@ lines(density(x.inc.both), col="red")
 
 
 ## Box Plot
-
 ```{r echo=FALSE}
 library(png)
 library(grid)
@@ -258,18 +217,12 @@ grid.raster(img)
 - s : samples standard deviation 
 
 
-
-
-
 ## For a sample of a population
 
 The mean is $$\overline{Y}=\frac{\sum_{i=1}^{n}Y_i}{n}$$
 
 
 The standard deviation is $$s=\sqrt{s^2}$$ where $$s^2=\frac{\sum_{i=1}^{n}\left ( Y_i-\bar{Y} \right )^2}{n-1}$$
-
-
-
 
 
 ## Central limit theorem
@@ -284,10 +237,6 @@ In principle, we could draw a histogram of these means 
 - The Central Limit Theorem states that regardless of the underlying population distribution of the variable of interest, the distribution of the population of means will be roughly normal 
 
 
-
-
-
-
 ## Central limit theorem
 
 - Your estimate of the sample mean is an estimate of the mean of this distribution of means (that is, it’s your best estimate of the population mean)
@@ -299,9 +248,6 @@ In principle, we could draw a histogram of these means 
 - We call this standard deviation the standard error of the mean 
 
 
-
-
-
 ## Central limit theorem
 
 ```{r echo=FALSE}
@@ -310,6 +256,7 @@ library(grid)
 img <- readPNG("images/CI.png")
 grid.raster(img)
 ```
+
 
 ## Your turn
 
@@ -322,9 +269,6 @@ You will need:
 `hist()`  
 
 
-
-
-
 ## Error bars
 
 ![](images/errorbars.png)
@@ -334,7 +278,6 @@ You will need:
 - Usually, they represent 1 SE or the 95% CI, but not always.   
 
 - **THE FIGURE LEGEND SHOULD INDICATE WHAT THE ERROR BARS REPRESENT!**</font>
-
 
 
 ## Covariance and Correlation
@@ -360,10 +303,6 @@ plot(ystrong.pos~x1,pch=16, cex=.75,col=rgb(1,0,0,.5)
 plot(ystrong.neg~x2,pch=16, cex=.75,col=rgb(1,0,0,.5)
      ,xlab="X",ylab="Y",main="strong negative correlation")
 ```
-
-
-
-
 
 
 ## Covariance and Correlation

@@ -23,9 +23,6 @@ knitr::opts_chunk$set(echo = FALSE)
 - Prep for Thursday  
 
 
-
-
-
 ## The public impression of statistics  
   
 - *Figures will not lie but liars will figure*  
@@ -37,19 +34,12 @@ knitr::opts_chunk$set(echo = FALSE)
 - *Statistics are no substitute for good judgement*  
 
 
-
-
-
 ## Your response
 
 - Misuse of statistics is unethical  
 - Poor training and maleficence are both responsible for failures  
 - Statistical literacy in the general public is essential  
 - Do your part: learn science of important topics and help friends and family understand them!
-
-
-
-
 
 
 ## Reproducibility crisis
@@ -61,11 +51,6 @@ Started in the social sciences but some problems are widespread
 -	small sample sizes  
 -	p-hacking  
 -	unethical researchers
-
-
-
-
-
 
 
 ## Reproducibility crisis
@@ -84,20 +69,13 @@ Solutions
 - Regression, correlation, anova, path analysis and many other techjniques were all developed in pursuit of understanding evolution.
 
 
-
 ## Why do biologists need statistics
-
 
 - We want to test hypotheses.  
 - To test a hypothesis we have to design an experiment  
 - Not all experiments have a traditional control and experimental treatment  
 - It is quite possible to design a study or collect data that cannot answer the questions that we have  
 - This leads to poor manuscripts and can lead to bad practices like p-hacking  
-
-
-
-
-
 
 
 ## Experimental Design
@@ -110,11 +88,6 @@ So, to design an experiment you need to understand how the data will be analyzed
 - What sample size will be necessary?   
 
 
-
-
-
-
-
 ## Collaborating with a statistician has challenges
 
 - In some cases this is a great option.  
@@ -125,10 +98,6 @@ So, to design an experiment you need to understand how the data will be analyzed
 - For all of these reasons statistical analysis **needs to involve people who understand the biological problem**  
 
 
-
-
-
-
 ## My stats philosophy
 
 - Statistics is a tool  
@@ -136,10 +105,6 @@ So, to design an experiment you need to understand how the data will be analyzed
 - My responsibility as a scientists is to report the truth as accurately as possible and statistics help me in this regard   
 - We may NEED statistics to discern patterns in our data   
 - Bayesian statistics offer a way to build on our past and ask the questions we are really interested in.  
-
-
-
-
 
 
 ## What is R
@@ -152,9 +117,6 @@ So, to design an experiment you need to understand how the data will be analyzed
 - *FYI: It can get you a job. - Dell, Lab Tech, Core Facility*
 
 
-
-
-
 ## Why use R
 
 - Many statistical approaches have been implemented in the R environment  
@@ -162,7 +124,6 @@ So, to design an experiment you need to understand how the data will be analyzed
 - Any program written in R will have access to all of R’s tools for statistics and graphing   
 - New methods of analysis are being implemented in R by the scientists developing the methods   
 - IMHO: Make beautiful presentations like this one.
-
 
 
 ## Why use R
@@ -173,11 +134,6 @@ So, to design an experiment you need to understand how the data will be analyzed
 - Open Science  
 - Running analyses with scripts facilitates revision of manuscripts   
 - Many methods (mixed models, quantitative genetics, etc.) are only available in R.  
-
-
-
-
-
 
 
 ## Installing R and RStudio
@@ -192,9 +148,6 @@ So, to design an experiment you need to understand how the data will be analyzed
 - Select the correct version for your system and follow the prompts.
 
 
-
-
-
 ## For Thursday
 
 - Read chapters 1 and 2 of WS   
@@ -203,16 +156,8 @@ So, to design an experiment you need to understand how the data will be analyzed
 - <font color="red">**Bring laptop to class!**</font>   
 
 
-
-
 ## Contact Info
 
 Heath Blackmon  
 BSBW 309A  
 coleoguy@gmail.com  
-
-
-
-
-
-
