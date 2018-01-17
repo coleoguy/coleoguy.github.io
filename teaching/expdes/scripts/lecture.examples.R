@@ -628,3 +628,28 @@ plot(y2~x2,
      pch=16)
 summary(lm(y2~x2))
 summary(lm(y~x))
+
+# job adds
+adds <- read.csv("../hw-labs/data/job.adds.csv", 
+                 as.is=T,
+                 row.names=1)
+adds <- as.data.frame(adds)
+
+foo <- barplot(adds$count, names="", las=2, main="Evoldir Postdoc Adds",
+        col = c(rgb(.5,.0,.5,.8), rgb(.1,.0,.7,.8),
+                rgb(.7,.1,.1,.8), rep(rgb(.7,.1,.1,.3), 10)))
+cats <- c("total adds", "no comp. skills listed",
+          "some type of coding skills",
+          "bioinformatics",
+          "R", "scripting",
+          "computational",
+          "misc. languages",
+          "python", "statistics",
+          "perl",
+          "modeling",
+          "unix")
+text(foo+.8, par("usr")[3]-2, pos=2, labels = cats, 
+     srt = 55, , xpd = TRUE, cex=.6)
+points(x=foo[c(4,5,6,7,10,12)], 
+       y=adds$count[c(4,5,6,7,10,12)]+5, 
+       pch="*", cex=1.6)
