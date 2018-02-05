@@ -1,20 +1,26 @@
 ---
-title: "Beetles"
+title: "Homework 3"
 author: "Heath Blackmon"
 date: "2/1/2018"
-output: html_document
+output: 
+  html_document:
+    toc: true
+  
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Reading in the data
 
 The first thing that we need to do is read in all of the data:
 ```{r}
 dat.m <- read.csv("gnatocerus.male.csv")
 dat.f <- read.csv("gnatocerus.female.csv")
 ```
+
+# Difference in males and females
 
 Now just to get a feel for things lets plot the body size observations for males and females on the same plot.
 ```{r}
@@ -30,6 +36,9 @@ points(x=4, y=2.1, pch=15, col=rgb(1,0,0,.5))
 text(x=4, y=2.3, pos=4, "male", cex=.7)
 text(x=4, y=2.1, pos=4, "female", cex=.7)
 ```
+
+
+# Are horns and body size correlated?
 
 We are really interested in horn length in males because we think it may be a sexually antagonistic trait.  Lets make a plot with horn size as a function of body size.
 
@@ -89,6 +98,7 @@ plot(dat.m$mating.attempts ~ dat.m$horns.resid,
      ylab="mating attempts", xlab="horn size\n(corrected for body size)")
 ```
 
+# Predictors of a males grandchildren
 
 Lets now examine the relationhsip with grandchildren
 
@@ -103,6 +113,8 @@ In this case none are significant.  The most extreme relationship was found in t
 ```{r}
 cor.test(dat.f$offspring, dat.f$body)
 ```
+
+# Female body size and offspring
 
 In contrast to what we see in males females have a fairly strong positive correlation between body size and offspring count.  Lets look at some plots to show these two different relationships.
 
