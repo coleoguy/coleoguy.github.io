@@ -178,7 +178,7 @@ text(x=4, y=2.1, pos=4, &quot;female&quot;, cex=.7)</code></pre>
 ## sample estimates:
 ##       cor 
 ## 0.6103045</code></pre>
-<p>This is a fairly strong correlation. When we see something like this one thing that can often help is to take the size of the trait after correcting for the variable that you think may be creating the correlation. In this case I beleive that when a beetle grows large all of its body parts are more likely to be large - including the horns. We can do a regression (which we will study in more depth soon) to extract the relative size of the horn after correcting for body size.</p>
+<p>This is a fairly strong correlation. When we see something like this one thing that can often help is to take the size of the trait after correcting for the variable that you think may be creating the correlation. In this case I believe that when a beetle grows large all of its body parts are more likely to be large - including the horns. We can do a regression (which we will study in more depth soon) to extract the relative size of the horn after correcting for body size.</p>
 <pre class="r"><code># lm stands for linear model and in this case will fit a 
 # least squares regression.  The [[2]] at the end is getting 
 # it to only return the second item which is the residuals.
@@ -186,7 +186,7 @@ horns.resid &lt;- lm(dat.m$horn ~ dat.m$body)[[2]]</code></pre>
 <p>Lets add this to our data table:</p>
 <pre class="r"><code># cbind just allows us to bind another column to our dataframe
 dat.m &lt;- cbind(dat.m, horns.resid)</code></pre>
-<p>Now lets do a series of cor.tests to see what the relationship between mating attemps and grandchildren look like.</p>
+<p>Now lets do a series of cor.tests to see what the relationship between mating attempts and grandchildren look like.</p>
 <pre class="r"><code>cor.test(dat.m$mating.attempts, dat.m$body)</code></pre>
 <pre><code>## 
 ##  Pearson's product-moment correlation
@@ -223,7 +223,7 @@ dat.m &lt;- cbind(dat.m, horns.resid)</code></pre>
 ## sample estimates:
 ##       cor 
 ## 0.2055923</code></pre>
-<p>As we might expect since they are correlated both horn size and body size show a similar result. Interestingly so does the residual of horn size after correcting for body size. We might be a bit suprised by this and it suggests that even ignoring overall body size beetles with longer horns for their size have an advantage over beetles with smaller horns for their size. We might want to visualize these relationships side by side with a plot showing mating attempts as a function of body size and as a function of horn residual.</p>
+<p>As we might expect since they are correlated both horn size and body size show a similar result. Interestingly so does the residual of horn size after correcting for body size. We might be a bit surprised by this and it suggests that even ignoring overall body size beetles with longer horns for their size have an advantage over beetles with smaller horns for their size. We might want to visualize these relationships side by side with a plot showing mating attempts as a function of body size and as a function of horn residual.</p>
 <pre class="r"><code># this code splits our plot area into two columns
 par(mfcol=c(1,2))
 
@@ -242,7 +242,7 @@ plot(dat.m$mating.attempts ~ dat.m$horns.resid,
 </div>
 <div id="predictors-of-a-males-grandchildren" class="section level1">
 <h1>Predictors of a males grandchildren</h1>
-<p>Lets now examine the relationhsip with grandchildren</p>
+<p>Lets now examine the relationship with grandchildren</p>
 <pre class="r"><code>cor.test(dat.m$grandchildren, dat.m$body)</code></pre>
 <pre><code>## 
 ##  Pearson's product-moment correlation
@@ -279,7 +279,7 @@ plot(dat.m$mating.attempts ~ dat.m$horns.resid,
 ## sample estimates:
 ##         cor 
 ## -0.08116258</code></pre>
-<p>In this case none are significant. The most extreme relationship was found in the comparison of grandchildren and bodysize. Lets look at that one in females.</p>
+<p>In this case none are significant. The most extreme relationship was found in the comparison of grandchildren and body size. Lets look at that one in females.</p>
 <pre class="r"><code>cor.test(dat.f$offspring, dat.f$body)</code></pre>
 <pre><code>## 
 ##  Pearson's product-moment correlation

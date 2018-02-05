@@ -55,7 +55,7 @@ That looks like a pretty strong correlation.  Lets test its significant using th
 cor.test(dat.m$horn, dat.m$body)
 ```
 
-This is a fairly strong correlation. When we see something like this one thing that can often help is to take the size of the trait after correcting for the variable that you think may be creating the correlation.  In this case I beleive that when a beetle grows large all of its body parts are more likely to be large - including the horns.  We can do a regression (which we will study in more depth soon) to extract the relative size of the horn after correcting for body size.
+This is a fairly strong correlation. When we see something like this one thing that can often help is to take the size of the trait after correcting for the variable that you think may be creating the correlation.  In this case I believe that when a beetle grows large all of its body parts are more likely to be large - including the horns.  We can do a regression (which we will study in more depth soon) to extract the relative size of the horn after correcting for body size.
 
 ```{r}
 # lm stands for linear model and in this case will fit a 
@@ -71,7 +71,7 @@ Lets add this to our data table:
 dat.m <- cbind(dat.m, horns.resid)
 ```
 
-Now lets do a series of cor.tests to see what the relationship between mating attemps and grandchildren look like.
+Now lets do a series of cor.tests to see what the relationship between mating attempts and grandchildren look like.
 
 ```{r}
 cor.test(dat.m$mating.attempts, dat.m$body)
@@ -79,7 +79,7 @@ cor.test(dat.m$mating.attempts, dat.m$horn)
 cor.test(dat.m$mating.attempts, dat.m$horns.resid)
 ```
 
-As we might expect since they are correlated both horn size and body size show a similar result.  Interestingly so does the residual of horn size after correcting for body size.  We might be a bit suprised by this and it suggests that even ignoring overall body size beetles with longer horns for their size have an advantage over beetles with smaller horns for their size.  We might want to visualize these relationships side by side with a plot showing mating attempts as a function of body size and as a function of horn residual.
+As we might expect since they are correlated both horn size and body size show a similar result.  Interestingly so does the residual of horn size after correcting for body size.  We might be a bit surprised by this and it suggests that even ignoring overall body size beetles with longer horns for their size have an advantage over beetles with smaller horns for their size.  We might want to visualize these relationships side by side with a plot showing mating attempts as a function of body size and as a function of horn residual.
 
 ```{r}
 # this code splits our plot area into two columns
@@ -100,7 +100,7 @@ plot(dat.m$mating.attempts ~ dat.m$horns.resid,
 
 # Predictors of a males grandchildren
 
-Lets now examine the relationhsip with grandchildren
+Lets now examine the relationship with grandchildren
 
 ```{r}
 cor.test(dat.m$grandchildren, dat.m$body)
@@ -108,7 +108,7 @@ cor.test(dat.m$grandchildren, dat.m$horn)
 cor.test(dat.m$grandchildren, dat.m$horns.resid)
 ```
 
-In this case none are significant.  The most extreme relationship was found in the comparison of grandchildren and bodysize.  Lets look at that one in females.
+In this case none are significant.  The most extreme relationship was found in the comparison of grandchildren and body size.  Lets look at that one in females.
 
 ```{r}
 cor.test(dat.f$offspring, dat.f$body)
