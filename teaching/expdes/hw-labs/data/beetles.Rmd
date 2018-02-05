@@ -132,12 +132,7 @@ When we look at the females we see that our data actually include 3 individuals 
 
 # Thoughts about homework questions
 
-(1) What	is	the	impact	of	having	a	larger	body, is	it	different	for	males	and	females?
+1. What is the impact of having a larger body, is it different for males and females? *The last two figures and the correlation tests answer this question quite clearly for females.  However, the picture in males is a little more complicated - you can consider both the way that body size impacts number of mating attempts and the number offspring that are produced by his daughters.*
 
-The last two figures and the correlation tests answer this question quite clearly for females.  However, the picture in males is a little more complicated - you can consider both the way that body size impacts number of mating attempts and the number offspring that are produced by his daughters.
-
-(2) What	are	the	best	predictors	for	number	of	mating	attempts	and	the	number	of	grandchildren	
-that	a	male	will	produce?
-
-These can be answered with correlation tests and scatter plots using the `plot` funciton.
+2. What are the best predictors for number of mating attempts and the number of grandchildren a male will produce? *These can be answered with correlation tests and scatter plots using the `plot` funciton.*
 
