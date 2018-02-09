@@ -68,7 +68,7 @@ You run the test and it is positive for species A. Compute the posterior probabi
 # our updated prior on the probability that our individual is species a
 up_a <- p_a_m
 # probability that positive for species a if species a
-p_pta_a <- .95
+p_pta_a <- .7
 # probability that positive for species a if species b
 p_pta_b <- .02
 

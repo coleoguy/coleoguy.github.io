@@ -183,13 +183,13 @@ p_a_m</code></pre>
 <pre class="r"><code># our updated prior on the probability that our individual is species a
 up_a &lt;- p_a_m
 # probability that positive for species a if species a
-p_pta_a &lt;- .95
+p_pta_a &lt;- .7
 # probability that positive for species a if species b
 p_pta_b &lt;- .02
 
 p_a_pta &lt;- (p_pta_a * up_a) / (p_pta_a * up_a + p_pta_b * (1-up_a))
 p_a_pta</code></pre>
-<pre><code>## [1] 0.9259259</code></pre>
+<pre><code>## [1] 0.9020619</code></pre>
 </div>
 </div>
 <div id="mcmc" class="section level2">
