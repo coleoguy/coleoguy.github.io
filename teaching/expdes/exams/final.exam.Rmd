@@ -1,0 +1,139 @@
+---
+title: "Biology 683 Experimental Design"
+subtitle: "Final Exam Fall 2018"
+author: "Your Name Here"
+date: "Date you complete the exam"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Starting your final
+Go to this [website](https://evobir.shinyapps.io/final/) to download the data for your final.  This website will generate a unique dataset for you to use that is linked to the last two digits of your A&M UIN.  Please enter these two digits in the code block below as well.
+
+```{r}
+# repalce 00 with the last two digits of your UIN
+student.seed <- 00
+```
+
+You should save this Rmd file and your three CSV data files that you download in the same folder and set that folder as your working directory in RStudio.  Complete each of the three problems below by placing code and text in the appropriate places. Try knitting your document frequently to make sure you can discover any problems that arise.  Once you have completed the exam you should be able to knit the document and have all of your answers, code, and figures come up in the final html file.  If you have any confusion about how to do this please see me before you leave class today!  
+
+## Problem 1
+
+The first step in analyzing your data is actually getting your data read in and in the correct format for analysis.  When you or your lab mates record data in different programs lots of things can go wrong.  Use this block of code to read your data into R and repair any problems you have discovered.  Your code should be commented to describe what you are doing.
+
+```{r}
+
+# YOU NEED TO WRITE CODE HERE THAT READS / FIXES YOUR DATA
+
+```
+
+The data that you have downloaded is adult body size data for flour beetles grown in four different food media. For this experiment you have two questions that you would like to answer.  First you would like to know do different foods lead to different sizes of beetles and if so which foods lead to significant differences in beetle size.  Describe the test(s) that you will use to answer these questions:
+
+**Your answer goes here**
+
+Use this code block to run the test(s) you want to perform:
+
+```{r}
+
+# YOU NEED TO WRITE CODE HERE THAT DOES SOME STATS
+
+```
+
+Write two to three sentences describing the result of your test(s) as you would for a journal in your field of study.
+
+**Your answer goes here**
+
+Use this code block to produce one publication quality plot of this data in a way that does a good job of illustrating the underlying data and any differences that you have found.
+
+```{r}
+
+# YOU NEED TO WRITE CODE HERE THAT MAKES AN AWESOME PLOT
+
+```
+
+## Problem 2
+
+The data for this problem consists of generation time data for a species across a range of temperatures and in the presence of either a control substance or 2 different possible nutrient supplements. 
+
+```{r}
+
+# YOU NEED TO WRITE CODE HERE THAT READS / FIXES YOUR DATA
+
+```
+
+Your goal in this experiment is to quantify the impact that nutrient and temperature variations have on generation time in your organism.  What statistical test/approach will you use:
+
+**Your answer goes here**
+
+
+```{r}
+
+# YOU NEED TO WRITE CODE FOR YOUR STATISTICAL TEST APPROACH HERE
+
+```
+
+A one degree change in temperature creates how much of an expected change in generation time?
+
+**Your answer goes here**
+
+If you wish to minimize generation time what is the best nutrient supplement and temperature?
+
+**Your answer goes here**
+
+If you were redesigning this experiment what would you do to increase power and accuracy of your parameter estimates.
+
+**Your answer goes here**
+
+## Problem 3
+
+You find that nutrient shortages during early development lead to widespread changes in gene expression that last throughout the lifespan of your organism. The dataset you have downloaded contains 500 gene expression values for 50 individuals that had limited food during early development and 50 individuals that were fed ad libitum.  It also contains data from 20 wild caught individuals.  The goal of this experiment is to determine if wild caught individuals experience nutrient shortages, and if so determine how common nutrient shortage is in the wild?
+
+```{r}
+
+# YOU NEED TO WRITE CODE HERE THAT READS / FIXES YOUR DATA
+
+```
+
+What statistical test/approach will you use:
+
+**Your answer goes here**
+
+
+```{r}
+
+# YOU NEED TO WRITE CODE FOR YOUR STATISTICAL TEST APPROACH HERE
+
+```
+
+
+Do wild caught individuals experience nutrient shortages, and if so what proportion of wild caught individuals likely experienced nutrient shortage?
+
+**Your answer goes here**
+
+What other characteristic seems to impact gene expression besides feeding regime?
+
+**Your answer goes here**
+
+Use this code block to produce one publication quality plot of this data in a way that does a good job of illustrating the differences in gene expression in starved and well fed individuals as well as the wild caught individuals.
+
+```{r}
+
+# YOU NEED TO WRITE CODE HERE THAT MAKES AN AWESOME PLOT
+
+```
+
+
+## Turning in your exam
+
+Please email me this Rmd file (I do not need your CSV files) before midnight (central time) 1 May 2018.
+
+
+
+
+
+
