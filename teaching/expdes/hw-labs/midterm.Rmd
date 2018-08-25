@@ -1,0 +1,148 @@
+---
+title: "Midterm"
+author: "Heath Blackmon"
+date: "3/8/2018"
+output: 
+  html_document:
+    toc: TRUE
+    tocdepth: 5
+---
+
+## Problem 1
+
+Seasonal effective disorder can lead to depression during the winter months. A study of mortality in Norway reveals that in a one year period there were 1236 suicides.  Of this total 572 occurred between October 10th and March 25th. Use an appropriate test to evaluate the null hypothesis that risk of suicide is unrelated to the season.
+
+I think the right way to figure this one is with a bionomial.  The part of the year that we are looking at includes `r 22+30+31+31+28+25` days out of 365 so `r round((22+30+31+31+28+25) / 365, digits=3)` of the days in a year.  So if a suicide occurs randomly in the year there is a 45.8% chance it will occur during this window so here is what the R code looks like to ask if more occur in this time span than we expect.
+```{r}
+binom.test(x=572, n=1236, p=.458, alternative="greater")
+```
+The risk of suicide does not appear to be realated to season in this dataset *p*=0378.
+
+## Problem 2
+You are teaching a class of 126 students.  Of this number 47 are first generation college students. 14 of the first-generation students earned an A in the class.  Meanwhile 43 of your students that are not first generation earned an A in the class.  
+a) Evaluate the null hypothesis that being a first-generation college student does not impact the probability of earning an A in your class.
+
+A simple chi square here should fit the bill.
+```{r}
+mat <- matrix(c(14,33,43,36),2,2)
+colnames(mat) <- c("first.gen","not")
+row.names(mat) <- c("A","not")
+chisq.test(mat)
+```
+First generation status does seem to impact the probability of earning an A in the course.
+
+## Problem 3
+Two lakes were freshly stocked with fish last season.  You go to the field and seine fish from both lakes. The body size of the fish you catch is recorded below.  You need to determine whether the fish in the two lakes are the same size.  
+```{r}
+lake1 <- c(7.69,	10.27,	9.38,	9.89,	9.89,	8.81,	9.82, 9.48,	9.78,	9.45)				
+lake2	<- c(9.06,	8.93,	11.32,	10.1,	9.8,	11.22,	8.61, 10.07,	8.49,	9.02,	10.01,	8.94,	9.02,	10.97)
+```
+a) State the null hypothesis of the statistical test you will perform?
+
+the mean fish size in the two lakes is the same
+
+b) Is the mean fish size in the two lakes significantly different?
+```{r}
+t.test(x=lake1, y=lake2)
+```
+
+size of fish in the two lakes is not significantly different.
+
+## Problem 4
+You are performing a study to determine whether fish can learn to distinguish shapes.  You have a feeding system that allows fish to press either a circle or square to release food.  You record the time required for a fish to release food the first time the feeder is placed in the tank and then later after 10 feeding trials.
+```{r}
+Trial1 <- 	c(53.98,	44.3,	52.3,	63.6,	57.98,	51.45,	46.79,	54.92,	43.96,	82.75)
+Trial10 <- c(61.72,	52.78,	47.16,	41.34,	64.46,	33.09,	55.61,	48.33,	54.63,	60.11)
+```
+a) do fish learn to access food more quickly over time.
+```{r}
+t.test(x=Trial1, y=Trial10, paired=T)
+```
+we are unable to detect a significant difference in these either
+
+
+## Problem 5
+Males and females often differ in life history traits like mortality rates across age classes. A long-term study of a species has provided the data below on life span. 
+```{r}
+fem <- 	c(6,	6.2,	3.2,	5.8,	6.8,	8.2,	4.9,	6.2,	6,	7.4, 5.8,	6,	5,	6,	4.8,	5.8,	5.4,	5.8,	5.3,	7.7)
+mal <- 	c(5.3,	6,	5.5,	6.9,	7.6,	5.5,	4.7,	6.5,	6.7,	5.5, 6.3,	4.3,	6.8,	4.4,	7.7,	6.5,	8.1,	5.9,	4,	6.9)
+library(car)
+leveneTest(c(fem, mal), 
+           c(rep("female", 20), rep("male", 20)))
+```
+a) Determine whether males or females have more variation in lifespan.
+No significant difference in these
+
+## Problem 6
+You are studying the impact of a soil additive on the germination of seeds.  You have collected the proportion of seeds that germinate with four different soil additives plus a control where no soil additive was provided.  
+```{r}
+mat <- matrix(c(0.72,	0.5,	0.54,	0.61,	0.65,	0.62,	0.29,	0.38,	0.47,	0.69,
+                0.56,	0.56,	0.56,	0.61,	0.68,	0.65,	0.31,	0.34,	0.54,	0.63,
+                0.44,	0.67,	0.5,	0.63,	0.6,	0.48,	0.77,	0.67,	0.89,	0.67,
+                0.62,	0.64,	0.6,	0.52,	0.43,	0.65,	0.8,	0.69,	0.62,	0.73,
+                0.72,	0.76,	0.75,	0.68,	0.8,	0.73,	0.54,	0.76,	0.9,	0.73),
+              10,5)
+colnames(mat) <- c("cont","treat1","treat2","treat3","treat4")
+mat.t <-  asin(sqrt(mat))
+new.dat <- data.frame(as.vector(mat.t),
+                      rep(c("cont","treat1","treat2","treat3","treat4"), each=10))
+colnames(new.dat) <- c("prop","treat")
+fit <- lm(new.dat$prop~new.dat$treat)
+summary(aov(fit))
+TukeyHSD(aov(fit))
+
+```
+a) Determine if the proportion of seeds that germinate with different soil additives varies.  If it does determine which treatments are significantly different.
+
+From our ANOVA we can see that some of the means are different and from the Tukey test we can see that indeed treatment 4 is significantly different from the control and treatment 1.
+
+
+b) Produce a high-quality plot of this data.  Choose a format that illustrates the variability of the data.  Insure that you include appropriate axes or legends.
+```{r}
+stripchart(sin(new.dat$prop)^2~new.dat$treat,
+           vertical=T,
+           pch=16,
+           method="jitter",
+           ylab="germination rate")
+
+```
+
+## Problem 7
+You believe that Thylacinus cynocephalus (a marsupial wolf analog), though widely believed to have gone extinct in 1933, may still be alive in thinly settled regions of Tasmania.  Using museum specimens, you have developed a DNA genotyping test that will accurately identify T. cynocephalus DNA 99.9% of the time.  You also evaluate your test by running 1000 marsupial samples that are not from the genus Thylacinus.  You find that 2 of these returned false positives. You go to Tasmania and collect scat, hair samples and bone fragments (all fresh) from a number of locations to test for Thylacinus DNA.  After testing all 73 of your samples you find that one of them are positive for Thylacinus DNA.  
+
+a) Use Bayes theorem to determine the probability that you have identified the remains of a Thylacinus.
+```{r}
+
+# accuracy of our test
+pPT <- .999
+
+# our prior super low it is probably extinct
+pT <- .0001
+
+# probability of getting a positive test
+#       Real Pos     False Positives
+pP <- .999 * .0001 + .002
+pTP <- (pPT*pT)/pP
+pTP
+
+pP2 <- 1-pbinom(1, 73, prob=pP)
+pTP2 <- (pPT*pT)/pP2
+pTP2
+```
+b) Justify your choice of a prior in this problem. 
+
+used a really small number becuase it just isn't that likely that one has survived this long since last spotted
+
+## Problem 8
+In one to two sentences describe what this code is doing.
+permutation test 
+ 
+
+## Problem 9 & 10
+Pick 2 questions and write a one paragraph answer for each (max 250 words)
+Discuss three causes of the reproducibility crisis.
+Discuss the difference in statistical and biological significance.
+Discuss the difference in Bayesian and Frequentist statistics
+
+
+
