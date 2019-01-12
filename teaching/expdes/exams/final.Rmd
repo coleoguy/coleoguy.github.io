@@ -5,7 +5,7 @@ subtitle: "Final Exam Fall 2018"
 author: "Your Name"
 date: "Date you complete the exam"
 output: 
-  html_document:
+  pdf_document:
     toc: true
 ---
 
