@@ -1,0 +1,99 @@
+---
+title: "permutations"
+author: "Heath Blackmon"
+date: "2/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+read the data 
+```{r}
+dat <- read.csv("zebra.finch.csv")
+```
+here i calculate a statistic (difference in means)
+```{r}
+mstat <- mean(dat$fem.prod) - mean(dat$male.prod)
+```
+
+here I calculate a second statistic (diffrence in variance)
+```{r}
+vstat <- var(dat$fem.prod)-var(dat$male.prod)
+```
+
+here I set up two empty vectors to hold our results from the permutations
+```{r}
+res.mstat <- res.vstat <- c()
+```
+
+this will perform the permutations
+```{r}
+for(i in 1:10000){
+  # i'm setting this seed so we all get the same random draws when 
+  # we run this code
+  set.seed(i)
+  # this draws to random samples of offspring number 442 each time
+  # matching the sample size that we had in our real data it then 
+  # calculates a difference in them and stores it. Effectively each
+  # time we go through this loop we are seeing a result under the 
+  # null model (no difference in groups)
+  res.mstat[i] <- mean(sample(unlist(dat), 442)) - 
+                  mean(sample(unlist(dat), 442))
+  # this does the same thing for 
+  res.vstat[i] <- var(sample(unlist(dat), 442)) - 
+                  var(sample(unlist(dat), 442))
+}
+```
+
+
+now we plot the observations from our permutations remember these are our expected observations under the null model
+```{r}
+plot(density(res.mstat),
+     lwd=3, main="Difference in male and female offspring number",
+     cex.main =.6, ylim=c(0,2.5),xlim=c(-.7,.7))
+# now lets plot our observation from nature
+abline(v=mstat, col="red", lwd=3)
+```
+
+next we calculate an empirical p-value meaning:
+What is the probability of observing our data from our experiment under the null model.
+
+To do this we ask how often did we see an equal or more extreme result in our observations via permuation than what we saw in the data that we collected in our experiment or nature.
+
+When you read this line of code think of it this way: count the number of times res.mstat was greater than or equal to our observation. Then to make it a probability by how many times you carried out the permutation.
+
+```{r}
+pval1 <- sum(res.mstat>=mstat)/10000
+```
+
+if I want to compare to the t.test we should used the alternative argument and set it to greater because thats the p-value I calculated above
+```{r}
+t.test(x=dat$fem.prod, y=dat$male.prod, alternative="greater")
+```
+
+We could do a two-sided test and ask what the chance that I would see a value more extreme (negative or positive). 
+```{r}
+two.sided <- sum(res.mstat>=mstat) + sum(res.mstat <= -mstat)
+pval2 <- two.sided/10000
+```
+
+compare to t.test
+```{r}
+t.test(x=dat$fem.prod, y=dat$male.prod)
+```
+
+lets add those p-values from our permutations to our plot
+```{r}
+plot(density(res.mstat),
+     lwd=3, main="Difference in male and female offspring number",
+     cex.main =.6, ylim=c(0,2.5),xlim=c(-.7,.7))
+# now lets plot our observation from nature
+abline(v=mstat, col="red", lwd=3)
+text(-.66, 2.4, paste("one sided pval=",round(pval1,digits=3)), cex=.5, pos=4)
+text(-.66, 2.2, paste("two sided pval=",round(pval2,digits=3)), cex=.5, pos=4)
+```
+
+
+How do we decide the number of permuations? Well the number of permuations that we run determines the level of accuracy that we have in our p-value. Imagine calculating the p-value as we have here if you did 10 permutations what would the possible p-values be? And if you did 100 or 1,000,000?
