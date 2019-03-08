@@ -1,0 +1,146 @@
+---
+title: "PCA Tutorial"
+author: "Heath Blackmon"
+date: "4/12/2018"
+output:
+  html_document:
+    df_print: paged
+    toc: yes
+    toc_depth: '3'
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Packages and data
+
+Today we will use two new packages 
+
+```{r, eval = F}
+install.packages("car")
+install.packages("FactoMineR")
+```
+
+1) Load the iris data and take a look at what you have
+
+```{r, eval = F}
+data('iris')
+head(iris)
+```
+
+### Basic PCA
+
+2) Perform the PCA using the base function `prcomp` use the assignment operator `<-` to send this to a new variable named `pca`.
+
+
+3) Review the object that is returned. You can see the names for the different elements in the list using the `names` function (`names(pca)`).
+
+
+4) A scree plot shows us the proportion of variance explained by each principal component.  Use the first element `pca$sdev` along with the `sum` function and square function (`^2`) to create a scree plot.
+
+### Results of PCA
+
+5) Use the fifth element (`pca$x`) to create a plot of the samples in principal component space. Color each point based on its species identity.
+
+-hint: factors have values of 1, 2, 3.  So what would you get if you ran this code
+```{r, eval = F}
+rainbow(3)[iris$Species]
+```
+
+Here is an example of a simple plot to get started with
+
+```{r, eval = F}
+plot(x=pca$x[, 1],
+     y=pca$x[, 2])
+```
+
+### Loadings and variables factor map
+
+The second element (`pca$rotation`) has loadings – this is the correlation between each of your raw measures and the sample scores for each principal component.  Sometimes people will report these raw correlations.  However, I think a more intuitive measure is how much of the variance in the raw measure is captured by a principal component to get this simply square these values.  
+
+6) Which raw variable is explained the most by PC1 what about PC2
+
+Rather than reporting these values sometimes you will see a plot called a variables factor map.  It is a graphical representation of the loadings.  The package `FactoMineR` offers a nice way to produce this plot.  
+
+7) Repeat your PCA using this package. In this package the PCA is done with the function `PCA` and you can set `graph = TRUE` to automatically produce the variables factor map.
+
+```{r, eval = F}
+library(FactoMineR)
+pca3 <- PCA(iris[,1:4], graph = T)
+```
+
+The plot that you get allows you to see graphically the alignment of variables with PCAs.  
+
+### Input data and assumptions
+
+The third and fourth elements (`pca$center` and `pca$scale`) of the list returned by `prcomp` are center and scale these items describe the transformation that is performed on the data before analysis.
+
+PCA does make some assumptions about the input data the most important of these is that measured variables either have linear or no correlation.  In practice, this is often untested.  Instead, researchers will often log transform all of their data before doing the PCA.
+
+8) Try log transforming the iris data does this change the result?
+
+```{r, eval = F}
+# here is an example of transforming one variable
+iris$Sepal.Length <- log(iris$Sepal.Length)
+```
+
+9) PCA is quite sensitive to outliers.  lets create one measure in our dataset to simulate this:
+
+```{r, eval = F}
+iris[150, 1] <- 510
+```
+
+10) Now perform the PCA again on this dataset and look at the result by plotting the data in the dimensions of the first two principal components.
+
+### Clustering data
+
+Often we would like to understand how well datapoints cluster in principal component space.  This is especially useful when we want to determine whether a new data point falls within our existing categories.  To do this we will use a function `dataEllipse` from the `car` package. Lets add an unknown specimen to our dataset and try and determine which species we believe it belongs to.
+
+11) follow this code to get a clean copy of your data and add a new datapoint from an unknown species.
+
+```{r, eval = F}
+# lets clear our memory and start fresh
+rm(list=ls())
+
+data(iris)
+# first we need to convert the species names from
+# factors to text
+Species <- as.character(iris$Species)
+
+# now we can add our new data
+iris[151, 1:4] <- c(7, 3.1, 4.5, 1.3)
+
+# and now we add the new set of species names as factors
+iris$Species <- as.factor(c(Species, "unknown"))
+```
+
+12) Now repeat your PCA with this data.  Plot the result of the PCA and add ellipses for each species.  Below I illustrate the basic plot and one ellipse.
+
+```{r, eval = F}
+library(car)
+pca <- prcomp(iris[,1:4])
+
+# examine first PCs
+plot(x = pca$x[, 1],
+     y = pca$x[, 2],
+     col = c("red","black","green", "blue")[iris$Species],
+     pch=16,
+     cex=.5,
+     xlab = "PC1",
+     ylab = "PC2")
+
+dataEllipse(x = pca$x[1:50, 1],
+            y = pca$x[1:50, 2],
+            add = T,
+            plot.points = F,
+            levels = .95,
+            center.pch = F, 
+            col = "red")
+```
+
+
+
