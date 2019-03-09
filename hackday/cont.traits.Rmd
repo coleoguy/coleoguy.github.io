@@ -1,0 +1,79 @@
+---
+title: "Continuous Traits on Phylogenies"
+author: "Heath Blackmon"
+date: "3/8/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Visualizing traits
+
+For starters lets just try simulating a tree and some data and plotting the values for our trait onto the tree
+
+```{r}
+# first load ape
+library(ape)
+
+# lets simulate a tree and data
+set.seed(10) 
+tree <- rcoal(10)
+trait <- round(rTraitCont(tree), digits=3)
+
+# lets plot the tree to see what it looks like
+plot(tree)
+
+# we might want to add values to the tips of the tree
+plot(tree, show.tip.label = F, x.lim=c(0,3))
+tiplabels(text=trait, frame="none",cex=.5, adj=-.1)
+```
+
+Try simulating your own tree and data and plotting it.
+
+## Ancestral state reconstruction
+
+Reconstructing ancestral states is central to many analyses in evolutionary biology. If we have a continuous trait we usually reconstruct trait values based on the assumption of a model of Brownian motion (although more complex models can be used). If we are only interested in values at different nodes in a tree we can use the R package `ape`. Here is an example
+
+```{r}
+# lets simulate that data again
+set.seed(10) 
+tree <- rcoal(10)
+trait <- round(rTraitCont(tree), digits=3)
+# this function will return ancestral 
+# states for each node in the tree
+anc.states <- ace(phy=tree, x=trait)
+# the maximum likelihood reconstruction is stored in
+# the second element of the list returned it is named ace
+anc.states[[2]]
+# or 
+anc.states$ace
+# we can also extract the 95% confidence interval for
+# alpha parameter which describes the rate of evolution
+anc.states$sigma2
+# we can also extract the 95% confidence interval for 
+# the value at each node:
+anc.states$CI95
+```
+
+The reconstructions in the ace list are ordered the same way as the nodes in the tree are try using the function `nodelabels` to place these ancestral state reconstructions onto the tree.
+
+## Visualizing ancestral states
+
+The package `phytools` allows some great visualizations of ancestral states for instance lets paint our tree branches with ancestral states rather than just labeling them:
+
+```{r}
+# first load phytools
+library(phytools)
+# lets simulate that data again
+set.seed(10) 
+tree <- rcoal(10)
+trait <- round(rTraitCont(tree), digits=3)
+# now lets use contmap to do the ancestral state construction
+anc.state.map <- contMap(tree=tree, x= trait)
+```
+
+Try changing this to a circular tree or for a real challenge try changing the color pallete used. The object returned by `contMap` contains an object cols that you will need to edit to change the colors. Good luck!
+
+
