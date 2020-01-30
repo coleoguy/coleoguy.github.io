@@ -113,6 +113,19 @@ plot(x=iris$Petal.Width,
            rep(rgb(1,0,0,.6), 50)))
 abline(v=.7, lty=2)
 
+# scatterplot with regression line
+plot(x=iris$Petal.Width, 
+     y=iris$Petal.Length,
+     pch=16,
+     cex=.7,
+     col=c(rep(rgb(0,0,1,.6), 50),
+           rep(rgb(0.1,.8,.4,.6), 50),
+           rep(rgb(1,0,0,.6), 50)))
+abline(lm(iris$Petal.Length~iris$Petal.Width), col="gray", lwd=2)
+# example of how to add on symbols
+text(x=.1,y=6.5,labels = expression(paste(beta, "=2.23")), pos=4)
+
+
 # mosaicplots
 surv.dat <- matrix(c(7,16,23,14),2,2)
 row.names(surv.dat) <- c("strain1", "strain2")
