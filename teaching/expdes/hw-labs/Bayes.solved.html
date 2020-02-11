@@ -376,10 +376,6 @@ summary {
 <div id="question-1" class="section level2">
 <h2>Question 1</h2>
 <p>Now suppose you find one of these species with the rare color pattern. Use Bayes theorem to compute the probability that it is from species A.</p>
-</div>
-<div id="bayes-theorem-refresher" class="section level2">
-<h2>Bayes Theorem Refresher</h2>
-<p>We will use <span class="math inline">\(hyp\)</span> to represent our hypothesis that our specimen is species A and we will use <span class="math inline">\(post\)</span> to represent having the color pattern that is more common in rare species. So the equation <span class="math inline">\(P(hyp|post)= \frac{P(post|hyp)P(hyp)}{P(post)}\)</span> would be read as the probability that a specimen is species A given that it has the color pattern common in this species is equal to the probability that this color pattern is present given that it is species A times the probability of species A divided by the probability of this color pattern.</p>
 <pre class="r"><code>posthyp &lt;- .5
 hyp &lt;- 5/100
 false.pos &lt;- .05 * .5
@@ -389,6 +385,66 @@ post &lt;- false.pos + true.pos
 # now we combine these in Bayes Theorem
 answer &lt;- posthyp * hyp / post</code></pre>
 <p>The chance that our specimen is species A is 0.568.</p>
+</div>
+<div id="question-2" class="section level2">
+<h2>Question 2</h2>
+<p>A new paper comes out that states that species B has a morphological feature 50% time that is only present 10% of the time in species A. Your sample has this feature. What is the probability that you have a sample of species A now?</p>
+<p>Some of you took this as an idependent question and some of you combined infromation from both 1 and 2 together. That approach of combining all data is particularly appropriate in this case because the beauty of Bayes theorem is our ability to combine information from multiple resources into out prior. I’ll accept either approach for the purposes of the homework.</p>
+<pre class="r"><code># with only this info
+posthyp &lt;- .1
+hyp &lt;- .05 
+false.pos &lt;- .05 * .1
+true.pos &lt;- .95 * .5
+post &lt;- false.pos + true.pos
+
+# now we combine these in Bayes Theorem
+answer.simple &lt;- posthyp * hyp / post
+
+
+
+# with all avaialable info
+posthyp &lt;- .1
+hyp &lt;- .568 #answer from question 1 becomes our prior
+false.pos &lt;- .568 * .1
+true.pos &lt;- .332 * .5
+post &lt;- false.pos + true.pos
+
+# now we combine these in Bayes Theorem
+answer.complex &lt;- posthyp * hyp / post</code></pre>
+<p>Simple answer: The chance that our specimen is species A is 0.01.</p>
+<p>Full answer: The chance that our specimen is species A is 0.255.</p>
+</div>
+<div id="question-3" class="section level2">
+<h2>Question 3</h2>
+<p>Suppose now that a genetic test is developed that can identify the species of our sample. But the test, like all tests, is imperfect. This is the information you have about the test:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The probability it correctly identifies species A is 0.7</p></li>
+<li><p>The probability it correctly identifies species B is 0.98</p></li>
+</ol>
+<p>You run the test and it is positive for species A. Compute the posterior probability that your sample is species A using all the information available. Again I’ll show both approaches with just this info and with all information combined.</p>
+<pre class="r"><code># with only this info
+posthyp &lt;- .7
+hyp &lt;- 5/100
+false.pos &lt;- .95 * .02
+true.pos &lt;- .05 * .7
+post &lt;- false.pos + true.pos
+
+# now we combine these in Bayes Theorem
+answer.simple &lt;- posthyp * hyp / post
+
+
+
+# with all avaialable info
+posthyp &lt;- .7
+hyp &lt;- .255
+false.pos &lt;- .745 * .02
+true.pos &lt;- .255 * .7
+post &lt;- false.pos + true.pos
+
+# now we combine these in Bayes Theorem
+answer.complex &lt;- posthyp * hyp / post</code></pre>
+<p>Simple answer: The chance that our specimen is species A is 0.648.</p>
+<p>Full answer: The chance that our specimen is species A is 0.923.</p>
 </div>
 
 

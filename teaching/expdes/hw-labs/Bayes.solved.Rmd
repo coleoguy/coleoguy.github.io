@@ -15,9 +15,6 @@ Suppose you are studying a pair of cryptic species. In your area 5% of individua
 ## Question 1
 Now suppose you find one of these species with the rare color pattern. Use Bayes theorem to compute the probability that it is from species A.
 
-## Bayes Theorem Refresher
-We will use $hyp$ to represent our hypothesis that our specimen is species A and we will use $post$ to represent having the color pattern that is more common in rare species. So the equation $P(hyp|post)= \frac{P(post|hyp)P(hyp)}{P(post)}$ would be read as the probability that a specimen is species A given that it has the color pattern common in this species is equal to the probability that this color pattern is present given that it is species A times the probability of species A divided by the probability of this color pattern. 
-
 
 ```{r}
 posthyp <- .5
@@ -43,16 +40,43 @@ Some of you took this as an idependent question and some of you combined infroma
 
 ```{r}
 # with only this info
+posthyp <- .1
+hyp <- .05 
+false.pos <- .05 * .1
+true.pos <- .95 * .5
+post <- false.pos + true.pos
+
+# now we combine these in Bayes Theorem
+answer.simple <- posthyp * hyp / post
+
+
 
 # with all avaialable info
+posthyp <- .1
+hyp <- .568 #answer from question 1 becomes our prior
+false.pos <- .568 * .1
+true.pos <- .332 * .5
+post <- false.pos + true.pos
+
+# now we combine these in Bayes Theorem
+answer.complex <- posthyp * hyp / post
+
+
+
 ```
+
+Simple answer: The chance that our specimen is species A is `r round(answer.simple, 3)`.
+
+Full answer: The chance that our specimen is species A is `r round(answer.complex, 3)`.
 
 
 
 ## Question 3
 
 Suppose now that a genetic test is developed that can identify the species of our sample. But the test, like all tests, is imperfect. This is the information you have about the test:
+
 a. The probability it correctly identifies species A is 0.7
+
 b. The probability it correctly identifies species B is 0.98
 
 You run the test and it is positive for species A. Compute the posterior probability that your sample is
@@ -61,9 +85,35 @@ species A using all the information available. Again I'll show both approaches w
 
 ```{r}
 # with only this info
+posthyp <- .7
+hyp <- 5/100
+false.pos <- .95 * .02
+true.pos <- .05 * .7
+post <- false.pos + true.pos
+
+# now we combine these in Bayes Theorem
+answer.simple <- posthyp * hyp / post
+
+
 
 # with all avaialable info
+posthyp <- .7
+hyp <- .255
+false.pos <- .745 * .02
+true.pos <- .255 * .7
+post <- false.pos + true.pos
+
+# now we combine these in Bayes Theorem
+answer.complex <- posthyp * hyp / post
+
+
+
 ```
+
+
+Simple answer: The chance that our specimen is species A is `r round(answer.simple, 3)`.
+
+Full answer: The chance that our specimen is species A is `r round(answer.complex, 3)`.
 
 
 
