@@ -43,3 +43,11 @@ t.test(horns[1:25, 1], horns[26:50, 1], alternative = "greater")
 # is not very close you can try running more itterations to get a better
 # sample of the null distribution.
 
+horns <- read.csv("horns.csv")
+stat.null <- c()
+for(i in 1:10000){
+  picked.rows <- sample(horns$line) == "control"
+  sizes.groupA <- horns[picked.rows, 1]
+  sizes.groupB <- horns[!picked.rows , 1]
+  stat.null <- c(stat.null, mean(sizes.groupA) - mean(sizes.groupB))
+}
