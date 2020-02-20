@@ -24,6 +24,18 @@ t.test(grasshopper$precrush,grasshopper$postcrush, paired = T)
 t.test(grasshopper$postcrush, grasshopper$recovered, paired = T)
 t.test(grasshopper$recovered, grasshopper$recrush, paired = T)
 
+
+t.test(grasshopper$precrush,
+       grasshopper$postcrush, 
+       paired = T,
+       alternative="less")
+t.test(grasshopper$postcrush,
+       grasshopper$precrush, 
+       paired = T,
+       alternative="greater")
+
+
+
 library(beeswarm)
 beeswarm(grasshopper, col="darkgreen", pch=16, ylab="range of motion")
 
@@ -40,3 +52,5 @@ beeswarm(grasshopper, col="darkgreen", pch=16, ylab="range of motion")
 # found that four samples from each surgery have range of motions that 
 # suggest that a small percentage of crush surgerys actually failed and 
 # did not lead to a loss of function.
+
+
