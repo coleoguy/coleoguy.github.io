@@ -55,7 +55,7 @@ answer.simple <- posthyp * hyp / post
 posthyp <- .1
 hyp <- .568 #answer from question 1 becomes our prior
 false.pos <- .568 * .1
-true.pos <- .332 * .5
+true.pos <- .432 * .5
 post <- false.pos + true.pos
 
 # now we combine these in Bayes Theorem
@@ -98,9 +98,9 @@ answer.simple <- posthyp * hyp / post
 
 # with all avaialable info
 posthyp <- .7
-hyp <- .255
-false.pos <- .745 * .02
-true.pos <- .255 * .7
+hyp <- .208
+false.pos <- .792 * .02
+true.pos <- .208 * .7
 post <- false.pos + true.pos
 
 # now we combine these in Bayes Theorem

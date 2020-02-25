@@ -406,13 +406,13 @@ answer.simple &lt;- posthyp * hyp / post
 posthyp &lt;- .1
 hyp &lt;- .568 #answer from question 1 becomes our prior
 false.pos &lt;- .568 * .1
-true.pos &lt;- .332 * .5
+true.pos &lt;- .432 * .5
 post &lt;- false.pos + true.pos
 
 # now we combine these in Bayes Theorem
 answer.complex &lt;- posthyp * hyp / post</code></pre>
 <p>Simple answer: The chance that our specimen is species A is 0.01.</p>
-<p>Full answer: The chance that our specimen is species A is 0.255.</p>
+<p>Full answer: The chance that our specimen is species A is 0.208.</p>
 </div>
 <div id="question-3" class="section level2">
 <h2>Question 3</h2>
@@ -436,15 +436,15 @@ answer.simple &lt;- posthyp * hyp / post
 
 # with all avaialable info
 posthyp &lt;- .7
-hyp &lt;- .255
-false.pos &lt;- .745 * .02
-true.pos &lt;- .255 * .7
+hyp &lt;- .208
+false.pos &lt;- .792 * .02
+true.pos &lt;- .208 * .7
 post &lt;- false.pos + true.pos
 
 # now we combine these in Bayes Theorem
 answer.complex &lt;- posthyp * hyp / post</code></pre>
 <p>Simple answer: The chance that our specimen is species A is 0.648.</p>
-<p>Full answer: The chance that our specimen is species A is 0.923.</p>
+<p>Full answer: The chance that our specimen is species A is 0.902.</p>
 </div>
 
 
