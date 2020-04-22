@@ -1,8 +1,12 @@
 ---
 title: "PCA Tutorial"
 author: "Heath Blackmon"
-date: "4/12/2018"
+date: "4/20/2020"
 output:
+  html_document:
+    df_print: paged
+    toc: yes
+    toc_depth: '3'
   pdf_document:
     toc: yes
     toc_depth: '3'
