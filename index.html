@@ -1,520 +1,556 @@
 <!DOCTYPE html>
-<html>
-<title>Blackmon Lab</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Blackmon Lab</title>
+  <meta content="The blackmon lab at Texas A&M University studies evolutionary biology. Members have published work focusing on sex chromosomes, chromosome number, theoretical and empirical papers as well as papers that are focused on method development." name="descriptison">
+  <meta content="sex chromosome heath blackmon evolution" name="keywords">
+
+  <!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
     
-<meta name="keywords" content="evolution, coleoptera, genomics, karyotype, chromosome, academia, phylogeny">
-<meta name="author" content="Heath Blackmon">    
-    
-<link rel="stylesheet" href="hlb.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="shortcut icon" href="beetle.png" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
-<style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
-</style>
-<body class="w3-black">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
 
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <!-- Avatar image in top left corner -->
-    <img src="images/TAMU-white.png" alt="Texas A&M logo" style="width:100%">
-    
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>Home</p>
-  </a>
-  <a href="#research" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>Research</p>
-  </a>
-  <a href="#publications" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>Publications</p>
-  </a>
-  <a href="#resources" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>Resources</p>
-  </a>
-  <a href="#members" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>Members</p>
-  </a>
-  <a href="#news" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>News</p>
-  </a>
-  <a href="#calendar" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <p>Calendar</p>
-  </a>
-</nav>
+  <!-- =======================================================
+  * Template Name: iPortfolio - v1.2.1
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">Home</a>
-    <a href="#research" class="w3-bar-item w3-button" style="width:25% !important">Research</a>
-    <a href="#publications" class="w3-bar-item w3-button" style="width:25% !important">Publications</a>
-    <a href="#resources" class="w3-bar-item w3-button" style="width:25% !important">Resources</a>
-    <a href="#members" class="w3-bar-item w3-button" style="width:25% !important">Members</a>
-    <a href="#news" class="w3-bar-item w3-button" style="width:25% !important">News</a>
-    <a href="#calendar" class="w3-bar-item w3-button" style="width:25% !important">Cal.</a>
-  </div>
-</div>
-    
-<!-- Page Content -->
-    
-<div class="w3-padding-large" id="main">
-    
-  <!-- Header/Home -->
-  <header class="w3-container w3-center w3-black" id="home">
-    <h1 class="w3-jumbo">Blackmon Lab</h1>
-    <h3>Evolutionary Biology</h3>
-    <img src="images/logo3.png" alt="blackmon lab logo" class="w3-image" width="25%">
+<body>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-15744659-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- ======= Mobile nav toggle button ======= -->
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
-  gtag('config', 'UA-15744659-3');
-</script>
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
 
-  </header>
+      <div class="profile">
+        <img src="assets/img/members/heath.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Blackmon Lab</a></h1>
+      </div>
 
-  <!-- Research Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="research">
-      <h2 class="w3-text-light-grey">Research</h2>
-    <div class="w3-white"> <div class="w3-dark-grey" style="height:10px;width:0%"></div> </div>
-      <p>The Blackmon Lab is in the <a href="http://www.bio.tamu.edu/" target="_blank" class="w3-hover-text-red">Biology Department at Texas A&amp;M University</a>. We have two broad areas of inquiry. The first is genome evolution, specifically sex chromosome and structural evolution. The second is the development of methods and databases that accelerate the analysis of data within a quantitative genetic or phylogenetic framework. To address these topics, we use a broad range of approaches including theoretical population genetics, bioinformatics, genomics, and molecular cytogenetics.  Although we have projects involving all types of organisms, we often study beetles, and we keep several species in the lab as model organisms.
-    </p>
-    <p class="w3-text-light-grey">Fragile Y Hypothesis</p>
+      <nav class="nav-menu">
+        <ul>
+          <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#research"><i class="bx bx-bulb"></i> <span>Research</span></a></li>
+          <li><a href="#publications"><i class="bx bx-file-blank"></i> <span>Publications</span></a></li>
+          <li><a href="#members"><i class="bx bx-user"></i> Members</a></li>
+          <li><a href="#resources"><i class="bx bx-server"></i> Resources</a></li>
+          <li><a href="#calendar"><i class="bx bx-calendar"></i> Calendar</a></li>
+          <li><a href="#news"><i class="bx bx-news"></i> News</a></li>
+          <li><a href="#joining"><i class="bx bx-user-plus"></i> Joining</a></li>
+          <li><a href="#labpics"><i class="bx bx-camera"></i> Pictures</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Blackmon Lab</h1>
+      <p>We study <span class="typed" data-typed-items="sex chromosomes, popgen, beetles, mammals, EVOLUTION"></span></p>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Research Section ======= -->
+    <section id="research" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Research</h2>
+          <p>The Blackmon Lab is in the <a href="http://www.bio.tamu.edu/" target="_blank" class="w3-hover-text-red">Biology Department at Texas A&amp;M University</a>. We have two broad areas of inquiry. The first is genome evolution, specifically sex chromosome and structural evolution. The second is the development of methods and databases that accelerate the analysis of data within a quantitative genetic or phylogenetic framework. To address these topics, we use a broad range of approaches including theoretical population genetics, bioinformatics, genomics, and molecular cytogenetics.  Although we have projects involving all types of organisms, we often study beetles, and we keep several species in the lab as model organisms.</p>
+        </div>
+
+      
+    <h3>Fragile Y Hypothesis</h3>
       <p>Chromosomal sex determination is phylogenetically widespread, having arisen independently in many lineages. Decades of theoretical work provide predictions about sex chromosome differentiation that are well supported by observations in both XY and ZW systems. However, the phylogenetic scope of previous work gives us a limited understanding of the pace of sex chromosome gain and loss and why Y or W chromosomes are more often lost in some lineages than others, creating XO or ZO systems. Contrary to our initial expectations, we find that highly degenerated Y chromosomes of many members of the Coleoptera suborder Polyphaga are rarely lost and that cases of Y chromosome loss are strongly associated with chiasmatic segregation during male meiosis. We propose the <a href="blackmon.pubs/2014d.pdf" target="_blank" class="w3-hover-text-red">"Fragile Y Hypothesis"</a> that recurrent selection to reduce recombination between the X and Y chromosome leads to the evolution of a small pseudoautosomal region, which, in taxa that require XY chiasmata for proper segregation during meiosis, increases the probability of aneuploid gamete production, with Y chromosome loss. This hypothesis predicts that taxa that evolve achiasmatic segregation during male meiosis will rarely lose the Y chromosome.
       </p>
-    <p class="w3-text-light-grey">Genetic Architecture</p>
+    <h3>Genetic Architecture</h3>
       <p>The pace and direction of evolution are governed by the genetic architecture of trait variation. Evolutionary biologists have disagreed about whether genes can be considered to act in isolation, or in the context of their genetic background (Fisher Wright debate). Line cross analysis (LCA) estimates genetic architecture parameters conditional on the best model chosen from a vast model space using relatively few line means and ignores uncertainty in model choice. To address these issues, we introduced an <a href="blackmon.pubs/2016e.pdf" target="_blank" class="w3-hover-text-red">information theoretic approach</a> to LCA, which comprehensively assesses the potential model space, quantifies model selection uncertainty, and uses model weighted averaging to estimate composite genetic effects accurately. Using simulated data and previously published LCA studies we have shown the utility of our approach to define the components of complex genetic architectures. Our analysis of 20+ previously published datasets also shows that traditional approaches have underestimated the importance of epistasis.
       </p>
-    <p class="w3-text-light-grey">Insect Karyotypes</p>
-      <p>Insects exhibit variation in both chromosome number and sex chromosome systems. Insect karyotypes have been an important source of data for both taxonomic and basic evolutionary biology research. Unfortunately, this data has always been scattered among journals and dissertations that are not accessible without subscriptions. We created the Tree of Sex Database to make this data open and available to all researchers. We curate the insect portion of this database that currently has over 15,000 records and has proven to be a valuable resource to explore and test ideas about the evolution of high-level genome evolution.  Recently we <a href="blackmon.pubs/2017a.pdf" target="_blank" class="w3-hover-text-red">published a synthesis</a> of this vast dataset and uncovered many interesting patterns and avenues for future investigations. We also recently published a subset of this data as the <a href="http://www.uta.edu/karyodb/" target="_blank" class="w3-hover-text-red">Coleoptera Karyotype Database</a>.  Beetle karyotypes are particularly powerful since they normally include information about the meiotic behavior of sex chromosomes.
+    <h3>Insect Karyotypes</h3>
+      <p>Insects exhibit variation in both chromosome number and sex chromosome systems. Insect karyotypes have been an important source of data for both taxonomic and basic evolutionary biology research. Unfortunately, this data has always been scattered among journals and dissertations that are not accessible without subscriptions. We created the Tree of Sex Database to make this data open and available to all researchers. We curate the insect portion of this database that currently has over 15,000 records and has proven to be a valuable resource to explore and test ideas about the evolution of high-level genome evolution.  Recently we <a href="blackmon.pubs/2017a.pdf" target="_blank" class="w3-hover-text-red">published a synthesis</a> of this vast dataset and uncovered many interesting patterns and avenues for future investigations. 
       </p>
-    <p class="w3-text-light-grey">Chromosome Number</p>
-      <p>It has long been thought that in Eusocial insect selection to increase genetic diversity within a colony should indirectly select for increases in the number of chromosomes. To test this long-standing hypothesis, <a href="blackmon.pubs/2015d.pdf" target="_blank" class="w3-hover-text-red">we investigated the relationship between eusociality and chromosome number across Hymenoptera</a>. We found that solitary and social Hymenoptera do not have significantly different numbers of chromosomes. However, we did find that chromosome number evolves more quickly in social than solitary Hymenoptera. It remains unclear whether variable selection pressure or drift are responsible for this difference.
+    <h3>Chromosome Number</h3>
+      <p>It has long been thought that in Eusocial insect selection to increase genetic diversity within a colony should indirectly select for increases in the number of chromosomes. To test this long-standing hypothesis, <a href="blackmon.pubs/2015d.pdf" target="_blank" class=>we investigated the relationship between eusociality and chromosome number across Hymenoptera</a>. We found that solitary and social Hymenoptera do not have significantly different numbers of chromosomes. However, we did find that chromosome number evolves more quickly in social than solitary Hymenoptera. It remains unclear whether variable selection pressure or drift are responsible for this difference.
       </p>
-    <!-- End Research Section -->
-  </div>
-  <!-- Publication Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-16" id="publications">
-    <h2 class="w3-text-light-grey">Publications</h2>
-    <div class="w3-white"> <div class="w3-dark-grey" style="height:10px;width:0%"></div> </div><br><br>
-      <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank" class="w3-hover-text-red">Google Scholar</a>
-      <p class="w3-text-light-grey">2019</p>
+          
+       
+
+      </div>
+    </section><!-- End Research Section -->
+
+    <!-- ======= Publications Section ======= -->
+    <section id="publications" class="facts">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Publications</h2>
+          <p><a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+        </div>
+      <h4>2019</h4>
       <p >
-          Armstrong, A, N Anderson, <span class="w3-text-white w3-hbold"> H Blackmon.</span> Inferring the potentially complex genetic architectures of adaptation, sexual dimorphism, and genotype by environment interactions by partitioning of mean phenotypes. Journal of Evolutionary Biology 32 (4), 369-379 <a href="/blackmon.pubs/2019-LCA.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Armstrong, A, N Anderson, <strong> H Blackmon.</strong> Inferring the potentially complex genetic architectures of adaptation, sexual dimorphism, and genotype by environment interactions by partitioning of mean phenotypes. Journal of Evolutionary Biology 32 (4), 369-379 <a href="/blackmon.pubs/2019-LCA.pdf" target="_blank">PDF</a>
           <br>
           <br>
-          Perkins, RD, JR Gamboa, MM Jonika, J Lo, A Shum, RH Adams, <span class="w3-text-white w3-hbold">H Blackmon</span>. A database of amphibian karyotypes. Chromosome Research, pp.1-7.  <a href="https://link.springer.com/article/10.1007/s10577-019-09613-1" target="_blank" class="w3-hover-text-red">PDF</a>
+          Perkins, RD, JR Gamboa, MM Jonika, J Lo, A Shum, RH Adams, <strong>H Blackmon</strong>. A database of amphibian karyotypes. Chromosome Research, pp.1-7.  <a href="https://link.springer.com/article/10.1007/s10577-019-09613-1" target="_blank" class="w3-hover-text-red">PDF</a>
           <br>
           <br>
-          Schield, DR, DC Card, NR Hales, BW Perry, GM Pasquesi, <span class="w3-text-white w3-hbold">H Blackmon</span>, RH Adams, AB Corbin, CF Smith, B Ramesh, and JP Demuth. The origins and evolution of chromosomes, dosage compensation, and mechanisms underlying venom regulation in snakes. Genome research, 29(4), pp.590-601. <a href="https://genome.cshlp.org/content/29/4/590.short?casa_token=9p2QARhbA_4AAAAA:NIcQNc-t0tHDx6Yb1cXY0IV9OVpJs9rlHnJOJtE1PnQTyTIIux6lkXBvUyvYRupG3O3QlX2vj1td" target="_blank" class="w3-hover-text-red">PDF</a>
+          Schield, DR, DC Card, NR Hales, BW Perry, GM Pasquesi, <strong>H Blackmon</strong>, RH Adams, AB Corbin, CF Smith, B Ramesh, and JP Demuth. The origins and evolution of chromosomes, dosage compensation, and mechanisms underlying venom regulation in snakes. Genome research, 29(4), pp.590-601. <a href="https://genome.cshlp.org/content/29/4/590.short?casa_token=9p2QARhbA_4AAAAA:NIcQNc-t0tHDx6Yb1cXY0IV9OVpJs9rlHnJOJtE1PnQTyTIIux6lkXBvUyvYRupG3O3QlX2vj1td" target="_blank" class="w3-hover-text-red">PDF</a>
           <br>
           <br>
-          Lo, J, MM Jonika, and <span class="w3-text-white w3-hbold">H Blackmon</span>. micRocounter: Microsatellite Characterization in Genome Assemblies. G3: Genes, Genomes, Genetics, 9(10), 3101-3104. <a href="https://www.g3journal.org/content/9/10/3101.abstract" target="_blank" class="w3-hover-text-red">PDF</a>
+          Lo, J, MM Jonika, and <strong>H Blackmon</strong>. micRocounter: Microsatellite Characterization in Genome Assemblies. G3: Genes, Genomes, Genetics, 9(10), 3101-3104. <a href="https://www.g3journal.org/content/9/10/3101.abstract" target="_blank" class="w3-hover-text-red">PDF</a>
           <br>
           <br>
-          Hjelmen, CE, <span class="w3-text-white w3-hbold">H Blackmon</span>, VR Holmes, CG Burrus, and JS Johnston. Genome size evolution differs between Drosophila subgenera with striking differences in male and female genome size in Sophophora. G3: Genes, Genomes, Genetics, 9(10), pp.3167-3179. <a href="https://www.g3journal.org/content/9/10/3167.abstract" target="_blank" class="w3-hover-text-red">PDF</a>
+          Hjelmen, CE, <strong>H Blackmon</strong>, VR Holmes, CG Burrus, and JS Johnston. Genome size evolution differs between Drosophila subgenera with striking differences in male and female genome size in Sophophora. G3: Genes, Genomes, Genetics, 9(10), pp.3167-3179. <a href="https://www.g3journal.org/content/9/10/3167.abstract" target="_blank" class="w3-hover-text-red">PDF</a>
           <br>
           <br>
-          <span class="w3-text-white w3-hbold"> Blackmon H,</span> J Justison, I Mayrose, EE Goldberg. Meiotic drive shapes rates of karyotype evolution in mammals. Evolution 73(3), 511-523  <a href="/blackmon.pubs/2019-mammals.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H,</strong> J Justison, I Mayrose, EE Goldberg. Meiotic drive shapes rates of karyotype evolution in mammals. Evolution 73(3), 511-523  <a href="/blackmon.pubs/2019-mammals.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
           <br>
           <br>
-          Passow, C, AM Bronikowski, <span class="w3-text-white w3-hbold"> H Blackmon,</span> S Parsai, TS Schwartz, SE McGaugh. Contrasting patterns of rapid molecular evolution within the p53 network across mammal and sauropsid lineages. Genome Biology and Evolution 11(3), 629-643 <a href="/blackmon.pubs/2019-p53.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Passow, C, AM Bronikowski, <strong>H Blackmon,</strong> S Parsai, TS Schwartz, SE McGaugh. Contrasting patterns of rapid molecular evolution within the p53 network across mammal and sauropsid lineages. Genome Biology and Evolution 11(3), 629-643 <a href="/blackmon.pubs/2019-p53.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
       </p>
-      <p class="w3-text-light-grey">2018</p>
+      <h4>2018</h4>
       <p >
-          Gale, CC, E Borrego, <span class="w3-text-white w3-hbold">H Blackmon,</span> JK Harper, D Richardson, and H Song. Investigating a Photolytic Metabolite in the Nocturnal Grasshopper Schistocerca ceratiola (Orthoptera: Acrididae). Annals of the Entomological Society of America, 112(1), pp.50-55. <a href="/blackmon.pubs/2018-ceratiola.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Gale, CC, E Borrego, <strong>H Blackmon,</strong> JK Harper, D Richardson, and H Song. Investigating a Photolytic Metabolite in the Nocturnal Grasshopper Schistocerca ceratiola (Orthoptera: Acrididae). Annals of the Entomological Society of America, 112(1), pp.50-55. <a href="/blackmon.pubs/2018-ceratiola.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
           
       </p>
-      <p class="w3-text-light-grey">2017</p>
+      <h4>2017</h4>
       <p >
           
-          <span class="w3-text-white w3-hbold"> Blackmon H,</span> Y Brandvain. Long-term fragility of Y chromosomes is dominated by short-term resolution of sexual antagonism -  Genetics <a href="/blackmon.pubs/2017-fragileY.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong> Blackmon H,</strong> Y Brandvain. Long-term fragility of Y chromosomes is dominated by short-term resolution of sexual antagonism -  Genetics <a href="/blackmon.pubs/2017-fragileY.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
           <br>
           <br>
-          <span class="w3-text-white w3-hbold"> Blackmon H,</span> L Ross, D Bachtrog. Sex determination, sex chromosomes and karyotype evolution in insects. – Journal of Heredity 108:1 78-93 – <em>recommended by Faculty of 1000. </em><a href="blackmon.pubs/2017a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong> Blackmon H,</strong> L Ross, D Bachtrog. Sex determination, sex chromosomes and karyotype evolution in insects. – Journal of Heredity 108:1 78-93 – <em>recommended by Faculty of 1000. </em><a href="blackmon.pubs/2017a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
           <br>
           <br>
-          Adams R, D Schield, D Card, <span class="w3-text-white w3-hbold">H Blackmon</span>, and T Castoe. GppFst: Genomic posterior predictive simulations of Fst and dxy for identifying outlier loci from population genomic data – Bioinformatics – doi:10.1093/bioinformatics/btw795. <a href="blackmon.pubs/2016b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Adams R, D Schield, D Card, <strong>H Blackmon</strong>, and T Castoe. GppFst: Genomic posterior predictive simulations of Fst and dxy for identifying outlier loci from population genomic data – Bioinformatics – doi:10.1093/bioinformatics/btw795. <a href="blackmon.pubs/2016b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
 
       </p>
-      <p class="w3-text-light-grey">2016</p>
+      <h4>2016</h4>
       <p>
-          <span class="w3-text-white w3-hbold">Blackmon H</span> and JP Demuth.  An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: moving beyond the joint-scaling test for line cross analysis. – Evolution 70:2 420-432. <a href="blackmon.pubs/2016e.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H</strong> and JP Demuth.  An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: moving beyond the joint-scaling test for line cross analysis. – Evolution 70:2 420-432. <a href="blackmon.pubs/2016e.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
           <br>
           <br>
           Asian Longhorn Beetle Consortium (67 Authors).  Genome of the Asian longhorned beetle (Anoplophora glabripennis), a globally significant invasive species, reveals key functional and evolutionary innovations at the beetle-plant interface. Genome Biology 17:1 227 - <em>Responsible for analysis of genome structure evolution. </em><a href="blackmon.pubs/2016d.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          Ross, L and <span class="w3-text-white w3-hbold">H Blackmon</span>.  Sex Determination. In R. Kliman (Ed.) Encyclopedia of Evolutionary Biology. 81-88 Elsevier Academic Press. doi:10.1016/B978-0-12-800049-6.00146-3. <a href="blackmon.pubs/2016a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Ross, L and <strong>H Blackmon</strong>.  Sex Determination. In R. Kliman (Ed.) Encyclopedia of Evolutionary Biology. 81-88 Elsevier Academic Press. doi:10.1016/B978-0-12-800049-6.00146-3. <a href="blackmon.pubs/2016a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          Adams R, <span class="w3-text-white w3-hbold">H Blackmon</span>, J Reyes-Velasco, D Schield, D Card, A Andrew, N Waynewood, T Castoe. Microsatellite landscape evolutionary dynamics across 450 million years of vertebrate genome evolution. Genome 59:5, 295-310 - <em>Editor’s choice. </em><a href="blackmon.pubs/2016c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Adams R, <strong>H Blackmon</strong>, J Reyes-Velasco, D Schield, D Card, A Andrew, N Waynewood, T Castoe. Microsatellite landscape evolutionary dynamics across 450 million years of vertebrate genome evolution. Genome 59:5, 295-310 - <em>Editor’s choice. </em><a href="blackmon.pubs/2016c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
       </p>
-      <p class="w3-text-light-grey">2015</p>
+      <h4>2015</h4>
       <p>
-          <span class="w3-text-white w3-hbold">Blackmon H</span>, N Hardy, L Ross. The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability. Evolution 69:11 2971-2978. <a href="blackmon.pubs/2015e.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H</strong>, N Hardy, L Ross. The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability. Evolution 69:11 2971-2978. <a href="blackmon.pubs/2015e.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          <span class="w3-text-white w3-hbold">Blackmon H</span> and JP Demuth. The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution. Bioessays 37:9 942-950. <a href="blackmon.pubs/2015a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H</strong> and JP Demuth. The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution. Bioessays 37:9 942-950. <a href="blackmon.pubs/2015a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          <span class="w3-text-white w3-hbold">Blackmon H</span> and JP Demuth. Coleoptera Karyotype Database. The Coleopterists Bulletin 69:1 174-175. <a href="blackmon.pubs/2015c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H</strong> and JP Demuth. Coleoptera Karyotype Database. The Coleopterists Bulletin 69:1 174-175. <a href="blackmon.pubs/2015c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          Ross, L, <span class="w3-text-white w3-hbold">H Blackmon</span>, P Lorite, V Gokhman, and N Hardy. Recombination, chromosome number and eusociality in the Hymenoptera. Journal of Evolutionary Biology 28:1 105-116. <a href="blackmon.pubs/2015d.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Ross, L, <strong>H Blackmon</strong>, P Lorite, V Gokhman, and N Hardy. Recombination, chromosome number and eusociality in the Hymenoptera. Journal of Evolutionary Biology 28:1 105-116. <a href="blackmon.pubs/2015d.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          <span class="w3-text-white w3-hbold">Blackmon H</span> and JP Demuth. Genomic origins of insect sex chromosomes. Current Opinion in Insect Science 7 45-50. – <em>recommended by Faculty of 1000. </em><a href="blackmon.pubs/2015b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H</strong> and JP Demuth. Genomic origins of insect sex chromosomes. Current Opinion in Insect Science 7 45-50. – <em>recommended by Faculty of 1000. </em><a href="blackmon.pubs/2015b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
       </p>
-      <p class="w3-text-light-grey">2014</p>
+      <h4>2014</h4>
       <p>
-          <span class="w3-text-white w3-hbold">Blackmon H</span> and JP Demuth. Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis. Genetics 197:2 561-572. <a href="blackmon.pubs/2014d.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H</strong> and JP Demuth. Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis. Genetics 197:2 561-572. <a href="blackmon.pubs/2014d.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          <span class="w3-text-white w3-hbold">Blackmon H</span> Coleoptera Karyotypes:  The evolution of sex chromosomes and chromosome number. Newsletter of the Ontario Entomological Society 19:2 19–21. <a href="blackmon.pubs/2014b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H</strong> Coleoptera Karyotypes:  The evolution of sex chromosomes and chromosome number. Newsletter of the Ontario Entomological Society 19:2 19–21. <a href="blackmon.pubs/2014b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          Streicher, JW, TJ Devitt, CS Goldberg, JH Malone, <span class="w3-text-white w3-hbold">H Blackmon</span>, and MK Fujita. Diversification and asymmetrical gene flow across time and space: lineage sorting and hybridization in polytypic barking frogs. Molecular Ecology 23:13 3273-3291. <a href="blackmon.pubs/2014a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Streicher, JW, TJ Devitt, CS Goldberg, JH Malone, <strong>H Blackmon</strong>, and MK Fujita. Diversification and asymmetrical gene flow across time and space: lineage sorting and hybridization in polytypic barking frogs. Molecular Ecology 23:13 3273-3291. <a href="blackmon.pubs/2014a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
-          Ashman T, D Bachtrog, <span class="w3-text-white w3-hbold">H Blackmon</span>, EE Goldberg, MW Hahn, M Kirkpatrick, J Kitano, JE Mank, I Mayrose, R Ming, SP Otto, CL Peichel, MW Pennell, N Perrin, L Ross, N Valenzuela, and JC Vamosi. Tree of Sex: A database of sexual systems. Nature Scientific Data 1:140015. – <em>responsible for 11,526 invertebrate records and all figures. </em><a href="blackmon.pubs/2014c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          Ashman T, D Bachtrog, <strong>H Blackmon</strong>, EE Goldberg, MW Hahn, M Kirkpatrick, J Kitano, JE Mank, I Mayrose, R Ming, SP Otto, CL Peichel, MW Pennell, N Perrin, L Ross, N Valenzuela, and JC Vamosi. Tree of Sex: A database of sexual systems. Nature Scientific Data 1:140015. – <em>responsible for 11,526 invertebrate records and all figures. </em><a href="blackmon.pubs/2014c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
       </p>
-      <p class="w3-text-light-grey">2012</p>
+      <h4>2012</h4>
       <p>
-          <span class="w3-text-white w3-hbold">Blackmon H</span> and JP Demuth. Ring Species and Speciation. Encyclopedia of Life Science. www.els.net. <a href="blackmon.pubs/2012a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
+          <strong>Blackmon H</strong> and JP Demuth. Ring Species and Speciation. Encyclopedia of Life Science. www.els.net. <a href="blackmon.pubs/2012a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
       </p>
-      
-    <!-- End Publication Section -->
-  </div>
 
-  <!-- Resources Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-16" id="resources">
-    <h2 class="w3-text-light-grey">Resources</h2>
-    <div class="w3-white"> <div class="w3-dark-grey" style="height:10px;width:0%"></div> </div>
-      <br>
-      <p class="w3-text-light-grey">Teaching</p>
-      <p>
-      <a href="http://coleoguy.github.io/expdes" target="_blank" class="w3-hover-text-red"><img src="images/expdes.png" alt="experimental design" class="w3-image" style="width:15%; float:left; padding: 0px 10px 10px 0px" ></a>
-      This course is intended to provide a foundation in the proper design of scientific research projects in the field of biology. A wide range of biological experiments are covered, and each type of experiment is explored with an eye toward choosing the appropriate statistical technique for analysis. By the end of the course, successful students will be able to design biological studies that are statistically tractable and perform basic statistical analyses using the programming language R.
-      </p><br>
-      <br>
-      <p>
-      <a href="/teaching/popgen/effective.pop.pptx" target="_blank" class="w3-hover-text-red"><img src="images/ne.png" alt="experimental design" class="w3-image" style="width:15%; float:left; padding: 0px 10px 10px 0px" ></a>
-          This <a href="/teaching/popgen/effective.pop.pptx" target="_blank" class="w3-hover-text-red">presentation</a> is from a guest lecture in population genetics focusing on effective population size.<br><br><br><br>
-      </p><br>
-      <br>
-      <p>
-      <img src="images/rseminar.jpg" alt="r in biology seminar" class="w3-image" style="width:15%; float:left; padding: 0px 10px 10px 0px" >
-      <a href="rseminar/index.html" target="_blank" class="w3-hover-text-red"><b>R for biologists seminar:</b></a> R is currently an essential tool for most evolutionary biologists.  This seminar includes tutorials and example datasets for many basic analyses in R that are commonly encountered in ecology and evolution.  The seminar starts off with the most basic steps (installation) so no prior experience is needed to use these exercises.</p><br><br>
-      <p>
-      <img src="images/foundations.jpg" alt="foundations of evolutionary biology" class="w3-image" style="width:15%; float:left; padding: 0px 10px 10px 0px" >
-      <a href="reading.group/index.html" target="_blank" class="w3-hover-text-red">Foundations of evolutionary biology:</a> An understanding of the foundational ideas that the modern synthesis of evolutionary biology is built on is essential for asking intelligent questions and understanding how your research fits into a larger understanding of life.  I offered a foundations of evolutionary biology seminar course for graduate students that provided a structured environment to discuss some of the most important papers in evolutionary biology. This website contains a schedule and PDF files for all of the readings in this course.</p>
-<br><br>
-      <p><a href="https://github.com/coleoguy" target="_blank" class="w3-hover-text-red"><b>GitHub software repository</b></a> I do most all of my development and analyses in public repositories.</p>
-      
-      <p class="w3-text-light-grey">R packages</p>
-      <p>
-      <img src="images/evobir.jpg" alt="R package evobir" class="w3-image" style="width:15%; float:left; padding: 0px 10px 10px 0px" >
-      The package <b><a href="https://github.com/coleoguy/evobir" target="_blank" class="w3-hover-text-red">evobiR</b></a> is a collection of R functions that I have developed for different projects. The functions in this package can be loosely organized into either analysis of empirical data, simulation functions, or those created primarily for didactic purposes. A <a href="http://coleoguy.github.io/evobir.html" target="_blank" class="w3-hover-text-red">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/evobir" target="_blank" class="w3-hover-text-red">here</a>.</p><br><br>
-      <p>
-      <img src="images/saga.jpg" alt="R package saga" class="w3-image" style="width:15%; float:left; padding: 0px 10px 10px 0px" >
-      The package <a href="https://github.com/coleoguy/SAGA" target="_blank" class="w3-hover-text-red"><b>SAGA</b></a> is a collection functions to ease and hopefully improve the quality of line cross analysis of genetic architecture. The overall goal is to allow for an easy and straightforward implementation of model averaged analysis using AICc. A <a href="http://coleoguy.github.io/saga.pdf" target="_blank" class="w3-hover-text-red">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/SAGA" target="_blank" class="w3-hover-text-red">here</a>.</p><br><br>
-      <p class="w3-text-light-grey">Databases</p>
-      <p>
-      <img src="images/ckd.png" alt="Karyotype databases" class="w3-image" style="width:15%; float:left; padding: 0px 10px 10px 0px" >
-      <a href="http://coleoguy.github.io/karyotypes/" target="_blank" class="w3-hover-text-red">Karyotype Databases:</a> Karyotypes are a highly variable and complex trait that offers an opportunity to detect changes in genome organization, uncover phylogenetic history, and distinguish cryptic species. The current databases contains more than 8,000 records for amphibians, coleoptera, and polyneoptera. The databases allows users to select the records that they wish to retrieve based on either taxonomy or trait values and builds customized tables of the results in a new window.</p><br>
-      <p>
-      <img src="images/tos.jpg" alt="tree of sex database" class="w3-image" style="width:15%; float:left; padding: 0px 10px 10px 0px" >
-      The <a href="http://www.treeofsex.org" target="_blank" class="w3-hover-text-red">Tree of Sex Database:</a> this is a product of a working group sponsored by the National Evolutionary Synthesis Center which sought to compile all information on sex determination systems across the tree of life.  To date, we have collected over 30K records including more than 10K invertebrates.  Much like the Coleoptera Karyotype Database, our goal is to make this data widely available allowing researchers across the globe to use data that was previously difficult to collect. </p><br>
-      <br><br><br>
-      <a href="grants.html" target="_blank" class="w3-hover-text-red">Grants for graduate student support</a>
-  <!-- End resources Section -->
-  </div>
-  <!-- members Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-16" id="members">
-    <h2 class="w3-text-light-grey">Lab Members</h2>
-    <div class="w3-white"> <div class="w3-dark-grey" style="height:10px;width:0%"></div> </div>
-      
-  <br><br>
-      <img src="images/blackmonlab-2018.png" alt="Blackmon Lab" class="w3-image" style="width:90%; float:center; padding: 0px 10px 10px 0px" >
-      <br><br>
 
-      
-<table style="width:100%">
-    <col width="15%">
-    <col width="85%">
-    
-    
-    
-  <tr><th><p class="w3-text-light-grey">Principal Investigator</p></th><th></th></tr>
-  <tr>
-    <td><img src="images/heath_blackmon.jpg" alt="Heath Blackmon" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ><br><br></td>
-    <td>Heath Blackmon received his PhD in the Demuth lab at the University of Texas at Arlington in 2015 while studying the evolution of sex chromosomes and karyotypes in Coleoptera and invertebrates.  He then transitioned to a postdoc for two years at the University of Minnesota.  While there he collaborated with Emma Goldberg and Yaniv Brandvain on projects spanning population genetics and macroevolution.  Heath opened his own lab at Texas A&amp;M University in the fall of 2017.&nbsp &nbsp <a href=blackmon.cv.pdf target="_blank" class="w3-hover-text-red">CV - October 2019</a></td> 
-  </tr>
-    
-  <tr><td><br /><br /></td></tr>
-    
-    
-    
-  <tr><th>Postdoctoral Researcher</th><th></th></tr>
-  <tr>
-      <td><img src="images/carlhjelmen.jpg" alt="carl_hjelmen" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Carl Hjelmen joined the lab in 2019. Carl's previous work has examined the evolution of genome size and the dynamics of Y chromosome decay across drosophila. He will be working on projects that examine the strucutral evolution of genomes and extending his studies of sex chromosomes in a genomic context. <a href=https://cehjelmen.github.io/ target="_blank" class="w3-hover-text-red"> Carl's website</a></td>
-  </tr>
-    
-  <tr><td><br /><br /></td></tr>
-    
-    
+      </div>
+    </section><!-- End Publications Section -->
 
-    
-  <tr><th>Researchers</th><th></th></tr>
-   <tr>
-      <td><img src="images/nathan.anderson.png" alt="nathan_anderson" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Nathan was first an undergraduate researcher in the lab for two years and since his graduation in December 2019 has transitioned into a technician position until he begins gaduate school in September of 2020. Nathan has broad interests in population and quantitative genetics as well as phylogenetics.</td>
-  </tr>
-  <tr>
-    
-  <tr><td><br /><br /></td></tr>
-    
-    
-    
-    
-    
-  <tr><th>Lab Manager</th><th></th></tr>
-  <tr>
-      <td><img src="images/riddhi.perkins.JPG" alt="riddhi_perkins" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Riddhi Perkins joined the lab as an undergraduate researcher in 2018. She quickly proved herself so organized and ambitious that she became a part-time lab manager as well. Riddhi's current research projects are focused on understanding the dynamics of chromosome evolution across amphibians.</td>
-  </tr>
-    
-  <tr><td><br /><br /></td></tr>
-    
-    
-    
-  <tr><th>Graduate Students</th><th></th></tr>
-  <tr>
-      <td><img src="images/terrence.jpg" alt="terrence_sylvester" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Terrence joined the lab as a biology Ph.D. student in 2017.  He is currently exploring the relationship between sexual systems and rates of chromosome evolution in Phasmatodea.  Terrence has broad interests in evolutionary biology.  He is working to develop a project that will allow him to combine field work with his interest in the evolution of genome complexity and structure.</td>
-  </tr>
-    
-  <tr>
-      <td><img src="images/michelle.jonika.jpg" alt="Michelle Jonika" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Michelle joined the lab as a genetics Ph.D. student in 2018.  She is currently working on a project examining the dynamics of microsat evolution across hexapods.  Michelle has broad interests and extensive experience in forensics.<br>
-      <a href=https://michellejonika.github.io/ target="_blank" class="w3-hover-text-red"> Michelle's website</a></td>
-  </tr>    
-  <tr><td><br /><br /></td></tr>
+    <!-- ======= Members Section ======= -->
+    <section id="members" class="skills section-bg">
+      <div class="container">
 
-    
-    
-  <tr><th>Undergraduate Students</th><th></th></tr>
-  <tr>
-      <td><img src="images/andrew.jpg" alt="andrew_armstrong" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Andrew is a mathematics major and joined the lab in 2017 and has worked on a method of inferrring genetic architecture.</td>
-  </tr>
-  <tr>
-      <td><img src="images/paulina.png" alt="paulina_serra_de_rossi" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Paulina joined the lab in 2018 and is working on a denovo sequencing project.</td>
-  </tr>
-  <tr>
-      <td><img src="images/eleanor.jpg" alt="eleanor" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Eleanor joined the lab in 2018 and is working on a genome size evolution project.</td>
-  </tr>
-  <tr>
-      <td><img src="images/johnathan.lo.jpg" alt="johnathan" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Johnathan joined the lab in 2018 and is working on algorithms for genome analysis.</td>
-    </tr>
-  <tr>
-      <td><img src="images/david.jpeg" alt="david" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>David joined the lab in 2018 and is working on a sexual antagonism project.</td>
-  </tr>
-  
-  <tr>
-      <td><img src="images/alli.jpeg" alt="david" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Alli joined the lab in 2020 and is working on a project focused on building new genome assemblies.</td>
-  </tr>
-  
-  <tr>
-      <td><img src="images/kayla.jpg" alt="david" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Kayla joined the lab in 2019 and is working on a project that is focused on the dynamics of autosome sex chromosome fusions.</td>
-  </tr>
-  
-  <tr>
-      <td><img src="images/mayra.jpg" alt="david" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Mayra joined the lab in 2018 and is working on a project to create new genetic resources in Tribolium.</td>
-  </tr>
-  
-  
-  <tr>
-      <td><img src="images/julia.jpg" alt="david" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Julia joined the lab in 2018 and is working on a theory project to understand the evolution of alternative forms of meiosis.</td>
-  </tr>
-  
-  <tr><td><br /><br /></td></tr>
-
-  <tr><th>Lab Alumni</th><th></th></tr>
-  <tr>
-      <td><img src="images/amyshum.jpg" alt="amy_shum" class="w3-image" style="width:100%; float:left; padding: 0px 10px 10px 0px" ></td>
-      <td>Amy joined the lab in 2018 and worked on a sexual antagonism project. She will be starting a pharmD program later this year.</td>
-  </tr>
-  
-
-</table>
-      
-      
-      <p class="w3-text-light-grey"></p>
-      <br>
-      <p class="w3-text-light-grey">Join us</p>
-      <p> I am currently recruiting a postdoc, graduate students, and undergraduates.  Interest in the evolution of sex chromosomes or genomic structure or more broadly trait evolution could make you a good fit in the lab.  While most of my work focuses on beetles motivated students wishing to work in other groups or on purely theoretical problems are also welcome.  Please read my <a href="expectations.html" target="_top"> expectations for lab members</a> and then <a href="mailto:coleoguy@gmail.com?Subject=joining the lab" target="_top">contact me</a> for more information.
-      <br>
-      <br>
-      The application deadline for Texas A&amp;M is December 1st.  If you are interested you should email me so we can discuss your potential fit with the lab.  You can become part of the lab through three different degree programs.  There is the traditional <a href="http://www.bio.tamu.edu/index.php/grad/#apply" target="_blank" class="w3-hover-text-red">biology graduate program.</a> However, there are also two interdepartmental programs where you can earn a PhD in either <a href="http://eeb.tamu.edu/" target="_blank" class="w3-hover-text-red">EEB</a> or <a href="http://genetics.tamu.edu/" target="_blank" class="w3-hover-text-red">Genetics.</a>
-      <br>
-      </p>
-      <p class="w3-text-light-grey">Collaborators</p>
-      <a >Rich Adams</a><br>
-      <a href="http://ib.berkeley.edu/labs/bachtrog/" target="_blank" class="w3-hover-text-red">Doris Bachtrog</a><br>
-      <a href="https://brandvainlab.wordpress.com/" target="_blank" class="w3-hover-text-red">Yaniv Brandvain</a><br>
-      <a href="http://www.snakegenomics.org/ToddCastoe/Home.html" target="_blank" class="w3-hover-text-red">Todd Castoe</a><br>
-      <a href="http://www.uta.edu/faculty/demuth/" target="_blank" class="w3-hover-text-red">Jeff Demuth</a><br>
-      <a href="http://www.uta.edu/faculty/mkfujita/" target="_blank" class="w3-hover-text-red">Matt Fujita</a><br>
-      <a href="http://eeg.github.io/lab/home.html" target="_blank" class="w3-hover-text-red">Emma Goldberg</a><br>
-      <a href="http://lauraross.bio.ed.ac.uk/" target="_blank" class="w3-hover-text-red">Laura Ross</a><br>
-  <!-- End people Section -->
-  </div>
-  <!-- news section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-16" id="news">
-    <h2 class="w3-text-light-grey">News</h2>
-      
-    <div class="w3-white"> <div class="w3-dark-grey" style="height:10px;width:0%"></div> </div>
-      <ul type="disc">
-         <li>
-             Twitter News
-              <br>
-              <a class="twitter-timeline" data-width="50%" data-height="250" data-theme="dark" href="https://twitter.com/coleoguy">Tweets by coleoguy</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-              <br>
-              <br>
+        <div class="section-title">
+          <h2>Lab Members</h2>
+        </div>
+          <div>
+        
+              <h4>Principal Investigator</h4>
+              <img src="assets/img/members/heath.jpg" alt="Heath Blackmon" height="160">
+              <p>Heath Blackmon received his PhD in the Demuth lab at the University of Texas at Arlington in 2015 while studying the evolution of sex chromosomes and karyotypes in Coleoptera and invertebrates.  He then transitioned to a postdoc for two years at the University of Minnesota.  While there he collaborated with Emma Goldberg and Yaniv Brandvain on projects spanning population genetics and macroevolution.  Heath opened his own lab at Texas A&amp;M University in the fall of 2017.<a href=blackmon.cv.pdf target="_blank"> CV - October 2019</a></p>
               
-          </li>
-          <li>
-              <strong>Holidays 2018</strong>
-              <br>
-              We had our first Blackmon-Dulin lab christmas party!
-              <br>
-              <img src="images/everyone2018.png" alt="black lighting" class="w3-image" style="width:50%; padding: 0px 10px 10px 0px" >
-              <br>
-              <br>
+              <h4>Research Staff</h4>
+              <p>Tahmineh Esfandani joined the lab in 2020 as a research scientist. She earned a Bachelors degree in 2008 from Azad University of Arak in Iran. She followed this with a masters in genetics and bioinformatics from Trinity College in Ireland. She has a broad background including managing a large mouse colony and extensive wetlab experience working in core facilities at the University of Oregon. Tahmineh is involved in a range of project focused on sex chromosome evolution.</p>
+              
+              <img src="assets/img/members/carl.jpg" alt="Cark Hjelmen" height="160">
+              <p>Carl Hjelmen joined the lab in 2019 as a postdoctoral researcher. Carl's previous work has examined the evolution of genome size and the dynamics of Y chromosome decay across drosophila. He will be working on projects that examine the strucutral evolution of genomes and extending his studies of sex chromosomes in a genomic context. <a href=https://cehjelmen.github.io/ target="_blank" > Carl's website</a></p>
 
-          </li>
-          <li>
-              <strong>Fall 2018</strong>
-              <br>
-              It has been a busy fall but we took time out to go and see the new Freddy Mercury movie (Queen is Amazing).
-              <br>
-              <img src="images/movie.night.2018.gif" alt="black lighting" class="w3-image" style="width:50%; padding: 0px 10px 10px 0px" >
-              <br>
-              <br>
+              <h4>Graduate Students</h4>
+              
+              <img src="assets/img/members/terrence.jpg" height="160">
+              <p>Terrence joined the lab as a biology Ph.D. student in 2017.  He is currently exploring the relationship between sexual systems and rates of chromosome evolution in Phasmatodea.  Terrence has broad interests in evolutionary biology.  He is working to develop a project that will allow him to combine field work with his interest in the evolution of genome complexity and structure.</p>
+    
+              <img src="assets/img/members/michelle.jpg" height="160">
+              <p>Michelle joined the lab as a genetics Ph.D. student in 2018.  She is currently working on a project examining the dynamics of microsat evolution across hexapods.  Michelle has broad interests and extensive experience in forensics.<a href=https://michellejonika.github.io/ target="_blank"> Michelle's website</a></p>
 
-          </li>
-          <li>
-              <strong>Summer 2018</strong>
-              <br>
-              We spent a few weeks in sky islands from West Texas to Arizona this summer.  Our target was further sampling of the genus Chrysina.  We were fortunate to collect all four US species from multiple locations.  These samples are going to let us ask lots of interesting questions about the tempo and mode of genome structural evolution as well as basic conservation questions that have never been addressed in this striking group of beetles.
-              <br>
-              <img src="images/summer-2018-blacklight.JPG" alt="black lighting" class="w3-image" style="width:50%; padding: 0px 10px 10px 0px" >
-              <br>
-              <br>
+    
+              <img src="assets/img/members/jamie.png" height="160">
+              <p>Jamie Alfieri joined the lab in 2020 as a PhD student in Ecology and Evolutionary Biology, and is co-advised with <a href=http://giriathrey.com/ target="_blank"> Giri Athrey</a>. Jamie's previous work has examined the effects of disturbance (urbanization and scavenger exclusion) on invertebrate community ecology. Jamie is broadly interested in connecting genome structure to organism function and community diversity.</p>
+      
+              <h4>Undergraduate Students</h4>
+              
+              <img src="assets/img/members/johnathan.lo.jpg" height="160">
+              <p>Johnathan joined the lab in 2018 and is working on algorithms for genome analysis.</p>
+              
+              <img src="assets/img/members/alli.jpeg" height="160">
+              <p>Alli joined the lab in 2020 and is working on a project focused on building new genome assemblies.</p>
+              
+              <img src="assets/img/members/kayla.jpg" height="160">
+              <p>Kayla joined the lab in 2019 and is working on a project that is focused on the dynamics of autosome sex chromosome fusions.</p>
+              
+              <img src="assets/img/members/julia.jpg" height="160">
+              <p>Julia joined the lab in 2018 and is working on a theory project to understand the evolution of alternative forms of meiosis.</p>
 
-          </li>
-          <li>
-              <strong>June 2018</strong>
-              <br>
-              We took our first lab collecting trip in Davey Crockett National Forest!  The goal for the trip was to collect species for Terrence to include in his survey of repetitive DNA content evolution across invertebrates and to introduce lab members to lots of fundamental insect collecting techniques like sweep netting and black lighting. It was hot, humid, and still, so the collecting was quite good!  We ended the trip with a fantastic Mexican breakfast buffet that Roberto skillfully prepared.
-              <br>
-              <img src="images/2018.b.lab.JPG" alt="lab collecting trip" class="w3-image" style="width:50%; padding: 0px 10px 10px 0px" >
-              <br>
-              <br>
+              
+              
+              <h4>Alumni</h4>
+                           
+              <img src="assets/img/members/sarah.png" height="160">
+              <p>Sarah joned the lab in 2019 to finish up a masters in EEB before heading to Florida to work on her Ph.D. Sarah has broad interests in evolution and behavior. While in the lab her work focused on understanding the genetic underpinnings of dispersal behavior in <i>Tribolium castaneum</i>.</p>
+                                            
+              <img src="assets/img/members/nathan.png" height="160">
+              <p>Nathan was first an undergraduate researcher in the lab for two years and since his graduation in December 2019 has transitioned into a technician position until he begins gaduate school in September of 2020. Nathan has broad interests in population and quantitative genetics as well as phylogenetics.</p>
+                  
+              <img src="assets/img/members/riddhi.JPG" height="160">
+              <p>Riddhi Perkins joined the lab as an undergraduate researcher in 2018. She quickly proved herself so organized and ambitious that she became a part-time lab manager as well. Riddhi's current research projects are focused on understanding the dynamics of chromosome evolution across amphibians.</p>
+                
+              <img src="assets/img/members/andrew.png" height="160">
+              <p>Andrew was a mathematics major and in the lab from 2017-2020 he published a great paper on line cross analysis methods and is now working in the finance industry.</p>
+              
+              <img src="assets/img/members/paulina.png" height="160">
+              <p>Paulina was in the lab from 2018-2020 and worked on several different beetle projects.</p>
+              
+              <img src="assets/img/members/eleanor.jpg" height="160">
+              <p>Eleanor was in the lab from 2018-2020 and worked on a genome size evolution project.</p>
+              
+              <img src="assets/img/members/david.jpeg" height="160">
+              <p>David was in the lab from 2018-2020 and worked on a sexual antagonism project.</p>
 
-          </li>
-          <li>
-              <strong>March 2018</strong>
-              <br>
-              Andrew and Nathan both did a great job presenting posters of their work in the lab at the Texas Genetics Conference.  Andrew presented a poster on our latest updates to the R package SAGA including some exciting extensions to traditional line cross analysis.  Nathan presented the work we have been doing to develop a new approach to detecting contingency in the evolution of binary traits.  Andrew was awarded best undergrad poster at the conference - Congrats Andrew! 
-              <img src="images/TGS.andrew.jpg" alt="Andrew at the Texas Genetic Society" class="w3-image" style="width:50%; padding: 0px 10px 10px 0px" >
-              <br>
-              <br>
+              <img src="assets/img/members/amy.jpg" height="160">
+              <p>Amy was in the lab from 2018-2020 and worked on a sexual antagonism project.</p>
+              
+              <img src="assets/img/members/mayra.jpg" height="160">
+              <p>Mayra was in the lab from 2018-2020 and worked to create new genetic resources in Tribolium.</p>
+              
+              <img src="assets/img/members/roberto.JPG" height="160">
+              <p>Roberto was a summer intern graduate student in the summer of 2018 he worked on a phylogeny project.</p>
+              
+          
 
-          </li>
-          <li>
-              <strong>October 2017</strong>
-              <br>
-              Read a bit more about the lab, my background, and plans for the future on the TAMU Biology website: <a href="http://www.bio.tamu.edu/index.php/2017/10/10/fs-blackmon/" target="_blank" class="w3-hover-text-red">Faculty spotlight</a>
-              <br>
-              <br>
-               We now have a bright shiny new Invictus incubator from Genesee Scientific.  This large incubator is where we keep all of our permanent population lines.  Soon we should get our second incubator that will be used for experimental lines.
-              <br>
-              <img src="images/invictus.jpg" alt="Crysina" class="w3-image" style="width:50%; padding: 0px 10px 10px 0px" >
-              <br>
-              <br>
+          </div>
 
-          </li>
-          <li>
-              <strong>August 2017</strong> 
-              <br>
-              The outcome of evolution is critically dependent on the nature of natural populations.  Are most species well characterized as large panmictic populations or do most species occur as many disjunct demes with limited gene flow?  This question is especially important for species like those in the genus <i>Chrysina</i> that are highly sought after by collectors.  If the population of one canyon is lost can they repopulate from another adjacent canyon or mountain range? This summer we collected all four species of north American <i>Chrysina</i>.  These beetles occur in West Texas, Arizona, and New Mexico.  Over the coming year, we will determine the degree to which gene flow occurs among the populations that we have sampled.
-              <br><br>
-              <br>
-              <img src="images/chrysina.png" alt="Crysina" class="w3-image" style="width:75%; padding: 0px 10px 10px 0px" >
-              <br>
-              <br>
-          </li>
-          <li>
-              <strong>June 2017</strong>
-              The GSA did a nice write up on my plans for the lab on their <a href="http://genestogenomes.org/early-career-scientist-leadership-spotlight-heath-blackmon/" target="_blank" class="w3-hover-text-red">Genes to Genomes blog.</a>
-          </li>
-        <br>
-      </ul>
-      <br>
-      <br>
-    </div>
-    <div class="w3-content w3-justify w3-text-grey w3-padding-16" id="calendar">
-    <h2 class="w3-text-light-grey">Calendar</h2>
-    <div class="w3-white"> <div class="w3-dark-grey" style="height:10px;width:0%"></div> </div>
+
+      </div>
+    </section><!-- End Skills Section -->
+
+    <!-- ======= Resources Section ======= -->
+    <section id="resources" class="resume">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Resources</h2>
+          <p>We devote a fair amount of our efforts to producing new datasets, software, and resources for both research and teaching. If you have any questions about these projects please dont hesitate to contact us for additional information.</p>
+        </div>
+
+
+      <h4>Teaching</h4>
+          
+      <p><a href="http://coleoguy.github.io/expdes" target="_blank">Experimental Design Course</a>
+      This course is intended to provide a foundation in the proper design of scientific research projects in the field of biology. A wide range of biological experiments are covered, and each type of experiment is explored with an eye toward choosing the appropriate statistical technique for analysis. By the end of the course, successful students will be able to design biological studies that are statistically tractable and perform basic statistical analyses using the programming language R.</p>
+          
+      <p><a href="rseminar/index.html" target="_blank">R for biologists seminar:</a> R is currently an essential tool for most evolutionary biologists.  This seminar includes tutorials and example datasets for many basic analyses in R that are commonly encountered in ecology and evolution.  The seminar starts off with the most basic steps (installation) so no prior experience is needed to use these exercises.</p>
+      
+      <p><a href="reading.group/index.html" target="_blank">Foundations of evolutionary biology:</a> An understanding of the foundational ideas that the modern synthesis of evolutionary biology is built on is essential for asking intelligent questions and understanding how your research fits into a larger understanding of life.  I offered a foundations of evolutionary biology seminar course for graduate students that provided a structured environment to discuss some of the most important papers in evolutionary biology. This website contains a schedule and PDF files for all of the readings in this course.</p>
+          
+      <p><a href="https://github.com/coleoguy" target="_blank">GitHub software repository:</a> I do most all of my development and analyses in public repositories.</p>
+      
+      <h4>R packages</h4>
+          
+      <p><a href="https://github.com/coleoguy/evobir" target="_blank">evobiR</a> is a collection of R functions that I have developed for different projects. The functions in this package can be loosely organized into either analysis of empirical data, simulation functions, or those created primarily for didactic purposes. A <a href="http://coleoguy.github.io/evobir.html" target="_blank">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/evobir" target="_blank">here</a>.</p>
+          
+      <p>The package <a href="https://github.com/coleoguy/SAGA2" target="_blank">SAGA</a> is a collection functions to ease and hopefully improve the quality of line cross analysis of genetic architecture. The overall goal is to allow for an easy and straightforward implementation of model averaged analysis using AICc. A <a href="http://coleoguy.github.io/saga.pdf" target="_blank">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/SAGA" target="_blank">here</a>.</p>
+          
+      <h4>Databases</h4>
+          
+      <p><a href="http://coleoguy.github.io/karyotypes/" target="_blank">Karyotype Databases:</a> Karyotypes are a highly variable and complex trait that offers an opportunity to detect changes in genome organization, uncover phylogenetic history, and distinguish cryptic species. The current databases contains more than 8,000 records for amphibians, coleoptera, and polyneoptera. The databases allows users to select the records that they wish to retrieve based on either taxonomy or trait values and builds customized tables of the results in a new window.</p>
+          
+      <p>The <a href="http://www.treeofsex.org" target="_blank">Tree of Sex Database:</a> this is a product of a working group sponsored by the National Evolutionary Synthesis Center which sought to compile all information on sex determination systems across the tree of life.  To date, we have collected over 30K records including more than 10K invertebrates.  Much like the Coleoptera Karyotype Database, our goal is to make this data widely available allowing researchers across the globe to use data that was previously difficult to collect. </p>
+                  
+      </div>
+    </section><!-- End Resume Section -->
+
+    <!-- ======= Calendar Section ======= -->
+    <section id="calendar" class="portfolio section-bg">
+      <div class="container">
+          
+          <p>If you need to scedule an appointment with me the best approach is to pick a time that is not currently blocked out and then email me asking to meet at that time. I am not guranteed to be in my office unless you let me know you will be coming by (I often work in coffee shops!)</p>
 
         <iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=coleoguy%40gmail.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="100%" height="500" frameborder="0" scrolling="no"></iframe>
       
       
-      <br>
-      <br>
-      <br>
+
+          
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= News Section ======= -->
+    <section id="news" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Lab News</h2>
+            <p>For the latst happenings check out our twitter feed below.</p>
+        </div>
+          
+<a class="twitter-timeline" data-width="400" data-height="500" href="https://twitter.com/coleoguy?ref_src=twsrc%5Etfw">Tweets by coleoguy</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Joining Section ======= -->
+    <section id="joining" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Joining the lab</h2>
+            <p>We are always seeking new students that can bring diversity, enthusiasm, and dedication into the lab.</p>
+        </div>
+          <p>We believe strongly in the importance of creating an inclusive supportive environment for all lab members. To achieve this we ask all lab members to sign a document that makes explicit our expectations for all lab members. This document includes the following statements:</p>
+          <ul>
+          <li>I will participate in weekly lab meetings and journal clubs.</li>
+          <li>I will attend departmental and IDP seminars.</li>
+          <li>I will prepare for our regular progress/pitfalls meetings</li>
+          <li>I will proof-read manuscripts from other lab members.</li>
+          <li>I will maintain a set of lab notes, including directories of data, annotated codes and versions, detailed methods. Lab notes will be sufficient to reproduce results without additional instructions.</li>
+          <li>I will participate in general lab responsibilities (beetle maintenance, maintain common areas, community outreach events).</li>
+          <li> As a graduate student I will be available in the lab/office most days from 9:00 – 17:00. </li>
+          <li>As an unergraduate researcher I devote a minimum of 10 hours a week to research and I will make a two semester commitment to work in the lab.</li>
+          <li>I value diversity in intellectual background, race, sex, and identity.</li>
+          <li>I will treat all others with respect and dignity.</li>
+          </ul>
+
+              
+If you are interested in joining the lab please email Dr. Blackmon (blackmon@tamu.edu) to schedule a meeting.
+
+
+          
+          
+      </div>
+    </section><!-- Joining Section -->
+
+
+     
+      
+    
+    <!-- ======= Lab Pics Section ======= -->
+    <section id="labpics" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Lab Pictures</h2>
+        </div>
+
+       <div class="row">
+          <div class="col-sm col-md-4">
+               <p><img src="assets/img/labpics/1.png" height="200"><br>
+                  Evolution Conference 2019</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/2.png" height="200"><br>
+                  Riddhi decorated the lab door for us</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/3.png" height="200"><br>
+                  Late night tacos after collecting</p>
+          </div>
+          </div>
+          
+       <div class="row">
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/6.png" height="200"><br>
+                  Searching for tiger beetles in Willcox AZ</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/4.png" height="200"><br>
+                  Lab Christmas 2019</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/5.png" height="200"><br>
+                  No beetle is out of reach with this net</p>
+          </div>
+          </div>
+          
+       <div class="row">
+          <div class="col-sm col-md-4">
+               <p><img src="assets/img/labpics/7.png" height="200"><br>
+                  Bernice</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/8.png" height="200"><br>
+                  Looking for Mordellidae</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/9.png" height="200"><br>
+                  East Texas collecting trip</p>
+          </div>
+          </div>
+          
+       <div class="row">
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/10.png" height="200"><br>
+                  I'm too slow</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/11.png" height="200"><br>
+                  Prada in West Texas</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/12.png" height="200"><br>
+                  Setting up lights for a night of collecting</p>
+          </div>
+          </div>
+          
+       <div class="row">
+          <div class="col-sm col-md-4">
+               <p><img src="assets/img/labpics/13.png" height="200"><br>
+                  LT checking the sheets for bugs</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/14.png" height="200"><br>
+                  2019 collecting during monsoons in AZ was productive</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/15.png" height="200"><br>
+                  Lots of these signs around field sites in AZ</p>
+          </div>
+          </div>
+          
+       <div class="row">
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/16.png" height="200"><br>
+                  Inaugral Aggie Vets Who Code Class</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/25.png" height="200"><br>
+                  Abbi caught a lot of giant millipedes</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/18.png" height="200"><br>
+                  Checking out aliend artifacts in Roswell</p>
+          </div>
+          </div>
+          
+       <div class="row">
+          <div class="col-sm col-md-4">
+               <p><img src="assets/img/labpics/19.png" height="200"><br>
+                  Terrence finding the only shade in White Sands</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/20.png" height="200"><br>
+                  Nellie was one of our first lab members</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/21.gif" height="200"><br>
+                  Movie night</p>
+          </div>
+          </div>
+          
+       <div class="row">
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/22.png" height="200"><br>
+                  Carl sand surfing</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/26.png" height="200"><br>
+                  Social distancing but still spending time together</p>
+          </div>
+          <div class="col-sm">
+               <p><img src="assets/img/labpics/27.png" height="200"><br>
+                  Terrence checking out a tarantula</p>
+          </div>
+          </div>
+          
+        </div>
+    </section><!-- Lab pics Section -->
+
+  
       
       
-                
-                
       
 
-      
-      <p>  
-      </p>
-      <p> 
-      </p>
-      <!-- End field Section -->
-    </div>
-    <!-- Footer -->
-<!-- END PAGE CONTENT -->
-</div>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
 </body>
+
 </html>
