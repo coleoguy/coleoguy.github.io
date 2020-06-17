@@ -1,91 +1,79 @@
 <!DOCTYPE html>
-<html>
-<title>Experimental Design</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-<meta name="keywords" content="statistics, R, bioinformatics, mathbio, analysis of biological data">
-<meta name="author" content="Heath Blackmon">    
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<link rel="stylesheet" href="hlb.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="shortcut icon" href="images/favicon.ico" />
+  <title>Experimental Design</title>
+  <meta content="This biostatistics class is designed for first year life sciences graduate students" name="descriptison">
+  <meta content="biostats R" name="keywords">
+
+  <!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+    
+    
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="assets/img/labpics/33.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Blackmon Lab</a></h1>
+      </div>
+
+      <nav class="nav-menu">
+        <ul>
+          <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#research"><i class="bx bx-bulb"></i> <span>Research</span></a></li>
+          <li><a href="#publications"><i class="bx bx-file-blank"></i> <span>Publications</span></a></li>
+          <li><a href="#resources"><i class="bx bx-server"></i> Resources</a></li>
+          <li><a href="#members"><i class="bx bx-user"></i> Members</a></li>
+          <li><a href="#calendar"><i class="bx bx-calendar"></i> Calendar</a></li>
+          <li><a href="#news"><i class="bx bx-news"></i> News</a></li>
+          <li><a href="#joining"><i class="bx bx-user-plus"></i> Joining</a></li>
+          <li><a href="#labpics"><i class="bx bx-camera"></i> Pictures</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+    </div>
+  </header><!-- End Header -->
 
 
-<style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
-</style>
-<body class="w3-black">
+    
+  <main id="main">
 
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-<!-- Avatar image in top left corner -->
-<img src="images/TAMU-white.png" alt="Texas A&M logo" style="width:100%">
 
-<a href="index.html#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-<p>Home</p>
-</a>
-<a href="index.html#research" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-<p>Research</p>
-</a>
-<a href="index.html#publications" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-<p>Publications</p>
-</a>
-<a href="index.html#resources" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-<p>Resources</p>
-</a>
-<a href="index.html#people" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-<p>People</p>
-</a>
-<a href="index.html#news" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-<p>News</p>
-</a>
-</nav>
+      
+<section id="research" class="resume">
+<div class="container">
+     <h2>Experimental Design</h2>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-<div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-<a href="index.html#" class="w3-bar-item w3-button" style="width:25% !important">Home</a>
-<a href="#index.htmlresearch" class="w3-bar-item w3-button" style="width:25% !important">Research</a>
-<a href="#index.htmlpublications" class="w3-bar-item w3-button" style="width:25% !important">Publications</a>
-<a href="#index.htmlresources" class="w3-bar-item w3-button" style="width:25% !important">Resources</a>
-<a href="#index.htmlpeople" class="w3-bar-item w3-button" style="width:25% !important">People</a>
-<a href="#index.htmlnews" class="w3-bar-item w3-button" style="width:25% !important">News</a>
-</div>
-</div>
-
-<!-- Page Content -->
-
-<div class="w3-padding-large" id="main">
-
-<!-- Header/Home -->
-<header class="w3-container w3-center w3-black" id="home">
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-15744659-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-15744659-3');
-</script>
-
-<h1 class="w3-jumbo">Experimental Design</h1>
-<h3 class="w4-jumbo">Bio683</h3>
-<img src="images/distros.png" alt="data" class="w3-image" width="45%">
-</header>
-
-<!-- Who we are -->
-<div class="w3-content w3-justify w3-text-grey w3-padding-64" id="wwa">
-  <p class="w3-text-light-grey">Learning Objective</p>
+  <h4>Learning Objective</h4>
   <p>
       This course is intended to provide a foundation in the proper design of scientific research projects in the field of biology. A wide range of biological experiments will be covered, and each type of experiment will be explored with an eye toward choosing the appropriate statistical technique for analysis. By the end of the course, successful students will be able to design biological studies that are statistically tractable and perform basic statistical analyses using the programming language R.
       <br>
@@ -99,18 +87,13 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       <br>
       <br>
       <a href="https://evobir.shinyapps.io/StudentSelection/" target="_blank" class="w3-hover-text-red">Random Student Selector</a>
-
 </p>
-
-  
-    <table style="width:100%">
-        
+    <table style="width:90%"> 
         <tr>
             <th>Week</th>
             <th>Topic</th> 
             <th>Reading</th>
-        </tr>
-        
+        </tr>  
         <tr>
             <td>
                 1
@@ -293,31 +276,114 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             </td>
         </tr>
     </table>
-    
-    <p class="w3-text-light-grey">Final exam files</p>
+    <h4>Final exam files</h4>
     <p>
     <a href="teaching/expdes/test.frogs.csv" target="_blank" class="w3-hover-text-red">test.frogs.csv</a><br>
     <a href="teaching/expdes/test.log.csv" target="_blank" class="w3-hover-text-red">test.log.csv</a><br>
     <a href="teaching/expdes/test.dispersal.csv" target="_blank" class="w3-hover-text-red">test.dispersal.csv</a><br>
-    <a href="teaching/expdes/test.contact.maps.csv" target="_blank" class="w3-hover-text-red">test.contact.maps.csv</a><br>
-    
-    
+    <a href="teaching/expdes/test.contact.maps.csv" target="_blank" class="w3-hover-text-red">test.contact.maps.csv</a><br>    
     </p>
-    
-    
-                    
-
-    
-  
-    <p class="w3-text-light-grey">Extra Resources</p>
+    <h4>Extra Resources</h4>
     <p>
         <a href="https://google.github.io/styleguide/Rguide.xml" target="_blank" class="w3-hover-text-red ">Google R style guide</a><br>   
         <a href="http://coleoguy.github.io/teaching/expdes/cheat-sheet.pdf" target="_blank" class="w3-hover-text-red">R cheat sheet</a>
         <a href="http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3" target="_blank" class="w3-hover-text-red">color brewer</a>
-     <!--   <a href="http://coleoguy.github.io/teaching/expdes/" target="_blank" class="w3-hover-text-red  lkn-is-disabled">Review sheet for exam 1</a><br>
-        <a href="http://coleoguy.github.io/teaching/expdes/" target="_blank" class="w3-hover-text-red  lkn-is-disabled">Review sheet for exam 2</a><br> -->
     </p>
-</div>
+          </div>
+ </section>    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
 <!-- Footer -->
 <!-- END PAGE CONTENT -->
 </div>
