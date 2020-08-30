@@ -1,0 +1,41 @@
+.blog-entry-title a:hover, a:link, a:visited {
+	text-decoration: underline;
+	color: #e94d59;
+}
+
+a:hover, a:active {
+	text-decoration: none;
+}
+
+#navcontainer #current {
+	color: #ea4759;
+}
+
+#navcontainer ul ul a {
+	color: #ea4759;
+}
+
+#navcontainer ul ul ul a{
+	color: #f7a8b4;
+}
+/*
+     FILE ARCHIVED ON 10:03:21 Jan 06, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 04:55:27 Aug 30, 2020.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  exclusion.robots: 0.331
+  PetaboxLoader3.resolve: 57.246 (2)
+  esindex: 0.022
+  CDXLines.iter: 21.923 (3)
+  exclusion.robots.policy: 0.312
+  captures_list: 94.644
+  load_resource: 38.043
+  RedisCDXSource: 1.033
+  PetaboxLoader3.datanode: 40.847 (4)
+  LoadShardBlock: 66.571 (3)
+*/
