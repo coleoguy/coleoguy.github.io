@@ -114,6 +114,7 @@ ui <- fluidPage(
                                                 "Female diploid number",
                                                 "Male diploid number",
                                                 "Reproductive mode",
+                                                "Genotypic mode",
                                                 "Sex chromosome system",
                                                 "Citations"
                                     ), selected = c("Taxonomy","Female diploid number",
@@ -219,6 +220,7 @@ server <- function(input, output) {
     if("Male diploid number" %in% input$col.pic) x <- c(x, 7)
     if("Reproductive mode" %in% input$col.pic) x <- c(x, 9)
     if("Sex chromosome system" %in% input$col.pic) x <- c(x, 10)
+    if("Genotypic mode" %in% input$col.pic) x <- c(x, 11)
     if("Citations" %in% input$col.pic) x <- c(x, 30)
     x <- sort(x)
     return(x)
