@@ -1,0 +1,95 @@
+---
+title: "Fun With Monte Carlo Simulations"
+author: "Heath Blackmon"
+date: "2/26/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Monte Carlo Simulation
+
+In all of the statistical tests that we use we calculate a statistic. Remember this could be something as simple as the mean of our sample 
+$$\mu=\frac{\sum x_i}{n}$$
+or something much more complex like the F statistic
+$$f=\frac{\frac{\sum_{j=1}^{p}n_j(\overline{x}_j-\overline{x})^2}{df_{ssb}}}{\frac{\sum_{j=1}^{p}n_j\sum_{i=1}^{n_j}n_j(\overline{x}_{ij}-\overline{x}_j)^2}{df_{ssw}}}$$ 
+that we calculate (or let R calculate for us) when doing an ANOVA. In every one of these cases the challenge is to compare this statistic to the distribution of expected values for the statistic when the null model is truly what is generating our data. Let's think about an example. I believe that half of all the children that are born should be female and half should be male. Do you know what statistical test you could do to answer this question? Hopefully you quickly in your head said a binomial test! Let's look at this straightforward example in R:
+
+```{r}
+# here is the proportion of females in 1000 births in college station
+fem.births <- 532
+binom.test(fem.births, 
+           n = 1000, 
+           p = .5)
+
+```
+
+What R did here was use formulas that describe the expected number of successes (female births) given equal opportunity for either male of female births (50% - my null model) and tell us how often we would see this many female births in a sample of 1000 individuals that actually have an equal probability of being either sex. Now lets look at how we would answer this with a simple Monte Carlo:
+
+```{r}
+# this is our observed statistic
+fem.births <- 532 
+# this will hold our results from the Monte Carlo
+null.dist <- c()
+for(i in 1:10000){
+  # this performs our experiment under the null model
+  sim <- sample(c("f","m"), 
+                size = 1000, 
+                replace = T, 
+                prob = c(.5, .5))
+  # here we store the statistic value from the
+  # simulated experiment
+  null.dist[i] <- sum(sim == "f")
+}
+# now we can compare our result to this null
+# distribution
+emp.pval <- sum(null.dist >= fem.births) / 10000
+emp.pval
+```
+
+So why is your pvalue different from what you got with the binomial test? Hopefully, you immediately started thinking about some kind of weird one-sided two-sided thing that we have talked about before. The answer is that above in the code I asked how often we would expect to see this many females or more. In contrast, the binomial test asked how often would we expect to see this extreme of a result lets see if we can get the binomial test to return the same result:
+
+```{r}
+# here is the proportion of females in 1000 births in college station
+fem.births <- 532
+binom.test(fem.births, 
+           n = 1000, 
+           p = .5, 
+           alternative = "greater")
+```
+
+So now these tests are in pretty good agreement with one another - great! Just to convince you I'm not cheating or anything we could have done the same thing with Monte Carlo lets illustrate that as well:
+
+```{r}
+# this is our observed statistic
+fem.births <- 532 
+# this will hold our results from the Monte Carlo
+null.dist <- c()
+for(i in 1:10000){
+  # this performs our experiment under the null model
+  sim <- sample(c("f","m"), 
+                size = 1000, 
+                replace = T, 
+                prob = c(.5, .5))
+  # here we store the statistic value from the
+  # simulated experiment
+  null.dist[i] <- sum(sim == "f")
+}
+# now we can compare our result to the null
+# distribution
+
+# the central limit theorem tells us that the
+# distribution of our statistic must be normal
+# in this case so what we can do is just multiply 
+# our sum by two to capture the cases where we had
+# this much of an excess in male births
+emp.pval <- sum(null.dist >= fem.births)*2 / 10000
+
+emp.pval
+```
+
+## Todays Exercise fun with Monte Carlos!
+### Retrogenes
+This dataset shows the number of new gene duplicates that have been created by each chromosome and the number of new retrogenes that are present on each chromosome. Chromosome 2 has recently fused with the sex chromosomes and I think it may be special use the data and a Monte Carlo to test my hypothesis. Take into account the number of genes and the size of each chromosome.
