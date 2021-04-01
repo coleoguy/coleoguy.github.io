@@ -23,8 +23,12 @@ site1 <- round(rnorm(15, mean=10, sd=4))
 site2 <- round(rnorm(23, mean=13, sd=4))
 dat <- data.frame(c(site1, site2),
                   c(rep(1, 15), rep(2, 23)))
+dat <- read.csv("mite.count.csv")
 colnames(dat) <- c("count", "site")
-t.test(site1, site2)
+t.test(dat$count[dat$site == 1], dat$count[dat$site == 2])
+fit <- glm(dat$count~as.factor(dat$site), family = "poisson")
+fit <- glm(dat$count~dat$site, family = "poisson")
+summary(fit)
 write.csv(dat, file="mite.count.csv")
 
 # You are interested in the impact of different feeds on
@@ -63,6 +67,9 @@ offspring <- rnorm(sampsize, mean = (body.length*.25), sd=.25) +
 dat <- data.frame(ID, offspring, body.length, color.int, strain)
 plot(dat)
 dat$offspring <- round(dat$offspring)
+dat <- read.csv("betta.csv")
 fit <- glm(dat$offspring ~ dat$body.length + dat$color.int + dat$strain)
+fit <- glm(dat$offspring ~ (dat$body.length + dat$color.int + dat$strain)^3)
+step(fit)
 summary(fit)
 write.csv(dat, "betta.csv")

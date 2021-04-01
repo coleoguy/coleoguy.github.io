@@ -57,13 +57,18 @@ fit
 h <- c(rep("hd", 6), rep("hs", 6),rep("hd", 6), rep("hs", 6))
 gd <- c(.97, .78, .99, .87, .91, .89, .61, .87,.88, .78, .80, .37)
 gs <- c(.56, .95,.73, .81, .89, .64, .77, .95,.93, .95, .89, .94)
-dat <- data.frame(c(gs,gd),
+dat <- data.frame(c(gd,gs),
                   h,
                   rep(c("gd","gs"),each=12))
 colnames(dat) <- c("fitness", "habitat", "genotype")
-fit <- anova(lm(dat$fitness ~ dat$habitat * dat$genotype))
-fit <- glm(dat$fitness ~ dat$habitat * dat$genotype)
-summary(fit)
+dat2 <- dat
+dat2$habitat <- as.factor(dat2$habitat)
+dat2$genotype <- as.factor(dat2$genotype)
+library(car)
+fit1 <- lm(dat2$fitness ~ dat2$habitat * dat2$genotype)
+fit2 <- Anova(lm(dat2$fitness ~ dat2$habitat * dat2$genotype), type="III")
+summary(fit1)
+fit2
 
 # You measure reproductive success of fish in your study you use fat
 # body measure as a correlate of health and record sex
