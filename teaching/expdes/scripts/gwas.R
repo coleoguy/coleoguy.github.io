@@ -28,7 +28,7 @@ chosenSNPs <- sample(1:4000, 4)
 # now we create our phenotype measured for each individual
 # based on the genotype that they carry at the 4 loci chosen
 y <- rnorm(200, mean=2*rowSums(dat[, chosenSNPs]-1), sd=1)
-
+plot(y~dat[,2177])
 
 # now lets see if we can recover this by running a GWAS
 pvals <- c()
@@ -58,7 +58,7 @@ sum(pvals<0.05)
 # goes to zero the -log of the number begins to increase disproportionately
 logged <- -1*log(seq(from=0.0000001, to=1, length.out = 4000))
 unlogged <- seq(from=0.0000001, to=1, length.out = 4000)
-plot(logged~unlogged)
+plot(logged~unlogged, xlim=c(0,.05))
 
 # ok so lets look at the pvalues from our GWAS
 plot(-1*log(pvals, base=10), cex=.1, ylab="-log10(pvalue)")
@@ -70,7 +70,7 @@ for(i in 1:4){
 
 # this is that arbitrary cutoff I mentioned
 abline(h=-1*log(5*10^-8, base=10),lty=3)
-
+which(pvals<5*10^-8)
 # our ability to detect a SNPs contribution are
 # dependent on genotype frequencies in our
 # sample.
