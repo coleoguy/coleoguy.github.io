@@ -1,0 +1,69 @@
+---
+title: "Mid Term Exam"
+author: "Your Name"
+date: "2/27/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+For section 1 and 2 give short answers **one or to two sentences at most** for each question:
+
+
+
+### Section 1 (20 points)
+
+What is a p-value?
+
+What is the differnce in a statistic and a parameter?
+
+Describe one of the causes of the reproducibility crisis.
+
+Why do we have to correct for multiple comparisons?
+
+In Bayesian analyses what is a prior?
+
+### Section 2 (20 points)
+
+What is the default null hypothesis of a two sample t-test?
+
+What is the null hypothesis of an ANOVA?
+
+You perform an experiment where chickens are fed corn, mixed seed, and a commercial diet. The chickens have final mean weights of 0.53, 0.69, and 0.41 kilograms respectively. You run an ANOVA on this data and get a p-value of 0.0012. What is your interpretation of this result?
+
+
+### Section 3 (20 points)
+
+Report the probability of observing 18 or more retrogenes (offspring) on chromosome 1. Download the data (retrogene.csv) analyze it and write **two sentences** describing what you did, the result, and your inference.
+
+```{r}
+# write your code for this question here
+
+```
+
+
+REPLACE THIS TEXT WITH YOUR TWO SENTENCES 
+
+### Section 4 (20 points)
+
+A researcher was intersted in whether differences in fishing practices in Canada and the US have an impact on the size of fish present on the shores of lake superior. Download the data (fish.csv) analyze it (using the simplest appropriate test) and write **two sentences** describing what you did, the result, and your inference.
+
+
+```{r}
+# write your code for this question here
+
+```
+
+
+REPLACE THIS TEXT WITH YOUR TWO SENTENCES 
+
+
+### Section 5 (20 points)
+
+Download the data file fins.csv and make a plot that does a good job of illustrating the difference in data from males and females. The plot should be publication quality.
+
+### Extra Credit (20 points)
+
+You develop a test based on expression profiles that can predict the developmental fate of two closely related neural progenitor cells as either motor or sensory. The test has 99% probability of correctly predicting development of a motor neuron and a 50% probability of correctly predicting the development of a sensory neuron. What is the proability that a cell predicted by your test to develop into a motor neuron will actually develop as a motor neuron?

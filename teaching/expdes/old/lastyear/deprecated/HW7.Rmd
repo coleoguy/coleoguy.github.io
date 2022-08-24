@@ -1,0 +1,144 @@
+---
+title: "HW7"
+author: "Heath Blackmon"
+date: "3/8/2018"
+output: 
+  html_document:
+    toc: TRUE
+    tocdepth: 5
+---
+# Dataset 1
+
+The	first	dataset (oaks.csv) that	we	are	going	to	look	at	is	a	study	on	the	impact	of	temperature	and	precipitation	on	the	fauna	
+of	ancient	oak	trees	in	Europe.		
+
+The	dataset	includes	6	columns:
+1. Country
+2. Tree	circumference
+3. Mean	temperature	of	the	warmest	quarter	
+4. Mean	precipitation	during	the	warmest	quarter
+5. Number	of	specialist	species	found
+6. Number	of	generalist	species	found
+
+## problem 1
+Identify	one	positive	and	one	negative	correlate	of	the	number	of	specialist	species	found	in	each	tree.
+```{r}
+oak <- read.csv("Dropbox/gitrepos/coleoguy.github.io/teaching/expdes/hw-labs/data/oaks.csv")
+
+cor.test(x=oak$specialist, y=oak$Circumference)
+cor.test(x=oak$specialist, y=oak$MeanTempWarmestQuart)
+cor.test(x=oak$specialist, y=oak$MeanPrecipWarmestQuart)
+
+```
+
+Using `cor.test` we find that temperature is positively correlated with number of specialists and that precipitation is negatively correlated with number of specialists.  You may have chosen to first transform the data in some fashion to increase normality.  In my exploration I didn't find these very helpful and they did not change my conclusions from the cor.test.
+
+## problem 2
+Find	the	strongest	correlate of	total	number	of	species	found	on	a	tree.		Plot	your	result	and	report	your	statistical	test.
+
+```{r}
+tot.sp <- oak$specialist+oak$generalist
+cor.test(x=tot.sp, y=oak$Circumference)
+cor.test(x=tot.sp, y=oak$MeanTempWarmestQuart)
+cor.test(x=tot.sp, y=oak$MeanPrecipWarmestQuart)
+plot(x=jitter(oak$MeanTempWarmestQuart, factor=3),
+     y=jitter(tot.sp, factor=3), 
+     col=rgb(1,0,.2,.75),
+     cex.lab=.7,
+     cex.axis=.6,
+     cex=.5,
+     pch=16,
+     ylab="Species count",
+     xlab="Mean temp. warmest quarter")
+abline(h=mean(tot.sp))
+abline(v=mean(oak$MeanTempWarmestQuart))
+```
+
+Using Pearson's correlation test we detect a significant correlation *p* < 0.001 and *R* = 0.33.
+
+# Dataset 2
+
+The	second	dataset (litter.csv) that	we	will	be	looking at	today	is	focused	on	the	impact	of	scavenging	macroinvertebrates on leaf	litter	decay.
+
+## Problem 3
+Use	what	you	have learned to analyze	this	dataset	and	make a statement about	the	impact of macroinvertebrates on leaf litter	decay.
+```{r}
+lit <-  read.csv("Dropbox/gitrepos/coleoguy.github.io/teaching/expdes/hw-labs/data/litter.csv")
+# really interested in the change
+delta.mass <- lit$initial_mass - lit$final_mass
+lit <- cbind(lit, delta.mass)
+
+# as always VISUALIZE the data
+stripchart(lit$delta.mass~lit$treatment,vertical=TRUE,method="jitter", pch=16, cex=.5,xlab="invertebrates excluded", ylab="mass loss")
+```
+
+My description of what these treatments were was a bit confusing sorry about that!  What I wanted you to do though was find which if any of these are different and in this case we have blocking that we can take into account. Here is how we do that:
+
+```{r}
+fit <- lm(lit$delta.mass ~ lit$treatment + lit$block)
+summary(aov(fit))
+```
+This shows us a significant effect of treatment but not block.  We could also check if we met some of the anova assumptions
+```{r}
+library(car)
+leveneTest(lit$delta.mass~lit$treatment)
+```
+So our variances are not really very different good there. Lets follow up that anova with the Tukey test
+```{r}
+TukeyHSD(aov(fit))
+```
+
+Taking this all together we should feel good about our ANOVA and we should say that the small treatment is significantly different than the other two.
+
+# Dataset 3
+
+The	final	dataset	(fish.csv)	for	today	looks	at	the	fitness	of	fish	from	two	different	habitats	(open	water	and	shallow	water).
+
+## problem 4
+What	is	the	name for	this	type	of	experimental	design
+
+Full factorial
+
+```{r}
+fish <-  read.csv("Dropbox/gitrepos/coleoguy.github.io/teaching/expdes/hw-labs/data/fish.csv")
+# really interested in the change
+delta.mass <- fish$mass_2 - fish$mass_1
+fish <- cbind(fish, delta.mass)
+
+# as always VISUALIZE the data
+plot(0,0,col="white",
+           ylim=c(-2,5),
+           xlim=c(.75,1.75),
+           pch=16, 
+           cex=.5,
+           xlab="Test Environment", 
+           ylab="growth",xaxt="n")
+# overplot to get different color by native niche
+oo <- mean(fish$delta.mass[1:50])
+os <- mean(fish$delta.mass[51:100])
+so <- mean(fish$delta.mass[101:150])
+ss <- mean(fish$delta.mass[151:200])
+points(pch=22,x=1,y=oo,bg="gold", col="black")
+points(pch=22,x=1,y=so,bg="gold", col="black")
+points(pch=22,x=1.5,y=os,bg="gold", col="black")
+points(pch=22,x=1.5,y=ss,bg="gold", col="black")
+x <- jitter(rep(1,50),factor=3)
+points(x=x, y=fish$delta.mass[1:50],pch=16,cex=.5,col=rgb(1,0,0,.5))
+points(x=x, y=fish$delta.mass[101:150],pch=16,cex=.5,col=rgb(0,0,0,.5))
+x <- jitter(rep(1.5,50),factor=3)
+points(x=x, y=fish$delta.mass[51:100],pch=16,cex=.5,col=rgb(1,0,0,.5))
+points(x=x, y=fish$delta.mass[151:200],pch=16,cex=.5,col=rgb(0,0,0,.5))
+lines(x=c(1,1.5), y=c(oo, os))
+lines(x=c(1,1.5), y=c(so, ss))
+axis(side=1, at=c(1,1.5),labels=c("open\nwater", "shallow\nwater"), tick = F)
+```
+
+## problem 5
+Is	there	an	interaction	between	the	type	of	habitat	fish	are	from	and	their	performance in	a	new	habitat?
+
+Yes the lines cross so we can interpet this as an interaction.
+
+## problem 6	plot	this	dataset
+
+See above
+
