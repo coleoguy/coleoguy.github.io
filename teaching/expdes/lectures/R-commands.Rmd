@@ -1,0 +1,93 @@
+---
+title: "R Commands"
+author: "Heath Blackmon"
+date: '2022-09-12'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R functions you must be able to use
+
+This is a document that I will grow as the semester progresses it includes all operators and functions that we have used and that you are responsible for being able to use in your work
+
+## Operators
+
+`+`     adds two values together
+
+`**`    exponentiation 
+
+`^`     exponentiation
+
+`/`     division
+
+`%%`    modulo division
+
+`<-`    assigns a value to a variable
+
+`:`     provides a range of numbers
+
+`[]`    access part of a vector, dataframe, or matrix
+
+`[[]]`  access part of a list
+
+`()`    provide arguments to a function
+
+`==`    test for equality
+
+`!=`    test for inequality
+
+`%in%`  is the item on the left present in the item on the right
+
+
+## Functions
+
+### Creating data structures
+
+`c`             concatenates things into a vector
+
+`matrix`        creates a matrix
+
+`cbind`         combine vectors as columns of a matrix
+
+`rbind`         combine vectors as the rows of a matrix
+
+`rep`           replicate something
+
+`data.frame`    create a dataframe
+
+### Control structures
+
+`for`           perform a block of code more than once
+
+`if`            perform a block of code under some conditions
+
+`while`    perform a block of code as long as a condition is true
+
+### Distributions
+
+`rnorm`         provide samples from a normal distribution
+
+`rpois`         provide samples from a poisson distribution
+
+`rexp`          provide samples from an exponential distribution
+
+`runif`         provide samples from a uniform distribution
+
+`rbinom`        provide samples from a binomial distribution
+
+`seq`           provide a sequence of values
+
+## Other functions
+
+`read.csv`      read a csv file
+
+`write.csv`     write a csv file
+
+`print`         print to the console
+
+`sum`  sums a vectors of numbers together
+
+
