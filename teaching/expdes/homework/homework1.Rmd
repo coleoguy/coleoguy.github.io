@@ -1,0 +1,90 @@
+---
+title: "homework 1"
+author: "Heath Blackmon"
+date: '2022-09-11'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
+
+
+
+1) You are studying an organisms behavior however the sex can only be determined by dissection after the experiment. You only have enough time and money to observe 10 individuals. What proportion of the time will you have at least three males and three females in your study. Assume that males and females are equally common.
+
+
+```{r}
+# method one
+females <- rbinom(1000, 10, prob=.5)
+sum(colSums(rbind(females > 2, females < 8)) == 2)/1000
+
+# method two
+successes <- c()
+for(i in 1:1000){
+  females <- sum(sample(c("M", "F"), 10, replace=T) == "F")
+  successes[i] <- females > 2 && females < 8
+}
+sum(successes)/1000
+```
+
+
+2) Now reevaluate if males make up 75% of the population and females make up 25% of the population.
+
+
+```{r}
+# method one
+females <- rbinom(1000, 10, prob = .25)
+sum(colSums(rbind(females > 2, females < 8)) == 2) / 1000
+
+# method two
+successes <- c()
+for(i in 1:1000){
+  females <- sum(sample(c("M", "F"), 10, 
+                        replace = T, 
+                        prob = c(.75, .25)) == "F")
+  successes[i] <- females > 2 && females < 8
+}
+sum(successes)/1000
+```
+
+
+Probability of flipping heads on a coin 4 times in a row (assume the coin is fair?
+
+
+```{r}
+.5^4
+```
+
+
+We have 68 students in our class. What is the average number of students that will flip 4 heads in a row across 1000 simulations.
+
+```{r}
+nums <- c()
+for(i in 1:1000){
+  nums[i] <- sum(rbinom(68, 4, prob=.5) == 4)
+}
+mean(nums)
+```
+
+You create a vector by typing: `x <- c(234, 874, 239, 598)` into R. Demonstrate 3 ways that you can extract 874 and 598 from the matrix:
+
+```{r}
+x <- c(234, 874, 239, 598)
+x[c(2,4)]
+x[c(F,T,F,T)]
+```
+
+
+You create a matrix by typing `x <- matrix(1:20, 10, 2)` into R.
+Demonstrate three ways in which you could extract the values 17, 18, 19 from the matrix.
+
+```{r}
+x <- matrix(1:20, 10, 2)
+x[7:9, 2]
+x[c(7,8,9), 2]
+x[c(F,F,F,F,F,F,T,T,T,F),c(F,T)]
+```
+
+
+
