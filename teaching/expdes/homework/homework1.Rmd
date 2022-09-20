@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F)
+knitr::opts_chunk$set(echo = T)
 ```
 
 For questions 1,2, and 4 use 1000 simulations to get your answer.
@@ -73,6 +73,7 @@ mean(nums)
 x <- c(234, 874, 239, 598)
 x[c(2,4)]
 x[c(F,T,F,T)]
+x[-c(1,3)]
 ```
 
 

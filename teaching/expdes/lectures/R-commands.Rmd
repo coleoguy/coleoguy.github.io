@@ -39,6 +39,8 @@ This is a document that I will grow as the semester progresses it includes all o
 
 `!=`    test for inequality
 
+`>`, `<`, `<=`, `>=` etc.
+
 `%in%`  is the item on the left present in the item on the right
 
 
@@ -79,6 +81,21 @@ This is a document that I will grow as the semester progresses it includes all o
 `rbinom`        provide samples from a binomial distribution
 
 `seq`           provide a sequence of values
+
+## Plotting functions
+
+`plot` basic plotting function to start off with
+
+`barplot` basic bar plot
+
+`boxplot` basic box plot
+
+`hist` basic histogram
+
+`points` adds points to an existing plot
+
+`text` adds text to an existing plot
+
 
 ## Other functions
 
