@@ -381,7 +381,7 @@ that males and females are equally common.</li>
 <pre class="r"><code># method one
 females &lt;- rbinom(1000, 10, prob=.5)
 sum(colSums(rbind(females &gt; 2, females &lt; 8)) == 2)/1000</code></pre>
-<pre><code>## [1] 0.898</code></pre>
+<pre><code>## [1] 0.9</code></pre>
 <pre class="r"><code># method two
 successes &lt;- c()
 for(i in 1:1000){
@@ -389,7 +389,7 @@ for(i in 1:1000){
   successes[i] &lt;- females &gt; 2 &amp;&amp; females &lt; 8
 }
 sum(successes)/1000</code></pre>
-<pre><code>## [1] 0.9</code></pre>
+<pre><code>## [1] 0.874</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Now reevaluate if males make up 75% of the population and females
 make up 25% of the population.</li>
@@ -397,7 +397,7 @@ make up 25% of the population.</li>
 <pre class="r"><code># method one
 females &lt;- rbinom(1000, 10, prob = .25)
 sum(colSums(rbind(females &gt; 2, females &lt; 8)) == 2) / 1000</code></pre>
-<pre><code>## [1] 0.469</code></pre>
+<pre><code>## [1] 0.489</code></pre>
 <pre class="r"><code># method two
 successes &lt;- c()
 for(i in 1:1000){
@@ -407,7 +407,7 @@ for(i in 1:1000){
   successes[i] &lt;- females &gt; 2 &amp;&amp; females &lt; 8
 }
 sum(successes)/1000</code></pre>
-<pre><code>## [1] 0.479</code></pre>
+<pre><code>## [1] 0.465</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Probability of flipping heads on a coin 4 times in a row (assume the
 coin is fair?</li>
@@ -423,7 +423,7 @@ for(i in 1:1000){
   nums[i] &lt;- sum(rbinom(68, 4, prob=.5) == 4)
 }
 mean(nums)</code></pre>
-<pre><code>## [1] 4.308</code></pre>
+<pre><code>## [1] 4.176</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>You create a vector by typing:
 <code>x &lt;- c(234, 874, 239, 598)</code> into R. Demonstrate 3 ways
