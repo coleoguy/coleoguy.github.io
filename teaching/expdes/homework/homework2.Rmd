@@ -1,0 +1,79 @@
+---
+title: "Home work 2"
+author: "Heath Blackmon"
+date: '2022-09-27'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## The challenge
+
+In this homework I want you to make a really beautiful plot of the betta fish data that is on the course website. The assignment was to produce visualizations that showed at least two different interesting patterns in the data and at least three variables. Below I have a few examples that I think do this well.
+
+
+```{r}
+dat <- read.csv("../datasets/bettafish.csv")
+```
+
+## Base R Plots
+
+You can also embed plots, for example:
+
+```{r}
+# Here I create a vector of colors that I will access
+# below to be able to color by sex.
+cols <- c(rgb(152, 78, 163, 110, maxColorValue = 255),
+          rgb(255, 127, 0, 110, maxColorValue = 255))
+plot(dat$price~dat$size,
+     xlab = "SVL (cm)",
+     ylab = "price (USD)",
+     pch = 16,
+     cex = 1.5,
+     col = cols[as.factor(dat$sex)])
+points(x = c(2.1, 2.1), y = c(21, 19), 
+       pch = 16, col = cols, cex = 1.5)
+text(x = c(2.1, 2.1), y = c(21, 19), 
+     c("female", "male"), 
+     pos = 4, cex = .85)
+```
+
+## Beeswarm package
+
+```{r}
+library(beeswarm)
+cols <- c(rgb(152, 78, 163, 110, maxColorValue = 255),
+          rgb(255, 127, 0, 110, maxColorValue = 255))
+beeswarm(dat$price~dat$color, 
+         pwcol = cols[as.factor(dat$sex)],
+         pch = 16,
+         cex = 2,
+         xlab = "color pattern",
+         ylab = "Price (USD)")
+points(x = c(.5, .5), y = c(21, 19), 
+       pch = 16, col = cols, cex = 2)
+text(x = c(.5, .5), y = c(21, 19), 
+     c("female", "male"), pos = 4, cex = .95)
+
+```
+
+## GGPlot2 package
+
+```{r}
+library(ggplot2)
+ggplot(dat, aes(y = price, x = size)) + 
+  geom_point(aes(shape = as.factor(sex), colour = color), 
+             alpha = 0.7, size = 5) + 
+  theme_bw() + 
+  theme(text = element_text(size = 15, hjust = 0.5, vjust = 0.5)) + 
+  scale_size(range = c(1, 5)) + 
+  guides(shape = guide_legend(title = "sex")) + 
+  xlab("Size (cm)") + 
+  ylab("Price (USD)")
+```
+
+
