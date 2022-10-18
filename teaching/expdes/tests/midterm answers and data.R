@@ -51,8 +51,9 @@ binom.test(48, 80, alternative = "g")
 # What p-value will you be reporting? Round your answer 
 # to the nearest hundredth (e.g. 0.05)
 
-dat <- matrix(c(475,340,459,269), 2, 2)
-chisq.test(dat)
+dat3 <- matrix(c(475,340,459,269), 2, 2)
+dat3 <- matrix(c(135,340,190,269), 2, 2)
+chisq.test(dat3)
 # 0.06
 
 # You are interested in the effectiveness of two UV 
@@ -123,7 +124,8 @@ emp.dif <- mean(dat$offspring[dat$strain=="strain42"]) -
 null.dist1 <- null.dist2 <- c()
 for(i in 1:1000){
   newstrain <- sample(dat$strain)
-  null.dist1[i] <- mean(dat$offspring[newstrain=="strain42"]) - mean(dat$offspring[newstrain=="strain76"])
+  null.dist1[i] <- mean(dat$offspring[newstrain=="strain42"]) - 
+    mean(dat$offspring[newstrain=="strain76"])
 
   newvals <- sample(dat$offspring)
   null.dist2[i] <- mean(newvals[1:50]) - mean(newvals[51:100])
@@ -160,6 +162,6 @@ for(q in 1:100){
 range(min.pval)
 # 0.003 to 0.007
 range(max.pval)
-# -0.028  to 0.036
+# 0.028  to 0.036
 
 
