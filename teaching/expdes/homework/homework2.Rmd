@@ -17,7 +17,7 @@ In this homework I want you to make a really beautiful plot of the betta fish da
 
 
 ```{r}
-dat <- read.csv("../datasets/bettafish.csv")
+dat <- read.csv("../datasets/betta.csv")
 ```
 
 ## Base R Plots
