@@ -15,7 +15,7 @@ binom.test(32, 80)
 
 # Now suppose that your question was not whether the 
 # sex ratio was 50:50 but whether this data supported 
-# Haldanes rule. 
+# Haldane's rule. 
 
 # Note: Haldanes rule states that in a cross when one 
 # sex is absent or present in reduced numbers it will 
