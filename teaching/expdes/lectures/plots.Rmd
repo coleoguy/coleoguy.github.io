@@ -1,0 +1,163 @@
+---
+title: "Plotting Examples"
+author: "Heath Blackmon"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Histogram
+
+The histogram is an excellent plot to show distributions of data where you want to show the actual number of records in each bin.
+
+```{r}
+# simulate a single numeric variable
+dat <- c(rnorm(100), 
+         rnorm(100, mean = -1, sd = .3))
+
+# make a histogram
+hist(xlab = "scintillation freq",
+     x = dat,  
+     xlim = c(-3, 3),
+     breaks = 30,
+     col = "hotpink")
+abline(v = 1, col = "darkgreen", lwd = 2)
+
+```
+
+## Density Plot
+
+Density plots are also good for visualizing distributions. I often pick a density plot if my sample size is very large 100s or 1000s of samples vs 10s of samples (when I might use a histogram instead).
+
+```{r}
+# build the basic plot
+plot(density(dat, bw = .1),main = "",
+     xlab = "Fusion Rate (MY)")
+
+# begin adding additional components
+polygon(density(dat, bw = .1), 
+        col = rgb(0, .5, .5, .5))
+polygon(density(rnorm(100)), 
+        col = rgb(1, 0, 0, .5))
+
+# manually create a legend (compare this to the legend function)
+points(x = c(1.5, 1.5),
+       y = c(.7, .65), cex = 1.5,
+       pch = c(15, 16), col = c(rgb(0, .5, .5, .5),
+                    rgb(1, 0, 0, .5)))
+text(x = c(1.5, 1.5),
+       y = c(.7, .65),
+       c("weekend", "weekday"), pos = 4,
+     cex = .75)
+```
+
+
+## XY Scatter Plot
+
+Scatter plots are good for visualizing the relationship between to continuous variables. By leveraging color or shape we can also include 1-2 additional discrete variables.
+
+```{r}
+
+# lets simulate some data
+x <- rnorm(250)
+y <- rnorm(250, mean = x)
+sex <- as.factor(sample(c("male", "female"), 
+              250, replace = T))
+
+# lets fit a linear model so we can add it to the plot too
+fit <- lm(y~x)
+intercept <- coef(fit)[1]
+slope <- coef(fit)[2]
+eq <- paste("y = ", round(intercept, 2), " + ", round(slope, 2), "x")
+
+# create some colors to use
+cols <- c(rgb(.5, .5, 1, .5), 
+          rgb(1, .5, .5, .5))[sex]
+
+# make the plot
+plot(y ~ x, xlab = "variable 1",
+     ylab = "variable 2",
+     pch = 16, col = cols)
+abline(fit, lwd = 2, lty = 2, col = "red")
+text(x = min(x), y = max(y), labels = eq, pos = 4)
+```
+
+
+
+## Plot for discrete predictor continuous response
+
+Modified boxplots can be a good approach in this situation. I am a big fan of the package beeswarm that makes it easy to lay over your actual datapoints in clean and clear fashion. I load in the block of code below but to make this code work you would need to make sure you installed it first.
+
+```{r}
+# load the beeswarm package
+library(beeswarm)
+
+# lets simulate some data
+x <- c(rnorm(100), rnorm(100, mean = 4))
+group <- rep(c("A", "B"), each = 100)
+
+# now lets make the plot
+boxplot(x ~ group, outline = F, col = "white")
+beeswarm(x ~ group, add = T)
+```
+
+
+
+Lets make another version of that with more groups and some space for significance indication.
+
+```{r}
+# lets simulate some data. I am setting a seed here because I am going to add 
+# some annotation to the plot that would be hard to do if I don't know the 
+# precise range of the data.
+set.seed(1)
+x <- c(rnorm(100), rnorm(100, mean = 2), rnorm(100, mean = 4))
+group <- rep(c("Control", "Treatment 1", "Treatment 2"), each = 100)
+
+# now lets make the plot
+boxplot(x ~ group, outline = F, col = "white", 
+        ylim = c(min(x), max(x) + 2), xlab="")
+beeswarm(x ~ group, add = T, cex = .5)
+lines(x = c(1, 3), y = c(8, 8))
+lines(x = c(1, 1.9), y = c(7, 7))
+lines(x = c(2.1, 3), y = c(7, 7))
+text(2, 8.4, "***", cex = .6)
+text(x = c(1.5, 2.5), y = c(7.4, 7.4), "ns", cex = .6)
+```
+
+## Plot for continuous predictor discrete response
+
+These plots are commonly needed if you are doing logistic regressions.
+
+```{r}
+# lets simulate some data
+times <- runif(100, min = 0, max = 100)
+
+# this will be our binary response variable
+outcome <- rbinom(100, 1, times/100)
+
+
+# typically that variable might start off more like this:
+binaryresponse <- c("infected", "notinfected", "infected",
+                    "infected", "notinfected", "infected")
+# you would need to convert this to zeros and ones 
+# here is an example of one way you might do that conversion
+numresp <- as.factor(binaryresponse)
+numresp <- as.numeric(numresp) - 1
+hist(numresp)
+
+
+# back to the example lets fit a linear regression to add to our plot
+fit <- glm(outcome ~ times, family = "binomial")
+# now we will generate a range of xvalues and calculate the model inffered
+# probability at each point
+x_vals <- seq(min(times), max(times), length.out = 100)
+predicted_probs <- predict(fit, newdata = data.frame(times = x_vals), type = "response")
+
+# now we will plot it all.
+plot(outcome ~ times, pch = 16 , col = rgb(1, 0 , 0, .5))
+lines(x = x_vals, y = predicted_probs, col = "blue", lwd = 2)
+
+```
