@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA Assignment App - How To Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background: #f9f9f9;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How to Use the TA Assignment App</h1>
+        <p>This guide will walk you through using the TA Assignment App. This application helps to assign Teaching Assistants (TAs) to sections based on priority and preference, ensuring a fair and efficient allocation of resources. The app is designed to be user-friendly and can be utilized by staff members at educational institutions to manage TA assignments.</p>
+
+        <h2>1. Upload the Required CSV Files</h2>
+        <p>To begin the TA assignment process, you need to upload two CSV files:</p>
+        <ul>
+            <li><strong>Students CSV:</strong> This file contains information about the TAs. Ensure this file is formatted correctly with the following columns:
+                <ul>
+                    <li><code>Student</code>: The name of the student.</li>
+                    <li><code>DegreeType</code>: The degree type of the student (e.g., MS, PhD).</li>
+                    <li><code>Department</code>: The department to which the student belongs.</li>
+                    <li><code>DegreeProgram</code>: The degree program (e.g., EEB).</li>
+                    <li><code>Sections</code>: The number of sections the student wishes to teach.</li>
+                    <li>Course preference columns (e.g., <code>BIOL111</code>, <code>BIOL112</code>, etc.): Each course the student ranked indicating their preference (e.g., 1 for most preferred, 2 for next preferred, etc.).</li><br>
+                </ul>
+            </li>
+            <li><strong>Classes CSV:</strong> This file contains the list of courses along with the number of sections that need to be taught. Ensure this file is formatted correctly with the following columns:
+                <ul>
+                    <li><code>Class</code>: The course name (e.g., BIOL111, BIOL112).</li>
+                    <li><code>Sections</code>: The number of sections that need to be assigned for each course.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>To upload the files:</p>
+        <ul>
+            <li>Click on the <strong>Upload Students CSV</strong> button and select the appropriate file from your computer.</li>
+            <li>Click on the <strong>Upload Classes CSV</strong> button and select the appropriate file from your computer.</li>
+        </ul>
+
+        <h2>2. Run the Assignment Process</h2>
+        <p>After uploading the required files:</p>
+        <ul>
+            <li>Click the <strong>Run Assignment</strong> button to start the TA assignment process.</li>
+            <li>The application will process the assignments based on the preferences and priorities of the TAs.</li>
+            <li>Once completed, the status will be displayed, indicating whether the assignment was successful and if there are any unmatched students.</li>
+        </ul>
+
+        <h2>3. Download the Results</h2>
+        <p>After the assignment is complete, you can download the results:</p>
+        <ul>
+            <li>Click the <strong>Download Results</strong> button to download a CSV file containing the assigned TAs for each course section. This file will have a column for each class studnet assignments will be in the cells below it. If a class requrires TAs but none could be assigned automatically cells will indicate "empty"</li>
+            <li>If there are any unmatched students, you can download their information by clicking the <strong>Download Unmatched Students</strong> button. This file will contain the list of students who could not be assigned to a section.</li>
+        </ul>
+
+        <h2>4. Interpreting the Results</h2>
+        <p>The downloaded results file will have a column for each course, and the rows will represent the sections assigned to the TAs. If a TA could not be assigned, their name will not appear in the results file, but they will be listed in the unmatched students file.</p>
+
+        <h2>5. Tips for Using the App</h2>
+        <ul>
+            <li>Ensure that the CSV files are formatted correctly. The <strong>Students CSV</strong> should have columns such as <code>Student</code>, <code>DegreeType</code>, <code>Department</code>, <code>DegreeProgram</code>, <code>Sections</code>, and the courses with preferences ranked numerically (e.g., 1, 2, 3).</li>
+            <li>The <strong>Classes CSV</strong> should have two columns: <code>Class</code> (the course name) and <code>Sections</code> (number of sections to be assigned).</li>
+            <li>After running the assignment, review the <strong>Unmatched Students</strong> file to ensure no TA is left out without reason. You may need to adjust preferences or sections accordingly.</li>
+        </ul>
+
+
+        <h2>7. Adaptation for Other Schools</h2>
+        <p>This application can easily be adapted for other educational institutions. Simply adjust the CSV input files to reflect the specific requirements and structure of your institution. If additional fields are needed, they can be added to the input CSV files, and minor modifications can be made in the application code to accommodate these fields.</p>
+        <p>The code is written in R using the <strong>Shiny</strong> package, which allows for easy modifications. If another institution needs additional functionalities, such as filtering by specific departments or including more complex assignment logic, these can be incorporated by extending the R code accordingly.</p>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,340 @@
+/**
+* Updated Template: Blackmon Lab Website – Wes Anderson Inspired Palette with Black
+* Author: Heath Blackmon Lab
+*/
+
+/*--------------------------------------------------------------
+# Color Palette
+--------------------------------------------------------------*/
+:root {
+  --background-color: #F4F1EE;   /* Creamy off-white for body background */
+  --text-color: #3B3A30;         /* Dark muted brown for general text */
+  --primary-color: #000000;      /* Black used as primary color */
+  --secondary-color: #D6A77A;    /* Warm tan for secondary elements */
+  --accent-color: #A1C6E7;       /* Muted soft blue for accents */
+  --link-color: #BC8F8F;         /* Rosy brown for links */
+  --header-bg: #000000;          /* Black for header and footer background */
+  --btn-bg: #D6A77A;            /* Warm tan for buttons */
+  --btn-hover-bg: #F7C873;      /* Lighter mustard on hover */
+}
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+a {
+  color: var(--link-color);
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  right: 15px;
+  bottom: 15px;
+  background: var(--secondary-color);
+  color: #fff;
+  transition: background 0.3s ease-in-out;
+  z-index: 99999;
+}
+
+.back-to-top i {
+  font-size: 24px;
+  position: absolute;
+  top: 7px;
+  left: 8px;
+}
+
+.back-to-top:hover {
+  background: var(--btn-hover-bg);
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  padding: 0 15px;
+  background: var(--header-bg);
+  overflow-y: auto;
+  z-index: 9997;
+  transition: left 0.5s ease-in-out;
+}
+
+#header .profile img {
+  margin: 15px auto;
+  display: block;
+  width: 120px;
+  border: 8px solid var(--secondary-color);
+}
+
+#header .profile h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+#header .profile h1 a,
+#header .profile h1 a:hover {
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+#header .profile .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: var(--text-color);
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: background 0.3s ease;
+}
+
+#header .profile .social-links a:hover {
+  background: var(--secondary-color);
+}
+
+#main {
+  margin-left: 300px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199px) {
+  #header {
+    left: -300px;
+  }
+  #main {
+    margin-left: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+.nav-menu {
+  padding-top: 30px;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu > ul > li {
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.nav-menu a i {
+  font-size: 24px;
+  padding-right: 8px;
+  color: var(--secondary-color);
+}
+
+.nav-menu a:hover,
+.nav-menu .active > a,
+.nav-menu li:hover > a {
+  color: #fff;
+}
+
+/* Mobile Navigation */
+.mobile-nav-toggle {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  z-index: 9998;
+  background: none;
+  border: none;
+  font-size: 24px;
+  transition: color 0.4s;
+  outline: none;
+  cursor: pointer;
+}
+
+.mobile-nav-toggle i {
+  color: var(--secondary-color);
+}
+
+.mobile-nav-active #header {
+  left: 0;
+}
+
+.mobile-nav-active .mobile-nav-toggle i {
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url("assets/img/earth-tone-hero.jpg") center center no-repeat;
+  background-size: cover;
+}
+
+#hero .hero-container {
+  position: relative;
+  z-index: 2;
+  min-width: 300px;
+  text-align: center;
+}
+
+#hero h1 {
+  margin: 0 0 10px;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  color: var(--background-color);
+}
+
+#hero p {
+  font-size: 26px;
+  color: var(--background-color);
+  margin-bottom: 500px;
+  font-family: "Poppins", sans-serif;
+}
+
+#hero p span {
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+/* Fixed background on large screens */
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+/* Adjustments on smaller screens */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background: #fff;
+}
+
+.section-title {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  position: relative;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: var(--secondary-color);
+}
+
+.section-title p {
+  margin-bottom: 0;
+  color: var(--text-color);
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: var(--header-bg);
+  color: var(--background-color);
+  text-align: center;
+  padding: 15px 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 9999;
+}
+
+#footer .copyright,
+#footer .credits {
+  text-align: center;
+  font-size: 14px;
+}
+
+/*--------------------------------------------------------------
+# Utility Classes
+--------------------------------------------------------------*/
+.newspaper {
+  column-count: 3;
+}
+
+/* Responsive Footer Adjustment */
+@media (max-width: 1199px) {
+  #footer {
+    position: static;
+    width: auto;
+    padding: 15px;
+  }
+}

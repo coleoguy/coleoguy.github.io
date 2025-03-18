@@ -4,143 +4,209 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Blackmon Lab</title>
-  <meta content="The blackmon lab at Texas A&M University studies evolutionary biology. Members have published work focusing on sex chromosomes, chromosome number, theoretical and empirical papers as well as papers that are focused on method development." name="descriptison">
-  <meta content="sex chromosome heath blackmon evolution" name="keywords">
+  <title>Blackmon Lab - Evolutionary Biology</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
   <!-- Favicons -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-    
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: iPortfolio - v1.2.1
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-    
-    
-    
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-15744659-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-15744659-3');
-</script>
-
-
-    
-    
-    
 </head>
 
-<body>
+<body class="index-page">
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Blackmon Lab</h1>
+      </a>
 
-      <div class="profile">
-        <img src="assets/img/labpics/33.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Blackmon Lab</a></h1>
-      </div>
-
-      <nav class="nav-menu">
+      <nav id="navmenu" class="navmenu">
         <ul>
-          <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#research"><i class="bx bx-bulb"></i> <span>Research</span></a></li>
-          <li><a href="#publications"><i class="bx bx-file-blank"></i> <span>Publications</span></a></li>
-          <li><a href="#resources"><i class="bx bx-server"></i> Resources</a></li>
-          <li><a href="#members"><i class="bx bx-user"></i> Members</a></li>
-          <li><a href="#calendar"><i class="bx bx-calendar"></i> Calendar</a></li>
-          <li><a href="#news"><i class="bx bx-news"></i> News</a></li>
-          <li><a href="#joining"><i class="bx bx-user-plus"></i> Joining</a></li>
-          <li><a href="#labpics"><i class="bx bx-camera"></i> Pictures</a></li>
-
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#members">Members</a></li>
+          <li><a href="#join">Joining our Team</a></li>
         </ul>
-      </nav><!-- .nav-menu -->
-      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
     </div>
-  </header><!-- End Header -->
+  </header>
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Blackmon Lab</h1>
-      <p>We study <span class="typed" data-typed-items="sex chromosomes, genetics, beetles, mammals, EVOLUTION"></span></p>
-    </div>
-  </section><!-- End Hero -->
+  <main class="main">
 
-  <main id="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
 
-    <!-- ======= Research Section ======= -->
-    <section id="research" class="resume">
+      <img src="assets/img/hero-bg.jpg" alt="Description" data-aos="fade-in" >
+      <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
+            <h2><br><br>Evolutionary Biology </h2>
+        </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Research Section -->
+    <section id="research" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Research</h2>
+      </div><!-- End Section Title -->
+
       <div class="container">
 
-        <div class="section-title">
-          <h2>Research</h2>
-          <p>The Blackmon Lab is in the <a href="http://www.bio.tamu.edu/" target="_blank" class="w3-hover-text-red">Biology Department at Texas A&amp;M University</a>. Our ultimate goal is to understand how and why the structure of genomes evolves the way it does across the tree of life. To understand genome structure, we study a broad range of organisms, including tomatoes, betta fish, beetles, chickens, and mammals. Genome structure is a broad term, but so are the aspects of genome structure that we investigate (e.g., chromosome number, sex chromosomes, structural mutations). We also have projects that focus on forces that impact genome structure (e.g., epistasis and sexual antagonism). <br><br>
+        <div class="row gy-3">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/about.jpg" alt="" class="img-fluid">
+          </div>
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-content ps-0 ps-lg-3">
+              <p>The Blackmon Lab is in the <a href="http://www.bio.tamu.edu/" target="_blank" class="w3-hover-text-red">Biology Department at Texas A&amp;M University</a>. Our ultimate goal is to understand how and why the structure of genomes evolves the way it does across the tree of life. To understand genome structure, we study a broad range of organisms, including tomatoes, betta fish, beetles, chickens, and mammals. Genome structure is a broad term, but so are the aspects of genome structure that we investigate (e.g., chromosome number, sex chromosomes, structural mutations). We also have projects that focus on forces that impact genome structure (e.g., epistasis and sexual antagonism). <br><br>
           
               We use three approaches to investigate each question we face in our research. First, we use theoretical population genetics to ask "what can happen?" Next, we use comparative methods and leverage data from 10s to 100s of species to ask, "what has happened over many millions of years?" Finally, we use genetics and genomics with emerging model organisms to ask, "what is happening from one generation to the next?"<br><br>
 
 Questions our lab is currently focused on:<br><br>
 
-1) What evolutionary forces lead to the divergence of sex chromosomes, and what forces act on "old" highly diverged sex chromosomes?<br>
+1) What evolutionary forces lead to the divergence of sex chromosomes, and what forces act on "old" highly diverged sex chromosomes?<br><br>
 
-2) Why does chromosome number evolve rapidly in some clades but remains nearly static in others?<br>
+2) Why does chromosome number evolve rapidly in some clades but remains nearly static in others?<br><br>
 
-3) Is there an ideal chromosome number, and if so, what determines that value?<br>
+3) Is there an ideal chromosome number, and if so, what determines that value?<br><br>
 
-4) What determines the fate of mutations that expand the proportion of the genome linked to a sex-determining locus?<br>
+4) What determines the fate of mutations that expand the proportion of the genome linked to a sex-determining locus?<br><br>
 
-5) Are there inherent fitness trade-offs between male and female phenotypes, or can a single genome be fit regardless of sex?<br>
+5) Are there inherent fitness trade-offs between male and female phenotypes, or can a single genome be fit regardless of sex?<br><br>
 
-6) Does the importance of epistasis vary across plants and animals?<br>
+6) Does the importance of epistasis vary across plants and animals?<br><br>
 
 7) How does domestication impact organisms? What can we learn about adaptation and radiation from studying domestication?<br><br>
 </p>
-        </div>
+              
+              
+            </div>
 
-      
-            
-       
+          </div>
+        </div>
 
       </div>
-    </section><!-- End Research Section -->
 
-    <!-- ======= Publications Section ======= -->
-    <section id="publications" class="skills section-bg">
+    </section><!-- /About Section -->
+
+    <!-- Resources Section -->
+    <section id="resources" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resources</h2>
+      </div><!-- End Section Title -->
       <div class="container">
-
-        <div class="section-title">
-          <h2>Publications</h2>
-          <p><a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank">Google Scholar</a></p>
-        </div>
+          <p>We devote a fair amount of our efforts to producing new datasets, software, and resources for both research and teaching. If you have any questions about these projects please dont hesitate to contact us for additional information.</p>
+      
           
+      <h4>Lab Meetings</h4>
+      <br>
+          Lab meetings are mandatory for all lab members and occur on Fridays at 1:00 PM in BSBW 425. If we are discussing a paper all students are expected to come to lab meetings with either questions or comments.
+      <br><br>
+          
+      <a href= "https://tamu.zoom.us/j/580704236" target="_blank"> meet with Dr. Blackmon on zoom</a>      <br>
+
+          <br>
+          
+          <br>
+      
+      <h4>Teaching</h4>
+          
+      <p><a href="phylo101.html" target="_blank">Phylogenetics 101:</a>
+      This page has materials for a 3 hour introduction to phylogenetics. This is targeted at a level that is appropriate for students that have little to no experience with actually inferring phylogenies. Peraphs upper level undergraduates or early graduate students in non phylogenetics labs.</p>
+                
+      <p><a href="https://docs.google.com/spreadsheets/d/1cV6ajWF-8pZVPIsrQ-p6W4rCY5S_HWbZZQ-KOxE6xFw/edit?usp=sharing" target="_blank">Spring 2025 Journal Club:</a>
+      This semester's journal club will focus on reading articles from each of the 2024 issues of the Journal Evolution.</p>
+                  
+      <p><a href="expdes.html" target="_blank">Experimental Design Course:</a>
+      This course is intended to provide a foundation in the proper design of scientific research projects in the field of biology. A wide range of biological experiments are covered, and each type of experiment is explored with an eye toward choosing the appropriate statistical technique for analysis. By the end of the course, successful students will be able to design biological studies that are statistically tractable and perform basic statistical analyses using the programming language R.</p>
+          
+      <p><a href="grad101.html" target="_blank">Orientation to graduate school:</a>
+      This course is designed to give you the tools and knowledge to be as successful as possible in completing your Ph.D. and securing the job you desire. Topics covered include mentoring relationships, curation of your online/professional identity, and building a understanding of how academia functions. </p>
+          
+      <p><a href="rseminar/index.html" target="_blank">R for biologists seminar:</a> R is currently an essential tool for most evolutionary biologists.  This seminar includes tutorials and example datasets for many basic analyses in R that are commonly encountered in ecology and evolution.  The seminar starts off with the most basic steps (installation) so no prior experience is needed to use these exercises.</p>
+      
+      <p><a href="reading.group/index.html" target="_blank">Foundations of evolutionary biology:</a> An understanding of the foundational ideas that the modern synthesis of evolutionary biology is built on is essential for asking intelligent questions and understanding how your research fits into a larger understanding of life.  I offered a foundations of evolutionary biology seminar course for graduate students that provided a structured environment to discuss some of the most important papers in evolutionary biology. This website contains a schedule and PDF files for all of the readings in this course.</p>
+          
+      <p><a href="https://github.com/coleoguy" target="_blank">GitHub software repository:</a> I do most all of my development and analyses in public repositories.</p>
+      
+      <p><a href="git-pages.tutorial.pdf" target="_blank">GitHub Pages Tutorial</a></p>
+
+          
+      <a href="https://evobir.shinyapps.io/TA-assignments/" target="_blank">TA Assignment App</a><a href="subpages/TA-assignmentapp.html" target="_blank"> - Tutorial</a><br>
+        <a href="https://forms.gle/RmS8CvmGE4KRKAAm6" target="_blank">Google Form</a><br><br>
+        
+
+          
+      <h4>R packages</h4>
+          
+      <p><a href="https://github.com/coleoguy/chromePlus" target="_blank">chromePlus</a> is a collection of R functions generate markov models appropriate for the evolution of chromosome number and binary traits. These models once constructed can be fit via maximum likelihood or Bayesian MCMC methods avaialable in the package diversitree.</p>
+           
+          
+      <p><a href="https://github.com/coleoguy/chromePlus" target="_blank">micRocounter</a> is an R package to identify all 2-6mer repeates in a genome assembly. It has been optimized for speed and can calculate statitics for larger genomes in a manner of minutes.</p>
+           
+      <p><a href="https://github.com/coleoguy/evobir" target="_blank">evobiR</a> is a collection of R functions that I have developed for different projects. The functions in this package can be loosely organized into either analysis of empirical data, simulation functions, or those created primarily for didactic purposes. A <a href="http://coleoguy.github.io/evobir.html" target="_blank">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/evobir" target="_blank">here</a>.</p>
+          
+      <p>The package <a href="https://github.com/coleoguy/SAGA2" target="_blank">SAGA2</a> is a collection functions to ease and hopefully improve the quality of line cross analysis of genetic architecture. The overall goal is to allow for an easy and straightforward implementation of model averaged analysis using AICc. A <a href="http://coleoguy.github.io/saga.pdf" target="_blank">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/SAGA" target="_blank">here</a>.</p>
+          
+      <h4>Databases</h4>
+          
+      <p><a href="http://coleoguy.github.io/karyotypes/" target="_blank">Karyotype Databases:</a> Karyotypes are a highly variable and complex trait that offers an opportunity to detect changes in genome organization, uncover phylogenetic history, and distinguish cryptic species. The current databases contains more than 8,000 records for amphibians, coleoptera, and polyneoptera. The databases allows users to select the records that they wish to retrieve based on either taxonomy or trait values and builds customized tables of the results in a new window.</p>
+          
+      <p>The <a href="http://www.treeofsex.org" target="_blank">Tree of Sex Database:</a> this is a product of a working group sponsored by the National Evolutionary Synthesis Center which sought to compile all information on sex determination systems across the tree of life.  To date, we have collected over 30K records including more than 10K invertebrates.  Much like the Coleoptera Karyotype Database, our goal is to make this data widely available allowing researchers across the globe to use data that was previously difficult to collect. </p>
+          
+      <p><a href="https://evobir.shinyapps.io/CaveCrawler/" target="_blank">CaveCrawler</a> is a reactive web interface for bioinformatic analysis of data in the Mexican tetra (Astyanax mexicanus), an emerging evolutionary model organism. CaveCrawler consists of 4 subpages: a Gene Search page for querying data about specific genes, a Transcription page for finding genes whose transcriptional levels differ between samples, a Population Genetics page for investigating statistics on diversity and selection, and a GO Term Info page for identifying and obtaining information on GO terms-of-interest.</p>
+           
+          
+      <h4>Other</h4>
+        <p>I recently built a cluster consisting of 26 Raspberry Pi 4Bs. I have <a href = "raspberrypicluster.html" , target="_blank">assembled some notes</a> to guide anyone else through this process</p>  
+        <p>I have assembled some links to graduate student <a href = "grants.html" , target = "_blank" >funding opportunities </a> for graduate students.</p>  
+
+    
+
+
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Publications Section -->
+    <section id="publications" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Publications</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+   
         <h4>2024</h4>
       <p>
           Burch, J., C. Nava, <strong>H. Blackmon</strong>. Assessing the opportunity for selection to impact morphological traits in crosses between two <i>Solanum</i> species <i> PeerJ</i> 12:e17985. <a href="https://doi.org/10.7717/peerj.17985"> open access</a>
@@ -292,27 +358,21 @@ Questions our lab is currently focused on:<br><br>
       <h4>2015</h4>
       <p>
           <strong>Blackmon H</strong>, N Hardy, L Ross. The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability. <i>Evolution</i> 69:11 2971-2978. <a href="blackmon.pubs/2015e.pdf" target="_blank">PDF</a>
-                        <br>
-                        <br>
+                        <br><br>
           <strong>Blackmon H</strong> and JP Demuth. The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution. <i>Bioessays</i> 37:9 942-950. <a href="blackmon.pubs/2015a.pdf" target="_blank">PDF</a>
-                        <br>
-                        <br>
+                        <br><br>
           <strong>Blackmon H</strong> and JP Demuth. Coleoptera Karyotype Database. <i>The Coleopterists Bulletin</i> 69:1 174-175. <a href="blackmon.pubs/2015c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br>
-                        <br>
+                        <br><br>
           Ross, L, <strong>H Blackmon</strong>, P Lorite, V Gokhman, and N Hardy. Recombination, chromosome number and eusociality in the Hymenoptera. <i>Journal of Evolutionary Biology</i> 28:1 105-116. <a href="blackmon.pubs/2015d.pdf" target="_blank">PDF</a>
-                        <br>
-                        <br>
+                        <br><br>
           <strong>Blackmon H</strong> and JP Demuth. Genomic origins of insect sex chromosomes. <i>Current Opinion in Insect Science</i> 7 45-50. – <em>recommended by Faculty of 1000. </em><a href="blackmon.pubs/2015b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
       </p>
       <h4>2014</h4>
       <p>
           <strong>Blackmon H</strong> and JP Demuth. Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis. <i>Genetics</i> 197:2 561-572. <a href="blackmon.pubs/2014d.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br>
-                        <br>
+                        <br><br>
           <strong>Blackmon H</strong> Coleoptera Karyotypes:  The evolution of sex chromosomes and chromosome number. <i>Newsletter of the Ontario Entomological Society</i> 19:2 19–21. <a href="blackmon.pubs/2014b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br>
-                        <br>
+                        <br><br>
           Streicher, JW, TJ Devitt, CS Goldberg, JH Malone, <strong>H Blackmon</strong>, and MK Fujita. Diversification and asymmetrical gene flow across time and space: lineage sorting and hybridization in polytypic barking frogs. <i>Molecular Ecology</i> 23:13 3273-3291. <a href="blackmon.pubs/2014a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
                         <br>
                         <br>
@@ -322,147 +382,54 @@ Questions our lab is currently focused on:<br><br>
       <p>
           <strong>Blackmon H</strong> and JP Demuth. Ring Species and Speciation. Encyclopedia of Life Science. www.els.net. <a href="blackmon.pubs/2012a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
       </p>
-
-
       </div>
-    </section><!-- End Publications Section -->
-      
-   
-    <!-- ======= Resources Section ======= -->
-    <section id="resources" class="resume">
-      <div class="container">
 
-        <div class="section-title">
-          <h2>Resources</h2>
-          <p>We devote a fair amount of our efforts to producing new datasets, software, and resources for both research and teaching. If you have any questions about these projects please dont hesitate to contact us for additional information.</p>
-        </div>
-          
-      <h4>Lab Meetings</h4>
-      <br>
-          Lab meetings are mandatory for all lab members and occur on Fridays at 1:00 PM in BSBW 425. If we are discussing a paper all students are expected to come to lab meetings with either questions or comments.
-      <br><br>
-          
-      <a href= "https://tamu.zoom.us/j/580704236" target="_blank"> meet with Dr. Blackmon on zoom</a>      <br>
+    </section><!-- /About Section -->
 
-          <br>
-          
-          <br>
-      
-      <h4>Teaching</h4>
-          
-      <p><a href="phylo101.html" target="_blank">Phylogenetics 101:</a>
-      This page has materials for a 3 hour introduction to phylogenetics. This is targeted at a level that is appropriate for students that have little to no experience with actually inferring phylogenies. Peraphs upper level undergraduates or early graduate students in non phylogenetics labs.</p>
-                
-      <p><a href="https://docs.google.com/spreadsheets/d/1cV6ajWF-8pZVPIsrQ-p6W4rCY5S_HWbZZQ-KOxE6xFw/edit?usp=sharing" target="_blank">Spring 2025 Journal Club:</a>
-      This semester's journal club will focus on reading articles from each of the 2024 issues of the Journal Evolution.</p>
-                  
-      <p><a href="http://coleoguy.github.io/expdes" target="_blank">Experimental Design Course:</a>
-      This course is intended to provide a foundation in the proper design of scientific research projects in the field of biology. A wide range of biological experiments are covered, and each type of experiment is explored with an eye toward choosing the appropriate statistical technique for analysis. By the end of the course, successful students will be able to design biological studies that are statistically tractable and perform basic statistical analyses using the programming language R.</p>
-          
-      <p><a href="grad101.html" target="_blank">Orientation to graduate school:</a>
-      This course is designed to give you the tools and knowledge to be as successful as possible in completing your Ph.D. and securing the job you desire. Topics covered include mentoring relationships, curation of your online/professional identity, and building a understanding of how academia functions. </p>
-          
-      <p><a href="rseminar/index.html" target="_blank">R for biologists seminar:</a> R is currently an essential tool for most evolutionary biologists.  This seminar includes tutorials and example datasets for many basic analyses in R that are commonly encountered in ecology and evolution.  The seminar starts off with the most basic steps (installation) so no prior experience is needed to use these exercises.</p>
-      
-      <p><a href="reading.group/index.html" target="_blank">Foundations of evolutionary biology:</a> An understanding of the foundational ideas that the modern synthesis of evolutionary biology is built on is essential for asking intelligent questions and understanding how your research fits into a larger understanding of life.  I offered a foundations of evolutionary biology seminar course for graduate students that provided a structured environment to discuss some of the most important papers in evolutionary biology. This website contains a schedule and PDF files for all of the readings in this course.</p>
-          
-      <p><a href="https://github.com/coleoguy" target="_blank">GitHub software repository:</a> I do most all of my development and analyses in public repositories.</p>
-      
-      <p><a href="git-pages.tutorial.pdf" target="_blank">GitHub Pages Tutorial</a></p>
+    <!-- Members Section -->
+    <section id="members" class="about section">
 
-          
-      <a href="https://evobir.shinyapps.io/TA-assignments/" target="_blank">TA Assignment App</a><a href="subpages/TA-assignmentapp.html" target="_blank"> - Tutorial</a><br>
-        <a href="https://forms.gle/RmS8CvmGE4KRKAAm6" target="_blank">Google Form</a><br><br>
-        
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Members</h2>
+      </div><!-- End Section Title -->
 
-          
-      <h4>R packages</h4>
-          
-      <p><a href="https://github.com/coleoguy/chromePlus" target="_blank">chromePlus</a> is a collection of R functions generate markov models appropriate for the evolution of chromosome number and binary traits. These models once constructed can be fit via maximum likelihood or Bayesian MCMC methods avaialable in the package diversitree.</p>
-           
-          
-      <p><a href="https://github.com/coleoguy/chromePlus" target="_blank">micRocounter</a> is an R package to identify all 2-6mer repeates in a genome assembly. It has been optimized for speed and can calculate statitics for larger genomes in a manner of minutes.</p>
-           
-      <p><a href="https://github.com/coleoguy/evobir" target="_blank">evobiR</a> is a collection of R functions that I have developed for different projects. The functions in this package can be loosely organized into either analysis of empirical data, simulation functions, or those created primarily for didactic purposes. A <a href="http://coleoguy.github.io/evobir.html" target="_blank">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/evobir" target="_blank">here</a>.</p>
-          
-      <p>The package <a href="https://github.com/coleoguy/SAGA2" target="_blank">SAGA2</a> is a collection functions to ease and hopefully improve the quality of line cross analysis of genetic architecture. The overall goal is to allow for an easy and straightforward implementation of model averaged analysis using AICc. A <a href="http://coleoguy.github.io/saga.pdf" target="_blank">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/SAGA" target="_blank">here</a>.</p>
-          
-      <h4>Databases</h4>
-          
-      <p><a href="http://coleoguy.github.io/karyotypes/" target="_blank">Karyotype Databases:</a> Karyotypes are a highly variable and complex trait that offers an opportunity to detect changes in genome organization, uncover phylogenetic history, and distinguish cryptic species. The current databases contains more than 8,000 records for amphibians, coleoptera, and polyneoptera. The databases allows users to select the records that they wish to retrieve based on either taxonomy or trait values and builds customized tables of the results in a new window.</p>
-          
-      <p>The <a href="http://www.treeofsex.org" target="_blank">Tree of Sex Database:</a> this is a product of a working group sponsored by the National Evolutionary Synthesis Center which sought to compile all information on sex determination systems across the tree of life.  To date, we have collected over 30K records including more than 10K invertebrates.  Much like the Coleoptera Karyotype Database, our goal is to make this data widely available allowing researchers across the globe to use data that was previously difficult to collect. </p>
-          
-      <p><a href="https://evobir.shinyapps.io/CaveCrawler/" target="_blank">CaveCrawler</a> is a reactive web interface for bioinformatic analysis of data in the Mexican tetra (Astyanax mexicanus), an emerging evolutionary model organism. CaveCrawler consists of 4 subpages: a Gene Search page for querying data about specific genes, a Transcription page for finding genes whose transcriptional levels differ between samples, a Population Genetics page for investigating statistics on diversity and selection, and a GO Term Info page for identifying and obtaining information on GO terms-of-interest.</p>
-           
-          
-      <h4>Other</h4>
-        <p>I recently built a cluster consisting of 26 Raspberry Pi 4Bs. I have <a href = "raspberrypicluster.html" , target="_blank">assembled some notes</a> to guide anyone else through this process</p>  
-        <p>I have assembled some links to graduate student <a href = "grants.html" , target = "_blank" >funding opportunities </a> for graduate students.</p>  
-          
-      </div>
-    </section><!-- End Skills Section -->
+              <div class="container">
 
-    <!-- ======= Members Section ======= -->
-    <section id="members" class="skills section-bg">
-      <div class="container">
 
-        <div class="section-title">
-          <h2>Lab Members</h2>
-        </div>
-          <div>
-        
               <h4>Principal Investigator</h4>
-              <img src="assets/img/members/heath.jpg" alt="Heath Blackmon" height="160">
+              <img src="assets/img/heath.jpg" alt="Heath Blackmon" height="160">
               <p>Heath Blackmon received his Ph.D. in the Demuth lab at the University of Texas at Arlington in 2015 while studying the evolution of sex chromosomes and karyotypes in Coleoptera and invertebrates.  He then transitioned to a postdoc for two years at the University of Minnesota.  While there he collaborated with Emma Goldberg and Yaniv Brandvain on projects spanning population genetics and macroevolution.  Heath opened his own lab at Texas A&amp;M University in the fall of 2017.<a href=blackmon-cv.pdf target="_blank"> CV - September 2024</a></p>
               <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="https://orcid.org/0000-0002-5433-4036" href="https://orcid.org/0000-0002-5433-4036" target="orcid.widget" rel="me noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">https://orcid.org/0000-0002-5433-4036</a></div>
               <br>
               
               <h4>Research Staff</h4>
-              <img src="assets/img/members/tammy.jpg" height="160">
-              <p>Tahmineh Esfandani joined the lab in 2020 as a research scientist. She earned a Bachelors degree in Cellular and Molecular Biology from Iran and followed this with a masters in genetics and bioinformatics from Trinity College in Ireland. She has a broad background including managing a large mouse colony and extensive wetlab experience working in core facilities at the University of Oregon. Tahmineh is involved in a range of project focused on sex chromosome evolution.</p>
-              
-              <img src="assets/img/members/michelle.jpg" height="160">
-              <p><a href=https://michellejonika.github.io/ target="_blank">Michelle Jonika</a> is a postdoctoral scholar whose work focuses on understanding the dynamics of highly labile aspects of genome structure and sex chromosomes.</p>
               
               <img src="assets/img/LT.jpg" height="160">
               <p>LT Blackmon is a founding member of the lab. He has participated in years of field work. He has broad interests in biology and is currently working on a project involving morphometrics of Chrysina species.</p>
 
               <h4>Graduate Students</h4>
               
-              <img src="assets/img/members/jorja.jpeg" height="160">
+              <img src="assets/img/jorja.jpeg" height="160">
               <p><a href=https://jorjaelliott.github.io/ target="_blank">Jorja Burch</a> joined the lab in 2021 through the Biology Ph.D. program. Jorja’s research focuses on understanding genetic architecture and the role of gene interactions in evolutionary outcomes. She is passionate about scientific communication and is pursuring a career in scientific publishing.</p>
               
-              <img src="assets/img/members/emma.jpg" height="160">
-              <p><a href=https://eslehmberg.github.io/ target="_blank">Emma Lehmberg</a> joined the lab in 2022 as an EEB student co-advised with Gil Rosenthal. Emma studies the relationships between hybridization, sexual conflict, and speciation in live-bearing fishes (Poeciliidae) using phylogenetics and comparative methods. She is broadly interested in the influences of sexual selection, breeding system variation, and sexual conflict on diversification across the tree of life.</p>
-              
+               
               <img src="assets/img/schien.jpg" height="160">
               <p><a href=https://seanchien4.github.io/ target="_blank">Sean Chien</a> joined the lab in 2022 as a biology Ph.D. student.  Sean has broad interests that combine evolutionary biology and Coleoptera. Fun fact: He loves fishing. </p>
               
               <img src="assets/img/mcopeland.JPG" height="160">
               <p><a href=https://Megan-Copeland.github.io/ target="_blank">Megan Copeland</a> joined the lab in 2022 as biology Ph.D. student. Megan's research broadly focuses on understanding genome structure. Her career interests include industry positions coinciding with genomics, bioinformatics, and forensics.</p>
-              
               <img src="assets/img/abarboza.jpg" height="160">
               <p><a href=http://andresdbp.github.io/ target="_blank">Andres Barboza Pereira</a> joined the lab in 2023 as a Genetics Ph.D. student. Andres has interests in evolution and genome structure. He enjoys theoretical and computational approaches to answering questions in biology.</p>
-              
               <img src="assets/img/kaya.png" height="160">
-              <p><a href= target= "_blank" >Kaya Harper</a> joined the lab in 2023 as a Biology Ph.D. student co-advised with Dr. Alex Keene. Kaya's interests lie at the intersection of evolutionary biology, genetics, and ecology, focusing on the genetic mechanisms that impact physiology and behavior in a diverse array of species.</p>
-              
+              <p>Kaya Harper joined the lab in 2023 as a Biology Ph.D. student co-advised with Dr. Alex Keene. Kaya's interests lie at the intersection of evolutionary biology, genetics, and ecology, focusing on the genetic mechanisms that impact physiology and behavior in a diverse array of species.</p>
               <h4>Post-Bacc Students</h4>
-              
               <img src="assets/img/zhaobo.png" height="160">
               <p>
                   Zhaobo Hu joined the lab as a postbac student in 2024. He is broadly interested in evolution. He is exploring topics like sexual conflict, selfish genetic elements, and the evolution of mutation rates.
-              
               </p>
-              
-              <h4>REU Students</h4>
-              
-              <img src="assets/img/tyana.jpeg" height="160">
-              <p>Tyana Rogers joined the lab as an REU student in the summer of 2024. Tyana is a first-generation college student, and she aspires to be a Genetic Counselor in the future.
-              </p><br>
-              
               <h4>Alumni</h4>
+                Emma Lehmberg<br>
               <a href=https://priscilla-glenn.github.io/ target="_blank" >Priscilla Glenn</a>: Postdoctoral Researcher at Texas A&amp;M University<br>             
               <a href=https://jamiealfieri.github.io/ target="_blank" > Jamie Alfieri</a>: Postdoctoral Researcher at UT Austin<br>
               <a href=https://tsylvester8.github.io/ target="_blank" >Terrence Sylvester</a>: Postdoctoral Researcher at UT Memphis<br>
@@ -473,12 +440,11 @@ Questions our lab is currently focused on:<br><br>
               Annabel Perry: Ph.D. student Harvard<br>
               Max Chin: Ph.D. student at UC Davis<br>
               Kayla Wilhoit: Ph.D. student at Duke<br>
+              Tahmineh Esfandani<br>
+              Michelle Jonika<br>
               <a href=https://cehjelmen.github.io/ target="_blank" > Carl Hjelmen</a>: Assistant Professor UVU<br><br>
-
-              
-      
               <h4>Current and former undergraduate students</h4>
-              <div class="newspaper">
+<div class="name-columns">
               Andrew Armstrong<br>
               Jennifer Elbert <br>
               Leen Fardoun <br> 
@@ -516,238 +482,122 @@ Questions our lab is currently focused on:<br><br>
               Wyatt Stogsdill<br>
               Crystal Nava<br>
               Mikayla Benjamin<br>
-              </div>
-              
-              
-
-              
-
-              
-              
-              
-          </div>
-
+              Tyana Rogers<br>
+                </div>
       </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Calendar Section ======= -->
-    <section id="calendar" class="resume">
-              <div class="container">
-        <div class="section-title">
-          <h2>Calendar</h2>
-          <p>If you need to scedule an appointment with me the best approach is to pick a time that is not currently blocked out and then email me asking to meet at that time. I am not guranteed to be in my office unless you let me know you will be coming by (I often work in coffee shops!)</p>
-        </div>
-
-      <div class="container">
-        <iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=coleoguy%40gmail.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="100%" height="500" frameborder="0" scrolling="no"></iframe>
+    </section><!-- /About Section -->
+    <!-- Join us Section -->
+    <section id="join" class="about section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Joining our Team</h2>
+      </div><!-- End Section Title -->
+      <div class="d-flex justify-content-center">
+        <img src="assets/img/volleyball.jpg" alt="Volleyball" class="img-fluid">
       </div>
-        </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= News Section ======= -->
-    <section id="news" class="skills section-bg">
       <div class="container">
+        <p>We are always seeking new students that can bring diverse perspectives, enthusiasm, and dedication into the lab. We believe strongly in the importance of creating a supportive environment for all lab members to reach their full potential. To achieve this we have explicit expections for all lab members including Dr. Blackmon</p><br>
+      <h5>All Lab Members</h5>
+      Attend lab meetings<br>
+      Take ownership and responsibility for assigned projects and tasks<br>
+      Take care of our space (clean up after yourself)<br>
+      Arrive at scheduled meetings on time and prepared<br>
+      Participate in lab functions<br>
+      Respond to all emails within 24 hours<br><br>
+      <h5>Graduate Students</h5>
+      Attend weekly seminars and job seminars<br>
+      Attend journal club<br>
+      Apply for grants/fellowships<br>
+      Present research at confernces<br>
+      Mentor one or more undergraduate<br>
+      Publish 3 papers during PhD<br>
+      Read all standard lab readings prior to end of second year<br><br>
+      <h5>Undergraduate Students</h5>
+      Devote a minimum of 10 hours a week to lab work<br>
+      Contribute to discussions in lab meeting<br><br>
+      <h5>Postdoctoral Researchers</h5>
+      Mentor graduate students <br>
+      Apply for fellowships/jobs<br><br>
+      <h5>Dr. Blackmon</h5>
+      Meet with students at scheduled times<br>
+      Give feedback on papers/applications within 2 weeks max<br>
+      Secure funding for lab<br>
+    </div>
+<div class="container my-4">
+  <div class="row justify-content-center g-3">
+    <div class="col-auto">
+      <img src="assets/img/x-party1.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-party2.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-party3.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-party4.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-volleyball.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/xp1.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/xp2.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/xp3.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-13.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-21.gif" class="gallery-img">
+    </div>
 
-        <div class="section-title">
-          <h2>Lab News</h2>
-            <p>For the latest happenings check out our twitter feed below.</p>
-        </div>
-          
-<a class="twitter-timeline" data-width="400" data-height="500" href="https://twitter.com/coleoguy?ref_src=twsrc%5Etfw">Tweets by coleoguy</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          
-      </div>
-    </section><!-- End Services Section -->
+    <div class="col-auto">
+      <img src="assets/img/x-wedding.png" class="gallery-img">
+    </div>
 
-    <!-- ======= Joining Section ======= -->
-    <section id="joining" class="resume">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Joining the lab</h2>
-            <p>We are always seeking new students that can bring diversity, enthusiasm, and dedication into the lab.</p>
-        </div>
-          <p>We believe strongly in the importance of creating an inclusive supportive environment for all lab members. To achieve this we ask all lab members to sign a document that makes explicit our expectations for all lab members. This document includes the following statements:</p>
-          <ul>
-          <li>I will participate in weekly lab meetings and journal clubs.</li>
-          <li>I will attend departmental and IDP seminars.</li>
-          <li>I will prepare for our regular progress/pitfalls meetings</li>
-          <li>I will proof-read manuscripts from other lab members.</li>
-          <li>I will maintain a set of lab notes, including directories of data, annotated codes and versions, detailed methods. Lab notes will be sufficient to reproduce results without additional instructions.</li>
-          <li>I will participate in general lab responsibilities (beetle maintenance, maintain common areas, community outreach events).</li>
-          <li> As a graduate student I will be available in the lab/office most days from 9:00 – 17:00. </li>
-          <li>As an undergraduate researcher I devote a minimum of 10 hours a week to research and I will make a two semester commitment to work in the lab.</li>
-          <li>I value diversity in intellectual background, race, sex, and identity.</li>
-          <li>I will treat all others with respect and dignity.</li>
-          </ul>
-
-              
-If you are interested in joining the lab please email Dr. Blackmon (blackmon@tamu.edu) to schedule a meeting.
-
-
-          
-          
-      </div>
-    </section><!-- Joining Section -->
-
-    <!-- ======= Lab Pics Section ======= -->
-    <section id="labpics" class="skills section-bg">
-      <div class="container">
-        <div class="section-title">
-          <h2>Lab Pictures</h2>
-        </div>
-
-       <div class="row">
-          <div class="col-sm col-md-4">
-               <p><img src="assets/img/labpics/1.png" width="90%"><br>
-                  Evolution Conference 2019</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/2.png" width="60%"><br>
-                  Riddhi decorated the lab door for us</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/3.png" width="90%"><br>
-                  Late night tacos after collecting</p>
-          </div>
-          </div>
-          
-       <div class="row">
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/6.png" width="80%"><br>
-                  Searching for tiger beetles in Willcox AZ</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/33.jpg" width="90%"><br>
-                  Michelle Jonika's award winning artwork</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/5.png" width="50%"><br>
-                  No beetle is out of reach with this net</p>
-          </div>
-          </div>
-          
-       <div class="row">
-          <div class="col-sm col-md-4">
-               <p><img src="assets/img/labpics/7.png" width="90%"><br>
-                  Bernice</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/8.png" width="80%"><br>
-                  Looking for Mordellidae</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/9.png" width="70%"><br>
-                  East Texas collecting trip</p>
-          </div>
-          </div>
-          
-       <div class="row">
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/10.png" width="80%"><br>
-                  I'm too slow</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/11.png" width="90%"><br>
-                  Prada in West Texas</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/12.png" width="80%"><br>
-                  Setting up lights for a night of collecting</p>
-          </div>
-          </div>
-          
-       <div class="row">
-          <div class="col-sm col-md-4">
-               <p><img src="assets/img/labpics/13.png" width="90%"><br>
-                  LT checking the sheets for bugs</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/14.png" width="90%"><br>
-                  2019 collecting during monsoons in AZ was productive</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/15.png" width="60%"><br>
-                  Lots of these signs around field sites in AZ</p>
-          </div>
-          </div>
-          
-       <div class="row">
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/16.png" width="70%"><br>
-                  Inaugral Aggie Vets Who Code Class</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/25.png" width="90%"><br>
-                  Abbi caught a lot of giant millipedes</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/18.png" width="80%"><br>
-                  Checking out alien artifacts in Roswell</p>
-          </div>
-          </div>
-          
-       <div class="row">
-          <div class="col-sm col-md-4">
-               <p><img src="assets/img/labpics/19.png" width="60%"><br>
-                  Terrence finding the only shade in White Sands</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/20.png" width="60%"><br>
-                  Nellie was one of our first lab members</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/21.gif" width="90%"><br>
-                  Movie night</p>
-          </div>
-          </div>
-          
-       <div class="row">
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/22.png" width="40%"><br>
-                  Carl sand surfing</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/26.png" width="90%"><br>
-                  Social distancing but still spending time together</p>
-          </div>
-          <div class="col-sm">
-               <p><img src="assets/img/labpics/27.png" width="40%"><br>
-                  Terrence checking out a tarantula</p>
-          </div>
-          </div>
-          
-        </div>
-    </section><!-- Lab pics Section -->
-
-  
-      
-      
-      
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-  </footer><!-- End  Footer -->
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
+    <div class="col-auto">
+      <img src="assets/img/x-25.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-3.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-5.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-poster.png" class="gallery-img">
+    </div>
+    <div class="col-auto">
+      <img src="assets/img/x-2.png" class="gallery-img">
+    </div>
+    <div class="container my-4 text-center">
+       <video class="w-50" controls>
+       <source src="assets/videos/trapping.mp4" type="video/mp4">
+       Your browser does not support the video tag.
+       </video>
+    </div>
+  </div>
+</div>
+    </section><!-- /About Section -->
+  </main>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Preloader -->
+  <div id="preloader"></div>
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-
-  <!-- Template Main JS File -->
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>
