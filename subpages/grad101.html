@@ -4,73 +4,63 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Orientation to Graduate School</title>
-  <meta content="This course is designed to provide entering graduate students the skills and resources necessary to be a success in a Ph.D. program in biology or the life sciences more broadly" name="descriptison">
-  <meta content="graduate school" name="keywords">
+  <title>Blackmon Lab - Evolutionary Biology</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
   <!-- Favicons -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-    
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="../assets/img/favicon.ico" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Main CSS File -->
+  <link href="../assets/css/main.css" rel="stylesheet">
 
-    
-    
 </head>
 
-<body>
+<body class="index-page">
 
-<!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <div class="profile">
-        <img src="assets/img/labpics/33.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Blackmon Lab</a></h1>
-      </div>
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Blackmon Lab</h1>
+      </a>
 
-      <nav class="nav-menu">
+      <nav id="navmenu" class="navmenu">
         <ul>
-          <li class="active"><a href="http://coleoguy.github.io/#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="http://coleoguy.github.io/#research"><i class="bx bx-bulb"></i> <span>Research</span></a></li>
-          <li><a href="http://coleoguy.github.io/#publications"><i class="bx bx-file-blank"></i> <span>Publications</span></a></li> 
-          <li><a href="http://coleoguy.github.io/#resources"><i class="bx bx-server"></i> Resources</a></li>
-          <li><a href="http://coleoguy.github.io/#members"><i class="bx bx-user"></i> Members</a></li>
-          <li><a href="http://coleoguy.github.io/#calendar"><i class="bx bx-calendar"></i> Calendar</a></li>
-          <li><a href="http://coleoguy.github.io/#news"><i class="bx bx-news"></i> News</a></li>
-          <li><a href="http://coleoguy.github.io/#joining"><i class="bx bx-user-plus"></i> Joining</a></li>
-          <li><a href="http://coleoguy.github.io/#labpics"><i class="bx bx-camera"></i> Pictures</a></li>
-
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#members">Members</a></li>
+          <li><a href="#join">Joining our Team</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#photos">Photos</a></li>
         </ul>
-      </nav><!-- .nav-menu -->
-      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
     </div>
-  </header><!-- End Header -->
+  </header>
 
+  <main class="main">
 
-    
-  <main id="main">
-
-
-      
-<section id="research" class="resume">
-<div class="container">
+ <section id="research" class="about section">
+     <div class="container">
+         <br><br><br>
      <h2>Graduate Orientation</h2>
 
   <h4>Learning Objective</h4>
