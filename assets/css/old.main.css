@@ -1701,16 +1701,3 @@ section,
 .starter-section {
   /* Add your styles here */
 }
-
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table th,
-table td {
-  border-bottom: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
