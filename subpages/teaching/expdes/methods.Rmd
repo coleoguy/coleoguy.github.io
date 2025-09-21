@@ -1,0 +1,928 @@
+---
+title: "Statistical Methods in Life Sciences, an AI approach"
+author: "BIOL683"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: false
+    df_print: paged
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+**How to use this document**
+
+Each method includes:
+
+-   Plain‑English description
+
+-   Assumptions/limits
+
+-   Example input
+
+-   R code
+
+-   Example output
+
+-   Interpretation (with effect sizes when possible)
+
+Data wrangling favors **base R**; plotting favors **ggplot2** for
+clarity. Run code blocks in R or RStudio. Install packages once with
+`install.packages()`.
+
+``` r
+# Core packages used in this review (install if needed)
+pkgs <- c("ggplot2","lme4","lmerTest","effectsize","emmeans","car","MASS","boot","tidyr","dplyr","broom","ggfortify","vegan")
+to_install <- setdiff(pkgs, rownames(installed.packages()))
+if(length(to_install)) install.packages(to_install)
+```
+
+------------------------------------------------------------------------
+
+# 1. T‑tests (one‑sample, independent two‑sample, paired)
+
+## 1.1 Plain English
+
+Compare means.
+
+-   **One-sample**: Is a sample mean different from a known/reference
+    value?
+-   **Two-sample (independent)**: Are the means of two independent
+    groups different?
+-   **Paired**: Are the means of two **matched** or **repeated**
+    observations different (before/after on same individuals)?
+
+T-tests are used when you're comparing the means of one or two groups to
+see if they’re statistically different from each other. The one-sample
+t-test checks whether a sample mean is different from a known or
+expected value (like a control or theoretical value). The two-sample
+version compares the means of two independent groups, while the paired
+version compares before/after measurements or matched pairs (e.g.,
+siblings, pre/post interventions). T-tests assume normally distributed
+data, especially when sample sizes are small, but they’re fairly robust.
+They're often your go-to when the outcome is continuous and the design
+is simple — just remember to check whether your samples are paired or
+independent and whether variance between groups is roughly equal.
+
+## 1.2 Assumptions / Limits
+
+-   Response is (approximately) **continuous** and roughly **normal** in
+    each group.
+-   **Independent two-sample** assumes independent observations and (for
+    Welch’s) does **not** require equal variances.
+-   **Paired** assumes the **differences** are \~ normal.
+-   Robust to mild deviations with moderate n; otherwise consider
+    **Wilcoxon**.
+
+## 1.3 Example Input Data
+
+Two treatments on fish growth (grams):
+
+``` r
+set.seed(1)
+ctrl <- rnorm(30, mean = 10, sd = 2)
+trt  <- rnorm(28, mean = 11.5, sd = 2)
+paired_before <- rnorm(20, 10, 1.5)
+paired_after  <- paired_before + rnorm(20, 0.8, 1.2)
+```
+
+## 1.4 R Code
+
+``` r
+# One-sample: is mean(ctrl) different from 10?
+t.test(ctrl, mu = 10)
+
+# Independent two-sample (Welch by default)
+t.test(trt, ctrl)
+
+# Paired t-test
+t.test(paired_after, paired_before, paired = TRUE)
+
+# Effect sizes
+library(effectsize)
+cohens_d(trt, ctrl)                 # independent
+cohens_d(paired_after, paired_before, paired = TRUE)  # paired
+```
+
+## 1.5 Example Output (abridged)
+
+```         
+Welch Two Sample t-test
+t = 3.2, df = 53.4, p = 0.0023
+mean of x = 11.52, mean of y = 10.02, diff = 1.50
+95% CI for diff: [0.56, 2.44]
+
+Cohen's d (Hedges' g corrected):
+d = 0.86 [0.31, 1.41]
+```
+
+## 1.6 Interpretation
+
+-   **p-value** tells you if the mean difference is more than we’d
+    expect due to sampling if they come from the same population.
+-   **Effect size (Cohen’s d)** tells you **how big** the difference is
+    (≈0.2 small, 0.5 medium, 0.8 large).
+-   Report mean±SD for each group, 95% CI for difference, and **d**.
+
+When you read a t‑test, don’t stop at the p‑value. Start with the
+**group means** and their **95% CI**—that tells you what size of
+difference is compatible with the data. Then report **Cohen’s d** (and
+its CI) so readers know if the difference is tiny, moderate, or big in
+biological terms. If Welch’s test was used, you already handled unequal
+variances; if not, check variance equality before making claims. For
+paired tests, emphasize the **mean of the within‑subject
+differences**—that’s the thing you actually tested. Finally,
+sanity‑check the plot: if the distributions barely overlap and d is
+decent, the story’s stronger than a lonely p‑value.
+
+------------------------------------------------------------------------
+
+# 2. Chi‑square tests (goodness‑of‑fit, independence)
+
+## 2.1 Plain English
+
+-   **Goodness‑of‑fit**: Do observed counts match expected proportions?
+-   **Independence**: Are two categorical variables associated?
+
+Chi-square tests are for categorical data — think counts of observations
+in different categories. You use them when you're trying to answer
+questions like “Do these two variables appear to be related?” or “Are
+these observed counts different from what I’d expect by chance?” The
+goodness-of-fit test asks whether one categorical variable fits a
+specific expected distribution, while the test of independence checks
+whether two categorical variables are statistically associated (like
+treatment group and survival). These tests assume independence between
+observations and that expected counts are big enough (typically ≥5 per
+cell). If you’ve got categories and counts — like genotypes, color
+morphs, or choices in a behavioral trial — this is your tool.
+
+## 2.2 Assumptions / Limits
+
+-   Counts (non‑negative integers), expected cell counts ideally ≥ 5
+    (else use **Fisher’s exact**).
+-   Observations are independent.
+
+## 2.3 Example Input
+
+``` r
+# Goodness-of-fit
+obs <- c(A=45, B=30, C=25)         # observed counts
+exp_prop <- c(0.4,0.3,0.3)
+
+# Independence table
+tab <- matrix(c(15,5,  8,12), nrow=2, byrow=TRUE,
+              dimnames=list(Treatment=c("Ctrl","Drug"),
+                              Outcome=c("No","Yes")))
+```
+
+## 2.4 R Code
+
+``` r
+# Goodness-of-fit (supply expected probabilities)
+chisq.test(obs, p = exp_prop)
+
+# Independence
+chisq.test(tab)
+
+# If any expected cell < 5, consider:
+fisher.test(tab)
+```
+
+## 2.5 Example Output (abridged)
+
+```         
+Chi-squared test for given probabilities
+X-squared = 0.83, df = 2, p = 0.66
+
+Pearson's Chi-squared test
+X-squared = 5.12, df = 1, p = 0.0236
+```
+
+## 2.6 Interpretation
+
+-   For independence, significant p indicates association between
+    variables.
+-   Report **effect size** for 2×2 as **phi**; for larger tables,
+    **Cramer’s V**.
+
+``` r
+library(effectsize)
+cramers_v(tab)
+```
+
+For chi‑square, the headline is whether the **observed pattern of
+counts** deviates meaningfully from what you’d expect by chance. Report
+**Cramér’s V (or phi in 2×2)** to size the association; large tables can
+be “significant” with trivial associations, so effect size keeps us
+honest. Inspect **standardized residuals** to see **which cells** drive
+the result (that’s usually the biological insight). If any expected
+counts are tiny, say you used **Fisher’s exact** instead and frame
+conclusions cautiously. Bottom line: tell readers *which categories*
+differ from expectation and by **how much**, not just that the table was
+“sig.”
+
+------------------------------------------------------------------------
+
+# 3. ANOVA (one‑way, two‑way, **repeated measures**)
+
+## 3.1 Plain English
+
+Compare **means across ≥ 2 groups** (factors).
+
+-   **One‑way**: one factor (e.g., treatment with 3 levels).
+-   **Two‑way**: two factors and their interaction.
+-   **Repeated measures**: same subjects measured multiple times
+    (within‑subject factor).
+
+ANOVA — short for analysis of variance — is what you use when you’re
+comparing more than two groups. It tells you whether there are any
+statistically significant differences among group means, and it’s more
+appropriate than stringing together a bunch of t-tests. One-way ANOVA
+tests the effect of a single factor (e.g., treatment), while two-way
+ANOVA lets you test two factors and their interaction (e.g., treatment
+and sex). If you measured the same subject multiple times, you’ll need a
+repeated measures ANOVA — which accounts for that within-subject
+structure. ANOVA assumes normality and equal variances among groups, but
+it’s robust to moderate violations. If you find significance, post-hoc
+tests (like Tukey’s) tell you which groups differ. Also, don’t just
+report the p-value — effect sizes like beta-squared are key to
+understanding the biological relevance.
+
+## 3.2 Assumptions / Limits
+
+-   Residuals \~ normal; **homogeneity of variances** (Levene/Bartlett).
+-   Independence of observations (except the **within‑subject**
+    structure for repeated measures).
+-   If violated, consider **transformations**, **Welch ANOVA**, or
+    **Kruskal‑Wallis**.
+
+## 3.3 Example Input (one‑way)
+
+``` r
+set.seed(2)
+dat <- data.frame(
+  y = c(rnorm(20,10,2), rnorm(22,11,2), rnorm(21,12,2)),
+  trt = factor(rep(c("A","B","C"), times=c(20,22,21)))
+)
+```
+
+## 3.4 R Code (one‑way + diagnostics + post‑hoc)
+
+``` r
+m1 <- aov(y ~ trt, data = dat)
+summary(m1)
+
+# Diagnostics
+par(mfrow=c(1,2)); plot(m1); par(mfrow=c(1,1))
+car::leveneTest(y ~ trt, data=dat)
+
+# Post-hoc (Tukey)
+TukeyHSD(m1)
+
+# Effect size (eta-squared)
+effectsize::eta_squared(m1)
+
+# Plot means + CI
+library(ggplot2)
+ggplot(dat, aes(trt, y)) +
+  stat_summary(fun=mean, geom="point", size=3) +
+  stat_summary(fun.data=mean_cl_normal, geom="errorbar", width=0.2) +
+  theme_minimal()
+```
+
+## 3.5 Two‑way ANOVA (interaction)
+
+``` r
+set.seed(3)
+dat2 <- expand.grid(
+  trt = c("A","B"),
+  sex = c("F","M"),
+  rep = 1:25
+)
+dat2$y <- with(dat2, 10 + (trt=="B")*2 + (sex=="M")*1 + (trt=="B" & sex=="M")*1.5 + rnorm(nrow(dat2),0,2))
+m2 <- aov(y ~ trt*sex, data=dat2)
+summary(m2)
+effectsize::eta_squared(m2)
+```
+
+## 3.6 **Repeated Measures ANOVA** (within‑subjects)
+
+``` r
+# Example: 10 subjects measured at 3 time points
+set.seed(4)
+subj <- factor(1:10)
+time <- factor(rep(c("T1","T2","T3"), each=10))
+y    <- c(rnorm(10,10,1.2), rnorm(10,11,1.2), rnorm(10,12,1.2))
+rm_dat <- data.frame(subj, time, y)
+
+# Within-subject (Error term)
+rm_mod <- aov(y ~ time + Error(subj/time), data=rm_dat)
+summary(rm_mod)
+
+# Pairwise (adjusted)
+emmeans::emmeans(lm(y ~ time + subj, rm_dat), pairwise ~ time)
+```
+
+## 3.7 Interpretation
+
+-   Significant F → some group means differ; follow with **post‑hoc**
+    tests.
+-   Report **eta²** or **partial eta²** for effect size.
+-   For repeated measures, check **sphericity** (if many levels); if
+    violated, use corrections (e.g., Greenhouse‑Geisser) or a **mixed
+    model**.
+
+With ANOVA, significance says “at least one group mean differs,” but the
+biology lives in **which contrasts** differ and **how large** those
+differences are. Report **eta²/partial‑eta²** and 95% CIs for **pairwise
+comparisons** (Tukey or planned contrasts) so effect sizes are front and
+center. For two‑way ANOVA, check the **interaction** first: if present,
+interpret main effects **within levels** of the other factor; if absent,
+main effects may be summarized cleanly.
+
+------------------------------------------------------------------------
+
+# 4. Correlation (Pearson)
+
+## 4.1 Plain English
+
+Measures **linear association** between two continuous variables (−1 to
++1).
+
+Correlation tells you how much two continuous variables tend to move
+together — positively, negatively, or not at all. Pearson correlation
+measures linear relationships and assumes both variables are roughly
+normally distributed. It gives you a number between −1 and +1: the
+closer to ±1, the stronger the relationship. A positive correlation
+means the variables increase together (e.g., body size and fecundity),
+while a negative one means as one increases, the other decreases (e.g.,
+age and metabolic rate). It’s easy to overinterpret, so always visualize
+it — and remember, correlation isn’t causation.
+
+## 4.2 Assumptions / Limits
+
+-   Approximately **bivariate normal**, linear relationship, no major
+    outliers.
+-   If nonlinear or ordinal, use **Spearman** or **Kendall**.
+
+## 4.3 Code
+
+``` r
+cor(mtcars$mpg, mtcars$wt, method = "pearson")
+cor.test(mtcars$mpg, mtcars$wt)
+
+# Plot with regression line (visual check)
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() +
+  geom_smooth(method="lm", se=TRUE) +
+  theme_minimal()
+```
+
+## 4.4 Interpretation
+
+-   Report **r** and 95% CI.
+-   Remember correlation ≠ causation.
+
+Correlation is about **strength and direction** of a **linear**
+relationship, not causation. Report **r** with a **95% CI** and show the
+scatter with a fitted line; readers should see whether a few points are
+doing all the work. If a relationship is clearly **nonlinear** or has
+**outliers**, Pearson r can mislead—switch to **Spearman** or model the
+curve. Also ask “so what?”: a modest r can be biologically important if
+the variables matter, while a large r can be trivial if it’s an artifact
+(batch, time, etc.). Keep the story focused on practical meaning, not
+just the magnitude of r.
+
+------------------------------------------------------------------------
+
+# 5. Linear Regression (LM)
+
+## 5.1 Plain English
+
+Predict a continuous response from one or more predictors; estimate
+**slopes** (effects).
+
+Linear regression is a workhorse method for modeling the relationship
+between a continuous outcome and one or more predictors (categorical or
+continuous). It estimates slopes that tell you how much the outcome
+changes for each unit of the predictor, holding others constant.
+Assumptions include linearity, homoscedasticity (constant variance), and
+normal residuals. You should check diagnostic plots — they’re easy and
+informative. Regression also gives you effect sizes via the slopes and
+R², which tells you how much of the variation in the outcome your model
+explains. Multiple regression (more than one predictor) lets you control
+for confounding and test more complex hypotheses.
+
+## 5.2 Assumptions / Limits
+
+-   Linear mean structure, residuals \~ normal, **homoscedasticity**,
+    independence, no severe multicollinearity.
+
+## 5.3 Code
+
+``` r
+fit <- lm(mpg ~ wt + hp, data=mtcars)
+summary(fit)              # coefficients, p, R^2
+car::vif(fit)             # multicollinearity
+plot(fit)                 # diagnostics
+effectsize::standardize_parameters(fit) # standardized betas
+```
+
+## 5.4 Interpretation
+
+-   Report slopes (β), SE, p, **R²** (variance explained), and
+    **standardized β** for effect size comparability.
+
+Interpret regression by translating coefficients into expected changes
+on the original scale: “a 1‑unit increase in X is associated with β
+units change in Y.” Use standardized betas if units differ wildly so
+readers can compare predictors. Report R² (variance explained) and show
+diagnostics—if residuals fan out or the relationship bends, your
+inferences and CIs aren’t trustworthy. When multiple predictors are in
+play, interpret a coefficient as conditional on the others; if
+collinearity is high, admit the uncertainty and consider simpler models.
+
+------------------------------------------------------------------------
+
+# 6. Generalized Linear Models (GLM) vs LM
+
+## 6.1 Plain English
+
+**GLMs** extend linear models with **non‑normal errors** and **link
+functions**:
+
+-   **Logistic** (binomial/logit) for **binary** outcomes
+-   **Poisson/Negative binomial** (log link) for **counts**
+-   **Gamma** (log) for **positive, skewed** responses
+
+**Strengths:**
+
+-   Properly models **non‑Gaussian** data
+-   Interpretable on link scale (e.g., **log‑odds**, **log counts**)
+-   Flexible; can include interactions, offsets, etc.
+
+GLMs extend linear regression to handle data that aren’t continuous and
+normally distributed — like binary outcomes, counts, or skewed data.
+Instead of fitting a straight line, GLMs use link functions to relate
+the predictors to the mean of a response with a specific distribution
+(binomial for yes/no, Poisson for counts, etc.). They shine when you're
+dealing with log-odds, incidence rates, or proportions — e.g., modeling
+survival, parasite load, or presence/absence. While the output can look
+cryptic (log odds and deviance), GLMs are powerful and flexible. Focus
+on interpreting effect sizes like odds ratios and incidence rate ratios,
+and always check for overdispersion in count data.
+
+## 6.2 Code: Logistic Regression (binary)
+
+``` r
+# Example: predict am (0/1) from wt + hp
+glm_bin <- glm(am ~ wt + hp, data=mtcars, family=binomial)
+summary(glm_bin)
+
+# Odds ratios and CIs
+or <- exp(cbind(OR = coef(glm_bin), confint(glm_bin)))
+or
+
+# Effect "size": Odds Ratios; McFadden's pseudo-R2
+library(pscl)
+pR2(glm_bin)
+```
+
+## 6.3 Code: Count Model (Poisson vs overdispersion)
+
+``` r
+# Fake counts
+set.seed(7)
+counts <- rpois(100, lambda = exp(0.3 + 0.5*rnorm(100)))
+x <- rnorm(100)
+dfc <- data.frame(counts, x)
+
+m_pois <- glm(counts ~ x, family=poisson, data=dfc)
+summary(m_pois)
+
+# Check overdispersion quickly:
+disp <- sum(residuals(m_pois, type="pearson")^2) / m_pois$df.residual
+
+# If > ~1.5, consider quasi-Poisson or negative binomial:
+m_qpois <- glm(counts ~ x, family=quasipoisson, data=dfc)
+summary(m_qpois)
+```
+
+## 6.4 Interpretation & Effect Sizes
+
+-   **Logistic**: report **odds ratios (OR)** with 95% CI.
+-   **Poisson**: report **incidence rate ratios (IRR = exp(β))**.
+-   Use appropriate **pseudo‑R²**, calibration plots, and residual
+    checks.
+
+For GLMs, always bring estimates back to a natural effect size on the
+response scale. In logistic, exponentiate coefficients to get odds
+ratios (OR) and report OR with 95% CIs (“treatment doubles the odds of
+survival”). In Poisson/negative binomial, exponentiate to get incidence
+rate ratios (IRR). State whether you checked overdispersion (and how you
+handled it). Replace generic fit indices with something interpretable
+(e.g., calibration curves, confusion‑style summaries for logistic;
+predicted counts across x for Poisson). A small p with an OR≈1 isn’t
+compelling—effect size and uncertainty should carry the conclusion.
+
+------------------------------------------------------------------------
+
+# 7. Mixed Effects Models (random effects; lme4)
+
+## 7.1 Plain English
+
+Handle **hierarchical** or **repeated measures** data by adding **random
+effects** (e.g., random intercept per subject, plot, batch).
+
+Mixed models are what you reach for when your data have grouping or
+repeated measures — like multiple measurements per animal, per cage, or
+per site. They combine fixed effects (e.g., treatment) with random
+effects (e.g., individual ID), allowing you to account for
+non-independence and variation between groups. This lets you use all
+your data without violating assumptions of independence. Mixed models
+are especially helpful in field or lab settings where full randomization
+isn’t possible. They require a bit more statistical care but offer
+realistic models of the biological structure in your data. Look at both
+fixed effect estimates and marginal vs conditional R² to understand
+what’s going on.
+
+## 7.2 When to Use
+
+-   Repeated measures on the **same individual** (non‑independence).
+-   Data clustered within **groups** (e.g., cages, sites, families).
+
+## 7.3 Code
+
+``` r
+library(lme4); library(lmerTest)
+# Example: y ~ time with repeated measures per subject
+rm_dat$timeN <- as.numeric(rm_dat$time)
+mod_lmm <- lmer(y ~ time + (1|subj), data=rm_dat)
+summary(mod_lmm)
+
+# Random slopes
+mod_rs <- lmer(y ~ time + (time|subj), data=rm_dat)
+anova(mod_lmm, mod_rs)
+
+# Effect sizes (marginal/conditional R2)
+performance::r2_nakagawa(mod_lmm)
+emmeans::emmeans(mod_lmm, pairwise ~ time)
+```
+
+## 7.4 Interpretation
+
+-   Fixed effects = average effects; random effects = variation among
+    groups/subjects.
+-   Report β, SE, p, and **R² (marginal/conditional)**.
+-   Prefer mixed models over rm‑ANOVA when data are unbalanced or
+    sphericity is suspect.
+
+Mixed models separate the **average (fixed) effects** you care about
+from the **group‑level variation** you must account for. Report fixed
+effects with CIs, and include **marginal/conditional R²** to show how
+much variance is explained by predictors vs the full model (including
+random effects). If random slopes matter, say so and explain the
+biological meaning (e.g., individuals differ in responsiveness).
+Emphasize **predicted means/trajectories** by group/subject with CIs;
+they make the repeated‑measures story visible. Note any convergence
+issues or singular fits—those hint at over‑complex random structures
+relative to the data.
+
+------------------------------------------------------------------------
+
+# 8. Non‑parametric Tests (common set)
+
+Non-parametric tests are your backup plan when data don’t meet
+parametric assumptions (like normality), or when your response is
+ordinal or ranked. They’re less powerful than parametric tests but more
+robust when data are skewed or have outliers. The Wilcoxon rank-sum
+(Mann–Whitney) test replaces a two-sample t-test, while the Wilcoxon
+signed-rank test replaces the paired version. Kruskal-Wallis stands in
+for one-way ANOVA, and the Friedman test replaces repeated measures
+ANOVA. You can also use Spearman or Kendall correlation for monotonic
+relationships. They don’t rely on means — they use medians or rank sums
+— so they’re great when distributions are weird.
+
+## 8.1 Why
+
+When assumptions (normality/homoscedasticity) are violated or data are
+ordinal.
+
+## 8.2 Menu
+
+-   **Wilcoxon rank‑sum** (Mann‑Whitney): two independent groups
+-   **Wilcoxon signed‑rank**: paired data
+-   **Kruskal‑Wallis**: ≥3 groups (one‑way ANOVA alternative)
+-   **Friedman**: repeated measures (rm‑ANOVA alternative)
+-   **Spearman/Kendall**: rank correlations
+
+## 8.3 Code
+
+``` r
+# Rank-sum
+wilcox.test(trt, ctrl)
+
+# Signed-rank (paired)
+wilcox.test(paired_after, paired_before, paired=TRUE)
+
+# Kruskal-Wallis
+kruskal.test(y ~ trt, data=dat)
+
+# Friedman (wide-to-long may be needed)
+# Simple example using a matrix: subjects in rows, treatments in columns
+mat <- cbind(T1=rnorm(10,10,1), T2=rnorm(10,11,1), T3=rnorm(10,12,1))
+friedman.test(mat)
+
+# Spearman correlation
+cor.test(mtcars$mpg, mtcars$hp, method="spearman")
+```
+
+## 8.4 Interpretation
+
+-   Report median differences or shift in ranks.
+-   Effect sizes: **rank‑biserial** for Wilcoxon, **eta²**-like measures
+    for Kruskal‑Wallis (see `effectsize`).
+
+Interpret non‑parametrics as shifts in distributions, not differences in
+means. Use median differences to quantify the shift with CIs. Visualize
+with boxplots/violin plots so readers see spread and overlap. A
+significant result tells you the typical ranks differ; it doesn’t say by
+how many units on the original scale unless you provide that estimate.
+If you chose a rank test because of outliers or skew, state that
+plainly—that transparency strengthens your conclusion.
+
+------------------------------------------------------------------------
+
+# 9. Permutation Tests
+
+## 9.1 Plain English
+
+Build a **null distribution** by repeatedly **shuffling labels**;
+compute p as the fraction of permutations with statistic ≥ observed.
+
+Permutation tests are beautifully intuitive: you calculate your observed
+statistic (like a mean difference), then randomly shuffle your group
+labels thousands of times and see how often the randomized difference is
+as extreme as yours. It builds a null distribution from your data rather
+than relying on theoretical ones. This makes them powerful,
+assumption-light alternatives to standard tests — especially when sample
+sizes are small or distributions are strange. They can be used for
+means, medians, correlations, regression coefficients, and more.
+
+## 9.2 Code (two‑group mean difference)
+
+``` r
+set.seed(10)
+x <- trt; y <- ctrl
+obs_diff <- mean(x) - mean(y)
+
+B <- 5000
+pool <- c(x,y)
+n1 <- length(x)
+perm_diffs <- replicate(B, {
+  idx <- sample(length(pool))
+  mean(pool[idx[1:n1]]) - mean(pool[idx[-(1:n1)]])
+})
+p_val <- mean(abs(perm_diffs) >= abs(obs_diff))
+p_val
+
+# Plot
+ggplot(data.frame(perm=perm_diffs), aes(perm)) +
+  geom_histogram(bins=40) +
+  geom_vline(xintercept=obs_diff, linewidth=1) +
+  theme_minimal()
+```
+
+## 9.3 Interpretation
+
+-   Minimal assumptions; exact under exchangeability.
+-   Report observed statistic, permutation p, and show the null
+    histogram.
+
+With permutation tests, your p‑value is literally the fraction of
+label‑shuffled worlds that look as extreme as your data. That story is
+easy to tell and defend. Pair the p‑value with the observed effect size
+(mean difference, correlation, etc.) and a null histogram so readers see
+where your estimate sits relative to chance. Because permutations
+respect your design, highlight that advantage when assumptions are
+doubtful. If sample size is small, note the resolution of the p‑value
+(e.g., with 5,000 permutations, the smallest nonzero p is 1/5000).
+
+------------------------------------------------------------------------
+
+# 10. Monte Carlo Simulation
+
+## 10.1 Plain English
+
+Simulate data from a model many times to understand **variability**,
+**bias**, or **power**.
+
+Monte Carlo methods involve repeated random sampling to explore how a
+process behaves. You can use them to estimate sampling distributions,
+check how often a confidence interval actually captures the true value,
+simulate null distributions, or assess statistical power. The key idea
+is: if you can describe a process, you can simulate it. In experimental
+design, they help you test your analysis plan before collecting data or
+understand how your stats might behave under different assumptions.
+
+## 10.2 Example: CI coverage for a mean under non‑normality
+
+``` r
+set.seed(11)
+B <- 2000; n <- 20; lambda <- 0.2   # exponential mean = 5
+cover <- replicate(B, {
+  samp <- rexp(n, lambda)
+  ci <- t.test(samp)$conf.int
+  mean(samp) >= ci[1] && mean(samp) <= ci[2]
+})
+mean(cover)  # ~ coverage rate
+```
+
+## 10.3 Interpretation
+
+-   Use to assess robustness, power, or estimator behavior under known
+    truths.
+
+Monte Carlo results are about behavior under repeated sampling:
+coverage, bias, power, Type I error—whatever you set out to measure.
+Summarize with clear metrics (“95% CI covered the truth 91% of the time
+under skew”) and plots of the simulated distributions so students can
+see what “typical” looks like versus “extreme.” Tie the findings back to
+design choices: sample size, variance, skew, or effect size. The win is
+actionable guidance—“with n=20 per group and this variance, power is
+\~0.7; we need \~n=28 for 0.8.”
+
+------------------------------------------------------------------------
+
+# 11. Posterior Predictive Simulations (Bayesian idea)
+
+## 11.1 Plain English
+
+Fit a Bayesian model → simulate new data from the **posterior
+predictive** → compare simulated vs observed to check **model fit**.
+
+Posterior predictive checks are a key part of Bayesian data analysis.
+Once you’ve fit a Bayesian model, you simulate new datasets from it and
+compare them to your actual data. If your model is reasonable, the
+simulated data should “look like” the observed data in terms of spread,
+structure, or key statistics. These checks are flexible and powerful for
+model validation, particularly when classical residuals don’t apply
+(e.g., in GLMs). They’re also great teaching tools — they help students
+see what a model is really claiming.
+
+## 11.2 Minimal Example (conceptual)
+
+``` r
+# Illustrative via bootstrapping-like posterior predictive check using a fitted LM
+fit <- lm(mpg ~ wt, data=mtcars)
+pred <- predict(fit, se.fit=TRUE)
+
+# Simulate new outcomes using fitted mean and residual SD
+set.seed(12)
+y_rep <- replicate(1000, pred$fit + rnorm(nrow(mtcars), 0, sd(residuals(fit))))
+# Compare distributions (e.g., means)
+obs_mean <- mean(mtcars$mpg)
+rep_means <- colMeans(y_rep)
+mean(rep_means >= obs_mean)  # rough tail-area check
+```
+
+## 11.3 Interpretation
+
+-   If observed statistics fall in extreme tails of replicated
+    distribution, model may not fit well.
+
+> For full Bayesian workflow, consider **brms** or **rstanarm** for
+> formal posterior predictive checks.
+
+Posterior predictive checks ask: if the model were true, would it
+generate data that look like ours? Show a statistic (mean, dispersion,
+zero‑inflation, max) or a visual (densities, residual patterns)
+comparing observed to posterior predictive distributions. If the
+observed falls in the tails, discuss which aspect of the data the model
+misses (skew, clumping, heterogeneity) and what revision would address
+it (different link, distribution, random effects). Emphasize that this
+is model criticism, not a p‑value hunt—the goal is a model that
+reproduces the salient biology.
+
+------------------------------------------------------------------------
+
+# 12. Dimensionality Reduction
+
+Dimensionality reduction techniques help you make sense of
+high-dimensional data — gene expression, behavioral assays,
+morphometrics, etc. PCA (Principal Component Analysis) finds axes
+(components) that explain the most variance in your data. MDS
+(Multidimensional Scaling) preserves pairwise distances between samples.
+Methods like t-SNE and UMAP preserve local relationships and are
+excellent for visualizing clusters, even if the axes are hard to
+interpret. These tools are about summarizing complex data into a form
+you can plot, analyze, or cluster — they don’t test hypotheses directly,
+but they make your downstream work easier.
+
+## 12.1 Plain English
+
+Summarize **high‑dimensional** data into fewer dimensions while
+preserving structure.
+
+-   **PCA**: linear projections maximizing variance.
+-   **MDS**: preserves pairwise distances / dissimilarities.
+-   **t‑SNE / UMAP**: preserves local neighborhoods (good for clusters,
+    not global geometry).
+
+## 12.2 PCA in R (base + ggplot)
+
+``` r
+X <- scale(iris[,1:4])
+p <- prcomp(X, center=TRUE, scale.=TRUE)
+summary(p)           # variance explained
+biplot(p)            # base R quick look
+
+# Pretty ggplot
+scores <- data.frame(p$x, Species=iris$Species)
+ggplot(scores, aes(PC1, PC2, color=Species)) +
+  geom_point(size=2) +
+  theme_minimal()
+```
+
+## 12.3 MDS
+
+``` r
+dist_mat <- dist(X)
+mds <- cmdscale(dist_mat, k=2)
+mds_df <- data.frame(MDS1=mds[,1], MDS2=mds[,2], Species=iris$Species)
+ggplot(mds_df, aes(MDS1, MDS2, color=Species)) +
+  geom_point(size=2) +
+  theme_minimal()
+```
+
+> For **t‑SNE/UMAP**, use packages like **Rtsne** or **uwot**.
+
+Interpret DR plots as maps, not proofs. For PCA, report the variance
+explained by PCs and describe the loadings to say which variables define
+each axis; then interpret group separation (or overlap) in that light.
+For MDS, stress that distances in the plot approximate
+dissimilarities—clusters that are close are similar by your chosen
+metric. For t‑SNE/UMAP, focus on local neighborhoods and avoid
+over‑reading global distances; reproducibility across seeds and
+parameters matters. Always tie patterns back to biology (treatment,
+batch, genotype) and follow up with models if you want inference, not
+just visualization.
+
+------------------------------------------------------------------------
+
+# 13. Tidyverse + ggplot (Cheat Section)
+
+> We used base R for data shaping, but sometimes tidyverse is cleaner;
+> **ggplot2** is our default for plots.
+
+## 13.1 Minimal Wrangling
+
+``` r
+library(dplyr)
+df <- as.data.frame(mtcars) |>
+  mutate(cyl = factor(cyl)) |>
+  group_by(cyl) |>
+  summarize(mpg_mean = mean(mpg), .groups="drop")
+df
+```
+
+## 13.2 ggplot Patterns
+
+``` r
+# Points + smooth
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point(alpha=0.7) +
+  geom_smooth(method="lm", se=TRUE) +
+  theme_minimal()
+
+# Group means with CIs
+ggplot(dat, aes(trt, y)) +
+  stat_summary(fun=mean, geom="point", size=3) +
+  stat_summary(fun.data=mean_cl_normal, geom="errorbar", width=0.2) +
+  theme_minimal()
+```
+
+## 13.3 Model + Tidy Output
+
+``` r
+library(broom)
+fit <- lm(mpg ~ wt + hp, data=mtcars)
+tidy(fit)        # table of coefficients
+glance(fit)      # model-level stats (R^2, AIC)
+augment(fit)     # fitted values, residuals
+```
+
+------------------------------------------------------------------------
+
+## Reporting Checklist (Students)
+
+-   **Design**: Experimental unit, randomization, replication, blocking.
+-   **Assumptions**: Checked and stated; if violated, justify
+    alternative.
+-   **Model**: Correct test/model with clear formula.
+-   **Effect size**: Always report (d, eta², OR/IRR, R², etc.) with
+    **95% CI**.
+-   **Visualization**: ggplot with clear labels, units, and uncertainty.
+-   **Reproducibility**: Set seed, show code, name packages/versions.
