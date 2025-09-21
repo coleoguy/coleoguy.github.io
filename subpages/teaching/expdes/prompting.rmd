@@ -1,0 +1,252 @@
+
+---
+title: "Prompting R: Using AI + RStudio for Stats & Visualization"
+author: "Your Name"
+date: "`r format(Sys.Date())`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: false
+    theme: readable
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width = 7, fig.height = 5)
+```
+
+# Why this handout
+
+Use **natural‑language prompts** with an AI assistant (like ChatGPT) to produce **clean, runnable R code** in RStudio for common statistics and plots—without over‑emphasizing syntax. You’ll see **prompt patterns**, **checklists**, and **ready‑to‑run examples**.
+
+---
+
+# Quick rules for great prompts
+
+* **Goal + Data + Output.** Say what you want, which dataset/columns, and the output (plot, test, model).
+* **Name tools.** e.g., “Use `ggplot2`” or “base R only.”
+* **Be concrete.** Provide column names and data types.
+* **Iterate.** Ask for edits (titles, colors, grouping).
+* **Ask for comments.** “Add comments to each step.”
+* **Paste errors back.** “Explain this error and fix it.”
+
+**Copy‑me template:**
+
+> I’m in RStudio. I have a data frame `DF` with columns: `y` (numeric), `x` (numeric), `group` (factor).
+> Make a scatterplot of `y` vs `x`, color by `group`, add loess smoothers, and nice axis labels. Use `ggplot2`. Give me **only runnable R code** with comments.
+
+---
+
+# Minimal dependencies
+
+The examples below use base R and **ggplot2**.
+
+```{r packages}
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+library(ggplot2)
+```
+
+---
+
+# Prompt → Code: common tasks
+
+## 1) Load a CSV and inspect
+
+**Good prompt:**
+
+> “Read `data/my_study.csv`, show first rows, column names, and a basic summary. Report missing values by column. Code only.”
+
+```{r load-and-inspect}
+path <- "data/my_study.csv"
+if (file.exists(path)) {
+  dat <- read.csv(path, stringsAsFactors = FALSE)
+  cat("Rows x Cols:", nrow(dat), "x", ncol(dat), "\n")
+  cat("Column names:\n"); print(names(dat))
+  cat("\nMissing values per column:\n"); print(colSums(is.na(dat)))
+  cat("\nSummary:\n"); print(summary(dat))
+} else {
+  cat("Demo mode: file not found; using built-in 'mtcars'.\n")
+  dat <- mtcars
+  dat$cyl <- factor(dat$cyl)
+  print(head(dat))
+}
+```
+
+## 2) Clean/transform (base R only)
+
+**Good prompt:**
+
+> “Recode `group` to factor, drop rows with missing `y` or `x`, create `log_y = log(y)`. Base R only, with comments.”
+
+```{r clean-base}
+df <- dat
+if ("cyl" %in% names(df)) df$cyl <- factor(df$cyl)  # demo grouping
+df <- df[!is.na(df$mpg) & !is.na(df$wt), ]          # demo: keep complete rows
+df$log_mpg <- log(df$mpg)
+summary(df$log_mpg)
+```
+
+## 3) Plot beautifully with ggplot2
+
+**Good prompt:**
+
+> “Scatterplot `mpg` vs `wt`, color by `cyl`, smooth per group, minimal theme, clear labels.”
+
+```{r ggplot-scatter}
+ggplot(df, aes(x = wt, y = mpg, color = cyl)) +
+  geom_point(alpha = 0.8, size = 2.5) +
+  geom_smooth(se = FALSE) +
+  labs(
+    title = "Fuel Efficiency vs Weight",
+    x = "Weight (1000 lbs)",
+    y = "Miles per Gallon",
+    color = "Cylinders"
+  ) +
+  theme_minimal(base_size = 14)
+```
+
+## 4) Two‑group comparison (Welch’s t‑test) + effect size
+
+**Good prompt:**
+
+> “Compare `mpg` between 4‑ and 6‑cyl. Welch’s t‑test, Cohen’s d, one‑sentence interpretation.”
+
+```{r ttest}
+sub <- df[df$cyl %in% c("4", "6"), ]
+x <- sub$mpg[sub$cyl == "4"]; y <- sub$mpg[sub$cyl == "6"]
+tt <- t.test(x, y)  # Welch by default
+d  <- (mean(x) - mean(y)) / sqrt((sd(x)^2 + sd(y)^2)/2)
+tt
+cat(sprintf("Cohen's d = %.2f\n", d))
+cat(sprintf("Interpretation: Mean mpg differs between 4- and 6-cylinder cars (t=%.2f, p=%.3f); effect size d=%.2f.\n",
+            unname(tt$statistic), tt$p.value, d))
+```
+
+## 5) One‑way ANOVA + diagnostics + Tukey
+
+**Good prompt:**
+
+> “ANOVA `mpg ~ cyl`, residual plot + QQ plot + Shapiro, Tukey post‑hoc if significant. One‑line takeaway.”
+
+```{r anova}
+fit <- aov(mpg ~ cyl, data = df)
+summary(fit)
+
+par(mfrow = c(1, 2))
+plot(fitted(fit), resid(fit), xlab="Fitted", ylab="Residuals", main="Residuals vs Fitted"); abline(h=0, lty=2)
+qqnorm(resid(fit)); qqline(resid(fit))
+par(mfrow = c(1, 1))
+
+shapiro <- shapiro.test(resid(fit)); shapiro
+
+p_anova <- summary(fit)[[1]]["cyl","Pr(>F)"]
+if (!is.na(p_anova) && p_anova < 0.05) {
+  tk <- TukeyHSD(fit, "cyl"); print(tk)
+  cat("Takeaway: Cylinders explain mpg differences; see Tukey pairs.\n")
+} else {
+  cat("Takeaway: No strong evidence that mpg differs by cylinders.\n")
+}
+```
+
+## 6) Linear regression with standardized effects
+
+**Good prompt:**
+
+> “Fit `mpg ~ wt + hp`. Report standardized betas and R². One‑sentence interpretation.”
+
+```{r lm}
+Z <- scale(df[, c("wt", "hp")])
+fit_lm <- lm(df$mpg ~ Z[, "wt"] + Z[, "hp"])
+summary(fit_lm)
+cat("Interpretation: Holding the other predictor constant, a 1 SD increase in a predictor changes mpg by its standardized beta.\n")
+```
+
+---
+
+# Prompt patterns (copy/paste)
+
+**Explain + code**
+
+> “Act as a stats tutor. In RStudio with `DF(col1 numeric, col2 factor)`, run a **Welch’s t‑test** comparing `col1` across `col2` groups, include **comments**, and explain the output in **2 sentences**.”
+
+**Plot with constraints**
+
+> “Use **base R only** to draw **side‑by‑side boxplots** of `y` by `group` from `DF`. Add a title and axis labels. Code only.”
+
+**Reproduce & compare**
+
+> “Give two solutions to plot `y ~ x` with a smooth: one using **base R** and one using **ggplot2**. Label axes and set a white background.”
+
+**Troubleshoot**
+
+> “I get `object 'Sepal.Length' not found`. Here is my code: \[paste]. Explain the error and give a fixed version.”
+
+---
+
+# Error‑driven workflow
+
+1. **Paste the exact error** into your AI prompt.
+2. **Include the code** (or the failing line).
+3. **State what you expected** (“I wanted a plot with three groups”).
+4. **Ask for a fix + explanation**.
+
+---
+
+# Built‑in practice datasets
+
+* **`iris`** — sepal/petal by species.
+  **Load:** `data(iris); head(iris)`
+* **`mtcars`** — car performance stats.
+  **Load:** `data(mtcars); head(mtcars)`
+* **`ToothGrowth`** — tooth length by supplement & dose.
+  **Load:** `data(ToothGrowth); head(ToothGrowth)`
+
+---
+
+# Exercises (prompt → code → interpret)
+
+1. **T‑test (ToothGrowth):** Compare tooth length by `supp`. Plot (violin/boxplot), Welch’s t‑test, effect size, one‑sentence interpretation.
+2. **ANOVA (iris):** Test whether `Sepal.Length` differs by `Species`. Diagnostics + Tukey; plot means with 95% CIs.
+3. **Regression (mtcars):** Model `mpg ~ wt + hp`. Report standardized betas, R², and a partial‑effect plot for `wt` controlling for `hp`.
+
+---
+
+# Copy‑me prompt + scaffold
+
+**Prompt to paste into AI:**
+
+> I’m in RStudio. I have `DF` with `y` (numeric outcome), `x` (numeric predictor), `grp` (factor).
+> Please produce **only runnable R code** that:
+>
+> 1. Removes rows with missing `y` or `x`.
+> 2. Makes a scatterplot of `y` vs `x`, color by `grp`, with a smooth per group.
+> 3. Fits `y ~ x + grp` and reports coefficients and R².
+> 4. Uses **ggplot2**, includes **comments**, runs as‑is.
+
+```{r scaffold}
+DF <- mtcars; DF$grp <- factor(DF$cyl)  # replace with your data
+DF <- DF[!is.na(DF$mpg) & !is.na(DF$wt), ]
+
+ggplot(DF, aes(wt, mpg, color = grp)) +
+  geom_point(alpha = 0.8) +
+  geom_smooth(se = FALSE) +
+  labs(x = "Weight (1000 lbs)", y = "Miles per Gallon", color = "Cylinders") +
+  theme_minimal(base_size = 14)
+
+fit <- lm(mpg ~ wt + grp, data = DF)
+summary(fit)
+```
+
+---
+
+# Mini cheat‑sheet: which test?
+
+* **Two groups, numeric outcome:** Welch’s **t‑test**.
+* **>2 groups, numeric outcome:** **ANOVA** (+ Tukey).
+* **Numeric outcome + predictors:** **Linear regression**.
+* **Counts:** **Chi‑square** or **Poisson/Logistic GLM**.
+* **Assumption issues:** Use **non‑parametrics** (Wilcoxon/Kruskal–Wallis), transforms, or appropriate **GLMs**.
+
+*End.*

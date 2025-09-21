@@ -1,0 +1,38 @@
+---
+title: "Quick Statistical Test Picker"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: false
+    df_print: paged
+---
+
+# Picking the right test by outcome & predictors
+
+Rows = **outcome type**; columns = **predictor setup**. Each cell suggests a go-to test (with common alternatives).
+
+| **Outcome (Y)** | **No predictor** (1-variable) | **1 categorical (2 groups)** | **1 categorical (>2 groups)** | **1 continuous predictor** | **≥2 predictors (mix of categorical/continuous)** |
+|---|---|---|---|---|---|
+| **Continuous** | One-sample *t* (vs μ₀) / Wilcoxon signed-rank | Two-sample *t* (Welch) / Mann–Whitney (Wilcoxon rank-sum) | One-way ANOVA / Kruskal–Wallis | Simple linear regression / Pearson *r* (Spearman as robust) | Multiple linear regression (LM) / Two-way ANOVA / ANCOVA; **LMM** if random effects |
+| **Binary** | Binomial test / 1-prop *z*-test | 2-prop *z*-test / Fisher’s exact (small *n*) / 2×2 χ² | χ² test of independence (R×2) | Logistic regression (GLM, logit) | Multiple logistic regression (GLM); **GLMM** if random effects |
+| **Count** | Poisson exact test (rate vs λ₀) | Poisson/NegBin regression with group | Poisson/NegBin regression with *k*-level factor | Poisson/NegBin regression | Multiple Poisson/NegBin regression; **GLMM** if random effects |
+| **Categorical (≥3 levels, nominal)** | Multinomial goodness-of-fit | χ² test of independence (2×*k*) | χ² test of independence (R×C) | Multinomial logistic regression | Multinomial logistic regression (with interactions as needed) |
+| **Ordinal** | Sign test / Wilcoxon signed-rank | Mann–Whitney (rank-sum) | Kruskal–Wallis | Ordinal logistic (proportional-odds) or Spearman | Ordinal logistic (cumulative link); **CLMM** if random effects |
+| **Time-to-event** | Descriptive Kaplan–Meier | Log-rank (2 groups) | Log-rank (*k* groups) | Cox proportional hazards (1 covariate) | Cox PH (multi-covariate) / parametric survival; frailty/mixed if clustered |
+
+## Paired / repeated-measures quick picks
+
+| **Outcome (Y)** | **2 timepoints / matched pairs** | **>2 timepoints (within-subjects)** | **Mixed within/between** |
+|---|---|---|---|
+| Continuous | Paired *t* / Wilcoxon signed-rank | Repeated-measures ANOVA / **LMM** | Mixed-effects model (LMM) |
+| Binary | McNemar’s test | Cochran’s Q | GLMM (logit) / GEE |
+| Ordinal | Wilcoxon signed-rank | Friedman test | Ordinal mixed model (CLMM) |
+| Count | — (often use GLMM) | — (often use GLMM) | GLMM (Poisson/NegBin) |
+| Time-to-event | Stratified log-rank | — | Cox PH with frailty/random effects |
+
+### Fast notes
+- Prefer **Welch’s *t*** by default for unequal variances; always report effect sizes (Cohen’s *d*, η²/ω², odds ratios, rate ratios).
+- Small counts → **Fisher’s exact** instead of χ². Overdispersion in counts → **Negative Binomial** over Poisson.
+- Non-normal / outliers → rank-based alternatives (Mann–Whitney, Kruskal–Wallis, Spearman).
+- Random/clustered data (subjects, classes, cages) → **Mixed-effects** (LMM/GLMM/CLMM) or **GEE**.
