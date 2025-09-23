@@ -1,0 +1,218 @@
+---
+title: "Biol 683 — Continuous Data & Statistical Comparisons (Pre‑class Reading)"
+author: "Heath Blackmon"
+date: "`r format(Sys.Date())`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: false
+    df_print: paged
+    theme: readable
+    highlight: tango
+---
+
+> This handout mirrors our slide deck and adds context, assumptions, and code snippets for your pre‑class reading. We’ll use class time for practice and discussion. 【7†source】
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALSE)
+```
+
+## 1) Continuous data, sampling, and the CLT
+
+Many biological variables (e.g., size, gene expression) are right‑skewed; size is often approximately exponential. If you repeatedly sample a population and compute the mean from each sample, the distribution of those means is approximately normal by the Central Limit Theorem (CLT). 【7†source】
+
+**Key idea.** The normality of the *sampling distribution of the mean* underpins t‑tests and confidence intervals—even when raw data are non‑normal.
+
+## 2) What is a p‑value?
+
+A p‑value is the probability of obtaining data as extreme as (or more extreme than) what you observed, **assuming the null hypothesis is true**. It is *not* the probability the null is true, nor your probability of being wrong.
+
+## 3) Comparing means (t‑tests)
+
+### 3.1 One‑sample t‑test
+
+Assesses whether a sample mean differs from a hypothesized value \\(\\mu\\). Assumes the variable is normally distributed in the population. 【7†source】
+
+Test statistic:
+\\[
+t \\,=\\, \\frac{\\bar Y - \\mu}{\\mathrm{SEM}}
+\\]
+
+> For proportion data, an **arcsine square‑root** transform is standard; remember to interpret on the original scale. 【7†source】
+
+### 3.2 Two‑sample t‑test (independent groups)
+
+Compares means of two groups (e.g., control vs treatment). Welch’s version tolerates unequal variances. 【7†source】
+
+Welch test statistic:
+\\[
+t \\,=\\, \\frac{\\bar Y_a - \\bar Y_b}{\\sqrt{\\tfrac{s_a^2}{n_a} + \\tfrac{s_b^2}{n_b}}}
+\\]
+
+### 3.3 Paired‑sample t‑test
+
+For before–after or matched designs; analyze differences \\(d_i = y_{ai} - y_{bi}\\). Assumes the differences are normally distributed. 【7†source】
+
+\\[
+t \\,=\\, \\frac{\\bar d}{\\mathrm{SE}_d}, \\qquad
+\\bar d \\,=\\, \\frac{1}{n}\\sum_{i=1}^{n} d_i
+\\]
+
+### 3.4 Confidence intervals and overlap
+
+If two 95% CIs **do not overlap**, the groups differ at \\(\\alpha=0.05\\). If they overlap, the test might still be significant—run the formal test. 【7†source】
+
+## 4) Comparing variances (Levene’s test)
+
+Variance can be biologically meaningful (e.g., variance in reproductive success). Levene’s test compares absolute deviations from group centers and is robust when normality is doubtful; it assumes roughly **symmetric** distributions. 【7†source】
+
+## 5) Assumptions & diagnostics
+
+- **t‑tests:** normality (variable or differences), independence; Welch’s handles unequal variances. 【7†source】  
+- **Levene’s:** symmetry (not strict normality). 【7†source】  
+
+Visual checks often beat formal tests:
+- **Histograms** and **QQ‑plots** help spot skew, heavy tails, and odd shapes.
+- **Shapiro–Wilk**: low power with small \\(n\\), oversensitive with large \\(n\\). Context matters. 【7†source】
+
+## 6) Transformations (use for assumptions, not p‑hacking)
+
+- **Log**: right‑skewed positive data  
+- **Arcsine(sqrt)**: proportions in \\([0,1]\\)  
+- **Square‑root**: counts (often add 0.5 first)  
+
+If you use a non‑standard transform, justify it and consider confirming results with a rank‑based method (e.g., Mann–Whitney). 【7†source】
+
+## 7) Non‑parametric & permutation tests
+
+### Mann–Whitney / Wilcoxon rank‑sum
+
+Rank‑based alternative to the two‑sample t‑test. Assumes symmetry and same‑shaped distributions. A significant result implies **distributional** differences (mean, variance, or skew). 【7†source】
+
+### Sign test
+
+Minimal‑assumption alternative to one‑sample or paired t‑tests; uses only the sign of differences. Low power—reserve for special cases. 【7†source】
+
+### Permutation tests
+
+Shuffle labels to build a null distribution for a statistic (e.g., mean difference). Highly flexible with minimal assumptions. 【7†source】
+
+## 8) Correlation and causation
+
+**Pearson’s r** measures linear association: \\( r = \\tfrac{\\mathrm{cov}(X,Y)}{s_X s_Y} \\). Assumes approximate bivariate normality and is sensitive to outliers and clustering. **Spearman’s rho** is rank‑based and robust to non‑normality and monotone nonlinearity. Time trends can induce spurious correlations—interrogate mechanisms and confounders. 【7†source】
+
+- Interactive: Correlation simulator — <https://evobir.shinyapps.io/covariance/>
+
+## 9) Quick selection guide
+
+| Question                                   | Recommended test           | Core assumptions                         |
+|:-------------------------------------------|:---------------------------|:-----------------------------------------|
+| Is a mean ≠ constant?                      | One‑sample t               | Normality                                |
+| Do two groups differ in mean?              | Welch two‑sample t         | Normality; unequal variances allowed     |
+| Before–after (same units)?                 | Paired t                   | Normality of differences                 |
+| Do groups differ in variance (spread)?     | Levene’s                   | Symmetry                                 |
+| Distributional difference, weak assumptions| Mann–Whitney               | Symmetry; same shape                     |
+| Minimal paired/one‑sample alternative      | Sign test                  | None (very low power)                    |
+| Flexible, custom statistic                 | Permutation                | Exchangeability / valid randomization    |
+| Linear association                         | Pearson’s r                | Bivariate normality; linearity           |
+| Monotone association, robust               | Spearman’s \\(\\rho\\)     | Monotonic relationship                   |
+
+## 10) Minimal R snippets (non‑evaluated by default)
+
+> These are short examples for in‑class practice. By default they do **not** execute when knitting so the document compiles cleanly. Replace placeholders and run interactively.
+
+### One‑sample t
+```{r}
+y <- c( )          # your sample numeric vector
+mu0 <- 0           # hypothesized mean
+t.test(y, mu = mu0)
+```
+
+### Welch two‑sample t
+```{r}
+# df with numeric y and factor group with 2 levels
+t.test(y ~ group, data = df)
+```
+
+### Paired t
+```{r}
+t.test(y_after, y_before, paired = TRUE)
+```
+
+### Levene’s test
+```{r}
+# install.packages("car")
+library(car)
+leveneTest(y ~ group, data = df)
+```
+
+### Mann–Whitney (Wilcoxon rank‑sum)
+```{r}
+wilcox.test(y ~ group, data = df, exact = FALSE)
+```
+
+### Sign test (paired)
+```{r}
+# install.packages("BSDA")
+library(BSDA)
+SIGN.test(y_after - y_before, md = 0)
+```
+
+### Permutation test (mean difference, two groups)
+```{r}
+set.seed(1)
+obs <- with(df, mean(y[group=="A"]) - mean(y[group=="B"]))
+B <- 5000
+null <- replicate(B, {
+  g <- sample(df$group)              # permute labels
+  with(df, mean(y[g=="A"]) - mean(y[g=="B"]))
+})
+pval <- mean(abs(null) >= abs(obs))
+c(observed_diff = obs, p_value = pval)
+```
+
+## 11) Demo‑safe examples (self‑contained; these DO run)
+
+> Toggle `eval = TRUE` below if you need a compiled document with outputs.
+
+```{r demo_setup, eval=TRUE}
+set.seed(42)
+n <- 25
+y <- rlnorm(n, meanlog = 0, sdlog = 0.6)   # skewed positive data
+y_log <- log(y)
+group <- factor(rep(c("A","B"), each = n))
+df <- data.frame(
+  y = c(rnorm(n, 10, 2), rnorm(n, 11, 2.5)),
+  group = group
+)
+```
+
+### One‑sample t on log‑scale (example)
+```{r, eval=TRUE}
+mu0 <- 0
+t.test(y_log, mu = mu0)
+```
+
+### Welch two‑sample t (example)
+```{r, eval=TRUE}
+t.test(y ~ group, data = df)
+```
+
+### Levene’s test (example)
+```{r, eval=TRUE}
+if (!requireNamespace("car", quietly = TRUE)) {
+  install.packages("car", repos = "https://cloud.r-project.org")
+}
+library(car)
+leveneTest(y ~ group, data = df)
+```
+
+### Mann–Whitney (example)
+```{r, eval=TRUE}
+wilcox.test(y ~ group, data = df, exact = FALSE)
+```
+
+## 12) Source
+
+This handout follows and elaborates the course slide deck (continuous variables, t‑tests, Levene’s, transformations, non‑parametrics, correlation). 【7†source】
