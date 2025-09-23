@@ -1,0 +1,380 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={BIOL 683 --- Formative Assessment 1: Data Thinking + AI Collaboration},
+  pdfauthor={Your Name (replace)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{BIOL 683 --- Formative Assessment 1: Data Thinking + AI
+Collaboration}
+\author{Your Name (replace)}
+\date{2025-09-22}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\begin{quote}
+\textbf{Instructions (read first):} This is a \textbf{test‑style,
+open‑notes, open‑AI} formative assessment. Knit to \textbf{PDF} for
+submission. You may use AI tools (ChatGPT/Copilot, etc.) to assist with
+code and writing, but \textbf{you are responsible for correctness}.
+Wherever you used AI, \textbf{briefly note the prompt and what you
+accepted/changed} in a footnote or an inline comment. Keep your writing
+clear and concise.
+
+\textbf{Policy reminders:} Show your reasoning, check assumptions,
+visualize the data, and justify test choices. Avoid p‑hacking. Prefer
+figures that \emph{show the data} and are accessible (e.g.,
+color‑blind‑safe palettes).
+\end{quote}
+
+\subsection{Grading (20 points total)}\label{grading-20-points-total}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Completeness \& Reproducibility (4 pts):} The document knits;
+  code is runnable and commented; seed set; session info included.
+\item
+  \textbf{Data Thinking (4 pts):} Clear description of data‑generating
+  process and assumptions; appropriate diagnostics.
+\item
+  \textbf{Test Choice \& Justification (4 pts):} Correct tests selected;
+  assumptions addressed; effect sizes and CIs reported.
+\item
+  \textbf{Figures \& Communication (4 pts):} Figures show the data,
+  avoid chartjunk, and have informative captions.
+\item
+  \textbf{AI Use \& Reflection (4 pts):} Where AI helped/hurt; prompts
+  summarized; independent judgment demonstrated.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Section A --- Simulate or Load Data (4
+pts)}\label{section-a-simulate-or-load-data-4-pts}
+
+\textbf{Option 1 (simulate)}: Create two groups (n = 30 each) of a
+biological measurement. - Group A: Normal with mean 10, SD 2. - Group B:
+Right‑skewed (log‑normal) with \texttt{meanlog\ =\ 2.3},
+\texttt{sdlog\ =\ 0.3}.
+
+\textbf{Option 2 (load)}: Use a real dataset of your choice (link or
+attach) and \textbf{briefly describe} the data‑generating process.
+
+\begin{quote}
+\textbf{Deliverables:} A short paragraph describing the data; a table
+with sample size, mean, SD; and exploratory plots (histogram and
+box/violin with points).
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{: Choose Option 1 (simulate) or Option 2 (load).}
+\CommentTok{\# {-}{-}{-} Option 1: simulate example scaffold (edit as needed) {-}{-}{-}}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{30}
+\NormalTok{grpA }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =} \DecValTok{10}\NormalTok{, }\AttributeTok{sd =} \DecValTok{2}\NormalTok{)}
+\NormalTok{grpB }\OtherTok{\textless{}{-}} \FunctionTok{rlnorm}\NormalTok{(n, }\AttributeTok{meanlog =} \FloatTok{2.3}\NormalTok{, }\AttributeTok{sdlog =} \FloatTok{0.3}\NormalTok{)}
+\NormalTok{group }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\StringTok{"B"}\NormalTok{), }\AttributeTok{each =}\NormalTok{ n))}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(grpA, grpB)}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(group, y)}
+\FunctionTok{summary}\NormalTok{(df)}
+\CommentTok{\# Plots (add labels/titles; consider viridisLite for colors)}
+\FunctionTok{hist}\NormalTok{(grpA, }\AttributeTok{main =} \StringTok{"Group A histogram"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Value"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(grpB, }\AttributeTok{main =} \StringTok{"Group B histogram"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Value"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =}\NormalTok{ df, }\AttributeTok{main =} \StringTok{"Group comparison"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Value"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Briefly describe the data and the hypothesized biological
+mechanism generating it.} \emph{(3--5 sentences.)}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Section B --- Assumptions \& Diagnostics (4
+pts)}\label{section-b-assumptions-diagnostics-4-pts}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Use \textbf{histograms} and \textbf{QQ‑plots} to assess normality.
+\item
+  Use \textbf{Shapiro--Wilk} (with caution) and comment on sample‑size
+  sensitivity.
+\item
+  If assumptions look shaky, propose a \textbf{transformation} (log,
+  square‑root, arcsine for proportions) and \textbf{justify} it.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{: Diagnostics and proposed transform}
+\CommentTok{\# Example scaffolds (edit/extend)}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{qqnorm}\NormalTok{(grpA); }\FunctionTok{qqline}\NormalTok{(grpA)}
+\FunctionTok{qqnorm}\NormalTok{(grpB); }\FunctionTok{qqline}\NormalTok{(grpB)}
+\FunctionTok{shapiro.test}\NormalTok{(grpA)}
+\FunctionTok{shapiro.test}\NormalTok{(grpB)}
+\CommentTok{\# Example transform:}
+\NormalTok{y\_log }\OtherTok{\textless{}{-}} \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{all}\NormalTok{(y }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{)) }\FunctionTok{log}\NormalTok{(y) }\ControlFlowTok{else}\NormalTok{ y  }\CommentTok{\# log only if positive}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Write 4--6 sentences} interpreting your diagnostics and whether
+a transform is warranted.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Section C --- Statistical Testing \& Estimation (8
+pts)}\label{section-c-statistical-testing-estimation-8-pts}
+
+\textbf{Goal:} Test whether groups differ in central tendency and
+communicate uncertainty.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compare A vs B using \textbf{Welch's two‑sample t‑test} on raw and (if
+  appropriate) transformed data. Report \textbf{effect size} (e.g., mean
+  diff and Hedges' g) and \textbf{95\% CI}.
+\item
+  Also test with \textbf{Mann--Whitney (Wilcoxon rank‑sum)} and discuss
+  agreement/disagreement.
+\item
+  Plot \textbf{group means with 95\% CIs} and \textbf{a data‑showing
+  figure} (e.g., box/violin with jitter). Use an \textbf{accessible
+  palette} (e.g., \texttt{viridisLite}).
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{: Analyses}
+\CommentTok{\# Welch t{-}test}
+\FunctionTok{t.test}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =}\NormalTok{ df)}
+\CommentTok{\# If transformed:}
+\FunctionTok{t.test}\NormalTok{(y\_log }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =} \FunctionTok{transform}\NormalTok{(df, }\AttributeTok{y\_log =} \FunctionTok{ifelse}\NormalTok{(y}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{, }\FunctionTok{log}\NormalTok{(y), }\ConstantTok{NA}\NormalTok{)), }\AttributeTok{na.action =}\NormalTok{ na.omit)}
+
+\CommentTok{\# Mann–Whitney}
+\FunctionTok{wilcox.test}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =}\NormalTok{ df, }\AttributeTok{exact =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Effect size (Hedges\textquotesingle{} g) — quick implementation}
+\NormalTok{hedges\_g }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  nx }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(x); ny }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(y)}
+\NormalTok{  sx2 }\OtherTok{\textless{}{-}} \FunctionTok{var}\NormalTok{(x); sy2 }\OtherTok{\textless{}{-}} \FunctionTok{var}\NormalTok{(y)}
+\NormalTok{  sp }\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(((nx}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{*}\NormalTok{sx2 }\SpecialCharTok{+}\NormalTok{ (ny}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{*}\NormalTok{sy2)}\SpecialCharTok{/}\NormalTok{(nx}\SpecialCharTok{+}\NormalTok{ny}\DecValTok{{-}2}\NormalTok{))}
+\NormalTok{  g }\OtherTok{\textless{}{-}}\NormalTok{ (}\FunctionTok{mean}\NormalTok{(x) }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(y))}\SpecialCharTok{/}\NormalTok{sp}
+\NormalTok{  J }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \DecValTok{3}\SpecialCharTok{/}\NormalTok{(}\DecValTok{4}\SpecialCharTok{*}\NormalTok{(nx}\SpecialCharTok{+}\NormalTok{ny)}\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{)  }\CommentTok{\# small{-}sample correction}
+\NormalTok{  g }\SpecialCharTok{*}\NormalTok{ J}
+\NormalTok{\}}
+\FunctionTok{with}\NormalTok{(df, }\FunctionTok{hedges\_g}\NormalTok{(y[group}\SpecialCharTok{==}\StringTok{"A"}\NormalTok{], y[group}\SpecialCharTok{==}\StringTok{"B"}\NormalTok{]))}
+
+\CommentTok{\# CIs plot (means +/{-} 1.96*SE)}
+\NormalTok{agg }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, df, }\ControlFlowTok{function}\NormalTok{(v) }\FunctionTok{c}\NormalTok{(}\AttributeTok{mean=}\FunctionTok{mean}\NormalTok{(v), }\AttributeTok{se=}\FunctionTok{sd}\NormalTok{(v)}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{length}\NormalTok{(v))))}
+\NormalTok{agg }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{group =}\NormalTok{ agg}\SpecialCharTok{$}\NormalTok{group, }\AttributeTok{mean =}\NormalTok{ agg}\SpecialCharTok{$}\NormalTok{y[, }\StringTok{"mean"}\NormalTok{], }\AttributeTok{se =}\NormalTok{ agg}\SpecialCharTok{$}\NormalTok{y[, }\StringTok{"se"}\NormalTok{])}
+\NormalTok{agg}\SpecialCharTok{$}\NormalTok{lower }\OtherTok{\textless{}{-}}\NormalTok{ agg}\SpecialCharTok{$}\NormalTok{mean }\SpecialCharTok{{-}} \FloatTok{1.96}\SpecialCharTok{*}\NormalTok{agg}\SpecialCharTok{$}\NormalTok{se}
+\NormalTok{agg}\SpecialCharTok{$}\NormalTok{upper }\OtherTok{\textless{}{-}}\NormalTok{ agg}\SpecialCharTok{$}\NormalTok{mean }\SpecialCharTok{+} \FloatTok{1.96}\SpecialCharTok{*}\NormalTok{agg}\SpecialCharTok{$}\NormalTok{se}
+\FunctionTok{print}\NormalTok{(agg)}
+
+\CommentTok{\# Simple CI plot (base R)}
+\FunctionTok{plot}\NormalTok{(agg}\SpecialCharTok{$}\NormalTok{group, agg}\SpecialCharTok{$}\NormalTok{mean, }\AttributeTok{ylim =} \FunctionTok{range}\NormalTok{(}\FunctionTok{c}\NormalTok{(agg}\SpecialCharTok{$}\NormalTok{lower, agg}\SpecialCharTok{$}\NormalTok{upper)), }\AttributeTok{xlab =} \StringTok{"Group"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Mean with 95\% CI"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{)}
+\FunctionTok{arrows}\NormalTok{(}\AttributeTok{x0 =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\AttributeTok{y0 =}\NormalTok{ agg}\SpecialCharTok{$}\NormalTok{lower, }\AttributeTok{x1 =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\AttributeTok{y1 =}\NormalTok{ agg}\SpecialCharTok{$}\NormalTok{upper, }\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{code =} \DecValTok{3}\NormalTok{, }\AttributeTok{length =} \FloatTok{0.05}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Interpretation (≤150 words):} Are results consistent across
+tests and (if used) transformations? What do the \textbf{effect sizes}
+and \textbf{CIs} suggest about biological relevance?
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Section D --- Figure Design \& Accessibility (2
+pts)}\label{section-d-figure-design-accessibility-2-pts}
+
+Produce \textbf{one publication‑quality figure} comparing groups that
+\textbf{shows the data} (e.g., box/violin + jitter). Use a
+color‑blind‑safe palette (e.g., \texttt{viridisLite::viridis(n=2)}). Add
+an informative caption stating the key take‑home message.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# }\AlertTok{TODO}\CommentTok{: Publishable figure (base or ggplot2 ok). Example (base):}
+\NormalTok{cols }\OtherTok{\textless{}{-}}\NormalTok{ viridisLite}\SpecialCharTok{::}\FunctionTok{viridis}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\FunctionTok{stripchart}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =}\NormalTok{ df, }\AttributeTok{vertical =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{pch =} \DecValTok{16}\NormalTok{, }\AttributeTok{col =} \FunctionTok{adjustcolor}\NormalTok{(cols[group], }\FloatTok{0.7}\NormalTok{), }\AttributeTok{method =} \StringTok{"jitter"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Group comparison (data shown)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Value"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ group, }\AttributeTok{data =}\NormalTok{ df, }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{border =} \StringTok{"gray30"}\NormalTok{, }\AttributeTok{col =} \ConstantTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Caption (2--3 sentences)} explaining the figure and what readers
+should notice.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Section E --- AI Use \& Reflection (2
+pts)}\label{section-e-ai-use-reflection-2-pts}
+
+\textbf{Briefly document} (bullets are fine): - Which prompts you used
+(paste 1--2 best prompts). - Where AI helped you move faster. - One
+place AI was wrong, unclear, or needed correction---and how you fixed
+it.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Reproducibility Appendix}\label{reproducibility-appendix}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sessionInfo}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## R version 4.5.1 (2025-06-13)
+## Platform: aarch64-apple-darwin20
+## Running under: macOS Sequoia 15.5
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib 
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## time zone: America/Chicago
+## tzcode source: internal
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## loaded via a namespace (and not attached):
+##  [1] compiler_4.5.1    fastmap_1.2.0     cli_3.6.5         tools_4.5.1      
+##  [5] htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10       rmarkdown_2.29   
+##  [9] knitr_1.50        xfun_0.52         digest_0.6.37     rlang_1.1.6      
+## [13] evaluate_1.0.4
+\end{verbatim}
+
+\subsubsection{Notes on Good Practice (skim before you
+start)}\label{notes-on-good-practice-skim-before-you-start}
+
+\begin{itemize}
+\tightlist
+\item
+  Prefer tests aligned to your \textbf{data‑generating process} and
+  \textbf{assumptions}.
+\item
+  If you transform, say why---and consider confirming with a rank‑based
+  test.
+\item
+  Figures should \textbf{show the data}, avoid distortion, and remain
+  legible in grayscale.
+\item
+  When in doubt, simulate. Use AI to write scaffolding code, but
+  \textbf{inspect outputs} carefully.
+\end{itemize}
+
+\end{document}

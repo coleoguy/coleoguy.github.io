@@ -1,0 +1,165 @@
+---
+title: "BIOL 683 — Exam 1: Data Thinking + AI Collaboration"
+author: "Instructor: Heath Blackmon"
+date: "`r format(Sys.Date())`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: false
+    theme: readable
+  pdf_document:
+    toc: true
+    number_sections: false
+fontsize: 11pt
+geometry: margin=1in
+---
+
+> **Instructions (read first):** This is a **test‑style, open‑notes, open‑AI** formative assessment. Knit a single RMD file to **HTML or PDF** for submission. You may use AI tools (ChatGPT/Copilot, etc.) to assist with code and writing, but **you are responsible for correctness**. Feel free to talk to class or lab mates but absolutely no sharing of files is allowed.
+>
+> **Policy reminders:** Explain reasoning, check assumptions, visualize data, and justify choices. Avoid p‑hacking. Prefer figures that *show the data* and are accessible (e.g., color‑blind‑safe palettes).
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALSE)
+set.seed(8675309)
+```
+
+## Grading (100 points total)
+
+-   **Completeness & Reproducibility (20 pts):** The document knits; code is runnable and commented; seed set.
+-   **Data Thinking (20 pts):** Clear description of data‑generating process and assumptions; appropriate diagnostics.
+-   **Test Choice & Justification (20 pts):** Correct tests selected; assumptions addressed; effect sizes and CIs reported.
+-   **Figures & Communication (20 pts):** Figures show the data, avoid chartjunk, and have informative captions.
+-   **AI Use & Reflection (20 pts):** Where AI helped/hurt; independent judgment demonstrated.
+
+------------------------------------------------------------------------
+
+## Section A — Simulate Data (20 pts)
+
+Create two groups (n = 30 each) of a biological measurement. -
+
+Group A: Normal with mean 10, SD 2.
+
+Group B: Right‑skewed (log‑normal) with `meanlog = 2.3`, `sdlog = 0.3`.
+
+> **Deliverables:** A short paragraph describing the data; a table with sample size, mean, SD; and exploratory plots (histogram and box/violin with points).
+
+```{r A-data}
+# --- Option 1: simulate example scaffold (edit as needed) ---
+n <- 30
+grpA <- rnorm(n, mean = 10, sd = 2)
+grpB <- rlnorm(n, meanlog = 2.3, sdlog = 0.3)
+group <- factor(rep(c("A","B"), each = n))
+y <- c(grpA, grpB)
+df <- data.frame(group, y)
+summary(df)
+# Plots (add labels/titles; consider viridisLite for colors)
+hist(grpA, main = "Group A histogram", xlab = "Value")
+hist(grpB, main = "Group B histogram", xlab = "Value")
+boxplot(y ~ group, data = df, main = "Group comparison", ylab = "Value")
+```
+
+**Briefly describe the data and the hypothesized biological mechanism generating it.** *(3–5 sentences.)*
+
+------------------------------------------------------------------------
+
+## Section B — Assumptions & Diagnostics (4 pts)
+
+1.  Use **histograms** and **QQ‑plots** to assess normality.
+2.  Use **Shapiro–Wilk** (with caution) and comment on sample‑size sensitivity.
+3.  If assumptions look shaky, propose a **transformation** (log, square‑root, arcsine for proportions) and **justify** it.
+
+```{r B-diagnostics}
+# TODO: Diagnostics and proposed transform
+# Example scaffolds (edit/extend)
+par(mfrow = c(1,2))
+qqnorm(grpA); qqline(grpA)
+qqnorm(grpB); qqline(grpB)
+shapiro.test(grpA)
+shapiro.test(grpB)
+# Example transform:
+y_log <- if (all(y > 0)) log(y) else y  # log only if positive
+```
+
+**Write 4–6 sentences** interpreting your diagnostics and whether a transform is warranted.
+
+------------------------------------------------------------------------
+
+## Section C — Statistical Testing & Estimation (8 pts)
+
+**Goal:** Test whether groups differ in central tendency and communicate uncertainty.
+
+1.  Compare A vs B using **Welch’s two‑sample t‑test** on raw and (if appropriate) transformed data. Report **effect size** (e.g., mean diff and Hedges’ g) and **95% CI**.
+2.  Also test with **Mann–Whitney (Wilcoxon rank‑sum)** and discuss agreement/disagreement.
+3.  Plot **group means with 95% CIs** and **a data‑showing figure** (e.g., box/violin with jitter). Use an **accessible palette** (e.g., `viridisLite`).
+
+```{r C-tests}
+# TODO: Analyses
+# Welch t-test
+t.test(y ~ group, data = df)
+# If transformed:
+t.test(y_log ~ group, data = transform(df, y_log = ifelse(y>0, log(y), NA)), na.action = na.omit)
+
+# Mann–Whitney
+wilcox.test(y ~ group, data = df, exact = FALSE)
+
+# Effect size (Hedges' g) — quick implementation
+hedges_g <- function(x, y){
+  nx <- length(x); ny <- length(y)
+  sx2 <- var(x); sy2 <- var(y)
+  sp <- sqrt(((nx-1)*sx2 + (ny-1)*sy2)/(nx+ny-2))
+  g <- (mean(x) - mean(y))/sp
+  J <- 1 - 3/(4*(nx+ny)-9)  # small-sample correction
+  g * J
+}
+with(df, hedges_g(y[group=="A"], y[group=="B"]))
+
+# CIs plot (means +/- 1.96*SE)
+agg <- aggregate(y ~ group, df, function(v) c(mean=mean(v), se=sd(v)/sqrt(length(v))))
+agg <- data.frame(group = agg$group, mean = agg$y[, "mean"], se = agg$y[, "se"])
+agg$lower <- agg$mean - 1.96*agg$se
+agg$upper <- agg$mean + 1.96*agg$se
+print(agg)
+
+# Simple CI plot (base R)
+plot(agg$group, agg$mean, ylim = range(c(agg$lower, agg$upper)), xlab = "Group", ylab = "Mean with 95% CI", pch = 19)
+arrows(x0 = 1:2, y0 = agg$lower, x1 = 1:2, y1 = agg$upper, angle = 90, code = 3, length = 0.05)
+```
+
+**Interpretation (≤150 words):** Are results consistent across tests and (if used) transformations? What do the **effect sizes** and **CIs** suggest about biological relevance?
+
+------------------------------------------------------------------------
+
+## Section D — Figure Design & Accessibility (2 pts)
+
+Produce **one publication‑quality figure** comparing groups that **shows the data** (e.g., box/violin + jitter). Use a color‑blind‑safe palette (e.g., `viridisLite::viridis(n=2)`). Add an informative caption stating the key take‑home message.
+
+```{r D-figure}
+# TODO: Publishable figure (base or ggplot2 ok). Example (base):
+cols <- viridisLite::viridis(2)
+stripchart(y ~ group, data = df, vertical = TRUE, pch = 16, col = adjustcolor(cols[group], 0.7), method = "jitter", main = "Group comparison (data shown)", ylab = "Value")
+boxplot(y ~ group, data = df, add = TRUE, border = "gray30", col = NA)
+```
+
+**Caption (2–3 sentences)** explaining the figure and what readers should notice.
+
+------------------------------------------------------------------------
+
+## Section E — AI Use & Reflection (2 pts)
+
+**Briefly document** (bullets are fine): - Which prompts you used (paste 1–2 best prompts). - Where AI helped you move faster. - One place AI was wrong, unclear, or needed correction—and how you fixed it.
+
+------------------------------------------------------------------------
+
+## Reproducibility Appendix
+
+```{r session-info, eval=TRUE}
+sessionInfo()
+```
+
+### Notes on Good Practice (skim before you start)
+
+-   Prefer tests aligned to your **data‑generating process** and **assumptions**.
+-   If you transform, say why—and consider confirming with a rank‑based test.
+-   Figures should **show the data**, avoid distortion, and remain legible in grayscale.
+-   When in doubt, simulate. Use AI to write scaffolding code, but **inspect outputs** carefully.
