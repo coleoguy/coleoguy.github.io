@@ -1,0 +1,62 @@
+---
+title: "T-test Class Example"
+author: "Heath Blackmon"
+date: "2025-09-25"
+output: html_document
+---
+  
+# Permutations Tests
+  
+Permutation tests allows us to perform tests with basically no assumptions.
+
+Read in my data
+```{r}
+dat <- read.csv("data/t_test_data.csv")
+```
+
+Lets test whether control and treatment have different means
+
+```{r}
+cont.range <- range(dat$value[dat$group=="Control"])
+trt.range <- range(dat$value[dat$group=="Treatment"])
+
+obs.dif <- (cont.range[2] - cont.range[1]) - (trt.range[2] - trt.range[1])
+```
+
+This shows that the observed difference in our means was: `r obs.dif`
+
+Now lets create a null distribution
+
+```{r}
+tempdat <- dat
+null.dist<-c()
+for(i in 1:1000){
+  tempdat$group <- sample(tempdat$group, 58)
+  cont.range <- range(tempdat$value[tempdat$group=="Control"])
+  trt.range <- range(tempdat$value[tempdat$group=="Treatment"])
+  null.dist[i] <- (cont.range[2] - cont.range[1]) - (trt.range[2] - trt.range[1])
+  
+}
+```
+
+now lets plot our null and the observed value 
+
+```{r}
+hist(null.dist)
+abline(v=obs.dif, lwd=2, col="red")
+```
+
+Whats the p-value? 
+
+Well we did not specify whether we thought one group was bigger than the other so I am going to change to looking at the absolute value of both the observed difference and the null. Be able to explain this decision on Tuesday.
+
+```{r}
+hist(abs(null.dist))
+abline(v=abs(obs.dif),lwd=2,col="red")
+pval <- sum(null.dist>=obs.dif)/1000
+```
+
+This shows that my pvalue is `r pval`. Be able to describe what that p-value means.
+
+
+Review this file and the rmd version of it to see what I did. Continue to play and practive with RMD files prior to next week.
