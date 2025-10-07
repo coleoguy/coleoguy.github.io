@@ -1,0 +1,103 @@
+---
+title: "Midterm"
+author: "Heath Blackmon"
+date: "2025-09-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Section A
+
+Generating Data.
+
+```{r}
+library(ggplot2)
+set.seed(1)
+n <- 30
+grpA <- rnorm(n = n, mean = 10, sd = 2)
+grpB <- rlnorm(n = n, meanlog = 2.3, sdlog=0.3)
+grp <- factor(rep(c("A","B"), each = n))
+y <- c(grpA, grpB)
+df <- data.frame(y, grp)
+summary(df)
+ggplot(df, aes(x = grp, y = y)) +
+  geom_violin(fill = "lightgray", color = "black", trim = FALSE) +
+  geom_jitter(width = 0.15, alpha = 0.6, color = "steelblue", size = 1.5) +
+  theme_minimal(base_size = 14) +
+  labs(x = NULL, y = "Y value")
+
+```
+
+## Section B
+
+In this section I assess the degree to which my data meet the assumptions of the tests that we might be doing (normality).
+
+```{r}
+par(mfcol=c(2,2))
+qqnorm(grpA)
+qqline(grpA)
+qqnorm(grpB)
+qqline(grpB)
+plot(density(grpA))
+plot(density(grpB))
+shapiro.test(grpA)
+shapiro.test(grpB)
+```
+
+This look like the classic example where our sample size is too small for Shapiro Wilks to reject normality even though we know for a fact that our one group was generated from a non-normal distribution.
+
+## Section C
+
+In this section we will discover whether these groups have statistically different means.
+
+```{r}
+t.test(grpA, grpB)
+wilcox.test(grpA, grpB)
+```
+
+We have no reason to reject a t-test at this point. We didn't fail to meet an assumption. However, since we know we didn't generate this data from a normal distribution lets go ahead and do a permutation test for fun.
+
+
+Finally lets just try out a permutation test. This is always fun anyways.
+
+```{r}
+obsdiff <- mean(grpA)-mean(grpB)
+null <- c()
+for(i in 1:10000){
+  tdat <- sample(c(grpA,grpB))
+  null[i] <- mean(tdat[1:30])-mean(tdat[31:60])
+}
+plot(density(abs(null)))
+abline(v=abs(obsdiff), col="darkred", lwd=2)
+
+pval <- sum(abs(null) >= abs(obsdiff))/length(null)
+pval
+
+```
+
+The results of the permutation test are consistent with the results of the t-test that is good!
+
+## Section D
+
+Let make a really beautiful plot of our data:
+
+```{r}
+library(ggplot2)
+
+# Basic violin plot with points
+ggplot(df, aes(x = grp, y = y)) +
+  geom_violin(trim = FALSE, fill = "lightgray", color = NA) +
+  ggbeeswarm::geom_quasirandom(width = 0.2, size = 1.5, alpha = 0.6) +
+  theme_bw(base_size = 14) +
+  theme(
+    #panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_blank()
+  ) +
+  labs(x = "Group", y = "Size")
+```
+
+**Figure 1. Individual Sizes for members of group A and group B.** On the vertical axis we plot size and on the horizontal we have members seperated by group. Groups were not significantly different (p-value = `r round(pval, 2)`)
