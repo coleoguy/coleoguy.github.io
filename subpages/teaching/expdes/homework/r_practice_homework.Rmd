@@ -1,0 +1,91 @@
+---
+title: "Voluntary Homework: Statistical Reasoning in R"
+author: "Dr. Heath Blackmon"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    theme: cerulean
+---
+
+# Introduction
+
+This voluntary homework will test your ability to choose and apply the correct statistical method in R. You will use the provided datasets to answer biological questions using appropriate tests. Think carefully about what kind of data you have and what analysis is most appropriate.
+
+Each question specifies a dataset (CSV file) and a biological question. You must:
+- Decide what statistical test to use.
+- Justify your choice in writing.
+- Run the analysis in R.
+- Summarize and interpret your results in plain English.
+
+---
+
+# 1. Plant Growth and Fertilizer
+
+Dataset: `fertilizer.csv`
+
+Researchers tested two fertilizers (A and B) and recorded plant height. Determine whether the two fertilizer treatments differ in their effect on plant growth. Check that your analysis assumptions are valid.
+
+*Hint:* Think about whether the response variable is continuous and how many groups are being compared.
+
+---
+
+# 2. Fertilizer and Survival
+
+Dataset: `survival.csv`
+
+Plants were treated with fertilizer A or B. Each plant was recorded as either Alive or Dead after one month. Test whether fertilizer type is associated with plant survival.
+
+*Hint:* Consider the type of data for both variables.
+
+---
+
+# 3. Fertilizer, Sunlight, and Growth
+
+Dataset: `plants_height.csv`
+
+Plants were exposed to different levels of sunlight (Low, High) and treated with one of two fertilizers (A, B). The response variable is height. Determine whether sunlight and fertilizer affect plant growth and whether they interact.
+
+*Hint:* Think about models that allow for continuous outcomes and categorical predictors.
+
+---
+
+# 4. Predicting Plant Height
+
+Dataset: `soil.csv`
+
+This dataset includes fertilizer type, sunlight, and several continuous soil properties (nitrogen, pH, and moisture). The goal is to identify which factors best predict plant height.
+
+*Hint:* Consider model-building approaches that allow for multiple predictors and variable selection.
+
+---
+
+# 5. Food Intake by Species
+
+Dataset: `food.csv`
+
+Two species (Mouse and Rat) were observed for their daily food intake (a count variable). Determine whether species differ in their food intake. Check whether your chosen model’s assumptions fit the data well.
+
+*Hint:* Think about how to model count data.
+
+---
+
+# 6. Response Probability by Species
+
+Dataset: `response.csv`
+
+Animals were given a stimulus and recorded as having responded (1) or not responded (0). Test whether response probability differs between species.
+
+*Hint:* Think about models that are appropriate for binary response data.
+
+---
+
+# 7. Bonus Challenge
+
+Choose one dataset and pose your own research question. Design an appropriate statistical analysis, justify your choice of test or model, and interpret your findings.
+
+---
+
+# Submission
+
+This is **voluntary** and not graded, but it will strongly reinforce your ability to think statistically. You should turn in a short report (one paragraph per analysis) explaining your reasoning and conclusions.

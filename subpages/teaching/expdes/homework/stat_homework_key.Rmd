@@ -1,0 +1,185 @@
+---
+title: "Answer Key with Code: Statistical Reasoning Homework"
+author: "Dr. Heath Blackmon"
+output:
+  html_document:
+    toc: true
+    theme: cerulean
+---
+
+# Overview
+
+This document provides the full answer key **with example R code** for the Voluntary Homework. It includes the correct statistical test, reasoning, and code implementation.
+
+---
+
+## 1. Plant Growth and Fertilizer
+
+**Goal:** Determine whether the two fertilizer treatments differ in their effect on plant growth.
+
+**Test:** Two-sample t-test
+
+**Reasoning:**
+- Response (`height`) is continuous.
+- Predictor (`fertilizer`) has two levels.
+- Assumptions: normality, equal variance.
+
+```{r}
+plants_ttest <- read.csv("fertilizer.csv")
+# Explore
+table(plants_ttest$fertilizer)
+summary(plants_ttest$height)
+
+# Check assumptions
+shapiro.test(plants_ttest$height[plants_ttest$fertilizer == "A"])
+shapiro.test(plants_ttest$height[plants_ttest$fertilizer == "B"])
+var.test(height ~ fertilizer, data = plants_ttest)
+
+# Perform t-test
+t.test(height ~ fertilizer, data = plants_ttest)
+```
+
+**Expected Result:** Fertilizer B plants are significantly taller.
+
+---
+
+## 2. Fertilizer and Survival
+
+**Goal:** Test whether fertilizer type is associated with plant survival.
+
+**Test:** Chi-square test of independence
+
+**Reasoning:**
+- Both variables are categorical.
+
+```{r}
+plants_chi <- read.csv("survival.csv")
+# Create contingency table
+tab <- table(plants_chi$fertilizer, plants_chi$survival)
+
+# Check expected counts
+chisq.test(tab)$expected
+
+# Perform chi-square test
+chisq.test(tab)
+```
+
+**Expected Result:** Fertilizer B increases survival rate.
+
+---
+
+## 3. Fertilizer, Sunlight, and Growth 
+
+**Goal:** Assess the effects of fertilizer, sunlight, and their interaction on plant height.
+
+**Test:** Two-way ANOVA / Linear regression with interaction term
+
+```{r}
+plants_regression <- read.csv("plants_height.csv")
+
+# Fit additive model
+model1 <- lm(height ~ fertilizer + sunlight, data = plants_regression)
+summary(model1)
+
+# Add interaction term
+model2 <- lm(height ~ fertilizer * sunlight, data = plants_regression)
+anova(model1, model2)
+summary(model2)
+
+# Diagnostic plot
+plot(model2, which = 1)
+```
+
+**Expected Result:** Both fertilizer and sunlight increase growth; weak or non-significant interaction.
+
+---
+
+## 4. Predicting Plant Height
+
+**Goal:** Identify which predictors best explain variation in plant height.
+
+**Test:** Multiple linear regression with stepwise selection
+
+```{r}
+plants_stepwise <- read.csv("soil.csv")
+
+# Fit full model
+full_model <- lm(height ~ fertilizer + sunlight + nitrogen + ph + moisture, data = plants_stepwise)
+summary(full_model)
+
+# Stepwise regression
+step_model <- step(full_model)
+summary(step_model)
+
+# Compare models
+anova(full_model, step_model)
+```
+
+**Expected Result:** Fertilizer, sunlight, and nitrogen remain in the final model.
+
+---
+
+## 5. Food Intake by Species
+
+**Goal:** Determine if species differ in food intake (count data).
+
+**Test:** GLM (Poisson regression)
+
+```{r}
+animals_count <- read.csv("food.csv")
+
+# Fit Poisson GLM
+count_model <- glm(food_intake ~ species, data = animals_count, family = poisson)
+summary(count_model)
+
+# Check overdispersion
+overdispersion <- sum(residuals(count_model, type = "pearson")^2) / count_model$df.residual
+overdispersion
+
+# If overdispersed, use quasi-Poisson
+if (overdispersion > 2) {
+  count_model <- glm(food_intake ~ species, data = animals_count, family = quasipoisson)
+  summary(count_model)
+}
+```
+
+**Expected Result:** Rats consume more food than mice; possible mild overdispersion.
+
+---
+
+## 6. Response Probability by Species 
+
+**Goal:** Test whether response probability differs between species.
+
+**Test:** Logistic regression
+
+```{r}
+animals_binary <- read.csv("response.csv")
+
+# Fit logistic model
+bin_model <- glm(responded ~ species, data = animals_binary, family = binomial)
+summary(bin_model)
+
+# Predicted probabilities
+animals_binary$predicted_prob <- predict(bin_model, type = "response")
+
+# Visualize
+library(ggplot2)
+ggplot(animals_binary, aes(x = species, y = predicted_prob)) +
+  geom_boxplot(fill = "skyblue") +
+  ylab("Predicted Probability of Response")
+```
+
+**Expected Result:** Rats have higher response probability.
+
+---
+
+## 7. Bonus Challenge
+
+**Examples:**
+
+- Compare mean nitrogen levels by sunlight: `t.test(nitrogen ~ sunlight, data = plants_stepwise)`
+- Predict survival probability from nitrogen: `glm(survival ~ nitrogen, data = mydata, family = binomial)`
+
+**Emphasis:**
+Justify your test choice and interpret results clearly. Visualization and assumption checks are encouraged.
