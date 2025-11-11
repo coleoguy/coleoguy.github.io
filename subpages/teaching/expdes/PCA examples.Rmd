@@ -1,0 +1,129 @@
+---
+title: "PCA Example with iris Dataset"
+author: "Heath Blackmon"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+# Clean environment and load needed packages
+rm(list = ls())
+library(FactoMineR)
+library(factoextra)
+library(car)
+```
+
+## 1. Load and Inspect Data
+
+We'll use the classic `iris` dataset. It contains 150 flower measurements from three species.
+
+```{r}
+data(iris)
+head(iris)
+```
+
+The variables `Sepal.Length`, `Sepal.Width`, `Petal.Length`, and `Petal.Width` will be used for PCA, while `Species` is a grouping factor.
+
+---
+
+## 2. Perform PCA with Base R
+
+We'll use `prcomp()` on the four numeric variables and scale them to equalize variance.
+
+```{r}
+pca_fit <- prcomp(iris[, 1:4], scale. = TRUE)
+summary(pca_fit)
+```
+
+The **summary** shows how much variance is explained by each principal component (PC).
+
+---
+
+## 3. Visualize PCA Results (Base Plot)
+
+We can plot the first two principal components using base R. Points are colored by species.
+
+```{r}
+species_colors <- c("setosa" = "red", "versicolor" = "green", "virginica" = "blue")
+
+plot(pca_fit$x[, 1], pca_fit$x[, 2],
+     col = species_colors[iris$Species],
+     pch = 19,
+     xlab = "PC1",
+     ylab = "PC2",
+     main = "Base R PCA Plot: iris dataset")
+legend("topright", legend = names(species_colors), col = species_colors, pch = 19)
+
+for (sp in unique(iris$Species)) {
+  dat <- pca_fit$x[iris$Species == sp, 1:2]
+  dataEllipse(dat[, 1], dat[, 2], 
+              levels = 0.95, 
+              add = TRUE, 
+              col = species_colors[sp], 
+              lwd = 2)
+}
+```
+
+These ellipses represent the regions containing about 95% of points for each species.
+
+---
+
+## 5. Examine Variable Contributions (FactoMineR)
+
+Now, let's use **FactoMineR** to see which variables contribute most to each principal component.
+
+```{r}
+res_pca <- PCA(iris[, 1:4], graph = FALSE)
+
+# Contributions to PC1 and PC2
+res_pca$var$contrib
+```
+
+This table shows how much each original variable contributes to each principal component.
+
+---
+
+## 6. Visualize Contributions (FactoMineR / factoextra)
+
+We can use `fviz_pca_var()` to visualize which variables load most strongly on each PC axis.
+
+```{r}
+fviz_pca_var(res_pca,
+             col.var = "contrib",
+             gradient.cols = c("blue", "orange", "red"),
+             repel = TRUE)
+```
+
+---
+
+## 7. Compare to Raw Measurements
+
+Finally, let's compare visually: do the first two PCs separate the species better than any two raw measurements?
+
+```{r}
+par(mfrow = c(1, 2))
+
+# Raw variables
+plot(iris$Petal.Length, iris$Petal.Width,
+     col = species_colors[iris$Species],
+     pch = 19,
+     main = "Raw: Petal.Length vs Petal.Width")
+
+# PCA axes
+plot(pca_fit$x[, 1], pca_fit$x[, 2],
+     col = species_colors[iris$Species],
+     pch = 19,
+     main = "PCA: PC1 vs PC2")
+
+legend("topright", legend = names(species_colors), col = species_colors, pch = 19)
+```
+
+---
+
+### Conclusion
+
+- The PCA compresses four correlated variables into two new axes that maximize variance captured.
+- The species clusters above are not more distinct in PCA space than in the raw measurement combinations.
+- What could explain this? Do other PCs do a better job than 1 and 2?
+
+---
+
