@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Foundational Resources - Blackmon Lab</title>
+  <meta name="description" content="Foundational software, tools, and resources for biologists.">
+  <meta name="keywords" content="biology, software, resources, R, phylogenetics, genomics, TAMU">
+
+  <link href="../assets/img/favicon.ico" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <style>
+      /* Custom style for the mentor comments to make them distinct */
+      .mentor-note {
+          color: #6c757d;
+          font-style: italic;
+          font-size: 0.95em;
+      }
+      .resource-category {
+          margin-top: 40px;
+          margin-bottom: 20px;
+          color: #2c3e50; /* Dark blue/grey to match academic tone */
+          border-bottom: 2px solid #eee;
+          padding-bottom: 10px;
+      }
+      /* Ensure links in the list stand out but aren't garish */
+      .resource-link {
+          color: #000;
+          text-decoration: none;
+      }
+      .resource-link:hover {
+          color: #500000; /* TAMU Maroon hover effect */
+          text-decoration: underline;
+      }
+  </style>
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">Blackmon Lab</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#research">Research</a></li>
+          <li><a href="index.html#resources">Resources</a></li>
+          <li><a href="index.html#publications">Publications</a></li>
+          <li><a href="index.html#members">Members</a></li>
+          <li><a href="index.html#join">Joining our Team</a></li>
+          <li><a href="index.html#calendar">Calendar</a></li>
+          <li><a href="index.html#photos">Photos</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4J0HZ3LNQX');
+</script>    
+    
+  <main class="main">
+
+ <section id="foundational-resources" class="about section">
+     <div class="container">
+         <br><br><br>
+     <h2>Foundational Tools & Resources</h2>
+     <p class="lead">
+        Below is a curated list of the tools, software, and databases that constitute the backbone of modern biological research.
+     </p>
+     <hr>
+
+    <h4 class="resource-category">1. The "Must Haves" (Lab Management & Protocols)</h4>
+    <ul>
+        <li><a href="https://www.protocols.io/" target="_blank" class="resource-link"><strong>Protocols.io:</strong></a> The open-access standard for sharing detailed methods. <span class="mentor-note">- Essential for reproducibility; don't just keep it in a paper notebook.</span></li>
+        <li><a href="https://www.quartzy.com/" target="_blank" class="resource-link"><strong>Quartzy:</strong></a> Lab supply management and ordering. <span class="mentor-note">- Great for keeping the lab manager (and the budget) sane.</span></li>
+        <li><a href="https://openwetware.org/wiki/Main_Page" target="_blank" class="resource-link"><strong>OpenWetWare:</strong></a> Wiki-based lab protocols. <span class="mentor-note">- A bit old-school, but still a goldmine for classic molecular recipes.</span></li>
+        <li><a href="https://www.addgene.org/" target="_blank" class="resource-link"><strong>Addgene:</strong></a> Non-profit plasmid repository. <span class="mentor-note">- If you need a construct, look here before you try to build it yourself.</span></li>
+        <li><a href="https://ehs.tamu.edu/" target="_blank" class="resource-link"><strong>TAMU EHS:</strong></a> Environmental Health & Safety. <span class="mentor-note">- Bookmark the safety data sheets (SDS). Boring, but legally required.</span></li>
+    </ul>
+
+    <h4 class="resource-category">2. Data Science & Coding (The Backbone)</h4>
+    <ul>
+        <li><a href="https://www.r-project.org/" target="_blank" class="resource-link"><strong>R Project:</strong></a> The statistical lingua franca of biology. <span class="mentor-note">- You cannot avoid this. Learn it early.</span></li>
+        <li><a href="https://posit.co/download/rstudio-desktop/" target="_blank" class="resource-link"><strong>RStudio (Posit):</strong></a> The essential IDE for R. <span class="mentor-note">- Do not try to use the base R GUI; this is the industry standard.</span></li>
+        <li><a href="https://www.python.org/" target="_blank" class="resource-link"><strong>Python:</strong></a> The glue of bioinformatics. <span class="mentor-note">- Better than R for heavy text processing and building complex pipelines.</span></li>
+        <li><a href="https://www.anaconda.com/" target="_blank" class="resource-link"><strong>Anaconda/Conda:</strong></a> Package manager for Python/R. <span class="mentor-note">- Saves you from "dependency hell" when installing software.</span></li>
+        <li><a href="https://jupyter.org/" target="_blank" class="resource-link"><strong>Jupyter Notebooks:</strong></a> Interactive computing. <span class="mentor-note">- Great for teaching and sharing analyses, less great for production pipelines.</span></li>
+        <li><a href="https://git-scm.com/" target="_blank" class="resource-link"><strong>Git</strong></a> & <a href="https://github.com/" target="_blank" class="resource-link"><strong>GitHub:</strong></a> Version control and hosting. <span class="mentor-note">- Steep learning curve, but saves you when you delete your thesis analysis by accident. If it's not on GitHub, did you even write it?</span></li>
+        <li><a href="https://stackoverflow.com/" target="_blank" class="resource-link"><strong>Stack Overflow:</strong></a> The oracle. <span class="mentor-note">- Copy-pasting from here is 50% of a bioinformatician's job.</span></li>
+        <li><a href="https://regex101.com/" target="_blank" class="resource-link"><strong>Regex101:</strong></a> Regular expression tester. <span class="mentor-note">- A life-saver for cleaning messy data files.</span></li>
+        <li><a href="https://hprc.tamu.edu/" target="_blank" class="resource-link"><strong>TAMU HPRC:</strong></a> Texas A&M High Performance Research Computing. <span class="mentor-note">- When your laptop creates smoke, move your job here. Excellent support team.</span></li>
+    </ul>
+
+    <h4 class="resource-category">3. Statistics & Reproducibility</h4>
+    <ul>
+        <li><a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower" target="_blank" class="resource-link"><strong>G*Power:</strong></a> Statistical power analysis. <span class="mentor-note">- Use this **before** you start your experiment, not after you realize your p-value is 0.06.</span></li>
+        <li><a href="https://osf.io/" target="_blank" class="resource-link"><strong>OSF (Open Science Framework):</strong></a> Project management for open science. <span class="mentor-note">- The best place to pre-register your studies.</span></li>
+        <li><a href="https://datadryad.org/" target="_blank" class="resource-link"><strong>Dryad</strong></a> & <a href="https://zenodo.org/" target="_blank" class="resource-link"><strong>Zenodo:</strong></a> Data repositories. <span class="mentor-note">- The standard for ecology/evolution papers. Zenodo gives you a DOI for code or posters.</span></li>
+    </ul>
+
+    <h4 class="resource-category">4. Genomics: The Heavy Lifters</h4>
+    <ul>
+        <li><a href="https://www.bioconductor.org/" target="_blank" class="resource-link"><strong>Bioconductor:</strong></a> The R repository for genomic data. <span class="mentor-note">- Essential, but updates can sometimes break your old scripts.</span></li>
+        <li><a href="http://www.htslib.org/" target="_blank" class="resource-link"><strong>Samtools:</strong></a> The swiss-army knife for DNA sequencing data. <span class="mentor-note">- Fast, command-line based, and absolutely essential.</span></li>
+        <li><a href="https://bedtools.readthedocs.io/en/latest/" target="_blank" class="resource-link"><strong>BEDTools:</strong></a> "Genome arithmetic." <span class="mentor-note">- For when you need to know what overlaps with what.</span></li>
+        <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank" class="resource-link"><strong>FastQC</strong></a> & <a href="http://www.usadellab.org/cms/?page=trimmomatic" target="_blank" class="resource-link"><strong>Trimmomatic:</strong></a> Quality control and cleaning. <span class="mentor-note">- The first things you run on any new dataset.</span></li>
+        <li><a href="https://software.broadinstitute.org/software/igv/" target="_blank" class="resource-link"><strong>IGV (Integrative Genomics Viewer):</strong></a> Visualizing genome alignments. <span class="mentor-note">- The best way to "see" your mutations and verify your code isn't lying to you.</span></li>
+    </ul>
+
+    <h4 class="resource-category">5. Phylogenetics: Inference & Visualization</h4>
+    <ul>
+        <li><a href="http://www.iqtree.org/" target="_blank" class="resource-link"><strong>IQ-TREE:</strong></a> Modern Maximum Likelihood. <span class="mentor-note">- Currently the best balance of speed and accuracy for most users.</span></li>
+        <li><a href="https://github.com/amkozlov/raxml-ng" target="_blank" class="resource-link"><strong>RAxML-NG:</strong></a> The successor to the classic RAxML. <span class="mentor-note">- Great for massive datasets.</span></li>
+        <li><a href="http://mrbayes.net/" target="_blank" class="resource-link"><strong>MrBayes</strong></a> / <a href="https://revbayes.github.io/" target="_blank" class="resource-link"><strong>RevBayes:</strong></a> Bayesian inference. <span class="mentor-note">- MrBayes is the classic; RevBayes is powerful but has a steep learning curve.</span></li>
+        <li><a href="http://tree.bio.ed.ac.uk/software/figtree/" target="_blank" class="resource-link"><strong>FigTree:</strong></a> The classic tree viewer. <span class="mentor-note">- Simple and effective, though showing its age.</span></li>
+        <li><a href="https://itol.embl.de/" target="_blank" class="resource-link"><strong>iTOL (Interactive Tree of Life):</strong></a> Web-based tree annotator. <span class="mentor-note">- Makes beautiful publication-quality figures, but it is online-only.</span></li>
+        <li><a href="https://yulab-smu.top/treedata-book/" target="_blank" class="resource-link"><strong>ggtree:</strong></a> R package for trees. <span class="mentor-note">- Hard to learn, but allows for fully programmable and reproducible tree graphics.</span></li>
+    </ul>
+
+    <h4 class="resource-category">6. Ecology, Fieldwork & Geospatial</h4>
+    <ul>
+        <li><a href="https://qgis.org/" target="_blank" class="resource-link"><strong>QGIS:</strong></a> Free, open-source GIS. <span class="mentor-note">- Just as capable as ArcGIS, but free. A must-learn for any field biologist.</span></li>
+        <li><a href="https://www.inaturalist.org/" target="_blank" class="resource-link"><strong>iNaturalist:</strong></a> Citizen science data. <span class="mentor-note">- A massive database of species occurrences and a great way to verify ID.</span></li>
+        <li><a href="https://www.gbif.org/" target="_blank" class="resource-link"><strong>GBIF:</strong></a> Global Biodiversity Information Facility. <span class="mentor-note">- The raw data hose for biogeography.</span></li>
+        <li><a href="https://www.worldclim.org/" target="_blank" class="resource-link"><strong>WorldClim:</strong></a> Global climate data. <span class="mentor-note">- The standard input for niche modeling.</span></li>
+        <li><a href="https://biodiversityinformatics.amnh.org/open_source/maxent/" target="_blank" class="resource-link"><strong>Maxent:</strong></a> Species distribution modeling. <span class="mentor-note">- User-friendly, but very easy to misuse statistically. Read the manual carefully.</span></li>
+    </ul>
+
+    <h4 class="resource-category">7. Molecular Biology & General Tools</h4>
+    <ul>
+        <li><a href="https://www.snapgene.com/snapgene-viewer" target="_blank" class="resource-link"><strong>SnapGene Viewer:</strong></a> Plasmid mapping. <span class="mentor-note">- The industry standard viewer is free and excellent.</span></li>
+        <li><a href="https://jorgensen.biology.utah.edu/wayned/ape/" target="_blank" class="resource-link"><strong>ApE (A Plasmid Editor):</strong></a> Free cloning tool. <span class="mentor-note">- Ugly interface, but rock-solid logic for planning constructs.</span></li>
+        <li><a href="https://primer3.ut.ee/" target="_blank" class="resource-link"><strong>Primer3:</strong></a> PCR primer design. <span class="mentor-note">- The engine behind almost every primer tool on the web.</span></li>
+        <li><a href="https://imagej.nih.gov/ij/" target="_blank" class="resource-link"><strong>ImageJ / Fiji:</strong></a> Scientific image analysis. <span class="mentor-note">- Java-based and clunky, but the absolute king of microscopy analysis.</span></li>
+        <li><a href="https://www.uniprot.org/" target="_blank" class="resource-link"><strong>UniProt</strong></a> & <a href="https://www.rcsb.org/" target="_blank" class="resource-link"><strong>PDB:</strong></a> Protein databases. <span class="mentor-note">- The gold standards for protein annotation and 3D structure.</span></li>
+    </ul>
+
+    <h4 class="resource-category">8. Writing, Citing & Publishing</h4>
+    <ul>
+        <li><a href="https://www.overleaf.com/" target="_blank" class="resource-link"><strong>Overleaf:</strong></a> Online LaTeX editor. <span class="mentor-note">- The best way to write collaborative papers without formatting headaches.</span></li>
+        <li><a href="https://www.zotero.org/" target="_blank" class="resource-link"><strong>Zotero:</strong></a> Reference manager. <span class="mentor-note">- Free, open-source, and arguably better than EndNote. Use the browser connector!</span></li>
+        <li><a href="https://v2.sherpa.ac.uk/romeo/" target="_blank" class="resource-link"><strong>Sherpa Romeo:</strong></a> Copyright policies. <span class="mentor-note">- Checks if you are legally allowed to post your PDF on your website.</span></li>
+        <li><a href="https://orcid.org/" target="_blank" class="resource-link"><strong>ORCID:</strong></a> Digital ID. <span class="mentor-note">- Get one. Now. It follows you forever.</span></li>
+        <li><a href="https://www.biorxiv.org/" target="_blank" class="resource-link"><strong>BioRxiv:</strong></a> The biology preprint server. <span class="mentor-note">- Post your paper here before you submit to a journal to get early feedback.</span></li>
+        <li><a href="https://writingcenter.tamu.edu/" target="_blank" class="resource-link"><strong>TAMU Writing Center:</strong></a> University resource. <span class="mentor-note">- They have specific consultants for scientific writing and dissertation formatting.</span></li>
+    </ul>
+
+    <h4 class="resource-category">9. Graphics & Visualization (Non-Data)</h4>
+    <ul>
+        <li><a href="https://inkscape.org/" target="_blank" class="resource-link"><strong>Inkscape:</strong></a> Vector graphics editor. <span class="mentor-note">- The free, open-source alternative to Adobe Illustrator. Incredibly powerful.</span></li>
+        <li><a href="https://www.gimp.org/" target="_blank" class="resource-link"><strong>GIMP:</strong></a> Raster image editor. <span class="mentor-note">- Free Photoshop. Capable tool, but has a definite learning curve.</span></li>
+        <li><a href="https://colorbrewer2.org/" target="_blank" class="resource-link"><strong>ColorBrewer:</strong></a> Color advice. <span class="mentor-note">- Stop using default red/green color scales! Use this to make accessible maps.</span></li>
+        <li><a href="https://biorender.com/" target="_blank" class="resource-link"><strong>BioRender:</strong></a> Scientific illustration. <span class="mentor-note">- Makes professional diagrams easy, but be aware everyone's figures are starting to look the same.</span></li>
+    </ul>
+
+    <h4 class="resource-category">10. Career, Culture & Sanity</h4>
+    <ul>
+        <li><a href="https://academictree.org/" target="_blank" class="resource-link"><strong>Academic Tree:</strong></a> Genealogy of science. <span class="mentor-note">- Find out who your academic "grandparents" are. Fun for seeing lineage.</span></li>
+        <li><a href="https://phdcomics.com/" target="_blank" class="resource-link"><strong>PhD Comics:</strong></a> The documentary of our lives. <span class="mentor-note">- It stops being funny and starts being painful around year 4.</span></li>
+        <li><a href="https://xkcd.com/" target="_blank" class="resource-link"><strong>XKCD:</strong></a> Nerdy humor. <span class="mentor-note">- There is a relevant comic for everything in science.</span></li>
+        <li><a href="https://www.researchgate.net/" target="_blank" class="resource-link"><strong>ResearchGate:</strong></a> Social network for scientists. <span class="mentor-note">- Spams your email, but actually useful for asking authors for PDFs.</span></li>
+    </ul>
+    
+    <h4 class="resource-category" style="border-bottom: 2px solid #500000; color: #500000;">11. Mentoring & Grad School Survival</h4>
+    <ul>
+        <li><a href="https://theprofessorisin.com/" target="_blank" class="resource-link"><strong>The Professor Is In:</strong></a> Career advice. <span class="mentor-note">- Hard truths about the academic job market. Read this early, not right before you graduate.</span></li>
+        <li><a href="https://www.science.org/careers" target="_blank" class="resource-link"><strong>Science Careers (AAAS):</strong></a> <span class="mentor-note">- Excellent articles on non-academic paths and lab management.</span></li>
+        <li><a href="https://myidp.sciencecareers.org/" target="_blank" class="resource-link"><strong>Individual Development Plan (IDP):</strong></a> <span class="mentor-note">- A structured way to plan your career goals. Required by many grants, but useful for everyone.</span></li>
+        <li><a href="https://grad.tamu.edu/" target="_blank" class="resource-link"><strong>TAMU Grad School:</strong></a> <span class="mentor-note">- Know the rules. They control your dates, deadlines, and dissertation formatting.</span></li>
+        <li><a href="https://www.facultydiversity.org/" target="_blank" class="resource-link"><strong>National Center for Faculty Development & Diversity:</strong></a> <span class="mentor-note">- A&M usually has a membership. Great for writing accountability and time management.</span></li>
+    </ul>
+
+    <br>
+    <div class="alert alert-light border" role="alert">
+        <strong>Community Contribution:</strong> This list is living and breathing. If you are a student or faculty member and have a tool that saved your thesis or accelerated your research, please email me at <a href="mailto:blackmon@tamu.edu" class="alert-link">blackmon@tamu.edu</a>. I am especially looking for resources that help early graduate students navigate the first few years.
+    </div>
+    <br><br>
+
+  </div>
+</section>    
+
+  </main><footer id="footer">
+      </footer><a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="../assets/vendor/counterup/counterup.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/venobox/venobox.min.js"></script>
+  <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
