@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>The Art of Prompting - Blackmon Lab</title>
+  <meta name="description" content="Guide to effective AI prompting for scientists and graduate students.">
+  <meta name="keywords" content="AI, prompting, science, biology, research, coding">
+
+  <link href="../assets/img/favicon.ico" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <style>
+      /* Styles for mentor notes and categories */
+      .mentor-note {
+          color: #6c757d;
+          font-style: italic;
+          font-size: 0.95em;
+      }
+      .resource-category {
+          margin-top: 50px;
+          margin-bottom: 20px;
+          color: #2c3e50;
+          border-bottom: 2px solid #500000;
+          padding-bottom: 10px;
+      }
+      
+      /* Link Styles */
+      .resource-link {
+          color: #000;
+          text-decoration: none;
+          font-weight: bold;
+      }
+      .resource-link:hover {
+          color: #500000; /* TAMU Maroon hover effect */
+          text-decoration: underline;
+      }
+
+      /* --- NEW STYLE FOR DUMMY LINKS --- */
+      /* Just remove 'coming-soon' from the HTML class to activate a link */
+      .resource-link.coming-soon {
+          color: #b0b0b0 !important; /* Light Gray */
+          cursor: default;           /* Shows arrow instead of pointer hand */
+          pointer-events: none;      /* Prevents clicking */
+          text-decoration: none;
+      }
+      /* -------------------------------- */
+
+      .level-badge {
+          display: inline-block;
+          padding: 5px 10px;
+          border-radius: 4px;
+          color: white;
+          font-weight: bold;
+          margin-bottom: 10px;
+          font-size: 0.8em;
+      }
+      .level-1 { background-color: #6c757d; }
+      .level-2 { background-color: #17a2b8; }
+      .level-3 { background-color: #500000; }
+  </style>
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">Blackmon Lab</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#research">Research</a></li>
+          <li><a href="index.html#resources">Resources</a></li>
+          <li><a href="index.html#publications">Publications</a></li>
+          <li><a href="index.html#members">Members</a></li>
+          <li><a href="index.html#join">Joining our Team</a></li>
+          <li><a href="index.html#calendar">Calendar</a></li>
+          <li><a href="index.html#photos">Photos</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+ <section id="prompting-guide" class="about section">
+     <div class="container">
+         <br><br><br>
+     <h2>The Scientist's Guide to Prompting</h2>
+     <p class="lead">
+         Most people treat AI like a search engine. This is a mistake. <br><br>
+         To get value out of these tools, you need to understand that prompting is a hierarchy. It ranges from simple questions to massive, multi-page workflows that simulate an expert employee. Below, we break down the levels of prompting, culminating in the "Mega Prompts" used in our lab for manuscript review and grant writing.
+    </p>
+     <hr>
+
+    <h4 class="resource-category">1. The Hierarchy of Complexity</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card p-3 h-100">
+                <span class="level-badge level-1">Level 1: The Chat</span>
+                <h5>"The Search Replacement"</h5>
+                <p><strong>Goal:</strong> Quick info retrieval.<br>
+                <strong>Example:</strong> "What is a Hidden Markov Model?"<br>
+                <strong>Value:</strong> Low. It saves you a Google search, but adds no intellectual depth.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 h-100">
+                <span class="level-badge level-2">Level 2: The Task</span>
+                <h5>"The Intern"</h5>
+                <p><strong>Goal:</strong> Execute a specific job.<br>
+                <strong>Example:</strong> "Edit this paragraph to be punchier. Do not change the meaning."<br>
+                <strong>Value:</strong> Medium. Saves time on tedious tasks like coding snippets or editing abstract text.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 h-100">
+                <span class="level-badge level-3">Level 3: The Workflow</span>
+                <h5>"The Mega-Prompt"</h5>
+                <p><strong>Goal:</strong> Simulate a senior colleague.<br>
+                <strong>Example:</strong> Uploading a full manuscript with a 5-page rubric and asking for a section-by-section critique based on specific journal guidelines.<br>
+                <strong>Value:</strong> High. This is where AI transforms research productivity.</p>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="resource-category">2. The "Mega-Prompt" Library</h4>
+     <p class="lead" style="font-size: 1rem;">
+        This is a repository of "Algorithmic Workflows"—complex, multi-stage instructions designed to force AI models to simulate expert roles. 
+        <br><br>
+        <strong>How to use:</strong> Click the link to download the prompt text. Paste the entire block into a large-context model (like ChatGPT-4o, Claude 3 Opus, or Gemini 1.5 Pro). For best results, attach your relevant files (manuscript PDF, raw data, etc.) when you paste the prompt.
+     </p>
+
+    <h4 class="resource-category">Research & Writing Workflows (The "Scientific Method" Engines)</h4>
+    <ul>
+        <li>
+            <a href="https://github.com/coleoguy/prompting/blob/main/manuscript-audit" target="_blank" class="resource-link">
+                The Manuscript Audit:
+            </a> 
+            <span class="mentor-note">Acts as an expert editor. Reviews your paper and helps you understand what needs to change. Think of it as a kind peer reviewer.</span>
+        </li>
+        
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Response to Reviewers" Diplomat:
+            </a> 
+            <span class="mentor-note">Takes raw/angry author comments and Reviewer 2’s critique, then outputs a table with "The Sandwich Method" (Agree, Refute w/ Evidence, Fix).</span>
+        </li>
+        
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Lay Summary" Translator:
+            </a> 
+            <span class="mentor-note">Converts dense genomic abstracts into 8th-grade reading level press releases, specifically flagging jargon like "heterozygosity."</span>
+        </li>
+        
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "DDIG/Small Grant" Architect:
+            </a> 
+            <span class="mentor-note">Builds the narrative arc for a Dissertation Improvement Grant, ensuring the budget justification aligns perfectly with experiments.</span>
+        </li>
+        
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Literature Gap" Analyzer:
+            </a> 
+            <span class="mentor-note">Takes 5-10 abstracts as input and identifies the specific "knowledge conflict" that allows you to frame your research novelty.</span>
+        </li>
+    </ul>
+
+    <h4 class="resource-category">Code & Data Science (The "Reproducibility" Engines)</h4>
+    <ul>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "R Package" Standardizer:
+            </a> 
+            <span class="mentor-note">Refactors a loose folder of R scripts into a formal R package structure (Description, Namespace, Roxygen2 docs).</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Bioinformatics Pipeline" Auditor:
+            </a> 
+            <span class="mentor-note">Reviews Bash/Nextflow pipelines for reproducibility gaps (missing versions, hard-coded paths).</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "ggplot2" Publication Polish:
+            </a> 
+            <span class="mentor-note">Enforces <em>Evolution</em> or <em>Systematic Biology</em> formatting standards (font sizes, colorblind palettes, axis limits).</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "SQL/Database" Schema Builder:
+            </a> 
+            <span class="mentor-note">Designs a normalized relational database schema for field collection data to prevent data rot.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Phylogenetic Methods" Critic:
+            </a> 
+            <span class="mentor-note">Checks Methods sections for missing parameters in Bayesian or Likelihood analyses (priors, burn-in, bootstrap replicates).</span>
+        </li>
+    </ul>
+
+    <h4 class="resource-category">Teaching & Mentoring (The "Pedagogy" Engines)</h4>
+    <ul>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "CUREs Class" Syllabus Generator:
+            </a> 
+            <span class="mentor-note">A 14-week backward-design workflow that aligns weekly wet-lab deliverables with Bloom's Taxonomy learning objectives.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Rubric" Constructor:
+            </a> 
+            <span class="mentor-note">Generates a fair, point-based grading rubric for subjective assignments (like posters) to standardize TA grading.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Socratic Tutor" Generator:
+            </a> 
+            <span class="mentor-note">Consumes a topic (e.g., "Coalescent Theory") and generates a script for the AI to quiz the student iteratively instead of giving answers.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Letter of Rec" Drafter:
+            </a> 
+            <span class="mentor-note">Drafts non-generic letters highlighting specific traits (resilience, troubleshooting) for Med School vs. Grad School based on your notes.</span>
+        </li>
+    </ul>
+
+    <h4 class="resource-category">Graduate Student Survival (The "Stress Test" Engines)</h4>
+    <ul>
+        <li>
+            <a href="https://github.com/coleoguy/prompting/blob/main/committee_simulator" class="resource-link">The "Quals Committee" Simulator</a> 
+            <span class="mentor-note">Act as my PhD committee with knowledge of backgrounds and simulate my committee meeting with me.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "IACUC/IRB" Protocol Writer:
+            </a> 
+            <span class="mentor-note">Drafts "Search for Alternatives" and "Justification of Animal Numbers" sections based on a brief experiment description.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Thesis Formatting" Automator:
+            </a> 
+            <span class="mentor-note">Checks a document against the specific, annoying formatting guidelines of the TAMU Office of Graduate Studies.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Poster" Narrative Streamliner:
+            </a> 
+            <span class="mentor-note">Cuts text-heavy conference posters down to bullet points and visual cues, focusing on the "3-second hook."</span>
+        </li>
+    </ul>
+
+    <h4 class="resource-category">Career & Administration (The "Bureaucracy" Engines)</h4>
+    <ul>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "CV to Industry Resume" Translator:
+            </a> 
+            <span class="mentor-note">Translates academic "Dissertation Research" into industry-speak "Project Management" and "Data Analytics" for biotech jobs.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Job Talk" Heckler:
+            </a> 
+            <span class="mentor-note">Generates the 5 most likely "Gotcha" questions a senior faculty member would ask during a tenure-track job talk Q&A.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Conflict Resolution" Emailer:
+            </a> 
+            <span class="mentor-note">Drafts professional, boundary-setting emails to decline committee requests or address authorship disputes without burning bridges.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Cover Letter" Tailor:
+            </a> 
+            <span class="mentor-note">Analyzes a specific journal's "Aims and Scope" and rewrites the "Why this journal?" paragraph to match their buzzwords.</span>
+        </li>
+    </ul>
+
+    <h4 class="resource-category">Lab Management (The "Safety" Engines)</h4>
+    <ul>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "SOP" Generator:
+            </a> 
+            <span class="mentor-note">Converts messy lab notebook scribbles into a formal, step-by-step Standard Operating Procedure with safety warnings.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Equipment Grant" Justification:
+            </a> 
+            <span class="mentor-note">Writes the "Need" section for instrumentation grants, focusing on broader departmental impact.</span>
+        </li>
+        <li>
+            <a href="#" class="resource-link coming-soon">
+                The "Safety Audit" Checklist:
+            </a> 
+            <span class="mentor-note">Generates a custom lab safety inspection checklist based on the specific chemicals and organisms listed in your inventory.</span>
+        </li>
+    </ul>
+
+    <br><br>
+    <div class="alert alert-light border" role="alert">
+        <strong>Community Contribution:</strong> Have you developed a "Mega-Prompt" that saved your thesis? Email it to <a href="mailto:blackmon@tamu.edu" class="alert-link">blackmon@tamu.edu</a> to add it to the library.
+    </div>
+    <br><br>
+
+  </div>
+</section>    
+
+  </main>
+  
+  <footer id="footer">
+      </footer>
+  
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script src="../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="../assets/vendor/counterup/counterup.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/venobox/venobox.min.js"></script>
+  <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../assets/vendor/typed.js/typed.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
