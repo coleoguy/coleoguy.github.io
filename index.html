@@ -4,32 +4,29 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Blackmon Lab - Evolutionary Biology</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Blackmon Lab - Evolutionary Biology at Texas A&M</title>
+  <meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+  <meta name="keywords" content="evolutionary biology, genome structure, sex chromosomes, karyotype, Texas A&M, Blackmon Lab">
+  <link rel="canonical" href="https://coleoguy.github.io/">
 
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blackmon Lab - Evolutionary Biology">
+  <meta property="og:description" content="Understanding how and why the structure of genomes evolves across the tree of life.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://coleoguy.github.io/">
 
-  gtag('config', 'G-4J0HZ3LNQX');
-</script>    
-    
-  
-  
-  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
   <!-- Favicons -->
   <link href="assets/img/favicon.ico" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,41 +38,46 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ResearchOrganization",
+    "name": "Blackmon Lab",
+    "url": "https://coleoguy.github.io",
+    "description": "Evolutionary biology research lab studying genome structure evolution at Texas A&M University",
+    "parentOrganization": {
+      "@type": "CollegeOrUniversity",
+      "name": "Texas A&M University"
+    },
+    "member": {
+      "@type": "Person",
+      "name": "Heath Blackmon",
+      "jobTitle": "Principal Investigator"
+    }
+  }
+  </script>
 </head>
 
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Blackmon Lab</h1>
-      </a>
+      <div class="logo-group">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+        <a href="https://bio.tamu.edu" target="_blank" class="dept-link">TAMU Biology</a>
+      </div>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#resources">Resources</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#members">Members</a></li>
-          <li><a href="#join">Joining our Team</a></li>
-          <li><a href="#calendar">Calendar</a></li>
-          <li><a href="#photos">Photos</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -85,636 +87,109 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-
-      <img src="assets/img/hero-bg.jpg" alt="Description" data-aos="fade-in" >
-      <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
-            <h2><br><br>Evolutionary Biology </h2>
+    <section id="hero" class="hero section">
+      <div class="hero-ambient"></div>
+      <div class="container hero-content" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/img/blackmon_black.png" alt="Blackmon Lab" class="hero-logo">
+        <p class="hero-tagline">Understanding how and why the structure of genomes evolves across the tree of life.</p>
+        <div class="hero-meta">Biology Department &middot; Texas A&amp;M University</div>
+        <div class="hero-actions">
+          <a href="research.html" class="btn-gold">Explore Our Research</a>
+          <a href="join.html" class="btn-outline">Join the Lab</a>
         </div>
+      </div>
+    </section>
 
-    </section><!-- /Hero Section -->
+    <!-- Photo Strip -->
+    <section style="padding: 30px 0 0;">
+      <div class="photo-strip" data-aos="fade-up">
+        <img src="assets/img/slide-fieldwork1.jpg" alt="Fieldwork">
+        <img src="assets/img/slide-labmeeting.jpg" alt="Lab meeting">
+        <img src="assets/img/slide-beetle.jpg" alt="Beetle research">
+        <img src="assets/img/slide-conference1.jpg" alt="Conference">
+        <img src="assets/img/slide-whiteboard1.jpg" alt="Whiteboard work">
+        <img src="assets/img/slide-fieldwork2.jpg" alt="Beetle trapping">
+        <img src="assets/img/slide-poster1.jpg" alt="Poster presentation">
+        <img src="assets/img/slide-desert.jpg" alt="Desert fieldwork">
+        <img src="assets/img/slide-whiteboard2.jpg" alt="Lab meeting">
+        <img src="assets/img/slide-presentation.jpg" alt="Lab presentation">
+        <img src="assets/img/slide-labgroup.png" alt="Lab group photo">
+        <img src="assets/img/slide-halloween.png" alt="Halloween party">
+        <img src="assets/img/slide-tailgate.png" alt="TAMU tailgate">
+        <img src="assets/img/slide-labnight.png" alt="Lab night">
+        <img src="assets/img/slide-pumpkins.png" alt="Pumpkin carving">
+      </div>
+    </section>
 
-    <!-- Research Section -->
-    <section id="research" class="about section">
+    <!-- Hub Navigation Cards -->
+    <section class="section" style="padding-top: 60px;">
+      <div class="container" data-aos="fade-up">
+        <div class="hub-grid">
+          <a href="research.html" class="hub-card">
+            <i class="bi bi-diagram-3"></i>
+            <span>Research</span>
+            <div class="hub-desc">Genome evolution, sex chromosomes, and computational biology</div>
+          </a>
+          <a href="publications.html" class="hub-card">
+            <i class="bi bi-journal-text"></i>
+            <span>Publications</span>
+            <div class="hub-desc">Papers from 2012 to present, live from ORCID</div>
+          </a>
+          <a href="team.html" class="hub-card">
+            <i class="bi bi-people"></i>
+            <span>Team</span>
+            <div class="hub-desc">PI, grad students, staff, and alumni</div>
+          </a>
+          <a href="resources.html" class="hub-card">
+            <i class="bi bi-tools"></i>
+            <span>Resources</span>
+            <div class="hub-desc">R packages, databases, teaching materials</div>
+          </a>
+          <a href="join.html" class="hub-card">
+            <i class="bi bi-door-open"></i>
+            <span>Join Us</span>
+            <div class="hub-desc">Expectations, calendar, and how to apply</div>
+          </a>
+          <a href="gallery.html" class="hub-card">
+            <i class="bi bi-camera"></i>
+            <span>Lab Life</span>
+            <div class="hub-desc">Photos, fieldwork, and fun</div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-      <!-- Section Title -->
+    <!-- News & Social Section -->
+    <section class="section">
       <div class="container section-title" data-aos="fade-up">
-        <h2>Research</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-3">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/about.jpg" alt="" class="img-fluid">
-          </div>
-
-          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="about-content ps-0 ps-lg-3">
-              <p>The Blackmon Lab is in the <a href="http://www.bio.tamu.edu/" target="_blank" class="w3-hover-text-red">Biology Department at Texas A&amp;M University</a>. Our ultimate goal is to understand how and why the structure of genomes evolves the way it does across the tree of life. To understand genome structure, we study a broad range of organisms, including tomatoes, betta fish, beetles, chickens, and mammals. Genome structure is a broad term, but so are the aspects of genome structure that we investigate (e.g., chromosome number, sex chromosomes, structural mutations). We also have projects that focus on forces that impact genome structure (e.g., epistasis and sexual antagonism). <br><br>
-          
-              We use three approaches to investigate each question we face in our research. First, we use theoretical population genetics to ask "what can happen?" Next, we use comparative methods and leverage data from 10s to 100s of species to ask, "what has happened over many millions of years?" Finally, we use genetics and genomics with emerging model organisms to ask, "what is happening from one generation to the next?"<br><br>
-
-Questions our lab is currently focused on:<br><br>
-
-1) What evolutionary forces lead to the divergence of sex chromosomes, and what forces act on "old" highly diverged sex chromosomes?<br><br>
-
-2) Why does chromosome number evolve rapidly in some clades but remains nearly static in others?<br><br>
-
-3) Is there an ideal chromosome number, and if so, what determines that value?<br><br>
-
-4) What determines the fate of mutations that expand the proportion of the genome linked to a sex-determining locus?<br><br>
-
-5) Are there inherent fitness trade-offs between male and female phenotypes, or can a single genome be fit regardless of sex?<br><br>
-
-6) Does the importance of epistasis vary across plants and animals?<br><br>
-
-7) How does domestication impact organisms? What can we learn about adaptation and radiation from studying domestication?<br><br>
-
-<strong>Blackmon Lab AI Generated Research Podcasts:</strong><br>
-  I have been playing with <a href="https://notebooklm.google.com/" target="_blank" class="w3-hover-text-red">Google's notebook lm</a> studio tool. It allows you to provide their model with a collection our sources and then generates a podcast based on those documents. The podcasts below are ones I generated based on papers from the lab. Note this tool has some consistant and odd mispronunciations that I have yet to solve.<br><br>
-Sex Chromosomes:<br>
-<audio controls autoplay muted>
-   <source src="assets/sexchromosomes.wav" type="audio/wav">
-   Your browser does not support the audio element.
-</audio><br><br>
-Quantitative Genetics and Epistasis:<br>
-<audio controls autoplay muted>
-   <source src="assets/quantgen.wav" type="audio/wav">
-   Your browser does not support the audio element.
-</audio><br><br>
-Chromosome Number:<br>
-<audio controls autoplay muted>
-   <source src="assets/chromosomenumber.wav" type="audio/wav">
-   Your browser does not support the audio element.
-</audio>
-
-                
-                
-                
-</p>
-              
-              
-            </div>
-
-          </div>
-        </div>
-
+        <h2>Connect</h2>
       </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Resources Section -->
-    <section id="resources" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resources</h2>
-      </div><!-- End Section Title -->
-      <div class="container">
-        
-        <p></p>
-        
-        
-          <p>We devote a fair amount of our efforts to producing new datasets, software, and resources for both research and teaching. If you have any questions about these projects please dont hesitate to contact us for additional information.</p>
-      
-          
-      <h4>Lab Meetings</h4>
-      <br>
-          Lab meetings are mandatory for all lab members and occur on Fridays at 10:00 AM in BSBW 425. If we are discussing a paper all students are expected to come to lab meetings with either questions or comments.
-      <br><br>
-          
-      <a href= "https://tamu.zoom.us/j/580704236" target="_blank"> meet with Dr. Blackmon on zoom</a>      <br>
-
-          <br>
-      <h4>Tools</h4>
-          
-      <p><a href="/subpages/resources.html" target="_blank">Foundational Resources:</a>
-      Navigating research requires the right tools for data, writing, and career planning. This list compiles the software and mentoring resources that keep our lab running and our students succeeding.
-      </p>
-                
-          
-      <p><a href="/subpages/Prompting.html" target="_blank">Prompting:</a>
-      My guide and useful prompts. Great if you need to have a paper reviewed or simulate your qualifying exam.
-      </p>
-                
-      <p><a href="/subpages/AI-Tools.html" target="_blank">AI Tools:</a>
-     Educators must embrace AI to ensure student success in a data-driven future. As biologists, these tools unlock new ways to model, analyze, and understand life.
-      </p>
-                
-          
-          <br>
-      
-      <h4>Teaching</h4>
-          
-      <p><a href="/subpages/phylo101.html" target="_blank">Phylogenetics 101:</a>
-      This page has materials for a 3 hour introduction to phylogenetics. This is targeted at a level that is appropriate for students that have little to no experience with actually inferring phylogenies. Peraphs upper level undergraduates or early graduate students in non phylogenetics labs.</p>
-                
-      <p><a href="https://docs.google.com/spreadsheets/d/1cV6ajWF-8pZVPIsrQ-p6W4rCY5S_HWbZZQ-KOxE6xFw/edit?usp=sharing" target="_blank">Fall 2025 Journal Club:</a>
-      This semester's journal club will focus on reading articles from each of the 2024 issues of the Journal of Evolutionary Biology.</p>
-                  
-      <p><a href="/subpages/expdes.html" target="_blank">Experimental Design Course:</a>
-      This course is intended to provide a foundation in the proper design of scientific research projects in the field of biology. A wide range of biological experiments are covered, and each type of experiment is explored with an eye toward choosing the appropriate statistical technique for analysis. By the end of the course, successful students will be able to design biological studies that are statistically tractable and perform basic statistical analyses using the programming language R.</p>
-          
-      <p><a href="/subpages/grad101.html" target="_blank">Orientation to graduate school:</a>
-      This course is designed to give you the tools and knowledge to be as successful as possible in completing your Ph.D. and securing the job you desire. Topics covered include mentoring relationships, curation of your online/professional identity, and building a understanding of how academia functions. </p>
-          
-      <p><a href="rseminar/index.html" target="_blank">R for biologists seminar:</a> R is currently an essential tool for most evolutionary biologists.  This seminar includes tutorials and example datasets for many basic analyses in R that are commonly encountered in ecology and evolution.  The seminar starts off with the most basic steps (installation) so no prior experience is needed to use these exercises.</p>
-      
-      <p><a href="reading.group/index.html" target="_blank">Foundations of evolutionary biology:</a> An understanding of the foundational ideas that the modern synthesis of evolutionary biology is built on is essential for asking intelligent questions and understanding how your research fits into a larger understanding of life.  I offered a foundations of evolutionary biology seminar course for graduate students that provided a structured environment to discuss some of the most important papers in evolutionary biology. This website contains a schedule and PDF files for all of the readings in this course.</p>
-          
-      <p>A CURE, or Course-based Undergraduate Research Experience, is a type of class where students engage in authentic, open-ended scientific research as part of their regular coursework. Instead of following canned lab exercises with known outcomes, students participate in real data collection, analysis, and discovery—often contributing to ongoing research projects. In my CURE class, students investigate evolutionary patterns in chromosome number and genome structure using real biological data. They learn to think like scientists, analyze complex datasets, and communicate their findings—developing skills in experimental design, coding, and interpretation while making meaningful contributions to research in evolutionary genomics.<br> <a href="subpages/cures-data.html" target="_blank">cure data munging guide</a></p>
-          
-      <p><a href="https://github.com/coleoguy" target="_blank">GitHub software repository:</a> I do most all of my development and analyses in public repositories.</p>
-      
-      <p><a href="git-pages.tutorial.pdf" target="_blank">GitHub Pages Tutorial</a></p>
-
-          
-      <a href="https://evobir.shinyapps.io/TA-assignments/" target="_blank">TA Assignment App</a><a href="subpages/TA-assignmentapp.html" target="_blank"> - Tutorial</a><br>
-        <a href="https://forms.gle/RmS8CvmGE4KRKAAm6" target="_blank">Google Form</a><br><br>
-        
-
-          
-      <h4>R packages</h4>
-          
-      <p><a href="https://github.com/coleoguy/DirectRepeateR" target="_blank">DirectRepeateR</a> is a software pacakge that is designed to find and annotate direct repeats in genome assemblies. It is able to produce a gff style file that can be added to any annotation.</p>
-           
-          
-      <p><a href="https://github.com/coleoguy/chromePlus" target="_blank">chromePlus</a> is a collection of R functions generate markov models appropriate for the evolution of chromosome number and binary traits. These models once constructed can be fit via maximum likelihood or Bayesian MCMC methods avaialable in the package diversitree.</p>
-           
-          
-      <p><a href="https://github.com/johnathanlo/micRocounter" target="_blank">micRocounter</a> is an R package to identify all 2-6mer repeates in a genome assembly. It has been optimized for speed and can calculate statitics for larger genomes in a manner of minutes.</p>
-           
-      <p><a href="https://github.com/coleoguy/evobir" target="_blank">evobiR</a> is a collection of R functions that I have developed for different projects. The functions in this package can be loosely organized into either analysis of empirical data, simulation functions, or those created primarily for didactic purposes. A <a href="/subpages/evobir.html" target="_blank">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/evobir" target="_blank">here</a>.</p>
-          
-      <p>The package <a href="https://github.com/coleoguy/SAGA2" target="_blank">SAGA2</a> is a collection functions to ease and hopefully improve the quality of line cross analysis of genetic architecture. The overall goal is to allow for an easy and straightforward implementation of model averaged analysis using AICc. A <a href="/subpages/saga.pdf" target="_blank">vignette</a> demonstrating its use is available. Instructions for installing the latest version from github are available <a href="https://github.com/coleoguy/SAGA" target="_blank">here</a>.</p>
-          
-      <h4>Databases</h4>
-          
-      <p><a href="/karyotypes/index.html" target="_blank">Karyotype Databases:</a> Karyotypes are a highly variable and complex trait that offers an opportunity to detect changes in genome organization, uncover phylogenetic history, and distinguish cryptic species. The current databases contains more than 8,000 records for amphibians, coleoptera, and polyneoptera. The databases allows users to select the records that they wish to retrieve based on either taxonomy or trait values and builds customized tables of the results in a new window.</p>
-          
-      <p>The <a href="http://www.treeofsex.org" target="_blank">Tree of Sex Database:</a> this is a product of a working group sponsored by the National Evolutionary Synthesis Center which sought to compile all information on sex determination systems across the tree of life.  To date, we have collected over 30K records including more than 10K invertebrates.  Much like the Coleoptera Karyotype Database, our goal is to make this data widely available allowing researchers across the globe to use data that was previously difficult to collect. </p>
-          
-      <p><a href="https://evobir.shinyapps.io/CaveCrawler/" target="_blank">CaveCrawler</a> is a reactive web interface for bioinformatic analysis of data in the Mexican tetra (Astyanax mexicanus), an emerging evolutionary model organism. CaveCrawler consists of 4 subpages: a Gene Search page for querying data about specific genes, a Transcription page for finding genes whose transcriptional levels differ between samples, a Population Genetics page for investigating statistics on diversity and selection, and a GO Term Info page for identifying and obtaining information on GO terms-of-interest.</p>
-           
-          
-      <h4>Other</h4>
-        <p>I recently built a cluster consisting of 26 Raspberry Pi 4Bs. I have <a href = "/subpages/raspberrypicluster.html" , target="_blank">assembled some notes</a> to guide anyone else through this process</p>  
-        <p>I have assembled some links to graduate student <a href = "/subpages/grants.html" , target = "_blank" >funding opportunities </a> for graduate students.</p>  
-
-    
-
-
-
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Publications Section -->
-    <section id="publications" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Publications</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-   
-          
-          <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en">Google Scholar</a><br><br><br>
-          
-        <h4>2024</h4>
-      <p>
-          Burch, J., C. Nava, <strong>H. Blackmon</strong>. Assessing the opportunity for selection to impact morphological traits in crosses between two <i>Solanum</i> species <i> PeerJ</i> 12:e17985. <a href="https://doi.org/10.7717/peerj.17985"> open access</a>
-          <br>
-          <br>
-          Wilhoit, K.T., E.P. Alexander, <strong>H. Blackmon</strong>. Worse than nothing at all: the inequality of fusions joining autosomes to the PAR and non-PAR portions of sex chromosomes<i> PeerJ</i> 12:e17740. <a href="https://peerj.com/articles/17740/"> open access</a>
-          <br>
-          <br>
-          Sylvester, T., Z. Hoover, C.E. Hjelmen, M.M. Jonika, L.T. Blackmon, J.M. Alfieri, J.S. Johnston, S. Chien, T. Esfandani, <strong>H. Blackmon</strong>. A reference quality genome assembly for the jewel scarab Chrysina gloriosa <i> G3 Genes| Genomes| Genetics</i> 14 (6). <a href="https://doi.org/10.1093/g3journal/jkae084"> open access</a>
-          <br>
-          <br>
-          Jonika M.M., K.T. Wilhoit, M. Chin, A. Arekere, <strong>H. Blackmon</strong> Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora. <i> Journal of Heredity</i>. esae025. <a href="https://doi.org/10.1093/jhered/esae025"> open access</a>
-          <br>
-          <br>
-          <strong>Blackmon, H.</strong>, M.M. Jonika, J.M. Alfieri, L. Fardoun, J.P. Demuth. Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera.  <i> Journal of Heredity</i>. 115 (2) 173-182. <a href="https://doi.org/10.1093/jhered/esae001"> open access</a>
-          <br>
-          <br>
-          Perry, A., D. Eddelbuettel, G. Rosenthal, <strong>H. Blackmon</strong> Polly: An R package for genotyping microsatellites and detecting highly polymorphic DNA markers from short‐read data. 
-          <i> Molecular Ecology Resources</i>. 24 (4) e13933. <a href="https://doi.org/10.1111/1755-0998.13933"> open access</a>
-          <br>
-          <br>
-          Burch, J., M. Chin, B.E. Fontenot, S. Mandal, T.D. McKnight, J.P. Demuth, <strong>H. Blackmon</strong>. Wright was right: Leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution <i>Evolution</i>. 78 (4) 624-634. <a href="https://doi.org/10.1093/evolut/qpae003"> open access</a>
-          <br>
-          <br>
-          Alfieri, J.M., R. Hingoranee, G.N. Athrey, <strong>H. Blackmon</strong>. Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes)
-          <i>Journal of Heredity</i> 115 (1), 1-10. <a href="https://doi.org/10.1093/jhered/esad059"> open access</a>
-          </p>   
-          
-        <h4>2023</h4>
-      <p>
-          Chicken Consortium (21 Authors). A pangenome graph reference of 30 chicken genomes allows genotyping of large and complex structural variants. <i>BMC Biology</i> 21 (1) <a href="https://www.researchsquare.com/article/rs-3086064/v1"> prerprint version</a>
-          <br>
-          <br>
-          Chicken Consortium (21 Authors). Chicken Genomic Diversity consortium: large-scale genomics to unravel the origins and adaptations of chickens. <i>Cytogenetics and Genome Research</i> 162 (8-9)<a href="https://doi.org/10.1159/000529376"> open access</a>
-          <br>
-          <br>
-          Alfieri, J.M., M.M. Jonika, J.N. Dulin, <strong>H. Blackmon</strong>. Tempo and Mode of Genome Structure Evolution in Insects. <i>Genes</i> 14 (2) 336<a href="https://doi.org/10.3390/genes14020336"> open access</a>
-          <br>
-          <br>
-          Alfieri, J.M., T. Johnson, A. Linderholm, <strong>H. Blackmon</strong>, G.N. Athrey. Genomic investigation refutes record of most diverged avian hybrid <i>Ecology and Evolution</i> 13 (1), e9689<a href="https://doi.org/10.1002/ece3.9689"> open access</a>
-      </p>
-        <h4>2022</h4>
-      <p >
-          
-          Pitonak, M., M. Aceves, P.A. Kumar, G. Dampf, P. Green. A. Tucker, V. Dietz, D. Miranda, S. Letchuman, M.M. Jonika, D. Bautista, <strong>H Blackmon</strong>, J.N. Dulin. Effects of biological sex mismatch on neural progenitor cell transplantation for spinal cord injury in mice. <i>Nature Communications</i> 13(1) 1-12 <a href="https://www.nature.com/articles/s41467-022-33134-x"> open access</a>
-          <br>
-          <br>   
-          Perry, A., S.E. McGaugh, A.C. Keene, <strong>H Blackmon</strong>. CaveCrawler: An interactive analysis suite for cavefish bioinformatics. <i>G3</i> 12:8 jkac132 <a href="https://academic.oup.com/g3journal/article/12/8/jkac132/6609176"> open access</a>
-          <br>
-          <br>   
-          Lotterhos, K., M. Fitzpatrick, <strong>H Blackmon</strong>. Simulations in Evaluations of Methods in Evolution, Ecology, and Systematics. <i>Annual Reviews in Evolution, Ecology, and Systematics</i>. – accepted <a href="https://www.annualreviews.org/doi/abs/10.1146/annurev-ecolsys-102320-093722"> open access</a>
-          <br>
-          <br>   
-          Jonika, MM, JM Alfieri, T Sylvester, AR Buhrow, <strong>H Blackmon.</strong> Why not Y naught. <i>Heredity</i> 129 75-78<a href="https://www.nature.com/articles/s41437-022-00543-z"> open access</a>
-          <br>
-          <br>
-          Hancock, ZB, ES Lehmberg, <strong>H Blackmon.</strong> Phylogenetics in Space: How Continuous spatial structure impacts tree inference. <i>Molecular Phylogenetics and Evolution</i> 173 107505 <a href="https://www.sciencedirect.com/science/article/pii/S105579032200118X" target="_blank" class="w3-hover-text-red"> open access</a>
-          <br>
-          <br>
-          Lo, J, and <strong>H Blackmon.</strong> Retrogene survival is not impacted by linkage relationships. <i>PeerJ</i> 10, e12822. <a href="https://peerj.com/articles/12822/" target="_blank" class="w3-hover-text-red"> open access</a>
-          <br>
-          <br>
-          Alfieri, JM, G Wang, MM Jonika, CA Gill, <strong>H Blackmon,</strong> GN Athrey. A primer on single-cell sequencing in non-model organisms. <i>Genes</i> 13(2) 380. <a href="https://www.mdpi.com/2073-4425/13/2/380" target="_blank" class="w3-hover-text-red"> open access</a>
-          <br>
-          <br>
-          Morelli, MW, <strong>H Blackmon,</strong> CE Hjelmen. Diptera and Drosophila Karyotype databases provide insights into the evolution of chromosome number and sex chromosome systems in flies. <i>Frontiers in Ecology and Evolution</i> 10: 832378 <a href="https://cehjelmen.github.io/assets/publications/morelli_diptera_frontiers_2022.pdf" target="_blank" class="w3-hover-text-red"> open access</a>
-      </p>
-      <h4>2021</h4>
-      <p >
-          Adams, RH, <strong>H Blackmon,</strong> M. DeGiorgio. Of traits and trees: probabilistic distances under continuous trait models for dissecting the interplay among phylogeny, model, and data. <i>Systematic Biology</i> 70(4) 660-680. <a href="https://doi.org/10.1093/sysbio/syab009" target="_blank" class="w3-hover-text-red"> open access</a>
-          
-      </p>
-      <h4>2020</h4>
-      <p >
-          Anderson, NW, CE Hjelmen, and <strong>H Blackmon</strong>. The probability of fusions joining sex chromosomes and autosomes <i> Biology Letters</i> 16(11): 20200648<a href="https://royalsocietypublishing.org/doi/10.1098/rsbl.2020.0648" target="_blank" class="w3-hover-text-red"> open access</a> 
-          <br>
-          <br>
-          Ruckman, SN, M Jonika, C Casola, and <strong>H Blackmon</strong>. Chromosome number evolves at equal rates in holocentric and monocentric clades. <i>PLoS Genetics</i> 16(10): e1009076 <a href="https://doi.org/10.1371/journal.pgen.1009076" target="_blank" class="w3-hover-text-red">open access</a> 
-          <br>
-          <br>
-          Hancock, ZB and <strong>H Blackmon</strong>. Ghosts of a structured past: Impacts of ancestral patterns of isolation-by-distance on divergence-time estimation. <i>Journal of Heredity</i> 111(6) 573-582 <a href="https://doi.org/10.1093/jhered/esaa042" target="_blank">open access</a>
-          <br>
-          <br>
-          Ruckman, SN and <strong>H Blackmon</strong>, 2020. The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum. <i>Journal of Heredity</i> 111(5) 498-505 <a href="https://doi.org/10.1093/jhered/esaa030" target="_blank" class="w3-hover-text-red">open access</a>
-          <br>
-          <br>
-          Sylvester, T, CE Hjelmen, SJ Hanrahan, PA Lenhart, JS Johnston, and <strong>H Blackmon</strong>. Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects. <i>Proceedings of the Royal Society B</i> 287(1935) 20201388 <a href="https://doi.org/10.1098/rspb.2020.1388" target="_blank" class="w3-hover-text-red">open access</a>
-          
-          <br>
-          <br>
-          Jonika MJ, J Lo, <strong>H Blackmon</strong>. Mode and tempo of microsatellite evolution across 300 million years of insect evolution. <i>Genes</i> 11(8) 945 <a href="https://doi.org/10.3390/genes11080945" target="_blank">open access</a>
-          <br>
-          <br>
-          Hjelmen, CE, VR Holmes, CG Burrus, E Piron, M Mynes, MA Garrett, <strong> H Blackmon </strong>, JS Johnston. Thoracic underreplication in Drosophila species estimates a minimum genome size and the dynamics of added DNA. <i>Evolution</i> 74 (4) 1423-1436. <a href="/blackmon.pubs/2020-underreplication.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-      </p>    
-      <h4>2019</h4>
-      <p >
-          Armstrong, A, NW Anderson, <strong> H Blackmon.</strong> Inferring the potentially complex genetic architectures of adaptation, sexual dimorphism, and genotype by environment interactions by partitioning of mean phenotypes. <i>Journal of Evolutionary Biology</i> 32 (4) 369-379 <a href="/blackmon.pubs/2019-LCA.pdf" target="_blank">PDF</a>
-          <br>
-          <br>
-          Perkins, RD, JR Gamboa, MM Jonika, J Lo, A Shum, RH Adams, <strong>H Blackmon</strong>. A database of amphibian karyotypes. <i>Chromosome Research</i> 27(4) 1-7  <a href="https://link.springer.com/article/10.1007/s10577-019-09613-1" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-          <br>
-          Schield, DR, DC Card, NR Hales, BW Perry, GM Pasquesi, <strong>H Blackmon</strong>, RH Adams, AB Corbin, CF Smith, B Ramesh, and JP Demuth. The origins and evolution of chromosomes, dosage compensation, and mechanisms underlying venom regulation in snakes. <i>Genome research</i> 29(4) 590-601. <a href="https://genome.cshlp.org/content/29/4/590.short?casa_token=9p2QARhbA_4AAAAA:NIcQNc-t0tHDx6Yb1cXY0IV9OVpJs9rlHnJOJtE1PnQTyTIIux6lkXBvUyvYRupG3O3QlX2vj1td" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-          <br>
-          Lo, J, MM Jonika, and <strong>H Blackmon</strong>. micRocounter: Microsatellite Characterization in Genome Assemblies. <i>G3: Genes, Genomes, Genetics</i> 9(10) 3101-3104. <a href="https://www.g3journal.org/content/9/10/3101.abstract" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-          <br>
-          Hjelmen, CE, <strong>H Blackmon</strong>, VR Holmes, CG Burrus, and JS Johnston. Genome size evolution differs between Drosophila subgenera with striking differences in male and female genome size in Sophophora. <i>G3: Genes, Genomes, Genetics</i> 9(10) 3167-3179. <a href="https://www.g3journal.org/content/9/10/3167.abstract" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-          <br>
-          <strong>Blackmon H,</strong> J Justison, I Mayrose, EE Goldberg. Meiotic drive shapes rates of karyotype evolution in mammals. <i>Evolution</i> 73(3) 511-523  <a href="/blackmon.pubs/2019-mammals.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-          <br>
-          Passow, C, AM Bronikowski, <strong>H Blackmon,</strong> S Parsai, TS Schwartz, SE McGaugh. Contrasting patterns of rapid molecular evolution within the p53 network across mammal and sauropsid lineages. <i>Genome Biology and Evolution</i> 11(3) 629-643 <a href="/blackmon.pubs/2019-p53.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-      </p>
-      <h4>2018</h4>
-      <p >
-          Gale, CC, E Borrego, <strong>H Blackmon,</strong> JK Harper, D Richardson, and H Song. Investigating a Photolytic Metabolite in the Nocturnal Grasshopper Schistocerca ceratiola (Orthoptera: Acrididae). <i>Annals of the Entomological Society of America</i> 112(1) 50-55. <a href="/blackmon.pubs/2018-ceratiola.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-          
-      </p>
-      <h4>2017</h4>
-      <p >
-          
-          <strong> Blackmon H,</strong> Y Brandvain. Long-term fragility of Y chromosomes is dominated by short-term resolution of sexual antagonism -  <i>Genetics</i> <a href="/blackmon.pubs/2017-fragileY.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-          <br>
-          <strong> Blackmon H,</strong> L Ross, D Bachtrog. Sex determination, sex chromosomes and karyotype evolution in insects. – <i>Journal of Heredity</i> 108:1 78-93 – <em>recommended by Faculty of 1000. </em><a href="blackmon.pubs/2017a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-          <br>
-          Adams R, D Schield, D Card, <strong>H Blackmon</strong>, and T Castoe. GppFst: Genomic posterior predictive simulations of Fst and dxy for identifying outlier loci from population genomic data – <i>Bioinformatics</i> – doi:10.1093/bioinformatics/btw795. <a href="blackmon.pubs/2016b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-
-      </p>
-      <h4>2016</h4>
-      <p>
-          <strong>Blackmon H</strong> and JP Demuth.  An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: moving beyond the joint-scaling test for line cross analysis. – <i>Evolution</i> 70:2 420-432. <a href="blackmon.pubs/2016e.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-          <br>
-          <br>
-          Asian Longhorn Beetle Consortium (67 Authors).  Genome of the Asian longhorned beetle (Anoplophora glabripennis), a globally significant invasive species, reveals key functional and evolutionary innovations at the beetle-plant interface. <i>Genome Biology</i> 17:1 227 - <em>Responsible for analysis of genome structure evolution. </em><a href="blackmon.pubs/2016d.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br>
-                        <br>
-          Ross, L and <strong>H Blackmon</strong>.  Sex Determination. In R. Kliman (Ed.) Encyclopedia of Evolutionary Biology. 81-88 Elsevier Academic Press. doi:10.1016/B978-0-12-800049-6.00146-3. <a href="blackmon.pubs/2016a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br>
-                        <br>
-          Adams R, <strong>H Blackmon</strong>, J Reyes-Velasco, D Schield, D Card, A Andrew, N Waynewood, T Castoe. Microsatellite landscape evolutionary dynamics across 450 million years of vertebrate genome evolution. <i>Genome</i> 59:5 295-310 - <em>Editor’s choice. </em><a href="blackmon.pubs/2016c.pdf" target="_blank">PDF</a>
-      </p>
-      <h4>2015</h4>
-      <p>
-          <strong>Blackmon H</strong>, N Hardy, L Ross. The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability. <i>Evolution</i> 69:11 2971-2978. <a href="blackmon.pubs/2015e.pdf" target="_blank">PDF</a>
-                        <br><br>
-          <strong>Blackmon H</strong> and JP Demuth. The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution. <i>Bioessays</i> 37:9 942-950. <a href="blackmon.pubs/2015a.pdf" target="_blank">PDF</a>
-                        <br><br>
-          <strong>Blackmon H</strong> and JP Demuth. Coleoptera Karyotype Database. <i>The Coleopterists Bulletin</i> 69:1 174-175. <a href="blackmon.pubs/2015c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br><br>
-          Ross, L, <strong>H Blackmon</strong>, P Lorite, V Gokhman, and N Hardy. Recombination, chromosome number and eusociality in the Hymenoptera. <i>Journal of Evolutionary Biology</i> 28:1 105-116. <a href="blackmon.pubs/2015d.pdf" target="_blank">PDF</a>
-                        <br><br>
-          <strong>Blackmon H</strong> and JP Demuth. Genomic origins of insect sex chromosomes. <i>Current Opinion in Insect Science</i> 7 45-50. – <em>recommended by Faculty of 1000. </em><a href="blackmon.pubs/2015b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-      </p>
-      <h4>2014</h4>
-      <p>
-          <strong>Blackmon H</strong> and JP Demuth. Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis. <i>Genetics</i> 197:2 561-572. <a href="blackmon.pubs/2014d.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br><br>
-          <strong>Blackmon H</strong> Coleoptera Karyotypes:  The evolution of sex chromosomes and chromosome number. <i>Newsletter of the Ontario Entomological Society</i> 19:2 19–21. <a href="blackmon.pubs/2014b.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br><br>
-          Streicher, JW, TJ Devitt, CS Goldberg, JH Malone, <strong>H Blackmon</strong>, and MK Fujita. Diversification and asymmetrical gene flow across time and space: lineage sorting and hybridization in polytypic barking frogs. <i>Molecular Ecology</i> 23:13 3273-3291. <a href="blackmon.pubs/2014a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-                        <br>
-                        <br>
-          Ashman T, D Bachtrog, <strong>H Blackmon</strong>, EE Goldberg, MW Hahn, M Kirkpatrick, J Kitano, JE Mank, I Mayrose, R Ming, SP Otto, CL Peichel, MW Pennell, N Perrin, L Ross, N Valenzuela, and JC Vamosi. Tree of Sex: A database of sexual systems. <i>Nature Scientific Data</i> 1:140015. – <em>responsible for 11,526 invertebrate records and all figures. </em><a href="blackmon.pubs/2014c.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-      </p>
-      <h4>2012</h4>
-      <p>
-          <strong>Blackmon H</strong> and JP Demuth. Ring Species and Speciation. Encyclopedia of Life Science. www.els.net. <a href="blackmon.pubs/2012a.pdf" target="_blank" class="w3-hover-text-red">PDF</a>
-      </p>
-      </div>
-
-    </section><!-- /About Section -->
-
-
-      <!-- Members Section -->
-<section id="members" class="about section">
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Members</h2>
-  </div><!-- End Section Title -->
-
-  <div class="container">
-    <div class="row">
-      <!-- Principal Investigator -->
-      <div class="col-md-6">
-        <h4>Principal Investigator</h4>
-        <div class="member">
-          <img src="assets/img/heath.jpg" alt="Heath Blackmon" class="img-fluid" style="height: 200px; width: auto;">
-          <p>
-            Heath Blackmon received his Ph.D. in the Demuth lab at the University of Texas at Arlington in 2015 while studying the evolution of sex chromosomes and karyotypes in Coleoptera and invertebrates. He then transitioned to a postdoc for two years at the University of Minnesota, collaborating with Emma Goldberg and Yaniv Brandvain on projects spanning population genetics and macroevolution. Heath opened his own lab at Texas A&amp;M University in the fall of 2017.
-            <a href="blackmon-cv.pdf" target="_blank"> CV - September 2024</a>
-          </p>
+      <div class="container" data-aos="fade-up">
+        <div class="social-strip">
+          <a href="https://www.instagram.com/tamu_biology/" target="_blank"><i class="bi bi-instagram"></i> TAMU Biology</a>
+          <a href="https://twitter.com/TAMU_Biology" target="_blank"><i class="bi bi-twitter-x"></i> @TAMU_Biology</a>
+          <a href="https://github.com/coleoguy" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+          <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank"><i class="bi bi-mortarboard-fill"></i> Google Scholar</a>
+          <a href="https://www.youtube.com/channel/UCGPj5iydCkn_5DanItR-C0w/" target="_blank"><i class="bi bi-youtube"></i> YouTube</a>
+          <a href="https://artsci.tamu.edu/news/newsfeed.html?tags=biology" target="_blank"><i class="bi bi-newspaper"></i> Department News</a>
         </div>
       </div>
+    </section>
 
-      <!-- Research Staff -->
-      <div class="col-md-6">
-        <h4>Research Staff</h4>
-        <div class="member">
-          <img src="assets/img/LT.png" class="img-fluid" style="height: 200px; width: auto;">
-          <p>LT Blackmon is a founding member of the lab. He has participated in years of fieldwork and has broad interests in biology, currently working on a project involving morphometrics of Chrysina species.</p>
-        </div>
-        <div class="member">
-          <img src="assets/img/kenzie.jpeg" class="img-fluid" style="height: 200px; width: auto;">
-          <p>Kenzie Laird is a research technician and undergraduate researcher. She has broad experience in caring for our model organisms and also has two projects of her own. One focused on leveraging simulations to understand how discrete trait PCMs fail in the presence of hybridization and another focused on agression in Betta Fish. She is also a champion archer!</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Graduate Students -->
-    <h4 class="mt-4">Graduate Students</h4>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="member">
-          <img src="assets/img/schien.jpg" class="img-fluid" style="height: 200px; width: auto;">
-          <p><a href="https://seanchien4.github.io/" target="_blank">Sean Chien</a> joined the lab in 2022 as a Biology Ph.D. student. Sean has broad interests combining evolutionary biology and Coleoptera. Fun fact: He loves fishing.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="member">
-          <img src="assets/img/mcopeland.JPG" class="img-fluid" style="height: 200px; width: auto;">
-          <p><a href="https://Megan-Copeland.github.io/" target="_blank">Megan Copeland</a> joined the lab in 2022 as a Biology Ph.D. student. Megan's research focuses on understanding genome structure. Her career interests include genomics, bioinformatics, and forensics.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="member">
-          <img src="assets/img/abarboza.jpg" class="img-fluid" style="height: 200px; width: auto;">
-          <p><a href="http://andresdbp.github.io/" target="_blank">Andres Barboza Pereira</a> joined the lab in 2023 as a Genetics Ph.D. student. Andres has interests in evolution and genome structure and enjoys theoretical and computational approaches to answering biological questions.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="member">
-          <img src="assets/img/kaya.png" class="img-fluid" style="height: 200px; width: auto;">
-          <p>Kaya Harper joined the lab in 2023 and is a Biology Ph.D. student. Kaya has interests in evolutionary biology and ecology. Kaya is a joint member of the Keene and Blackmon labs and is currently working on undderstanding epigenetic regulation in cave fish.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="member">
-          <img src="assets/img/shelbie.jpg" class="img-fluid" style="height: 200px; width: auto;">
-          <p><a href="https://scholar.google.com/citations?user=5gGQotEAAAAJ&hl=en&oi=sra" target="_blank">Shelbie Weaver</a> joined the lab in 2025 as an EEB Ph.D. student. Shelbie has interests in evolution, ecology, and crustaceans. She is currently studying the factors that allow some crabs to invade freshwater habitats.</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="member">
-          <img src="assets/img/kiedon.png" class="img-fluid" style="height: 200px; width: auto;">
-          <p><a href="https://scholar.google.com/citations?user=6pue-hkAAAAJ&hl=en&oi=ao" target="_blank">Kiedon Bryant</a> joined the lab in 2025 as a Biology Ph.D. student. Kiedon has interests in behavorial evolution and ecology in fish. He is currently studying the impact of transgenerational interaction on fitness and reproductionin using Betta fish as a model. </p>
-        </div>
-      </div>
-    </div>
-    <!-- Post-Bacc Students -->
-    <h4 class="mt-4">Post-Bacc Students</h4>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="member">
-          <img src="assets/img/meg.jpg" class="img-fluid" style="height: 200px; width: auto;">
-          <p>Meghann McConnell joined the lab as a post-bacc student in 2025. She is broadly interested in evolution and learning more about computational approaches.
-          </p>
-        </div>
-      </div>
-    </div>
-    <h4 class="mt-4">Undergraduate Researchers</h4>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="member">
-          <p>
-Kevin Bolwerk<br>
-Sally Bounds<br>
-Emily Clark <br>
-Olivia Deiterman<br>
-Jimena Garcia<br>
-Riya Girish<br>
-Rachel Koehl<br>
-Mallory Murphy<br>
-Sarah Schmalz<br>
-Wyatt Stogsdill<br>
-Runyan Zhou<br>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Alumni -->
-    <h4 class="mt-4">Alumni</h4>
-    <div class="row">
-      <div class="col-md-6">
-        <p>
-          <a href="" target="_blank">Zhaobo Hu</a> PhD Student<br>
-          <a href="https://jorjaelliott.github.io/" target="_blank">Jorja Burch</a> Wiley Publishers<br>
-          <a href="https://scholar.google.com/citations?user=g5RzjxUAAAAJ&hl=en&oi=ao" target="_blank">Emma Lehmberg</a><br>
-          <a href="https://cehjelmen.github.io/" target="_blank">Carl Hjelmen</a> Assistant Professor - Utah Valley University <br>
-          <a href="https://scholar.google.com/citations?user=1-NTzLkAAAAJ&hl=en&oi=ao" target="_blank">Michelle Jonika</a><br>
-          <a href="https://priscilla-glenn.github.io/" target="_blank">Priscilla Glenn</a>: Postdoctoral Researcher - Texas A&amp;M University<br>
-          <a href="https://jamiealfieri.github.io/" target="_blank">Jamie Alfieri</a>: Postdoctoral Researcher - UT Austin<br>
-          <a href="https://tsylvester8.github.io/" target="_blank">Terrence Sylvester</a>: Postdoctoral Researcher - UT Memphis<br>
-          <a href="https://scholar.google.com/citations?user=kyxh-AcAAAAJ&hl=en" target="_blank"> Sarah Ruckman</a>: Ph.D. student FSU<br>
-          <a href="https://nw-anderson.github.io/" target="_blank">Nathan Anderson</a>: Ph.D. student UW Madison<br>
-          <a href="https://github.com/johnathanlo" target="_blank">Johnathan Lo</a>: Ph.D. student Berkeley<br>
-          <a href="https://scholar.google.com/citations?user=9vsdZUcAAAAJ&hl=en&oi=ao" target="_blank">Zachary Hoover</a>: Ph.D. student Texas A&amp;M University<br>
-          Annabel Perry: Ph.D. student Harvard<br>
-          <a href="https://scholar.google.com/citations?user=T6kxaGMAAAAJ&hl=en&oi=ao" target="_blank">Max Chin</a>: Ph.D. student at UC Davis<br>
-          <a href="https://scholar.google.com/citations?user=a2Go4VEAAAAJ&hl=en&oi=ao" target="_blank">Kayla Wilhoit</a>: Ph.D. student at Duke<br>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-      
-
-      
-      
-      <!-- Join us Section -->
-    <section id="join" class="about section">
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Joining our Team</h2>
-      </div><!-- End Section Title -->
-      <div class="container">
-        <p>We are always seeking new students that can bring diverse perspectives, enthusiasm, and dedication into the lab. We believe strongly in the importance of creating a supportive environment for all lab members to reach their full potential. To achieve this we have explicit expections for all lab members including Dr. Blackmon</p><br>
-      <h5>All Lab Members</h5>
-      Attend lab meetings<br>
-      Take ownership and responsibility for assigned projects and tasks<br>
-      Take care of our space (clean up after yourself)<br>
-      Arrive at scheduled meetings on time and prepared<br>
-      Participate in lab functions<br>
-      Respond to all emails within 24 hours<br><br>
-      <h5>Graduate Students</h5>
-      Attend weekly seminars and job seminars<br>
-      Attend journal club<br>
-      Apply for grants/fellowships<br>
-      Present research at confernces<br>
-      Mentor one or more undergraduate<br>
-      Publish 3 papers during PhD<br>
-      Read all standard lab readings prior to end of second year<br><br>
-      <h5>Undergraduate Students</h5>
-      Devote a minimum of 10 hours a week to lab work<br>
-      Contribute to discussions in lab meeting<br><br>
-      <h5>Postdoctoral Researchers</h5>
-      Mentor graduate students <br>
-      Apply for fellowships/jobs<br><br>
-      <h5>Dr. Blackmon</h5>
-      Meet with students at scheduled times<br>
-      Give feedback on papers/applications within 2 weeks max<br>
-      Secure funding for lab<br>
-    </div>
-      </section>
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Dr. Blackmon's Schedule </h2>
-      </div><!-- End Section Title -->
-      <section id="calendar" class="calendar"> 
-        <div class="container">
-          <iframe title="calendar" src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=coleoguy%40gmail.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="100%" height="500"></iframe>
-        </div>
-      </section>
-        
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Lab Photos</h2>
-      </div><!-- End Section Title -->
-        
-        <section id="photos" class="calendar">
- <div class="container my-4">
-  <div class="row justify-content-center g-3">
-    <div class="col-auto">
-      <img src="assets/img/x-party1.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-party2.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-party3.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-party4.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-volleyball.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/xp1.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/xp2.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/xp3.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-13.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-21.gif" class="gallery-img">
-    </div>
-
-    <div class="col-auto">
-      <img src="assets/img/x-wedding.png" class="gallery-img">
-    </div>
-
-    <div class="col-auto">
-      <img src="assets/img/x-25.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-3.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-5.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-poster.png" class="gallery-img">
-    </div>
-    <div class="col-auto">
-      <img src="assets/img/x-2.png" class="gallery-img">
-    </div>
-    <div class="container my-4 text-center">
-       <video class="w-50" controls>
-       <source src="assets/videos/trapping.mp4" type="video/mp4"  loading="lazy">
-       Your browser does not support the video tag.
-       </video>
-    </div>
-  </div>
-</div>
-    </section><!-- /About Section -->
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackmon Lab &middot; Department of Biology &middot; Texas A&amp;M University</p>
+    </div>
+  </footer>
+
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
   <!-- Preloader -->
   <div id="preloader"></div>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -723,6 +198,7 @@ Runyan Zhou<br>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 </body>
