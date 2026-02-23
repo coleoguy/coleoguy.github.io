@@ -67,7 +67,11 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <a href="https://bio.tamu.edu" target="_blank" class="dept-link">TAMU Biology</a>
+        <div class="dept-links">
+          <a href="https://bio.tamu.edu" target="_blank" class="dept-link">TAMU Biology</a>
+          <span class="dept-sep">&middot;</span>
+          <a href="https://eeb.tamu.edu" target="_blank" class="dept-link">TAMU EEB</a>
+        </div>
       </div>
 
       <nav id="navmenu" class="navmenu">
@@ -102,25 +106,9 @@
     </section>
 
     <!-- Photo Strip -->
-    <section style="padding: 30px 0 0;">
-      <div class="photo-strip" data-aos="fade-up">
+    <section style="padding: 30px 0 0; overflow: hidden; max-height: 220px;">
+      <div class="photo-strip" style="overflow: hidden; max-height: 200px;">
         <div class="photo-strip-track">
-          <img src="assets/img/slide-fieldwork1.jpg" alt="Fieldwork">
-          <img src="assets/img/slide-labmeeting.jpg" alt="Lab meeting">
-          <img src="assets/img/slide-beetle.jpg" alt="Beetle research">
-          <img src="assets/img/slide-conference1.jpg" alt="Conference">
-          <img src="assets/img/slide-whiteboard1.jpg" alt="Whiteboard work">
-          <img src="assets/img/slide-fieldwork2.jpg" alt="Beetle trapping">
-          <img src="assets/img/slide-poster1.jpg" alt="Poster presentation">
-          <img src="assets/img/slide-desert.jpg" alt="Desert fieldwork">
-          <img src="assets/img/slide-whiteboard2.jpg" alt="Lab meeting">
-          <img src="assets/img/slide-presentation.jpg" alt="Lab presentation">
-          <img src="assets/img/slide-labgroup.png" alt="Lab group photo">
-          <img src="assets/img/slide-halloween.png" alt="Halloween party">
-          <img src="assets/img/slide-tailgate.png" alt="TAMU tailgate">
-          <img src="assets/img/slide-labnight.png" alt="Lab night">
-          <img src="assets/img/slide-pumpkins.png" alt="Pumpkin carving">
-          <!-- Duplicate set for seamless loop -->
           <img src="assets/img/slide-fieldwork1.jpg" alt="Fieldwork">
           <img src="assets/img/slide-labmeeting.jpg" alt="Lab meeting">
           <img src="assets/img/slide-beetle.jpg" alt="Beetle research">
@@ -139,6 +127,16 @@
         </div>
       </div>
     </section>
+    <script>
+      // Clone images for seamless scroll loop after page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        var track = document.querySelector('.photo-strip-track');
+        if (track) {
+          var imgs = track.innerHTML;
+          track.innerHTML = imgs + imgs;
+        }
+      });
+    </script>
 
     <!-- Hub Navigation Cards -->
     <section class="section" style="padding-top: 60px;">
