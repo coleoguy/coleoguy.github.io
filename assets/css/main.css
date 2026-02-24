@@ -158,7 +158,7 @@ img { max-width: 100%; height: auto; }
 /* ========================
    DESKTOP NAV
 ======================== */
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .navmenu { padding: 0; }
 
   .navmenu ul {
@@ -167,14 +167,14 @@ img { max-width: 100%; height: auto; }
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 2px;
+    gap: 0;
   }
 
   .navmenu li { position: relative; }
 
   .navmenu > ul > li {
     white-space: nowrap;
-    padding: 8px 4px;
+    padding: 8px 2px;
   }
 
   .navmenu > ul > li:last-child { padding-right: 0; }
@@ -182,11 +182,11 @@ img { max-width: 100%; height: auto; }
   .navmenu a,
   .navmenu a:focus {
     color: rgba(255,255,255,0.5);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    padding: 7px 12px;
+    padding: 7px 8px;
     border-radius: 6px;
     font-family: var(--font-heading);
     display: flex;
@@ -270,7 +270,7 @@ img { max-width: 100%; height: auto; }
 /* ========================
    MOBILE NAV
 ======================== */
-@media (max-width: 1199px) {
+@media (max-width: 991px) {
   .mobile-nav-toggle {
     color: #fff;
     font-size: 28px;
@@ -399,7 +399,7 @@ section,
   overflow: clip;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 991px) {
   section, .section { scroll-margin-top: 62px; }
 }
 
@@ -453,12 +453,12 @@ section:nth-of-type(even) {
 ======================== */
 .hero {
   width: 100%;
-  min-height: 100vh;
+  min-height: auto;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 100px 0 40px;
   overflow: hidden;
   background: var(--bg);
 }
@@ -586,7 +586,7 @@ section:nth-of-type(even) {
   .hero .hero-logo { width: 220px; }
   .hero .hero-art-credit { font-size: 10px; }
   .hero .hero-tagline { font-size: 16px; padding: 0 20px; }
-  .hero { min-height: 90vh; }
+  .hero { min-height: auto; }
 }
 
 /* ========================
