@@ -142,7 +142,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .header .logo h1 {
-  font-size: 20px;
+  font-size: 24px;
   margin: 0;
   font-weight: 700;
   color: #fff;
@@ -1722,6 +1722,15 @@ table th {
 /* ========================
    HERO PHOTO BANNER (for inner pages)
 ======================== */
+.page-header .photo-strip {
+  margin-top: 30px;
+  border-radius: 12px;
+}
+
+.page-header .photo-strip img {
+  height: 140px;
+}
+
 .page-photo-banner {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
