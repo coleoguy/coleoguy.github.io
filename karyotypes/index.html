@@ -33,6 +33,10 @@
   <link href="../assets/css/main.css" rel="stylesheet">
 
   <style>
+    /* Tighter page header */
+    .page-header { padding: 110px 0 30px; }
+    @media (max-width: 768px) { .page-header { padding: 90px 0 24px; } }
+
     /* Karyotype page cards */
     .db-grid {
       display: grid;
@@ -164,13 +168,6 @@
       color: var(--text-secondary);
     }
 
-    .lab-logo-mark {
-      display: block;
-      max-width: 140px;
-      margin: 0 auto 32px;
-      opacity: 0.7;
-    }
-
     .credits-section {
       max-width: 780px;
       margin: 0 auto;
@@ -269,12 +266,7 @@
     <section class="section">
       <div class="container">
 
-        <div class="intro-block" data-aos="fade-up">
-          <img src="../assets/img/blackmon_white.png" alt="Blackmon Lab" class="lab-logo-mark">
-          <p>Cytogenetic data is perhaps the most basic information about a genome&mdash;how many discrete chromosomes is the genome divided among, and what type of sex chromosomes are present. Despite the fundamental nature of this data, many questions surrounding the evolution of genomes at this level remain unanswered. As we move into an era of ever more affordable sequencing, this is critical preliminary information that should be evaluated before sequencing and may even suggest particularly attractive targets for future efforts. Unfortunately, cytogenetic data is often scattered among many journals and frequently behind paywalls. For these reasons, we have built databases that make this data publicly available.</p>
-        </div>
-
-        <div class="stat-bar" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-bar" data-aos="fade-up">
           <div class="stat-item">
             <span class="stat-num">14,037</span>
             <span class="stat-label">Total Records</span>
@@ -375,6 +367,10 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="intro-block" data-aos="fade-up">
+          <p>Cytogenetic data is perhaps the most basic information about a genome&mdash;how many discrete chromosomes is the genome divided among, and what type of sex chromosomes are present. Despite the fundamental nature of this data, many questions surrounding the evolution of genomes at this level remain unanswered. As we move into an era of ever more affordable sequencing, this is critical preliminary information that should be evaluated before sequencing and may even suggest particularly attractive targets for future efforts. Unfortunately, cytogenetic data is often scattered among many journals and frequently behind paywalls. For these reasons, we have built databases that make this data publicly available.</p>
         </div>
 
         <div class="credits-section" data-aos="fade-up">
