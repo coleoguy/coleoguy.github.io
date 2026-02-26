@@ -1,138 +1,407 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Karyotype Databases</title>
-
-  <meta name="keywords" content="sex chromosomes, chromosome number, karyotype, blackmon lab, evolution">
+  <title>Karyotype Databases - Blackmon Lab</title>
+  <meta name="description" content="Publicly available karyotype databases for amphibians, beetles, flies, and mammals from the Blackmon Lab at Texas A&M University.">
+  <meta name="keywords" content="sex chromosomes, chromosome number, karyotype, blackmon lab, evolution, cytogenetics">
   <meta name="author" content="Heath Blackmon">
+  <link rel="canonical" href="https://coleoguy.github.io/karyotypes/">
+
+  <meta property="og:title" content="Karyotype Databases - Blackmon Lab">
+  <meta property="og:description" content="Publicly available karyotype databases with 14,000+ records across amphibians, insects, and mammals.">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
 
   <link href="../assets/img/favicon.ico" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
   <link href="../assets/css/main.css" rel="stylesheet">
 
   <style>
-  body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-  /* Override dark theme for this page */
-  body { background: #ffffff !important; color: #333 !important; }
-  .w3-row-padding img {margin-bottom: 12px}
-  #main {margin-left: 10px; padding-top: 70px;}
-  a { color: #1a73e8; }
-  a:hover { color: #174ea6; }
-  h1 { color: #222 !important; }
-  /* Remove margins from "page content" on small screens */
-  @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    /* Karyotype page cards */
+    .db-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .db-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .db-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .db-card:hover {
+      border-color: var(--accent-border);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .db-card:hover::before {
+      opacity: 1;
+    }
+
+    .db-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .db-card-icon i {
+      font-size: 22px;
+      color: var(--accent);
+    }
+
+    .db-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+    }
+
+    .db-card .db-records {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .db-card .db-ref {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .db-card .db-ref a {
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .db-card .db-ref a:hover {
+      color: var(--accent);
+    }
+
+    .db-card .btn-launch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 8px;
+      color: var(--accent);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      transition: all 0.25s ease;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    .db-card .btn-launch:hover {
+      background: var(--accent);
+      color: #0a0a0a;
+      border-color: var(--accent);
+    }
+
+    .intro-block {
+      max-width: 780px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .intro-block p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-secondary);
+    }
+
+    .lab-logo-mark {
+      display: block;
+      max-width: 140px;
+      margin: 0 auto 32px;
+      opacity: 0.7;
+    }
+
+    .credits-section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding-top: 40px;
+    }
+
+    .credits-section p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .credits-section a {
+      color: var(--text-secondary);
+    }
+
+    .credits-section a:hover {
+      color: var(--accent);
+    }
+
+    .stat-bar {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item .stat-num {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .stat-item .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: var(--font-heading);
+    }
+
+    @media (max-width: 768px) {
+      .db-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-bar {
+        gap: 24px;
+      }
+      .stat-item .stat-num {
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
-<body class="w3-white">
 
-<header id="header" class="header d-flex align-items-center fixed-top">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-    <a href="../index.html" class="logo d-flex align-items-center">
-      <h1 class="sitename">Blackmon Lab</h1>
-    </a>
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-      </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-    </nav>
-  </div>
-</header>
+<body>
 
-    
-<!-- Page Content -->
-    
-<div class="w3-padding-large" id="main">
-    
-  <!-- Header/Home -->
-  <header class="w3-container w3-center w3-white" id="home">
-    <h1 class="w3-jumbo">Karyotype Data</h1>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
   </header>
-<br>
-<br>
-<br>
-    <div class="w3-content w3-justify w3-text-dark-grey w3-padding-32">
-        Cytogenetic data is perhaps the most basic information about a genome (i.e., how many discrete chromosomes is the genome divided among, what type of sex chromosomes are present).  Despite the fundamental nature of this data, many questions surrounding the evolution of genomes at this level remain unanswered.  Furthermore, as we move into an era of ever more affordable sequencing, this is critical preliminary information that should be evaluated before sequencing and may even suggest particularly attractive targets for future sequencing efforts.  Unfortunately, cytogenetic data is often scattered among many journals and often behind paywalls.  For these reasons, we have built databases that make this data publicly available.
-    </div>
-<table style="width:100%">
-  <tr>
-    <th>
-        <a href="https://evobir.shinyapps.io/AmphibianDB/" target="_blank" class="w3-hover-text-red">
-            <img src="../assets/img/amphibs.png" alt="data" class="w3-image" width="20%"><br>
-            Amphibian Karyotype Database</a><sup> 1</sup><br>
-            2124 records
-    </th>
-    <th>
-        <a href="https://evobir.shinyapps.io/ColeopteraDB/"target="_blank" class="w3-hover-text-red">
-           <img src="../assets/img/coleos.png" alt="data" class="w3-image" width="25%"><br>
-           Coleoptera Karyotype Database</a><sup> 2</sup><br>
-            4960 records<br><br>
-    </th>
-    <th>
-        <a href="https://evobir.shinyapps.io/PolyneopteraDB/"target="_blank" class="w3-hover-text-red">
-           <img src="../assets/img/polyneoptera.png" alt="data" class="w3-image" width="37%"><br>
-           Polyneoptera Database</a><sup> 3</sup><br>
-            823 records<br>           
-    </th> 
-  </tr>
-  <tr>
-    <th>
-        <a href="https://evobir.shinyapps.io/Diptera/" target="_blank" class="w3-hover-text-red">
-            <img src="../assets/img/diptera.png" alt="data" class="w3-image" width="20%"><br>
-            Diptera Karyotype Database</a><sup> 4</sup><br>
-            3443 records
-    </th>
-    <th>
-         <a href="https://evobir.shinyapps.io/Drosophila/" target="_blank" class="w3-hover-text-red">
-            <img src="../assets/img/drosophila.jpg" alt="data" class="w3-image" width="30%"><br>
-            Drosophila Karyotype Database</a><sup> 4</sup><br>
-            1247 records
-    </th>
-    <th>
-         <a href="https://evobir.shinyapps.io/mammals/" target="_blank" class="w3-hover-text-red">
-            <img src="../assets/img/panda.png" alt="data" class="w3-image" width="30%"><br>
-            Mammal Karyotype Database</a><sup> 5</sup><br>
-            1440 records
-    </th> 
-  </tr>
-</table> 
-    
-    
-   <br>
-    <div class="w3-content w3-justify w3-text-dark-grey w3-padding-32">
-        <small>
-        These databases are supported by the <a href="http://coleoguy.github.io/" target="_blank" class="w3-hover-text-red">Blackmon Lab</a> at Texas A&amp;M University and the <a href="http://www.uta.edu/faculty/demuth/" target="_blank" class="w3-hover-text-red">Demuth Lab</a> at The University of Texas at Arlington.<br><br>
-        
-        <sup>1 </sup><a href="https://link.springer.com/article/10.1007/s10577-019-09613-1" target="_blank" class="w3-hover-text-red">Perkins, R.D., Gamboa, J.R., Jonika, M.M., Lo, J., Shum, A., Adams, R.H. and Blackmon, H., 2019. A database of amphibian karyotypes. Chromosome Research, 27(4), pp. 313-319.</a><br><br>
 
-        <sup>2 </sup><a href="https://bioone.org/journals/the-coleopterists-bulletin/volume-69/issue-1/0010-065X-69.1.174/Coleoptera-Karyotype-Database/10.1649/0010-065X-69.1.174.full" target="_blank" class="w3-hover-text-red">Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. Coleopt. Bull, 69, pp. 174-175.</a><br><br>
-        
-        <sup>3 </sup><a href="https://royalsocietypublishing.org/doi/full/10.1098/rspb.2020.1388" target="_blank" class="w3-hover-text-red">Sylvester, T., Hjelmen, C.E., Hanrahan, S.J., Lenhart, P.A., Johnston, J.S. and Blackmon, H., 2020. Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects. Proceedings of the Royal Society B, 287(1935), p.20201388.</a><br><br>
-            
-        <sup>4 </sup><a href="" target="_blank" class="w3-hover-text-red">Morelli, M.W., H. Blackmon, and C.E. Hjelmen. Diptera and Drosophila Karyotype database. Frontiers in Ecology and Evolution. 10.3389</a>
-</small>
-    </div>
- 
-            
-<!-- END PAGE CONTENT -->
-</div>
+  <main class="main">
 
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/vendor/php-email-form/validate.js"></script>
-<script src="../assets/vendor/aos/aos.js"></script>
-<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="../assets/js/main.js"></script>
+    <section class="page-header">
+      <div class="container">
+        <h1>Karyotype Databases</h1>
+        <p>Publicly available cytogenetic data across the tree of life.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="intro-block" data-aos="fade-up">
+          <img src="../assets/img/blackmon_white.png" alt="Blackmon Lab" class="lab-logo-mark">
+          <p>Cytogenetic data is perhaps the most basic information about a genome&mdash;how many discrete chromosomes is the genome divided among, and what type of sex chromosomes are present. Despite the fundamental nature of this data, many questions surrounding the evolution of genomes at this level remain unanswered. As we move into an era of ever more affordable sequencing, this is critical preliminary information that should be evaluated before sequencing and may even suggest particularly attractive targets for future efforts. Unfortunately, cytogenetic data is often scattered among many journals and frequently behind paywalls. For these reasons, we have built databases that make this data publicly available.</p>
+        </div>
+
+        <div class="stat-bar" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-item">
+            <span class="stat-num">14,037</span>
+            <span class="stat-label">Total Records</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Databases</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">4</span>
+            <span class="stat-label">Taxonomic Groups</span>
+          </div>
+        </div>
+
+        <div class="db-grid">
+
+          <div class="db-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="db-card-icon">
+              <i class="bi bi-database"></i>
+            </div>
+            <h3>Coleoptera Karyotype Database</h3>
+            <div class="db-records">4,960 records</div>
+            <a href="https://evobir.shinyapps.io/ColeopteraDB/" target="_blank" class="btn-launch">
+              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <div class="db-ref">
+              <a href="https://bioone.org/journals/the-coleopterists-bulletin/volume-69/issue-1/0010-065X-69.1.174/Coleoptera-Karyotype-Database/10.1649/0010-065X-69.1.174.full" target="_blank">Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. Coleopt. Bull, 69, pp. 174&ndash;175.</a>
+            </div>
+          </div>
+
+          <div class="db-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="db-card-icon">
+              <i class="bi bi-database"></i>
+            </div>
+            <h3>Diptera Karyotype Database</h3>
+            <div class="db-records">3,443 records</div>
+            <a href="https://evobir.shinyapps.io/Diptera/" target="_blank" class="btn-launch">
+              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <div class="db-ref">
+              <a href="" target="_blank">Morelli, M.W., H. Blackmon, and C.E. Hjelmen. Diptera and Drosophila Karyotype database. Frontiers in Ecology and Evolution. 10.3389</a>
+            </div>
+          </div>
+
+          <div class="db-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="db-card-icon">
+              <i class="bi bi-database"></i>
+            </div>
+            <h3>Amphibian Karyotype Database</h3>
+            <div class="db-records">2,124 records</div>
+            <a href="https://evobir.shinyapps.io/AmphibianDB/" target="_blank" class="btn-launch">
+              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <div class="db-ref">
+              <a href="https://link.springer.com/article/10.1007/s10577-019-09613-1" target="_blank">Perkins, R.D., Gamboa, J.R., Jonika, M.M., Lo, J., Shum, A., Adams, R.H. and Blackmon, H., 2019. A database of amphibian karyotypes. Chromosome Research, 27(4), pp. 313&ndash;319.</a>
+            </div>
+          </div>
+
+          <div class="db-card" data-aos="fade-up" data-aos-delay="250">
+            <div class="db-card-icon">
+              <i class="bi bi-database"></i>
+            </div>
+            <h3>Mammal Karyotype Database</h3>
+            <div class="db-records">1,440 records</div>
+            <a href="https://evobir.shinyapps.io/mammals/" target="_blank" class="btn-launch">
+              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <div class="db-ref">
+              Mammal karyotype database.
+            </div>
+          </div>
+
+          <div class="db-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="db-card-icon">
+              <i class="bi bi-database"></i>
+            </div>
+            <h3>Drosophila Karyotype Database</h3>
+            <div class="db-records">1,247 records</div>
+            <a href="https://evobir.shinyapps.io/Drosophila/" target="_blank" class="btn-launch">
+              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <div class="db-ref">
+              <a href="" target="_blank">Morelli, M.W., H. Blackmon, and C.E. Hjelmen. Diptera and Drosophila Karyotype database. Frontiers in Ecology and Evolution. 10.3389</a>
+            </div>
+          </div>
+
+          <div class="db-card" data-aos="fade-up" data-aos-delay="350">
+            <div class="db-card-icon">
+              <i class="bi bi-database"></i>
+            </div>
+            <h3>Polyneoptera Database</h3>
+            <div class="db-records">823 records</div>
+            <a href="https://evobir.shinyapps.io/PolyneopteraDB/" target="_blank" class="btn-launch">
+              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <div class="db-ref">
+              <a href="https://royalsocietypublishing.org/doi/full/10.1098/rspb.2020.1388" target="_blank">Sylvester, T., Hjelmen, C.E., Hanrahan, S.J., Lenhart, P.A., Johnston, J.S. and Blackmon, H., 2020. Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects. Proceedings of the Royal Society B, 287(1935), p.20201388.</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="credits-section" data-aos="fade-up">
+          <p>These databases are supported by the <a href="https://coleoguy.github.io/" target="_blank">Blackmon Lab</a> at Texas A&amp;M University and the <a href="http://www.uta.edu/faculty/demuth/" target="_blank">Demuth Lab</a> at The University of Texas at Arlington.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackmon Lab &middot; Department of Biology &middot; Texas A&amp;M University</p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>
