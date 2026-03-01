@@ -1695,8 +1695,10 @@ table th {
   padding: 0;
   margin: 0 -15px;
   position: relative;
-  mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
 }
 
 .photo-strip-track {

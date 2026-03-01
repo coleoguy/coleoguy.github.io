@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Blackmon Lab - Evolutionary Biology</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>R for Biologists Seminar - Blackmon Lab</title>
+  <meta name="description" content="R programming tutorials and datasets for ecology and evolution. Learn data analysis, visualization, and statistical modeling using base R. No prior R experience needed.">
+  <meta name="keywords" content="R programming, biologists, ecology, evolution, data analysis, tutorials">
+  <link rel="canonical" href="https://coleoguy.github.io/rseminar/">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.ico" rel="icon">
@@ -26,153 +35,498 @@
 
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
-
 </head>
-    
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4J0HZ3LNQX');
-</script>    
-    
-    
-    
-   
 <body class="index-page">
 
+  <!-- Header -->
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Blackmon Lab</h1>
-      </a>
-
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="https://coleoguy.github.io/#hero" class="active">Home</a></li>
-          <li><a href="https://coleoguy.github.io/#research">Research</a></li>
-          <li><a href="https://coleoguy.github.io/#resources">Resources</a></li>
-          <li><a href="https://coleoguy.github.io/#publications">Publications</a></li>
-          <li><a href="https://coleoguy.github.io/#members">Members</a></li>
-          <li><a href="https://coleoguy.github.io/#join">Joining our Team</a></li>
-          <li><a href="https://coleoguy.github.io/#calendar">Calendar</a></li>
-          <li><a href="https://coleoguy.github.io/#photos">Photos</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
       </nav>
     </div>
   </header>
 
   <main class="main">
+    <!-- Page Header -->
+    <div class="page-header" data-aos="fade">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h1>R for Biologists</h1>
+            <p class="lead">Learn R programming for data analysis, visualization, and statistical modeling in ecology and evolution. No prior R experience required.</p>
+            <p class="text-muted">An introductory course originally delivered to graduate students and continually updated with modern approaches.</p>
+          </div>
+          <div class="col-lg-4 text-center">
+            <img alt="R logo" src="rlogo.png" style="width: 120px; height: 120px;" />
+          </div>
+        </div>
+      </div>
+    </div>
 
-  
-<br>
-<body>
-<br>
-<meta name="description" content="An introductory course in R.  This course was delivered in 2013 to a group of first year graduate students.  It is continually being updated.">
-    <br><br><br>
-<img alt="r-logo" src="rlogo.png" style="border-style: solid; border-width: 0px; width: 95px; height: 95px; margin-left: 10px; margin-right: 10px; float: left;" /><font size="5"><strong>R Graduate Seminar<br />
-Biological analysis with R</strong></font><br /><br />
-Heath Blackmon<br /><br />
-<table style="width: 700px;" border="3" cellpadding="1" cellspacing="1">
-  <tbody>
-    <tr>
-      <td style="font-weight: bold;">Topics</td>
-      <td style="font-weight: bold;">Files and Links</td>
-    </tr>
-    <tr>
-      <td>Install R and RStudio</td>
-      <td><a href="http://www.r-project.org/" target="_blank">R instructions</a><br />
-      <a href="http://www.rstudio.com/products/rstudio/download/" target="_blank">R Studio instructions</a><br />
-      <a href="syllabus.pdf" target="_blank">syllabus</a></td>
-    </tr>
-    <tr>
-      <td>Navigating in R &amp; R Studio<br />
-Basics of R syntax<br />
-Data structures in R<br />
-      </td>
-      <td><a href="wksheet1.pdf" target="_blank">worksheet 1</a><br />
-      <a href="ex.1.R" target="_blank">script for ex. 1</a><br />
-      <a href="finch.csv" target="_blank">finch data</a><br />
-      <a href="R.refcard.pdf" target="_blank">R cheat sheet</a><br />
-      <a href="R.style.sheet.pdf" target="_blank">R style sheet</a><br />
-      </td>
-    </tr>
-    <tr>
-      <td>Subsetting<br />
-Plotting<br />
-      </td>
-      <td><a href="wksheet2.pdf" target="_blank">worksheet 2</a><br />
-      <a href="par.pdf" target="_blank">plotting arguments</a><br />
-      <a href="div.csv" target="_blank">divergence data</a><br />
-      <a href="ex.2.R" target="_blank">script for ex. 2</a></td>
-    </tr>
-    <tr>
-      <td>MK models of Trait Evolution</td>
-      <td><a href="wksheet3.pdf" target="_blank">worksheet 3</a><br />
-      <a href="ex.3.R" target="_blank">script for ex. 3</a><br />
-      </td>
-    </tr>
-    <tr>
-      <td>Continuous Trait Evolution</td>
-      <td><a href="wksheet4.pdf" target="_blank">worksheet</a><br />
-      <a href="tree.nex" target="_blank">tree</a><br />
-      <a href="chromnum.csv" target="_blank">chromosome numbers</a><br />
-      <a href="ex.4.R" target="_blank">script for ex. 4</a></td>
-    </tr>
-    <tr>
-      <td>Custom Functions</td>
-      <td><a href="wksheet5.pdf" target="_blank">worksheet</a><br />
-      <a href="ex.5.R" target="_blank">func. for ex. 5</a><br />
-      <a href="ex.5b.R" target="_blank">script for ex. 5</a></td>
-    </tr>
-    <tr>
-      <td style="vertical-align: top;">Putting it all together<br />
-      </td>
-      <td style="vertical-align: top;"><a href="mcmc.samples.RData" target="_blank">mcmc.samples</a></td>
-    </tr>
-    <tr>
-      <td style="vertical-align: top;">Birth Death Processes<br />
-      </td>
-      <td style="vertical-align: top;"><a href="bd.proc.pdf" target="_blank">worksheet</a><br />
-      <a href="bd.proc.R" target="_blank">script for ex. 6</a><br />
-      </td>
-    </tr>
-    <tr>
-      <td>PCA<br />
-      <a href="http://www.uta.edu/faculty/ensmith/Elijah" target="_blank">Elijah Wostl</a></td>
-      <td><a href="PCA-worksheet.pdf" target="_blank">worksheet</a><br />
-      <a href="I2.csv" target="_blank">data</a><br />
-      </td>
-    </tr>
-    <tr>
-      <td>Time Series Analysis<br />
-      <a href="http://ashleyasmus.weebly.com" target="_blank" >Ashley
-Asmus</a><br />
-      </td>
-      <td><a href="time-series-worksheet.pdf" target="_blank" >worksheet</a><br />
-      </td>
-    </tr>
-  </tbody>
-</table>
-<br />
-One of the best things about learning R is that there is an amazing
-amount of material available online.&nbsp; Almost any problem that you
-will experience has been seen before.&nbsp; <br />
-<br />
-Lots of additional resources are available at the <a href="http://www.r-project.org/" target="_blank">R website</a><br />
-Additional courses focussing on R are available: <a href="http://www.codeschool.com/" target="_blank">code school</a> <a href="https://www.coursera.org/" target="_blank">coursera</a>
-<br />
-<br />
-<font size="1"><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width: 0pt;" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset" property="dct:title" rel="dct:type"> R Seminar Resources</span> by Heath Blackmon are
-licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative
-Commons Attribution-NonCommercial 3.0 Unported License</a></font>
+    <!-- Getting Started Section -->
+    <section class="content-section">
+      <div class="container">
+        <h2 class="section-title mb-5">Getting Started</h2>
+
+        <div class="row">
+          <!-- Installation Card -->
+          <div class="col-lg-6 mb-4" data-aos="fade-up">
+            <div class="resource-category">
+              <h4><i class="bi bi-download"></i> Installation & Setup</h4>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="http://www.r-project.org/" target="_blank" rel="noopener noreferrer">
+                  <strong>R Installation</strong>
+                  <i class="bi bi-box-arrow-up-right ms-2"></i>
+                </a>
+              </div>
+              <p class="resource-desc">Download and install R from the official R Project website.</p>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="http://www.rstudio.com/products/rstudio/download/" target="_blank" rel="noopener noreferrer">
+                  <strong>RStudio IDE</strong>
+                  <i class="bi bi-box-arrow-up-right ms-2"></i>
+                </a>
+              </div>
+              <p class="resource-desc">Download RStudio, the recommended integrated development environment for R.</p>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="syllabus.pdf" target="_blank" rel="noopener noreferrer">
+                  <strong>Course Syllabus</strong>
+                  <i class="bi bi-file-pdf ms-2"></i>
+                </a>
+              </div>
+              <p class="resource-desc">Overview of course structure, topics, and learning objectives.</p>
+            </div>
+          </div>
+
+          <!-- Reference Materials Card -->
+          <div class="col-lg-6 mb-4" data-aos="fade-up">
+            <div class="resource-category">
+              <h4><i class="bi bi-book"></i> Reference Materials</h4>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="R.refcard.pdf" target="_blank" rel="noopener noreferrer">
+                  <strong>R Cheat Sheet</strong>
+                  <i class="bi bi-file-pdf ms-2"></i>
+                </a>
+              </div>
+              <p class="resource-desc">Quick reference guide for common R functions and syntax patterns in base R.</p>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="R.style.sheet.pdf" target="_blank" rel="noopener noreferrer">
+                  <strong>R Style Guide</strong>
+                  <i class="bi bi-file-pdf ms-2"></i>
+                </a>
+              </div>
+              <p class="resource-desc">Best practices for writing clean, readable, and maintainable R code.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seminar Sessions Section -->
+    <section class="content-section">
+      <div class="container">
+        <h2 class="section-title mb-5">Seminar Sessions</h2>
+
+        <!-- Session 1: R Basics -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-1-circle"></i> R Basics: Navigation, Syntax & Data Structures</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-file-earmark-pdf"></i> Worksheet & Script</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="wksheet1.pdf" target="_blank" rel="noopener noreferrer">Worksheet 1</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="ex.1.R" target="_blank" rel="noopener noreferrer">Exercise 1 Script (ex.1.R)</a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-database"></i> Data Files</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="finch.csv" target="_blank" rel="noopener noreferrer">Finch Data (finch.csv)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 2: Subsetting & Plotting -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-2-circle"></i> Subsetting & Plotting</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-file-earmark-pdf"></i> Worksheet & Script</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="wksheet2.pdf" target="_blank" rel="noopener noreferrer">Worksheet 2</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="ex.2.R" target="_blank" rel="noopener noreferrer">Exercise 2 Script (ex.2.R)</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="par.pdf" target="_blank" rel="noopener noreferrer">Plotting Arguments Reference</a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-database"></i> Data Files</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="div.csv" target="_blank" rel="noopener noreferrer">Divergence Data (div.csv)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 3: Markov Models -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-3-circle"></i> Markov Models of Trait Evolution</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-file-earmark-pdf"></i> Worksheet & Script</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="wksheet3.pdf" target="_blank" rel="noopener noreferrer">Worksheet 3</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="ex.3.R" target="_blank" rel="noopener noreferrer">Exercise 3 Script (ex.3.R)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 4: Continuous Trait Evolution -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-4-circle"></i> Continuous Trait Evolution</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-file-earmark-pdf"></i> Worksheet & Script</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="wksheet4.pdf" target="_blank" rel="noopener noreferrer">Worksheet 4</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="ex.4.R" target="_blank" rel="noopener noreferrer">Exercise 4 Script (ex.4.R)</a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-database"></i> Data Files</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="tree.nex" target="_blank" rel="noopener noreferrer">Phylogenetic Tree (tree.nex)</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="chromnum.csv" target="_blank" rel="noopener noreferrer">Chromosome Numbers (chromnum.csv)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 5: Custom Functions -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-5-circle"></i> Writing Custom Functions</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-file-earmark-pdf"></i> Worksheet & Script</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="wksheet5.pdf" target="_blank" rel="noopener noreferrer">Worksheet 5</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="ex.5.R" target="_blank" rel="noopener noreferrer">Exercise 5 Function Library (ex.5.R)</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="ex.5b.R" target="_blank" rel="noopener noreferrer">Exercise 5 Main Script (ex.5b.R)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 6: Birth-Death Processes -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-6-circle"></i> Birth-Death Processes</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-file-earmark-pdf"></i> Worksheet & Script</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="bd.proc.pdf" target="_blank" rel="noopener noreferrer">Birth-Death Processes Worksheet</a>
+                  </div>
+                  <div class="resource-item">
+                    <a href="bd.proc.R" target="_blank" rel="noopener noreferrer">Exercise 6 Script (bd.proc.R)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 7: PCA -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-7-circle"></i> Principal Component Analysis (PCA)</h4>
+                <p class="session-instructor text-muted mt-2 mb-0">Taught by <strong>Elijah Wostl</strong></p>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-file-earmark-pdf"></i> Worksheet</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="PCA-worksheet.pdf" target="_blank" rel="noopener noreferrer">PCA Worksheet</a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-database"></i> Data Files</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="I2.csv" target="_blank" rel="noopener noreferrer">Morphological Data (I2.csv)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 8: Time Series -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-8-circle"></i> Time Series Analysis</h4>
+                <p class="session-instructor text-muted mt-2 mb-0">Taught by <strong>Ashley Asmus</strong></p>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-file-earmark-pdf"></i> Worksheet</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="time-series-worksheet.pdf" target="_blank" rel="noopener noreferrer">Time Series Worksheet</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Session 9: Putting It Together -->
+        <div class="row mb-5" data-aos="fade-up">
+          <div class="col-lg-12">
+            <div class="session-card">
+              <div class="session-header">
+                <h4><i class="bi bi-star"></i> Putting It All Together</h4>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resource-category">
+                    <h6><i class="bi bi-database"></i> Data Files</h6>
+                  </div>
+                  <div class="resource-item">
+                    <a href="mcmc.samples.RData" target="_blank" rel="noopener noreferrer">MCMC Samples Data (mcmc.samples.RData)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Resources Section -->
+    <section class="content-section">
+      <div class="container">
+        <h2 class="section-title mb-5">Additional Resources</h2>
+
+        <div class="row">
+          <!-- Other Seminars -->
+          <div class="col-lg-4 mb-4" data-aos="fade-up">
+            <div class="resource-category">
+              <h4><i class="bi bi-collection"></i> Related Seminars</h4>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="MOA.html">Macroevolutionary Analyses</a>
+              </div>
+              <p class="resource-desc">Advanced methods for studying evolutionary patterns across species and traits.</p>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="migration.html">Migration & Gene Flow</a>
+              </div>
+              <p class="resource-desc">Computational approaches to modeling population structure and migration.</p>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="phylo-hack.html">Phylogenetic Hackathon</a>
+              </div>
+              <p class="resource-desc">Intensive workshop on phylogenetic methods and tree manipulation in R.</p>
+            </div>
+          </div>
+
+          <!-- Online Learning -->
+          <div class="col-lg-4 mb-4" data-aos="fade-up">
+            <div class="resource-category">
+              <h4><i class="bi bi-laptop"></i> Online Learning Platforms</h4>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="http://www.r-project.org/" target="_blank" rel="noopener noreferrer">
+                  R Project
+                  <i class="bi bi-box-arrow-up-right ms-2"></i>
+                </a>
+              </div>
+              <p class="resource-desc">Official R documentation and resources.</p>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="http://www.codeschool.com/" target="_blank" rel="noopener noreferrer">
+                  Code School
+                  <i class="bi bi-box-arrow-up-right ms-2"></i>
+                </a>
+              </div>
+              <p class="resource-desc">Interactive coding courses and tutorials.</p>
+            </div>
+            <div class="resource-item">
+              <div class="resource-link">
+                <a href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer">
+                  Coursera
+                  <i class="bi bi-box-arrow-up-right ms-2"></i>
+                </a>
+              </div>
+              <p class="resource-desc">University-level courses in data science and R programming.</p>
+            </div>
+          </div>
+
+          <!-- Tips for Success -->
+          <div class="col-lg-4 mb-4" data-aos="fade-up">
+            <div class="resource-category">
+              <h4><i class="bi bi-lightbulb"></i> Tips for Success</h4>
+            </div>
+            <p>One of the best aspects of learning R is the abundance of online resources. Most challenges you encounter have been solved before by someone in the community.</p>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Start with base R fundamentals</li>
+              <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Practice with real ecological data</li>
+              <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Write clean, reproducible code</li>
+              <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Use the R help system frequently</li>
+              <li class="mb-2"><i class="bi bi-check-circle text-success me-2"></i> Join the R community online</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- License Section -->
+    <section class="license-section">
+      <div class="container text-center">
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">
+          <img alt="Creative Commons License" style="border-width: 0;" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" />
+        </a>
+        <p class="mt-3 text-muted">
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">R for Biologists Seminar</span> by <strong>Heath Blackmon</strong> is licensed under a
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackmon Lab &middot; Department of Biology &middot; Texas A&amp;M University</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
 </body>
-    </main>
+</html>

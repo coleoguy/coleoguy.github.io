@@ -1,129 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Blackmon Lab - Evolutionary Biology</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Phylogenetics 101 - Blackmon Lab</title>
+  <meta name="description" content="A 3-hour introduction to phylogenetics for upper-level undergrads or early grad students.">
+  <link rel="canonical" href="https://coleoguy.github.io/subpages/phylo101.html">
 
-  <!-- Favicons -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
   <link href="../assets/img/favicon.ico" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
-
 </head>
 
-    
-    
-     
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4J0HZ3LNQX');
-</script>    
-    
-    
-    
-      
-    
-    
-    
-    
-    
-    
-    
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="../index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">Blackmon Lab</h1>
-      </a>
-
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
       </nav>
     </div>
   </header>
 
   <main class="main">
 
-<section class="resume" id="research">
-<div class="container">
-    <br><br><br>
-<h2>Phylogenetics 101</h2>
+    <!-- Page Header -->
+    <section class="page-header" data-aos="fade-up">
+      <div class="container">
+        <h1>Phylogenetics 101</h1>
+        <p class="lead">A 3-hour foundational workshop in phylogenetic methods and inference</p>
+      </div>
+    </section>
 
-     This workshop is designed to expose students to some of the most basic and foundational aspects of phylogentics and allow them to start using software that is crucial in sequence alignment as well as phylogenetic inference and assesment.<br/>
-<br/>
-<br/>
-      For more information email <a href="mailto:blackmon@tamu.edu">Dr. Blackmon</a>. <br/>
-<br/>
-<a class="w3-hover-text-red" href="teaching/phylogenetics-101.pdf" target="_blank">PDF Lecture Slides</a><br/>
-<a class="w3-hover-text-red" href="teaching/phylogenetics-101.pptx" target="_blank">PPTX Lecture Slides</a><br/>
-<a class="w3-hover-text-red" href="teaching/apes.nex" target="_blank">apes.nex</a><br/>
-<a class="w3-hover-text-red" href="teaching/apes.fas" target="_blank">apes.fas</a><br/>
-<a class="w3-hover-text-red" href="teaching/apes.phy" target="_blank">apes.phy</a><br/>
-<a class="w3-hover-text-red" href="teaching/scarab.fa" target="_blank">scarab.fa</a><br/>
-<a class="w3-hover-text-red" href="teaching/scarab.nex" target="_blank">scarab.nex</a><br/>
-<a class="w3-hover-text-red" href="https://tamu.zoom.us/rec/share/oXLTgNnuanxoNq3OQ4Ek6Hc0KTe7RXDOPTFQmJqi99UERU2gTwuyoJlqL2qPAk_a.5rMITmzamvTv84Pn" target="_blank">recording of workshop</a><br/>
-<!--    <br>
-    <br>
-    <h4>Exam files</h4><br><br>
-    <h4>Extra Resources</h4>
-        <a href="teaching/expdes/cheatsheet-rmarkdown-2.0.pdf" target="_blank" class="w3-hover-text-red ">R markdown</a><br>   
-        <a href="https://jef.works/R-style-guide/" target="_blank" class="w3-hover-text-red ">R style guide</a><br>   
-        <a href="teaching/expdes/cheatsheet.basics.pdf" target="_blank">basics of R cheat sheet</a><br>
-        <a href="teaching/expdes/cheatsheet.base.plotting.pdf" target="_blank">base R plotting cheat sheet</a><br>
-        <a href="teaching/expdes/cheatsheet.ggplot2.pdf" target="_blank">ggplot2 cheat sheet</a><br>
-        <a href="http://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3" target="_blank">color brewer</a><br>
-    <br><br>
-    <h4>Useful R packages</h4>
-    swirl<br>
-    ggplot2<br>
-    coda<br>-->
-</div>
-</section>
-</main><!-- End #main -->
-<!-- ======= Footer ======= -->
-<footer id="footer">
-</footer><!-- End  Footer -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Overview Section -->
+    <section class="content-section" data-aos="fade-up">
+      <div class="container">
+        <h2>Workshop Overview</h2>
+        <p>
+          Phylogenetics 101 is designed to expose students to the foundational aspects of phylogenetics, including tree thinking, sequence alignment, phylogenetic inference, and tree assessment. This intensive workshop provides hands-on experience with widely-used methods and software tools essential for modern evolutionary biology.
+        </p>
+        <p>
+          Throughout this workshop, participants will learn:
+        </p>
+        <ul>
+          <li><strong>Tree Thinking:</strong> Understanding evolutionary relationships and interpreting phylogenetic trees</li>
+          <li><strong>Sequence Alignment:</strong> Methods for aligning DNA and protein sequences for phylogenetic analysis</li>
+          <li><strong>Phylogenetic Inference Methods:</strong> Neighbor-Joining, Maximum Likelihood, and Bayesian approaches to building evolutionary trees</li>
+          <li><strong>Tree Assessment:</strong> Evaluating tree confidence and robustness through bootstrapping and posterior probabilities</li>
+          <li><strong>Software Application:</strong> Practical experience with industry-standard phylogenetics software packages</li>
+        </ul>
+        <p>
+          The workshop is intended for upper-level undergraduates and early graduate students with basic understanding of molecular biology and evolution. By the end of the session, participants will be equipped to perform basic phylogenetic analyses and understand the fundamental principles underlying modern phylogenetic methods.
+        </p>
+      </div>
+    </section>
 
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/vendor/php-email-form/validate.js"></script>
-<script src="../assets/vendor/aos/aos.js"></script>
-<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <hr style="border-color: var(--border); margin: 60px 0;">
 
-<script src="../assets/js/main.js"></script>
+    <!-- Workshop Materials Section -->
+    <section class="content-section" data-aos="fade-up">
+      <div class="container">
+        <h2>
+          <i class="bi bi-file-earmark-pdf"></i> Workshop Materials
+        </h2>
+        <p>
+          Access the lecture slides and workshop recording below. The lecture slides cover all major topics presented during the workshop, providing a comprehensive overview of phylogenetics principles, methods, and applications.
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-lg-6">
+            <div class="resource-item" data-aos="fade-up">
+              <div class="resource-link">
+                <h4>
+                  <i class="bi bi-file-pdf"></i>
+                  <a href="teaching/phylogenetics-101.pdf" target="_blank">PDF Lecture Slides</a>
+                </h4>
+              </div>
+              <div class="resource-desc">
+                Complete lecture slides in PDF format for easy viewing and annotation.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="resource-item" data-aos="fade-up">
+              <div class="resource-link">
+                <h4>
+                  <i class="bi bi-file-earmark-powerpoint"></i>
+                  <a href="teaching/phylogenetics-101.pptx" target="_blank">PPTX Lecture Slides</a>
+                </h4>
+              </div>
+              <div class="resource-desc">
+                PowerPoint version for viewing animations and full presentation experience.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-item mt-4" data-aos="fade-up">
+          <div class="resource-link">
+            <h4>
+              <i class="bi bi-camera-video"></i>
+              <a href="https://tamu.zoom.us/rec/share/oXLTgNnuanxoNq3OQ4Ek6Hc0KTe7RXDOPTFQmJqi99UERU2gTwuyoJlqL2qPAk_a.5rMITmzamvTv84Pn" target="_blank">Workshop Recording</a>
+            </h4>
+          </div>
+          <div class="resource-desc">
+            Access the full recording of the workshop session for review or if you were unable to attend live.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr style="border-color: var(--border); margin: 60px 0;">
+
+    <!-- Datasets Section -->
+    <section class="content-section" data-aos="fade-up">
+      <div class="container">
+        <h2>
+          <i class="bi bi-database"></i> Practice Datasets
+        </h2>
+        <p>
+          The following datasets are provided for hands-on practice during and after the workshop. Each dataset demonstrates different aspects of phylogenetic analysis and can be used with various phylogenetics software packages.
+        </p>
+
+        <!-- Ape Dataset -->
+        <div class="dataset-category mt-5" data-aos="fade-up">
+          <h3>
+            <i class="bi bi-diagram-3"></i> Ape Phylogeny Dataset
+          </h3>
+          <p>
+            The ape dataset represents a well-studied primate phylogeny, making it ideal for learning sequence alignment and phylogenetic tree building. This dataset provides a diverse set of primate sequences that are well-characterized in the literature, allowing you to practice alignment methods and verify your results against known evolutionary relationships.
+          </p>
+          <p class="text-muted">
+            Available in multiple formats for compatibility with different software packages:
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-lg-4">
+              <div class="resource-item">
+                <div class="resource-link">
+                  <h5>
+                    <a href="teaching/apes.nex" target="_blank">apes.nex</a>
+                  </h5>
+                </div>
+                <div class="resource-desc">
+                  <strong>NEXUS format</strong> - Commonly used with MrBayes and FigTree. Includes metadata and command blocks.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="resource-item">
+                <div class="resource-link">
+                  <h5>
+                    <a href="teaching/apes.fas" target="_blank">apes.fas</a>
+                  </h5>
+                </div>
+                <div class="resource-desc">
+                  <strong>FASTA format</strong> - Standard sequence format compatible with most phylogenetics software including BLAST, MEGA, and RAxML.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="resource-item">
+                <div class="resource-link">
+                  <h5>
+                    <a href="teaching/apes.phy" target="_blank">apes.phy</a>
+                  </h5>
+                </div>
+                <div class="resource-desc">
+                  <strong>PHYLIP format</strong> - Compact format used by PHYLIP suite and RAxML for efficient computation.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scarab Dataset -->
+        <div class="dataset-category mt-5" data-aos="fade-up">
+          <h3>
+            <i class="bi bi-bug"></i> Scarab Beetle Dataset
+          </h3>
+          <p>
+            The scarab beetle dataset represents a more complex phylogenetic problem drawn from Coleoptera (beetles), one of the most diverse animal groups. This dataset is well-suited for applying the techniques learned in the workshop to a real research dataset with greater evolutionary complexity and diversity. It provides excellent practice for advanced tree building and assessment approaches.
+          </p>
+          <p class="text-muted">
+            Available in two complementary formats:
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-lg-6">
+              <div class="resource-item">
+                <div class="resource-link">
+                  <h5>
+                    <a href="teaching/scarab.fa" target="_blank">scarab.fa</a>
+                  </h5>
+                </div>
+                <div class="resource-desc">
+                  <strong>FASTA format</strong> - Standard format for sequence data analysis across multiple phylogenetics platforms.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="resource-item">
+                <div class="resource-link">
+                  <h5>
+                    <a href="teaching/scarab.nex" target="_blank">scarab.nex</a>
+                  </h5>
+                </div>
+                <div class="resource-desc">
+                  <strong>NEXUS format</strong> - For Bayesian analysis and other NEXUS-compatible software.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr style="border-color: var(--border); margin: 60px 0;">
+
+    <!-- Software & Tools Section -->
+    <section class="content-section" data-aos="fade-up">
+      <div class="container">
+        <h2>
+          <i class="bi bi-tools"></i> Software & Tools
+        </h2>
+        <p>
+          The following software packages are commonly used in phylogenetic analysis and are recommended for the types of analyses covered in this workshop:
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-lg-6">
+            <div class="resource-item" data-aos="fade-up">
+              <div class="resource-link">
+                <h5>MEGA (Molecular Evolutionary Genetics Analysis)</h5>
+              </div>
+              <div class="resource-desc">
+                Comprehensive software for sequence alignment, tree building (neighbor-joining, maximum likelihood), and tree visualization. User-friendly interface with extensive documentation, ideal for learning phylogenetics.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="resource-item" data-aos="fade-up">
+              <div class="resource-link">
+                <h5>FigTree</h5>
+              </div>
+              <div class="resource-desc">
+                Powerful phylogenetic tree viewer and editor for visualizing and annotating trees. Essential for producing publication-quality phylogenetic figures.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="resource-item" data-aos="fade-up">
+              <div class="resource-link">
+                <h5>RAxML (Randomized Axelerated Maximum Likelihood)</h5>
+              </div>
+              <div class="resource-desc">
+                High-performance software for phylogenetic inference using maximum likelihood. Handles large datasets efficiently and includes built-in support for bootstrapping.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="resource-item" data-aos="fade-up">
+              <div class="resource-link">
+                <h5>MrBayes</h5>
+              </div>
+              <div class="resource-desc">
+                Bayesian phylogenetic inference software. Produces posterior probability distributions for trees and parameters, providing a probabilistic framework for phylogenetic analysis.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-4" data-aos="fade-up">
+          <i class="bi bi-info-circle"></i>
+          <strong>Getting Started:</strong> Start with MEGA if you are new to phylogenetics, as it offers an intuitive interface and integrates alignment, tree building, and visualization. Once comfortable with the fundamentals, explore RAxML and MrBayes for more advanced analyses.
+        </div>
+      </div>
+    </section>
+
+    <hr style="border-color: var(--border); margin: 60px 0;">
+
+    <!-- Contact Section -->
+    <section class="content-section" data-aos="fade-up">
+      <div class="container">
+        <h2>
+          <i class="bi bi-envelope"></i> Contact & Questions
+        </h2>
+        <p>
+          For questions about this workshop, the materials provided, or guidance on phylogenetic analyses, please contact:
+        </p>
+        <div class="alert alert-light" data-aos="fade-up">
+          <strong><a href="mailto:blackmon@tamu.edu">Dr. Blackmon</a></strong><br>
+          Department of Biology<br>
+          Texas A&amp;M University
+        </div>
+        <p>
+          We welcome questions and are happy to provide additional resources or clarification on any aspects of phylogenetics covered in this workshop.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackmon Lab &middot; Department of Biology &middot; Texas A&amp;M University</p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+
 </body>
 </html>
-<!-- Footer -->
-<!-- END PAGE CONTENT -->

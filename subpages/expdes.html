@@ -4,18 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Experimental Design</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Experimental Design in Biology - Blackmon Lab</title>
+  <meta name="description" content="BIOL 683: Experimental Design in Biology. Dataset-focused approach with R and AI tools, learning vibe coding and modern statistical methods.">
+  <meta name="keywords" content="experimental design, statistics, R programming, data analysis, AI tools, Texas A&M, Blackmon Lab">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.ico" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,300 +31,543 @@
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
 
+  <style>
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      background: var(--bg-color, #1a1a1a);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .schedule-table thead {
+      background: var(--accent-color, #d4a574);
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    .schedule-table th {
+      padding: 15px;
+      text-align: left;
+      border: 1px solid #333;
+    }
+
+    .schedule-table td {
+      padding: 12px 15px;
+      border: 1px solid #333;
+      color: #e8e8e8;
+    }
+
+    .schedule-table tbody tr:hover {
+      background: rgba(212, 165, 116, 0.1);
+    }
+
+    .schedule-table tbody tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .week-number {
+      font-weight: 600;
+      color: #d4a574;
+    }
+
+    .dataset-focus {
+      font-style: italic;
+      color: #b8b8b8;
+      font-size: 0.95em;
+    }
+
+    .resource-link {
+      color: #d4a574;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .resource-link:hover {
+      text-decoration: underline;
+      color: #e8c9a0;
+    }
+
+    .resource-category {
+      margin: 40px 0 25px 0;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #d4a574;
+    }
+
+    .resource-category h4 {
+      color: #d4a574;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .resource-item {
+      margin: 12px 0;
+      padding: 10px;
+      background: rgba(212, 165, 116, 0.05);
+      border-left: 3px solid #d4a574;
+      border-radius: 4px;
+    }
+
+    .resource-desc {
+      color: #b8b8b8;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+
+    .course-info-box {
+      background: rgba(212, 165, 116, 0.08);
+      border: 1px solid #d4a574;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+
+    .course-info-box h3 {
+      color: #d4a574;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .info-item {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    .info-item strong {
+      color: #d4a574;
+      display: inline-block;
+      min-width: 120px;
+    }
+
+    .goals-list {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0;
+    }
+
+    .goals-list li {
+      padding: 10px 0 10px 30px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .goals-list li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #d4a574;
+      font-size: 1.2em;
+    }
+
+    .test-week {
+      background: rgba(212, 165, 116, 0.15);
+      font-weight: 600;
+      color: #d4a574;
+    }
+
+    .no-class {
+      background: rgba(100, 100, 100, 0.2);
+      font-style: italic;
+      color: #a8a8a8;
+    }
+
+    .page-header h1 {
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .page-subtitle {
+      font-size: 1.2em;
+      color: #d4a574;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    main section {
+      margin-bottom: 40px;
+    }
+
+    main h2 {
+      color: #d4a574;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+
+    main h3 {
+      color: #e8e8e8;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    main p {
+      line-height: 1.7;
+      color: #d0d0d0;
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
 
-<body class="index-page">
+<body class="expdes-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="../index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Experimental Design</h1>
-      </a>
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
       </nav>
     </div>
   </header>
 
-    
-    
-    
-     
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4J0HZ3LNQX');
-</script>    
-    
-    
-    
-      
-    
-    
-    
-    
-    
-    
-    
-    
-    
   <main class="main">
 
-<div class="text-center">
-  <img src="expd/hero.jpg" alt="Description" class="img-fluid" style="width: 90%;">
-</div>
- <section class="container my-4">
- <!-- Course Information -->
-  <section id="course-info">
-    <h2>Course Information</h2>
-    <strong>Course Number:</strong> BIOL 683<br>
-    <strong>Course Title:</strong> Experimental Design in Biology<br>
-    <strong>Time:</strong> TR 8:00–9:15<br>
-    <strong>Location:</strong> ILCB 237<br>
-    <strong>Credit Hours:</strong> 3<br>
-    <a href="teaching/expdes/syllabus.pdf" target="_blank" class="w3-hover-text-red">Syllabus - 2025</a>
-  </section>
-  <!-- Instructor Details -->
-  <section id="instructor">
-    <h2>Instructor</h2>
-    <strong>Name:</strong> Heath Blackmon<br>
-    <strong>Office:</strong> BSBW425<br>
-    <strong>Email:</strong> <a href="mailto:blackmon@tamu.edu">blackmon@tamu.edu</a><br>
-    <strong>Office Hours:</strong> TR 9:30–10:30, or by appointment<br>
-  </section>
+    <!-- Page Header -->
+    <section class="page-header" data-aos="fade-up">
+      <div class="container">
+        <h1>Experimental Design in Biology</h1>
+        <p class="page-subtitle">BIOL 683 | Fall 2026</p>
+        <div style="text-align: center; margin-top: 30px;">
+          <img src="expd/hero.jpg" alt="Experimental Design Course" class="img-fluid" style="max-width: 100%; border-radius: 8px;">
+        </div>
+      </div>
+    </section>
 
-  <!-- Course Goals -->
-  <section id="goals">
-    <h2>Goals of the Course</h2>
-    <p>
-      This course prepares PhD students to be rigorous, fast, and AI-savvy scientists. 
-      Students will build skills in R for data management, visualization, hypothesis testing, 
-      regression, model selection, and advanced methods such as GLMs, PCA, and Bayesian analysis. 
-      At the same time, students will learn how to use generative AI as both a coding partner 
-      and as a target of critical evaluation.
-    </p>
-    <ul>
-      <li>Develop proficiency in R and modern data analysis.</li>
-      <li>Work effectively with AI tools while recognizing limitations.</li>
-      <li>Critically evaluate statistical models and AI-generated output.</li>
-      <li>Communicate results clearly in writing, visuals, and discussion.</li>
-      <li>Practice responsible, ethical use of AI in research.</li>
-    </ul>
-  </section>
-   
-   <section id="pages">
-   <a href="teaching/expdes/prompting.html" target="_blank" class="w3-hover-text-red">Prompting</a><br>
-   <a href="teaching/expdes/datasets.html" target="_blank" class="w3-hover-text-red">Datasets</a><br>
-   <a href="teaching/expdes/test.picker.html" target="_blank" class="w3-hover-text-red">Method Choice</a><br>
-   <a href="teaching/expdes/guide.html" target="_blank" class="w3-hover-text-red">Statistical Methods</a><br>
-   <a href="teaching/expdes/methods.html" target="_blank" class="w3-hover-text-red">Statistical Methods - more explanation</a><br>
-   Download the <a href="teaching/expdes/distribution.app.R" target="_blank" class="w3-hover-text-red">Distribution Simulator</a><br>
-   Download the <a href="teaching/expdes/t-testapp.R" target="_blank" class="w3-hover-text-red">T-test Simulator</a><br>
-</section>
+    <!-- Main Content -->
+    <section class="container">
 
-  
+      <!-- Course Information -->
+      <section id="course-info" data-aos="fade-up">
+        <h2>Course Information</h2>
+        <div class="course-info-box">
+          <div class="info-item">
+            <strong>Course Number:</strong> BIOL 683
+          </div>
+          <div class="info-item">
+            <strong>Course Title:</strong> Experimental Design in Biology
+          </div>
+          <div class="info-item">
+            <strong>Semester:</strong> Fall 2026
+          </div>
+          <div class="info-item">
+            <strong>Time:</strong> TR 8:00–9:15 AM
+          </div>
+          <div class="info-item">
+            <strong>Location:</strong> ILCB 237
+          </div>
+          <div class="info-item">
+            <strong>Credit Hours:</strong> 3
+          </div>
+        </div>
+      </section>
 
-  <!-- Course Schedule -->
-  <section id="schedule">
-    <h2>Course Schedule</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Week</th>
-          <th>Dates</th>
-          <th>Topic</th>
-          <th>Resources/Links</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Aug 25–29</td>
-          <td>Orientation &amp; The AI Scientist</td>
-          <td><a href="teaching/expdes/lectures/exp-1.pptx" target="_blank" class="w3-hover-text-red">slides</a></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Sep 1–5</td>
-          <td>Foundations of R</td>
-          <td><a href="teaching/expdes/lectures/introR.html" target="_blank" class="w3-hover-text-red">intro R</a></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Sep 8–12</td>
-          <td>Data Visualization</td>
-          <td><a href="teaching/expdes/lectures/exp-2.pptx" target="_blank" class="w3-hover-text-red">slides</a></td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Sep 15–19</td>
-          <td>Statistical Principles and AI Code Generatrion</td>
-          <td><a href="teaching/expdes/lectures/exp-3.pptx" target="_blank" class="w3-hover-text-red">slides</a></td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Sep 22–26</td>
-          <td>
-            Continuous Variables and Simple Tests<br>
-            1) read data in<br>
-            2) visualize<br>
-            3) t-test<br>
-            4) permutation test<br>
-            5) Play with chi-square<br>
-          
-          
-          </td>
-          <td>
-            <a href="teaching/expdes/lectures/exp-4.pptx" target="_blank" class="w3-hover-text-red">slides</a><br>
-            <a href="teaching/expdes/lectures/continuous_data.html" target="_blank" class="w3-hover-text-red">notes</a><br>
-            <a href="teaching/expdes/t-test2.rmd" target="_blank" class="w3-hover-text-red">permutation RMD</a><br>
-            <a href="teaching/expdes/t-test2.html" target="_blank" class="w3-hover-text-red">permutation ex.</a><br>
-          
-          
-          </td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Sep 29–Oct 3</td>
-          <td><strong>Test Week 1 (AI-Critical Thinking Exam)</strong><br>
-            Turn in an annotated copy of the "midterm answers" file. <br>
-            Document what you would have done differently. Turn in a <br>
-            single PDF file. If you email name your file "lastname-firstname.pdf"
-          
-          </td>
-          <td>
-            <a href="teaching/expdes/midterm/biol683_formative_test.html" target="_blank" class="w3-hover-text-red">midterm</a><br>
-            <a href="teaching/expdes/midterm/biol683_formative_test_WORKED.pdf" target="_blank" class="w3-hover-text-red">midterm answers</a><br>
-            <a href="teaching/expdes/midterm/midterm.html" target="_blank" class="w3-hover-text-red">in class example</a><br>
-            
-          </td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Oct 6–10</td>
-          <td>Analysis of proportions</td>
-          <td><a href="teaching/expdes/lectures/exp-5.pptx" target="_blank" class="w3-hover-text-red">slides</a><br>
-          <a href="teaching/expdes/worksheets/ws-1.pdf" target="_blank" class="w3-hover-text-red">worksheet 1</a><br></td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>Oct 13–17</td>
-          <td>Linear Models – Part 1</td>
-          <td><a href="teaching/expdes/lectures/exp-6.pptx" target="_blank" class="w3-hover-text-red">slides</a><br>
-              <a href="teaching/expdes/anova.r" target="_blank" class="w3-hover-text-red">r code</a><br></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>Oct 20–24</td>
-          <td>Generalized Linear Models and <br>Model Selection – Part 2</td>
-          <td><a href="teaching/expdes/worksheets/ws-2.pdf" target="_blank" class="w3-hover-text-red">worksheet 2</a><br></td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>Oct 27–31</td>
-          <td>Mixed Effects Models</td>
-          <td>
-          <a href="teaching/expdes/homework/r_practice_homework.html" target="_blank" class="w3-hover-text-red">pretend homework</a><br>
-          <a href="teaching/expdes/homework/fertilizer.csv" target="_blank" class="w3-hover-text-red">fertilizer.csv</a><br>
-          <a href="teaching/expdes/homework/food.csv" target="_blank" class="w3-hover-text-red">food.csv</a><br>
-          <a href="teaching/expdes/homework/plants_height.csv" target="_blank" class="w3-hover-text-red">plants_height.csv</a><br>
-          <a href="teaching/expdes/homework/response.csv" target="_blank" class="w3-hover-text-red">response.csv</a><br>
-          <a href="teaching/expdes/homework/soil.csv" target="_blank" class="w3-hover-text-red">soil.csv</a><br>
-          <a href="teaching/expdes/homework/survival.csv" target="_blank" class="w3-hover-text-red">survival.csv</a><br>
-          <a href="teaching/expdes/homework/stat_homework_key.html" target="_blank" class="w3-hover-text-red">pretend homework key</a><br>
-          <a href="teaching/expdes/data/reproductive_isolation.csv" target="_blank" class="w3-hover-text-red">rep_isolation.csv</a><br><br>
-          <a href="teaching/expdes/binomial_regression.r" target="_blank" class="w3-hover-text-red">binomial_reg.R</a><br>
-          
-          
-          
-          
-          
-          
-          </td>
-        </tr>
-        
+      <!-- Instructor Information -->
+      <section id="instructor" data-aos="fade-up">
+        <h2>Instructor</h2>
+        <div class="course-info-box">
+          <div class="info-item">
+            <strong>Name:</strong> Heath Blackmon
+          </div>
+          <div class="info-item">
+            <strong>Office:</strong> BSBW 425
+          </div>
+          <div class="info-item">
+            <strong>Email:</strong> <a href="mailto:blackmon@tamu.edu" class="resource-link">blackmon@tamu.edu</a>
+          </div>
+          <div class="info-item">
+            <strong>Office Hours:</strong> TR 9:30–10:30 AM, or by appointment
+          </div>
+        </div>
+      </section>
 
-        <tr>
-          <td>11</td>
-          <td>Nov 3–7</td>
-          <td>Dimensional Reduction</td>
-          <td>
-          <a href="teaching/expdes/lectures/exp-7.pptx" target="_blank" class="w3-hover-text-red">slides</a><br>
-          <a href="teaching/expdes/PCA-examples.html" target="_blank" class="w3-hover-text-red">examples</a><br>
-          </td>
-        </tr>
-        <tr>
-          <td>12</td>
-          <td>Nov 10–14</td>
-          <td>Advanced Topics – Bayesian Methods &amp; Simulation</td>
-          <td>
-            <a href="teaching/expdes/lectures/exp-8.pptx" target="_blank" class="w3-hover-text-red">slides</a><br>          
-            <a href="teaching/expdes/data/birdmcmc1.csv" target="_blank" class="w3-hover-text-red">birdmcmc1.csv</a><br>
-            <a href="teaching/expdes/data/birdmcmc2.csv" target="_blank" class="w3-hover-text-red">birdmcmc2.csv</a><br>
-            <a href="teaching/expdes/data/birdmcmc3.csv" target="_blank" class="w3-hover-text-red">birdmcmc3.csv</a><br><br>
-            <a href="teaching/expdes/data/retrogene.csv" target="_blank" class="w3-hover-text-red">retrogene.csv</a><br>
-                <a href="teaching/expdes/lectures/exp-9.pptx" target="_blank" class="w3-hover-text-red">slides</a><br>          
-      
-          </td>
-        </tr>
-        <tr>
-          <td>13</td>
-          <td>Nov 17–21</td>
-          <td>Choosing Approaches <br> Final Data Discussion</td>
-          <td>
-            <a href="teaching/expdes/worksheets/ws-3-4.pdf" target="_blank" class="w3-hover-text-red">worksheets 3-4</a><br>          
-            <a href="https://drive.google.com/drive/folders/1p6fowXoyzrXhutQ_XvBal7S8RnaeRKly?usp=sharing" target="_blank" class="w3-hover-text-red">Available Data</a><br> 
-          </td>
-        </tr>
-        <tr>
-          <td>14</td>
-          <td>Nov 24–28</td>
-          <td>Plotting <br>Work on Final</td>
-          <td>
-            <a href="teaching/expdes/data/horn.data.csv" target="_blank" class="w3-hover-text-red">horn.data.csv</a><br>
-            <a href="teaching/expdes/data/parent.offspring.csv" target="_blank" class="w3-hover-text-red">parent.offspring.csv</a><br>
-            
-            
-            No Class Thursday</td>
-        </tr>
-        <tr>
-          <td>15</td>
-          <td>Dec 1–5</td>
-          <td><strong>Work on Final</strong></td>
-          <td>
-            <a href="teaching/expdes/Rubric-2025.pdf" target="_blank" class="w3-hover-text-red">Final Rubric</a><br>          
-            <a href="https://drive.google.com/drive/folders/1zqd6aG83oQewC6xaENX3EbclYVIbRndC?usp=sharing" target="_blank" class="w3-hover-text-red">Folder for Final Project</a><br>          
-          
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-    
-    
+      <!-- Course Goals -->
+      <section id="goals" data-aos="fade-up">
+        <h2>Course Goals and Philosophy</h2>
+        <p>
+          This course prepares PhD students to be rigorous, fast, and AI-savvy scientists. Students will learn R programming
+          through a "vibe coding" approach—building intuition and working alongside AI tools—while progressing through a carefully
+          sequenced series of datasets that grow in complexity. Each week builds skills in data visualization, hypothesis testing,
+          model building, and critical evaluation of both statistical methods and AI-generated output.
+        </p>
+        <p>
+          By the end of the course, you will understand when and how to apply t-tests, chi-square tests, linear models, generalized
+          linear models, mixed effects models, dimensional reduction techniques, and Bayesian MCMC approaches—not just as isolated
+          methods, but as part of a cohesive analytical toolkit.
+        </p>
+        <h3>Learning Objectives</h3>
+        <ul class="goals-list">
+          <li>Develop practical proficiency in R for data visualization, manipulation, and analysis.</li>
+          <li>Learn "vibe coding": using AI as a coding partner while understanding the logic behind your analyses.</li>
+          <li>Progress through increasing complexity in experimental design and statistical methods.</li>
+          <li>Master hypothesis testing and model selection frameworks.</li>
+          <li>Apply mixed effects models, dimensional reduction, and Bayesian methods to real biological data.</li>
+          <li>Critically evaluate statistical output, model assumptions, and AI-generated suggestions.</li>
+          <li>Communicate results clearly through code, visualizations, and scientific writing.</li>
+          <li>Practice responsible and ethical use of AI in research.</li>
+        </ul>
+      </section>
 
-</section>
-    
- 
+      <!-- Resources & Tools -->
+      <section id="resources" data-aos="fade-up">
+        <h2>Course Resources & Tools</h2>
 
+        <div class="resource-category">
+          <h4><i class="bi bi-book-half"></i> Guides & References</h4>
+        </div>
+        <div class="resource-item">
+          <a href="teaching/expdes/prompting.html" target="_blank" class="resource-link">Prompting Guide</a>
+          <div class="resource-desc">Best practices for working effectively with AI tools in data analysis and coding.</div>
+        </div>
+        <div class="resource-item">
+          <a href="teaching/expdes/guide.html" target="_blank" class="resource-link">Statistical Methods Guide</a>
+          <div class="resource-desc">Reference for when to use different statistical approaches.</div>
+        </div>
+        <div class="resource-item">
+          <a href="teaching/expdes/methods.html" target="_blank" class="resource-link">Statistical Methods: Deep Dive</a>
+          <div class="resource-desc">Detailed explanations and mathematical foundations of key methods.</div>
+        </div>
+        <div class="resource-item">
+          <a href="teaching/expdes/test.picker.html" target="_blank" class="resource-link">Method Choice Tool</a>
+          <div class="resource-desc">Interactive guide to help you choose the right statistical test for your data.</div>
+        </div>
 
+        <div class="resource-category">
+          <h4><i class="bi bi-database"></i> Datasets</h4>
+        </div>
+        <div class="resource-item">
+          <a href="teaching/expdes/datasets.html" target="_blank" class="resource-link">Course Datasets</a>
+          <div class="resource-desc">Curated biological datasets used throughout the course, organized by topic and complexity.</div>
+        </div>
 
+        <div class="resource-category">
+          <h4><i class="bi bi-calculator"></i> Interactive Tools</h4>
+        </div>
+        <div class="resource-item">
+          <a href="teaching/expdes/distribution.app.R" target="_blank" class="resource-link">Distribution Simulator</a>
+          <div class="resource-desc">Interactive R app to explore probability distributions and sampling behavior.</div>
+        </div>
+        <div class="resource-item">
+          <a href="teaching/expdes/t-testapp.R" target="_blank" class="resource-link">T-test Simulator</a>
+          <div class="resource-desc">Interactive app to visualize how t-tests work with different sample sizes and effect sizes.</div>
+        </div>
+      </section>
 
+      <!-- Course Schedule -->
+      <section id="schedule" data-aos="fade-up">
+        <h2>Course Schedule – Fall 2026</h2>
+        <p style="color: #b8b8b8; margin-bottom: 20px;">
+          <em>A dataset-focused progression from foundational R and vibe coding through advanced statistical methods.</em>
+        </p>
+
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th style="width: 8%;">Week</th>
+              <th style="width: 18%;">Dates</th>
+              <th style="width: 28%;">Topic</th>
+              <th style="width: 28%;">Dataset Focus</th>
+              <th style="width: 18%;">Resources</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Week 1 -->
+            <tr>
+              <td class="week-number">1</td>
+              <td>Aug 24–30</td>
+              <td>Orientation & The AI Scientist</td>
+              <td class="dataset-focus">Course philosophy, vibe coding intro, AI tools setup</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 2 -->
+            <tr>
+              <td class="week-number">2</td>
+              <td>Aug 31–Sep 6</td>
+              <td>Foundations of R & Vibe Coding</td>
+              <td class="dataset-focus">Base R syntax, reading data, using AI as coding partner</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 3 -->
+            <tr>
+              <td class="week-number">3</td>
+              <td>Sep 7–13</td>
+              <td>Data Visualization with Base R</td>
+              <td class="dataset-focus"><strong>Morphometric Measurements:</strong> Plotting, histograms, boxplots</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 4 -->
+            <tr>
+              <td class="week-number">4</td>
+              <td>Sep 14–20</td>
+              <td>Statistical Thinking & Distributions</td>
+              <td class="dataset-focus"><strong>Ecological Count Data:</strong> Probability, distributions, hypothesis framework</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 5 -->
+            <tr>
+              <td class="week-number">5</td>
+              <td>Sep 21–27</td>
+              <td>T-tests & Permutation Tests</td>
+              <td class="dataset-focus"><strong>Field Experiment Data:</strong> Comparing two treatment groups</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 6 -->
+            <tr class="test-week">
+              <td class="week-number">6</td>
+              <td>Sep 28–Oct 4</td>
+              <td>Test Week 1: AI-Critical Thinking Exam</td>
+              <td class="dataset-focus">Synthesizing weeks 1–5; evaluating AI-generated analyses</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 7 -->
+            <tr>
+              <td class="week-number">7</td>
+              <td>Oct 5–11</td>
+              <td>Chi-Square & Tests of Proportions</td>
+              <td class="dataset-focus"><strong>Categorical Data:</strong> Genetic cross ratios or species surveys</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 8 -->
+            <tr>
+              <td class="week-number">8</td>
+              <td>Oct 12–18</td>
+              <td>Linear Models Part 1: ANOVA & Regression</td>
+              <td class="dataset-focus"><strong>Multi-factor Experimental Data:</strong> Comparing multiple groups and continuous predictors</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 9 -->
+            <tr>
+              <td class="week-number">9</td>
+              <td>Oct 19–25</td>
+              <td>Generalized Linear Models & Model Selection</td>
+              <td class="dataset-focus"><strong>Count/Binary Response Data:</strong> GLMs, AIC-based model selection</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 10 -->
+            <tr>
+              <td class="week-number">10</td>
+              <td>Oct 26–Nov 1</td>
+              <td>Mixed Effects Models</td>
+              <td class="dataset-focus"><strong>Longitudinal or Multi-site Data:</strong> Random effects, nested designs</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 11 -->
+            <tr>
+              <td class="week-number">11</td>
+              <td>Nov 2–8</td>
+              <td>Dimensional Reduction</td>
+              <td class="dataset-focus"><strong>Multivariate Data:</strong> PCA, ordination techniques</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 12 -->
+            <tr>
+              <td class="week-number">12</td>
+              <td>Nov 9–15</td>
+              <td>Bayesian Methods & MCMC</td>
+              <td class="dataset-focus"><strong>Phylogenetic/Evolutionary Parameters:</strong> Priors, posteriors, convergence diagnostics</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 13 -->
+            <tr>
+              <td class="week-number">13</td>
+              <td>Nov 16–22</td>
+              <td>Choosing Your Approach: Final Data Discussion</td>
+              <td class="dataset-focus">Integrating methods; planning final project analyses</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+
+            <!-- Week 14 -->
+            <tr>
+              <td class="week-number">14</td>
+              <td>Nov 23–29</td>
+              <td>Advanced Plotting & Work on Final</td>
+              <td class="dataset-focus">Publication-quality visualizations; refining final analyses</td>
+              <td style="color: #no-class;">No class Thursday (Thanksgiving)</td>
+            </tr>
+
+            <!-- Week 15 -->
+            <tr>
+              <td class="week-number">15</td>
+              <td>Nov 30–Dec 6</td>
+              <td>Work on Final Project</td>
+              <td class="dataset-focus">Completion and presentation prep</td>
+              <td style="color: #a8a8a8;">TBD</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Course Structure -->
+      <section id="structure" data-aos="fade-up">
+        <h2>How This Course Works</h2>
+        <h3>Vibe Coding Philosophy</h3>
+        <p>
+          "Vibe coding" is about building intuition and confidence in your data analysis skills. Rather than memorizing syntax,
+          you'll learn to understand the logic of statistical approaches and use AI tools (like ChatGPT or Copilot) as your coding
+          partner—asking them for help with implementation while you focus on the conceptual work. You'll learn to critique AI suggestions,
+          catch errors, and understand why certain approaches work better than others.
+        </p>
+
+        <h3>Dataset Progression</h3>
+        <p>
+          Each week focuses on a specific biological dataset that demonstrates the week's statistical concept. The datasets increase
+          in complexity: starting with simple morphometric measurements for visualization, progressing through experimental comparisons,
+          categorical data, multi-factor designs, and finally to advanced methods like mixed models and Bayesian approaches. By working
+          with real (or realistic) biological data, you'll see how methods apply in practice.
+        </p>
+
+        <h3>Assessment Structure</h3>
+        <p>
+          <strong>Test Week 1 (Week 6):</strong> An AI-Critical Thinking Exam where you'll analyze a dataset and an AI-generated analysis,
+          identifying strengths, weaknesses, and what you would do differently.
+        </p>
+        <p>
+          <strong>Final Project:</strong> A comprehensive data analysis project where you choose a dataset of interest, apply appropriate
+          statistical methods learned in the course, and present your findings clearly with publication-quality visualizations.
+        </p>
+      </section>
+
+    </section>
 
   </main>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackmon Lab &middot; Department of Biology &middot; Texas A&amp;M University</p>
+    </div>
+  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

@@ -24,41 +24,33 @@
   <link href="../assets/css/main.css" rel="stylesheet">
 
   <style>
-      /* Styles for mentor notes and categories */
       .mentor-note {
-          color: #6c757d;
+          color: var(--text-muted);
           font-style: italic;
           font-size: 0.95em;
       }
       .resource-category {
           margin-top: 50px;
           margin-bottom: 20px;
-          color: #2c3e50;
-          border-bottom: 2px solid #500000;
+          color: var(--text-heading);
+          border-bottom: 2px solid var(--accent);
           padding-bottom: 10px;
       }
-      
-      /* Link Styles */
       .resource-link {
-          color: #000;
+          color: var(--accent) !important;
           text-decoration: none;
           font-weight: bold;
       }
       .resource-link:hover {
-          color: #500000; /* TAMU Maroon hover effect */
+          color: var(--accent-hover) !important;
           text-decoration: underline;
       }
-
-      /* --- NEW STYLE FOR DUMMY LINKS --- */
-      /* Just remove 'coming-soon' from the HTML class to activate a link */
       .resource-link.coming-soon {
-          color: #b0b0b0 !important; /* Light Gray */
-          cursor: default;           /* Shows arrow instead of pointer hand */
-          pointer-events: none;      /* Prevents clicking */
+          color: var(--text-muted) !important;
+          cursor: default;
+          pointer-events: none;
           text-decoration: none;
       }
-      /* -------------------------------- */
-
       .level-badge {
           display: inline-block;
           padding: 5px 10px;
@@ -70,7 +62,16 @@
       }
       .level-1 { background-color: #6c757d; }
       .level-2 { background-color: #17a2b8; }
-      .level-3 { background-color: #500000; }
+      .level-3 { background-color: var(--accent); }
+      .card { background: var(--bg-card); border: 1px solid var(--border); }
+      .card h5 { color: var(--text-heading); }
+      .card p { color: var(--text-secondary); }
+      .alert-light { background: var(--bg-card); color: var(--text-secondary); border-color: var(--border) !important; }
+      .alert-light strong { color: var(--text-heading); }
+      .alert-link { color: var(--accent) !important; }
+      .lead { color: var(--text-secondary); }
+      hr { border-color: var(--border); }
+      li { color: var(--text-secondary); }
   </style>
 
 </head>
@@ -80,15 +81,22 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="../index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">Blackmon Lab</h1>
-      </a>
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
       </nav>
     </div>
   </header>
@@ -336,10 +344,14 @@
 
   </main>
   
-  <footer id="footer">
-      </footer>
-  
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <footer class="site-footer">
+    <div class="container">
+      <p>Blackmon Lab &middot; Department of Biology &middot; Texas A&amp;M University</p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
 
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
