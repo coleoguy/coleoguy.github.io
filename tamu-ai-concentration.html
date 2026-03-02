@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applied AI in Biology | Texas A&M University Biology</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      color: #222;
+      background: #fff;
+    }
+
+    a { color: #500000; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── TOP BAR ─────────────────────────────────────────── */
+    .top-bar {
+      background: #3D0000;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .top-bar svg { flex-shrink: 0; }
+
+    /* ── SITE HEADER ─────────────────────────────────────── */
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .tamu-logo {
+      width: 60px;
+      height: 60px;
+      background: #500000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tamu-logo svg { width: 44px; height: 44px; }
+    .site-title {
+      display: flex;
+      flex-direction: column;
+    }
+    .site-title .university {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #333;
+    }
+    .site-title .dept {
+      font-size: 22px;
+      font-weight: 300;
+      color: #333;
+    }
+    .site-header-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+    }
+    .site-header-right a { color: #333; }
+    .search-box {
+      display: flex;
+      border: 1px solid #aaa;
+    }
+    .search-box input {
+      border: none;
+      padding: 6px 10px;
+      font-size: 13px;
+      width: 160px;
+      outline: none;
+    }
+    .search-box button {
+      background: #500000;
+      border: none;
+      color: #fff;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* ── NAV ──────────────────────────────────────────────── */
+    .main-nav {
+      background: #fff;
+      border-bottom: 3px solid #500000;
+    }
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      padding: 0 32px;
+      gap: 0;
+    }
+    .main-nav ul li a {
+      display: block;
+      padding: 14px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #333;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -3px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .main-nav ul li a:hover,
+    .main-nav ul li a.active {
+      color: #500000;
+      border-bottom-color: #500000;
+      text-decoration: none;
+    }
+
+    /* ── CHEVRON STRIP ───────────────────────────────────── */
+    .chevron-strip {
+      height: 32px;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          #2a2a2a 0px,
+          #2a2a2a 10px,
+          #1a1a1a 10px,
+          #1a1a1a 20px
+        );
+      opacity: 0.85;
+    }
+
+    /* ── BREADCRUMB ──────────────────────────────────────── */
+    .breadcrumb {
+      padding: 16px 32px 0;
+      font-size: 13px;
+      color: #555;
+    }
+    .breadcrumb a { color: #500000; }
+    .breadcrumb span { margin: 0 6px; color: #999; }
+
+    /* ── PAGE LAYOUT ─────────────────────────────────────── */
+    .page-layout {
+      display: flex;
+      align-items: flex-start;
+      padding: 24px 32px 60px;
+      gap: 40px;
+      max-width: 1200px;
+    }
+    .main-content { flex: 1; min-width: 0; }
+    .sidebar { width: 260px; flex-shrink: 0; margin-top: 8px; }
+
+    /* ── PAGE TITLE ──────────────────────────────────────── */
+    .page-title {
+      font-size: 38px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #222;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .title-underline {
+      width: 110px;
+      height: 5px;
+      background: #500000;
+      margin-bottom: 28px;
+    }
+
+    /* ── INTRO BLOCK ─────────────────────────────────────── */
+    .intro-tagline {
+      font-size: 18px;
+      font-style: italic;
+      color: #500000;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .intro-body {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 18px;
+    }
+    .intro-meta {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .intro-meta strong { font-weight: 700; }
+
+    /* ── SECTION HEADING ─────────────────────────────────── */
+    .section-heading {
+      font-size: 26px;
+      font-style: italic;
+      color: #500000;
+      font-weight: 600;
+      margin-bottom: 16px;
+      margin-top: 36px;
+    }
+
+    /* ── COURSE TABLE ────────────────────────────────────── */
+    .course-note {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .course-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .course-table thead tr {
+      background: #500000;
+      color: #fff;
+    }
+    .course-table thead th {
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+    }
+    .course-table tbody tr:nth-child(odd)  { background: #fafafa; }
+    .course-table tbody tr:nth-child(even) { background: #f2f2f2; }
+    .course-table tbody tr:hover { background: #f5eaea; }
+    .course-table td {
+      padding: 10px 12px;
+      vertical-align: top;
+      border-bottom: 1px solid #e0e0e0;
+      line-height: 1.5;
+      color: #333;
+    }
+    .course-table td:first-child {
+      font-weight: 700;
+      color: #500000;
+      white-space: nowrap;
+    }
+    .course-table td:nth-child(3) {
+      text-align: center;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .table-footnote {
+      font-size: 13px;
+      color: #555;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* ── INFO BOX ────────────────────────────────────────── */
+    .info-box {
+      background: #f9f4f4;
+      border-left: 4px solid #500000;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #333;
+    }
+    .info-box strong { color: #500000; }
+
+    /* ── BULLET LIST ─────────────────────────────────────── */
+    .content-list {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    .content-list li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    /* ── SIDEBAR ─────────────────────────────────────────── */
+    .sidebar-links { display: flex; flex-direction: column; gap: 0; }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f2f2f2;
+      padding: 14px 16px;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+      font-weight: 700;
+      color: #500000;
+      transition: background 0.15s;
+    }
+    .sidebar-link:hover {
+      background: #e8e0e0;
+      text-decoration: none;
+    }
+    .sidebar-link .arrow { font-size: 16px; }
+    .sidebar-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #777;
+      padding: 16px 0 8px;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: #222;
+      color: #ccc;
+      font-size: 13px;
+      padding: 36px 32px;
+      margin-top: 40px;
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    footer .footer-col h4 {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    footer .footer-col p,
+    footer .footer-col a {
+      color: #bbb;
+      line-height: 1.9;
+      display: block;
+    }
+    footer .footer-col a:hover { color: #fff; }
+    footer .footer-bottom {
+      width: 100%;
+      border-top: 1px solid #444;
+      margin-top: 24px;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 12px;
+    }
+    .social-icons { display: flex; gap: 12px; margin-top: 10px; }
+    .social-icon {
+      width: 30px; height: 30px;
+      background: #444;
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 13px; font-weight: 700;
+    }
+    .social-icon:hover { background: #500000; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <svg width="16" height="16" viewBox="0 0 100 100" fill="white">
+    <polygon points="50,5 95,95 5,95" fill="none" stroke="white" stroke-width="8"/>
+    <polygon points="50,25 80,85 20,85" fill="white"/>
+  </svg>
+  College of Arts &amp; Sciences
+</div>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-left">
+    <div class="tamu-logo">
+      <svg viewBox="0 0 100 100" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,8 92,92 8,92" fill="none" stroke="white" stroke-width="7"/>
+        <polygon points="50,28 78,84 22,84" fill="white"/>
+      </svg>
+    </div>
+    <div class="site-title">
+      <span class="university">Texas A&amp;M University</span>
+      <span class="dept">Biology</span>
+    </div>
+  </div>
+  <div class="site-header-right">
+    <a href="#">Webmail</a>
+    <a href="#">Calendar</a>
+    <div class="search-box">
+      <input type="text" placeholder="Search Biology" />
+      <button>&#128269;</button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <ul>
+    <li><a href="#">About</a></li>
+    <li><a href="#" class="active">Academics</a></li>
+    <li><a href="#">Research</a></li>
+    <li><a href="#">Giving</a></li>
+    <li><a href="#">Directory</a></li>
+  </ul>
+</nav>
+
+<!-- CHEVRON STRIP -->
+<div class="chevron-strip"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">College Home</a><span>/</span>
+  <a href="#">Biology</a><span>/</span>
+  <a href="#">Academics</a><span>/</span>
+  <a href="#">Undergraduate &amp; Graduate</a><span>/</span>
+  Applied AI in Biology
+</div>
+
+<!-- PAGE LAYOUT -->
+<div class="page-layout">
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <h1 class="page-title">Applied AI in Biology</h1>
+    <div class="title-underline"></div>
+
+    <p class="intro-tagline">Build the skills that define the next generation of biologists.</p>
+
+    <p class="intro-body">
+      AI is changing what biologists can do — how fast they work, how much data they can handle, and the kinds of questions they can ask. The Applied AI in Biology concentration gives you hands-on experience with the tools at the center of that shift. You'll learn to use AI for real biological problems: analyzing images, working with large datasets, generating and troubleshooting code, synthesizing literature, and designing reproducible research workflows.
+    </p>
+
+    <p class="intro-body">
+      This concentration is about <strong>using AI, not building it</strong>. No prior programming or AI experience is required. Whether you're interested in ecology, molecular biology, evolution, or anything in between, these skills will strengthen your research and set you apart — in graduate school, industry, and beyond.
+    </p>
+
+    <div class="intro-meta">
+      <strong>Concentration Coordinators:</strong> Dr. Heath Blackmon and Dr. Mohsen Hooshyar
+    </div>
+
+    <!-- BS CONCENTRATION -->
+    <h2 class="section-heading">BS Courses</h2>
+    <p class="course-note">Complete a minimum of 10 of the 13 available semester hours. Most students can satisfy the concentration without adding to their overall course load.</p>
+
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Title</th>
+          <th>SH</th>
+          <th>Topics &amp; Skills Covered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BIOL 289</td>
+          <td>Applied AI in STEM</td>
+          <td>3</td>
+          <td>Introductory survey of AI tools across biological disciplines. Covers prompt basics, using LLMs for research tasks, AI-assisted data exploration, and ethical use of AI in science. No coding prerequisites.</td>
+        </tr>
+        <tr>
+          <td>BIOL 481&sup1;</td>
+          <td>Current Topics in AI</td>
+          <td>1</td>
+          <td>Weekly seminar on emerging AI applications in biology. Rotating topics include AlphaFold and protein structure prediction, AI in ecology and field biology, ML for genomics, and critical appraisal of AI methods in the literature.</td>
+        </tr>
+        <tr>
+          <td>BIOL 489</td>
+          <td>AI in Biology</td>
+          <td>3</td>
+          <td>Practical deployment of AI tools to biological questions. Covers AI literacy, using pre-trained models, image analysis tools, AI-assisted literature synthesis, and hands-on tool use across biological subdisciplines.</td>
+        </tr>
+        <tr>
+          <td>BIOL 491</td>
+          <td>CUREs: AI-Enabled Research</td>
+          <td>3</td>
+          <td>Authentic research experience using AI tools to address open biological questions. Students contribute to ongoing departmental projects using AI-assisted analysis pipelines, image recognition, or large-dataset synthesis.</td>
+        </tr>
+        <tr>
+          <td>BIOL 683</td>
+          <td>Experimental Design</td>
+          <td>3</td>
+          <td>AI-assisted coding for biological data analysis and visualization. Tools include LLM coding assistants, Python/R for data wrangling, reproducible workflow development, and publication-quality figure generation.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="table-footnote">&sup1; BIOL 481 may be repeated for credit, but only 1 SH may be applied toward the concentration.</p>
+    <p class="table-footnote">Note: Advanced undergraduates may enroll in BIOL 683 with department permission.</p>
+
+    <!-- PhD CONCENTRATION -->
+    <h2 class="section-heading">PhD Courses</h2>
+    <p class="course-note">Complete a minimum of 10 of the 13 available semester hours. These courses are designed to integrate directly with your dissertation research.</p>
+
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Title</th>
+          <th>SH</th>
+          <th>Topics &amp; Skills Covered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BIOL 681&sup1;</td>
+          <td>Current Topics in AI</td>
+          <td>1</td>
+          <td>Weekly graduate seminar on emerging AI applications in biology. Rotating topics include AlphaFold and protein structure prediction, AI in ecology, ML for genomics, and critical appraisal of AI methods in published research.</td>
+        </tr>
+        <tr>
+          <td>BIOL 683</td>
+          <td>Experimental Design</td>
+          <td>3</td>
+          <td>AI-assisted coding for biological data analysis and visualization. Tools include LLM coding assistants, Python/R for data wrangling, reproducible workflow development, and publication-quality figure generation.</td>
+        </tr>
+        <tr>
+          <td>BIOL 689</td>
+          <td>AI in Biology</td>
+          <td>3</td>
+          <td>Graduate-level deployment of AI tools to biological research questions. Covers pre-trained model selection and use, AI-assisted literature synthesis, critical evaluation of AI methods in published research, and domain-specific tool application.</td>
+        </tr>
+        <tr>
+          <td>BIOL 689</td>
+          <td>AI Productivity for Researchers</td>
+          <td>3</td>
+          <td>Advanced prompt engineering for scientific tasks, using LLMs for grant and manuscript development, automating repetitive research workflows, AI-assisted coding and debugging, and reproducibility standards for AI-generated outputs.</td>
+        </tr>
+        <tr>
+          <td>Elective</td>
+          <td>Dept-Approved Course</td>
+          <td>3</td>
+          <td>One graduate-level course from a department-maintained approved list spanning BIOL, STAT, and CSCE offerings in applied data science, computational biology, or related fields.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="table-footnote">&sup1; BIOL 681 may be repeated for credit, but only 1 SH may be applied toward the concentration.</p>
+    <p class="table-footnote">Note: Both BIOL 689 sections (AI in Biology and AI Productivity for Researchers) are distinct Special Topics offerings and may both be applied toward the concentration.</p>
+
+    <!-- OVERVIEW -->
+    <h2 class="section-heading">Why Add This Concentration?</h2>
+    <p class="intro-body">
+      The tools available to biologists have changed dramatically. AlphaFold reshaped how we think about protein structure. AI-powered image analysis makes studies possible that were unimaginable a decade ago. Large language models are becoming standard tools for reading, writing, and thinking through scientific problems. Researchers who can use these tools effectively move faster, ask bigger questions, and produce stronger work.
+    </p>
+    <p class="intro-body">
+      Every course in this concentration is built around one idea: <em>you don't need to build AI to benefit from it</em>. You'll develop practical, transferable skills — how to choose the right tool for a biological problem, how to use it effectively, and how to critically evaluate what it gives you back. That last part matters. Knowing when an AI is wrong is just as important as knowing how to use it.
+    </p>
+
+    <div class="info-box">
+      <strong>BIOL 491 &mdash; CUREs: AI-Enabled Research</strong><br/>
+      In BIOL 491, you'll join a real research project — using AI tools alongside faculty and graduate students to tackle open biological questions. Work from this course is designed to go on your CV, strengthen your graduate school applications, and in some cases contribute directly to publication.
+    </div>
+
+    <!-- ELIGIBILITY -->
+    <h2 class="section-heading">Who Can Join?</h2>
+    <ul class="content-list">
+      <li><strong>Undergraduates:</strong> Open to all BS students majoring in Biology, Microbiology, Molecular &amp; Cell Biology, or Zoology. Start with BIOL 289 — no prior coding or AI experience needed.</li>
+      <li><strong>Graduate students:</strong> Open to all Biology and Microbiology PhD students. The concentration is designed to complement your dissertation research, not add to your workload.</li>
+      <li><strong>Not sure where to start?</strong> Reach out to the undergraduate or graduate advising office — they can help you map the concentration onto your existing degree plan.</li>
+    </ul>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section-label">Undergraduate Programs</div>
+    <div class="sidebar-links">
+      <a href="#" class="sidebar-link">Undergraduate Programs <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Undergraduate Advising <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Honors in Biology <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Biology, B.A./B.S. <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Molecular and Cell Biology, B.S. <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Microbiology, B.S. <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Zoology, B.S. <span class="arrow">→</span></a>
+    </div>
+
+    <div class="sidebar-section-label">Graduate Programs</div>
+    <div class="sidebar-links">
+      <a href="#" class="sidebar-link">Graduate Programs <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Graduate Advising <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Biology, Ph.D. <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Microbiology, Ph.D. <span class="arrow">→</span></a>
+    </div>
+
+    <div class="sidebar-section-label">Contact</div>
+    <div class="sidebar-links">
+      <a href="#" class="sidebar-link">Undergraduate Advising <span class="arrow">→</span></a>
+      <a href="#" class="sidebar-link">Graduate Advising <span class="arrow">→</span></a>
+    </div>
+  </aside>
+
+</div><!-- end page-layout -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-col">
+    <h4>Department of Biology</h4>
+    <p>3258 TAMU</p>
+    <p>College Station, TX 77843-3258</p>
+    <p>Phone: (979) 845-3826</p>
+    <p>Fax: (979) 845-2891</p>
+    <div class="social-icons">
+      <a href="#" class="social-icon">f</a>
+      <a href="#" class="social-icon">in</a>
+      <a href="#" class="social-icon">X</a>
+      <a href="#" class="social-icon">yt</a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>Applied AI Concentration</h4>
+    <a href="#">Concentration Overview</a>
+    <a href="#">BS Course Requirements</a>
+    <a href="#">PhD Course Requirements</a>
+    <a href="#">Declare the Concentration</a>
+    <a href="#">Faculty Contacts</a>
+  </div>
+  <div class="footer-col">
+    <h4>Resources</h4>
+    <a href="#">TAMU Course Catalog</a>
+    <a href="#">Undergraduate Advising</a>
+    <a href="#">Graduate School</a>
+    <a href="#">AI Tools for Research</a>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Texas A&amp;M University &mdash; Department of Biology</span>
+    <span>
+      <a href="#" style="color:#777;">Accessibility</a> &nbsp;|&nbsp;
+      <a href="#" style="color:#777;">Privacy</a> &nbsp;|&nbsp;
+      <a href="#" style="color:#777;">Site Policies</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
