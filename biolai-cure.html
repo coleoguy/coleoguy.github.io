@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>BiolAI CURE Student Showcase - Blackmon Lab</title>
+  <title>CURE in Evolutionary Biology and AI: Student Showcase</title>
   <meta name="description" content="Meet the students of the BiolAI CURE program and their evolutionary biology research projects at the Blackmon Lab, Texas A&M University.">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
@@ -81,20 +81,25 @@
       background: linear-gradient(135deg, rgba(201,162,39,0.08) 0%, var(--bg-card, #111111) 100%);
       border: 1px solid rgba(201,162,39,0.3);
       border-radius: 14px;
-      padding: 32px;
+      overflow: hidden;
       display: flex;
-      gap: 22px;
-      align-items: flex-start;
+      flex-direction: column;
       margin-bottom: 40px;
-      max-width: 800px;
+      max-width: 360px;
       margin-left: auto;
       margin-right: auto;
     }
-    .pi-avatar {
-      font-size: 2.2rem !important;
-      width: 72px !important;
-      height: 72px !important;
-      min-width: 72px !important;
+    .pi-card .student-photo-wrap {
+      padding: 32px 24px 0;
+    }
+    .pi-card .student-avatar {
+      width: 120px;
+      height: 120px;
+      font-size: 2.8rem;
+      border-color: rgba(201,162,39,0.3);
+    }
+    .pi-card .student-info {
+      padding: 16px 28px 28px;
     }
     .pi-label {
       font-size: 0.72rem;
@@ -112,8 +117,8 @@
 
     .student-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
       padding: 0 0 60px;
     }
 
@@ -121,10 +126,9 @@
       background: var(--bg-card, #111111);
       border: 1px solid var(--border, #1a1a1a);
       border-radius: 14px;
-      padding: 26px;
+      overflow: hidden;
       display: flex;
-      gap: 18px;
-      align-items: flex-start;
+      flex-direction: column;
       transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
     .student-card:hover {
@@ -133,23 +137,39 @@
       transform: translateY(-2px);
     }
 
+    .student-photo-wrap {
+      text-align: center;
+      padding: 28px 24px 0;
+    }
+
     .student-avatar {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      background: rgba(201,162,39,0.08);
-      border: 1px solid rgba(201,162,39,0.15);
-      display: flex;
+      background: rgba(201,162,39,0.06);
+      border: 2px solid rgba(201,162,39,0.15);
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
+      font-size: 2.4rem;
       line-height: 1;
+      overflow: hidden;
+    }
+    .student-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .student-info {
+      padding: 16px 24px 24px;
+      text-align: center;
     }
 
     .student-info h3 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 600;
       color: var(--text-heading, #f0f0f0);
       margin: 0 0 4px;
@@ -158,7 +178,7 @@
     .student-meta {
       font-size: 0.78rem;
       color: var(--text-muted, #666);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       font-weight: 500;
     }
 
@@ -171,14 +191,15 @@
       padding: 1px 10px;
       font-size: 0.75rem;
       font-weight: 500;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .student-info p {
       color: var(--text-secondary, #a0a0a0);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       line-height: 1.65;
       margin: 0;
+      text-align: left;
     }
 
     .acknowledgment {
@@ -198,9 +219,9 @@
 
     @media (max-width: 480px) {
       .student-grid { grid-template-columns: 1fr; }
-      .student-card, .pi-card { padding: 20px; gap: 14px; }
       .showcase-hero h1 { font-size: 2rem; }
       .cure-about { padding: 24px 20px; }
+      .pi-card { max-width: 100%; }
     }
   </style>
 </head>
@@ -232,7 +253,7 @@
 
     <section class="showcase-hero">
       <div class="container" data-aos="fade-up">
-        <h1>BiolAI <span class="accent">CURE</span> Showcase</h1>
+        <h1>Biology and AI<span class="accent">CURE</span> Showcase</h1>
         <p class="lead">Meet the Spring 2026 cohort and their independent research projects in evolutionary biology. <strong>Every student below is conducting original research using phylogenetic comparative methods and AI-assisted analysis.</strong></p>
         <div class="badge-count"><i class="bi bi-people-fill"></i>&ensp;51 Student Researchers</div>
       </div>
@@ -243,11 +264,13 @@
 
         <div class="cure-about" data-aos="fade-up">
           <h2>What is a CURE?</h2>
-          <p>A Course-based Undergraduate Research Experience (CURE) replaces traditional cookbook labs with authentic, discovery-driven research. Unlike standard coursework, every student in a CURE tackles a genuine scientific question whose answer is unknown—meaning their work can contribute to real publications and scientific progress. In BiolAI, students combine evolutionary biology with AI-powered tools to formulate hypotheses, build phylogenetic datasets, run comparative analyses, and interpret results at a level typically reserved for graduate research. <strong>These are not class exercises; they are real research projects carried out by undergraduates from across the university.</strong></p>
+          <p>A Course-based Undergraduate Research Experience (CURE) replaces traditional cookbook labs with authentic, discovery-driven research. Unlike standard coursework, every student in a CURE tackles a genuine scientific question whose answer is unknown—meaning their work can contribute to real publications and scientific progress. In Dr. Blackmon's Biology and AI CURE, students combine evolutionary biology with AI-powered tools to formulate hypotheses, build phylogenetic datasets, run comparative analyses, and interpret results at a level typically reserved for graduate research. <strong>These are not class exercises; they are real research projects carried out by undergraduates from across the university.</strong></p>
         </div>
 
           <div class="pi-card" data-aos="fade-up">
-            <div class="student-avatar pi-avatar">🧬</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar pi-avatar">🧬</div>
+            </div>
             <div class="student-info">
               <h3>Heath Blackmon <span class="pi-label">Course Director</span></h3>
               <div class="student-meta">Principal Investigator · Biology</div>
@@ -258,7 +281,9 @@
 
         <div class="student-grid">
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🐟</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐟</div>
+            </div>
             <div class="student-info">
               <h3>Anabiya Ali</h3>
               <div class="student-meta">Freshman · Biology</div>
@@ -267,7 +292,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🐋</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐋</div>
+            </div>
             <div class="student-info">
               <h3>Khadija Ansari</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -276,7 +303,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🐹</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐹</div>
+            </div>
             <div class="student-info">
               <h3>Steven Arackal</h3>
               <div class="student-meta">Senior · Biology</div>
@@ -285,7 +314,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-avatar">🪰</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪰</div>
+            </div>
             <div class="student-info">
               <h3>Dharshini Baskaran</h3>
               <div class="student-meta">Junior · Neuroscience</div>
@@ -294,7 +325,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-avatar">🪼</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪼</div>
+            </div>
             <div class="student-info">
               <h3>Carrie Bernard</h3>
               <div class="student-meta">Junior · Biology</div>
@@ -303,7 +336,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-avatar">🌿</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌿</div>
+            </div>
             <div class="student-info">
               <h3>Alexa Burgos</h3>
               <div class="student-meta">Senior · Biology</div>
@@ -312,7 +347,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🪲</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪲</div>
+            </div>
             <div class="student-info">
               <h3>Ruben Carreno</h3>
               <div class="student-meta">Senior · Biomedical Sciences</div>
@@ -321,7 +358,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🦋</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦋</div>
+            </div>
             <div class="student-info">
               <h3>Emily Chew</h3>
               <div class="student-meta">Sophomore · Biomedical Sciences</div>
@@ -330,7 +369,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🌱</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌱</div>
+            </div>
             <div class="student-info">
               <h3>Isabella Collins</h3>
               <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
@@ -339,7 +380,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-avatar">🦅</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦅</div>
+            </div>
             <div class="student-info">
               <h3>Camille Cordell</h3>
               <div class="student-meta">Junior · Biochemistry &amp; Biophysics</div>
@@ -348,7 +391,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-avatar">🦎</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦎</div>
+            </div>
             <div class="student-info">
               <h3>Ishan Dash</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -357,7 +402,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-avatar">🐔</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐔</div>
+            </div>
             <div class="student-info">
               <h3>Sophia Dong</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -366,7 +413,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🕷️</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🕷️</div>
+            </div>
             <div class="student-info">
               <h3>Michael (Robin) Flanagan</h3>
               <div class="student-meta">Senior · Biology</div>
@@ -375,7 +424,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🐢</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐢</div>
+            </div>
             <div class="student-info">
               <h3>Maya Friedman</h3>
               <div class="student-meta">Senior · Biomedical Sciences</div>
@@ -384,7 +435,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🌲</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌲</div>
+            </div>
             <div class="student-info">
               <h3>Ananya Gudapati</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -393,7 +446,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-avatar">🦗</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦗</div>
+            </div>
             <div class="student-info">
               <h3>Bevin Haynes</h3>
               <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
@@ -402,7 +457,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-avatar">🐍</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐍</div>
+            </div>
             <div class="student-info">
               <h3>Anaya Hooda</h3>
               <div class="student-meta">Senior · Neuroscience</div>
@@ -411,7 +468,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-avatar">🦇</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦇</div>
+            </div>
             <div class="student-info">
               <h3>Andrew Jordan</h3>
               <div class="student-meta">Senior · Genetics</div>
@@ -420,7 +479,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🦘</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦘</div>
+            </div>
             <div class="student-info">
               <h3>Lynn Khalidi</h3>
               <div class="student-meta">Sophomore · Neuroscience</div>
@@ -429,7 +490,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🪲</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪲</div>
+            </div>
             <div class="student-info">
               <h3>Ruth Koffi</h3>
               <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
@@ -438,7 +501,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🐸</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐸</div>
+            </div>
             <div class="student-info">
               <h3>Amrutha Kosanaum</h3>
               <div class="student-meta">Senior · Biology</div>
@@ -447,7 +512,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-avatar">🐒</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐒</div>
+            </div>
             <div class="student-info">
               <h3>Sienna Kramer</h3>
               <div class="student-meta">Junior · General Studies</div>
@@ -456,7 +523,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-avatar">🐝</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐝</div>
+            </div>
             <div class="student-info">
               <h3>Joy Lee</h3>
               <div class="student-meta">Freshman · Biology</div>
@@ -465,7 +534,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-avatar">🌻</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌻</div>
+            </div>
             <div class="student-info">
               <h3>Virginia Lopez</h3>
               <div class="student-meta">Senior · Biology</div>
@@ -474,7 +545,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🪲</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪲</div>
+            </div>
             <div class="student-info">
               <h3>Srija Manapuri</h3>
               <div class="student-meta">Senior · Forensic &amp; Investigative Sciences</div>
@@ -483,7 +556,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🪲</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪲</div>
+            </div>
             <div class="student-info">
               <h3>Ryan Matta</h3>
               <div class="student-meta">Junior · Microbiology</div>
@@ -492,7 +567,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🐟</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐟</div>
+            </div>
             <div class="student-info">
               <h3>Janie Menjivar</h3>
               <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
@@ -501,7 +578,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-avatar">🦈</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦈</div>
+            </div>
             <div class="student-info">
               <h3>Robert Millikan</h3>
               <div class="student-meta">Junior · Biological &amp; Environmental Sciences</div>
@@ -510,7 +589,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-avatar">🍄</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🍄</div>
+            </div>
             <div class="student-info">
               <h3>Olivia Montorello</h3>
               <div class="student-meta">Senior · Public Health</div>
@@ -519,7 +600,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-avatar">🪶</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪶</div>
+            </div>
             <div class="student-info">
               <h3>Jackson Moore</h3>
               <div class="student-meta">Senior · Biology</div>
@@ -528,7 +611,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🌺</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌺</div>
+            </div>
             <div class="student-info">
               <h3>Samy Muktevi</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -537,7 +622,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🐠</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐠</div>
+            </div>
             <div class="student-info">
               <h3>Meghana Munduru</h3>
               <div class="student-meta">Junior · Psychology</div>
@@ -546,7 +633,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🐡</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐡</div>
+            </div>
             <div class="student-info">
               <h3>Soniya Muñoz</h3>
               <div class="student-meta">Senior · Zoology</div>
@@ -555,7 +644,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-avatar">🐟</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐟</div>
+            </div>
             <div class="student-info">
               <h3>Anna Brooke Naegle</h3>
               <div class="student-meta">Freshman · Ecology &amp; Conservation Biology</div>
@@ -564,7 +655,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-avatar">🐺</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐺</div>
+            </div>
             <div class="student-info">
               <h3>Tewobola Olasehinde</h3>
               <div class="student-meta">Senior · Biological &amp; Environmental Sciences</div>
@@ -573,7 +666,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-avatar">☕</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">☕</div>
+            </div>
             <div class="student-info">
               <h3>Bhakti Patel</h3>
               <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
@@ -582,7 +677,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🌷</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌷</div>
+            </div>
             <div class="student-info">
               <h3>Samshritha Pochanapeddi</h3>
               <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
@@ -591,7 +688,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🌿</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌿</div>
+            </div>
             <div class="student-info">
               <h3>Anjalika Sachan</h3>
               <div class="student-meta">Junior · Neuroscience</div>
@@ -600,7 +699,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🐟</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐟</div>
+            </div>
             <div class="student-info">
               <h3>Evelyn Sanchez</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -609,7 +710,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-avatar">🦎</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦎</div>
+            </div>
             <div class="student-info">
               <h3>Kiara Santiago</h3>
               <div class="student-meta">Junior · Biochemistry &amp; Biophysics</div>
@@ -618,7 +721,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-avatar">🦎</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦎</div>
+            </div>
             <div class="student-info">
               <h3>Hamzah Sheikh</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -627,7 +732,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-avatar">🌶️</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌶️</div>
+            </div>
             <div class="student-info">
               <h3>Dana Stavinoha</h3>
               <div class="student-meta">Sophomore · Genetics</div>
@@ -636,7 +743,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🪲</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪲</div>
+            </div>
             <div class="student-info">
               <h3>Ava Tingue</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -645,7 +754,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🪳</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🪳</div>
+            </div>
             <div class="student-info">
               <h3>Keagan Tran</h3>
               <div class="student-meta">Sophomore · Biology</div>
@@ -654,7 +765,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🦂</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦂</div>
+            </div>
             <div class="student-info">
               <h3>Felix Vasili</h3>
               <div class="student-meta">Freshman · Neuroscience</div>
@@ -663,7 +776,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-avatar">🐭</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐭</div>
+            </div>
             <div class="student-info">
               <h3>Thomas Vela</h3>
               <div class="student-meta">Senior · Biology</div>
@@ -672,7 +787,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-avatar">🦎</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🦎</div>
+            </div>
             <div class="student-info">
               <h3>Mary-Jo Velasquez</h3>
               <div class="student-meta">Senior · Biology</div>
@@ -681,7 +798,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-avatar">🌸</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🌸</div>
+            </div>
             <div class="student-info">
               <h3>Samhita Vemuri</h3>
               <div class="student-meta">Junior · Genetics</div>
@@ -690,7 +809,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-avatar">🐦</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐦</div>
+            </div>
             <div class="student-info">
               <h3>Emma Walker</h3>
               <div class="student-meta">Junior · Zoology</div>
@@ -699,7 +820,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-avatar">🐞</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🐞</div>
+            </div>
             <div class="student-info">
               <h3>MacKenzie Wilkerson</h3>
               <div class="student-meta">Junior · Microbiology</div>
@@ -708,7 +831,9 @@
             </div>
           </div>
           <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-avatar">🔬</div>
+            <div class="student-photo-wrap">
+              <div class="student-avatar">🔬</div>
+            </div>
             <div class="student-info">
               <h3>Aiden Nychka</h3>
               <div class="student-meta">Senior · Genetics</div>
@@ -738,5 +863,26 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <!-- Shuffle student cards on each page load -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var grid = document.querySelector('.student-grid');
+      if (!grid) return;
+      var cards = Array.from(grid.children);
+      // Fisher-Yates shuffle
+      for (var i = cards.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        grid.appendChild(cards[j]);
+        cards[j] = cards[i];
+      }
+      // Re-append last card to ensure all are in DOM
+      grid.appendChild(cards[0]);
+      // Reset AOS delays so animations still work smoothly
+      grid.querySelectorAll('.student-card').forEach(function(card, idx) {
+        card.setAttribute('data-aos-delay', Math.min(idx * 20, 200));
+      });
+    });
+  </script>
 </body>
 </html>
