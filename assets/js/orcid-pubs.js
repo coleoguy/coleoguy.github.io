@@ -6,7 +6,7 @@
 (function () {
   const ORCID_ID = '0000-0002-5433-4036';
   const BASE_URL = `https://pub.orcid.org/v3.0/${ORCID_ID}`;
-  const CACHE_KEY = 'blackmon_orcid_pubs_v2';
+  const CACHE_KEY = 'blackmon_orcid_pubs_v3';
   const CACHE_TTL = 1000 * 60 * 60; // 1 hour
   const BATCH_SIZE = 25; // put-codes per bulk request
 
@@ -140,7 +140,9 @@
 
       const json = await resp.json();
       const groups = json.group || [];
-      const works = groups.map(extractSummary).filter(Boolean);
+      const ALLOWED_TYPES = ['journal-article', 'book', 'book-chapter', 'preprint'];
+      const works = groups.map(extractSummary).filter(Boolean)
+        .filter(w => ALLOWED_TYPES.includes(w.type));
 
       // Step 2: Fetch authors in batches
       const putCodes = works.map(w => w.putCode).filter(Boolean);
