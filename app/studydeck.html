@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f0ebe3">
+<title>StudyDeck</title>
+<link rel="manifest" href="manifest.json">
+<style>
+
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --desk:          #f0ebe3;
+  --card-bg:       #ffffff;
+  --card-aged:     #fdfbf6;
+  --card-oldest:   #f9f5ec;
+  --surface:       #ffffff;
+  --border:        #e0d8cc;
+  --border-light:  #ece6db;
+  --text:          #1c1c1e;
+  --text-muted:    #6b6b6b;
+  --text-light:    #a8a8a8;
+  --accent:        #3d5a80;
+  --accent-dk:     #2c4460;
+  --accent-light:  #edf2f8;
+  --correct:       #2d6a4f;
+  --correct-light: #ebf5f0;
+  --wrong:         #9b2335;
+  --wrong-light:   #faeaec;
+  --easy:          #1e6b8a;
+  --easy-light:    #e6f4f9;
+  --shadow-sm:     0 1px 4px rgba(0,0,0,0.08);
+  --shadow-md:     0 4px 20px rgba(0,0,0,0.10);
+  --shadow-card:   0 2px 14px rgba(0,0,0,0.11), 0 1px 3px rgba(0,0,0,0.07);
+  --r:   12px;
+  --r-s:  8px;
+  --r-xs: 6px;
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { height: 100%; }
+body {
+  height: 100%; overflow: hidden;
+  background: var(--desk);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button { font-family: inherit; cursor: pointer; }
+input  { font-family: inherit; }
+
+/* ═══════════════════════════════════════════
+   SCREEN SYSTEM
+═══════════════════════════════════════════ */
+.screen {
+  position: fixed; inset: 0;
+  display: none; flex-direction: column;
+  background: var(--desk);
+  overflow: hidden;
+}
+.screen.active { display: flex; }
+.screen.slide-in  { animation: slideIn  .28s cubic-bezier(.4,0,.2,1); }
+.screen.slide-out { animation: slideOut .28s cubic-bezier(.4,0,.2,1); }
+.screen.fade-in   { animation: fadeIn   .25s ease; }
+
+@keyframes slideIn  { from { opacity:0; transform:translateX(32px);  } to { opacity:1; transform:translateX(0); } }
+@keyframes slideOut { from { opacity:0; transform:translateX(-32px); } to { opacity:1; transform:translateX(0); } }
+@keyframes fadeIn   { from { opacity:0; transform:translateY(10px);  } to { opacity:1; transform:translateY(0); } }
+
+/* ═══════════════════════════════════════════
+   SHARED NAV BAR
+═══════════════════════════════════════════ */
+.nav {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px 10px;
+  padding-top: calc(14px + env(safe-area-inset-top));
+  flex-shrink: 0;
+  background: var(--desk);
+}
+.nav-back {
+  width: 34px; height: 34px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.07); border-radius: 50%;
+  border: none; color: var(--text); font-size: 17px;
+  transition: background .15s;
+}
+.nav-back:active { background: rgba(0,0,0,0.14); }
+.nav-title { flex: 1; font-size: 17px; font-weight: 600; letter-spacing: -.3px; line-height: 1.2; }
+.nav-sub   { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+.nav-action {
+  background: none; border: none;
+  font-size: 14px; font-weight: 500; color: var(--accent);
+  padding: 6px 2px; white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════
+   SHARED FORM ELEMENTS
+═══════════════════════════════════════════ */
+.field-label {
+  display: block; font-size: 12px; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase;
+  letter-spacing: .4px; margin-bottom: 6px;
+}
+.field {
+  width: 100%; padding: 14px 16px;
+  border: 1.5px solid var(--border); border-radius: var(--r-s);
+  font-size: 16px; background: var(--card-bg); color: var(--text);
+  outline: none; transition: border-color .2s;
+}
+.field:focus { border-color: var(--accent); }
+.field-error { font-size: 13px; color: var(--wrong); min-height: 18px; margin-top: 6px; }
+
+.btn-primary {
+  width: 100%; padding: 16px;
+  background: var(--accent); color: white;
+  border: none; border-radius: var(--r-s);
+  font-size: 16px; font-weight: 600;
+  transition: background .15s;
+}
+.btn-primary:active { background: var(--accent-dk); }
+.btn-secondary {
+  width: 100%; padding: 14px;
+  background: var(--accent-light); color: var(--accent);
+  border: none; border-radius: var(--r-s);
+  font-size: 15px; font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════
+   ① ONBOARDING
+═══════════════════════════════════════════ */
+#screen-onboarding {
+  justify-content: center; align-items: center;
+  padding: 40px 32px;
+  padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  text-align: center;
+}
+.ob-logo {
+  width: 80px; height: 80px; border-radius: 22px;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; margin: 0 auto 28px;
+  box-shadow: var(--shadow-md);
+}
+.ob-h   { font-size: 28px; font-weight: 700; letter-spacing: -.6px; margin-bottom: 8px; }
+.ob-sub { font-size: 15px; color: var(--text-muted); line-height: 1.55; margin-bottom: 40px; }
+.ob-form { width: 100%; max-width: 320px; text-align: left; }
+.ob-form .field-label { margin-top: 0; }
+
+/* ═══════════════════════════════════════════
+   ② HOME
+═══════════════════════════════════════════ */
+#screen-home { background: var(--desk); }
+
+.home-top {
+  padding: calc(22px + env(safe-area-inset-top)) 20px 16px;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  flex-shrink: 0;
+}
+.home-greeting { font-size: 13px; color: var(--text-muted); margin-bottom: 3px; }
+.home-name     { font-size: 26px; font-weight: 700; letter-spacing: -.6px; }
+
+.pts-badge { text-align: right; }
+.pts-num   { font-size: 28px; font-weight: 700; color: var(--accent); letter-spacing: -.5px; line-height: 1; }
+.pts-lbl   { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .4px; margin-top: 2px; }
+
+.home-scroll { flex: 1; overflow-y: auto; padding: 4px 20px 110px; }
+
+.section-hd {
+  font-size: 11px; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .5px;
+  padding: 12px 0 8px;
+}
+
+/* Class row */
+.class-row {
+  background: var(--card-bg); border-radius: var(--r);
+  border: 1px solid var(--border-light);
+  padding: 14px 16px; margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer; transition: transform .12s;
+  -webkit-user-select: none; user-select: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.class-row:active { transform: scale(.98); }
+.class-row-info { flex: 1; min-width: 0; }
+.class-row-name { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.class-row-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.class-row-prog { font-size: 11px; color: var(--text-light); margin-top: 5px; }
+.class-row-arrow { color: var(--text-light); font-size: 16px; flex-shrink: 0; }
+
+/* Add class button */
+.add-btn {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; padding: 14px 16px; margin-bottom: 10px;
+  background: none; border: 1.5px dashed var(--border);
+  border-radius: var(--r); color: var(--text-muted);
+  font-size: 14px; font-weight: 500;
+  transition: border-color .2s, color .2s;
+}
+.add-btn:active { border-color: var(--accent); color: var(--accent); }
+.add-btn-icon { font-size: 20px; line-height: 1; }
+
+/* Empty state */
+.empty {
+  text-align: center; padding: 60px 20px;
+}
+.empty-icon { font-size: 52px; margin-bottom: 14px; opacity: .45; }
+.empty-text { font-size: 15px; color: var(--text-muted); line-height: 1.5; }
+
+/* Loading row */
+.sync-row {
+  display: none; align-items: center; gap: 8px;
+  padding: 8px 20px; font-size: 13px; color: var(--text-muted);
+  flex-shrink: 0;
+}
+.sync-row.show { display: flex; }
+.spinner {
+  width: 14px; height: 14px; flex-shrink: 0;
+  border: 2px solid var(--border); border-top-color: var(--accent);
+  border-radius: 50%; animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Science link */
+.science-link {
+  text-align: center; padding: 8px 0 0;
+  font-size: 13px; color: var(--accent); font-weight: 500;
+  background: none; border: none; width: 100%;
+}
+
+/* ═══════════════════════════════════════════
+   ③ DESK / CLASS VIEW
+═══════════════════════════════════════════ */
+.desk-sub {
+  padding: 2px 20px 14px; flex-shrink: 0;
+}
+.desk-class { font-size: 19px; font-weight: 700; letter-spacing: -.4px; }
+.desk-info  { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+
+.desk-scroll { flex: 1; overflow-y: auto; padding: 4px 16px 100px; }
+
+/* CARD STACKS GRID */
+.deck-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+}
+
+.deck-tile {
+  cursor: pointer; -webkit-user-select: none; user-select: none;
+  transition: transform .14s;
+}
+.deck-tile:active { transform: scale(.95); }
+
+/* The sloppy stack */
+.stack {
+  position: relative; height: 108px; margin-bottom: 8px;
+}
+/* Card 3 — bottom, most tilted */
+.stack::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--card-oldest); border-radius: 7px;
+  transform: rotate(-5deg) translate(-4px, 4px);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+}
+/* Card 2 — middle */
+.stack::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--card-aged); border-radius: 7px;
+  transform: rotate(-2.5deg) translate(-2px, 2px);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.09);
+}
+/* Card 1 — top */
+.stack-face {
+  position: absolute; inset: 0; z-index: 1;
+  background: var(--card-bg); border-radius: 7px;
+  box-shadow: var(--shadow-card);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 10px 12px; text-align: center; gap: 4px;
+}
+.stack-title { font-size: 12px; font-weight: 600; line-height: 1.35; color: var(--text); }
+.stack-n     { font-size: 11px; color: var(--text-light); }
+
+.deck-done .stack-face { background: #f5fbf7; }
+.done-badge {
+  display: none; font-size: 10px; font-weight: 700;
+  color: var(--correct); background: var(--correct-light);
+  padding: 2px 7px; border-radius: 20px;
+}
+.deck-done .done-badge { display: block; }
+.deck-done .stack-n    { display: none; }
+
+.deck-pts { font-size: 11px; color: var(--text-muted); text-align: center; }
+
+/* ═══════════════════════════════════════════
+   ④ STUDY SESSION
+═══════════════════════════════════════════ */
+#screen-study { justify-content: space-between; }
+
+.study-prog {
+  padding: 2px 20px 12px; flex-shrink: 0;
+}
+.prog-bar {
+  height: 3px; background: var(--border); border-radius: 2px; overflow: hidden;
+}
+.prog-fill {
+  height: 100%; background: var(--accent);
+  border-radius: 2px; transition: width .35s ease;
+}
+.prog-txt {
+  font-size: 11px; color: var(--text-light);
+  text-align: right; margin-top: 4px; letter-spacing: .2px;
+}
+
+.study-body {
+  flex: 1; overflow-y: auto;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 0 20px 16px;
+}
+
+/* FLASHCARD */
+.fc-scene {
+  width: 100%; max-width: 380px;
+  perspective: 1400px;
+}
+.fc-card {
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform .52s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+}
+.fc-card.flipped { transform: rotateY(180deg); }
+.fc-face {
+  background: var(--card-bg); border-radius: var(--r);
+  box-shadow: var(--shadow-card);
+  padding: 28px 24px; min-height: 190px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.fc-face.back {
+  position: absolute; inset: 0;
+  transform: rotateY(180deg);
+  background: #fafeff;
+}
+.card-lbl {
+  font-size: 10px; font-weight: 700; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: .6px; margin-bottom: 14px;
+}
+.card-q { font-size: 17px; font-weight: 500; line-height: 1.6; color: var(--text); }
+.card-a { font-size: 16px; line-height: 1.6; color: var(--text); }
+.tap-hint { font-size: 12px; color: var(--text-light); margin-top: 18px; }
+
+/* FITB CARD */
+.fitb-card {
+  width: 100%; max-width: 380px;
+  background: var(--card-bg); border-radius: var(--r);
+  box-shadow: var(--shadow-card); padding: 24px 22px;
+}
+.fitb-q { font-size: 17px; font-weight: 500; line-height: 1.6; margin-bottom: 18px; }
+.fitb-input {
+  width: 100%; padding: 13px 15px;
+  border: 1.5px solid var(--border); border-radius: var(--r-s);
+  font-size: 16px; outline: none;
+  transition: border-color .2s, background .2s;
+}
+.fitb-input:focus   { border-color: var(--accent); }
+.fitb-input.correct { border-color: var(--correct); background: var(--correct-light); }
+.fitb-input.wrong   { border-color: var(--wrong);   background: var(--wrong-light);   }
+
+.fitb-hint {
+  font-size: 13px; color: var(--text-muted); margin-top: 8px;
+  display: none; line-height: 1.4;
+}
+.fitb-hint.show { display: block; }
+.fitb-feedback {
+  font-size: 14px; line-height: 1.5; margin-top: 10px;
+  display: none;
+}
+.fitb-feedback.show { display: block; }
+.fitb-submit {
+  width: 100%; margin-top: 14px; padding: 13px;
+  background: var(--accent); color: white; border: none;
+  border-radius: var(--r-s); font-size: 15px; font-weight: 600;
+  transition: background .15s;
+}
+.fitb-submit:active   { background: var(--accent-dk); }
+.fitb-submit:disabled { opacity: .4; }
+
+/* MCQ CARD */
+.mcq-card {
+  width: 100%; max-width: 380px;
+  background: var(--card-bg); border-radius: var(--r);
+  box-shadow: var(--shadow-card); padding: 22px 20px;
+}
+.mcq-q { font-size: 16px; font-weight: 500; line-height: 1.6; margin-bottom: 16px; }
+.mcq-opt {
+  display: flex; align-items: flex-start; gap: 11px;
+  padding: 11px 13px; margin-bottom: 8px;
+  border: 1.5px solid var(--border); border-radius: var(--r-s);
+  cursor: pointer; font-size: 14px; line-height: 1.45;
+  transition: border-color .12s, background .12s;
+  -webkit-user-select: none; user-select: none;
+}
+.mcq-opt:last-of-type { margin-bottom: 0; }
+.mcq-opt.chosen    { border-color: var(--accent);  background: var(--accent-light); }
+.mcq-opt.correct   { border-color: var(--correct); background: var(--correct-light); }
+.mcq-opt.wrong     { border-color: var(--wrong);   background: var(--wrong-light);   }
+.opt-letter {
+  width: 21px; height: 21px; flex-shrink: 0;
+  border-radius: 50%; background: var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: var(--text-muted);
+  transition: background .12s, color .12s;
+}
+.mcq-opt.correct .opt-letter { background: var(--correct); color: white; }
+.mcq-opt.wrong   .opt-letter { background: var(--wrong);   color: white; }
+.mcq-explanation {
+  margin-top: 12px; padding: 11px 13px;
+  background: var(--desk); border-radius: var(--r-xs);
+  font-size: 13px; line-height: 1.5; color: var(--text-muted);
+  display: none;
+}
+.mcq-explanation.show { display: block; }
+
+/* RATING BAR */
+.rating-bar {
+  padding: 10px 20px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  flex-shrink: 0;
+}
+.rating-hint {
+  font-size: 11px; color: var(--text-light);
+  text-align: center; margin-bottom: 8px;
+  transition: opacity .2s;
+}
+.rating-btns {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+}
+.r-btn {
+  padding: 12px 6px; border: none; border-radius: var(--r-s);
+  font-size: 13px; font-weight: 700; line-height: 1.2;
+  transition: opacity .12s;
+}
+.r-btn:active   { opacity: .75; }
+.r-btn:disabled { opacity: .28; cursor: default; }
+.r-again { background: var(--wrong-light);   color: var(--wrong);   }
+.r-gotit { background: var(--correct-light); color: var(--correct); }
+.r-easy  { background: var(--easy-light);    color: var(--easy);    }
+
+/* ═══════════════════════════════════════════
+   ⑤ COMPLETE SCREEN
+═══════════════════════════════════════════ */
+#screen-complete {
+  align-items: center; justify-content: center;
+  padding: 32px 24px;
+  padding-bottom: calc(32px + env(safe-area-inset-bottom));
+  text-align: center; overflow-y: auto;
+}
+.cmp-icon  { font-size: 52px; margin-bottom: 10px; }
+.cmp-title { font-size: 22px; font-weight: 700; letter-spacing: -.4px; margin-bottom: 4px; }
+.cmp-deck  { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+
+.cmp-card {
+  width: 100%; max-width: 320px;
+  background: var(--card-bg); border-radius: var(--r);
+  box-shadow: var(--shadow-card); padding: 20px 22px;
+  margin-bottom: 14px;
+}
+.cmp-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cmp-row:last-child { margin-bottom: 0; }
+.cmp-lbl  { font-size: 13px; color: var(--text-muted); }
+.cmp-val  { font-size: 20px; font-weight: 700; color: var(--accent); }
+.cmp-divider { height: 1px; background: var(--border-light); margin: 12px 0; }
+.cmp-code-lbl { font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+.cmp-code     { font-size: 22px; font-weight: 700; letter-spacing: 5px; font-family: 'SF Mono', 'Fira Code', monospace; }
+
+.ped-box {
+  width: 100%; max-width: 320px;
+  background: var(--accent-light); border-radius: var(--r-s);
+  padding: 14px 16px; text-align: left; margin-bottom: 18px;
+}
+.ped-lbl  { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 5px; }
+.ped-text { font-size: 13px; line-height: 1.55; color: var(--text); }
+
+/* ═══════════════════════════════════════════
+   ⑥ SCIENCE SCREEN
+═══════════════════════════════════════════ */
+.sci-scroll { flex: 1; overflow-y: auto; padding: 4px 20px 60px; }
+.sci-section {
+  background: var(--card-bg); border-radius: var(--r);
+  border: 1px solid var(--border-light);
+  padding: 18px 18px; margin-bottom: 12px;
+}
+.sci-h { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.sci-p { font-size: 14px; line-height: 1.65; color: var(--text-muted); }
+.sci-badge {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  background: var(--accent-light); color: var(--accent);
+  padding: 2px 8px; border-radius: 20px; margin-bottom: 6px;
+  text-transform: uppercase; letter-spacing: .4px;
+}
+
+/* ═══════════════════════════════════════════
+   BOTTOM SHEET MODAL
+═══════════════════════════════════════════ */
+.sheet-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.45);
+  z-index: 200; display: flex; align-items: flex-end;
+  opacity: 0; pointer-events: none;
+  transition: opacity .22s;
+}
+.sheet-overlay.open { opacity: 1; pointer-events: all; }
+.sheet {
+  width: 100%; background: var(--surface);
+  border-radius: 24px 24px 0 0;
+  padding: 20px 24px calc(24px + env(safe-area-inset-bottom));
+  transform: translateY(100%);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+}
+.sheet-overlay.open .sheet { transform: translateY(0); }
+.sheet-handle {
+  width: 36px; height: 4px; background: var(--border);
+  border-radius: 2px; margin: 0 auto 20px;
+}
+.sheet-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.sheet-sub   { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     ① ONBOARDING
+══════════════════════════════════════ -->
+<div id="screen-onboarding" class="screen active fade-in">
+  <div class="ob-logo">📚</div>
+  <div class="ob-h">StudyDeck</div>
+  <div class="ob-sub">Evidence-based study cards built on learning science.<br>What should we call you?</div>
+  <div class="ob-form">
+    <label class="field-label" for="ob-name">Your name</label>
+    <input type="text" id="ob-name" class="field" placeholder="e.g. Maria Santos"
+           autocomplete="given-name" autocorrect="off">
+    <div style="height:16px"></div>
+    <button class="btn-primary" onclick="completeOnboarding()">Get started →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ② HOME
+══════════════════════════════════════ -->
+<div id="screen-home" class="screen">
+  <div class="home-top">
+    <div>
+      <div class="home-greeting" id="home-greet">Good morning</div>
+      <div class="home-name"     id="home-name">Your Classes</div>
+    </div>
+    <div class="pts-badge">
+      <div class="pts-num" id="home-pts">0</div>
+      <div class="pts-lbl">Points</div>
+    </div>
+  </div>
+  <div class="sync-row" id="sync-row">
+    <div class="spinner"></div>
+    <span>Syncing classes…</span>
+  </div>
+  <div class="home-scroll">
+    <div id="home-list"></div>
+    <button class="science-link" onclick="showScreen('screen-science','fade-in')">
+      📖 Why this study method works
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ③ DESK — CLASS VIEW
+══════════════════════════════════════ -->
+<div id="screen-class" class="screen">
+  <div class="nav">
+    <button class="nav-back" onclick="showScreen('screen-home','slide-out')">←</button>
+    <div>
+      <div class="nav-title" id="desk-code"></div>
+    </div>
+    <button class="nav-action" onclick="refreshAll()">Refresh</button>
+  </div>
+  <div class="desk-sub">
+    <div class="desk-class" id="desk-name"></div>
+    <div class="desk-info"  id="desk-info"></div>
+  </div>
+  <div class="desk-scroll">
+    <div class="deck-grid" id="deck-grid"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ④ STUDY
+══════════════════════════════════════ -->
+<div id="screen-study" class="screen">
+  <div class="nav">
+    <button class="nav-back" id="study-exit" onclick="exitStudy()">✕</button>
+    <div class="nav-title" id="study-title"></div>
+  </div>
+  <div class="study-prog">
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+    <div class="prog-txt"  id="prog-txt"></div>
+  </div>
+  <div class="study-body" id="study-body"></div>
+  <div class="rating-bar">
+    <div class="rating-hint" id="rating-hint">How well did you know this?</div>
+    <div class="rating-btns">
+      <button class="r-btn r-again" id="r-again" onclick="rate('again')" disabled>Again</button>
+      <button class="r-btn r-gotit" id="r-gotit" onclick="rate('gotit')" disabled>Got it</button>
+      <button class="r-btn r-easy"  id="r-easy"  onclick="rate('easy')"  disabled>Easy</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ⑤ COMPLETE
+══════════════════════════════════════ -->
+<div id="screen-complete" class="screen fade-in">
+  <div class="cmp-icon"  id="cmp-icon">✅</div>
+  <div class="cmp-title" id="cmp-title">Deck complete!</div>
+  <div class="cmp-deck"  id="cmp-deck"></div>
+  <div class="cmp-card">
+    <div class="cmp-row">
+      <span class="cmp-lbl">Points earned</span>
+      <span class="cmp-val" id="cmp-earned">+0</span>
+    </div>
+    <div class="cmp-row">
+      <span class="cmp-lbl">Semester total</span>
+      <span class="cmp-val" id="cmp-total">0</span>
+    </div>
+    <div class="cmp-divider"></div>
+    <div class="cmp-code-lbl">Verification code</div>
+    <div class="cmp-code" id="cmp-code">—</div>
+  </div>
+  <div class="ped-box">
+    <div class="ped-lbl">The science behind what you just did</div>
+    <div class="ped-text" id="ped-text"></div>
+  </div>
+  <button class="btn-primary" style="max-width:320px" onclick="showScreen('screen-class','slide-out')">
+    Back to decks
+  </button>
+</div>
+
+<!-- ══════════════════════════════════════
+     ⑥ SCIENCE
+══════════════════════════════════════ -->
+<div id="screen-science" class="screen">
+  <div class="nav">
+    <button class="nav-back" onclick="history.go(-1) || showScreen('screen-home','slide-out')">←</button>
+    <div class="nav-title">Why It Works</div>
+  </div>
+  <div class="sci-scroll">
+
+    <div class="sci-section">
+      <div class="sci-badge">Strongest evidence</div>
+      <div class="sci-h">Active recall beats re-reading</div>
+      <div class="sci-p">Every time you retrieve information from memory — before seeing the answer — you strengthen that memory trace far more than reading it again. This is called the <em>testing effect</em>. Roediger & Karpicke (2006) showed students who were tested retained 50% more after a week than students who re-studied the same material.</div>
+    </div>
+
+    <div class="sci-section">
+      <div class="sci-badge">Strong evidence</div>
+      <div class="sci-h">Generating answers is better than recognizing them</div>
+      <div class="sci-p">Fill-in-the-blank outperforms multiple choice because your brain has to <em>construct</em> the answer rather than identify it. This is the <em>generation effect</em> — the mental effort of producing a response creates a deeper, more durable memory trace. That's why we use more fill-in-the-blank than multiple choice.</div>
+    </div>
+
+    <div class="sci-section">
+      <div class="sci-badge">Strong evidence</div>
+      <div class="sci-h">Difficult cards come back sooner</div>
+      <div class="sci-p">When you mark a card "Again," it re-enters your queue just a few cards ahead. This is a simplified form of <em>spaced repetition</em>, which exploits the spacing effect: reviewing material at the moment you're about to forget it produces stronger long-term retention than reviewing it when it's still fresh.</div>
+    </div>
+
+    <div class="sci-section">
+      <div class="sci-badge">Good evidence</div>
+      <div class="sci-h">Mixing question types helps</div>
+      <div class="sci-p">Interleaving flashcards, fill-in-the-blank, and multiple choice within a session feels harder than doing all of one type at once — and that difficulty is the point. <em>Desirable difficulty</em> research shows that varied practice produces better long-term retention and transfer, even though it feels less efficient in the moment.</div>
+    </div>
+
+    <div class="sci-section">
+      <div class="sci-badge">Good evidence</div>
+      <div class="sci-h">Short sessions over time beat marathon cramming</div>
+      <div class="sci-p">A deck completed across three sessions is more effective than the same deck completed in one sitting. The app tracks your points across the whole semester so that studying is worthwhile every week — not just before an exam. Distributed practice is one of the highest-impact, lowest-effort learning strategies known.</div>
+    </div>
+
+    <div class="sci-section">
+      <div class="sci-badge">Points design</div>
+      <div class="sci-h">Points reward process, not performance</div>
+      <div class="sci-p">You earn points for completing decks, not for getting answers right. This is intentional. Performance-based rewards shift focus to the score and away from learning. Process-based rewards encourage engagement with difficult material without the anxiety of being graded on each response.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     MODAL — ADD CLASS
+══════════════════════════════════════ -->
+<div class="sheet-overlay" id="add-sheet" onclick="sheetTap(event)">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">Subscribe to a class</div>
+    <div class="sheet-sub">Paste the URL your instructor shared. StudyDeck will download and sync their decks automatically.</div>
+    <label class="field-label">Class manifest URL</label>
+    <input type="url" id="add-url" class="field"
+           placeholder="https://instructor.edu/course/class.json"
+           autocorrect="off" autocapitalize="none">
+    <div class="field-error" id="add-error"></div>
+    <div style="height:14px"></div>
+    <button class="btn-primary" id="add-btn" onclick="subscribeClass()" style="max-width:100%">
+      Subscribe
+    </button>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════
+
+let S = {
+  student:  null,       // { name }
+  classes:  [],         // [{ url, data }]  data = full manifest JSON
+  progress: {},         // { deckKey: { done, date, pts, code } }
+};
+
+let session = {
+  deck:    null,   // deck meta from manifest
+  deckKey: null,
+  queue:   [],
+  cur:     null,
+  total:   0,
+  classIdx: -1,
+};
+
+let curClassIdx = -1;
+
+// ══════════════════════════════════════════════
+//  PEDAGOGY ROTATION
+// ══════════════════════════════════════════════
+const PED = [
+  "You just practiced active recall — retrieving from memory rather than re-reading. The testing effect shows this produces 50% better retention after one week.",
+  "Every card you marked 'Again' came back so retrieval happened while the memory trace was still fragile. That's spaced repetition at work.",
+  "Fill-in-the-blank cards force you to generate an answer, not just recognize one. The generation effect makes that harder mental effort worth it.",
+  "Mixing flashcards, fill-in-blank, and multiple choice in one session creates desirable difficulty — harder in the moment, stronger long-term.",
+  "Points for completing decks, not for correct answers. That keeps your focus on learning, not on performing.",
+];
+
+// ══════════════════════════════════════════════
+//  PERSISTENCE
+// ══════════════════════════════════════════════
+function save() { try { localStorage.setItem('sd_v1', JSON.stringify(S)); } catch(e){} }
+function load() {
+  try {
+    const r = localStorage.getItem('sd_v1');
+    if (r) S = { ...S, ...JSON.parse(r) };
+  } catch(e) {}
+}
+
+// ══════════════════════════════════════════════
+//  SCREEN NAVIGATION
+// ══════════════════════════════════════════════
+function showScreen(id, anim) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('active','slide-in','slide-out','fade-in');
+  });
+  const el = document.getElementById(id);
+  el.classList.add('active');
+  if (anim) el.classList.add(anim);
+  el.scrollTop = 0;
+}
+
+// ══════════════════════════════════════════════
+//  ONBOARDING
+// ══════════════════════════════════════════════
+function completeOnboarding() {
+  const v = document.getElementById('ob-name').value.trim();
+  if (!v) { document.getElementById('ob-name').focus(); return; }
+  S.student = { name: v };
+  save(); initHome(); showScreen('screen-home','fade-in');
+}
+document.getElementById('ob-name').addEventListener('keydown', e => {
+  if (e.key === 'Enter') completeOnboarding();
+});
+
+// ══════════════════════════════════════════════
+//  HOME
+// ══════════════════════════════════════════════
+function initHome() {
+  const name = S.student.name.split(' ')[0];
+  const h = new Date().getHours();
+  const greet = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+  document.getElementById('home-greet').textContent = greet + ', ' + name;
+  document.getElementById('home-name').textContent  = 'Your Classes';
+  renderHome();
+}
+
+function totalPts() {
+  return Object.values(S.progress).reduce((s, p) => s + (p.pts || 0), 0);
+}
+
+function renderHome() {
+  document.getElementById('home-pts').textContent = totalPts();
+  const el = document.getElementById('home-list');
+  let h = '';
+
+  if (S.classes.length) {
+    h += '<div class="section-hd">Enrolled</div>';
+    S.classes.forEach((cls, i) => {
+      if (!cls.data) return;
+      const info   = cls.data.class || {};
+      const decks  = cls.data.decks || [];
+      const done   = decks.filter(d => S.progress[dkKey(cls.url, d.url)]?.done).length;
+      h += `<div class="class-row" onclick="openClass(${i})">
+        <div class="class-row-info">
+          <div class="class-row-name">${info.name || 'Untitled class'}</div>
+          <div class="class-row-meta">${[info.instructor, info.semester].filter(Boolean).join(' · ')}</div>
+          <div class="class-row-prog">${done} / ${decks.length} decks complete</div>
+        </div>
+        <div class="class-row-arrow">›</div>
+      </div>`;
+    });
+  } else {
+    h += `<div class="empty">
+      <div class="empty-icon">🗂</div>
+      <div class="empty-text">No classes yet.<br>Add one with the button below.</div>
+    </div>`;
+  }
+
+  h += `<button class="add-btn" onclick="openSheet()">
+    <span class="add-btn-icon">＋</span> Add a class
+  </button>`;
+  el.innerHTML = h;
+}
+
+// ══════════════════════════════════════════════
+//  CLASS / DESK VIEW
+// ══════════════════════════════════════════════
+function openClass(i) {
+  curClassIdx = i;
+  const cls  = S.classes[i];
+  const info = cls.data.class || {};
+  document.getElementById('desk-code').textContent = info.code || info.name;
+  document.getElementById('desk-name').textContent = info.name || '';
+  document.getElementById('desk-info').textContent =
+    [info.instructor, info.institution, info.semester].filter(Boolean).join(' · ');
+  renderDeskGrid();
+  showScreen('screen-class','slide-in');
+}
+
+function renderDeskGrid() {
+  const cls   = S.classes[curClassIdx];
+  const decks = cls.data.decks || [];
+  let h = '';
+  decks.forEach((dk, i) => {
+    const key    = dkKey(cls.url, dk.url);
+    const done   = !!S.progress[key]?.done;
+    const nCards = (dk._cards || []).length;
+    h += `<div class="deck-tile ${done ? 'deck-done' : ''}" onclick="startDeck(${i})">
+      <div class="stack">
+        <div class="stack-face">
+          <div class="stack-title">${dk.title}</div>
+          <div class="stack-n">${nCards ? nCards + ' cards' : 'Tap to begin'}</div>
+          <div class="done-badge">✓ Complete</div>
+        </div>
+      </div>
+      <div class="deck-pts">${dk.points || 0} pts</div>
+    </div>`;
+  });
+  document.getElementById('deck-grid').innerHTML = h;
+}
+
+// ══════════════════════════════════════════════
+//  STUDY SESSION ENGINE
+// ══════════════════════════════════════════════
+async function startDeck(deckIdx) {
+  const cls    = S.classes[curClassIdx];
+  const dkMeta = cls.data.decks[deckIdx];
+
+  // Fetch deck file if not yet cached
+  if (!dkMeta._cards) {
+    try {
+      const res  = await fetch(dkMeta.url);
+      const json = await res.json();
+      dkMeta._cards  = json.cards  || [];
+      dkMeta._pts    = json.deck?.points ?? dkMeta.points ?? 0;
+      save();
+    } catch(e) {
+      alert('Could not load this deck.\n\nCheck your connection. If the problem persists, your instructor may need to enable CORS on their server, or host on GitHub Pages.');
+      return;
+    }
+  }
+
+  const key   = dkKey(cls.url, dkMeta.url);
+  const cards = interleave(dkMeta._cards);
+
+  session = {
+    deck:     dkMeta,
+    deckKey:  key,
+    classIdx: curClassIdx,
+    queue:    cards.map(c => ({ ...c, status: 'new' })),
+    cur:      null,
+    total:    cards.length,
+  };
+
+  document.getElementById('study-title').textContent = dkMeta.title;
+  showScreen('screen-study','slide-in');
+  nextCard();
+}
+
+// Interleave card types for desirable difficulty / variety
+function interleave(cards) {
+  const byType = {};
+  cards.forEach(c => { (byType[c.type] = byType[c.type] || []).push(c); });
+  const types = Object.keys(byType);
+  const out = [];
+  let hasMore = true;
+  while (hasMore) {
+    hasMore = false;
+    types.forEach(t => {
+      if (byType[t].length) { out.push(byType[t].shift()); hasMore = true; }
+    });
+  }
+  return out;
+}
+
+function nextCard() {
+  const card = session.queue.find(c => c.status === 'new' || c.status === 'again');
+  if (!card) { endSession(); return; }
+  session.cur = card;
+  updateProg();
+  ratingEnable(false);
+  const body = document.getElementById('study-body');
+  if      (card.type === 'flashcard') renderFC(card, body);
+  else if (card.type === 'fitb')      renderFITB(card, body);
+  else if (card.type === 'mcq')       renderMCQ(card, body);
+  else { card.status = 'learned'; nextCard(); }  // skip unknown types
+}
+
+function updateProg() {
+  const remaining = session.queue.filter(c => c.status === 'new' || c.status === 'again').length;
+  const done      = session.total - remaining;
+  const pct       = session.total > 0 ? (done / session.total) * 100 : 0;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-txt').textContent  = done + ' of ' + session.total;
+}
+
+function ratingEnable(on) {
+  ['r-again','r-gotit','r-easy'].forEach(id => {
+    document.getElementById(id).disabled = !on;
+  });
+  document.getElementById('rating-hint').style.opacity = on ? '1' : '0.3';
+}
+
+// ──── FLASHCARD ────
+function renderFC(card, body) {
+  body.innerHTML = `
+    <div class="fc-scene">
+      <div class="fc-card" id="fc" onclick="flipFC()">
+        <div class="fc-face front">
+          <div class="card-lbl">Flashcard</div>
+          <div class="card-q">${card.front}</div>
+          <div class="tap-hint">tap to reveal</div>
+        </div>
+        <div class="fc-face back">
+          <div class="card-lbl">Answer</div>
+          <div class="card-a">${card.back}</div>
+        </div>
+      </div>
+    </div>`;
+}
+function flipFC() {
+  const fc = document.getElementById('fc');
+  if (fc.classList.contains('flipped')) return;
+  fc.classList.add('flipped');
+  ratingEnable(true);
+}
+
+// ──── FILL IN THE BLANK ────
+function renderFITB(card, body) {
+  body.innerHTML = `
+    <div class="fitb-card">
+      <div class="card-lbl">Fill in the blank</div>
+      <div class="fitb-q">${card.question}</div>
+      <input type="text" id="fitb-in" class="fitb-input"
+             placeholder="Your answer…"
+             autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false">
+      ${card.hint ? `<div class="fitb-hint show">Hint: ${card.hint}</div>` : ''}
+      <div class="fitb-feedback" id="fitb-fb"></div>
+      <button class="fitb-submit" id="fitb-sub" onclick="checkFITB()">Check →</button>
+    </div>`;
+  setTimeout(() => { const i = document.getElementById('fitb-in'); if(i) i.focus(); }, 320);
+  document.getElementById('fitb-in').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkFITB();
+  });
+}
+function checkFITB() {
+  if (session._answered) return;
+  session._answered = true;
+  const card  = session.cur;
+  const inp   = document.getElementById('fitb-in');
+  const ok    = norm(inp.value) === norm(card.answer);
+  inp.disabled = true;
+  inp.classList.add(ok ? 'correct' : 'wrong');
+  document.getElementById('fitb-sub').disabled = true;
+  const fb = document.getElementById('fitb-fb');
+  fb.innerHTML = ok
+    ? `<span style="color:var(--correct)">✓ Correct</span>`
+    : `<span style="color:var(--wrong)">✗ Answer: <strong>${card.answer}</strong></span>`;
+  fb.classList.add('show');
+  ratingEnable(true);
+  session._answered = false;
+}
+
+// ──── MULTIPLE CHOICE ────
+function renderMCQ(card, body) {
+  const lets = ['A','B','C','D'];
+  const opts = (card.options || []).map((o,i) => `
+    <div class="mcq-opt" id="opt${i}" onclick="pickMCQ(${i})">
+      <div class="opt-letter">${lets[i]}</div>
+      <span>${o}</span>
+    </div>`).join('');
+  body.innerHTML = `
+    <div class="mcq-card">
+      <div class="card-lbl">Multiple choice</div>
+      <div class="mcq-q">${card.question}</div>
+      ${opts}
+      <div class="mcq-explanation" id="mcq-exp">${card.explanation || ''}</div>
+    </div>`;
+}
+function pickMCQ(i) {
+  if (session._answered) return;
+  session._answered = true;
+  const card = session.cur;
+  (card.options || []).forEach((_,j) => {
+    const el = document.getElementById('opt'+j);
+    if (!el) return;
+    el.style.pointerEvents = 'none';
+    if (j === card.correct) el.classList.add('correct');
+    else if (j === i)       el.classList.add('wrong');
+  });
+  if (card.explanation) document.getElementById('mcq-exp').classList.add('show');
+  ratingEnable(true);
+  session._answered = false;
+}
+
+// ──── SPACED REPETITION RATING ────
+function rate(level) {
+  const { queue, cur } = session;
+  const pos = queue.indexOf(cur);
+  if (level === 'again') {
+    cur.status = 'again';
+    queue.splice(pos, 1);
+    queue.splice(Math.min(pos + 3, queue.length), 0, cur);
+  } else {
+    cur.status = level === 'easy' ? 'mastered' : 'learned';
+  }
+  nextCard();
+}
+
+function exitStudy() {
+  if (confirm('Leave this session?\nYour progress in this session will be lost.')) {
+    showScreen('screen-class','slide-out');
+  }
+}
+
+// ══════════════════════════════════════════════
+//  SESSION COMPLETE
+// ══════════════════════════════════════════════
+function endSession() {
+  const { deck, deckKey } = session;
+  const pts      = deck._pts ?? deck.points ?? 0;
+  const already  = !!S.progress[deckKey]?.done;
+
+  if (!already) {
+    const code = mkCode(S.student.name, deckKey, pts);
+    S.progress[deckKey] = { done: true, date: today(), pts, code };
+    save();
+  }
+
+  const prog  = S.progress[deckKey];
+  const total = totalPts();
+
+  document.getElementById('cmp-icon').textContent  = already ? '📚' : '🎉';
+  document.getElementById('cmp-title').textContent = already ? 'Session done' : 'Deck complete!';
+  document.getElementById('cmp-deck').textContent  = deck.title;
+  document.getElementById('cmp-earned').textContent = already ? 'already earned' : '+' + pts;
+  document.getElementById('cmp-total').textContent  = total;
+  document.getElementById('cmp-code').textContent   = prog.code;
+  document.getElementById('ped-text').textContent   = PED[Math.floor(Math.random() * PED.length)];
+
+  renderDeskGrid();
+  renderHome();
+  showScreen('screen-complete','fade-in');
+}
+
+// ══════════════════════════════════════════════
+//  VERIFICATION CODE
+// ══════════════════════════════════════════════
+function mkCode(name, key, pts) {
+  const s = (name||'').toLowerCase().trim() + '|' + key + '|' + today() + '|' + pts;
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = (Math.imul(33, h) ^ s.charCodeAt(i)) >>> 0;
+  return h.toString(36).toUpperCase().padStart(8,'0').slice(0,8);
+}
+
+// ══════════════════════════════════════════════
+//  CLASS FETCHING
+// ══════════════════════════════════════════════
+function openSheet() {
+  document.getElementById('add-url').value   = '';
+  document.getElementById('add-error').textContent = '';
+  document.getElementById('add-sheet').classList.add('open');
+  setTimeout(() => document.getElementById('add-url').focus(), 380);
+}
+function sheetTap(e) {
+  if (e.target === document.getElementById('add-sheet'))
+    document.getElementById('add-sheet').classList.remove('open');
+}
+
+async function subscribeClass() {
+  const url = document.getElementById('add-url').value.trim();
+  if (!url) return;
+  if (S.classes.find(c => c.url === url)) {
+    document.getElementById('add-error').textContent = 'Already subscribed to this class.';
+    return;
+  }
+  const btn = document.getElementById('add-btn');
+  const err = document.getElementById('add-error');
+  btn.textContent = 'Loading…'; btn.disabled = true; err.textContent = '';
+  try {
+    const data = await fetchManifest(url);
+    S.classes.push({ url, data });
+    save();
+    document.getElementById('add-sheet').classList.remove('open');
+    renderHome();
+  } catch(e) {
+    err.textContent = 'Could not load that URL. Make sure it\'s reachable and CORS-enabled (GitHub Pages works perfectly).';
+  }
+  btn.textContent = 'Subscribe'; btn.disabled = false;
+}
+
+async function fetchManifest(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const json = await res.json();
+  if (!json.class || !json.decks) throw new Error('Invalid format');
+  return json;
+}
+
+async function refreshAll() {
+  if (!S.classes.length) return;
+  document.getElementById('sync-row').classList.add('show');
+  for (const cls of S.classes) {
+    try {
+      const fresh = await fetchManifest(cls.url);
+      // Preserve cached deck cards
+      (fresh.decks || []).forEach(fd => {
+        const old = (cls.data.decks || []).find(d => d.url === fd.url);
+        if (old?._cards) fd._cards = old._cards;
+      });
+      cls.data = fresh;
+    } catch(e) { /* keep existing */ }
+  }
+  save();
+  document.getElementById('sync-row').classList.remove('show');
+  renderHome();
+  if (curClassIdx >= 0) renderDeskGrid();
+}
+
+// ══════════════════════════════════════════════
+//  UTILITIES
+// ══════════════════════════════════════════════
+function norm(s) {
+  return (s||'').toLowerCase().trim().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ');
+}
+function today() {
+  return new Date().toISOString().slice(0,10);
+}
+function dkKey(manifestUrl, deckUrl) {
+  const s = manifestUrl + '||' + (deckUrl || '');
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
+  return 'dk' + Math.abs(h).toString(36);
+}
+
+// ══════════════════════════════════════════════
+//  BOOT
+// ══════════════════════════════════════════════
+load();
+if (S.student) {
+  initHome();
+  showScreen('screen-home','fade-in');
+}
+
+// Service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
