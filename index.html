@@ -92,6 +92,7 @@
           <li><a href="team.html">Team</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
         <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
@@ -150,8 +151,15 @@
       });
     </script>
 
+    <!-- Live Metrics Banner -->
+    <section class="section" style="padding: 30px 0 0;">
+      <div class="container" data-aos="fade-up">
+        <div data-scholar-metrics="banner"></div>
+      </div>
+    </section>
+
     <!-- Hub Navigation Cards -->
-    <section class="section" style="padding-top: 60px;">
+    <section class="section" style="padding-top: 40px;">
       <div class="container" data-aos="fade-up">
         <div class="hub-grid">
           <a href="research.html" class="hub-card">
@@ -188,8 +196,82 @@
       </div>
     </section>
 
-    <!-- News & Social Section -->
+    <!-- Study Systems Visualization -->
+    <section class="section" style="padding-bottom: 0;">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Study Systems</h2>
+      </div>
+      <div class="container" data-aos="fade-up">
+        <div class="study-systems-grid">
+          <div class="study-system-card">
+            <img class="system-photo" src="assets/img/study-systems/beetles.jpg" alt="Goliath beetle" loading="lazy">
+            <h4>Beetles</h4>
+            <p>Karyotype evolution and sex chromosome systems across Coleoptera — the most species-rich order of animals.</p>
+          </div>
+          <div class="study-system-card">
+            <img class="system-photo" src="assets/img/study-systems/tomatoes.jpg" alt="Tomato plants" loading="lazy">
+            <h4>Tomatoes</h4>
+            <p>Chromosome number variation and its link to adaptation in Solanaceae, including wild and domesticated species.</p>
+          </div>
+          <div class="study-system-card">
+            <img class="system-photo" src="assets/img/study-systems/betta.jpg" alt="Betta splendens" loading="lazy">
+            <h4>Betta Fish</h4>
+            <p>Genetics of aggression, color, and sexual selection — and how domestication shapes phenotypic evolution.</p>
+          </div>
+          <div class="study-system-card">
+            <img class="system-photo" src="assets/img/study-systems/chickens.jpg" alt="Chicken" loading="lazy">
+            <h4>Chickens</h4>
+            <p>Sex-linked traits and sexual antagonism in a model system for understanding domestication.</p>
+          </div>
+          <div class="study-system-card">
+            <img class="system-photo" src="assets/img/study-systems/crabs.jpg" alt="Crab" loading="lazy">
+            <h4>Crabs</h4>
+            <p>The evolution of freshwater invasion and its genomic consequences across Brachyura.</p>
+          </div>
+          <div class="study-system-card">
+            <img class="system-photo" src="assets/img/study-systems/mammals.jpg" alt="Muntjac deer" loading="lazy">
+            <h4>Mammals</h4>
+            <p>Broad-scale comparative analyses of sex chromosome evolution and karyotype diversity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab Highlights / News -->
     <section class="section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Lab Highlights</h2>
+      </div>
+      <div class="container" data-aos="fade-up">
+        <div id="news-feed" data-max-items="4" data-layout="cards"></div>
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="news.html" class="btn-outline" style="display: inline-flex; align-items: center; gap: 6px;"><i class="bi bi-arrow-right"></i> All News</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Funding & Support -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Supported By</h2>
+      </div>
+      <div class="container" data-aos="fade-up">
+        <div class="funder-strip">
+          <div class="funder-item">
+            <img src="assets/img/logos/nsf.png" alt="National Science Foundation" class="funder-logo-img">
+          </div>
+          <div class="funder-item">
+            <img src="assets/img/logos/nih.png" alt="National Institutes of Health" class="funder-logo-img">
+          </div>
+          <div class="funder-item">
+            <img src="assets/img/logos/tamu.png" alt="Texas A&M University" class="funder-logo-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect & Social -->
+    <section class="section" style="padding-top: 0;">
       <div class="container section-title" data-aos="fade-up">
         <h2>Connect</h2>
       </div>
@@ -240,5 +322,9 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Scholar Metrics & News Feed -->
+  <script src="assets/js/scholar-metrics.js"></script>
+  <script src="assets/js/news-feed.js"></script>
 </body>
 </html>

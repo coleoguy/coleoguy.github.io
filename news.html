@@ -4,16 +4,16 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Publications - Blackmon Lab</title>
-  <meta name="description" content="Peer-reviewed publications from the Blackmon Lab at Texas A&M University, studying genome structure, sex chromosomes, and evolutionary biology.">
-  <meta name="keywords" content="publications, evolutionary biology, genome structure, sex chromosomes, karyotype, Texas A&M, Blackmon Lab">
-  <link rel="canonical" href="https://coleoguy.github.io/publications.html">
+  <title>News - Blackmon Lab</title>
+  <meta name="description" content="Latest news, highlights, and updates from the Blackmon Lab at Texas A&M University.">
+  <meta name="keywords" content="news, updates, Blackmon Lab, evolutionary biology, Texas A&M">
+  <link rel="canonical" href="https://coleoguy.github.io/news.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Publications - Blackmon Lab">
-  <meta property="og:description" content="Peer-reviewed publications from the Blackmon Lab at Texas A&M University, studying genome structure, sex chromosomes, and evolutionary biology.">
+  <meta property="og:title" content="News - Blackmon Lab">
+  <meta property="og:description" content="Latest news and highlights from the Blackmon Lab at Texas A&M University.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://coleoguy.github.io/publications.html">
+  <meta property="og:url" content="https://coleoguy.github.io/news.html">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
@@ -37,20 +37,9 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Publications - Blackmon Lab",
-    "description": "Peer-reviewed publications from the Blackmon Lab",
-    "url": "https://coleoguy.github.io/publications.html"
-  }
-  </script>
 </head>
 
-<body class="publications-page">
+<body class="news-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -63,11 +52,11 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html" class="active">Publications</a></li>
+          <li><a href="publications.html">Publications</a></li>
           <li><a href="team.html">Team</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
+          <li><a href="news.html" class="active">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
         <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
@@ -78,23 +67,17 @@
   <main class="main">
 
     <!-- Page Header -->
-    <section class="page-header section">
+    <section class="page-header">
       <div class="container" data-aos="fade-up">
-        <h1>Publications</h1>
+        <h1>Lab News</h1>
+        <p>Recent highlights, publications, awards, and updates from the Blackmon Lab.</p>
       </div>
     </section>
 
-    <!-- Publications Section -->
+    <!-- News Timeline -->
     <section class="section">
       <div class="container" data-aos="fade-up">
-        <div style="display: flex; align-items: baseline; flex-wrap: wrap; gap: 16px; margin-bottom: 2rem;">
-          <div class="scholar-links" style="display: flex; align-items: baseline;">
-            <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank" class="scholar-link"><i class="bi bi-mortarboard-fill"></i> Google Scholar</a>
-            <a href="https://orcid.org/0000-0002-5433-4036" target="_blank" class="scholar-link" style="margin-left: 12px;"><i class="bi bi-link-45deg"></i> ORCID</a>
-          </div>
-          <div data-scholar-metrics="compact" style="display: flex; align-items: baseline;"></div>
-        </div>
-        <div id="publications-list"></div>
+        <div id="news-feed" data-max-items="100" data-layout="timeline"></div>
       </div>
     </section>
 
@@ -124,10 +107,7 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <!-- ORCID Publications -->
-  <script src="assets/js/orcid-pubs.js"></script>
-
-  <!-- Scholar Metrics -->
-  <script src="assets/js/scholar-metrics.js"></script>
+  <!-- News Feed -->
+  <script src="assets/js/news-feed.js"></script>
 </body>
 </html>
