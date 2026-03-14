@@ -11,6 +11,13 @@
 
   const NEWS_DATA = [
     {
+      "date": "2026-03-14",
+      "title": "Lab paper sprint: 10 manuscripts targeted for submission",
+      "body": "The week of March 16th we are launching a lab-wide paper sprint with a goal of submitting or resubmitting 10 manuscripts. We have multiple graduate students and undergraduates with papers that are virtually complete — this is a coordinated push to get them across the finish line. We will post updates here as each paper is submitted or resubmitted.",
+      "category": "lab",
+      "icon": "bi-journal-check"
+    },
+    {
       "date": "2026-02-19",
       "title": "Dr. Megan Copeland successfully defends dissertation",
       "body": "Megan Copeland defended her PhD dissertation on February 19th, capping years of research bridging avian genomics, hybrid compatibility, and domestication biology. Congratulations, Dr. Copeland!",

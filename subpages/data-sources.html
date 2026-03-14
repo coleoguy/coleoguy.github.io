@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Public Data Sources - Blackmon Lab</title>
+  <meta name="description" content="Curated list of open-access databases, repositories, and resources for comparative and evolutionary biology. Blackmon Lab, Texas A&M University.">
+  <meta name="keywords" content="data sources, databases, phylogenetics, trait data, occurrence records, genomics, biodiversity, open science">
+  <link rel="canonical" href="https://coleoguy.github.io/subpages/data-sources.html">
+
+  <meta property="og:title" content="Public Data Sources - Blackmon Lab">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://coleoguy.github.io/subpages/data-sources.html">
+  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <link href="../assets/img/favicon.ico" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .grants-section-heading {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-top: 44px;
+      margin-bottom: 4px;
+    }
+    .grant-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      columns: 2;
+      column-gap: 40px;
+    }
+    .grant-list li {
+      padding: 5px 0;
+      break-inside: avoid;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .grant-list a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .grant-list a:hover {
+      color: var(--accent);
+    }
+    .grant-list .note {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    @media (max-width: 640px) {
+      .grant-list { columns: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section class="page-header">
+      <div class="container">
+        <h1>Public Data Sources</h1>
+        <p>Open-access databases, repositories, and resources for comparative and evolutionary biology.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 24px; padding-bottom: 60px;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+
+            <!-- Trait & Phenotype Databases -->
+            <h4 class="grants-section-heading" data-aos="fade-up">Trait &amp; Phenotype Databases</h4>
+            <ul class="grant-list">
+              <li><a href="https://figshare.com/s/b990722d72a26b5bfead" target="_blank">AVONET</a> <span class="note">comprehensive morphological, ecological, and life-history data for all ~11,000 bird species</span></li>
+              <li><a href="http://esapubs.org/archive/ecol/E090/184/" target="_blank">PanTHERIA</a> <span class="note">life-history, ecology, and geography for all known extant mammals; also available via the PanTHERIA R package</span></li>
+              <li><a href="https://www.try-db.org/TryWeb/Home.php" target="_blank">TRY Plant Trait Database</a> <span class="note">global database of plant traits across 2,500+ species; access requires registration</span></li>
+              <li><a href="https://genomics.senescence.info/species/" target="_blank">AnAge: Animal Ageing and Longevity Database</a> <span class="note">longevity and life-history traits for 4,000+ animal species</span></li>
+              <li><a href="https://www.nature.com/articles/sdata2017123" target="_blank">AmphiBIO</a> <span class="note">ecological trait data for 6,776 amphibian species</span></li>
+            </ul>
+
+            <!-- Occurrence & Taxonomy -->
+            <h4 class="grants-section-heading" data-aos="fade-up">Occurrence &amp; Taxonomy</h4>
+            <ul class="grant-list">
+              <li><a href="https://www.gbif.org/" target="_blank">GBIF</a> <span class="note">Global Biodiversity Information Facility; 2+ billion species occurrence records; R package <code>rgbif</code></span></li>
+              <li><a href="https://www.inaturalist.org/" target="_blank">iNaturalist</a> <span class="note">community-contributed observations with photos and locations; API available</span></li>
+              <li><a href="https://www.itis.gov/" target="_blank">ITIS</a> <span class="note">Integrated Taxonomic Information System; authoritative taxonomic names for North American species</span></li>
+              <li><a href="https://www.ncbi.nlm.nih.gov/taxonomy" target="_blank">NCBI Taxonomy</a> <span class="note">taxonomic backbone for all NCBI databases; downloadable flat files</span></li>
+              <li><a href="https://www.catalogueoflife.org/" target="_blank">Catalogue of Life</a> <span class="note">global species checklist with ~2 million accepted species names</span></li>
+              <li><a href="https://species.wikimedia.org/wiki/Main_Page" target="_blank">Wikispecies</a> <span class="note">free species directory; open-edit taxon pages with literature links</span></li>
+              <li><a href="https://www.worldfloraonline.org/" target="_blank">World Flora Online</a> <span class="note">authoritative plant names and classification</span></li>
+            </ul>
+
+            <!-- Phylogenies & Divergence Times -->
+            <h4 class="grants-section-heading" data-aos="fade-up">Phylogenies &amp; Divergence Times</h4>
+            <ul class="grant-list">
+              <li><a href="https://tree.opentreeoflife.org/" target="_blank">Open Tree of Life</a> <span class="note">synthetic supertree of all life; API via the <code>rotl</code> R package</span></li>
+              <li><a href="http://www.timetree.org/" target="_blank">TimeTree</a> <span class="note">database of published divergence time estimates; search any pair of taxa</span></li>
+              <li><a href="https://treebase.org/" target="_blank">TreeBASE</a> <span class="note">repository of published phylogenetic matrices and trees; searchable by taxon or publication</span></li>
+              <li><a href="https://vertlife.org/" target="_blank">VertLife</a> <span class="note">posterior distributions of fully-sampled vertebrate phylogenies for birds, mammals, amphibians, squamates</span></li>
+            </ul>
+
+            <!-- Genomics & Sequence Data -->
+            <h4 class="grants-section-heading" data-aos="fade-up">Genomics &amp; Sequence Data</h4>
+            <ul class="grant-list">
+              <li><a href="https://www.ncbi.nlm.nih.gov/" target="_blank">NCBI GenBank / SRA</a> <span class="note">primary archive for sequence data, raw reads, and genomes</span></li>
+              <li><a href="https://www.ensembl.org/" target="_blank">Ensembl</a> <span class="note">annotated vertebrate genomes with comparative genomics tools</span></li>
+              <li><a href="https://genome.ucsc.edu/" target="_blank">UCSC Genome Browser</a> <span class="note">genome assembly browser with annotation tracks</span></li>
+              <li><a href="https://www.ncbi.nlm.nih.gov/genome/" target="_blank">NCBI Genome</a> <span class="note">genome assemblies and annotation for thousands of species</span></li>
+              <li><a href="https://flybase.org/" target="_blank">FlyBase</a> <span class="note">Drosophila genomics and genetics (community resource)</span></li>
+              <li><a href="https://wormbase.org/" target="_blank">WormBase</a> <span class="note">C. elegans and related nematode genomics</span></li>
+            </ul>
+
+            <!-- Repositories & Data Archives -->
+            <h4 class="grants-section-heading" data-aos="fade-up">Repositories &amp; Data Archives</h4>
+            <ul class="grant-list">
+              <li><a href="https://datadryad.org/" target="_blank">Dryad</a> <span class="note">data underlying published papers; CC0 license; DOI-minted datasets</span></li>
+              <li><a href="https://zenodo.org/" target="_blank">Zenodo</a> <span class="note">CERN-hosted open repository for any research output; R packages, datasets, code</span></li>
+              <li><a href="https://figshare.com/" target="_blank">Figshare</a> <span class="note">figures, datasets, code, and preprints; unlimited public storage</span></li>
+              <li><a href="https://osf.io/" target="_blank">OSF (Open Science Framework)</a> <span class="note">project management + data/code sharing platform widely used in ecology/evolution</span></li>
+            </ul>
+
+            <!-- R Packages for Data Access -->
+            <h4 class="grants-section-heading" data-aos="fade-up">R Packages for Data Access</h4>
+            <ul class="grant-list">
+              <li><code>rotl</code> <span class="note">R interface to Open Tree of Life API</span></li>
+              <li><code>rgbif</code> <span class="note">access GBIF occurrence data from R</span></li>
+              <li><code>taxize</code> <span class="note">taxonomic name resolution across multiple databases from R</span></li>
+              <li><code>ape</code> / <code>phytools</code> <span class="note">read and manipulate phylogenies</span></li>
+              <li><code>rfishbase</code> <span class="note">access FishBase from R</span></li>
+              <li><code>rentrez</code> <span class="note">NCBI Entrez API from R</span></li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Resources Section -->
+    <section class="section" style="padding-top: 0; padding-bottom: 60px;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div style="padding: 24px; background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 4px;">
+              <h4 style="font-size: 0.9rem; margin-bottom: 16px; color: var(--text);">Related Resources</h4>
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+                <li><a href="../karyotypes/index.html" style="color: var(--text); text-decoration: none; transition: color 0.15s;">Karyotype Databases</a> — our own karyotype data collection</li>
+                <li><a href="../phylo-methods/index.html" style="color: var(--text); text-decoration: none; transition: color 0.15s;">Phylogenetic Comparative Methods Guide</a> — methods and best practices</li>
+                <li><a href="../resources.html" style="color: var(--text); text-decoration: none; transition: color 0.15s;">Resources</a> — additional lab resources and tools</li>
+              </ul>
+              <style>
+                .section a:hover {
+                  color: var(--accent);
+                }
+              </style>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

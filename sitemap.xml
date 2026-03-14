@@ -216,4 +216,28 @@
     <loc>https://coleoguy.github.io/phylo-methods/discrete-continuous.html</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://coleoguy.github.io/citation-network.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/chromosome-evolution-history.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/phylo-methods/bd-simulator.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/subpages/data-sources.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/subpages/glossary.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/phylo-methods/likelihood-ridges.html</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>

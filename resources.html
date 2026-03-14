@@ -52,6 +52,78 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* ── Compact resource layout ─────────────────────── */
+    .res-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 52px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .res-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .res-grid { grid-template-columns: 1fr; } }
+
+    .res-col h3 {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+      padding-bottom: 6px;
+      margin: 0 0 4px;
+    }
+
+    .res-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+    }
+
+    .res-list li {
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      line-height: 1.35;
+    }
+
+    .res-list li:last-child { border-bottom: none; }
+
+    .res-list a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-primary, rgba(248,244,237,0.9));
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .res-list a:hover { color: var(--accent, #c9a227); }
+
+    .res-list small {
+      display: block;
+      font-size: 0.73rem;
+      color: var(--text-secondary, rgba(200,197,190,0.45));
+      margin-top: 1px;
+      line-height: 1.4;
+    }
+
+    .res-list small a {
+      font-size: inherit;
+      font-weight: 400;
+      color: var(--accent, #c9a227);
+      opacity: 0.7;
+    }
+    .res-list small a:hover { opacity: 1; }
+
+    .res-divider {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(200,197,190,0.3);
+      padding: 10px 0 4px;
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
@@ -89,133 +161,164 @@
     </section>
 
     <section class="section">
-      <div class="container">
-        <div class="row">
-          <!-- Tools Column -->
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="resource-category">
-              <h4><i class="bi bi-tools"></i> Tools</h4>
-              <div class="resource-item">
-                <a href="subpages/resources.html" target="_blank" class="resource-link">Foundational Resources</a>
-                <p class="resource-desc">Software and mentoring resources for data, writing, and career planning.</p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/Prompting.html" target="_blank" class="resource-link">Prompting Guide</a>
-                <p class="resource-desc">AI prompting guide and useful prompts for paper review or qualifying exam simulation.</p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/AI-Tools.html" target="_blank" class="resource-link">AI Tools for Biologists</a>
-                <p class="resource-desc">AI tools to model, analyze, and understand life in a data-driven future.</p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/popgen-sim.html" target="_blank" class="resource-link">Population Genetics Simulator</a>
-                <p class="resource-desc">Interactive Wright-Fisher simulator - drift, selection, mutation, migration, bottlenecks, and sex chromosome evolution.</p>
-              </div>
-            </div>
+      <div class="container" data-aos="fade-up">
+        <div class="res-grid">
 
-            <div class="resource-category">
-              <h4><i class="bi bi-box-seam"></i> R Packages</h4>
-              <div class="resource-item">
-                <a href="https://github.com/coleoguy/DirectRepeateR" target="_blank" class="resource-link">DirectRepeateR</a>
-                <p class="resource-desc">Find and annotate direct repeats in genome assemblies; produces GFF-style output.</p>
-              </div>
-              <div class="resource-item">
-                <a href="https://github.com/coleoguy/chromePlus" target="_blank" class="resource-link">chromePlus</a>
-                <p class="resource-desc">Markov models for chromosome number and binary trait evolution, compatible with diversitree.</p>
-              </div>
-              <div class="resource-item">
-                <a href="https://github.com/johnathanlo/micRocounter" target="_blank" class="resource-link">micRocounter</a>
-                <p class="resource-desc">Identify all 2-6mer repeats in genome assemblies, optimized for speed.</p>
-              </div>
-              <div class="resource-item">
-                <a href="https://github.com/coleoguy/evobir" target="_blank" class="resource-link">evobiR</a>
-                <p class="resource-desc">R functions for empirical data analysis, simulation, and teaching. <a href="subpages/evobir.html" target="_blank">Vignette</a></p>
-              </div>
-              <div class="resource-item">
-                <a href="https://github.com/coleoguy/SAGA2" target="_blank" class="resource-link">SAGA2</a>
-                <p class="resource-desc">Model-averaged line cross analysis using AICc.</p>
-              </div>
-            </div>
+          <!-- Column 1: Software -->
+          <div class="res-col">
+            <h3>Software</h3>
+            <ul class="res-list">
+              <li>
+                <a href="https://github.com/coleoguy/chromePlus" target="_blank">chromePlus</a>
+                <small>Markov models for chromosome + binary trait evolution &mdash; <a href="phylo-methods/discrete.html">guide</a> &middot; <a href="chromosome-evolution-history.html">history</a></small>
+              </li>
+              <li>
+                <a href="https://github.com/coleoguy/evobir" target="_blank">evobiR</a>
+                <small>Analysis, simulation &amp; teaching functions &mdash; <a href="subpages/evobir.html" target="_blank">vignette</a></small>
+              </li>
+              <li>
+                <a href="https://github.com/coleoguy/SAGA2" target="_blank">SAGA2</a>
+                <small>Model-averaged line cross analysis (AICc)</small>
+              </li>
+              <li>
+                <a href="https://github.com/coleoguy/DirectRepeateR" target="_blank">DirectRepeateR</a>
+                <small>Direct repeat annotation in genome assemblies</small>
+              </li>
+              <li>
+                <a href="https://github.com/johnathanlo/micRocounter" target="_blank">micRocounter</a>
+                <small>Fast 2–6mer repeat identification</small>
+              </li>
+              <li>
+                <a href="https://github.com/coleoguy" target="_blank">All GitHub repos →</a>
+              </li>
+            </ul>
 
-            <div class="resource-category">
-              <h4><i class="bi bi-database"></i> Databases</h4>
-              <div class="resource-item">
-                <a href="karyotypes/index.html" target="_blank" class="resource-link">Karyotype Databases</a>
-                <p class="resource-desc">8,000+ records for amphibians, Coleoptera, and Polyneoptera with custom queries.</p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/karyotype-agent.html" target="_blank" class="resource-link">Autonomous Karyotype Data Collector</a>
-                <p class="resource-desc">AI-native agent that mines beetle cytogenetics literature automatically - triage, PDF extraction, and structured output via Claude.</p>
-              </div>
-              <div class="resource-item">
-                <a href="http://www.treeofsex.org" target="_blank" class="resource-link">Tree of Sex Database</a>
-                <p class="resource-desc">30K+ records on sex determination systems across the tree of life (NESCent).</p>
-              </div>
-              <div class="resource-item">
-                <a href="https://evobir.shinyapps.io/CaveCrawler/" target="_blank" class="resource-link">CaveCrawler</a>
-                <p class="resource-desc">Interactive bioinformatic analysis of Mexican tetra (Astyanax mexicanus) data.</p>
-              </div>
-            </div>
+            <span class="res-divider">Interactive</span>
+            <ul class="res-list">
+              <li>
+                <a href="subpages/popgen-sim.html" target="_blank">Population Genetics Simulator</a>
+                <small>Wright-Fisher: drift, selection, mutation, migration, sex chromosomes</small>
+              </li>
+              <li>
+                <a href="phylo-methods/bd-simulator.html" target="_blank">Birth-Death Tree Simulator</a>
+                <small>Same rates, different outcomes — stochasticity of macroevolution</small>
+              </li>
+              <li>
+                <a href="https://evobir.shinyapps.io/CaveCrawler/" target="_blank">CaveCrawler</a>
+                <small>Interactive cave fish (<em>Astyanax</em>) bioinformatics</small>
+              </li>
+              <li>
+                <a href="subpages/AI-Tools.html" target="_blank">AI Tools for Biologists</a>
+                <small>Curated tools for data-driven biology</small>
+              </li>
+              <li>
+                <a href="subpages/glossary.html" target="_blank">Research Glossary</a>
+                <small>PCM, chromosome evolution, and pop-gen terms defined</small>
+              </li>
+            </ul>
           </div>
 
-          <!-- Teaching Column -->
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="resource-category">
-              <h4><i class="bi bi-mortarboard"></i> Teaching</h4>
-              <div class="resource-item">
-                <a href="subpages/phylo101.html" target="_blank" class="resource-link">Phylogenetics 101</a>
-                <p class="resource-desc">3-hour introduction to phylogenetics for upper-level undergrads or early grad students.</p>
-              </div>
-              <div class="resource-item">
-                <a href="phylo-methods/index.html" target="_blank" class="resource-link">Phylogenetic Comparative Methods</a>
-                <p class="resource-desc">Interactive guide from first principles to working analyses: phylogenies, continuous traits, discrete traits, and combined methods.</p>
-              </div>
-              <div class="resource-item">
-                <a href="https://docs.google.com/spreadsheets/d/1cV6ajWF-8pZVPIsrQ-p6W4rCY5S_HWbZZQ-KOxE6xFw/edit?usp=sharing" target="_blank" class="resource-link">Fall 2025 Journal Club</a>
-                <p class="resource-desc">Reading articles from each of the 2024 issues of the Journal of Evolutionary Biology.</p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/expdes.html" target="_blank" class="resource-link">Experimental Design Course</a>
-                <p class="resource-desc">Foundation in designing statistically tractable biological experiments using R.</p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/grad101.html" target="_blank" class="resource-link">Orientation to Graduate School</a>
-                <p class="resource-desc">Tools for completing your Ph.D. and securing jobs: mentoring, identity, and academia.</p>
-              </div>
-              <div class="resource-item">
-                <a href="rseminar/index.html" target="_blank" class="resource-link">R for Biologists Seminar</a>
-                <p class="resource-desc">Tutorials and datasets for common analyses in ecology and evolution. No prior R experience needed.</p>
-              </div>
-              <div class="resource-item">
-                <a href="reading.group/index.html" target="_blank" class="resource-link">Foundations of Evolutionary Biology</a>
-                <p class="resource-desc">Seminar covering foundational papers of the modern evolutionary synthesis.</p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/cures-data.html" target="_blank" class="resource-link">CURE Data Munging Guide</a>
-                <p class="resource-desc">Course-based Undergraduate Research Experience: investigating chromosome number evolution.</p>
-              </div>
-            </div>
+          <!-- Column 2: Data -->
+          <div class="res-col">
+            <h3>Data</h3>
+            <ul class="res-list">
+              <li>
+                <a href="karyotypes/index.html">Karyotype Databases</a>
+                <small>14,000+ cytogenetic records — beetles, flies, amphibians, mammals, Polyneoptera</small>
+              </li>
+              <li>
+                <a href="http://www.treeofsex.org" target="_blank">Tree of Sex Database</a>
+                <small>30,000+ records on sex determination across the tree of life</small>
+              </li>
+              <li>
+                <a href="subpages/karyotype-agent.html" target="_blank">Autonomous Karyotype Collector</a>
+                <small>AI agent mining beetle cytogenetics literature in real time</small>
+              </li>
+              <li>
+                <a href="subpages/data-sources.html" target="_blank">Public Data Sources</a>
+                <small>AVONET, PanTHERIA, GBIF, Open Tree of Life, Dryad &amp; more</small>
+              </li>
+            </ul>
 
-            <div class="resource-category">
-              <h4><i class="bi bi-link-45deg"></i> Other</h4>
-              <div class="resource-item">
-                <a href="https://github.com/coleoguy" target="_blank" class="resource-link">GitHub Repository</a>
-                <p class="resource-desc">Public development and analysis repositories.</p>
-              </div>
-              <div class="resource-item">
-                <a href="https://evobir.shinyapps.io/TA-assignments/" target="_blank" class="resource-link">TA Assignment App</a>
-                <p class="resource-desc"><a href="subpages/TA-assignmentapp.html" target="_blank">Tutorial</a> &middot; <a href="https://forms.gle/RmS8CvmGE4KRKAAm6" target="_blank">Google Form</a></p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/raspberrypicluster.html" target="_blank" class="resource-link">Raspberry Pi Cluster Build</a>
-                <p class="resource-desc">Notes on building a 26-node Raspberry Pi 4B cluster.</p>
-              </div>
-              <div class="resource-item">
-                <a href="subpages/grants.html" target="_blank" class="resource-link">Graduate Funding Opportunities</a>
-                <p class="resource-desc">Curated list of funding sources for graduate students.</p>
-              </div>
-            </div>
+            <span class="res-divider">Background Reading</span>
+            <ul class="res-list">
+              <li>
+                <a href="chromosome-evolution-history.html">History of Chromosome Evolution</a>
+                <small>Stebbins to ChromEvol — a century of ideas</small>
+              </li>
+              <li>
+                <a href="citation-network.html">Publication Network</a>
+                <small>Interactive co-authorship graph</small>
+              </li>
+            </ul>
+
+            <span class="res-divider">Lab &amp; Admin</span>
+            <ul class="res-list">
+              <li>
+                <a href="subpages/grants.html" target="_blank">Graduate Funding Opportunities</a>
+              </li>
+              <li>
+                <a href="https://evobir.shinyapps.io/TA-assignments/" target="_blank">TA Assignment App</a>
+                <small><a href="subpages/TA-assignmentapp.html" target="_blank">Tutorial</a> &middot; <a href="https://forms.gle/RmS8CvmGE4KRKAAm6" target="_blank">Google Form</a></small>
+              </li>
+              <li>
+                <a href="subpages/raspberrypicluster.html" target="_blank">Raspberry Pi Cluster Build</a>
+                <small>26-node Pi 4B cluster notes</small>
+              </li>
+            </ul>
           </div>
+
+          <!-- Column 3: Teaching -->
+          <div class="res-col">
+            <h3>Teaching</h3>
+            <ul class="res-list">
+              <li>
+                <a href="phylo-methods/index.html" target="_blank">Phylogenetic Comparative Methods</a>
+                <small>Interactive guide: phylogenies → continuous → discrete → combined</small>
+              </li>
+              <li>
+                <a href="subpages/phylo101.html" target="_blank">Phylogenetics 101</a>
+                <small>3-hour intro for upper undergrads / early grad students</small>
+              </li>
+              <li>
+                <a href="rseminar/index.html" target="_blank">R for Biologists</a>
+                <small>Tutorials for common ecology &amp; evolution analyses; no prior R needed</small>
+              </li>
+              <li>
+                <a href="subpages/expdes.html" target="_blank">Experimental Design</a>
+                <small>Statistically tractable experiment design using R</small>
+              </li>
+              <li>
+                <a href="subpages/cures-data.html" target="_blank">CURE Data Guide</a>
+                <small>Undergrad research: chromosome number evolution</small>
+              </li>
+              <li>
+                <a href="reading.group/index.html" target="_blank">Foundations of Evo Bio</a>
+                <small>Seminar — foundational papers of the modern synthesis</small>
+              </li>
+              <li>
+                <a href="https://docs.google.com/spreadsheets/d/1cV6ajWF-8pZVPIsrQ-p6W4rCY5S_HWbZZQ-KOxE6xFw/edit?usp=sharing" target="_blank">Fall 2025 Journal Club</a>
+                <small>JEB 2024 reading list</small>
+              </li>
+            </ul>
+
+            <span class="res-divider">For grad students</span>
+            <ul class="res-list">
+              <li>
+                <a href="subpages/grad101.html" target="_blank">Grad School Orientation</a>
+                <small>Mentoring, identity, and securing jobs</small>
+              </li>
+              <li>
+                <a href="subpages/resources.html" target="_blank">Foundational Resources</a>
+                <small>Data, writing, and career planning tools</small>
+              </li>
+              <li>
+                <a href="subpages/Prompting.html" target="_blank">AI Prompting Guide</a>
+                <small>Paper review, qual exam simulation, and more</small>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </section>

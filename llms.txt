@@ -46,6 +46,11 @@ Heath Blackmon, Ph.D. — Associate Head, Department of Biology, Texas A&M Unive
 - Bio & AI CURE: https://coleoguy.github.io/biolai-cure.html
 - STEGG Conference: https://coleoguy.github.io/stegg.html
 - AI Concentration: https://coleoguy.github.io/tamu-ai-concentration.html
+- PCM Guide (index): https://coleoguy.github.io/phylo-methods/index.html
+- PCM Guide — Phylogenies: https://coleoguy.github.io/phylo-methods/phylogenies.html
+- PCM Guide — Continuous Traits: https://coleoguy.github.io/phylo-methods/continuous.html
+- PCM Guide — Discrete Traits: https://coleoguy.github.io/phylo-methods/discrete.html
+- PCM Guide — Discrete + Continuous: https://coleoguy.github.io/phylo-methods/discrete-continuous.html
 
 ## Contact
 
@@ -70,6 +75,44 @@ Six searchable, filterable, downloadable karyotype databases embedded as static 
 Hub page: https://coleoguy.github.io/karyotypes/
 Total records: 14,037 karyotypes across vertebrates and insects.
 
+## Phylogenetic Comparative Methods (PCM) Interactive Guide
+
+An interactive teaching resource covering the core methods in phylogenetic comparative biology. All visualizations run client-side in the browser with no server required.
+
+### Phylogenies
+URL: https://coleoguy.github.io/phylo-methods/phylogenies.html
+Covers tree reading, cladograms vs phylograms, branch lengths, tree rotation, and a fully interactive D3.js vertebrate chronogram with toggleable branch lengths.
+
+### Continuous Trait Evolution
+URL: https://coleoguy.github.io/phylo-methods/continuous.html
+Brownian motion simulation, phylogenetic signal, PGLS regression. Includes live simulator (adjustable sigma, single/20-sim modes), signal comparison SVGs, and PGLS vs OLS regression visualization.
+
+### Discrete Trait Evolution
+URL: https://coleoguy.github.io/phylo-methods/discrete.html
+Mk model, ancestral state reconstruction, stochastic character mapping, Pagel's test. Includes interactive Markov diagram, ASR visualization with marginal probability pies, and stochastic character mapping panels. Also covers chromePlus (R package for chromosome number evolution — gain/loss/polyploidy/demiploidy with binary trait modulation) and a comparison of maximum likelihood vs Bayesian inference with an interactive posterior/likelihood/prior canvas.
+
+### Discrete + Continuous (ANCOVA, Pagel's Lambda)
+URL: https://coleoguy.github.io/phylo-methods/discrete-continuous.html
+PGLS-ANCOVA for mixed trait models, Pagel's lambda phylogenetic signal parameter. Lambda heatmap shows how the phylogenetic covariance matrix changes from no signal (lambda=0) to full BM expectation (lambda=1).
+
+### Birth-Death Tree Simulator
+URL: https://coleoguy.github.io/phylo-methods/bd-simulator.html
+Interactive birth-death tree simulator using the Gillespie algorithm. Runs two independent simulations with identical λ (speciation) and μ (extinction) rates, showing how stochastic macroevolutionary processes produce radically different tree topologies and diversity. Adjustable sliders for λ, μ, and crown age. Visual: gold=surviving lineages, grey=extinct lineages, red dots=extinction events, teal dots=extant tips. Paired panels illustrate how the same net diversification rate (r = λ − μ) can yield very different outcomes.
+
+### Likelihood Ridges in Discrete Trait Models
+URL: https://coleoguy.github.io/phylo-methods/likelihood-ridges.html
+Conceptual guide explaining a key numerical challenge in Mk-model maximum likelihood estimation: high rate parameters proportional to trait spread across the tree can fit data nearly as well as the true MLE, creating a flat ridge in likelihood space at biologically unrealistic values. Explains why MCMC with priors or multiple starting points is essential, and what happens when optimization wanders into this region. Includes interactive likelihood surface visualization and links to discrete trait methods.
+
+## Chromosome Number Evolution — Intellectual History
+
+A standalone editorial page tracing a century of ideas on karyotype evolution, from the cytological foundations (Stebbins, White) through the population genetic challenge (Lande), the hybrid speciation synthesis (Rieseberg), and the probabilistic revolution (Mayrose ChromEvol, Zenil-Ferguson BiChroM/ChromoSSE). Ends with open questions and the Blackmon Lab's contributions. Newspaper-style two-column layout. Links to karyotype databases, chromePlus, and the PCM guide.
+URL: https://coleoguy.github.io/chromosome-evolution-history.html
+
+## Citation Network
+
+An interactive force-directed graph showing the lab's publication network. Nodes are papers sized by citation count and colored by year (gold→teal). Edges connect papers that share co-authors. Built with D3.js, fetches live data from OpenAlex by ORCID. Supports pan/zoom, hover tooltips, node dimming, and click-to-DOI. Includes a stats overlay (paper count, total citations, connections) and a color/size legend.
+URL: https://coleoguy.github.io/citation-network.html
+
 ## AI-Native Biology Program
 
 The Blackmon Lab is building AI-native workflows for evolutionary biology. Full program overview:
@@ -89,3 +132,13 @@ Course-Based Undergraduate Research Experience (Spring 2026) where students cond
 ### AI in Biology Concentration (Texas A&M)
 URL: https://coleoguy.github.io/tamu-ai-concentration.html
 Formal degree concentration at Texas A&M — 10 semester hours of AI-focused coursework in Biology BS and PhD programs.
+
+## Public Data Sources for Evolutionary Biology
+
+A curated directory of major open-access databases and repositories used in comparative and evolutionary biology research. Organized by category: trait databases (AVONET, PanTHERIA, TRY), occurrence/taxonomy (GBIF, iNaturalist, ITIS, NCBI Taxonomy), phylogenies (Open Tree of Life, TreeBASE, TimeTree), genomics (NCBI, Ensembl, UCSC), and repositories (Dryad, Zenodo, Figshare). Each entry includes a brief description and direct link.
+URL: https://coleoguy.github.io/subpages/data-sources.html
+
+## Research Glossary
+
+Plain-language definitions of core concepts in the Blackmon Lab's research areas: phylogenetics and comparative methods, chromosome and karyotype evolution, population genetics, and genomics. Terms include: birth-death model, Mk model, Brownian motion, PGLS, phylogenetic signal, sex chromosome, B chromosomes, fixation probability, coalescence, and more. Aimed at upper undergrads and early grad students entering the field.
+URL: https://coleoguy.github.io/subpages/glossary.html

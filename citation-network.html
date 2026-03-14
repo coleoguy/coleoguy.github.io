@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publication Network - Blackmon Lab</title>
+  <meta name="description" content="Interactive force-directed graph of Blackmon Lab publications, colored by year and connected by shared co-authorship.">
+  <link rel="canonical" href="https://coleoguy.github.io/citation-network.html">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    :root { --gold: #c9a227; --teal: #34d399; }
+
+    body { background: #080808; overflow: hidden; }
+
+    /* Full-bleed canvas below fixed header */
+    #network-wrap {
+      position: fixed;
+      top: 80px; left: 0; right: 0; bottom: 0;
+    }
+    #network-svg { width: 100%; height: 100%; display: block; }
+
+    /* Links */
+    .net-link { stroke: rgba(201,162,39,0.55); }
+
+    /* Nodes */
+    .net-node circle {
+      cursor: pointer;
+      transition: filter 0.15s;
+    }
+    .net-node:hover circle { filter: brightness(1.4) drop-shadow(0 0 6px rgba(255,255,255,0.4)); }
+
+    /* Tooltip */
+    #net-tooltip {
+      position: fixed;
+      background: rgba(12,12,12,0.97);
+      border: 1px solid rgba(201,162,39,0.28);
+      border-radius: 9px;
+      padding: 13px 16px;
+      max-width: 310px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.12s;
+      font-family: var(--font-body, system-ui, sans-serif);
+    }
+    #net-tooltip.visible { opacity: 1; }
+    #net-tooltip .tt-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #f0ede8;
+      line-height: 1.45;
+      margin-bottom: 7px;
+    }
+    #net-tooltip .tt-meta {
+      font-size: 11px;
+      color: rgba(200,197,192,0.6);
+      line-height: 1.7;
+    }
+    #net-tooltip .tt-citations { color: var(--gold); font-weight: 700; }
+    #net-tooltip .tt-open {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 10px;
+      color: rgba(200,197,192,0.35);
+      font-style: italic;
+    }
+
+    /* Stats panel — top-left */
+    #net-stats {
+      position: fixed;
+      top: 96px; left: 18px;
+      background: rgba(8,8,8,0.88);
+      border: 1px solid rgba(201,162,39,0.14);
+      border-radius: 9px;
+      padding: 14px 18px;
+      font-family: var(--font-mono, monospace);
+      font-size: 11px;
+      color: rgba(200,197,192,0.65);
+      z-index: 100;
+      line-height: 2;
+      display: none;
+    }
+    #net-stats strong { color: var(--gold); }
+    .stats-divider {
+      border: none;
+      border-top: 1px solid rgba(201,162,39,0.1);
+      margin: 8px 0;
+    }
+    #net-stats a {
+      color: rgba(200,197,192,0.4);
+      text-decoration: none;
+      font-size: 10px;
+      transition: color 0.2s;
+    }
+    #net-stats a:hover { color: var(--gold); }
+
+    /* Legend — bottom-right */
+    #net-legend {
+      position: fixed;
+      bottom: 22px; right: 18px;
+      background: rgba(8,8,8,0.88);
+      border: 1px solid rgba(201,162,39,0.14);
+      border-radius: 9px;
+      padding: 13px 16px;
+      z-index: 100;
+      font-size: 10.5px;
+      color: rgba(200,197,192,0.6);
+      display: none;
+      min-width: 160px;
+    }
+    #net-legend .leg-heading {
+      font-weight: 600;
+      color: rgba(200,197,192,0.8);
+      margin-bottom: 5px;
+      font-family: var(--font-mono, monospace);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    #legend-bar {
+      display: block;
+      width: 148px;
+      height: 7px;
+      border-radius: 4px;
+      margin: 4px 0 3px;
+    }
+    .leg-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: rgba(200,197,192,0.4);
+      margin-bottom: 10px;
+    }
+    #size-legend {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .leg-note {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(201,162,39,0.1);
+      font-size: 10px;
+      color: rgba(200,197,192,0.3);
+      line-height: 1.6;
+    }
+
+    /* Controls — bottom-left */
+    #net-controls {
+      position: fixed;
+      bottom: 22px; left: 18px;
+      display: none;
+      gap: 8px;
+      z-index: 100;
+    }
+    .net-btn {
+      background: rgba(8,8,8,0.9);
+      border: 1px solid rgba(201,162,39,0.18);
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 11px;
+      color: rgba(200,197,192,0.65);
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: var(--font-mono, monospace);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .net-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .net-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,162,39,0.06); }
+
+    /* Loading */
+    #net-loading {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: rgba(200,197,192,0.55);
+      font-family: var(--font-mono, monospace);
+      font-size: 12px;
+      z-index: 200;
+    }
+    .net-spinner {
+      width: 30px; height: 30px;
+      border: 2px solid rgba(201,162,39,0.15);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.85s linear infinite;
+      margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Fade-out hint */
+    #net-hint {
+      position: fixed;
+      bottom: 60px; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono, monospace);
+      font-size: 10px;
+      color: rgba(200,197,192,0.28);
+      z-index: 100;
+      pointer-events: none;
+      white-space: nowrap;
+      transition: opacity 1.5s ease;
+    }
+
+    /* Highlighted nodes */
+    .net-node.dimmed circle { opacity: 0.1; }
+    .net-link.dimmed { stroke-opacity: 0.04 !important; }
+    .net-link:not(.dimmed) { stroke: rgba(201,162,39,0.9); }
+  </style>
+</head>
+
+<body class="publications-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html" class="active">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Loading -->
+  <div id="net-loading">
+    <div class="net-spinner"></div>
+    Fetching publication data from OpenAlex…
+  </div>
+
+  <!-- SVG canvas -->
+  <div id="network-wrap">
+    <svg id="network-svg"></svg>
+  </div>
+
+  <!-- Floating tooltip -->
+  <div id="net-tooltip">
+    <div class="tt-title"></div>
+    <div class="tt-meta"></div>
+  </div>
+
+  <!-- Stats panel -->
+  <div id="net-stats">
+    <strong id="stat-papers">—</strong> papers<br>
+    <strong id="stat-citations">—</strong> total citations<br>
+    <strong id="stat-connections">—</strong> co-author connections
+    <hr class="stats-divider">
+    <a href="publications.html"><i class="bi bi-arrow-left"></i> Publications</a>
+  </div>
+
+  <!-- Legend -->
+  <div id="net-legend">
+    <div class="leg-heading">Year</div>
+    <canvas id="legend-bar" width="148" height="7"></canvas>
+    <div class="leg-row"><span id="leg-year-min">2012</span><span id="leg-year-max">2026</span></div>
+    <div class="leg-heading">Citations</div>
+    <div id="size-legend"></div>
+    <div class="leg-note">
+      Edges = shared co-authors<br>
+      Click node to open paper<br>
+      Scroll to zoom · drag to pan
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div id="net-controls">
+    <button class="net-btn" id="btn-reset" onclick="resetZoom()">
+      <i class="bi bi-arrows-fullscreen"></i> Reset
+    </button>
+    <button class="net-btn" id="btn-labels" onclick="toggleLabels()">
+      <i class="bi bi-tag"></i> Labels
+    </button>
+  </div>
+
+  <!-- Hint -->
+  <div id="net-hint">hover · drag · scroll to zoom · click to open paper</div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script>
+    const ORCID      = '0000-0002-5433-4036';
+    const HEATH_ORCID = `https://orcid.org/${ORCID}`;
+    const API_URL    = `https://api.openalex.org/works?filter=author.orcid:${ORCID}&per-page=100&sort=cited_by_count:desc`;
+
+    let simulation, svg, g, zoomBeh;
+    let linkSel, nodeSel, labelSel, labelGroup;
+    let labelsOn = false;
+    let yearMin = 2012, yearMax = 2026;
+
+    // Gold → teal color ramp matching site palette
+    const colorFor = year =>
+      d3.interpolateRgb('#c9a227', '#34d399')((year - yearMin) / Math.max(1, yearMax - yearMin));
+
+    const nodeR = citations => Math.max(5, Math.min(28, 4.5 + Math.sqrt(citations) * 1.9));
+
+    // ── Fetch & bootstrap ────────────────────────────────────────
+    async function init() {
+      try {
+        const resp = await fetch(API_URL);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        const works = (data.results || []).filter(w => w.title);
+        if (!works.length) throw new Error('No works returned');
+
+        yearMin = Math.min(...works.map(w => w.publication_year || 2012));
+        yearMax = Math.max(...works.map(w => w.publication_year || 2026));
+
+        // Nodes
+        const nodes = works.map((w, i) => ({
+          i,
+          title:       w.title,
+          year:        w.publication_year || 2020,
+          citations:   w.cited_by_count  || 0,
+          doi:         w.doi,
+          concept:     w.concepts?.[0]?.display_name || '',
+          coIds:       w.authorships
+                         .filter(a => a.author?.orcid !== HEATH_ORCID)
+                         .map(a => a.author?.id).filter(Boolean),
+          coNames:     w.authorships
+                         .filter(a => a.author?.orcid !== HEATH_ORCID)
+                         .map(a => a.author?.display_name).filter(Boolean),
+        }));
+
+        // Edges: shared non-Heath co-authors
+        const links = [];
+        for (let a = 0; a < nodes.length; a++) {
+          const setA = new Set(nodes[a].coIds);
+          for (let b = a + 1; b < nodes.length; b++) {
+            const shared = nodes[b].coIds.filter(id => setA.has(id)).length;
+            if (shared > 0) links.push({ source: a, target: b, w: shared });
+          }
+        }
+
+        // Stats
+        const totalCites = nodes.reduce((s, n) => s + n.citations, 0);
+        document.getElementById('stat-papers').textContent      = nodes.length;
+        document.getElementById('stat-citations').textContent   = totalCites.toLocaleString();
+        document.getElementById('stat-connections').textContent = links.length;
+        document.getElementById('leg-year-min').textContent     = yearMin;
+        document.getElementById('leg-year-max').textContent     = yearMax;
+
+        document.getElementById('net-loading').style.display  = 'none';
+        document.getElementById('net-stats').style.display    = 'block';
+        document.getElementById('net-legend').style.display   = 'block';
+        document.getElementById('net-controls').style.display = 'flex';
+
+        render(nodes, links);
+        drawLegend(nodes);
+
+        // Fade hint after 6 s
+        setTimeout(() => {
+          const h = document.getElementById('net-hint');
+          if (h) h.style.opacity = '0';
+        }, 6000);
+
+      } catch (err) {
+        document.getElementById('net-loading').innerHTML =
+          `<div style="color:rgba(244,63,94,0.75);max-width:320px;line-height:1.6;">
+             Could not load publication data.<br>
+             <small style="color:rgba(200,197,192,0.4)">${err.message}</small><br><br>
+             <a href="publications.html" style="color:var(--gold)">← Back to publications</a>
+           </div>`;
+      }
+    }
+
+    // ── Render ──────────────────────────────────────────────────
+    function render(nodes, links) {
+      const wrap = document.getElementById('network-wrap');
+      let W = wrap.offsetWidth, H = wrap.offsetHeight;
+
+      svg = d3.select('#network-svg').attr('width', W).attr('height', H);
+
+      // Click background → deselect
+      svg.on('click', deselect);
+
+      g = svg.append('g');
+
+      // Zoom / pan
+      zoomBeh = d3.zoom()
+        .scaleExtent([0.15, 8])
+        .on('zoom', e => g.attr('transform', e.transform));
+      svg.call(zoomBeh);
+
+      // Links
+      linkSel = g.append('g')
+        .selectAll('line')
+        .data(links)
+        .join('line')
+        .attr('class', 'net-link')
+        .attr('stroke-width', d => Math.min(4, 1.0 + d.w * 0.7))
+        .attr('stroke-opacity', d => Math.min(0.85, 0.45 + d.w * 0.15));
+
+      // Node groups
+      nodeSel = g.append('g')
+        .selectAll('g.net-node')
+        .data(nodes)
+        .join('g')
+        .attr('class', 'net-node')
+        .call(makeDrag());
+
+      nodeSel.append('circle')
+        .attr('r',            d => nodeR(d.citations))
+        .attr('fill',         d => colorFor(d.year))
+        .attr('fill-opacity', 0.88)
+        .attr('stroke',       d => colorFor(d.year))
+        .attr('stroke-opacity', 0.55)
+        .attr('stroke-width', 1.5)
+        .on('mouseover',  showTip)
+        .on('mousemove',  moveTip)
+        .on('mouseout',   hideTip)
+        .on('click',      handleClick);
+
+      // Labels (hidden by default) — keep group ref separate so toggle works
+      labelGroup = g.append('g').style('display', 'none');
+      labelSel = labelGroup
+        .selectAll('text')
+        .data(nodes)
+        .join('text')
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '7.5px')
+        .attr('fill', 'rgba(200,197,192,0.65)')
+        .attr('pointer-events', 'none')
+        .text(d => clip(d.title, 28));
+
+      // Force simulation
+      simulation = d3.forceSimulation(nodes)
+        .force('link',    d3.forceLink(links).id(d => d.i)
+                            .distance(d => 55 + 35 / d.w)
+                            .strength(0.38))
+        .force('charge',  d3.forceManyBody().strength(-170))
+        .force('center',  d3.forceCenter(W / 2, H / 2))
+        .force('collide', d3.forceCollide(d => nodeR(d.citations) + 4))
+        .on('tick', tick);
+
+      // Resize
+      window.addEventListener('resize', () => {
+        W = wrap.offsetWidth; H = wrap.offsetHeight;
+        svg.attr('width', W).attr('height', H);
+        simulation.force('center', d3.forceCenter(W / 2, H / 2)).alpha(0.08).restart();
+      });
+    }
+
+    function tick() {
+      linkSel
+        .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+      nodeSel.attr('transform', d => `translate(${d.x},${d.y})`);
+      if (labelsOn)
+        labelSel.attr('x', d => d.x).attr('y', d => d.y + nodeR(d.citations) + 10);
+    }
+
+    // ── Drag ────────────────────────────────────────────────────
+    function makeDrag() {
+      return d3.drag()
+        .on('start', (e, d) => { if (!e.active) simulation.alphaTarget(0.2).restart(); d.fx = d.x; d.fy = d.y; })
+        .on('drag',  (e, d) => { d.fx = e.x; d.fy = e.y; })
+        .on('end',   (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; });
+    }
+
+    // ── Tooltip ─────────────────────────────────────────────────
+    const tip = document.getElementById('net-tooltip');
+
+    function showTip(event, d) {
+      // Dim everything else
+      nodeSel.classed('dimmed', n => n !== d);
+      linkSel.classed('dimmed', l => l.source !== d && l.target !== d);
+
+      tip.querySelector('.tt-title').textContent = d.title;
+      tip.querySelector('.tt-meta').innerHTML =
+        `<span class="tt-citations">${d.citations.toLocaleString()} citation${d.citations !== 1 ? 's' : ''}</span> &middot; ${d.year}` +
+        (d.concept ? `<br>${d.concept}` : '') +
+        (d.coNames.length
+          ? `<br><span style="color:rgba(200,197,192,0.38)">${d.coNames.slice(0, 3).join(', ')}${d.coNames.length > 3 ? ` +${d.coNames.length - 3}` : ''}</span>`
+          : '') +
+        (d.doi ? `<br><span class="tt-open">click to open →</span>` : '');
+
+      tip.classList.add('visible');
+      positionTip(event);
+    }
+
+    function moveTip(event) { positionTip(event); }
+
+    function positionTip(event) {
+      let x = event.clientX + 16, y = event.clientY - 12;
+      tip.style.left = x + 'px'; tip.style.top = y + 'px';
+      requestAnimationFrame(() => {
+        const r = tip.getBoundingClientRect();
+        if (r.right  > window.innerWidth  - 8) tip.style.left = (event.clientX - r.width  - 16) + 'px';
+        if (r.bottom > window.innerHeight - 8) tip.style.top  = (event.clientY - r.height - 12) + 'px';
+      });
+    }
+
+    function hideTip() {
+      tip.classList.remove('visible');
+      nodeSel.classed('dimmed', false);
+      linkSel.classed('dimmed', false);
+    }
+
+    function handleClick(event, d) {
+      event.stopPropagation();
+      if (d.doi) window.open(d.doi, '_blank');
+    }
+
+    function deselect() {
+      nodeSel?.classed('dimmed', false);
+      linkSel?.classed('dimmed', false);
+    }
+
+    // ── Controls ─────────────────────────────────────────────────
+    function resetZoom() {
+      svg.transition().duration(550).call(zoomBeh.transform, d3.zoomIdentity);
+    }
+
+    function toggleLabels() {
+      labelsOn = !labelsOn;
+      labelGroup.style('display', labelsOn ? null : 'none');
+      if (labelsOn) labelSel.attr('x', d => d.x).attr('y', d => d.y + nodeR(d.citations) + 10);
+      document.getElementById('btn-labels').classList.toggle('active', labelsOn);
+    }
+
+    // ── Legend ───────────────────────────────────────────────────
+    function drawLegend(nodes) {
+      // Color bar
+      const canvas = document.getElementById('legend-bar');
+      const ctx = canvas.getContext('2d');
+      for (let i = 0; i < 148; i++) {
+        ctx.fillStyle = colorFor(yearMin + (i / 147) * (yearMax - yearMin));
+        ctx.fillRect(i, 0, 1, 7);
+      }
+
+      // Size guide
+      const maxC = Math.max(...nodes.map(n => n.citations));
+      const milestones = [0, Math.round(maxC * 0.2), Math.round(maxC * 0.6), maxC];
+      const box = document.getElementById('size-legend');
+      box.innerHTML = '';
+      milestones.forEach(c => {
+        const r = nodeR(c);
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:3px;';
+        wrap.innerHTML =
+          `<svg width="${r*2+2}" height="${r*2+2}" style="display:block">
+             <circle cx="${r+1}" cy="${r+1}" r="${r}"
+               fill="rgba(200,197,192,0.18)" stroke="rgba(200,197,192,0.35)" stroke-width="1"/>
+           </svg>
+           <span style="color:rgba(200,197,192,0.35);font-size:9px">${c}</span>`;
+        box.appendChild(wrap);
+      });
+    }
+
+    function clip(s, n) { return s && s.length > n ? s.slice(0, n) + '…' : s || ''; }
+
+    init();
+  </script>
+</body>
+</html>

@@ -1,28 +1,30 @@
 /**
- * Scholar Metrics - Displays citation data from Google Scholar
- * Data source: assets/data/scholar-metrics.json
- * To update: edit the JSON file with current Google Scholar values
+ * Scholar Metrics — live citation data via OpenAlex public API
+ *
+ * Primary source: OpenAlex (api.openalex.org) — free, no API key, ORCID lookup.
+ *   Note: OpenAlex counts differ slightly from Google Scholar because Google
+ *   indexes a broader document set. Both are valid; OpenAlex is open and
+ *   auto-updates on every page load.
+ * Fallback 1: assets/data/scholar-metrics.json  (manually maintained cache)
+ * Fallback 2: hardcoded values below
+ *
+ * To force a manual override, edit assets/data/scholar-metrics.json.
  */
 (function () {
-  const DATA_URL = 'assets/data/scholar-metrics.json';
+  const ORCID        = '0000-0002-5433-4036';
+  const OPENALEX_URL = `https://api.openalex.org/authors/https://orcid.org/${ORCID}`;
+  const JSON_URL     = 'assets/data/scholar-metrics.json';
+  const FALLBACK     = { citationCount: 2199, hIndex: 23, i10Index: 32 };
 
-  // Hardcoded fallback for local file:// testing (updated from Google Scholar)
-  const FALLBACK = { citationCount: 2199, hIndex: 23, i10Index: 32 };
-
-  // Find all containers that want metrics
   const containers = document.querySelectorAll('[data-scholar-metrics]');
   if (containers.length === 0) return;
 
   function animateNumber(el, target, duration) {
-    const start = 0;
     const startTime = performance.now();
-    function update(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(start + (target - start) * eased);
-      el.textContent = current.toLocaleString();
+    function update(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased    = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target).toLocaleString();
       if (progress < 1) requestAnimationFrame(update);
     }
     requestAnimationFrame(update);
@@ -63,8 +65,8 @@
         `;
       }
 
-      // Animate numbers on scroll
-      const observer = new IntersectionObserver((entries) => {
+      // Animate numbers into view
+      const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             container.querySelectorAll('[data-target]').forEach(el => {
@@ -78,16 +80,40 @@
     });
   }
 
+  // Try OpenAlex first, then local JSON cache, then hardcoded fallback
   async function fetchMetrics() {
+    // 1. OpenAlex live data (auto-updates, no key required)
     try {
-      const resp = await fetch(DATA_URL);
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const resp = await fetch(OPENALEX_URL);
+      if (!resp.ok) throw new Error(`OpenAlex HTTP ${resp.status}`);
+      const author = await resp.json();
+      const data = {
+        citationCount: author.cited_by_count           || 0,
+        hIndex:        author.summary_stats?.h_index   || 0,
+        i10Index:      author.summary_stats?.i10_index || 0,
+      };
+      if (data.citationCount > 0 && data.hIndex > 0) {
+        renderMetrics(data);
+        return;
+      }
+      throw new Error('OpenAlex returned implausible values');
+    } catch (e) {
+      console.info('Scholar metrics: OpenAlex unavailable, trying local cache.', e.message);
+    }
+
+    // 2. Local JSON cache (manually updated backup)
+    try {
+      const resp = await fetch(JSON_URL);
+      if (!resp.ok) throw new Error(`JSON cache HTTP ${resp.status}`);
       const data = await resp.json();
       renderMetrics(data);
-    } catch (err) {
-      console.warn('Scholar metrics fetch failed, using fallback:', err);
-      renderMetrics(FALLBACK);
+      return;
+    } catch (e) {
+      console.info('Scholar metrics: local cache unavailable, using hardcoded fallback.', e.message);
     }
+
+    // 3. Hardcoded fallback
+    renderMetrics(FALLBACK);
   }
 
   fetchMetrics();

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birth-Death Tree Simulator - Blackmon Lab</title>
+  <meta name="description" content="Interactive birth-death process simulator showing how identical evolutionary rates produce dramatically different phylogenetic trees by chance alone.">
+  <link rel="canonical" href="https://coleoguy.github.io/phylo-methods/bd-simulator.html">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+  <link href="../assets/img/favicon.ico" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* ── Page header ─────────────────────────── */
+    .page-header {
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 50px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-family: var(--font-heading, sans-serif);
+      color: var(--text-heading, #f8f4ed);
+      margin-bottom: 14px;
+    }
+    .page-header .subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      max-width: 680px;
+    }
+
+    /* ── Controls ────────────────────────────── */
+    .sim-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 28px;
+      padding: 28px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .ctrl-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 160px;
+    }
+    .ctrl-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary, rgba(200,197,190,0.55));
+    }
+    .ctrl-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ctrl-row input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 140px;
+      height: 4px;
+      background: rgba(201,162,39,0.2);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .ctrl-row input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px; height: 14px;
+      background: var(--accent, #c9a227);
+      border-radius: 50%;
+    }
+    .ctrl-val {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.82rem;
+      color: var(--accent, #c9a227);
+      min-width: 36px;
+    }
+    .btn-simulate {
+      padding: 10px 28px;
+      background: rgba(201,162,39,0.1);
+      border: 1.5px solid var(--accent, #c9a227);
+      color: var(--accent, #c9a227);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-simulate:hover { background: rgba(201,162,39,0.18); }
+    .btn-simulate:active { transform: scale(0.97); }
+
+    /* ── Tree panels ─────────────────────────── */
+    .tree-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 700px) { .tree-panels { grid-template-columns: 1fr; } }
+
+    .tree-panel {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border, rgba(255,255,255,0.07));
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .tree-panel-head {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tree-panel-head .run-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(200,197,190,0.4);
+    }
+    .tree-panel-head .run-stats {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.75rem;
+      color: var(--accent, #c9a227);
+    }
+    .tree-canvas-wrap { position: relative; }
+    canvas.tree-canvas {
+      display: block;
+      width: 100%;
+      height: 320px;
+    }
+    .extinct-overlay {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(8,8,8,0.6);
+      font-size: 0.85rem;
+      color: rgba(244,63,94,0.75);
+      font-family: var(--font-mono, monospace);
+      letter-spacing: 0.08em;
+    }
+    .extinct-overlay.show { display: flex; }
+
+    /* ── Explanation ─────────────────────────── */
+    .explanation {
+      margin-top: 44px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .explanation h2 {
+      font-size: 1.1rem;
+      color: var(--text-heading, #f8f4ed);
+      margin-bottom: 12px;
+    }
+    .explanation p {
+      font-size: 0.88rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      line-height: 1.75;
+      max-width: 800px;
+      margin-bottom: 10px;
+    }
+    .highlight-text { color: var(--accent, #c9a227); font-weight: 600; }
+
+    /* ── Nav buttons ─────────────────────────── */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      gap: 12px;
+    }
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .nav-button:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+
+<body>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-header">
+      <div class="container-xl">
+        <h1>Birth-Death Tree Simulator</h1>
+        <div class="subtitle">Two trees, same rates, very different outcomes — the stochastic heart of macroevolution</div>
+      </div>
+    </section>
+
+    <section class="content-section" style="padding: 0 0 60px;">
+      <div class="container-xl">
+
+        <!-- Controls -->
+        <div class="sim-controls">
+          <div class="ctrl-group">
+            <span class="ctrl-label">Birth rate (λ)</span>
+            <div class="ctrl-row">
+              <input type="range" id="lambdaSlider" min="0.2" max="3.0" step="0.1" value="1.0">
+              <span class="ctrl-val" id="lambdaVal">1.0</span>
+            </div>
+          </div>
+          <div class="ctrl-group">
+            <span class="ctrl-label">Death rate (μ)</span>
+            <div class="ctrl-row">
+              <input type="range" id="muSlider" min="0.0" max="1.5" step="0.05" value="0.3">
+              <span class="ctrl-val" id="muVal">0.30</span>
+            </div>
+          </div>
+          <div class="ctrl-group">
+            <span class="ctrl-label">Crown age (time)</span>
+            <div class="ctrl-row">
+              <input type="range" id="timeSlider" min="1" max="8" step="0.5" value="4">
+              <span class="ctrl-val" id="timeVal">4.0</span>
+            </div>
+          </div>
+          <button class="btn-simulate" id="simBtn" onclick="runSimulation()">
+            <i class="bi bi-shuffle"></i> Simulate
+          </button>
+        </div>
+
+        <!-- Tree panels -->
+        <div class="tree-panels">
+          <div class="tree-panel">
+            <div class="tree-panel-head">
+              <span class="run-label">Run 1</span>
+              <span class="run-stats" id="stats1">—</span>
+            </div>
+            <div class="tree-canvas-wrap">
+              <canvas class="tree-canvas" id="canvas1"></canvas>
+              <div class="extinct-overlay" id="extinct1">All lineages extinct</div>
+            </div>
+          </div>
+          <div class="tree-panel">
+            <div class="tree-panel-head">
+              <span class="run-label">Run 2</span>
+              <span class="run-stats" id="stats2">—</span>
+            </div>
+            <div class="tree-canvas-wrap">
+              <canvas class="tree-canvas" id="canvas2"></canvas>
+              <div class="extinct-overlay" id="extinct2">All lineages extinct</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explanation -->
+        <div class="explanation" data-aos="fade-up">
+          <h2>What are you looking at?</h2>
+          <p>Each panel simulates a <span class="highlight-text">birth-death process</span> starting from a single lineage. At any moment, each living lineage can speciate (split into two daughters, rate λ) or go extinct (rate μ). The two simulations use identical parameter values — but because speciation and extinction are <span class="highlight-text">stochastic events</span>, the resulting trees are completely different every time.</p>
+          <p><span class="highlight-text" style="color: #c9a227;">Gold branches</span> are lineages that survive to the present. <span class="highlight-text" style="color: rgba(100,90,80,0.9);">Grey branches</span> went extinct before the end time. <span style="color:rgba(220,80,60,0.8);">Red dots</span> mark extinction events.</p>
+          <p>This variability is why two clades evolving at the same rates can end up with very different numbers of species, and why detecting shifts in diversification rate requires careful statistical methods — a lot of the apparent signal can be noise. Try increasing μ toward λ (high turnover) and watch how often complete extinction occurs. Try low μ and high λ for explosive radiations.</p>
+          <p>The net diversification rate is <span class="highlight-text">r = λ − μ</span>. When r is small or negative, trees frequently go extinct entirely — even with a positive expected trajectory, any single realization can die out by chance (the <span class="highlight-text">stochastic extinction problem</span>).</p>
+        </div>
+
+        <!-- Nav buttons -->
+        <div class="nav-buttons">
+          <a href="phylogenies.html" class="nav-button"><i class="bi bi-arrow-left"></i> Phylogenies</a>
+          <a href="index.html" class="nav-button">PCM Guide <i class="bi bi-grid"></i></a>
+          <a href="discrete.html" class="nav-button">Discrete Traits <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    // ── Slider wiring ───────────────────────────────────────────
+    const lambdaSlider = document.getElementById('lambdaSlider');
+    const muSlider     = document.getElementById('muSlider');
+    const timeSlider   = document.getElementById('timeSlider');
+    const lambdaVal    = document.getElementById('lambdaVal');
+    const muVal        = document.getElementById('muVal');
+    const timeVal      = document.getElementById('timeVal');
+
+    lambdaSlider.addEventListener('input', () => { lambdaVal.textContent = parseFloat(lambdaSlider.value).toFixed(1); runSimulation(); });
+    muSlider.addEventListener('input',     () => { muVal.textContent     = parseFloat(muSlider.value).toFixed(2);    runSimulation(); });
+    timeSlider.addEventListener('input',   () => { timeVal.textContent   = parseFloat(timeSlider.value).toFixed(1);  runSimulation(); });
+
+    // ── Birth-death simulation ──────────────────────────────────
+    function simulateBD(lambda, mu, maxTime) {
+      let nextId = 0;
+      const nodes = {};
+
+      const addNode = (start, parentId) => {
+        const id = nextId++;
+        nodes[id] = { id, start, end: null, parentId, children: [], alive: false };
+        return id;
+      };
+
+      const rootId = addNode(0, null);
+      let active = [rootId];
+      let t = 0;
+
+      while (active.length > 0 && t < maxTime && active.length < 400) {
+        const n = active.length;
+        const totalRate = n * (lambda + mu);
+        const dt = -Math.log(Math.random()) / totalRate;
+        t += dt;
+        if (t >= maxTime) break;
+
+        const idx = Math.floor(Math.random() * n);
+        const nodeId = active[idx];
+        const node = nodes[nodeId];
+
+        if (Math.random() < lambda / (lambda + mu)) {
+          // Speciation
+          node.end = t;
+          const c1 = addNode(t, nodeId);
+          const c2 = addNode(t, nodeId);
+          node.children = [c1, c2];
+          active.splice(idx, 1, c1, c2);
+        } else {
+          // Extinction
+          node.end = t;
+          active.splice(idx, 1);
+        }
+      }
+
+      // Close surviving lineages at maxTime
+      for (const id of active) {
+        nodes[id].end = maxTime;
+        nodes[id].alive = true;
+      }
+
+      const nAlive = active.length;
+      return { nodes, rootId, nAlive, extinct: nAlive === 0 };
+    }
+
+    // ── Y-position assignment (DFS post-order) ──────────────────
+    function assignY(nodes, nodeId, counter) {
+      const node = nodes[nodeId];
+      if (node.children.length === 0) {
+        node.y = counter.val++;
+        return;
+      }
+      for (const cid of node.children) assignY(nodes, cid, counter);
+      const ys = node.children.map(cid => nodes[cid].y);
+      node.y = ys.reduce((a, b) => a + b, 0) / ys.length;
+    }
+
+    function countTips(nodes, nodeId) {
+      const node = nodes[nodeId];
+      if (node.children.length === 0) return 1;
+      return node.children.reduce((s, cid) => s + countTips(nodes, cid), 0);
+    }
+
+    // ── Canvas drawing ──────────────────────────────────────────
+    function drawBDTree(canvasEl, result, maxTime) {
+      const dpr = window.devicePixelRatio || 1;
+      const cssW = canvasEl.clientWidth;
+      const cssH = canvasEl.clientHeight;
+      canvasEl.width  = cssW * dpr;
+      canvasEl.height = cssH * dpr;
+
+      const ctx = canvasEl.getContext('2d');
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, cssW, cssH);
+
+      if (result.extinct) return;
+
+      const { nodes, rootId } = result;
+      const tipCount = countTips(nodes, rootId);
+      const pad = { top: 14, right: 18, bottom: 14, left: 18 };
+      const plotW = cssW - pad.left - pad.right;
+      const plotH = cssH - pad.top  - pad.bottom;
+
+      const xS = t => pad.left + (t / maxTime) * plotW;
+      const yS = y => pad.top  + (y / Math.max(1, tipCount - 1)) * plotH;
+
+      // Draw present-time line
+      ctx.save();
+      ctx.strokeStyle = 'rgba(52,211,153,0.12)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 5]);
+      ctx.beginPath();
+      ctx.moveTo(xS(maxTime), pad.top);
+      ctx.lineTo(xS(maxTime), cssH - pad.bottom);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.restore();
+
+      // Recursive draw
+      const drawNode = (nodeId) => {
+        const node = nodes[nodeId];
+        const x1 = xS(node.start);
+        const x2 = xS(node.end);
+        const y  = yS(node.y);
+
+        // Horizontal branch
+        const isAlive = node.alive;
+        const isSurviving = isAlive || node.children.some(cid => nodes[cid].alive);
+
+        ctx.strokeStyle = isAlive
+          ? 'rgba(201,162,39,0.88)'
+          : 'rgba(120,108,88,0.32)';
+        ctx.lineWidth = isAlive ? 1.6 : 0.8;
+        ctx.beginPath();
+        ctx.moveTo(x1, y);
+        ctx.lineTo(x2, y);
+        ctx.stroke();
+
+        // Vertical connector at branching event
+        if (node.children.length > 0) {
+          const ys = node.children.map(cid => nodes[cid].y);
+          const yMin = yS(Math.min(...ys));
+          const yMax = yS(Math.max(...ys));
+          ctx.strokeStyle = 'rgba(140,120,80,0.28)';
+          ctx.lineWidth = 0.9;
+          ctx.beginPath();
+          ctx.moveTo(x2, yMin);
+          ctx.lineTo(x2, yMax);
+          ctx.stroke();
+        }
+
+        // Extinction marker
+        if (!isAlive && node.children.length === 0) {
+          ctx.fillStyle = 'rgba(220,70,50,0.65)';
+          ctx.beginPath();
+          ctx.arc(x2, y, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Tip dot (alive)
+        if (isAlive) {
+          ctx.fillStyle = '#34d399';
+          ctx.beginPath();
+          ctx.arc(x2, y, 3.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        for (const cid of node.children) drawNode(cid);
+      };
+
+      drawNode(rootId);
+    }
+
+    // ── Run both simulations ────────────────────────────────────
+    function runSimulation() {
+      const lambda  = parseFloat(lambdaSlider.value);
+      const mu      = parseFloat(muSlider.value);
+      const maxTime = parseFloat(timeSlider.value);
+
+      [1, 2].forEach(i => {
+        const result  = simulateBD(lambda, mu, maxTime);
+        const canvas  = document.getElementById(`canvas${i}`);
+        const statsEl = document.getElementById(`stats${i}`);
+        const extEl   = document.getElementById(`extinct${i}`);
+
+        drawBDTree(canvas, result, maxTime);
+
+        if (result.extinct) {
+          statsEl.textContent = 'extinct';
+          extEl.classList.add('show');
+        } else {
+          statsEl.textContent = `${result.nAlive} extant lineage${result.nAlive !== 1 ? 's' : ''}`;
+          extEl.classList.remove('show');
+        }
+      });
+    }
+
+    // Initial draw on load
+    window.addEventListener('load', () => {
+      requestAnimationFrame(runSimulation);
+    });
+    window.addEventListener('resize', () => {
+      runSimulation();
+    });
+  </script>
+</body>
+</html>
