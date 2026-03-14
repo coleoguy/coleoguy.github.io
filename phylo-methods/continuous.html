@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Continuous Trait Evolution - Phylogenetic Comparative Methods</title>
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <style>
+    .page-header {
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 60px 0;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .page-header .subtitle {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 700px;
+    }
+
+    .content-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .content-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 30px;
+      max-width: 900px;
+    }
+
+    .viz-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+
+    .simulator-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .simulator-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .control-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--bg);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(201,162,39,0.4);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 8px rgba(201,162,39,0.4);
+    }
+
+    .slider-value {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      min-width: 50px;
+      text-align: right;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sim-button {
+      padding: 12px 24px;
+      border: 1px solid var(--accent-border);
+      background: transparent;
+      color: var(--accent);
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .sim-button:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    .sim-button.primary {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    .tree-canvas {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(to bottom, rgba(201,162,39,0.05), transparent);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .bar-chart-container {
+      margin-top: 30px;
+    }
+
+    .chart-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 15px;
+      font-family: var(--font-mono);
+    }
+
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 180px;
+      padding: 10px;
+      background: var(--bg);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .bar {
+      flex: 1;
+      background: linear-gradient(to top, var(--accent), rgba(201,162,39,0.5));
+      border-radius: 2px 2px 0 0;
+      transition: all 0.3s ease;
+      min-height: 4px;
+      position: relative;
+    }
+
+    .bar:hover {
+      filter: brightness(1.2);
+    }
+
+    .bar-label {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .tree-canvas-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-box {
+      background: rgba(201,162,39,0.05);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .highlight-text {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 20px 0;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .code-block .keyword {
+      color: #fb923c;
+    }
+
+    .code-block .string {
+      color: #34d399;
+    }
+
+    .code-block .comment {
+      color: var(--text-secondary);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .nav-button:hover {
+      background: rgba(201,162,39,0.15);
+      border-color: var(--accent);
+    }
+
+    .nav-button.prev {
+      margin-right: auto;
+    }
+
+    .signal-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .signal-tree {
+      text-align: center;
+    }
+
+    .signal-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 20px;
+    }
+
+    .signal-svg {
+      width: 100%;
+      height: 300px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .signal-description {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    .regression-plot {
+      width: 100%;
+      height: 380px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-header">
+      <div class="container-xl">
+        <h1>Continuous Trait Evolution</h1>
+        <div class="subtitle">Body size, metabolic rate, chromosome number: how traits evolve along the tree</div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">What is a continuous trait?</h2>
+        <p class="section-text">Continuous traits are characters that vary along a spectrum. Body size, brain mass, metabolic rate, chromosome number, genome size. These are not discrete categories. A species can have a body size of 2.3 kg, or 4.7 kg, or any value in between.</p>
+        <p class="section-text">When you measure a continuous trait across species, you get a dataset of real numbers. The question in phylogenetic comparative methods is: how much of the variation in this trait is explained by shared ancestry, and how much is explained by independent evolution in different lineages?</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">The problem with naive regression</h2>
+        <p class="section-text">Suppose you measure body size and home range for 50 species of carnivores. You want to know: do larger animals have larger home ranges? A simple linear regression seems like the obvious approach.</p>
+        <p class="section-text">The problem: your 50 species are not independent data points. If 20 of them are closely related lions, they inherited similar body sizes and home ranges from their common ancestor. Your regression treats each as an independent observation, inflating the sample size and giving you false confidence in your result.</p>
+        <p class="section-text">This is the essence of the phylogenetic comparative problem. We need methods that acknowledge the tree structure.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Brownian Motion</h2>
+        <p class="section-text">The foundation for most continuous trait analysis is the <span class="highlight-text">Brownian motion model</span>. This is a random walk: at each instant in time, a trait changes by a small, random amount. The change is drawn from a normal distribution with mean 0 and variance sigma-squared (the rate of evolution).</p>
+        <p class="section-text">Under Brownian motion, the variance of a trait at the tips of the tree is proportional to time. A longer branch accumulates more variance. A shorter branch accumulates less. This is exactly what we expect under random evolution.</p>
+
+        <div class="viz-container">
+          <div class="simulator-wrapper">
+            <div class="simulator-controls">
+              <div class="control-group">
+                <label class="control-label">Rate of evolution (sigma-squared)</label>
+                <div class="slider-container">
+                  <input type="range" id="sigmaSlider" min="0.1" max="3" step="0.1" value="1">
+                  <span class="slider-value" id="sigmaValue">1.0</span>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Simulations</label>
+                <div class="button-group">
+                  <button class="sim-button primary" onclick="runSingleSim()">Run 1 Simulation</button>
+                  <button class="sim-button" onclick="run20Sims()">Run 20 Simulations</button>
+                </div>
+              </div>
+
+              <div class="info-box">
+                <strong>How it works:</strong> Start at the root with an ancestral trait value. As you move along branches, the trait performs a random walk. Longer branches (more time) lead to larger changes. The simulation shows one random realization of this process.
+              </div>
+            </div>
+
+            <div class="tree-canvas-wrapper">
+              <canvas id="treeCanvas" class="tree-canvas"></canvas>
+            </div>
+          </div>
+
+          <div class="bar-chart-container">
+            <div class="chart-title">Tip Trait Values</div>
+            <div class="bar-chart" id="barChart"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Phylogenetic signal</h2>
+        <p class="section-text">Not all traits evolve under Brownian motion at the same rate. Some traits show strong <span class="highlight-text">phylogenetic signal</span>: closely related species are very similar, and the trait is predictable from phylogeny. Other traits show weak signal: the trait is distributed randomly across the tree, with no obvious relationship to phylogeny.</p>
+        <p class="section-text">The most common way to quantify signal is <span class="highlight-text">Blomberg's K</span>. Under Brownian motion, K = 1. If K > 1, the trait is more clustered by phylogeny than expected under BM (strong signal). If K < 1, the trait is less clustered (weak signal, more convergence or recent change).</p>
+
+        <div class="signal-comparison">
+          <div class="signal-tree">
+            <div class="signal-title">High Phylogenetic Signal (K > 1)</div>
+            <svg class="signal-svg" viewBox="0 0 300 300">
+              <!-- Tree with high signal -->
+              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="100" x2="150" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="100" x2="150" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="100" x2="150" y2="120" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
+
+              <circle cx="150" cy="80" r="6" fill="#34d399"/>
+              <circle cx="150" cy="120" r="6" fill="#34d399"/>
+              <circle cx="150" cy="180" r="6" fill="#fb923c"/>
+              <circle cx="150" cy="220" r="6" fill="#fb923c"/>
+
+              <text x="160" y="85" font-size="11" fill="var(--text-secondary)">0.9</text>
+              <text x="160" y="125" font-size="11" fill="var(--text-secondary)">1.1</text>
+              <text x="160" y="185" font-size="11" fill="var(--text-secondary)">5.0</text>
+              <text x="160" y="225" font-size="11" fill="var(--text-secondary)">5.1</text>
+            </svg>
+            <div class="signal-description">Sister species (green and orange clades) have very different trait values. But within each clade, species are similar. The trait clusters by phylogeny.</div>
+          </div>
+
+          <div class="signal-tree">
+            <div class="signal-title">Low Phylogenetic Signal (K < 1)</div>
+            <svg class="signal-svg" viewBox="0 0 300 300">
+              <!-- Tree with low signal -->
+              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="100" x2="150" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="100" x2="150" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="100" x2="150" y2="120" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
+
+              <circle cx="150" cy="80" r="6" fill="#34d399"/>
+              <circle cx="150" cy="120" r="6" fill="#fb923c"/>
+              <circle cx="150" cy="180" r="6" fill="#34d399"/>
+              <circle cx="150" cy="220" r="6" fill="#fb923c"/>
+
+              <text x="160" y="85" font-size="11" fill="var(--text-secondary)">0.8</text>
+              <text x="160" y="125" font-size="11" fill="var(--text-secondary)">0.9</text>
+              <text x="160" y="185" font-size="11" fill="var(--text-secondary)">0.7</text>
+              <text x="160" y="225" font-size="11" fill="var(--text-secondary)">0.6</text>
+            </svg>
+            <div class="signal-description">Colors are scattered across the tree. Green and orange tips appear in both clades. The trait is random with respect to phylogeny. This can indicate rapid evolution or convergence.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Phylogenetic Generalized Least Squares (PGLS)</h2>
+        <p class="section-text">When you regress one continuous trait against another (e.g., body size vs. home range), you want to account for the phylogenetic non-independence. This is what <span class="highlight-text">PGLS</span> does.</p>
+        <p class="section-text">PGLS is a regression method that uses the expected covariance matrix from the phylogeny to weight the data. Under Brownian motion, species that are closer in the tree are expected to be more similar. PGLS exploits this to give you a regression line that reflects the true evolutionary relationships, not just the raw tip data.</p>
+
+        <div class="viz-container">
+          <canvas id="regressionPlot" class="regression-plot"></canvas>
+        </div>
+
+        <div class="info-box">
+          <strong>Why OLS is wrong:</strong> The red line (OLS) is influenced heavily by clusters of closely related species. If you have 10 lions that all happen to be large and have large home ranges, OLS gives them equal weight to an isolated, distantly related species. PGLS corrects for this by treating them as less independent.
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">What you actually do in R</h2>
+        <p class="section-text">In practice, you use the <code>gls</code> function from the <code>nlme</code> package with a correlation structure from <code>ape</code>:</p>
+
+        <div class="code-block">
+          <span class="comment"># Load packages</span><br>
+          <span class="keyword">library</span>(<span class="string">"nlme"</span>)<br>
+          <span class="keyword">library</span>(<span class="string">"ape"</span>)<br>
+          <br>
+          <span class="comment"># tree: your phylogeny (phylo object)</span><br>
+          <span class="comment"># data: your data frame with trait columns</span><br>
+          <br>
+          <span class="keyword">model</span> <span class="string">&lt;-</span> <span class="keyword">gls</span>(trait2 <span class="string">~</span> trait1,<br>
+          <span class="string">    data = data,</span><br>
+          <span class="string">    correlation = corBrownian(phy = tree))</span><br>
+          <br>
+          <span class="keyword">summary</span>(<span class="keyword">model</span>)
+        </div>
+
+        <p class="section-text">The <code>corBrownian</code> function encodes the phylogenetic covariance matrix. The <code>gls</code> function (generalized least squares) uses this matrix to compute regression coefficients that properly account for phylogenetic non-independence.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <div class="nav-buttons">
+          <a href="phylogenies.html" class="nav-button prev">
+            <i class="bi bi-arrow-left"></i>
+            Previous: Phylogenies
+          </a>
+          <a href="discrete.html" class="nav-button">
+            Next: Discrete Traits
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    // Brownian Motion Simulator
+
+    // Ultra-metric 10-tip tree
+    const treeStructure = [
+      { id: 0, parent: null, depth: 0, time: 0, children: [1, 2] },
+      { id: 1, parent: 0, depth: 1, time: 2, children: [3, 4] },
+      { id: 2, parent: 0, depth: 1, time: 2, children: [5, 6] },
+      { id: 3, parent: 1, depth: 2, time: 1, children: [7, 8] },
+      { id: 4, parent: 1, depth: 2, time: 1, children: [] },
+      { id: 5, parent: 2, depth: 2, time: 1, children: [9, 10] },
+      { id: 6, parent: 2, depth: 2, time: 1, children: [] },
+      { id: 7, parent: 3, depth: 3, time: 1, children: [] },
+      { id: 8, parent: 3, depth: 3, time: 1, children: [] },
+      { id: 9, parent: 5, depth: 3, time: 1, children: [] },
+      { id: 10, parent: 5, depth: 3, time: 1, children: [] }
+    ];
+
+    // Compute distances from root
+    function computeDistances(nodes) {
+      const distances = [0];
+      for (let i = 1; i < nodes.length; i++) {
+        const parent = nodes[nodes[i].parent];
+        distances[i] = distances[nodes[i].parent] + nodes[i].time;
+      }
+      return distances;
+    }
+
+    // Simulate Brownian motion
+    function simulateBM(sigma, nodes) {
+      const distances = computeDistances(nodes);
+      const values = new Array(nodes.length);
+      values[0] = 0; // Start at root
+
+      for (let i = 1; i < nodes.length; i++) {
+        const parentVal = values[nodes[i].parent];
+        const timeInterval = nodes[i].time;
+        const change = Math.sqrt(sigma * timeInterval) * randn();
+        values[i] = parentVal + change;
+      }
+
+      return values;
+    }
+
+    // Standard normal random variable
+    function randn() {
+      let u1 = Math.random();
+      let u2 = Math.random();
+      return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+    }
+
+    // Draw tree
+    function drawTree(canvas, nodeValues, highlightMultiple = false) {
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = 'rgba(200,197,192,0.3)';
+      ctx.fillRect(0, 0, width, height);
+
+      const margin = 50;
+      const plotWidth = width - 2 * margin;
+      const plotHeight = height - 2 * margin;
+
+      // Normalize values for coloring
+      const minVal = Math.min(...nodeValues.filter((v, i) => treeStructure[i].children.length === 0));
+      const maxVal = Math.max(...nodeValues.filter((v, i) => treeStructure[i].children.length === 0));
+      const range = maxVal - minVal || 1;
+
+      // Draw branches
+      ctx.strokeStyle = 'rgba(154,151,147,0.6)';
+      ctx.lineWidth = 2;
+      for (let i = 1; i < treeStructure.length; i++) {
+        const node = treeStructure[i];
+        const parentNode = treeStructure[node.parent];
+
+        const distances = computeDistances(treeStructure);
+        const parentX = margin + (distances[node.parent] / 5) * plotWidth;
+        const childX = margin + (distances[i] / 5) * plotWidth;
+
+        const parentY = margin + (node.depth - 1) * (plotHeight / 3);
+        const childY = margin + node.depth * (plotHeight / 3);
+
+        ctx.beginPath();
+        ctx.moveTo(parentX, parentY);
+        ctx.lineTo(childX, childY);
+        ctx.stroke();
+      }
+
+      // Draw nodes
+      const distances = computeDistances(treeStructure);
+      for (let i = 0; i < treeStructure.length; i++) {
+        const node = treeStructure[i];
+        const x = margin + (distances[i] / 5) * plotWidth;
+        const y = margin + node.depth * (plotHeight / 3);
+
+        // Tip nodes
+        if (node.children.length === 0) {
+          const val = nodeValues[i];
+          const norm = (val - minVal) / range;
+          const hue = 200 + (norm * 60); // Blue to gold
+          ctx.fillStyle = `hsl(${hue}, 80%, 50%)`;
+          ctx.beginPath();
+          ctx.arc(x, y, 6, 0, 2 * Math.PI);
+          ctx.fill();
+
+          // Label
+          ctx.fillStyle = 'rgba(200,197,192,0.8)';
+          ctx.font = 'bold 10px monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(`T${i}`, x, y + 18);
+        } else {
+          ctx.fillStyle = 'rgba(157,150,142,0.6)';
+          ctx.beginPath();
+          ctx.arc(x, y, 3, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+      }
+    }
+
+    // Create bar chart
+    function updateBarChart(nodeValues) {
+      const tipIndices = treeStructure
+        .map((n, i) => ({ i, n }))
+        .filter(x => x.n.children.length === 0)
+        .map(x => x.i);
+
+      const tipValues = tipIndices.map(i => nodeValues[i]);
+      const minVal = Math.min(...tipValues);
+      const maxVal = Math.max(...tipValues);
+      const range = maxVal - minVal || 1;
+
+      const chart = document.getElementById('barChart');
+      chart.innerHTML = '';
+
+      tipValues.forEach((val, idx) => {
+        const norm = (val - minVal) / range;
+        const height = Math.max(5, norm * 160);
+        const hue = 200 + (norm * 60);
+
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = height + 'px';
+        bar.style.background = `linear-gradient(to top, hsl(${hue}, 80%, 50%), hsl(${hue}, 80%, 60%))`;
+
+        const label = document.createElement('div');
+        label.className = 'bar-label';
+        label.textContent = val.toFixed(1);
+
+        bar.appendChild(label);
+        chart.appendChild(bar);
+      });
+    }
+
+    // Regression plot
+    function drawRegressionPlot() {
+      const canvas = document.getElementById('regressionPlot');
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = 'rgba(8,8,8,0.5)';
+      ctx.fillRect(0, 0, width, height);
+
+      const margin = 50;
+      const plotWidth = width - 2 * margin;
+      const plotHeight = height - 2 * margin;
+
+      // Draw axes
+      ctx.strokeStyle = 'rgba(154,151,147,0.4)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(margin, height - margin);
+      ctx.lineTo(width - margin, height - margin);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(margin, margin);
+      ctx.lineTo(margin, height - margin);
+      ctx.stroke();
+
+      // Generate fake data with some structure
+      const nPoints = 12;
+      const data = [];
+      for (let i = 0; i < nPoints; i++) {
+        const x = Math.random() * 4 + 1;
+        const y = 0.6 * x + Math.random() * 0.8 - 0.4 + 1.5;
+        data.push({ x, y });
+      }
+
+      // Normalize data
+      const xMin = 1, xMax = 5;
+      const yMin = Math.min(...data.map(p => p.y));
+      const yMax = Math.max(...data.map(p => p.y));
+
+      // Draw OLS line (wrong)
+      const olsSlope = 0.5;
+      const olsIntercept = 1.5;
+
+      ctx.strokeStyle = 'rgba(244,63,94,0.6)';
+      ctx.lineWidth = 2.5;
+      ctx.setLineDash([5, 5]);
+      ctx.beginPath();
+      ctx.moveTo(
+        margin + ((xMin - xMin) / (xMax - xMin)) * plotWidth,
+        height - margin - ((olsIntercept - yMin) / (yMax - yMin)) * plotHeight
+      );
+      ctx.lineTo(
+        margin + ((xMax - xMin) / (xMax - xMin)) * plotWidth,
+        height - margin - (((olsSlope * xMax + olsIntercept) - yMin) / (yMax - yMin)) * plotHeight
+      );
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Draw PGLS line (correct, slightly different)
+      const pglsSlope = 0.65;
+      const pglsIntercept = 1.3;
+
+      ctx.strokeStyle = 'rgba(201,162,39,0.8)';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(
+        margin + ((xMin - xMin) / (xMax - xMin)) * plotWidth,
+        height - margin - ((pglsIntercept - yMin) / (yMax - yMin)) * plotHeight
+      );
+      ctx.lineTo(
+        margin + ((xMax - xMin) / (xMax - xMin)) * plotWidth,
+        height - margin - (((pglsSlope * xMax + pglsIntercept) - yMin) / (yMax - yMin)) * plotHeight
+      );
+      ctx.stroke();
+
+      // Draw data points
+      ctx.fillStyle = 'rgba(201,162,39,0.8)';
+      data.forEach(p => {
+        const px = margin + ((p.x - xMin) / (xMax - xMin)) * plotWidth;
+        const py = height - margin - ((p.y - yMin) / (yMax - yMin)) * plotHeight;
+        ctx.beginPath();
+        ctx.arc(px, py, 4, 0, 2 * Math.PI);
+        ctx.fill();
+      });
+
+      // Legend
+      ctx.fillStyle = 'rgba(200,197,192,0.8)';
+      ctx.font = '11px monospace';
+      ctx.fillText('OLS (red dashed)', width - 180, 25);
+      ctx.fillText('PGLS (gold solid)', width - 180, 42);
+    }
+
+    // Update sigma value display
+    document.getElementById('sigmaSlider').addEventListener('input', function() {
+      document.getElementById('sigmaValue').textContent = this.value;
+    });
+
+    // Simulation functions
+    function runSingleSim() {
+      const sigma = parseFloat(document.getElementById('sigmaSlider').value);
+      const values = simulateBM(sigma, treeStructure);
+      const canvas = document.getElementById('treeCanvas');
+      drawTree(canvas, values, false);
+      updateBarChart(values);
+    }
+
+    function run20Sims() {
+      const sigma = parseFloat(document.getElementById('sigmaSlider').value);
+      const canvas = document.getElementById('treeCanvas');
+      const ctx = canvas.getContext('2d');
+
+      const width = canvas.width;
+      const height = canvas.height;
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = 'rgba(8,8,8,0.5)';
+      ctx.fillRect(0, 0, width, height);
+
+      const margin = 50;
+      const plotWidth = width - 2 * margin;
+      const plotHeight = height - 2 * margin;
+
+      // Draw all 20 sims
+      for (let sim = 0; sim < 20; sim++) {
+        const values = simulateBM(sigma, treeStructure);
+
+        const minVal = Math.min(...values.filter((v, i) => treeStructure[i].children.length === 0));
+        const maxVal = Math.max(...values.filter((v, i) => treeStructure[i].children.length === 0));
+        const range = maxVal - minVal || 1;
+
+        const distances = computeDistances(treeStructure);
+
+        // Draw branches with transparency
+        ctx.strokeStyle = `rgba(201,162,39,${0.15 + (sim * 0.02)})`;
+        ctx.lineWidth = 1.5;
+        for (let i = 1; i < treeStructure.length; i++) {
+          const node = treeStructure[i];
+          const parentNode = treeStructure[node.parent];
+
+          const parentX = margin + (distances[node.parent] / 5) * plotWidth;
+          const childX = margin + (distances[i] / 5) * plotWidth;
+
+          const parentY = margin + (node.depth - 1) * (plotHeight / 3);
+          const childY = margin + node.depth * (plotHeight / 3);
+
+          ctx.beginPath();
+          ctx.moveTo(parentX, parentY);
+          ctx.lineTo(childX, childY);
+          ctx.stroke();
+        }
+      }
+
+      // Draw axes
+      ctx.strokeStyle = 'rgba(154,151,147,0.4)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < treeStructure.length; i++) {
+        const node = treeStructure[i];
+        if (node.children.length === 0) {
+          const x = margin + (distances[i] / 5) * plotWidth;
+          const y = margin + node.depth * (plotHeight / 3);
+          ctx.fillStyle = 'rgba(201,162,39,0.6)';
+          ctx.beginPath();
+          ctx.arc(x, y, 5, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+      }
+    }
+
+    // Initial draw
+    runSingleSim();
+    drawRegressionPlot();
+  </script>
+</body>
+</html>

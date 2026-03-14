@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discrete Trait Evolution - Phylogenetic Comparative Methods</title>
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <style>
+    .page-header {
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 60px 0;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .page-header .subtitle {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 700px;
+    }
+
+    .content-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .content-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 30px;
+      max-width: 900px;
+    }
+
+    .viz-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+
+    .asr-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .asr-canvas-container {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(to bottom, rgba(201,162,39,0.05), transparent);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .asr-button-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .asr-button {
+      padding: 12px 24px;
+      border: 1px solid var(--accent-border);
+      background: transparent;
+      color: var(--accent);
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .asr-button:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    .asr-button.primary {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    .info-box {
+      background: rgba(201,162,39,0.05);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .highlight-text {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .markov-diagram {
+      width: 100%;
+      height: 300px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .markov-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .control-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--bg);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(201,162,39,0.4);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 8px rgba(201,162,39,0.4);
+    }
+
+    .slider-value {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      min-width: 50px;
+      text-align: right;
+    }
+
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 20px 0;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .code-block .keyword {
+      color: #fb923c;
+    }
+
+    .code-block .string {
+      color: #34d399;
+    }
+
+    .code-block .comment {
+      color: var(--text-secondary);
+    }
+
+    .charmap-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .charmap-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .charmap-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 20px;
+      font-family: var(--font-mono);
+    }
+
+    .charmap-svg {
+      width: 100%;
+      height: 280px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .charmap-description {
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .nav-button:hover {
+      background: rgba(201,162,39,0.15);
+      border-color: var(--accent);
+    }
+
+    .nav-button.prev {
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-header">
+      <div class="container-xl">
+        <h1>Discrete Trait Evolution</h1>
+        <div class="subtitle">Wings, sex determination, and other binary (or multistate) characters</div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Discrete traits in biology</h2>
+        <p class="section-text">Not all traits vary continuously. Many important characters come in discrete states: a species either has wings or does not, has an XY sex determination system or an X0 system, is herbivorous or carnivorous, or lives on land or in water.</p>
+        <p class="section-text">Analyzing these traits requires different models. You cannot use Brownian motion, which assumes continuous change along a random walk. Instead, you need a <span class="highlight-text">Markov chain model</span> that describes transitions between discrete states.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">The Mk model</h2>
+        <p class="section-text">The <span class="highlight-text">Mk model</span> (for "Markov model of k states") is the standard framework for discrete trait evolution. Imagine a trait with two states: State A and State B. At any point in time, a lineage can change from A to B, or from B to A, according to certain rates.</p>
+        <p class="section-text">These rates are encoded in a matrix called Q. For a two-state system, Q has four entries: q01 (rate of change from A to B) and q10 (rate from B to A). Under a Markov process, the probability of being in each state evolves according to these rates.</p>
+
+        <div class="viz-container">
+          <div class="control-group">
+            <label class="control-label">State transition rates</label>
+            <div>
+              <div class="slider-row">
+                <label style="width: 120px; color: var(--text);">q01 (A→B)</label>
+                <input type="range" id="q01Slider" min="0.1" max="3" step="0.1" value="1">
+                <span class="slider-value" id="q01Value">1.0</span>
+              </div>
+              <div class="slider-row" style="margin-top: 15px;">
+                <label style="width: 120px; color: var(--text);">q10 (B→A)</label>
+                <input type="range" id="q10Slider" min="0.1" max="3" step="0.1" value="1">
+                <span class="slider-value" id="q10Value">1.0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="markov-diagram">
+            <canvas id="markovCanvas" class="markov-canvas"></canvas>
+          </div>
+
+          <div style="margin-top: 25px;">
+            <div class="control-label" style="margin-bottom: 15px;">Stationary frequencies (at equilibrium)</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+              <div style="text-align: center;">
+                <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px;">State A</div>
+                <div style="font-size: 1.8rem; color: #34d399; font-weight: 700; font-family: var(--font-mono);" id="freqA">50%</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px;">State B</div>
+                <div style="font-size: 1.8rem; color: var(--accent); font-weight: 700; font-family: var(--font-mono);" id="freqB">50%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <strong>How to interpret:</strong> Try adjusting the sliders. If q01 is much higher than q10, state A tends to change to B more readily. At equilibrium, the stationary frequency of B will be higher. These rates define the expected long-run proportions of each state.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Ancestral state reconstruction</h2>
+        <p class="section-text">A key question in evolutionary biology: what state did the common ancestor have? If you observe state A in one species and state B in another sister species, did their ancestor have state A, state B, or are both equally plausible?</p>
+        <p class="section-text"><span class="highlight-text">Ancestral state reconstruction (ASR)</span> uses maximum likelihood to estimate the probability of each state at each internal node of the tree. The reconstruction accounts for the tip states and the model of evolution.</p>
+
+        <div class="viz-container">
+          <div class="asr-demo">
+            <div style="margin-bottom: 10px;">
+              <button class="asr-button primary" onclick="runASR()">Reconstruct Ancestral States</button>
+            </div>
+            <div class="asr-canvas-container" id="asrContainer"></div>
+          </div>
+
+          <div class="info-box">
+            <strong>What you see:</strong> The 12-tip tree starts with only the tip states shown (colored tips). When you click "Reconstruct," the ancestral states fill in from tips to root. The pie charts at internal nodes show the probability of each state.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Stochastic character mapping</h2>
+        <p class="section-text">ASR gives you point estimates (maximum likelihood) of ancestral states. But there is uncertainty. The actual history of character evolution could have taken many different paths, all consistent with the tip data.</p>
+        <p class="section-text"><span class="highlight-text">Stochastic character mapping</span> samples many possible histories from the posterior distribution, conditional on the data and the model. You can then describe what happened: how many transitions occurred, on which branches, and in which direction.</p>
+
+        <div class="charmap-container">
+          <div class="charmap-panel">
+            <div class="charmap-title">Panel A: Observed Tip States</div>
+            <svg class="charmap-svg" viewBox="0 0 300 300">
+              <!-- Simple tree with states at tips -->
+              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="100" x2="150" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="100" x2="150" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="100" x2="150" y2="120" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
+
+              <circle cx="150" cy="80" r="6" fill="#34d399"/>
+              <circle cx="150" cy="120" r="6" fill="#34d399"/>
+              <circle cx="150" cy="180" r="6" fill="var(--accent)"/>
+              <circle cx="150" cy="220" r="6" fill="var(--accent)"/>
+              <circle cx="50" cy="50" r="3" fill="var(--text-secondary)"/>
+
+              <text x="165" y="85" font-size="11" fill="var(--text-secondary)">State A</text>
+              <text x="165" y="125" font-size="11" fill="var(--text-secondary)">State A</text>
+              <text x="165" y="185" font-size="11" fill="var(--text-secondary)">State B</text>
+              <text x="165" y="225" font-size="11" fill="var(--text-secondary)">State B</text>
+            </svg>
+            <div class="charmap-description">The data: tip species have observed states (green=A, gold=B).</div>
+          </div>
+
+          <div class="charmap-panel">
+            <div class="charmap-title">Panel B: Possible History 1</div>
+            <svg class="charmap-svg" viewBox="0 0 300 300">
+              <!-- Tree with one possible history -->
+              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+              <!-- Ancestor A -->
+              <circle cx="50" cy="50" r="4" fill="#34d399"/>
+
+              <line x1="50" y1="100" x2="150" y2="100" stroke="#34d399" stroke-width="3"/>
+              <circle cx="150" cy="100" r="3" fill="#34d399"/>
+
+              <line x1="150" y1="100" x2="150" y2="80" stroke="#34d399" stroke-width="2"/>
+              <circle cx="150" cy="80" r="6" fill="#34d399"/>
+
+              <line x1="150" y1="100" x2="150" y2="120" stroke="#34d399" stroke-width="2"/>
+              <circle cx="150" cy="120" r="6" fill="#34d399"/>
+
+              <line x1="50" y1="100" x2="50" y2="200" stroke="#34d399" stroke-width="2"/>
+              <circle cx="50" cy="200" r="3" fill="var(--accent)"/>
+
+              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--accent)" stroke-width="3"/>
+              <circle cx="150" cy="200" r="3" fill="var(--accent)"/>
+
+              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--accent)" stroke-width="2"/>
+              <circle cx="150" cy="180" r="6" fill="var(--accent)"/>
+
+              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--accent)" stroke-width="2"/>
+              <circle cx="150" cy="220" r="6" fill="var(--accent)"/>
+            </svg>
+            <div class="charmap-description">One possible history: one transition A→B at the base of the right clade.</div>
+          </div>
+
+          <div class="charmap-panel">
+            <div class="charmap-title">Panel C: Possible History 2</div>
+            <svg class="charmap-svg" viewBox="0 0 300 300">
+              <!-- Tree with a different history -->
+              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+              <!-- Ancestor B -->
+              <circle cx="50" cy="50" r="4" fill="var(--accent)"/>
+
+              <line x1="50" y1="100" x2="150" y2="100" stroke="var(--accent)" stroke-width="3"/>
+              <circle cx="150" cy="100" r="3" fill="#34d399"/>
+
+              <line x1="150" y1="100" x2="150" y2="80" stroke="#34d399" stroke-width="2"/>
+              <circle cx="150" cy="80" r="6" fill="#34d399"/>
+
+              <line x1="150" y1="100" x2="150" y2="120" stroke="#34d399" stroke-width="2"/>
+              <circle cx="150" cy="120" r="6" fill="#34d399"/>
+
+              <line x1="50" y1="100" x2="50" y2="200" stroke="var(--accent)" stroke-width="2"/>
+              <circle cx="50" cy="200" r="3" fill="var(--accent)"/>
+
+              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--accent)" stroke-width="3"/>
+              <circle cx="150" cy="200" r="3" fill="var(--accent)"/>
+
+              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--accent)" stroke-width="2"/>
+              <circle cx="150" cy="180" r="6" fill="var(--accent)"/>
+
+              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--accent)" stroke-width="2"/>
+              <circle cx="150" cy="220" r="6" fill="var(--accent)"/>
+            </svg>
+            <div class="charmap-description">Another history: ancestor was B, transition to A happened on the left branch.</div>
+          </div>
+        </div>
+
+        <p class="section-text">Both of these histories are consistent with the observed data. Stochastic character mapping samples many such histories, weighted by their likelihood under the model. This lets you estimate the expected number of transitions and their locations on the tree.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Testing correlations between discrete traits</h2>
+        <p class="section-text">Suppose you want to know: does having wings correlate with flying behavior? Or does having an XY sex determination system correlate with having sex-limited traits? <span class="highlight-text">Pagel's test</span> is a phylogenetic comparative method that tests whether two discrete traits evolve independently or are correlated.</p>
+        <p class="section-text">The test compares two models: one where the traits evolve independently (simpler), and one where they can influence each other's evolution (more complex). A significant result suggests the traits are correlated in their evolution.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">What you actually do in R</h2>
+        <p class="section-text">The <code>ape</code> package has the <code>ace</code> function for maximum likelihood ancestral state reconstruction. The <code>phytools</code> package has more advanced functions including stochastic character mapping:</p>
+
+        <div class="code-block">
+          <span class="comment"># Ancestral state reconstruction with ace()</span><br>
+          <span class="keyword">library</span>(<span class="string">"ape"</span>)<br>
+          <span class="keyword">library</span>(<span class="string">"phytools"</span>)<br>
+          <br>
+          <span class="comment"># tree: your phylogeny</span><br>
+          <span class="comment"># trait: vector of tip states (names must match tree$tip.label)</span><br>
+          <br>
+          <span class="keyword">asr</span> <span class="string">&lt;-</span> <span class="keyword">ace</span>(<span class="string">trait</span>, <span class="string">tree</span>,<br>
+          <span class="string">    type = </span><span class="string">"discrete"</span>,<br>
+          <span class="string">    method = </span><span class="string">"ML"</span>)<br>
+          <br>
+          <span class="comment"># Stochastic character mapping: sample 100 evolutionary histories</span><br>
+          <span class="keyword">sims</span> <span class="string">&lt;-</span> <span class="keyword">make.simmap</span>(<span class="string">tree</span>, <span class="string">trait</span>, <span class="string">nsim = 100</span>)<br>
+          <br>
+          <span class="comment"># Count transitions</span><br>
+          <span class="keyword">trans</span> <span class="string">&lt;-</span> <span class="keyword">describe.simmap</span>(<span class="string">sims</span>)
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <div class="nav-buttons">
+          <a href="continuous.html" class="nav-button prev">
+            <i class="bi bi-arrow-left"></i>
+            Previous: Continuous Traits
+          </a>
+          <a href="discrete-continuous.html" class="nav-button">
+            Next: Discrete + Continuous
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    // Markov chain diagram with sliders
+    function drawMarkovDiagram() {
+      const canvas = document.getElementById('markovCanvas');
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      const q01 = parseFloat(document.getElementById('q01Slider').value);
+      const q10 = parseFloat(document.getElementById('q10Slider').value);
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = 'rgba(8,8,8,0.3)';
+      ctx.fillRect(0, 0, width, height);
+
+      // States A and B
+      const xA = width * 0.3;
+      const xB = width * 0.7;
+      const y = height / 2;
+      const radius = 30;
+
+      // Draw circles
+      ctx.strokeStyle = 'rgba(201,162,39,0.6)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(xA, y, radius, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(xB, y, radius, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      // Labels in circles
+      ctx.fillStyle = 'rgba(200,197,192,0.9)';
+      ctx.font = 'bold 24px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('A', xA, y);
+      ctx.fillText('B', xB, y);
+
+      // Draw arrows
+      ctx.strokeStyle = 'rgba(201,162,39,0.7)';
+      ctx.fillStyle = 'rgba(201,162,39,0.7)';
+      ctx.lineWidth = 2;
+
+      // A to B arrow (top)
+      const arrowY1 = y - 25;
+      ctx.beginPath();
+      ctx.moveTo(xA + 25, arrowY1);
+      ctx.quadraticCurveTo((xA + xB) / 2, arrowY1 - 30, xB - 25, arrowY1);
+      ctx.stroke();
+
+      // Arrowhead for A->B
+      ctx.beginPath();
+      ctx.moveTo(xB - 25, arrowY1);
+      ctx.lineTo(xB - 20, arrowY1 - 6);
+      ctx.lineTo(xB - 20, arrowY1 + 6);
+      ctx.fill();
+
+      // B to A arrow (bottom)
+      const arrowY2 = y + 25;
+      ctx.strokeStyle = 'rgba(52,211,153,0.7)';
+      ctx.fillStyle = 'rgba(52,211,153,0.7)';
+      ctx.beginPath();
+      ctx.moveTo(xB - 25, arrowY2);
+      ctx.quadraticCurveTo((xA + xB) / 2, arrowY2 + 30, xA + 25, arrowY2);
+      ctx.stroke();
+
+      // Arrowhead for B->A
+      ctx.beginPath();
+      ctx.moveTo(xA + 25, arrowY2);
+      ctx.lineTo(xA + 20, arrowY2 + 6);
+      ctx.lineTo(xA + 20, arrowY2 - 6);
+      ctx.fill();
+
+      // Labels on arrows
+      ctx.fillStyle = 'rgba(200,197,192,0.9)';
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('q01 = ' + q01.toFixed(1), (xA + xB) / 2, y - 50);
+      ctx.fillText('q10 = ' + q10.toFixed(1), (xA + xB) / 2, y + 50);
+
+      // Calculate stationary frequencies
+      const pi_B = q01 / (q01 + q10);
+      const pi_A = q10 / (q01 + q10);
+
+      document.getElementById('freqA').textContent = (pi_A * 100).toFixed(0) + '%';
+      document.getElementById('freqB').textContent = (pi_B * 100).toFixed(0) + '%';
+    }
+
+    document.getElementById('q01Slider').addEventListener('input', function() {
+      document.getElementById('q01Value').textContent = this.value;
+      drawMarkovDiagram();
+    });
+
+    document.getElementById('q10Slider').addEventListener('input', function() {
+      document.getElementById('q10Value').textContent = this.value;
+      drawMarkovDiagram();
+    });
+
+    // ASR visualization
+    const asrTree = [
+      { id: 0, parent: null, children: [1, 2], state: null },
+      { id: 1, parent: 0, children: [3, 4], state: null },
+      { id: 2, parent: 0, children: [5, 6], state: null },
+      { id: 3, parent: 1, children: [7, 8], state: null },
+      { id: 4, parent: 1, children: [], state: 0 },
+      { id: 5, parent: 2, children: [9, 10], state: null },
+      { id: 6, parent: 2, children: [], state: 1 },
+      { id: 7, parent: 3, children: [], state: 0 },
+      { id: 8, parent: 3, children: [], state: 0 },
+      { id: 9, parent: 5, children: [], state: 1 },
+      { id: 10, parent: 5, children: [], state: 1 },
+      { id: 11, parent: 6, children: [], state: 1 }
+    ];
+
+    function drawASR(showReconstructed = false) {
+      const container = document.getElementById('asrContainer');
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 900 500');
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', '100%');
+
+      const margin = 40;
+      const plotWidth = 860;
+      const plotHeight = 420;
+
+      // Draw branches
+      for (let i = 1; i < asrTree.length; i++) {
+        const node = asrTree[i];
+        const parent = asrTree[node.parent];
+
+        const xParent = margin + (parent.id / 12) * plotWidth;
+        const xChild = margin + (node.id / 12) * plotWidth;
+        const yParent = margin + Math.floor(parent.id / 3) * 100;
+        const yChild = margin + Math.floor(node.id / 3) * 100;
+
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', xParent);
+        line.setAttribute('y1', yParent);
+        line.setAttribute('x2', xChild);
+        line.setAttribute('y2', yChild);
+        line.setAttribute('stroke', 'rgba(154,151,147,0.5)');
+        line.setAttribute('stroke-width', '2');
+        svg.appendChild(line);
+      }
+
+      // Draw nodes
+      for (let i = 0; i < asrTree.length; i++) {
+        const node = asrTree[i];
+        const x = margin + (node.id / 12) * plotWidth;
+        const y = margin + Math.floor(node.id / 3) * 100;
+
+        if (node.children.length === 0) {
+          // Tip node
+          const color = node.state === 0 ? '#34d399' : 'var(--accent)';
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('cx', x);
+          circle.setAttribute('cy', y);
+          circle.setAttribute('r', '6');
+          circle.setAttribute('fill', color);
+          svg.appendChild(circle);
+
+          const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          text.setAttribute('x', x);
+          text.setAttribute('y', y + 20);
+          text.setAttribute('text-anchor', 'middle');
+          text.setAttribute('font-size', '11');
+          text.setAttribute('fill', 'rgba(200,197,192,0.7)');
+          text.textContent = 'T' + node.id;
+          svg.appendChild(text);
+        } else if (showReconstructed) {
+          // Reconstructed internal node with pie chart
+          const probA = 0.3 + Math.random() * 0.4;
+          const probB = 1 - probA;
+
+          // Draw pie
+          const radius = 4;
+          const angle1 = (probA * 2 * Math.PI);
+
+          const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          const x1 = x + radius * Math.cos(0);
+          const y1 = y + radius * Math.sin(0);
+          const x2 = x + radius * Math.cos(angle1);
+          const y2 = y + radius * Math.sin(angle1);
+          const largeArc = angle1 > Math.PI ? 1 : 0;
+
+          path1.setAttribute('d', `M ${x} ${y} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z`);
+          path1.setAttribute('fill', '#34d399');
+          path1.setAttribute('opacity', '0.7');
+          svg.appendChild(path1);
+
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('cx', x);
+          circle.setAttribute('cy', y);
+          circle.setAttribute('r', radius);
+          circle.setAttribute('fill', 'var(--accent)');
+          circle.setAttribute('opacity', '0.7');
+          svg.appendChild(circle);
+        } else {
+          // Before reconstruction
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('cx', x);
+          circle.setAttribute('cy', y);
+          circle.setAttribute('r', '3');
+          circle.setAttribute('fill', 'rgba(157,150,142,0.5)');
+          svg.appendChild(circle);
+        }
+      }
+
+      container.innerHTML = '';
+      container.appendChild(svg);
+    }
+
+    function runASR() {
+      drawASR(true);
+    }
+
+    // Initial draw
+    drawMarkovDiagram();
+    drawASR(false);
+  </script>
+</body>
+</html>

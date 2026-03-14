@@ -8,9 +8,6 @@
   <link href="../assets/img/favicon.ico" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -24,14 +21,14 @@
       body {
           font-family: Arial, sans-serif;
           line-height: 1.6;
-          background-color: #f4f4f4;
+          background-color: var(--bg-raised, #0e0e0e);
           margin: 0;
           padding: 20px;
       }
       .container {
           max-width: 800px;
           margin: auto;
-          background: #fff;
+          background: var(--bg-card, #1a1a1a);
           padding: 20px;
           border-radius: 5px;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -40,7 +37,7 @@
           color: #333;
       }
       code {
-          background: #f9f9f9;
+          background: var(--bg-card, #1a1a1a);
           padding: 2px 4px;
           border-radius: 3px;
       }

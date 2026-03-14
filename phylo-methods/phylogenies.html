@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phylogenies - Phylogenetic Comparative Methods</title>
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <style>
+    .page-header {
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 60px 0;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .page-header .subtitle {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 700px;
+    }
+
+    .content-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .content-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 30px;
+      max-width: 900px;
+    }
+
+    .viz-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+
+    .d3-tree-container {
+      width: 100%;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, rgba(201,162,39,0.03), transparent);
+      border-radius: 8px;
+    }
+
+    .tree-control {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tree-toggle {
+      padding: 10px 20px;
+      border: 1px solid var(--accent-border);
+      background: transparent;
+      color: var(--accent);
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .tree-toggle:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    .tree-toggle.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    svg text {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      fill: var(--text);
+    }
+
+    svg .node {
+      fill: var(--text-secondary);
+    }
+
+    svg .node.tip {
+      fill: var(--accent);
+      font-weight: 600;
+    }
+
+    svg .node.internal {
+      fill: var(--text-muted);
+    }
+
+    svg .link {
+      stroke: var(--text-secondary);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    svg .link.highlight {
+      stroke: var(--accent);
+      stroke-width: 3;
+      filter: drop-shadow(0 0 5px rgba(201,162,39,0.4));
+    }
+
+    .rotations-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .rotation-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .rotation-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 20px;
+    }
+
+    .rotation-svg {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 15px;
+    }
+
+    .rotation-note {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .highlight-text {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .branch-length-svg {
+      width: 100%;
+      height: 400px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .nav-button:hover {
+      background: rgba(201,162,39,0.15);
+      border-color: var(--accent);
+    }
+
+    .nav-button.prev {
+      margin-right: auto;
+    }
+
+    .example-box {
+      background: rgba(201,162,39,0.05);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 4px;
+    }
+
+    .example-label {
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-header">
+      <div class="container-xl">
+        <h1>Phylogenies</h1>
+        <div class="subtitle">Understanding trees, branch lengths, and why evolution is not a ladder</div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">What is a phylogeny?</h2>
+        <p class="section-text">A phylogeny is a branching diagram showing the evolutionary relationships among species. Each tip represents a living (or extinct) species. Each internal node represents a common ancestor. The branches connecting them represent time or evolutionary change.</p>
+        <p class="section-text">Think of the phylogeny as a family tree of life. Just as your grandparents had children who had children, species have common ancestors. The phylogeny is a hypothesis about how all these ancestors and descendants are related.</p>
+        <p class="section-text">Below is an interactive phylogeny of 15 vertebrate species. Hover over the tips to see the species highlighted, along with its entire ancestral lineage.</p>
+
+        <div class="viz-container">
+          <div class="tree-control">
+            <button class="tree-toggle active" onclick="toggleBranchLengths()" id="lengthToggle">Show branch lengths</button>
+          </div>
+          <div class="d3-tree-container" id="d3TreeContainer"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Reading a phylogeny</h2>
+        <p class="section-text">A key insight: the horizontal position of species in a phylogeny does not matter. You can rotate branches around any internal node and get a topology that is logically identical. Below are three different "rotations" of the same six-species tree. They look different, but they show the same relationships.</p>
+
+        <div class="rotations-container">
+          <div class="rotation-box">
+            <div class="rotation-title">Layout 1</div>
+            <svg class="rotation-svg" viewBox="0 0 280 300">
+              <!-- Tree 1: balanced -->
+              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="80" x2="130" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="220" x2="130" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="80" x2="130" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="100" x2="200" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="100" x2="200" y2="60" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="100" x2="200" y2="140" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="220" x2="130" y2="240" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="240" x2="200" y2="240" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="240" x2="200" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="240" x2="200" y2="280" stroke="var(--text-secondary)" stroke-width="2"/>
+
+              <circle cx="50" cy="50" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="100" r="3" fill="var(--text-secondary)"/>
+              <circle cx="200" cy="100" r="3" fill="var(--text-secondary)"/>
+              <circle cx="200" cy="240" r="3" fill="var(--text-secondary)"/>
+
+              <circle cx="200" cy="60" r="4" fill="var(--accent)"/>
+              <circle cx="200" cy="140" r="4" fill="var(--accent)"/>
+              <circle cx="200" cy="200" r="4" fill="var(--accent)"/>
+              <circle cx="200" cy="280" r="4" fill="var(--accent)"/>
+              <circle cx="130" cy="80" r="4" fill="var(--accent)"/>
+              <circle cx="130" cy="240" r="4" fill="var(--accent)"/>
+
+              <text x="210" y="65" font-size="10" fill="var(--text-secondary)">A</text>
+              <text x="210" y="145" font-size="10" fill="var(--text-secondary)">B</text>
+              <text x="210" y="205" font-size="10" fill="var(--text-secondary)">C</text>
+              <text x="210" y="285" font-size="10" fill="var(--text-secondary)">D</text>
+              <text x="140" y="75" font-size="10" fill="var(--text-secondary)">E</text>
+              <text x="140" y="250" font-size="10" fill="var(--text-secondary)">F</text>
+            </svg>
+            <div class="rotation-note">Species A and B are sisters (most recent common ancestor). C, D, E, F are sisters to each other.</div>
+          </div>
+
+          <div class="rotation-box">
+            <div class="rotation-title">Layout 2</div>
+            <svg class="rotation-svg" viewBox="0 0 280 300">
+              <!-- Tree 2: left-heavy -->
+              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="150" x2="130" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="50" y1="120" x2="130" y2="120" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="120" x2="130" y2="60" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="60" x2="200" y2="60" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="60" x2="200" y2="40" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="60" x2="200" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="120" x2="130" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="180" x2="200" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="180" x2="200" y2="140" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="180" x2="200" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="130" y1="150" x2="200" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="150" x2="200" y2="260" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="200" y1="150" x2="200" y2="280" stroke="var(--text-secondary)" stroke-width="2"/>
+
+              <circle cx="200" cy="40" r="4" fill="var(--accent)"/>
+              <circle cx="200" cy="80" r="4" fill="var(--accent)"/>
+              <circle cx="200" cy="140" r="4" fill="var(--accent)"/>
+              <circle cx="200" cy="220" r="4" fill="var(--accent)"/>
+              <circle cx="200" cy="260" r="4" fill="var(--accent)"/>
+              <circle cx="200" cy="280" r="4" fill="var(--accent)"/>
+
+              <circle cx="50" cy="50" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="60" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="180" r="3" fill="var(--text-secondary)"/>
+
+              <text x="210" y="45" font-size="10" fill="var(--text-secondary)">A</text>
+              <text x="210" y="85" font-size="10" fill="var(--text-secondary)">B</text>
+              <text x="210" y="145" font-size="10" fill="var(--text-secondary)">C</text>
+              <text x="210" y="225" font-size="10" fill="var(--text-secondary)">D</text>
+              <text x="210" y="265" font-size="10" fill="var(--text-secondary)">E</text>
+              <text x="210" y="285" font-size="10" fill="var(--text-secondary)">F</text>
+            </svg>
+            <div class="rotation-note">Same topology, different visual arrangement. All relationships are identical.</div>
+          </div>
+
+          <div class="rotation-box">
+            <div class="rotation-title">Layout 3</div>
+            <svg class="rotation-svg" viewBox="0 0 280 300">
+              <!-- Tree 3: radial -->
+              <line x1="140" y1="150" x2="220" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="140" y1="150" x2="220" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="140" y1="150" x2="100" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="140" y1="150" x2="100" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="140" y1="150" x2="140" y2="50" stroke="var(--text-secondary)" stroke-width="2"/>
+              <line x1="140" y1="150" x2="140" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+
+              <circle cx="140" cy="150" r="3" fill="var(--text-secondary)"/>
+
+              <circle cx="220" cy="80" r="4" fill="var(--accent)"/>
+              <circle cx="220" cy="220" r="4" fill="var(--accent)"/>
+              <circle cx="100" cy="80" r="4" fill="var(--accent)"/>
+              <circle cx="100" cy="220" r="4" fill="var(--accent)"/>
+              <circle cx="140" cy="50" r="4" fill="var(--accent)"/>
+              <circle cx="140" cy="250" r="4" fill="var(--accent)"/>
+
+              <text x="225" y="75" font-size="10" fill="var(--text-secondary)">A</text>
+              <text x="225" y="225" font-size="10" fill="var(--text-secondary)">B</text>
+              <text x="85" y="75" font-size="10" fill="var(--text-secondary)">C</text>
+              <text x="85" y="225" font-size="10" fill="var(--text-secondary)">D</text>
+              <text x="130" y="40" font-size="10" fill="var(--text-secondary)">E</text>
+              <text x="130" y="265" font-size="10" fill="var(--text-secondary)">F</text>
+            </svg>
+            <div class="rotation-note">Radial layout of the same tree. Which layout is "best" depends on what you want to show.</div>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <div class="example-label">Key point</div>
+          <p class="section-text" style="margin: 0;">What matters in a phylogeny is <span class="highlight-text">which species are nested within which clades</span>. The visual layout is irrelevant. A and B can be on the left or right, at the top or bottom. What matters is that they share a most recent common ancestor that is not shared with C, D, E, or F.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Branch lengths</h2>
+        <p class="section-text">In some phylogenies, the length of branches encodes information about evolutionary time or the amount of change. A long branch means more time has passed, or more genetic change has accumulated. A short branch means the lineages diverged recently.</p>
+        <p class="section-text">This distinction is crucial. A <span class="highlight-text">cladogram</span> shows topology but ignores branch lengths. A <span class="highlight-text">chronogram</span> or <span class="highlight-text">phylogram</span> uses branch length to encode meaningful information.</p>
+
+        <div class="viz-container">
+          <svg class="branch-length-svg" viewBox="0 0 900 500">
+            <!-- Title -->
+            <text x="450" y="30" text-anchor="middle" font-size="16" fill="var(--text-heading)" font-weight="600">A chronogram: branch lengths represent evolutionary time (in millions of years)</text>
+
+            <!-- Time axis -->
+            <line x1="80" y1="480" x2="880" y2="480" stroke="var(--text-secondary)" stroke-width="2"/>
+            <text x="450" y="510" text-anchor="middle" font-size="12" fill="var(--text-secondary)">Time (millions of years ago)</text>
+
+            <!-- Time tick marks -->
+            <line x1="80" y1="475" x2="80" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
+            <text x="80" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">0</text>
+
+            <line x1="230" y1="475" x2="230" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
+            <text x="230" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">50</text>
+
+            <line x1="380" y1="475" x2="380" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
+            <text x="380" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">100</text>
+
+            <line x1="530" y1="475" x2="530" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
+            <text x="530" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">150</text>
+
+            <line x1="680" y1="475" x2="680" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
+            <text x="680" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">200</text>
+
+            <!-- Tree branches -->
+            <!-- Main trunk -->
+            <line x1="80" y1="100" x2="80" y2="450" stroke="var(--text-secondary)" stroke-width="2.5"/>
+
+            <!-- First split at 200 mya -->
+            <circle cx="80" cy="100" r="4" fill="var(--accent)"/>
+            <text x="50" y="95" text-anchor="end" font-size="11" fill="var(--accent)" font-weight="600">MRCA</text>
+            <text x="50" y="110" text-anchor="end" font-size="10" fill="var(--text-secondary)">(200 mya)</text>
+
+            <!-- Left clade -->
+            <line x1="80" y1="100" x2="250" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
+            <circle cx="250" cy="100" r="3" fill="var(--text-secondary)"/>
+            <text x="260" y="95" font-size="10" fill="var(--text-secondary)">100 mya</text>
+
+            <!-- Right clade -->
+            <line x1="80" y1="100" x2="80" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
+            <circle cx="80" cy="200" r="3" fill="var(--text-secondary)"/>
+            <text x="90" y="200" font-size="10" fill="var(--text-secondary)">100 mya</text>
+
+            <!-- Left clade splits -->
+            <line x1="250" y1="100" x2="250" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
+            <line x1="250" y1="150" x2="350" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
+            <line x1="250" y1="150" x2="150" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
+
+            <!-- Tips left -->
+            <circle cx="150" cy="150" r="4" fill="var(--accent)"/>
+            <text x="155" y="155" font-size="11" fill="var(--text)" font-weight="600">Human</text>
+
+            <circle cx="350" cy="150" r="4" fill="var(--accent)"/>
+            <text x="355" y="155" font-size="11" fill="var(--text)" font-weight="600">Chimpanzee</text>
+
+            <!-- Right clade splits -->
+            <line x1="80" y1="200" x2="80" y2="300" stroke="var(--text-secondary)" stroke-width="2"/>
+            <line x1="80" y1="300" x2="450" y2="300" stroke="var(--text-secondary)" stroke-width="2"/>
+            <line x1="80" y1="300" x2="150" y2="300" stroke="var(--text-secondary)" stroke-width="2"/>
+
+            <circle cx="150" cy="300" r="4" fill="var(--accent)"/>
+            <text x="155" y="305" font-size="11" fill="var(--text)" font-weight="600">Chicken</text>
+
+            <circle cx="450" cy="300" r="4" fill="var(--accent)"/>
+            <text x="455" y="305" font-size="11" fill="var(--text)" font-weight="600">Crocodile</text>
+
+            <!-- Right-right split -->
+            <line x1="80" y1="300" x2="80" y2="400" stroke="var(--text-secondary)" stroke-width="2"/>
+            <line x1="80" y1="400" x2="350" y2="400" stroke="var(--text-secondary)" stroke-width="2"/>
+            <line x1="80" y1="400" x2="150" y2="400" stroke="var(--text-secondary)" stroke-width="2"/>
+
+            <circle cx="150" cy="400" r="4" fill="var(--accent)"/>
+            <text x="155" y="405" font-size="11" fill="var(--text)" font-weight="600">Frog</text>
+
+            <circle cx="350" cy="400" r="4" fill="var(--accent)"/>
+            <text x="355" y="405" font-size="11" fill="var(--text)" font-weight="600">Fish</text>
+
+            <!-- Annotations -->
+            <g opacity="0.6">
+              <line x1="100" y1="125" x2="140" y2="125" stroke="var(--accent)" stroke-width="1" stroke-dasharray="5,5"/>
+              <text x="145" y="130" font-size="9" fill="var(--accent)">50 million years</text>
+            </g>
+
+            <g opacity="0.6">
+              <line x1="100" y1="250" x2="140" y2="250" stroke="var(--accent)" stroke-width="1" stroke-dasharray="5,5"/>
+              <text x="145" y="255" font-size="9" fill="var(--accent)">100 million years</text>
+            </g>
+          </svg>
+        </div>
+
+        <p class="section-text">In the chronogram above, the horizontal axis represents time. The branch leading to Fish is the longest because it diverged from the other vertebrates around 500 million years ago. Humans and Chimpanzees share a much more recent common ancestor, so the branches separating them are shorter.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Why phylogenies matter for statistics</h2>
+        <p class="section-text">Here is a critical problem that motivates phylogenetic comparative methods: if you study 1000 species of beetles, you do not have 1000 independent observations. If 500 of those species are sisters (they share a most recent common ancestor that lived 2 million years ago), then those 500 species are not independent. They inherited many traits from their common ancestor.</p>
+        <p class="section-text">This is the problem of <span class="highlight-text">phylogenetic non-independence</span>. When you analyze traits across species, you must account for the fact that species are related by descent. Otherwise, you violate the assumption of independence that underlies standard statistical tests.</p>
+
+        <div class="example-box">
+          <div class="example-label">Example</div>
+          <p class="section-text" style="margin: 0;">Imagine you want to test whether body size predicts home range across 100 carnivore species. If you use linear regression, you assume the 100 data points are independent. But suppose 50 species are recently evolved lion relatives. They inherited similar body sizes and home ranges from their common ancestor. Now your sample size is effectively much smaller than 100.</p>
+        </div>
+
+        <p class="section-text">The phylogeny gives you the structure to correct for this non-independence. By accounting for the shared ancestry among species, phylogenetic comparative methods let you extract the evolutionary signal from the phylogenetic noise.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">How phylogenies are built</h2>
+        <p class="section-text">Phylogenies are not observed directly. They are inferred from genetic data (DNA sequences), morphological characters (body shape, skeletal features), or a combination of both. The most common method is <span class="highlight-text">maximum likelihood (ML)</span>, which finds the tree that makes your data most probable under a statistical model of evolution.</p>
+        <p class="section-text">Another popular approach is <span class="highlight-text">Bayesian inference</span>, which uses Bayes' theorem to calculate a probability distribution over all possible trees. Both methods account for uncertainty in the tree topology.</p>
+        <p class="section-text">For the purposes of comparative methods, the key insight is this: the phylogeny you use is an estimate, not a fact. It comes with uncertainty. Some internal branches may be poorly supported. Good practice includes checking the support values (bootstrap percentages in ML, posterior probabilities in Bayesian methods) and sometimes using methods that account for topological uncertainty.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container-xl">
+        <div class="nav-buttons">
+          <a href="index.html" class="nav-button prev">
+            <i class="bi bi-arrow-left"></i>
+            Back to Guide
+          </a>
+          <a href="continuous.html" class="nav-button">
+            Next: Continuous Traits
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <script>
+    // D3 Interactive Tree Visualization
+    const vertbrateData = {
+      name: "Vertebrata",
+      children: [
+        {
+          name: "Mammalia",
+          children: [
+            {
+              name: "Primates",
+              children: [
+                { name: "Human", x: 0 },
+                { name: "Chimpanzee", x: 0 }
+              ]
+            },
+            {
+              name: "Carnivora",
+              children: [
+                { name: "Lion", x: 0 },
+                { name: "Dog", x: 0 }
+              ]
+            },
+            { name: "Elephant", x: 0 }
+          ]
+        },
+        {
+          name: "Aves",
+          children: [
+            { name: "Chicken", x: 0 },
+            { name: "Ostrich", x: 0 }
+          ]
+        },
+        {
+          name: "Reptilia",
+          children: [
+            { name: "Crocodile", x: 0 },
+            { name: "Lizard", x: 0 }
+          ]
+        },
+        {
+          name: "Amphibia",
+          children: [
+            { name: "Frog", x: 0 },
+            { name: "Salamander", x: 0 }
+          ]
+        },
+        { name: "Fish", x: 0 }
+      ]
+    };
+
+    let showBranchLengths = true;
+    let highlightedLineage = null;
+
+    function renderTree() {
+      const container = document.getElementById('d3TreeContainer');
+      container.innerHTML = '';
+
+      const width = container.offsetWidth;
+      const height = 600;
+      const margin = { top: 40, right: 40, bottom: 40, left: 40 };
+
+      const svg = d3.select('#d3TreeContainer').append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
+      const g = svg.append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+
+      const tree = d3.tree()
+        .size([width - margin.left - margin.right, height - margin.top - margin.bottom]);
+
+      const root = d3.hierarchy(vertbrateData);
+      tree(root);
+
+      // Draw links
+      const links = g.selectAll('.link')
+        .data(root.links())
+        .enter()
+        .append('path')
+        .attr('class', 'link')
+        .attr('d', d3.linkVertical()
+          .x(d => d.x)
+          .y(d => d.y))
+        .on('mouseenter', function(event, d) {
+          highlightLineage(d.target, g);
+        })
+        .on('mouseleave', function() {
+          clearHighlight(g);
+        });
+
+      // Draw nodes
+      const nodes = g.selectAll('.node')
+        .data(root.descendants())
+        .enter()
+        .append('g')
+        .attr('class', 'node')
+        .attr('transform', d => `translate(${d.x},${d.y})`);
+
+      nodes.append('circle')
+        .attr('class', d => d.children ? 'node internal' : 'node tip')
+        .attr('r', d => d.children ? 3 : 5);
+
+      nodes.append('text')
+        .attr('dy', d => d.children ? -12 : -12)
+        .attr('text-anchor', 'middle')
+        .text(d => d.data.name)
+        .style('font-size', d => d.children ? '10px' : '11px')
+        .style('font-weight', d => d.children ? '400' : '600')
+        .on('mouseenter', function(event, d) {
+          if (!d.children) {
+            highlightLineage(d, g);
+          }
+        })
+        .on('mouseleave', function() {
+          clearHighlight(g);
+        });
+    }
+
+    function highlightLineage(node, g) {
+      const ancestors = getAncestors(node);
+
+      g.selectAll('.link')
+        .classed('highlight', d => {
+          return ancestors.some(anc => anc === d.target);
+        });
+
+      g.selectAll('.node circle')
+        .style('fill', d => {
+          if (ancestors.some(anc => anc === d)) {
+            return 'var(--accent)';
+          }
+          return d.children ? 'var(--text-secondary)' : 'var(--accent)';
+        })
+        .style('filter', d => {
+          if (ancestors.some(anc => anc === d)) {
+            return 'drop-shadow(0 0 6px rgba(201,162,39,0.6))';
+          }
+          return 'none';
+        });
+    }
+
+    function clearHighlight(g) {
+      g.selectAll('.link').classed('highlight', false);
+      g.selectAll('.node circle')
+        .style('fill', d => d.children ? 'var(--text-secondary)' : 'var(--accent)')
+        .style('filter', 'none');
+    }
+
+    function getAncestors(node) {
+      const ancestors = [];
+      let current = node;
+      while (current) {
+        ancestors.push(current);
+        current = current.parent;
+      }
+      return ancestors;
+    }
+
+    function toggleBranchLengths() {
+      showBranchLengths = !showBranchLengths;
+      const btn = document.getElementById('lengthToggle');
+      if (showBranchLengths) {
+        btn.textContent = 'Hide branch lengths';
+        btn.classList.add('active');
+      } else {
+        btn.textContent = 'Show branch lengths';
+        btn.classList.remove('active');
+      }
+      renderTree();
+    }
+
+    renderTree();
+    window.addEventListener('resize', renderTree);
+  </script>
+</body>
+</html>

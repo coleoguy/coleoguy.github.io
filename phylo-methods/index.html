@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phylogenetic Comparative Methods - Blackmon Lab</title>
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <style>
+    .hero-section {
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 0 80px 0;
+      background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-section h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-section .subtitle {
+      font-size: 1.3rem;
+      color: var(--text);
+      max-width: 800px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    .intro-text {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .topic-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topic-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent, rgba(201,162,39,0.05));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .topic-card:hover {
+      border-color: var(--accent-border);
+      background: var(--bg-card-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(201,162,39,0.1);
+    }
+
+    .topic-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .card-description {
+      color: var(--text);
+      flex-grow: 1;
+      margin-bottom: 25px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .difficulty-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .difficulty-foundational {
+      background: rgba(52, 211, 153, 0.15);
+      color: #34d399;
+    }
+
+    .difficulty-intermediate {
+      background: rgba(251, 146, 60, 0.15);
+      color: #fb923c;
+    }
+
+    .difficulty-advanced {
+      background: rgba(244, 114, 182, 0.15);
+      color: #f472b6;
+    }
+
+    .card-link-arrow {
+      color: var(--accent);
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .topic-card:hover .card-link-arrow {
+      transform: translateX(6px);
+    }
+  </style>
+</head>
+<body>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero-section">
+      <div class="container-xl">
+        <h1>Phylogenetic Comparative Methods</h1>
+        <div class="subtitle">A guide from first principles to working analyses</div>
+        <div class="intro-text">
+          Phylogenetic comparative methods let us test evolutionary hypotheses by accounting for the shared history of species. Whether you are studying how body size evolves, mapping the origin of complex traits, or testing correlations between characters, the phylogeny is your map to understanding the data.
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container-xl">
+        <div class="cards-grid">
+          <!-- Card 1: Phylogenies -->
+          <a href="phylogenies.html" class="topic-card" data-aos="fade-up">
+            <div class="card-icon">🌳</div>
+            <h2 class="card-title">Phylogenies</h2>
+            <p class="card-description">Before anything else, you need to know what a phylogeny is and how to read one. Learn to interpret the tree of life, understand branch lengths, and see why topology matters.</p>
+            <div class="card-footer">
+              <span class="difficulty-badge difficulty-foundational">Foundational</span>
+              <i class="bi bi-arrow-right card-link-arrow"></i>
+            </div>
+          </a>
+
+          <!-- Card 2: Continuous Traits -->
+          <a href="continuous.html" class="topic-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-icon">📈</div>
+            <h2 class="card-title">Continuous Traits</h2>
+            <p class="card-description">Body size, chromosome number, metabolic rate. How do we analyze traits that vary on a continuum? Learn Brownian motion, phylogenetic signal, and phylogenetic generalized least squares.</p>
+            <div class="card-footer">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <i class="bi bi-arrow-right card-link-arrow"></i>
+            </div>
+          </a>
+
+          <!-- Card 3: Discrete Traits -->
+          <a href="discrete.html" class="topic-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-icon">🔵</div>
+            <h2 class="card-title">Discrete Traits</h2>
+            <p class="card-description">Wings vs no wings. XY vs X0 sex determination. How do we model traits that come in distinct states? Learn the Mk model and ancestral state reconstruction.</p>
+            <div class="card-footer">
+              <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              <i class="bi bi-arrow-right card-link-arrow"></i>
+            </div>
+          </a>
+
+          <!-- Card 4: Discrete + Continuous -->
+          <a href="discrete-continuous.html" class="topic-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-icon">🔀</div>
+            <h2 class="card-title">Discrete + Continuous</h2>
+            <p class="card-description">What happens when you need both types of data in the same analysis? Learn phylogenetic ANCOVA, threshold models, and how to integrate multiple types of data.</p>
+            <div class="card-footer">
+              <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              <i class="bi bi-arrow-right card-link-arrow"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
