@@ -604,6 +604,8 @@
 
     function drawANCOVPlot() {
       const canvas = document.getElementById('ancovPlot');
+      canvas.width  = canvas.offsetWidth  || 700;
+      canvas.height = canvas.offsetHeight || 400;
       const ctx = canvas.getContext('2d');
       const width = canvas.width;
       const height = canvas.height;
@@ -669,44 +671,51 @@
         ctx.stroke();
       }
 
-      // Draw phylogeny if requested
+      // Draw phylogeny inset if requested
       if (ancovMode === 'phylo' || ancovMode === 'pgls') {
-        ctx.strokeStyle = 'rgba(201,162,39,0.2)';
-        ctx.lineWidth = 1;
-        const treePosX = margin + plotWidth / 2;
-        const treePosY = margin + plotHeight / 2;
+        // Small right-angle cladogram inset in upper-left corner of plot area
+        const tx = margin + 12;   // inset origin x
+        const ty = margin + 12;   // inset origin y
+        const tw = 72;            // inset width
+        const th = 72;            // inset height
+        const midY = ty + th / 2;
+        const topY = ty + th * 0.2;
+        const botY = ty + th * 0.8;
 
-        // Simple tree structure
+        ctx.strokeStyle = 'rgba(200,197,192,0.25)';
+        ctx.lineWidth = 1.5;
+        // Root to group A (right-angle elbow)
         ctx.beginPath();
-        ctx.moveTo(treePosX - 80, treePosY - 60);
-        ctx.lineTo(treePosX - 80, treePosY + 60);
+        ctx.moveTo(tx, midY);
+        ctx.lineTo(tx, topY);
+        ctx.lineTo(tx + tw * 0.55, topY);
         ctx.stroke();
-
+        // Root to group B
         ctx.beginPath();
-        ctx.moveTo(treePosX - 80, treePosY - 60);
-        ctx.lineTo(treePosX - 40, treePosY - 60);
+        ctx.moveTo(tx, midY);
+        ctx.lineTo(tx, botY);
+        ctx.lineTo(tx + tw * 0.55, botY);
         ctx.stroke();
-
+        // Root dot
+        ctx.fillStyle = 'rgba(200,197,192,0.3)';
         ctx.beginPath();
-        ctx.moveTo(treePosX - 80, treePosY + 60);
-        ctx.lineTo(treePosX - 40, treePosY + 60);
-        ctx.stroke();
-
-        ctx.fillStyle = 'rgba(52,211,153,0.3)';
-        ctx.beginPath();
-        ctx.arc(treePosX - 40, treePosY - 60, 25, 0, 2 * Math.PI);
+        ctx.arc(tx, midY, 3, 0, 2 * Math.PI);
         ctx.fill();
-
-        ctx.fillStyle = 'rgba(201,162,39,0.3)';
+        // Group A circle + label
+        ctx.fillStyle = 'rgba(52,211,153,0.25)';
         ctx.beginPath();
-        ctx.arc(treePosX - 40, treePosY + 60, 25, 0, 2 * Math.PI);
+        ctx.arc(tx + tw * 0.55, topY, 14, 0, 2 * Math.PI);
         ctx.fill();
-
-        ctx.fillStyle = 'rgba(200,197,192,0.5)';
-        ctx.font = '10px monospace';
+        // Group B circle + label
+        ctx.fillStyle = 'rgba(201,162,39,0.25)';
+        ctx.beginPath();
+        ctx.arc(tx + tw * 0.55, botY, 14, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(200,197,192,0.55)';
+        ctx.font = '9px monospace';
         ctx.textAlign = 'center';
-        ctx.fillText('Group A', treePosX - 40, treePosY - 55);
-        ctx.fillText('Group B', treePosX - 40, treePosY + 65);
+        ctx.fillText('A', tx + tw * 0.55, topY + 3);
+        ctx.fillText('B', tx + tw * 0.55, botY + 3);
       }
     }
 
@@ -720,60 +729,84 @@
     // Lambda heatmap
     function drawHeatmap() {
       const canvas = document.getElementById('heatmapCanvas');
+      // Always re-measure from CSS layout; reset buffer so canvas clears cleanly
+      const cssW = canvas.offsetWidth;
+      canvas.width  = cssW > 10 ? cssW : (canvas.width > 10 ? canvas.width : 600);
+      canvas.height = 320;
       const ctx = canvas.getContext('2d');
-      const width = canvas.width;
+      const width  = canvas.width;
       const height = canvas.height;
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = 'rgba(8,8,8,0.6)';
+      ctx.fillRect(0, 0, width, height);
 
       const lambda = parseFloat(document.getElementById('lambdaSlider').value);
       const nSpecies = 8;
 
-      ctx.fillStyle = 'rgba(8,8,8,0.3)';
-      ctx.fillRect(0, 0, width, height);
+      const pad  = 48;
+      const cellSize = Math.floor((Math.min(width, height) - pad * 2) / nSpecies);
+      const gridW = cellSize * nSpecies;
+      const startX = Math.round((width  - gridW) / 2);
+      const startY = 18;
 
-      const cellSize = (width - 60) / nSpecies;
-      const startX = 40;
-      const startY = 20;
-
-      // Create correlation matrix
-      const corr = Array(nSpecies).fill().map((_, i) =>
-        Array(nSpecies).fill().map((_, j) => {
+      // Correlation matrix: diagonal=1, off-diagonal scaled by lambda
+      const corr = Array.from({ length: nSpecies }, (_, i) =>
+        Array.from({ length: nSpecies }, (_, j) => {
           if (i === j) return 1;
           const dist = Math.abs(i - j) / nSpecies;
-          return Math.exp(-dist * 5) * lambda + (1 - lambda) * 0.1;
+          return Math.exp(-dist * 6) * lambda + (1 - lambda) * (0.05 + dist * 0.02);
         })
       );
 
-      // Draw heatmap
+      // Color map: near-zero → deep slate-blue; high → bright gold
+      function corrColor(v) {
+        // v in [0,1]: 0 = cold, 1 = hot
+        const r = Math.round(v * 201 + (1 - v) * 22);
+        const g = Math.round(v * 162 + (1 - v) * 36);
+        const b = Math.round(v *  39 + (1 - v) * 80);
+        return `rgb(${r},${g},${b})`;
+      }
+
+      // Draw cells
       for (let i = 0; i < nSpecies; i++) {
         for (let j = 0; j < nSpecies; j++) {
-          const val = corr[i][j];
-          const hue = 200 + (val * 60); // Blue to gold gradient
-          ctx.fillStyle = `hsl(${hue}, 70%, 50%)`;
+          ctx.fillStyle = corrColor(corr[i][j]);
           ctx.fillRect(startX + j * cellSize, startY + i * cellSize, cellSize, cellSize);
-
-          // Draw border
-          ctx.strokeStyle = 'rgba(154,151,147,0.2)';
+          ctx.strokeStyle = 'rgba(0,0,0,0.35)';
           ctx.lineWidth = 0.5;
           ctx.strokeRect(startX + j * cellSize, startY + i * cellSize, cellSize, cellSize);
         }
       }
 
-      // Labels
-      ctx.fillStyle = 'rgba(200,197,192,0.6)';
-      ctx.font = '10px monospace';
+      // Axis labels
+      ctx.fillStyle = 'rgba(200,197,192,0.65)';
+      ctx.font = `${Math.max(8, Math.round(cellSize * 0.38))}px monospace`;
       for (let i = 0; i < nSpecies; i++) {
         ctx.textAlign = 'right';
-        ctx.fillText('S' + (i + 1), startX - 8, startY + i * cellSize + cellSize / 2 + 3);
+        ctx.fillText('S' + (i + 1), startX - 5, startY + i * cellSize + cellSize * 0.65);
         ctx.textAlign = 'center';
-        ctx.fillText('S' + (i + 1), startX + i * cellSize + cellSize / 2, startY + nSpecies * cellSize + 15);
+        ctx.fillText('S' + (i + 1), startX + i * cellSize + cellSize / 2, startY + gridW + 13);
       }
 
-      // Legend
-      ctx.fillStyle = 'rgba(200,197,192,0.5)';
+      // Color legend bar
+      const legX = startX;
+      const legY = startY + gridW + 26;
+      const legW = gridW;
+      const legH = 10;
+      for (let px = 0; px < legW; px++) {
+        ctx.fillStyle = corrColor(px / legW);
+        ctx.fillRect(legX + px, legY, 1, legH);
+      }
+      ctx.strokeStyle = 'rgba(154,151,147,0.3)';
+      ctx.lineWidth = 0.5;
+      ctx.strokeRect(legX, legY, legW, legH);
+      ctx.fillStyle = 'rgba(200,197,192,0.55)';
       ctx.font = '9px monospace';
       ctx.textAlign = 'left';
-      ctx.fillText('Lambda = 0: no signal', 10, height - 10);
-      ctx.fillText('Lambda = 1: full BM', width - 140, height - 10);
+      ctx.fillText('low corr', legX, legY + legH + 11);
+      ctx.textAlign = 'right';
+      ctx.fillText('high corr', legX + legW, legY + legH + 11);
     }
 
     document.getElementById('lambdaSlider').addEventListener('input', function() {
@@ -781,9 +814,11 @@
       drawHeatmap();
     });
 
-    // Initial draws
-    drawANCOVPlot();
-    drawHeatmap();
+    // Initial draws — defer to next frame so CSS layout is complete
+    requestAnimationFrame(() => {
+      drawANCOVPlot();
+      drawHeatmap();
+    });
     window.addEventListener('resize', () => {
       drawANCOVPlot();
       drawHeatmap();

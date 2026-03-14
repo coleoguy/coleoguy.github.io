@@ -77,12 +77,10 @@
 
     .d3-tree-container {
       width: 100%;
-      height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 580px;
       background: linear-gradient(to bottom, rgba(201,162,39,0.03), transparent);
       border-radius: 8px;
+      overflow: hidden;
     }
 
     .tree-control {
@@ -186,7 +184,7 @@
 
     .branch-length-svg {
       width: 100%;
-      height: 400px;
+      height: auto;
     }
 
     .nav-buttons {
@@ -293,112 +291,167 @@
         <p class="section-text">A key insight: the horizontal position of species in a phylogeny does not matter. You can rotate branches around any internal node and get a topology that is logically identical. Below are three different "rotations" of the same six-species tree. They look different, but they show the same relationships.</p>
 
         <div class="rotations-container">
+          <!-- All three layouts show the same topology: ((A,B),((C,D),(E,F)))
+               Tips at x=240 (layouts 1&2) or y=220 (layout 3, top-down)
+               Internal nodes: AB@(140,40), CD@(160,120), EF@(160,200),
+               CDEF@(100,160), root@(30,100) -->
+
           <div class="rotation-box">
-            <div class="rotation-title">Layout 1</div>
-            <svg class="rotation-svg" viewBox="0 0 280 300">
-              <!-- Tree 1: balanced -->
-              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="80" x2="130" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="220" x2="130" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="80" x2="130" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="100" x2="200" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="100" x2="200" y2="60" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="100" x2="200" y2="140" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="220" x2="130" y2="240" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="240" x2="200" y2="240" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="240" x2="200" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="240" x2="200" y2="280" stroke="var(--text-secondary)" stroke-width="2"/>
+            <div class="rotation-title">Layout 1: horizontal</div>
+            <svg class="rotation-svg" viewBox="0 0 280 255">
+              <!-- Branches: M parentX,parentY V childY H childX -->
+              <!-- root(30,100) → AB(140,40) -->
+              <path d="M30,100 V40 H140" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- root(30,100) → CDEF(100,160) -->
+              <path d="M30,100 V160 H100" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- AB(140,40) → A tip(240,20) -->
+              <path d="M140,40 V20 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- AB(140,40) → B tip(240,60) -->
+              <path d="M140,40 V60 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- CDEF(100,160) → CD(160,120) -->
+              <path d="M100,160 V120 H160" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- CDEF(100,160) → EF(160,200) -->
+              <path d="M100,160 V200 H160" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- CD(160,120) → C tip(240,100) -->
+              <path d="M160,120 V100 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- CD(160,120) → D tip(240,140) -->
+              <path d="M160,120 V140 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- EF(160,200) → E tip(240,180) -->
+              <path d="M160,200 V180 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- EF(160,200) → F tip(240,220) -->
+              <path d="M160,200 V220 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
 
-              <circle cx="50" cy="50" r="3" fill="var(--text-secondary)"/>
-              <circle cx="130" cy="100" r="3" fill="var(--text-secondary)"/>
-              <circle cx="200" cy="100" r="3" fill="var(--text-secondary)"/>
-              <circle cx="200" cy="240" r="3" fill="var(--text-secondary)"/>
+              <!-- Internal nodes -->
+              <circle cx="30"  cy="100" r="3" fill="var(--text-secondary)"/>
+              <circle cx="140" cy="40"  r="3" fill="var(--text-secondary)"/>
+              <circle cx="100" cy="160" r="3" fill="var(--text-secondary)"/>
+              <circle cx="160" cy="120" r="3" fill="var(--text-secondary)"/>
+              <circle cx="160" cy="200" r="3" fill="var(--text-secondary)"/>
 
-              <circle cx="200" cy="60" r="4" fill="var(--accent)"/>
-              <circle cx="200" cy="140" r="4" fill="var(--accent)"/>
-              <circle cx="200" cy="200" r="4" fill="var(--accent)"/>
-              <circle cx="200" cy="280" r="4" fill="var(--accent)"/>
-              <circle cx="130" cy="80" r="4" fill="var(--accent)"/>
-              <circle cx="130" cy="240" r="4" fill="var(--accent)"/>
+              <!-- Tips -->
+              <circle cx="240" cy="20"  r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="60"  r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="100" r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="140" r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="180" r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="220" r="5" fill="var(--accent)"/>
 
-              <text x="210" y="65" font-size="10" fill="var(--text-secondary)">A</text>
-              <text x="210" y="145" font-size="10" fill="var(--text-secondary)">B</text>
-              <text x="210" y="205" font-size="10" fill="var(--text-secondary)">C</text>
-              <text x="210" y="285" font-size="10" fill="var(--text-secondary)">D</text>
-              <text x="140" y="75" font-size="10" fill="var(--text-secondary)">E</text>
-              <text x="140" y="250" font-size="10" fill="var(--text-secondary)">F</text>
+              <!-- Labels -->
+              <text x="249" y="24"  font-size="13" fill="var(--text)" font-style="italic">A</text>
+              <text x="249" y="64"  font-size="13" fill="var(--text)" font-style="italic">B</text>
+              <text x="249" y="104" font-size="13" fill="var(--text)" font-style="italic">C</text>
+              <text x="249" y="144" font-size="13" fill="var(--text)" font-style="italic">D</text>
+              <text x="249" y="184" font-size="13" fill="var(--text)" font-style="italic">E</text>
+              <text x="249" y="224" font-size="13" fill="var(--text)" font-style="italic">F</text>
             </svg>
-            <div class="rotation-note">Species A and B are sisters (most recent common ancestor). C, D, E, F are sisters to each other.</div>
+            <div class="rotation-note">A &amp; B are sisters. C &amp; D are sisters. E &amp; F are sisters. (CD) and (EF) form a clade.</div>
           </div>
 
           <div class="rotation-box">
-            <div class="rotation-title">Layout 2</div>
-            <svg class="rotation-svg" viewBox="0 0 280 300">
-              <!-- Tree 2: left-heavy -->
-              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="150" x2="130" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="120" x2="130" y2="120" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="120" x2="130" y2="60" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="60" x2="200" y2="60" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="60" x2="200" y2="40" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="60" x2="200" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="120" x2="130" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="180" x2="200" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="180" x2="200" y2="140" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="180" x2="200" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="130" y1="150" x2="200" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="150" x2="200" y2="260" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="200" y1="150" x2="200" y2="280" stroke="var(--text-secondary)" stroke-width="2"/>
+            <div class="rotation-title">Layout 2: branches rotated</div>
+            <!-- Same topology, some branches rotated: B on top of A; EF above CD; D above C -->
+            <!-- Tip order: B=20, A=60, E=100, F=140, D=180, C=220 -->
+            <!-- Nodes: BA@(140,40), EF@(160,120), DC@(160,200), EFDC@(100,160), root@(30,100) -->
+            <svg class="rotation-svg" viewBox="0 0 280 255">
+              <!-- root → BA -->
+              <path d="M30,100 V40 H140" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- root → EFDC -->
+              <path d="M30,100 V160 H100" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- BA → B(240,20) -->
+              <path d="M140,40 V20 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- BA → A(240,60) -->
+              <path d="M140,40 V60 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- EFDC → EF(160,120) -->
+              <path d="M100,160 V120 H160" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- EFDC → DC(160,200) -->
+              <path d="M100,160 V200 H160" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- EF → E(240,100) -->
+              <path d="M160,120 V100 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- EF → F(240,140) -->
+              <path d="M160,120 V140 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- DC → D(240,180) -->
+              <path d="M160,200 V180 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- DC → C(240,220) -->
+              <path d="M160,200 V220 H240" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
 
-              <circle cx="200" cy="40" r="4" fill="var(--accent)"/>
-              <circle cx="200" cy="80" r="4" fill="var(--accent)"/>
-              <circle cx="200" cy="140" r="4" fill="var(--accent)"/>
-              <circle cx="200" cy="220" r="4" fill="var(--accent)"/>
-              <circle cx="200" cy="260" r="4" fill="var(--accent)"/>
-              <circle cx="200" cy="280" r="4" fill="var(--accent)"/>
+              <!-- Internal nodes -->
+              <circle cx="30"  cy="100" r="3" fill="var(--text-secondary)"/>
+              <circle cx="140" cy="40"  r="3" fill="var(--text-secondary)"/>
+              <circle cx="100" cy="160" r="3" fill="var(--text-secondary)"/>
+              <circle cx="160" cy="120" r="3" fill="var(--text-secondary)"/>
+              <circle cx="160" cy="200" r="3" fill="var(--text-secondary)"/>
 
-              <circle cx="50" cy="50" r="3" fill="var(--text-secondary)"/>
-              <circle cx="130" cy="60" r="3" fill="var(--text-secondary)"/>
-              <circle cx="130" cy="180" r="3" fill="var(--text-secondary)"/>
+              <!-- Tips -->
+              <circle cx="240" cy="20"  r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="60"  r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="100" r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="140" r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="180" r="5" fill="var(--accent)"/>
+              <circle cx="240" cy="220" r="5" fill="var(--accent)"/>
 
-              <text x="210" y="45" font-size="10" fill="var(--text-secondary)">A</text>
-              <text x="210" y="85" font-size="10" fill="var(--text-secondary)">B</text>
-              <text x="210" y="145" font-size="10" fill="var(--text-secondary)">C</text>
-              <text x="210" y="225" font-size="10" fill="var(--text-secondary)">D</text>
-              <text x="210" y="265" font-size="10" fill="var(--text-secondary)">E</text>
-              <text x="210" y="285" font-size="10" fill="var(--text-secondary)">F</text>
+              <!-- Labels — same topology, different arrangement -->
+              <text x="249" y="24"  font-size="13" fill="var(--text)" font-style="italic">B</text>
+              <text x="249" y="64"  font-size="13" fill="var(--text)" font-style="italic">A</text>
+              <text x="249" y="104" font-size="13" fill="var(--text)" font-style="italic">E</text>
+              <text x="249" y="144" font-size="13" fill="var(--text)" font-style="italic">F</text>
+              <text x="249" y="184" font-size="13" fill="var(--text)" font-style="italic">D</text>
+              <text x="249" y="224" font-size="13" fill="var(--text)" font-style="italic">C</text>
             </svg>
-            <div class="rotation-note">Same topology, different visual arrangement. All relationships are identical.</div>
+            <div class="rotation-note">Identical topology — A &amp; B still sisters, (CD) and (EF) still a clade. Branches were just rotated.</div>
           </div>
 
           <div class="rotation-box">
-            <div class="rotation-title">Layout 3</div>
-            <svg class="rotation-svg" viewBox="0 0 280 300">
-              <!-- Tree 3: radial -->
-              <line x1="140" y1="150" x2="220" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="140" y1="150" x2="220" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="140" y1="150" x2="100" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="140" y1="150" x2="100" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="140" y1="150" x2="140" y2="50" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="140" y1="150" x2="140" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
+            <div class="rotation-title">Layout 3: top-down</div>
+            <!-- Same topology rotated 90°. Root at top, tips at bottom.
+                 Tips at y=220: A=25, B=69, C=113, D=157, E=201, F=245
+                 AB@(47,120), CD@(135,150), EF@(223,150), CDEF@(179,80), root@(113,25) -->
+            <svg class="rotation-svg" viewBox="0 0 280 255">
+              <!-- Branches: M parentX,parentY H childX V childY -->
+              <!-- root(113,25) → AB(47,120) -->
+              <path d="M113,25 H47 V120" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- root(113,25) → CDEF(179,80) -->
+              <path d="M113,25 H179 V80" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- AB(47,120) → A(25,220) -->
+              <path d="M47,120 H25 V220" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- AB(47,120) → B(69,220) -->
+              <path d="M47,120 H69 V220" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- CDEF(179,80) → CD(135,150) -->
+              <path d="M179,80 H135 V150" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- CDEF(179,80) → EF(223,150) -->
+              <path d="M179,80 H223 V150" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- CD(135,150) → C(113,220) -->
+              <path d="M135,150 H113 V220" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- CD(135,150) → D(157,220) -->
+              <path d="M135,150 H157 V220" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- EF(223,150) → E(201,220) -->
+              <path d="M223,150 H201 V220" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- EF(223,150) → F(245,220) -->
+              <path d="M223,150 H245 V220" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
 
-              <circle cx="140" cy="150" r="3" fill="var(--text-secondary)"/>
+              <!-- Internal nodes -->
+              <circle cx="113" cy="25"  r="3" fill="var(--text-secondary)"/>
+              <circle cx="47"  cy="120" r="3" fill="var(--text-secondary)"/>
+              <circle cx="179" cy="80"  r="3" fill="var(--text-secondary)"/>
+              <circle cx="135" cy="150" r="3" fill="var(--text-secondary)"/>
+              <circle cx="223" cy="150" r="3" fill="var(--text-secondary)"/>
 
-              <circle cx="220" cy="80" r="4" fill="var(--accent)"/>
-              <circle cx="220" cy="220" r="4" fill="var(--accent)"/>
-              <circle cx="100" cy="80" r="4" fill="var(--accent)"/>
-              <circle cx="100" cy="220" r="4" fill="var(--accent)"/>
-              <circle cx="140" cy="50" r="4" fill="var(--accent)"/>
-              <circle cx="140" cy="250" r="4" fill="var(--accent)"/>
+              <!-- Tips -->
+              <circle cx="25"  cy="220" r="5" fill="var(--accent)"/>
+              <circle cx="69"  cy="220" r="5" fill="var(--accent)"/>
+              <circle cx="113" cy="220" r="5" fill="var(--accent)"/>
+              <circle cx="157" cy="220" r="5" fill="var(--accent)"/>
+              <circle cx="201" cy="220" r="5" fill="var(--accent)"/>
+              <circle cx="245" cy="220" r="5" fill="var(--accent)"/>
 
-              <text x="225" y="75" font-size="10" fill="var(--text-secondary)">A</text>
-              <text x="225" y="225" font-size="10" fill="var(--text-secondary)">B</text>
-              <text x="85" y="75" font-size="10" fill="var(--text-secondary)">C</text>
-              <text x="85" y="225" font-size="10" fill="var(--text-secondary)">D</text>
-              <text x="130" y="40" font-size="10" fill="var(--text-secondary)">E</text>
-              <text x="130" y="265" font-size="10" fill="var(--text-secondary)">F</text>
+              <!-- Labels below tips -->
+              <text x="25"  y="238" font-size="13" text-anchor="middle" fill="var(--text)" font-style="italic">A</text>
+              <text x="69"  y="238" font-size="13" text-anchor="middle" fill="var(--text)" font-style="italic">B</text>
+              <text x="113" y="238" font-size="13" text-anchor="middle" fill="var(--text)" font-style="italic">C</text>
+              <text x="157" y="238" font-size="13" text-anchor="middle" fill="var(--text)" font-style="italic">D</text>
+              <text x="201" y="238" font-size="13" text-anchor="middle" fill="var(--text)" font-style="italic">E</text>
+              <text x="245" y="238" font-size="13" text-anchor="middle" fill="var(--text)" font-style="italic">F</text>
             </svg>
-            <div class="rotation-note">Radial layout of the same tree. Which layout is "best" depends on what you want to show.</div>
+            <div class="rotation-note">Same topology rotated 90°. Root at top, time runs downward. All relationships identical to layouts 1 &amp; 2.</div>
           </div>
         </div>
 
@@ -416,93 +469,89 @@
         <p class="section-text">This distinction is crucial. A <span class="highlight-text">cladogram</span> shows topology but ignores branch lengths. A <span class="highlight-text">chronogram</span> or <span class="highlight-text">phylogram</span> uses branch length to encode meaningful information.</p>
 
         <div class="viz-container">
-          <svg class="branch-length-svg" viewBox="0 0 900 500">
+          <!-- Chronogram: 5-taxon vertebrate tree
+               x=80 = 500 mya (root), x=820 = 0 mya (present), scale = 1.48 px/mya
+               Tips y: Fish=70, Frog=160, Lizard=250, Croc=340, Human=430
+               Nodes (x=time-position, y=midpoint of descendant tip range):
+                 Root(80, 250), Tetrapod(265, 295), LizCrocHuman(361, 340), CrocHuman(450, 385)
+               Paths: M node.x,node.y  V child.y  H child.x   (shoulder at node.x) -->
+          <svg class="branch-length-svg" viewBox="0 0 960 520">
             <!-- Title -->
-            <text x="450" y="30" text-anchor="middle" font-size="16" fill="var(--text-heading)" font-weight="600">A chronogram: branch lengths represent evolutionary time (in millions of years)</text>
+            <text x="480" y="28" text-anchor="middle" font-size="15" fill="var(--text-heading)" font-weight="600">Vertebrate chronogram: branch length = evolutionary time</text>
 
-            <!-- Time axis -->
-            <line x1="80" y1="480" x2="880" y2="480" stroke="var(--text-secondary)" stroke-width="2"/>
-            <text x="450" y="510" text-anchor="middle" font-size="12" fill="var(--text-secondary)">Time (millions of years ago)</text>
+            <!-- === BRANCHES (shoulder at parent x, then horizontal to child) === -->
+            <!-- Root(80,250) → Fish(820,70) -->
+            <path d="M80,250 V70 H820"  stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+            <!-- Root(80,250) → Tetrapod(265,295) -->
+            <path d="M80,250 V295 H265" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+            <!-- Tetrapod(265,295) → Frog(820,160) -->
+            <path d="M265,295 V160 H820" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+            <!-- Tetrapod(265,295) → LizCrocHuman(361,340) -->
+            <path d="M265,295 V340 H361" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+            <!-- LizCrocHuman(361,340) → Lizard(820,250) -->
+            <path d="M361,340 V250 H820" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+            <!-- LizCrocHuman(361,340) → CrocHuman(450,385) -->
+            <path d="M361,340 V385 H450" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+            <!-- CrocHuman(450,385) → Croc(820,340) -->
+            <path d="M450,385 V340 H820" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+            <!-- CrocHuman(450,385) → Human(820,430) -->
+            <path d="M450,385 V430 H820" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
 
-            <!-- Time tick marks -->
-            <line x1="80" y1="475" x2="80" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
-            <text x="80" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">0</text>
+            <!-- === INTERNAL NODES === -->
+            <circle cx="80"  cy="250" r="4" fill="var(--text-secondary)"/>
+            <circle cx="265" cy="295" r="4" fill="var(--text-secondary)"/>
+            <circle cx="361" cy="340" r="4" fill="var(--text-secondary)"/>
+            <circle cx="450" cy="385" r="4" fill="var(--text-secondary)"/>
 
-            <line x1="230" y1="475" x2="230" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
-            <text x="230" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">50</text>
+            <!-- === TIP NODES === -->
+            <circle cx="820" cy="70"  r="5" fill="var(--accent)"/>
+            <circle cx="820" cy="160" r="5" fill="var(--accent)"/>
+            <circle cx="820" cy="250" r="5" fill="var(--accent)"/>
+            <circle cx="820" cy="340" r="5" fill="var(--accent)"/>
+            <circle cx="820" cy="430" r="5" fill="var(--accent)"/>
 
-            <line x1="380" y1="475" x2="380" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
-            <text x="380" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">100</text>
+            <!-- === TIP LABELS === -->
+            <text x="830" y="74"  font-size="13" fill="var(--text)" font-style="italic">Fish</text>
+            <text x="830" y="164" font-size="13" fill="var(--text)" font-style="italic">Frog</text>
+            <text x="830" y="254" font-size="13" fill="var(--text)" font-style="italic">Lizard</text>
+            <text x="830" y="344" font-size="13" fill="var(--text)" font-style="italic">Crocodile</text>
+            <text x="830" y="434" font-size="13" fill="var(--text)" font-style="italic">Human</text>
 
-            <line x1="530" y1="475" x2="530" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
-            <text x="530" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">150</text>
+            <!-- === NODE AGE LABELS (above node, at node's x) === -->
+            <text x="80"  y="45"  text-anchor="middle" font-size="10" fill="var(--text-secondary)">~500 mya</text>
+            <text x="265" y="45"  text-anchor="middle" font-size="10" fill="var(--text-secondary)">~375 mya</text>
+            <text x="361" y="45"  text-anchor="middle" font-size="10" fill="var(--text-secondary)">~310 mya</text>
+            <text x="450" y="45"  text-anchor="middle" font-size="10" fill="var(--text-secondary)">~250 mya</text>
+            <!-- dashed vertical guides from age labels to axis -->
+            <line x1="80"  y1="50" x2="80"  y2="456" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+            <line x1="265" y1="50" x2="265" y2="456" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+            <line x1="361" y1="50" x2="361" y2="456" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+            <line x1="450" y1="50" x2="450" y2="456" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
 
-            <line x1="680" y1="475" x2="680" y2="485" stroke="var(--text-secondary)" stroke-width="1"/>
-            <text x="680" y="495" text-anchor="middle" font-size="11" fill="var(--text-secondary)">200</text>
+            <!-- === TIME AXIS === -->
+            <line x1="80" y1="458" x2="820" y2="458" stroke="var(--text-secondary)" stroke-width="2"/>
 
-            <!-- Tree branches -->
-            <!-- Main trunk -->
-            <line x1="80" y1="100" x2="80" y2="450" stroke="var(--text-secondary)" stroke-width="2.5"/>
+            <!-- Tick at 500 mya (x=80) -->
+            <line x1="80"  y1="453" x2="80"  y2="463" stroke="var(--text-secondary)" stroke-width="1.5"/>
+            <text x="80"  y="476" text-anchor="middle" font-size="11" fill="var(--text-secondary)">500</text>
+            <!-- Tick at 400 mya (x=228) -->
+            <line x1="228" y1="453" x2="228" y2="463" stroke="var(--text-secondary)" stroke-width="1.5"/>
+            <text x="228" y="476" text-anchor="middle" font-size="11" fill="var(--text-secondary)">400</text>
+            <!-- Tick at 300 mya (x=376) -->
+            <line x1="376" y1="453" x2="376" y2="463" stroke="var(--text-secondary)" stroke-width="1.5"/>
+            <text x="376" y="476" text-anchor="middle" font-size="11" fill="var(--text-secondary)">300</text>
+            <!-- Tick at 200 mya (x=524) -->
+            <line x1="524" y1="453" x2="524" y2="463" stroke="var(--text-secondary)" stroke-width="1.5"/>
+            <text x="524" y="476" text-anchor="middle" font-size="11" fill="var(--text-secondary)">200</text>
+            <!-- Tick at 100 mya (x=672) -->
+            <line x1="672" y1="453" x2="672" y2="463" stroke="var(--text-secondary)" stroke-width="1.5"/>
+            <text x="672" y="476" text-anchor="middle" font-size="11" fill="var(--text-secondary)">100</text>
+            <!-- Tick at present (x=820) -->
+            <line x1="820" y1="453" x2="820" y2="463" stroke="var(--text-secondary)" stroke-width="1.5"/>
+            <text x="820" y="476" text-anchor="middle" font-size="11" fill="var(--text-secondary)">0</text>
 
-            <!-- First split at 200 mya -->
-            <circle cx="80" cy="100" r="4" fill="var(--accent)"/>
-            <text x="50" y="95" text-anchor="end" font-size="11" fill="var(--accent)" font-weight="600">MRCA</text>
-            <text x="50" y="110" text-anchor="end" font-size="10" fill="var(--text-secondary)">(200 mya)</text>
-
-            <!-- Left clade -->
-            <line x1="80" y1="100" x2="250" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
-            <circle cx="250" cy="100" r="3" fill="var(--text-secondary)"/>
-            <text x="260" y="95" font-size="10" fill="var(--text-secondary)">100 mya</text>
-
-            <!-- Right clade -->
-            <line x1="80" y1="100" x2="80" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
-            <circle cx="80" cy="200" r="3" fill="var(--text-secondary)"/>
-            <text x="90" y="200" font-size="10" fill="var(--text-secondary)">100 mya</text>
-
-            <!-- Left clade splits -->
-            <line x1="250" y1="100" x2="250" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
-            <line x1="250" y1="150" x2="350" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
-            <line x1="250" y1="150" x2="150" y2="150" stroke="var(--text-secondary)" stroke-width="2"/>
-
-            <!-- Tips left -->
-            <circle cx="150" cy="150" r="4" fill="var(--accent)"/>
-            <text x="155" y="155" font-size="11" fill="var(--text)" font-weight="600">Human</text>
-
-            <circle cx="350" cy="150" r="4" fill="var(--accent)"/>
-            <text x="355" y="155" font-size="11" fill="var(--text)" font-weight="600">Chimpanzee</text>
-
-            <!-- Right clade splits -->
-            <line x1="80" y1="200" x2="80" y2="300" stroke="var(--text-secondary)" stroke-width="2"/>
-            <line x1="80" y1="300" x2="450" y2="300" stroke="var(--text-secondary)" stroke-width="2"/>
-            <line x1="80" y1="300" x2="150" y2="300" stroke="var(--text-secondary)" stroke-width="2"/>
-
-            <circle cx="150" cy="300" r="4" fill="var(--accent)"/>
-            <text x="155" y="305" font-size="11" fill="var(--text)" font-weight="600">Chicken</text>
-
-            <circle cx="450" cy="300" r="4" fill="var(--accent)"/>
-            <text x="455" y="305" font-size="11" fill="var(--text)" font-weight="600">Crocodile</text>
-
-            <!-- Right-right split -->
-            <line x1="80" y1="300" x2="80" y2="400" stroke="var(--text-secondary)" stroke-width="2"/>
-            <line x1="80" y1="400" x2="350" y2="400" stroke="var(--text-secondary)" stroke-width="2"/>
-            <line x1="80" y1="400" x2="150" y2="400" stroke="var(--text-secondary)" stroke-width="2"/>
-
-            <circle cx="150" cy="400" r="4" fill="var(--accent)"/>
-            <text x="155" y="405" font-size="11" fill="var(--text)" font-weight="600">Frog</text>
-
-            <circle cx="350" cy="400" r="4" fill="var(--accent)"/>
-            <text x="355" y="405" font-size="11" fill="var(--text)" font-weight="600">Fish</text>
-
-            <!-- Annotations -->
-            <g opacity="0.6">
-              <line x1="100" y1="125" x2="140" y2="125" stroke="var(--accent)" stroke-width="1" stroke-dasharray="5,5"/>
-              <text x="145" y="130" font-size="9" fill="var(--accent)">50 million years</text>
-            </g>
-
-            <g opacity="0.6">
-              <line x1="100" y1="250" x2="140" y2="250" stroke="var(--accent)" stroke-width="1" stroke-dasharray="5,5"/>
-              <text x="145" y="255" font-size="9" fill="var(--accent)">100 million years</text>
-            </g>
+            <!-- Axis title -->
+            <text x="450" y="498" text-anchor="middle" font-size="12" fill="var(--text-secondary)">Millions of years ago (mya)</text>
           </svg>
         </div>
 
@@ -568,144 +617,156 @@
   <script src="../assets/js/main.js"></script>
 
   <script>
-    // D3 Interactive Tree Visualization
-    const vertbrateData = {
-      name: "Vertebrata",
+    // Vertebrate phylogeny with approximate divergence ages (mya)
+    const vertebrateData = {
+      name: "Vertebrata", age: 500,
       children: [
+        { name: "Fish", age: 0 },
         {
-          name: "Mammalia",
+          name: "Tetrapoda", age: 375,
           children: [
+            { name: "Frog", age: 0 },
+            { name: "Salamander", age: 0 },
             {
-              name: "Primates",
+              name: "Amniota", age: 340,
               children: [
-                { name: "Human", x: 0 },
-                { name: "Chimpanzee", x: 0 }
+                {
+                  name: "Mammalia", age: 310,
+                  children: [
+                    {
+                      name: "Primates", age: 85,
+                      children: [
+                        { name: "Human", age: 0 },
+                        { name: "Chimpanzee", age: 0 }
+                      ]
+                    },
+                    { name: "Elephant", age: 0 },
+                    {
+                      name: "Carnivora", age: 95,
+                      children: [
+                        { name: "Lion", age: 0 },
+                        { name: "Dog", age: 0 }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  name: "Reptilia", age: 310,
+                  children: [
+                    { name: "Lizard", age: 0 },
+                    {
+                      name: "Archosauria", age: 250,
+                      children: [
+                        { name: "Crocodile", age: 0 },
+                        {
+                          name: "Aves", age: 150,
+                          children: [
+                            { name: "Chicken", age: 0 },
+                            { name: "Ostrich", age: 0 }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
               ]
-            },
-            {
-              name: "Carnivora",
-              children: [
-                { name: "Lion", x: 0 },
-                { name: "Dog", x: 0 }
-              ]
-            },
-            { name: "Elephant", x: 0 }
+            }
           ]
-        },
-        {
-          name: "Aves",
-          children: [
-            { name: "Chicken", x: 0 },
-            { name: "Ostrich", x: 0 }
-          ]
-        },
-        {
-          name: "Reptilia",
-          children: [
-            { name: "Crocodile", x: 0 },
-            { name: "Lizard", x: 0 }
-          ]
-        },
-        {
-          name: "Amphibia",
-          children: [
-            { name: "Frog", x: 0 },
-            { name: "Salamander", x: 0 }
-          ]
-        },
-        { name: "Fish", x: 0 }
+        }
       ]
     };
 
-    let showBranchLengths = true;
-    let highlightedLineage = null;
+    let showBranchLengths = false;
 
     function renderTree() {
       const container = document.getElementById('d3TreeContainer');
       container.innerHTML = '';
 
-      const width = container.offsetWidth;
-      const height = 600;
-      const margin = { top: 40, right: 40, bottom: 40, left: 40 };
+      const width = Math.max(container.offsetWidth || 700, 500);
+      const height = 560;
+      const margin = { top: 20, right: 160, bottom: 20, left: 30 };
+      const innerWidth  = width  - margin.left - margin.right;
+      const innerHeight = height - margin.top  - margin.bottom;
 
       const svg = d3.select('#d3TreeContainer').append('svg')
         .attr('width', width)
-        .attr('height', height);
+        .attr('height', height)
+        .style('display', 'block');
 
       const g = svg.append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
-      const tree = d3.tree()
-        .size([width - margin.left - margin.right, height - margin.top - margin.bottom]);
+      const root = d3.hierarchy(vertebrateData);
 
-      const root = d3.hierarchy(vertbrateData);
-      tree(root);
+      // d3.cluster: x → vertical position (0..innerHeight), y → horizontal (0..innerWidth)
+      d3.cluster().size([innerHeight, innerWidth])(root);
 
-      // Draw links
-      const links = g.selectAll('.link')
+      if (showBranchLengths) {
+        // Override horizontal (y) position based on node age; tips at innerWidth
+        const maxAge = 500;
+        root.each(d => {
+          d.y = (1 - d.data.age / maxAge) * innerWidth;
+        });
+      }
+
+      // Right-angle (phylogram-style) links: shoulder at parent x, then horizontal to child x
+      g.selectAll('.link')
         .data(root.links())
         .enter()
         .append('path')
         .attr('class', 'link')
-        .attr('d', d3.linkVertical()
-          .x(d => d.x)
-          .y(d => d.y))
-        .on('mouseenter', function(event, d) {
-          highlightLineage(d.target, g);
-        })
-        .on('mouseleave', function() {
-          clearHighlight(g);
-        });
+        .attr('d', d =>
+          `M${d.source.y},${d.source.x} V${d.target.x} H${d.target.y}`
+        );
 
-      // Draw nodes
       const nodes = g.selectAll('.node')
         .data(root.descendants())
         .enter()
         .append('g')
-        .attr('class', 'node')
-        .attr('transform', d => `translate(${d.x},${d.y})`);
+        .attr('class', d => `node ${d.children ? 'internal' : 'tip'}`)
+        .attr('transform', d => `translate(${d.y},${d.x})`);
 
+      // Circles
       nodes.append('circle')
-        .attr('class', d => d.children ? 'node internal' : 'node tip')
-        .attr('r', d => d.children ? 3 : 5);
+        .attr('r', d => d.children ? 3 : 5)
+        .style('fill', d => d.children ? 'var(--text-secondary)' : 'var(--accent)');
 
-      nodes.append('text')
-        .attr('dy', d => d.children ? -12 : -12)
-        .attr('text-anchor', 'middle')
+      // Tip labels only — to the right of each tip
+      nodes.filter(d => !d.children)
+        .append('text')
+        .attr('dx', 10)
+        .attr('dy', 4)
         .text(d => d.data.name)
-        .style('font-size', d => d.children ? '10px' : '11px')
-        .style('font-weight', d => d.children ? '400' : '600')
-        .on('mouseenter', function(event, d) {
-          if (!d.children) {
-            highlightLineage(d, g);
-          }
-        })
-        .on('mouseleave', function() {
-          clearHighlight(g);
-        });
+        .style('font-size', '12px')
+        .style('fill', 'var(--text)')
+        .style('font-style', 'italic');
+
+      // Hover: highlight path from tip to root
+      nodes.on('mouseenter', function(event, d) {
+        if (!d.children) highlightLineage(d, g);
+      }).on('mouseleave', function() {
+        clearHighlight(g);
+      });
+    }
+
+    function getAncestors(node) {
+      const a = [];
+      let cur = node;
+      while (cur) { a.push(cur); cur = cur.parent; }
+      return a;
     }
 
     function highlightLineage(node, g) {
-      const ancestors = getAncestors(node);
-
+      const ancestors = new Set(getAncestors(node));
       g.selectAll('.link')
-        .classed('highlight', d => {
-          return ancestors.some(anc => anc === d.target);
-        });
-
+        .classed('highlight', d => ancestors.has(d.target));
       g.selectAll('.node circle')
-        .style('fill', d => {
-          if (ancestors.some(anc => anc === d)) {
-            return 'var(--accent)';
-          }
-          return d.children ? 'var(--text-secondary)' : 'var(--accent)';
-        })
-        .style('filter', d => {
-          if (ancestors.some(anc => anc === d)) {
-            return 'drop-shadow(0 0 6px rgba(201,162,39,0.6))';
-          }
-          return 'none';
-        });
+        .style('fill', d => ancestors.has(d)
+          ? 'var(--accent)'
+          : (d.children ? 'var(--text-secondary)' : 'var(--accent)'))
+        .style('filter', d => ancestors.has(d)
+          ? 'drop-shadow(0 0 6px rgba(201,162,39,0.6))'
+          : 'none');
     }
 
     function clearHighlight(g) {
@@ -715,26 +776,11 @@
         .style('filter', 'none');
     }
 
-    function getAncestors(node) {
-      const ancestors = [];
-      let current = node;
-      while (current) {
-        ancestors.push(current);
-        current = current.parent;
-      }
-      return ancestors;
-    }
-
     function toggleBranchLengths() {
       showBranchLengths = !showBranchLengths;
       const btn = document.getElementById('lengthToggle');
-      if (showBranchLengths) {
-        btn.textContent = 'Hide branch lengths';
-        btn.classList.add('active');
-      } else {
-        btn.textContent = 'Show branch lengths';
-        btn.classList.remove('active');
-      }
+      btn.textContent = showBranchLengths ? 'Hide branch lengths' : 'Show branch lengths';
+      btn.classList.toggle('active', showBranchLengths);
       renderTree();
     }
 

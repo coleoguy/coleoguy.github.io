@@ -425,25 +425,26 @@
           <div class="charmap-panel">
             <div class="charmap-title">Panel A: Observed Tip States</div>
             <svg class="charmap-svg" viewBox="0 0 300 300">
-              <!-- Simple tree with states at tips -->
-              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="100" x2="150" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="100" x2="150" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="100" x2="150" y2="120" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
-
-              <circle cx="150" cy="80" r="6" fill="#34d399"/>
-              <circle cx="150" cy="120" r="6" fill="#34d399"/>
-              <circle cx="150" cy="180" r="6" fill="var(--accent)"/>
-              <circle cx="150" cy="220" r="6" fill="var(--accent)"/>
-              <circle cx="50" cy="50" r="3" fill="var(--text-secondary)"/>
-
-              <text x="165" y="85" font-size="11" fill="var(--text-secondary)">State A</text>
-              <text x="165" y="125" font-size="11" fill="var(--text-secondary)">State A</text>
-              <text x="165" y="185" font-size="11" fill="var(--text-secondary)">State B</text>
-              <text x="165" y="225" font-size="11" fill="var(--text-secondary)">State B</text>
+              <!-- Horizontal cladogram: ((T1,T2),(T3,T4)), root left, tips right -->
+              <path d="M30,150 V100 H130" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M30,150 V200 H130" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,100 V70 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,100 V130 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,200 V170 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,200 V230 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- Internal nodes -->
+              <circle cx="30" cy="150" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="100" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="200" r="3" fill="var(--text-secondary)"/>
+              <!-- Tip nodes: A=green, B=gold -->
+              <circle cx="210" cy="70"  r="7" fill="#34d399"/>
+              <circle cx="210" cy="130" r="7" fill="#34d399"/>
+              <circle cx="210" cy="170" r="7" fill="var(--accent)"/>
+              <circle cx="210" cy="230" r="7" fill="var(--accent)"/>
+              <text x="222" y="74"  font-size="11" fill="var(--text-secondary)" font-style="italic">State A</text>
+              <text x="222" y="134" font-size="11" fill="var(--text-secondary)" font-style="italic">State A</text>
+              <text x="222" y="174" font-size="11" fill="var(--text-secondary)" font-style="italic">State B</text>
+              <text x="222" y="234" font-size="11" fill="var(--text-secondary)" font-style="italic">State B</text>
             </svg>
             <div class="charmap-description">The data: tip species have observed states (green=A, gold=B).</div>
           </div>
@@ -451,31 +452,24 @@
           <div class="charmap-panel">
             <div class="charmap-title">Panel B: Possible History 1</div>
             <svg class="charmap-svg" viewBox="0 0 300 300">
-              <!-- Tree with one possible history -->
-              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
-              <!-- Ancestor A -->
-              <circle cx="50" cy="50" r="4" fill="#34d399"/>
-
-              <line x1="50" y1="100" x2="150" y2="100" stroke="#34d399" stroke-width="3"/>
-              <circle cx="150" cy="100" r="3" fill="#34d399"/>
-
-              <line x1="150" y1="100" x2="150" y2="80" stroke="#34d399" stroke-width="2"/>
-              <circle cx="150" cy="80" r="6" fill="#34d399"/>
-
-              <line x1="150" y1="100" x2="150" y2="120" stroke="#34d399" stroke-width="2"/>
-              <circle cx="150" cy="120" r="6" fill="#34d399"/>
-
-              <line x1="50" y1="100" x2="50" y2="200" stroke="#34d399" stroke-width="2"/>
-              <circle cx="50" cy="200" r="3" fill="var(--accent)"/>
-
-              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--accent)" stroke-width="3"/>
-              <circle cx="150" cy="200" r="3" fill="var(--accent)"/>
-
-              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--accent)" stroke-width="2"/>
-              <circle cx="150" cy="180" r="6" fill="var(--accent)"/>
-
-              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--accent)" stroke-width="2"/>
-              <circle cx="150" cy="220" r="6" fill="var(--accent)"/>
+              <!-- History 1: root=A, one transition A→B at base of right clade -->
+              <!-- Left clade branches: A (green) -->
+              <path d="M30,150 V100 H130" stroke="#34d399" stroke-width="2.5" fill="none"/>
+              <path d="M130,100 V70 H210" stroke="#34d399" stroke-width="2.5" fill="none"/>
+              <path d="M130,100 V130 H210" stroke="#34d399" stroke-width="2.5" fill="none"/>
+              <!-- Right clade branches: B (gold) — transition at root→lower-pair -->
+              <path d="M30,150 V200 H130" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+              <path d="M130,200 V170 H210" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+              <path d="M130,200 V230 H210" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+              <!-- Internal nodes -->
+              <circle cx="30"  cy="150" r="4" fill="#34d399"/>
+              <circle cx="130" cy="100" r="4" fill="#34d399"/>
+              <circle cx="130" cy="200" r="4" fill="var(--accent)"/>
+              <!-- Tips -->
+              <circle cx="210" cy="70"  r="7" fill="#34d399"/>
+              <circle cx="210" cy="130" r="7" fill="#34d399"/>
+              <circle cx="210" cy="170" r="7" fill="var(--accent)"/>
+              <circle cx="210" cy="230" r="7" fill="var(--accent)"/>
             </svg>
             <div class="charmap-description">One possible history: one transition A→B at the base of the right clade.</div>
           </div>
@@ -483,31 +477,25 @@
           <div class="charmap-panel">
             <div class="charmap-title">Panel C: Possible History 2</div>
             <svg class="charmap-svg" viewBox="0 0 300 300">
-              <!-- Tree with a different history -->
-              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
-              <!-- Ancestor B -->
-              <circle cx="50" cy="50" r="4" fill="var(--accent)"/>
-
-              <line x1="50" y1="100" x2="150" y2="100" stroke="var(--accent)" stroke-width="3"/>
-              <circle cx="150" cy="100" r="3" fill="#34d399"/>
-
-              <line x1="150" y1="100" x2="150" y2="80" stroke="#34d399" stroke-width="2"/>
-              <circle cx="150" cy="80" r="6" fill="#34d399"/>
-
-              <line x1="150" y1="100" x2="150" y2="120" stroke="#34d399" stroke-width="2"/>
-              <circle cx="150" cy="120" r="6" fill="#34d399"/>
-
-              <line x1="50" y1="100" x2="50" y2="200" stroke="var(--accent)" stroke-width="2"/>
-              <circle cx="50" cy="200" r="3" fill="var(--accent)"/>
-
-              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--accent)" stroke-width="3"/>
-              <circle cx="150" cy="200" r="3" fill="var(--accent)"/>
-
-              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--accent)" stroke-width="2"/>
-              <circle cx="150" cy="180" r="6" fill="var(--accent)"/>
-
-              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--accent)" stroke-width="2"/>
-              <circle cx="150" cy="220" r="6" fill="var(--accent)"/>
+              <!-- History 2: root=B, transition B→A on left branch -->
+              <!-- Left clade stem: B (gold) — colored by root state -->
+              <path d="M30,150 V100 H130" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+              <!-- Left clade descendants: A (green) — after transition at upper-pair node -->
+              <path d="M130,100 V70 H210" stroke="#34d399" stroke-width="2.5" fill="none"/>
+              <path d="M130,100 V130 H210" stroke="#34d399" stroke-width="2.5" fill="none"/>
+              <!-- Right clade branches: B (gold) throughout -->
+              <path d="M30,150 V200 H130" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+              <path d="M130,200 V170 H210" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+              <path d="M130,200 V230 H210" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+              <!-- Internal nodes -->
+              <circle cx="30"  cy="150" r="4" fill="var(--accent)"/>
+              <circle cx="130" cy="100" r="4" fill="#34d399"/>
+              <circle cx="130" cy="200" r="4" fill="var(--accent)"/>
+              <!-- Tips -->
+              <circle cx="210" cy="70"  r="7" fill="#34d399"/>
+              <circle cx="210" cy="130" r="7" fill="#34d399"/>
+              <circle cx="210" cy="170" r="7" fill="var(--accent)"/>
+              <circle cx="210" cy="230" r="7" fill="var(--accent)"/>
             </svg>
             <div class="charmap-description">Another history: ancestor was B, transition to A happened on the left branch.</div>
           </div>
@@ -551,6 +539,154 @@
       </div>
     </section>
 
+    <!-- ChromePlus section -->
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Chromosome number as a discrete trait: chromePlus</h2>
+        <p class="section-text">Chromosome number is one of the most dynamic features of eukaryotic genomes. Across species, chromosomes fuse, split, and duplicate — sometimes driving reproductive isolation and speciation. Modeling how chromosome number evolves requires treating it as a special kind of discrete trait where the state space is large (chromosome numbers from 1 to 100+) and the transitions have biological structure: gains of one, losses of one, and whole-genome duplications (polyploidy) all have distinct rates.</p>
+        <p class="section-text"><a href="https://github.com/coleoguy/chromePlus" target="_blank" class="highlight-text">chromePlus</a> is an R package developed in this lab that extends the <em>chromEvol</em> framework within the <code>diversitree</code> ecosystem. It fits Markov chain models of chromosome evolution on phylogenies using MCMC, and critically, allows a binary trait (such as sex determination system, mating strategy, or presence of B chromosomes) to influence the rates of chromosome change. This lets you ask: does having sex chromosomes speed up or slow down karyotype evolution?</p>
+
+        <div class="viz-container" style="padding: 30px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+            <div>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 18px; line-height: 1.7;">The model tracks a state space combining chromosome number and binary trait. From any state, five types of events can occur:</p>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="background: rgba(52,211,153,0.15); border: 1px solid #34d399; border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: #34d399; min-width: 60px; text-align: center;">+1</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Dysploidy gain — one chromosome added</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="background: rgba(244,63,94,0.12); border: 1px solid rgba(244,63,94,0.5); border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(244,63,94,0.85); min-width: 60px; text-align: center;">−1</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Dysploidy loss — one chromosome removed</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="background: rgba(201,162,39,0.12); border: 1px solid var(--accent-border); border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); min-width: 60px; text-align: center;">×2</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Polyploidy — whole-genome duplication</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.5); border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(139,92,246,0.85); min-width: 60px; text-align: center;">½</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Demiploidy — half-genome reduction event</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.5); border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(56,189,248,0.85); min-width: 60px; text-align: center;">A↔B</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Binary trait transition — changes the rate regime</span>
+                </div>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 18px; line-height: 1.7;">Each of these rates can be conditioned on the binary trait state — so you can model a world where sex-chromosome-bearing lineages (state B) have faster dysploidy rates than those without (state A).</p>
+            </div>
+            <div>
+              <svg viewBox="0 0 280 260" style="width: 100%; border: 1px solid var(--border); border-radius: 8px; background: var(--bg);">
+                <!-- Horizontal cladogram showing chr# evolution -->
+                <!-- Branches -->
+                <path d="M30,130 V70 H130" stroke="var(--text-secondary)" stroke-width="1.5" fill="none"/>
+                <path d="M30,130 V190 H130" stroke="var(--text-secondary)" stroke-width="1.5" fill="none"/>
+                <path d="M130,70 V45 H220" stroke="#34d399" stroke-width="2" fill="none"/>
+                <path d="M130,70 V95 H220" stroke="#34d399" stroke-width="2" fill="none"/>
+                <path d="M130,190 V165 H220" stroke="var(--accent)" stroke-width="2" fill="none"/>
+                <path d="M130,190 V215 H220" stroke="var(--accent)" stroke-width="2" fill="none"/>
+                <!-- Internal nodes -->
+                <circle cx="30" cy="130" r="5" fill="rgba(157,150,142,0.6)"/>
+                <circle cx="130" cy="70"  r="5" fill="#34d399"/>
+                <circle cx="130" cy="190" r="5" fill="var(--accent)"/>
+                <!-- Tips with chromosome numbers -->
+                <circle cx="220" cy="45"  r="8" fill="#34d399"/>
+                <circle cx="220" cy="95"  r="8" fill="#34d399"/>
+                <circle cx="220" cy="165" r="8" fill="var(--accent)"/>
+                <circle cx="220" cy="215" r="8" fill="var(--accent)"/>
+                <text x="233" y="49"  font-size="11" fill="rgba(200,197,192,0.85)" font-style="italic">n=8</text>
+                <text x="233" y="99"  font-size="11" fill="rgba(200,197,192,0.85)" font-style="italic">n=9</text>
+                <text x="233" y="169" font-size="11" fill="rgba(200,197,192,0.85)" font-style="italic">n=18 ×2</text>
+                <text x="233" y="219" font-size="11" fill="rgba(200,197,192,0.85)" font-style="italic">n=17</text>
+                <!-- Ancestor label -->
+                <text x="8" y="128" font-size="10" fill="rgba(157,150,142,0.7)">n=8</text>
+                <text x="10" y="140" font-size="8"  fill="rgba(157,150,142,0.5)">anc.</text>
+                <!-- ×2 annotation on gold clade stem -->
+                <text x="60" y="205" font-size="10" fill="var(--accent)" font-weight="600">polyploidy</text>
+              </svg>
+              <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 8px; line-height: 1.5;">A polyploidy event in the ancestor of the gold clade doubled the chromosome number. dysploidy then reduced n=18 → n=17 in one lineage.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="section-text" style="margin-top: 30px;">In R, chromePlus wraps MCMC inference around these models, returning posterior distributions over rate parameters. You can compare models (e.g., rates equal vs rates free between binary trait states) using Bayes factors from the MCMC output.</p>
+
+        <div class="code-block">
+          <span class="comment"># Install chromePlus from GitHub</span><br>
+          <span class="keyword">devtools</span>::<span class="keyword">install_github</span>(<span class="string">"coleoguy/chromePlus"</span>)<br>
+          <span class="keyword">library</span>(<span class="string">"chromePlus"</span>)<br>
+          <br>
+          <span class="comment"># Simulate chromosome evolution on a tree</span><br>
+          <span class="comment"># tree: phylo object; start: ancestral chr number; rates: c(gain, loss, poly, demi)</span><br>
+          <span class="keyword">sim</span> &lt;- <span class="keyword">simChrom</span>(<span class="string">tree</span>, <span class="string">pars = c(0.1, 0.1, 0.01, 0.001)</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">root.value = 8</span>, <span class="string">chrRange = c(1, 50)</span>)<br>
+          <br>
+          <span class="comment"># Fit a model allowing a binary trait to modulate rates</span><br>
+          <span class="keyword">fit</span> &lt;- <span class="keyword">makeSSEchrom</span>(<span class="string">tree</span>, <span class="string">chr.data</span>, <span class="string">trait.data</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">model = "chromPlus"</span>)<br>
+          <br>
+          <span class="comment"># Plot MCMC results</span><br>
+          <span class="keyword">plotChromeplus</span>(<span class="string">fit</span>)
+        </div>
+      </div>
+    </section>
+
+    <!-- ML vs Bayesian section -->
+    <section class="content-section">
+      <div class="container-xl">
+        <h2 class="section-title">Maximum likelihood vs Bayesian inference</h2>
+        <p class="section-text">All of the methods on this page require fitting a model to data — estimating rate parameters like q01 and q10. There are two major philosophies for doing this, and both appear in phylogenetic software. Understanding the difference matters because they answer subtly different questions and have very different computational demands.</p>
+
+        <div class="viz-container" style="padding: 30px 30px 20px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+            <!-- MLE panel -->
+            <div>
+              <h5 style="color: var(--text-heading); font-family: var(--font-heading); font-size: 1rem; margin-bottom: 12px;">Maximum Likelihood (ML)</h5>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">The likelihood function L(θ | data) describes how probable the observed data are for each possible value of the parameter θ. Maximum likelihood finds the single value of θ that makes the data most probable — the peak of this surface.</p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">This is computationally fast because you only need to find one point. Tools like <code>ape::ace(method="ML")</code> and <code>corHMM</code> use numerical optimization (gradient descent or Nelder–Mead) to locate the peak quickly, even for large trees.</p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75;">The cost: you get a point estimate, not a distribution. Standard errors can be approximated from the curvature of the likelihood surface, but this assumes the surface is roughly parabolic near the peak — an assumption that can break down with sparse data.</p>
+            </div>
+            <!-- Bayesian panel -->
+            <div>
+              <h5 style="color: var(--text-heading); font-family: var(--font-heading); font-size: 1rem; margin-bottom: 12px;">Bayesian Inference</h5>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">Bayes' theorem says: <em>posterior ∝ likelihood × prior</em>. Rather than finding the single best θ, Bayesian inference characterizes the full posterior distribution over θ — the probability of each parameter value given the data and your prior beliefs.</p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">This is elegant because it propagates uncertainty naturally. You don't just get a best estimate — you get a credible interval that directly means "there is 95% posterior probability the parameter lies here." Stochastic character mapping is inherently Bayesian for exactly this reason.</p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75;">The cost: the posterior is rarely tractable analytically. In practice, MCMC (Markov chain Monte Carlo) is used to sample from it, which requires running a chain for tens of thousands of iterations. For complex models on large trees, this can take hours or days.</p>
+            </div>
+          </div>
+
+          <!-- Interactive visualization -->
+          <div style="margin-top: 32px; border-top: 1px solid var(--border); padding-top: 28px;">
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 16px; text-align: center;">Adjust the sliders to see how the likelihood surface and prior shape the posterior distribution. The ML estimate is the peak of the likelihood curve; the Bayesian posterior is the product of likelihood × prior (renormalized).</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px;">
+              <div class="control-group">
+                <label class="control-label">Data strength (sample size proxy)</label>
+                <div class="slider-container">
+                  <input type="range" id="dataStrengthSlider" min="1" max="10" step="0.5" value="4">
+                  <span class="slider-value" id="dataStrengthValue">4.0</span>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Prior strength (stronger = more informative)</label>
+                <div class="slider-container">
+                  <input type="range" id="priorStrengthSlider" min="0.2" max="6" step="0.2" value="1">
+                  <span class="slider-value" id="priorStrengthValue">1.0</span>
+                </div>
+              </div>
+            </div>
+            <canvas id="mlBayesCanvas" style="width:100%; height:240px; border-radius:6px; border:1px solid var(--border);"></canvas>
+            <div style="display: flex; gap: 24px; margin-top: 12px; justify-content: center; flex-wrap: wrap;">
+              <span style="font-size: 0.8rem; color: rgba(200,197,192,0.7);"><span style="display:inline-block; width:22px; height:3px; background:rgba(52,211,153,0.9); vertical-align:middle; margin-right:5px; border-radius:2px;"></span>Likelihood L(θ|data)</span>
+              <span style="font-size: 0.8rem; color: rgba(200,197,192,0.7);"><span style="display:inline-block; width:22px; height:3px; background:rgba(154,151,147,0.6); vertical-align:middle; margin-right:5px; border-radius:2px; border-bottom: 2px dashed rgba(154,151,147,0.6);"></span>Prior p(θ)</span>
+              <span style="font-size: 0.8rem; color: rgba(200,197,192,0.7);"><span style="display:inline-block; width:22px; height:3px; background:rgba(201,162,39,0.9); vertical-align:middle; margin-right:5px; border-radius:2px;"></span>Posterior p(θ|data)</span>
+              <span style="font-size: 0.8rem; color: rgba(200,197,192,0.7);"><span style="display:inline-block; width:3px; height:14px; background:rgba(52,211,153,0.9); vertical-align:middle; margin-right:5px;"></span>ML estimate (peak)</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="section-text" style="margin-top: 30px;">In practice: use ML when you need fast answers or are running many model comparisons (e.g., testing 10 different rate matrices). Use Bayesian methods (MCMC) when you need full uncertainty quantification, want to formally incorporate prior information, or are working with models too complex for numerical optimization (like chromePlus, or joint inference of rates and ancestral states).</p>
+      </div>
+    </section>
+
     <section class="content-section">
       <div class="container-xl">
         <div class="nav-buttons">
@@ -587,6 +723,8 @@
     // Markov chain diagram with sliders
     function drawMarkovDiagram() {
       const canvas = document.getElementById('markovCanvas');
+      canvas.width  = canvas.offsetWidth  || 500;
+      canvas.height = canvas.offsetHeight || 280;
       const ctx = canvas.getContext('2d');
       const width = canvas.width;
       const height = canvas.height;
@@ -683,114 +821,109 @@
       drawMarkovDiagram();
     });
 
-    // ASR visualization
+    // ASR visualization — clean 4-tip balanced tree matching charmap topology ((T1,T2),(T3,T4))
     const asrTree = [
-      { id: 0, parent: null, children: [1, 2], state: null },
-      { id: 1, parent: 0, children: [3, 4], state: null },
-      { id: 2, parent: 0, children: [5, 6], state: null },
-      { id: 3, parent: 1, children: [7, 8], state: null },
-      { id: 4, parent: 1, children: [], state: 0 },
-      { id: 5, parent: 2, children: [9, 10], state: null },
-      { id: 6, parent: 2, children: [], state: 1 },
-      { id: 7, parent: 3, children: [], state: 0 },
-      { id: 8, parent: 3, children: [], state: 0 },
-      { id: 9, parent: 5, children: [], state: 1 },
-      { id: 10, parent: 5, children: [], state: 1 },
-      { id: 11, parent: 6, children: [], state: 1 }
+      { id: 0, parent: null, children: [1, 2] },        // root
+      { id: 1, parent: 0,    children: [3, 4] },        // upper-pair
+      { id: 2, parent: 0,    children: [5, 6] },        // lower-pair
+      { id: 3, parent: 1,    children: [], state: 0 },  // T1: State A
+      { id: 4, parent: 1,    children: [], state: 0 },  // T2: State A
+      { id: 5, parent: 2,    children: [], state: 1 },  // T3: State B
+      { id: 6, parent: 2,    children: [], state: 1 },  // T4: State B
     ];
+
+    // Layout coordinates: root left, tips right — matches charmap SVG topology
+    const asrCoords = [
+      { x: 60,  y: 250 },   // 0: root
+      { x: 240, y: 150 },   // 1: upper-pair node
+      { x: 240, y: 350 },   // 2: lower-pair node
+      { x: 420, y: 80  },   // 3: T1
+      { x: 420, y: 220 },   // 4: T2
+      { x: 420, y: 280 },   // 5: T3
+      { x: 420, y: 420 },   // 6: T4
+    ];
+
+    const tipLabels = ['Sp. 1 (A)', 'Sp. 2 (A)', 'Sp. 3 (B)', 'Sp. 4 (B)'];
+
+    function makeSVGEl(tag, attrs) {
+      const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      return el;
+    }
+
+    function drawPie(svg, cx, cy, r, probA) {
+      if (probA >= 0.99) {
+        svg.appendChild(makeSVGEl('circle', { cx, cy, r, fill: '#34d399', opacity: '0.9' }));
+        return;
+      }
+      if (probA <= 0.01) {
+        svg.appendChild(makeSVGEl('circle', { cx, cy, r, fill: 'var(--accent)', opacity: '0.9' }));
+        return;
+      }
+      const angle = probA * 2 * Math.PI;
+      const x1 = cx + r * Math.cos(-Math.PI / 2);
+      const y1 = cy + r * Math.sin(-Math.PI / 2);
+      const x2 = cx + r * Math.cos(-Math.PI / 2 + angle);
+      const y2 = cy + r * Math.sin(-Math.PI / 2 + angle);
+      const large = angle > Math.PI ? 1 : 0;
+      svg.appendChild(makeSVGEl('path', {
+        d: `M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${large},1 ${x2},${y2} Z`,
+        fill: '#34d399', opacity: '0.9'
+      }));
+      svg.appendChild(makeSVGEl('path', {
+        d: `M${cx},${cy} L${x2},${y2} A${r},${r} 0 ${1 - large},1 ${x1},${y1} Z`,
+        fill: 'var(--accent)', opacity: '0.9'
+      }));
+    }
 
     function drawASR(showReconstructed = false) {
       const container = document.getElementById('asrContainer');
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('viewBox', '0 0 900 500');
-      svg.setAttribute('width', '100%');
-      svg.setAttribute('height', '100%');
+      const svg = makeSVGEl('svg', { viewBox: '0 0 580 500', width: '100%', height: '100%' });
 
-      const margin = 40;
-      const plotWidth = 860;
-      const plotHeight = 420;
-
-      // Draw branches
+      // Branches as right-angle elbow paths
       for (let i = 1; i < asrTree.length; i++) {
-        const node = asrTree[i];
-        const parent = asrTree[node.parent];
-
-        const xParent = margin + (parent.id / 12) * plotWidth;
-        const xChild = margin + (node.id / 12) * plotWidth;
-        const yParent = margin + Math.floor(parent.id / 3) * 100;
-        const yChild = margin + Math.floor(node.id / 3) * 100;
-
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', xParent);
-        line.setAttribute('y1', yParent);
-        line.setAttribute('x2', xChild);
-        line.setAttribute('y2', yChild);
-        line.setAttribute('stroke', 'rgba(154,151,147,0.5)');
-        line.setAttribute('stroke-width', '2');
-        svg.appendChild(line);
+        const p = asrCoords[asrTree[i].parent];
+        const c = asrCoords[i];
+        svg.appendChild(makeSVGEl('path', {
+          d: `M${p.x},${p.y} V${c.y} H${c.x}`,
+          stroke: 'rgba(154,151,147,0.55)', 'stroke-width': '2', fill: 'none'
+        }));
       }
 
-      // Draw nodes
+      // Nodes
       for (let i = 0; i < asrTree.length; i++) {
         const node = asrTree[i];
-        const x = margin + (node.id / 12) * plotWidth;
-        const y = margin + Math.floor(node.id / 3) * 100;
+        const { x, y } = asrCoords[i];
 
         if (node.children.length === 0) {
-          // Tip node
+          // Tip
           const color = node.state === 0 ? '#34d399' : 'var(--accent)';
-          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-          circle.setAttribute('cx', x);
-          circle.setAttribute('cy', y);
-          circle.setAttribute('r', '6');
-          circle.setAttribute('fill', color);
-          svg.appendChild(circle);
-
-          const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-          text.setAttribute('x', x);
-          text.setAttribute('y', y + 20);
-          text.setAttribute('text-anchor', 'middle');
-          text.setAttribute('font-size', '11');
-          text.setAttribute('fill', 'rgba(200,197,192,0.7)');
-          text.textContent = 'T' + node.id;
-          svg.appendChild(text);
+          svg.appendChild(makeSVGEl('circle', { cx: x, cy: y, r: '8', fill: color }));
+          const lbl = makeSVGEl('text', {
+            x: x + 14, y: y + 4, 'font-size': '13', fill: 'rgba(200,197,192,0.8)',
+            'font-style': 'italic'
+          });
+          lbl.textContent = tipLabels[i - 3];
+          svg.appendChild(lbl);
         } else if (showReconstructed) {
-          // Reconstructed internal node with pie chart
-          const probA = 0.3 + Math.random() * 0.4;
-          const probB = 1 - probA;
-
-          // Draw pie
-          const radius = 4;
-          const angle1 = (probA * 2 * Math.PI);
-
-          const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-          const x1 = x + radius * Math.cos(0);
-          const y1 = y + radius * Math.sin(0);
-          const x2 = x + radius * Math.cos(angle1);
-          const y2 = y + radius * Math.sin(angle1);
-          const largeArc = angle1 > Math.PI ? 1 : 0;
-
-          path1.setAttribute('d', `M ${x} ${y} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z`);
-          path1.setAttribute('fill', '#34d399');
-          path1.setAttribute('opacity', '0.7');
-          svg.appendChild(path1);
-
-          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-          circle.setAttribute('cx', x);
-          circle.setAttribute('cy', y);
-          circle.setAttribute('r', radius);
-          circle.setAttribute('fill', 'var(--accent)');
-          circle.setAttribute('opacity', '0.7');
-          svg.appendChild(circle);
+          // Marginal probability pie
+          const probA = i === 0 ? 0.5 + Math.random() * 0.3 : 0.25 + Math.random() * 0.5;
+          drawPie(svg, x, y, 14, probA);
         } else {
-          // Before reconstruction
-          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-          circle.setAttribute('cx', x);
-          circle.setAttribute('cy', y);
-          circle.setAttribute('r', '3');
-          circle.setAttribute('fill', 'rgba(157,150,142,0.5)');
-          svg.appendChild(circle);
+          svg.appendChild(makeSVGEl('circle', {
+            cx: x, cy: y, r: '6', fill: 'rgba(157,150,142,0.55)'
+          }));
         }
+      }
+
+      // Legend (only when reconstructed)
+      if (showReconstructed) {
+        const leg = makeSVGEl('text', {
+          x: '300', y: '475', 'font-size': '11', fill: 'rgba(200,197,192,0.6)',
+          'text-anchor': 'middle'
+        });
+        leg.textContent = 'Pie charts = P(State A) / P(State B) at each internal node';
+        svg.appendChild(leg);
       }
 
       container.innerHTML = '';
@@ -801,9 +934,139 @@
       drawASR(true);
     }
 
+    // ── ML vs Bayesian interactive canvas ─────────────────────
+    function drawMLBayes() {
+      const canvas = document.getElementById('mlBayesCanvas');
+      if (!canvas) return;
+      const cssW = canvas.offsetWidth;
+      canvas.width  = cssW > 10 ? cssW : (canvas.width > 10 ? canvas.width : 700);
+      canvas.height = 240;
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(8,8,8,0.55)';
+      ctx.fillRect(0, 0, W, H);
+
+      const mL = 36, mR = 24, mT = 22, mB = 38;
+      const pW = W - mL - mR, pH = H - mT - mB;
+      const N = 400;
+
+      const dataK  = parseFloat(document.getElementById('dataStrengthSlider').value);
+      const priorK = parseFloat(document.getElementById('priorStrengthSlider').value);
+
+      // Parameter space: θ ∈ [0, 1] (e.g. a rate scaled 0–1)
+      // Likelihood: Gaussian centered at 0.6, width controlled by dataK
+      // Prior: Gaussian centered at 0.35 (slightly off true value), width by priorK
+      const likeMu = 0.60, likeSD = 0.25 / Math.sqrt(dataK);
+      const priorMu = 0.35, priorSD = 0.30 / Math.sqrt(priorK);
+
+      const pts = Array.from({ length: N + 1 }, (_, k) => {
+        const theta = k / N;
+        const like  = Math.exp(-0.5 * ((theta - likeMu) / likeSD) ** 2);
+        const prior = Math.exp(-0.5 * ((theta - priorMu) / priorSD) ** 2);
+        return { theta, like, prior, post: like * prior };
+      });
+
+      // Normalize each curve to [0,1] for display
+      const maxLike  = Math.max(...pts.map(p => p.like));
+      const maxPrior = Math.max(...pts.map(p => p.prior));
+      const maxPost  = Math.max(...pts.map(p => p.post));
+
+      const tx = theta => mL + theta * pW;
+      const ty = (v, mx) => mT + pH - (v / mx) * pH;
+
+      function drawCurve(color, getter, norm, fill) {
+        ctx.beginPath();
+        ctx.moveTo(tx(pts[0].theta), ty(getter(pts[0]), norm));
+        for (let k = 1; k <= N; k++) {
+          ctx.lineTo(tx(pts[k].theta), ty(getter(pts[k]), norm));
+        }
+        if (fill) {
+          ctx.lineTo(tx(pts[N].theta), mT + pH);
+          ctx.lineTo(tx(pts[0].theta), mT + pH);
+          ctx.closePath();
+          ctx.fillStyle = fill;
+          ctx.fill();
+        }
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+      }
+
+      // Fill areas (transparent)
+      drawCurve('rgba(52,211,153,0.9)',  p => p.like,  maxLike,  'rgba(52,211,153,0.07)');
+      drawCurve('rgba(201,162,39,0.9)',  p => p.post,  maxPost,  'rgba(201,162,39,0.10)');
+
+      // Prior dashed
+      ctx.save();
+      ctx.setLineDash([5, 4]);
+      drawCurve('rgba(154,151,147,0.65)', p => p.prior, maxPrior, null);
+      ctx.setLineDash([]);
+      ctx.restore();
+
+      // ML estimate: vertical line at likeMu
+      ctx.strokeStyle = 'rgba(52,211,153,0.85)';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.moveTo(tx(likeMu), mT);
+      ctx.lineTo(tx(likeMu), mT + pH);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Axis
+      ctx.strokeStyle = 'rgba(154,151,147,0.35)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(mL, mT + pH); ctx.lineTo(mL + pW, mT + pH);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(mL, mT); ctx.lineTo(mL, mT + pH);
+      ctx.stroke();
+
+      // x-axis ticks and labels
+      ctx.fillStyle = 'rgba(200,197,192,0.5)';
+      ctx.font = '9px monospace';
+      ctx.textAlign = 'center';
+      [0, 0.2, 0.4, 0.6, 0.8, 1.0].forEach(v => {
+        const x = tx(v);
+        ctx.beginPath();
+        ctx.moveTo(x, mT + pH);
+        ctx.lineTo(x, mT + pH + 4);
+        ctx.strokeStyle = 'rgba(154,151,147,0.35)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.fillText(v.toFixed(1), x, mT + pH + 14);
+      });
+
+      // Axis label
+      ctx.fillStyle = 'rgba(200,197,192,0.45)';
+      ctx.font = '10px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('θ  (parameter value)', mL + pW / 2, H - 5);
+
+      // ML estimate label
+      const mlX = tx(likeMu);
+      ctx.fillStyle = 'rgba(52,211,153,0.85)';
+      ctx.font = 'bold 9px monospace';
+      ctx.textAlign = mlX > W / 2 ? 'right' : 'left';
+      ctx.fillText('ML = ' + likeMu.toFixed(2), mlX + (mlX > W / 2 ? -5 : 5), mT + 14);
+    }
+
+    document.getElementById('dataStrengthSlider').addEventListener('input', function() {
+      document.getElementById('dataStrengthValue').textContent = parseFloat(this.value).toFixed(1);
+      drawMLBayes();
+    });
+    document.getElementById('priorStrengthSlider').addEventListener('input', function() {
+      document.getElementById('priorStrengthValue').textContent = parseFloat(this.value).toFixed(1);
+      drawMLBayes();
+    });
+
     // Initial draw
     drawMarkovDiagram();
     drawASR(false);
+    requestAnimationFrame(drawMLBayes);
   </script>
 </body>
 </html>

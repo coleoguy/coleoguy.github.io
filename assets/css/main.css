@@ -1860,14 +1860,13 @@ table th {
 .metrics-compact {
   display: inline-flex;
   gap: 20px;
-  align-items: baseline;
-  padding: 6px 16px;
+  align-items: center;
+  padding: 10px 20px;
   background: rgba(201,162,39,0.06);
   border: 1px solid rgba(201,162,39,0.12);
   border-radius: 8px;
   font-size: 0.85rem;
   color: var(--text-muted);
-  vertical-align: baseline;
   line-height: 1.4;
 }
 

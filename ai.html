@@ -614,29 +614,36 @@
             <div class="principle-row">
               <div class="principle-num">01</div>
               <div class="principle-content">
-                <h5>Validate everything</h5>
-                <p>Every AI output is verified computationally or reviewed by a domain expert before it enters a publication or database. Confidence scores and review flags are built into the pipeline from the start.</p>
+                <h5>Validate before trusting</h5>
+                <p>Every AI output is verified before it enters a publication, dataset, or decision. The form of verification — computational check, statistical test, expert review — depends on the task, but the expectation is universal.</p>
               </div>
             </div>
             <div class="principle-row">
               <div class="principle-num">02</div>
               <div class="principle-content">
-                <h5>AI handles repetition; researchers handle reasoning</h5>
-                <p>Searching, triaging, extracting, and checking math are good uses of AI. Deciding what question is worth asking, and whether a result makes sense, stays with the researcher.</p>
+                <h5>AI amplifies effort; researchers supply judgment</h5>
+                <p>Search, extraction, reformatting, summarizing, and consistency checking are good uses of AI. Deciding what question is scientifically worth asking, whether a result makes biological sense, and what to conclude — those stay with the researcher.</p>
               </div>
             </div>
             <div class="principle-row">
               <div class="principle-num">03</div>
               <div class="principle-content">
-                <h5>Publish the failures too</h5>
-                <p>We care as much about documenting where AI reasoning fails in biology as demonstrating what it can do. Understanding the failure modes is the scientifically useful part.</p>
+                <h5>Document how the result was produced</h5>
+                <p>Reproducible science requires knowing not just what AI generated, but what it was asked, with what model, and under what constraints. Prompts, model versions, and pipeline configurations are part of the methods section.</p>
               </div>
             </div>
             <div class="principle-row">
               <div class="principle-num">04</div>
               <div class="principle-content">
-                <h5>Domain knowledge has to be explicit</h5>
-                <p>A generic LLM call on a cytogenetics paper produces generic results. Every extraction prompt for the karyotype agent includes a 330-line domain guide encoding notation conventions, known problem families, and expected value ranges.</p>
+                <h5>Characterize failure modes, not just capabilities</h5>
+                <p>We care as much about documenting where AI reasoning breaks down as demonstrating what it can do. Systematically testing the limits of a tool is as scientifically valuable as deploying it successfully.</p>
+              </div>
+            </div>
+            <div class="principle-row">
+              <div class="principle-num">05</div>
+              <div class="principle-content">
+                <h5>Make domain knowledge explicit</h5>
+                <p>A general-purpose AI applied to a specialized scientific problem produces generic results. Effective use requires encoding expert knowledge in prompts, constraints, and validation rules — not assuming the model already carries it.</p>
               </div>
             </div>
           </div>

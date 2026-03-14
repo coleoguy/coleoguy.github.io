@@ -87,14 +87,19 @@
     </section>
 
     <!-- Publications Section -->
+    <style>
+      /* Make the metrics box stretch to match the link buttons */
+      .pub-profile-row { display: flex; align-items: stretch; flex-wrap: wrap; gap: 12px; margin-bottom: 2rem; }
+      .pub-profile-row .scholar-link { margin-bottom: 0; }
+      .pub-profile-row [data-scholar-metrics] { display: flex; align-items: stretch; }
+      .pub-profile-row .metrics-compact { display: flex; align-items: center; }
+    </style>
     <section class="section">
       <div class="container" data-aos="fade-up">
-        <div style="display: flex; align-items: baseline; flex-wrap: wrap; gap: 16px; margin-bottom: 2rem;">
-          <div class="scholar-links" style="display: flex; align-items: baseline;">
-            <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank" class="scholar-link"><i class="bi bi-mortarboard-fill"></i> Google Scholar</a>
-            <a href="https://orcid.org/0000-0002-5433-4036" target="_blank" class="scholar-link" style="margin-left: 12px;"><i class="bi bi-link-45deg"></i> ORCID</a>
-          </div>
-          <div data-scholar-metrics="compact" style="display: flex; align-items: baseline;"></div>
+        <div class="pub-profile-row">
+          <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank" class="scholar-link"><i class="bi bi-mortarboard-fill"></i> Google Scholar</a>
+          <a href="https://orcid.org/0000-0002-5433-4036" target="_blank" class="scholar-link"><i class="bi bi-link-45deg"></i> ORCID</a>
+          <div data-scholar-metrics="compact"></div>
         </div>
         <div id="publications-list"></div>
       </div>

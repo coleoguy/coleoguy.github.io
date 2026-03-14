@@ -450,27 +450,33 @@
         <p class="section-text">The most common way to quantify signal is <span class="highlight-text">Blomberg's K</span>. Under Brownian motion, K = 1. If K > 1, the trait is more clustered by phylogeny than expected under BM (strong signal). If K < 1, the trait is less clustered (weak signal, more convergence or recent change).</p>
 
         <div class="signal-comparison">
+          <!-- Both SVGs: horizontal cladogram, root(30,150), upper-pair(130,100), lower-pair(130,200)
+               tips at x=210, y: T1=70, T2=130, T3=170, T4=230 -->
+
           <div class="signal-tree">
             <div class="signal-title">High Phylogenetic Signal (K > 1)</div>
             <svg class="signal-svg" viewBox="0 0 300 300">
-              <!-- Tree with high signal -->
-              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="100" x2="150" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="100" x2="150" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="100" x2="150" y2="120" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
-
-              <circle cx="150" cy="80" r="6" fill="#34d399"/>
-              <circle cx="150" cy="120" r="6" fill="#34d399"/>
-              <circle cx="150" cy="180" r="6" fill="#fb923c"/>
-              <circle cx="150" cy="220" r="6" fill="#fb923c"/>
-
-              <text x="160" y="85" font-size="11" fill="var(--text-secondary)">0.9</text>
-              <text x="160" y="125" font-size="11" fill="var(--text-secondary)">1.1</text>
-              <text x="160" y="185" font-size="11" fill="var(--text-secondary)">5.0</text>
-              <text x="160" y="225" font-size="11" fill="var(--text-secondary)">5.1</text>
+              <!-- Branches -->
+              <path d="M30,150 V100 H130" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M30,150 V200 H130" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,100 V70 H210"  stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,100 V130 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,200 V170 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,200 V230 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- Internal nodes -->
+              <circle cx="30"  cy="150" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="100" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="200" r="3" fill="var(--text-secondary)"/>
+              <!-- Tips: sisters green+green and orange+orange → high signal -->
+              <circle cx="210" cy="70"  r="6" fill="#34d399"/>
+              <circle cx="210" cy="130" r="6" fill="#34d399"/>
+              <circle cx="210" cy="170" r="6" fill="#fb923c"/>
+              <circle cx="210" cy="230" r="6" fill="#fb923c"/>
+              <!-- Trait values -->
+              <text x="220" y="74"  font-size="12" fill="var(--text-secondary)">0.9</text>
+              <text x="220" y="134" font-size="12" fill="var(--text-secondary)">1.1</text>
+              <text x="220" y="174" font-size="12" fill="var(--text-secondary)">5.0</text>
+              <text x="220" y="234" font-size="12" fill="var(--text-secondary)">5.1</text>
             </svg>
             <div class="signal-description">Sister species (green and orange clades) have very different trait values. But within each clade, species are similar. The trait clusters by phylogeny.</div>
           </div>
@@ -478,24 +484,27 @@
           <div class="signal-tree">
             <div class="signal-title">Low Phylogenetic Signal (K < 1)</div>
             <svg class="signal-svg" viewBox="0 0 300 300">
-              <!-- Tree with low signal -->
-              <line x1="50" y1="50" x2="50" y2="250" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="100" x2="150" y2="100" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="100" x2="150" y2="80" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="100" x2="150" y2="120" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="50" y1="200" x2="150" y2="200" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="200" x2="150" y2="180" stroke="var(--text-secondary)" stroke-width="2"/>
-              <line x1="150" y1="200" x2="150" y2="220" stroke="var(--text-secondary)" stroke-width="2"/>
-
-              <circle cx="150" cy="80" r="6" fill="#34d399"/>
-              <circle cx="150" cy="120" r="6" fill="#fb923c"/>
-              <circle cx="150" cy="180" r="6" fill="#34d399"/>
-              <circle cx="150" cy="220" r="6" fill="#fb923c"/>
-
-              <text x="160" y="85" font-size="11" fill="var(--text-secondary)">0.8</text>
-              <text x="160" y="125" font-size="11" fill="var(--text-secondary)">0.9</text>
-              <text x="160" y="185" font-size="11" fill="var(--text-secondary)">0.7</text>
-              <text x="160" y="225" font-size="11" fill="var(--text-secondary)">0.6</text>
+              <!-- Branches (same topology) -->
+              <path d="M30,150 V100 H130" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M30,150 V200 H130" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,100 V70 H210"  stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,100 V130 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,200 V170 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <path d="M130,200 V230 H210" stroke="var(--text-secondary)" stroke-width="2" fill="none"/>
+              <!-- Internal nodes -->
+              <circle cx="30"  cy="150" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="100" r="3" fill="var(--text-secondary)"/>
+              <circle cx="130" cy="200" r="3" fill="var(--text-secondary)"/>
+              <!-- Tips: green/orange mixed within each clade → low signal -->
+              <circle cx="210" cy="70"  r="6" fill="#34d399"/>
+              <circle cx="210" cy="130" r="6" fill="#fb923c"/>
+              <circle cx="210" cy="170" r="6" fill="#34d399"/>
+              <circle cx="210" cy="230" r="6" fill="#fb923c"/>
+              <!-- Trait values -->
+              <text x="220" y="74"  font-size="12" fill="var(--text-secondary)">0.8</text>
+              <text x="220" y="134" font-size="12" fill="var(--text-secondary)">0.9</text>
+              <text x="220" y="174" font-size="12" fill="var(--text-secondary)">0.7</text>
+              <text x="220" y="234" font-size="12" fill="var(--text-secondary)">0.6</text>
             </svg>
             <div class="signal-description">Colors are scattered across the tree. Green and orange tips appear in both clades. The trait is random with respect to phylogeny. This can indicate rapid evolution or convergence.</div>
           </div>
@@ -597,10 +606,46 @@
     function computeDistances(nodes) {
       const distances = [0];
       for (let i = 1; i < nodes.length; i++) {
-        const parent = nodes[nodes[i].parent];
         distances[i] = distances[nodes[i].parent] + nodes[i].time;
       }
       return distances;
+    }
+
+    // Compute horizontal-phylogram layout positions
+    // Returns: distances (x), yRank (y fraction 0..nTips-1), maxDist, nTips, tipOrder
+    function computeLayout(nodes) {
+      const distances = computeDistances(nodes);
+      const maxDist = Math.max(...distances);
+
+      // Depth-first traversal → tip order
+      const tipOrder = [];
+      function traverse(id) {
+        const node = nodes[id];
+        if (node.children.length === 0) { tipOrder.push(id); return; }
+        node.children.forEach(c => traverse(c));
+      }
+      traverse(0);
+
+      // Tips get rank 0..nTips-1
+      const rank = {};
+      tipOrder.forEach((id, r) => { rank[id] = r; });
+
+      // Internal nodes: midpoint of first/last descendant tip ranks
+      function descRanks(id) {
+        if (nodes[id].children.length === 0) return [rank[id]];
+        return nodes[id].children.flatMap(c => descRanks(c));
+      }
+
+      const yRank = new Array(nodes.length);
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].children.length === 0) {
+          yRank[i] = rank[i];
+        } else {
+          const r = descRanks(i);
+          yRank[i] = (Math.min(...r) + Math.max(...r)) / 2;
+        }
+      }
+      return { distances, maxDist, yRank, nTips: tipOrder.length, tipOrder };
     }
 
     // Simulate Brownian motion
@@ -626,71 +671,63 @@
       return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
     }
 
-    // Draw tree
+    // Draw tree — horizontal phylogram layout, root left, tips right
     function drawTree(canvas, nodeValues, highlightMultiple = false) {
+      canvas.width  = canvas.offsetWidth  || 700;
+      canvas.height = canvas.offsetHeight || 350;
       const ctx = canvas.getContext('2d');
       const width = canvas.width;
       const height = canvas.height;
 
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'rgba(200,197,192,0.3)';
+      ctx.fillStyle = 'rgba(200,197,192,0.08)';
       ctx.fillRect(0, 0, width, height);
 
-      const margin = 50;
-      const plotWidth = width - 2 * margin;
-      const plotHeight = height - 2 * margin;
+      const mL = 25, mR = 80, mT = 20, mB = 20;
+      const plotW = width - mL - mR;
+      const plotH = height - mT - mB;
 
-      // Normalize values for coloring
-      const minVal = Math.min(...nodeValues.filter((v, i) => treeStructure[i].children.length === 0));
-      const maxVal = Math.max(...nodeValues.filter((v, i) => treeStructure[i].children.length === 0));
-      const range = maxVal - minVal || 1;
+      const tipVals = nodeValues.filter((v, i) => treeStructure[i].children.length === 0);
+      const minVal = Math.min(...tipVals);
+      const maxVal = Math.max(...tipVals);
+      const range  = maxVal - minVal || 1;
 
-      // Draw branches
-      ctx.strokeStyle = 'rgba(154,151,147,0.6)';
+      const { distances, maxDist, yRank, nTips } = computeLayout(treeStructure);
+      const spacing = plotH / (nTips - 1);
+
+      const nx = i => mL + (distances[i] / maxDist) * plotW;
+      const ny = i => mT + yRank[i] * spacing;
+
+      // Right-angle branches: vertical shoulder at parent x, then horizontal to child
+      ctx.strokeStyle = 'rgba(154,151,147,0.75)';
       ctx.lineWidth = 2;
       for (let i = 1; i < treeStructure.length; i++) {
-        const node = treeStructure[i];
-        const parentNode = treeStructure[node.parent];
-
-        const distances = computeDistances(treeStructure);
-        const parentX = margin + (distances[node.parent] / 5) * plotWidth;
-        const childX = margin + (distances[i] / 5) * plotWidth;
-
-        const parentY = margin + (node.depth - 1) * (plotHeight / 3);
-        const childY = margin + node.depth * (plotHeight / 3);
-
+        const p = treeStructure[i].parent;
         ctx.beginPath();
-        ctx.moveTo(parentX, parentY);
-        ctx.lineTo(childX, childY);
+        ctx.moveTo(nx(p), ny(p));
+        ctx.lineTo(nx(p), ny(i));   // shoulder
+        ctx.lineTo(nx(i), ny(i));   // branch
         ctx.stroke();
       }
 
-      // Draw nodes
-      const distances = computeDistances(treeStructure);
+      // Nodes
       for (let i = 0; i < treeStructure.length; i++) {
-        const node = treeStructure[i];
-        const x = margin + (distances[i] / 5) * plotWidth;
-        const y = margin + node.depth * (plotHeight / 3);
-
-        // Tip nodes
-        if (node.children.length === 0) {
-          const val = nodeValues[i];
-          const norm = (val - minVal) / range;
-          const hue = 200 + (norm * 60); // Blue to gold
-          ctx.fillStyle = `hsl(${hue}, 80%, 50%)`;
+        if (treeStructure[i].children.length === 0) {
+          const norm = (nodeValues[i] - minVal) / range;
+          const hue  = 200 + norm * 60;
+          ctx.fillStyle = `hsl(${hue}, 80%, 55%)`;
           ctx.beginPath();
-          ctx.arc(x, y, 6, 0, 2 * Math.PI);
+          ctx.arc(nx(i), ny(i), 6, 0, 2 * Math.PI);
           ctx.fill();
-
-          // Label
-          ctx.fillStyle = 'rgba(200,197,192,0.8)';
+          // Trait value label
+          ctx.fillStyle = 'rgba(200,197,192,0.85)';
           ctx.font = 'bold 10px monospace';
-          ctx.textAlign = 'center';
-          ctx.fillText(`T${i}`, x, y + 18);
+          ctx.textAlign = 'left';
+          ctx.fillText(nodeValues[i].toFixed(1), nx(i) + 10, ny(i) + 4);
         } else {
-          ctx.fillStyle = 'rgba(157,150,142,0.6)';
+          ctx.fillStyle = 'rgba(157,150,142,0.7)';
           ctx.beginPath();
-          ctx.arc(x, y, 3, 0, 2 * Math.PI);
+          ctx.arc(nx(i), ny(i), 3, 0, 2 * Math.PI);
           ctx.fill();
         }
       }
@@ -733,6 +770,8 @@
     // Regression plot
     function drawRegressionPlot() {
       const canvas = document.getElementById('regressionPlot');
+      canvas.width  = canvas.offsetWidth  || 700;
+      canvas.height = canvas.offsetHeight || 350;
       const ctx = canvas.getContext('2d');
       const width = canvas.width;
       const height = canvas.height;
@@ -842,60 +881,56 @@
     function run20Sims() {
       const sigma = parseFloat(document.getElementById('sigmaSlider').value);
       const canvas = document.getElementById('treeCanvas');
+      canvas.width  = canvas.offsetWidth  || 700;
+      canvas.height = canvas.offsetHeight || 350;
       const ctx = canvas.getContext('2d');
 
-      const width = canvas.width;
+      const width  = canvas.width;
       const height = canvas.height;
       ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'rgba(8,8,8,0.5)';
+      ctx.fillStyle = 'rgba(200,197,192,0.08)';
       ctx.fillRect(0, 0, width, height);
 
-      const margin = 50;
-      const plotWidth = width - 2 * margin;
-      const plotHeight = height - 2 * margin;
+      const mL = 25, mR = 80, mT = 20, mB = 20;
+      const plotW = width - mL - mR;
+      const plotH = height - mT - mB;
 
-      // Draw all 20 sims
-      for (let sim = 0; sim < 20; sim++) {
-        const values = simulateBM(sigma, treeStructure);
+      const { distances, maxDist, yRank, nTips } = computeLayout(treeStructure);
+      const spacing = plotH / (nTips - 1);
 
-        const minVal = Math.min(...values.filter((v, i) => treeStructure[i].children.length === 0));
-        const maxVal = Math.max(...values.filter((v, i) => treeStructure[i].children.length === 0));
-        const range = maxVal - minVal || 1;
+      const nx = i => mL + (distances[i] / maxDist) * plotW;
+      const ny = i => mT + yRank[i] * spacing;
 
-        const distances = computeDistances(treeStructure);
-
-        // Draw branches with transparency
-        ctx.strokeStyle = `rgba(201,162,39,${0.15 + (sim * 0.02)})`;
-        ctx.lineWidth = 1.5;
-        for (let i = 1; i < treeStructure.length; i++) {
-          const node = treeStructure[i];
-          const parentNode = treeStructure[node.parent];
-
-          const parentX = margin + (distances[node.parent] / 5) * plotWidth;
-          const childX = margin + (distances[i] / 5) * plotWidth;
-
-          const parentY = margin + (node.depth - 1) * (plotHeight / 3);
-          const childY = margin + node.depth * (plotHeight / 3);
-
-          ctx.beginPath();
-          ctx.moveTo(parentX, parentY);
-          ctx.lineTo(childX, childY);
-          ctx.stroke();
-        }
+      // Draw tree skeleton once
+      ctx.strokeStyle = 'rgba(154,151,147,0.45)';
+      ctx.lineWidth = 1.5;
+      for (let i = 1; i < treeStructure.length; i++) {
+        const p = treeStructure[i].parent;
+        ctx.beginPath();
+        ctx.moveTo(nx(p), ny(p));
+        ctx.lineTo(nx(p), ny(i));
+        ctx.lineTo(nx(i), ny(i));
+        ctx.stroke();
       }
 
-      // Draw axes
-      ctx.strokeStyle = 'rgba(154,151,147,0.4)';
-      ctx.lineWidth = 1;
-      for (let i = 0; i < treeStructure.length; i++) {
-        const node = treeStructure[i];
-        if (node.children.length === 0) {
-          const x = margin + (distances[i] / 5) * plotWidth;
-          const y = margin + node.depth * (plotHeight / 3);
-          ctx.fillStyle = 'rgba(201,162,39,0.6)';
-          ctx.beginPath();
-          ctx.arc(x, y, 5, 0, 2 * Math.PI);
-          ctx.fill();
+      // Overlay 20 simulations as jittered tip dots
+      for (let sim = 0; sim < 20; sim++) {
+        const values = simulateBM(sigma, treeStructure);
+        const tipVals = values.filter((v, i) => treeStructure[i].children.length === 0);
+        const minVal  = Math.min(...tipVals);
+        const maxVal  = Math.max(...tipVals);
+        const range   = maxVal - minVal || 1;
+
+        for (let i = 0; i < treeStructure.length; i++) {
+          if (treeStructure[i].children.length === 0) {
+            const norm = (values[i] - minVal) / range;
+            const hue  = 200 + norm * 60;
+            const jitter = (sim - 9.5) * 1.8;
+            ctx.fillStyle = `hsla(${hue}, 80%, 55%, 0.55)`;
+            ctx.beginPath();
+            ctx.arc(nx(i) + jitter, ny(i), 4, 0, 2 * Math.PI);
+            ctx.fill();
+          }
         }
       }
     }
