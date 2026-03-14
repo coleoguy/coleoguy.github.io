@@ -407,8 +407,8 @@
     // ── Canvas drawing ──────────────────────────────────────────
     function drawBDTree(canvasEl, result, maxTime) {
       const dpr = window.devicePixelRatio || 1;
-      const cssW = canvasEl.clientWidth;
-      const cssH = canvasEl.clientHeight;
+      const cssW = canvasEl.clientWidth  || canvasEl.offsetWidth  || 400;
+      const cssH = canvasEl.clientHeight || canvasEl.offsetHeight || 320;
       canvasEl.width  = cssW * dpr;
       canvasEl.height = cssH * dpr;
 
@@ -419,6 +419,10 @@
       if (result.extinct) return;
 
       const { nodes, rootId } = result;
+
+      // Assign y-positions via DFS post-order (was defined but never called — the bug)
+      assignY(nodes, rootId, { val: 0 });
+
       const tipCount = countTips(nodes, rootId);
       const pad = { top: 14, right: 18, bottom: 14, left: 18 };
       const plotW = cssW - pad.left - pad.right;
