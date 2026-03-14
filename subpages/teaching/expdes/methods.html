@@ -2815,7 +2815,7 @@ version compares before/after measurements or matched pairs (e.g.,
 siblings, pre/post interventions). T-tests assume normally distributed
 data, especially when sample sizes are small, but they’re fairly robust.
 They’re often your go-to when the outcome is continuous and the design
-is simple — just remember to check whether your samples are paired or
+is simple - just remember to check whether your samples are paired or
 independent and whether variance between groups is roughly equal.</p>
 </div>
 <div id="assumptions-limits" class="section level2">
@@ -2879,13 +2879,13 @@ big</strong> the difference is (≈0.2 small, 0.5 medium, 0.8 large).</li>
 <strong>d</strong>.</li>
 </ul>
 <p>When you read a t‑test, don’t stop at the p‑value. Start with the
-<strong>group means</strong> and their <strong>95% CI</strong>—that
+<strong>group means</strong> and their <strong>95% CI</strong>-that
 tells you what size of difference is compatible with the data. Then
 report <strong>Cohen’s d</strong> (and its CI) so readers know if the
 difference is tiny, moderate, or big in biological terms. If Welch’s
 test was used, you already handled unequal variances; if not, check
 variance equality before making claims. For paired tests, emphasize the
-<strong>mean of the within‑subject differences</strong>—that’s the thing
+<strong>mean of the within‑subject differences</strong>-that’s the thing
 you actually tested. Finally, sanity‑check the plot: if the
 distributions barely overlap and d is decent, the story’s stronger than
 a lonely p‑value.</p>
@@ -2902,7 +2902,7 @@ proportions?</li>
 <li><strong>Independence</strong>: Are two categorical variables
 associated?</li>
 </ul>
-<p>Chi-square tests are for categorical data — think counts of
+<p>Chi-square tests are for categorical data - think counts of
 observations in different categories. You use them when you’re trying to
 answer questions like “Do these two variables appear to be related?” or
 “Are these observed counts different from what I’d expect by chance?”
@@ -2911,8 +2911,8 @@ specific expected distribution, while the test of independence checks
 whether two categorical variables are statistically associated (like
 treatment group and survival). These tests assume independence between
 observations and that expected counts are big enough (typically ≥5 per
-cell). If you’ve got categories and counts — like genotypes, color
-morphs, or choices in a behavioral trial — this is your tool.</p>
+cell). If you’ve got categories and counts - like genotypes, color
+morphs, or choices in a behavioral trial - this is your tool.</p>
 </div>
 <div id="assumptions-limits-1" class="section level2">
 <h2>2.2 Assumptions / Limits</h2>
@@ -2988,18 +2988,18 @@ levels).</li>
 <li><strong>Repeated measures</strong>: same subjects measured multiple
 times (within‑subject factor).</li>
 </ul>
-<p>ANOVA — short for analysis of variance — is what you use when you’re
+<p>ANOVA - short for analysis of variance - is what you use when you’re
 comparing more than two groups. It tells you whether there are any
 statistically significant differences among group means, and it’s more
 appropriate than stringing together a bunch of t-tests. One-way ANOVA
 tests the effect of a single factor (e.g., treatment), while two-way
 ANOVA lets you test two factors and their interaction (e.g., treatment
 and sex). If you measured the same subject multiple times, you’ll need a
-repeated measures ANOVA — which accounts for that within-subject
+repeated measures ANOVA - which accounts for that within-subject
 structure. ANOVA assumes normality and equal variances among groups, but
 it’s robust to moderate violations. If you find significance, post-hoc
 tests (like Tukey’s) tell you which groups differ. Also, don’t just
-report the p-value — effect sizes like beta-squared are key to
+report the p-value - effect sizes like beta-squared are key to
 understanding the biological relevance.</p>
 </div>
 <div id="assumptions-limits-2" class="section level2">
@@ -3102,14 +3102,14 @@ effects may be summarized cleanly.</p>
 <p>Measures <strong>linear association</strong> between two continuous
 variables (−1 to +1).</p>
 <p>Correlation tells you how much two continuous variables tend to move
-together — positively, negatively, or not at all. Pearson correlation
+together - positively, negatively, or not at all. Pearson correlation
 measures linear relationships and assumes both variables are roughly
 normally distributed. It gives you a number between −1 and +1: the
 closer to ±1, the stronger the relationship. A positive correlation
 means the variables increase together (e.g., body size and fecundity),
 while a negative one means as one increases, the other decreases (e.g.,
 age and metabolic rate). It’s easy to overinterpret, so always visualize
-it — and remember, correlation isn’t causation.</p>
+it - and remember, correlation isn’t causation.</p>
 </div>
 <div id="assumptions-limits-3" class="section level2">
 <h2>4.2 Assumptions / Limits</h2>
@@ -3142,7 +3142,7 @@ ggplot(mtcars, aes(wt, mpg)) +
 <strong>r</strong> with a <strong>95% CI</strong> and show the scatter
 with a fitted line; readers should see whether a few points are doing
 all the work. If a relationship is clearly <strong>nonlinear</strong> or
-has <strong>outliers</strong>, Pearson r can mislead—switch to
+has <strong>outliers</strong>, Pearson r can mislead-switch to
 <strong>Spearman</strong> or model the curve. Also ask “so what?”: a
 modest r can be biologically important if the variables matter, while a
 large r can be trivial if it’s an artifact (batch, time, etc.). Keep the
@@ -3161,7 +3161,7 @@ between a continuous outcome and one or more predictors (categorical or
 continuous). It estimates slopes that tell you how much the outcome
 changes for each unit of the predictor, holding others constant.
 Assumptions include linearity, homoscedasticity (constant variance), and
-normal residuals. You should check diagnostic plots — they’re easy and
+normal residuals. You should check diagnostic plots - they’re easy and
 informative. Regression also gives you effect sizes via the slopes and
 R², which tells you how much of the variation in the outcome your model
 explains. Multiple regression (more than one predictor) lets you control
@@ -3193,7 +3193,7 @@ and <strong>standardized β</strong> for effect size comparability.</li>
 changes on the original scale: “a 1‑unit increase in X is associated
 with β units change in Y.” Use standardized betas if units differ wildly
 so readers can compare predictors. Report R² (variance explained) and
-show diagnostics—if residuals fan out or the relationship bends, your
+show diagnostics-if residuals fan out or the relationship bends, your
 inferences and CIs aren’t trustworthy. When multiple predictors are in
 play, interpret a coefficient as conditional on the others; if
 collinearity is high, admit the uncertainty and consider simpler
@@ -3223,11 +3223,11 @@ responses</li>
 <li>Flexible; can include interactions, offsets, etc.</li>
 </ul>
 <p>GLMs extend linear regression to handle data that aren’t continuous
-and normally distributed — like binary outcomes, counts, or skewed data.
+and normally distributed - like binary outcomes, counts, or skewed data.
 Instead of fitting a straight line, GLMs use link functions to relate
 the predictors to the mean of a response with a specific distribution
 (binomial for yes/no, Poisson for counts, etc.). They shine when you’re
-dealing with log-odds, incidence rates, or proportions — e.g., modeling
+dealing with log-odds, incidence rates, or proportions - e.g., modeling
 survival, parasite load, or presence/absence. While the output can look
 cryptic (log odds and deviance), GLMs are powerful and flexible. Focus
 on interpreting effect sizes like odds ratios and incidence rate ratios,
@@ -3283,7 +3283,7 @@ rate ratios (IRR). State whether you checked overdispersion (and how you
 handled it). Replace generic fit indices with something interpretable
 (e.g., calibration curves, confusion‑style summaries for logistic;
 predicted counts across x for Poisson). A small p with an OR≈1 isn’t
-compelling—effect size and uncertainty should carry the conclusion.</p>
+compelling-effect size and uncertainty should carry the conclusion.</p>
 <hr />
 </div>
 </div>
@@ -3295,7 +3295,7 @@ compelling—effect size and uncertainty should carry the conclusion.</p>
 measures</strong> data by adding <strong>random effects</strong> (e.g.,
 random intercept per subject, plot, batch).</p>
 <p>Mixed models are what you reach for when your data have grouping or
-repeated measures — like multiple measurements per animal, per cage, or
+repeated measures - like multiple measurements per animal, per cage, or
 per site. They combine fixed effects (e.g., treatment) with random
 effects (e.g., individual ID), allowing you to account for
 non-independence and variation between groups. This lets you use all
@@ -3350,7 +3350,7 @@ random slopes matter, say so and explain the biological meaning (e.g.,
 individuals differ in responsiveness). Emphasize <strong>predicted
 means/trajectories</strong> by group/subject with CIs; they make the
 repeated‑measures story visible. Note any convergence issues or singular
-fits—those hint at over‑complex random structures relative to the
+fits-those hint at over‑complex random structures relative to the
 data.</p>
 <hr />
 </div>
@@ -3365,8 +3365,8 @@ robust when data are skewed or have outliers. The Wilcoxon rank-sum
 signed-rank test replaces the paired version. Kruskal-Wallis stands in
 for one-way ANOVA, and the Friedman test replaces repeated measures
 ANOVA. You can also use Spearman or Kendall correlation for monotonic
-relationships. They don’t rely on means — they use medians or rank sums
-— so they’re great when distributions are weird.</p>
+relationships. They don’t rely on means - they use medians or rank sums
+- so they’re great when distributions are weird.</p>
 <div id="why" class="section level2">
 <h2>8.1 Why</h2>
 <p>When assumptions (normality/homoscedasticity) are violated or data
@@ -3418,7 +3418,7 @@ Visualize with boxplots/violin plots so readers see spread and overlap.
 A significant result tells you the typical ranks differ; it doesn’t say
 by how many units on the original scale unless you provide that
 estimate. If you chose a rank test because of outliers or skew, state
-that plainly—that transparency strengthens your conclusion.</p>
+that plainly-that transparency strengthens your conclusion.</p>
 <hr />
 </div>
 </div>
@@ -3434,7 +3434,7 @@ observed statistic (like a mean difference), then randomly shuffle your
 group labels thousands of times and see how often the randomized
 difference is as extreme as yours. It builds a null distribution from
 your data rather than relying on theoretical ones. This makes them
-powerful, assumption-light alternatives to standard tests — especially
+powerful, assumption-light alternatives to standard tests - especially
 when sample sizes are small or distributions are strange. They can be
 used for means, medians, correlations, regression coefficients, and
 more.</p>
@@ -3512,12 +3512,12 @@ mean(cover)  # ~ coverage rate</code></pre>
 truths.</li>
 </ul>
 <p>Monte Carlo results are about behavior under repeated sampling:
-coverage, bias, power, Type I error—whatever you set out to measure.
+coverage, bias, power, Type I error-whatever you set out to measure.
 Summarize with clear metrics (“95% CI covered the truth 91% of the time
 under skew”) and plots of the simulated distributions so students can
 see what “typical” looks like versus “extreme.” Tie the findings back to
 design choices: sample size, variance, skew, or effect size. The win is
-actionable guidance—“with n=20 per group and this variance, power is
+actionable guidance-“with n=20 per group and this variance, power is
 ~0.7; we need ~n=28 for 0.8.”</p>
 <hr />
 </div>
@@ -3535,7 +3535,7 @@ compare them to your actual data. If your model is reasonable, the
 simulated data should “look like” the observed data in terms of spread,
 structure, or key statistics. These checks are flexible and powerful for
 model validation, particularly when classical residuals don’t apply
-(e.g., in GLMs). They’re also great teaching tools — they help students
+(e.g., in GLMs). They’re also great teaching tools - they help students
 see what a model is really claiming.</p>
 </div>
 <div id="minimal-example-conceptual" class="section level2">
@@ -3569,7 +3569,7 @@ comparing observed to posterior predictive distributions. If the
 observed falls in the tails, discuss which aspect of the data the model
 misses (skew, clumping, heterogeneity) and what revision would address
 it (different link, distribution, random effects). Emphasize that this
-is model criticism, not a p‑value hunt—the goal is a model that
+is model criticism, not a p‑value hunt-the goal is a model that
 reproduces the salient biology.</p>
 <hr />
 </div>
@@ -3577,14 +3577,14 @@ reproduces the salient biology.</p>
 <div id="dimensionality-reduction" class="section level1">
 <h1>12. Dimensionality Reduction</h1>
 <p>Dimensionality reduction techniques help you make sense of
-high-dimensional data — gene expression, behavioral assays,
+high-dimensional data - gene expression, behavioral assays,
 morphometrics, etc. PCA (Principal Component Analysis) finds axes
 (components) that explain the most variance in your data. MDS
 (Multidimensional Scaling) preserves pairwise distances between samples.
 Methods like t-SNE and UMAP preserve local relationships and are
 excellent for visualizing clusters, even if the axes are hard to
 interpret. These tools are about summarizing complex data into a form
-you can plot, analyze, or cluster — they don’t test hypotheses directly,
+you can plot, analyze, or cluster - they don’t test hypotheses directly,
 but they make your downstream work easier.</p>
 <div id="plain-english-10" class="section level2">
 <h2>12.1 Plain English</h2>
@@ -3627,7 +3627,7 @@ ggplot(mds_df, aes(MDS1, MDS2, color=Species)) +
 explained by PCs and describe the loadings to say which variables define
 each axis; then interpret group separation (or overlap) in that light.
 For MDS, stress that distances in the plot approximate
-dissimilarities—clusters that are close are similar by your chosen
+dissimilarities-clusters that are close are similar by your chosen
 metric. For t‑SNE/UMAP, focus on local neighborhoods and avoid
 over‑reading global distances; reproducibility across seeds and
 parameters matters. Always tie patterns back to biology (treatment,

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>AI-Native Biology - Blackmon Lab</title>
+  <meta name="description" content="The Blackmon Lab at Texas A&M uses AI to accelerate research in evolutionary biology. Autonomous literature agents, AI-assisted theory, and practical curricula for biologists.">
+  <meta name="keywords" content="AI in biology, AI-native biology, autonomous agents, evolutionary biology AI, karyotype agent, TAMU AI, Blackmon Lab">
+  <link rel="canonical" href="https://coleoguy.github.io/ai.html">
+
+  <meta property="og:title" content="AI-Native Biology - Blackmon Lab">
+  <meta property="og:description" content="Autonomous literature agents, AI-assisted analysis, and practical curricula for biologists. AI research at the Blackmon Lab, Texas A&M.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://coleoguy.github.io/ai.html">
+  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* ── AI hero ──────────────────────────────────────────── */
+    .ai-hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .ai-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,162,39,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ai-hero .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      background: var(--accent-dim);
+      border-radius: 20px;
+      padding: 5px 16px;
+      margin-bottom: 24px;
+    }
+    .ai-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      font-family: var(--font-heading);
+    }
+    .ai-hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .ai-hero .lead {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+    .ai-hero .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 11px 28px;
+      border-radius: 8px;
+      border: none;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .btn-accent:hover { background: var(--accent-hover); color: #000; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding: 10px 24px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .btn-ghost:hover { border-color: var(--border-hover); color: var(--text-heading); }
+
+    /* ── Divider ──────────────────────────────────────────── */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── Vision section ───────────────────────────────────── */
+    .vision-section {
+      padding: 80px 0;
+    }
+    .vision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+    .vision-cell {
+      background: var(--bg-card);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .vision-cell:hover { background: var(--bg-card-hover); }
+    .vision-cell .vc-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .vision-cell h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 10px;
+      font-family: var(--font-heading);
+    }
+    .vision-cell p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .vision-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 769px) and (max-width: 992px) {
+      .vision-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── Section label ────────────────────────────────────── */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      margin-bottom: 12px;
+    }
+    .section-body {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 640px;
+    }
+
+    /* ── Project cards ────────────────────────────────────── */
+    .projects-section {
+      padding: 80px 0;
+      background: var(--bg-raised);
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 26px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+    .project-card.featured {
+      border-color: var(--accent-border);
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,162,39,0.04) 100%);
+    }
+    .pc-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .pc-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pc-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      margin: 0 0 4px;
+    }
+    .pc-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 9px;
+      border-radius: 10px;
+    }
+    .status-active   { background: rgba(74,222,128,0.12); color: #4ade80; }
+    .status-complete { background: rgba(148,163,184,0.12); color: #94a3b8; }
+    .status-paper    { background: rgba(167,139,250,0.12); color: #a78bfa; }
+    .status-teaching { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .pc-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .pc-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 18px;
+    }
+    .pc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: auto;
+      transition: gap 0.15s;
+    }
+    .pc-link:hover { gap: 9px; color: var(--accent-hover); }
+
+    /* ── Teaching section ─────────────────────────────────── */
+    .teaching-section {
+      padding: 80px 0;
+    }
+    .teaching-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 26px;
+      height: 100%;
+      transition: border-color 0.2s;
+    }
+    .teaching-card:hover { border-color: var(--border-hover); }
+
+    /* ── Principles section ───────────────────────────────── */
+    .principles-section {
+      padding: 80px 0;
+      background: var(--bg-raised);
+    }
+    .principle-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .principle-row:last-child { border-bottom: none; }
+    .principle-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-border);
+      font-family: var(--font-heading);
+      flex-shrink: 0;
+      width: 56px;
+      line-height: 1;
+      margin-top: 4px;
+    }
+    .principle-content h5 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      margin-bottom: 8px;
+    }
+    .principle-content p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ── CTA section ──────────────────────────────────────── */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="ai.html" class="active">AI</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <section class="ai-hero">
+      <div class="container">
+        <div class="eyebrow" data-aos="fade-down">Blackmon Lab · Texas A&amp;M University</div>
+        <h1 data-aos="fade-up">AI in<br><em>Evolutionary Biology</em></h1>
+        <p class="lead" data-aos="fade-up" data-aos-delay="80">
+          We use AI tools to accelerate research in evolutionary biology. Our work spans autonomous literature-mining agents, AI-assisted theoretical derivations, and practical curricula for biology students and researchers.
+        </p>
+        <div class="hero-ctas" data-aos="fade-up" data-aos-delay="140">
+          <a href="#projects" class="btn-accent">
+            <i class="bi bi-grid-3x3-gap-fill"></i> See our projects
+          </a>
+          <a href="join.html" class="btn-ghost">
+            <i class="bi bi-person-plus"></i> Join the lab
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ── Vision ────────────────────────────────────────── -->
+    <section class="vision-section">
+      <div class="container">
+        <div class="text-center mb-2" data-aos="fade-up">
+          <span class="section-label">Our approach</span>
+          <h2 class="section-title">How we use AI in the lab</h2>
+          <p class="section-body mx-auto" style="text-align:center;">
+            We use AI as a research tool, not just a productivity shortcut. That means autonomous pipelines with validated outputs, workflows that scale to problems a single lab couldn't otherwise tackle, and curricula that give students practical skills alongside the critical thinking to evaluate AI outputs.
+          </p>
+        </div>
+
+        <div class="vision-grid" data-aos="fade-up" data-aos-delay="80">
+          <div class="vision-cell">
+            <span class="vc-icon">🤖</span>
+            <h4>Autonomous agents</h4>
+            <p>Software agents that search databases, triage papers, extract structured data, and generate new queries based on what they find. They run unattended and pick up where they left off across sessions.</p>
+          </div>
+          <div class="vision-cell">
+            <span class="vc-icon">🧠</span>
+            <h4>AI as lead investigator</h4>
+            <p>We are testing whether a Claude-powered agent can act as principal investigator on a complete research project: forming hypotheses, selecting comparative methods, running analyses, and drafting a manuscript. The goal is to understand where AI reasoning works in biology and where it fails.</p>
+          </div>
+          <div class="vision-cell">
+            <span class="vc-icon">🎓</span>
+            <h4>AI-literate biologists</h4>
+            <p>Biology students need practical fluency with AI tools alongside the critical thinking to evaluate their outputs. We have built curricula at the undergraduate and graduate levels at Texas A&amp;M to develop both.</p>
+          </div>
+          <div class="vision-cell">
+            <span class="vc-icon">📊</span>
+            <h4>Data at scale</h4>
+            <p>Cytogenetics data from the past 80 years are scattered across hundreds of journals in multiple languages. AI makes it feasible to extract, standardize, and analyze this literature at a scale that wouldn't be practical otherwise.</p>
+          </div>
+          <div class="vision-cell">
+            <span class="vc-icon">🔬</span>
+            <h4>Validated outputs</h4>
+            <p>Every AI extraction gets a confidence score. Flagged records are routed to domain experts. Validation is built into the pipeline design, not added as an afterthought.</p>
+          </div>
+          <div class="vision-cell">
+            <span class="vc-icon">🌐</span>
+            <h4>Open and reproducible</h4>
+            <p>All databases, code, and workflows are published openly so other comparative biology labs can replicate and build on them.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ── Projects ───────────────────────────────────────── -->
+    <section class="projects-section" id="projects">
+      <div class="container">
+        <div class="mb-5" data-aos="fade-up">
+          <span class="section-label">Active &amp; recent work</span>
+          <h2 class="section-title">Research projects</h2>
+          <p class="section-body">Active and recent projects using AI tools in the lab.</p>
+        </div>
+
+        <div class="row g-4">
+
+          <!-- Karyotype Agent -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="project-card featured">
+              <div class="pc-header">
+                <span class="pc-icon">🪲</span>
+                <div>
+                  <p class="pc-title">Autonomous Karyotype Data Collector</p>
+                  <span class="pc-status status-active"><span class="pc-dot"></span>Active</span>
+                </div>
+              </div>
+              <p class="pc-desc">An autonomous agent that searches PubMed and CrossRef, triages papers with Claude Haiku, fetches PDFs via Unpaywall, and extracts structured karyotype records with Claude Sonnet. Currently at 629+ records across 144 beetle families, running 730 search terms.</p>
+              <a href="subpages/karyotype-agent.html" class="pc-link">Learn more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- AI Lead Investigator -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+            <div class="project-card featured">
+              <div class="pc-header">
+                <span class="pc-icon">🦾</span>
+                <div>
+                  <p class="pc-title">AI as Lead Investigator</p>
+                  <span class="pc-status status-paper"><span class="pc-dot"></span>Manuscript in prep</span>
+                </div>
+              </div>
+              <p class="pc-desc">We gave a Claude-powered agent a complete research problem in claw evolution and asked it to carry the project from hypothesis to manuscript. The goal is to understand where AI reasoning works in biology and where it breaks down. Manuscript in preparation.</p>
+              <a href="research.html" class="pc-link">See research program <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- RateScape -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+            <div class="project-card">
+              <div class="pc-header">
+                <span class="pc-icon">📈</span>
+                <div>
+                  <p class="pc-title">RateScape</p>
+                  <span class="pc-status status-active"><span class="pc-dot"></span>Active</span>
+                </div>
+              </div>
+              <p class="pc-desc">Penalized likelihood method for estimating branch-specific rate scalars on phylogenies. We used AI tools throughout method development, simulation, and manuscript writing. Planned application to pathogen drug-resistance rate estimation (NHGRI PAR-25-228).</p>
+              <a href="resources.html" class="pc-link">R packages <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Karyotype Databases -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+            <div class="project-card">
+              <div class="pc-header">
+                <span class="pc-icon">🗂️</span>
+                <div>
+                  <p class="pc-title">Karyotype Databases</p>
+                  <span class="pc-status status-complete"><span class="pc-dot"></span>Published</span>
+                </div>
+              </div>
+              <p class="pc-desc">Six interactive karyotype databases covering Coleoptera, Diptera, Amphibia, Mammalia, Drosophila, and Polyneoptera. Over 20,000 records total. All static, downloadable, and machine-readable.</p>
+              <a href="karyotypes/index.html" class="pc-link">Browse databases <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Pop Gen Sim -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+            <div class="project-card">
+              <div class="pc-header">
+                <span class="pc-icon">🧬</span>
+                <div>
+                  <p class="pc-title">Population Genetics Simulator</p>
+                  <span class="pc-status status-complete"><span class="pc-dot"></span>Published</span>
+                </div>
+              </div>
+              <p class="pc-desc">Interactive Wright-Fisher simulator supporting drift, selection, mutation, migration, and bottlenecks. Built entirely through AI-assisted coding as a teaching tool and a test of what a coding agent can produce without manual intervention.</p>
+              <a href="subpages/popgen-sim.html" class="pc-link">Open simulator <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Sex chr theory -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="180">
+            <div class="project-card">
+              <div class="pc-header">
+                <span class="pc-icon">🔣</span>
+                <div>
+                  <p class="pc-title">Sex-Autosome Fusion Theory</p>
+                  <span class="pc-status status-paper"><span class="pc-dot"></span>Manuscript in prep</span>
+                </div>
+              </div>
+              <p class="pc-desc">Theory paper on sex-autosome fusion fixation probability. We used AI tools for symbolic derivations, analytical cross-checks, and drafting. A useful test case for how AI assistance affects throughput and error rate in theoretical work.</p>
+              <a href="research.html" class="pc-link">Research page <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ── Teaching ───────────────────────────────────────── -->
+    <section class="teaching-section">
+      <div class="container">
+        <div class="mb-5" data-aos="fade-up">
+          <span class="section-label">Education</span>
+          <h2 class="section-title">Teaching</h2>
+          <p class="section-body">Courses and curricula at Texas A&M giving biology students hands-on experience with AI tools.</p>
+        </div>
+
+        <div class="row g-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="teaching-card">
+              <div class="pc-header">
+                <span class="pc-icon">🧪</span>
+                <div>
+                  <p class="pc-title">Biology and AI CURE</p>
+                  <span class="pc-status status-teaching"><span class="pc-dot"></span>Spring 2026</span>
+                </div>
+              </div>
+              <p class="pc-desc" style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">Undergraduate research course where each student conducts an original evolutionary biology project using phylogenetic comparative methods and AI-assisted analysis. Spring 2026 cohort.</p>
+              <a href="biolai-cure.html" class="pc-link">Meet the cohort <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="60">
+            <div class="teaching-card">
+              <div class="pc-header">
+                <span class="pc-icon">🎓</span>
+                <div>
+                  <p class="pc-title">AI in Biology Concentration</p>
+                  <span class="pc-status status-teaching"><span class="pc-dot"></span>Curriculum</span>
+                </div>
+              </div>
+              <p class="pc-desc" style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">Formal 10-credit-hour concentration in the Texas A&amp;M Biology BS and PhD programs. Built to develop skills that transfer across tools, not just familiarity with whatever is current.</p>
+              <a href="tamu-ai-concentration.html" class="pc-link">View concentration <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+            <div class="teaching-card">
+              <div class="pc-header">
+                <span class="pc-icon">📖</span>
+                <div>
+                  <p class="pc-title">AI Tools &amp; Prompting Guides</p>
+                  <span class="pc-status status-complete"><span class="pc-dot"></span>Open access</span>
+                </div>
+              </div>
+              <p class="pc-desc" style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">Practical guides to AI tools and prompting techniques written for biologists. Covers literature review, data analysis, coding assistance, and writing workflows.</p>
+              <a href="subpages/AI-Tools.html" class="pc-link">Browse guides <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ── Principles ─────────────────────────────────────── -->
+    <section class="principles-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-right">
+            <span class="section-label">How we approach it</span>
+            <h2 class="section-title">Principles</h2>
+            <p class="section-body">Some constraints we try to stick to.</p>
+          </div>
+          <div class="col-lg-7 offset-lg-1" data-aos="fade-left">
+            <div class="principle-row">
+              <div class="principle-num">01</div>
+              <div class="principle-content">
+                <h5>Validate everything</h5>
+                <p>Every AI output is verified computationally or reviewed by a domain expert before it enters a publication or database. Confidence scores and review flags are built into the pipeline from the start.</p>
+              </div>
+            </div>
+            <div class="principle-row">
+              <div class="principle-num">02</div>
+              <div class="principle-content">
+                <h5>AI handles repetition; researchers handle reasoning</h5>
+                <p>Searching, triaging, extracting, and checking math are good uses of AI. Deciding what question is worth asking, and whether a result makes sense, stays with the researcher.</p>
+              </div>
+            </div>
+            <div class="principle-row">
+              <div class="principle-num">03</div>
+              <div class="principle-content">
+                <h5>Publish the failures too</h5>
+                <p>We care as much about documenting where AI reasoning fails in biology as demonstrating what it can do. Understanding the failure modes is the scientifically useful part.</p>
+              </div>
+            </div>
+            <div class="principle-row">
+              <div class="principle-num">04</div>
+              <div class="principle-content">
+                <h5>Domain knowledge has to be explicit</h5>
+                <p>A generic LLM call on a cytogenetics paper produces generic results. Every extraction prompt for the karyotype agent includes a 330-line domain guide encoding notation conventions, known problem families, and expected value ranges.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ── CTA ────────────────────────────────────────────── -->
+    <section class="cta-section">
+      <div class="container" data-aos="fade-up">
+        <h2>Join the lab</h2>
+        <p>We are recruiting graduate students and postdocs interested in using AI tools in evolutionary biology research. Get in touch if that sounds like you.</p>
+        <div class="hero-ctas">
+          <a href="join.html" class="btn-accent">
+            <i class="bi bi-person-plus"></i> Join the lab
+          </a>
+          <a href="research.html" class="btn-ghost">
+            <i class="bi bi-journal-text"></i> Our research
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

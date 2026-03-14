@@ -264,21 +264,21 @@ input  { font-family: inherit; }
 .stack {
   position: relative; height: 108px; margin-bottom: 8px;
 }
-/* Card 3 — bottom, most tilted */
+/* Card 3 - bottom, most tilted */
 .stack::before {
   content: ''; position: absolute; inset: 0;
   background: var(--card-oldest); border-radius: 7px;
   transform: rotate(-5deg) translate(-4px, 4px);
   box-shadow: 0 1px 4px rgba(0,0,0,0.09);
 }
-/* Card 2 — middle */
+/* Card 2 - middle */
 .stack::after {
   content: ''; position: absolute; inset: 0;
   background: var(--card-aged); border-radius: 7px;
   transform: rotate(-2.5deg) translate(-2px, 2px);
   box-shadow: 0 1px 6px rgba(0,0,0,0.09);
 }
-/* Card 1 — top */
+/* Card 1 - top */
 .stack-face {
   position: absolute; inset: 0; z-index: 1;
   background: var(--card-bg); border-radius: 7px;
@@ -588,7 +588,7 @@ input  { font-family: inherit; }
 </div>
 
 <!-- ══════════════════════════════════════
-     ③ DESK — CLASS VIEW
+     ③ DESK - CLASS VIEW
 ══════════════════════════════════════ -->
 <div id="screen-class" class="screen">
   <div class="nav">
@@ -648,7 +648,7 @@ input  { font-family: inherit; }
     </div>
     <div class="cmp-divider"></div>
     <div class="cmp-code-lbl">Verification code</div>
-    <div class="cmp-code" id="cmp-code">—</div>
+    <div class="cmp-code" id="cmp-code">-</div>
   </div>
   <div class="ped-box">
     <div class="ped-lbl">The science behind what you just did</div>
@@ -672,13 +672,13 @@ input  { font-family: inherit; }
     <div class="sci-section">
       <div class="sci-badge">Strongest evidence</div>
       <div class="sci-h">Active recall beats re-reading</div>
-      <div class="sci-p">Every time you retrieve information from memory — before seeing the answer — you strengthen that memory trace far more than reading it again. This is called the <em>testing effect</em>. Roediger & Karpicke (2006) showed students who were tested retained 50% more after a week than students who re-studied the same material.</div>
+      <div class="sci-p">Every time you retrieve information from memory - before seeing the answer - you strengthen that memory trace far more than reading it again. This is called the <em>testing effect</em>. Roediger & Karpicke (2006) showed students who were tested retained 50% more after a week than students who re-studied the same material.</div>
     </div>
 
     <div class="sci-section">
       <div class="sci-badge">Strong evidence</div>
       <div class="sci-h">Generating answers is better than recognizing them</div>
-      <div class="sci-p">Fill-in-the-blank outperforms multiple choice because your brain has to <em>construct</em> the answer rather than identify it. This is the <em>generation effect</em> — the mental effort of producing a response creates a deeper, more durable memory trace. That's why we use more fill-in-the-blank than multiple choice.</div>
+      <div class="sci-p">Fill-in-the-blank outperforms multiple choice because your brain has to <em>construct</em> the answer rather than identify it. This is the <em>generation effect</em> - the mental effort of producing a response creates a deeper, more durable memory trace. That's why we use more fill-in-the-blank than multiple choice.</div>
     </div>
 
     <div class="sci-section">
@@ -690,13 +690,13 @@ input  { font-family: inherit; }
     <div class="sci-section">
       <div class="sci-badge">Good evidence</div>
       <div class="sci-h">Mixing question types helps</div>
-      <div class="sci-p">Interleaving flashcards, fill-in-the-blank, and multiple choice within a session feels harder than doing all of one type at once — and that difficulty is the point. <em>Desirable difficulty</em> research shows that varied practice produces better long-term retention and transfer, even though it feels less efficient in the moment.</div>
+      <div class="sci-p">Interleaving flashcards, fill-in-the-blank, and multiple choice within a session feels harder than doing all of one type at once - and that difficulty is the point. <em>Desirable difficulty</em> research shows that varied practice produces better long-term retention and transfer, even though it feels less efficient in the moment.</div>
     </div>
 
     <div class="sci-section">
       <div class="sci-badge">Good evidence</div>
       <div class="sci-h">Short sessions over time beat marathon cramming</div>
-      <div class="sci-p">A deck completed across three sessions is more effective than the same deck completed in one sitting. The app tracks your points across the whole semester so that studying is worthwhile every week — not just before an exam. Distributed practice is one of the highest-impact, lowest-effort learning strategies known.</div>
+      <div class="sci-p">A deck completed across three sessions is more effective than the same deck completed in one sitting. The app tracks your points across the whole semester so that studying is worthwhile every week - not just before an exam. Distributed practice is one of the highest-impact, lowest-effort learning strategies known.</div>
     </div>
 
     <div class="sci-section">
@@ -709,7 +709,7 @@ input  { font-family: inherit; }
 </div>
 
 <!-- ══════════════════════════════════════
-     MODAL — ADD CLASS
+     MODAL - ADD CLASS
 ══════════════════════════════════════ -->
 <div class="sheet-overlay" id="add-sheet" onclick="sheetTap(event)">
   <div class="sheet">
@@ -754,10 +754,10 @@ let curClassIdx = -1;
 //  PEDAGOGY ROTATION
 // ══════════════════════════════════════════════
 const PED = [
-  "You just practiced active recall — retrieving from memory rather than re-reading. The testing effect shows this produces 50% better retention after one week.",
+  "You just practiced active recall - retrieving from memory rather than re-reading. The testing effect shows this produces 50% better retention after one week.",
   "Every card you marked 'Again' came back so retrieval happened while the memory trace was still fragile. That's spaced repetition at work.",
   "Fill-in-the-blank cards force you to generate an answer, not just recognize one. The generation effect makes that harder mental effort worth it.",
-  "Mixing flashcards, fill-in-blank, and multiple choice in one session creates desirable difficulty — harder in the moment, stronger long-term.",
+  "Mixing flashcards, fill-in-blank, and multiple choice in one session creates desirable difficulty - harder in the moment, stronger long-term.",
   "Points for completing decks, not for correct answers. That keeps your focus on learning, not on performing.",
 ];
 

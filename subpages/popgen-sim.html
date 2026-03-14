@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Population Genetics Simulator - Blackmon Lab</title>
+  <meta name="description" content="Interactive Wright-Fisher population genetics simulator with genetic drift, natural selection, mutation, migration, and bottlenecks. Built by the Blackmon Lab at Texas A&M University.">
+  <link rel="canonical" href="https://coleoguy.github.io/subpages/popgen-sim.html">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <link href="../assets/img/favicon.ico" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section class="page-header">
+      <div class="container">
+        <h1>Population Genetics Simulator</h1>
+        <p>Wright-Fisher model - drift, selection, mutation, migration, and bottlenecks</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 24px; padding-bottom: 40px;">
+      <div class="container-xl">
+
+        <!-- Preset Scenarios -->
+        <div class="presets-bar mb-3" data-aos="fade-up">
+          <span class="presets-label">Presets:</span>
+          <div class="presets-list">
+            <button class="preset-btn" onclick="loadPreset('pure_drift')">Pure Drift</button>
+            <button class="preset-btn" onclick="loadPreset('small_pop')">Small Population</button>
+            <button class="preset-btn" onclick="loadPreset('sweep')">Selective Sweep</button>
+            <button class="preset-btn" onclick="loadPreset('purifying')">Purifying Selection</button>
+            <button class="preset-btn" onclick="loadPreset('balancing')">Balancing Selection</button>
+            <button class="preset-btn" onclick="loadPreset('bottleneck')">Bottleneck</button>
+            <button class="preset-btn" onclick="loadPreset('mut_drift')">Mutation–Drift</button>
+            <span class="presets-divider">|</span>
+            <button class="preset-btn preset-btn-sex" onclick="loadPreset('x_drift')">X-linked Drift</button>
+            <button class="preset-btn preset-btn-sex" onclick="loadPreset('x_sweep')">Hemizygous Sweep</button>
+            <button class="preset-btn preset-btn-sex" onclick="loadPreset('zw_purifying')">ZW Purifying</button>
+          </div>
+        </div>
+
+        <div class="row g-3">
+
+          <!-- =================== LEFT PANEL: PARAMETERS =================== -->
+          <div class="col-lg-3 col-md-4" data-aos="fade-right">
+            <div class="param-panel" id="param-panel">
+
+              <!-- Core -->
+              <div class="param-group">
+                <div class="param-group-title"><i class="bi bi-sliders"></i> Core Parameters</div>
+
+                <div class="param-row">
+                  <label>Effective Pop. Size (N<sub>e</sub>)</label>
+                  <div class="slider-row">
+                    <input type="range" id="ne" min="1" max="4" step="0.02" value="2"
+                      class="param-slider" oninput="updateNeDisplay('ne','ne-display')">
+                    <span id="ne-display" class="param-val">100</span>
+                  </div>
+                  <div class="param-hint">Log scale: 10 – 10,000</div>
+                </div>
+
+                <div class="param-row">
+                  <label>Generations</label>
+                  <div class="slider-row">
+                    <input type="range" id="generations" min="20" max="500" step="10" value="100"
+                      class="param-slider" oninput="syncGenMax(); updateVal('generations','gen-display', v=>v)">
+                    <span id="gen-display" class="param-val">100</span>
+                  </div>
+                </div>
+
+                <div class="param-row">
+                  <label>Replicates</label>
+                  <div class="slider-row">
+                    <input type="range" id="replicates" min="1" max="20" step="1" value="5"
+                      class="param-slider" oninput="updateVal('replicates','rep-display', v=>v)">
+                    <span id="rep-display" class="param-val">5</span>
+                  </div>
+                </div>
+
+                <div class="param-row">
+                  <label>Starting Frequency (p₀)</label>
+                  <div class="slider-row">
+                    <input type="range" id="p0" min="0.01" max="0.99" step="0.01" value="0.5"
+                      class="param-slider" oninput="updateVal('p0','p0-display', v=>parseFloat(v).toFixed(2))">
+                    <span id="p0-display" class="param-val">0.50</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Selection -->
+              <div class="param-group">
+                <div class="param-group-title param-toggle-title">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="sel-enabled" onchange="toggleForce('sel-params',this)">
+                    <span class="toggle-track"></span>
+                  </label>
+                  <span><i class="bi bi-arrow-up-right-circle"></i> Selection</span>
+                </div>
+                <div id="sel-params" class="force-params locked">
+                  <div class="param-row">
+                    <label>Selection Coeff. (s)</label>
+                    <div class="slider-row">
+                      <input type="range" id="s" min="-1" max="1" step="0.01" value="0.05"
+                        class="param-slider" oninput="updateVal('s','s-display', v=>parseFloat(v).toFixed(2))">
+                      <span id="s-display" class="param-val">0.05</span>
+                    </div>
+                    <div class="param-hint">Negative = deleterious to A allele</div>
+                  </div>
+                  <div class="param-row">
+                    <label>Dominance (h)</label>
+                    <div class="slider-row">
+                      <input type="range" id="h" min="0" max="2" step="0.01" value="0.5"
+                        class="param-slider" oninput="updateVal('h','h-display', v=>parseFloat(v).toFixed(2))">
+                      <span id="h-display" class="param-val">0.50</span>
+                    </div>
+                    <div class="param-hint">0 = recessive · 0.5 = additive · 1 = dominant · >1 = overdominant</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mutation -->
+              <div class="param-group">
+                <div class="param-group-title param-toggle-title">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="mut-enabled" onchange="toggleForce('mut-params',this)">
+                    <span class="toggle-track"></span>
+                  </label>
+                  <span><i class="bi bi-shuffle"></i> Mutation</span>
+                </div>
+                <div id="mut-params" class="force-params locked">
+                  <div class="param-row">
+                    <label>Forward rate (μ, A→a)</label>
+                    <div class="slider-row">
+                      <input type="range" id="mu" min="0" max="0.05" step="0.001" value="0.01"
+                        class="param-slider" oninput="updateVal('mu','mu-display', v=>parseFloat(v).toFixed(3))">
+                      <span id="mu-display" class="param-val">0.010</span>
+                    </div>
+                  </div>
+                  <div class="param-row">
+                    <label>Back rate (ν, a→A)</label>
+                    <div class="slider-row">
+                      <input type="range" id="nu" min="0" max="0.05" step="0.001" value="0.001"
+                        class="param-slider" oninput="updateVal('nu','nu-display', v=>parseFloat(v).toFixed(3))">
+                      <span id="nu-display" class="param-val">0.001</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Migration -->
+              <div class="param-group">
+                <div class="param-group-title param-toggle-title">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="mig-enabled" onchange="toggleForce('mig-params',this)">
+                    <span class="toggle-track"></span>
+                  </label>
+                  <span><i class="bi bi-arrow-left-right"></i> Migration</span>
+                </div>
+                <div id="mig-params" class="force-params locked">
+                  <div class="param-row">
+                    <label>Migration rate (m)</label>
+                    <div class="slider-row">
+                      <input type="range" id="m" min="0" max="0.5" step="0.005" value="0.05"
+                        class="param-slider" oninput="updateVal('m','m-display', v=>parseFloat(v).toFixed(3))">
+                      <span id="m-display" class="param-val">0.050</span>
+                    </div>
+                    <div class="param-hint">Island model - fraction from source each gen</div>
+                  </div>
+                  <div class="param-row">
+                    <label>Source freq. (p<sub>m</sub>)</label>
+                    <div class="slider-row">
+                      <input type="range" id="pm" min="0" max="1" step="0.01" value="0.5"
+                        class="param-slider" oninput="updateVal('pm','pm-display', v=>parseFloat(v).toFixed(2))">
+                      <span id="pm-display" class="param-val">0.50</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottleneck -->
+              <div class="param-group">
+                <div class="param-group-title param-toggle-title">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="bot-enabled" onchange="toggleForce('bot-params',this)">
+                    <span class="toggle-track"></span>
+                  </label>
+                  <span><i class="bi bi-funnel"></i> Bottleneck</span>
+                </div>
+                <div id="bot-params" class="force-params locked">
+                  <div class="param-row">
+                    <label>Generation</label>
+                    <div class="slider-row">
+                      <input type="range" id="bot-gen" min="1" max="99" step="1" value="50"
+                        class="param-slider" oninput="updateVal('bot-gen','botgen-display', v=>v)">
+                      <span id="botgen-display" class="param-val">50</span>
+                    </div>
+                  </div>
+                  <div class="param-row">
+                    <label>Bottleneck N<sub>e</sub></label>
+                    <div class="slider-row">
+                      <input type="range" id="bot-ne" min="0" max="3" step="0.05" value="1"
+                        class="param-slider" oninput="updateNeDisplay('bot-ne','botne-display')">
+                      <span id="botne-display" class="param-val">10</span>
+                    </div>
+                    <div class="param-hint">Log scale: 1 – 1,000</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sex Chromosome -->
+              <div class="param-group" style="border-bottom:none; margin-bottom:0;">
+                <div class="param-group-title param-toggle-title" id="sex-chr-title">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="sex-enabled" onchange="toggleForce('sex-params',this); toggleSexChrMode(this)">
+                    <span class="toggle-track"></span>
+                  </label>
+                  <span><i class="bi bi-gender-ambiguous"></i> Sex Chromosome</span>
+                </div>
+                <div id="sex-params" class="force-params locked">
+                  <div class="param-row">
+                    <label>Sex determination system</label>
+                    <div class="sex-system-row">
+                      <label class="sys-opt">
+                        <input type="radio" name="sex-system" value="XY" checked onchange="updateSexLabels()">
+                        <span>XY &nbsp;<small>(♂ heterogametic)</small></span>
+                      </label>
+                      <label class="sys-opt">
+                        <input type="radio" name="sex-system" value="ZW" onchange="updateSexLabels()">
+                        <span>ZW <small>(♀ heterogametic)</small></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="param-row">
+                    <label id="recomb-label">Recombination to SD locus (r)</label>
+                    <div class="slider-row">
+                      <input type="range" id="r-recomb" min="0" max="0.5" step="0.005" value="0"
+                        class="param-slider" oninput="updateVal('r-recomb','r-display', v=>parseFloat(v).toFixed(3))">
+                      <span id="r-display" class="param-val">0.000</span>
+                    </div>
+                    <div class="param-hint">0 = fully sex-linked · 0.5 = pseudoautosomal</div>
+                  </div>
+                  <div class="param-row">
+                    <label>
+                      <input type="checkbox" id="show-sec-chr" style="margin-right:4px; accent-color: var(--accent);">
+                      <span id="show-sec-label">Show Y allele frequency</span>
+                    </label>
+                    <div class="param-hint">Dashed lines track allele freq on secondary chromosome</div>
+                  </div>
+                  <div class="sex-info-box" id="sex-info-box">
+                    <span id="sex-mode-desc">♂ hemizygous · N<sub>e,X</sub> = ¾N<sub>e</sub></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="mt-3">
+                <button class="btn-run w-100" onclick="runAndPlot()">
+                  <i class="bi bi-play-fill"></i> Run Simulation
+                </button>
+                <button class="btn-clear w-100 mt-2" onclick="clearPlot()">
+                  <i class="bi bi-x-circle"></i> Clear
+                </button>
+                <button class="btn-share w-100 mt-2" onclick="shareURL()">
+                  <i class="bi bi-share"></i> Share These Settings
+                </button>
+              </div>
+
+            </div><!-- /param-panel -->
+          </div><!-- /left col -->
+
+          <!-- =================== RIGHT PANEL: CHART + STATS =================== -->
+          <div class="col-lg-9 col-md-8" data-aos="fade-left">
+
+            <!-- Chart -->
+            <div class="chart-wrap">
+              <canvas id="simChart"></canvas>
+              <div id="chart-hint" class="chart-hint">Configure parameters and press <strong>Run Simulation</strong></div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="stats-row mt-2" id="stats-row" style="display:none;">
+              <div class="stat-card">
+                <div class="stat-val" id="stat-fixed">-</div>
+                <div class="stat-label">Fixed (p = 1)</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-val" id="stat-lost">-</div>
+                <div class="stat-label">Lost (p = 0)</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-val" id="stat-seg">-</div>
+                <div class="stat-label">Segregating</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-val" id="stat-mean">-</div>
+                <div class="stat-label">Mean Final p</div>
+              </div>
+            </div>
+
+            <!-- Model Notes -->
+            <details class="model-notes mt-3">
+              <summary><i class="bi bi-info-circle me-1"></i>About this model</summary>
+              <div class="model-text">
+                <p>Each generation, forces are applied in order:</p>
+                <ol>
+                  <li><strong>Selection</strong> (diploid): p′ = (p²w<sub>AA</sub> + p(1−p)w<sub>Aa</sub>) / w̄ &nbsp;&nbsp; where w<sub>AA</sub> = 1+s, w<sub>Aa</sub> = 1+hs, w<sub>aa</sub> = 1</li>
+                  <li><strong>Mutation</strong>: p′ = p(1−μ) + (1−p)ν</li>
+                  <li><strong>Migration</strong> (island model): p′ = p(1−m) + mp<sub>m</sub></li>
+                  <li><strong>Drift</strong>: sample 2N<sub>e</sub> alleles from Binomial(2N<sub>e</sub>, p)</li>
+                </ol>
+                <p>Trajectories stop at fixation (p = 1) or loss (p = 0). A bottleneck replaces N<sub>e</sub> with N<sub>bottle</sub> for a single generation. The dashed amber line marks the bottleneck generation.</p>
+                <p><strong>Sex Chromosome mode</strong> tracks three allele frequencies per replicate: p<sub>dip</sub> (sex chromosome in diploid homogametic sex), p<sub>hap</sub> (sex chromosome in hemizygous heterogametic sex), p<sub>sec</sub> (secondary chromosome: Y or W). The solid trajectory shows the overall population-level frequency p = (2p<sub>dip</sub> + p<sub>hap</sub> + p<sub>sec</sub>) / 4. Selection in the hemizygous sex is fully exposed (no dominance). Recombination rate r mixes allele pools between the sex chromosome and secondary chromosome in the heterogametic sex each generation. At r = 0.5 (pseudoautosomal), behavior converges to the autosomal model. Drift is applied separately to each chromosome class: 2×(N<sub>e</sub>/2) alleles for the diploid sex, and 1×(N<sub>e</sub>/2) each for the hemizygous sex's sex chromosome and secondary chromosome, giving effective population size N<sub>e,X</sub> ≈ ¾N<sub>e</sub>.</p>
+              </div>
+            </details>
+
+          </div><!-- /right col -->
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+  <!-- ================================================================
+       STYLES
+  ================================================================ -->
+  <style>
+    /* ---- Presets bar ---- */
+    .presets-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .presets-label {
+      font-size: 0.78rem;
+      color: var(--text-muted, #706d69);
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .presets-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .preset-btn {
+      background: rgba(201,162,39,0.08);
+      color: var(--text-secondary, #9a9793);
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 20px;
+      padding: 0.22rem 0.8rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .preset-btn:hover {
+      background: rgba(201,162,39,0.18);
+      border-color: var(--accent, #c9a227);
+      color: var(--accent, #c9a227);
+    }
+    .preset-btn.active {
+      background: rgba(201,162,39,0.22);
+      border-color: var(--accent, #c9a227);
+      color: var(--accent, #c9a227);
+    }
+
+    /* ---- Parameter Panel ---- */
+    .param-panel {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 12px;
+      padding: 1.1rem 1rem;
+      position: sticky;
+      top: 80px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #2a2a2a transparent;
+    }
+    .param-panel::-webkit-scrollbar { width: 4px; }
+    .param-panel::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+
+    .param-group {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .param-group-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent, #c9a227);
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .param-toggle-title {
+      cursor: default;
+      color: var(--text-secondary, #9a9793);
+    }
+    .param-toggle-title.enabled {
+      color: var(--accent, #c9a227);
+    }
+
+    /* Toggle switch */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 30px;
+      height: 17px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.12);
+      border-radius: 17px;
+      transition: background 0.2s;
+    }
+    .toggle-track::before {
+      content: '';
+      position: absolute;
+      width: 11px; height: 11px;
+      left: 3px; bottom: 3px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+    .toggle-switch input:checked + .toggle-track {
+      background: var(--accent, #c9a227);
+    }
+    .toggle-switch input:checked + .toggle-track::before {
+      transform: translateX(13px);
+      background: #000;
+    }
+
+    /* Force params */
+    .force-params {
+      padding-left: 0.4rem;
+      transition: opacity 0.2s;
+    }
+    .force-params.locked {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* Param rows & sliders */
+    .param-row { margin-bottom: 0.55rem; }
+    .param-row label {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--text-secondary, #9a9793);
+      margin-bottom: 0.18rem;
+    }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .param-slider {
+      flex: 1;
+      height: 3px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .param-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--accent, #c9a227);
+      cursor: pointer;
+      box-shadow: 0 0 4px rgba(201,162,39,0.5);
+    }
+    .param-slider::-moz-range-thumb {
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--accent, #c9a227);
+      border: none;
+      cursor: pointer;
+    }
+    .param-val {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent, #c9a227);
+      min-width: 44px;
+      text-align: right;
+      font-family: var(--font-mono, monospace);
+    }
+    .param-hint {
+      font-size: 0.65rem;
+      color: var(--text-muted, #706d69);
+      margin-top: 0.1rem;
+      line-height: 1.3;
+    }
+
+    /* Buttons */
+    .btn-run {
+      background: var(--accent, #c9a227);
+      color: #080808;
+      border: none;
+      border-radius: 8px;
+      padding: 0.55rem 1rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-family: var(--font-body);
+    }
+    .btn-run:hover {
+      background: var(--accent-hover, #ddb82f);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(201,162,39,0.3);
+    }
+    .btn-clear, .btn-share {
+      background: transparent;
+      color: var(--text-muted, #706d69);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-family: var(--font-body);
+      width: 100%;
+    }
+    .btn-clear:hover {
+      border-color: rgba(255,255,255,0.25);
+      color: var(--text, #c8c5c0);
+    }
+    .btn-share:hover {
+      border-color: var(--accent, #c9a227);
+      color: var(--accent, #c9a227);
+    }
+
+    /* ---- Chart ---- */
+    .chart-wrap {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 12px;
+      padding: 1rem;
+      position: relative;
+      height: 420px;
+    }
+    .chart-hint {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted, #706d69);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    /* ---- Stats Row ---- */
+    .stats-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .stat-card {
+      flex: 1;
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 8px;
+      padding: 0.6rem 0.5rem;
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent, #c9a227);
+      line-height: 1;
+      font-family: var(--font-mono, monospace);
+    }
+    .stat-label {
+      font-size: 0.68rem;
+      color: var(--text-muted, #706d69);
+      margin-top: 0.25rem;
+    }
+
+    /* ---- Model Notes ---- */
+    .model-notes {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+    }
+    .model-notes summary {
+      color: var(--text-muted, #706d69);
+      font-size: 0.82rem;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+    .model-notes summary::-webkit-details-marker { display: none; }
+    .model-notes summary:hover { color: var(--accent, #c9a227); }
+    .model-text {
+      margin-top: 0.7rem;
+      color: var(--text-secondary, #9a9793);
+      font-size: 0.8rem;
+      line-height: 1.65;
+    }
+    .model-text ol { padding-left: 1.2rem; }
+    .model-text li { margin-bottom: 0.4rem; }
+
+    /* ---- Sex chromosome extras ---- */
+    .presets-divider {
+      color: rgba(255,255,255,0.15);
+      font-size: 0.9rem;
+      padding: 0 0.1rem;
+    }
+    .preset-btn-sex {
+      background: rgba(167,139,250,0.08);
+      border-color: rgba(167,139,250,0.25);
+    }
+    .preset-btn-sex:hover {
+      background: rgba(167,139,250,0.18);
+      border-color: #a78bfa;
+      color: #a78bfa;
+    }
+    .preset-btn-sex.active {
+      background: rgba(167,139,250,0.22);
+      border-color: #a78bfa;
+      color: #a78bfa;
+    }
+    .sex-system-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-top: 0.2rem;
+    }
+    .sys-opt {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: var(--text-secondary, #9a9793);
+    }
+    .sys-opt input[type="radio"] {
+      accent-color: var(--accent, #c9a227);
+      cursor: pointer;
+    }
+    .sys-opt small {
+      opacity: 0.65;
+    }
+    .sex-info-box {
+      margin-top: 0.5rem;
+      background: rgba(167,139,250,0.08);
+      border: 1px solid rgba(167,139,250,0.2);
+      border-radius: 6px;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.72rem;
+      color: #a78bfa;
+      line-height: 1.4;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 767px) {
+      .param-panel {
+        position: static;
+        max-height: none;
+      }
+      .chart-wrap { height: 300px; }
+      .stats-row { flex-wrap: wrap; }
+      .stat-card { min-width: calc(50% - 0.25rem); }
+    }
+  </style>
+
+  <!-- ================================================================
+       JAVASCRIPT
+  ================================================================ -->
+  <script>
+  // ================================================================
+  // DISPLAY HELPERS
+  // ================================================================
+  function updateVal(id, displayId, fmt) {
+    document.getElementById(displayId).textContent = fmt(document.getElementById(id).value);
+  }
+
+  function updateNeDisplay(sliderId, displayId) {
+    const log10 = parseFloat(document.getElementById(sliderId).value);
+    const ne = Math.round(Math.pow(10, log10));
+    document.getElementById(displayId).textContent = ne.toLocaleString();
+  }
+
+  // ================================================================
+  // SEX CHROMOSOME UI HELPERS
+  // ================================================================
+  function toggleSexChrMode(checkbox) {
+    // Visually mark the section title
+    const title = document.getElementById('sex-chr-title');
+    if (checkbox.checked) title.classList.add('enabled');
+    else title.classList.remove('enabled');
+    updateSexLabels();
+  }
+
+  function updateSexLabels() {
+    const sys = document.querySelector('input[name="sex-system"]:checked').value;
+    const isXY = (sys === 'XY');
+    document.getElementById('recomb-label').textContent =
+      `Recombination to ${isXY ? 'Y' : 'W'} junction (r)`;
+    document.getElementById('show-sec-label').textContent =
+      `Show ${isXY ? 'Y' : 'W'} allele frequency`;
+    document.getElementById('sex-mode-desc').innerHTML =
+      isXY
+        ? '♂ hemizygous at focal locus · N<sub>e,X</sub> ≈ ¾N<sub>e</sub>'
+        : '♀ hemizygous at focal locus · N<sub>e,Z</sub> ≈ ¾N<sub>e</sub>';
+  }
+
+  function syncGenMax() {
+    updateVal('generations', 'gen-display', v => v);
+    const gens = parseInt(document.getElementById('generations').value);
+    const botSlider = document.getElementById('bot-gen');
+    botSlider.max = gens - 1;
+    if (parseInt(botSlider.value) >= gens) {
+      botSlider.value = Math.floor(gens / 2);
+      updateVal('bot-gen', 'botgen-display', v => v);
+    }
+  }
+
+  function toggleForce(paramsId, checkbox) {
+    const el = document.getElementById(paramsId);
+    const title = checkbox.closest('.param-group-title');
+    if (checkbox.checked) {
+      el.classList.remove('locked');
+      title.classList.add('enabled');
+    } else {
+      el.classList.add('locked');
+      title.classList.remove('enabled');
+    }
+  }
+
+  // ================================================================
+  // SIMULATION ENGINE
+  // ================================================================
+  function boxMullerNormal() {
+    let u1, u2;
+    do { u1 = Math.random(); } while (u1 === 0);
+    u2 = Math.random();
+    return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+  }
+
+  function binomSample(n, p) {
+    if (n <= 0) return 0;
+    if (p <= 0) return 0;
+    if (p >= 1) return n;
+    // Normal approx for large n (accurate when np and n(1-p) > ~10)
+    if (n > 60) {
+      const mu = n * p;
+      const sigma = Math.sqrt(n * p * (1 - p));
+      if (sigma < 1e-6) return Math.round(mu);
+      return Math.max(0, Math.min(n, Math.round(mu + sigma * boxMullerNormal())));
+    }
+    // Exact Bernoulli sum for small n
+    let k = 0;
+    for (let i = 0; i < n; i++) if (Math.random() < p) k++;
+    return k;
+  }
+
+  function getParams() {
+    const neLog  = parseFloat(document.getElementById('ne').value);
+    const botLog = parseFloat(document.getElementById('bot-ne').value);
+    const sexSysEl = document.querySelector('input[name="sex-system"]:checked');
+    return {
+      Ne:          Math.round(Math.pow(10, neLog)),
+      generations: parseInt(document.getElementById('generations').value),
+      replicates:  parseInt(document.getElementById('replicates').value),
+      p0:          parseFloat(document.getElementById('p0').value),
+      selEnabled:  document.getElementById('sel-enabled').checked,
+      s:           parseFloat(document.getElementById('s').value),
+      h:           parseFloat(document.getElementById('h').value),
+      mutEnabled:  document.getElementById('mut-enabled').checked,
+      mu:          parseFloat(document.getElementById('mu').value),
+      nu:          parseFloat(document.getElementById('nu').value),
+      migEnabled:  document.getElementById('mig-enabled').checked,
+      m:           parseFloat(document.getElementById('m').value),
+      pm:          parseFloat(document.getElementById('pm').value),
+      botEnabled:  document.getElementById('bot-enabled').checked,
+      botGen:      parseInt(document.getElementById('bot-gen').value),
+      botNe:       Math.round(Math.pow(10, botLog)),
+      // Sex chromosome params
+      sexEnabled:  document.getElementById('sex-enabled').checked,
+      sexSystem:   sexSysEl ? sexSysEl.value : 'XY',
+      rRecomb:     parseFloat(document.getElementById('r-recomb').value),
+      showSecChr:  document.getElementById('show-sec-chr').checked,
+    };
+  }
+
+  function simulate(p) {
+    const { Ne, generations, replicates, p0,
+            selEnabled, s, h,
+            mutEnabled, mu, nu,
+            migEnabled, m, pm,
+            botEnabled, botGen, botNe } = p;
+
+    const trajectories = [];
+    const outcomes = { fixed: 0, lost: 0, segregating: 0, finalFreqs: [] };
+
+    for (let r = 0; r < replicates; r++) {
+      const traj = new Array(generations + 1).fill(null);
+      traj[0] = p0;
+      let freq = p0;
+      let ended = false;
+      let endGen = generations;
+
+      for (let g = 1; g <= generations; g++) {
+        if (ended) break;
+
+        // 1. Selection (diploid model)
+        if (selEnabled && s !== 0) {
+          const w11 = 1 + s;
+          const w12 = 1 + h * s;
+          const w22 = 1;
+          const wbar = freq*freq*w11 + 2*freq*(1-freq)*w12 + (1-freq)*(1-freq)*w22;
+          if (wbar > 1e-10) freq = (freq*freq*w11 + freq*(1-freq)*w12) / wbar;
+        }
+
+        // 2. Mutation
+        if (mutEnabled) {
+          freq = freq * (1 - mu) + (1 - freq) * nu;
+        }
+
+        // 3. Migration (island model)
+        if (migEnabled) {
+          freq = freq * (1 - m) + m * pm;
+        }
+
+        // 4. Drift - binomial sampling
+        const effNe = (botEnabled && g === botGen) ? botNe : Ne;
+        const alleles = binomSample(2 * effNe, Math.max(0, Math.min(1, freq)));
+        freq = alleles / (2 * effNe);
+
+        traj[g] = freq;
+
+        if (freq <= 0) {
+          outcomes.lost++;
+          ended = true;
+          endGen = g;
+        } else if (freq >= 1) {
+          outcomes.fixed++;
+          ended = true;
+          endGen = g;
+        }
+      }
+
+      if (!ended) outcomes.segregating++;
+      outcomes.finalFreqs.push(traj[endGen]);
+      trajectories.push(traj.slice(0, endGen + 1));
+    }
+
+    outcomes.meanFinalFreq = outcomes.finalFreqs.reduce((a, b) => a + b, 0) / replicates;
+    return { trajectories, outcomes };
+  }
+
+  // ================================================================
+  // SEX-LINKED SIMULATION ENGINE
+  // ================================================================
+  // Unified diploid/hemizygous model. Two systems:
+  //
+  //  XY  (♂ heterogametic):  diploid = ♀ (XX), hemizygous = ♂ (XY)
+  //      Transmission: daughters get X from ♀ pool + X from ♂ pool
+  //                    sons    get X from ♀ pool + Y from ♂ pool
+  //
+  //  ZW  (♀ heterogametic):  diploid = ♂ (ZZ), hemizygous = ♀ (ZW)
+  //      Transmission: sons     get Z from ♂ pool + Z from ♀ pool
+  //                    daughters get Z from ♂ pool + W from ♀ pool
+  //
+  //  In both cases the algebra is identical - just swap sex labels.
+  //  Internally use: dip = diploid sex, hap = hemizygous sex, sec = Y or W.
+  //
+  //  Three frequencies tracked per replicate:
+  //    p_dip : freq of A on sex chr in diploid sex
+  //    p_hap : freq of A on sex chr in hemizygous sex  (no dominance in selection)
+  //    p_sec : freq of A on secondary chr (Y or W)  - starts at 0
+  //
+  //  Overall displayed frequency: (2·p_dip + p_hap + p_sec) / 4
+  //    [2·(Ne/2) alleles from diploid sex; (Ne/2) from hap X; (Ne/2) from secondary chr]
+  //
+  //  Drift allele counts:   diploid sex  → Binomial(2·⌊Ne/2⌋, p_dip)
+  //                         hemizygous X → Binomial(⌊Ne/2⌋,   p_hap)
+  //                         secondary    → Binomial(⌊Ne/2⌋,   p_sec)
+  //  → gives N_e,sex ≈ 3/4 N_e (classical result for X-linked loci)
+
+  function simulateSexLinked(p) {
+    const { Ne, generations, replicates, p0,
+            selEnabled, s, h,
+            mutEnabled, mu, nu,
+            migEnabled, m, pm,
+            botEnabled, botGen, botNe,
+            rRecomb } = p;
+
+    const trajectories    = [];  // overall freq lines
+    const traj_dip_all    = [];  // p_dip lines (for secondary chr display)
+    const traj_sec_all    = [];  // p_sec lines
+    const outcomes = { fixed: 0, lost: 0, segregating: 0, finalFreqs: [] };
+
+    for (let rep = 0; rep < replicates; rep++) {
+      const traj     = new Array(generations + 1).fill(null);
+      const traj_dip = new Array(generations + 1).fill(null);
+      const traj_sec = new Array(generations + 1).fill(null);
+
+      // Starting allele frequencies
+      // p0 applies to the main sex chromosome in both sexes.
+      // Secondary chromosome (Y/W) starts with NO copies of A.
+      let pd = p0;  // p_dip
+      let ph = p0;  // p_hap
+      let ps = 0;   // p_sec
+
+      // Overall = freq of A across all sex chromosomes (X or Z).
+      // Denominator 3: 2 copies in diploid sex + 1 copy in hemizygous sex.
+      // Secondary chr (Y/W) tracked separately - displayed as dashed line only.
+      const overall = () => (2*pd + ph) / 3;
+
+      traj[0] = overall(); traj_dip[0] = pd; traj_sec[0] = ps;
+
+      let ended = false;
+      let endGen = generations;
+
+      for (let g = 1; g <= generations; g++) {
+        if (ended) break;
+
+        // --- 1. SELECTION ---
+        if (selEnabled && s !== 0) {
+          // Diploid sex: standard diploid selection (dominance applies)
+          const w11 = 1+s, w12 = 1+h*s, w22 = 1;
+          const wb_d = pd*pd*w11 + 2*pd*(1-pd)*w12 + (1-pd)*(1-pd)*w22;
+          if (wb_d > 1e-10) pd = (pd*pd*w11 + pd*(1-pd)*w12) / wb_d;
+
+          // Hemizygous sex: no dominance, allele is always exposed
+          const wb_h = ph*(1+s) + (1-ph);
+          if (wb_h > 1e-10) ph = ph*(1+s) / wb_h;
+
+          // Secondary chromosome (Y/W): same selection as main chr allele
+          const wb_s = ps*(1+s) + (1-ps);
+          if (wb_s > 1e-10) ps = ps*(1+s) / wb_s;
+        }
+
+        // --- 2. MUTATION ---
+        if (mutEnabled) {
+          pd = pd*(1-mu) + (1-pd)*nu;
+          ph = ph*(1-mu) + (1-ph)*nu;
+          ps = ps*(1-mu) + (1-ps)*nu;
+        }
+
+        // --- 3. MIGRATION (island model) ---
+        if (migEnabled) {
+          pd = pd*(1-m) + m*pm;
+          ph = ph*(1-m) + m*pm;
+          ps = ps*(1-m) + m*pm;
+        }
+
+        // --- 4. RECOMBINATION (between sex chr and secondary chr in heterogametic sex) ---
+        // With rate r, sex-chr allele in hemizygous sex can recombine onto secondary chr
+        if (rRecomb > 0) {
+          const new_ph = ph*(1-rRecomb) + ps*rRecomb;
+          const new_ps = ps*(1-rRecomb) + ph*rRecomb;
+          ph = new_ph;
+          ps = new_ps;
+        }
+
+        // --- 5. TRANSMISSION + DRIFT (combined as Wright-Fisher sampling) ---
+        // For next generation:
+        //   Diploid sex gets one sex chr from diploid parent + one from hemizygous parent
+        //     → sampling freq = (pd + ph) / 2
+        //   Hemizygous sex gets sex chr from diploid parent only
+        //     → sampling freq = pd
+        //   Secondary chr passes from hemizygous parent to hemizygous offspring
+        //     → sampling freq = ps
+        const effNe = (botEnabled && g === botGen) ? botNe : Ne;
+        const Nd = Math.max(1, Math.round(effNe / 2));  // individuals of each sex
+        const Nh = Math.max(1, Math.round(effNe / 2));
+
+        const freq_dip_next = Math.max(0, Math.min(1, (pd + ph) / 2));
+        const freq_hap_next = Math.max(0, Math.min(1, pd));
+        const freq_sec_next = Math.max(0, Math.min(1, ps));
+
+        const k_d = binomSample(2 * Nd, freq_dip_next);
+        const k_h = binomSample(Nh,     freq_hap_next);
+        const k_s = binomSample(Nh,     freq_sec_next);
+
+        pd = k_d / (2 * Nd);
+        ph = k_h / Nh;
+        ps = k_s / Nh;
+
+        const freq = overall();
+        traj[g]     = freq;
+        traj_dip[g] = pd;
+        traj_sec[g] = ps;
+
+        // Fixation/loss: check only sex chromosome (X or Z) pool, not secondary chr.
+        // Y/W typically lacks the locus at r=0; even at r>0 tracking X fixation is the
+        // biologically meaningful event.
+        if (pd >= 1 && ph >= 1) { outcomes.fixed++; ended = true; endGen = g; }
+        else if (pd <= 0 && ph <= 0) { outcomes.lost++; ended = true; endGen = g; }
+      }
+
+      if (!ended) outcomes.segregating++;
+      outcomes.finalFreqs.push(traj[endGen]);
+
+      trajectories.push(traj.slice(0, endGen + 1));
+      traj_dip_all.push(traj_dip.slice(0, endGen + 1));
+      traj_sec_all.push(traj_sec.slice(0, endGen + 1));
+    }
+
+    outcomes.meanFinalFreq =
+      outcomes.finalFreqs.reduce((a, b) => a + b, 0) / replicates;
+    return { trajectories, traj_dip_all, traj_sec_all, outcomes };
+  }
+
+  // ================================================================
+  // CHART
+  // ================================================================
+  // 20-color palette - works on dark background
+  const PALETTE = [
+    '#c9a227','#38bdf8','#f43f5e','#4ade80','#a78bfa',
+    '#fb923c','#2dd4bf','#f472b6','#facc15','#34d399',
+    '#60a5fa','#f87171','#c084fc','#a3e635','#fb7185',
+    '#22d3ee','#fbbf24','#818cf8','#86efac','#fca5a5'
+  ];
+
+  let simChart = null;
+
+  function initChart() {
+    const ctx = document.getElementById('simChart').getContext('2d');
+    simChart = new Chart(ctx, {
+      type: 'line',
+      data: { datasets: [] },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 250 },
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+          x: {
+            type: 'linear',
+            title: {
+              display: true,
+              text: 'Generation',
+              color: 'rgba(200,197,192,0.6)',
+              font: { size: 12 }
+            },
+            ticks: { color: 'rgba(200,197,192,0.45)', maxTicksLimit: 8, stepSize: 1 },
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            border: { color: 'rgba(255,255,255,0.15)' }
+          },
+          y: {
+            min: 0, max: 1,
+            title: {
+              display: true,
+              text: 'Allele Frequency (p)',
+              color: 'rgba(200,197,192,0.6)',
+              font: { size: 12 }
+            },
+            ticks: {
+              color: 'rgba(200,197,192,0.45)',
+              stepSize: 0.25,
+              callback: v => v.toFixed(2)
+            },
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            border: { color: 'rgba(255,255,255,0.15)' }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              title: ctx => `Generation ${ctx[0].parsed.x}`,
+              label: ctx => {
+                if (ctx.dataset.isAnnotation) return null;
+                return ` Rep ${ctx.datasetIndex + 1}: p = ${ctx.parsed.y.toFixed(4)}`;
+              }
+            },
+            backgroundColor: 'rgba(14,14,14,0.95)',
+            borderColor: 'rgba(255,255,255,0.12)',
+            borderWidth: 1,
+            titleColor: 'rgba(200,197,192,0.8)',
+            bodyColor: 'rgba(200,197,192,0.6)',
+            padding: 10,
+            filter: item => !item.dataset.isAnnotation
+          }
+        }
+      }
+    });
+  }
+
+  function runAndPlot() {
+    const params = getParams();
+
+    let trajectories, outcomes, traj_dip_all, traj_sec_all;
+    if (params.sexEnabled) {
+      ({ trajectories, traj_dip_all, traj_sec_all, outcomes } = simulateSexLinked(params));
+    } else {
+      ({ trajectories, outcomes } = simulate(params));
+    }
+
+    // Hide chart hint
+    document.getElementById('chart-hint').style.display = 'none';
+
+    const datasets = [];
+
+    trajectories.forEach((traj, i) => {
+      const col = PALETTE[i % PALETTE.length];
+      // Solid line: overall allele frequency
+      datasets.push({
+        data: traj.map((p, g) => ({ x: g, y: p })),
+        borderColor: col,
+        backgroundColor: 'transparent',
+        borderWidth: 1.8,
+        pointRadius: 0,
+        pointHoverRadius: 3,
+        tension: 0,
+        spanGaps: false,
+        label: `Rep ${i + 1}`,
+      });
+
+      // Sex chromosome secondary chr lines (dashed, same color, thinner)
+      if (params.sexEnabled && params.showSecChr && traj_sec_all) {
+        datasets.push({
+          data: traj_sec_all[i].map((p, g) => ({ x: g, y: p })),
+          borderColor: col,
+          backgroundColor: 'transparent',
+          borderWidth: 0.9,
+          borderDash: [3, 3],
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          tension: 0,
+          spanGaps: false,
+          label: `Rep ${i + 1} Y/W`,
+          isSecondary: true,
+        });
+      }
+    });
+
+    // Bottleneck annotation vertical line
+    if (params.botEnabled) {
+      datasets.push({
+        data: [{ x: params.botGen, y: 0 }, { x: params.botGen, y: 1 }],
+        borderColor: 'rgba(201,162,39,0.55)',
+        borderWidth: 1.5,
+        borderDash: [5, 4],
+        pointRadius: 0,
+        label: 'Bottleneck',
+        isAnnotation: true,
+      });
+    }
+
+    // Update y-axis label to reflect sex chr mode
+    const sys = params.sexEnabled ? params.sexSystem : null;
+    simChart.options.scales.y.title.text =
+      sys ? `Allele Freq. on ${sys === 'XY' ? 'X' : 'Z'} chromosomes` : 'Allele Frequency (p)';
+
+    simChart.options.scales.x.max = params.generations;
+    simChart.data.datasets = datasets;
+    simChart.update();
+
+    // Stats
+    const total = params.replicates;
+    document.getElementById('stat-fixed').textContent = `${outcomes.fixed}/${total}`;
+    document.getElementById('stat-lost').textContent  = `${outcomes.lost}/${total}`;
+    document.getElementById('stat-seg').textContent   = `${outcomes.segregating}/${total}`;
+    document.getElementById('stat-mean').textContent  = outcomes.meanFinalFreq.toFixed(3);
+    document.getElementById('stats-row').style.display = 'flex';
+  }
+
+  function clearPlot() {
+    simChart.data.datasets = [];
+    simChart.update();
+    document.getElementById('stats-row').style.display = 'none';
+    document.getElementById('chart-hint').style.display = 'flex';
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  }
+
+  // ================================================================
+  // PRESETS
+  // ================================================================
+  const PRESETS = {
+    pure_drift: {
+      ne:2, generations:150, replicates:10, p0:0.5,
+      selEnabled:false, s:0.05, h:0.5,
+      mutEnabled:false, mu:0.01, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:50, botNe:1
+    },
+    small_pop: {
+      ne:1.48, generations:80, replicates:15, p0:0.5,   // Ne≈30
+      selEnabled:false, s:0.05, h:0.5,
+      mutEnabled:false, mu:0.01, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:40, botNe:1
+    },
+    sweep: {
+      ne:3, generations:200, replicates:10, p0:0.05,    // Ne=1000
+      selEnabled:true, s:0.1, h:0.5,
+      mutEnabled:false, mu:0.01, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:100, botNe:1
+    },
+    purifying: {
+      ne:3, generations:200, replicates:12, p0:0.5,
+      selEnabled:true, s:-0.05, h:0.5,
+      mutEnabled:false, mu:0.01, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:100, botNe:1
+    },
+    balancing: {
+      ne:3, generations:300, replicates:8, p0:0.1,      // overdominance → eq ≈ 0.75
+      selEnabled:true, s:0.2, h:1.5,
+      mutEnabled:false, mu:0.001, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:150, botNe:1
+    },
+    bottleneck: {
+      ne:3, generations:200, replicates:10, p0:0.5,
+      selEnabled:false, s:0.05, h:0.5,
+      mutEnabled:false, mu:0.01, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:true, botGen:50, botNe:1               // bottleneck Ne=10
+    },
+    mut_drift: {
+      ne:2, generations:400, replicates:8, p0:0.5,
+      selEnabled:false, s:0.05, h:0.5,
+      mutEnabled:true, mu:0.01, nu:0.005,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:100, botNe:1,
+      sexEnabled:false, sexSystem:'XY', rRecomb:0, showSecChr:false
+    },
+    // --- Sex chromosome presets ---
+    x_drift: {
+      // Pure drift on X - compare to autosomal: expect faster loss/fixation (3/4 Ne)
+      ne:2.3, generations:150, replicates:12, p0:0.5,  // Ne≈200
+      selEnabled:false, s:0.05, h:0.5,
+      mutEnabled:false, mu:0.01, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:75, botNe:1,
+      sexEnabled:true, sexSystem:'XY', rRecomb:0, showSecChr:false
+    },
+    x_sweep: {
+      // Recessive beneficial allele on X - hemizygous males get full advantage immediately
+      ne:3, generations:200, replicates:10, p0:0.05,   // Ne=1000
+      selEnabled:true, s:0.1, h:0,                      // recessive in females, fully expressed in males
+      mutEnabled:false, mu:0.01, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:100, botNe:1,
+      sexEnabled:true, sexSystem:'XY', rRecomb:0, showSecChr:false
+    },
+    zw_purifying: {
+      // Purifying selection on Z-linked locus - deleterious allele exposed in ZW females
+      ne:3, generations:200, replicates:10, p0:0.4,
+      selEnabled:true, s:-0.08, h:0.5,
+      mutEnabled:false, mu:0.01, nu:0.001,
+      migEnabled:false, m:0.05, pm:0.5,
+      botEnabled:false, botGen:100, botNe:1,
+      sexEnabled:true, sexSystem:'ZW', rRecomb:0, showSecChr:false
+    }
+  };
+
+  function loadPreset(name) {
+    const p = PRESETS[name];
+    if (!p) return;
+
+    // Sliders
+    document.getElementById('ne').value          = p.ne;
+    document.getElementById('generations').value = p.generations;
+    document.getElementById('replicates').value  = p.replicates;
+    document.getElementById('p0').value          = p.p0;
+    document.getElementById('s').value           = p.s;
+    document.getElementById('h').value           = p.h;
+    document.getElementById('mu').value          = p.mu;
+    document.getElementById('nu').value          = p.nu;
+    document.getElementById('m').value           = p.m;
+    document.getElementById('pm').value          = p.pm;
+    document.getElementById('bot-gen').value     = p.botGen;
+    document.getElementById('bot-ne').value      = p.botNe;
+
+    // Checkboxes & force sections
+    ['sel','mut','mig','bot'].forEach(key => {
+      const cb   = document.getElementById(key + '-enabled');
+      const sect = document.getElementById(key + '-params');
+      const title = cb.closest('.param-group-title');
+      cb.checked = p[key + 'Enabled'];
+      if (cb.checked) { sect.classList.remove('locked'); title.classList.add('enabled'); }
+      else            { sect.classList.add('locked');    title.classList.remove('enabled'); }
+    });
+
+    // Sex chromosome section
+    const sexCb   = document.getElementById('sex-enabled');
+    const sexSect = document.getElementById('sex-params');
+    const sexTitle = document.getElementById('sex-chr-title');
+    sexCb.checked = p.sexEnabled || false;
+    if (sexCb.checked) { sexSect.classList.remove('locked'); sexTitle.classList.add('enabled'); }
+    else               { sexSect.classList.add('locked');    sexTitle.classList.remove('enabled'); }
+
+    // Sex system radio
+    const sysVal = p.sexSystem || 'XY';
+    document.querySelectorAll('input[name="sex-system"]').forEach(r => {
+      r.checked = (r.value === sysVal);
+    });
+    // r and showSecChr
+    document.getElementById('r-recomb').value = p.rRecomb !== undefined ? p.rRecomb : 0;
+    document.getElementById('show-sec-chr').checked = p.showSecChr || false;
+    updateVal('r-recomb','r-display', v => parseFloat(v).toFixed(3));
+    updateSexLabels();
+
+    // Refresh displays
+    updateNeDisplay('ne','ne-display');
+    updateNeDisplay('bot-ne','botne-display');
+    syncGenMax();
+    updateVal('replicates','rep-display',  v => v);
+    updateVal('p0','p0-display',           v => parseFloat(v).toFixed(2));
+    updateVal('s','s-display',             v => parseFloat(v).toFixed(2));
+    updateVal('h','h-display',             v => parseFloat(v).toFixed(2));
+    updateVal('mu','mu-display',           v => parseFloat(v).toFixed(3));
+    updateVal('nu','nu-display',           v => parseFloat(v).toFixed(3));
+    updateVal('m','m-display',             v => parseFloat(v).toFixed(3));
+    updateVal('pm','pm-display',           v => parseFloat(v).toFixed(2));
+    updateVal('bot-gen','botgen-display',  v => v);
+
+    // Highlight active preset
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+
+    runAndPlot();
+  }
+
+  // ================================================================
+  // URL SHARING
+  // ================================================================
+  function shareURL() {
+    const p = getParams();
+    const keys = ['Ne','generations','replicates','p0',
+                  'selEnabled','s','h',
+                  'mutEnabled','mu','nu',
+                  'migEnabled','m','pm',
+                  'botEnabled','botGen','botNe',
+                  'sexEnabled','sexSystem','rRecomb','showSecChr'];
+    const params = new URLSearchParams();
+    keys.forEach(k => params.set(k, p[k]));
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.querySelector('.btn-share');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      btn.style.color = 'var(--accent)';
+      setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
+    }).catch(() => { prompt('Copy this URL:', url); });
+  }
+
+  function loadFromURL() {
+    const params = new URLSearchParams(location.search);
+    if (!params.has('Ne')) return false;
+
+    const set = (id, val) => { const el = document.getElementById(id); if(el) el.value = val; };
+
+    // Ne: convert back to log10
+    const ne = parseFloat(params.get('Ne'));
+    set('ne', Math.log10(ne));
+
+    set('generations', params.get('generations'));
+    set('replicates',  params.get('replicates'));
+    set('p0',          params.get('p0'));
+    set('s',           params.get('s'));
+    set('h',           params.get('h'));
+    set('mu',          params.get('mu'));
+    set('nu',          params.get('nu'));
+    set('m',           params.get('m'));
+    set('pm',          params.get('pm'));
+    set('bot-gen',     params.get('botGen'));
+
+    const botNe = parseFloat(params.get('botNe'));
+    set('bot-ne', Math.log10(botNe));
+
+    ['sel','mut','mig','bot'].forEach(key => {
+      const val = params.get(key + 'Enabled') === 'true';
+      const cb   = document.getElementById(key + '-enabled');
+      const sect = document.getElementById(key + '-params');
+      const title = cb.closest('.param-group-title');
+      cb.checked = val;
+      if (val) { sect.classList.remove('locked'); title.classList.add('enabled'); }
+      else     { sect.classList.add('locked');    title.classList.remove('enabled'); }
+    });
+
+    // Sex chromosome params from URL
+    const sexEn = params.get('sexEnabled') === 'true';
+    const sexCb   = document.getElementById('sex-enabled');
+    const sexSect = document.getElementById('sex-params');
+    const sexTitle = document.getElementById('sex-chr-title');
+    sexCb.checked = sexEn;
+    if (sexEn) { sexSect.classList.remove('locked'); sexTitle.classList.add('enabled'); }
+    else       { sexSect.classList.add('locked');    sexTitle.classList.remove('enabled'); }
+
+    const sysVal = params.get('sexSystem') || 'XY';
+    document.querySelectorAll('input[name="sex-system"]').forEach(r => {
+      r.checked = (r.value === sysVal);
+    });
+    if (params.has('rRecomb')) {
+      document.getElementById('r-recomb').value = params.get('rRecomb');
+      updateVal('r-recomb','r-display', v => parseFloat(v).toFixed(3));
+    }
+    if (params.has('showSecChr')) {
+      document.getElementById('show-sec-chr').checked = params.get('showSecChr') === 'true';
+    }
+    updateSexLabels();
+
+    return true;
+  }
+
+  // ================================================================
+  // INIT
+  // ================================================================
+  document.addEventListener('DOMContentLoaded', () => {
+    initChart();
+
+    // Refresh all displays
+    updateNeDisplay('ne','ne-display');
+    updateNeDisplay('bot-ne','botne-display');
+    updateVal('generations','gen-display', v => v);
+    updateVal('replicates','rep-display',  v => v);
+    updateVal('p0','p0-display',           v => parseFloat(v).toFixed(2));
+    updateVal('s','s-display',             v => parseFloat(v).toFixed(2));
+    updateVal('h','h-display',             v => parseFloat(v).toFixed(2));
+    updateVal('mu','mu-display',           v => parseFloat(v).toFixed(3));
+    updateVal('nu','nu-display',           v => parseFloat(v).toFixed(3));
+    updateVal('m','m-display',             v => parseFloat(v).toFixed(3));
+    updateVal('pm','pm-display',           v => parseFloat(v).toFixed(2));
+    updateVal('bot-gen','botgen-display',  v => v);
+
+    // Load from URL if params present, otherwise run default
+    const fromURL = loadFromURL();
+    if (fromURL) {
+      updateNeDisplay('ne','ne-display');
+      updateNeDisplay('bot-ne','botne-display');
+      syncGenMax();
+      updateVal('generations','gen-display', v => v);
+      updateVal('replicates','rep-display',  v => v);
+      updateVal('p0','p0-display',           v => parseFloat(v).toFixed(2));
+      runAndPlot();
+    } else {
+      // Default: run pure drift on load
+      runAndPlot();
+    }
+  });
+  </script>
+
+</body>
+</html>

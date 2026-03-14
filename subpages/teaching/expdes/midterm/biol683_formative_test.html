@@ -13,7 +13,7 @@
 
 <meta name="date" content="2025-09-22" />
 
-<title>BIOL 683 — Exam 1: Data Thinking + AI Collaboration</title>
+<title>BIOL 683 - Exam 1: Data Thinking + AI Collaboration</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1509,7 +1509,7 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">BIOL 683 — Exam 1: Data Thinking + AI
+<h1 class="title toc-ignore">BIOL 683 - Exam 1: Data Thinking + AI
 Collaboration</h1>
 <h4 class="author">Instructor: Heath Blackmon</h4>
 <h4 class="date">2025-09-22</h4>
@@ -1548,7 +1548,7 @@ helped/hurt; independent judgment demonstrated.</li>
 <hr />
 </div>
 <div id="section-a-simulate-data-20-pts" class="section level2">
-<h2>Section A — Simulate Data (20 pts)</h2>
+<h2>Section A - Simulate Data (20 pts)</h2>
 <p>Create two groups (n = 30 each) of a biological measurement. -</p>
 <p>Group A: Normal with mean 10, SD 2.</p>
 <p>Group B: Right‑skewed (log‑normal) with <code>meanlog = 2.3</code>,
@@ -1575,7 +1575,7 @@ mechanism generating it.</strong> <em>(3–5 sentences.)</em></p>
 <hr />
 </div>
 <div id="section-b-assumptions-diagnostics-4-pts" class="section level2">
-<h2>Section B — Assumptions &amp; Diagnostics (4 pts)</h2>
+<h2>Section B - Assumptions &amp; Diagnostics (4 pts)</h2>
 <ol style="list-style-type: decimal">
 <li>Use <strong>histograms</strong> and <strong>QQ‑plots</strong> to
 assess normality.</li>
@@ -1599,7 +1599,7 @@ and whether a transform is warranted.</p>
 <hr />
 </div>
 <div id="section-c-statistical-testing-estimation-8-pts" class="section level2">
-<h2>Section C — Statistical Testing &amp; Estimation (8 pts)</h2>
+<h2>Section C - Statistical Testing &amp; Estimation (8 pts)</h2>
 <p><strong>Goal:</strong> Test whether groups differ in central tendency
 and communicate uncertainty.</p>
 <ol style="list-style-type: decimal">
@@ -1623,7 +1623,7 @@ t.test(y_log ~ group, data = transform(df, y_log = ifelse(y&gt;0, log(y), NA)), 
 # Mann–Whitney
 wilcox.test(y ~ group, data = df, exact = FALSE)
 
-# Effect size (Hedges&#39; g) — quick implementation
+# Effect size (Hedges&#39; g) - quick implementation
 hedges_g &lt;- function(x, y){
   nx &lt;- length(x); ny &lt;- length(y)
   sx2 &lt;- var(x); sy2 &lt;- var(y)
@@ -1651,7 +1651,7 @@ relevance?</p>
 <hr />
 </div>
 <div id="section-d-figure-design-accessibility-2-pts" class="section level2">
-<h2>Section D — Figure Design &amp; Accessibility (2 pts)</h2>
+<h2>Section D - Figure Design &amp; Accessibility (2 pts)</h2>
 <p>Produce <strong>one publication‑quality figure</strong> comparing
 groups that <strong>shows the data</strong> (e.g., box/violin + jitter).
 Use a color‑blind‑safe palette (e.g.,
@@ -1666,10 +1666,10 @@ what readers should notice.</p>
 <hr />
 </div>
 <div id="section-e-ai-use-reflection-2-pts" class="section level2">
-<h2>Section E — AI Use &amp; Reflection (2 pts)</h2>
+<h2>Section E - AI Use &amp; Reflection (2 pts)</h2>
 <p><strong>Briefly document</strong> (bullets are fine): - Which prompts
 you used (paste 1–2 best prompts). - Where AI helped you move faster. -
-One place AI was wrong, unclear, or needed correction—and how you fixed
+One place AI was wrong, unclear, or needed correction-and how you fixed
 it.</p>
 <hr />
 </div>
@@ -1704,7 +1704,7 @@ it.</p>
 <ul>
 <li>Prefer tests aligned to your <strong>data‑generating
 process</strong> and <strong>assumptions</strong>.</li>
-<li>If you transform, say why—and consider confirming with a rank‑based
+<li>If you transform, say why-and consider confirming with a rank‑based
 test.</li>
 <li>Figures should <strong>show the data</strong>, avoid distortion, and
 remain legible in grayscale.</li>

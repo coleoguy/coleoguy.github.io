@@ -81,21 +81,19 @@
       opacity: 1;
     }
 
-    .db-card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
+    .db-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(201,162,39,0.08);
+      border: 1px solid rgba(201,162,39,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 20px;
-    }
-
-    .db-card-icon i {
-      font-size: 22px;
-      color: var(--accent);
+      font-size: 36px;
+      line-height: 1;
+      user-select: none;
     }
 
     .db-card h3 {
@@ -229,6 +227,7 @@
       }
     }
   </style>
+  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
 </head>
 
 <body>
@@ -246,6 +245,7 @@
           <li><a href="../publications.html">Publications</a></li>
           <li><a href="../team.html">Team</a></li>
           <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
           <li><a href="../join.html">Join</a></li>
           <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
@@ -284,13 +284,12 @@
         <div class="db-grid">
 
           <div class="db-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="db-card-icon">
-              <i class="bi bi-database"></i>
-            </div>
+            <div class="db-avatar">
+              🪲</div>
             <h3>Coleoptera Karyotype Database</h3>
             <div class="db-records">4,960 records</div>
-            <a href="https://evobir.shinyapps.io/ColeopteraDB/" target="_blank" class="btn-launch">
-              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            <a href="../subpages/karyotype-data/coleoptera.html" class="btn-launch">
+              Open Database <i class="bi bi-arrow-right"></i>
             </a>
             <div class="db-ref">
               <a href="https://bioone.org/journals/the-coleopterists-bulletin/volume-69/issue-1/0010-065X-69.1.174/Coleoptera-Karyotype-Database/10.1649/0010-065X-69.1.174.full" target="_blank">Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. Coleopt. Bull, 69, pp. 174&ndash;175.</a>
@@ -298,27 +297,25 @@
           </div>
 
           <div class="db-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="db-card-icon">
-              <i class="bi bi-database"></i>
-            </div>
+            <div class="db-avatar">
+              🪰</div>
             <h3>Diptera Karyotype Database</h3>
             <div class="db-records">3,443 records</div>
-            <a href="https://evobir.shinyapps.io/Diptera/" target="_blank" class="btn-launch">
-              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            <a href="../subpages/karyotype-data/diptera.html" class="btn-launch">
+              Open Database <i class="bi bi-arrow-right"></i>
             </a>
             <div class="db-ref">
-              <a href="" target="_blank">Morelli, M.W., H. Blackmon, and C.E. Hjelmen. Diptera and Drosophila Karyotype database. Frontiers in Ecology and Evolution. 10.3389</a>
+              <a href="https://www.frontiersin.org/journals/ecology-and-evolution" target="_blank">Morelli, M.W., Blackmon, H. and Hjelmen, C.E. Diptera and Drosophila Karyotype Database. <em>Frontiers in Ecology and Evolution</em>.</a>
             </div>
           </div>
 
           <div class="db-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="db-card-icon">
-              <i class="bi bi-database"></i>
-            </div>
+            <div class="db-avatar">
+              🐸</div>
             <h3>Amphibian Karyotype Database</h3>
             <div class="db-records">2,124 records</div>
-            <a href="https://evobir.shinyapps.io/AmphibianDB/" target="_blank" class="btn-launch">
-              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            <a href="../subpages/karyotype-data/amphibian.html" class="btn-launch">
+              Open Database <i class="bi bi-arrow-right"></i>
             </a>
             <div class="db-ref">
               <a href="https://link.springer.com/article/10.1007/s10577-019-09613-1" target="_blank">Perkins, R.D., Gamboa, J.R., Jonika, M.M., Lo, J., Shum, A., Adams, R.H. and Blackmon, H., 2019. A database of amphibian karyotypes. Chromosome Research, 27(4), pp. 313&ndash;319.</a>
@@ -326,51 +323,48 @@
           </div>
 
           <div class="db-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="db-card-icon">
-              <i class="bi bi-database"></i>
-            </div>
+            <div class="db-avatar">
+              🐭</div>
             <h3>Mammal Karyotype Database</h3>
             <div class="db-records">1,440 records</div>
-            <a href="https://evobir.shinyapps.io/mammals/" target="_blank" class="btn-launch">
-              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            <a href="../subpages/karyotype-data/mammal.html" class="btn-launch">
+              Open Database <i class="bi bi-arrow-right"></i>
             </a>
             <div class="db-ref">
-              Mammal karyotype database.
+              Mammal karyotype database. Blackmon Lab, Texas A&amp;M University.
             </div>
           </div>
 
           <div class="db-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="db-card-icon">
-              <i class="bi bi-database"></i>
-            </div>
+            <div class="db-avatar">
+              🪰</div>
             <h3>Drosophila Karyotype Database</h3>
             <div class="db-records">1,247 records</div>
-            <a href="https://evobir.shinyapps.io/Drosophila/" target="_blank" class="btn-launch">
-              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            <a href="../subpages/karyotype-data/drosophila.html" class="btn-launch">
+              Open Database <i class="bi bi-arrow-right"></i>
             </a>
             <div class="db-ref">
-              <a href="" target="_blank">Morelli, M.W., H. Blackmon, and C.E. Hjelmen. Diptera and Drosophila Karyotype database. Frontiers in Ecology and Evolution. 10.3389</a>
+              <a href="https://www.frontiersin.org/journals/ecology-and-evolution" target="_blank">Morelli, M.W., Blackmon, H. and Hjelmen, C.E. Diptera and Drosophila Karyotype Database. <em>Frontiers in Ecology and Evolution</em>.</a>
             </div>
           </div>
 
           <div class="db-card" data-aos="fade-up" data-aos-delay="350">
-            <div class="db-card-icon">
-              <i class="bi bi-database"></i>
-            </div>
-            <h3>Polyneoptera Database</h3>
+            <div class="db-avatar">
+              🦗</div>
+            <h3>Polyneoptera Karyotype Database</h3>
             <div class="db-records">823 records</div>
-            <a href="https://evobir.shinyapps.io/PolyneopteraDB/" target="_blank" class="btn-launch">
-              Open Database <i class="bi bi-box-arrow-up-right"></i>
+            <a href="../subpages/karyotype-data/polyneoptera.html" class="btn-launch">
+              Open Database <i class="bi bi-arrow-right"></i>
             </a>
             <div class="db-ref">
-              <a href="https://royalsocietypublishing.org/doi/full/10.1098/rspb.2020.1388" target="_blank">Sylvester, T., Hjelmen, C.E., Hanrahan, S.J., Lenhart, P.A., Johnston, J.S. and Blackmon, H., 2020. Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects. Proceedings of the Royal Society B, 287(1935), p.20201388.</a>
+              <a href="https://royalsocietypublishing.org/doi/full/10.1098/rspb.2020.1388" target="_blank">Sylvester, T., Hjelmen, C.E., Hanrahan, S.J., Lenhart, P.A., Johnston, J.S. and Blackmon, H., 2020. Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects. Proc. Roy. Soc. B, 287(1935).</a>
             </div>
           </div>
 
         </div>
 
         <div class="intro-block" data-aos="fade-up">
-          <p>Cytogenetic data is perhaps the most basic information about a genome&mdash;how many discrete chromosomes is the genome divided among, and what type of sex chromosomes are present. Despite the fundamental nature of this data, many questions surrounding the evolution of genomes at this level remain unanswered. As we move into an era of ever more affordable sequencing, this is critical preliminary information that should be evaluated before sequencing and may even suggest particularly attractive targets for future efforts. Unfortunately, cytogenetic data is often scattered among many journals and frequently behind paywalls. For these reasons, we have built databases that make this data publicly available.</p>
+          <p>Cytogenetic data is perhaps the most basic information about a genome-how many discrete chromosomes is the genome divided among, and what type of sex chromosomes are present. Despite the fundamental nature of this data, many questions surrounding the evolution of genomes at this level remain unanswered. As we move into an era of ever more affordable sequencing, this is critical preliminary information that should be evaluated before sequencing and may even suggest particularly attractive targets for future efforts. Unfortunately, cytogenetic data is often scattered among many journals and frequently behind paywalls. For these reasons, we have built databases that make this data publicly available.</p>
         </div>
 
         <div class="credits-section" data-aos="fade-up">

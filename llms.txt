@@ -50,3 +50,42 @@ Heath Blackmon, Ph.D. — Associate Head, Department of Biology, Texas A&M Unive
 ## Contact
 
 Department of Biology, Texas A&M University, College Station, TX 77843
+
+## Interactive Tools & Databases
+
+The lab hosts several fully client-side interactive tools directly on this site (no server required):
+
+### Population Genetics Simulator
+URL: https://coleoguy.github.io/subpages/popgen-sim.html
+Wright-Fisher simulator supporting drift, selection, mutation, migration, bottlenecks, and sex chromosome evolution (XY/ZW). Runs entirely in the browser.
+
+### Karyotype Databases
+Six searchable, filterable, downloadable karyotype databases embedded as static HTML pages:
+- Coleoptera (4,960 records): https://coleoguy.github.io/subpages/karyotype-data/coleoptera.html
+- Diptera (3,443 records): https://coleoguy.github.io/subpages/karyotype-data/diptera.html
+- Amphibian (2,124 records): https://coleoguy.github.io/subpages/karyotype-data/amphibian.html
+- Mammal (1,440 records): https://coleoguy.github.io/subpages/karyotype-data/mammal.html
+- Drosophila (1,247 records): https://coleoguy.github.io/subpages/karyotype-data/drosophila.html
+- Polyneoptera (823 records): https://coleoguy.github.io/subpages/karyotype-data/polyneoptera.html
+Hub page: https://coleoguy.github.io/karyotypes/
+Total records: 14,037 karyotypes across vertebrates and insects.
+
+## AI-Native Biology Program
+
+The Blackmon Lab is building AI-native workflows for evolutionary biology. Full program overview:
+URL: https://coleoguy.github.io/ai.html
+
+### Autonomous Karyotype Data Collector
+URL: https://coleoguy.github.io/subpages/karyotype-agent.html
+An autonomous AI agent that crawls PubMed and CrossRef, triages papers with Claude Haiku, fetches PDFs via Unpaywall, and extracts structured karyotype records with Claude Sonnet. Currently building a Coleoptera karyotype database (629+ records). Uses 730 search terms across 144 beetle families. 33-field output schema per record including taxonomy, 2n, sex chromosome system, karyotype formula, collection locality, and extraction confidence.
+
+### AI as Lead Investigator
+An experiment in research autonomy: a Claude-powered agent that formulates hypotheses about claw evolution, selects comparative methods, runs analyses, interprets results, and drafts a manuscript. Manuscript in preparation.
+
+### Biology and AI CURE
+URL: https://coleoguy.github.io/biolai-cure.html
+Course-Based Undergraduate Research Experience (Spring 2026) where students conduct original evolutionary biology research using phylogenetic comparative methods and AI-assisted analysis.
+
+### AI in Biology Concentration (Texas A&M)
+URL: https://coleoguy.github.io/tamu-ai-concentration.html
+Formal degree concentration at Texas A&M — 10 semester hours of AI-focused coursework in Biology BS and PhD programs.

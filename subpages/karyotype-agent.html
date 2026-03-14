@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Autonomous Karyotype Data Collector - Blackmon Lab</title>
+  <meta name="description" content="An AI-native autonomous agent that crawls the scientific literature to build a comprehensive Coleoptera karyotype database. Uses Claude AI for triage and extraction across PubMed and CrossRef.">
+  <meta name="keywords" content="karyotype database, Coleoptera chromosomes, autonomous AI agent, beetle cytogenetics, literature mining, Blackmon Lab, TAMU Biology">
+  <link rel="canonical" href="https://coleoguy.github.io/subpages/karyotype-agent.html">
+
+  <meta property="og:title" content="Autonomous Karyotype Data Collector - Blackmon Lab">
+  <meta property="og:description" content="An AI-native autonomous agent that crawls the scientific literature to build a comprehensive Coleoptera karyotype database.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://coleoguy.github.io/subpages/karyotype-agent.html">
+  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <link href="../assets/img/favicon.ico" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* ── Page-specific styles ─────────────────────────────── */
+    .agent-hero {
+      background: linear-gradient(135deg, #0f1923 0%, #1a2d40 50%, #0f1923 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 60px 0 48px;
+      text-align: center;
+    }
+    .agent-hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .agent-hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 6px 18px;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      margin: 4px;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── Stat cards ───────────────────────────────────────── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin: 40px 0;
+    }
+    .stat-card {
+      background: var(--surface-color, #1a1f2e);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .stat-card .stat-num {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-color, #e8a44a);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card .stat-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Pipeline diagram ─────────────────────────────────── */
+    .pipeline {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 32px 0;
+    }
+    .pipeline-step {
+      background: var(--surface-color, #1a1f2e);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 18px 22px;
+      text-align: center;
+      min-width: 130px;
+    }
+    .pipeline-step .step-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .pipeline-step .step-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #e0e6f0;
+    }
+    .pipeline-step .step-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 3px;
+    }
+    .pipeline-arrow {
+      font-size: 1.4rem;
+      color: rgba(255,255,255,0.3);
+      padding: 0 4px;
+    }
+    @media (max-width: 640px) {
+      .pipeline-arrow { transform: rotate(90deg); }
+      .pipeline { flex-direction: column; }
+    }
+
+    /* ── Feature cards ────────────────────────────────────── */
+    .feature-card {
+      background: var(--surface-color, #1a1f2e);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 28px 24px;
+      height: 100%;
+    }
+    .feature-card .fc-icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .feature-card h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #e0e6f0;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── Schema table ─────────────────────────────────────── */
+    .schema-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .schema-table th {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-weight: 600;
+    }
+    .schema-table td {
+      padding: 9px 14px;
+      color: rgba(255,255,255,0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      vertical-align: top;
+    }
+    .schema-table tr:hover td { background: rgba(255,255,255,0.03); }
+    .schema-table .field-name {
+      font-family: monospace;
+      color: #7dd3fc;
+      font-size: 0.82rem;
+    }
+    .schema-table .field-group {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Section headers ──────────────────────────────────── */
+    .section-heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #e0e6f0;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+    }
+
+    /* ── Code block ───────────────────────────────────────── */
+    .code-block {
+      background: #0d1117;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 18px 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      color: #d0d8e4;
+      overflow-x: auto;
+    }
+    .code-block .comment { color: #6b737d; }
+    .code-block .cmd { color: #7dd3fc; }
+    .code-block .flag { color: #a5d6a7; }
+
+    /* ── Status badge ─────────────────────────────────────── */
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .status-pill .pill-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .pill-green { background: #4ade80; }
+    .pill-yellow { background: #fbbf24; }
+    .pill-red { background: #f87171; }
+
+    /* ── Back link ────────────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      text-decoration: none;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: rgba(255,255,255,0.85); }
+
+    /* ── Dark content sections ────────────────────────────── */
+    .content-section {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .content-section:last-child { border-bottom: none; }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group">
+        <a href="../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../ai.html">AI</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <div class="agent-hero">
+      <div class="container">
+        <h1>Autonomous Karyotype Data Collector</h1>
+        <p>Autonomous agent for building the Coleoptera karyotype database. It searches PubMed and CrossRef, triages papers, fetches PDFs, and extracts structured records using Claude AI.</p>
+        <div>
+          <span class="hero-badge"><span class="dot"></span> Actively collecting</span>
+          <span class="hero-badge">🪲 Coleoptera</span>
+          <span class="hero-badge">🤖 Claude AI</span>
+          <span class="hero-badge">📄 PubMed + CrossRef</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Stats ─────────────────────────────────────────── -->
+    <section class="content-section">
+      <div class="container">
+        <a href="../karyotypes/index.html" class="back-link">
+          <i class="bi bi-arrow-left"></i> All karyotype databases
+        </a>
+
+        <div class="stat-grid" data-aos="fade-up">
+          <div class="stat-card">
+            <div class="stat-num">629+</div>
+            <div class="stat-label">Records extracted</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">730</div>
+            <div class="stat-label">Search terms</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">144</div>
+            <div class="stat-label">Beetle families targeted</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">33</div>
+            <div class="stat-label">Fields per record</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2</div>
+            <div class="stat-label">AI models in pipeline</div>
+          </div>
+        </div>
+
+        <!-- ── Status pills ── -->
+        <div class="status-row" data-aos="fade-up" data-aos-delay="100">
+          <span class="status-pill"><span class="pill-dot pill-green"></span> PubMed - active</span>
+          <span class="status-pill"><span class="pill-dot pill-green"></span> CrossRef - active</span>
+          <span class="status-pill"><span class="pill-dot pill-red"></span> Semantic Scholar - rate-limited, disabled</span>
+          <span class="status-pill"><span class="pill-dot pill-yellow"></span> Google Scholar - legally ambiguous, disabled</span>
+          <span class="status-pill"><span class="pill-dot pill-green"></span> Unpaywall open-access PDFs - active</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How it works ───────────────────────────────────── -->
+    <section class="content-section">
+      <div class="container">
+        <p class="section-heading" data-aos="fade-up">How it works</p>
+        <p class="section-sub" data-aos="fade-up">The agent runs a four-stage loop. Taxa found in new extractions generate additional search queries, so coverage expands automatically.</p>
+
+        <div class="pipeline" data-aos="fade-up">
+          <div class="pipeline-step">
+            <span class="step-icon">🔍</span>
+            <div class="step-name">Search</div>
+            <div class="step-sub">PubMed + CrossRef<br>730 query terms</div>
+          </div>
+          <span class="pipeline-arrow">→</span>
+          <div class="pipeline-step">
+            <span class="step-icon">⚡</span>
+            <div class="step-name">Triage</div>
+            <div class="step-sub">Claude Haiku<br>likely / uncertain / skip</div>
+          </div>
+          <span class="pipeline-arrow">→</span>
+          <div class="pipeline-step">
+            <span class="step-icon">📄</span>
+            <div class="step-name">Fetch PDF</div>
+            <div class="step-sub">pdf_url → Unpaywall<br>→ CrossRef → abstract</div>
+          </div>
+          <span class="pipeline-arrow">→</span>
+          <div class="pipeline-step">
+            <span class="step-icon">🧬</span>
+            <div class="step-name">Extract</div>
+            <div class="step-sub">Claude Sonnet<br>structured JSON → CSV</div>
+          </div>
+          <span class="pipeline-arrow">→</span>
+          <div class="pipeline-step">
+            <span class="step-icon">🔄</span>
+            <div class="step-name">Generate queries</div>
+            <div class="step-sub">New taxa feed<br>new searches</div>
+          </div>
+        </div>
+
+        <p class="section-sub mt-3" data-aos="fade-up">The loop runs until 10,000 records are collected, all 730 search terms are exhausted, or five consecutive rounds return no new papers. State is persisted to disk and the agent resumes cleanly.</p>
+      </div>
+    </section>
+
+    <!-- ── Feature cards ──────────────────────────────────── -->
+    <section class="content-section">
+      <div class="container">
+        <p class="section-heading" data-aos="fade-up">Key capabilities</p>
+        <p class="section-sub" data-aos="fade-up">Handles old monographs, Russian-language journals, and multi-species tables.</p>
+
+        <div class="row g-3" data-aos="fade-up">
+          <div class="col-md-4">
+            <div class="feature-card">
+              <span class="fc-icon">🤖</span>
+              <h5>Dual-model AI pipeline</h5>
+              <p>Claude Haiku handles triage at roughly 10x lower cost than Sonnet. Claude Sonnet does the full extraction, producing validated JSON with a confidence score for every record.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <span class="fc-icon">📖</span>
+              <h5>Domain-aware extraction</h5>
+              <p>Every extraction prompt includes a 330-line cytogenetics guide encoding sex chromosome notation, B chromosome rules, ploidy conventions, and family-specific notes for 11 priority beetle families.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <span class="fc-icon">🌐</span>
+              <h5>Multi-language, any era</h5>
+              <p>The agent processes papers in Russian, Japanese, Spanish, Portuguese, and German from the 1930s onward. Soviet cytogenetics literature from the 1950s through 1980s is a priority target given how underrepresented it is in modern databases.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <span class="fc-icon">📥</span>
+              <h5>Priority PDF inbox</h5>
+              <p>Place any PDF into <code>priority_pdfs/</code> and it gets processed immediately at full extraction quality, bypassing triage. Old monographs, scanned journals, and personal copies all work. Processed files move to <code>done/</code> automatically.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <span class="fc-icon">🛡️</span>
+              <h5>Automatic data quality flags</h5>
+              <p>Records are flagged for review when 2n falls outside the expected range, the sex chromosome system conflicts with known family patterns, the paper is a secondary source, or confidence falls below 0.75.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <span class="fc-icon">📊</span>
+              <h5>Live dashboard + Alex AI</h5>
+              <p>A local web dashboard at port 8787 shows record counts, family coverage, confidence distributions, and the agent log. An embedded Claude Haiku assistant (Alex) can start, stop, and restart the agent and edit the extraction guide through a chat interface.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Output schema ──────────────────────────────────── -->
+    <section class="content-section">
+      <div class="container">
+        <p class="section-heading" data-aos="fade-up">Output schema</p>
+        <p class="section-sub" data-aos="fade-up">Each record is a row in <code>results.csv</code> with 33 fields covering paper metadata, taxonomy, core karyotype data, cytogenetic methods, collection provenance, and extraction quality.</p>
+
+        <div data-aos="fade-up" style="overflow-x:auto; border-radius:10px; border:1px solid rgba(255,255,255,0.08);">
+          <table class="schema-table">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Group</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="field-name">doi, paper_title, paper_authors, paper_year, paper_journal</td><td class="field-group">Paper</td><td>Source publication metadata</td></tr>
+              <tr><td class="field-name">species, family, genus</td><td class="field-group">Taxonomy</td><td>Species as given in paper; family updated to current classification</td></tr>
+              <tr><td class="field-name">chromosome_number_2n</td><td class="field-group">Karyotype</td><td>Standard diploid complement (Bs excluded)</td></tr>
+              <tr><td class="field-name">n_haploid</td><td class="field-group">Karyotype</td><td>Haploid number from meiotic preparations</td></tr>
+              <tr><td class="field-name">sex_chr_system</td><td class="field-group">Karyotype</td><td>Recorded verbatim - XY, Xyp, X0, neo-XY, X₁X₂Y, ZW, etc.</td></tr>
+              <tr><td class="field-name">sex_of_specimen</td><td class="field-group">Karyotype</td><td>male / female / both (separate rows when 2n differs by sex)</td></tr>
+              <tr><td class="field-name">karyotype_formula</td><td class="field-group">Karyotype</td><td>Verbatim formula, e.g. <em>2n = 18A + XY</em></td></tr>
+              <tr><td class="field-name">haploid_autosome_count</td><td class="field-group">Karyotype</td><td>(2n − sex chr count) / 2 - the A value for comparative work</td></tr>
+              <tr><td class="field-name">chromosome_morphology</td><td class="field-group">Karyotype</td><td>M / SM / ST / T classes; verbatim formula if given</td></tr>
+              <tr><td class="field-name">ploidy, b_chromosomes</td><td class="field-group">Karyotype</td><td>Explicit ploidy level; B count range e.g. "0–2"</td></tr>
+              <tr><td class="field-name">staining_method, NOR_position, heterochromatin_pattern</td><td class="field-group">Methods</td><td>Cytogenetic technique; nucleolus organizer location; C-banding pattern</td></tr>
+              <tr><td class="field-name">collection_locality, voucher_info, collection_year, number_of_specimens</td><td class="field-group">Provenance</td><td>Geographic and specimen-level metadata when reported</td></tr>
+              <tr><td class="field-name">extraction_confidence</td><td class="field-group">Quality</td><td>0–1 score from the extraction model; records below 0.75 are discarded</td></tr>
+              <tr><td class="field-name">flag_for_review</td><td class="field-group">Quality</td><td>True when 2n is unusual, data conflicts with known records, or confidence is borderline</td></tr>
+              <tr><td class="field-name">source_type, notes, pdf_url, processed_date</td><td class="field-group">Meta</td><td>full_text / abstract; extraction notes; PDF link; timestamp</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Taxonomic scope ────────────────────────────────── -->
+    <section class="content-section">
+      <div class="container">
+        <div class="row align-items-start g-5">
+          <div class="col-lg-6" data-aos="fade-right">
+            <p class="section-heading">Taxonomic scope</p>
+            <p class="section-sub">All four Coleoptera suborders, with 11 priority families searched first and most thoroughly.</p>
+            <div class="row g-2">
+              <div class="col-6">
+                <div class="feature-card" style="padding:16px 18px;">
+                  <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">Priority families</div>
+                  <div style="font-size:0.83rem;color:rgba(255,255,255,0.7);line-height:1.9;">
+                    Curculionidae<br>Chrysomelidae<br>Cerambycidae<br>Carabidae<br>Scarabaeidae<br>Tenebrionidae
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="feature-card" style="padding:16px 18px;">
+                  <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">&nbsp;</div>
+                  <div style="font-size:0.83rem;color:rgba(255,255,255,0.7);line-height:1.9;">
+                    Coccinellidae<br>Staphylinidae<br>Elateridae<br>Buprestidae<br>Lucanidae
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <p class="section-heading">Running the agent</p>
+            <p class="section-sub">Command-line interface; fully autonomous or in targeted test modes.</p>
+            <div class="code-block">
+<span class="comment"># Full autonomous run</span>
+<span class="cmd">python agent.py</span>
+
+<span class="comment"># Stop after 50 papers (testing)</span>
+<span class="cmd">python agent.py</span> <span class="flag">--limit 50</span>
+
+<span class="comment"># Verify cascade on a known good DOI</span>
+<span class="cmd">python agent.py</span> <span class="flag">--test-paper</span> 10.3897/compcytogen.v10i3.9504
+
+<span class="comment"># Launch live dashboard at localhost:8787</span>
+<span class="cmd">python dashboard.py</span>
+            </div>
+            <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-top:12px;">State is persisted in JSON files - the agent resumes cleanly. The PDF cache is keyed by DOI hash; safe to delete to force re-downloads.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Context / motivation ───────────────────────────── -->
+    <section class="content-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="fade-up">
+            <p class="section-heading">Background and motivation</p>
+            <p style="color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:18px;">
+              Coleoptera has roughly 400,000 described species, but cytogenetic data are scattered across hundreds of journals in multiple languages spanning nearly a century of publications. Compiling this literature by hand is a multi-year undertaking.
+            </p>
+            <p style="color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:18px;">
+              The existing <a href="karyotype-data/coleoptera.html" style="color:#7dd3fc;">Coleoptera Karyotype Database</a> (4,960 records from 252 papers, compiled through 2022) was built by hand. This agent is designed to continue that work: reading papers, extracting structured records, and flagging ambiguous cases for review.
+            </p>
+            <p style="color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:0;">
+              The project is part of the lab's broader <a href="../research.html" style="color:#7dd3fc;">AI research program</a> focused on autonomous agents for data-intensive biology.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Related resources ──────────────────────────────── -->
+    <section class="content-section">
+      <div class="container">
+        <p class="section-heading text-center" data-aos="fade-up">Related resources</p>
+        <div class="row g-3 justify-content-center mt-2" data-aos="fade-up">
+          <div class="col-md-4">
+            <a href="karyotype-data/coleoptera.html" style="text-decoration:none;">
+              <div class="feature-card" style="cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+                <span class="fc-icon">🪲</span>
+                <h5>Coleoptera Karyotype Database</h5>
+                <p>Browse or download 4,959 curated beetle karyotype records with interactive filters, boxplots, and citations.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="../karyotypes/index.html" style="text-decoration:none;">
+              <div class="feature-card" style="cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+                <span class="fc-icon">🗂️</span>
+                <h5>All karyotype databases</h5>
+                <p>Coleoptera, Diptera, Amphibia, Mammals, Drosophila, and Polyneoptera - six interactive databases from the Blackmon Lab.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="../research.html" style="text-decoration:none;">
+              <div class="feature-card" style="cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+                <span class="fc-icon">🔬</span>
+                <h5>Lab research</h5>
+                <p>Theoretical population genetics, sex chromosome evolution, comparative genomics, and AI-native biology at Texas A&M.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+
+</body>
+</html>
