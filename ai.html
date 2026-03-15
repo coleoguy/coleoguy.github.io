@@ -31,6 +31,7 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
+
   <style>
     /* ── AI hero ──────────────────────────────────────────── */
     .ai-hero {
@@ -341,13 +342,15 @@
 </head>
 
 <body>
+  <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group">
+      <div class="logo-group d-flex align-items-center gap-2">
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -357,6 +360,7 @@
           <li><a href="resources.html">Resources</a></li>
           <li><a href="ai.html" class="active">AI</a></li>
           <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
         <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>

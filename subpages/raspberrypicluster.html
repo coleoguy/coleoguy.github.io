@@ -128,16 +128,17 @@
 </head>
 
 <body class="index-page">
+  <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
 
   <!-- Header -->
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group">
+      <div class="logo-group d-flex align-items-center gap-2">
         <a href="../index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
       </div>
-
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="../research.html">Research</a></li>

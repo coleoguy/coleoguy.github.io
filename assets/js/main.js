@@ -122,16 +122,17 @@
   window.addEventListener("load", initSwiper);
 
   /**
-   * Initiate glightbox
+   * Initiate glightbox (guard for pages that don't load the vendor script)
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  if (typeof GLightbox !== 'undefined') {
+    GLightbox({ selector: '.glightbox' });
+  }
 
   /**
-   * Init isotope layout and filters
+   * Init isotope layout and filters (guard for pages that don't load vendor scripts)
    */
   document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
+    if (typeof imagesLoaded === 'undefined' || typeof Isotope === 'undefined') return;
     let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
     let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
     let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
@@ -187,6 +188,44 @@
       }
     }
   });
+
+  /**
+   * Dark / Light mode toggle (Aggie Maroon light theme)
+   */
+  /**
+   * Swap hero logo src between dark and light versions
+   */
+  function applyLogoTheme(isLight) {
+    const logo = document.querySelector('.hero-logo');
+    if (!logo) return;
+    if (isLight) {
+      if (!logo.dataset.darkSrc) logo.dataset.darkSrc = logo.src;
+      logo.src = logo.src.replace('blackmon_black.png', 'blackmon_white.png');
+    } else {
+      if (logo.dataset.darkSrc) logo.src = logo.dataset.darkSrc;
+    }
+  }
+
+  const themeToggleBtn = document.getElementById('theme-toggle');
+
+  // Apply logo + icon based on current body class — works regardless of localStorage
+  const isLightOnLoad = document.body.classList.contains('light-mode');
+  applyLogoTheme(isLightOnLoad);
+  if (themeToggleBtn) {
+    const icon = themeToggleBtn.querySelector('i');
+    if (icon) { icon.className = isLightOnLoad ? 'bi bi-moon-fill' : 'bi bi-sun-fill'; }
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      const icon = themeToggleBtn.querySelector('i');
+      if (icon) { icon.className = isLight ? 'bi bi-moon-fill' : 'bi bi-sun-fill'; }
+      applyLogoTheme(isLight);
+      try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch(e) {}
+    });
+  }
 
   /**
    * Navmenu Scrollspy

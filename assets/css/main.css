@@ -130,8 +130,9 @@ img { max-width: 100%; height: auto; }
 
 .header .logo-group {
   display: flex;
-  flex-direction: column;
-  gap: 0;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 
 .header .logo { line-height: 1; }
@@ -2192,3 +2193,191 @@ table th {
     height: 48px;
   }
 }
+
+/* ========================
+   THEME TOGGLE BUTTON
+======================== */
+.theme-toggle {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.55);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* Scrolled dark header */
+.scrolled .theme-toggle {
+  border-color: rgba(255,255,255,0.20);
+  color: rgba(255,255,255,0.50);
+}
+
+/* ========================
+   LIGHT MODE – Aggie Maroon & White
+======================== */
+body.light-mode {
+  --bg: #FAF8F5;
+  --bg-raised: #F0EAE0;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F7F2EC;
+  --border: rgba(80,0,0,0.10);
+  --border-hover: rgba(80,0,0,0.22);
+  --accent: #c9a227;
+  --accent-hover: #b8911e;
+  --accent-dim: rgba(201,162,39,0.10);
+  --accent-glow: rgba(201,162,39,0.22);
+  --accent-border: rgba(201,162,39,0.35);
+  --text: #1F1515;
+  --text-secondary: #5C4848;
+  --text-heading: #500000;
+  --text-muted: #A08888;
+
+  /* Bootstrap compat vars */
+  --background-color: #FAF8F5;
+  --default-color: #1F1515;
+  --heading-color: #500000;
+  --accent-color: #c9a227;
+  --surface-color: #FFFFFF;
+  --contrast-color: #FFFFFF;
+  --nav-color: #3A2020;
+  --nav-hover-color: #c9a227;
+  --nav-mobile-background-color: #FFFFFF;
+  --nav-dropdown-background-color: #FFFFFF;
+  --nav-dropdown-color: #3A2020;
+  --nav-dropdown-hover-color: #c9a227;
+}
+
+/* Base */
+body.light-mode { background: var(--bg); color: var(--text); }
+body.light-mode p { color: var(--text-secondary); }
+body.light-mode h1, body.light-mode h2, body.light-mode h3,
+body.light-mode h4, body.light-mode h5, body.light-mode h6 {
+  color: var(--text-heading);
+}
+body.light-mode a { color: #500000; }
+body.light-mode a:hover { color: var(--accent); }
+body.light-mode .nav-cta, body.light-mode .nav-cta:hover { color: #0a0a0a !important; }
+body.light-mode ::selection { background: rgba(80,0,0,0.20); color: #500000; }
+
+/* Scrollbars */
+body.light-mode ::-webkit-scrollbar-track { background: var(--bg); }
+body.light-mode ::-webkit-scrollbar-thumb { background: #D4BFBF; }
+body.light-mode ::-webkit-scrollbar-thumb:hover { background: #BFA0A0; }
+
+/* Sections */
+body.light-mode section,
+body.light-mode .section { background-color: var(--bg); color: var(--text); }
+body.light-mode section:nth-of-type(even),
+body.light-mode .section.light-background { background: var(--bg-raised); }
+
+/* Header – non-scrolled */
+body.light-mode:not(.scrolled) .header .logo h1 { color: #500000; }
+body.light-mode:not(.scrolled) .header .logo h1 .accent { color: var(--accent); }
+body.light-mode:not(.scrolled) .navmenu a,
+body.light-mode:not(.scrolled) .navmenu a:focus { color: rgba(80,0,0,0.60); }
+body.light-mode:not(.scrolled) .navmenu a:hover,
+body.light-mode:not(.scrolled) .navmenu li:hover > a,
+body.light-mode:not(.scrolled) .navmenu .active { color: #500000; }
+/* Light mode toggle — non-scrolled (on warm white hero) */
+body.light-mode:not(.scrolled) .theme-toggle {
+  border-color: rgba(80,0,0,0.25);
+  color: rgba(80,0,0,0.55);
+}
+body.light-mode:not(.scrolled) .mobile-nav-toggle { color: #500000; }
+
+/* Header – scrolled: Aggie Maroon bar */
+body.light-mode.scrolled .header {
+  background: rgba(80, 0, 0, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,162,39,0.25);
+}
+body.light-mode.scrolled .header .logo h1 { color: #FFFFFF; }
+body.light-mode.scrolled .header .logo h1 .accent { color: var(--accent); }
+body.light-mode.scrolled .navmenu a,
+body.light-mode.scrolled .navmenu a:focus { color: rgba(255,255,255,0.65); }
+body.light-mode.scrolled .navmenu a:hover,
+body.light-mode.scrolled .navmenu li:hover > a,
+body.light-mode.scrolled .navmenu .active { color: var(--accent); }
+body.light-mode.scrolled .mobile-nav-toggle { color: #FFFFFF; }
+/* Light mode toggle — scrolled (on maroon header) */
+body.light-mode.scrolled .theme-toggle {
+  border-color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.75);
+}
+
+/* Mobile nav */
+body.light-mode .mobile-nav-active .navmenu { background: rgba(80, 0, 0, 0.97); }
+body.light-mode .navmenu .dropdown ul { background: #FFFFFF; border-color: rgba(80,0,0,0.12); }
+
+/* Cards & surfaces */
+body.light-mode .card,
+body.light-mode .pub-card,
+body.light-mode .team-card,
+body.light-mode .resource-card,
+body.light-mode .hub-card,
+body.light-mode .study-card { background: var(--bg-card); border-color: var(--border); }
+
+/* Section title underline – keep gold accent */
+body.light-mode .section-title h2::after { background: var(--accent); }
+
+/* Buttons */
+body.light-mode .btn-gold { background: var(--accent); color: #000; }
+body.light-mode .btn-outline { border-color: rgba(80,0,0,0.35); color: #500000; }
+body.light-mode .btn-outline:hover { background: rgba(80,0,0,0.06); }
+
+/* Nav CTA pill — keep gold background with dark text in both modes */
+body.light-mode .nav-cta { background: var(--accent) !important; color: #0a0a0a !important; }
+body.light-mode .nav-cta:hover { background: var(--accent-hover) !important; color: #0a0a0a !important; }
+
+/* Scroll-top button */
+body.light-mode .scroll-top { background: #500000; }
+body.light-mode .scroll-top:hover { background: var(--accent); }
+
+/* Ambient element: subtle warm glow, visible but not garish */
+body.light-mode .hero-ambient {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle,
+    rgba(201,162,39,0.18) 0%,
+    rgba(80,0,0,0.08) 45%,
+    transparent 70%);
+  animation: ambient-pulse 6s ease-in-out infinite;
+}
+
+/* Hero section bg: cream so multiply blend works on logo */
+body.light-mode .hero {
+  background: #FAF8F5 !important;
+}
+
+body.light-mode .hero-tagline { color: #5C4848; }
+body.light-mode .hero-meta a { color: #500000; }
+
+/* Logo in light mode: src swap + multiply handled by JS.
+   multiply makes white pixels = background color (invisible),
+   black lines stay dark. */
+body.light-mode .hero-logo {
+  mix-blend-mode: multiply;
+}
+
+/* Timeline */
+body.light-mode .timeline-item { background: var(--bg-card); border-color: var(--border); }
+body.light-mode .timeline-item:hover { border-color: rgba(201,162,39,0.30); }
+
+/* Code/mono */
+body.light-mode code, body.light-mode pre { background: #F0E8E8; color: #500000; }

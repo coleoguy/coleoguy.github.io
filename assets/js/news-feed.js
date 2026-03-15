@@ -20,7 +20,7 @@
     {
       "date": "2026-02-19",
       "title": "Dr. Megan Copeland successfully defends dissertation",
-      "body": "Megan Copeland defended her PhD dissertation on February 19th, capping years of research bridging avian genomics, hybrid compatibility, and domestication biology. Congratulations, Dr. Copeland!",
+      "body": "Megan Copeland defended her PhD dissertation on February 19th, capping years of research on genome assembly, annotation, and the evolution of genome structure. Congratulations, Dr. Copeland!",
       "category": "lab",
       "icon": "bi-mortarboard"
     },
