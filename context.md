@@ -160,6 +160,7 @@ Pages in subdirectories (`phylo-methods/`, `subpages/`, `karyotypes/`) use `../`
 | `grad101.html` | Grad school guide |
 | `AI-Tools.html` | AI tools for biologists |
 | `Prompting.html` | Prompting guide |
+| `biol682.html` | BIOL 682: Communication in the Biological Sciences — writing, revision, peer review materials |
 | `cures.html` | CUREs info |
 
 ---
