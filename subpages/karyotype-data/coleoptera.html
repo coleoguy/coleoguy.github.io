@@ -939,25 +939,26 @@
       boxmean: true,
     }));
 
+    const isLight = document.body.classList.contains('light-mode');
     const layout = {
-      paper_bgcolor: 'rgba(0,0,0,0)',
-      plot_bgcolor:  'rgba(20,20,20,1)',
-      font: { color: '#c8c5c0', family: 'Inter, sans-serif', size: 12 },
+      paper_bgcolor: isLight ? '#ffffff' : 'rgba(0,0,0,0)',
+      plot_bgcolor:  isLight ? '#ffffff' : 'rgba(20,20,20,1)',
+      font: { color: isLight ? '#3a3a3a' : '#c8c5c0', family: 'Inter, sans-serif', size: 12 },
       xaxis: {
         title: { text: xLabels[xField] || xField, font: { size: 13 } },
-        gridcolor: 'rgba(255,255,255,0.06)',
+        gridcolor: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)',
         tickfont:  { size: 11 },
         categoryorder: 'category ascending',
         automargin: true,
       },
       yaxis: {
         title: { text: 'Diploid Number (2n)', font: { size: 13 } },
-        gridcolor: 'rgba(255,255,255,0.06)',
+        gridcolor: isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)',
         zeroline: false,
       },
       legend: {
-        bgcolor: 'rgba(20,20,20,0.9)',
-        bordercolor: 'rgba(255,255,255,0.1)',
+        bgcolor: isLight ? 'rgba(255,255,255,0.95)' : 'rgba(20,20,20,0.9)',
+        bordercolor: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
         borderwidth: 1,
         font: { size: 11 },
       },
