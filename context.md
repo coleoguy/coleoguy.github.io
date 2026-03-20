@@ -232,6 +232,14 @@ Major additions made across two extended sessions:
 - **Glossary** (`subpages/glossary.html`): ~50 terms across 4 research areas
 - **Sitemap + llms.txt**: Updated to include all new pages
 
+## Site Maintenance (March 19, 2026)
+
+- **Google Analytics**: Added GA snippet (`G-4J0HZ3LNQX`) to 25 HTML files that were missing it, including `stegg.html`, `tamu-ai-concentration.html`, `cures-karyotype-database.html`, `subpages/evobir.html`, `subpages/Prompting.html`, and the entire `subpages/teaching/expdes/` directory. All HTML files now have GA tracking.
+- **STEGG page** (`stegg.html`): Marked as archived — added gold archive banner at top, updated `<title>` to say "(Archived)", added `<meta description>`, Open Graph tags, canonical URL, and GA snippet.
+- **CUREs Karyotype Database** (`cures-karyotype-database.html`): Brought into site design system — replaced custom header with standard site header/nav, added site footer with scroll-top, loaded `main.css` + Bootstrap + Bootstrap Icons, added SEO meta tags (description, OG, canonical), favicon. Functional CSS scoped under `.db-app` and `.db-container` to avoid conflicts with `main.css`. Added to `sitemap.xml`.
+- **Sitemap**: Added `cures-karyotype-database.html` (62 URLs total).
+- **Known remaining issues**: (1) Megan Copeland still listed as grad student on `team.html` but defended dissertation Feb 2026 — needs move to Alumni; (2) Homepage Google Calendar embed shows personal events (Gym, Trivia Night, etc.) publicly — consider switching to a lab-only calendar or removing.
+
 ---
 
 ## Notes for Future Sessions

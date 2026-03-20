@@ -68,9 +68,12 @@
   <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <a href="../../index.html" class="logo d-flex align-items-center">
-        <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-      </a>
+      <div class="logo-group d-flex align-items-center gap-2">
+        <a href="../../index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+      </div>
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="../../research.html">Research</a></li>
@@ -434,15 +437,18 @@
         boxpoints:false,boxmean:true};
     });
     Plotly.react('plotly-chart',traces,{
-      paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(20,20,20,1)',
-      font:{color:'#c8c5c0',family:'Inter,sans-serif',size:12},
-      xaxis:{title:{text:PLOT_X_LABELS[xField]||xField,font:{size:13}},gridcolor:'rgba(255,255,255,0.06)',tickfont:{size:11},categoryorder:'category ascending',automargin:true},
-      yaxis:{title:{text:Y_LABEL,font:{size:13}},gridcolor:'rgba(255,255,255,0.06)',zeroline:false},
-      legend:{bgcolor:'rgba(20,20,20,0.9)',bordercolor:'rgba(255,255,255,0.1)',borderwidth:1,font:{size:11}},
+      paper_bgcolor:document.body.classList.contains('light-mode')?'#ffffff':'rgba(0,0,0,0)',plot_bgcolor:document.body.classList.contains('light-mode')?'#ffffff':'rgba(20,20,20,1)',
+      font:{color:document.body.classList.contains('light-mode')?'#3a3a3a':'#c8c5c0',family:'Inter,sans-serif',size:12},
+      xaxis:{title:{text:PLOT_X_LABELS[xField]||xField,font:{size:13}},gridcolor:document.body.classList.contains('light-mode')?'rgba(0,0,0,0.08)':'rgba(255,255,255,0.06)',tickfont:{size:11},categoryorder:'category ascending',automargin:true},
+      yaxis:{title:{text:Y_LABEL,font:{size:13}},gridcolor:document.body.classList.contains('light-mode')?'rgba(0,0,0,0.08)':'rgba(255,255,255,0.06)',zeroline:false},
+      legend:{bgcolor:document.body.classList.contains('light-mode')?'rgba(255,255,255,0.95)':'rgba(20,20,20,0.9)',bordercolor:document.body.classList.contains('light-mode')?'rgba(0,0,0,0.1)':'rgba(255,255,255,0.1)',borderwidth:1,font:{size:11}},
       margin:{l:60,r:20,t:30,b:100},height:500,boxmode:'group'
     },{displaylogo:false,responsive:true,modeBarButtonsToRemove:['lasso2d','select2d']});
   }
 
+  
+  // Re-render plot when theme toggles
+  new MutationObserver(()=>{ if(document.getElementById('tab-plot')&&document.getElementById('tab-plot').classList.contains('active')) renderPlot(); }).observe(document.body,{attributes:true,attributeFilter:['class']});
   function setupTabs() {
     document.querySelectorAll('.tab-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{

@@ -988,6 +988,9 @@
   }
 
   // ── Tabs ───────────────────────────────────────────────────────────────────
+  
+  // Re-render plot when theme toggles
+  new MutationObserver(()=>{ if(document.getElementById('tab-plot')&&document.getElementById('tab-plot').classList.contains('active')) renderPlot(); }).observe(document.body,{attributes:true,attributeFilter:['class']});
   function setupTabs() {
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {

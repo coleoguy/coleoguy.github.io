@@ -13,6 +13,15 @@
 
 
 <title>Voluntary Homework: Statistical Reasoning in R</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -344,9 +353,17 @@ display: none;
 <body>
 <header id="header" class="header d-flex align-items-center fixed-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-    <a href="../../../../index.html" class="logo d-flex align-items-center">
-      <h1 class="sitename">Blackmon Lab</h1>
-    </a>
+    <div class="logo-group d-flex align-items-center gap-2">
+
+      <a href="../../../../index.html" class="logo d-flex align-items-center">
+
+        <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+
+      </a>
+
+      <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+
+    </div>
     <nav id="navmenu" class="navmenu">
       <ul>
         <li><a href="../../../../index.html">Home</a></li>
