@@ -50,6 +50,7 @@
     
     
 <body class="index-page">
+  <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -355,7 +356,8 @@ Various<br>
   <footer id="footer">
   </footer><!-- End  Footer -->
 
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

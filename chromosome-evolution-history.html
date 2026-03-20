@@ -36,7 +36,7 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
 
-  <!-- Playfair Display for editorial feel -->
+  <!-- Playfair Display for header -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
@@ -75,14 +75,14 @@
       margin: 0 auto;
     }
 
-    /* ── Newspaper body ─────────────────────────────────────── */
+    /* ── Content body ─────────────────────────────────────── */
     .newspaper-wrap {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 56px 20px 56px;
+      padding: 48px 20px 48px;
     }
 
-    /* Top rule + ornament */
+    /* Decorative rule */
     .paper-rule {
       text-align: center;
       color: var(--accent);
@@ -102,87 +102,63 @@
       opacity: 0.5;
     }
 
-    /* Two-column grid */
+    /* Single-column flow */
     .col-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px 40px;
+      display: block;
     }
-    @media (max-width: 680px) {
-      .col-grid { grid-template-columns: 1fr; }
-    }
-
-    .col-full { grid-column: 1 / -1; }
 
     /* Section heads */
     .col-grid h2 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 0.7rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
       color: var(--accent);
       border-bottom: 1px solid rgba(201,162,39,0.25);
-      padding-bottom: 4px;
-      margin: 22px 0 10px;
+      padding-bottom: 6px;
+      margin: 36px 0 14px;
     }
     .col-grid h2:first-child { margin-top: 0; }
 
     /* Body text */
     .col-grid p {
-      font-size: 0.88rem;
-      line-height: 1.78;
-      color: var(--text-secondary, rgba(200,197,190,0.75));
-      margin-bottom: 10px;
-      text-align: justify;
-      hyphens: auto;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 16px;
     }
     .col-grid p:last-child { margin-bottom: 0; }
 
-    /* Intro paragraph is slightly bigger */
+    /* Intro paragraph */
     .lead-para {
-      font-size: 0.95rem !important;
-      color: var(--text-primary, rgba(248,244,237,0.88)) !important;
-      line-height: 1.82 !important;
+      font-size: 1.08rem !important;
+      color: var(--text-heading) !important;
+      line-height: 1.85 !important;
     }
 
     /* Pull quote */
     .pullquote {
       border-left: 3px solid var(--accent);
-      padding: 8px 14px;
-      margin: 16px 0;
-      font-family: 'Playfair Display', Georgia, serif;
+      padding: 12px 20px;
+      margin: 24px 0;
       font-style: italic;
-      font-size: 0.87rem;
+      font-size: 1rem;
       color: var(--accent);
-      line-height: 1.55;
-      opacity: 0.85;
+      line-height: 1.6;
     }
 
-    /* Inline link style */
+    /* Inline link style — visible in both themes */
     .col-grid a {
       color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(201,162,39,0.35);
-      transition: border-color 0.15s, opacity 0.15s;
+      text-decoration: underline;
+      text-decoration-color: rgba(201,162,39,0.4);
+      text-underline-offset: 2px;
+      transition: text-decoration-color 0.15s;
     }
-    .col-grid a:hover { opacity: 0.75; border-color: var(--accent); }
+    .col-grid a:hover { text-decoration-color: var(--accent); }
 
     /* Strong text */
     .col-grid strong {
       font-weight: 600;
-      color: var(--text-primary, rgba(248,244,237,0.9));
-    }
-
-    /* Column divider (vertical rule between columns on desktop) */
-    @media (min-width: 681px) {
-      .col-grid > div:nth-child(odd):not(.col-full) {
-        border-right: 1px solid rgba(201,162,39,0.12);
-        padding-right: 24px;
-      }
-      .col-grid > div:nth-child(even):not(.col-full) {
-        padding-left: 16px;
-      }
+      color: var(--text-heading);
     }
 
     /* Bottom ornament */
@@ -191,10 +167,10 @@
       margin-top: 40px;
       padding-top: 18px;
       border-top: 1px solid rgba(201,162,39,0.2);
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-secondary, rgba(200,197,190,0.4));
+      color: var(--text-muted);
     }
 
     /* Related resources box */
@@ -226,7 +202,7 @@
       border: 1px solid rgba(201,162,39,0.25);
       border-radius: 20px;
       font-size: 0.8rem;
-      color: var(--text-secondary, rgba(200,197,190,0.7));
+      color: var(--text);
       text-decoration: none;
       transition: all 0.18s;
     }
