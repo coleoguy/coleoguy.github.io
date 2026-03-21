@@ -24,13 +24,14 @@
 
   <style>
     /* ── Full-bleed layout below fixed header ── */
-    body { background: #080808; overflow: hidden; }
+    body { background: var(--bg, #080808); overflow: hidden; }
 
     #phylo-app {
       position: fixed;
       top: 80px; left: 0; right: 0; bottom: 0;
       display: flex;
       flex-direction: column;
+      background: var(--bg, #080808);
     }
 
     /* ── Toolbar ── */
@@ -39,8 +40,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 20px;
-      background: #0e0e0e;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg-raised, #0e0e0e);
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
       flex-shrink: 0;
       flex-wrap: wrap;
       gap: 8px;
@@ -64,10 +65,10 @@
 
     .toggle-group {
       display: flex;
-      background: #1a1a1a;
+      background: var(--bg-card, #1a1a1a);
       border-radius: 6px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
     }
 
     .toggle-btn {
@@ -88,7 +89,7 @@
     }
 
     .toggle-btn:hover:not(.active) {
-      background: #222;
+      background: var(--bg-card-hover, #222);
       color: var(--text, #c8c5c0);
     }
 
@@ -96,8 +97,8 @@
       padding: 5px 12px;
       font-size: 12px;
       cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: #1a1a1a;
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      background: var(--bg-card, #1a1a1a);
       color: var(--text-secondary, #9a9793);
       border-radius: 6px;
       transition: all 0.2s;
@@ -105,9 +106,9 @@
     }
 
     .phylo-btn:hover {
-      background: #222;
+      background: var(--bg-card-hover, #222);
       color: var(--text, #c8c5c0);
-      border-color: rgba(255,255,255,0.18);
+      border-color: var(--border-hover, rgba(255,255,255,0.18));
     }
 
     /* ── Tree canvas ── */
@@ -115,13 +116,14 @@
       flex: 1;
       overflow: hidden;
       position: relative;
+      background: var(--bg, #080808);
     }
 
     #tree-svg { width: 100%; height: 100%; display: block; }
 
     .link {
       fill: none;
-      stroke: rgba(201,162,39,0.30);
+      stroke: var(--phylo-branch, rgba(201,162,39,0.30));
       stroke-width: 1.5px;
       transition: stroke 0.3s, stroke-width 0.3s;
     }
@@ -134,8 +136,8 @@
     .node circle { cursor: pointer; transition: all 0.2s; }
 
     .node circle.internal {
-      fill: #1a1a1a;
-      stroke: rgba(255,255,255,0.15);
+      fill: var(--bg-card, #1a1a1a);
+      stroke: var(--border, rgba(255,255,255,0.15));
       stroke-width: 2px;
     }
 
@@ -169,8 +171,8 @@
     #phylo-tooltip {
       position: absolute;
       pointer-events: none;
-      background: rgba(12,12,12,0.97);
-      border: 1px solid rgba(201,162,39,0.28);
+      background: var(--phylo-tooltip-bg, rgba(12,12,12,0.97));
+      border: 1px solid var(--accent-border, rgba(201,162,39,0.28));
       border-radius: 9px;
       padding: 13px 16px;
       font-size: 13px;
@@ -201,19 +203,20 @@
 
     .tt-label { color: var(--text-muted, #706d69); font-size: 12px; }
     .tt-value { color: var(--text, #c8c5c0); font-weight: 500; }
-    .tt-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 6px 0; }
+    .tt-divider { border: none; border-top: 1px solid var(--border, rgba(255,255,255,0.08)); margin: 6px 0; }
 
     /* ── Legend ── */
     .phylo-legend {
       position: absolute;
       bottom: 20px;
       left: 20px;
-      background: rgba(14,14,14,0.95);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--phylo-panel-bg, rgba(14,14,14,0.95));
+      border: 1px solid var(--border, rgba(255,255,255,0.08));
       border-radius: 9px;
       padding: 14px 18px;
       font-size: 12px;
       font-family: var(--font-body);
+      color: var(--text, #c8c5c0);
     }
 
     .legend-title {
@@ -225,7 +228,7 @@
       letter-spacing: 1px;
     }
 
-    .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; color: var(--text, #c8c5c0); }
     .legend-swatch { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
     /* ── Help overlay ── */
@@ -235,16 +238,16 @@
       right: 20px;
       font-size: 11px;
       color: var(--text-muted, #706d69);
-      background: rgba(14,14,14,0.92);
+      background: var(--phylo-panel-bg, rgba(14,14,14,0.92));
       padding: 8px 14px;
       border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid var(--border, rgba(255,255,255,0.06));
       line-height: 1.7;
       font-family: var(--font-body);
     }
 
     /* ── Scale bar ── */
-    .scale-bar { fill: none; stroke: rgba(255,255,255,0.20); stroke-width: 1.5px; }
+    .scale-bar { fill: none; stroke: var(--text-muted, rgba(255,255,255,0.20)); stroke-width: 1.5px; }
     .scale-text { fill: var(--text-muted, #706d69); font-size: 11px; }
 
     /* ── Modal ── */
@@ -264,8 +267,8 @@
     .modal-overlay.open { opacity: 1; pointer-events: all; }
 
     .nwk-modal {
-      background: #141414;
-      border: 1px solid rgba(255,255,255,0.10);
+      background: var(--bg-raised, #141414);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
       border-radius: 12px;
       padding: 28px 32px;
       width: 640px;
@@ -304,8 +307,8 @@
     .nwk-modal textarea {
       width: 100%;
       min-height: 120px;
-      background: #0a0a0a;
-      border: 1px solid rgba(255,255,255,0.10);
+      background: var(--bg, #0a0a0a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
       border-radius: 8px;
       color: var(--text, #c8c5c0);
       font-family: var(--font-mono);
@@ -343,11 +346,142 @@
       margin-bottom: 10px;
       display: none;
     }
+
+    /* ── File upload row ── */
+    .file-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .file-row label {
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .file-input-wrap {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .file-input-wrap input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .file-label-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      font-size: 12px;
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 6px;
+      color: var(--text-secondary, #9a9793);
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .file-input-wrap:hover .file-label-btn {
+      background: var(--bg-card-hover, #222);
+      color: var(--text, #c8c5c0);
+      border-color: var(--border-hover, rgba(255,255,255,0.18));
+    }
+
+    .file-name {
+      font-size: 12px;
+      color: var(--accent, #c9a227);
+      font-family: var(--font-mono);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 260px;
+    }
+
+    .or-divider {
+      font-size: 11px;
+      color: var(--text-muted, #706d69);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    body.light-mode .file-label-btn { background: var(--bg-card); border-color: var(--border); color: var(--text-secondary); }
+    body.light-mode .file-input-wrap:hover .file-label-btn { background: var(--bg-card-hover); color: var(--text); }
+
+    /* ═══════════════════════════════════════════
+       LIGHT MODE OVERRIDES
+    ═══════════════════════════════════════════ */
+    body.light-mode {
+      --phylo-branch: rgba(80,0,0,0.25);
+      --phylo-tooltip-bg: rgba(255,255,255,0.97);
+      --phylo-panel-bg: rgba(255,255,255,0.95);
+    }
+
+    body.light-mode #phylo-app { background: var(--bg); }
+    body.light-mode #tree-container { background: var(--bg); }
+    body.light-mode .phylo-toolbar { background: var(--bg-raised); border-bottom-color: var(--border); }
+
+    body.light-mode .toggle-group { background: var(--bg-card); border-color: var(--border); }
+    body.light-mode .toggle-btn { color: var(--text-secondary); }
+    body.light-mode .toggle-btn.active { background: var(--accent); color: #fff; }
+    body.light-mode .toggle-btn:hover:not(.active) { background: var(--bg-card-hover); }
+
+    body.light-mode .phylo-btn { background: var(--bg-card); border-color: var(--border); color: var(--text-secondary); }
+    body.light-mode .phylo-btn:hover { background: var(--bg-card-hover); color: var(--text); border-color: var(--border-hover); }
+
+    body.light-mode .node circle.internal { fill: var(--bg-card); stroke: var(--border); }
+    body.light-mode .node text { fill: var(--text); }
+    body.light-mode .link { stroke: rgba(80,0,0,0.20); }
+    body.light-mode .link.highlighted { stroke: #500000; }
+
+    body.light-mode #phylo-tooltip {
+      background: var(--phylo-tooltip-bg);
+      border-color: var(--border);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    body.light-mode .tt-name { color: var(--text-heading); }
+    body.light-mode .tt-value { color: var(--text); }
+    body.light-mode .tt-label { color: var(--text-muted); }
+    body.light-mode .tt-divider { border-top-color: var(--border); }
+
+    body.light-mode .phylo-legend {
+      background: var(--phylo-panel-bg);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    body.light-mode .legend-title { color: var(--text-secondary); }
+    body.light-mode .legend-item { color: var(--text); }
+
+    body.light-mode .phylo-help {
+      background: var(--phylo-panel-bg);
+      border-color: var(--border);
+      color: var(--text-muted);
+    }
+
+    body.light-mode .scale-bar { stroke: rgba(80,0,0,0.25); }
+    body.light-mode .scale-text { fill: var(--text-muted); }
+
+    body.light-mode .nwk-modal { background: var(--bg-card); border-color: var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+    body.light-mode .nwk-modal textarea { background: var(--bg); border-color: var(--border); color: var(--text); }
+    body.light-mode .modal-overlay { background: rgba(0,0,0,0.40); }
   </style>
 </head>
 
 <body class="index-page">
-  <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
+  <script>
+    try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}
+    // Force .scrolled so the header renders identically to other pages (opaque bg).
+    // main.js removes .scrolled on window load when scrollY===0, so re-add it after.
+    document.body.classList.add('scrolled');
+    window.addEventListener('load', function() { document.body.classList.add('scrolled'); });
+  </script>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -406,13 +540,29 @@
   <div class="modal-overlay" id="newick-modal">
     <div class="nwk-modal">
       <h2>Load Newick Tree</h2>
-      <p>Paste a Newick-format string below. Optionally add a CSV of tip trait data (taxon column must match tip labels).</p>
+      <p>Upload a tree file or paste a Newick string. Optionally add trait data as CSV (first column = taxon names matching tip labels).</p>
 
-      <label for="newick-input">Newick String</label>
-      <textarea id="newick-input" placeholder="((A:0.1,B:0.2):0.3,(C:0.15,D:0.25):0.35);">((Dynastes_hercules:0.15,Dynastes_tityus:0.18):0.08,(Megasoma_elephas:0.21,Megasoma_actaeon:0.23):0.06):0.12;</textarea>
+      <div class="file-row">
+        <label>Tree File</label>
+        <div class="file-input-wrap">
+          <input type="file" id="newick-file" accept=".nwk,.tre,.tree,.nex,.txt,.newick">
+          <span class="file-label-btn"><i class="bi bi-upload"></i> Choose .nwk / .tre</span>
+        </div>
+        <span class="file-name" id="newick-file-name"></span>
+      </div>
+      <div class="or-divider">— or paste below —</div>
+      <textarea id="newick-input" placeholder="((A:0.1,B:0.2):0.3,(C:0.15,D:0.25):0.35);"></textarea>
       <div class="error-msg" id="newick-error"></div>
 
-      <label for="trait-input">Trait Data (CSV, optional)</label>
+      <div class="file-row">
+        <label>Trait Data</label>
+        <div class="file-input-wrap">
+          <input type="file" id="trait-file" accept=".csv,.tsv,.txt">
+          <span class="file-label-btn"><i class="bi bi-upload"></i> Choose .csv / .tsv</span>
+        </div>
+        <span class="file-name" id="trait-file-name"></span>
+      </div>
+      <div class="or-divider">— or paste below (optional) —</div>
       <textarea id="trait-input" style="min-height:80px" placeholder="taxon,family,chr,habitat
 Dynastes_hercules,Scarabaeidae,2n=20,Neotropical
 Dynastes_tityus,Scarabaeidae,2n=20,Nearctic"></textarea>
@@ -426,6 +576,9 @@ Dynastes_tityus,Scarabaeidae,2n=20,Nearctic"></textarea>
       </div>
     </div>
   </div>
+
+  <!-- Elements expected by main.js -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -513,6 +666,31 @@ function buildColorPalette(traitInfo, colorCol) {
 }
 
 // ============================================================
+// FILE UPLOAD HELPERS
+// ============================================================
+function readFileInto(fileInput, textarea, nameSpan) {
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    nameSpan.textContent = file.name;
+    const reader = new FileReader();
+    reader.onload = () => { textarea.value = reader.result; };
+    reader.readAsText(file);
+  });
+}
+
+readFileInto(
+  document.getElementById('newick-file'),
+  document.getElementById('newick-input'),
+  document.getElementById('newick-file-name')
+);
+readFileInto(
+  document.getElementById('trait-file'),
+  document.getElementById('trait-input'),
+  document.getElementById('trait-file-name')
+);
+
+// ============================================================
 // MODAL LOGIC
 // ============================================================
 const newickModal = document.getElementById('newick-modal');
@@ -525,7 +703,7 @@ document.getElementById('newick-go').addEventListener('click', () => {
   const traitStr = document.getElementById('trait-input').value.trim();
   const colorField = document.getElementById('color-field').value.trim();
   const errEl = document.getElementById('newick-error');
-  if (!nwkStr) { errEl.textContent = 'Please enter a Newick string.'; errEl.style.display = 'block'; return; }
+  if (!nwkStr) { errEl.textContent = 'Please upload a tree file or paste a Newick string.'; errEl.style.display = 'block'; return; }
   let parsed;
   try { parsed = parseNewick(nwkStr); }
   catch (e) { errEl.textContent = 'Parse error: ' + e.message; errEl.style.display = 'block'; return; }
