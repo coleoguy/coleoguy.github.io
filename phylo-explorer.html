@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phylogenetic Tree Explorer - Blackmon Lab</title>
+  <meta name="description" content="Interactive phylogenetic tree viewer with cladogram, phylogram, and radial layouts. Paste your own Newick string and trait data.">
+  <link rel="canonical" href="https://coleoguy.github.io/phylo-explorer.html">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+
+  <style>
+    /* ── Full-bleed layout below fixed header ── */
+    body { background: #080808; overflow: hidden; }
+
+    #phylo-app {
+      position: fixed;
+      top: 80px; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Toolbar ── */
+    .phylo-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: #0e0e0e;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .phylo-toolbar h2 {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+      margin: 0;
+      letter-spacing: -0.3px;
+    }
+
+    .phylo-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .toggle-group {
+      display: flex;
+      background: #1a1a1a;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .toggle-btn {
+      padding: 5px 14px;
+      font-size: 12px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary, #9a9793);
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+
+    .toggle-btn.active {
+      background: var(--accent, #c9a227);
+      color: #080808;
+      font-weight: 600;
+    }
+
+    .toggle-btn:hover:not(.active) {
+      background: #222;
+      color: var(--text, #c8c5c0);
+    }
+
+    .phylo-btn {
+      padding: 5px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: #1a1a1a;
+      color: var(--text-secondary, #9a9793);
+      border-radius: 6px;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+
+    .phylo-btn:hover {
+      background: #222;
+      color: var(--text, #c8c5c0);
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    /* ── Tree canvas ── */
+    #tree-container {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #tree-svg { width: 100%; height: 100%; display: block; }
+
+    .link {
+      fill: none;
+      stroke: rgba(201,162,39,0.30);
+      stroke-width: 1.5px;
+      transition: stroke 0.3s, stroke-width 0.3s;
+    }
+
+    .link.highlighted {
+      stroke: var(--accent, #c9a227);
+      stroke-width: 2.5px;
+    }
+
+    .node circle { cursor: pointer; transition: all 0.2s; }
+
+    .node circle.internal {
+      fill: #1a1a1a;
+      stroke: rgba(255,255,255,0.15);
+      stroke-width: 2px;
+    }
+
+    .node circle.internal:hover {
+      fill: var(--accent, #c9a227);
+      stroke: var(--accent-hover, #ddb82f);
+    }
+
+    .node circle.internal.collapsed {
+      fill: #e8973e;
+      stroke: #f0b060;
+    }
+
+    .node circle.leaf {
+      stroke-width: 2px;
+      transition: r 0.2s, fill 0.2s;
+    }
+
+    .node circle.leaf:hover { filter: brightness(1.3); }
+
+    .node text {
+      font-size: 12px;
+      fill: var(--text, #c8c5c0);
+      pointer-events: none;
+      font-family: var(--font-body);
+    }
+
+    .node text.species-label { font-style: italic; }
+
+    /* ── Tooltip ── */
+    #phylo-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(12,12,12,0.97);
+      border: 1px solid rgba(201,162,39,0.28);
+      border-radius: 9px;
+      padding: 13px 16px;
+      font-size: 13px;
+      line-height: 1.6;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      max-width: 280px;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 100;
+      font-family: var(--font-body);
+    }
+
+    #phylo-tooltip.visible { opacity: 1; }
+
+    .tt-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-heading, #eae7e2);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .tt-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .tt-label { color: var(--text-muted, #706d69); font-size: 12px; }
+    .tt-value { color: var(--text, #c8c5c0); font-weight: 500; }
+    .tt-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 6px 0; }
+
+    /* ── Legend ── */
+    .phylo-legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(14,14,14,0.95);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 9px;
+      padding: 14px 18px;
+      font-size: 12px;
+      font-family: var(--font-body);
+    }
+
+    .legend-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-secondary, #9a9793);
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .legend-swatch { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Help overlay ── */
+    .phylo-help {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 11px;
+      color: var(--text-muted, #706d69);
+      background: rgba(14,14,14,0.92);
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+      line-height: 1.7;
+      font-family: var(--font-body);
+    }
+
+    /* ── Scale bar ── */
+    .scale-bar { fill: none; stroke: rgba(255,255,255,0.20); stroke-width: 1.5px; }
+    .scale-text { fill: var(--text-muted, #706d69); font-size: 11px; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.70);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .nwk-modal {
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px;
+      padding: 28px 32px;
+      width: 640px;
+      max-width: 90vw;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      font-family: var(--font-body);
+    }
+
+    .nwk-modal h2 {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+      margin-bottom: 6px;
+    }
+
+    .nwk-modal p {
+      font-size: 13px;
+      color: var(--text-secondary, #9a9793);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .nwk-modal label {
+      display: block;
+      font-size: 11px;
+      color: var(--text-secondary, #9a9793);
+      margin-bottom: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nwk-modal textarea {
+      width: 100%;
+      min-height: 120px;
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 8px;
+      color: var(--text, #c8c5c0);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 12px;
+      resize: vertical;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .nwk-modal textarea:focus { border-color: var(--accent, #c9a227); }
+
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px; }
+
+    .btn-gold-sm {
+      padding: 8px 20px;
+      font-size: 13px;
+      cursor: pointer;
+      border: none;
+      background: var(--accent, #c9a227);
+      color: #080808;
+      border-radius: 6px;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+      font-weight: 600;
+    }
+
+    .btn-gold-sm:hover { background: var(--accent-hover, #ddb82f); }
+
+    .error-msg {
+      color: #e86452;
+      font-size: 12px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+  <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group d-flex align-items-center gap-2">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- PHYLO APP -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div id="phylo-app">
+    <div class="phylo-toolbar">
+      <h2><i class="bi bi-tree"></i> Phylogenetic Tree Explorer</h2>
+      <div class="phylo-controls">
+        <div class="toggle-group">
+          <button class="toggle-btn active" data-mode="phylogram">Phylogram</button>
+          <button class="toggle-btn" data-mode="cladogram">Cladogram</button>
+          <button class="toggle-btn" data-mode="radial">Radial</button>
+        </div>
+        <button class="phylo-btn" id="load-newick"><i class="bi bi-file-earmark-code"></i> Load Newick</button>
+        <button class="phylo-btn" id="expand-all">Expand All</button>
+        <button class="phylo-btn" id="reset-zoom">Reset Zoom</button>
+      </div>
+    </div>
+    <div id="tree-container">
+      <svg id="tree-svg"></svg>
+      <div id="phylo-tooltip"></div>
+      <div class="phylo-legend" id="legend"></div>
+      <div class="phylo-help">
+        <strong>Controls:</strong><br>
+        Click internal node &rarr; collapse/expand clade<br>
+        Hover tip &rarr; trait data &nbsp;|&nbsp; Scroll &rarr; zoom &nbsp;|&nbsp; Drag &rarr; pan
+      </div>
+    </div>
+  </div>
+
+  <!-- Newick input modal -->
+  <div class="modal-overlay" id="newick-modal">
+    <div class="nwk-modal">
+      <h2>Load Newick Tree</h2>
+      <p>Paste a Newick-format string below. Optionally add a CSV of tip trait data (taxon column must match tip labels).</p>
+
+      <label for="newick-input">Newick String</label>
+      <textarea id="newick-input" placeholder="((A:0.1,B:0.2):0.3,(C:0.15,D:0.25):0.35);">((Dynastes_hercules:0.15,Dynastes_tityus:0.18):0.08,(Megasoma_elephas:0.21,Megasoma_actaeon:0.23):0.06):0.12;</textarea>
+      <div class="error-msg" id="newick-error"></div>
+
+      <label for="trait-input">Trait Data (CSV, optional)</label>
+      <textarea id="trait-input" style="min-height:80px" placeholder="taxon,family,chr,habitat
+Dynastes_hercules,Scarabaeidae,2n=20,Neotropical
+Dynastes_tityus,Scarabaeidae,2n=20,Nearctic"></textarea>
+
+      <label for="color-field">Color tips by column (optional)</label>
+      <textarea id="color-field" style="min-height:32px;resize:none" placeholder="family"></textarea>
+
+      <div class="modal-actions">
+        <button class="phylo-btn" id="newick-cancel">Cancel</button>
+        <button class="btn-gold-sm" id="newick-go">Load Tree</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+<script>
+// ============================================================
+// NEWICK PARSER
+// ============================================================
+function parseNewick(str) {
+  str = str.trim().replace(/\n/g, '');
+  if (str.endsWith(';')) str = str.slice(0, -1);
+
+  let i = 0;
+  function readNode() {
+    const node = { name: '', branchLength: 0, children: undefined };
+    if (str[i] === '(') {
+      node.children = [];
+      i++;
+      while (true) {
+        node.children.push(readNode());
+        if (str[i] === ',') { i++; continue; }
+        if (str[i] === ')') { i++; break; }
+        throw new Error(`Unexpected char '${str[i]}' at position ${i}`);
+      }
+    }
+    let label = '';
+    while (i < str.length && str[i] !== ':' && str[i] !== ',' && str[i] !== ')' && str[i] !== '(' && str[i] !== ';') {
+      label += str[i]; i++;
+    }
+    node.name = label.replace(/_/g, ' ').trim();
+    if (str[i] === ':') {
+      i++;
+      let numStr = '';
+      while (i < str.length && /[0-9.eE\-+]/.test(str[i])) { numStr += str[i]; i++; }
+      node.branchLength = parseFloat(numStr) || 0;
+    }
+    return node;
+  }
+  return readNode();
+}
+
+// ============================================================
+// CSV TRAIT PARSER
+// ============================================================
+function parseTraitCSV(csvStr) {
+  if (!csvStr || !csvStr.trim()) return null;
+  const lines = csvStr.trim().split('\n').map(l => l.trim()).filter(l => l);
+  if (lines.length < 2) return null;
+  const delim = lines[0].includes('\t') ? '\t' : ',';
+  const headers = lines[0].split(delim).map(h => h.trim());
+  const map = new Map();
+  for (let r = 1; r < lines.length; r++) {
+    const vals = lines[r].split(delim).map(v => v.trim());
+    const taxon = vals[0].replace(/_/g, ' ');
+    const obj = {};
+    for (let c = 1; c < headers.length; c++) obj[headers[c]] = vals[c] || '';
+    map.set(taxon, obj);
+  }
+  return { headers: headers.slice(1), data: map };
+}
+
+function attachTraits(node, traitMap) {
+  if (!node.children || node.children.length === 0) {
+    const traits = traitMap.get(node.name);
+    if (traits) node.data = { ...traits };
+  } else {
+    node.children.forEach(c => attachTraits(c, traitMap));
+  }
+}
+
+function buildColorPalette(traitInfo, colorCol) {
+  if (!traitInfo || !colorCol) return {};
+  const uniqueVals = [...new Set(traitInfo.data.values())].map(d => d[colorCol]).filter(Boolean);
+  const uniq = [...new Set(uniqueVals)];
+  const palette = [
+    '#c9a227', '#4faadf', '#34d399', '#e86452', '#b074d0',
+    '#e880a0', '#5ec6b8', '#db8e42', '#7a8ff5', '#c0c0c0',
+    '#f06070', '#40b0a0', '#e0a030', '#8060d0', '#50c070',
+  ];
+  const map = {};
+  uniq.forEach((v, i) => { map[v] = palette[i % palette.length]; });
+  return map;
+}
+
+// ============================================================
+// MODAL LOGIC
+// ============================================================
+const newickModal = document.getElementById('newick-modal');
+document.getElementById('load-newick').addEventListener('click', () => newickModal.classList.add('open'));
+document.getElementById('newick-cancel').addEventListener('click', () => newickModal.classList.remove('open'));
+newickModal.addEventListener('click', (e) => { if (e.target === newickModal) newickModal.classList.remove('open'); });
+
+document.getElementById('newick-go').addEventListener('click', () => {
+  const nwkStr = document.getElementById('newick-input').value.trim();
+  const traitStr = document.getElementById('trait-input').value.trim();
+  const colorField = document.getElementById('color-field').value.trim();
+  const errEl = document.getElementById('newick-error');
+  if (!nwkStr) { errEl.textContent = 'Please enter a Newick string.'; errEl.style.display = 'block'; return; }
+  let parsed;
+  try { parsed = parseNewick(nwkStr); }
+  catch (e) { errEl.textContent = 'Parse error: ' + e.message; errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+  const traitInfo = parseTraitCSV(traitStr);
+  if (traitInfo) attachTraits(parsed, traitInfo.data);
+  if (colorField && traitInfo) {
+    Object.keys(familyColors).forEach(k => delete familyColors[k]);
+    Object.assign(familyColors, buildColorPalette(traitInfo, colorField));
+    currentColorField = colorField;
+  } else { currentColorField = 'family'; }
+  loadTree(parsed);
+  newickModal.classList.remove('open');
+});
+
+// ============================================================
+// Dynamic tree loading
+// ============================================================
+let currentColorField = 'family';
+let _rawTreeData;
+
+function loadTree(data) {
+  _rawTreeData = data;
+  _rebuildRoot();
+  collapsedNodes.clear();
+  buildLegend();
+  render();
+}
+
+function _rebuildRoot() {
+  const h = d3.hierarchy(_rawTreeData);
+  Object.assign(root, h);
+  setCumulativeLength(root);
+  window._maxLen = d3.max(root.leaves(), d => d.cumLen);
+}
+
+// ============================================================
+// DEMO DATA — Beetle phylogeny with karyotype & trait data
+// ============================================================
+const treeData = {
+  name: "", branchLength: 0,
+  children: [
+    { name: "", branchLength: 0.08, children: [
+      { name: "", branchLength: 0.04, children: [
+        { name: "", branchLength: 0.08, children: [
+          { name: "Dynastes hercules", branchLength: 0.15, data: { family: "Scarabaeidae", chr: "2n = 20", habitat: "Neotropical", diet: "Saprophagous", size: "50–170 mm" }},
+          { name: "Dynastes tityus", branchLength: 0.18, data: { family: "Scarabaeidae", chr: "2n = 20", habitat: "Nearctic", diet: "Saprophagous", size: "40–60 mm" }},
+        ]},
+        { name: "", branchLength: 0.06, children: [
+          { name: "Megasoma elephas", branchLength: 0.21, data: { family: "Scarabaeidae", chr: "2n = 20", habitat: "Neotropical", diet: "Saprophagous", size: "50–120 mm" }},
+          { name: "Megasoma actaeon", branchLength: 0.23, data: { family: "Scarabaeidae", chr: "2n = 18", habitat: "Neotropical", diet: "Saprophagous", size: "50–135 mm" }},
+        ]},
+      ]},
+      { name: "", branchLength: 0.14, children: [
+        { name: "Goliathus goliatus", branchLength: 0.14, data: { family: "Scarabaeidae", chr: "2n = 20", habitat: "Afrotropical", diet: "Frugivorous", size: "50–110 mm" }},
+        { name: "", branchLength: 0.06, children: [
+          { name: "Chelorrhina polyphemus", branchLength: 0.11, data: { family: "Scarabaeidae", chr: "2n = 20", habitat: "Afrotropical", diet: "Frugivorous", size: "40–65 mm" }},
+          { name: "Mecynorrhina torquata", branchLength: 0.13, data: { family: "Scarabaeidae", chr: "2n = 20", habitat: "Afrotropical", diet: "Frugivorous", size: "45–85 mm" }},
+        ]},
+      ]},
+    ]},
+    { name: "", branchLength: 0.10, children: [
+      { name: "", branchLength: 0.15, children: [
+        { name: "Lucanus cervus", branchLength: 0.12, data: { family: "Lucanidae", chr: "2n = 24", habitat: "Palearctic", diet: "Saprophagous", size: "25–75 mm" }},
+        { name: "Lucanus elaphus", branchLength: 0.14, data: { family: "Lucanidae", chr: "2n = 24", habitat: "Nearctic", diet: "Saprophagous", size: "30–45 mm" }},
+      ]},
+      { name: "", branchLength: 0.05, children: [
+        { name: "", branchLength: 0.10, children: [
+          { name: "Cyclommatus metallifer", branchLength: 0.13, data: { family: "Lucanidae", chr: "2n = 18", habitat: "Indomalayan", diet: "Saprophagous", size: "30–90 mm" }},
+          { name: "Prosopocoilus giraffa", branchLength: 0.16, data: { family: "Lucanidae", chr: "2n = 22", habitat: "Indomalayan", diet: "Saprophagous", size: "35–120 mm" }},
+        ]},
+        { name: "", branchLength: 0.11, children: [
+          { name: "Chiasognathus grantii", branchLength: 0.14, data: { family: "Lucanidae", chr: "2n = 20", habitat: "Neotropical", diet: "Saprophagous", size: "35–80 mm" }},
+          { name: "", branchLength: 0.07, children: [
+            { name: "Dorcus titanus", branchLength: 0.10, data: { family: "Lucanidae", chr: "2n = 18", habitat: "Indomalayan", diet: "Saprophagous", size: "30–110 mm" }},
+            { name: "Dorcus parallelipipedus", branchLength: 0.09, data: { family: "Lucanidae", chr: "2n = 18", habitat: "Palearctic", diet: "Saprophagous", size: "18–32 mm" }},
+          ]},
+        ]},
+      ]},
+    ]},
+  ]
+};
+
+// ============================================================
+// Color palette
+// ============================================================
+const familyColors = {
+  "Scarabaeidae": "#c9a227",
+  "Lucanidae": "#4faadf",
+};
+
+// ============================================================
+// Layout engine
+// ============================================================
+const container = document.getElementById('tree-container');
+const svg = d3.select('#tree-svg');
+const tooltip = document.getElementById('phylo-tooltip');
+let currentMode = 'phylogram';
+const margin = { top: 40, right: 220, bottom: 60, left: 40 };
+
+const root = d3.hierarchy(treeData);
+
+function setCumulativeLength(node, parentLen = 0) {
+  node.cumLen = parentLen + (node.data.branchLength || 0);
+  if (node.children) node.children.forEach(c => setCumulativeLength(c, node.cumLen));
+}
+setCumulativeLength(root);
+
+let maxLen = d3.max(root.leaves(), d => d.cumLen);
+window._maxLen = maxLen;
+
+const collapsedNodes = new Set();
+
+function getVisibleRoot() {
+  function cloneVisible(node) {
+    const { children: _rawChildren, ...rest } = node.data;
+    const clone = { ...rest, _origNode: node };
+    if (node.children && !collapsedNodes.has(node)) {
+      clone.children = node.children.map(cloneVisible);
+    } else if (node.children && collapsedNodes.has(node)) {
+      clone._collapsedCount = node.leaves().length;
+    }
+    return clone;
+  }
+  const visData = cloneVisible(root);
+  const visRoot = d3.hierarchy(visData);
+  visRoot.each(n => {
+    if (n.data._origNode) {
+      n.cumLen = n.data._origNode.cumLen;
+      n.data.branchLength = n.data._origNode.data.branchLength;
+      n.data.name = n.data._origNode.data.name;
+      n.data.data = n.data._origNode.data.data;
+    }
+  });
+  return visRoot;
+}
+
+// ============================================================
+// Render
+// ============================================================
+let zoomBehavior, gMain;
+
+function render() {
+  svg.selectAll('*').remove();
+  const W = container.clientWidth;
+  const H = container.clientHeight;
+  gMain = svg.append('g');
+  zoomBehavior = d3.zoom().scaleExtent([0.3, 5]).on('zoom', (e) => gMain.attr('transform', e.transform));
+  svg.call(zoomBehavior);
+  const visRoot = getVisibleRoot();
+  if (currentMode === 'radial') renderRadial(visRoot, W, H);
+  else renderRectangular(visRoot, W, H);
+}
+
+function renderRectangular(visRoot, W, H) {
+  const numLeaves = visRoot.leaves().length;
+  const treeH = Math.max(H - margin.top - margin.bottom, numLeaves * 28);
+  const treeW = W - margin.left - margin.right;
+  const g = gMain.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const cluster = d3.cluster().size([treeH, treeW - 60]);
+  cluster(visRoot);
+  const xScale = d3.scaleLinear().domain([0, window._maxLen || maxLen]).range([0, treeW - 60]);
+
+  visRoot.each(n => {
+    if (currentMode === 'phylogram') { n.plotX = xScale(n.cumLen); }
+    else { n.plotX = n.y; }
+    n.plotY = n.x;
+  });
+
+  if (currentMode === 'phylogram') visRoot.each(n => { n.plotX = xScale(n.cumLen); });
+
+  g.selectAll('.link').data(visRoot.links()).enter().append('path')
+    .attr('class', 'link')
+    .attr('d', d => `M${d.source.plotX},${d.source.plotY}V${d.target.plotY}H${d.target.plotX}`);
+
+  const nodes = g.selectAll('.node').data(visRoot.descendants()).enter().append('g')
+    .attr('class', 'node').attr('transform', d => `translate(${d.plotX},${d.plotY})`);
+
+  nodes.filter(d => d.children || d.data._collapsedCount).append('circle')
+    .attr('r', d => d.data._collapsedCount ? 7 : 5)
+    .attr('class', d => 'internal' + (d.data._collapsedCount ? ' collapsed' : ''))
+    .on('click', (e, d) => {
+      if (!d.data._origNode) return;
+      const orig = d.data._origNode;
+      if (collapsedNodes.has(orig)) collapsedNodes.delete(orig);
+      else collapsedNodes.add(orig);
+      render();
+    });
+
+  nodes.filter(d => d.data._collapsedCount).append('text')
+    .attr('dy', -12).attr('text-anchor', 'middle')
+    .style('fill', '#e8973e').style('font-size', '11px')
+    .text(d => `${d.data._collapsedCount} tips`);
+
+  const leaves = nodes.filter(d => !d.children && !d.data._collapsedCount);
+  leaves.append('circle').attr('r', 5).attr('class', 'leaf')
+    .attr('fill', d => { const v = d.data.data && d.data.data[currentColorField]; return familyColors[v] || '#888'; })
+    .attr('stroke', d => { const v = d.data.data && d.data.data[currentColorField]; return d3.color(familyColors[v] || '#888').brighter(0.5); });
+
+  leaves.append('text').attr('dx', 10).attr('dy', 4).attr('class', 'species-label').text(d => d.data.name);
+
+  leaves.on('mouseenter', (e, d) => showTooltip(e, d)).on('mousemove', moveTooltip).on('mouseleave', hideTooltip);
+
+  leaves.on('mouseenter.highlight', (e, d) => {
+    const ancestorSet = new Set(d.ancestors());
+    g.selectAll('.link').classed('highlighted', l => ancestorSet.has(l.source) && ancestorSet.has(l.target));
+  }).on('mouseleave.highlight', () => g.selectAll('.link').classed('highlighted', false));
+
+  if (currentMode === 'phylogram') {
+    const scaleLen = 0.1;
+    const barW = xScale(scaleLen);
+    const barG = g.append('g').attr('transform', `translate(20, ${treeH + 30})`);
+    barG.append('line').attr('x1', 0).attr('x2', barW).attr('y1', 0).attr('y2', 0).attr('class', 'scale-bar');
+    barG.append('line').attr('x1', 0).attr('x2', 0).attr('y1', -5).attr('y2', 5).attr('class', 'scale-bar');
+    barG.append('line').attr('x1', barW).attr('x2', barW).attr('y1', -5).attr('y2', 5).attr('class', 'scale-bar');
+    barG.append('text').attr('x', barW / 2).attr('y', 18).attr('text-anchor', 'middle').attr('class', 'scale-text').text(`${scaleLen} substitutions/site`);
+  }
+
+  const bounds = g.node().getBBox();
+  const fullW = bounds.width + margin.left + margin.right + 40;
+  const fullH = bounds.height + margin.top + margin.bottom + 40;
+  const scale = Math.min(W / fullW, H / fullH, 1) * 0.9;
+  const tx = (W - bounds.width * scale) / 2 - bounds.x * scale;
+  const ty = (H - bounds.height * scale) / 2 - bounds.y * scale;
+  svg.call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+}
+
+function renderRadial(visRoot, W, H) {
+  const radius = Math.min(W, H) / 2 - 120;
+  const g = gMain.append('g').attr('transform', `translate(${W/2},${H/2})`);
+  const cluster = d3.cluster().size([360, radius]).separation(() => 1);
+  cluster(visRoot);
+  const rScale = d3.scaleLinear().domain([0, window._maxLen || maxLen]).range([0, radius]);
+  visRoot.each(n => { n.angle = n.x; n.radius = rScale(n.cumLen); });
+
+  function project(angle, r) { const a = (angle - 90) / 180 * Math.PI; return [r * Math.cos(a), r * Math.sin(a)]; }
+
+  g.selectAll('.link').data(visRoot.links()).enter().append('path').attr('class', 'link')
+    .attr('d', d => {
+      const sp = project(d.source.angle, d.source.radius);
+      const mp = project(d.target.angle, d.source.radius);
+      const tp = project(d.target.angle, d.target.radius);
+      return `M${sp[0]},${sp[1]}A${d.source.radius},${d.source.radius} 0 0 ${d.target.angle > d.source.angle ? 1 : 0} ${mp[0]},${mp[1]}L${tp[0]},${tp[1]}`;
+    });
+
+  const nodes = g.selectAll('.node').data(visRoot.descendants()).enter().append('g').attr('class', 'node')
+    .attr('transform', d => { const p = project(d.angle, d.radius); return `translate(${p[0]},${p[1]})`; });
+
+  nodes.filter(d => d.children || d.data._collapsedCount).append('circle')
+    .attr('r', d => d.data._collapsedCount ? 7 : 4)
+    .attr('class', d => 'internal' + (d.data._collapsedCount ? ' collapsed' : ''))
+    .on('click', (e, d) => {
+      if (!d.data._origNode) return;
+      const orig = d.data._origNode;
+      if (collapsedNodes.has(orig)) collapsedNodes.delete(orig);
+      else collapsedNodes.add(orig);
+      render();
+    });
+
+  const leaves = nodes.filter(d => !d.children && !d.data._collapsedCount);
+  leaves.append('circle').attr('r', 5).attr('class', 'leaf')
+    .attr('fill', d => { const v = d.data.data && d.data.data[currentColorField]; return familyColors[v] || '#888'; })
+    .attr('stroke', d => { const v = d.data.data && d.data.data[currentColorField]; return d3.color(familyColors[v] || '#888').brighter(0.5); });
+
+  leaves.append('text').attr('dy', 4).attr('class', 'species-label')
+    .attr('text-anchor', d => d.angle > 180 ? 'end' : 'start')
+    .attr('dx', d => d.angle > 180 ? -10 : 10)
+    .attr('transform', d => d.angle > 180 ? 'rotate(180)' : null)
+    .text(d => d.data.name);
+
+  leaves.on('mouseenter', (e, d) => showTooltip(e, d)).on('mousemove', moveTooltip).on('mouseleave', hideTooltip);
+  svg.call(zoomBehavior.transform, d3.zoomIdentity);
+}
+
+// ============================================================
+// Tooltip
+// ============================================================
+function showTooltip(event, d) {
+  const dd = d.data.data;
+  if (!dd) {
+    if (d.data.name) { tooltip.innerHTML = `<div class="tt-name">${d.data.name}</div>`; tooltip.classList.add('visible'); moveTooltip(event); }
+    return;
+  }
+  let html = `<div class="tt-name">${d.data.name}</div><hr class="tt-divider">`;
+  for (const [key, val] of Object.entries(dd)) {
+    if (val) { const label = key.charAt(0).toUpperCase() + key.slice(1); html += `<div class="tt-row"><span class="tt-label">${label}</span><span class="tt-value">${val}</span></div>`; }
+  }
+  tooltip.innerHTML = html;
+  tooltip.classList.add('visible');
+  moveTooltip(event);
+}
+
+function moveTooltip(event) {
+  const rect = container.getBoundingClientRect();
+  let x = event.clientX - rect.left + 16;
+  let y = event.clientY - rect.top - 10;
+  if (x + 280 > rect.width) x = event.clientX - rect.left - 296;
+  if (y + 200 > rect.height) y = rect.height - 210;
+  tooltip.style.left = x + 'px';
+  tooltip.style.top = y + 'px';
+}
+
+function hideTooltip() { tooltip.classList.remove('visible'); }
+
+// ============================================================
+// Legend
+// ============================================================
+function buildLegend() {
+  const title = currentColorField.charAt(0).toUpperCase() + currentColorField.slice(1);
+  let html = `<div class="legend-title">${title}</div>`;
+  for (const [val, col] of Object.entries(familyColors)) {
+    html += `<div class="legend-item"><div class="legend-swatch" style="background:${col}"></div><span>${val}</span></div>`;
+  }
+  html += '<hr class="tt-divider" style="margin:10px 0 8px">';
+  html += '<div class="legend-item"><div class="legend-swatch" style="background:#e8973e"></div><span>Collapsed clade</span></div>';
+  document.getElementById('legend').innerHTML = html;
+}
+
+// ============================================================
+// Event listeners
+// ============================================================
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMode = btn.dataset.mode;
+    render();
+  });
+});
+
+document.getElementById('expand-all').addEventListener('click', () => { collapsedNodes.clear(); render(); });
+document.getElementById('reset-zoom').addEventListener('click', () => { svg.transition().duration(400).call(zoomBehavior.transform, d3.zoomIdentity); setTimeout(render, 420); });
+window.addEventListener('resize', render);
+
+// ============================================================
+// Init
+// ============================================================
+buildLegend();
+render();
+</script>
+</body>
+</html>
