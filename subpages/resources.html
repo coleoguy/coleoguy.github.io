@@ -5,36 +5,39 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Foundational Resources - Blackmon Lab</title>
-  <meta name="description" content="Foundational software, tools, and resources for biologists.">
-    <meta property="og:title" content="Foundational Resources - Blackmon Lab" />
-    <meta property="og:description" content="Foundational software, tools, and resources for biologists." />
-    <meta property="og:url" content="https://coleoguy.github.io/subpages/resources.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
+  <meta name="description" content="Curated list of foundational software, tools, and databases for biological research. Covers coding, genomics, phylogenetics, ecology, writing, and career resources.">
+  <meta property="og:title" content="Foundational Resources - Blackmon Lab" />
+  <meta property="og:description" content="Curated list of foundational software, tools, and databases for biological research. Covers coding, genomics, phylogenetics, ecology, writing, and career resources." />
+  <meta property="og:url" content="https://coleoguy.github.io/subpages/resources.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blackmon Lab" />
   <meta name="keywords" content="biology, software, resources, R, phylogenetics, genomics, TAMU">
+  <link rel="canonical" href="https://coleoguy.github.io/subpages/resources.html">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
 
   <link href="../assets/img/favicon.ico" rel="icon">
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
   <link href="../assets/css/main.css" rel="stylesheet">
-
 </head>
 
-<body class="index-page">
-
-  <div class="preloader"></div>
+<body>
+  <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
       <div class="logo-group d-flex align-items-center gap-2">
         <a href="../index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
@@ -46,28 +49,26 @@
           <li><a href="../research.html">Research</a></li>
           <li><a href="../publications.html">Publications</a></li>
           <li><a href="../team.html">Team</a></li>
-          <li><a href="../subpages/resources.html">Resources</a></li>
+          <li><a href="../resources.html">Resources</a></li>
           <li><a href="../ai.html">AI</a></li>
           <li><a href="../join.html">Join</a></li>
-          <li><a href="../news.html">News</a></li>
           <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
       </nav>
-
     </div>
   </header>
 
   <main class="main">
 
-    <section id="page-header" class="page-header">
+    <section class="page-header">
       <div class="container">
         <h1>Foundational Tools & Resources</h1>
-        <p class="lead">Below is a curated list of the tools, software, and databases that constitute the backbone of modern biological research.</p>
+        <p class="lead">A curated list of the tools, software, and databases that constitute the backbone of modern biological research.</p>
       </div>
     </section>
 
-    <section id="foundational-resources" class="resources section">
+    <section class="resources section">
       <div class="container">
 
         <!-- Section 1: Lab Management & Protocols -->
@@ -75,7 +76,7 @@
           <h4 class="resource-category">
             <i class="bi bi-flask"></i> 1. The "Must Haves" (Lab Management & Protocols)
           </h4>
-          
+
           <div class="resource-item">
             <a href="https://www.protocols.io/" target="_blank" class="resource-link"><strong>Protocols.io</strong></a>
             <p class="resource-desc">The open-access standard for sharing detailed methods. <span class="mentor-note">Essential for reproducibility; don't just keep it in a paper notebook.</span></p>
@@ -280,7 +281,7 @@
         <!-- Section 7: Molecular Biology & General Tools -->
         <div class="resource-section">
           <h4 class="resource-category">
-            <i class="bi bi-beaker"></i> 7. Molecular Biology & General Tools
+            <i class="bi bi-droplet"></i> 7. Molecular Biology & General Tools
           </h4>
 
           <div class="resource-item">
@@ -443,31 +444,19 @@
 
   </main>
 
-  <footer id="footer" class="site-footer">
+  <footer id="footer" class="footer">
     <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+      <div class="copyright text-center">
+        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
+      </div>
     </div>
   </footer>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
   <script src="../assets/js/main.js"></script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
 
 </body>
 
