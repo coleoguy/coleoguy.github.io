@@ -11,6 +11,13 @@
 
   const NEWS_DATA = [
     {
+      "date": "2026-03-21",
+      "title": "10 Papers in One Week: A Progress Report",
+      "body": "I told the lab we were going to submit 10 papers this week. We submitted four, which, for anyone keeping score, is still an absurd amount of work for one week. Beyond the submissions, the progress people made on other manuscripts and analyses was just as impressive. Wildly proud of this group.",
+      "category": "lab",
+      "icon": "bi-journal-check"
+    },
+    {
       "date": "2026-03-14",
       "title": "Lab paper sprint: 10 manuscripts targeted for submission",
       "body": "The week of March 16th we are launching a lab-wide paper sprint with a goal of submitting or resubmitting 10 manuscripts. We have multiple graduate students and undergraduates with papers that are virtually complete — this is a coordinated push to get them across the finish line. We will post updates here as each paper is submitted or resubmitted.",

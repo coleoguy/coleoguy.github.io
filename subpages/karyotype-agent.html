@@ -6,13 +6,14 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Autonomous Karyotype Data Collector - Blackmon Lab</title>
   <meta name="description" content="An AI-native autonomous agent that crawls the scientific literature to build a comprehensive Coleoptera karyotype database. Uses Claude AI for triage and extraction across PubMed and CrossRef.">
+    <meta property="og:title" content="Autonomous Karyotype Data Collector - Blackmon Lab" />
+    <meta property="og:description" content="An AI-native autonomous agent that crawls the scientific literature to build a comprehensive Coleoptera karyotype database. Uses Claude AI for triage and extraction across PubMed and CrossRef." />
+    <meta property="og:url" content="https://coleoguy.github.io/subpages/karyotype-agent.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Blackmon Lab" />
   <meta name="keywords" content="karyotype database, Coleoptera chromosomes, autonomous AI agent, beetle cytogenetics, literature mining, Blackmon Lab, TAMU Biology">
   <link rel="canonical" href="https://coleoguy.github.io/subpages/karyotype-agent.html">
 
-  <meta property="og:title" content="Autonomous Karyotype Data Collector - Blackmon Lab">
-  <meta property="og:description" content="An AI-native autonomous agent that crawls the scientific literature to build a comprehensive Coleoptera karyotype database.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://coleoguy.github.io/subpages/karyotype-agent.html">
   <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
@@ -37,7 +38,7 @@
     .agent-hero {
       background: linear-gradient(135deg, #0f1923 0%, #1a2d40 50%, #0f1923 100%);
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 60px 0 48px;
+      padding: 100px 0 48px;
       text-align: center;
     }
     .agent-hero h1 {
@@ -83,8 +84,8 @@
       margin: 40px 0;
     }
     .stat-card {
-      background: var(--surface-color, #1a1f2e);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px 20px;
       text-align: center;
@@ -92,13 +93,13 @@
     .stat-card .stat-num {
       font-size: 2.2rem;
       font-weight: 700;
-      color: var(--accent-color, #e8a44a);
+      color: var(--accent);
       line-height: 1;
       margin-bottom: 6px;
     }
     .stat-card .stat-label {
       font-size: 0.82rem;
-      color: rgba(255,255,255,0.5);
+      color: var(--text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -113,8 +114,8 @@
       margin: 32px 0;
     }
     .pipeline-step {
-      background: var(--surface-color, #1a1f2e);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 10px;
       padding: 18px 22px;
       text-align: center;
@@ -128,16 +129,16 @@
     .pipeline-step .step-name {
       font-size: 0.88rem;
       font-weight: 600;
-      color: #e0e6f0;
+      color: var(--text-heading);
     }
     .pipeline-step .step-sub {
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.45);
+      color: var(--text-muted);
       margin-top: 3px;
     }
     .pipeline-arrow {
       font-size: 1.4rem;
-      color: rgba(255,255,255,0.3);
+      color: var(--text-muted);
       padding: 0 4px;
     }
     @media (max-width: 640px) {
@@ -147,8 +148,8 @@
 
     /* ── Feature cards ────────────────────────────────────── */
     .feature-card {
-      background: var(--surface-color, #1a1f2e);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 28px 24px;
       height: 100%;
@@ -161,12 +162,12 @@
     .feature-card h5 {
       font-size: 1rem;
       font-weight: 600;
-      color: #e0e6f0;
+      color: var(--text-heading);
       margin-bottom: 10px;
     }
     .feature-card p {
       font-size: 0.88rem;
-      color: rgba(255,255,255,0.55);
+      color: var(--text-secondary);
       line-height: 1.65;
       margin: 0;
     }
@@ -178,30 +179,30 @@
       font-size: 0.85rem;
     }
     .schema-table th {
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.6);
+      background: var(--bg-card);
+      color: var(--text-secondary);
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       padding: 10px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid var(--border);
       font-weight: 600;
     }
     .schema-table td {
       padding: 9px 14px;
-      color: rgba(255,255,255,0.75);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
       vertical-align: top;
     }
-    .schema-table tr:hover td { background: rgba(255,255,255,0.03); }
+    .schema-table tr:hover td { background: var(--bg-card-hover); }
     .schema-table .field-name {
       font-family: monospace;
-      color: #7dd3fc;
+      color: var(--accent);
       font-size: 0.82rem;
     }
     .schema-table .field-group {
       font-size: 0.72rem;
-      color: rgba(255,255,255,0.35);
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -210,11 +211,11 @@
     .section-heading {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #e0e6f0;
+      color: var(--text-heading);
       margin-bottom: 8px;
     }
     .section-sub {
-      color: rgba(255,255,255,0.5);
+      color: var(--text-secondary);
       font-size: 0.92rem;
       margin-bottom: 28px;
     }
@@ -233,6 +234,14 @@
     .code-block .comment { color: #6b737d; }
     .code-block .cmd { color: #7dd3fc; }
     .code-block .flag { color: #a5d6a7; }
+    body.light-mode .code-block {
+      background: #f6f8fa;
+      border-color: rgba(0,0,0,0.1);
+      color: #24292f;
+    }
+    body.light-mode .code-block .comment { color: #6a737d; }
+    body.light-mode .code-block .cmd { color: #0550ae; }
+    body.light-mode .code-block .flag { color: #116329; }
 
     /* ── Status badge ─────────────────────────────────────── */
     .status-row {
@@ -245,12 +254,12 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 20px;
       padding: 5px 14px;
       font-size: 0.83rem;
-      color: rgba(255,255,255,0.7);
+      color: var(--text);
     }
     .status-pill .pill-dot {
       width: 7px; height: 7px;
@@ -266,25 +275,35 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: rgba(255,255,255,0.5);
+      color: var(--text-secondary);
       font-size: 0.85rem;
       text-decoration: none;
       margin-bottom: 32px;
       transition: color 0.2s;
     }
-    .back-link:hover { color: rgba(255,255,255,0.85); }
+    .back-link:hover { color: var(--text); }
 
-    /* ── Dark content sections ────────────────────────────── */
+    /* ── Content sections ─────────────────────────────────── */
     .content-section {
       padding: 56px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid var(--border);
     }
     .content-section:last-child { border-bottom: none; }
+
+    /* ── Light mode hero adjustments ──────────────────────── */
+    body.light-mode .agent-hero {
+      background: linear-gradient(135deg, #1a2d40 0%, #2a4a6b 50%, #1a2d40 100%);
+    }
   </style>
 </head>
 
 <body>
-  <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
+  <script>
+    try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}
+    document.body.classList.add('scrolled');
+    window.addEventListener('load', function() { document.body.classList.add('scrolled'); });
+  </script>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important"><i class="bi bi-arrow-up-short"></i></a>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">

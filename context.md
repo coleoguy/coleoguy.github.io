@@ -120,6 +120,7 @@ Pages in subdirectories (`phylo-methods/`, `subpages/`, `karyotypes/`) use `../`
 | `tamu-ai-concentration.html` | AI concentration in Biology degree |
 | `chromosome-evolution-history.html` | Intellectual history of chromosome evolution research; newspaper two-column layout with Playfair Display font; includes "What Has This Lab Added?" section |
 | `citation-network.html` | D3 force-directed citation network, fetches from OpenAlex by ORCID |
+| `phylo-explorer.html` | Interactive D3.js phylogenetic tree viewer — Newick upload, cladogram/phylogram/radial layouts, trait coloring, clade collapsing |
 | `sitemap.xml` | XML sitemap — update when adding new pages |
 | `llms.txt` | Plain-text site guide for LLMs — update when adding new pages |
 | `robots.txt` | Standard crawl rules |
@@ -171,8 +172,8 @@ The following pages are deliberately cross-linked — maintain these when editin
 
 - `research.html` ↔ `karyotypes/index.html` ↔ `chromosome-evolution-history.html` ↔ `phylo-methods/discrete.html`
 - `phylo-methods/discrete.html` ↔ `phylo-methods/likelihood-ridges.html`
-- `resources.html` → `subpages/data-sources.html`, `subpages/glossary.html`, `phylo-methods/bd-simulator.html`
-- `index.html` hub cards → all major sections including `chromosome-evolution-history.html`
+- `resources.html` → `subpages/data-sources.html`, `subpages/glossary.html`, `phylo-methods/bd-simulator.html`, `phylo-explorer.html`
+- `index.html` hub cards → all major sections including `chromosome-evolution-history.html`, `phylo-explorer.html`
 - `publications.html` → `citation-network.html`
 
 ---
@@ -239,6 +240,12 @@ Major additions made across two extended sessions:
 - **CUREs Karyotype Database** (`cures-karyotype-database.html`): Brought into site design system — replaced custom header with standard site header/nav, added site footer with scroll-top, loaded `main.css` + Bootstrap + Bootstrap Icons, added SEO meta tags (description, OG, canonical), favicon. Functional CSS scoped under `.db-app` and `.db-container` to avoid conflicts with `main.css`. Added to `sitemap.xml`.
 - **Sitemap**: Added `cures-karyotype-database.html` (62 URLs total).
 - **Known remaining issues**: (1) Megan Copeland still listed as grad student on `team.html` but defended dissertation Feb 2026 — needs move to Alumni; (2) Homepage Google Calendar embed shows personal events (Gym, Trivia Night, etc.) publicly — consider switching to a lab-only calendar or removing.
+
+---
+
+## Phylogenetic Tree Explorer (March 2026)
+
+Interactive D3.js tree viewer (`phylo-explorer.html`). Users paste or upload Newick strings and optional CSV/TSV trait data. Three layout modes: cladogram, phylogram (branch-length-scaled), and radial. Features: clade collapsing/expanding, hover tooltips, trait-based tip coloring with auto-generated legend, zoom/pan, SVG export. Demo data: beetle phylogeny with habitat traits. Forces `body.scrolled` class for opaque header. Includes hidden `.scroll-top` element required by `main.js`. Linked from `index.html` (hub card), `resources.html` (Interactive section).
 
 ---
 

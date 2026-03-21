@@ -143,6 +143,11 @@ URL: https://coleoguy.github.io/subpages/data-sources.html
 Plain-language definitions of core concepts in the Blackmon Lab's research areas: phylogenetics and comparative methods, chromosome and karyotype evolution, population genetics, and genomics. Terms include: birth-death model, Mk model, Brownian motion, PGLS, phylogenetic signal, sex chromosome, B chromosomes, fixation probability, coalescence, and more. Aimed at upper undergrads and early grad students entering the field.
 URL: https://coleoguy.github.io/subpages/glossary.html
 
+## Phylogenetic Tree Explorer
+
+Interactive D3.js-based phylogenetic tree viewer. Users paste or upload a Newick string and optionally a CSV/TSV trait file. Supports three layout modes: cladogram (equal leaf spacing), phylogram (branch lengths proportional to evolutionary distance), and radial (fan layout). Features include clade collapsing/expanding on click, hover tooltips with node info, trait-based tip coloring with legend, zoom/pan, and SVG export. Demo data shows a beetle phylogeny with habitat traits. Fully client-side, no server required.
+URL: https://coleoguy.github.io/phylo-explorer.html
+
 ## BIOL 682: Communication in the Biological Sciences
 
 Course materials for BIOL 682 — scientific writing, storytelling, peer review, and revision in the biological sciences. Includes downloadable PDFs on common writing flaws in life sciences manuscripts, structured revision prompts, example revision responses, and peer review guidelines.
