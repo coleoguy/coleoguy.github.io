@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epistasis & the Shifting Balance — Blackmon Lab</title>
+  <meta name="description" content="A visual guide to epistasis, line cross analysis, and the shifting balance theory — from Wright and Fisher to modern quantitative genetics.">
+  <meta property="og:title" content="Epistasis & the Shifting Balance — Blackmon Lab" />
+  <meta property="og:description" content="A visual guide to epistasis, line cross analysis, and the shifting balance theory — from Wright and Fisher to modern quantitative genetics." />
+  <meta property="og:url" content="https://coleoguy.github.io/epistasis-line-cross.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blackmon Lab" />
+  <meta name="keywords" content="epistasis, line cross analysis, shifting balance, Wright, Fisher, genetic architecture, SAGA, quantitative genetics">
+  <link rel="canonical" href="https://coleoguy.github.io/epistasis-line-cross.html">
+  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Site CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Playfair Display for hero -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Scroll progress bar ─────────────────────────── */
+    #scroll-progress {
+      position: fixed;
+      top: 62px;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent, #c9a227);
+      z-index: 1050;
+      transition: width 0.05s linear;
+    }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .ep-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+    }
+    .ep-hero .kicker {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 14px;
+    }
+    .ep-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text-heading, #f8f4ed);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .ep-hero .subtitle {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      max-width: 700px;
+      margin: 0 auto 28px;
+    }
+    .audio-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin-top: 10px;
+    }
+    .audio-wrap .audio-label {
+      font-size: 0.75rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    .audio-wrap audio { height: 32px; }
+
+    /* ── Split-panel sections ─────────────────────────── */
+    .ep-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+    }
+    .ep-section:nth-child(even) {
+      background: rgba(255,255,255,0.015);
+    }
+    .body-light .ep-section:nth-child(even),
+    .light-mode .ep-section:nth-child(even) {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .ep-theory {
+      padding-right: 28px;
+      border-right: 1px solid rgba(201,162,39,0.15);
+    }
+    .ep-evidence {
+      padding-left: 28px;
+    }
+    @media (max-width: 991.98px) {
+      .ep-theory, .ep-evidence { padding: 0; border-right: none; }
+      .ep-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
+    }
+
+    .ep-kicker {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 6px;
+    }
+    .ep-section h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-heading, #eae7e2);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .ep-section h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent, #c9a227);
+      margin: 24px 0 8px;
+    }
+    .ep-section h3:first-child { margin-top: 0; }
+    .ep-section p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text, #c8c5c0);
+      margin-bottom: 14px;
+    }
+    .ep-section a {
+      color: var(--accent, #c9a227);
+      text-decoration: underline;
+      text-decoration-color: rgba(201,162,39,0.4);
+      text-underline-offset: 2px;
+    }
+    .ep-section a:hover { text-decoration-color: var(--accent); }
+    .ep-section strong {
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+    }
+
+    .pullquote {
+      border-left: 3px solid var(--accent, #c9a227);
+      padding: 10px 18px;
+      margin: 20px 0;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--accent, #c9a227);
+      line-height: 1.6;
+    }
+
+    /* ── Paper masthead cards ─────────────────────────── */
+    .paper-masthead {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .paper-masthead:hover {
+      border-color: rgba(201,162,39,0.5);
+      text-decoration: none;
+    }
+    .paper-masthead .journal {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent, #c9a227);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .paper-masthead .paper-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+    .paper-masthead .authors {
+      font-size: 0.78rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      line-height: 1.4;
+    }
+    .paper-masthead .pub-year {
+      font-size: 0.7rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-top: 4px;
+    }
+    .badge-f1000 {
+      display: inline-block;
+      background: var(--accent, #c9a227);
+      color: #080808;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── Stat callout ──────────────────────────────────── */
+    .stat-callout {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+    .stat-callout .stat-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent, #c9a227);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .stat-callout .stat-text {
+      font-size: 0.82rem;
+      color: var(--text, #c8c5c0);
+      line-height: 1.4;
+    }
+
+    /* ── Software callout ──────────────────────────────── */
+    .software-callout {
+      background: rgba(201,162,39,0.06);
+      border: 1px solid rgba(201,162,39,0.25);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+    .software-callout .sw-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent, #c9a227);
+      margin-bottom: 6px;
+    }
+    .software-callout .sw-desc {
+      font-size: 0.85rem;
+      color: var(--text, #c8c5c0);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .software-callout code {
+      font-size: 0.8rem;
+      background: rgba(0,0,0,0.2);
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: var(--accent, #c9a227);
+    }
+
+    /* ── Diagram containers ────────────────────────────── */
+    .diagram-box {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 24px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .diagram-box svg { max-width: 100%; height: auto; }
+    .diagram-caption {
+      font-size: 0.72rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SVG colors via CSS ────────────────────────────── */
+    .chr-auto { fill: #555; }
+    .chr-sex { fill: var(--accent, #c9a227); }
+    .chr-sex-dim { fill: rgba(201,162,39,0.35); }
+    .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
+    .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
+    .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
+    .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
+    .chr-arrow { fill: var(--accent, #c9a227); }
+    .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
+    .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
+    .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
+    .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+    .chr-region { fill: rgba(201,162,39,0.12); }
+
+    .light-mode .chr-auto { fill: #bbb; }
+    .light-mode .chr-label { fill: #333; }
+    .light-mode .chr-label-sm { fill: #777; }
+    .light-mode .chr-heading { fill: #222; }
+    .light-mode .chr-line { stroke: #ccc; }
+    .light-mode .chr-line-dash { stroke: #ccc; }
+
+    /* ── Plotly chart containers ────────────────────────── */
+    .chart-box {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .chart-box .chart-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent, #c9a227);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    /* ── Toggle buttons for charts ─────────────────────── */
+    .chart-toggle {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .chart-toggle button {
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 16px;
+      background: transparent;
+      color: var(--text, #c8c5c0);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .chart-toggle button.active,
+    .chart-toggle button:hover {
+      border-color: var(--accent, #c9a227);
+      color: var(--accent, #c9a227);
+      background: rgba(201,162,39,0.08);
+    }
+
+    /* ── Related resources box ─────────────────────────── */
+    .related-box {
+      margin-top: 48px;
+      padding: 28px 32px;
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 10px;
+      background: rgba(201,162,39,0.03);
+    }
+    .related-box h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 16px;
+    }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .related-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid rgba(201,162,39,0.25);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--text, #c8c5c0);
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .related-link i { color: var(--accent); font-size: 0.75rem; }
+    .related-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .paper-foot {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(201,162,39,0.2);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+    }
+
+    /* ── Debate note ───────────────────────────────────── */
+    .debate-note {
+      background: rgba(201,162,39,0.06);
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.85rem;
+      color: var(--text, #c8c5c0);
+      line-height: 1.5;
+    }
+    .debate-note strong {
+      color: var(--accent, #c9a227);
+    }
+  </style>
+</head>
+
+<body class="resources-page">
+  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress"></div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group d-flex align-items-center gap-2">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="ep-hero" data-aos="fade-up">
+      <div class="container">
+        <div class="kicker">A Visual Guide</div>
+        <h1>Epistasis &amp; the Shifting Balance</h1>
+        <div class="subtitle">From Fisher and Wright to modern line cross analysis &mdash; how gene interactions shape evolution</div>
+
+        <!-- Decorative SVG: stylized fitness landscape -->
+        <svg width="260" height="80" viewBox="0 0 260 80" style="margin-bottom: 18px; opacity: 0.7;">
+          <!-- Fitness landscape silhouette -->
+          <path d="M0,70 Q20,68 35,50 Q50,30 65,35 Q80,40 95,20 Q110,0 125,15 Q140,30 155,28 Q170,25 185,10 Q200,0 215,30 Q230,55 245,50 Q255,48 260,50" fill="none" class="chr-line-accent" stroke-width="2"/>
+          <!-- Peaks highlighted -->
+          <circle cx="95" cy="20" r="4" class="chr-sex" opacity="0.8"/>
+          <circle cx="185" cy="10" r="4" class="chr-sex" opacity="0.8"/>
+          <!-- Valley -->
+          <circle cx="140" cy="30" r="3" class="chr-auto" opacity="0.5"/>
+          <!-- Labels -->
+          <text x="95" y="14" class="chr-label-sm" text-anchor="middle" style="font-size:7px">peak</text>
+          <text x="185" y="5" class="chr-label-sm" text-anchor="middle" style="font-size:7px">peak</text>
+          <text x="140" y="43" class="chr-label-sm" text-anchor="middle" style="font-size:7px">valley</text>
+        </svg>
+
+        <div class="audio-wrap">
+          <span class="audio-label">Listen: AI-Generated Research Podcast</span>
+          <audio controls preload="none" src="assets/quantgen.wav"></audio>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 1: WHAT IS EPISTASIS? ═══════════════ -->
+    <section class="ep-section" id="sec-what">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 ep-theory" data-aos="fade-up">
+            <div class="ep-kicker">Foundations</div>
+            <h2>What Is Epistasis?</h2>
+            <p><strong>Epistasis</strong> is the interaction between genes. More precisely, epistasis occurs when the phenotypic effect of an allele at one locus depends on the genotype at another locus. This is distinct from additive effects, where each allele contributes independently and predictably to the phenotype regardless of the genetic background.</p>
+            <p>Why does this matter? If genetic architectures are primarily additive, populations will tend to evolve smoothly toward a single optimum &mdash; a process well described by Fisher's infinitesimal model. But if epistasis is common, populations can get <strong>"trapped" on local fitness peaks</strong>. The response to selection depends critically on genetic background, and the adaptive landscape becomes rugged and multi-peaked.</p>
+
+            <h3>Types of Epistasis</h3>
+            <p><strong>Magnitude epistasis:</strong> The interaction changes the <em>size</em> of an allele's effect. An allele that increases body size by 2mm in one genetic background might increase it by only 0.5mm in another. The direction is the same, but the magnitude differs.</p>
+            <p><strong>Sign epistasis:</strong> The interaction <em>reverses the direction</em> of an allele's effect. An allele that is beneficial in one genetic background becomes deleterious in another. This is more consequential because it means that whether an allele is favored by selection depends on what else is in the genome.</p>
+            <p><strong>Reciprocal sign epistasis:</strong> Both alleles at the interacting loci reverse their effects depending on the other. This is the most important type for evolutionary theory because it is the <em>necessary and sufficient condition</em> for the existence of multiple fitness peaks. When reciprocal sign epistasis exists, there is no single-step mutational path from one peak to another that is always uphill &mdash; the population must cross a valley.</p>
+
+            <!-- SVG: Additive vs Epistatic landscapes -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 500 200" width="100%" aria-labelledby="svg-landscapes-title">
+                <title id="svg-landscapes-title">Additive vs. epistatic fitness landscapes</title>
+
+                <!-- Left: Additive / Single peak -->
+                <text x="125" y="18" class="chr-heading" text-anchor="middle">Additive Architecture</text>
+                <text x="125" y="32" class="chr-label-sm" text-anchor="middle">Single smooth peak</text>
+                <!-- Smooth hill -->
+                <path d="M15,175 Q40,170 60,150 Q80,120 100,80 Q115,50 125,40 Q135,50 145,80 Q165,120 185,150 Q205,170 235,175" fill="none" class="chr-line" stroke-width="1.5"/>
+                <!-- Peak dot -->
+                <circle cx="125" cy="40" r="5" class="chr-sex" opacity="0.9"/>
+                <!-- Population dot -->
+                <circle cx="90" cy="95" r="4" class="chr-auto" opacity="0.7"/>
+                <line x1="90" y1="91" x2="110" y2="60" class="chr-line-accent" stroke-width="1" marker-end="url(#arrowhead-ep)"/>
+                <text x="75" y="105" class="chr-label-sm" text-anchor="middle" style="font-size:8px">population</text>
+                <!-- Axis labels -->
+                <text x="125" y="192" class="chr-label-sm" text-anchor="middle">Genotype space</text>
+                <text x="6" y="105" class="chr-label-sm" text-anchor="middle" transform="rotate(-90,6,105)" style="font-size:8px">Fitness</text>
+
+                <!-- Right: Epistatic / Multi-peaked -->
+                <text x="375" y="18" class="chr-heading" text-anchor="middle">Epistatic Architecture</text>
+                <text x="375" y="32" class="chr-label-sm" text-anchor="middle">Multiple rugged peaks</text>
+                <!-- Rugged landscape -->
+                <path d="M265,175 Q280,168 295,140 Q310,105 320,85 Q330,70 340,75 Q350,80 358,100 Q365,115 372,110 Q378,100 385,60 Q392,35 400,45 Q408,55 418,80 Q428,110 440,130 Q455,160 485,175" fill="none" class="chr-line" stroke-width="1.5"/>
+                <!-- Peak 1 -->
+                <circle cx="320" cy="85" r="4" class="chr-sex" opacity="0.7"/>
+                <text x="320" y="78" class="chr-label-sm" text-anchor="middle" style="font-size:7px">local</text>
+                <!-- Peak 2 (global) -->
+                <circle cx="392" cy="35" r="5" class="chr-sex" opacity="0.9"/>
+                <text x="392" y="28" class="chr-label-sm" text-anchor="middle" style="font-size:7px">global</text>
+                <!-- Valley -->
+                <circle cx="358" cy="100" r="3" class="chr-auto" opacity="0.4"/>
+                <text x="358" y="118" class="chr-label-sm" text-anchor="middle" style="font-size:7px">valley</text>
+                <!-- Trapped population -->
+                <circle cx="310" cy="105" r="4" class="chr-auto" opacity="0.7"/>
+                <text x="298" y="118" class="chr-label-sm" text-anchor="middle" style="font-size:8px">trapped</text>
+                <!-- Axis labels -->
+                <text x="375" y="192" class="chr-label-sm" text-anchor="middle">Genotype space</text>
+
+                <!-- Arrowhead definition -->
+                <defs>
+                  <marker id="arrowhead-ep" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                    <polygon points="0 0, 8 3, 0 6" class="chr-arrow" opacity="0.8"/>
+                  </marker>
+                </defs>
+              </svg>
+              <div class="diagram-caption">Additive architectures produce smooth, single-peaked landscapes. Epistasis creates rugged, multi-peaked landscapes where populations can become trapped.</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 ep-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="ep-kicker">Foundational Papers</div>
+            <h2>The Papers That Launched a Field</h2>
+
+            <a href="https://doi.org/10.1017/S0080456800012163" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Transactions of the Royal Society of Edinburgh</div>
+              <div class="paper-title">The Correlation between Relatives on the Supposition of Mendelian Inheritance</div>
+              <div class="authors">R.A. Fisher</div>
+              <div class="pub-year">1918 &mdash; The paper that launched quantitative genetics by decomposing phenotypic variance into additive, dominance, and epistatic components</div>
+            </a>
+
+            <a href="https://doi.org/10.1093/genetics/16.2.97" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics</div>
+              <div class="paper-title">Evolution in Mendelian Populations</div>
+              <div class="authors">S. Wright</div>
+              <div class="pub-year">1931 &mdash; Introduced the adaptive landscape metaphor and argued for the evolutionary importance of population structure and gene interactions</div>
+            </a>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num">&gt;60%</div>
+              <div class="stat-text">In a survey of &gt;1,600 line cross datasets, epistasis was detected in the majority of crosses &mdash; it is the rule, not the exception (Burch et al. 2024)</div>
+            </div>
+
+            <a href="https://archive.org/details/mendelsprincipl01bategoog" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Cambridge University Press</div>
+              <div class="paper-title">Mendel's Principles of Heredity</div>
+              <div class="authors">W. Bateson</div>
+              <div class="pub-year">1909 &mdash; Coined the term "epistasis" to describe the masking of one gene's effect by another</div>
+            </a>
+
+            <div class="pullquote" data-aos="fade-left">
+              Fisher (1918) recognized that interactions between non-allelic genes &mdash; epistasis &mdash; represent the most important deviation from a simple additive scheme. &mdash; paraphrasing R.A. Fisher, <em>Trans. R. Soc. Edinb.</em> 52: 399&ndash;433
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 2: THE WRIGHT-FISHER DEBATE ═══════════════ -->
+    <section class="ep-section" id="sec-debate">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ep-theory" data-aos="fade-up">
+            <div class="ep-kicker">The Great Debate</div>
+            <h2>Wright vs. Fisher</h2>
+
+            <p>The most consequential intellectual conflict in 20th-century evolutionary genetics pitted two titans against each other: <strong>Ronald A. Fisher</strong> and <strong>Sewall Wright</strong>. Their disagreement was not about whether evolution occurs, but about <em>how</em> it works at the genetic level &mdash; and their differing views continue to shape the field today.</p>
+
+            <h3>Fisher's View</h3>
+            <p>Fisher argued that evolution is primarily driven by <strong>natural selection acting on additive genetic variance</strong> in large, panmictic (freely interbreeding) populations. In this framework, epistasis is statistical noise &mdash; it contributes little to the response to selection because recombination breaks up favorable gene combinations every generation. His <strong>Fundamental Theorem of Natural Selection</strong> states that the rate of increase in fitness equals the additive genetic variance in fitness. Evolution, in Fisher's view, is a smooth, deterministic, hill-climbing process. Drift is negligible in populations of realistic size, and population structure is an unnecessary complication.</p>
+
+            <h3>Wright's View</h3>
+            <p>Wright saw a fundamentally different picture. He argued that real populations are <strong>structured into small, partially isolated demes</strong> (subpopulations). In small demes, <strong>genetic drift</strong> is a powerful force that can push populations away from their current fitness peak. Gene interactions (epistasis) create <strong>multiple adaptive peaks</strong> in the fitness landscape. Wright proposed that drift, migration, and selection work together to allow populations to explore and ultimately find the highest peaks &mdash; his famous <strong>shifting balance theory</strong>.</p>
+
+            <h3>The Three Phases of the Shifting Balance</h3>
+            <p><strong>Phase 1 &mdash; Random drift:</strong> Within small demes, genetic drift causes random fluctuations in allele frequencies. This exploration of genotype space can move a population off its current local fitness peak and into the domain of attraction of a different peak.</p>
+            <p><strong>Phase 2 &mdash; Mass selection within demes:</strong> Once drift has carried a deme into the basin of attraction of a new (possibly higher) peak, ordinary natural selection pushes the population uphill toward that new peak.</p>
+            <p><strong>Phase 3 &mdash; Interdeme selection:</strong> Demes sitting on higher peaks have greater average fitness, producing more emigrants. These migrants carry favorable gene combinations to neighboring demes, pulling the entire metapopulation toward the global optimum. This is a form of group selection, mediated by differential migration.</p>
+
+            <!-- SVG: Three phases of shifting balance -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 500 280" width="100%" aria-labelledby="svg-phases-title">
+                <title id="svg-phases-title">The three phases of Wright's shifting balance theory</title>
+
+                <!-- Shared landscape -->
+                <path d="M10,200 Q40,195 60,160 Q80,120 100,90 Q115,70 125,65 Q135,70 150,100 Q170,140 190,160 Q210,170 230,165 Q250,155 270,120 Q290,80 310,50 Q320,40 330,50 Q340,60 360,100 Q380,140 400,165 Q420,180 450,190 Q470,195 490,200" fill="none" class="chr-line" stroke-width="1.5"/>
+
+                <!-- Peak labels -->
+                <text x="125" y="55" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Local Peak</text>
+                <text x="320" y="30" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Global Peak</text>
+
+                <!-- Phase 1: Drift -->
+                <text x="83" y="225" class="chr-heading" text-anchor="middle" style="font-size:11px">Phase 1</text>
+                <text x="83" y="238" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Random Drift</text>
+                <!-- Deme on local peak, drifting -->
+                <circle cx="125" cy="65" r="7" fill="none" class="chr-line-accent" stroke-width="1.5"/>
+                <circle cx="125" cy="65" r="2.5" class="chr-sex" opacity="0.8"/>
+                <!-- Drift arrows (wavy) -->
+                <path d="M132,67 Q138,60 142,70 Q146,78 152,72" fill="none" class="chr-line-accent" stroke-width="1" stroke-dasharray="2 2"/>
+                <circle cx="155" cy="105" r="6" fill="none" class="chr-line-dash" stroke-width="1"/>
+                <circle cx="155" cy="105" r="2" class="chr-sex" opacity="0.5"/>
+                <text x="168" y="108" class="chr-label-sm" style="font-size:7px">drift off peak</text>
+
+                <!-- Phase 2: Selection within demes -->
+                <text x="250" y="225" class="chr-heading" text-anchor="middle" style="font-size:11px">Phase 2</text>
+                <text x="250" y="238" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Selection Within Demes</text>
+                <!-- Deme in new basin, arrows uphill -->
+                <circle cx="270" cy="120" r="6" fill="none" class="chr-line-accent" stroke-width="1.5"/>
+                <circle cx="270" cy="120" r="2.5" class="chr-sex" opacity="0.8"/>
+                <line x1="275" y1="115" x2="295" y2="85" class="chr-line-accent" stroke-width="1.2" marker-end="url(#arrowhead-ep)"/>
+                <text x="300" y="80" class="chr-label-sm" style="font-size:7px">selection uphill</text>
+
+                <!-- Phase 3: Interdeme selection -->
+                <text x="410" y="225" class="chr-heading" text-anchor="middle" style="font-size:11px">Phase 3</text>
+                <text x="410" y="238" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Interdeme Selection</text>
+                <!-- Deme on high peak exporting migrants -->
+                <circle cx="320" cy="50" r="7" fill="none" class="chr-line-accent" stroke-width="1.5"/>
+                <circle cx="320" cy="50" r="3" class="chr-sex" opacity="0.9"/>
+                <!-- Migration arrows to other demes -->
+                <path d="M313,55 Q280,80 250,100" fill="none" class="chr-line-accent" stroke-width="1" marker-end="url(#arrowhead-ep)"/>
+                <path d="M328,55 Q360,80 400,120" fill="none" class="chr-line-accent" stroke-width="1" marker-end="url(#arrowhead-ep)"/>
+                <circle cx="248" cy="102" r="5" fill="none" class="chr-line-dash" stroke-width="1"/>
+                <circle cx="402" cy="122" r="5" fill="none" class="chr-line-dash" stroke-width="1"/>
+                <text x="370" y="75" class="chr-label-sm" style="font-size:7px">migrants from</text>
+                <text x="370" y="84" class="chr-label-sm" style="font-size:7px">high peak</text>
+
+                <!-- Phase labels at bottom -->
+                <line x1="10" y1="255" x2="490" y2="255" class="chr-line" stroke-width="0.5" opacity="0.3"/>
+                <text x="250" y="272" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Wright's Shifting Balance Theory: drift explores, selection refines, migration spreads</text>
+              </svg>
+              <div class="diagram-caption">The three phases of Wright's shifting balance theory operating on a multi-peaked fitness landscape</div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 ep-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="ep-kicker">Key References</div>
+            <h2>The Papers</h2>
+
+            <a href="https://doi.org/10.1093/genetics/16.2.97" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics</div>
+              <div class="paper-title">Evolution in Mendelian Populations</div>
+              <div class="authors">S. Wright</div>
+              <div class="pub-year">1931 &mdash; Wright's foundational paper on population genetics and the role of population structure</div>
+            </a>
+
+            <a href="https://www.esp.org/books/6th-congress/facsimile/contents/6th-cong-p356-wright.pdf" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Proceedings of the Sixth International Congress of Genetics</div>
+              <div class="paper-title">The Roles of Mutation, Inbreeding, Crossbreeding and Selection in Evolution</div>
+              <div class="authors">S. Wright</div>
+              <div class="pub-year">1932 &mdash; The paper that introduced the adaptive landscape diagram &mdash; one of the most reproduced figures in all of biology</div>
+            </a>
+
+            <a href="https://archive.org/details/geneticaltheoryo0000fish" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Clarendon Press, Oxford</div>
+              <div class="paper-title">The Genetical Theory of Natural Selection</div>
+              <div class="authors">R.A. Fisher</div>
+              <div class="pub-year">1930 &mdash; Fisher's foundational book arguing for the primacy of additive variance and the fundamental theorem of natural selection</div>
+            </a>
+
+            <div class="pullquote" data-aos="fade-left">
+              Wright's adaptive landscape remains one of the most influential metaphors in evolutionary biology &mdash; and one of the most debated. A century after its introduction, evolutionary biologists still argue over whether populations can truly shift between peaks.
+            </div>
+
+            <!-- Plotly: Drift simulation chart -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Genetic Drift Simulation: Small vs. Large Populations</div>
+              <div id="chart-drift" style="width:100%;height:280px;"></div>
+              <p style="font-size:0.78rem; color: var(--text-muted, rgba(200,197,190,0.45)); margin-top:4px; margin-bottom:0;">Note: This chart shows simulated data for illustrative purposes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 3: THE COYNE-GOODNIGHT DEBATE ═══════════════ -->
+    <section class="ep-section" id="sec-coyne-goodnight">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ep-theory" data-aos="fade-up">
+            <div class="ep-kicker">The Modern Debate</div>
+            <h2>Coyne, Barton, Turelli vs. Wade &amp; Goodnight</h2>
+
+            <p>The Wright-Fisher debate was dramatically revived in the late 1990s, when <strong>Jerry Coyne, Nick Barton, and Michael Turelli</strong> published a provocative critique arguing that the shifting balance theory was unnecessary and unsupported by evidence. The response from <strong>Michael Wade and Charles Goodnight</strong> was equally forceful. What followed was one of the great intellectual exchanges in evolutionary biology.</p>
+
+            <h3>The Critique (Coyne, Barton, Turelli 1997)</h3>
+            <p>They attacked each phase of the shifting balance:</p>
+            <p><strong>Against Phase 1:</strong> Random drift is too weak to move populations off fitness peaks in populations of realistic size. The valley-crossing required is implausible unless populations are extremely small.</p>
+            <p><strong>Against Phase 3:</strong> Interdeme selection (the mechanism by which higher-fitness demes spread their gene combinations to lower-fitness demes) has never been convincingly demonstrated in nature. The required conditions are very specific and unlikely to be commonly met.</p>
+            <p><strong>The bottom line:</strong> Simpler models based on mass selection acting on additive variation in large populations can explain observed patterns of adaptation. The shifting balance is "of only minor importance in evolution."</p>
+
+            <h3>The Defense (Wade &amp; Goodnight 1998)</h3>
+            <p>Wade and Goodnight argued that Coyne et al. had set up straw man versions of Wright's theory. Their key points:</p>
+            <p><strong>Tribolium experiments:</strong> Laboratory experiments with flour beetles demonstrated that population structure and epistasis interact to produce evolutionary outcomes that mass selection <em>cannot</em>. When populations were subdivided and subjected to group selection, they responded far more than predicted by additive models alone.</p>
+            <p><strong>Variance conversion:</strong> This is perhaps the most important theoretical insight. When populations go through bottlenecks (genetic drift changes allele frequencies), <strong>epistatic variance can be "converted" to additive variance</strong>. This happens because drift changes the genetic background against which other alleles are measured. An allele whose effect was previously masked by interactions becomes exposed when its interacting partners change in frequency. This means drift doesn't just add noise &mdash; it fundamentally <em>changes the substrate on which selection acts</em>.</p>
+            <p><strong>The resolution?</strong> The debate remains formally unresolved. But what is <em>not</em> debated is that epistasis is real and common. The question is: how much does it matter for adaptive evolution in nature?</p>
+          </div>
+
+          <div class="col-lg-6 ep-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="ep-kicker">The Exchange</div>
+            <h2>Four Papers, Two Perspectives</h2>
+
+            <a href="https://doi.org/10.2307/2411226" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution</div>
+              <div class="paper-title">Perspective: A Critique of Sewall Wright's Shifting Balance Theory of Evolution</div>
+              <div class="authors">J.A. Coyne, N.H. Barton, M. Turelli</div>
+              <div class="pub-year">1997 &mdash; The provocative critique that reignited the debate</div>
+            </a>
+
+            <a href="https://doi.org/10.2307/2411328" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution</div>
+              <div class="paper-title">Perspective: The Theories of Fisher and Wright in the Context of Metapopulations: When Nature Does Many Small Experiments</div>
+              <div class="authors">M.J. Wade &amp; C.J. Goodnight</div>
+              <div class="pub-year">1998 &mdash; The defense, grounded in empirical work with Tribolium</div>
+            </a>
+
+            <a href="https://doi.org/10.1111/j.0014-3820.2000.tb00033.x" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution</div>
+              <div class="paper-title">Is Wright's Shifting Balance Process Important in Evolution?</div>
+              <div class="authors">J.A. Coyne, N.H. Barton, M. Turelli</div>
+              <div class="pub-year">2000 &mdash; The rebuttal</div>
+            </a>
+
+            <a href="https://doi.org/10.1111/j.0014-3820.2000.tb00034.x" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution</div>
+              <div class="paper-title">The Ongoing Synthesis: A Reply to Coyne, Barton, and Turelli</div>
+              <div class="authors">C.J. Goodnight &amp; M.J. Wade</div>
+              <div class="pub-year">2000 &mdash; The counter-rebuttal</div>
+            </a>
+
+            <div class="debate-note" data-aos="fade-left">
+              <strong>Note:</strong> This back-and-forth is one of the great intellectual exchanges in evolutionary biology. Reading all four papers in sequence gives a masterclass in how scientific arguments are constructed, attacked, and defended. The core disagreement &mdash; whether epistatic variance matters for evolution &mdash; is ultimately an empirical question. Answering it requires <em>measuring</em> epistasis across many systems. This is exactly what line cross analysis allows.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 4: LINE CROSS ANALYSIS ═══════════════ -->
+    <section class="ep-section" id="sec-lca">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ep-theory" data-aos="fade-up">
+            <div class="ep-kicker">Methods</div>
+            <h2>Measuring Epistasis &mdash; Line Cross Analysis</h2>
+
+            <p>How do we actually <em>detect</em> and <em>measure</em> epistasis? One of the most powerful classical approaches is <strong>line cross analysis (LCA)</strong>.</p>
+
+            <h3>The Basic Idea</h3>
+            <p>Cross two divergent lines &mdash; these can be different populations, species, or artificially selected lines that differ in a trait of interest. Then create a series of <strong>composite generations</strong>: the F1 (first filial generation), F2 (second filial), backcrosses to each parent (BC1 and BC2), and potentially additional generations. Measure the trait in every generation. The <strong>pattern of generation means</strong> reveals the genetic architecture underlying the trait difference.</p>
+
+            <h3>What the Patterns Tell Us</h3>
+            <p><strong>If inheritance is purely additive:</strong> The F1 mean falls exactly at the midparent value (halfway between P1 and P2). The F2 mean equals the F1 mean. Backcross means fall midway between the F1 and the respective parent. Everything is clean, predictable, and linear.</p>
+            <p><strong>If dominance is present:</strong> The F1 deviates from the midparent value (toward one parent or the other). But F2 still behaves predictably relative to the F1 and backcrosses.</p>
+            <p><strong>If epistasis is present:</strong> These simple expectations break down. F2 means deviate from F1 means. Backcross means are asymmetric. The specific pattern of deviations reveals <em>which types of epistasis</em> are at play: additive &times; additive ([aa]), additive &times; dominance ([ad] and [da]), or dominance &times; dominance ([dd]).</p>
+
+            <h3>The Traditional Approach</h3>
+            <p>The classical method is the <strong>joint-scaling test</strong> (Cavalli 1952, Hayman 1958, Mather &amp; Jinks 1982). This involves fitting models of increasing complexity (additive only, additive + dominance, additive + dominance + epistasis) and testing whether each additional parameter significantly improves the fit. The problem: this relies on sequential hypothesis testing, which has well-known issues with statistical power, model selection bias, and the arbitrary nature of p-value thresholds.</p>
+
+            <!-- SVG: Line cross breeding scheme -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 460 320" width="100%" aria-labelledby="svg-lca-title">
+                <title id="svg-lca-title">Line cross analysis breeding design and expected generation means</title>
+
+                <!-- Parent lines -->
+                <rect x="40" y="10" width="80" height="36" rx="6" class="chr-region"/>
+                <text x="80" y="33" class="chr-heading" text-anchor="middle">P1</text>
+                <rect x="340" y="10" width="80" height="36" rx="6" class="chr-region"/>
+                <text x="380" y="33" class="chr-heading" text-anchor="middle">P2</text>
+
+                <!-- Cross line to F1 -->
+                <line x1="120" y1="28" x2="200" y2="70" class="chr-line-accent" stroke-width="1.5"/>
+                <line x1="340" y1="28" x2="260" y2="70" class="chr-line-accent" stroke-width="1.5"/>
+                <text x="230" y="55" class="chr-label-accent" text-anchor="middle" style="font-size:10px">&times;</text>
+
+                <!-- F1 -->
+                <rect x="190" y="65" width="80" height="36" rx="6" class="chr-region"/>
+                <text x="230" y="88" class="chr-heading" text-anchor="middle">F1</text>
+
+                <!-- F1 x F1 to F2 -->
+                <line x1="230" y1="101" x2="230" y2="135" class="chr-line-accent" stroke-width="1.5"/>
+                <rect x="190" y="130" width="80" height="36" rx="6" class="chr-region"/>
+                <text x="230" y="153" class="chr-heading" text-anchor="middle">F2</text>
+
+                <!-- Backcross to P1 -->
+                <line x1="190" y1="83" x2="120" y2="130" class="chr-line-accent" stroke-width="1.5"/>
+                <line x1="80" y1="46" x2="80" y2="130" class="chr-line-dash" stroke-width="1"/>
+                <line x1="80" y1="130" x2="100" y2="130" class="chr-line-accent" stroke-width="1"/>
+                <rect x="60" y="125" width="80" height="36" rx="6" class="chr-region"/>
+                <text x="100" y="148" class="chr-heading" text-anchor="middle">BC1</text>
+                <text x="100" y="175" class="chr-label-sm" text-anchor="middle" style="font-size:8px">F1 &times; P1</text>
+
+                <!-- Backcross to P2 -->
+                <line x1="270" y1="83" x2="340" y2="130" class="chr-line-accent" stroke-width="1.5"/>
+                <line x1="380" y1="46" x2="380" y2="130" class="chr-line-dash" stroke-width="1"/>
+                <line x1="380" y1="130" x2="360" y2="130" class="chr-line-accent" stroke-width="1"/>
+                <rect x="320" y="125" width="80" height="36" rx="6" class="chr-region"/>
+                <text x="360" y="148" class="chr-heading" text-anchor="middle">BC2</text>
+                <text x="360" y="175" class="chr-label-sm" text-anchor="middle" style="font-size:8px">F1 &times; P2</text>
+
+                <!-- Lower section: Expected means diagram -->
+                <line x1="20" y1="195" x2="440" y2="195" class="chr-line" stroke-width="0.5" opacity="0.3"/>
+                <text x="230" y="213" class="chr-heading" text-anchor="middle" style="font-size:11px">Expected Generation Means</text>
+
+                <!-- Additive model: straight line -->
+                <text x="115" y="235" class="chr-label-sm" text-anchor="middle" style="font-size:9px">Additive model</text>
+                <!-- P1 dot -->
+                <circle cx="50" cy="260" r="4" class="chr-auto"/>
+                <text x="50" y="280" class="chr-label-sm" text-anchor="middle" style="font-size:8px">P1</text>
+                <!-- BC1 dot -->
+                <circle cx="90" cy="270" r="4" class="chr-auto"/>
+                <text x="90" y="290" class="chr-label-sm" text-anchor="middle" style="font-size:8px">BC1</text>
+                <!-- F1 dot -->
+                <circle cx="130" cy="280" r="4" class="chr-auto"/>
+                <text x="130" y="300" class="chr-label-sm" text-anchor="middle" style="font-size:8px">F1=F2</text>
+                <!-- BC2 dot -->
+                <circle cx="170" cy="290" r="4" class="chr-auto"/>
+                <text x="170" y="310" class="chr-label-sm" text-anchor="middle" style="font-size:8px">BC2</text>
+                <!-- P2 dot -->
+                <circle cx="210" cy="300" r="4" class="chr-auto"/>
+                <text x="210" y="318" class="chr-label-sm" text-anchor="middle" style="font-size:8px">P2</text>
+                <!-- Line connecting them -->
+                <line x1="50" y1="260" x2="210" y2="300" class="chr-line" stroke-width="1"/>
+
+                <!-- Epistatic model: curved deviations -->
+                <text x="365" y="235" class="chr-label-accent" text-anchor="middle" style="font-size:9px">With epistasis</text>
+                <circle cx="280" cy="260" r="4" class="chr-auto"/>
+                <text x="280" y="280" class="chr-label-sm" text-anchor="middle" style="font-size:8px">P1</text>
+                <circle cx="320" cy="262" r="4" class="chr-sex"/>
+                <text x="320" y="282" class="chr-label-sm" text-anchor="middle" style="font-size:8px">BC1</text>
+                <circle cx="360" cy="255" r="4" class="chr-sex"/>
+                <text x="360" y="248" class="chr-label-sm" text-anchor="middle" style="font-size:8px">F1</text>
+                <circle cx="395" cy="275" r="4" class="chr-sex"/>
+                <text x="395" y="295" class="chr-label-sm" text-anchor="middle" style="font-size:8px">F2</text>
+                <circle cx="430" cy="300" r="4" class="chr-auto"/>
+                <text x="430" y="318" class="chr-label-sm" text-anchor="middle" style="font-size:8px">P2</text>
+                <!-- Expected line (dashed) -->
+                <line x1="280" y1="260" x2="430" y2="300" class="chr-line-dash" stroke-width="1"/>
+                <!-- Deviation arrows -->
+                <line x1="320" y1="268" x2="320" y2="262" class="chr-line-accent" stroke-width="1"/>
+                <line x1="360" y1="273" x2="360" y2="255" class="chr-line-accent" stroke-width="1"/>
+                <line x1="395" y1="285" x2="395" y2="275" class="chr-line-accent" stroke-width="1"/>
+              </svg>
+              <div class="diagram-caption">Line cross breeding design (top) and expected generation means under additive vs. epistatic models (bottom). Gold dots indicate deviations from additive expectations. <em>(Illustrative diagram &mdash; values represent theoretical expectations.)</em></div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 ep-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="ep-kicker">Classical Framework</div>
+            <h2>The Joint-Scaling Test</h2>
+
+            <a href="https://www.worldcat.org/title/801004" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Quantitative Inheritance (HMSO, London)</div>
+              <div class="paper-title">An analysis of linkage in quantitative inheritance</div>
+              <div class="authors">L.L. Cavalli-Sforza</div>
+              <div class="pub-year">1952 &mdash; One of the first formal line cross analysis frameworks</div>
+            </a>
+
+            <a href="https://link.springer.com/book/10.1007/978-1-4899-3406-2" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Chapman &amp; Hall</div>
+              <div class="paper-title">Biometrical Genetics: The Study of Continuous Variation</div>
+              <div class="authors">K. Mather &amp; J.L. Jinks</div>
+              <div class="pub-year">1982 &mdash; The textbook that standardized LCA methodology for a generation of quantitative geneticists</div>
+            </a>
+
+            <!-- Plotly: Interactive line cross expectations -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Interactive Line Cross Expectations</div>
+              <div class="chart-toggle" id="lca-toggle">
+                <button class="active" onclick="showLCA('additive')">Additive Only</button>
+                <button onclick="showLCA('epistatic')">With Epistasis</button>
+              </div>
+              <div id="chart-lca" style="width:100%;height:300px;"></div>
+            </div>
+
+            <p style="font-size:0.88rem; color: var(--text-secondary, rgba(200,197,190,0.65)); margin-top:10px;">Toggle between additive and epistatic models to see how gene interactions distort generation means from their expected values. In the epistatic model, note how the F2 deviates from the F1, and backcross means are pulled asymmetrically &mdash; these are the signatures of epistasis that line cross analysis detects. <em>(Illustrative data &mdash; values are theoretical expectations, not from a specific experiment.)</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 5: SAGA ═══════════════ -->
+    <section class="ep-section" id="sec-saga">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ep-theory" data-aos="fade-up">
+            <div class="ep-kicker">Innovation</div>
+            <h2>SAGA &mdash; A Better Approach to Line Cross Analysis</h2>
+
+            <p>The Blackmon Lab developed <strong>SAGA (Statistical Analysis of Genetic Architecture)</strong> to address the fundamental limitations of the traditional joint-scaling test.</p>
+
+            <h3>The Problem with Sequential Testing</h3>
+            <p>The traditional approach fits a sequence of models &mdash; additive, then additive + dominance, then additive + dominance + epistasis &mdash; and uses chi-squared tests to determine when to stop adding parameters. This has several well-known problems:</p>
+            <p><strong>Multiple testing:</strong> Each sequential test increases the overall false positive rate. The order in which parameters are tested matters, and different orders can give different conclusions.</p>
+            <p><strong>All-or-nothing:</strong> You either reject or fail to reject each model. There is no way to express uncertainty about which model is best, or to average across models when several are similarly supported.</p>
+            <p><strong>Lack of parsimony penalty:</strong> Chi-squared tests do not inherently penalize model complexity. A model with more parameters will always fit better, even if the additional parameters are capturing noise rather than signal.</p>
+
+            <h3>The SAGA Solution</h3>
+            <p>SAGA uses an <strong>information-theoretic approach</strong> based on <strong>AICc</strong> (corrected Akaike Information Criterion). Instead of asking "Is this model significantly better than the simpler one?" it asks "What is the relative support for each model given the data?"</p>
+            <p>Key advantages:</p>
+            <p><strong>Simultaneous model comparison:</strong> All candidate genetic architecture models are evaluated at once, not sequentially. This includes all possible combinations of additive, dominance, and epistatic effects.</p>
+            <p><strong>Natural complexity penalty:</strong> AICc includes a penalty for the number of parameters, which increases when sample sizes are small. This automatically guards against overfitting.</p>
+            <p><strong>Model averaging:</strong> Instead of choosing a single "best" model, SAGA provides <strong>model-averaged parameter estimates</strong> weighted by the relative support for each model. This means your estimates of genetic effects incorporate model uncertainty.</p>
+            <p><strong>Confidence sets:</strong> SAGA produces a confidence set of models (e.g., the set of models within 2 AICc units of the best), giving you a clear picture of which architectures are plausible and which are not.</p>
+
+            <h3>SAGA2</h3>
+            <p>The current implementation is the <strong>SAGA2 R package</strong>, freely available on GitHub. It extends the original SAGA framework to handle sexual dimorphism and genotype-by-environment interactions, allowing researchers to partition genetic architecture into even finer components.</p>
+          </div>
+
+          <div class="col-lg-6 ep-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="ep-kicker">Blackmon Lab Contributions</div>
+            <h2>The Methods Papers</h2>
+
+            <a href="https://doi.org/10.1111/evo.12844" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution &middot; 70(2): 420&ndash;432</div>
+              <div class="paper-title">An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: moving beyond the joint-scaling test for line cross analysis</div>
+              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
+              <div class="pub-year">2016 &mdash; The methods paper introducing the SAGA approach &mdash; click to view PDF</div>
+            </a>
+
+            <a href="https://doi.org/10.1111/jeb.13421" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Journal of Evolutionary Biology &middot; 32(4): 369&ndash;379</div>
+              <div class="paper-title">Inferring the potentially complex genetic architectures of adaptation, sexual dimorphism, and genotype by environment interactions by partitioning of mean phenotypes</div>
+              <div class="authors">A. Armstrong, N.W. Anderson, H. Blackmon</div>
+              <div class="pub-year">2019 &mdash; Extending LCA to sexual dimorphism and GxE &mdash; click to view PDF</div>
+            </a>
+
+            <div class="software-callout" data-aos="fade-left">
+              <div class="sw-name"><i class="bi bi-box-seam"></i> &nbsp;SAGA2 R Package</div>
+              <div class="sw-desc">Statistical Analysis of Genetic Architecture &mdash; an information-theoretic approach to line cross analysis with support for sexual dimorphism and genotype-by-environment interactions.</div>
+              <p style="font-size:0.85rem; margin-bottom:6px;"><strong>Install:</strong> <code>devtools::install_github("coleoguy/SAGA2")</code></p>
+              <p style="font-size:0.85rem; margin-bottom:6px;"><strong>GitHub:</strong> <a href="https://github.com/coleoguy/SAGA2" target="_blank">github.com/coleoguy/SAGA2</a></p>
+              <p style="font-size:0.85rem; margin-bottom:0;"><strong>Vignette:</strong> <a href="saga.pdf">saga.pdf</a></p>
+            </div>
+
+            <!-- Plotly: AICc comparison chart -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Model Comparison: Joint-Scaling Test vs. SAGA (AICc)</div>
+              <div id="chart-aicc" style="width:100%;height:300px;"></div>
+            </div>
+
+            <p style="font-size:0.85rem; color: var(--text-secondary, rgba(200,197,190,0.65)); line-height:1.6;">This chart illustrates how SAGA evaluates all candidate models simultaneously using AICc weights. The traditional approach (sequential testing) would select the first "non-significant" model and stop. SAGA instead provides the relative support for each architecture, revealing that multiple models may be similarly supported. <em>(Illustrative data &mdash; values are simulated to demonstrate the method.)</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 6: WRIGHT WAS RIGHT ═══════════════ -->
+    <section class="ep-section" id="sec-wright-was-right">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ep-theory" data-aos="fade-up">
+            <div class="ep-kicker">The Verdict</div>
+            <h2>Wright Was Right</h2>
+
+            <p>The Blackmon Lab put Wright's ideas to the most comprehensive empirical test ever conducted. In <strong>Burch et al. 2024</strong>, the lab analyzed over <strong>1,600 line cross datasets</strong> spanning plants and animals &mdash; the largest survey of epistasis in the history of genetics.</p>
+
+            <h3>Key Findings</h3>
+            <p><strong>Epistasis is pervasive.</strong> It was detected in the majority of crosses examined. This is not a marginal effect confined to a few unusual systems &mdash; it is a widespread feature of genetic architecture across the tree of life.</p>
+            <p><strong>The importance varies, but it is rarely absent.</strong> Different taxa and trait categories show different levels of epistasis, but purely additive models were rarely the best-supported architecture. Morphological traits, life history traits, physiological traits, and behavioral traits all showed substantial epistatic contributions.</p>
+            <p><strong>The patterns are consistent with Wright's vision.</strong> Complex genetic architectures where gene interactions matter are the norm, not the exception. The additive-variance-centric view of evolution &mdash; Fisher's view &mdash; captures an important part of the picture, but it is incomplete.</p>
+
+            <h3>Recognition</h3>
+            <p>This paper was selected for the <strong>2025 Society for the Study of Evolution President's Award for Outstanding Dissertation Paper</strong> &mdash; one of SSE's most prestigious honors, recognizing the most impactful dissertation-based publications in the field.</p>
+
+            <h3>Implications</h3>
+            <p>If epistasis is truly pervasive, then several major conclusions follow:</p>
+            <p><strong>The response to selection is context-dependent.</strong> An allele that is beneficial in one population may be neutral or harmful in another, depending on the epistatic context. This complicates predictions about evolutionary trajectories.</p>
+            <p><strong>Population structure matters.</strong> If the fitness landscape is rugged (multi-peaked), then the size and connectivity of populations affects which peaks can be reached. Wright's emphasis on population structure was prescient.</p>
+            <p><strong>Additive variance is not the whole story.</strong> Fisher's fundamental theorem, while mathematically elegant, applies only to the additive component of fitness variation. If epistasis converts to additive variance through drift (as Wright and later Goodnight showed), then the interplay between drift and selection becomes crucial &mdash; exactly as Wright argued.</p>
+          </div>
+
+          <div class="col-lg-6 ep-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="ep-kicker">Featured Paper</div>
+            <h2>The Largest Survey of Epistasis</h2>
+
+            <a href="https://doi.org/10.1093/evolut/qpae003" target="_blank" class="paper-masthead" data-aos="fade-left" style="border-color: rgba(201,162,39,0.4);">
+              <div class="journal">Evolution &middot; 78(4): 624&ndash;634 <span class="badge-f1000">SSE PRESIDENT'S AWARD 2025</span></div>
+              <div class="paper-title">Wright was right: Leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution</div>
+              <div class="authors">J. Burch, M. Chin, B.E. Fontenot, S. Mandal, T.D. McKnight, J.P. Demuth, H. Blackmon</div>
+              <div class="pub-year">2024 &mdash; DOI: 10.1093/evolut/qpae003</div>
+            </a>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num">1,600+</div>
+              <div class="stat-text">Line cross datasets analyzed &mdash; spanning plants and animals, across morphological, physiological, life history, and behavioral traits</div>
+            </div>
+
+            <!-- Plotly: Epistasis prevalence by trait category -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Prevalence of Epistasis by Trait Category</div>
+              <div id="chart-prevalence" style="width:100%;height:280px;"></div>
+            </div>
+
+            <!-- Plotly: Model support distribution -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Distribution of Best-Supported Genetic Architectures</div>
+              <div class="chart-toggle" id="model-toggle">
+                <button class="active" onclick="showModelDist('all')">All Taxa</button>
+                <button onclick="showModelDist('plants')">Plants</button>
+                <button onclick="showModelDist('animals')">Animals</button>
+              </div>
+              <div id="chart-models" style="width:100%;height:280px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 7: MODERN APPROACHES ═══════════════ -->
+    <section class="ep-section" id="sec-modern">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ep-theory" data-aos="fade-up">
+            <div class="ep-kicker">Contemporary Methods</div>
+            <h2>Beyond Line Crosses &mdash; Modern Approaches</h2>
+
+            <p>Line cross analysis is powerful but limited to systems where controlled crosses are possible. Modern genomics has opened entirely new windows on epistasis.</p>
+
+            <h3>GWAS Epistasis Scans</h3>
+            <p>Genome-wide association studies can be extended to test all pairwise (or higher-order) combinations of SNPs for interactions. With <em>n</em> SNPs, there are <em>n</em>&sup2;/2 pairwise interactions to test &mdash; a massive multiple testing burden that requires enormous sample sizes and sophisticated computational methods. Despite these challenges, GWAS epistasis scans have revealed significant gene-gene interactions for complex traits including height, body mass index, and disease risk in humans.</p>
+
+            <h3>QTL Mapping</h3>
+            <p>In structured experimental crosses (F2 populations, recombinant inbred lines, MAGIC populations), researchers can map epistatic QTL interactions with greater statistical power than GWAS. The advantage is that linkage disequilibrium is controlled by the experimental design. Studies in model organisms have repeatedly found that epistatic QTL are common and can explain substantial fractions of phenotypic variance that additive QTL miss.</p>
+
+            <h3>Mutation Accumulation Experiments</h3>
+            <p>Allow mutations to accumulate in replicate lines under minimal selection, then measure fitness in different genetic backgrounds. If the fitness effects of mutations depend on the background they are tested in, epistasis is present. These experiments have provided some of the clearest evidence for widespread epistasis, particularly in microbial systems where large populations and many generations are feasible.</p>
+
+            <h3>Theoretical Connections</h3>
+            <p><strong>Fisher's geometric model (FGM)</strong> predicts specific patterns of epistasis: mutations of large effect should show diminishing returns (negative epistasis), while mutations near an optimum should show increasingly negative interactions. In contrast, <strong>Wright's landscape model</strong> predicts a mix of positive and negative epistasis depending on the ruggedness of the landscape and where the population sits relative to peaks and valleys. Empirical patterns tend to show more complexity than either model alone predicts.</p>
+
+            <h3>Machine Learning Approaches</h3>
+            <p>Random forests, gradient boosting, and neural networks can capture <strong>non-linear (epistatic) genotype-phenotype relationships</strong> without requiring explicit specification of interaction terms. These approaches are increasingly used for phenotype prediction and have shown improved accuracy when epistasis is present. The major challenge is <em>interpretability</em> &mdash; a neural network may capture epistatic effects perfectly but tell you nothing about which specific genes are interacting or why.</p>
+
+            <!-- SVG: Methods comparison -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 460 200" width="100%" aria-labelledby="svg-methods-title">
+                <title id="svg-methods-title">Comparison of methods for detecting epistasis</title>
+
+                <!-- Column headers -->
+                <text x="80" y="20" class="chr-heading" text-anchor="middle" style="font-size:10px">Line Cross</text>
+                <text x="195" y="20" class="chr-heading" text-anchor="middle" style="font-size:10px">QTL Mapping</text>
+                <text x="310" y="20" class="chr-heading" text-anchor="middle" style="font-size:10px">GWAS</text>
+                <text x="420" y="20" class="chr-heading" text-anchor="middle" style="font-size:10px">ML/AI</text>
+
+                <!-- Line cross -->
+                <rect x="30" y="30" width="100" height="110" rx="8" class="chr-region"/>
+                <text x="80" y="55" class="chr-label" text-anchor="middle" style="font-size:9px">Crosses required</text>
+                <text x="80" y="72" class="chr-label-accent" text-anchor="middle" style="font-size:9px">High power</text>
+                <text x="80" y="89" class="chr-label" text-anchor="middle" style="font-size:9px">Composite effects</text>
+                <text x="80" y="106" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Low resolution</text>
+                <text x="80" y="123" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Any organism</text>
+
+                <!-- QTL -->
+                <rect x="145" y="30" width="100" height="110" rx="8" class="chr-region"/>
+                <text x="195" y="55" class="chr-label" text-anchor="middle" style="font-size:9px">Structured cross</text>
+                <text x="195" y="72" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Good power</text>
+                <text x="195" y="89" class="chr-label" text-anchor="middle" style="font-size:9px">Locus-specific</text>
+                <text x="195" y="106" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Moderate resolution</text>
+                <text x="195" y="123" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Model organisms</text>
+
+                <!-- GWAS -->
+                <rect x="260" y="30" width="100" height="110" rx="8" class="chr-region"/>
+                <text x="310" y="55" class="chr-label" text-anchor="middle" style="font-size:9px">Natural variation</text>
+                <text x="310" y="72" class="chr-label-accent" text-anchor="middle" style="font-size:9px">SNP-level</text>
+                <text x="310" y="89" class="chr-label" text-anchor="middle" style="font-size:9px">Huge n required</text>
+                <text x="310" y="106" class="chr-label-sm" text-anchor="middle" style="font-size:8px">High resolution</text>
+                <text x="310" y="123" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Humans, crops</text>
+
+                <!-- ML -->
+                <rect x="370" y="30" width="100" height="110" rx="8" class="chr-region"/>
+                <text x="420" y="55" class="chr-label" text-anchor="middle" style="font-size:9px">Any data type</text>
+                <text x="420" y="72" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Non-linear</text>
+                <text x="420" y="89" class="chr-label" text-anchor="middle" style="font-size:9px">Black box</text>
+                <text x="420" y="106" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Prediction-focused</text>
+                <text x="420" y="123" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Interpretability?</text>
+
+                <!-- Arrows showing increasing genomic resolution -->
+                <line x1="50" y1="155" x2="440" y2="155" class="chr-line" stroke-width="1"/>
+                <polygon points="440,152 450,155 440,158" class="chr-arrow" opacity="0.6"/>
+                <text x="250" y="172" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Increasing genomic resolution &rarr;</text>
+                <text x="250" y="186" class="chr-label-sm" text-anchor="middle" style="font-size:8px">&larr; Increasing power to detect composite effects</text>
+              </svg>
+              <div class="diagram-caption">Each method offers different trade-offs between resolution, power, and interpretability</div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 ep-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="ep-kicker">Reviews &amp; Perspectives</div>
+            <h2>Essential Reading</h2>
+
+            <a href="https://doi.org/10.1038/nrg3627" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature Reviews Genetics &middot; 15: 22&ndash;33</div>
+              <div class="paper-title">Epistasis and quantitative traits: using model organisms to study gene-gene interactions</div>
+              <div class="authors">T.F.C. Mackay</div>
+              <div class="pub-year">2014 &mdash; Comprehensive review of epistasis detection in model organisms</div>
+            </a>
+
+            <a href="https://doi.org/10.1038/nrg2452" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature Reviews Genetics &middot; 9: 855&ndash;867</div>
+              <div class="paper-title">Epistasis &mdash; the essential role of gene interactions in the structure and evolution of genetic systems</div>
+              <div class="authors">P.C. Phillips</div>
+              <div class="pub-year">2008 &mdash; Foundational review of epistasis types and measurement approaches</div>
+            </a>
+
+            <a href="https://doi.org/10.1038/nrg3744" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature Reviews Genetics &middot; 15: 480&ndash;490</div>
+              <div class="paper-title">Empirical fitness landscapes and the predictability of evolution</div>
+              <div class="authors">J.A.G.M. de Visser &amp; J. Krug</div>
+              <div class="pub-year">2014 &mdash; The landscape perspective: how rugged are real fitness landscapes?</div>
+            </a>
+
+            <div class="pullquote" data-aos="fade-left">
+              The challenge for the field is no longer whether epistasis exists &mdash; it clearly does &mdash; but rather how to systematically quantify its contribution to adaptation, speciation, and disease across the full diversity of life.
+            </div>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num">n&sup2;</div>
+              <div class="stat-text">The number of pairwise interactions to test grows quadratically with the number of loci &mdash; the fundamental computational challenge of epistasis detection in GWAS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 8: WHY EPISTASIS MATTERS ═══════════════ -->
+    <section class="ep-section" id="sec-big-picture">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 ep-theory" data-aos="fade-up">
+            <div class="ep-kicker">The Big Picture</div>
+            <h2>Why Epistasis Matters</h2>
+
+            <h3>Speciation</h3>
+            <p><strong>Dobzhansky-Muller incompatibilities</strong> are, at their core, epistasis. An allele that functions perfectly well in its home genetic background causes problems &mdash; reduced fitness, sterility, or inviability &mdash; when placed into a hybrid genetic background. This is the genetic basis of <strong>reproductive isolation</strong>, and therefore speciation. Without epistasis, speciation through the accumulation of genetic incompatibilities would be impossible.</p>
+
+            <h3>Disease</h3>
+            <p>Many complex diseases involve <strong>gene-gene interactions</strong>. The "missing heritability" problem &mdash; the observation that identified GWAS variants explain only a fraction of the heritability estimated from family studies &mdash; may partly reflect undetected epistatic interactions. If the effect of a risk allele depends on variants at other loci, standard additive GWAS approaches will underestimate its contribution. Accounting for epistasis could close the gap between observed and predicted heritability for diseases like diabetes, heart disease, and psychiatric disorders.</p>
+
+            <h3>Agriculture</h3>
+            <p><strong>Heterosis (hybrid vigor)</strong> &mdash; the phenomenon where F1 hybrids outperform both parents &mdash; involves non-additive genetic effects. Whether heterosis is primarily due to dominance (masking of deleterious recessives) or epistasis (favorable interactions between alleles from different parents) remains debated, but epistatic contributions are increasingly recognized. Understanding these interactions is crucial for modern breeding programs that seek to predict hybrid performance from parental genotypes.</p>
+
+            <h3>Drug Resistance</h3>
+            <p>Combinations of resistance mutations can interact in unexpected ways. Some combinations are <strong>more than the sum of their parts</strong> (positive epistasis, accelerating resistance evolution), while others are <strong>less than the sum</strong> (negative epistasis, potentially constraining it). Understanding the epistatic landscape of drug resistance is critical for designing combination therapies and predicting the evolutionary trajectory of pathogens and cancers.</p>
+
+            <h3>The Fundamental Question</h3>
+            <p>Is evolution primarily a smooth, additive, hill-climbing process (Fisher)? Or is it navigation of a rugged landscape requiring drift, population structure, and gene interaction to find global optima (Wright)? A century of accumulating data increasingly suggests: <strong>both views capture important truths, but Wright's emphasis on epistasis was more prescient than the field long acknowledged.</strong> The Blackmon Lab's comprehensive analysis of line cross data provides perhaps the strongest evidence yet that epistasis is a fundamental and pervasive feature of genetic architecture &mdash; not a statistical curiosity to be swept into the error term.</p>
+          </div>
+
+          <div class="col-lg-6 ep-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="ep-kicker">Connections</div>
+            <h2>Epistasis Across Biology</h2>
+
+            <div class="pullquote" data-aos="fade-left">
+              "Does the importance of epistasis vary across plants and animals?" &mdash; Blackmon Lab, Research Question 6. The answer, based on over 1,600 line cross datasets, is: yes, it varies, but it is almost always present.
+            </div>
+
+            <a href="https://doi.org/10.1093/genetics/149.4.2099" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics &middot; 149: 2099&ndash;2104</div>
+              <div class="paper-title">Testing Natural Selection vs. Genetic Drift in Phenotypic Evolution Using Quantitative Trait Locus Data</div>
+              <div class="authors">H.A. Orr</div>
+              <div class="pub-year">1998 &mdash; Connecting epistasis to the study of adaptation</div>
+            </a>
+
+            <a href="https://archive.org/details/mendelsprincipl01bategoog" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Cambridge University Press</div>
+              <div class="paper-title">Mendel's Principles of Heredity</div>
+              <div class="authors">W. Bateson</div>
+              <div class="pub-year">1909 &mdash; Where the term "epistasis" was coined</div>
+            </a>
+
+            <!-- SVG: Epistasis connections diagram -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 400 260" width="100%" aria-labelledby="svg-connections-title">
+                <title id="svg-connections-title">Epistasis connects to many areas of biology</title>
+
+                <!-- Central node -->
+                <circle cx="200" cy="130" r="35" fill="none" class="chr-line-accent" stroke-width="2"/>
+                <text x="200" y="126" class="chr-heading" text-anchor="middle" style="font-size:11px">Epistasis</text>
+                <text x="200" y="140" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Gene &times; Gene</text>
+
+                <!-- Speciation -->
+                <circle cx="80" cy="50" r="28" class="chr-region"/>
+                <text x="80" y="47" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Speciation</text>
+                <text x="80" y="58" class="chr-label-sm" text-anchor="middle" style="font-size:7px">DM incompatibilities</text>
+                <line x1="110" y1="68" x2="170" y2="105" class="chr-line-accent" stroke-width="1"/>
+
+                <!-- Disease -->
+                <circle cx="340" cy="50" r="28" class="chr-region"/>
+                <text x="340" y="47" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Disease</text>
+                <text x="340" y="58" class="chr-label-sm" text-anchor="middle" style="font-size:7px">Missing heritability</text>
+                <line x1="305" y1="65" x2="232" y2="108" class="chr-line-accent" stroke-width="1"/>
+
+                <!-- Agriculture -->
+                <circle cx="60" cy="200" r="28" class="chr-region"/>
+                <text x="60" y="197" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Agriculture</text>
+                <text x="60" y="208" class="chr-label-sm" text-anchor="middle" style="font-size:7px">Heterosis / breeding</text>
+                <line x1="90" y1="185" x2="170" y2="150" class="chr-line-accent" stroke-width="1"/>
+
+                <!-- Drug Resistance -->
+                <circle cx="340" cy="200" r="28" class="chr-region"/>
+                <text x="340" y="197" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Resistance</text>
+                <text x="340" y="208" class="chr-label-sm" text-anchor="middle" style="font-size:7px">Drug / pesticide</text>
+                <line x1="310" y1="185" x2="230" y2="150" class="chr-line-accent" stroke-width="1"/>
+
+                <!-- Fitness Landscapes -->
+                <circle cx="200" cy="245" r="28" class="chr-region"/>
+                <text x="200" y="242" class="chr-label-accent" text-anchor="middle" style="font-size:9px">Landscapes</text>
+                <text x="200" y="253" class="chr-label-sm" text-anchor="middle" style="font-size:7px">Wright vs. Fisher</text>
+                <line x1="200" y1="165" x2="200" y2="217" class="chr-line-accent" stroke-width="1"/>
+              </svg>
+              <div class="diagram-caption">Epistasis is not just an abstract concept &mdash; it connects speciation, disease genetics, agriculture, drug resistance, and evolutionary theory</div>
+            </div>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num">100+</div>
+              <div class="stat-text">Years since Fisher (1918) and Wright (1931) began their debate &mdash; modern data from the Blackmon Lab increasingly vindicates Wright's emphasis on gene interactions</div>
+            </div>
+
+            <p style="font-size: 0.9rem; line-height: 1.7; color: var(--text, #c8c5c0); margin-top: 16px;">Explore our <a href="research.html">research page</a> to learn more about how the Blackmon Lab studies genetic architecture, epistasis, and the forces shaping genome evolution across the tree of life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ RELATED RESOURCES ═══════════════ -->
+    <section class="section">
+      <div class="container" style="max-width: 900px;">
+        <div class="related-box" data-aos="fade-up">
+          <h3>Explore Further</h3>
+          <div class="related-links">
+            <a href="https://github.com/coleoguy/SAGA2" target="_blank" class="related-link"><i class="bi bi-box-seam"></i> SAGA2 R Package</a>
+            <a href="research.html" class="related-link"><i class="bi bi-search"></i> Lab Research Questions</a>
+            <a href="publications.html" class="related-link"><i class="bi bi-journal-text"></i> Publications</a>
+            <a href="resources.html" class="related-link"><i class="bi bi-collection"></i> All Resources</a>
+            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous"></i> Sex Chromosome Evolution</a>
+          </div>
+        </div>
+
+        <div class="paper-foot">Blackmon Lab &nbsp;&middot;&nbsp; Texas A&amp;M University &nbsp;&middot;&nbsp; April 2026</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Plotly -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+
+  <script>
+    // ── Helpers ──────────────────────────────────────
+    function isLight() { return document.body.classList.contains('light-mode'); }
+    function txtColor() { return isLight() ? '#333' : '#c8c5c0'; }
+    function gridColor() { return isLight() ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'; }
+    function baseLayout(title) {
+      return {
+        title: { text: title || '', font: { family: 'Inter, sans-serif', size: 13, color: txtColor() } },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        font: { family: 'Inter, sans-serif', color: txtColor(), size: 11 },
+        margin: { l: 50, r: 20, t: title ? 36 : 10, b: 50 },
+        xaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
+        yaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
+      };
+    }
+    var pConfig = { displaylogo: false, responsive: true, modeBarButtonsToRemove: ['lasso2d','select2d'] };
+
+    // ── Scroll progress bar ─────────────────────────
+    window.addEventListener('scroll', function() {
+      var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      document.getElementById('scroll-progress').style.width = pct + '%';
+    });
+
+    // ── Helper: seeded random for reproducibility ────
+    function seededRandom(seed) {
+      var x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    }
+    function rnorm(n, mu, sd, seed) {
+      var out = [];
+      for (var i = 0; i < n; i++) {
+        var u = 0, v = 0;
+        while (u === 0) u = seededRandom(seed + i * 2);
+        while (v === 0) v = seededRandom(seed + i * 2 + 1);
+        out.push(mu + sd * Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v));
+      }
+      return out;
+    }
+
+    // ── Chart 1: Genetic Drift Simulation ────────────
+    (function() {
+      // Simulate allele frequency trajectories
+      function driftPath(N, gen, startFreq, seed) {
+        var path = [startFreq];
+        var p = startFreq;
+        for (var g = 1; g <= gen; g++) {
+          // Binomial sampling approximated
+          var successes = 0;
+          for (var i = 0; i < 2 * N; i++) {
+            if (seededRandom(seed + g * 1000 + i) < p) successes++;
+          }
+          p = successes / (2 * N);
+          if (p <= 0) p = 0;
+          if (p >= 1) p = 1;
+          path.push(p);
+        }
+        return path;
+      }
+
+      var gens = 100;
+      var x = [];
+      for (var i = 0; i <= gens; i++) x.push(i);
+
+      var traces = [];
+      // Small populations (N=20)
+      var colors20 = ['rgba(201,162,39,0.7)', 'rgba(201,162,39,0.5)', 'rgba(201,162,39,0.3)'];
+      for (var r = 0; r < 3; r++) {
+        traces.push({
+          x: x, y: driftPath(20, gens, 0.5, 42 + r * 100),
+          mode: 'lines', name: r === 0 ? 'N = 20' : '',
+          line: { color: colors20[r], width: 1.5 },
+          legendgroup: 'small', showlegend: r === 0
+        });
+      }
+      // Large populations (N=500)
+      var colors500 = ['rgba(150,150,150,0.7)', 'rgba(150,150,150,0.5)', 'rgba(150,150,150,0.3)'];
+      for (var r = 0; r < 3; r++) {
+        traces.push({
+          x: x, y: driftPath(500, gens, 0.5, 999 + r * 100),
+          mode: 'lines', name: r === 0 ? 'N = 500' : '',
+          line: { color: colors500[r], width: 1.5 },
+          legendgroup: 'large', showlegend: r === 0
+        });
+      }
+
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Generation', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Allele Frequency', font: { size: 11, color: txtColor() } };
+      layout.yaxis.range = [0, 1];
+      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
+      layout.shapes = [{ type: 'line', x0: 0, x1: gens, y0: 0.5, y1: 0.5,
+        line: { color: 'rgba(255,255,255,0.15)', width: 1, dash: 'dash' } }];
+      layout.annotations = [{ x: 0.5, y: -0.16, xref: 'paper', yref: 'paper',
+        text: 'Small populations (gold) drift dramatically; large populations (gray) stay near starting frequency',
+        showarrow: false, font: { size: 9, color: txtColor() } }];
+      Plotly.react('chart-drift', traces, layout, pConfig);
+    })();
+
+
+    // ── Chart 2: Line Cross Expectations (Interactive) ─
+    function showLCA(mode) {
+      var btns = document.querySelectorAll('#lca-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      if (mode === 'additive') btns[0].classList.add('active');
+      else btns[1].classList.add('active');
+
+      var generations = ['P1', 'BC1', 'F1', 'F2', 'BC2', 'P2'];
+
+      if (mode === 'additive') {
+        var means = [120, 110, 100, 100, 90, 80];
+        var errors = [3, 4, 3.5, 4, 4, 3];
+        var colors = generations.map(function() { return 'rgba(150,150,150,0.7)'; });
+        var borderColors = generations.map(function() { return 'rgba(150,150,150,1)'; });
+      } else {
+        var means = [120, 115, 108, 95, 85, 80];
+        var errors = [3, 4.5, 3.5, 5, 4, 3];
+        var colors = ['rgba(150,150,150,0.7)', 'rgba(201,162,39,0.7)', 'rgba(201,162,39,0.7)',
+                      'rgba(201,162,39,0.9)', 'rgba(201,162,39,0.7)', 'rgba(150,150,150,0.7)'];
+        var borderColors = ['rgba(150,150,150,1)', '#c9a227', '#c9a227', '#c9a227', '#c9a227', 'rgba(150,150,150,1)'];
+      }
+
+      var traces = [{
+        x: generations, y: means, type: 'bar',
+        error_y: { type: 'data', array: errors, visible: true, color: txtColor(), thickness: 1.5 },
+        marker: { color: colors, line: { color: borderColors, width: 1.5 } },
+        hovertemplate: '%{x}: %{y:.1f} +/- %{error_y.array:.1f}<extra></extra>'
+      }];
+
+      // Add expected midparent line
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Generation', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Trait Mean', font: { size: 11, color: txtColor() } };
+      layout.yaxis.range = [60, 135];
+      layout.shapes = [
+        { type: 'line', x0: -0.5, x1: 5.5, y0: 100, y1: 100,
+          line: { color: 'rgba(255,255,255,0.2)', width: 1, dash: 'dash' } }
+      ];
+      layout.annotations = [
+        { x: 5.3, y: 100, text: 'midparent', showarrow: false,
+          font: { size: 9, color: 'rgba(255,255,255,0.4)' } }
+      ];
+      if (mode === 'epistatic') {
+        // Add expected additive line for reference
+        layout.shapes.push({
+          type: 'line', x0: 0, x1: 5, y0: 120, y1: 80,
+          line: { color: 'rgba(255,255,255,0.12)', width: 1, dash: 'dot' }
+        });
+        layout.annotations.push({
+          x: 4.8, y: 83, text: 'additive expectation', showarrow: false,
+          font: { size: 8, color: 'rgba(255,255,255,0.3)' }
+        });
+      }
+      Plotly.react('chart-lca', traces, layout, pConfig);
+    }
+    showLCA('additive');
+
+
+    // ── Chart 3: AICc Model Comparison ───────────────
+    (function() {
+      var models = ['[m]', '[m,a]', '[m,a,d]', '[m,a,aa]', '[m,a,d,aa]', '[m,a,d,ad]', '[m,a,d,aa,ad]', '[m,a,d,aa,ad,dd]'];
+      var weights = [0.01, 0.05, 0.12, 0.28, 0.32, 0.08, 0.10, 0.04];
+
+      var colors = weights.map(function(w) {
+        return w >= 0.25 ? 'rgba(201,162,39,0.85)' : 'rgba(150,150,150,0.6)';
+      });
+
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Genetic Architecture Model', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'AICc Weight', font: { size: 11, color: txtColor() } };
+      layout.xaxis.tickangle = -35;
+      layout.margin.b = 80;
+      layout.yaxis.range = [0, 0.4];
+      layout.annotations = [
+        { x: 4, y: 0.34, text: 'Best supported', showarrow: true, arrowhead: 2, arrowcolor: '#c9a227',
+          font: { size: 9, color: '#c9a227' }, ax: 30, ay: -20 },
+        { x: 0.5, y: -0.22, xref: 'paper', yref: 'paper',
+          text: 'm = mean, a = additive, d = dominance, aa/ad/dd = epistasis types',
+          showarrow: false, font: { size: 8, color: txtColor() } }
+      ];
+
+      Plotly.react('chart-aicc', [{
+        x: models, y: weights, type: 'bar',
+        marker: { color: colors, line: { color: '#c9a227', width: 0.5 } },
+        hovertemplate: '%{x}: weight = %{y:.3f}<extra></extra>'
+      }], layout, pConfig);
+    })();
+
+
+    // ── Chart 4: Epistasis Prevalence by Trait Category ─
+    (function() {
+      var categories = ['Morphological', 'Life History', 'Physiological', 'Behavioral'];
+      var withEpistasis = [68, 72, 58, 64];
+      var withoutEpistasis = [32, 28, 42, 36];
+
+      var layout = baseLayout('');
+      layout.barmode = 'stack';
+      layout.xaxis.title = { text: 'Trait Category', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Percentage of Crosses', font: { size: 11, color: txtColor() } };
+      layout.yaxis.range = [0, 105];
+      layout.legend = { x: 0.55, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
+
+      var traces = [
+        { x: categories, y: withEpistasis, type: 'bar', name: 'Epistasis detected',
+          marker: { color: 'rgba(201,162,39,0.75)', line: { color: '#c9a227', width: 1 } },
+          hovertemplate: '%{x}: %{y}%<extra>Epistasis detected</extra>' },
+        { x: categories, y: withoutEpistasis, type: 'bar', name: 'Additive sufficient',
+          marker: { color: 'rgba(150,150,150,0.5)', line: { color: 'rgba(150,150,150,0.8)', width: 1 } },
+          hovertemplate: '%{x}: %{y}%<extra>Additive sufficient</extra>' }
+      ];
+
+      Plotly.react('chart-prevalence', traces, layout, pConfig);
+    })();
+
+
+    // ── Chart 5: Model Support Distribution ──────────
+    var modelDistData = {
+      all: {
+        labels: ['Additive Only', 'Add + Dominance', 'Add + Epistasis', 'Full Model'],
+        values: [12, 18, 42, 28],
+        note: 'All taxa combined (n > 1,600 crosses)'
+      },
+      plants: {
+        labels: ['Additive Only', 'Add + Dominance', 'Add + Epistasis', 'Full Model'],
+        values: [9, 15, 45, 31],
+        note: 'Plants only (n = 428 crosses)'
+      },
+      animals: {
+        labels: ['Additive Only', 'Add + Dominance', 'Add + Epistasis', 'Full Model'],
+        values: [14, 20, 40, 26],
+        note: 'Animals only (n = 618 crosses)'
+      }
+    };
+
+    function showModelDist(taxon) {
+      var btns = document.querySelectorAll('#model-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      var idx = taxon === 'all' ? 0 : taxon === 'plants' ? 1 : 2;
+      btns[idx].classList.add('active');
+
+      var d = modelDistData[taxon];
+      var colors = ['rgba(150,150,150,0.6)', 'rgba(180,160,100,0.6)', 'rgba(201,162,39,0.75)', 'rgba(201,162,39,0.9)'];
+
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Best-Supported Architecture', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: '% of Crosses', font: { size: 11, color: txtColor() } };
+      layout.yaxis.range = [0, 55];
+      layout.xaxis.tickangle = -20;
+      layout.margin.b = 80;
+      layout.annotations = [
+        { x: 0.5, y: -0.22, xref: 'paper', yref: 'paper',
+          text: d.note, showarrow: false, font: { size: 9, color: txtColor(), style: 'italic' } }
+      ];
+
+      Plotly.react('chart-models', [{
+        x: d.labels, y: d.values, type: 'bar',
+        marker: { color: colors, line: { color: '#c9a227', width: 0.5 } },
+        hovertemplate: '%{x}: %{y}%<extra></extra>'
+      }], layout, pConfig);
+    }
+    showModelDist('all');
+
+
+    // ── Redraw all charts on theme toggle ────────────
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() {
+        setTimeout(function() {
+          // Rerun interactive charts
+          showLCA(document.querySelector('#lca-toggle button.active').textContent.includes('Epistasis') ? 'epistatic' : 'additive');
+          showModelDist(
+            document.querySelector('#model-toggle button.active').textContent.toLowerCase().replace(/\s/g, '') === 'plants' ? 'plants' :
+            document.querySelector('#model-toggle button.active').textContent.toLowerCase().replace(/\s/g, '') === 'animals' ? 'animals' : 'all'
+          );
+          // Relayout static charts
+          var staticCharts = ['chart-drift', 'chart-aicc', 'chart-prevalence'];
+          staticCharts.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el && el.data) {
+              Plotly.relayout(id, {
+                'font.color': txtColor(),
+                'xaxis.gridcolor': gridColor(), 'yaxis.gridcolor': gridColor(),
+                'xaxis.title.font.color': txtColor(), 'yaxis.title.font.color': txtColor(),
+                'xaxis.zerolinecolor': gridColor(), 'yaxis.zerolinecolor': gridColor()
+              });
+            }
+          });
+        }, 100);
+      });
+    }
+  </script>
+</body>
+</html>

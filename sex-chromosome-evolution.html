@@ -682,7 +682,7 @@
             <p>In Hymenoptera (ants, bees, wasps) and some other arthropods, there are <strong>no sex chromosomes at all</strong>. Males develop from unfertilized eggs and are haploid; females develop from fertilized eggs and are diploid. Ploidy <em>is</em> sex determination. This system has profound consequences for the evolution of genome architecture and social behavior &mdash; it means that sisters share 75% of their genes, which Hamilton argued was a key driver of eusociality.</p>
 
             <h3>Environmental Sex Determination</h3>
-            <p>Many reptiles (most turtles, all crocodilians) determine sex by the temperature experienced during embryonic development. Some fish change sex in response to social cues &mdash; the largest female in a group of clownfish becomes male if the dominant male dies. Transitions between genetic and environmental sex determination happen repeatedly across the tree of life, and understanding <em>why</em> organisms switch is an active area of research.</p>
+            <p>Many reptiles (most turtles, all crocodilians) determine sex by the temperature experienced during embryonic development. Some fish change sex in response to social cues &mdash; clownfish are protandrous hermaphrodites, meaning the dominant male in a group changes to female if the breeding female dies. Transitions between genetic and environmental sex determination happen repeatedly across the tree of life, and understanding <em>why</em> organisms switch is an active area of research.</p>
           </div>
 
           <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
@@ -739,8 +739,8 @@
             </div>
 
             <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Annual Review of Microbiology</div>
-              <div class="paper-title">Evolution of sexual reproduction in fungi</div>
+              <div class="journal">Mycologia</div>
+              <div class="paper-title">Evolution of fungal sexual reproduction</div>
               <div class="authors">J. Heitman, S. Sun, T.Y. James</div>
               <div class="pub-year">2013 &mdash; Comprehensive review of fungal mating systems and the convergent evolution of mating-type chromosomes</div>
             </div>
@@ -979,8 +979,9 @@
 
             <!-- Plotly: Turnover rates -->
             <div class="chart-box" data-aos="fade-left">
-              <div class="chart-title">Y Chromosome Turnover Across Insect Orders</div>
+              <div class="chart-title">Y Chromosome Turnover Across XY Insect Orders</div>
               <div id="chart-turnover" style="width:100%; height:300px;"></div>
+              <div class="diagram-caption">Data are illustrative estimates for pedagogical purposes.</div>
             </div>
           </div>
         </div>
@@ -1070,6 +1071,7 @@
             <div class="chart-box" data-aos="fade-left">
               <div class="chart-title">Identifying Sex-Linked Scaffolds by Coverage</div>
               <div id="chart-coverage" style="width:100%; height:320px;"></div>
+              <div class="diagram-caption">Simulated data for illustration.</div>
             </div>
 
             <!-- Plotly: Expression ratio -->
@@ -1080,6 +1082,7 @@
                 <button onclick="showExprMode('uncompensated')">Without Compensation</button>
               </div>
               <div id="chart-expression" style="width:100%; height:280px;"></div>
+              <div class="diagram-caption">Simulated data for illustration.</div>
             </div>
 
             <div class="paper-masthead" data-aos="fade-left">
@@ -1221,6 +1224,7 @@
                 <button onclick="showViolinTaxon('snake')">Snake</button>
               </div>
               <div id="chart-violin" style="width:100%; height:300px;"></div>
+              <div class="diagram-caption">Simulated data for illustration.</div>
             </div>
           </div>
         </div>
@@ -1409,8 +1413,8 @@
 
     // ── Chart 1: Y Chromosome Turnover ──────────────
     (function() {
-      var orders = ['Coleoptera','Diptera','Orthoptera','Hemiptera','Lepidoptera','Hymenoptera','Odonata','Neuroptera'];
-      var rates = [0.42, 0.38, 0.31, 0.28, 0.15, 0.08, 0.22, 0.18];
+      var orders = ['Coleoptera','Diptera','Orthoptera','Hemiptera','Odonata','Neuroptera'];
+      var rates = [0.42, 0.38, 0.31, 0.28, 0.22, 0.18];
       var layout = baseLayout('');
       layout.xaxis.title = { text: 'Insect Order', font: { size: 11, color: txtColor() } };
       layout.yaxis.title = { text: 'Estimated Turnover Rate', font: { size: 11, color: txtColor() } };
@@ -1560,7 +1564,7 @@
       violinData.drosophila.auto = rnorm(200, 1.0, 0.18);
       violinData.drosophila.xlink = rnorm(60, 1.02, 0.24);
       violinData.snake.auto = rnorm(200, 1.0, 0.18);
-      violinData.snake.xlink = rnorm(60, 0.68, 0.22);
+      violinData.snake.xlink = rnorm(60, 1.45, 0.22);
     })();
 
     function showViolinTaxon(taxon) {

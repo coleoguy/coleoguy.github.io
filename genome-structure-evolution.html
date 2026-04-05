@@ -441,7 +441,7 @@
             <p>A <strong>fusion</strong> joins two chromosomes into one, reducing the chromosome number by one. There are two main types:</p>
 
             <h3>Robertsonian Translocations (Centric Fusions)</h3>
-            <p>Two <strong>acrocentric</strong> chromosomes (with the centromere near one end) fuse at their centromeres, producing a single <strong>metacentric</strong> chromosome (centromere in the middle). One centromere is typically lost or inactivated. This is the most common type of fusion in mammals &mdash; human chromosome 2 is a Robertsonian fusion of two ancestral ape chromosomes, which is why humans have 2n = 46 while the other great apes have 2n = 48.</p>
+            <p>Two <strong>acrocentric</strong> chromosomes (with the centromere near one end) fuse at their centromeres, producing a single <strong>metacentric</strong> chromosome (centromere in the middle). One centromere is typically lost or inactivated. This is the most common type of fusion in mammals &mdash; human chromosome 2 is an end-to-end (telomeric) fusion of two ancestral ape chromosomes, which is why humans have 2n = 46 while the other great apes have 2n = 48.</p>
 
             <h3>Tandem (End-to-End) Fusions</h3>
             <p>One chromosome attaches to the end (telomere) of another. Less common than Robertsonian translocations in mammals but important in insects and other groups. The resulting chromosome retains both centromeres initially, though one is usually silenced.</p>
@@ -746,7 +746,7 @@
 
             <div class="paper-masthead" data-aos="fade-left">
               <div class="journal">Systematic Biology</div>
-              <div class="paper-title">Chromploid: an agent-based framework for modeling genome evolution across lineages</div>
+              <div class="paper-title">ChromoSSE: testing hypotheses of chromosome number evolution with phylogenetic state-dependent speciation and extinction models</div>
               <div class="authors">R. Zenil-Ferguson &amp; colleagues</div>
               <div class="pub-year">ChromoSSE and BiChroM models &mdash; coupling chromosome evolution to diversification dynamics, allowing karyotype change to interact with speciation and extinction rates</div>
             </div>
@@ -866,47 +866,42 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">The Deepest Puzzle</div>
-            <h2>Stasis and Lability: Why Do Some Clades Never Change?</h2>
+            <div class="gs-kicker">Dismantling the Stasis Paradigm</div>
+            <h2>Rates of Karyotype Evolution Span Seven Orders of Magnitude</h2>
 
-            <p>Perhaps the most striking feature of karyotype evolution is how <strong>uneven</strong> it is. Some lineages evolve rapidly &mdash; <em>Muntiacus</em> deer span 2n = 6 to 2n = 46 across just a few species. Rock wallabies (<em>Petrogale</em>) have undergone dozens of Robertsonian fusions in a few million years. But other lineages are remarkably static: most birds sit near 2n &asymp; 80, essentially unchanged for tens of millions of years. Most frogs cluster around 2n = 26.</p>
+            <p>For decades, a common assumption held that chromosome number is <strong>evolutionarily conservative</strong> &mdash; that most lineages sit near a stable karyotype, punctuated by rare bursts of change. A massive new analysis shatters this view. Copeland et al. (submitted) compiled <strong>63,682 karyotypes</strong> across <strong>56 eukaryotic clades</strong> &mdash; spanning animals, plants, fungi, and more &mdash; and estimated rates of dysploidy and polyploidy on each clade's phylogeny using chromePlus. The result: rates of chromosome number evolution vary by <strong>seven orders of magnitude</strong> across the tree of life.</p>
 
-            <h3>What Maintains Stasis?</h3>
-            <p>Several hypotheses have been proposed:</p>
-            <p><strong>Constraint</strong>: Some karyotype configurations may be "locked in" by functional requirements. If genome organization affects gene regulation (e.g., through topologically associating domains), rearrangements that disrupt these structures may be strongly selected against.</p>
-            <p><strong>Stabilizing selection</strong>: There may be an <strong>optimal chromosome number</strong> for a given body plan, ecology, or developmental program. The Blackmon Lab has explored this idea directly &mdash; is there an "ideal" chromosome number, and if so, what determines it?</p>
-            <p><strong>Meiotic mechanics</strong>: Organisms with particular meiotic systems (e.g., holocentric chromosomes, where the centromere spans the entire chromosome) may tolerate or resist rearrangements differently.</p>
+            <h3>Stasis Is Rarer Than You Think</h3>
+            <p>Perhaps the most surprising finding is that groups traditionally considered "static" are anything but. All three bird orders analyzed (<em>Accipitriformes</em>, <em>Passeriformes</em>, and <em>Galliformes</em>) <strong>exceed the global median rate</strong> of chromosome number change. The appearance of stasis in birds &mdash; most species near 2n &asymp; 80 &mdash; masks genuinely active evolutionary dynamics.</p>
 
-            <h3>What Permits Lability?</h3>
-            <p>Conversely, rapid karyotype change may be enabled by small population size (drift overcomes underdominance), strong meiotic drive, relaxed constraint on genome organization, or ecological factors that favor frequent population bottlenecks (island colonization, fragmented habitats).</p>
+            <h3>Ecology Trumps Architecture</h3>
+            <p>A longstanding hypothesis predicted that chromosome architecture should dictate rates: holocentric chromosomes (where the centromere spans the entire chromosome) should tolerate rearrangements more readily than monocentric ones. The data say otherwise. <strong>Orchidaceae</strong> (monocentric) evolve chromosome number ~34&times; faster than <strong>Odonata</strong> (holocentric). This pattern, replicated across the dataset, argues that <strong>ecology and life history matter more than chromosome structure</strong> for setting the tempo of karyotype evolution.</p>
+
+            <h3>Rate Variation Is Kingdom-Agnostic</h3>
+            <p>Fast and slow clades are found in every kingdom. The slowest clade in the dataset is an animal (Cetacea); the fastest is a plant (Asteraceae). Insects, vertebrates, angiosperms, and fungi all span the full range. There is no "animal rate" or "plant rate" &mdash; the forces shaping karyotype tempo are universal.</p>
           </div>
 
           <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">Comparative Patterns</div>
-            <h2>Rate Variation Across the Tree</h2>
+            <div class="gs-kicker">Real Data &mdash; 55 Clades</div>
+            <h2>Total Dysploidy Rate Across Eukaryotes</h2>
 
-            <!-- Plotly: Rate variation across clades -->
+            <!-- Plotly: Rate variation across clades — real MCMC posteriors -->
             <div class="chart-box" data-aos="fade-left">
-              <div class="chart-title">Karyotype Evolutionary Rate Variation</div>
-              <div id="chart-stasis" style="width:100%; height:320px;"></div>
-            </div>
-
-            <p>The contrast is dramatic. Some insect orders show enormous karyotype diversity within a single family, while others are nearly uniform across thousands of species. Understanding <em>why</em> is one of the central challenges in the field.</p>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Journal of Heredity <span class="badge-f1000">F1000</span></div>
-              <div class="paper-title">Sex determination, sex chromosomes, and karyotype evolution in insects</div>
-              <div class="authors">H. Blackmon, L. Ross, D. Bachtrog</div>
-              <div class="pub-year">2017 &mdash; Comprehensive analysis of the diversity and rates of karyotype change across insect orders</div>
+              <div class="chart-title">Total Dysploidy Rate (ascending + descending + polyploidy)</div>
+              <div id="chart-stasis" style="width:100%; height:640px;"></div>
+              <p class="diagram-caption" style="font-size:0.75rem; opacity:0.7; margin-top:4px;">Posterior median rates estimated via chromePlus MCMC on trees scaled to unit depth. Dashed line = global median. Data from Copeland et al. (submitted). Clades colored by higher classification.</p>
             </div>
 
             <div class="stat-callout" data-aos="fade-left">
-              <div class="stat-num" style="font-size:1.2rem;">Q2</div>
-              <div class="stat-text">Why does chromosome number evolve rapidly in some clades but remains nearly static in others? <a href="research.html">&rarr; Lab research questions</a></div>
+              <div class="stat-num">55</div>
+              <div class="stat-text">Eukaryotic clades analyzed &mdash; spanning insects, vertebrates, plants, fungi, arachnids, and more &mdash; from 63,682 karyotype records</div>
             </div>
-            <div class="stat-callout" data-aos="fade-left">
-              <div class="stat-num" style="font-size:1.2rem;">Q3</div>
-              <div class="stat-text">Is there an ideal chromosome number, and if so, what determines that value?</div>
+
+            <div class="paper-masthead" data-aos="fade-left" style="border-left: 3px solid var(--accent);">
+              <div class="journal"><span style="background:#c9a227;color:#000;padding:1px 6px;border-radius:3px;font-size:0.7rem;">SUBMITTED</span></div>
+              <div class="paper-title">Chromosome number evolves at rates spanning seven orders of magnitude across eukaryotes</div>
+              <div class="authors">M. Copeland, H. Blackmon</div>
+              <div class="pub-year">2025 &mdash; CURE-based study of 63,682 karyotypes across 56 clades dismantles the stasis paradigm and shows rate variation is kingdom-agnostic</div>
             </div>
 
             <div class="paper-masthead" data-aos="fade-left">
@@ -928,6 +923,11 @@
               <div class="paper-title">Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora</div>
               <div class="authors">M.M. Jonika, K.T. Wilhoit, M. Chin, A. Arekere, H. Blackmon</div>
               <div class="pub-year">2024 &mdash; Range size (a proxy for effective population size) predicts rates of karyotype change in carnivores &mdash; consistent with drift as the primary force</div>
+            </div>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num" style="font-size:1.2rem;">Q2</div>
+              <div class="stat-text">Why does chromosome number evolve rapidly in some clades but remains nearly static in others? <a href="research.html">&rarr; Lab research questions</a></div>
             </div>
           </div>
         </div>
@@ -986,8 +986,8 @@
                 <!-- Model box -->
                 <rect x="230" y="40" width="170" height="95" rx="8" class="chr-region" opacity="0.4"/>
                 <text x="315" y="58" class="chr-heading" text-anchor="middle" style="font-size:11px">Estimated Parameters</text>
-                <text x="245" y="76" class="chr-label-sm" text-anchor="start">&#955; = fusion rate</text>
-                <text x="245" y="92" class="chr-label-sm" text-anchor="start">&#948; = fission rate</text>
+                <text x="245" y="76" class="chr-label-sm" text-anchor="start">&#955; = chromosome gain rate</text>
+                <text x="245" y="92" class="chr-label-sm" text-anchor="start">&#948; = chromosome loss rate</text>
                 <text x="245" y="108" class="chr-label-sm" text-anchor="start">&#961; = polyploidy rate</text>
                 <text x="245" y="124" class="chr-label-sm" text-anchor="start">&#916; = trait effect on rates</text>
               </svg>
@@ -1027,10 +1027,10 @@
             </div>
 
             <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Chromosome Research</div>
-              <div class="paper-title">Loren Rieseberg and the experimental synthesis of hybrid speciation</div>
-              <div class="authors">(Rieseberg's sunflower work)</div>
-              <div class="pub-year">1990s&ndash;2000s &mdash; Experimentally recreated hybrid species of Helianthus, demonstrating that chromosomal rearrangements accumulate predictably during hybrid speciation and act as barriers to gene flow</div>
+              <div class="journal">Trends in Ecology &amp; Evolution</div>
+              <div class="paper-title">Chromosomal rearrangements and speciation</div>
+              <div class="authors">L.H. Rieseberg</div>
+              <div class="pub-year">2001 &mdash; Review of how chromosomal rearrangements accumulate during speciation and act as barriers to gene flow, with evidence from Helianthus hybrid species</div>
             </div>
           </div>
         </div>
@@ -1088,7 +1088,7 @@
             </div>
 
             <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Nature</div>
+              <div class="journal">Book &middot; Sinauer Associates</div>
               <div class="paper-title">The origins of genome architecture</div>
               <div class="authors">M. Lynch</div>
               <div class="pub-year">2007 &mdash; Michael Lynch's influential argument that genome complexity often evolves through drift and mutation pressure rather than adaptation</div>
@@ -1204,7 +1204,7 @@
 
     // ── Chart 2: Fusion vs fission rates (mammals) ──
     (function() {
-      var orders = ['Primates','Rodentia','Carnivora','Chiroptera','Artiodactyla','Perissodactyla','Insectivora','Marsupialia'];
+      var orders = ['Primates','Rodentia','Carnivora','Chiroptera','Artiodactyla','Perissodactyla','Eulipotyphla','Marsupialia'];
       var fusionR = [0.18, 0.25, 0.12, 0.30, 0.22, 0.08, 0.15, 0.35];
       var fissionR = [0.08, 0.10, 0.06, 0.12, 0.05, 0.04, 0.09, 0.14];
       var layout = baseLayout('');
@@ -1224,27 +1224,34 @@
       ], layout, pConfig);
     })();
 
-    // ── Chart 3: Karyotype rate variation ────────────
+    // ── Chart 3: Real dysploidy rates from Copeland et al. (submitted) ────────────
     (function() {
-      var groups = ['Birds','Frogs','Mammals','Coleoptera','Lepidoptera','Diptera','Orthoptera','Plants (angiosperms)'];
-      var cv = [0.04, 0.08, 0.25, 0.35, 0.55, 0.20, 0.30, 0.60];
-      var colors = cv.map(function(v) {
-        return v < 0.1 ? 'rgba(100,160,220,0.7)' : v < 0.3 ? 'rgba(150,150,150,0.6)' : 'rgba(201,162,39,0.75)';
-      });
+      // Posterior median total rates (asc + desc + poly) from chromePlus MCMC — 55 clades (excl. Magnoliaceae)
+      var clades = ['Cetacea','Odonata','Cyprinidae','Hydrophilidae','Caudata','Scincoidea','Tenebrionidae','Scarabaeoidea','Marsupialia','Rubiaceae','Drosophilidae','Characiformes','Coccinellidae','Phasmatodea','Testudines','Curculionidae','Serpentes','Gekkonidae','Anabantiformes','Fabaceae','Dytiscidae','Blattodea','Brassicaceae','Hemiptera','Chrysomelidae','Passifloraceae','Orthoptera','Cichlidae','Gymnospermae','Accipitriformes','Carnivora','Carabidae','Chiroptera','Liliaceae','Araneae','Fungi','Iguania','Nothobranchiidae','Gobiidae','Scorpiones','Muridae','Passeriformes','Primates','Bryophytes','Galliformes','Anura','Siluriformes','Hymenoptera','Cricetidae','Orchidaceae','Solanaceae','Lepidoptera','Chondrichthyes','Pteridophytes','Asteraceae'];
+      var rates = [0.24,0.39,0.66,1.08,1.31,1.44,1.47,1.53,1.53,1.59,1.81,1.83,2.31,2.45,2.80,2.94,3.24,3.35,3.56,3.56,3.67,3.75,3.87,3.97,4.16,4.28,4.36,4.39,4.82,4.92,4.93,5.24,5.37,5.73,5.82,6.13,7.05,7.35,7.61,7.62,7.87,8.00,8.36,8.83,9.76,11.14,11.72,11.82,11.92,13.38,14.29,15.08,16.02,17.20,42.80];
+      // Higher classification for coloring
+      var higher = ['Mammalia','Insecta','Actinopterygii','Insecta','Amphibia','Reptilia','Insecta','Insecta','Mammalia','Angiospermae','Insecta','Actinopterygii','Insecta','Insecta','Reptilia','Insecta','Reptilia','Reptilia','Actinopterygii','Angiospermae','Insecta','Insecta','Angiospermae','Insecta','Insecta','Angiospermae','Insecta','Actinopterygii','Gymnospermae','Reptilia','Mammalia','Insecta','Mammalia','Angiospermae','Arachnida','Fungi','Reptilia','Actinopterygii','Actinopterygii','Arachnida','Mammalia','Reptilia','Mammalia','Bryophyta','Reptilia','Amphibia','Actinopterygii','Insecta','Mammalia','Angiospermae','Angiospermae','Insecta','Chondrichthyes','Pteridophyta','Angiospermae'];
+      var classColors = {
+        'Mammalia':'#6096BA','Insecta':'#8E3B9E','Actinopterygii':'#0077B6','Amphibia':'#48CAE4',
+        'Reptilia':'#F48C06','Angiospermae':'#84D957','Gymnospermae':'#0B4218','Arachnida':'#D00000',
+        'Fungi':'#E6AB02','Bryophyta':'#1D3557','Chondrichthyes':'#023E8A','Pteridophyta':'#2E8B57'
+      };
+      var barColors = higher.map(function(h) { return classColors[h] || '#888'; });
+      var medianRate = 4.39;
       var layout = baseLayout('');
-      layout.xaxis.title = { text: '', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Coefficient of Variation in 2n', font: { size: 11, color: txtColor() } };
-      layout.xaxis.tickangle = -35;
-      layout.margin.b = 100;
+      layout.yaxis = { title: { text: '', font: { size: 11, color: txtColor() } }, automargin: true, tickfont: { size: 8, color: txtColor() } };
+      layout.xaxis = { title: { text: 'Total dysploidy rate (per unit tree depth)', font: { size: 11, color: txtColor() } }, type: 'log', gridcolor: gridColor(), tickfont: { size: 9, color: txtColor() } };
+      layout.margin = { l: 110, r: 20, t: 10, b: 50 };
+      layout.height = 640;
+      layout.shapes = [{ type: 'line', x0: medianRate, x1: medianRate, y0: -0.5, y1: 54.5, xref: 'x', yref: 'y', line: { color: 'rgba(201,162,39,0.6)', width: 2, dash: 'dash' } }];
       layout.annotations = [
-        { x: 0.5, y: -0.22, xref: 'paper', yref: 'paper', showarrow: false,
-          text: 'Low CV = karyotype stasis (blue) | High CV = karyotype lability (gold)',
-          font: { size: 9, color: txtColor() } }
+        { x: Math.log10(medianRate), y: 1.02, xref: 'x', yref: 'paper', showarrow: false,
+          text: 'median', font: { size: 9, color: 'rgba(201,162,39,0.8)' } }
       ];
       Plotly.react('chart-stasis', [{
-        x: groups, y: cv, type: 'bar',
-        marker: { color: colors, line: { color: colors.map(function(c) { return c.replace('0.7','1').replace('0.6','1').replace('0.75','1'); }), width: 1 } },
-        hovertemplate: '%{x}: CV = %{y:.2f}<extra></extra>'
+        y: clades, x: rates, type: 'bar', orientation: 'h',
+        marker: { color: barColors, line: { color: barColors, width: 0.5 } },
+        hovertemplate: '%{y}: rate = %{x:.2f}<extra></extra>'
       }], layout, pConfig);
     })();
 

@@ -4,7 +4,7 @@
     {
       "name": "site",
       "runtimeExecutable": "ruby",
-      "runtimeArgs": ["-e", "require 'webrick'; WEBrick::HTTPServer.new(Port: 8080, DocumentRoot: '/Users/blackmon/Desktop/GitHub/coleoguy.github.io').start"],
+      "runtimeArgs": ["-run", "-e", "httpd", "/Users/blackmon/Desktop/GitHub/coleoguy.github.io", "-p", "8080"],
       "port": 8080
     }
   ]

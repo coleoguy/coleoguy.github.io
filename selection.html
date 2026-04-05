@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selection in Evolution — Blackmon Lab</title>
+  <meta name="description" content="A visual guide to selection — natural, artificial, sexual, background, and indirect selection on recombination modifiers. From Darwin to modern population genetics.">
+  <meta property="og:title" content="Selection in Evolution — Blackmon Lab" />
+  <meta property="og:description" content="A visual guide to selection — natural, artificial, sexual, background, and indirect selection on recombination modifiers in evolutionary biology." />
+  <meta property="og:url" content="https://coleoguy.github.io/selection.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blackmon Lab" />
+  <meta name="keywords" content="natural selection, sexual selection, sexual antagonism, background selection, genetic drift, effective population size, recombination, inversions, artificial selection">
+  <link rel="canonical" href="https://coleoguy.github.io/selection.html">
+  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Scroll progress bar ─────────────────────────── */
+    #scroll-progress {
+      position: fixed;
+      top: 62px;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent, #c9a227);
+      z-index: 1050;
+      transition: width 0.05s linear;
+    }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .sl-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+    }
+    .sl-hero .kicker {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 14px;
+    }
+    .sl-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text-heading, #f8f4ed);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .sl-hero .subtitle {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      max-width: 700px;
+      margin: 0 auto 28px;
+    }
+
+    /* ── Split-panel sections ─────────────────────────── */
+    .sl-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+    }
+    .sl-section:nth-child(even) {
+      background: rgba(255,255,255,0.015);
+    }
+    .body-light .sl-section:nth-child(even),
+    .light-mode .sl-section:nth-child(even) {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .sl-theory {
+      padding-right: 28px;
+      border-right: 1px solid rgba(201,162,39,0.15);
+    }
+    .sl-evidence {
+      padding-left: 28px;
+    }
+    @media (max-width: 991.98px) {
+      .sl-theory, .sl-evidence { padding: 0; border-right: none; }
+      .sl-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
+    }
+
+    .sl-kicker {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 6px;
+    }
+    .sl-section h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-heading, #eae7e2);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .sl-section h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent, #c9a227);
+      margin: 24px 0 8px;
+    }
+    .sl-section h3:first-child { margin-top: 0; }
+    .sl-section p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text, #c8c5c0);
+      margin-bottom: 14px;
+    }
+    .sl-section a {
+      color: var(--accent, #c9a227);
+      text-decoration: underline;
+      text-decoration-color: rgba(201,162,39,0.4);
+      text-underline-offset: 2px;
+    }
+    .sl-section a:hover { text-decoration-color: var(--accent); }
+    .sl-section strong {
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+    }
+
+    .pullquote {
+      border-left: 3px solid var(--accent, #c9a227);
+      padding: 10px 18px;
+      margin: 20px 0;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--accent, #c9a227);
+      line-height: 1.6;
+    }
+
+    /* ── Paper masthead cards ─────────────────────────── */
+    .paper-masthead {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .paper-masthead:hover {
+      border-color: rgba(201,162,39,0.5);
+      text-decoration: none;
+    }
+    .paper-masthead .journal {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent, #c9a227);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .paper-masthead .paper-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+    .paper-masthead .authors {
+      font-size: 0.78rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      line-height: 1.4;
+    }
+    .paper-masthead .pub-year {
+      font-size: 0.7rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-top: 4px;
+    }
+
+    /* ── Organism cards ────────────────────────────────── */
+    .org-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .org-card {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .org-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      filter: grayscale(30%);
+      transition: filter 0.3s;
+    }
+    .org-card:hover img { filter: grayscale(0%); }
+    .org-card .org-info {
+      padding: 8px 10px;
+    }
+    .org-card .org-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+    }
+    .org-card .org-system {
+      font-size: 0.7rem;
+      color: var(--accent, #c9a227);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Diagram containers ────────────────────────────── */
+    .diagram-box {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 24px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .diagram-box svg { max-width: 100%; height: auto; }
+    .diagram-caption {
+      font-size: 0.72rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SVG colors via CSS ────────────────────────────── */
+    .chr-auto { fill: #555; }
+    .chr-sex { fill: var(--accent, #c9a227); }
+    .chr-sex-dim { fill: rgba(201,162,39,0.35); }
+    .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
+    .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
+    .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
+    .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
+    .chr-arrow { fill: var(--accent, #c9a227); }
+    .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
+    .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
+    .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
+    .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+    .chr-region { fill: rgba(201,162,39,0.12); }
+    .chr-del { fill: #b04040; }
+    .chr-del-dim { fill: rgba(176,64,64,0.35); }
+    .chr-neutral { fill: #888; }
+
+    .light-mode .chr-auto { fill: #bbb; }
+    .light-mode .chr-label { fill: #333; }
+    .light-mode .chr-label-sm { fill: #777; }
+    .light-mode .chr-heading { fill: #222; }
+    .light-mode .chr-line { stroke: #ccc; }
+    .light-mode .chr-line-dash { stroke: #ccc; }
+    .light-mode .chr-neutral { fill: #aaa; }
+
+    /* ── Plotly chart containers ────────────────────────── */
+    .chart-box {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .chart-box .chart-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent, #c9a227);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    /* ── Toggle buttons for charts ─────────────────────── */
+    .chart-toggle {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .chart-toggle button {
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 16px;
+      background: transparent;
+      color: var(--text, #c8c5c0);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .chart-toggle button.active,
+    .chart-toggle button:hover {
+      border-color: var(--accent, #c9a227);
+      color: var(--accent, #c9a227);
+      background: rgba(201,162,39,0.08);
+    }
+
+    /* ── Stat callout ──────────────────────────────────── */
+    .stat-callout {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+    .stat-callout .stat-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent, #c9a227);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .stat-callout .stat-text {
+      font-size: 0.82rem;
+      color: var(--text, #c8c5c0);
+      line-height: 1.4;
+    }
+
+    /* ── Related resources box ─────────────────────────── */
+    .related-box {
+      margin-top: 48px;
+      padding: 28px 32px;
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 10px;
+      background: rgba(201,162,39,0.03);
+    }
+    .related-box h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 16px;
+    }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .related-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid rgba(201,162,39,0.25);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--text, #c8c5c0);
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .related-link i { color: var(--accent); font-size: 0.75rem; }
+    .related-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .paper-foot {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(201,162,39,0.2);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+    }
+  </style>
+</head>
+
+<body class="resources-page">
+  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress"></div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group d-flex align-items-center gap-2">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="sl-hero" data-aos="fade-up">
+      <div class="container">
+        <div class="kicker">A Visual Guide</div>
+        <h1>Selection in Evolution</h1>
+        <div class="subtitle">Natural, sexual, artificial, and indirect &mdash; how selection shapes genomes, populations, and the diversity of life</div>
+
+        <!-- Decorative SVG: stylized fitness curve with organisms -->
+        <svg width="260" height="90" viewBox="0 0 260 90" style="margin-bottom: 18px; opacity: 0.7;">
+          <!-- Fitness landscape curve -->
+          <path d="M10,75 Q50,70 80,40 Q100,20 130,15 Q160,20 180,40 Q210,70 250,75" stroke="rgba(201,162,39,0.5)" stroke-width="2" fill="none"/>
+          <!-- Favored organisms (gold, near peak) -->
+          <circle cx="120" cy="22" r="5" class="chr-sex" opacity="0.9"/>
+          <circle cx="130" cy="15" r="6" class="chr-sex" opacity="1.0"/>
+          <circle cx="140" cy="22" r="5" class="chr-sex" opacity="0.9"/>
+          <!-- Disfavored organisms (gray, at edges) -->
+          <circle cx="40" cy="68" r="4" class="chr-auto" opacity="0.5"/>
+          <circle cx="60" cy="55" r="4" class="chr-auto" opacity="0.5"/>
+          <circle cx="210" cy="65" r="4" class="chr-auto" opacity="0.5"/>
+          <circle cx="235" cy="72" r="4" class="chr-auto" opacity="0.5"/>
+          <!-- Labels -->
+          <text x="130" y="88" class="chr-label-sm" text-anchor="middle" style="font-size:8px">Fitness Landscape</text>
+        </svg>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 1: WHAT IS SELECTION? ═══════════════ -->
+    <section class="sl-section" id="sec-what">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 sl-theory" data-aos="fade-up">
+            <div class="sl-kicker">Foundations</div>
+            <h2>What Is Selection?</h2>
+
+            <p><strong>Selection</strong> is differential survival and reproduction based on heritable phenotypic variation. It is the only evolutionary force that consistently produces <strong>adaptation</strong> &mdash; the fit between organism and environment that pervades the living world. While mutation generates variation, recombination shuffles it, and drift randomly eliminates it, only selection can build complex adaptations over time.</p>
+
+            <p>Darwin's insight was deceptively simple: <strong>variation exists</strong>, much of it is <strong>heritable</strong>, and <strong>not all individuals reproduce equally</strong>. The result is cumulative, directional change in the composition of populations. Individuals that happen to carry traits that improve their survival or reproductive success leave more offspring, and those offspring inherit the very traits that gave their parents an advantage.</p>
+
+            <h3>The Mathematics of Selection</h3>
+            <p>For a single locus with two alleles under additive (semi-dominant) selection, the change in frequency of the favored allele per generation is approximately:</p>
+            <div class="pullquote">&Delta;p &asymp; sp(1&minus;p) / 2</div>
+            <p>where <em>s</em> is the selection coefficient and <em>p</em> is the allele frequency. The general form, &Delta;p = sp(1&minus;p)[ph + (1&minus;p)(1&minus;h)] / w&#x0304;, accounts for dominance (<em>h</em>) and mean fitness (w&#x0304;). But real selection is far more complex. The <strong>breeder's equation</strong> captures the response to selection on a quantitative trait:</p>
+            <div class="pullquote">R = h&sup2;S</div>
+            <p>where <em>R</em> is the response (change in mean phenotype), <em>h&sup2;</em> is heritability, and <em>S</em> is the selection differential. This deceptively simple equation encodes a profound truth: the rate of evolutionary change depends on both the <strong>strength of selection</strong> and the <strong>amount of heritable variation</strong> available.</p>
+
+            <p>Selection acts on <strong>phenotypes</strong>, not genotypes directly. The mapping from genotype to phenotype to fitness is where all the complexity lives &mdash; pleiotropy, epistasis, genotype-by-environment interactions, and developmental constraints all mediate how genotypic variation translates into fitness differences.</p>
+
+            <h3>Types of Selection</h3>
+            <p><strong>Directional selection</strong> favors one phenotypic extreme, shifting the mean. <strong>Stabilizing selection</strong> favors the mean, reducing variance. <strong>Disruptive selection</strong> favors both extremes, increasing variance and potentially driving speciation. <strong>Frequency-dependent selection</strong> changes in direction depending on how common a phenotype is &mdash; negative frequency dependence maintains diversity, positive frequency dependence eliminates it. <strong>Density-dependent selection</strong> varies with population density, often favoring different life-history strategies at high vs. low density.</p>
+
+            <!-- SVG DIAGRAM: Three modes of selection -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 520 260" width="100%" aria-labelledby="svg-modes-title">
+                <title id="svg-modes-title">Three modes of selection: directional, stabilizing, and disruptive</title>
+
+                <!-- Panel 1: Directional -->
+                <text x="87" y="18" class="chr-heading" text-anchor="middle">Directional</text>
+                <!-- Before distribution (gray) -->
+                <path d="M15,100 Q30,98 45,85 Q60,55 75,40 Q87,35 100,40 Q115,55 130,85 Q145,98 160,100" fill="rgba(136,136,136,0.25)" stroke="rgba(136,136,136,0.5)" stroke-width="1"/>
+                <text x="87" y="115" class="chr-label-sm" text-anchor="middle">Before</text>
+                <!-- After distribution (gold, shifted right) -->
+                <path d="M35,220 Q50,218 65,205 Q80,175 95,160 Q107,155 120,160 Q135,175 150,205 Q165,218 175,220" fill="rgba(201,162,39,0.25)" stroke="rgba(201,162,39,0.7)" stroke-width="1.5"/>
+                <text x="107" y="235" class="chr-label-accent" text-anchor="middle">After</text>
+                <!-- Arrow showing shift -->
+                <line x1="87" y1="125" x2="107" y2="145" class="chr-line-accent"/>
+                <polygon points="107,145 100,140 103,148" class="chr-arrow"/>
+                <!-- Axis -->
+                <line x1="10" y1="102" x2="170" y2="102" class="chr-line" opacity="0.3"/>
+                <line x1="10" y1="222" x2="175" y2="222" class="chr-line" opacity="0.3"/>
+
+                <!-- Panel 2: Stabilizing -->
+                <text x="262" y="18" class="chr-heading" text-anchor="middle">Stabilizing</text>
+                <!-- Before distribution (gray, wide) -->
+                <path d="M185,100 Q205,95 225,75 Q240,45 255,35 Q262,30 270,35 Q285,45 300,75 Q315,95 340,100" fill="rgba(136,136,136,0.25)" stroke="rgba(136,136,136,0.5)" stroke-width="1"/>
+                <text x="262" y="115" class="chr-label-sm" text-anchor="middle">Before</text>
+                <!-- After distribution (gold, narrower, taller) -->
+                <path d="M210,220 Q230,218 245,200 Q255,170 260,155 Q262,148 265,155 Q270,170 280,200 Q295,218 315,220" fill="rgba(201,162,39,0.25)" stroke="rgba(201,162,39,0.7)" stroke-width="1.5"/>
+                <text x="262" y="235" class="chr-label-accent" text-anchor="middle">After</text>
+                <!-- Arrows showing compression -->
+                <line x1="225" y1="125" x2="240" y2="145" class="chr-line-accent"/>
+                <polygon points="240,145 233,141 236,149" class="chr-arrow"/>
+                <line x1="300" y1="125" x2="285" y2="145" class="chr-line-accent"/>
+                <polygon points="285,145 289,149 292,141" class="chr-arrow"/>
+                <line x1="185" y1="102" x2="345" y2="102" class="chr-line" opacity="0.3"/>
+                <line x1="185" y1="222" x2="345" y2="222" class="chr-line" opacity="0.3"/>
+
+                <!-- Panel 3: Disruptive -->
+                <text x="432" y="18" class="chr-heading" text-anchor="middle">Disruptive</text>
+                <!-- Before distribution (gray, single peak) -->
+                <path d="M360,100 Q380,95 400,75 Q415,45 425,35 Q432,30 440,35 Q450,45 465,75 Q480,95 505,100" fill="rgba(136,136,136,0.25)" stroke="rgba(136,136,136,0.5)" stroke-width="1"/>
+                <text x="432" y="115" class="chr-label-sm" text-anchor="middle">Before</text>
+                <!-- After distribution (gold, bimodal) -->
+                <path d="M360,220 Q370,218 380,205 Q388,185 393,178 Q397,175 400,178 Q405,185 410,200 Q420,215 432,220 Q444,215 454,200 Q459,185 463,178 Q467,175 470,178 Q475,185 480,205 Q490,218 505,220" fill="rgba(201,162,39,0.25)" stroke="rgba(201,162,39,0.7)" stroke-width="1.5"/>
+                <text x="432" y="235" class="chr-label-accent" text-anchor="middle">After</text>
+                <!-- Arrows showing divergence -->
+                <line x1="415" y1="125" x2="397" y2="145" class="chr-line-accent"/>
+                <polygon points="397,145 402,139 394,140" class="chr-arrow"/>
+                <line x1="450" y1="125" x2="467" y2="145" class="chr-line-accent"/>
+                <polygon points="467,145 462,139 470,140" class="chr-arrow"/>
+                <line x1="355" y1="102" x2="510" y2="102" class="chr-line" opacity="0.3"/>
+                <line x1="355" y1="222" x2="510" y2="222" class="chr-line" opacity="0.3"/>
+
+                <!-- Shared x-axis label -->
+                <text x="260" y="255" class="chr-label-sm" text-anchor="middle">Phenotype value (trait axis)</text>
+              </svg>
+              <div class="diagram-caption">Three modes of selection on a quantitative trait &mdash; before (gray) and after (gold) distributions</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sl-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sl-kicker">Foundational Works</div>
+            <h2>The Intellectual Lineage</h2>
+
+            <p>The theory of selection has been built by generations of thinkers, from Darwin's original verbal argument to the rigorous mathematical framework of population genetics. Each step clarified how selection acts, how it interacts with other forces, and how it produces the patterns we observe in living organisms.</p>
+
+            <a href="https://archive.org/details/originofspecies00darw" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; John Murray, London</div>
+              <div class="paper-title">On the Origin of Species by Means of Natural Selection</div>
+              <div class="authors">C. Darwin</div>
+              <div class="pub-year">1859 &mdash; The foundational text that established natural selection as the primary mechanism of adaptive evolution</div>
+            </a>
+
+            <a href="https://archive.org/details/geneticaltheoryo0000fish" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Clarendon Press, Oxford</div>
+              <div class="paper-title">The Genetical Theory of Natural Selection</div>
+              <div class="authors">R.A. Fisher</div>
+              <div class="pub-year">1930 &mdash; Formalized selection in mathematical terms; Fisher's fundamental theorem states that the rate of increase in fitness equals the additive genetic variance in fitness</div>
+            </a>
+
+            <a href="https://doi.org/10.1038/227520a0" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature</div>
+              <div class="paper-title">Selection and Covariance</div>
+              <div class="authors">G.R. Price</div>
+              <div class="pub-year">1970 &mdash; The Price equation: the most general mathematical description of selection, showing that evolutionary change equals the covariance between trait and fitness</div>
+            </a>
+
+            <a href="https://doi.org/10.2307/2407630" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution &middot; 33: 402&ndash;416</div>
+              <div class="paper-title">Quantitative genetic analysis of multivariate evolution, applied to brain:body size allometry</div>
+              <div class="authors">R. Lande</div>
+              <div class="pub-year">1979 &mdash; Extended selection theory to multivariate traits; the Lande equation describes how correlated traits respond to selection simultaneously</div>
+            </a>
+
+            <div class="pullquote">
+              &ldquo;There is grandeur in this view of life, with its several powers, having been originally breathed into a few forms or into one; and that, whilst this planet has gone cycling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved.&rdquo; &mdash; Darwin, 1859
+            </div>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num">165+</div>
+              <div class="stat-text">Years since the publication of the Origin, and the theory of natural selection remains the central organizing principle of biology.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 2: DRIFT VS. SELECTION ═══════════════ -->
+    <section class="sl-section" id="sec-drift">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sl-theory" data-aos="fade-up">
+            <div class="sl-kicker">Population Size Matters</div>
+            <h2>Drift vs. Selection &mdash; The Role of N<sub>e</sub></h2>
+
+            <p>Whether selection or drift dominates at a given locus depends on the <strong>effective population size</strong> (N<sub>e</sub>) and the <strong>selection coefficient</strong> (s). The critical threshold is:</p>
+            <div class="pullquote">|N<sub>e</sub>s| &asymp; 1</div>
+
+            <p>When |N<sub>e</sub>s| >> 1, selection dominates: beneficial alleles spread to fixation, deleterious alleles are purged. When |N<sub>e</sub>s| << 1, drift dominates: alleles behave as if effectively neutral, regardless of their actual fitness effects. Their fate becomes a random walk governed by sampling variance in small populations.</p>
+
+            <p>This means that what counts as <strong>"neutral"</strong> depends on population size. In large populations (bacteria with very large N<sub>e</sub>, insect species with huge census sizes), even very weakly selected alleles &mdash; those with s = 10<sup>&minus;7</sup> &mdash; are visible to selection. In small populations (endangered species, island endemics, organisms that have passed through severe bottlenecks), even moderately deleterious mutations with s = 10<sup>&minus;3</sup> can drift to fixation as if they were neutral.</p>
+
+            <h3>The Nearly Neutral Theory</h3>
+            <p>Ohta (1973) recognized that most new mutations are not strictly neutral but <strong>slightly deleterious</strong>. Their evolutionary fate depends critically on N<sub>e</sub>. As N<sub>e</sub> decreases, the boundary of effective neutrality expands, and more slightly deleterious mutations drift to fixation. This leads to <strong>genomic decay</strong> &mdash; an accumulation of mildly harmful substitutions in small populations.</p>
+
+            <h3>Implications for Genome Evolution</h3>
+            <p>Small-N<sub>e</sub> lineages accumulate more slightly deleterious mutations, exhibit weaker codon usage bias, harbor more pseudogenes, and potentially experience faster rates of chromosome rearrangement fixation. Lynch (2007) argued powerfully that most of genome architecture &mdash; intron proliferation, genome size expansion, mobile element accumulation &mdash; is driven not by adaptation but by the <strong>inability of selection to prevent genomic bloat</strong> in organisms with small effective population sizes.</p>
+
+            <!-- SVG DIAGRAM: Allele frequency trajectories -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 520 230" width="100%" aria-labelledby="svg-drift-title">
+                <title id="svg-drift-title">Allele frequency trajectories under different effective population sizes</title>
+
+                <!-- Panel 1: Large Ne -->
+                <text x="87" y="18" class="chr-heading" text-anchor="middle">Large N<tspan baseline-shift="sub" font-size="9">e</tspan></text>
+                <rect x="10" y="25" width="154" height="170" rx="4" fill="none" class="chr-line" opacity="0.2"/>
+                <!-- Beneficial allele rises to fixation (gold) -->
+                <polyline points="10,170 30,165 50,155 70,140 90,115 110,80 130,50 150,35 164,30" fill="none" stroke="#c9a227" stroke-width="1.8"/>
+                <!-- Neutral allele (gray, flat-ish) -->
+                <polyline points="10,120 30,118 50,122 70,120 90,125 110,118 130,121 150,119 164,122" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="4 2"/>
+                <!-- Deleterious allele drops (dim red, dashed) -->
+                <polyline points="10,100 30,110 50,125 70,140 90,155 110,168 130,178 150,185 164,190" fill="none" stroke="#b04040" stroke-width="1" stroke-dasharray="3 3"/>
+                <text x="87" y="210" class="chr-label-sm" text-anchor="middle">Selection dominates</text>
+
+                <!-- Panel 2: Intermediate Ne -->
+                <text x="262" y="18" class="chr-heading" text-anchor="middle">Intermediate N<tspan baseline-shift="sub" font-size="9">e</tspan></text>
+                <rect x="185" y="25" width="154" height="170" rx="4" fill="none" class="chr-line" opacity="0.2"/>
+                <!-- Beneficial with drift noise (gold) -->
+                <polyline points="185,170 205,162 225,158 245,145 265,128 285,118 305,95 325,72 339,55" fill="none" stroke="#c9a227" stroke-width="1.8"/>
+                <!-- Neutral (gray, random walk) -->
+                <polyline points="185,120 205,115 225,130 245,125 265,110 285,120 305,130 325,115 339,125" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="4 2"/>
+                <!-- Deleterious (somewhat random) -->
+                <polyline points="185,100 205,108 225,115 245,125 265,130 285,140 305,155 325,162 339,170" fill="none" stroke="#b04040" stroke-width="1" stroke-dasharray="3 3"/>
+                <text x="262" y="210" class="chr-label-sm" text-anchor="middle">Selection + drift</text>
+
+                <!-- Panel 3: Small Ne -->
+                <text x="432" y="18" class="chr-heading" text-anchor="middle">Small N<tspan baseline-shift="sub" font-size="9">e</tspan></text>
+                <rect x="360" y="25" width="154" height="170" rx="4" fill="none" class="chr-line" opacity="0.2"/>
+                <!-- All alleles show random walk -->
+                <polyline points="360,170 380,155 400,160 420,140 440,130 460,145 480,120 500,105 514,95" fill="none" stroke="#c9a227" stroke-width="1.8"/>
+                <polyline points="360,120 380,130 400,115 420,125 440,135 460,120 480,115 500,130 514,140" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="4 2"/>
+                <polyline points="360,100 380,90 400,105 420,95 440,80 460,90 480,75 500,60 514,45" fill="none" stroke="#b04040" stroke-width="1" stroke-dasharray="3 3"/>
+                <text x="432" y="210" class="chr-label-sm" text-anchor="middle">Drift dominates</text>
+
+                <!-- Legend -->
+                <line x1="140" y1="225" x2="160" y2="225" stroke="#c9a227" stroke-width="1.8"/>
+                <text x="165" y="228" class="chr-label-sm">Beneficial</text>
+                <line x1="225" y1="225" x2="245" y2="225" stroke="#888" stroke-width="1" stroke-dasharray="4 2"/>
+                <text x="250" y="228" class="chr-label-sm">Neutral</text>
+                <line x1="300" y1="225" x2="320" y2="225" stroke="#b04040" stroke-width="1" stroke-dasharray="3 3"/>
+                <text x="325" y="228" class="chr-label-sm">Deleterious</text>
+              </svg>
+              <div class="diagram-caption">Allele frequency trajectories: selection vs. drift depends on effective population size</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sl-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sl-kicker">Neutral &amp; Nearly Neutral Theory</div>
+            <h2>The Drift&ndash;Selection Balance</h2>
+
+            <a href="https://doi.org/10.1038/217624a0" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature &middot; 217: 624&ndash;626</div>
+              <div class="paper-title">Evolutionary Rate at the Molecular Level</div>
+              <div class="authors">M. Kimura</div>
+              <div class="pub-year">1968 &mdash; Proposed the neutral theory: most molecular evolution is driven by drift, not selection</div>
+            </a>
+
+            <a href="https://doi.org/10.1038/246096a0" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature &middot; 246: 96&ndash;98</div>
+              <div class="paper-title">Slightly Deleterious Mutant Substitutions in Evolution</div>
+              <div class="authors">T. Ohta</div>
+              <div class="pub-year">1973 &mdash; The nearly neutral theory: most mutations are slightly deleterious, and their fate depends on N<sub>e</sub></div>
+            </a>
+
+            <a href="https://global.oup.com/academic/product/the-origins-of-genome-architecture-9780878934843" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Sinauer Associates</div>
+              <div class="paper-title">The Origins of Genome Architecture</div>
+              <div class="authors">M. Lynch</div>
+              <div class="pub-year">2007 &mdash; A magisterial synthesis arguing that nonadaptive forces (drift) shape genome evolution; N<sub>e</sub> is everything</div>
+            </a>
+
+            <a href="https://doi.org/10.1111/evo.13682" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution &middot; Blackmon Lab</div>
+              <div class="paper-title">Meiotic drive shapes rates of karyotype evolution in mammals</div>
+              <div class="authors">H. Blackmon, J. Justison, I. Mayrose, E.E. Goldberg</div>
+              <div class="pub-year">2019 &mdash; Demonstrates how drift interacts with selection on chromosome rearrangements across mammals</div>
+            </a>
+
+            <a href="https://doi.org/10.1093/jhered/esae001" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Journal of Heredity &middot; 115(2): 173&ndash;182 &middot; Blackmon Lab</div>
+              <div class="paper-title">Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera</div>
+              <div class="authors">H. Blackmon, M.M. Jonika, J.M. Alfieri, L. Fardoun, J.P. Demuth</div>
+              <div class="pub-year">2024 &mdash; Showing that drift, not selection, is the primary force driving karyotype evolution in Coleoptera</div>
+            </a>
+
+            <a href="https://doi.org/10.1093/jhered/esae025" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Journal of Heredity &middot; 115(5): 524&ndash;531 &middot; Blackmon Lab</div>
+              <div class="paper-title">Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora</div>
+              <div class="authors">M.M. Jonika, K.T. Wilhoit, M. Chin, A. Arekere, H. Blackmon</div>
+              <div class="pub-year">2024 &mdash; Companion paper providing evidence that karyotype evolution in Carnivora is shaped primarily by nonadaptive forces</div>
+            </a>
+
+            <!-- Plotly CHART: Fixation probability simulator -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Fixation Probability Simulator</div>
+              <div class="chart-toggle" id="ne-toggle">
+                <button class="active" onclick="toggleNe('all')">All N<sub>e</sub></button>
+                <button onclick="toggleNe('small')">N<sub>e</sub> = 10</button>
+                <button onclick="toggleNe('med')">N<sub>e</sub> = 1000</button>
+                <button onclick="toggleNe('large')">N<sub>e</sub> = 10000</button>
+              </div>
+              <div id="chart-fixation" style="width:100%; height:320px;"></div>
+              <p style="font-size:11px; color:rgba(136,136,136,0.8); margin-top:4px; text-align:center;">Computed from the Kimura (1962) diffusion approximation for a new mutation in a diploid population. For beneficial mutations with large N<sub>e</sub>, fixation probability approaches ~2s.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 3: SEXUAL SELECTION ═══════════════ -->
+    <section class="sl-section" id="sec-sexual">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sl-theory" data-aos="fade-up">
+            <div class="sl-kicker">Darwin's Other Selection</div>
+            <h2>Sexual Selection and Sexual Antagonism</h2>
+
+            <p><strong>Sexual selection</strong> arises from variation in mating success rather than survival. Darwin recognized two distinct mechanisms: <strong>intrasexual selection</strong> (competition among members of one sex, typically males, for access to mates) and <strong>intersexual selection</strong> (mate choice, typically by females, favoring particular traits in the other sex).</p>
+
+            <p>Sexual selection can drive the rapid evolution of extreme traits &mdash; peacock tails, beetle horns, bird song complexity, elaborate courtship dances. These traits may <strong>reduce survival</strong> but increase mating success. The tension between natural and sexual selection produces some of the most dramatic phenotypes in nature.</p>
+
+            <h3>Sexual Antagonism</h3>
+            <p><strong>Sexual antagonism</strong> occurs when alleles benefit one sex but harm the other. This conflict is pervasive because the same genome must produce both males and females, yet the optimal phenotype for each sex is often different. Traits that maximize male fitness (large body size, aggression, ornamentation) may reduce female fitness, and vice versa.</p>
+
+            <p><strong>Intralocus sexual conflict</strong> occurs when a single locus is under opposing selection in males and females. Resolution mechanisms include: (1) <strong>sex-limited expression</strong> &mdash; the allele is expressed only in the sex it benefits, (2) <strong>gene duplication and divergence</strong> &mdash; each sex uses a different copy, or (3) <strong>movement to sex chromosomes</strong> &mdash; the allele becomes X- or Y-linked where it spends more or less time in one sex.</p>
+
+            <h3>Sex Chromosomes as Resolution</h3>
+            <p>Sexually antagonistic alleles benefit from sex-linkage. A female-beneficial allele gains an advantage by being <strong>X-linked</strong> (it spends two-thirds of its time in females in an XY system). A male-beneficial allele gains from being <strong>Y-linked</strong> (exclusively male-transmitted). This creates selection to expand sex-linked regions and is a major force driving the evolution of sex chromosomes &mdash; a topic the Blackmon Lab studies extensively.</p>
+
+            <p><strong>Intersexual selection</strong> can maintain genetic variation through the <strong>genic capture</strong> model: if female choice targets condition-dependent traits, then many loci throughout the genome &mdash; all those that affect organismal condition &mdash; become indirect targets of sexual selection.</p>
+
+            <!-- SVG DIAGRAM: Sexual antagonism resolution -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 520 220" width="100%" aria-labelledby="svg-sa-title">
+                <title id="svg-sa-title">Sexual antagonism and its resolution</title>
+
+                <!-- Panel 1: Conflict -->
+                <text x="87" y="18" class="chr-heading" text-anchor="middle">Conflict</text>
+                <text x="52" y="40" class="chr-label-sm" text-anchor="middle">Males</text>
+                <text x="122" y="40" class="chr-label-sm" text-anchor="middle">Females</text>
+                <!-- Male fitness bar (gold = benefit) -->
+                <rect x="32" y="50" width="40" height="80" rx="4" class="chr-sex" opacity="0.7"/>
+                <text x="52" y="95" class="chr-label" text-anchor="middle" style="font-size:10px; fill:#fff;">+</text>
+                <!-- Female fitness bar (red = cost) -->
+                <rect x="102" y="80" width="40" height="50" rx="4" class="chr-del-dim"/>
+                <text x="122" y="110" class="chr-label" text-anchor="middle" style="font-size:10px;">&#8722;</text>
+                <text x="87" y="155" class="chr-label-sm" text-anchor="middle">Allele A benefits males,</text>
+                <text x="87" y="168" class="chr-label-sm" text-anchor="middle">harms females</text>
+
+                <!-- Panel 2: Sex-limited expression -->
+                <text x="262" y="18" class="chr-heading" text-anchor="middle">Sex-Limited Expression</text>
+                <text x="227" y="40" class="chr-label-sm" text-anchor="middle">Males</text>
+                <text x="297" y="40" class="chr-label-sm" text-anchor="middle">Females</text>
+                <!-- Male: expressed (gold) -->
+                <rect x="207" y="50" width="40" height="80" rx="4" class="chr-sex" opacity="0.7"/>
+                <text x="227" y="95" class="chr-label" text-anchor="middle" style="font-size:10px; fill:#fff;">ON</text>
+                <!-- Female: silenced (gray, small) -->
+                <rect x="277" y="100" width="40" height="30" rx="4" class="chr-auto" opacity="0.3"/>
+                <text x="297" y="120" class="chr-label" text-anchor="middle" style="font-size:10px;">OFF</text>
+                <text x="262" y="155" class="chr-label-sm" text-anchor="middle">Allele expressed</text>
+                <text x="262" y="168" class="chr-label-sm" text-anchor="middle">only in males</text>
+
+                <!-- Panel 3: Linkage to sex chromosome -->
+                <text x="432" y="18" class="chr-heading" text-anchor="middle">Sex Chromosome Linkage</text>
+                <!-- Y chromosome with allele -->
+                <rect x="410" y="50" width="16" height="45" rx="8" class="chr-sex" opacity="0.55"/>
+                <text x="418" y="78" class="chr-label" text-anchor="middle" style="font-size:8px; fill:#fff;">A</text>
+                <text x="418" y="108" class="chr-label-sm" text-anchor="middle">Y</text>
+                <!-- X chromosome -->
+                <rect x="440" y="50" width="16" height="70" rx="8" class="chr-sex"/>
+                <text x="448" y="133" class="chr-label-sm" text-anchor="middle">X</text>
+                <text x="432" y="155" class="chr-label-sm" text-anchor="middle">Male-benefit allele on Y:</text>
+                <text x="432" y="168" class="chr-label-sm" text-anchor="middle">never in females</text>
+
+                <!-- Arrows between panels -->
+                <line x1="155" y1="100" x2="185" y2="100" class="chr-line-accent"/>
+                <polygon points="185,100 178,96 178,104" class="chr-arrow"/>
+                <line x1="330" y1="100" x2="360" y2="100" class="chr-line-accent"/>
+                <polygon points="360,100 353,96 353,104" class="chr-arrow"/>
+
+                <!-- Bottom label -->
+                <text x="262" y="200" class="chr-label-sm" text-anchor="middle">Resolution mechanisms for intralocus sexual conflict</text>
+              </svg>
+              <div class="diagram-caption">Sexual antagonism: the conflict and two resolution mechanisms</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sl-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sl-kicker">From Darwin to Genomics</div>
+            <h2>Sexual Selection in Theory and Practice</h2>
+
+            <a href="https://archive.org/details/descentofman1871darwin" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; John Murray, London</div>
+              <div class="paper-title">The Descent of Man, and Selection in Relation to Sex</div>
+              <div class="authors">C. Darwin</div>
+              <div class="pub-year">1871 &mdash; Introduced sexual selection as a distinct evolutionary force, separate from natural selection</div>
+            </a>
+
+            <a href="https://doi.org/10.1073/pnas.78.6.3721" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">PNAS &middot; 78: 3721&ndash;3725</div>
+              <div class="paper-title">Models of speciation by sexual selection on polygenic traits</div>
+              <div class="authors">R. Lande</div>
+              <div class="pub-year">1981 &mdash; Showed that Fisherian runaway sexual selection can drive speciation, even without ecological divergence</div>
+            </a>
+
+            <a href="https://doi.org/10.2307/2408385" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution &middot; 38: 735&ndash;742</div>
+              <div class="paper-title">Sex Chromosomes and the Evolution of Sexual Dimorphism</div>
+              <div class="authors">W.R. Rice</div>
+              <div class="pub-year">1984 &mdash; The foundational theory of sex chromosomes resolving sexual antagonism</div>
+            </a>
+
+            <a href="https://doi.org/10.1534/genetics.117.300382" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics &middot; Blackmon Lab</div>
+              <div class="paper-title">Long-term fragility of Y chromosomes is dominated by short-term resolution of sexual antagonism</div>
+              <div class="authors">H. Blackmon &amp; Y. Brandvain</div>
+              <div class="pub-year">2017 &mdash; Showing how sexually antagonistic selection drives Y chromosome fragility and turnover</div>
+            </a>
+
+            <a href="https://doi.org/10.1002/bies.201500040" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Bioessays &middot; Blackmon Lab</div>
+              <div class="paper-title">The fragile Y hypothesis: implications of autosome&ndash;sex chromosome fusions</div>
+              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
+              <div class="pub-year">2015 &mdash; The fragile Y hypothesis, connecting sexual antagonism to chromosome evolution</div>
+            </a>
+
+            <div class="pullquote">
+              &ldquo;Sexual selection depends, not on a struggle for existence in relation to other organic beings or to external conditions, but on a struggle between the individuals of one sex, generally the males, for the possession of the other sex.&rdquo; &mdash; Darwin, 1871
+            </div>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num">2/3</div>
+              <div class="stat-text">In an XY system, an X-linked allele spends two-thirds of its time in females &mdash; making the X a natural home for female-benefit sexually antagonistic alleles.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 4: BACKGROUND SELECTION ═══════════════ -->
+    <section class="sl-section" id="sec-linked">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sl-theory" data-aos="fade-up">
+            <div class="sl-kicker">The Neighborhood Effect</div>
+            <h2>Background Selection and Linked Selection</h2>
+
+            <p>Selection at one locus affects allele frequencies at <strong>linked loci</strong>. This &ldquo;linked selection&rdquo; has profound consequences for genome evolution and explains many patterns that cannot be understood by looking at individual loci in isolation.</p>
+
+            <h3>Background Selection</h3>
+            <p>Charlesworth, Morgan, and Charlesworth (1993) formalized <strong>background selection</strong>: purifying selection against deleterious mutations at linked loci reduces the effective population size (N<sub>e</sub>) at nearby neutral sites. The stronger the purifying selection and the lower the recombination rate, the greater the reduction. Regions of the genome with little recombination &mdash; near centromeres, on sex chromosomes, within inversions &mdash; have reduced diversity, reduced efficacy of selection, and faster accumulation of deleterious mutations.</p>
+
+            <h3>Genetic Hitchhiking</h3>
+            <p>Maynard Smith and Haigh (1974) described <strong>genetic hitchhiking</strong>: when a beneficial mutation sweeps to fixation, it drags along linked neutral (and even slightly deleterious) variants, creating a <strong>selective sweep</strong> &mdash; a region of drastically reduced diversity surrounding the selected site. Sweeps leave a characteristic molecular signature: reduced heterozygosity, an excess of rare alleles, and elevated linkage disequilibrium. These signatures allow us to detect recent positive selection in genome scans.</p>
+
+            <h3>Hill-Robertson Interference</h3>
+            <p><strong>Hill-Robertson interference</strong> occurs when selection at multiple linked loci interferes with itself. Beneficial alleles at one locus may be linked to deleterious alleles at another, preventing either from reaching its optimal frequency. This mutual interference reduces the overall efficacy of selection and is one of the most important theoretical justifications for the evolution of recombination.</p>
+
+            <h3>Consequences</h3>
+            <p>Together, these linked selection effects explain: (1) why diversity <strong>correlates with recombination rate</strong> across the genome, (2) why non-recombining regions (Y chromosomes, inversions) <strong>degenerate</strong>, (3) why <strong>recombination itself evolves</strong> &mdash; any modifier that increases recombination can be favored because it breaks up the negative associations created by Hill-Robertson interference.</p>
+
+            <!-- SVG DIAGRAM: Background selection and hitchhiking -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 500 280" width="100%" aria-labelledby="svg-linked-title">
+                <title id="svg-linked-title">Background selection and genetic hitchhiking along a chromosome</title>
+
+                <!-- Top panel: Background selection -->
+                <text x="250" y="18" class="chr-heading" text-anchor="middle">Background Selection</text>
+                <!-- Chromosome bar -->
+                <rect x="40" y="30" width="420" height="18" rx="9" class="chr-auto" opacity="0.4"/>
+                <!-- Genes on chromosome -->
+                <rect x="70" y="32" width="30" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <rect x="130" y="32" width="25" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <rect x="200" y="32" width="35" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <!-- Deleterious mutation (red X) -->
+                <rect x="280" y="32" width="28" height="14" rx="3" fill="rgba(176,64,64,0.5)"/>
+                <text x="294" y="43" style="font-size:10px; fill:#fff; font-weight:bold;" text-anchor="middle">X</text>
+                <rect x="350" y="32" width="30" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <rect x="410" y="32" width="25" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <!-- Purifying selection removes deleterious + neighbors -->
+                <path d="M294,52 L294,68" stroke="#b04040" stroke-width="1.5"/>
+                <polygon points="294,68 290,62 298,62" fill="#b04040"/>
+                <!-- Diversity reduction zone -->
+                <rect x="230" y="75" width="130" height="22" rx="4" fill="rgba(176,64,64,0.08)" stroke="rgba(176,64,64,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+                <text x="295" y="90" class="chr-label-sm" text-anchor="middle" style="font-size:8px;">Reduced diversity zone</text>
+                <!-- Neutral variants dragged down -->
+                <text x="250" y="73" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">neutral</text>
+                <text x="340" y="73" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">neutral</text>
+
+                <!-- Divider -->
+                <line x1="40" y1="115" x2="460" y2="115" class="chr-line-dash"/>
+
+                <!-- Bottom panel: Hitchhiking -->
+                <text x="250" y="135" class="chr-heading" text-anchor="middle">Genetic Hitchhiking (Selective Sweep)</text>
+                <!-- Chromosome bar -->
+                <rect x="40" y="148" width="420" height="18" rx="9" class="chr-auto" opacity="0.4"/>
+                <!-- Genes -->
+                <rect x="70" y="150" width="30" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <rect x="130" y="150" width="25" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <!-- Beneficial mutation (gold star) -->
+                <rect x="200" y="150" width="35" height="14" rx="3" class="chr-sex" opacity="0.8"/>
+                <text x="217" y="161" style="font-size:8px; fill:#fff; font-weight:bold;" text-anchor="middle">+</text>
+                <rect x="280" y="150" width="28" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <rect x="350" y="150" width="30" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <rect x="410" y="150" width="25" height="14" rx="3" fill="rgba(201,162,39,0.3)"/>
+                <!-- Sweep to fixation -->
+                <path d="M217,170 L217,186" stroke="#c9a227" stroke-width="1.5"/>
+                <polygon points="217,170 213,176 221,176" class="chr-arrow"/>
+                <!-- Sweep zone -->
+                <rect x="150" y="192" width="140" height="22" rx="4" fill="rgba(201,162,39,0.08)" stroke="rgba(201,162,39,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+                <text x="220" y="207" class="chr-label-sm" text-anchor="middle" style="font-size:8px;">Selective sweep zone</text>
+                <!-- Neutral variants dragged up -->
+                <text x="170" y="190" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">neutral</text>
+                <text x="270" y="190" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">neutral</text>
+
+                <!-- Diversity profile at bottom -->
+                <text x="250" y="240" class="chr-label-sm" text-anchor="middle">Resulting diversity pattern:</text>
+                <polyline points="40,270 100,268 150,265 190,255 210,240 220,260 230,240 250,255 290,265 340,268 400,270 460,270" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+                <line x1="40" y1="272" x2="460" y2="272" class="chr-line" opacity="0.3"/>
+                <text x="220" y="278" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">dip at sweep</text>
+              </svg>
+              <div class="diagram-caption">How selection at one locus drags linked neutral variants along for the ride</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sl-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sl-kicker">Linked Selection Theory</div>
+            <h2>The Papers That Built the Framework</h2>
+
+            <a href="https://doi.org/10.1093/genetics/134.4.1289" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics &middot; 134: 1289&ndash;1303</div>
+              <div class="paper-title">The Effect of Deleterious Mutations on Neutral Molecular Variation</div>
+              <div class="authors">B. Charlesworth, M.T. Morgan, D. Charlesworth</div>
+              <div class="pub-year">1993 &mdash; Formalized background selection: purifying selection at linked loci reduces N<sub>e</sub> for neutral variants</div>
+            </a>
+
+            <a href="https://doi.org/10.1017/S0016672300014634" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetical Research &middot; 23: 23&ndash;35</div>
+              <div class="paper-title">The Hitch-Hiking Effect of a Favourable Gene</div>
+              <div class="authors">J. Maynard Smith &amp; J. Haigh</div>
+              <div class="pub-year">1974 &mdash; The original hitchhiking paper, showing that selective sweeps reduce diversity at linked sites</div>
+            </a>
+
+            <a href="https://doi.org/10.1017/S0016672300010156" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetical Research &middot; 8: 269&ndash;294</div>
+              <div class="paper-title">The Effect of Linkage on Limits to Artificial Selection</div>
+              <div class="authors">W.G. Hill &amp; A. Robertson</div>
+              <div class="pub-year">1966 &mdash; Showed that linkage between selected loci reduces the efficiency of selection &mdash; the Hill-Robertson effect</div>
+            </a>
+
+            <!-- Plotly CHART: Diversity along chromosome -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Nucleotide Diversity Along a Chromosome</div>
+              <div class="chart-toggle" id="diversity-toggle">
+                <button class="active" onclick="showDiversityMode('sweep')">Selective Sweep</button>
+                <button onclick="showDiversityMode('background')">Background Selection</button>
+              </div>
+              <div id="chart-diversity" style="width:100%; height:300px;"></div>
+              <p style="font-size:11px; color:rgba(136,136,136,0.8); margin-top:4px; text-align:center;">Simulated/illustrative data showing expected diversity patterns; not empirical observations.</p>
+            </div>
+
+            <div class="pullquote">
+              &ldquo;The effect of selection at linked loci is arguably the most important concept in molecular evolution after the neutral theory itself.&rdquo;
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 5: INDIRECT SELECTION ═══════════════ -->
+    <section class="sl-section" id="sec-indirect">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sl-theory" data-aos="fade-up">
+            <div class="sl-kicker">Genome Architecture</div>
+            <h2>Indirect Selection &mdash; Recombination Modifiers</h2>
+
+            <p>Some of the most consequential selection in genome evolution is <strong>indirect</strong>: it acts not on the phenotype produced by a mutation, but on the effect that mutation has on <strong>linkage relationships</strong> among other genes.</p>
+
+            <h3>Inversions and Supergenes</h3>
+            <p>A chromosomal <strong>inversion</strong> captures a block of genes in a non-recombining unit. If the captured block includes locally adapted alleles or sexually antagonistic alleles, the inversion can be favored by indirect selection &mdash; not because the inversion itself is beneficial, but because it <strong>preserves beneficial gene combinations</strong> that would be broken up by recombination in the standard arrangement.</p>
+
+            <p>This is the theoretical basis for <strong>supergenes</strong> &mdash; regions of suppressed recombination that maintain co-adapted allele complexes. Spectacular examples include: <em>Heliconius</em> butterfly wing pattern mimicry (controlled by inversions on a single chromosome), white-throated sparrow behavioral morphs (a massive inversion on chromosome 2), and fire ant social chromosomes (a supergene determines whether colonies have one or multiple queens).</p>
+
+            <h3>Chromosome Fusions</h3>
+            <p>Chromosome fusions change the recombination landscape. A fusion between an autosome and a sex chromosome creates a <strong>neo-sex chromosome</strong>, instantly altering which genes are sex-linked and changing the selective regime for those genes. The Blackmon Lab has shown that fusions to sex chromosomes are <strong>not random</strong> &mdash; fusions to the non-PAR (pseudoautosomal region) portions of sex chromosomes are favored differently than fusions to PAR regions, with important implications for the rate and direction of sex chromosome evolution.</p>
+
+            <h3>Recombination Rate Evolution</h3>
+            <p>The recombination rate itself evolves. Modifiers that increase or decrease recombination can be favored depending on the fitness landscape. In a <strong>rugged epistatic landscape</strong>, reduced recombination can preserve good gene combinations. In a <strong>changing environment</strong>, increased recombination generates the novel combinations needed to adapt. The tension between these forces shapes recombination rate variation both within and between species.</p>
+
+            <!-- SVG DIAGRAM: Inversion capturing locally adapted alleles -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 480 240" width="100%" aria-labelledby="svg-inv-title">
+                <title id="svg-inv-title">Inversion captures locally adapted alleles into a supergene</title>
+
+                <!-- Standard arrangement -->
+                <text x="240" y="18" class="chr-heading" text-anchor="middle">Inversion Captures Co-adapted Alleles</text>
+
+                <!-- Before: standard chromosome -->
+                <text x="60" y="50" class="chr-label-accent" text-anchor="end">Standard</text>
+                <rect x="70" y="38" width="380" height="18" rx="9" class="chr-auto" opacity="0.35"/>
+                <!-- Alleles: A, B, C scattered -->
+                <rect x="120" y="40" width="28" height="14" rx="3" class="chr-sex" opacity="0.7"/>
+                <text x="134" y="51" style="font-size:9px; fill:#fff;" text-anchor="middle">A</text>
+                <rect x="220" y="40" width="28" height="14" rx="3" class="chr-sex" opacity="0.7"/>
+                <text x="234" y="51" style="font-size:9px; fill:#fff;" text-anchor="middle">B</text>
+                <rect x="320" y="40" width="28" height="14" rx="3" class="chr-sex" opacity="0.7"/>
+                <text x="334" y="51" style="font-size:9px; fill:#fff;" text-anchor="middle">C</text>
+                <!-- Recombination arrows between alleles -->
+                <text x="177" y="72" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">recomb.</text>
+                <text x="277" y="72" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">recomb.</text>
+                <line x1="148" y1="56" x2="220" y2="56" class="chr-line-dash"/>
+                <line x1="248" y1="56" x2="320" y2="56" class="chr-line-dash"/>
+
+                <!-- Arrow down -->
+                <text x="240" y="98" class="chr-label-accent" text-anchor="middle" style="font-size:10px;">Inversion occurs</text>
+                <line x1="240" y1="102" x2="240" y2="118" class="chr-line-accent"/>
+                <polygon points="240,118 236,112 244,112" class="chr-arrow"/>
+
+                <!-- After: inverted chromosome -->
+                <text x="60" y="140" class="chr-label-accent" text-anchor="end">Inverted</text>
+                <rect x="70" y="128" width="380" height="18" rx="9" class="chr-auto" opacity="0.35"/>
+                <!-- Inversion block highlighted -->
+                <rect x="110" y="126" width="260" height="22" rx="4" fill="rgba(201,162,39,0.12)" stroke="rgba(201,162,39,0.4)" stroke-width="1"/>
+                <!-- Alleles captured together -->
+                <rect x="130" y="130" width="28" height="14" rx="3" class="chr-sex" opacity="0.9"/>
+                <text x="144" y="141" style="font-size:9px; fill:#fff;" text-anchor="middle">A</text>
+                <rect x="225" y="130" width="28" height="14" rx="3" class="chr-sex" opacity="0.9"/>
+                <text x="239" y="141" style="font-size:9px; fill:#fff;" text-anchor="middle">B</text>
+                <rect x="320" y="130" width="28" height="14" rx="3" class="chr-sex" opacity="0.9"/>
+                <text x="334" y="141" style="font-size:9px; fill:#fff;" text-anchor="middle">C</text>
+                <!-- No recombination within inversion -->
+                <text x="240" y="165" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">No recombination within inversion</text>
+                <text x="240" y="178" class="chr-label-sm" text-anchor="middle" style="font-size:8px;">Co-adapted alleles inherited as a unit = "supergene"</text>
+
+                <!-- Examples -->
+                <text x="240" y="205" class="chr-label-sm" text-anchor="middle">Examples: Heliconius mimicry | Sparrow morphs | Ant social chromosomes</text>
+
+                <!-- Breakpoint indicators -->
+                <line x1="110" y1="122" x2="110" y2="152" stroke="rgba(201,162,39,0.6)" stroke-width="1" stroke-dasharray="2 2"/>
+                <line x1="370" y1="122" x2="370" y2="152" stroke="rgba(201,162,39,0.6)" stroke-width="1" stroke-dasharray="2 2"/>
+                <text x="108" y="118" class="chr-label-sm" text-anchor="end" style="font-size:7px;">breakpoint</text>
+                <text x="372" y="118" class="chr-label-sm" style="font-size:7px;">breakpoint</text>
+              </svg>
+              <div class="diagram-caption">Inversions capture co-adapted alleles, creating supergenes that resist recombination</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sl-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sl-kicker">Supergenes &amp; Chromosome Fusions</div>
+            <h2>Indirect Selection in Action</h2>
+
+            <a href="https://doi.org/10.1534/genetics.105.047985" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics &middot; 173: 419&ndash;434</div>
+              <div class="paper-title">Chromosome Inversions, Local Adaptation and Speciation</div>
+              <div class="authors">M. Kirkpatrick &amp; N.H. Barton</div>
+              <div class="pub-year">2006 &mdash; The classic theory of inversion establishment via local adaptation: inversions spread because they capture locally adapted allele combinations</div>
+            </a>
+
+            <a href="https://doi.org/10.1098/rsbl.2020.0648" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Biology Letters &middot; Blackmon Lab</div>
+              <div class="paper-title">The probability of fusions joining sex chromosomes and autosomes</div>
+              <div class="authors">N.W. Anderson, C.E. Hjelmen, H. Blackmon</div>
+              <div class="pub-year">2020 &mdash; Showing fusion bias toward sex chromosomes: fusions joining autosomes to sex chromosomes happen at non-random rates</div>
+            </a>
+
+            <a href="https://doi.org/10.7717/peerj.17740" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">PeerJ &middot; Blackmon Lab</div>
+              <div class="paper-title">Worse than nothing at all: the inequality of fusions joining autosomes to the PAR and non-PAR portions of sex chromosomes</div>
+              <div class="authors">K.T. Wilhoit, E.P. Alexander, H. Blackmon</div>
+              <div class="pub-year">2024 &mdash; PAR vs. non-PAR fusion dynamics: where the fusion attaches to the sex chromosome matters profoundly</div>
+            </a>
+
+            <a href="https://doi.org/10.1038/nature10341" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature &middot; 477: 203&ndash;206</div>
+              <div class="paper-title">Chromosomal rearrangements maintain a polymorphic supergene controlling butterfly mimicry</div>
+              <div class="authors">M. Joron, R. Frezal, R.T. Jones, N.L. Chamberlain, S.F. Lee, C.R. Haag, A. Whibley, M. Becuwe, S.W. Baxter, L. Ferguson, P.A. Wilkinson, C. Salazar, C. Davidson, R.E. Naisbit, C.D. Jiggins</div>
+              <div class="pub-year">2011 &mdash; The <em>Heliconius</em> supergene: inversions maintain mimicry polymorphism</div>
+            </a>
+
+            <a href="https://doi.org/10.1038/hdy.2013.121" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Heredity &middot; 113: 1&ndash;8</div>
+              <div class="paper-title">Supergenes and their role in evolution</div>
+              <div class="authors">M.J. Thompson &amp; C.D. Jiggins</div>
+              <div class="pub-year">2014 &mdash; Comprehensive review of supergene biology across taxa</div>
+            </a>
+
+            <!-- Plotly CHART: Inversion frequency dynamics -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Inversion Frequency Dynamics</div>
+              <div class="chart-toggle" id="inversion-toggle">
+                <button onclick="showInversion('neutral')">No Local Adaptation</button>
+                <button class="active" onclick="showInversion('adaptive')">With Local Adaptation</button>
+              </div>
+              <div id="chart-inversion" style="width:100%; height:300px;"></div>
+              <p style="font-size:11px; color:rgba(136,136,136,0.8); margin-top:4px; text-align:center;">Simulated trajectories illustrating frequency-dependent selection dynamics; not empirical data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 6: ARTIFICIAL SELECTION ═══════════════ -->
+    <section class="sl-section" id="sec-artificial">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sl-theory" data-aos="fade-up">
+            <div class="sl-kicker">Humans as Selective Agents</div>
+            <h2>Artificial Selection and Domestication</h2>
+
+            <p><strong>Artificial selection</strong> applies the same evolutionary principles &mdash; heritable variation + differential reproduction = evolutionary change &mdash; but with human preference replacing ecological fitness as the selective environment. Darwin began the <em>Origin</em> with artificial selection precisely because it made the mechanism of selection tangible and undeniable.</p>
+
+            <h3>Domestication as Evolutionary Experiment</h3>
+            <p>Domesticated species have experienced intense selection on specific traits &mdash; yield, behavior, morphology, color &mdash; for hundreds to thousands of generations. This creates <strong>dramatic phenotypic change</strong> while revealing the genetic architecture of adaptation. Key insights from domestication include:</p>
+            <p><strong>(1) Response can be rapid and dramatic.</strong> The difference between a wolf and a Chihuahua, between red junglefowl and a modern broiler chicken, between wild teosinte and modern maize &mdash; all achieved in a few thousand generations or less.</p>
+            <p><strong>(2) Correlated responses reveal genetic architecture.</strong> Selecting for tameness in foxes produced floppy ears, curly tails, and piebald coats &mdash; the "domestication syndrome." These correlated responses reveal pleiotropy and genetic correlations that constrain and channel evolutionary change.</p>
+            <p><strong>(3) Domestication bottlenecks reduce diversity.</strong> Most domesticated species have dramatically reduced genetic diversity compared to their wild ancestors, making them vulnerable to novel diseases and environmental changes.</p>
+            <p><strong>(4) Relaxed selection reveals costs.</strong> When natural selection on anti-predator behavior, immune function, or other wild-type traits is relaxed, those traits degrade &mdash; showing that they were maintained by ongoing selection in the wild.</p>
+
+            <h3>Lab Study Systems</h3>
+            <p>The Blackmon Lab uses domesticated species as models for understanding how selection reshapes genomes. <strong>Betta fish</strong> (<em>Betta splendens</em>) have been selectively bred for centuries for coloration, fin morphology, and aggression &mdash; creating extreme phenotypic diversity from a single wild ancestor. <strong>Chickens</strong>, domesticated from red junglefowl, are now the world's most abundant bird and a model for studying rapid adaptation under intense artificial selection.</p>
+
+            <!-- SVG DIAGRAM: Natural vs. Artificial selection -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 480 220" width="100%" aria-labelledby="svg-artsel-title">
+                <title id="svg-artsel-title">Natural selection vs. artificial selection on phenotype distributions</title>
+
+                <!-- Left: Natural selection -->
+                <text x="120" y="18" class="chr-heading" text-anchor="middle">Natural Selection</text>
+                <!-- Multiple selective pressures (arrows from many directions) -->
+                <ellipse cx="120" cy="100" rx="80" ry="55" fill="none" stroke="rgba(136,136,136,0.3)" stroke-width="1"/>
+                <!-- Organism in center -->
+                <circle cx="120" cy="100" r="15" class="chr-auto" opacity="0.5"/>
+                <text x="120" y="104" class="chr-label" text-anchor="middle" style="font-size:8px;">Org</text>
+                <!-- Pressure arrows -->
+                <line x1="120" y1="35" x2="120" y2="75" class="chr-line" opacity="0.5"/>
+                <text x="120" y="30" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">Predators</text>
+                <line x1="120" y1="165" x2="120" y2="125" class="chr-line" opacity="0.5"/>
+                <text x="120" y="175" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">Disease</text>
+                <line x1="30" y1="100" x2="95" y2="100" class="chr-line" opacity="0.5"/>
+                <text x="25" y="104" class="chr-label-sm" text-anchor="end" style="font-size:7px;">Climate</text>
+                <line x1="210" y1="100" x2="145" y2="100" class="chr-line" opacity="0.5"/>
+                <text x="215" y="104" class="chr-label-sm" style="font-size:7px;">Competition</text>
+                <line x1="55" y1="55" x2="100" y2="82" class="chr-line" opacity="0.5"/>
+                <text x="40" y="50" class="chr-label-sm" text-anchor="middle" style="font-size:7px;">Mates</text>
+                <text x="120" y="198" class="chr-label-sm" text-anchor="middle">Many traits under selection</text>
+                <text x="120" y="210" class="chr-label-sm" text-anchor="middle">simultaneously</text>
+
+                <!-- Right: Artificial selection -->
+                <text x="360" y="18" class="chr-heading" text-anchor="middle">Artificial Selection</text>
+                <!-- Single strong arrow -->
+                <circle cx="360" cy="100" r="15" class="chr-sex" opacity="0.5"/>
+                <text x="360" y="104" class="chr-label" text-anchor="middle" style="font-size:8px; fill:#fff;">Org</text>
+                <!-- Strong directional arrow (gold) -->
+                <line x1="360" y1="35" x2="360" y2="75" stroke="#c9a227" stroke-width="2.5"/>
+                <polygon points="360,75 355,62 365,62" class="chr-arrow"/>
+                <text x="360" y="28" class="chr-label-accent" text-anchor="middle" style="font-size:8px;">SIZE / COLOR / YIELD</text>
+                <!-- Relaxed pressures (faded) -->
+                <line x1="270" y1="100" x2="335" y2="100" class="chr-line-dash" opacity="0.25"/>
+                <text x="265" y="104" class="chr-label-sm" text-anchor="end" style="font-size:7px; opacity:0.4;">Climate</text>
+                <line x1="450" y1="100" x2="385" y2="100" class="chr-line-dash" opacity="0.25"/>
+                <text x="455" y="104" class="chr-label-sm" style="font-size:7px; opacity:0.4;">Predators</text>
+                <text x="360" y="198" class="chr-label-sm" text-anchor="middle">Strong selection on one trait;</text>
+                <text x="360" y="210" class="chr-label-sm" text-anchor="middle">relaxed on others</text>
+              </svg>
+              <div class="diagram-caption">Natural selection: many pressures, many traits. Artificial selection: intense focus on one or few traits.</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sl-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sl-kicker">Domestication &amp; Study Systems</div>
+            <h2>Learning from What We've Bred</h2>
+
+            <a href="https://archive.org/details/variationofanima00darw" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; John Murray, London</div>
+              <div class="paper-title">The Variation of Animals and Plants under Domestication</div>
+              <div class="authors">C. Darwin</div>
+              <div class="pub-year">1868 &mdash; Darwin's deep dive into artificial selection: pigeons, dogs, cattle, and the analogy to natural selection</div>
+            </a>
+
+            <a href="https://www.worldcat.org/title/34638968" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Longman (4th ed.)</div>
+              <div class="paper-title">Introduction to Quantitative Genetics</div>
+              <div class="authors">D.S. Falconer &amp; T.F.C. Mackay</div>
+              <div class="pub-year">1996 &mdash; The standard reference for selection response theory: the breeder's equation and its extensions</div>
+            </a>
+
+            <p>The Blackmon Lab asks: <strong>"How does domestication impact organisms? What can we learn about adaptation and radiation from studying domestication?"</strong> Domesticated species offer tractable systems where the selection history is at least partially known, allowing us to connect genotype to phenotype to fitness in ways that are difficult in wild populations.</p>
+
+            <div class="org-grid">
+              <div class="org-card">
+                <img src="assets/img/study-systems/betta.jpg" alt="Betta fish" loading="lazy">
+                <div class="org-info">
+                  <div class="org-name">Betta Fish</div>
+                  <div class="org-system">Color, fins, aggression</div>
+                </div>
+              </div>
+              <div class="org-card">
+                <img src="assets/img/study-systems/chickens.jpg" alt="Chickens" loading="lazy">
+                <div class="org-info">
+                  <div class="org-name">Chickens</div>
+                  <div class="org-system">Growth, egg production</div>
+                </div>
+              </div>
+              <div class="org-card">
+                <img src="assets/img/study-systems/tomatoes.jpg" alt="Tomatoes" loading="lazy">
+                <div class="org-info">
+                  <div class="org-name">Tomatoes</div>
+                  <div class="org-system">Fruit size, flavor, yield</div>
+                </div>
+              </div>
+              <div class="org-card">
+                <img src="assets/img/study-systems/beetles.jpg" alt="Beetles" loading="lazy">
+                <div class="org-info">
+                  <div class="org-name">Beetles</div>
+                  <div class="org-system">Comparative genomics</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plotly CHART: Breeder's equation simulator -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Response to Selection (Breeder's Equation)</div>
+              <div class="chart-toggle" id="breeder-toggle">
+                <button class="active" onclick="showBreeder('high')">h&sup2; = 0.8</button>
+                <button onclick="showBreeder('med')">h&sup2; = 0.4</button>
+                <button onclick="showBreeder('low')">h&sup2; = 0.1</button>
+              </div>
+              <div id="chart-breeder" style="width:100%; height:300px;"></div>
+              <p style="font-size:11px; color:rgba(136,136,136,0.8); margin-top:4px; text-align:center;">Simulated response to truncation selection under the breeder's equation; illustrative, not empirical data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 7: SELECTION AND SPECIATION ═══════════════ -->
+    <section class="sl-section" id="sec-speciation">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sl-theory" data-aos="fade-up">
+            <div class="sl-kicker">Divergence &amp; Isolation</div>
+            <h2>Selection and Speciation</h2>
+
+            <p>Selection drives speciation in multiple ways, each involving the buildup of reproductive isolation between diverging populations.</p>
+
+            <h3>Ecological Speciation</h3>
+            <p><strong>Divergent natural selection</strong> in different environments creates reproductive isolation as a byproduct of adaptation. Populations adapting to different ecological niches &mdash; different food sources, different habitats, different climates &mdash; accumulate genetic differences that reduce hybrid fitness. The key insight is that reproductive isolation is not the target of selection but an <strong>incidental consequence</strong> of adaptation to different environments.</p>
+
+            <h3>Sexual Selection and Speciation</h3>
+            <p>Divergent mate preferences can drive rapid reproductive isolation <strong>even without ecological divergence</strong>. Lande's (1981) models showed that Fisherian runaway processes &mdash; where female preferences and male ornaments coevolve in a positive feedback loop &mdash; can cause rapid, arbitrary divergence in mating signals between populations, leading to prezygotic isolation.</p>
+
+            <h3>Reinforcement</h3>
+            <p>When hybrids are less fit, selection favors increased <strong>assortative mating</strong> &mdash; individuals preferring mates from their own population. This strengthens reproductive barriers in sympatry, a process called <strong>reinforcement</strong> or the "Wallace effect." Reinforcement completes the speciation process by converting partial barriers into complete ones.</p>
+
+            <h3>Dobzhansky-Muller Incompatibilities</h3>
+            <p>Independently derived mutations that function well in their home genetic background but interact negatively in hybrids create <strong>Dobzhansky-Muller incompatibilities</strong>. This is epistatic selection against hybrid genotypes: allele A from population 1 and allele B from population 2 have never been tested together, and when combined in a hybrid, they fail. These incompatibilities accumulate roughly as the <strong>square</strong> of divergence time (the "snowball" effect).</p>
+
+            <h3>Haldane's Rule</h3>
+            <p><strong>Haldane's rule</strong>: in crosses between species, the heterogametic sex (XY males or ZW females) is more often inviable or infertile. Multiple explanations contribute: the <strong>dominance theory</strong> (recessive incompatibilities on the X are exposed in hemizygous males), <strong>faster-X evolution</strong> (hemizygous selection accelerates divergence of X-linked genes), and <strong>meiotic drive</strong> (selfish genetic elements on sex chromosomes cause hybrid dysfunction).</p>
+
+            <h3>Genomic Islands of Speciation</h3>
+            <p>In the face of gene flow, selection creates <strong>"genomic islands of speciation"</strong> &mdash; regions that resist introgression because they contain locally adapted or incompatible alleles, while the rest of the genome freely introgresses. These islands are often associated with inversions or low-recombination regions, connecting speciation to the genome architecture themes discussed above.</p>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sl-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sl-kicker">The Speciation Library</div>
+            <h2>How Species Are Born</h2>
+
+            <a href="https://archive.org/details/geneticsoriginof0000dobz" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Columbia University Press</div>
+              <div class="paper-title">Genetics and the Origin of Species</div>
+              <div class="authors">T. Dobzhansky</div>
+              <div class="pub-year">1937 &mdash; The modern synthesis perspective on speciation: genetics meets biogeography</div>
+            </a>
+
+            <a href="https://archive.org/details/systematicsandor0000mayr" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Columbia University Press</div>
+              <div class="paper-title">Systematics and the Origin of Species</div>
+              <div class="authors">E. Mayr</div>
+              <div class="pub-year">1942 &mdash; Geographic speciation theory and the biological species concept</div>
+            </a>
+
+            <a href="https://global.oup.com/academic/product/speciation-9780878930890" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Sinauer Associates</div>
+              <div class="paper-title">Speciation</div>
+              <div class="authors">J.A. Coyne &amp; H.A. Orr</div>
+              <div class="pub-year">2004 &mdash; The definitive modern treatment of speciation mechanisms</div>
+            </a>
+
+            <a href="https://global.oup.com/academic/product/ecological-speciation-9780199587117" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Oxford University Press</div>
+              <div class="paper-title">Ecological Speciation</div>
+              <div class="authors">P. Nosil</div>
+              <div class="pub-year">2012 &mdash; Comprehensive treatment of how divergent ecological selection drives reproductive isolation</div>
+            </a>
+
+            <a href="https://doi.org/10.1016/j.cois.2014.12.003" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Blackmon Lab</div>
+              <div class="paper-title">Genomic origins of insect sex chromosomes</div>
+              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
+              <div class="pub-year">2015 &mdash; Connecting sex chromosome evolution to Haldane's rule and speciation in insects</div>
+            </a>
+
+            <div class="pullquote">
+              &ldquo;Speciation is the result of genetic divergence, and selection &mdash; natural, sexual, or both &mdash; is the engine that drives populations apart faster than gene flow can homogenize them.&rdquo;
+            </div>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num">n&sup2;</div>
+              <div class="stat-text">Dobzhansky-Muller incompatibilities accumulate roughly as the square of divergence time &mdash; the "snowball" effect. Speciation accelerates as populations become more genetically different.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 8: THE BIG PICTURE ═══════════════ -->
+    <section class="sl-section" id="sec-bigpicture">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sl-theory" data-aos="fade-up">
+            <div class="sl-kicker">Synthesis</div>
+            <h2>The Big Picture &mdash; How Selection Shapes Genomes</h2>
+
+            <p>The genome is shaped by the interplay of <strong>all forms of selection simultaneously</strong>. No single force acts in isolation, and the patterns we observe in any genome are the cumulative result of millions of years of these forces interacting with each other and with the nonadaptive process of genetic drift.</p>
+
+            <h3>The Forces in Concert</h3>
+            <p><strong>Natural selection</strong> maintains gene function and drives adaptation to the ecological environment. <strong>Sexual selection</strong> drives rapid divergence between species and sexual dimorphism within them. <strong>Background selection</strong> erodes diversity in low-recombination regions, reducing the efficacy of selection precisely where it is most needed. <strong>Indirect selection</strong> on recombination modifiers shapes genome architecture &mdash; recombination rates, chromosome number, inversion polymorphism. And the balance between <strong>drift and selection</strong> (N<sub>e</sub>s) determines which of these forces dominates at any given locus in any given species.</p>
+
+            <h3>Unresolved Questions</h3>
+            <p><strong>(1) How much of the genome is under selection?</strong> Estimates range from less than 5% (only protein-coding regions) to over 80% (ENCODE functional annotations). The answer depends critically on what we mean by "functional" and on N<sub>e</sub>.</p>
+            <p><strong>(2) New mutations vs. standing variation?</strong> Does most adaptation come from new mutations that arise after the environment changes, or from pre-existing variation that was previously neutral or even slightly deleterious? The answer matters for predicting evolutionary responses to rapid environmental change.</p>
+            <p><strong>(3) Evolvability.</strong> How do organisms maintain the capacity to respond to future selection while being well-adapted now? Modularity, genetic redundancy, and the structure of genetic networks may all contribute to evolvability, but the degree to which evolvability itself is shaped by selection remains debated.</p>
+            <p><strong>(4) Selection on genome structure.</strong> How does selection on chromosome number, recombination landscape, and genome organization interact with selection on gene content? This is the core question of the Blackmon Lab's research program.</p>
+
+            <!-- SVG: Big picture summary -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 480 200" width="100%" aria-labelledby="svg-big-title">
+                <title id="svg-big-title">Multiple forms of selection shaping the genome simultaneously</title>
+
+                <!-- Central genome -->
+                <ellipse cx="240" cy="100" rx="60" ry="40" fill="rgba(201,162,39,0.1)" stroke="rgba(201,162,39,0.4)" stroke-width="1.5"/>
+                <text x="240" y="96" class="chr-heading" text-anchor="middle" style="font-size:11px;">Genome</text>
+                <text x="240" y="110" class="chr-label-sm" text-anchor="middle" style="font-size:8px;">Architecture + Content</text>
+
+                <!-- Natural selection arrow -->
+                <line x1="80" y1="40" x2="180" y2="75" stroke="#c9a227" stroke-width="1.5"/>
+                <polygon points="180,75 172,68 175,78" class="chr-arrow"/>
+                <text x="65" y="35" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">Natural</text>
+                <text x="65" y="46" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">Selection</text>
+
+                <!-- Sexual selection arrow -->
+                <line x1="80" y1="160" x2="185" y2="125" stroke="#c9a227" stroke-width="1.5"/>
+                <polygon points="185,125 177,125 180,132" class="chr-arrow"/>
+                <text x="65" y="165" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">Sexual</text>
+                <text x="65" y="176" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">Selection</text>
+
+                <!-- Background selection arrow -->
+                <line x1="400" y1="40" x2="300" y2="75" stroke="rgba(176,64,64,0.6)" stroke-width="1.5"/>
+                <polygon points="300,75 305,66 308,76" fill="rgba(176,64,64,0.6)"/>
+                <text x="415" y="35" class="chr-label-sm" text-anchor="middle" style="font-size:9px;">Background</text>
+                <text x="415" y="46" class="chr-label-sm" text-anchor="middle" style="font-size:9px;">Selection</text>
+
+                <!-- Drift arrow -->
+                <line x1="400" y1="160" x2="300" y2="125" stroke="rgba(136,136,136,0.6)" stroke-width="1.5"/>
+                <polygon points="300,125 306,124 303,132" fill="rgba(136,136,136,0.6)"/>
+                <text x="415" y="160" class="chr-label-sm" text-anchor="middle" style="font-size:9px;">Genetic</text>
+                <text x="415" y="171" class="chr-label-sm" text-anchor="middle" style="font-size:9px;">Drift (N<tspan baseline-shift="sub" font-size="7">e</tspan>)</text>
+
+                <!-- Indirect selection arrow (from top) -->
+                <line x1="240" y1="20" x2="240" y2="55" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="4 2"/>
+                <polygon points="240,55 236,48 244,48" class="chr-arrow"/>
+                <text x="240" y="14" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">Indirect Selection (Recomb. Modifiers)</text>
+
+                <!-- Output arrow -->
+                <line x1="240" y1="145" x2="240" y2="180" class="chr-line-accent"/>
+                <polygon points="240,180 236,173 244,173" class="chr-arrow"/>
+                <text x="240" y="195" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">Phenotype, Diversity, Adaptation, Speciation</text>
+              </svg>
+              <div class="diagram-caption">Multiple evolutionary forces converge on the genome simultaneously</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sl-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sl-kicker">Synthesis &amp; Future Directions</div>
+            <h2>The State of the Art</h2>
+
+            <a href="https://www.worldcat.org/title/428053781" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Roberts &amp; Company</div>
+              <div class="paper-title">Elements of Evolutionary Genetics</div>
+              <div class="authors">B. Charlesworth &amp; D. Charlesworth</div>
+              <div class="pub-year">2010 &mdash; The most rigorous modern treatment of population and evolutionary genetics</div>
+            </a>
+
+            <a href="https://doi.org/10.1038/nrg1523" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature Reviews Genetics &middot; 6: 119&ndash;127</div>
+              <div class="paper-title">The genetic theory of adaptation: a brief history</div>
+              <div class="authors">H.A. Orr</div>
+              <div class="pub-year">2005 &mdash; Concise review tracing the development of adaptation theory from Fisher to the molecular age</div>
+            </a>
+
+            <a href="https://doi.org/10.1093/evolut/qpae003" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution &middot; 78(4): 624&ndash;634 &middot; Blackmon Lab</div>
+              <div class="paper-title">Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution</div>
+              <div class="authors">J. Burch, M. Chin, B.E. Fontenot, S. Mandal, T.D. McKnight, J.P. Demuth, H. Blackmon</div>
+              <div class="pub-year">2024 &mdash; Demonstrating pervasive epistasis across more than 1000 datasets, validating Wright's shifting balance theory</div>
+            </a>
+
+            <a href="https://doi.org/10.1534/genetics.114.164269" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics &middot; Blackmon Lab</div>
+              <div class="paper-title">Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis</div>
+              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
+              <div class="pub-year">2014 &mdash; Quantifying the rate of Y chromosome gain and loss across insects</div>
+            </a>
+
+            <a href="https://doi.org/10.1038/s41437-022-00543-z" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Heredity &middot; 129: 75&ndash;78 &middot; Blackmon Lab</div>
+              <div class="paper-title">Why Not Y Naught?</div>
+              <div class="authors">M.M. Jonika, J.M. Alfieri, T. Sylvester, A.R. Buhrow, H. Blackmon</div>
+              <div class="pub-year">2022 &mdash; Investigating the evolutionary dynamics of Y chromosome loss across diverse taxa</div>
+            </a>
+
+            <a href="https://doi.org/10.1111/evo.12844" target="_blank" class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution &middot; 70(2): 420&ndash;432 &middot; Blackmon Lab</div>
+              <div class="paper-title">An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: moving beyond the joint-scaling test for line cross analysis</div>
+              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
+              <div class="pub-year">2016 &mdash; Methods for studying the evolution of discrete traits like chromosome number and sex determination systems</div>
+            </a>
+
+            <div class="pullquote">
+              &ldquo;The Blackmon Lab studies these questions across multiple systems &mdash; from beetles (chromosome evolution, drift vs. selection) to betta fish (artificial selection, sexual dimorphism) to broad comparative analyses across thousands of species.&rdquo;
+            </div>
+
+            <!-- Links to other educational pages -->
+            <div class="related-box" data-aos="fade-up">
+              <h3>Explore More</h3>
+              <div class="related-links">
+                <a href="research.html" class="related-link"><i class="bi bi-flask"></i> Research</a>
+                <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous"></i> Sex Chromosome Evolution</a>
+                <a href="genome-structure-evolution.html" class="related-link"><i class="bi bi-grid-3x3"></i> Genome Structure</a>
+                <a href="epistasis.html" class="related-link"><i class="bi bi-diagram-3"></i> Epistasis</a>
+                <a href="coleoptera-genomics.html" class="related-link"><i class="bi bi-bug"></i> Coleoptera Genomics</a>
+                <a href="publications.html" class="related-link"><i class="bi bi-journal-text"></i> Publications</a>
+                <a href="popgen.html" class="related-link"><i class="bi bi-graph-up"></i> PopGen Simulator</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+
+  <script>
+    /* ── Plotly helpers ─────────────────────────────── */
+    function isLight() { return document.body.classList.contains('light-mode'); }
+    function txtColor() { return isLight() ? '#333' : '#c8c5c0'; }
+    function gridColor() { return isLight() ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'; }
+    function baseLayout(title) {
+      return {
+        title: { text: title || '', font: { family: 'Inter, sans-serif', size: 13, color: txtColor() } },
+        paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
+        font: { family: 'Inter, sans-serif', color: txtColor(), size: 11 },
+        margin: { l: 50, r: 20, t: title ? 36 : 10, b: 50 },
+        xaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
+        yaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
+      };
+    }
+    var pConfig = { displaylogo: false, responsive: true, modeBarButtonsToRemove: ['lasso2d','select2d'] };
+
+    /* ── Scroll progress bar ─────────────────────────── */
+    window.addEventListener('scroll', function() {
+      var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      document.getElementById('scroll-progress').style.width = pct + '%';
+    });
+
+    /* ── Chart 1: Fixation Probability ───────────────── */
+    function fixProb(s, Ne) {
+      if (Math.abs(s) < 1e-10) return 1.0 / (2.0 * Ne);
+      var num = 1.0 - Math.exp(-2.0 * s);
+      var den = 1.0 - Math.exp(-4.0 * Ne * s);
+      if (Math.abs(den) < 1e-30) return 1.0 / (2.0 * Ne);
+      return num / den;
+    }
+
+    var fixationNeVals = [10, 100, 1000, 10000];
+    var fixationTraces = [];
+    var sVals = [];
+    for (var i = -100; i <= 100; i++) { sVals.push(i * 0.001); }
+
+    var neColors = ['rgba(201,162,39,0.4)', 'rgba(201,162,39,0.6)', 'rgba(201,162,39,0.8)', '#c9a227'];
+    fixationNeVals.forEach(function(ne, idx) {
+      var yVals = sVals.map(function(s) { return fixProb(s, ne); });
+      fixationTraces.push({
+        x: sVals, y: yVals, mode: 'lines',
+        name: 'Ne = ' + ne,
+        line: { color: neColors[idx], width: idx === 3 ? 2.5 : 1.5 },
+        hovertemplate: 's = %{x:.3f}<br>P(fix) = %{y:.4f}<extra>Ne=' + ne + '</extra>'
+      });
+    });
+
+    // Neutral baseline 1/(2N) for reference
+    fixationTraces.push({
+      x: sVals,
+      y: sVals.map(function() { return 1.0 / (2.0 * 100); }),
+      mode: 'lines', name: '1/(2N), N=100',
+      line: { color: 'rgba(136,136,136,0.4)', width: 1, dash: 'dash' },
+      hoverinfo: 'skip'
+    });
+
+    var fixationVisibility = { all: fixationTraces.map(function() { return true; }),
+      small: [true, false, false, false, false],
+      med: [false, false, true, false, false],
+      large: [false, false, false, true, false]
+    };
+
+    function drawFixation(vis) {
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Selection coefficient (s)', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Fixation probability', font: { size: 11, color: txtColor() } };
+      layout.xaxis.range = [-0.1, 0.1];
+      layout.yaxis.range = [0, 0.25];
+      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10, color: txtColor() } };
+      layout.showlegend = true;
+      var traces = fixationTraces.map(function(t, i) {
+        var tr = Object.assign({}, t);
+        tr.visible = vis[i];
+        return tr;
+      });
+      Plotly.react('chart-fixation', traces, layout, pConfig);
+    }
+
+    function toggleNe(mode) {
+      var btns = document.querySelectorAll('#ne-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      event.target.classList.add('active');
+      drawFixation(fixationVisibility[mode]);
+    }
+    drawFixation(fixationVisibility.all);
+
+
+    /* ── Chart 2: Diversity Along Chromosome ─────────── */
+    function generateDiversity(mode) {
+      var x = [], y = [];
+      for (var i = 0; i <= 200; i++) {
+        x.push(i);
+        var base = 0.01 + 0.002 * Math.sin(i * 0.05);
+        // Add noise
+        base += (Math.random() - 0.5) * 0.002;
+        if (mode === 'sweep') {
+          // Sharp dip around position 100
+          var dist = Math.abs(i - 100);
+          if (dist < 25) {
+            base -= 0.008 * Math.exp(-dist * dist / 80);
+          }
+        } else {
+          // Broad reduction near centromere (position 0-40) and telomere
+          if (i < 40) {
+            base -= 0.004 * (1 - i / 40);
+          }
+          if (i > 170) {
+            base -= 0.003 * ((i - 170) / 30);
+          }
+          // Moderate reduction at low-recombination region
+          if (i > 80 && i < 130) {
+            base -= 0.003;
+          }
+        }
+        y.push(Math.max(0.001, base));
+      }
+      return { x: x, y: y };
+    }
+
+    function showDiversityMode(mode) {
+      var btns = document.querySelectorAll('#diversity-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      if (mode === 'sweep') btns[0].classList.add('active');
+      else btns[1].classList.add('active');
+
+      var data = generateDiversity(mode);
+      var traces = [{
+        x: data.x, y: data.y, mode: 'lines',
+        line: { color: '#c9a227', width: 1.5 },
+        fill: 'tozeroy', fillcolor: 'rgba(201,162,39,0.1)',
+        hovertemplate: 'Position: %{x}<br>\u03C0: %{y:.4f}<extra></extra>'
+      }];
+
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Chromosome position', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Nucleotide diversity (\u03C0)', font: { size: 11, color: txtColor() } };
+      layout.yaxis.range = [0, 0.015];
+
+      if (mode === 'sweep') {
+        layout.shapes = [{
+          type: 'rect', x0: 85, x1: 115, y0: 0, y1: 1, yref: 'paper',
+          fillcolor: 'rgba(201,162,39,0.08)', line: { width: 0 }
+        }];
+        layout.annotations = [{
+          x: 100, y: 0.013, text: 'Sweep', showarrow: true, arrowhead: 2,
+          ax: 0, ay: -25, font: { size: 10, color: '#c9a227' }
+        }];
+      } else {
+        layout.shapes = [{
+          type: 'rect', x0: 80, x1: 130, y0: 0, y1: 1, yref: 'paper',
+          fillcolor: 'rgba(176,64,64,0.06)', line: { width: 0 }
+        }];
+        layout.annotations = [{
+          x: 105, y: 0.013, text: 'Low recomb.', showarrow: true, arrowhead: 2,
+          ax: 0, ay: -25, font: { size: 10, color: txtColor() }
+        }, {
+          x: 20, y: 0.013, text: 'Centromere', showarrow: true, arrowhead: 2,
+          ax: 0, ay: -25, font: { size: 10, color: txtColor() }
+        }];
+      }
+      Plotly.react('chart-diversity', traces, layout, pConfig);
+    }
+    showDiversityMode('sweep');
+
+
+    /* ── Chart 3: Inversion Frequency Dynamics ───────── */
+    function simInversion(mode) {
+      var gens = [], freq = [];
+      var p = 0.01;
+      for (var g = 0; g <= 500; g++) {
+        gens.push(g);
+        freq.push(p);
+        if (mode === 'adaptive') {
+          // Selection favoring inversion; frequency-dependent advantage weakens as inversion spreads
+          var s_local = 0.02 * (1 - p);
+          p = p + s_local * p * (1 - p) + (Math.random() - 0.5) * 0.008;
+        } else {
+          // Neutral drift
+          p = p + (Math.random() - 0.5) * 0.015;
+        }
+        p = Math.max(0, Math.min(1, p));
+      }
+      return { x: gens, y: freq };
+    }
+
+    function showInversion(mode) {
+      var btns = document.querySelectorAll('#inversion-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      if (mode === 'neutral') btns[0].classList.add('active');
+      else btns[1].classList.add('active');
+
+      // Run 5 replicate simulations
+      var traces = [];
+      for (var r = 0; r < 5; r++) {
+        var data = simInversion(mode);
+        traces.push({
+          x: data.x, y: data.y, mode: 'lines',
+          line: { color: mode === 'adaptive' ? 'rgba(201,162,39,' + (0.4 + r * 0.12) + ')' : 'rgba(136,136,136,' + (0.3 + r * 0.1) + ')', width: 1.5 },
+          showlegend: false,
+          hovertemplate: 'Gen %{x}<br>Freq: %{y:.3f}<extra></extra>'
+        });
+      }
+
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Generation', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Inversion frequency', font: { size: 11, color: txtColor() } };
+      layout.yaxis.range = [0, 1];
+      Plotly.react('chart-inversion', traces, layout, pConfig);
+    }
+    showInversion('adaptive');
+
+
+    /* ── Chart 4: Breeder's Equation Response ────────── */
+    function simBreeder(h2) {
+      var S = 2.0; // selection differential (constant truncation)
+      var gens = [], meanTrait = [], neutralLine = [];
+      var mu = 10.0;
+      for (var g = 0; g <= 30; g++) {
+        gens.push(g);
+        meanTrait.push(mu);
+        neutralLine.push(10.0);
+        mu = mu + h2 * S;
+      }
+      return { gens: gens, response: meanTrait, neutral: neutralLine };
+    }
+
+    function showBreeder(level) {
+      var btns = document.querySelectorAll('#breeder-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      var h2 = level === 'high' ? 0.8 : level === 'med' ? 0.4 : 0.1;
+      var idx = level === 'high' ? 0 : level === 'med' ? 1 : 2;
+      btns[idx].classList.add('active');
+
+      var data = simBreeder(h2);
+      var traces = [{
+        x: data.gens, y: data.response, mode: 'lines',
+        name: 'Response (h\u00B2 = ' + h2 + ')',
+        line: { color: '#c9a227', width: 2.5 },
+        hovertemplate: 'Gen %{x}<br>Mean: %{y:.1f}<extra></extra>'
+      }, {
+        x: data.gens, y: data.neutral, mode: 'lines',
+        name: 'No selection',
+        line: { color: 'rgba(136,136,136,0.4)', width: 1, dash: 'dash' },
+        hoverinfo: 'skip'
+      }];
+
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Generation', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Mean trait value', font: { size: 11, color: txtColor() } };
+      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10, color: txtColor() } };
+      layout.annotations = [{
+        x: 15, y: data.response[15], text: 'R = h\u00B2S = ' + h2 + ' \u00D7 2 = ' + (h2 * 2).toFixed(1) + ' per gen',
+        showarrow: true, arrowhead: 2, ax: 40, ay: -30,
+        font: { size: 10, color: '#c9a227' }
+      }];
+      Plotly.react('chart-breeder', traces, layout, pConfig);
+    }
+    showBreeder('high');
+
+
+    /* ── Redraw charts on theme toggle ───────────────── */
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() {
+        setTimeout(function() {
+          // Redraw all charts
+          var neActiveBtn = document.querySelector('#ne-toggle button.active');
+          if (neActiveBtn) {
+            var txt = neActiveBtn.textContent || neActiveBtn.innerText;
+            if (txt.indexOf('10000') > -1) toggleNe('large');
+            else if (txt.indexOf('1000') > -1) toggleNe('med');
+            else if (txt.indexOf('10') > -1 && txt.indexOf('1000') === -1 && txt.indexOf('10000') === -1) toggleNe('small');
+            else drawFixation(fixationVisibility.all);
+          }
+
+          var divActiveBtn = document.querySelector('#diversity-toggle button.active');
+          if (divActiveBtn) {
+            showDiversityMode(divActiveBtn.textContent.indexOf('Background') > -1 ? 'background' : 'sweep');
+          }
+
+          var invActiveBtn = document.querySelector('#inversion-toggle button.active');
+          if (invActiveBtn) {
+            showInversion(invActiveBtn.textContent.indexOf('No') > -1 ? 'neutral' : 'adaptive');
+          }
+
+          var brActiveBtn = document.querySelector('#breeder-toggle button.active');
+          if (brActiveBtn) {
+            var btxt = brActiveBtn.textContent || brActiveBtn.innerText;
+            if (btxt.indexOf('0.8') > -1) showBreeder('high');
+            else if (btxt.indexOf('0.4') > -1) showBreeder('med');
+            else showBreeder('low');
+          }
+        }, 100);
+      });
+    }
+  </script>
+</body>
+</html>

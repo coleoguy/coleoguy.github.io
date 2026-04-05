@@ -67,12 +67,12 @@
     @media (max-width: 580px) { .res-grid { grid-template-columns: 1fr; } }
 
     .res-col h3 {
-      font-size: 0.62rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      border-bottom: 1px solid rgba(201,162,39,0.2);
+      color: var(--accent, #c9a227) !important;
+      border-bottom: 1px solid rgba(201,162,39,0.25);
       padding-bottom: 6px;
       margin: 0 0 4px;
     }
@@ -94,7 +94,7 @@
     .res-list a {
       font-size: 0.88rem;
       font-weight: 500;
-      color: var(--text-primary, rgba(248,244,237,0.9));
+      color: var(--text-heading, #222);
       text-decoration: none;
       transition: color 0.15s;
     }
@@ -103,7 +103,8 @@
     .res-list small {
       display: block;
       font-size: 0.73rem;
-      color: var(--text-secondary, rgba(200,197,190,0.45));
+      color: var(--text, #555);
+      opacity: 0.7;
       margin-top: 1px;
       line-height: 1.4;
     }
@@ -117,12 +118,14 @@
     .res-list small a:hover { opacity: 1; }
 
     .res-divider {
-      font-size: 0.58rem;
+      font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(200,197,190,0.3);
-      padding: 10px 0 4px;
+      color: var(--accent, #c9a227);
+      border-bottom: 1px solid rgba(201,162,39,0.25);
+      padding-bottom: 6px;
+      margin-top: 24px;
       display: block;
     }
   </style>
@@ -168,13 +171,13 @@
       <div class="container" data-aos="fade-up">
         <div class="res-grid">
 
-          <!-- Column 1: Software -->
+          <!-- Column 1: Software & Data -->
           <div class="res-col">
-            <h3>Software</h3>
+            <h3>Software &amp; R Packages</h3>
             <ul class="res-list">
               <li>
                 <a href="https://github.com/coleoguy/chromePlus" target="_blank">chromePlus</a>
-                <small>Markov models for chromosome + binary trait evolution &mdash; <a href="phylo-methods/discrete.html">guide</a> &middot; <a href="chromosome-evolution-history.html">history</a></small>
+                <small>Markov models for chromosome + binary trait evolution &mdash; <a href="phylo-methods/discrete.html">guide</a></small>
               </li>
               <li>
                 <a href="https://github.com/coleoguy/evobir" target="_blank">evobiR</a>
@@ -189,83 +192,62 @@
                 <small>Direct repeat annotation in genome assemblies</small>
               </li>
               <li>
-                <a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a>
-                <small>Automated trait data collection from the literature</small>
-              </li>
-              <li>
                 <a href="https://github.com/johnathanlo/micRocounter" target="_blank">micRocounter</a>
-                <small>Fast 2–6mer repeat identification</small>
+                <small>Fast 2&ndash;6mer repeat identification</small>
               </li>
               <li>
-                <a href="https://github.com/coleoguy" target="_blank">All GitHub repos →</a>
+                <a href="https://github.com/coleoguy" target="_blank">All GitHub repos &rarr;</a>
               </li>
             </ul>
 
-            <span class="res-divider">Interactive</span>
-            <ul class="res-list">
-              <li>
-                <a href="subpages/popgen-sim.html" target="_blank">Population Genetics Simulator</a>
-                <small>Wright-Fisher: drift, selection, mutation, migration, sex chromosomes</small>
-              </li>
-              <li>
-                <a href="phylo-methods/bd-simulator.html" target="_blank">Birth-Death Tree Simulator</a>
-                <small>Same rates, different outcomes — stochasticity of macroevolution</small>
-              </li>
-              <li>
-                <a href="https://evobir.shinyapps.io/CaveCrawler/" target="_blank">CaveCrawler</a>
-                <small>Interactive cave fish (<em>Astyanax</em>) bioinformatics</small>
-              </li>
-              <li>
-                <a href="phylo-explorer.html">Phylogenetic Tree Explorer</a>
-                <small>Interactive tree viewer: load Newick, explore traits, multiple layouts</small>
-              </li>
-              <li>
-                <a href="subpages/AI-Tools.html" target="_blank">AI Tools for Biologists</a>
-                <small>Curated tools for data-driven biology</small>
-              </li>
-              <li>
-                <a href="subpages/glossary.html" target="_blank">Research Glossary</a>
-                <small>PCM, chromosome evolution, and pop-gen terms defined</small>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Column 2: Data -->
-          <div class="res-col">
-            <h3>Data</h3>
+            <h3>Databases</h3>
             <ul class="res-list">
               <li>
                 <a href="karyotypes/index.html">Karyotype Databases</a>
-                <small>14,000+ cytogenetic records — beetles, flies, amphibians, mammals, Polyneoptera</small>
+                <small>14,000+ cytogenetic records &mdash; beetles, flies, amphibians, mammals, Polyneoptera</small>
               </li>
               <li>
-                <a href="tau_database.html">Circadian Period (τ) Database</a>
+                <a href="tau_database.html">Circadian Period (&tau;) Database</a>
                 <small>1,634 free-running period measurements across the tree of life</small>
               </li>
               <li>
                 <a href="http://www.treeofsex.org" target="_blank">Tree of Sex Database</a>
                 <small>30,000+ records on sex determination across the tree of life</small>
               </li>
-
               <li>
                 <a href="subpages/data-sources.html" target="_blank">Public Data Sources</a>
                 <small>AVONET, PanTHERIA, GBIF, Open Tree of Life, Dryad &amp; more</small>
               </li>
             </ul>
+          </div>
 
-            <span class="res-divider">Background Reading</span>
+          <!-- Column 2: Learning & Exploration -->
+          <div class="res-col">
+            <h3>Visual Guides</h3>
             <ul class="res-list">
               <li>
-                <a href="chromosome-evolution-history.html">History of Chromosome Evolution</a>
-                <small>Stebbins to ChromEvol — a century of ideas</small>
-              </li>
-              <li>
                 <a href="sex-chromosome-evolution.html">How Sex Chromosomes Evolve</a>
-                <small>Visual guide — from autosomes to X, Y, Z, W and beyond</small>
+                <small>From autosomes to X, Y, Z, W &mdash; diagrams, interactive charts, and key papers</small>
               </li>
               <li>
                 <a href="genome-structure-evolution.html">Evolution of Genome Structure</a>
-                <small>Fusions, fissions, polyploidy, and karyotype stasis vs. lability</small>
+                <small>Fusions, fissions, polyploidy, meiotic drive, and karyotype stasis</small>
+              </li>
+              <li>
+                <a href="epistasis-line-cross.html">Epistasis &amp; the Shifting Balance</a>
+                <small>Line cross analysis, SAGA, and the Wright&ndash;Fisher debate</small>
+              </li>
+              <li>
+                <a href="selection.html">Selection in Evolution</a>
+                <small>Natural, sexual, background, and indirect selection &mdash; drift vs. selection</small>
+              </li>
+              <li>
+                <a href="coleoptera-genomics.html">Coleoptera Genomics</a>
+                <small>Beetle genomes, Stevens elements, dosage compensation, and population genetics</small>
+              </li>
+              <li>
+                <a href="chromosome-evolution-history.html">History of Chromosome Evolution</a>
+                <small>Stebbins to ChromEvol &mdash; a century of ideas</small>
               </li>
               <li>
                 <a href="citation-network.html">Publication Network</a>
@@ -273,29 +255,61 @@
               </li>
             </ul>
 
-            <span class="res-divider">Lab &amp; Admin</span>
+            <h3>Interactive Tools</h3>
             <ul class="res-list">
               <li>
-                <a href="subpages/grants.html" target="_blank">Graduate Funding Opportunities</a>
+                <a href="subpages/popgen-sim.html" target="_blank">Population Genetics Simulator</a>
+                <small>Wright-Fisher: drift, selection, mutation, migration, sex chromosomes</small>
               </li>
               <li>
-                <a href="https://evobir.shinyapps.io/TA-assignments/" target="_blank">TA Assignment App</a>
-                <small><a href="subpages/TA-assignmentapp.html" target="_blank">Tutorial</a> &middot; <a href="https://forms.gle/RmS8CvmGE4KRKAAm6" target="_blank">Google Form</a></small>
+                <a href="phylo-methods/bd-simulator.html" target="_blank">Birth-Death Tree Simulator</a>
+                <small>Same rates, different outcomes &mdash; stochasticity of macroevolution</small>
               </li>
               <li>
-                <a href="subpages/raspberrypicluster.html" target="_blank">Raspberry Pi Cluster Build</a>
-                <small>26-node Pi 4B cluster notes</small>
+                <a href="phylo-explorer.html">Phylogenetic Tree Explorer</a>
+                <small>Load Newick, explore traits, multiple layouts</small>
+              </li>
+              <li>
+                <a href="https://evobir.shinyapps.io/CaveCrawler/" target="_blank">CaveCrawler</a>
+                <small>Interactive cave fish (<em>Astyanax</em>) bioinformatics</small>
+              </li>
+              <li>
+                <a href="subpages/glossary.html" target="_blank">Research Glossary</a>
+                <small>PCM, chromosome evolution, and pop-gen terms defined</small>
+              </li>
+            </ul>
+
+            <h3>AI &amp; Automation</h3>
+            <ul class="res-list">
+              <li>
+                <a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a>
+                <small>AI-powered trait data collection from the literature</small>
+              </li>
+              <li>
+                <a href="subpages/AI-Tools.html" target="_blank">AI Tools for Biologists</a>
+                <small>Curated tools for data-driven biology</small>
+              </li>
+              <li>
+                <a href="subpages/Prompting.html" target="_blank">AI Prompting Guide</a>
+                <small>Paper review, qual exam simulation, and more</small>
+              </li>
+              <li>
+                <a href="subpages/karyotype-agent.html">Karyotype Data Agent</a>
+                <small>Autonomous literature-mining agent for cytogenetic records</small>
+              </li>
+              <li>
+                <a href="ai.html">All AI Projects &rarr;</a>
               </li>
             </ul>
           </div>
 
-          <!-- Column 3: Teaching -->
+          <!-- Column 3: Teaching & Students -->
           <div class="res-col">
-            <h3>Teaching</h3>
+            <h3>Courses &amp; Teaching</h3>
             <ul class="res-list">
               <li>
                 <a href="phylo-methods/index.html" target="_blank">Phylogenetic Comparative Methods</a>
-                <small>Interactive guide: phylogenies → continuous → discrete → combined</small>
+                <small>Interactive guide: phylogenies &rarr; continuous &rarr; discrete &rarr; combined</small>
               </li>
               <li>
                 <a href="subpages/phylo101.html" target="_blank">Phylogenetics 101</a>
@@ -310,16 +324,16 @@
                 <small>Statistically tractable experiment design using R</small>
               </li>
               <li>
-                <a href="subpages/cures-data.html" target="_blank">CURE Data Guide</a>
-                <small>Undergrad research: chromosome number evolution</small>
-              </li>
-              <li>
                 <a href="subpages/biol682.html" target="_blank">BIOL 682: Communication in Bio Sci</a>
                 <small>Scientific writing, storytelling, peer review &amp; revision</small>
               </li>
               <li>
+                <a href="subpages/cures-data.html" target="_blank">CURE Data Guide</a>
+                <small>Undergrad research: chromosome number evolution</small>
+              </li>
+              <li>
                 <a href="reading.group/index.html" target="_blank">Foundations of Evo Bio</a>
-                <small>Seminar — foundational papers of the modern synthesis</small>
+                <small>Seminar &mdash; foundational papers of the modern synthesis</small>
               </li>
               <li>
                 <a href="https://docs.google.com/spreadsheets/d/1cV6ajWF-8pZVPIsrQ-p6W4rCY5S_HWbZZQ-KOxE6xFw/edit?usp=sharing" target="_blank">Fall 2025 Journal Club</a>
@@ -327,19 +341,27 @@
               </li>
             </ul>
 
-            <span class="res-divider">For grad students</span>
+            <h3>For Graduate Students</h3>
             <ul class="res-list">
               <li>
                 <a href="subpages/grad101.html" target="_blank">Grad School Orientation</a>
                 <small>Mentoring, identity, and securing jobs</small>
               </li>
               <li>
+                <a href="subpages/grants.html" target="_blank">Graduate Funding Opportunities</a>
+                <small>Fellowships, grants, and funding sources</small>
+              </li>
+              <li>
                 <a href="subpages/resources.html" target="_blank">Foundational Resources</a>
                 <small>Data, writing, and career planning tools</small>
               </li>
               <li>
-                <a href="subpages/Prompting.html" target="_blank">AI Prompting Guide</a>
-                <small>Paper review, qual exam simulation, and more</small>
+                <a href="subpages/raspberrypicluster.html" target="_blank">Raspberry Pi Cluster Build</a>
+                <small>26-node Pi 4B cluster notes</small>
+              </li>
+              <li>
+                <a href="https://evobir.shinyapps.io/TA-assignments/" target="_blank">TA Assignment App</a>
+                <small><a href="subpages/TA-assignmentapp.html" target="_blank">Tutorial</a> &middot; <a href="https://forms.gle/RmS8CvmGE4KRKAAm6" target="_blank">Google Form</a></small>
               </li>
             </ul>
           </div>

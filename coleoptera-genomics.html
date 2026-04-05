@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coleoptera Genomics — Blackmon Lab</title>
+  <meta name="description" content="A visual guide to beetle genomics — from reference genomes and chromosomal elements to dosage compensation, population genetics, and the most species-rich order on Earth.">
+  <meta property="og:title" content="Coleoptera Genomics — Blackmon Lab" />
+  <meta property="og:description" content="A visual guide to beetle genomics — reference genomes, chromosomal elements, dosage compensation, and population genetics in the most species-rich order on Earth." />
+  <meta property="og:url" content="https://coleoguy.github.io/coleoptera-genomics.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blackmon Lab" />
+  <meta name="keywords" content="Coleoptera, beetle genomics, insect genomes, Stevens elements, dosage compensation, Tribolium, Chrysina, population genetics">
+  <link rel="canonical" href="https://coleoguy.github.io/coleoptera-genomics.html">
+  <meta property="og:image" content="https://coleoguy.github.io/assets/img/study-systems/chrysina-beyeri.jpg">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Site CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Playfair Display for hero -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Scroll progress bar ─────────────────────────── */
+    #scroll-progress {
+      position: fixed;
+      top: 62px;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent, #c9a227);
+      z-index: 1050;
+      transition: width 0.05s linear;
+    }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .cg-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+    }
+    .cg-hero .kicker {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 14px;
+    }
+    .cg-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text-heading, #f8f4ed);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .cg-hero .subtitle {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      max-width: 700px;
+      margin: 0 auto 28px;
+    }
+    .cg-hero .hero-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent, #c9a227);
+      margin-top: 18px;
+      filter: saturate(1.1);
+    }
+
+    /* ── Split-panel sections ─────────────────────────── */
+    .cg-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+    }
+    .cg-section:nth-child(even) {
+      background: rgba(255,255,255,0.015);
+    }
+    .body-light .cg-section:nth-child(even),
+    .light-mode .cg-section:nth-child(even) {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .cg-theory {
+      padding-right: 28px;
+      border-right: 1px solid rgba(201,162,39,0.15);
+    }
+    .cg-evidence {
+      padding-left: 28px;
+    }
+    @media (max-width: 991.98px) {
+      .cg-theory, .cg-evidence { padding: 0; border-right: none; }
+      .cg-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
+    }
+
+    .cg-kicker {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 6px;
+    }
+    .cg-section h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-heading, #eae7e2);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .cg-section h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent, #c9a227);
+      margin: 24px 0 8px;
+    }
+    .cg-section h3:first-child { margin-top: 0; }
+    .cg-section p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text, #c8c5c0);
+      margin-bottom: 14px;
+    }
+    .cg-section a {
+      color: var(--accent, #c9a227);
+      text-decoration: underline;
+      text-decoration-color: rgba(201,162,39,0.4);
+      text-underline-offset: 2px;
+    }
+    .cg-section a:hover { text-decoration-color: var(--accent); }
+    .cg-section strong {
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+    }
+
+    .pullquote {
+      border-left: 3px solid var(--accent, #c9a227);
+      padding: 10px 18px;
+      margin: 20px 0;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--accent, #c9a227);
+      line-height: 1.6;
+    }
+
+    /* ── Paper masthead cards ─────────────────────────── */
+    .paper-masthead {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .paper-masthead:hover {
+      border-color: rgba(201,162,39,0.5);
+      text-decoration: none;
+    }
+    .paper-masthead .journal {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent, #c9a227);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .paper-masthead .paper-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+    .paper-masthead .authors {
+      font-size: 0.78rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      line-height: 1.4;
+    }
+    .paper-masthead .pub-year {
+      font-size: 0.7rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-top: 4px;
+    }
+    .badge-f1000 {
+      display: inline-block;
+      background: var(--accent, #c9a227);
+      color: #080808;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── Diagram containers ────────────────────────────── */
+    .diagram-box {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 24px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .diagram-box svg { max-width: 100%; height: auto; }
+    .diagram-caption {
+      font-size: 0.72rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SVG colors via CSS ────────────────────────────── */
+    .chr-auto { fill: #555; }
+    .chr-sex { fill: var(--accent, #c9a227); }
+    .chr-sex-dim { fill: rgba(201,162,39,0.35); }
+    .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
+    .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
+    .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
+    .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
+    .chr-arrow { fill: var(--accent, #c9a227); }
+    .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
+    .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
+    .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
+    .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+    .chr-region { fill: rgba(201,162,39,0.12); }
+
+    .light-mode .chr-auto { fill: #bbb; }
+    .light-mode .chr-label { fill: #333; }
+    .light-mode .chr-label-sm { fill: #777; }
+    .light-mode .chr-heading { fill: #222; }
+    .light-mode .chr-line { stroke: #ccc; }
+    .light-mode .chr-line-dash { stroke: #ccc; }
+
+    /* ── Plotly chart containers ────────────────────────── */
+    .chart-box {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .chart-box .chart-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent, #c9a227);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    /* ── Stat callout ──────────────────────────────────── */
+    .stat-callout {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+    .stat-callout .stat-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent, #c9a227);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .stat-callout .stat-text {
+      font-size: 0.82rem;
+      color: var(--text, #c8c5c0);
+      line-height: 1.4;
+    }
+
+    /* ── Toggle buttons for charts ─────────────────────── */
+    .chart-toggle {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .chart-toggle button {
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 16px;
+      background: transparent;
+      color: var(--text, #c8c5c0);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .chart-toggle button.active,
+    .chart-toggle button:hover {
+      border-color: var(--accent, #c9a227);
+      color: var(--accent, #c9a227);
+      background: rgba(201,162,39,0.08);
+    }
+
+    /* ── Genome cards (NEW) ────────────────────────────── */
+    .genome-card {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-left: 4px solid var(--accent, #c9a227);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+    .genome-card:hover {
+      border-color: rgba(201,162,39,0.5);
+      border-left-color: var(--accent, #c9a227);
+    }
+    .genome-card .genome-species {
+      font-size: 1.0rem;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--text-heading, #eae7e2);
+      margin-bottom: 2px;
+    }
+    .genome-card .genome-common {
+      font-size: 0.78rem;
+      color: var(--accent, #c9a227);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .genome-card .genome-family {
+      font-size: 0.72rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-bottom: 10px;
+    }
+    .genome-card .genome-desc {
+      font-size: 0.85rem;
+      color: var(--text, #c8c5c0);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .genome-card .genome-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .genome-card .genome-stat {
+      font-size: 0.72rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+    }
+    .genome-card .genome-stat strong {
+      color: var(--accent, #c9a227);
+      font-weight: 700;
+    }
+    .genome-card .genome-why {
+      font-size: 0.78rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      font-style: italic;
+      margin-top: 6px;
+    }
+    .genome-card .genome-badge {
+      display: inline-block;
+      background: rgba(201,162,39,0.12);
+      color: var(--accent, #c9a227);
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ── Dosage compensation mechanism cards ──────────── */
+    .mech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    @media (max-width: 767.98px) {
+      .mech-grid { grid-template-columns: 1fr; }
+    }
+    .mech-card {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .mech-card .mech-organism {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent, #c9a227);
+      margin-bottom: 6px;
+    }
+    .mech-card .mech-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+      margin-bottom: 4px;
+    }
+    .mech-card .mech-desc {
+      font-size: 0.75rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      line-height: 1.45;
+    }
+
+    /* ── Related resources box ─────────────────────────── */
+    .related-box {
+      margin-top: 48px;
+      padding: 28px 32px;
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 10px;
+      background: rgba(201,162,39,0.03);
+    }
+    .related-box h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 16px;
+    }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .related-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid rgba(201,162,39,0.25);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--text, #c8c5c0);
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .related-link i { color: var(--accent); font-size: 0.75rem; }
+    .related-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .paper-foot {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(201,162,39,0.2);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+    }
+  </style>
+</head>
+
+<body class="resources-page">
+  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress"></div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group d-flex align-items-center gap-2">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="cg-hero" data-aos="fade-up">
+      <div class="container">
+        <div class="kicker">A Visual Guide</div>
+        <h1>Coleoptera Genomics</h1>
+        <div class="subtitle">Inside the genomes of the most species-rich order on Earth &mdash; from reference assemblies and chromosomal elements to population genetics and conservation</div>
+
+        <!-- Decorative SVG: beetle silhouette with chromosome pairs -->
+        <svg width="140" height="110" viewBox="0 0 140 110" style="margin-bottom: 10px; opacity: 0.8;">
+          <!-- Beetle body outline -->
+          <ellipse cx="70" cy="52" rx="38" ry="44" class="chr-auto" opacity="0.18"/>
+          <!-- Head -->
+          <ellipse cx="70" cy="12" rx="14" ry="10" class="chr-auto" opacity="0.22"/>
+          <!-- Elytra split line -->
+          <line x1="70" y1="20" x2="70" y2="96" class="chr-line" stroke-width="1.5"/>
+          <!-- Chromosome pairs inside body -->
+          <rect x="48" y="30" width="7" height="22" rx="3.5" class="chr-sex" opacity="0.85"/>
+          <rect x="58" y="34" width="7" height="18" rx="3.5" class="chr-sex" opacity="0.55"/>
+          <rect x="75" y="30" width="7" height="22" rx="3.5" class="chr-auto" opacity="0.5"/>
+          <rect x="85" y="30" width="7" height="22" rx="3.5" class="chr-auto" opacity="0.5"/>
+          <rect x="52" y="58" width="7" height="20" rx="3.5" class="chr-auto" opacity="0.4"/>
+          <rect x="62" y="58" width="7" height="20" rx="3.5" class="chr-auto" opacity="0.4"/>
+          <rect x="75" y="56" width="7" height="24" rx="3.5" class="chr-sex" opacity="0.45"/>
+          <rect x="85" y="60" width="7" height="16" rx="3.5" class="chr-auto" opacity="0.35"/>
+          <!-- Antennae -->
+          <line x1="60" y1="8" x2="44" y2="0" class="chr-line-accent" stroke-width="1"/>
+          <line x1="80" y1="8" x2="96" y2="0" class="chr-line-accent" stroke-width="1"/>
+          <!-- Legs (simplified) -->
+          <line x1="36" y1="38" x2="22" y2="30" class="chr-line" stroke-width="1"/>
+          <line x1="36" y1="55" x2="20" y2="55" class="chr-line" stroke-width="1"/>
+          <line x1="36" y1="72" x2="22" y2="80" class="chr-line" stroke-width="1"/>
+          <line x1="104" y1="38" x2="118" y2="30" class="chr-line" stroke-width="1"/>
+          <line x1="104" y1="55" x2="120" y2="55" class="chr-line" stroke-width="1"/>
+          <line x1="104" y1="72" x2="118" y2="80" class="chr-line" stroke-width="1"/>
+        </svg>
+
+        <br>
+        <img src="assets/img/study-systems/chrysina-beyeri.jpg" alt="Chrysina beyeri scarab beetle" class="hero-photo">
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 1: WHY BEETLE GENOMES MATTER ═══════════════ -->
+    <section class="cg-section" id="sec-why">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 cg-theory" data-aos="fade-up">
+            <div class="cg-kicker">Foundations</div>
+            <h2>Why Beetle Genomes Matter</h2>
+            <p>Coleoptera is the most species-rich order of any organism on Earth. With approximately <strong>400,000 described species</strong>, beetles account for roughly 25% of all known animal species and about 40% of all insects. No other order &mdash; of any kingdom &mdash; comes close.</p>
+            <p>Beetles occupy nearly every terrestrial and freshwater habitat on the planet. They include critical <strong>pollinators</strong> (scarabs, longhorns), <strong>decomposers</strong> (burying beetles, dung beetles), <strong>agricultural pests</strong> (Colorado potato beetle, boll weevil, bark beetles), and <strong>forest ecosystem engineers</strong> (bark beetles that drive succession in conifer forests).</p>
+            <p>Yet genomic resources for Coleoptera have lagged far behind Diptera (flies) and Lepidoptera (butterflies and moths). For years, <em>Tribolium castaneum</em> (the red flour beetle) was essentially the only high-quality beetle reference genome. This meant that the most species-rich order of life was also one of the least genomically characterized.</p>
+            <p>The genomic revolution in Coleoptera is now underway. New long-read sequencing technologies &mdash; PacBio HiFi and Oxford Nanopore &mdash; combined with Hi-C chromosome scaffolding have made <strong>chromosome-level beetle assemblies</strong> achievable for any species, not just model organisms.</p>
+            <p>Understanding beetle genomes matters for multiple reasons:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li><strong>Pest management</strong> &mdash; bark beetles, crop pests, and stored-product beetles cause billions of dollars in damage annually. Genomics enables targeted control strategies.</li>
+              <li><strong>Conservation</strong> &mdash; endangered beetle species need genomic baselines for population viability and genetic rescue.</li>
+              <li><strong>Fundamental biology</strong> &mdash; why are there so many beetle species? What is different about their genomes?</li>
+              <li><strong>Comparative genomics</strong> &mdash; beetles span 325+ million years of evolution, providing a massive comparative framework.</li>
+            </ul>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 cg-evidence" data-aos="fade-up" data-aos-delay="100">
+            <h3>Key Papers</h3>
+
+            <a class="paper-masthead" href="https://doi.org/10.1038/nature06784" target="_blank">
+              <div class="journal">Nature &middot; 2008</div>
+              <div class="paper-title">The genome of the model beetle and pest <em>Tribolium castaneum</em></div>
+              <div class="authors">Richards S, Gibbs RA, Weinstock GM, et al. (Tribolium Genome Sequencing Consortium)</div>
+              <div class="pub-year">Volume 452, pp. 949&ndash;955</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1073/pnas.1909655116" target="_blank">
+              <div class="journal">PNAS &middot; 2019</div>
+              <div class="paper-title">The evolution and genomic basis of beetle diversity</div>
+              <div class="authors">McKenna DD, Shin S, Ahrens D, Balke M, Beza-Beza C, Clarke DJ, et al.</div>
+              <div class="pub-year">Volume 116(49), pp. 24729&ndash;24737</div>
+            </a>
+
+            <div class="stat-callout" data-aos="zoom-in">
+              <div class="stat-num">~400K</div>
+              <div class="stat-text">described beetle species &mdash; more than any other order of life. Estimated true diversity may exceed 1 million species.</div>
+            </div>
+
+            <a class="paper-masthead" href="https://doi.org/10.1126/science.aaa1313" target="_blank">
+              <div class="journal">Science &middot; 2014</div>
+              <div class="paper-title">Phylogenomics resolves the timing and pattern of insect evolution</div>
+              <div class="authors">Misof B, Liu S, Meusemann K, Peters RS, Donath A, Mayer C, et al. (1KITE Consortium)</div>
+              <div class="pub-year">Volume 346(6210), pp. 763&ndash;767</div>
+            </a>
+
+            <!-- Beetle diversity diagram -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 400 180" width="100%" aria-labelledby="svg-diversity-title">
+                <title id="svg-diversity-title">Beetle species richness compared to other orders</title>
+                <!-- Bars showing relative species counts -->
+                <text x="10" y="20" class="chr-heading">Species Richness by Order</text>
+                <!-- Coleoptera -->
+                <rect x="10" y="35" width="360" height="22" rx="4" class="chr-sex" opacity="0.85"/>
+                <text x="14" y="50" class="chr-label" style="font-size:10px; font-weight:700; fill:#080808;">Coleoptera ~400,000</text>
+                <!-- Lepidoptera -->
+                <rect x="10" y="63" width="162" height="18" rx="4" class="chr-auto" opacity="0.55"/>
+                <text x="14" y="76" class="chr-label-sm">Lepidoptera ~180,000</text>
+                <!-- Hymenoptera -->
+                <rect x="10" y="87" width="144" height="18" rx="4" class="chr-auto" opacity="0.45"/>
+                <text x="14" y="100" class="chr-label-sm">Hymenoptera ~160,000</text>
+                <!-- Diptera -->
+                <rect x="10" y="111" width="140" height="18" rx="4" class="chr-auto" opacity="0.40"/>
+                <text x="14" y="124" class="chr-label-sm">Diptera ~155,000</text>
+                <!-- Hemiptera -->
+                <rect x="10" y="135" width="72" height="18" rx="4" class="chr-auto" opacity="0.32"/>
+                <text x="14" y="148" class="chr-label-sm">Hemiptera ~80,000</text>
+                <text x="10" y="172" class="chr-label-sm" style="font-style:italic;">Beetles alone comprise ~25% of all described animal species</text>
+              </svg>
+              <div class="diagram-caption">Approximate described species counts for major insect orders</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 2: STEVENS ELEMENTS ═══════════════ -->
+    <section class="cg-section" id="sec-stevens">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 cg-theory" data-aos="fade-up">
+            <div class="cg-kicker">Chromosomal Architecture</div>
+            <h2>Stevens Elements &mdash; The Chromosomal Building Blocks</h2>
+            <p>Just as <em>Drosophila</em> has Muller elements (A&ndash;F), beetles have their own set of conserved chromosomal elements. We call these <strong>Stevens elements</strong>, named after <strong>Nettie Stevens</strong>, who discovered sex chromosomes in 1905 while studying the mealworm beetle <em>Tenebrio molitor</em>.</p>
+            <p>Stevens elements represent <strong>ancestral linkage groups</strong> that have been conserved across beetle evolution despite hundreds of millions of years of divergence. Even when chromosome numbers change dramatically through fusions and fissions, the gene content of these elements tends to stay together as syntenic blocks.</p>
+            <p>The <em>Tribolium castaneum</em> genome (2n = 20, or 10 chromosome pairs) provided the initial framework for defining these elements. Comparative mapping to other beetle species reveals remarkable conservation of synteny blocks, even across species with radically different chromosome numbers.</p>
+
+            <h3>Why Stevens Elements Matter</h3>
+            <p>Understanding these conserved elements is essential for:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li><strong>Tracing the history of chromosome rearrangements</strong> &mdash; which fusions and fissions occurred in a lineage</li>
+              <li><strong>Determining sex chromosome homology</strong> &mdash; identifying which element became the X or Y in different species</li>
+              <li><strong>Understanding dosage compensation</strong> &mdash; are the same genes compensated when different elements become sex-linked?</li>
+              <li><strong>Reconstructing ancestral karyotypes</strong> &mdash; what did the beetle ancestor's chromosomes look like?</li>
+            </ul>
+
+            <!-- SVG: Stevens elements across species -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 480 320" width="100%" aria-labelledby="svg-stevens-title">
+                <title id="svg-stevens-title">Stevens elements conserved across beetle species with different chromosome numbers</title>
+                <text x="240" y="20" class="chr-heading" text-anchor="middle">Stevens Elements Across Beetle Species</text>
+
+                <!-- Color legend -->
+                <rect x="10" y="32" width="14" height="10" rx="2" fill="#c9a227" opacity="0.9"/>
+                <text x="28" y="41" class="chr-label-sm">S1</text>
+                <rect x="55" y="32" width="14" height="10" rx="2" fill="#7a9e3e" opacity="0.9"/>
+                <text x="73" y="41" class="chr-label-sm">S2</text>
+                <rect x="100" y="32" width="14" height="10" rx="2" fill="#4a8cb5" opacity="0.9"/>
+                <text x="118" y="41" class="chr-label-sm">S3</text>
+                <rect x="145" y="32" width="14" height="10" rx="2" fill="#b5564a" opacity="0.9"/>
+                <text x="163" y="41" class="chr-label-sm">S4</text>
+                <rect x="190" y="32" width="14" height="10" rx="2" fill="#8b6db5" opacity="0.9"/>
+                <text x="208" y="41" class="chr-label-sm">S5</text>
+                <rect x="235" y="32" width="14" height="10" rx="2" fill="#555" opacity="0.7"/>
+                <text x="253" y="41" class="chr-label-sm">S6&ndash;S10</text>
+
+                <!-- Species 1: Tribolium castaneum (n=10, 10 separate chromosomes) -->
+                <text x="80" y="70" class="chr-heading" text-anchor="middle" style="font-size:11px;">Tribolium castaneum</text>
+                <text x="80" y="82" class="chr-label-sm" text-anchor="middle">n = 10</text>
+                <rect x="10" y="90" width="12" height="50" rx="6" fill="#c9a227" opacity="0.85"/>
+                <rect x="26" y="90" width="12" height="45" rx="6" fill="#7a9e3e" opacity="0.85"/>
+                <rect x="42" y="90" width="12" height="42" rx="6" fill="#4a8cb5" opacity="0.85"/>
+                <rect x="58" y="90" width="12" height="40" rx="6" fill="#b5564a" opacity="0.85"/>
+                <rect x="74" y="90" width="12" height="38" rx="6" fill="#8b6db5" opacity="0.85"/>
+                <rect x="90" y="90" width="12" height="36" rx="6" fill="#555" opacity="0.6"/>
+                <rect x="106" y="90" width="12" height="34" rx="6" fill="#555" opacity="0.55"/>
+                <rect x="122" y="90" width="12" height="32" rx="6" fill="#555" opacity="0.5"/>
+                <rect x="138" y="90" width="12" height="30" rx="6" fill="#555" opacity="0.45"/>
+                <rect x="154" y="90" width="12" height="28" rx="6" fill="#555" opacity="0.4"/>
+
+                <!-- Species 2: Hypothetical fused species (n=5) -->
+                <text x="290" y="70" class="chr-heading" text-anchor="middle" style="font-size:11px;">Fused karyotype species</text>
+                <text x="290" y="82" class="chr-label-sm" text-anchor="middle">n = 5</text>
+                <!-- Fused chromosomes: S1+S6, S2+S7, S3+S8, S4+S9, S5+S10 -->
+                <rect x="240" y="90" width="14" height="44" rx="6" fill="#c9a227" opacity="0.85"/>
+                <rect x="240" y="134" width="14" height="30" rx="6" fill="#555" opacity="0.5"/>
+                <rect x="260" y="90" width="14" height="40" rx="6" fill="#7a9e3e" opacity="0.85"/>
+                <rect x="260" y="130" width="14" height="28" rx="6" fill="#555" opacity="0.45"/>
+                <rect x="280" y="90" width="14" height="38" rx="6" fill="#4a8cb5" opacity="0.85"/>
+                <rect x="280" y="128" width="14" height="26" rx="6" fill="#555" opacity="0.4"/>
+                <rect x="300" y="90" width="14" height="36" rx="6" fill="#b5564a" opacity="0.85"/>
+                <rect x="300" y="126" width="14" height="24" rx="6" fill="#555" opacity="0.4"/>
+                <rect x="320" y="90" width="14" height="34" rx="6" fill="#8b6db5" opacity="0.85"/>
+                <rect x="320" y="124" width="14" height="22" rx="6" fill="#555" opacity="0.35"/>
+
+                <!-- Connecting lines showing homology -->
+                <line x1="16" y1="142" x2="247" y2="90" class="chr-line-dash"/>
+                <line x1="32" y1="137" x2="267" y2="90" class="chr-line-dash"/>
+                <line x1="48" y1="134" x2="287" y2="90" class="chr-line-dash"/>
+                <line x1="64" y1="132" x2="307" y2="90" class="chr-line-dash"/>
+                <line x1="80" y1="130" x2="327" y2="90" class="chr-line-dash"/>
+
+                <!-- Species 3: High chromosome number species (n=18) -->
+                <text x="240" y="195" class="chr-heading" text-anchor="middle" style="font-size:11px;">Fissioned karyotype species</text>
+                <text x="240" y="207" class="chr-label-sm" text-anchor="middle">n = 18</text>
+                <!-- S1 split into two -->
+                <rect x="100" y="215" width="9" height="26" rx="4" fill="#c9a227" opacity="0.85"/>
+                <rect x="112" y="215" width="9" height="22" rx="4" fill="#c9a227" opacity="0.6"/>
+                <!-- S2 split -->
+                <rect x="124" y="215" width="9" height="24" rx="4" fill="#7a9e3e" opacity="0.85"/>
+                <rect x="136" y="215" width="9" height="20" rx="4" fill="#7a9e3e" opacity="0.6"/>
+                <!-- S3 split -->
+                <rect x="148" y="215" width="9" height="22" rx="4" fill="#4a8cb5" opacity="0.85"/>
+                <rect x="160" y="215" width="9" height="18" rx="4" fill="#4a8cb5" opacity="0.6"/>
+                <!-- S4 intact -->
+                <rect x="172" y="215" width="9" height="36" rx="4" fill="#b5564a" opacity="0.85"/>
+                <!-- S5 intact -->
+                <rect x="184" y="215" width="9" height="34" rx="4" fill="#8b6db5" opacity="0.85"/>
+                <!-- remaining elements -->
+                <rect x="196" y="215" width="9" height="28" rx="4" fill="#555" opacity="0.55"/>
+                <rect x="208" y="215" width="9" height="26" rx="4" fill="#555" opacity="0.5"/>
+                <rect x="220" y="215" width="9" height="24" rx="4" fill="#555" opacity="0.45"/>
+                <rect x="232" y="215" width="9" height="22" rx="4" fill="#555" opacity="0.4"/>
+                <rect x="244" y="215" width="9" height="20" rx="4" fill="#555" opacity="0.38"/>
+                <rect x="256" y="215" width="9" height="18" rx="4" fill="#555" opacity="0.35"/>
+                <rect x="268" y="215" width="9" height="22" rx="4" fill="#555" opacity="0.33"/>
+                <rect x="280" y="215" width="9" height="20" rx="4" fill="#555" opacity="0.30"/>
+                <rect x="292" y="215" width="9" height="18" rx="4" fill="#555" opacity="0.28"/>
+                <rect x="304" y="215" width="9" height="16" rx="4" fill="#555" opacity="0.26"/>
+
+                <text x="240" y="300" class="chr-label-sm" text-anchor="middle" style="font-style:italic;">Same ancestral gene content, reshuffled by fusions and fissions across 300+ Myr</text>
+              </svg>
+              <div class="diagram-caption">Stevens elements are conserved linkage groups that persist across beetle evolution</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 cg-evidence" data-aos="fade-up" data-aos-delay="100">
+            <h3>Key Papers</h3>
+
+            <a class="paper-masthead" href="https://www.biodiversitylibrary.org/bibliography/1667" target="_blank">
+              <div class="journal">Carnegie Institution of Washington &middot; 1905</div>
+              <div class="paper-title">Studies in spermatogenesis with especial reference to the "accessory chromosome"</div>
+              <div class="authors">Stevens NM</div>
+              <div class="pub-year">Publication No. 36</div>
+            </a>
+
+            <div class="pullquote">"Nettie Stevens discovered sex chromosomes while studying <em>Tenebrio molitor</em>, a beetle &mdash; making Coleoptera central to the origin of sex chromosome biology."</div>
+
+            <a class="paper-masthead" href="https://doi.org/10.1093/jhered/esw047" target="_blank">
+              <div class="journal">Journal of Heredity &middot; 2017 <span class="badge-f1000">F1000</span></div>
+              <div class="paper-title">Sex determination, sex chromosomes, and karyotype evolution in insects</div>
+              <div class="authors">Blackmon H, Ross L, Bachtrog D</div>
+              <div class="pub-year">Volume 108(1), pp. 78&ndash;93</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1371/journal.pgen.1011477" target="_blank">
+              <div class="journal">PLoS Genetics &middot; 2024</div>
+              <div class="paper-title">Sex and neo-sex chromosome evolution in beetles</div>
+              <div class="authors">Bracewell R, Tran A, Chatla K, Bachtrog D</div>
+              <div class="pub-year">Volume 20, e1011477</div>
+            </a>
+
+            <!-- Plotly Chart: Synteny dot plot -->
+            <div class="chart-box" data-aos="zoom-in">
+              <div class="chart-title">Synteny Conservation &mdash; Stevens Elements</div>
+              <div id="chart-synteny" style="width:100%;height:340px;"></div>
+              <p style="font-size:0.78rem; font-style:italic; color:var(--text-secondary, rgba(200,197,190,0.65)); margin-top:4px;">Note: Data shown are simulated for illustrative purposes and do not represent real synteny analyses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 3: LAB-PRODUCED GENOMES ═══════════════ -->
+    <section class="cg-section" id="sec-genomes">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 cg-theory" data-aos="fade-up">
+            <div class="cg-kicker">Blackmon Lab Genomics</div>
+            <h2>Lab-Produced Genomes</h2>
+            <p>The Blackmon Lab is actively generating <strong>chromosome-level genome assemblies</strong> for beetle species chosen to answer specific evolutionary questions. Each genome project targets a species that fills a key gap in our understanding of beetle genome evolution.</p>
+            <p>Our approach combines multiple technologies:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li><strong>PacBio HiFi sequencing</strong> &mdash; highly accurate long reads (>99.9% accuracy, 15&ndash;20 kb read lengths) for contiguous assembly</li>
+              <li><strong>Hi-C scaffolding</strong> &mdash; chromosome conformation capture to order and orient contigs into chromosome-level scaffolds</li>
+              <li><strong>RNA-seq</strong> &mdash; transcriptome data for gene annotation and expression analysis</li>
+            </ul>
+            <p>Assemblies are evaluated using <strong>BUSCO completeness scores</strong> (typically >95% for our chromosome-level assemblies) and compared to karyotype data from our comprehensive databases of over 14,000 beetle karyotype records.</p>
+            <p>Each genome below was chosen not just for its biological interest, but for its strategic placement in the beetle tree of life &mdash; filling phylogenetic gaps and enabling comparative analyses that would be impossible with genomes from model organisms alone.</p>
+
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 400 160" width="100%" aria-labelledby="svg-pipeline-title">
+                <title id="svg-pipeline-title">Genome assembly pipeline</title>
+                <text x="200" y="20" class="chr-heading" text-anchor="middle">Assembly Pipeline</text>
+                <!-- Step boxes -->
+                <rect x="10" y="35" width="80" height="40" rx="6" class="chr-region" stroke="#c9a227" stroke-width="1"/>
+                <text x="50" y="52" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">PacBio HiFi</text>
+                <text x="50" y="64" class="chr-label-sm" text-anchor="middle">Long reads</text>
+                <!-- Arrow -->
+                <polygon points="95,55 105,50 105,60" class="chr-arrow"/>
+                <rect x="110" y="35" width="80" height="40" rx="6" class="chr-region" stroke="#c9a227" stroke-width="1"/>
+                <text x="150" y="52" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">HiFiasm</text>
+                <text x="150" y="64" class="chr-label-sm" text-anchor="middle">Assembly</text>
+                <!-- Arrow -->
+                <polygon points="195,55 205,50 205,60" class="chr-arrow"/>
+                <rect x="210" y="35" width="80" height="40" rx="6" class="chr-region" stroke="#c9a227" stroke-width="1"/>
+                <text x="250" y="52" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">Hi-C</text>
+                <text x="250" y="64" class="chr-label-sm" text-anchor="middle">Scaffolding</text>
+                <!-- Arrow -->
+                <polygon points="295,55 305,50 305,60" class="chr-arrow"/>
+                <rect x="310" y="35" width="80" height="40" rx="6" class="chr-region" stroke="#c9a227" stroke-width="1"/>
+                <text x="350" y="52" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">BUSCO</text>
+                <text x="350" y="64" class="chr-label-sm" text-anchor="middle">Validation</text>
+                <!-- Bottom row -->
+                <rect x="60" y="95" width="120" height="40" rx="6" class="chr-region" stroke="#c9a227" stroke-width="1"/>
+                <text x="120" y="112" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">RNA-seq</text>
+                <text x="120" y="124" class="chr-label-sm" text-anchor="middle">Gene annotation</text>
+                <line x1="120" y1="95" x2="150" y2="75" class="chr-line-accent"/>
+                <rect x="220" y="95" width="120" height="40" rx="6" class="chr-region" stroke="#c9a227" stroke-width="1"/>
+                <text x="280" y="112" class="chr-label-accent" text-anchor="middle" style="font-size:9px;">Karyotype DB</text>
+                <text x="280" y="124" class="chr-label-sm" text-anchor="middle">Cross-validation</text>
+                <line x1="280" y1="95" x2="250" y2="75" class="chr-line-accent"/>
+                <text x="200" y="155" class="chr-label-sm" text-anchor="middle" style="font-style:italic;">Integrated pipeline for chromosome-level beetle genome assemblies</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence (Genome Cards) -->
+          <div class="col-lg-6 cg-evidence" data-aos="fade-up" data-aos-delay="100">
+            <h3>Our Genomes</h3>
+
+            <div class="genome-card" data-aos="fade-left">
+              <div class="genome-badge">Chromosome-level</div>
+              <div class="genome-species">Chrysina gloriosa</div>
+              <div class="genome-common">Glorious Scarab</div>
+              <div class="genome-family">Family: Scarabaeidae (Rutelinae)</div>
+              <div class="genome-desc">One of the most spectacular beetles in North America. Its brilliant iridescent green and gold coloration is produced by <strong>chiral nanostructures</strong> in the exoskeleton that selectively reflect circularly polarized light &mdash; a rare optical phenomenon in nature.</div>
+              <div class="genome-stats">
+                <span class="genome-stat"><strong>Assembly:</strong> chromosome-level</span>
+                <span class="genome-stat"><strong>BUSCO:</strong> >95%</span>
+              </div>
+              <div class="genome-why">Focus: scarab genome evolution, structural coloration genetics, circularly polarized light</div>
+            </div>
+
+            <div class="genome-card" data-aos="fade-left" data-aos-delay="50">
+              <div class="genome-badge">Chromosome-level</div>
+              <div class="genome-species">Dendroctonus frontalis</div>
+              <div class="genome-common">Southern Pine Beetle</div>
+              <div class="genome-family">Family: Curculionidae (Scolytinae)</div>
+              <div class="genome-desc">One of the most destructive forest pests in North America. This bark beetle kills pine trees en masse during outbreaks, reshaping forest ecosystems across the southeastern United States. Understanding its genome is critical for forest management and predicting outbreak dynamics under climate change.</div>
+              <div class="genome-stats">
+                <span class="genome-stat"><strong>Assembly:</strong> chromosome-level</span>
+                <span class="genome-stat"><strong>BUSCO:</strong> >95%</span>
+              </div>
+              <div class="genome-why">Focus: pest genomics, population dynamics, olfactory gene family evolution</div>
+            </div>
+
+            <div class="genome-card" data-aos="fade-left" data-aos-delay="100">
+              <div class="genome-badge" style="background:rgba(220,80,80,0.15); color:#dc5050;">Conservation Milestone</div>
+              <div class="genome-species">Endangered Longarmed Beetle</div>
+              <div class="genome-common">First Endangered Beetle Genome from Our Lab</div>
+              <div class="genome-family">Conservation genomics flagship</div>
+              <div class="genome-desc">Our first genome assembly for an <strong>endangered beetle species</strong>. This project represents a conservation genomics milestone &mdash; providing the genetic baseline needed for population viability assessment, genetic diversity monitoring, and potential genetic rescue strategies.</div>
+              <div class="genome-stats">
+                <span class="genome-stat"><strong>Assembly:</strong> chromosome-level</span>
+                <span class="genome-stat"><strong>BUSCO:</strong> >95%</span>
+              </div>
+              <div class="genome-why">Focus: conservation genomics, population viability, genetic diversity baseline</div>
+            </div>
+
+            <div class="genome-card" data-aos="fade-left" data-aos-delay="150">
+              <div class="genome-badge">Chromosome-level</div>
+              <div class="genome-species">Dynastes grantii</div>
+              <div class="genome-common">Western Hercules Beetle</div>
+              <div class="genome-family">Family: Scarabaeidae (Dynastinae)</div>
+              <div class="genome-desc">One of the largest beetles in North America. Males develop enormous thoracic and cephalic horns used in combat over females. <strong>Sexual dimorphism is extreme</strong> &mdash; males can be twice the size of females, making this species ideal for studying the genomics of sexual selection and conditional trait expression.</div>
+              <div class="genome-stats">
+                <span class="genome-stat"><strong>Assembly:</strong> chromosome-level</span>
+                <span class="genome-stat"><strong>BUSCO:</strong> >95%</span>
+              </div>
+              <div class="genome-why">Focus: sexual selection, horn development genetics, genome size evolution</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 4: DOSAGE COMPENSATION ═══════════════ -->
+    <section class="cg-section" id="sec-dosage">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 cg-theory" data-aos="fade-up">
+            <div class="cg-kicker">Gene Regulation</div>
+            <h2>Dosage Compensation in Beetles</h2>
+            <p>Most beetles have <strong>XY sex determination</strong>, though some possess more exotic systems: Xyp (parachute sex chromosomes), neo-XY (autosome fused to an ancestral sex chromosome), or X0 (Y chromosome lost entirely). Beetles have more <strong>sex chromosome system diversity</strong> than almost any other order.</p>
+            <p>Dosage compensation addresses a fundamental problem: males have one X chromosome while females have two. This means X-linked genes are at <strong>half dosage</strong> in the heterogametic sex &mdash; potentially halving the expression of hundreds of genes.</p>
+
+            <h3>Solutions Across Life</h3>
+            <div class="mech-grid">
+              <div class="mech-card">
+                <div class="mech-organism">Drosophila</div>
+                <div class="mech-name">Male hyper-expression</div>
+                <div class="mech-desc">MSL complex upregulates the single X in males to match two-X female expression</div>
+              </div>
+              <div class="mech-card">
+                <div class="mech-organism">Mammals</div>
+                <div class="mech-name">X-inactivation</div>
+                <div class="mech-desc">Females silence one X (Barr body) so both sexes express from a single X</div>
+              </div>
+              <div class="mech-card">
+                <div class="mech-organism">C. elegans</div>
+                <div class="mech-name">Hermaphrodite down-regulation</div>
+                <div class="mech-desc">XX hermaphrodites halve expression from both X chromosomes</div>
+              </div>
+            </div>
+
+            <h3>What About Beetles?</h3>
+            <p>The answer is complex and varies across species. <em>Tribolium castaneum</em> shows <strong>incomplete dosage compensation</strong> &mdash; some X-linked genes are compensated (expression ratio near 1:1 between sexes), while others are not (expression ratio near 0.5 in males). This incomplete pattern may be ancestral for beetles.</p>
+            <p>The Blackmon Lab investigates dosage compensation patterns across beetle species using <strong>RNA-seq and coverage-based sex chromosome identification</strong>. By comparing male and female read depth across the genome, we can identify sex-linked scaffolds without any prior genetic map.</p>
+
+            <!-- SVG: Coverage-based method -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 440 260" width="100%" aria-labelledby="svg-coverage-title">
+                <title id="svg-coverage-title">Coverage-based method for identifying sex-linked scaffolds</title>
+                <text x="220" y="18" class="chr-heading" text-anchor="middle">Coverage-Based Sex Chromosome Identification</text>
+
+                <!-- Genome bar (scaffolds) -->
+                <text x="10" y="95" class="chr-label-sm">Genome scaffolds</text>
+                <!-- Autosomal scaffolds -->
+                <rect x="10" y="100" width="60" height="16" rx="3" class="chr-auto" opacity="0.5"/>
+                <rect x="75" y="100" width="50" height="16" rx="3" class="chr-auto" opacity="0.5"/>
+                <rect x="130" y="100" width="45" height="16" rx="3" class="chr-auto" opacity="0.5"/>
+                <rect x="180" y="100" width="55" height="16" rx="3" class="chr-auto" opacity="0.5"/>
+                <!-- X-linked scaffolds -->
+                <rect x="240" y="100" width="50" height="16" rx="3" class="chr-sex" opacity="0.85"/>
+                <rect x="295" y="100" width="40" height="16" rx="3" class="chr-sex" opacity="0.85"/>
+                <rect x="340" y="100" width="30" height="16" rx="3" class="chr-sex" opacity="0.85"/>
+                <!-- Y-linked scaffold -->
+                <rect x="375" y="100" width="20" height="16" rx="3" class="chr-sex-dim"/>
+                <rect x="400" y="100" width="15" height="16" rx="3" class="chr-sex-dim"/>
+
+                <!-- Female read depth track (above) -->
+                <text x="10" y="56" class="chr-label-sm" style="fill:var(--accent);">Female read depth</text>
+                <!-- High depth for autosomes -->
+                <line x1="10" y1="80" x2="235" y2="80" class="chr-line-accent"/>
+                <!-- High depth for X (2 copies) -->
+                <line x1="240" y1="80" x2="370" y2="80" class="chr-line-accent"/>
+                <!-- Near zero for Y -->
+                <line x1="375" y1="96" x2="415" y2="96" class="chr-line-accent" opacity="0.3"/>
+                <!-- Baseline -->
+                <line x1="10" y1="98" x2="420" y2="98" class="chr-line-dash"/>
+
+                <!-- Male read depth track (below) -->
+                <text x="10" y="145" class="chr-label-sm">Male read depth</text>
+                <!-- Normal depth for autosomes -->
+                <line x1="10" y1="135" x2="235" y2="135" class="chr-line"/>
+                <!-- Half depth for X (1 copy) -->
+                <line x1="240" y1="145" x2="370" y2="145" class="chr-line" stroke-width="1.5"/>
+                <!-- Y present -->
+                <line x1="375" y1="135" x2="415" y2="135" class="chr-line"/>
+
+                <!-- Labels -->
+                <text x="120" y="170" class="chr-label" text-anchor="middle">Autosomal</text>
+                <text x="120" y="182" class="chr-label-sm" text-anchor="middle">F:M ~ 1:1</text>
+                <text x="305" y="170" class="chr-label-accent" text-anchor="middle">X-linked</text>
+                <text x="305" y="182" class="chr-label-sm" text-anchor="middle">F:M ~ 2:1</text>
+                <text x="397" y="170" class="chr-label-sm" text-anchor="middle">Y</text>
+                <text x="397" y="182" class="chr-label-sm" text-anchor="middle">F ~ 0</text>
+
+                <!-- Annotation arrows -->
+                <line x1="305" y1="80" x2="305" y2="145" class="chr-line-dash" stroke="#c9a227"/>
+                <text x="315" y="116" class="chr-label-accent" style="font-size:9px;">2x gap</text>
+
+                <text x="220" y="210" class="chr-label-sm" text-anchor="middle" style="font-style:italic;">Comparing male vs. female read depth reveals sex-linked scaffolds</text>
+                <text x="220" y="225" class="chr-label-sm" text-anchor="middle" style="font-style:italic;">without requiring a genetic map</text>
+              </svg>
+              <div class="diagram-caption">Coverage-based identification of sex chromosomes from whole-genome sequencing</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 cg-evidence" data-aos="fade-up" data-aos-delay="100">
+            <h3>Key Papers</h3>
+
+            <a class="paper-masthead" href="https://doi.org/10.1098/rsos.240755" target="_blank">
+              <div class="journal">Royal Society Open Science &middot; 2024</div>
+              <div class="paper-title">Genome assembly of the southern pine beetle reveals the origins of gene content reduction in <em>Dendroctonus</em></div>
+              <div class="authors">Copeland M, Landa S, Owoyemi AO, Jonika MM, Alfieri JM, Johnston JS, Sylvester TP, Kyre BR, Hoover Z, Hjelmen CE, Rieske LK, Blackmon H, Casola C</div>
+              <div class="pub-year">Volume 11, 240755</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1016/j.cois.2014.12.003" target="_blank">
+              <div class="journal">Current Opinion in Insect Science &middot; 2015</div>
+              <div class="paper-title">Genomic origins of insect sex chromosomes</div>
+              <div class="authors">Blackmon H, Demuth JP</div>
+              <div class="pub-year">Volume 7, pp. 45&ndash;50</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1093/jhered/esw047" target="_blank">
+              <div class="journal">Journal of Heredity &middot; 2017 <span class="badge-f1000">F1000</span></div>
+              <div class="paper-title">Sex determination, sex chromosomes, and karyotype evolution in insects</div>
+              <div class="authors">Blackmon H, Ross L, Bachtrog D</div>
+              <div class="pub-year">Volume 108(1), pp. 78&ndash;93</div>
+            </a>
+
+            <!-- Plotly Chart: Coverage scatter -->
+            <div class="chart-box" data-aos="zoom-in">
+              <div class="chart-title">Read Depth &mdash; Sex Chromosome Identification</div>
+              <div id="chart-coverage" style="width:100%;height:320px;"></div>
+              <p style="font-size:0.78rem; font-style:italic; color:var(--text-secondary, rgba(200,197,190,0.65)); margin-top:4px;">Note: Data shown are simulated for illustrative purposes and do not represent real coverage analyses.</p>
+            </div>
+
+            <!-- Plotly Chart: Expression ratio -->
+            <div class="chart-box" data-aos="zoom-in">
+              <div class="chart-title">Male:Female Expression Ratio</div>
+              <div class="chart-toggle" id="expr-toggle">
+                <button class="active" onclick="showExprMode('tribolium')">Tribolium</button>
+                <button onclick="showExprMode('dendroctonus')">Dendroctonus</button>
+                <button onclick="showExprMode('chrysina')">Chrysina</button>
+              </div>
+              <div id="chart-expression" style="width:100%;height:300px;"></div>
+              <p style="font-size:0.78rem; font-style:italic; color:var(--text-secondary, rgba(200,197,190,0.65)); margin-top:4px;">Note: Expression ratios shown are simulated for illustrative purposes and do not represent real RNA-seq data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 5: POPULATION SIZE & GENE FLOW ═══════════════ -->
+    <section class="cg-section" id="sec-popgen">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 cg-theory" data-aos="fade-up">
+            <div class="cg-kicker">Population Genetics</div>
+            <h2>Population Size, Gene Flow, and Beetle Diversity</h2>
+            <p><strong>Effective population size (Ne)</strong> is one of the most important parameters in evolutionary genetics. It determines the relative power of genetic drift versus natural selection, the rate of adaptive evolution, the level of standing genetic variation, and the probability of fixing new mutations.</p>
+            <p>Beetles span an enormous range of population sizes: from widespread agricultural pests with Ne in the <strong>millions</strong> (Colorado potato beetle, bark beetles during outbreaks) to narrowly endemic montane species with Ne in the <strong>hundreds</strong> (flightless ground beetles on isolated sky islands).</p>
+
+            <h3>Gene Flow and Dispersal</h3>
+            <p>Gene flow connects populations and homogenizes allele frequencies. In beetles, gene flow depends critically on <strong>dispersal ability</strong> (flight versus flightlessness), habitat connectivity, and life history traits.</p>
+            <p><strong>Flightless beetle species</strong> tend to have:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li>Smaller effective population sizes</li>
+              <li>Stronger population genetic structure (higher Fst)</li>
+              <li>Higher rates of allopatric speciation</li>
+              <li>Potentially faster chromosome evolution &mdash; connecting to the <strong>drift barrier hypothesis</strong> for karyotype change</li>
+            </ul>
+
+            <h3>Population Genomic Approaches</h3>
+            <p>Modern population genomics uses several complementary approaches:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li><strong>&pi; (nucleotide diversity)</strong> estimates Ne &times; &mu;</li>
+              <li><strong>Fst</strong> between populations measures genetic differentiation</li>
+              <li><strong>PSMC / SMC++</strong> reconstructs Ne through time from a single genome</li>
+              <li><strong>Admixture analysis</strong> reveals hybridization and introgression</li>
+            </ul>
+
+            <!-- SVG: Flying vs flightless beetles -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 460 220" width="100%" aria-labelledby="svg-popgen-title">
+                <title id="svg-popgen-title">Flying vs. flightless beetle population connectivity</title>
+                <text x="230" y="18" class="chr-heading" text-anchor="middle">Dispersal and Population Structure</text>
+
+                <!-- LEFT: Flying beetle -->
+                <text x="115" y="42" class="chr-label-accent" text-anchor="middle" style="font-size:10px; font-weight:700;">FLYING BEETLE</text>
+
+                <!-- Mountain/habitat patches -->
+                <ellipse cx="50" cy="130" rx="35" ry="18" class="chr-auto" opacity="0.3"/>
+                <ellipse cx="115" cy="100" rx="30" ry="16" class="chr-auto" opacity="0.3"/>
+                <ellipse cx="180" cy="135" rx="32" ry="17" class="chr-auto" opacity="0.3"/>
+
+                <!-- Populations (circles) -->
+                <circle cx="50" cy="125" r="10" class="chr-sex" opacity="0.7"/>
+                <circle cx="115" cy="95" r="10" class="chr-sex" opacity="0.7"/>
+                <circle cx="180" cy="130" r="10" class="chr-sex" opacity="0.7"/>
+
+                <!-- Gene flow arrows (bidirectional) -->
+                <line x1="60" y1="120" x2="105" y2="100" class="chr-line-accent" stroke-width="2" opacity="0.8"/>
+                <line x1="125" y1="100" x2="170" y2="125" class="chr-line-accent" stroke-width="2" opacity="0.8"/>
+                <line x1="60" y1="130" x2="170" y2="135" class="chr-line-accent" stroke-width="1.5" opacity="0.5"/>
+
+                <text x="115" y="170" class="chr-label-sm" text-anchor="middle">High gene flow</text>
+                <text x="115" y="183" class="chr-label-sm" text-anchor="middle">Low Fst &middot; Large Ne</text>
+                <text x="115" y="196" class="chr-label-sm" text-anchor="middle">Slow karyotype change</text>
+
+                <!-- Divider -->
+                <line x1="230" y1="35" x2="230" y2="205" class="chr-line-dash"/>
+
+                <!-- RIGHT: Flightless beetle -->
+                <text x="345" y="42" class="chr-label-accent" text-anchor="middle" style="font-size:10px; font-weight:700;">FLIGHTLESS BEETLE</text>
+
+                <!-- Mountain/habitat patches (isolated) -->
+                <ellipse cx="280" cy="100" rx="28" ry="16" class="chr-auto" opacity="0.3"/>
+                <ellipse cx="345" cy="140" rx="25" ry="14" class="chr-auto" opacity="0.3"/>
+                <ellipse cx="410" cy="95" rx="26" ry="15" class="chr-auto" opacity="0.3"/>
+
+                <!-- Populations (circles) -->
+                <circle cx="280" cy="95" r="7" class="chr-sex" opacity="0.7"/>
+                <circle cx="345" cy="135" r="6" class="chr-sex" opacity="0.7"/>
+                <circle cx="410" cy="90" r="5" class="chr-sex" opacity="0.7"/>
+
+                <!-- Dashed lines = restricted gene flow -->
+                <line x1="287" y1="100" x2="338" y2="130" class="chr-line-dash" stroke-width="1" opacity="0.3"/>
+                <line x1="352" y1="132" x2="403" y2="95" class="chr-line-dash" stroke-width="1" opacity="0.3"/>
+
+                <text x="345" y="170" class="chr-label-sm" text-anchor="middle">Low gene flow</text>
+                <text x="345" y="183" class="chr-label-sm" text-anchor="middle">High Fst &middot; Small Ne</text>
+                <text x="345" y="196" class="chr-label-sm" text-anchor="middle">Fast karyotype change</text>
+              </svg>
+              <div class="diagram-caption">Dispersal ability drives population structure and the rate of chromosome evolution</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 cg-evidence" data-aos="fade-up" data-aos-delay="100">
+            <h3>Key Papers</h3>
+
+            <a class="paper-masthead" href="https://doi.org/10.1111/mec.14264" target="_blank">
+              <div class="journal">Molecular Ecology &middot; 2018</div>
+              <div class="paper-title">Genotyping-by-sequencing reveals range-wide population structure in <em>Dendroctonus</em></div>
+              <div class="authors">Bracewell RR, Pfrender ME, Mock KE, Bentz BJ</div>
+              <div class="pub-year">Volume 27(3), pp. 677&ndash;691</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1534/genetics.114.164269" target="_blank">
+              <div class="journal">Genetics &middot; 2014</div>
+              <div class="paper-title">Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis</div>
+              <div class="authors">Blackmon H, Demuth JP</div>
+              <div class="pub-year">Volume 197(2), pp. 561&ndash;572</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.3390/genes14020336" target="_blank">
+              <div class="journal">Genes &middot; 2023</div>
+              <div class="paper-title">Tempo and mode of genome structure evolution in insects</div>
+              <div class="authors">Alfieri JM, Jonika MM, Dulin JN, Blackmon H</div>
+              <div class="pub-year">Volume 14(2), 336</div>
+            </a>
+
+            <div class="stat-callout" data-aos="zoom-in">
+              <div class="stat-num">10<sup>2</sup>&ndash;10<sup>7</sup></div>
+              <div class="stat-text">The range of effective population sizes across beetle species &mdash; from isolated mountaintop endemics to continent-wide pest outbreaks.</div>
+            </div>
+
+            <!-- Plotly Chart: PSMC Ne through time -->
+            <div class="chart-box" data-aos="zoom-in">
+              <div class="chart-title">Effective Population Size Through Time (PSMC)</div>
+              <div class="chart-toggle" id="psmc-toggle">
+                <button class="active" onclick="showPSMCSpecies('all')">All Species</button>
+                <button onclick="showPSMCSpecies('dendroctonus')">Dendroctonus</button>
+                <button onclick="showPSMCSpecies('chrysina')">Chrysina</button>
+                <button onclick="showPSMCSpecies('endemic')">Endemic spp.</button>
+              </div>
+              <div id="chart-psmc" style="width:100%;height:340px;"></div>
+              <p style="font-size:0.78rem; font-style:italic; color:var(--text-secondary, rgba(200,197,190,0.65)); margin-top:4px;">Note: PSMC curves shown are simulated for illustrative purposes and do not represent real demographic reconstructions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 6: BEETLE PHYLOGENOMICS ═══════════════ -->
+    <section class="cg-section" id="sec-phylo">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 cg-theory" data-aos="fade-up">
+            <div class="cg-kicker">Systematics</div>
+            <h2>Beetle Phylogenomics</h2>
+            <p>Resolving the beetle tree of life has been one of the great challenges in systematic biology. With approximately 400,000 species across roughly 200 families, the phylogenetic relationships among major beetle lineages remained contentious for decades.</p>
+            <p>Genomic data has transformed beetle systematics. Transcriptomes and whole genomes provide <strong>thousands of loci</strong> for phylogenetic inference, resolving relationships that were ambiguous with morphology or single genes.</p>
+
+            <h3>The Four Beetle Suborders</h3>
+            <p>Coleoptera is divided into four suborders, each with a distinctive body plan and ecology:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li><strong>Adephaga</strong> &mdash; ground beetles, tiger beetles, diving beetles (~45,000 species). Predatory, with strong mandibles.</li>
+              <li><strong>Archostemata</strong> &mdash; reticulated beetles (~40 species). Ancient relicts, the most basal living beetles.</li>
+              <li><strong>Myxophaga</strong> &mdash; tiny aquatic beetles (~100 species). Algae feeders in water films.</li>
+              <li><strong>Polyphaga</strong> &mdash; the vast majority (~350,000 species). Includes weevils, scarabs, longhorns, ladybugs, fireflies, and nearly every beetle you have ever seen.</li>
+            </ul>
+
+            <h3>Key Resolved Relationships</h3>
+            <p>Genomic phylogenetics has resolved several long-standing debates:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li>The placement of <strong>weevils (Curculionoidea)</strong> deep within Polyphaga</li>
+              <li>The rapid radiation of <strong>phytophagous beetles</strong> coinciding with angiosperm diversification</li>
+              <li>Beetles originated approximately <strong>~325 million years ago</strong> (Carboniferous) and survived the end-Permian mass extinction</li>
+              <li>Most modern beetle families diversified during the <strong>Cretaceous terrestrial revolution</strong></li>
+            </ul>
+
+            <div class="pullquote">"If one could conclude as to the nature of the Creator from a study of creation, it would appear that God has an inordinate fondness for beetles." &mdash; attributed to J.B.S. Haldane</div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 cg-evidence" data-aos="fade-up" data-aos-delay="100">
+            <h3>Key Papers</h3>
+
+            <a class="paper-masthead" href="https://doi.org/10.1073/pnas.1909655116" target="_blank">
+              <div class="journal">PNAS &middot; 2019</div>
+              <div class="paper-title">The evolution and genomic basis of beetle diversity</div>
+              <div class="authors">McKenna DD, Shin S, Ahrens D, Balke M, Beza-Beza C, Clarke DJ, et al.</div>
+              <div class="pub-year">4,818 genes from transcriptomes of 146 species representing all major beetle lineages</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1111/syen.12132" target="_blank">
+              <div class="journal">Systematic Entomology &middot; 2018</div>
+              <div class="paper-title">The beetle tree of life reveals that Coleoptera survived end-Permian mass extinction to diversify during the Cretaceous terrestrial revolution</div>
+              <div class="authors">Zhang SQ, Che LH, Li Y, Liang D, Pang H, Slipinski A, Zhang P</div>
+              <div class="pub-year">Volume 43(1), pp. 34&ndash;53</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1515/9783110373929" target="_blank">
+              <div class="journal">De Gruyter &middot; 2016</div>
+              <div class="paper-title">Handbook of Zoology, Coleoptera, Beetles</div>
+              <div class="authors">Beutel RG, Leschen RAB (Eds.)</div>
+              <div class="pub-year">Comprehensive systematic reference for beetle morphology and classification</div>
+            </a>
+
+            <!-- Plotly Chart: Species richness by clade -->
+            <div class="chart-box" data-aos="zoom-in">
+              <div class="chart-title">Species Richness by Beetle Suborder</div>
+              <div id="chart-phylo" style="width:100%;height:380px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 7: COMPARATIVE GENOMICS ═══════════════ -->
+    <section class="cg-section" id="sec-comparative">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 cg-theory" data-aos="fade-up">
+            <div class="cg-kicker">Genome Evolution</div>
+            <h2>Comparative Genomics Across Beetles</h2>
+            <p>With multiple chromosome-level beetle genomes now available, comparative genomics is revealing the forces shaping beetle genome evolution at unprecedented resolution.</p>
+
+            <h3>Genome Size Variation</h3>
+            <p>Beetles show substantial genome size variation, from compact genomes of approximately <strong>150 Mb</strong> in some small species to bloated genomes exceeding <strong>2 Gb</strong> in others. What drives this variation? Three major forces contribute:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li><strong>Transposable element dynamics</strong> &mdash; TE expansions can dramatically inflate genome size, while efficient deletion mechanisms keep some genomes compact</li>
+              <li><strong>DNA deletion rates</strong> &mdash; species with faster rates of DNA loss tend to have smaller genomes</li>
+              <li><strong>Polyploidy</strong> &mdash; rare in beetles but documented in some weevil lineages</li>
+            </ul>
+
+            <h3>Gene Family Evolution</h3>
+            <p>Beetles have <strong>expanded and contracted specific gene families</strong> relative to other insects. Two families are particularly dynamic:</p>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li><strong>Olfactory receptors (ORs)</strong> &mdash; expanded in bark beetles that must locate host trees and pheromone sources over long distances</li>
+              <li><strong>Gustatory receptors (GRs)</strong> &mdash; expanded in phytophagous species that must evaluate host plant chemistry</li>
+              <li><strong>Cytochrome P450s</strong> &mdash; detoxification genes expanded in species feeding on chemically defended plants</li>
+            </ul>
+
+            <h3>Synteny and Chromosome Evolution</h3>
+            <p>Despite chromosome number variation ranging from <strong>2n = 4</strong> (some bark beetles) to <strong>2n = 72+</strong> (some longhorns), many synteny blocks are conserved across hundreds of millions of years. Chromosome fusions and fissions reshuffle these blocks without disrupting the genes within them, consistent with the Stevens element framework.</p>
+
+            <h3>Repetitive DNA</h3>
+            <p>Transposable elements make up a variable fraction of beetle genomes. Some lineages have experienced <strong>TE expansions</strong> (genome obesity), particularly in species with large genomes and small Ne. Others maintain compact genomes through efficient deletion, especially species with large population sizes where selection against genomic bloat is more effective.</p>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 cg-evidence" data-aos="fade-up" data-aos-delay="100">
+            <h3>Key Papers</h3>
+
+            <a class="paper-masthead" href="https://doi.org/10.1186/s12864-019-6394-6" target="_blank">
+              <div class="journal">BMC Genomics &middot; 2020</div>
+              <div class="paper-title">Enhanced genome assembly and a new official gene set for <em>Tribolium castaneum</em></div>
+              <div class="authors">Herndon N, Shelton J, Gerischer L, Ioannidis P, Ninova M, Donitz J, et al.</div>
+              <div class="pub-year">Volume 21, Article 47</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1186/gb-2013-14-3-r27" target="_blank">
+              <div class="journal">Genome Biology &middot; 2013</div>
+              <div class="paper-title">Draft genome of the mountain pine beetle, <em>Dendroctonus ponderosae</em> Hopkins, a major forest pest</div>
+              <div class="authors">Keeling CI, Yuen MMS, Liao NY, Docking TR, Chan SK, Taylor GA, et al.</div>
+              <div class="pub-year">Volume 14, Article R27</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1093/g3journal/jkae084" target="_blank">
+              <div class="journal">G3: Genes, Genomes, Genetics &middot; 2024</div>
+              <div class="paper-title">A reference quality genome assembly for the jewel scarab <em>Chrysina gloriosa</em></div>
+              <div class="authors">Sylvester T, Hoover Z, Hjelmen CE, Jonika MM, Blackmon LT, Alfieri JM, Johnston JS, Chien S, Esfandani T, Blackmon H</div>
+              <div class="pub-year">Volume 14(6)</div>
+            </a>
+
+            <div class="stat-callout" data-aos="zoom-in">
+              <div class="stat-num">150 Mb&ndash;2+ Gb</div>
+              <div class="stat-text">The range of beetle genome sizes &mdash; a >13-fold variation driven by transposable elements, deletion rates, and population size.</div>
+            </div>
+
+            <!-- Plotly Chart: Genome size variation -->
+            <div class="chart-box" data-aos="zoom-in">
+              <div class="chart-title">Genome Size Variation Across Beetle Families</div>
+              <div class="chart-toggle" id="genomesize-toggle">
+                <button class="active" onclick="showGenomeSizeMode('size')">Genome Size</button>
+                <button onclick="showGenomeSizeMode('chrnum')">Chromosome Number</button>
+              </div>
+              <div id="chart-genomesize" style="width:100%;height:360px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 8: FUTURE / BIG PICTURE ═══════════════ -->
+    <section class="cg-section" id="sec-future">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 cg-theory" data-aos="fade-up">
+            <div class="cg-kicker">Looking Ahead</div>
+            <h2>The Future of Beetle Genomics</h2>
+            <p>Large-scale initiatives are rapidly expanding beetle genomic resources. The <strong>Earth BioGenome Project</strong>, <strong>i5K</strong> (5,000 insect genomes), and national genome projects around the world are making beetle genomes available at an accelerating pace.</p>
+
+            <h3>Coming Frontiers</h3>
+            <ul style="font-size:0.92rem; color:var(--text, #c8c5c0); line-height:1.8;">
+              <li><strong>Pan-genomes</strong> &mdash; capturing structural variation within species, moving beyond single reference genomes to understand the full complement of genetic diversity</li>
+              <li><strong>Population-level resequencing</strong> &mdash; whole-genome resequencing of hundreds of individuals across hundreds of beetle species, revealing selection pressures and demographic histories</li>
+              <li><strong>Functional genomics</strong> &mdash; CRISPR gene editing in non-model beetles, moving from correlation to causation in understanding gene function</li>
+              <li><strong>Conservation genomics</strong> &mdash; genetic rescue and monitoring for endangered species, using genomic data to guide management decisions</li>
+              <li><strong>Metagenomics</strong> &mdash; beetle-microbiome interactions, particularly the obligate symbioses in bark beetles and grain beetles that enable exploitation of nutritionally poor substrates</li>
+            </ul>
+
+            <h3>The Big Question</h3>
+            <p><strong>Why are there so many beetle species?</strong> Is it adaptive radiation into new ecological niches? Key innovations (phytophagy, complete metamorphosis, elytra protecting flight wings)? Geographic opportunity? Or something about their genomes &mdash; perhaps high rates of chromosome rearrangement that promote speciation, or gene family expansions that enable rapid adaptation?</p>
+            <p>Comparative genomics across the order may finally answer Haldane's famous (possibly apocryphal) quip about "an inordinate fondness for beetles." The answer is likely multifactorial, and it will require exactly the kind of integrative approach our lab takes &mdash; combining karyotype databases, genome assemblies, population genomics, and phylogenetic comparative methods.</p>
+
+            <h3>The Blackmon Lab's Contribution</h3>
+            <p>Our <strong>karyotype databases</strong> (14,000+ records for beetles alone), <strong>genome assemblies</strong>, and <strong>population genomic studies</strong> provide the foundation for answering these questions at genomic scale. By integrating cytogenetic, genomic, and phylogenetic data, we aim to understand not just how beetle genomes evolve, but <em>why</em> they evolve the way they do.</p>
+
+            <div class="pullquote">"The beetle order Coleoptera is the largest radiation of life on Earth. Understanding their genomes is not a niche pursuit &mdash; it is central to understanding biodiversity itself."</div>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 cg-evidence" data-aos="fade-up" data-aos-delay="100">
+            <h3>Key Papers</h3>
+
+            <a class="paper-masthead" href="https://doi.org/10.1649/0010-065X-69.1.174" target="_blank">
+              <div class="journal">The Coleopterists Bulletin &middot; 2015</div>
+              <div class="paper-title">Coleoptera Karyotype Database</div>
+              <div class="authors">Blackmon H, Demuth JP</div>
+              <div class="pub-year">The foundational cytogenetic dataset for beetle chromosome evolution</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1073/pnas.1720115115" target="_blank">
+              <div class="journal">PNAS &middot; 2018</div>
+              <div class="paper-title">Earth BioGenome Project: Sequencing life for the future of life</div>
+              <div class="authors">Lewin HA, Robinson GE, Kress WJ, Baker WJ, Coddington J, Crandall KA, et al.</div>
+              <div class="pub-year">Volume 115(17), pp. 4325&ndash;4333</div>
+            </a>
+
+            <a class="paper-masthead" href="https://doi.org/10.1126/science.aaa1313" target="_blank">
+              <div class="journal">Science &middot; 2014</div>
+              <div class="paper-title">Phylogenomics resolves the timing and pattern of insect evolution</div>
+              <div class="authors">Misof B, Liu S, Meusemann K, Peters RS, et al. (1KITE Consortium)</div>
+              <div class="pub-year">Volume 346(6210), pp. 763&ndash;767</div>
+            </a>
+
+            <div class="stat-callout" data-aos="zoom-in">
+              <div class="stat-num">14,000+</div>
+              <div class="stat-text">Beetle karyotype records in the Blackmon Lab database &mdash; the most comprehensive cytogenetic dataset for any insect order.</div>
+            </div>
+
+            <div class="pullquote">"Our integrative approach &mdash; from karyotypes to genomes to populations &mdash; provides the data needed to understand why beetles are the most successful order of life."</div>
+
+            <img src="assets/img/study-systems/beetles.jpg" alt="Diverse beetle specimens" style="width:100%; border-radius:10px; margin:16px 0; border:1px solid var(--border, rgba(255,255,255,0.10));">
+
+            <img src="assets/img/study-systems/strategus-sp.jpg" alt="Strategus beetle" style="width:100%; border-radius:10px; margin:16px 0; border:1px solid var(--border, rgba(255,255,255,0.10));">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ RELATED RESOURCES ═══════════════ -->
+    <section class="cg-section" id="sec-resources" style="border-bottom:none;">
+      <div class="container">
+        <div class="related-box" data-aos="fade-up">
+          <h3>Related Resources</h3>
+          <div class="related-links">
+            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Sex Chromosome Evolution</a>
+            <a href="genome-structure-evolution.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Genome Structure Evolution</a>
+            <a href="research.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Research Overview</a>
+            <a href="publications.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Publications</a>
+            <a href="https://github.com/coleoguy/chromePlus" target="_blank" class="related-link"><i class="bi bi-github"></i> chromePlus R Package</a>
+            <a href="resources.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Karyotype Databases</a>
+          </div>
+        </div>
+
+        <div class="paper-foot">Blackmon Lab &middot; Texas A&amp;M University &middot; Coleoptera Genomics</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Plotly -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+
+  <script>
+    /* ── Scroll progress bar ─────────────────────────── */
+    (function() {
+      var bar = document.getElementById('scroll-progress');
+      if (!bar) return;
+      window.addEventListener('scroll', function() {
+        var h = document.documentElement;
+        var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+        bar.style.width = pct + '%';
+      });
+    })();
+
+    /* ── Plotly helpers ──────────────────────────────── */
+    function isLight() { return document.body.classList.contains('light-mode'); }
+    function txtColor() { return isLight() ? '#333' : '#c8c5c0'; }
+    function gridColor() { return isLight() ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'; }
+    function bgColor() { return 'rgba(0,0,0,0)'; }
+    function baseLayout(title) {
+      return {
+        title: title ? { text: title, font: { size: 13, color: txtColor() } } : undefined,
+        font: { family: 'Inter, sans-serif', color: txtColor(), size: 11 },
+        paper_bgcolor: bgColor(),
+        plot_bgcolor: bgColor(),
+        margin: { l: 50, r: 20, t: title ? 36 : 16, b: 50 },
+        xaxis: { gridcolor: gridColor(), zerolinecolor: gridColor(), tickfont: { size: 10 } },
+        yaxis: { gridcolor: gridColor(), zerolinecolor: gridColor(), tickfont: { size: 10 } }
+      };
+    }
+    var pConfig = { displaylogo: false, responsive: true, modeBarButtonsToRemove: ['lasso2d','select2d'] };
+
+    /* ── Helper: random normal ───────────────────────── */
+    function rnorm(n, mu, sd) {
+      var out = [];
+      for (var i = 0; i < n; i++) {
+        var u = 0, v = 0;
+        while (u === 0) u = Math.random();
+        while (v === 0) v = Math.random();
+        out.push(mu + sd * Math.sqrt(-2*Math.log(u)) * Math.cos(2*Math.PI*v));
+      }
+      return out;
+    }
+
+    /* ═══ CHART 1: Synteny Dot Plot ═══════════════════ */
+    (function() {
+      // Simulated synteny between Tribolium (10 chr) and another beetle (7 chr)
+      // Each dot = an orthologous gene pair
+      var colors = ['#c9a227','#7a9e3e','#4a8cb5','#b5564a','#8b6db5','#888','#666','#c9a227','#7a9e3e','#4a8cb5'];
+      var xAll = [], yAll = [], cAll = [], textAll = [];
+      var elementNames = ['S1','S2','S3','S4','S5','S6','S7','S8','S9','S10'];
+      // Map: Tribolium chr -> other species chr (with some fusions)
+      var mapping = [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,1],[9,2],[10,3]];
+      for (var m = 0; m < mapping.length; m++) {
+        var tchr = mapping[m][0];
+        var ochr = mapping[m][1];
+        var npts = 15 + Math.floor(Math.random() * 15);
+        for (var j = 0; j < npts; j++) {
+          var xv = tchr + (Math.random() - 0.5) * 0.6;
+          var yv = ochr + (Math.random() - 0.5) * 0.6;
+          xAll.push(xv);
+          yAll.push(yv);
+          cAll.push(colors[m % colors.length]);
+          textAll.push(elementNames[m]);
+        }
+      }
+      var traces = [{
+        x: xAll, y: yAll, mode: 'markers', type: 'scatter',
+        marker: { color: cAll, size: 5, opacity: 0.7 },
+        text: textAll,
+        hovertemplate: 'Tribolium chr %{x:.0f}<br>Species B chr %{y:.0f}<br>Element: %{text}<extra></extra>'
+      }];
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Tribolium castaneum chromosome', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Species B chromosome', font: { size: 11, color: txtColor() } };
+      layout.xaxis.range = [0.2, 10.8];
+      layout.yaxis.range = [0.2, 7.8];
+      layout.xaxis.dtick = 1;
+      layout.yaxis.dtick = 1;
+      layout.showlegend = false;
+      Plotly.newPlot('chart-synteny', traces, layout, pConfig);
+    })();
+
+    /* ═══ CHART 2: Coverage Scatter ═══════════════════ */
+    (function() {
+      // Simulated read depth data
+      var autoF = rnorm(300, 1.0, 0.08);
+      var autoM = rnorm(300, 1.0, 0.08);
+      var xF = rnorm(60, 1.0, 0.07);
+      var xM = rnorm(60, 0.5, 0.06);
+      var yF = rnorm(15, 0.02, 0.015);
+      var yM = rnorm(15, 0.5, 0.08);
+      // Clamp Y female near zero
+      yF = yF.map(function(v) { return Math.max(0, v); });
+
+      var traces = [
+        { x: autoF, y: autoM, mode: 'markers', name: 'Autosomes',
+          marker: { color: 'rgba(150,150,150,0.5)', size: 5 },
+          hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>Autosome</extra>' },
+        { x: xF, y: xM, mode: 'markers', name: 'X-linked',
+          marker: { color: 'rgba(201,162,39,0.8)', size: 7, symbol: 'diamond' },
+          hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>X-linked</extra>' },
+        { x: yF, y: yM, mode: 'markers', name: 'Y-linked',
+          marker: { color: 'rgba(220,80,80,0.7)', size: 7, symbol: 'square' },
+          hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>Y-linked</extra>' }
+      ];
+      var shapes = [
+        { type: 'line', x0: 0, x1: 1.4, y0: 0, y1: 1.4, line: { color: 'rgba(255,255,255,0.15)', width: 1, dash: 'dot' } },
+        { type: 'line', x0: 0, x1: 1.4, y0: 0, y1: 0.7, line: { color: 'rgba(201,162,39,0.25)', width: 1, dash: 'dot' } }
+      ];
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Female Normalized Read Depth', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Male Normalized Read Depth', font: { size: 11, color: txtColor() } };
+      layout.xaxis.range = [-0.1, 1.45];
+      layout.yaxis.range = [-0.1, 1.45];
+      layout.shapes = shapes;
+      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
+      Plotly.newPlot('chart-coverage', traces, layout, pConfig);
+    })();
+
+    /* ═══ CHART 3: Expression Ratio Violin ════════════ */
+    var exprData = {
+      tribolium: {
+        autosomal: rnorm(300, 1.0, 0.18),
+        xlinked: rnorm(80, 0.72, 0.18),
+        note: 'Tribolium: incomplete dosage compensation'
+      },
+      dendroctonus: {
+        autosomal: rnorm(300, 1.0, 0.17),
+        xlinked: rnorm(80, 0.88, 0.20),
+        note: 'Dendroctonus: moderate compensation'
+      },
+      chrysina: {
+        autosomal: rnorm(300, 1.0, 0.19),
+        xlinked: rnorm(80, 0.60, 0.16),
+        note: 'Chrysina: minimal compensation'
+      }
+    };
+
+    function showExprMode(mode) {
+      var btns = document.querySelectorAll('#expr-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      var idx = mode === 'tribolium' ? 0 : mode === 'dendroctonus' ? 1 : 2;
+      btns[idx].classList.add('active');
+
+      var d = exprData[mode];
+      var traces = [
+        { y: d.autosomal, type: 'violin', name: 'Autosomal', side: 'positive',
+          line: { color: 'rgba(150,150,150,0.7)' }, fillcolor: 'rgba(150,150,150,0.2)',
+          meanline: { visible: true }, box: { visible: true }, bandwidth: 0.06 },
+        { y: d.xlinked, type: 'violin', name: 'X-linked', side: 'positive',
+          line: { color: '#c9a227' }, fillcolor: 'rgba(201,162,39,0.2)',
+          meanline: { visible: true }, box: { visible: true }, bandwidth: 0.06 }
+      ];
+      var layout = baseLayout('');
+      layout.yaxis.title = { text: 'Male : Female Expression Ratio', font: { size: 11, color: txtColor() } };
+      layout.yaxis.range = [0, 2.0];
+      layout.legend = { x: 0.65, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
+      layout.shapes = [{ type: 'line', x0: -0.5, x1: 2, y0: 1, y1: 1,
+        line: { color: 'rgba(255,255,255,0.2)', width: 1, dash: 'dash' } }];
+      layout.annotations = [{ x: 0.5, y: -0.14, xref: 'paper', yref: 'paper',
+        text: d.note, showarrow: false, font: { size: 10, color: txtColor(), style: 'italic' } }];
+      Plotly.react('chart-expression', traces, layout, pConfig);
+    }
+    showExprMode('tribolium');
+
+    /* ═══ CHART 4: PSMC Ne Through Time ═══════════════ */
+    var psmcData = {};
+    (function() {
+      // Time points (log scale, years ago)
+      var times = [];
+      for (var t = 3; t <= 7; t += 0.1) { times.push(Math.pow(10, t)); }
+
+      // Dendroctonus: large Ne, expansion
+      var dendNe = times.map(function(t) {
+        return 500000 + 200000 * Math.sin(Math.log10(t) * 2) + 100000 * Math.cos(Math.log10(t) * 3);
+      });
+      // Chrysina: moderate Ne, bottleneck
+      var chrNe = times.map(function(t) {
+        var base = 100000;
+        if (t > 30000 && t < 200000) base = 30000; // bottleneck
+        return base + 20000 * Math.sin(Math.log10(t) * 1.5);
+      });
+      // Endemic flightless species: small Ne, declining
+      var endNe = times.map(function(t) {
+        return Math.max(500, 50000 * Math.exp(-Math.log10(t) * 0.4) + 3000 * Math.sin(Math.log10(t) * 2));
+      });
+
+      psmcData = {
+        times: times,
+        dendroctonus: dendNe,
+        chrysina: chrNe,
+        endemic: endNe
+      };
+    })();
+
+    function showPSMCSpecies(sp) {
+      var btns = document.querySelectorAll('#psmc-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      var idx = sp === 'all' ? 0 : sp === 'dendroctonus' ? 1 : sp === 'chrysina' ? 2 : 3;
+      btns[idx].classList.add('active');
+
+      var traces = [];
+      if (sp === 'all' || sp === 'dendroctonus') {
+        traces.push({
+          x: psmcData.times, y: psmcData.dendroctonus, mode: 'lines', name: 'D. frontalis',
+          line: { color: '#c9a227', width: 2 }
+        });
+      }
+      if (sp === 'all' || sp === 'chrysina') {
+        traces.push({
+          x: psmcData.times, y: psmcData.chrysina, mode: 'lines', name: 'C. gloriosa',
+          line: { color: '#7a9e3e', width: 2 }
+        });
+      }
+      if (sp === 'all' || sp === 'endemic') {
+        traces.push({
+          x: psmcData.times, y: psmcData.endemic, mode: 'lines', name: 'Endemic spp.',
+          line: { color: '#b5564a', width: 2, dash: 'dash' }
+        });
+      }
+
+      var layout = baseLayout('');
+      layout.xaxis.type = 'log';
+      layout.xaxis.title = { text: 'Years Ago', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Effective Population Size (Ne)', font: { size: 11, color: txtColor() } };
+      layout.xaxis.autorange = 'reversed';
+      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
+      Plotly.react('chart-psmc', traces, layout, pConfig);
+    }
+    showPSMCSpecies('all');
+
+    /* ═══ CHART 5: Species Richness by Clade ══════════ */
+    (function() {
+      var clades = ['Polyphaga','Adephaga','Archostemata','Myxophaga'];
+      var counts = [350000, 45000, 40, 100];
+      var suborders = ['Polyphaga','Adephaga','Archostemata','Myxophaga'];
+      var colorMap = { 'Polyphaga': '#c9a227', 'Adephaga': '#7a9e3e', 'Archostemata': '#4a8cb5', 'Myxophaga': '#b5564a' };
+      var barColors = suborders.map(function(s) { return colorMap[s]; });
+
+      var traces = [{
+        x: clades, y: counts, type: 'bar',
+        marker: { color: barColors, opacity: 0.85 },
+        hovertemplate: '%{x}: %{y:,} species<extra></extra>'
+      }];
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Suborder', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Described Species', font: { size: 11, color: txtColor() } };
+      layout.yaxis.type = 'log';
+      layout.margin.b = 90;
+      layout.xaxis.tickangle = -45;
+      layout.showlegend = false;
+      Plotly.newPlot('chart-phylo', traces, layout, pConfig);
+    })();
+
+    /* ═══ CHART 6: Genome Size Variation ══════════════ */
+    var genomeSizeData = {
+      families: ['Chrysomelidae','Curculionidae','Cerambycidae','Scarabaeidae',
+        'Staphylinidae','Carabidae','Tenebrionidae','Buprestidae',
+        'Elateridae','Coccinellidae','Lucanidae','Dynastinae'],
+      sizes: [580, 680, 900, 750, 350, 420, 250, 310, 520, 380, 1100, 1400],
+      chrNums: [22, 22, 20, 20, 18, 24, 20, 16, 18, 18, 20, 20],
+      suborders: ['Polyphaga','Polyphaga','Polyphaga','Polyphaga',
+        'Polyphaga','Adephaga','Polyphaga','Polyphaga',
+        'Polyphaga','Polyphaga','Polyphaga','Polyphaga']
+    };
+
+    function showGenomeSizeMode(mode) {
+      var btns = document.querySelectorAll('#genomesize-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      if (mode === 'size') btns[0].classList.add('active');
+      else btns[1].classList.add('active');
+
+      var d = genomeSizeData;
+      var colorMap = { 'Polyphaga': '#c9a227', 'Adephaga': '#7a9e3e' };
+      var barColors = d.suborders.map(function(s) { return colorMap[s] || '#888'; });
+
+      var yVals = mode === 'size' ? d.sizes : d.chrNums;
+      var yTitle = mode === 'size' ? 'Genome Size (Mb)' : 'Diploid Chromosome Number (2n)';
+
+      var traces = [{
+        x: d.families, y: yVals, type: 'bar',
+        marker: { color: barColors, opacity: 0.85 },
+        hovertemplate: '%{x}: %{y}<extra></extra>'
+      }];
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: '', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: yTitle, font: { size: 11, color: txtColor() } };
+      layout.margin.b = 100;
+      layout.xaxis.tickangle = -45;
+      layout.showlegend = false;
+      Plotly.react('chart-genomesize', traces, layout, pConfig);
+    }
+    showGenomeSizeMode('size');
+
+    /* ═══ Redraw all charts on theme toggle ═══════════ */
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() {
+        setTimeout(function() {
+          // Re-render toggled charts
+          var activeExpr = document.querySelector('#expr-toggle button.active');
+          if (activeExpr) {
+            var txt = activeExpr.textContent.toLowerCase();
+            showExprMode(txt);
+          }
+          var activePSMC = document.querySelector('#psmc-toggle button.active');
+          if (activePSMC) {
+            var txt2 = activePSMC.textContent.toLowerCase().replace(/\s/g, '').replace('spp.', '');
+            if (txt2.indexOf('all') >= 0) showPSMCSpecies('all');
+            else if (txt2.indexOf('dend') >= 0) showPSMCSpecies('dendroctonus');
+            else if (txt2.indexOf('chry') >= 0) showPSMCSpecies('chrysina');
+            else showPSMCSpecies('endemic');
+          }
+          var activeGS = document.querySelector('#genomesize-toggle button.active');
+          if (activeGS) {
+            showGenomeSizeMode(activeGS.textContent.toLowerCase().indexOf('chrom') >= 0 ? 'chrnum' : 'size');
+          }
+          // Relayout static charts
+          var staticCharts = ['chart-synteny', 'chart-coverage', 'chart-phylo'];
+          staticCharts.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el && el.data) {
+              Plotly.relayout(id, {
+                'font.color': txtColor(),
+                'xaxis.gridcolor': gridColor(),
+                'yaxis.gridcolor': gridColor(),
+                'xaxis.title.font.color': txtColor(),
+                'yaxis.title.font.color': txtColor()
+              });
+            }
+          });
+        }, 100);
+      });
+    }
+  </script>
+</body>
+</html>
