@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Sex Chromosomes Evolve - Blackmon Lab</title>
+  <meta name="description" content="A visual guide to sex chromosome evolution — from ordinary autosomes to the X, Y, Z, and W chromosomes that determine sex across the tree of life. Covers identification methods, dosage compensation, degeneration, and more.">
+  <meta property="og:title" content="How Sex Chromosomes Evolve - Blackmon Lab" />
+  <meta property="og:description" content="A visual guide to sex chromosome evolution — from autosomes to sex chromosomes, dosage compensation, degeneration, and beyond." />
+  <meta property="og:url" content="https://coleoguy.github.io/sex-chromosome-evolution.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blackmon Lab" />
+  <meta name="keywords" content="sex chromosomes, XY, ZW, dosage compensation, Y chromosome degeneration, karyotype evolution, Blackmon Lab, sex determination">
+  <link rel="canonical" href="https://coleoguy.github.io/sex-chromosome-evolution.html">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Site CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Playfair Display for hero -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Scroll progress bar ─────────────────────────── */
+    #scroll-progress {
+      position: fixed;
+      top: 62px;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent, #c9a227);
+      z-index: 1050;
+      transition: width 0.05s linear;
+    }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .sc-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+    }
+    .sc-hero .kicker {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 14px;
+    }
+    .sc-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text-heading, #f8f4ed);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .sc-hero .subtitle {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      max-width: 700px;
+      margin: 0 auto 28px;
+    }
+    .audio-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin-top: 10px;
+    }
+    .audio-wrap .audio-label {
+      font-size: 0.75rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    .audio-wrap audio { height: 32px; }
+
+    /* ── Split-panel sections ─────────────────────────── */
+    .sc-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+    }
+    .sc-section:nth-child(even) {
+      background: rgba(255,255,255,0.015);
+    }
+    .body-light .sc-section:nth-child(even),
+    .light-mode .sc-section:nth-child(even) {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .sc-theory {
+      padding-right: 28px;
+      border-right: 1px solid rgba(201,162,39,0.15);
+    }
+    .sc-evidence {
+      padding-left: 28px;
+    }
+    @media (max-width: 991.98px) {
+      .sc-theory, .sc-evidence { padding: 0; border-right: none; }
+      .sc-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
+    }
+
+    .sc-kicker {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 6px;
+    }
+    .sc-section h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-heading, #eae7e2);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .sc-section h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent, #c9a227);
+      margin: 24px 0 8px;
+    }
+    .sc-section h3:first-child { margin-top: 0; }
+    .sc-section p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text, #c8c5c0);
+      margin-bottom: 14px;
+    }
+    .sc-section a {
+      color: var(--accent, #c9a227);
+      text-decoration: underline;
+      text-decoration-color: rgba(201,162,39,0.4);
+      text-underline-offset: 2px;
+    }
+    .sc-section a:hover { text-decoration-color: var(--accent); }
+    .sc-section strong {
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+    }
+
+    .pullquote {
+      border-left: 3px solid var(--accent, #c9a227);
+      padding: 10px 18px;
+      margin: 20px 0;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--accent, #c9a227);
+      line-height: 1.6;
+    }
+
+    /* ── Paper masthead cards ─────────────────────────── */
+    .paper-masthead {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .paper-masthead:hover {
+      border-color: rgba(201,162,39,0.5);
+      text-decoration: none;
+    }
+    .paper-masthead .journal {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent, #c9a227);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .paper-masthead .paper-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+      line-height: 1.35;
+      margin-bottom: 5px;
+    }
+    .paper-masthead .authors {
+      font-size: 0.78rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      line-height: 1.4;
+    }
+    .paper-masthead .pub-year {
+      font-size: 0.7rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-top: 4px;
+    }
+    .badge-f1000 {
+      display: inline-block;
+      background: var(--accent, #c9a227);
+      color: #080808;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── Organism cards ────────────────────────────────── */
+    .org-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+    @media (min-width: 1200px) {
+      .org-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .org-card {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .org-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      filter: grayscale(30%);
+      transition: filter 0.3s;
+    }
+    .org-card:hover img { filter: grayscale(0%); }
+    .org-card .org-info {
+      padding: 8px 10px;
+    }
+    .org-card .org-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+    }
+    .org-card .org-system {
+      font-size: 0.7rem;
+      color: var(--accent, #c9a227);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Diagram containers ────────────────────────────── */
+    .diagram-box {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 24px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .diagram-box svg { max-width: 100%; height: auto; }
+    .diagram-caption {
+      font-size: 0.72rem;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SVG colors via CSS ────────────────────────────── */
+    .chr-auto { fill: #555; }
+    .chr-sex { fill: var(--accent, #c9a227); }
+    .chr-sex-dim { fill: rgba(201,162,39,0.35); }
+    .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
+    .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
+    .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
+    .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
+    .chr-arrow { fill: var(--accent, #c9a227); }
+    .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
+    .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
+    .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
+    .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+    .chr-region { fill: rgba(201,162,39,0.12); }
+
+    .light-mode .chr-auto { fill: #bbb; }
+    .light-mode .chr-label { fill: #333; }
+    .light-mode .chr-label-sm { fill: #777; }
+    .light-mode .chr-heading { fill: #222; }
+    .light-mode .chr-line { stroke: #ccc; }
+    .light-mode .chr-line-dash { stroke: #ccc; }
+
+    /* ── Plotly chart containers ────────────────────────── */
+    .chart-box {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .chart-box .chart-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent, #c9a227);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    /* ── Stat callout ──────────────────────────────────── */
+    .stat-callout {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+    }
+    .stat-callout .stat-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent, #c9a227);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .stat-callout .stat-text {
+      font-size: 0.82rem;
+      color: var(--text, #c8c5c0);
+      line-height: 1.4;
+    }
+
+    /* ── Mechanism cards ────────────────────────────────── */
+    .mech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    @media (max-width: 767.98px) {
+      .mech-grid { grid-template-columns: 1fr; }
+    }
+    .mech-card {
+      background: var(--bg-card, #1a1a1a);
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .mech-card .mech-organism {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent, #c9a227);
+      margin-bottom: 6px;
+    }
+    .mech-card .mech-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-heading, #eae7e2);
+      margin-bottom: 4px;
+    }
+    .mech-card .mech-desc {
+      font-size: 0.75rem;
+      color: var(--text-secondary, rgba(200,197,190,0.65));
+      line-height: 1.45;
+    }
+
+    /* ── Toggle buttons for charts ─────────────────────── */
+    .chart-toggle {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .chart-toggle button {
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border: 1px solid var(--border, rgba(255,255,255,0.10));
+      border-radius: 16px;
+      background: transparent;
+      color: var(--text, #c8c5c0);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .chart-toggle button.active,
+    .chart-toggle button:hover {
+      border-color: var(--accent, #c9a227);
+      color: var(--accent, #c9a227);
+      background: rgba(201,162,39,0.08);
+    }
+
+    /* ── Related resources box ─────────────────────────── */
+    .related-box {
+      margin-top: 48px;
+      padding: 28px 32px;
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 10px;
+      background: rgba(201,162,39,0.03);
+    }
+    .related-box h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent, #c9a227);
+      margin-bottom: 16px;
+    }
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .related-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid rgba(201,162,39,0.25);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--text, #c8c5c0);
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+    .related-link i { color: var(--accent); font-size: 0.75rem; }
+    .related-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .paper-foot {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(201,162,39,0.2);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted, rgba(200,197,190,0.45));
+    }
+  </style>
+</head>
+
+<body class="resources-page">
+  <script>try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}</script>
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress"></div>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group d-flex align-items-center gap-2">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html" class="active">Resources</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="sc-hero" data-aos="fade-up">
+      <div class="container">
+        <div class="kicker">A Visual Guide</div>
+        <h1>How Sex Chromosomes Evolve</h1>
+        <div class="subtitle">From ordinary autosomes to the X, Y, Z, and W &mdash; and the mating-type chromosomes, UV systems, and everything in between</div>
+
+        <!-- Decorative SVG -->
+        <svg width="120" height="80" viewBox="0 0 120 80" style="margin-bottom: 18px; opacity: 0.7;">
+          <rect x="20" y="5" width="16" height="70" rx="8" class="chr-sex" opacity="0.9"/>
+          <rect x="50" y="25" width="16" height="50" rx="8" class="chr-sex" opacity="0.5"/>
+          <text x="28" y="85" class="chr-label-sm" text-anchor="middle" style="font-size:10px">X</text>
+          <text x="58" y="85" class="chr-label-sm" text-anchor="middle" style="font-size:10px">Y</text>
+          <rect x="84" y="5" width="16" height="70" rx="8" class="chr-auto" opacity="0.3"/>
+          <rect x="84" y="5" width="16" height="70" rx="8" class="chr-auto" opacity="0.15" transform="translate(5,0)"/>
+        </svg>
+
+        <div class="audio-wrap">
+          <span class="audio-label">Listen: AI-Generated Research Podcast</span>
+          <audio controls preload="none" src="assets/sexchromosomes.wav"></audio>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 1: WHAT ARE SEX CHROMOSOMES? ═══════════════ -->
+    <section class="sc-section" id="sec-what">
+      <div class="container">
+        <div class="row">
+          <!-- LEFT: Theory -->
+          <div class="col-lg-6 sc-theory" data-aos="fade-up">
+            <div class="sc-kicker">Foundations</div>
+            <h2>What Are Sex Chromosomes?</h2>
+            <p>Most chromosomes come in matched pairs &mdash; one from each parent. These are <strong>autosomes</strong>, and both copies carry the same genes. <strong>Sex chromosomes</strong> are different. They are the chromosomes that differ between males and females of a species and typically carry or are linked to the gene that triggers sex determination.</p>
+            <p>In <strong>XY systems</strong> (mammals, many insects, some fish), males carry one X and one Y, while females carry two Xs. The Y is typically small and gene-poor. In <strong>ZW systems</strong> (birds, snakes, butterflies), it is the <em>female</em> who is the heterogametic sex &mdash; carrying one Z and one W &mdash; while males have two Zs. In <strong>X0 systems</strong>, the Y has been lost entirely: males have a single X and no partner for it.</p>
+            <p>A crucial insight: sex chromosomes are <strong>not a fixed feature of life</strong>. They have evolved independently hundreds of times across the tree of life. Every pair of sex chromosomes started as an ordinary pair of autosomes.</p>
+
+            <!-- SVG: Three sex chromosome systems -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 520 200" width="100%" aria-labelledby="svg-systems-title">
+                <title id="svg-systems-title">Three sex chromosome systems: XY, ZW, and X0</title>
+
+                <!-- XY System -->
+                <text x="87" y="20" class="chr-heading" text-anchor="middle">XY System</text>
+                <!-- Female XX -->
+                <text x="52" y="42" class="chr-label-sm" text-anchor="middle">Female</text>
+                <rect x="30" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <rect x="50" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <text x="36" y="115" class="chr-label-sm" text-anchor="middle">X</text>
+                <text x="56" y="115" class="chr-label-sm" text-anchor="middle">X</text>
+                <!-- autosomes -->
+                <rect x="30" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <rect x="50" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <!-- Male XY -->
+                <text x="122" y="42" class="chr-label-sm" text-anchor="middle">Male</text>
+                <rect x="100" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <rect x="120" y="68" width="12" height="35" rx="6" class="chr-sex" opacity="0.55"/>
+                <text x="106" y="115" class="chr-label-sm" text-anchor="middle">X</text>
+                <text x="126" y="115" class="chr-label-sm" text-anchor="middle">Y</text>
+                <rect x="100" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <rect x="120" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <text x="87" y="185" class="chr-label-sm" text-anchor="middle">Mammals, many insects, some fish</text>
+
+                <!-- ZW System -->
+                <text x="262" y="20" class="chr-heading" text-anchor="middle">ZW System</text>
+                <!-- Male ZZ -->
+                <text x="222" y="42" class="chr-label-sm" text-anchor="middle">Male</text>
+                <rect x="200" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <rect x="220" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <text x="206" y="115" class="chr-label-sm" text-anchor="middle">Z</text>
+                <text x="226" y="115" class="chr-label-sm" text-anchor="middle">Z</text>
+                <rect x="200" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <rect x="220" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <!-- Female ZW -->
+                <text x="297" y="42" class="chr-label-sm" text-anchor="middle">Female</text>
+                <rect x="275" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <rect x="295" y="68" width="12" height="35" rx="6" class="chr-sex" opacity="0.55"/>
+                <text x="281" y="115" class="chr-label-sm" text-anchor="middle">Z</text>
+                <text x="301" y="115" class="chr-label-sm" text-anchor="middle">W</text>
+                <rect x="275" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <rect x="295" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <text x="262" y="185" class="chr-label-sm" text-anchor="middle">Birds, snakes, butterflies</text>
+
+                <!-- X0 System -->
+                <text x="432" y="20" class="chr-heading" text-anchor="middle">X0 System</text>
+                <!-- Female XX -->
+                <text x="397" y="42" class="chr-label-sm" text-anchor="middle">Female</text>
+                <rect x="375" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <rect x="395" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <text x="381" y="115" class="chr-label-sm" text-anchor="middle">X</text>
+                <text x="401" y="115" class="chr-label-sm" text-anchor="middle">X</text>
+                <rect x="375" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <rect x="395" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <!-- Male X0 -->
+                <text x="467" y="42" class="chr-label-sm" text-anchor="middle">Male</text>
+                <rect x="452" y="48" width="12" height="55" rx="6" class="chr-sex"/>
+                <!-- empty space where Y would be -->
+                <text x="458" y="115" class="chr-label-sm" text-anchor="middle">X</text>
+                <text x="480" y="90" class="chr-label-sm" text-anchor="middle" style="font-style:italic; opacity:0.4">--</text>
+                <rect x="452" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <rect x="472" y="122" width="12" height="45" rx="6" class="chr-auto" opacity="0.4"/>
+                <text x="432" y="185" class="chr-label-sm" text-anchor="middle">Some insects, nematodes</text>
+              </svg>
+              <div class="diagram-caption">Three independently evolved sex chromosome systems</div>
+            </div>
+
+            <p>But sex determination goes far beyond chromosomes. Some organisms use <strong>environmental cues</strong> (temperature in many reptiles), <strong>haplodiploidy</strong> (ploidy level determines sex in bees and ants), or vastly more complex genetic architectures. Understanding this diversity is key to understanding why sex chromosomes evolve the way they do.</p>
+          </div>
+
+          <!-- RIGHT: Evidence -->
+          <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sc-kicker">Across the Tree of Life</div>
+            <h2>Diversity of Sex Determination</h2>
+
+            <div class="org-grid">
+              <div class="org-card">
+                <img src="assets/img/study-systems/beetles.jpg" alt="Beetles" loading="lazy">
+                <div class="org-info">
+                  <div class="org-name">Beetles</div>
+                  <div class="org-system">XY, Xy<sub>p</sub>, X0, neo-XY &hellip; 15+ systems</div>
+                </div>
+              </div>
+              <div class="org-card">
+                <img src="assets/img/study-systems/chickens.jpg" alt="Chickens" loading="lazy">
+                <div class="org-info">
+                  <div class="org-name">Birds</div>
+                  <div class="org-system">ZW system</div>
+                </div>
+              </div>
+              <div class="org-card">
+                <img src="assets/img/study-systems/mammals.jpg" alt="Mammals" loading="lazy">
+                <div class="org-info">
+                  <div class="org-name">Mammals</div>
+                  <div class="org-system">XY system (SRY gene)</div>
+                </div>
+              </div>
+              <div class="org-card">
+                <img src="assets/img/study-systems/betta.jpg" alt="Betta fish" loading="lazy">
+                <div class="org-info">
+                  <div class="org-name">Fish</div>
+                  <div class="org-system">XY, ZW, polygenic, environmental</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-callout" data-aos="fade-left">
+              <div class="stat-num">15+</div>
+              <div class="stat-text">Different sex chromosome systems documented in beetles alone &mdash; more than any other animal order. <a href="karyotypes/index.html">Explore the karyotype databases &rarr;</a></div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Book &middot; Princeton University Press</div>
+              <div class="paper-title">Evolution of Sex Determining Mechanisms</div>
+              <div class="authors">J.J. Bull</div>
+              <div class="pub-year">1983 &mdash; The foundational text on the diversity and evolution of sex determination systems</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">PLOS Biology</div>
+              <div class="paper-title">Sex determination: why so many ways of doing it?</div>
+              <div class="authors">D. Bachtrog, J.E. Mank, C.L. Peichel, M. Kirkpatrick, S.P. Otto, T.-L. Ashman, M.W. Hahn, J. Kitano, I. Mayrose, R. Ming, N. Perrin, L. Ross, N. Valenzuela, J.C. Vamosi &amp; The Tree of Sex Consortium</div>
+              <div class="pub-year">2014</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 2: BEYOND XY AND ZW ═══════════════ -->
+    <section class="sc-section" id="sec-diversity">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sc-theory" data-aos="fade-up">
+            <div class="sc-kicker">Strange &amp; Wonderful</div>
+            <h2>Beyond XY and ZW &mdash; The Wild Diversity</h2>
+
+            <h3>UV Sex Chromosomes</h3>
+            <p>In some algae and bryophytes (liverworts, mosses), sex is determined in the <strong>haploid phase</strong> of the life cycle. After meiosis, spores carry either a <strong>U chromosome</strong> (producing female gametophytes) or a <strong>V chromosome</strong> (producing male gametophytes). This is fundamentally different from XY/ZW systems because selection on sex-linked genes operates on haploid individuals &mdash; there is no "heterozygous shelter" for deleterious mutations. The liverwort <em>Marchantia polymorpha</em> and the green alga <em>Volvox</em> are model systems for studying UV chromosomes.</p>
+
+            <h3>Fungal Mating-Type Chromosomes</h3>
+            <p>Fungi push the boundaries of what "sex chromosomes" can mean. The mushroom <em>Schizophyllum commune</em> has over <strong>23,000 mating types</strong>, controlled by two unlinked loci with hundreds of alleles each. Meanwhile, <em>Cryptococcus neoformans</em> and <em>Ustilago maydis</em> have large mating-type chromosomes with suppressed recombination that show striking parallels to animal and plant sex chromosomes &mdash; including degeneration, gene loss, and accumulation of transposable elements. These independently evolved systems demonstrate that the same evolutionary forces shape sex-linked genomic regions across all of life.</p>
+
+            <h3>Haplodiploidy</h3>
+            <p>In Hymenoptera (ants, bees, wasps) and some other arthropods, there are <strong>no sex chromosomes at all</strong>. Males develop from unfertilized eggs and are haploid; females develop from fertilized eggs and are diploid. Ploidy <em>is</em> sex determination. This system has profound consequences for the evolution of genome architecture and social behavior &mdash; it means that sisters share 75% of their genes, which Hamilton argued was a key driver of eusociality.</p>
+
+            <h3>Environmental Sex Determination</h3>
+            <p>Many reptiles (most turtles, all crocodilians) determine sex by the temperature experienced during embryonic development. Some fish change sex in response to social cues &mdash; the largest female in a group of clownfish becomes male if the dominant male dies. Transitions between genetic and environmental sex determination happen repeatedly across the tree of life, and understanding <em>why</em> organisms switch is an active area of research.</p>
+          </div>
+
+          <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sc-kicker">Convergent Evolution</div>
+            <h2>The Same Forces, Again and Again</h2>
+
+            <p>The remarkable thing about sex-linked genomic regions is how convergent their evolution is. Whether we look at animal X/Y chromosomes, plant sex chromosomes, fungal mating-type regions, or algal U/V chromosomes, we see the same features evolve independently: <strong>recombination suppression</strong>, <strong>degeneration of the heterogametic chromosome</strong>, and <strong>accumulation of repetitive elements</strong>. This convergence tells us that the evolutionary forces shaping these regions are powerful and predictable.</p>
+
+            <!-- UV lifecycle diagram -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 400 220" width="100%" aria-labelledby="svg-uv-title">
+                <title id="svg-uv-title">UV sex chromosome system in the haploid phase</title>
+                <!-- Diploid sporophyte at top -->
+                <rect x="155" y="10" width="90" height="36" rx="6" class="chr-region"/>
+                <text x="200" y="32" class="chr-heading" text-anchor="middle">Diploid (UV)</text>
+                <!-- Arrow down: meiosis -->
+                <line x1="200" y1="50" x2="200" y2="70" class="chr-line-accent"/>
+                <text x="200" y="64" class="chr-label-sm" text-anchor="middle" dy="-3" dx="40">Meiosis</text>
+                <!-- Branch left and right -->
+                <line x1="200" y1="70" x2="120" y2="100" class="chr-line-accent"/>
+                <line x1="200" y1="70" x2="280" y2="100" class="chr-line-accent"/>
+                <!-- U spore -->
+                <rect x="75" y="100" width="90" height="36" rx="6" class="chr-sex" opacity="0.7"/>
+                <text x="120" y="123" class="chr-heading" text-anchor="middle" style="font-size:12px; fill:#080808">U spore (&#9792;)</text>
+                <!-- V spore -->
+                <rect x="235" y="100" width="90" height="36" rx="6" class="chr-sex" opacity="0.4"/>
+                <text x="280" y="123" class="chr-heading" text-anchor="middle" style="font-size:12px">V spore (&#9794;)</text>
+                <!-- Haploid gametophytes -->
+                <line x1="120" y1="140" x2="120" y2="160" class="chr-line-accent"/>
+                <line x1="280" y1="140" x2="280" y2="160" class="chr-line-accent"/>
+                <text x="120" y="178" class="chr-label" text-anchor="middle">Female</text>
+                <text x="120" y="192" class="chr-label-sm" text-anchor="middle">gametophyte</text>
+                <text x="280" y="178" class="chr-label" text-anchor="middle">Male</text>
+                <text x="280" y="192" class="chr-label-sm" text-anchor="middle">gametophyte</text>
+                <!-- Fertilization arrow back up -->
+                <path d="M 140 200 Q 200 230 260 200" fill="none" class="chr-line-dash"/>
+                <text x="200" y="218" class="chr-label-sm" text-anchor="middle">Fertilization</text>
+              </svg>
+              <div class="diagram-caption">UV system: sex determined in the haploid phase</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution</div>
+              <div class="paper-title">The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability</div>
+              <div class="authors">H. Blackmon, N. Hardy, L. Ross</div>
+              <div class="pub-year">2015</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Microbiology and Molecular Biology Reviews</div>
+              <div class="paper-title">Evolution of the mating-type locus: the basidiomycetes</div>
+              <div class="authors">L.N. Nieuwenhuis, T.Y. James</div>
+              <div class="pub-year">2016 &mdash; How fungal mating-type regions converge on the same features as animal/plant sex chromosomes</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Annual Review of Microbiology</div>
+              <div class="paper-title">Evolution of sexual reproduction in fungi</div>
+              <div class="authors">J. Heitman, S. Sun, T.Y. James</div>
+              <div class="pub-year">2013 &mdash; Comprehensive review of fungal mating systems and the convergent evolution of mating-type chromosomes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 3: THE ORIGIN STORY ═══════════════ -->
+    <section class="sc-section" id="sec-origin">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sc-theory" data-aos="fade-up">
+            <div class="sc-kicker">The Origin Story</div>
+            <h2>From Autosomes to Sex Chromosomes</h2>
+
+            <p>Every pair of sex chromosomes began as an ordinary pair of autosomes. The transformation unfolds in stages:</p>
+
+            <p><strong>Step 1: A sex-determining gene appears.</strong> A mutation arises on one copy of an autosome that triggers male or female development. This could be a novel gene, a translocated gene, or a regulatory change. Now one homolog carries a sex-determiner and the other does not &mdash; this is the birth of a proto-sex chromosome.</p>
+
+            <p><strong>Step 2: Sexually antagonistic alleles accumulate.</strong> Genes that benefit one sex but harm the other ("sexually antagonistic" genes) are favored near the sex-determiner. A male-benefit allele, for example, is advantageous when linked to the male-determining gene because it will always be in males.</p>
+
+            <p><strong>Step 3: Recombination is suppressed.</strong> Selection favors chromosomal inversions or other rearrangements that prevent the sex-determiner from recombining away from the sexually antagonistic alleles. The non-recombining region expands, sometimes in discrete "evolutionary strata."</p>
+
+            <p><strong>Step 4: The proto-Y degenerates.</strong> Without recombination to purge deleterious mutations, the proto-Y chromosome accumulates genetic damage. Genes are lost, repetitive elements invade, and the chromosome physically shrinks.</p>
+
+            <!-- SVG: 4-stage progression -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 500 170" width="100%" aria-labelledby="svg-origin-title">
+                <title id="svg-origin-title">Four stages of sex chromosome evolution from autosomes</title>
+
+                <!-- Stage 1: Identical autosomes -->
+                <rect x="15" y="30" width="14" height="65" rx="7" class="chr-auto"/>
+                <rect x="35" y="30" width="14" height="65" rx="7" class="chr-auto"/>
+                <text x="32" y="20" class="chr-label-sm" text-anchor="middle">Stage 1</text>
+                <text x="32" y="112" class="chr-label-sm" text-anchor="middle">Autosome</text>
+                <text x="32" y="124" class="chr-label-sm" text-anchor="middle">pair</text>
+
+                <!-- Arrow -->
+                <line x1="60" y1="62" x2="100" y2="62" class="chr-line-accent"/>
+                <polygon points="97,57 107,62 97,67" class="chr-arrow"/>
+
+                <!-- Stage 2: Sex-determining gene -->
+                <rect x="115" y="30" width="14" height="65" rx="7" class="chr-auto"/>
+                <rect x="135" y="30" width="14" height="65" rx="7" class="chr-auto"/>
+                <circle cx="142" cy="45" r="5" class="chr-sex"/>
+                <text x="132" y="20" class="chr-label-sm" text-anchor="middle">Stage 2</text>
+                <text x="132" y="112" class="chr-label-sm" text-anchor="middle">Sex gene</text>
+                <text x="132" y="124" class="chr-label-sm" text-anchor="middle">appears</text>
+
+                <!-- Arrow -->
+                <line x1="160" y1="62" x2="200" y2="62" class="chr-line-accent"/>
+                <polygon points="197,57 207,62 197,67" class="chr-arrow"/>
+
+                <!-- Stage 3: Inversion / recombination suppression -->
+                <rect x="215" y="30" width="14" height="65" rx="7" class="chr-sex" opacity="0.6"/>
+                <rect x="235" y="30" width="14" height="65" rx="7" class="chr-auto"/>
+                <rect x="237" y="35" width="10" height="30" rx="3" class="chr-region" opacity="0.5"/>
+                <circle cx="242" cy="45" r="5" class="chr-sex"/>
+                <text x="232" y="20" class="chr-label-sm" text-anchor="middle">Stage 3</text>
+                <text x="232" y="112" class="chr-label-sm" text-anchor="middle">Recomb.</text>
+                <text x="232" y="124" class="chr-label-sm" text-anchor="middle">suppressed</text>
+
+                <!-- Arrow -->
+                <line x1="260" y1="62" x2="300" y2="62" class="chr-line-accent"/>
+                <polygon points="297,57 307,62 297,67" class="chr-arrow"/>
+
+                <!-- Stage 4: Degenerated Y -->
+                <rect x="315" y="30" width="14" height="65" rx="7" class="chr-sex"/>
+                <rect x="340" y="45" width="12" height="40" rx="6" class="chr-sex" opacity="0.35"/>
+                <text x="335" y="20" class="chr-label-sm" text-anchor="middle">Stage 4</text>
+                <text x="322" y="112" class="chr-label-accent" text-anchor="middle">X</text>
+                <text x="346" y="112" class="chr-label-accent" text-anchor="middle">Y</text>
+                <text x="335" y="130" class="chr-label-sm" text-anchor="middle">Differentiated</text>
+
+                <!-- Arrow to X0 -->
+                <line x1="365" y1="62" x2="405" y2="62" class="chr-line-dash"/>
+                <polygon points="402,57 412,62 402,67" class="chr-arrow" opacity="0.4"/>
+
+                <!-- Stage 5: Y lost -->
+                <rect x="420" y="30" width="14" height="65" rx="7" class="chr-sex"/>
+                <text x="445" y="65" class="chr-label-sm" text-anchor="start" style="font-style:italic; opacity:0.4">Y lost</text>
+                <text x="427" y="112" class="chr-label-accent" text-anchor="middle">X</text>
+                <text x="427" y="130" class="chr-label-sm" text-anchor="middle">X0 system</text>
+              </svg>
+              <div class="diagram-caption">The evolutionary trajectory from autosome pair to differentiated sex chromosomes</div>
+            </div>
+
+            <h3>Alternative Models: Not Just Sexually Antagonistic Selection</h3>
+            <p>The classic model &mdash; sexually antagonistic selection drives recombination suppression &mdash; has been the dominant framework since <strong>Rice (1987)</strong>. But it is not the only game in town. <strong>Thomas Lenormand</strong> and colleagues have developed models showing that recombination suppression can spread through other mechanisms, including the sheltering of deleterious recessive alleles and regulatory degeneration. In their models, expansion of the non-recombining region may be driven by drift or neutral processes as much as by selection. This is an active and genuinely unresolved debate in the field.</p>
+          </div>
+
+          <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sc-kicker">Key Papers</div>
+            <h2>The Theoretical Foundation</h2>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution</div>
+              <div class="paper-title">The accumulation of sexually antagonistic genes as a selective agent promoting the evolution of reduced recombination</div>
+              <div class="authors">W.R. Rice</div>
+              <div class="pub-year">1987 &mdash; The foundational paper on sexually antagonistic selection driving sex chromosome differentiation</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Philosophical Transactions of the Royal Society B</div>
+              <div class="paper-title">The degeneration of Y chromosomes</div>
+              <div class="authors">B. Charlesworth &amp; D. Charlesworth</div>
+              <div class="pub-year">2000 &mdash; The definitive theoretical framework for why non-recombining chromosomes decay</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Current Biology</div>
+              <div class="paper-title">Sex chromosome degeneration by regulatory evolution</div>
+              <div class="authors">T. Lenormand, S. Fyon, E. Sun, D. Roze</div>
+              <div class="pub-year">2020 &mdash; An alternative model: regulatory changes, not just gene loss, drive degeneration. Drift and sheltering may matter more than antagonistic selection.</div>
+            </div>
+
+            <div class="pullquote">"Every sex chromosome pair started as an ordinary pair of autosomes. The question is not whether they will degenerate, but how fast and by what mechanism."</div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Bioessays</div>
+              <div class="paper-title">The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution</div>
+              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
+              <div class="pub-year">2015</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 4: DEGENERATION ═══════════════ -->
+    <section class="sc-section" id="sec-degeneration">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sc-theory" data-aos="fade-up">
+            <div class="sc-kicker">Decay &amp; Divergence</div>
+            <h2>Why the Y (or W) Degenerates</h2>
+
+            <p>Once recombination stops, a chromosome is on a one-way path toward decay. Several mutually reinforcing processes drive this:</p>
+
+            <p><strong>Muller's ratchet</strong> &mdash; In small populations, the class of chromosomes with the fewest deleterious mutations can be lost by drift. Without recombination to recreate the least-loaded class, the ratchet clicks forward: the minimum number of mutations on the chromosome only ever increases.</p>
+
+            <p><strong>Background selection</strong> &mdash; Purifying selection against deleterious alleles on the non-recombining chromosome reduces the effective population size of the entire chromosome, making it more vulnerable to drift.</p>
+
+            <p><strong>Genetic hitchhiking</strong> &mdash; When a beneficial mutation sweeps to fixation on the Y, it drags along any linked deleterious alleles. Without recombination, the good and the bad travel together.</p>
+
+            <p><strong>Hill-Robertson interference</strong> &mdash; The general phenomenon: selection at one locus interferes with selection at linked loci. On a non-recombining chromosome, every gene interferes with every other gene.</p>
+
+            <p>The result: gene loss, accumulation of transposable elements, heterochromatinization, and physical shrinkage. The human Y retains only ~55 protein-coding genes, down from the ~800+ on the X.</p>
+
+            <!-- SVG: Degeneration timeline -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 440 220" width="100%" aria-labelledby="svg-degen-title">
+                <title id="svg-degen-title">Stages of Y chromosome degeneration</title>
+
+                <!-- Timeline line -->
+                <line x1="50" y1="30" x2="50" y2="200" class="chr-line-dash"/>
+                <text x="35" y="18" class="chr-label-sm" text-anchor="end" style="font-style:italic">Time</text>
+                <polygon points="47,195 50,205 53,195" class="chr-arrow" opacity="0.4"/>
+
+                <!-- Young -->
+                <circle cx="50" cy="45" r="5" class="chr-sex"/>
+                <rect x="80" y="28" width="14" height="50" rx="7" class="chr-sex"/>
+                <rect x="100" y="30" width="13" height="46" rx="6.5" class="chr-sex" opacity="0.7"/>
+                <text x="130" y="48" class="chr-label" text-anchor="start">Young</text>
+                <text x="130" y="62" class="chr-label-sm" text-anchor="start">Nearly identical to X (e.g. stickleback)</text>
+
+                <!-- Intermediate -->
+                <circle cx="50" cy="95" r="5" class="chr-sex"/>
+                <rect x="80" y="78" width="14" height="50" rx="7" class="chr-sex"/>
+                <rect x="100" y="85" width="12" height="35" rx="6" class="chr-sex" opacity="0.5"/>
+                <text x="130" y="98" class="chr-label" text-anchor="start">Intermediate</text>
+                <text x="130" y="112" class="chr-label-sm" text-anchor="start">Shrunken, gene-poor (e.g. some Drosophila)</text>
+
+                <!-- Old -->
+                <circle cx="50" cy="145" r="5" class="chr-sex"/>
+                <rect x="80" y="128" width="14" height="50" rx="7" class="chr-sex"/>
+                <rect x="102" y="148" width="10" height="22" rx="5" class="chr-sex" opacity="0.3"/>
+                <text x="130" y="148" class="chr-label" text-anchor="start">Old</text>
+                <text x="130" y="162" class="chr-label-sm" text-anchor="start">Tiny, few genes (e.g. human Y, ~55 genes)</text>
+
+                <!-- Lost -->
+                <circle cx="50" cy="195" r="5" class="chr-sex"/>
+                <rect x="80" y="178" width="14" height="50" rx="7" class="chr-sex"/>
+                <text x="112" y="200" class="chr-label-sm" text-anchor="start" style="font-style:italic; opacity:0.5">Y gone</text>
+                <text x="130" y="198" class="chr-label" text-anchor="start">Lost (X0)</text>
+                <text x="130" y="212" class="chr-label-sm" text-anchor="start">Y lost entirely (e.g. some Drosophila, insects)</text>
+              </svg>
+              <div class="diagram-caption">Y chromosomes degenerate over time &mdash; from nearly identical to the X to complete loss</div>
+            </div>
+
+            <h3>The Drift vs. Selection Debate</h3>
+            <p><strong>Brian Charlesworth's</strong> models emphasize deterministic forces: background selection and hitchhiking are powerful enough to drive degeneration even in large populations. Others argue that drift plays a larger role, especially in species with small effective population sizes. The relative contribution of each force remains one of the genuinely contested questions in sex chromosome biology.</p>
+          </div>
+
+          <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sc-kicker">Evidence &amp; Theory</div>
+            <h2>Testing the Fragile Y</h2>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Nature Reviews Genetics</div>
+              <div class="paper-title">Y-chromosome evolution: emerging insights into processes of Y-chromosome degeneration</div>
+              <div class="authors">D. Bachtrog</div>
+              <div class="pub-year">2013 &mdash; A landmark review synthesizing what we know about Y degeneration across taxa</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Science</div>
+              <div class="paper-title">The evolution of sex chromosomes</div>
+              <div class="authors">B. Charlesworth</div>
+              <div class="pub-year">1991 &mdash; The classic theoretical framework</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics</div>
+              <div class="paper-title">Short-term resolution of sexual antagonism dominates long-term fragility of Y chromosomes</div>
+              <div class="authors">H. Blackmon &amp; Y. Brandvain</div>
+              <div class="pub-year">2017</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genetics</div>
+              <div class="paper-title">Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis</div>
+              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
+              <div class="pub-year">2014</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Heredity</div>
+              <div class="paper-title">Why not Y naught</div>
+              <div class="authors">M.M. Jonika, J.M. Alfieri, T. Sylvester, A. Burhow, H. Blackmon</div>
+              <div class="pub-year">2022</div>
+            </div>
+
+            <!-- Plotly: Turnover rates -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Y Chromosome Turnover Across Insect Orders</div>
+              <div id="chart-turnover" style="width:100%; height:300px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 5: IDENTIFYING SEX CHROMOSOMES ═══════════════ -->
+    <section class="sc-section" id="sec-identify">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sc-theory" data-aos="fade-up">
+            <div class="sc-kicker">Methods</div>
+            <h2>Finding Sex Chromosomes in Genome Assemblies</h2>
+
+            <h3>Coverage-Based Identification</h3>
+            <p>The simplest and most powerful approach: sequence both males and females, then map their reads to the genome assembly. <strong>X-linked scaffolds</strong> will have approximately <strong>half the read depth</strong> in males (who have one X) compared to females (who have two). <strong>Y-linked scaffolds</strong> will have reads from males but <strong>zero coverage from females</strong>. Autosomes will show equal coverage in both sexes.</p>
+
+            <h3>Expression-Based Identification</h3>
+            <p>Compare gene expression (RNA-seq) between males and females across scaffolds. X-linked genes will show characteristic expression patterns that depend on whether dosage compensation exists. Without compensation, X-linked genes are expressed at roughly half the level in males compared to females. With compensation, expression is equalized &mdash; but the <em>mechanism</em> of equalization differs among taxa (see Section 6).</p>
+
+            <h3>Additional Approaches</h3>
+            <p><strong>Heterozygosity</strong>: Females (XX) will be heterozygous on X-linked loci, while males (XY) will be hemizygous &mdash; meaning variant calls from males on X-linked scaffolds will look homozygous. <strong>K-mer methods</strong>: male-specific k-mers identify Y-linked sequences. <strong>Synteny</strong>: comparing to related species with known sex chromosomes can identify conserved sex-linked regions.</p>
+
+            <!-- SVG: Coverage method schematic -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 460 200" width="100%" aria-labelledby="svg-coverage-title">
+                <title id="svg-coverage-title">Coverage-based sex chromosome identification</title>
+
+                <!-- Genome assembly bar -->
+                <text x="230" y="18" class="chr-heading" text-anchor="middle">Reference Genome Assembly</text>
+                <rect x="20" y="25" width="100" height="20" rx="3" class="chr-auto" opacity="0.5"/>
+                <rect x="130" y="25" width="100" height="20" rx="3" class="chr-auto" opacity="0.5"/>
+                <rect x="240" y="25" width="80" height="20" rx="3" class="chr-sex" opacity="0.6"/>
+                <rect x="330" y="25" width="60" height="20" rx="3" class="chr-sex" opacity="0.3"/>
+                <text x="70" y="38" class="chr-label-sm" text-anchor="middle" style="fill:#fff">Autosome</text>
+                <text x="180" y="38" class="chr-label-sm" text-anchor="middle" style="fill:#fff">Autosome</text>
+                <text x="280" y="38" class="chr-label-sm" text-anchor="middle" style="fill:#080808">X-linked</text>
+                <text x="360" y="38" class="chr-label-sm" text-anchor="middle">Y-linked</text>
+
+                <!-- Female reads -->
+                <text x="15" y="75" class="chr-label-accent" text-anchor="start">&#9792; Female reads</text>
+                <!-- Auto coverage: full -->
+                <rect x="20" y="80" width="100" height="16" rx="2" fill="rgba(201,162,39,0.15)"/>
+                <rect x="20" y="80" width="100" height="16" rx="2" fill="none" stroke="rgba(201,162,39,0.3)" stroke-width="1"/>
+                <rect x="130" y="80" width="100" height="16" rx="2" fill="rgba(201,162,39,0.15)"/>
+                <rect x="130" y="80" width="100" height="16" rx="2" fill="none" stroke="rgba(201,162,39,0.3)" stroke-width="1"/>
+                <!-- X coverage: full (XX) -->
+                <rect x="240" y="80" width="80" height="16" rx="2" fill="rgba(201,162,39,0.15)"/>
+                <rect x="240" y="80" width="80" height="16" rx="2" fill="none" stroke="rgba(201,162,39,0.3)" stroke-width="1"/>
+                <!-- Y coverage: none -->
+                <rect x="330" y="80" width="60" height="16" rx="2" fill="none" stroke="rgba(255,80,80,0.3)" stroke-width="1" stroke-dasharray="3 2"/>
+                <text x="360" y="92" class="chr-label-sm" text-anchor="middle" style="fill:rgba(255,80,80,0.6)">0x</text>
+                <text x="410" y="91" class="chr-label-sm" text-anchor="start">Full</text>
+
+                <!-- Male reads -->
+                <text x="15" y="125" class="chr-label-accent" text-anchor="start">&#9794; Male reads</text>
+                <!-- Auto coverage: full -->
+                <rect x="20" y="130" width="100" height="16" rx="2" fill="rgba(100,160,220,0.15)"/>
+                <rect x="20" y="130" width="100" height="16" rx="2" fill="none" stroke="rgba(100,160,220,0.3)" stroke-width="1"/>
+                <rect x="130" y="130" width="100" height="16" rx="2" fill="rgba(100,160,220,0.15)"/>
+                <rect x="130" y="130" width="100" height="16" rx="2" fill="none" stroke="rgba(100,160,220,0.3)" stroke-width="1"/>
+                <!-- X coverage: HALF -->
+                <rect x="240" y="130" width="80" height="8" rx="2" fill="rgba(100,160,220,0.15)"/>
+                <rect x="240" y="130" width="80" height="8" rx="2" fill="none" stroke="rgba(100,160,220,0.3)" stroke-width="1"/>
+                <text x="410" y="140" class="chr-label-sm" text-anchor="start">Half depth</text>
+                <!-- Y coverage: present -->
+                <rect x="330" y="130" width="60" height="14" rx="2" fill="rgba(100,160,220,0.15)"/>
+                <rect x="330" y="130" width="60" height="14" rx="2" fill="none" stroke="rgba(100,160,220,0.3)" stroke-width="1"/>
+
+                <!-- Summary labels -->
+                <text x="70" y="170" class="chr-label-sm" text-anchor="middle">F:M = 1:1</text>
+                <text x="180" y="170" class="chr-label-sm" text-anchor="middle">F:M = 1:1</text>
+                <text x="280" y="170" class="chr-label-sm" text-anchor="middle" style="fill:var(--accent)">F:M = 2:1</text>
+                <text x="360" y="170" class="chr-label-sm" text-anchor="middle" style="fill:rgba(255,80,80,0.7)">F:M = 0:1</text>
+                <text x="230" y="192" class="chr-label-sm" text-anchor="middle" style="font-style:italic">The ratio of female:male coverage reveals which scaffolds are sex-linked</text>
+              </svg>
+              <div class="diagram-caption">Coverage-based identification of sex-linked scaffolds</div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sc-kicker">What the Data Look Like</div>
+            <h2>Example Plots and Patterns</h2>
+
+            <!-- Plotly: Coverage scatter -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Identifying Sex-Linked Scaffolds by Coverage</div>
+              <div id="chart-coverage" style="width:100%; height:320px;"></div>
+            </div>
+
+            <!-- Plotly: Expression ratio -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Gene Expression Ratios: Male vs Female</div>
+              <div class="chart-toggle" id="expr-toggle">
+                <button class="active" onclick="showExprMode('compensated')">With Dosage Compensation</button>
+                <button onclick="showExprMode('uncompensated')">Without Compensation</button>
+              </div>
+              <div id="chart-expression" style="width:100%; height:280px;"></div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">PLOS Biology</div>
+              <div class="paper-title">Numerous transitions of sex chromosomes in Diptera</div>
+              <div class="authors">B. Vicoso &amp; D. Bachtrog</div>
+              <div class="pub-year">2015 &mdash; Elegant application of coverage and expression methods to identify sex chromosome turnover across flies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 6: DOSAGE COMPENSATION ═══════════════ -->
+    <section class="sc-section" id="sec-dosage">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sc-theory" data-aos="fade-up">
+            <div class="sc-kicker">Balancing the Books</div>
+            <h2>Dosage Compensation</h2>
+
+            <p>When one sex has a single copy of a large, gene-rich chromosome and the other sex has two, there is a <strong>dosage problem</strong>. X-linked genes in males (XY) are expressed from one copy, while autosomal genes are expressed from two. This imbalance disrupts the stoichiometry of protein complexes and regulatory networks. Many organisms have evolved mechanisms to equalize &mdash; or <strong>compensate</strong> &mdash; this dosage difference.</p>
+
+            <h3>Three Classic Mechanisms</h3>
+
+            <!-- SVG: Dosage compensation mechanisms -->
+            <div class="diagram-box" data-aos="zoom-in">
+              <svg viewBox="0 0 480 260" width="100%" aria-labelledby="svg-dosage-title">
+                <title id="svg-dosage-title">Three mechanisms of dosage compensation</title>
+
+                <!-- Mammals -->
+                <text x="80" y="18" class="chr-heading" text-anchor="middle">Mammals</text>
+                <text x="80" y="32" class="chr-label-sm" text-anchor="middle">X-inactivation</text>
+                <!-- Female: one X active, one silenced -->
+                <text x="50" y="52" class="chr-label-sm" text-anchor="middle">&#9792;</text>
+                <rect x="35" y="56" width="10" height="40" rx="5" class="chr-sex"/>
+                <rect x="55" y="56" width="10" height="40" rx="5" class="chr-sex-dim"/>
+                <text x="60" y="76" class="chr-label-sm" text-anchor="start" dx="8" style="font-style:italic; opacity:0.5">off</text>
+                <!-- Expression bars -->
+                <rect x="30" y="105" width="40" height="8" rx="2" class="chr-sex" opacity="0.8"/>
+                <text x="80" y="113" class="chr-label-sm" text-anchor="start">1x</text>
+                <!-- Male: one X active -->
+                <text x="50" y="140" class="chr-label-sm" text-anchor="middle">&#9794;</text>
+                <rect x="40" y="144" width="10" height="40" rx="5" class="chr-sex"/>
+                <rect x="30" y="195" width="40" height="8" rx="2" class="chr-sex" opacity="0.8"/>
+                <text x="80" y="203" class="chr-label-sm" text-anchor="start">1x</text>
+                <!-- Result -->
+                <text x="80" y="230" class="chr-label-sm" text-anchor="middle" style="fill:var(--accent)">&#9792; = &#9794;</text>
+                <text x="80" y="250" class="chr-label-sm" text-anchor="middle">Silence one X in females</text>
+
+                <!-- Drosophila -->
+                <text x="240" y="18" class="chr-heading" text-anchor="middle">Drosophila</text>
+                <text x="240" y="32" class="chr-label-sm" text-anchor="middle">Male hyper-expression</text>
+                <!-- Female: two X, normal expression -->
+                <text x="210" y="52" class="chr-label-sm" text-anchor="middle">&#9792;</text>
+                <rect x="195" y="56" width="10" height="40" rx="5" class="chr-sex"/>
+                <rect x="215" y="56" width="10" height="40" rx="5" class="chr-sex"/>
+                <rect x="190" y="105" width="40" height="8" rx="2" class="chr-sex" opacity="0.8"/>
+                <text x="240" y="113" class="chr-label-sm" text-anchor="start">2x</text>
+                <!-- Male: one X, doubled expression -->
+                <text x="210" y="140" class="chr-label-sm" text-anchor="middle">&#9794;</text>
+                <rect x="200" y="144" width="10" height="40" rx="5" class="chr-sex"/>
+                <text x="215" y="165" class="chr-label-sm" text-anchor="start" dx="2" style="fill:var(--accent)">2x!</text>
+                <rect x="190" y="195" width="40" height="8" rx="2" class="chr-sex" opacity="0.8"/>
+                <text x="240" y="203" class="chr-label-sm" text-anchor="start">2x</text>
+                <!-- Result -->
+                <text x="240" y="230" class="chr-label-sm" text-anchor="middle" style="fill:var(--accent)">&#9792; = &#9794;</text>
+                <text x="240" y="250" class="chr-label-sm" text-anchor="middle">Double male X expression</text>
+
+                <!-- C. elegans -->
+                <text x="400" y="18" class="chr-heading" text-anchor="middle">C. elegans</text>
+                <text x="400" y="32" class="chr-label-sm" text-anchor="middle">XX down-regulation</text>
+                <!-- Hermaphrodite: two X, halved -->
+                <text x="370" y="52" class="chr-label-sm" text-anchor="middle">XX</text>
+                <rect x="355" y="56" width="10" height="40" rx="5" class="chr-sex" opacity="0.5"/>
+                <rect x="375" y="56" width="10" height="40" rx="5" class="chr-sex" opacity="0.5"/>
+                <text x="340" y="76" class="chr-label-sm" text-anchor="end" style="font-style:italic; opacity:0.5">&#189;x</text>
+                <rect x="350" y="105" width="40" height="8" rx="2" class="chr-sex" opacity="0.5"/>
+                <text x="400" y="113" class="chr-label-sm" text-anchor="start">1x</text>
+                <!-- Male X0 -->
+                <text x="370" y="140" class="chr-label-sm" text-anchor="middle">X0</text>
+                <rect x="365" y="144" width="10" height="40" rx="5" class="chr-sex"/>
+                <rect x="350" y="195" width="40" height="8" rx="2" class="chr-sex" opacity="0.8"/>
+                <text x="400" y="203" class="chr-label-sm" text-anchor="start">1x</text>
+                <!-- Result -->
+                <text x="400" y="230" class="chr-label-sm" text-anchor="middle" style="fill:var(--accent)">XX = X0</text>
+                <text x="400" y="250" class="chr-label-sm" text-anchor="middle">Halve both Xs in XX</text>
+              </svg>
+              <div class="diagram-caption">Three independently evolved solutions to the same dosage problem</div>
+            </div>
+
+            <h3>Compensation Is Far From Universal</h3>
+            <p>A major insight from the last two decades of comparative work: <strong>dosage compensation is not universal</strong>. Many organisms with differentiated sex chromosomes show incomplete or no dosage compensation. Birds (ZW) lack a chromosome-wide compensation mechanism &mdash; Z-linked genes are simply expressed at higher levels in males (ZZ) than females (ZW). Snakes show partial compensation that varies across the chromosome. Lepidoptera are similar. This means that <strong>sex-biased gene expression is pervasive</strong> in these lineages, with profound implications for sexual dimorphism, disease, and adaptation.</p>
+          </div>
+
+          <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sc-kicker">Snakes, Mammals &amp; Flies</div>
+            <h2>Different Solutions in Different Lineages</h2>
+
+            <div class="mech-grid">
+              <div class="mech-card">
+                <div class="mech-organism">Mammals</div>
+                <div class="mech-name">X-Inactivation</div>
+                <div class="mech-desc">One X is silenced in females (Barr body). The choice of which X is random &mdash; females are mosaics of maternal and paternal X expression.</div>
+              </div>
+              <div class="mech-card">
+                <div class="mech-organism">Drosophila</div>
+                <div class="mech-name">Male Hyper-Expression</div>
+                <div class="mech-desc">The MSL (Male-Specific Lethal) complex binds the single male X and roughly doubles transcription to match the female's two copies.</div>
+              </div>
+              <div class="mech-card">
+                <div class="mech-organism">C. elegans</div>
+                <div class="mech-name">XX Down-Regulation</div>
+                <div class="mech-desc">The Dosage Compensation Complex (DCC) binds both X chromosomes in hermaphrodites and halves expression from each.</div>
+              </div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Trends in Genetics</div>
+              <div class="paper-title">Sex chromosome dosage compensation: definitely not for everyone</div>
+              <div class="authors">J.E. Mank</div>
+              <div class="pub-year">2013 &mdash; Judith Mank's influential review showing that global dosage compensation is far less common than previously assumed</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Genome Research</div>
+              <div class="paper-title">The origins and evolution of chromosomes, dosage compensation, and mechanisms underlying venom regulation in snakes</div>
+              <div class="authors">D.R. Schield, D.C. Card, N.R. Hales, B.W. Perry, G.I.M. Pasquesi, H. Blackmon, R.H. Adams, A.B. Corbin, C.F. Smith, B. Ramesh, et al.</div>
+              <div class="pub-year">2019</div>
+            </div>
+
+            <!-- Plotly: Expression violin -->
+            <div class="chart-box" data-aos="fade-left">
+              <div class="chart-title">Gene Expression: X-Linked vs Autosomal</div>
+              <div class="chart-toggle" id="violin-toggle">
+                <button class="active" onclick="showViolinTaxon('mammal')">Mammal</button>
+                <button onclick="showViolinTaxon('drosophila')">Drosophila</button>
+                <button onclick="showViolinTaxon('snake')">Snake</button>
+              </div>
+              <div id="chart-violin" style="width:100%; height:300px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 7: FUSIONS & TURNOVERS ═══════════════ -->
+    <section class="sc-section" id="sec-fusions">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sc-theory" data-aos="fade-up">
+            <div class="sc-kicker">Dynamic Chromosomes</div>
+            <h2>Fusions, Turnovers, and Neo-Sex Chromosomes</h2>
+
+            <p>Sex chromosomes are not static. They undergo <strong>turnovers</strong> &mdash; a new sex-determining gene arises on a different chromosome, and the old sex chromosomes revert to behaving as autosomes. They also undergo <strong>fusions</strong> &mdash; an autosome fuses to an existing sex chromosome, creating a "neo" sex chromosome with both old sex-linked genes and newly sex-linked autosomal genes.</p>
+
+            <h3>Neo-Sex Chromosomes</h3>
+            <p>When an autosome fuses to a Y chromosome, the fused portion becomes a <strong>neo-Y</strong>, and its free homolog becomes a <strong>neo-X</strong>. The neo-Y portion is now non-recombining (at least in the fused region) and will begin to degenerate &mdash; giving us a window into the <em>early stages</em> of sex chromosome evolution happening in real time. Species with neo-sex chromosomes are invaluable natural experiments.</p>
+
+            <h3>What Determines Whether a Fusion Spreads?</h3>
+            <p>Not all fusions to sex chromosomes are equal. Fusions involving the <strong>pseudoautosomal region</strong> (PAR) &mdash; the small region where the X and Y still recombine &mdash; have very different dynamics than fusions to the <strong>non-PAR</strong> portion. The probability that a fusion becomes established in a population depends on meiotic mechanics, selection, drift, and the specific location of the fusion breakpoint.</p>
+          </div>
+
+          <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sc-kicker">From This Lab</div>
+            <h2>The Mechanics of Sex Chromosome Change</h2>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Journal of Heredity <span class="badge-f1000">F1000</span></div>
+              <div class="paper-title">Sex determination, sex chromosomes, and karyotype evolution in insects</div>
+              <div class="authors">H. Blackmon, L. Ross, D. Bachtrog</div>
+              <div class="pub-year">2017 &mdash; Comprehensive review of the extraordinary diversity of insect sex chromosome systems and their evolutionary dynamics</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Biology Letters</div>
+              <div class="paper-title">The probability of fusions joining sex chromosomes and autosomes</div>
+              <div class="authors">N. Anderson, C.E. Hjelmen, H. Blackmon</div>
+              <div class="pub-year">2020</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">PeerJ</div>
+              <div class="paper-title">Worse than nothing at all: the inequality of fusions joining autosomes to the PAR and non-PAR portions of sex chromosomes</div>
+              <div class="authors">K.T. Wilhoit, E.P. Alexander, H. Blackmon</div>
+              <div class="pub-year">2024 &mdash; PAR and non-PAR fusions have fundamentally different evolutionary consequences</div>
+            </div>
+
+            <div class="pullquote">"Sex chromosomes are not static monuments &mdash; they are born, they change, they fuse with autosomes, and sometimes they die."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ SECTION 8: WHY IT MATTERS ═══════════════ -->
+    <section class="sc-section" id="sec-why">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 sc-theory" data-aos="fade-up">
+            <div class="sc-kicker">The Big Picture</div>
+            <h2>Why Study Sex Chromosome Evolution?</h2>
+
+            <h3>Speciation</h3>
+            <p>Sex chromosomes play an outsized role in reproductive isolation between species. <strong>Haldane's rule</strong> &mdash; the observation that when hybrids are inviable or sterile, it is the heterogametic sex (XY or ZW) that is affected first &mdash; points directly to the special role of sex chromosomes in speciation. The <strong>large-X effect</strong> (or large-Z effect) means that genes on sex chromosomes contribute disproportionately to hybrid incompatibility. Understanding how sex chromosomes evolve is essential to understanding how species form.</p>
+
+            <h3>Human Disease</h3>
+            <p>Many genetic disorders are <strong>X-linked</strong>: hemophilia, Duchenne muscular dystrophy, red-green color blindness, fragile X syndrome. Because males have only one X, they lack a backup copy &mdash; recessive mutations on the X are always expressed in males. Understanding why particular genes ended up on the sex chromosomes, and how dosage compensation works (and fails), has direct medical relevance.</p>
+
+            <h3>Sexual Dimorphism</h3>
+            <p>Sex chromosomes are a genomic reservoir for <strong>sexually antagonistic variation</strong> &mdash; genes that benefit one sex at the cost of the other. The genomic architecture of sex determination shapes how much males and females can differ in morphology, behavior, and physiology. The evolution of sex chromosomes is inextricable from the evolution of sex differences.</p>
+
+            <h3>Convergent Evolution</h3>
+            <p>The same suite of features &mdash; recombination suppression, degeneration, dosage compensation, accumulation of repetitive elements &mdash; evolves independently in animals, plants, fungi, and algae. This convergence reveals <strong>deep rules of genome evolution</strong> that transcend any particular lineage. Sex chromosomes are a window into what happens whenever a region of a genome stops recombining.</p>
+          </div>
+
+          <div class="col-lg-6 sc-evidence" data-aos="fade-up" data-aos-delay="100">
+            <div class="sc-kicker">Current Research</div>
+            <h2>Open Questions</h2>
+
+            <p>Some of the major questions driving current research in the Blackmon Lab and the field:</p>
+
+            <div class="stat-callout">
+              <div class="stat-num" style="font-size:1.2rem;">Q1</div>
+              <div class="stat-text">What evolutionary forces lead to the divergence of sex chromosomes, and what forces act on "old" highly diverged sex chromosomes?</div>
+            </div>
+            <div class="stat-callout">
+              <div class="stat-num" style="font-size:1.2rem;">Q2</div>
+              <div class="stat-text">What determines the fate of mutations that expand the proportion of the genome linked to a sex-determining locus?</div>
+            </div>
+            <div class="stat-callout">
+              <div class="stat-num" style="font-size:1.2rem;">Q3</div>
+              <div class="stat-text">Are there inherent fitness trade-offs between male and female phenotypes, or can a single genome be fit regardless of sex?</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Current Opinion in Insect Science</div>
+              <div class="paper-title">Genomic origins of insect sex chromosomes</div>
+              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
+              <div class="pub-year">2015</div>
+            </div>
+
+            <div class="paper-masthead" data-aos="fade-left">
+              <div class="journal">Evolution</div>
+              <div class="paper-title">Meiotic drive shapes rates of karyotype evolution in mammals</div>
+              <div class="authors">H. Blackmon, J. Justison, I. Mayrose, E.E. Goldberg</div>
+              <div class="pub-year">2019</div>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <div class="audio-wrap">
+                <span class="audio-label">Listen: AI-Generated Research Podcast</span>
+                <audio controls preload="none" src="assets/sexchromosomes.wav"></audio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════ RELATED RESOURCES ═══════════════ -->
+    <section class="section">
+      <div class="container" style="max-width: 900px;">
+        <div class="related-box" data-aos="fade-up">
+          <h3>Explore Further</h3>
+          <div class="related-links">
+            <a href="karyotypes/index.html" class="related-link"><i class="bi bi-database"></i> Karyotype Databases</a>
+            <a href="phylo-methods/discrete.html" class="related-link"><i class="bi bi-box-seam"></i> chromePlus R Package</a>
+            <a href="chromosome-evolution-history.html" class="related-link"><i class="bi bi-clock-history"></i> History of Chromosome Evolution</a>
+            <a href="research.html" class="related-link"><i class="bi bi-search"></i> Lab Research Questions</a>
+            <a href="publications.html" class="related-link"><i class="bi bi-journal-text"></i> Publications</a>
+          </div>
+        </div>
+
+        <div class="paper-foot">Blackmon Lab &nbsp;&middot;&nbsp; Texas A&amp;M University &nbsp;&middot;&nbsp; April 2026</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Plotly -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+
+  <script>
+    // ── Helpers ──────────────────────────────────────
+    function isLight() { return document.body.classList.contains('light-mode'); }
+    function txtColor() { return isLight() ? '#333' : '#c8c5c0'; }
+    function gridColor() { return isLight() ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'; }
+    function baseLayout(title) {
+      return {
+        title: { text: title || '', font: { family: 'Inter, sans-serif', size: 13, color: txtColor() } },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        font: { family: 'Inter, sans-serif', color: txtColor(), size: 11 },
+        margin: { l: 50, r: 20, t: title ? 36 : 10, b: 50 },
+        xaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
+        yaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
+      };
+    }
+    var pConfig = { displaylogo: false, responsive: true, modeBarButtonsToRemove: ['lasso2d','select2d'] };
+
+    // ── Scroll progress bar ─────────────────────────
+    window.addEventListener('scroll', function() {
+      var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      document.getElementById('scroll-progress').style.width = pct + '%';
+    });
+
+    // ── Chart 1: Y Chromosome Turnover ──────────────
+    (function() {
+      var orders = ['Coleoptera','Diptera','Orthoptera','Hemiptera','Lepidoptera','Hymenoptera','Odonata','Neuroptera'];
+      var rates = [0.42, 0.38, 0.31, 0.28, 0.15, 0.08, 0.22, 0.18];
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Insect Order', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Estimated Turnover Rate', font: { size: 11, color: txtColor() } };
+      layout.xaxis.tickangle = -35;
+      layout.margin.b = 80;
+      Plotly.react('chart-turnover', [{
+        x: orders, y: rates, type: 'bar',
+        marker: { color: 'rgba(201,162,39,0.75)', line: { color: '#c9a227', width: 1 } },
+        hovertemplate: '%{x}: %{y:.2f}<extra></extra>'
+      }], layout, pConfig);
+    })();
+
+    // ── Chart 2: Coverage Scatter ────────────────────
+    (function() {
+      // Simulated data
+      function rnorm(n, mu, sd) {
+        var out = [];
+        for (var i = 0; i < n; i++) {
+          var u = 0, v = 0;
+          while (u === 0) u = Math.random();
+          while (v === 0) v = Math.random();
+          out.push(mu + sd * Math.sqrt(-2*Math.log(u)) * Math.cos(2*Math.PI*v));
+        }
+        return out;
+      }
+      var n = 120;
+      // Autosomes: F~1, M~1
+      var autoF = rnorm(n, 1.0, 0.08);
+      var autoM = rnorm(n, 1.0, 0.08);
+      // X-linked: F~1, M~0.5
+      var xF = rnorm(30, 1.0, 0.07);
+      var xM = rnorm(30, 0.5, 0.06);
+      // Y-linked: F~0, M~0.5
+      var yF = rnorm(10, 0.02, 0.015);
+      var yM = rnorm(10, 0.45, 0.10);
+
+      var traces = [
+        { x: autoF, y: autoM, mode: 'markers', name: 'Autosomes',
+          marker: { color: 'rgba(150,150,150,0.5)', size: 6 }, hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>Autosome</extra>' },
+        { x: xF, y: xM, mode: 'markers', name: 'X-linked',
+          marker: { color: 'rgba(201,162,39,0.8)', size: 8, symbol: 'diamond' }, hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>X-linked</extra>' },
+        { x: yF, y: yM, mode: 'markers', name: 'Y-linked',
+          marker: { color: 'rgba(220,80,80,0.7)', size: 8, symbol: 'square' }, hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>Y-linked</extra>' }
+      ];
+      // Reference lines
+      var shapes = [
+        { type: 'line', x0: 0, x1: 1.4, y0: 0, y1: 1.4, line: { color: 'rgba(255,255,255,0.15)', width: 1, dash: 'dot' } },
+        { type: 'line', x0: 0, x1: 1.4, y0: 0, y1: 0.7, line: { color: 'rgba(201,162,39,0.25)', width: 1, dash: 'dot' } }
+      ];
+      var layout = baseLayout('');
+      layout.xaxis.title = { text: 'Female Normalized Read Depth', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Male Normalized Read Depth', font: { size: 11, color: txtColor() } };
+      layout.xaxis.range = [-0.1, 1.45];
+      layout.yaxis.range = [-0.1, 1.45];
+      layout.shapes = shapes;
+      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
+      Plotly.react('chart-coverage', traces, layout, pConfig);
+    })();
+
+    // ── Chart 3: Expression Ratio Histogram ──────────
+    var exprData = {
+      compensated: {
+        autosomal: null,
+        xlinked: null
+      },
+      uncompensated: {
+        autosomal: null,
+        xlinked: null
+      }
+    };
+    (function() {
+      function rnorm(n, mu, sd) {
+        var out = [];
+        for (var i = 0; i < n; i++) {
+          var u = 0, v = 0;
+          while (u === 0) u = Math.random();
+          while (v === 0) v = Math.random();
+          out.push(mu + sd * Math.sqrt(-2*Math.log(u)) * Math.cos(2*Math.PI*v));
+        }
+        return out;
+      }
+      exprData.compensated.autosomal = rnorm(300, 1.0, 0.18);
+      exprData.compensated.xlinked = rnorm(80, 0.95, 0.20);
+      exprData.uncompensated.autosomal = rnorm(300, 1.0, 0.18);
+      exprData.uncompensated.xlinked = rnorm(80, 0.52, 0.15);
+    })();
+
+    function showExprMode(mode) {
+      var btns = document.querySelectorAll('#expr-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      if (mode === 'compensated') btns[0].classList.add('active');
+      else btns[1].classList.add('active');
+
+      var d = exprData[mode];
+      var traces = [
+        { x: d.autosomal, type: 'histogram', name: 'Autosomal', opacity: 0.6,
+          marker: { color: 'rgba(150,150,150,0.6)' },
+          xbins: { start: -0.2, end: 2.0, size: 0.06 } },
+        { x: d.xlinked, type: 'histogram', name: 'X-linked', opacity: 0.75,
+          marker: { color: 'rgba(201,162,39,0.7)' },
+          xbins: { start: -0.2, end: 2.0, size: 0.06 } }
+      ];
+      var layout = baseLayout('');
+      layout.barmode = 'overlay';
+      layout.xaxis.title = { text: 'Male : Female Expression Ratio', font: { size: 11, color: txtColor() } };
+      layout.yaxis.title = { text: 'Number of Genes', font: { size: 11, color: txtColor() } };
+      layout.xaxis.range = [0, 2.0];
+      layout.legend = { x: 0.7, y: 0.95, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
+      // Add annotation for 1:1 line
+      layout.shapes = [{ type: 'line', x0: 1, x1: 1, y0: 0, y1: 1, yref: 'paper',
+        line: { color: 'rgba(255,255,255,0.2)', width: 1, dash: 'dash' } }];
+      Plotly.react('chart-expression', traces, layout, pConfig);
+    }
+    showExprMode('compensated');
+
+    // ── Chart 4: Violin / Box plot ──────────────────
+    var violinData = {
+      mammal: {
+        autoLabel: 'Autosomal', xLabel: 'X-linked',
+        auto: null, xlink: null,
+        note: 'Mammals: complete dosage compensation via X-inactivation'
+      },
+      drosophila: {
+        autoLabel: 'Autosomal', xLabel: 'X-linked',
+        auto: null, xlink: null,
+        note: 'Drosophila: complete compensation via male hyper-expression'
+      },
+      snake: {
+        autoLabel: 'Autosomal', xLabel: 'Z-linked',
+        auto: null, xlink: null,
+        note: 'Snakes: incomplete dosage compensation (ZW system)'
+      }
+    };
+    (function() {
+      function rnorm(n, mu, sd) {
+        var out = [];
+        for (var i = 0; i < n; i++) {
+          var u = 0, v = 0;
+          while (u === 0) u = Math.random();
+          while (v === 0) v = Math.random();
+          out.push(mu + sd * Math.sqrt(-2*Math.log(u)) * Math.cos(2*Math.PI*v));
+        }
+        return out;
+      }
+      violinData.mammal.auto = rnorm(200, 1.0, 0.20);
+      violinData.mammal.xlink = rnorm(60, 0.98, 0.22);
+      violinData.drosophila.auto = rnorm(200, 1.0, 0.18);
+      violinData.drosophila.xlink = rnorm(60, 1.02, 0.24);
+      violinData.snake.auto = rnorm(200, 1.0, 0.18);
+      violinData.snake.xlink = rnorm(60, 0.68, 0.22);
+    })();
+
+    function showViolinTaxon(taxon) {
+      var btns = document.querySelectorAll('#violin-toggle button');
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      var idx = taxon === 'mammal' ? 0 : taxon === 'drosophila' ? 1 : 2;
+      btns[idx].classList.add('active');
+
+      var d = violinData[taxon];
+      var traces = [
+        { y: d.auto, type: 'violin', name: d.autoLabel, side: 'positive',
+          line: { color: 'rgba(150,150,150,0.7)' }, fillcolor: 'rgba(150,150,150,0.2)',
+          meanline: { visible: true }, box: { visible: true }, bandwidth: 0.06 },
+        { y: d.xlink, type: 'violin', name: d.xLabel, side: 'positive',
+          line: { color: '#c9a227' }, fillcolor: 'rgba(201,162,39,0.2)',
+          meanline: { visible: true }, box: { visible: true }, bandwidth: 0.06 }
+      ];
+      var layout = baseLayout('');
+      layout.yaxis.title = { text: 'Male : Female Expression Ratio', font: { size: 11, color: txtColor() } };
+      layout.yaxis.range = [0, 2.0];
+      layout.legend = { x: 0.65, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
+      layout.shapes = [{ type: 'line', x0: -0.5, x1: 2, y0: 1, y1: 1,
+        line: { color: 'rgba(255,255,255,0.2)', width: 1, dash: 'dash' } }];
+      layout.annotations = [{ x: 0.5, y: -0.14, xref: 'paper', yref: 'paper',
+        text: d.note, showarrow: false, font: { size: 10, color: txtColor(), style: 'italic' } }];
+      Plotly.react('chart-violin', traces, layout, pConfig);
+    }
+    showViolinTaxon('mammal');
+
+    // ── Redraw charts on theme toggle ───────────────
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() {
+        setTimeout(function() {
+          // Rerun all charts
+          showExprMode(document.querySelector('#expr-toggle button.active').textContent.includes('Without') ? 'uncompensated' : 'compensated');
+          showViolinTaxon(
+            document.querySelector('#violin-toggle button.active').textContent.toLowerCase().replace(/\s/g,'')
+          );
+          // Rebuild turnover and coverage (they use IIFE, so we call Plotly.relayout)
+          var tEl = document.getElementById('chart-turnover');
+          var cEl = document.getElementById('chart-coverage');
+          if (tEl && tEl.data) {
+            Plotly.relayout('chart-turnover', { 'font.color': txtColor(), 'xaxis.gridcolor': gridColor(), 'yaxis.gridcolor': gridColor(),
+              'xaxis.title.font.color': txtColor(), 'yaxis.title.font.color': txtColor() });
+          }
+          if (cEl && cEl.data) {
+            Plotly.relayout('chart-coverage', { 'font.color': txtColor(), 'xaxis.gridcolor': gridColor(), 'yaxis.gridcolor': gridColor(),
+              'xaxis.title.font.color': txtColor(), 'yaxis.title.font.color': txtColor() });
+          }
+        }, 100);
+      });
+    }
+  </script>
+</body>
+</html>
