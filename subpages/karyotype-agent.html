@@ -299,7 +299,7 @@
 
 <body>
   <script>
-    try{if(localStorage.getItem("theme")==="light"){document.body.classList.add("light-mode");}}catch(e){}
+    document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}
     document.body.classList.add('scrolled');
     window.addEventListener('load', function() { document.body.classList.add('scrolled'); });
   </script>
