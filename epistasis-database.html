@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Epistasis Database - Blackmon Lab</title>
+  <meta name="description" content="Over 1,600 datasets from 130+ publications quantifying the role of epistasis in trait divergence across the tree of life.">
+  <meta property="og:title" content="Epistasis Database - Blackmon Lab" />
+  <meta property="og:description" content="Over 1,600 datasets from 130+ publications quantifying the role of epistasis in trait divergence across the tree of life." />
+  <meta property="og:url" content="https://coleoguy.github.io/epistasis-database.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blackmon Lab" />
+  <link rel="canonical" href="https://coleoguy.github.io/epistasis-database.html">
+  <meta name="keywords" content="epistasis, line cross analysis, additive, dominance, trait divergence, quantitative genetics, Wright, shifting balance">
+
+  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Epistasis Database",
+    "description": "Over 1,600 datasets from 130+ publications quantifying epistatic, additive, and dominance effects on trait divergence.",
+    "url": "https://coleoguy.github.io/epistasis-database.html",
+    "creator": {
+      "@type": "Organization",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    },
+    "license": "https://coleoguy.github.io/epistasis-database.html#usage"
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4J0HZ3LNQX');
+  </script>
+
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- PapaParse for CSV loading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <!-- Chart.js for visualization -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <style>
+    /* ── Epistasis Database Styles ────────────────── */
+
+    .epi-hero {
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+    .epi-hero img {
+      max-width: 180px;
+      margin-bottom: 24px;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(201,162,39,0.12);
+    }
+    .epi-hero .lead {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Stats banner */
+    .epi-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin: 36px 0 12px;
+    }
+    .epi-stat {
+      text-align: center;
+    }
+    .epi-stat .num {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+    }
+    .epi-stat .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* Tab navigation */
+    .epi-tabs {
+      display: flex;
+      gap: 4px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .epi-tab {
+      padding: 10px 22px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: var(--font-body);
+    }
+    .epi-tab:hover {
+      color: var(--text-heading);
+    }
+    .epi-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .epi-panel {
+      display: none;
+    }
+    .epi-panel.active {
+      display: block;
+    }
+
+    /* Controls bar */
+    .epi-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .epi-control label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .epi-control select {
+      width: 100%;
+      padding: 7px 10px;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      color: var(--text-heading);
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.2s;
+      appearance: auto;
+    }
+    .epi-control select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* Chart container */
+    .epi-chart-wrap {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .epi-chart-wrap canvas {
+      max-height: 480px;
+    }
+    .epi-chart-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 8px;
+    }
+    .epi-n-display {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .epi-n-display strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Data table */
+    .epi-table-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .epi-search {
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      color: var(--text-heading);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      min-width: 260px;
+      transition: border-color 0.2s;
+    }
+    .epi-search:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .epi-download-btn {
+      padding: 7px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--bg);
+      background: var(--accent);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: var(--font-body);
+    }
+    .epi-download-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .epi-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .epi-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .epi-table thead {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .epi-table th {
+      padding: 10px 14px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--accent-border);
+      text-align: left;
+      cursor: pointer;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .epi-table th:hover {
+      color: var(--accent-hover);
+    }
+    .epi-table th .sort-arrow {
+      margin-left: 4px;
+      font-size: 0.7rem;
+      opacity: 0.4;
+    }
+    .epi-table th.sorted .sort-arrow {
+      opacity: 1;
+      color: var(--accent);
+    }
+    .epi-table td {
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    .epi-table tr:hover td {
+      background: var(--accent-dim);
+    }
+    .epi-table td a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .epi-table td a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+    .epi-table .epi-val {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    /* Pagination */
+    .epi-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .epi-page-btn {
+      padding: 5px 12px;
+      font-size: 0.8rem;
+      font-family: var(--font-body);
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .epi-page-btn:hover {
+      border-color: var(--accent-border);
+      color: var(--text-heading);
+    }
+    .epi-page-btn.active {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+    .epi-page-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    .epi-page-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0 8px;
+    }
+
+    /* Citations */
+    .epi-citations {
+      columns: 1;
+      column-gap: 36px;
+    }
+    @media (min-width: 768px) { .epi-citations { columns: 2; } }
+
+    .epi-citation {
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.55;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      break-inside: avoid;
+    }
+    .epi-citation:last-child { border-bottom: none; }
+
+    /* Info section */
+    .epi-info {
+      max-width: 780px;
+      line-height: 1.75;
+      color: var(--text);
+    }
+    .epi-info p {
+      margin-bottom: 16px;
+    }
+    .epi-info strong, .epi-info b {
+      color: var(--text-heading);
+    }
+    .epi-cite-block {
+      padding: 16px 20px;
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      color: var(--text-heading);
+      line-height: 1.6;
+    }
+
+    /* Ternary plot */
+    .epi-ternary-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-top: 24px;
+      text-align: center;
+    }
+    .epi-ternary-wrap canvas {
+      max-width: 560px;
+      margin: 0 auto;
+      display: block;
+    }
+    .epi-ternary-legend {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+    .epi-ternary-legend span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .epi-ternary-legend .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Loading */
+    .epi-loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .epi-loading .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: epi-spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes epi-spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <div class="logo-group d-flex align-items-center gap-2">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+        </a>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+      </div>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="resources.html" class="active">Resources</a></li>
+          <li><a href="ai.html">AI</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Epistasis Database</h1>
+        <p>Quantifying the role of epistasis in trait divergence across the tree of life</p>
+      </div>
+    </section>
+
+    <!-- Hero / About -->
+    <section class="section">
+      <div class="container">
+        <div class="epi-hero" data-aos="fade-up">
+          <img src="subpages/LCA-database/www/epi-logo.png" alt="Epistasis Database Logo">
+          <p class="lead">
+            Since the 1930s, scientists have debated the importance of epistatic gene action
+            relative to additive gene action in trait divergence. To resolve this debate, we conducted
+            an extensive literature search and generated several datasets, allowing us to quantify
+            the composite genetic effects that underlie trait divergence across the tree of life.
+          </p>
+
+          <div class="epi-stats">
+            <div class="epi-stat">
+              <span class="num" id="stat-datasets">--</span>
+              <span class="label">Datasets</span>
+            </div>
+            <div class="epi-stat">
+              <span class="num" id="stat-pubs">--</span>
+              <span class="label">Publications</span>
+            </div>
+            <div class="epi-stat">
+              <span class="num" id="stat-species">--</span>
+              <span class="label">Species</span>
+            </div>
+            <div class="epi-stat">
+              <span class="num" id="stat-traits">--</span>
+              <span class="label">Traits</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main interactive section -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Tabs -->
+        <div class="epi-tabs">
+          <button class="epi-tab active" data-panel="plot">Visualization</button>
+          <button class="epi-tab" data-panel="ternary">Ternary Plot</button>
+          <button class="epi-tab" data-panel="table">Data Table</button>
+          <button class="epi-tab" data-panel="citations">Citations</button>
+          <button class="epi-tab" data-panel="info">About &amp; Usage</button>
+        </div>
+
+        <!-- PLOT PANEL -->
+        <div class="epi-panel active" id="panel-plot">
+          <div class="epi-controls">
+            <div class="epi-control">
+              <label>Color by</label>
+              <select id="colorBy">
+                <option value="kingdom">Clade</option>
+                <option value="divergence">Divergence</option>
+                <option value="class">Trait class</option>
+                <option value="domestication">Organism type</option>
+                <option value="SCS">Sex chromosome system</option>
+                <option value="weighted">Regression type</option>
+              </select>
+            </div>
+            <div class="epi-control">
+              <label>Clade</label>
+              <select id="filterClade">
+                <option value="all">All</option>
+                <option value="plant">Plant</option>
+                <option value="animal">Animal</option>
+              </select>
+            </div>
+            <div class="epi-control">
+              <label>Divergence</label>
+              <select id="filterDivergence">
+                <option value="all">All</option>
+                <option value="within">Within species</option>
+                <option value="between">Between species</option>
+              </select>
+            </div>
+            <div class="epi-control">
+              <label>Trait class</label>
+              <select id="filterClass">
+                <option value="all">All</option>
+                <option value="LH">Life history</option>
+                <option value="M">Morphology</option>
+              </select>
+            </div>
+            <div class="epi-control">
+              <label>Organism type</label>
+              <select id="filterDomestication">
+                <option value="all">All</option>
+                <option value="domestic">Domesticated</option>
+                <option value="lab">Lab</option>
+                <option value="wild">Wild</option>
+              </select>
+            </div>
+            <div class="epi-control">
+              <label>Regression</label>
+              <select id="filterRegression">
+                <option value="all">All</option>
+                <option value="Y">Weighted LSR</option>
+                <option value="N">Unweighted LSR</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="epi-n-display" id="nDisplay"></div>
+
+          <div class="epi-chart-wrap">
+            <canvas id="epiChart"></canvas>
+          </div>
+          <p class="epi-chart-note">Cumulative distribution of the proportion of trait divergence explained by epistasis</p>
+        </div>
+
+        <!-- TERNARY PANEL -->
+        <div class="epi-panel" id="panel-ternary">
+          <div class="epi-controls">
+            <div class="epi-control">
+              <label>Color by</label>
+              <select id="ternColorBy">
+                <option value="kingdom">Clade</option>
+                <option value="divergence">Divergence</option>
+                <option value="class">Trait class</option>
+                <option value="domestication">Organism type</option>
+              </select>
+            </div>
+            <div class="epi-control">
+              <label>Clade</label>
+              <select id="ternFilterClade">
+                <option value="all">All</option>
+                <option value="plant">Plant</option>
+                <option value="animal">Animal</option>
+              </select>
+            </div>
+            <div class="epi-control">
+              <label>Divergence</label>
+              <select id="ternFilterDivergence">
+                <option value="all">All</option>
+                <option value="within">Within species</option>
+                <option value="between">Between species</option>
+              </select>
+            </div>
+            <div class="epi-control">
+              <label>Trait class</label>
+              <select id="ternFilterClass">
+                <option value="all">All</option>
+                <option value="LH">Life history</option>
+                <option value="M">Morphology</option>
+              </select>
+            </div>
+          </div>
+          <div class="epi-ternary-wrap">
+            <canvas id="ternaryCanvas" width="560" height="520"></canvas>
+            <div class="epi-ternary-legend" id="ternaryLegend"></div>
+          </div>
+          <p class="epi-chart-note">Each point represents one dataset. Vertices: Additive (top), Dominance (bottom-left), Epistasis (bottom-right).</p>
+        </div>
+
+        <!-- TABLE PANEL -->
+        <div class="epi-panel" id="panel-table">
+          <div class="epi-table-controls">
+            <input type="text" class="epi-search" id="tableSearch" placeholder="Search organism, phenotype, or citation...">
+            <button class="epi-download-btn" id="downloadBtn"><i class="bi bi-download"></i> Download CSV</button>
+          </div>
+          <div class="epi-table-wrap" style="max-height: 600px; overflow-y: auto;">
+            <table class="epi-table" id="dataTable">
+              <thead>
+                <tr>
+                  <th data-col="organism">Organism <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="phenotype">Phenotype <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="SCS">SCS <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="traitClass">Trait <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="clade">Clade <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="divergence">Div. <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="divTime">MYA <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="domest">Type <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="add" class="epi-val">Add <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="dom" class="epi-val">Dom <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="epi" class="epi-val">Epi <span class="sort-arrow">&#9650;</span></th>
+                  <th data-col="file">Data <span class="sort-arrow">&#9650;</span></th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+          <div class="epi-pagination" id="pagination"></div>
+        </div>
+
+        <!-- CITATIONS PANEL -->
+        <div class="epi-panel" id="panel-citations">
+          <div class="epi-loading" id="citLoading">
+            <div class="spinner"></div>
+            Loading citations...
+          </div>
+          <div class="epi-citations" id="citationsList"></div>
+        </div>
+
+        <!-- INFO PANEL -->
+        <div class="epi-panel" id="panel-info">
+          <div class="epi-info">
+            <p>
+              Since the 1930s, scientists have debated the importance of epistatic gene action
+              relative to additive gene action in trait divergence. Previous studies have been
+              limited in the number of datasets for which they can accurately quantify epistatic
+              effects. To resolve this debate, we have conducted an extensive literature search
+              and generated several datasets, allowing us to quantify the composite genetic effects
+              that underlie trait divergence across the tree of life.
+            </p>
+            <p>
+              This database houses over 1,600 datasets from 130+ publications, allowing viewers
+              to visualize the effect of epistasis on a range of organisms and phenotypes.
+              Use the <strong>Visualization</strong> tab to explore cumulative distributions of
+              epistatic effects with flexible color-coding and subsetting. The <strong>Ternary Plot</strong>
+              shows the relative contributions of additive, dominance, and epistatic effects for each dataset.
+              The <strong>Data Table</strong> tab provides a searchable, sortable
+              view of all records, and each underlying dataset can be downloaded individually.
+            </p>
+
+            <div class="epi-cite-block" id="usage">
+              <strong>Citation:</strong><br>
+              Elliott, Jorja, Maximos Chin, Brian E. Fontenot, Sabyasachi Mandal,
+              Thomas D. McKnight, Jeffery P. Demuth, Heath Blackmon.
+              "Wright was Right: Analysis of over one thousand datasets supports the
+              critical role of epistasis in genetics and evolution."
+            </div>
+
+            <p>
+              <strong>Submitting data:</strong> If you are aware of any available records that
+              should be added to the database, please
+              <a href="mailto:blackmon@tamu.edu">email us</a> and we will incorporate the missing data.
+            </p>
+            <p>
+              <strong>Usage rights:</strong> Data taken from the database must not be reproduced
+              in published lists, online databases, or other formats, nor redistributed without
+              permission. The information in this database is provided solely for personal and
+              academic use, and must not be used for the purposes of financial gain.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Current version: 1.0 &middot; Last updated: 14 July 2023
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // ── State ──────────────────────────────────────
+    let resultsData = [];
+    let refData = [];
+    let citationsData = [];
+    let chart = null;
+    let tableSortCol = null;
+    let tableSortAsc = true;
+    let tablePageSize = 50;
+    let tablePage = 0;
+
+    // Viridis-inspired palette
+    const PALETTES = {
+      4: ['#440154', '#31688e', '#35b779', '#fde725'],
+      3: ['#440154', '#21918c', '#fde725'],
+      2: ['#440154', '#fde725'],
+      5: ['#440154', '#3b528b', '#21918c', '#5ec962', '#fde725'],
+      6: ['#440154', '#443983', '#31688e', '#21918c', '#35b779', '#fde725'],
+      7: ['#440154', '#443983', '#31688e', '#21918c', '#35b779', '#90d743', '#fde725'],
+      8: ['#440154', '#46337e', '#365c8d', '#277f8e', '#1fa187', '#4ac16d', '#9fda3a', '#fde725']
+    };
+
+    function getPalette(n) {
+      if (n <= 0) return [];
+      if (n <= 8) return (PALETTES[n] || PALETTES[4]).slice(0, n);
+      // Generate for n > 8
+      var cols = [];
+      for (var i = 0; i < n; i++) {
+        var t = i / (n - 1);
+        var r = Math.round(68 + t * 185);
+        var g = Math.round(1 + t * 230);
+        var b = Math.round(84 + (1 - t) * 141);
+        cols.push('rgb(' + r + ',' + g + ',' + b + ')');
+      }
+      return cols;
+    }
+
+    // ── Data Loading ───────────────────────────────
+    var basePath = 'subpages/LCA-database/';
+
+    // Strip BOM and normalize header names
+    function cleanHeaders(results) {
+      if (!results.meta || !results.meta.fields) return;
+      var cleaned = results.meta.fields.map(function(f) {
+        return f.replace(/^\uFEFF/, '').trim();
+      });
+      // Remap data rows to cleaned headers
+      results.data = results.data.map(function(row) {
+        var out = {};
+        results.meta.fields.forEach(function(orig, i) {
+          out[cleaned[i]] = row[orig];
+        });
+        return out;
+      });
+      results.meta.fields = cleaned;
+    }
+
+    // Convert "NA" strings to null and parse numbers
+    function parseResultsRow(d) {
+      ['add', 'dom', 'epi'].forEach(function(k) {
+        if (d[k] === 'NA' || d[k] === '' || d[k] === undefined || d[k] === null) {
+          d[k] = null;
+        } else {
+          d[k] = parseFloat(d[k]);
+          if (isNaN(d[k])) d[k] = null;
+        }
+      });
+      return d;
+    }
+
+    function fetchCSV(url) {
+      return new Promise(function(resolve, reject) {
+        // Try XHR first (works on http/https)
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function() {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            resolve(xhr.responseText);
+          } else {
+            reject(new Error('HTTP ' + xhr.status + ' for ' + url));
+          }
+        };
+        xhr.onerror = function() {
+          reject(new Error('Network error fetching ' + url));
+        };
+        xhr.send();
+      });
+    }
+
+    function parseCSV(text, opts) {
+      return Papa.parse(text, Object.assign({header: true, skipEmptyLines: true}, opts || {}));
+    }
+
+    function loadAllData() {
+      Promise.all([
+        fetchCSV(basePath + 'complete.results.csv'),
+        fetchCSV(basePath + 'ref_shiny.version.csv'),
+        fetchCSV(basePath + 'citations.csv')
+      ]).then(function(texts) {
+        // Parse complete.results
+        var r1 = parseCSV(texts[0]);
+        cleanHeaders(r1);
+        resultsData = r1.data
+          .filter(function(d) { return d.file && d.file.trim(); })
+          .map(parseResultsRow);
+
+        // Parse ref table
+        var r2 = parseCSV(texts[1]);
+        cleanHeaders(r2);
+        refData = r2.data.filter(function(d) { return d['new file name'] && d['new file name'].trim(); });
+
+        // Parse citations
+        var r3 = parseCSV(texts[2]);
+        cleanHeaders(r3);
+        citationsData = r3.data.filter(function(d) { return d.Citation && d.Citation.trim(); });
+
+        // Render everything
+        updateStats();
+        updatePlot();
+        updateTernary();
+        renderTable();
+        renderCitations();
+      }).catch(function(err) {
+        console.error('Data load error:', err);
+        document.getElementById('nDisplay').innerHTML =
+          '<span style="color:#e74c3c"><strong>Error loading data.</strong> ' +
+          'If viewing locally, please use a web server (e.g. <code>python3 -m http.server</code>) ' +
+          'or view on <a href="https://coleoguy.github.io/epistasis-database.html" style="color:var(--accent)">GitHub Pages</a>. ' +
+          'Browser security blocks CSV loading from file:// URLs.</span>';
+      });
+    }
+
+    function updateStats() {
+      document.getElementById('stat-datasets').textContent = resultsData.length.toLocaleString();
+      document.getElementById('stat-pubs').textContent = citationsData.length;
+
+      var species = {};
+      var traits = {};
+      resultsData.forEach(function(d) {
+        if (d.species) species[d.species] = 1;
+        if (d.trait) traits[d.trait] = 1;
+      });
+      document.getElementById('stat-species').textContent = Object.keys(species).length;
+      document.getElementById('stat-traits').textContent = Object.keys(traits).length;
+    }
+
+    // ── Filtering ──────────────────────────────────
+    function getVal(id) {
+      var el = document.getElementById(id);
+      return el ? el.value : 'all';
+    }
+
+    function getFilteredData(prefix) {
+      prefix = prefix || '';
+      var pre = prefix ? prefix + 'Filter' : 'filter';
+      var clade = getVal(pre + 'Clade');
+      var div = getVal(pre + 'Divergence');
+      var cls = getVal(pre + 'Class');
+      var dom = getVal(pre + 'Domestication');
+      var reg = getVal(pre + 'Regression');
+
+      return resultsData.filter(function(d) {
+        if (clade !== 'all' && d.kingdom !== clade) return false;
+        if (div !== 'all' && d.divergence !== div) return false;
+        if (cls !== 'all' && d['class'] !== cls) return false;
+        if (dom !== 'all' && d.domestication !== dom) return false;
+        if (reg !== 'all' && d.weighted !== reg) return false;
+        return true;
+      });
+    }
+
+    // ── Cumulative Distribution Plot ───────────────
+    function updatePlot() {
+      var data = getFilteredData('').filter(function(d) {
+        return d.epi !== null && d.epi !== '' && !isNaN(d.epi);
+      });
+
+      var colorCol = document.getElementById('colorBy').value;
+      var groups = {};
+      data.forEach(function(d) {
+        var key = d[colorCol] || 'Unknown';
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(d.epi);
+      });
+
+      var keys = Object.keys(groups).sort();
+      var palette = getPalette(keys.length);
+      var datasets = [];
+
+      // Show n counts
+      var parts = [];
+      keys.forEach(function(key, i) {
+        var vals = groups[key].slice().sort(function(a, b) { return a - b; });
+        var xs = [];
+        for (var j = 0; j < vals.length; j++) {
+          xs.push(j / (vals.length - 1 || 1));
+        }
+        var points = xs.map(function(x, idx) { return { x: x, y: vals[idx] }; });
+        datasets.push({
+          label: key + ' (n=' + vals.length + ')',
+          data: points,
+          borderColor: palette[i],
+          backgroundColor: palette[i] + '33',
+          pointBackgroundColor: palette[i],
+          pointRadius: vals.length > 200 ? 1.5 : vals.length > 50 ? 2.5 : 3.5,
+          pointHoverRadius: 5,
+          borderWidth: 2,
+          tension: 0,
+          showLine: true,
+          fill: false
+        });
+        parts.push('<span style="color:' + palette[i] + ';font-weight:700">' + key + '</span>: ' + vals.length);
+      });
+
+      document.getElementById('nDisplay').innerHTML = 'Showing <strong>' + data.length + '</strong> datasets &mdash; ' + parts.join(' &middot; ');
+
+      if (chart) chart.destroy();
+
+      var ctx = document.getElementById('epiChart').getContext('2d');
+
+      // Detect theme
+      var isDark = !document.body.classList.contains('light-mode');
+      var gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)';
+      var tickColor = isDark ? '#9a9793' : '#666';
+
+      chart = new Chart(ctx, {
+        type: 'scatter',
+        data: { datasets: datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.8,
+          interaction: { mode: 'nearest', intersect: true },
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                color: tickColor,
+                font: { family: "'Inter', sans-serif", size: 12 },
+                usePointStyle: true,
+                pointStyle: 'circle',
+                padding: 16
+              }
+            },
+            tooltip: {
+              backgroundColor: isDark ? '#1a1a1a' : '#fff',
+              titleColor: isDark ? '#eae7e2' : '#222',
+              bodyColor: isDark ? '#c8c5c0' : '#444',
+              borderColor: 'rgba(201,162,39,0.3)',
+              borderWidth: 1,
+              padding: 10,
+              callbacks: {
+                label: function(ctx) {
+                  return ctx.dataset.label.split(' (')[0] + ': epi = ' + ctx.parsed.y.toFixed(3);
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              type: 'linear',
+              min: 0, max: 1,
+              title: {
+                display: true,
+                text: 'Proportion of datasets analyzed',
+                color: tickColor,
+                font: { family: "'Inter', sans-serif", size: 13, weight: 600 }
+              },
+              grid: { color: gridColor },
+              ticks: { color: tickColor }
+            },
+            y: {
+              type: 'linear',
+              min: 0, max: 1,
+              title: {
+                display: true,
+                text: 'Proportion of trait divergence that is epistatic',
+                color: tickColor,
+                font: { family: "'Inter', sans-serif", size: 13, weight: 600 }
+              },
+              grid: { color: gridColor },
+              ticks: { color: tickColor }
+            }
+          }
+        }
+      });
+    }
+
+    // ── Ternary Plot ───────────────────────────────
+    function updateTernary() {
+      var data = getFilteredData('tern').filter(function(d) {
+        return d.add !== null && d.dom !== null && d.epi !== null &&
+               !isNaN(d.add) && !isNaN(d.dom) && !isNaN(d.epi);
+      });
+
+      var colorCol = document.getElementById('ternColorBy').value;
+      var groups = {};
+      data.forEach(function(d) {
+        var key = d[colorCol] || 'Unknown';
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(d);
+      });
+
+      var keys = Object.keys(groups).sort();
+      var palette = getPalette(keys.length);
+
+      var canvas = document.getElementById('ternaryCanvas');
+      var ctx = canvas.getContext('2d');
+      var W = canvas.width;
+      var H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      // Triangle geometry
+      var pad = 50;
+      var triH = (W - 2 * pad) * Math.sqrt(3) / 2;
+      var topY = (H - triH) / 2;
+      var topX = W / 2;
+      var leftX = pad;
+      var leftY = topY + triH;
+      var rightX = W - pad;
+      var rightY = topY + triH;
+
+      // Convert ternary coords (add, dom, epi) to x,y
+      function ternToXY(a, d, e) {
+        var total = a + d + e;
+        if (total === 0) return { x: topX, y: topY + triH / 2 };
+        a /= total; d /= total; e /= total;
+        var x = leftX * d + rightX * e + topX * a;
+        var y = leftY * d + rightY * e + topY * a;
+        return { x: x, y: y };
+      }
+
+      var isDark = !document.body.classList.contains('light-mode');
+
+      // Draw triangle
+      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.15)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(topX, topY);
+      ctx.lineTo(leftX, leftY);
+      ctx.lineTo(rightX, rightY);
+      ctx.closePath();
+      ctx.stroke();
+
+      // Grid lines
+      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+      ctx.lineWidth = 0.8;
+      for (var g = 0.2; g < 1; g += 0.2) {
+        var p1 = ternToXY(g, 1 - g, 0);
+        var p2 = ternToXY(g, 0, 1 - g);
+        ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+        p1 = ternToXY(0, g, 1 - g);
+        p2 = ternToXY(1 - g, g, 0);
+        ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+        p1 = ternToXY(0, 1 - g, g);
+        p2 = ternToXY(1 - g, 0, g);
+        ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+      }
+
+      // Labels
+      ctx.font = '600 13px Inter, sans-serif';
+      ctx.fillStyle = isDark ? '#c9a227' : '#8a6d10';
+      ctx.textAlign = 'center';
+      ctx.fillText('Additive', topX, topY - 12);
+      ctx.fillText('Dominance', leftX - 5, leftY + 20);
+      ctx.fillText('Epistasis', rightX + 5, rightY + 20);
+
+      // Plot points
+      keys.forEach(function(key, ki) {
+        var pts = groups[key];
+        ctx.fillStyle = palette[ki] + 'bb';
+        pts.forEach(function(d) {
+          var p = ternToXY(d.add, d.dom, d.epi);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 3.2, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      });
+
+      // Legend
+      var legendEl = document.getElementById('ternaryLegend');
+      legendEl.innerHTML = keys.map(function(key, i) {
+        return '<span><span class="dot" style="background:' + palette[i] + '"></span>' + key + ' (n=' + groups[key].length + ')</span>';
+      }).join('');
+    }
+
+    // ── Data Table ─────────────────────────────────
+    function getMergedTableData() {
+      // Build a lookup from refData by filename
+      var refLookup = {};
+      refData.forEach(function(r) {
+        var fname = r['new file name'];
+        if (fname) refLookup[fname] = r;
+      });
+
+      return resultsData.map(function(d) {
+        var ref = refLookup[d.file] || {};
+        return {
+          organism: ref['organism'] || d.species || '',
+          phenotype: ref['phenotype'] || d.trait || '',
+          SCS: ref['SCS'] || d.SCS || '',
+          traitClass: d['class'] === 'LH' ? 'Life history' : d['class'] === 'M' ? 'Morphology' : (d['class'] || ''),
+          clade: d.kingdom || '',
+          divergence: d.divergence || '',
+          divTime: ref['divergence.time(MYA)'] || '',
+          domest: d.domestication || '',
+          add: d.add,
+          dom: d.dom,
+          epi: d.epi,
+          file: d.file || '',
+          citation: ref['citation'] || ''
+        };
+      });
+    }
+
+    function renderTable() {
+      var allData = getMergedTableData();
+      var query = (document.getElementById('tableSearch').value || '').toLowerCase();
+
+      var filtered = allData;
+      if (query) {
+        filtered = allData.filter(function(d) {
+          return (d.organism + ' ' + d.phenotype + ' ' + d.citation).toLowerCase().indexOf(query) >= 0;
+        });
+      }
+
+      // Sort
+      if (tableSortCol) {
+        filtered.sort(function(a, b) {
+          var va = a[tableSortCol], vb = b[tableSortCol];
+          if (va === null || va === '' || va === undefined) return 1;
+          if (vb === null || vb === '' || vb === undefined) return -1;
+          if (typeof va === 'number' && typeof vb === 'number') return tableSortAsc ? va - vb : vb - va;
+          va = String(va).toLowerCase(); vb = String(vb).toLowerCase();
+          if (va < vb) return tableSortAsc ? -1 : 1;
+          if (va > vb) return tableSortAsc ? 1 : -1;
+          return 0;
+        });
+      }
+
+      // Paginate
+      var totalPages = Math.ceil(filtered.length / tablePageSize);
+      if (tablePage >= totalPages) tablePage = Math.max(0, totalPages - 1);
+      var start = tablePage * tablePageSize;
+      var pageData = filtered.slice(start, start + tablePageSize);
+
+      var tbody = document.getElementById('tableBody');
+      tbody.innerHTML = pageData.map(function(d) {
+        var fmtNum = function(v) {
+          if (v === null || v === '' || v === undefined || isNaN(v)) return '<span style="opacity:0.3">--</span>';
+          return Number(v).toFixed(3);
+        };
+        var fileLink = d.file ? '<a href="subpages/LCA-database/www/' + d.file + '" target="_blank" title="Download ' + d.file + '">' + d.file.replace('.csv', '') + '</a>' : '';
+        return '<tr>' +
+          '<td>' + (d.organism || '') + '</td>' +
+          '<td>' + (d.phenotype || '') + '</td>' +
+          '<td>' + (d.SCS || '') + '</td>' +
+          '<td>' + (d.traitClass || '') + '</td>' +
+          '<td>' + (d.clade || '') + '</td>' +
+          '<td>' + (d.divergence || '') + '</td>' +
+          '<td class="epi-val">' + (d.divTime || '') + '</td>' +
+          '<td>' + (d.domest || '') + '</td>' +
+          '<td class="epi-val">' + fmtNum(d.add) + '</td>' +
+          '<td class="epi-val">' + fmtNum(d.dom) + '</td>' +
+          '<td class="epi-val">' + fmtNum(d.epi) + '</td>' +
+          '<td>' + fileLink + '</td>' +
+        '</tr>';
+      }).join('');
+
+      // Pagination
+      var pag = document.getElementById('pagination');
+      if (totalPages <= 1) { pag.innerHTML = ''; return; }
+
+      var html = '<button class="epi-page-btn" ' + (tablePage === 0 ? 'disabled' : '') + ' data-page="' + (tablePage - 1) + '">&laquo;</button>';
+      var maxShow = 7;
+      var startP = Math.max(0, tablePage - 3);
+      var endP = Math.min(totalPages, startP + maxShow);
+      if (endP - startP < maxShow) startP = Math.max(0, endP - maxShow);
+      for (var p = startP; p < endP; p++) {
+        html += '<button class="epi-page-btn' + (p === tablePage ? ' active' : '') + '" data-page="' + p + '">' + (p + 1) + '</button>';
+      }
+      html += '<span class="epi-page-info">' + filtered.length + ' records</span>';
+      html += '<button class="epi-page-btn" ' + (tablePage >= totalPages - 1 ? 'disabled' : '') + ' data-page="' + (tablePage + 1) + '">&raquo;</button>';
+      pag.innerHTML = html;
+    }
+
+    // ── Citations ──────────────────────────────────
+    function renderCitations() {
+      document.getElementById('citLoading').style.display = 'none';
+      var html = citationsData.map(function(c) {
+        return '<div class="epi-citation">' + (c.Citation || '') + '</div>';
+      }).join('');
+      document.getElementById('citationsList').innerHTML = html;
+    }
+
+    // ── Download ───────────────────────────────────
+    function downloadCSV() {
+      var data = getMergedTableData();
+      var header = 'organism,phenotype,SCS,trait_class,clade,divergence,divergence_time_MYA,organism_type,additive,dominance,epistasis,file,citation\n';
+      var rows = data.map(function(d) {
+        return [d.organism, d.phenotype, d.SCS, d.traitClass, d.clade, d.divergence, d.divTime, d.domest,
+                d.add, d.dom, d.epi, d.file, '"' + (d.citation || '').replace(/"/g, '""') + '"'].join(',');
+      }).join('\n');
+      var blob = new Blob([header + rows], { type: 'text/csv' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'epistasis-database-' + new Date().toISOString().slice(0, 10) + '.csv';
+      a.click();
+    }
+
+    // ── Event Binding ──────────────────────────────
+    function init() {
+      // Tabs
+      document.querySelectorAll('.epi-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          document.querySelectorAll('.epi-tab').forEach(function(t) { t.classList.remove('active'); });
+          document.querySelectorAll('.epi-panel').forEach(function(p) { p.classList.remove('active'); });
+          tab.classList.add('active');
+          document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+        });
+      });
+
+      // Plot controls
+      ['colorBy', 'filterClade', 'filterDivergence', 'filterClass', 'filterDomestication', 'filterRegression'].forEach(function(id) {
+        document.getElementById(id).addEventListener('change', updatePlot);
+      });
+
+      // Ternary controls
+      ['ternColorBy', 'ternFilterClade', 'ternFilterDivergence', 'ternFilterClass'].forEach(function(id) {
+        document.getElementById(id).addEventListener('change', updateTernary);
+      });
+
+      // Table search
+      var searchTimer;
+      document.getElementById('tableSearch').addEventListener('input', function() {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function() { tablePage = 0; renderTable(); }, 200);
+      });
+
+      // Table sort
+      document.querySelectorAll('.epi-table th').forEach(function(th) {
+        th.addEventListener('click', function() {
+          var col = th.dataset.col;
+          if (tableSortCol === col) {
+            tableSortAsc = !tableSortAsc;
+          } else {
+            tableSortCol = col;
+            tableSortAsc = true;
+          }
+          // Update arrow visuals
+          document.querySelectorAll('.epi-table th').forEach(function(t) { t.classList.remove('sorted'); });
+          th.classList.add('sorted');
+          th.querySelector('.sort-arrow').innerHTML = tableSortAsc ? '&#9650;' : '&#9660;';
+          renderTable();
+        });
+      });
+
+      // Pagination
+      document.getElementById('pagination').addEventListener('click', function(e) {
+        if (e.target.classList.contains('epi-page-btn') && !e.target.disabled) {
+          tablePage = parseInt(e.target.dataset.page);
+          renderTable();
+        }
+      });
+
+      // Download
+      document.getElementById('downloadBtn').addEventListener('click', downloadCSV);
+
+      // Theme change observer for chart
+      var observer = new MutationObserver(function() {
+        if (chart) updatePlot();
+        updateTernary();
+      });
+      observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+      loadAllData();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+
+</body>
+</html>
