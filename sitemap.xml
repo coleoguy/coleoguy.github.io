@@ -252,4 +252,32 @@
     <loc>https://coleoguy.github.io/phylo-explorer.html</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://coleoguy.github.io/sex-chromosome-evolution.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/coleoptera-genomics.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/genome-structure-evolution.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/selection.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/epistasis-line-cross.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/epistasis-database.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coleoguy.github.io/tau_database.html</loc>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -30,7 +30,8 @@ Heath Blackmon, Ph.D. — Associate Head, Department of Biology, Texas A&M Unive
 - **DirectRepeateR**: Find and annotate direct repeats in genome assemblies
 - **micRocounter**: Identify 2-6mer repeats in genome assemblies
 - **SAGA2**: Model-averaged line cross analysis using AICc
-- **Karyotype Databases**: 8,000+ records for amphibians, Coleoptera, and Polyneoptera
+- **Karyotype Databases**: 14,000+ records for beetles, flies, amphibians, mammals, Drosophila, and Polyneoptera
+- **Epistasis Database**: 1,600+ line cross datasets from 130+ publications on epistasis in trait divergence
 - **Tree of Sex Database**: 30,000+ records on sex determination systems (NESCent collaboration)
 
 ## Pages
@@ -51,6 +52,13 @@ Heath Blackmon, Ph.D. — Associate Head, Department of Biology, Texas A&M Unive
 - PCM Guide — Continuous Traits: https://coleoguy.github.io/phylo-methods/continuous.html
 - PCM Guide — Discrete Traits: https://coleoguy.github.io/phylo-methods/discrete.html
 - PCM Guide — Discrete + Continuous: https://coleoguy.github.io/phylo-methods/discrete-continuous.html
+- Sex Chromosome Evolution (visual guide): https://coleoguy.github.io/sex-chromosome-evolution.html
+- Coleoptera Genomics (visual guide): https://coleoguy.github.io/coleoptera-genomics.html
+- Genome Structure Evolution (visual guide): https://coleoguy.github.io/genome-structure-evolution.html
+- Selection in Evolution (visual guide): https://coleoguy.github.io/selection.html
+- Epistasis & the Shifting Balance (visual guide): https://coleoguy.github.io/epistasis-line-cross.html
+- Epistasis Database: https://coleoguy.github.io/epistasis-database.html
+- Circadian Period Database: https://coleoguy.github.io/tau_database.html
 
 ## Contact
 
@@ -112,6 +120,38 @@ URL: https://coleoguy.github.io/chromosome-evolution-history.html
 
 An interactive force-directed graph showing the lab's publication network. Nodes are papers sized by citation count and colored by year (gold→teal). Edges connect papers that share co-authors. Built with D3.js, fetches live data from OpenAlex by ORCID. Supports pan/zoom, hover tooltips, node dimming, and click-to-DOI. Includes a stats overlay (paper count, total citations, connections) and a color/size legend.
 URL: https://coleoguy.github.io/citation-network.html
+
+## Visual Guides to Evolutionary Biology
+
+In addition to the Chromosome Evolution History page and the PCM interactive guide, the lab hosts several long-form visual guides covering core topics in evolutionary biology:
+
+### Sex Chromosome Evolution
+URL: https://coleoguy.github.io/sex-chromosome-evolution.html
+A visual guide to sex chromosome evolution, from ordinary autosomes to the X, Y, Z, and W chromosomes that determine sex across the tree of life. Covers identification methods (cytogenetics, sequencing), Ohno's law, Y/W degeneration, dosage compensation (XCI, hypertranscription, incomplete compensation in ZW systems), and evolutionary turnover. Includes interactive diagrams, phylogenetic distribution of sex determination systems, and key papers.
+
+### Coleoptera Genomics
+URL: https://coleoguy.github.io/coleoptera-genomics.html
+A visual guide to beetle genomics. Covers reference genomes across coleopteran families, Stevens elements (ancestral chromosomal units), dosage compensation in beetles, population genetics of pest and model species, and the genomic basis of extraordinary species richness. Links beetle karyotype databases to modern genome assemblies.
+
+### Evolution of Genome Structure
+URL: https://coleoguy.github.io/genome-structure-evolution.html
+A visual guide to the evolution of gross genome structure: chromosome fusions, fissions, whole-genome duplication (polyploidy), demiploidy, and the forces that shape karyotype evolution across the tree of life. Covers meiotic drive, drift, and selection on chromosome number. Includes interactive diagrams and links to karyotype databases and chromePlus.
+
+### Selection in Evolution
+URL: https://coleoguy.github.io/selection.html
+A visual guide to selection, covering natural, artificial, sexual, background, and indirect selection on recombination modifiers. Spans Darwin to modern population genetics. Includes interactive fitness landscape visualizations, the breeder's equation, and key papers from Fisher, Wright, Haldane, and Hamilton through modern quantitative genetics.
+
+### Epistasis and the Shifting Balance
+URL: https://coleoguy.github.io/epistasis-line-cross.html
+A visual guide to epistasis, line cross analysis, and Wright's shifting balance theory. Covers types of epistasis (magnitude, sign, reciprocal sign), the Wright-Fisher debate, the joint-scaling test, SAGA/SAGA2 (information-theoretic line cross analysis), and empirical evidence from over 1,600 datasets. Includes interactive fitness landscape diagrams and the full intellectual history of the debate.
+
+### Epistasis Database
+URL: https://coleoguy.github.io/epistasis-database.html
+Interactive database of 1,600+ line cross datasets from 130+ publications quantifying the relative contributions of additive, dominance, and epistatic genetic effects to trait divergence across plants and animals. Features cumulative distribution plots, ternary (additive/dominance/epistasis) visualization, searchable/sortable data table with individual dataset downloads, and full citation list. Replaces a former Shiny application; runs entirely client-side.
+
+### Circadian Period Database
+URL: https://coleoguy.github.io/tau_database.html
+Searchable database of 1,634 free-running circadian period (tau) measurements across the tree of life. Includes species, common name, tau value, light regime, sex, and citation for each record. Fully client-side with filtering and download.
 
 ## AI-Native Biology Program
 
