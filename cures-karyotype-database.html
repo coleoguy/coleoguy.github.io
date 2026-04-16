@@ -65,6 +65,36 @@ select:focus, .search-input:focus { border-color:#c9a227; outline:none; }
   text-transform:uppercase; letter-spacing:0.5px; margin-top:12px;
 }
 .reset-btn:hover { background:#c9a227; color:#141311; }
+.repo-link {
+  display:block; margin-top:14px; padding:8px 10px; text-align:center;
+  background:transparent; border:1px solid #2a2825; color:#a09d98 !important;
+  border-radius:4px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px;
+  text-decoration:none !important; transition:all 0.15s ease;
+}
+.repo-link:hover { border-color:#c9a227; color:#c9a227 !important; text-decoration:none !important; }
+.repo-link i { margin-right:6px; font-size:13px; vertical-align:-1px; }
+.light-mode .repo-link { border-color:#d5d0c8; color:#6b6b6b !important; }
+.light-mode .repo-link:hover { border-color:#c9a227; color:#8b7a2e !important; }
+
+/* Citation block on Overview tab */
+.cite-box { background:#1e1c19; border:1px solid #2a2825; border-radius:6px; padding:16px 18px; }
+.cite-ref { font-size:13px; line-height:1.55; color:#c8c5c0; margin:0 0 10px 0; }
+.cite-ref a { color:#c9a227; }
+.cite-toggle {
+  background:transparent; border:1px solid #c9a227; color:#c9a227;
+  padding:5px 12px; border-radius:4px; font-size:11px; font-family:inherit;
+  text-transform:uppercase; letter-spacing:0.5px; cursor:pointer;
+}
+.cite-toggle:hover { background:#c9a227; color:#141311; }
+.cite-bib {
+  margin-top:12px; padding:12px; background:#141311; border:1px solid #2a2825;
+  border-radius:4px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size:11.5px; color:#c8c5c0; overflow-x:auto; white-space:pre-wrap; word-break:break-word;
+}
+.light-mode .cite-box { background:#f0ede8; border-color:#d5d0c8; }
+.light-mode .cite-ref { color:#3a3a3a; }
+.light-mode .cite-ref a { color:#8b7a2e; }
+.light-mode .cite-bib { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
 
 /* MAIN */
 .main { padding:24px; overflow-x:auto; }
@@ -225,6 +255,10 @@ tbody tr:hover { background:rgba(201,162,39,0.05); }
     <input type="text" class="search-input" id="searchBox" placeholder="Type to search...">
 
     <button class="reset-btn" id="resetBtn">Reset filters</button>
+
+    <a href="https://github.com/coleoguy/metazoa-chromosomes" target="_blank" rel="noopener" class="repo-link">
+      <i class="bi bi-github"></i> GitHub Repository for This Database
+    </a>
   </div>
 
   <div class="main">
@@ -245,13 +279,34 @@ tbody tr:hover { background:rgba(201,162,39,0.05); }
       </div>
       <h3 style="color:#c9a227;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Records by Clade</h3>
       <div class="clade-grid" id="cladeGrid"></div>
+
+      <h3 style="color:#c9a227;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-top:28px;margin-bottom:12px;">Cite This Database</h3>
+      <div class="cite-box">
+        <p class="cite-ref">
+          Copeland, M., McConnell, M., Barboza, A., Abraham, H.M., Alfieri, J., Arackal, S., Bernard, C.E., Bryant, K., Cast, S., Chien, S., Clark, E., Cruz, C.E., Diaz, A.Y., Deiterman, O., Girish, R., Harper, K., Hjelmen, C.E., Thompson, M.J., Koehl, R., Koneru, T., Laird, K., Lee, Y., Lopez, V.R., Murphy, M., Perez, N., Schmalz, S., Sylvester, T., and Blackmon, H. (2026). Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life. <em>bioRxiv</em> 2026.04.14.718287. <a href="https://doi.org/10.64898/2026.04.14.718287" target="_blank" rel="noopener">https://doi.org/10.64898/2026.04.14.718287</a>
+        </p>
+        <button class="cite-toggle" id="citeBibBtn" type="button">Show BibTeX</button>
+<pre class="cite-bib" id="citeBib" hidden>@article{Copeland2026.04.14.718287,
+  author    = {Copeland, Megan and McConnell, Meghann and Barboza, Andres and Abraham, Hannah M and Alfieri, James and Arackal, Steven and Bernard, Carrie E and Bryant, Kiedon and Cast, Shelbie and Chien, Sean and Clark, Emily and Cruz, Cassandra E and Diaz, Aileen Y and Deiterman, Olivia and Girish, Riya and Harper, Kaya and Hjelmen, Carl E and Thompson, Michelle J and Koehl, Rachel and Koneru, Tanvi and Laird, Kenzie and Lee, Yoonseo and Lopez, Virginia R and Murphy, Mallory and Perez, Nayeli and Schmalz, Sarah and Sylvester, Terrence and Blackmon, Heath},
+  title     = {Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life},
+  year      = {2026},
+  doi       = {10.64898/2026.04.14.718287},
+  publisher = {Cold Spring Harbor Laboratory},
+  journal   = {bioRxiv},
+  elocation-id = {2026.04.14.718287},
+  url       = {https://www.biorxiv.org/content/early/2026/04/16/2026.04.14.718287}
+}</pre>
+      </div>
     </div>
 
     <!-- TABLE -->
     <div class="tab-content" id="tab-table">
       <div class="table-controls">
         <span class="page-info" id="pageInfo"></span>
-        <button class="csv-btn" id="csvBtn">&#11015; Download CSV</button>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="csv-btn" id="csvBtn" title="Download the currently filtered records as CSV">&#11015; Download filtered CSV</button>
+          <a class="csv-btn" href="data/cures-karyotype-database.csv" download title="Download the full dataset (63,542 records with citations)" style="text-decoration:none; display:inline-block;">&#11015; Full dataset (CSV)</a>
+        </div>
       </div>
       <table>
         <thead>
@@ -594,6 +649,19 @@ document.getElementById('csvBtn').addEventListener('click', () => {
 
 // Plot type change
 document.getElementById('plotType').addEventListener('change', renderPlot);
+
+// Citation BibTeX toggle
+(() => {
+  const btn = document.getElementById('citeBibBtn');
+  const bib = document.getElementById('citeBib');
+  if (btn && bib) {
+    btn.addEventListener('click', () => {
+      const shown = !bib.hasAttribute('hidden');
+      if (shown) { bib.setAttribute('hidden', ''); btn.textContent = 'Show BibTeX'; }
+      else { bib.removeAttribute('hidden'); btn.textContent = 'Hide BibTeX'; }
+    });
+  }
+})();
 
 // Init
 applyFilters();
