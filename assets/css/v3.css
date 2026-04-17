@@ -120,7 +120,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 
 /* Phylogenetic tree */
 .tree, .tree ul { list-style: none; }
-.tree { padding-left: 4px; }
+.tree { padding-left: 18px; position: relative; }
 .tree ul { padding-left: 16px; }
 .tree li { position: relative; padding: 3px 0 3px 18px; }
 .tree li::before {
@@ -138,9 +138,40 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   background: var(--branch);
 }
 .tree li:last-child::after { height: 14px; }
-.tree > li { padding-left: 0; margin-top: 14px; }
-.tree > li::before, .tree > li::after { display: none; }
+
+/* Top-level categories: show branch lines connecting to backbone */
+.tree > li { padding-left: 0; margin-top: 10px; position: relative; }
+.tree > li::before {
+  display: block;
+  left: -16px; top: 13px;
+  width: 14px; height: 1px;
+}
+.tree > li::after { display: none; }
 .tree > li:first-child { margin-top: 0; }
+
+/* Backbone: vertical trunk connecting all top-level categories */
+.tree::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 13px;
+  bottom: 15px;
+  width: 1px;
+  background: var(--branch);
+}
+
+/* Connector from brand root-dot down to first category */
+.brand { position: relative; }
+.brand::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 100%;
+  height: 30px;
+  width: 1px;
+  background: var(--branch);
+}
+
 .tree > li > a, .tree > li > span {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -169,7 +200,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   background: var(--accent);
 }
 
-/* Collapsible tree categories */
+/* Collapsible tree categories — all start open, click to collapse */
 .tree > li > ul { display: none; }
 .tree > li.open > ul { display: block; }
 .tree > li > span {
@@ -177,7 +208,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   user-select: none;
 }
 .tree > li > span::before {
-  content: '+';
+  content: '−';
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--accent);
@@ -185,7 +216,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   display: inline-block;
   width: 8px;
 }
-.tree > li.open > span::before { content: '−'; }
+.tree > li:not(.open) > span::before { content: '+'; }
 
 /* Main reading column */
 main.column {
