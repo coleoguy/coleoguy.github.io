@@ -613,9 +613,9 @@ extra_scripts: |
           <div class="col-lg-6 cg-theory" data-aos="fade-up">
             <div class="cg-kicker">Chromosomal Architecture</div>
             <h2>Stevens Elements &mdash; The Chromosomal Building Blocks</h2>
-            <p>Just as <em>Drosophila</em> has Muller elements (A&ndash;F), beetles have their own set of conserved chromosomal elements. We call these <strong>Stevens elements</strong>, named after <strong>Nettie Stevens</strong>, who discovered sex chromosomes in 1905 while studying the mealworm beetle <em>Tenebrio molitor</em>.</p>
+            <p>Just as <em>Drosophila</em> has Muller elements (A&ndash;F), beetles have their own set of conserved chromosomal elements &mdash; the beetle homolog of the Muller-element concept. We call these <strong>Stevens elements</strong>, named after <strong>Nettie Stevens</strong>, who in 1905 made the first clear cytological-genetic case for sex chromosomes while studying the mealworm beetle <em>Tenebrio molitor</em>. (Henking had earlier observed an unpaired "X element" in <em>Pyrrhocoris</em> insect embryos in 1891 without recognizing its role in sex determination.)</p>
             <p>Stevens elements represent <strong>ancestral linkage groups</strong> that have been conserved across beetle evolution despite hundreds of millions of years of divergence. Even when chromosome numbers change dramatically through fusions and fissions, the gene content of these elements tends to stay together as syntenic blocks.</p>
-            <p>The <em>Tribolium castaneum</em> genome (2n = 20, or 10 chromosome pairs) provided the initial framework for defining these elements. Comparative mapping to other beetle species reveals remarkable conservation of synteny blocks, even across species with radically different chromosome numbers.</p>
+            <p>The <em>Tribolium castaneum</em> genome (2n = 20, or 10 chromosome pairs) provided the initial framework for defining these elements. Note that 2n = 20 is a <em>reduced</em> karyotype for beetles — the inferred ancestral coleopteran has 2n &asymp; 22, so <em>Tribolium</em> reflects fusion/fission history, not an ancestral baseline. Comparative mapping to other beetle species reveals remarkable conservation of synteny blocks, even across species with radically different chromosome numbers.</p>
 
             <h3>Why Stevens Elements Matter</h3>
             <p>Understanding these conserved elements is essential for:</p>
@@ -769,7 +769,7 @@ extra_scripts: |
               <li><strong>Hi-C scaffolding</strong> &mdash; chromosome conformation capture to order and orient contigs into chromosome-level scaffolds</li>
               <li><strong>RNA-seq</strong> &mdash; transcriptome data for gene annotation and expression analysis</li>
             </ul>
-            <p>Assemblies are evaluated using <strong>BUSCO completeness scores</strong> (typically >95% for our chromosome-level assemblies) and compared to karyotype data from our comprehensive databases of over 14,000 beetle karyotype records.</p>
+            <p>Assemblies are evaluated using <strong>BUSCO completeness scores</strong> (typically >95% for our chromosome-level assemblies) and compared to karyotype data from our comprehensive databases of over 14,000 beetle karyotype records. <em>Caveat:</em> BUSCO measures the fraction of expected single-copy orthologs that are present and complete &mdash; it is a measure of <em>gene-content completeness</em>, not contiguity or structural accuracy. A 95%+ BUSCO score is consistent with chromosome-level scaffolding but does not by itself prove it; we therefore report N50, the number of scaffolds anchored to chromosomes, and concordance with cytogenetic karyotypes (Vertebrate Genomes Project / Earth BioGenome standards) alongside BUSCO whenever available.</p>
             <p>Each genome below was chosen not just for its biological interest, but for its strategic placement in the beetle tree of life &mdash; filling phylogenetic gaps and enabling comparative analyses that would be impossible with genomes from model organisms alone.</p>
 
             <div class="diagram-box" data-aos="zoom-in">
@@ -900,7 +900,7 @@ extra_scripts: |
             </div>
 
             <h3>What About Beetles?</h3>
-            <p>The answer is complex and varies across species. <em>Tribolium castaneum</em> shows <strong>incomplete dosage compensation</strong> &mdash; some X-linked genes are compensated (expression ratio near 1:1 between sexes), while others are not (expression ratio near 0.5 in males). This incomplete pattern may be ancestral for beetles.</p>
+            <p>The answer is complex and varies across species. <em>Tribolium castaneum</em> shows <strong>incomplete dosage compensation</strong> &mdash; some X-linked genes are compensated (expression ratio near 1:1 between sexes), while others are not (expression ratio near 0.5 in males). Whether this incomplete pattern is ancestral for beetles or derived in <em>Tribolium</em> remains an open question — comparative dosage compensation data across coleopteran lineages are still sparse.</p>
             <p>The Blackmon Lab investigates dosage compensation patterns across beetle species using <strong>RNA-seq and coverage-based sex chromosome identification</strong>. By comparing male and female read depth across the genome, we can identify sex-linked scaffolds without any prior genetic map.</p>
 
             <!-- SVG: Coverage-based method -->
@@ -1029,7 +1029,7 @@ extra_scripts: |
               <li>Smaller effective population sizes</li>
               <li>Stronger population genetic structure (higher Fst)</li>
               <li>Higher rates of allopatric speciation</li>
-              <li>Potentially faster chromosome evolution &mdash; connecting to the <strong>drift barrier hypothesis</strong> for karyotype change</li>
+              <li>Potentially faster chromosome evolution &mdash; connecting to the <strong>drift barrier hypothesis</strong> for karyotype change. The lab's recent work in mammals (Jonika et al. 2024, <em>Journal of Heredity</em>) shows that range size &mdash; a proxy for effective population size &mdash; predicts chromosome number evolution rates in Carnivora, with smaller-range species showing faster karyotype turnover. The mechanistic implication is that drift, not selection, dominates fixation of mildly underdominant chromosomal rearrangements; the same prediction is now being tested in beetles using the lab's karyotype databases.</li>
             </ul>
 
             <h3>Population Genomic Approaches</h3>

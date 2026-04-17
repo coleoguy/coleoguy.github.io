@@ -404,7 +404,7 @@ extra_scripts: |
             <p>A <strong>fusion</strong> joins two chromosomes into one, reducing the chromosome number by one. There are two main types:</p>
 
             <h3>Robertsonian Translocations (Centric Fusions)</h3>
-            <p>Two <strong>acrocentric</strong> chromosomes (with the centromere near one end) fuse at their centromeres, producing a single <strong>metacentric</strong> chromosome (centromere in the middle). One centromere is typically lost or inactivated. This is the most common type of fusion in mammals &mdash; human chromosome 2 is an end-to-end (telomeric) fusion of two ancestral ape chromosomes, which is why humans have 2n = 46 while the other great apes have 2n = 48.</p>
+            <p>Two <strong>acrocentric</strong> chromosomes (with the centromere near one end) fuse at their centromeres, producing a single <strong>metacentric</strong> chromosome (centromere in the middle). One centromere is typically lost or inactivated. This is the most common type of fusion in mammals. Human chromosome 2 is a related but distinct case: a <em>telomeric</em> fusion of two ancestral ape chromosomes (still present as separate chromosomes in the other great apes), which is why humans have 2n = 46 while the other great apes have 2n = 48.</p>
 
             <h3>Tandem (End-to-End) Fusions</h3>
             <p>One chromosome attaches to the end (telomere) of another. Less common than Robertsonian translocations in mammals but important in insects and other groups. The resulting chromosome retains both centromeres initially, though one is usually silenced.</p>
@@ -488,7 +488,7 @@ extra_scripts: |
               <tr><td><strong>Meiotic drive</strong></td><td>If the fused chromosome is preferentially transmitted, it can overcome underdominance</td></tr>
               <tr><td><strong>Weak underdominance</strong></td><td>Some fusions may have negligible fitness costs in heterozygotes</td></tr>
               <tr><td><strong>Recombination suppression</strong></td><td>Fusions near adapted gene complexes may be favored</td></tr>
-              <tr><td><strong>Monobrachial homology</strong></td><td>Different populations fix different fusions; hybrids are sterile</td></tr>
+              <tr><td><strong>Monobrachial homology</strong></td><td>Different populations fix <em>different</em> Robertsonian fusions involving overlapping arms; F<sub>1</sub> hybrids form complex multivalents at meiosis (chains and rings of three or more chromosomes), which mis-segregate. Hybrids are sterile or sub-fertile, so even mildly underdominant fusions can persist within populations and ultimately drive reproductive isolation between them.</td></tr>
             </table>
 
             <div class="paper-masthead" data-aos="fade-left">
@@ -517,7 +517,7 @@ extra_scripts: |
             <div class="gs-kicker">Splitting Apart</div>
             <h2>Chromosome Fissions</h2>
 
-            <p>A <strong>fission</strong> splits one chromosome into two, increasing the chromosome number. This requires that the broken chromosome somehow acquires a <strong>new centromere</strong> (neocentromere) and <strong>new telomeres</strong> at the break points &mdash; otherwise the fragments will be lost during cell division.</p>
+            <p>A <strong>fission</strong> splits one chromosome into two, increasing the chromosome number. This requires that the broken chromosome somehow acquires a <strong>new centromere</strong> (neocentromere) and <strong>new telomeres</strong> at the break points &mdash; otherwise the fragments will be lost during cell division. Neocentromere formation was once thought to be vanishingly rare, but cytogenetic and ChIP-seq surveys (Henikoff & Malik 2002; Marshall et al. 2008) show that functional neocentromeres can arise epigenetically at non-canonical sequence locations on much shorter timescales than previously assumed &mdash; even within human pedigrees. The bottleneck is therefore not centromere <em>formation</em> per se but the joint requirement for centromere stability, telomere capping (often via telomerase action at the new break), and avoidance of dicentric configurations during transmission.</p>
 
             <h3>How Fissions Work</h3>
             <p>Fissions are mechanistically more challenging than fusions. A fusion simply joins existing chromosomes; a fission must <strong>create</strong> new functional elements. Neocentromeres can arise from latent centromeric sequences or through epigenetic activation of non-centromeric DNA. Telomeres can be added <em>de novo</em> by telomerase or by recombination-based mechanisms. Despite these hurdles, fissions are clearly common &mdash; many lineages show net increases in chromosome number over evolutionary time.</p>
@@ -795,6 +795,7 @@ extra_scripts: |
             </div>
 
             <p>The key finding: in mammals, chromosome number evolution is <strong>biased toward fusions</strong> in a pattern consistent with female meiotic drive favoring metacentric chromosomes. This provides a mechanistic explanation for why mammalian karyotypes tend to evolve toward lower chromosome numbers.</p>
+            <p><em>Caveat &mdash; how general is this?</em> The de Villena & Sapienza mechanism requires asymmetric female meiosis (only one of the four meiotic products becomes the egg). That asymmetry is shared by most animals and plants but the strength of the resulting selection varies with how reliably the centromere can bias spindle orientation, with effective population size, and with sex-determination system. Whether comparable centromere-driven karyotype trends operate in ZW systems &mdash; where female meiosis still asymmetrically produces a single egg, but where Z and W centromeres differ &mdash; remains largely untested. The lab's ongoing work on birds, Lepidoptera, and ZW fish will help resolve whether female-meiotic drive is a general organizing force or a mammal-specific quirk.</p>
 
             <div class="paper-masthead" data-aos="fade-left">
               <div class="journal">Genetics</div>
@@ -828,7 +829,7 @@ extra_scripts: |
             <div class="gs-kicker">Dismantling the Stasis Paradigm</div>
             <h2>Rates of Karyotype Evolution Span Seven Orders of Magnitude</h2>
 
-            <p>For decades, a common assumption held that chromosome number is <strong>evolutionarily conservative</strong> &mdash; that most lineages sit near a stable karyotype, punctuated by rare bursts of change. A massive new analysis shatters this view. Copeland et al. (submitted) compiled <strong>63,682 karyotypes</strong> across <strong>56 eukaryotic clades</strong> &mdash; spanning animals, plants, fungi, and more &mdash; and estimated rates of dysploidy and polyploidy on each clade's phylogeny using chromePlus. The result: rates of chromosome number evolution vary by <strong>seven orders of magnitude</strong> across the tree of life.</p>
+            <p>For decades, a common assumption held that chromosome number is <strong>evolutionarily conservative</strong> &mdash; that most lineages sit near a stable karyotype, punctuated by rare bursts of change. A massive new analysis shatters this view. Copeland et al. (2026, <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank">bioRxiv</a> &mdash; preprint, not yet peer-reviewed) compiled <strong>63,682 karyotypes</strong> across <strong>56 eukaryotic clades</strong> &mdash; spanning animals, plants, fungi, and more &mdash; and estimated rates of dysploidy and polyploidy on each clade's phylogeny using chromePlus. The result: rates of chromosome number evolution vary by <strong>seven orders of magnitude</strong> across the tree of life.</p>
 
             <h3>Stasis Is Rarer Than You Think</h3>
             <p>Perhaps the most surprising finding is that groups traditionally considered "static" are anything but. All three bird orders analyzed (<em>Accipitriformes</em>, <em>Passeriformes</em>, and <em>Galliformes</em>) <strong>exceed the global median rate</strong> of chromosome number change. The appearance of stasis in birds &mdash; most species near 2n &asymp; 80 &mdash; masks genuinely active evolutionary dynamics.</p>
@@ -848,7 +849,7 @@ extra_scripts: |
             <div class="chart-box" data-aos="fade-left">
               <div class="chart-title">Total Dysploidy Rate (ascending + descending + polyploidy)</div>
               <div id="chart-stasis" style="width:100%; height:640px;"></div>
-              <p class="diagram-caption" style="font-size:0.75rem; opacity:0.7; margin-top:4px;">Posterior median rates estimated via chromePlus MCMC on trees scaled to unit depth. Dashed line = global median. Data from Copeland et al. (submitted). Clades colored by higher classification.</p>
+              <p class="diagram-caption" style="font-size:0.75rem; opacity:0.7; margin-top:4px;">Posterior median rates estimated via chromePlus MCMC on trees scaled to unit depth. Dashed line = global median. Data from Copeland et al. (2026, bioRxiv preprint). Clades colored by higher classification.</p>
             </div>
 
             <div class="stat-callout" data-aos="fade-left">
@@ -1012,7 +1013,7 @@ extra_scripts: |
             <p>Chromosomes are not randomly arranged in the nucleus. They occupy <strong>territories</strong>, fold into <strong>topologically associating domains</strong> (TADs), and interact through <strong>long-range regulatory elements</strong>. Rearrangements that disrupt these structures could have large fitness effects. But we have almost no comparative data on 3D genome organization across species with different karyotypes.</p>
 
             <h3>Why Do Models Fail?</h3>
-            <p><strong>Model adequacy</strong> is an increasingly recognized problem. Our probabilistic models of chromosome number change are simple Markov processes. They assume constant rates (or at best trait-dependent rates) across entire clades. But chromosome evolution is clearly episodic, context-dependent, and mechanistically complex. Whether our models capture the relevant biology is an open and important question.</p>
+            <p><strong>Model adequacy</strong> is an increasingly recognized problem. Our probabilistic models of chromosome number change are simple Markov processes. They assume constant rates (or at best trait-dependent rates) across entire clades. But chromosome evolution is clearly episodic, context-dependent, and mechanistically complex. Whether our models capture the relevant biology is an open and important question. Recent work has begun to address this directly: ChromoSSE (Freyman & H&ouml;hna 2018; Zenil-Ferguson et al.) allows rates of dysploidy, polyploidy, and demiploidy to vary jointly with diversification, and hidden-state models (Beaulieu & O'Meara 2016, HiSSE; Caetano et al. 2018) let unobserved variables modulate transition rates within a clade. Posterior predictive simulation is now a standard adequacy check &mdash; if simulating from the fitted model produces summaries (mean, variance, frequency of polyploid tips) that don't match the data, the model is missing something real. We don't yet have a fully episodic, mechanism-aware framework for chromosome evolution, but the methodological vocabulary for building one is in place.</p>
 
             <h3>Can We Predict Karyotype Evolution?</h3>
             <p>Given a species' phylogenetic position, ecology, life history, and meiotic system, can we predict its karyotype? Currently, <strong>no</strong>. This is humbling. It suggests that important forces remain unidentified or that stochastic processes dominate in ways our deterministic models cannot capture.</p>

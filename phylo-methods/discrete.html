@@ -314,7 +314,7 @@ extra_scripts: |
     <section class="content-section">
       <div class="container-xl">
         <h2 class="section-title">The Mk model</h2>
-        <p class="section-text">The <span class="highlight-text">Mk model</span> (for "Markov model of k states") is the standard framework for discrete trait evolution. Imagine a trait with two states: State A and State B. At any point in time, a lineage can change from A to B, or from B to A, according to certain rates.</p>
+        <p class="section-text">The <span class="highlight-text">Mk model</span> (Lewis 2001, <em>Syst. Biol.</em> 50:913&ndash;925; likelihood computation in Pagel 1994 and Nielsen 2002) is the standard framework for discrete trait evolution. Imagine a trait with two states: State A and State B. At any point in time, a lineage can change from A to B, or from B to A, according to certain instantaneous rates &mdash; entries in a <em>Q</em> matrix, not directly observable counts. <em>A warning that matters later:</em> if branch lengths are not absolute, the Mk model is only identifiable up to a scaling of all rates by a constant; this creates the well-known <a href="likelihood-ridges.html" style="color: var(--accent);">likelihood ridge problem</a> when transition rates wander to unrealistically high values during ML optimization.</p>
         <p class="section-text">These rates are encoded in a matrix called Q. For a two-state system, Q has four entries: q01 (rate of change from A to B) and q10 (rate from B to A). Under a Markov process, the probability of being in each state evolves according to these rates.</p>
 
         <div class="viz-container">
@@ -383,8 +383,8 @@ extra_scripts: |
     <section class="content-section">
       <div class="container-xl">
         <h2 class="section-title">Stochastic character mapping</h2>
-        <p class="section-text">ASR gives you point estimates (maximum likelihood) of ancestral states. But there is uncertainty. The actual history of character evolution could have taken many different paths, all consistent with the tip data.</p>
-        <p class="section-text"><span class="highlight-text">Stochastic character mapping</span> samples many possible histories from the posterior distribution, conditional on the data and the model. You can then describe what happened: how many transitions occurred, on which branches, and in which direction.</p>
+        <p class="section-text">ASR gives you point estimates (maximum likelihood) of ancestral states. But there is uncertainty. The actual history of character evolution could have taken many different paths, all consistent with the tip data. Crucially, the probabilities at internal nodes are <em>conditional on the fitted model</em>: if you assumed a symmetric Mk2 but the true rate matrix is biased toward losses, your ASR will be confidently wrong. Sensitivity to model choice is one of the most underappreciated issues in PCMs &mdash; reconstructing under several plausible models and reporting the consensus, or formally averaging across models, is much safer than reporting a single ASR as a point estimate.</p>
+        <p class="section-text"><span class="highlight-text">Stochastic character mapping</span> samples many possible histories from the conditional distribution given the tip data, the tree, and the fitted model. The samples represent uncertainty about <em>where</em> and <em>when</em> changes happened on the tree &mdash; not uncertainty about the model itself. You can then describe what happened: how many transitions occurred, on which branches, and in which direction.</p>
 
         <div class="charmap-container">
           <div class="charmap-panel">

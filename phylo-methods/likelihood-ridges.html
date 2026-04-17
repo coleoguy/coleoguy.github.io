@@ -415,7 +415,9 @@ extra_head: |
         </p>
 
         <p class="section-text">
-          The solutions—priors, multiple starts, penalization, and bounds—all aim to break the ridge by adding external information or constraints. In practice, <span class="highlight-text">Bayesian MCMC with informative priors is the gold standard</span> because it explicitly encodes what you know (or want to assume) about plausible rate ranges. When in doubt, compare results across methods and always sanity-check your rate estimates.
+          The solutions—priors, multiple starts, penalization, and bounds—all aim to break the ridge by adding external information or constraints. In practice, <span class="highlight-text">Bayesian MCMC with informative priors is the gold standard</span> because it explicitly encodes what you know (or want to assume) about plausible rate ranges.</p>
+          <p><em>One critical nuance.</em> MCMC with an <strong>uninformative</strong> prior (e.g., Uniform(0, ∞) or Exponential with very large mean) will <em>still wander up the ridge</em>, because the likelihood is genuinely flat there and the prior offers no counter-pressure. The fix is not just &ldquo;use Bayesian methods&rdquo; but &ldquo;use a meaningfully informative prior&rdquo; &mdash; an Exponential with mean equal to the expected number of transitions per million years for the trait class, or a tight Lognormal centered on a biologically plausible rate. Without that, MCMC and ML can give the same misleading answer. Likewise, the &ldquo;multiple starting points&rdquo; strategy works because different starts sample different regions of the ridge; from any one starting point the optimizer converges deterministically. See Revell & Harmon (2008, <em>Evol. Bioinform.</em>) and Harmon (2019, <em>Phylogenetic Comparative Methods</em>) for explicit treatments of these issues.</p>
+          <p>When in doubt, compare results across methods and always sanity-check your rate estimates.
         </p>
       </div>
     </section>

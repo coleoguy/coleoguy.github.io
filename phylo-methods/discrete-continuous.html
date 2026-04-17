@@ -416,7 +416,7 @@ extra_scripts: |
       <div class="container-xl">
         <h2 class="section-title">Pagel's lambda and phylogenetic correlation</h2>
         <p class="section-text">In the examples above, we have assumed Brownian motion evolution. But sometimes traits do not show strong phylogenetic signal. One way to model this is with <span class="highlight-text">Pagel's lambda</span>, a scaling parameter that ranges from 0 (no phylogenetic signal) to 1 (strong signal under BM).</p>
-        <p class="section-text">Lambda transforms the phylogenetic covariance matrix by scaling off-diagonal elements. At lambda=0, all species are equally distinct. At lambda=1, you recover the standard BM expectation. Below is a heatmap showing how the correlations between species change as lambda varies.</p>
+        <p class="section-text">Lambda transforms the phylogenetic covariance matrix by scaling all <em>off-diagonal</em> elements (the shared variance between pairs of species due to common ancestry) by a factor &lambda; while leaving the diagonal (each species's total variance) unchanged. Concretely, if <strong>V</strong> is the BM-expected covariance matrix, the &lambda;-transformed matrix is <strong>V<sub>&lambda;</sub></strong> = &lambda;<strong>V</strong> + (1&minus;&lambda;)·diag(<strong>V</strong>). At &lambda; = 0, off-diagonals are zero and species are independent (a star phylogeny in covariance terms); at &lambda; = 1, you recover the standard BM expectation. &lambda; is fit by maximum likelihood, so it doubles as a formal test of phylogenetic signal: a confidence interval that excludes 0 means signal is detected; one that excludes 1 means evolution is slower-than-BM at the tips. Below is a heatmap showing how the correlations between species change as lambda varies.</p>
 
         <div class="viz-container">
           <div class="control-group">
@@ -439,7 +439,7 @@ extra_scripts: |
     <section class="content-section">
       <div class="container-xl">
         <h2 class="section-title">The threshold model</h2>
-        <p class="section-text">A conceptually important model bridges the gap between discrete and continuous evolution. The <span class="highlight-text">threshold model</span> (Felsenstein 2012) proposes that a discrete trait (e.g., the presence or absence of a feature) is determined by an underlying continuous "liability" variable. When liability exceeds a threshold, the discrete trait is expressed.</p>
+        <p class="section-text">A conceptually important model bridges the gap between discrete and continuous evolution. The <span class="highlight-text">threshold model</span> &mdash; rooted in Wright (1934) and developed for phylogenetic use by Felsenstein (2005, <em>The Comparative Method in Evolutionary Biology</em>) and Felsenstein (2012, <em>Am. Nat.</em> 179: 145&ndash;156) &mdash; proposes that a discrete trait (e.g., the presence or absence of a feature) is determined by an underlying continuous "liability" variable. When liability exceeds a threshold, the discrete trait is expressed.</p>
         <p class="section-text">This model is powerful because it unifies discrete and continuous thinking. The liability evolves continuously (under Brownian motion), but we only observe the discrete outcome. This means that even if a discrete trait appears to have no phylogenetic signal, there could be substantial signal in the underlying liability.</p>
 
         <div class="info-box">
