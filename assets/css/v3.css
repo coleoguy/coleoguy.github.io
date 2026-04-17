@@ -94,9 +94,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 
 .brand {
   display: flex; align-items: baseline; gap: 10px;
-  margin-bottom: 28px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--rule);
+  margin-bottom: 10px;
 }
 .brand .root-dot {
   width: 9px; height: 9px; border-radius: 50%;
@@ -143,8 +141,8 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 .tree > li { padding-left: 0; margin-top: 10px; position: relative; }
 .tree > li::before {
   display: block;
-  left: -16px; top: 13px;
-  width: 14px; height: 1px;
+  left: -14px; top: 13px;
+  width: 12px; height: 1px;
 }
 .tree > li::after { display: none; }
 .tree > li:first-child { margin-top: 0; }
@@ -153,21 +151,21 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 .tree::before {
   content: '';
   position: absolute;
-  left: 2px;
-  top: 13px;
+  left: 4px;
+  top: 0;
   bottom: 15px;
   width: 1px;
   background: var(--branch);
 }
 
-/* Connector from brand root-dot down to first category */
+/* Connector from brand root-dot down to trunk */
 .brand { position: relative; }
 .brand::after {
   content: '';
   position: absolute;
   left: 4px;
-  top: 100%;
-  height: 30px;
+  top: 50%;
+  bottom: -10px;
   width: 1px;
   background: var(--branch);
 }
@@ -208,7 +206,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   user-select: none;
 }
 .tree > li > span::before {
-  content: '−';
+  content: '+';
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--accent);
@@ -216,7 +214,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   display: inline-block;
   width: 8px;
 }
-.tree > li:not(.open) > span::before { content: '+'; }
+.tree > li.open > span::before { content: '−'; }
 
 /* Main reading column */
 main.column {

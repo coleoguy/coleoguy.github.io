@@ -21,12 +21,12 @@
     });
   }
 
-  // Collapsible sidebar tree categories — all open by default
+  // Collapsible sidebar tree categories — collapsed by default, open if active link inside
   document.querySelectorAll('.tree > li > span').forEach(span => {
     const li = span.parentElement;
     const ul = li.querySelector(':scope > ul');
     if (!ul) return;
-    li.classList.add('open');
+    if (ul.querySelector('a.active')) li.classList.add('open');
     span.addEventListener('click', () => li.classList.toggle('open'));
   });
 

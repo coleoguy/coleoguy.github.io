@@ -112,7 +112,7 @@
     <h1 class="title">TraitTrawler</h1>
 
     <p class="lede">
-      An autonomous AI agent pipeline that builds structured, citation-grounded scientific databases from the primary literature. Point it at a taxon and a trait — it finds the papers, fetches the PDFs, extracts the data, and verifies every claim against the source before writing a single row. No domain-specific logic lives in the pipeline; all of it lives in per-project validator files that you approve.
+      An autonomous AI agent pipeline that builds structured, citation-grounded scientific databases from the primary literature. Point it at a taxon and a trait: it finds the papers, fetches the PDFs, extracts the data, and verifies every claim against the source before writing a single row. No domain-specific logic lives in the pipeline; all of it lives in per-project validator files that you approve.
     </p>
 
     <div class="stats-row">
@@ -143,12 +143,12 @@
         <span class="layer-summary-text">
           <span class="sum-kicker">The central guarantee</span>
           <span class="sum-head">No row is written unless the claim appears verbatim in the source PDF</span>
-          <span class="sum-trail">Grounding is a protocol invariant enforced by a deterministic Python script — not a best-effort field.</span>
+          <span class="sum-trail">Grounding is a protocol invariant enforced by a deterministic Python script, not a best-effort field.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>The problem with AI literature extraction isn't hallucination in the obvious sense — the model confidently reporting something no paper ever said. The subtler failure is correct-sounding values that are on the right page but in the wrong row of a table, or plausible numbers assembled from two different papers. TraitTrawler's answer is a hard gate: before any extracted claim reaches the output CSV, a deterministic Python script checks that a verbatim quote from the extraction literally appears on the cited page of the SHA256-hashed source PDF. If the quote isn't there, the row is dropped. There is no fallback. Grounding is enforced, not hoped for.</p>
-        <p>Behind the grounding gate sits a second layer: every project ships with user-approved Python validator files — domain-specific range checks, arithmetic consistency rules, and notation validators — that also run on every row. These are proposed by the pipeline after reading seed papers, vetted by a static linter that blocks any unsafe code before you ever see them, and only activated after your approval. A row that passes grounding but fails a validator is routed to a review queue rather than written to the CSV.</p>
+        <p>The problem with AI literature extraction isn't hallucination in the obvious sense: the model confidently reporting something no paper ever said. The subtler failure is correct-sounding values that are on the right page but in the wrong row of a table, or plausible numbers assembled from two different papers. TraitTrawler's answer is a hard gate: before any extracted claim reaches the output CSV, a deterministic Python script checks that a verbatim quote from the extraction literally appears on the cited page of the SHA256-hashed source PDF. If the quote isn't there, the row is dropped. There is no fallback. Grounding is enforced, not hoped for.</p>
+        <p>Behind the grounding gate sits a second layer: every project ships with user-approved Python validator files (domain-specific range checks, arithmetic consistency rules, and notation validators) that also run on every row. These are proposed by the pipeline after reading seed papers, vetted by a static linter that blocks any unsafe code before you ever see them, and only activated after your approval. A row that passes grounding but fails a validator is routed to a review queue rather than written to the CSV.</p>
         <p>The audit trail behind each accepted row is publishable: source PDF hash, page number, verbatim quote, model versions, and validator verdicts are written to an append-only ledger file in Darwin Core + PAV + PROV-O format.</p>
       </div>
     </details>
@@ -163,7 +163,7 @@
       </summary>
       <div class="layer-body">
         <p>Most automated extraction systems are built around a specific domain: a tool for extracting clinical trial endpoints, or plant phenology records, or chemical properties. TraitTrawler's architecture enforces the opposite: the core pipeline contains no karyotype logic, no chromosome logic, no biology logic at all. When you start a project, the pipeline reads 5–10 seed papers for your trait, writes a trait profile summarizing how values are reported in the literature, proposes an output schema, and proposes a set of domain-specific validators. You approve each validator individually. Then the pipeline runs.</p>
-        <p>The same pipeline that assembled our Coleoptera karyotype database works for avian body mass, plant flowering date, drug dosing from case reports, or materials-science thermal properties. The contribution is the architecture. Spinning up a new trait domain requires seed papers and an approval session — no code changes to the pipeline.</p>
+        <p>The same pipeline that assembled our Coleoptera karyotype database works for avian body mass, plant flowering date, drug dosing from case reports, or materials-science thermal properties. The contribution is the architecture. Spinning up a new trait domain requires seed papers and an approval session; no code changes to the pipeline.</p>
         <p>This is enforced architecturally, not by convention. The agnostic hooks (grounding, schema validity, deduplication, GBIF taxonomy) run on every project. The trait-specific hooks run only on the project that generated them. They are kept in separate files and loaded separately. A hook that somehow escaped its project could not corrupt another project's data.</p>
       </div>
     </details>
@@ -173,11 +173,11 @@
         <span class="layer-summary-text">
           <span class="sum-kicker">How it works</span>
           <span class="sum-head">An 8-phase state machine with deterministic gates at each step</span>
-          <span class="sum-trail">A Manager subagent orchestrates specialists — triage on Haiku, extraction on Opus, verification on Sonnet.</span>
+          <span class="sum-trail">A Manager subagent orchestrates specialists: triage on Haiku, extraction on Opus, verification on Sonnet.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>The pipeline runs as an 8-phase state machine inside Claude Code. A Manager subagent orchestrates specialist subagents, each running on the model appropriate to its task: Haiku 4.5 for fast relevance triage, Opus 4.7 at maximum effort for extraction and final adjudication, Sonnet 4.6 for semantic verification. The Manager stays lean — it never reads PDFs directly, only tracks state and dispatches subagents. This keeps the main context from filling across 500-paper runs.</p>
+        <p>The pipeline runs as an 8-phase state machine inside Claude Code. A Manager subagent orchestrates specialist subagents, each running on the model appropriate to its task: Haiku 4.5 for fast relevance triage, Opus 4.7 at maximum effort for extraction and final adjudication, Sonnet 4.6 for semantic verification. The Manager stays lean; it never reads PDFs directly, only tracks state and dispatches subagents. This keeps the main context from filling across 500-paper runs.</p>
         <p>Within the extraction loop, each paper goes through: triage → extraction (text + image at 2576px for table and figure pages) → grounding verification → semantic verification (with escalation to an Opus advisor for ambiguous claims) → schema validation → project-specific hooks → optional adjudication. Only papers that clear every gate write to the CSV. The rest are logged with reasons.</p>
         <p>The pipeline narrates at declared checkpoints and runs autonomously between them. You can leave it running and come back to a partially completed database, a review queue of flagged records, and a session report summarizing coverage and failure patterns.</p>
       </div>
@@ -187,13 +187,13 @@
       <summary>
         <span class="layer-summary-text">
           <span class="sum-kicker">Bootstrap</span>
-          <span class="sum-head">Bring your existing curated dataset — it becomes ground truth</span>
+          <span class="sum-head">Bring your existing curated dataset: it becomes ground truth</span>
           <span class="sum-trail">The pipeline ingests existing CSVs as human-validated anchors and derives soft validators from their distributions.</span>
         </span>
       </summary>
       <div class="layer-body">
         <p>Most labs starting a trait database already have years of manually curated data. TraitTrawler treats this as a first-class input. You supply your curated CSV (and optionally the paired PDFs), and the bootstrap subagent ingests each row as human-validated ground truth: SHA256-hashed into the manifest, marked <code>ValidatedByHuman</code> in Darwin Core provenance, written to the ledger, and treated as the anchor the AI extractor will not re-extract unless you explicitly request it.</p>
-        <p>The bootstrap also derives soft validators from your curated data — range checks and categorical constraints generated from the actual distributions in your data, with 20% padding so novel-but-correct values are flagged for review rather than rejected. These are proposed to you for approval exactly like any other validator.</p>
+        <p>The bootstrap also derives soft validators from your curated data: range checks and categorical constraints generated from the actual distributions in your data, with 20% padding so novel-but-correct values are flagged for review rather than rejected. These are proposed to you for approval exactly like any other validator.</p>
         <p>When we built the karyotype database, we had nearly three decades of manually compiled records in our existing datasets. The bootstrap turned that prior work into a head start rather than something to throw away.</p>
       </div>
     </details>
@@ -207,8 +207,8 @@
         </span>
       </summary>
       <div class="layer-body">
-        <p>The first version of this pipeline was purpose-built to collect diploid chromosome counts from the entomological literature — a specific task with known notation conventions, a known journal set, and an existing curated dataset to bootstrap from. It worked well enough that we ran it for a semester's worth of literature, and the output is our CUREs karyotype database.</p>
-        <p>The problem with version one was that all the trait knowledge was hardcoded. The chromosome-count range checks, the notation conventions, the taxonomy validation rules — all of it lived in the pipeline itself. Adapting it to a different trait meant rewriting core logic. Version six breaks that coupling entirely. The trait knowledge is now learned per-project and stored in files outside the pipeline. The pipeline is the same regardless of what you point it at.</p>
+        <p>The first version of this pipeline was purpose-built to collect diploid chromosome counts from the entomological literature, a specific task with known notation conventions, a known journal set, and an existing curated dataset to bootstrap from. It worked well enough that we ran it for a semester's worth of literature, and the output is our CUREs karyotype database.</p>
+        <p>The problem with version one was that all the trait knowledge was hardcoded. The chromosome-count range checks, the notation conventions, the taxonomy validation rules: all of it lived in the pipeline itself. Adapting it to a different trait meant rewriting core logic. Version six breaks that coupling entirely. The trait knowledge is now learned per-project and stored in files outside the pipeline. The pipeline is the same regardless of what you point it at.</p>
         <p>The karyotype database is still the best proof that the architecture works. It is also no longer the reason to use it.</p>
         <div class="layer-links">
           <a href="https://github.com/coleoguy/TraitTrawler" target="_blank" rel="noopener">TraitTrawler on GitHub &rarr;</a>
