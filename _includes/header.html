@@ -1,0 +1,27 @@
+{%- comment -%}
+  Site header / nav. Highlights the current page's nav link if page.nav_active matches.
+  Set `nav_active: research` (or publications/team/resources/ai/join/news/gallery) in front matter.
+{%- endcomment -%}
+<header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <div class="logo-group d-flex align-items-center gap-2">
+      <a href="{{ '/' | relative_url }}" class="logo d-flex align-items-center">
+        <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
+      </a>
+      <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
+    </div>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="{{ '/research.html' | relative_url }}"{% if page.nav_active == 'research' %} class="active"{% endif %}>Research</a></li>
+        <li><a href="{{ '/publications.html' | relative_url }}"{% if page.nav_active == 'publications' %} class="active"{% endif %}>Publications</a></li>
+        <li><a href="{{ '/team.html' | relative_url }}"{% if page.nav_active == 'team' %} class="active"{% endif %}>Team</a></li>
+        <li><a href="{{ '/resources.html' | relative_url }}"{% if page.nav_active == 'resources' %} class="active"{% endif %}>Resources</a></li>
+        <li><a href="{{ '/ai.html' | relative_url }}"{% if page.nav_active == 'ai' %} class="active"{% endif %}>AI</a></li>
+        <li><a href="{{ '/join.html' | relative_url }}"{% if page.nav_active == 'join' %} class="active"{% endif %}>Join</a></li>
+        <li><a href="{{ '/news.html' | relative_url }}"{% if page.nav_active == 'news' %} class="active"{% endif %}>News</a></li>
+        <li><a href="{{ '/gallery.html' | relative_url }}" class="nav-cta{% if page.nav_active == 'gallery' %} active{% endif %}">Lab Life</a></li>
+      </ul>
+      <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
+    </nav>
+  </div>
+</header>

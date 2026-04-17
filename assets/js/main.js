@@ -28,11 +28,19 @@
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+    const active = document.querySelector('body').classList.toggle('mobile-nav-active');
+    // Icon may live on the toggle itself (legacy) or on a child <i> (current button markup).
+    const iconEl = mobileNavToggleBtn.querySelector('i') || mobileNavToggleBtn;
+    iconEl.classList.toggle('bi-list');
+    iconEl.classList.toggle('bi-x');
+    if (mobileNavToggleBtn.tagName === 'BUTTON') {
+      mobileNavToggleBtn.setAttribute('aria-expanded', active ? 'true' : 'false');
+      mobileNavToggleBtn.setAttribute('aria-label', active ? 'Close navigation menu' : 'Open navigation menu');
+    }
   }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+  if (mobileNavToggleBtn) {
+    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+  }
 
   /**
    * Hide mobile nav on same-page/hash links

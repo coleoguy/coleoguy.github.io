@@ -120,7 +120,7 @@
         <a href="../index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -132,7 +132,7 @@
           <li><a href="../join.html">Join</a></li>
           <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -160,7 +160,7 @@
             </div>
 
             <!-- Frontier Models -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-cpu"></i>Frontier Models (The Engines)</h4>
+            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-cpu" aria-hidden="true"></i>Frontier Models (The Engines)</h4>
             <p class="category-note">These are not simple chatbots; they are reasoning engines. With the right prompting strategy (giving context, persona, and constraints), they can draft entire manuscripts, synthesize vast literature, and code complex pipelines. If you use them lazily, you get garbage. If you drive them like a Ferrari, you win.</p>
             <ul class="tool-list">
               <li>
@@ -179,7 +179,7 @@
             <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:14px;">The power of these tools is highly dependent on your prompting. See my guide to <a href="./Prompting.html" style="color:var(--accent);">prompting</a> - especially the "mega-prompts" section, which is where the real capability is unlocked.</p>
 
             <!-- Prompt Engineering -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-code-square"></i>Prompt Engineering (Tools to Build Tools)</h4>
+            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-code-square" aria-hidden="true"></i>Prompt Engineering (Tools to Build Tools)</h4>
             <p class="category-note">If you are building complex workflows (mega-prompts), you cannot just type into a chat window. You need environments that let you test, iterate, and save your "source code."</p>
             <ul class="tool-list">
               <li>
@@ -205,7 +205,7 @@
             </ul>
 
             <!-- Literature Search -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-journal-text"></i>Literature Search &amp; Discovery</h4>
+            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-journal-text" aria-hidden="true"></i>Literature Search &amp; Discovery</h4>
             <ul class="tool-list">
               <li>
                 <a href="https://notebooklm.google.com/" target="_blank" class="tool-name">Google NotebookLM</a>
@@ -246,7 +246,7 @@
             </ul>
 
             <!-- Writing -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-pencil"></i>Writing &amp; Editing</h4>
+            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-pencil" aria-hidden="true"></i>Writing &amp; Editing</h4>
             <ul class="tool-list">
               <li>
                 <a href="https://paperpal.com/" target="_blank" class="tool-name">Paperpal</a>
@@ -267,7 +267,7 @@
             </ul>
 
             <!-- Data Analysis -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-bar-chart"></i>Data Analysis &amp; Coding</h4>
+            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-bar-chart" aria-hidden="true"></i>Data Analysis &amp; Coding</h4>
             <ul class="tool-list">
               <li>
                 <a href="https://github.com/features/copilot" target="_blank" class="tool-name">GitHub Copilot</a>
@@ -284,7 +284,7 @@
             </ul>
 
             <!-- Figures -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-image"></i>Figures &amp; Visualization</h4>
+            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-image" aria-hidden="true"></i>Figures &amp; Visualization</h4>
             <ul class="tool-list">
               <li>
                 <a href="https://biorender.com/" target="_blank" class="tool-name">BioRender</a>
@@ -301,7 +301,7 @@
             </ul>
 
             <!-- Teaching -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-easel"></i>Teaching &amp; Presentations</h4>
+            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-easel" aria-hidden="true"></i>Teaching &amp; Presentations</h4>
             <ul class="tool-list">
               <li>
                 <a href="https://gamma.app/" target="_blank" class="tool-name">Gamma</a>
@@ -318,7 +318,7 @@
             </ul>
 
             <!-- Productivity -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-clipboard-check"></i>Productivity &amp; Lab Management</h4>
+            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-clipboard-check" aria-hidden="true"></i>Productivity &amp; Lab Management</h4>
             <ul class="tool-list">
               <li>
                 <a href="https://otter.ai/" target="_blank" class="tool-name">Otter.ai</a>
@@ -346,7 +346,7 @@
   </footer>
 
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
+    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
   </a>
 
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

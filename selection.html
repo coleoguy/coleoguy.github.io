@@ -388,6 +388,32 @@
       color: var(--text-muted, rgba(200,197,190,0.45));
     }
   </style>
+
+  <!-- Structured Data (added by audit) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Selection in Evolution",
+    "url": "https://coleoguy.github.io/selection.html",
+    "description": "Visual guide to natural, artificial, sexual, background, and indirect selection. From Darwin to modern population genetics with interactive fitness landscapes.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Evolutionary biology"
+    },
+    "keywords": ["natural selection", "sexual selection", "background selection", "fitness landscape", "population genetics"],
+    "publisher": {
+      "@type": "ResearchOrganization",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    }
+  }
+  </script>
 </head>
 
 <body class="resources-page">
@@ -402,7 +428,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -415,7 +441,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -447,7 +473,6 @@
         </svg>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 1: WHAT IS SELECTION? ═══════════════ -->
     <section class="sl-section" id="sec-what">
@@ -580,7 +605,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 2: DRIFT VS. SELECTION ═══════════════ -->
     <section class="sl-section" id="sec-drift">
@@ -715,7 +739,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 3: SEXUAL SELECTION ═══════════════ -->
     <section class="sl-section" id="sec-sexual">
       <div class="container">
@@ -847,7 +870,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 4: BACKGROUND SELECTION ═══════════════ -->
     <section class="sl-section" id="sec-linked">
       <div class="container">
@@ -978,7 +1000,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 5: INDIRECT SELECTION ═══════════════ -->
     <section class="sl-section" id="sec-indirect">
@@ -1113,7 +1134,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 6: ARTIFICIAL SELECTION ═══════════════ -->
     <section class="sl-section" id="sec-artificial">
@@ -1250,7 +1270,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 7: SELECTION AND SPECIATION ═══════════════ -->
     <section class="sl-section" id="sec-speciation">
       <div class="container">
@@ -1332,7 +1351,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 8: THE BIG PICTURE ═══════════════ -->
     <section class="sl-section" id="sec-bigpicture">
@@ -1456,13 +1474,13 @@
             <div class="related-box" data-aos="fade-up">
               <h3>Explore More</h3>
               <div class="related-links">
-                <a href="research.html" class="related-link"><i class="bi bi-flask"></i> Research</a>
-                <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous"></i> Sex Chromosome Evolution</a>
-                <a href="genome-structure-evolution.html" class="related-link"><i class="bi bi-grid-3x3"></i> Genome Structure</a>
-                <a href="epistasis-database.html" class="related-link"><i class="bi bi-diagram-3"></i> Epistasis Database</a>
-                <a href="coleoptera-genomics.html" class="related-link"><i class="bi bi-bug"></i> Coleoptera Genomics</a>
-                <a href="publications.html" class="related-link"><i class="bi bi-journal-text"></i> Publications</a>
-                <a href="popgen.html" class="related-link"><i class="bi bi-graph-up"></i> PopGen Simulator</a>
+                <a href="research.html" class="related-link"><i class="bi bi-flask" aria-hidden="true"></i> Research</a>
+                <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous" aria-hidden="true"></i> Sex Chromosome Evolution</a>
+                <a href="genome-structure-evolution.html" class="related-link"><i class="bi bi-grid-3x3" aria-hidden="true"></i> Genome Structure</a>
+                <a href="epistasis-database.html" class="related-link"><i class="bi bi-diagram-3" aria-hidden="true"></i> Epistasis Database</a>
+                <a href="coleoptera-genomics.html" class="related-link"><i class="bi bi-bug" aria-hidden="true"></i> Coleoptera Genomics</a>
+                <a href="publications.html" class="related-link"><i class="bi bi-journal-text" aria-hidden="true"></i> Publications</a>
+                <a href="popgen.html" class="related-link"><i class="bi bi-graph-up" aria-hidden="true"></i> PopGen Simulator</a>
               </div>
             </div>
           </div>
@@ -1478,7 +1496,7 @@
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
   <div id="preloader"></div>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1573,7 +1591,6 @@
     }
     drawFixation(fixationVisibility.all);
 
-
     /* ── Chart 2: Diversity Along Chromosome ─────────── */
     function generateDiversity(mode) {
       var x = [], y = [];
@@ -1651,7 +1668,6 @@
     }
     showDiversityMode('sweep');
 
-
     /* ── Chart 3: Inversion Frequency Dynamics ───────── */
     function simInversion(mode) {
       var gens = [], freq = [];
@@ -1697,7 +1713,6 @@
       Plotly.react('chart-inversion', traces, layout, pConfig);
     }
     showInversion('adaptive');
-
 
     /* ── Chart 4: Breeder's Equation Response ────────── */
     function simBreeder(h2) {
@@ -1745,7 +1760,6 @@
       Plotly.react('chart-breeder', traces, layout, pConfig);
     }
     showBreeder('high');
-
 
     /* ── Redraw charts on theme toggle ───────────────── */
     var themeBtn = document.getElementById('theme-toggle');

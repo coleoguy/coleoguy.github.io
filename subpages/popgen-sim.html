@@ -42,7 +42,7 @@
         <a href="../index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -54,7 +54,7 @@
           <li><a href="../join.html">Join</a></li>
           <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -97,7 +97,7 @@
 
               <!-- Core -->
               <div class="param-group">
-                <div class="param-group-title"><i class="bi bi-sliders"></i> Core Parameters</div>
+                <div class="param-group-title"><i class="bi bi-sliders" aria-hidden="true"></i> Core Parameters</div>
 
                 <div class="param-row">
                   <label>Effective Pop. Size (N<sub>e</sub>)</label>
@@ -144,7 +144,7 @@
                     <input type="checkbox" id="sel-enabled" onchange="toggleForce('sel-params',this)">
                     <span class="toggle-track"></span>
                   </label>
-                  <span><i class="bi bi-arrow-up-right-circle"></i> Selection</span>
+                  <span><i class="bi bi-arrow-up-right-circle" aria-hidden="true"></i> Selection</span>
                 </div>
                 <div id="sel-params" class="force-params locked">
                   <div class="param-row">
@@ -175,7 +175,7 @@
                     <input type="checkbox" id="mut-enabled" onchange="toggleForce('mut-params',this)">
                     <span class="toggle-track"></span>
                   </label>
-                  <span><i class="bi bi-shuffle"></i> Mutation</span>
+                  <span><i class="bi bi-shuffle" aria-hidden="true"></i> Mutation</span>
                 </div>
                 <div id="mut-params" class="force-params locked">
                   <div class="param-row">
@@ -204,7 +204,7 @@
                     <input type="checkbox" id="mig-enabled" onchange="toggleForce('mig-params',this)">
                     <span class="toggle-track"></span>
                   </label>
-                  <span><i class="bi bi-arrow-left-right"></i> Migration</span>
+                  <span><i class="bi bi-arrow-left-right" aria-hidden="true"></i> Migration</span>
                 </div>
                 <div id="mig-params" class="force-params locked">
                   <div class="param-row">
@@ -234,7 +234,7 @@
                     <input type="checkbox" id="bot-enabled" onchange="toggleForce('bot-params',this)">
                     <span class="toggle-track"></span>
                   </label>
-                  <span><i class="bi bi-funnel"></i> Bottleneck</span>
+                  <span><i class="bi bi-funnel" aria-hidden="true"></i> Bottleneck</span>
                 </div>
                 <div id="bot-params" class="force-params locked">
                   <div class="param-row">
@@ -264,7 +264,7 @@
                     <input type="checkbox" id="sex-enabled" onchange="toggleForce('sex-params',this); toggleSexChrMode(this)">
                     <span class="toggle-track"></span>
                   </label>
-                  <span><i class="bi bi-gender-ambiguous"></i> Sex Chromosome</span>
+                  <span><i class="bi bi-gender-ambiguous" aria-hidden="true"></i> Sex Chromosome</span>
                 </div>
                 <div id="sex-params" class="force-params locked">
                   <div class="param-row">
@@ -305,13 +305,13 @@
               <!-- Buttons -->
               <div class="mt-3">
                 <button class="btn-run w-100" onclick="runAndPlot()">
-                  <i class="bi bi-play-fill"></i> Run Simulation
+                  <i class="bi bi-play-fill" aria-hidden="true"></i> Run Simulation
                 </button>
                 <button class="btn-clear w-100 mt-2" onclick="clearPlot()">
-                  <i class="bi bi-x-circle"></i> Clear
+                  <i class="bi bi-x-circle" aria-hidden="true"></i> Clear
                 </button>
                 <button class="btn-share w-100 mt-2" onclick="shareURL()">
-                  <i class="bi bi-share"></i> Share These Settings
+                  <i class="bi bi-share" aria-hidden="true"></i> Share These Settings
                 </button>
               </div>
 
@@ -349,7 +349,7 @@
 
             <!-- Model Notes -->
             <details class="model-notes mt-3">
-              <summary><i class="bi bi-info-circle me-1"></i>About this model</summary>
+              <summary><i class="bi bi-info-circle me-1" aria-hidden="true"></i>About this model</summary>
               <div class="model-text">
                 <p>Each generation, forces are applied in order:</p>
                 <ol>
@@ -376,7 +376,7 @@
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
   <div id="preloader"></div>
 
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1419,7 +1419,7 @@
     navigator.clipboard.writeText(url).then(() => {
       const btn = document.querySelector('.btn-share');
       const orig = btn.innerHTML;
-      btn.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+      btn.innerHTML = '<i class="bi bi-check2" aria-hidden="true"></i> Copied!';
       btn.style.color = 'var(--accent)';
       setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; }, 2000);
     }).catch(() => { prompt('Copy this URL:', url); });

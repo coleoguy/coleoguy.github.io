@@ -24,7 +24,8 @@
     "@type": "ResearchOrganization",
     "name": "Blackmon Lab",
     "url": "https://coleoguy.github.io",
-    "description": "The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches.",
+    "logo": "https://coleoguy.github.io/assets/img/blackmon_black.png",
+    "description": "The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University. Research focuses on sex chromosomes, chromosome number evolution, and the genetic basis of adaptation.",
     "parentOrganization": {
       "@type": "CollegeOrUniversity",
       "name": "Texas A&M University",
@@ -32,8 +33,13 @@
     },
     "department": {
       "@type": "Organization",
-      "name": "Department of Biology"
+      "name": "Department of Biology",
+      "url": "https://bio.tamu.edu"
     },
+    "sameAs": [
+      "https://github.com/coleoguy",
+      "https://scholar.google.com/citations?user=ytApUl0AAAAJ"
+    ],
     "member": {
       "@type": "Person",
       "name": "Heath Blackmon",
@@ -70,48 +76,8 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ResearchOrganization",
-    "name": "Blackmon Lab",
-    "url": "https://coleoguy.github.io",
-    "logo": "https://coleoguy.github.io/assets/img/blackmon_black.png",
-    "description": "Evolutionary biology research lab studying genome structure evolution across the tree of life at Texas A&M University. Research focuses on sex chromosomes, chromosome number evolution, and the genetic basis of adaptation using theoretical, comparative, and experimental approaches.",
-    "parentOrganization": {
-      "@type": "CollegeOrUniversity",
-      "name": "Texas A&M University",
-      "url": "https://www.tamu.edu"
-    },
-    "department": {
-      "@type": "Organization",
-      "name": "Department of Biology",
-      "url": "https://bio.tamu.edu"
-    },
-    "member": {
-      "@type": "Person",
-      "name": "Heath Blackmon",
-      "jobTitle": "Associate Professor",
-      "sameAs": [
-        "https://scholar.google.com/citations?user=ytApUl0AAAAJ",
-        "https://orcid.org/0000-0002-5433-4036",
-        "https://github.com/coleoguy"
-      ]
-    },
-    "sameAs": [
-      "https://github.com/coleoguy",
-      "https://scholar.google.com/citations?user=ytApUl0AAAAJ"
-    ]
-  }
-  </script>
 </head>
 
 <body class="index-page">
@@ -123,7 +89,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -136,7 +102,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -204,77 +170,77 @@
       <div class="container" data-aos="fade-up">
         <div class="hub-grid">
           <a href="research.html" class="hub-card">
-            <i class="bi bi-diagram-3"></i>
+            <i class="bi bi-diagram-3" aria-hidden="true"></i>
             <span>Research</span>
             <div class="hub-desc">Genome evolution, sex chromosomes, and computational biology</div>
           </a>
           <a href="publications.html" class="hub-card">
-            <i class="bi bi-journal-text"></i>
+            <i class="bi bi-journal-text" aria-hidden="true"></i>
             <span>Publications</span>
             <div class="hub-desc">Papers from 2012 to present, live from ORCID</div>
           </a>
           <a href="team.html" class="hub-card">
-            <i class="bi bi-people"></i>
+            <i class="bi bi-people" aria-hidden="true"></i>
             <span>Team</span>
             <div class="hub-desc">PI, grad students, staff, and alumni</div>
           </a>
           <a href="resources.html" class="hub-card">
-            <i class="bi bi-tools"></i>
+            <i class="bi bi-tools" aria-hidden="true"></i>
             <span>Resources</span>
             <div class="hub-desc">R packages, databases, teaching materials</div>
           </a>
           <a href="join.html" class="hub-card">
-            <i class="bi bi-door-open"></i>
+            <i class="bi bi-door-open" aria-hidden="true"></i>
             <span>Join Us</span>
             <div class="hub-desc">Expectations, calendar, and how to apply</div>
           </a>
           <a href="gallery.html" class="hub-card">
-            <i class="bi bi-camera"></i>
+            <i class="bi bi-camera" aria-hidden="true"></i>
             <span>Lab Life</span>
             <div class="hub-desc">Photos, fieldwork, and fun</div>
           </a>
           <a href="phylo-methods/index.html" class="hub-card">
-            <i class="bi bi-tree"></i>
+            <i class="bi bi-tree" aria-hidden="true"></i>
             <span>PCM Guide</span>
             <div class="hub-desc">Interactive guide to phylogenetic comparative methods</div>
           </a>
           <a href="ai.html" class="hub-card">
-            <i class="bi bi-cpu"></i>
+            <i class="bi bi-cpu" aria-hidden="true"></i>
             <span>AI in the Lab</span>
             <div class="hub-desc">How we use AI in evolutionary biology research</div>
           </a>
           <a href="chromosome-evolution-history.html" class="hub-card">
-            <i class="bi bi-journal-richtext"></i>
+            <i class="bi bi-journal-richtext" aria-hidden="true"></i>
             <span>Chromosome History</span>
             <div class="hub-desc">A century of ideas on karyotype evolution, from Stebbins to ChromEvol</div>
           </a>
           <a href="sex-chromosome-evolution.html" class="hub-card">
-            <i class="bi bi-gender-ambiguous"></i>
+            <i class="bi bi-gender-ambiguous" aria-hidden="true"></i>
             <span>Sex Chromosomes</span>
             <div class="hub-desc">Visual guide to how sex chromosomes evolve from autosomes</div>
           </a>
           <a href="genome-structure-evolution.html" class="hub-card">
-            <i class="bi bi-grid-3x3-gap"></i>
+            <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i>
             <span>Genome Structure</span>
             <div class="hub-desc">Fusions, fissions, polyploidy, and the forces shaping karyotype evolution</div>
           </a>
           <a href="epistasis-line-cross.html" class="hub-card">
-            <i class="bi bi-bezier2"></i>
+            <i class="bi bi-bezier2" aria-hidden="true"></i>
             <span>Epistasis</span>
             <div class="hub-desc">The shifting balance, line cross analysis, and why Wright was right</div>
           </a>
           <a href="selection.html" class="hub-card">
-            <i class="bi bi-funnel"></i>
+            <i class="bi bi-funnel" aria-hidden="true"></i>
             <span>Selection</span>
             <div class="hub-desc">Natural, sexual, background, and indirect selection in evolution</div>
           </a>
           <a href="coleoptera-genomics.html" class="hub-card">
-            <i class="bi bi-bug"></i>
+            <i class="bi bi-bug" aria-hidden="true"></i>
             <span>Beetle Genomics</span>
             <div class="hub-desc">Genomes, Stevens elements, and population genetics of Coleoptera</div>
           </a>
           <a href="phylo-explorer.html" class="hub-card">
-            <i class="bi bi-diagram-2"></i>
+            <i class="bi bi-diagram-2" aria-hidden="true"></i>
             <span>Tree Explorer</span>
             <div class="hub-desc">Interactive phylogenetic tree viewer — paste Newick, explore traits</div>
           </a>
@@ -331,11 +297,10 @@
       <div class="container" data-aos="fade-up">
         <div id="news-feed" data-max-items="4" data-layout="cards"></div>
         <div style="text-align: center; margin-top: 20px;">
-          <a href="news.html" class="btn-outline" style="display: inline-flex; align-items: center; gap: 6px;"><i class="bi bi-arrow-right"></i> All News</a>
+          <a href="news.html" class="btn-outline" style="display: inline-flex; align-items: center; gap: 6px;"><i class="bi bi-arrow-right" aria-hidden="true"></i> All News</a>
         </div>
       </div>
     </section>
-
 
     <!-- Connect & Social -->
     <section class="section" style="padding-top: 0;">
@@ -344,12 +309,12 @@
       </div>
       <div class="container" data-aos="fade-up">
         <div class="social-strip">
-          <a href="https://www.instagram.com/tamu_biology/" target="_blank"><i class="bi bi-instagram"></i> TAMU Biology</a>
-          <a href="https://twitter.com/TAMU_Biology" target="_blank"><i class="bi bi-twitter-x"></i> @TAMU_Biology</a>
-          <a href="https://github.com/coleoguy" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-          <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank"><i class="bi bi-mortarboard-fill"></i> Google Scholar</a>
-          <a href="https://www.youtube.com/channel/UCGPj5iydCkn_5DanItR-C0w/" target="_blank"><i class="bi bi-youtube"></i> YouTube</a>
-          <a href="https://artsci.tamu.edu/news/newsfeed.html?tags=biology" target="_blank"><i class="bi bi-newspaper"></i> Department News</a>
+          <a href="https://www.instagram.com/tamu_biology/" target="_blank"><i class="bi bi-instagram" aria-hidden="true"></i> TAMU Biology</a>
+          <a href="https://twitter.com/TAMU_Biology" target="_blank"><i class="bi bi-twitter-x" aria-hidden="true"></i> @TAMU_Biology</a>
+          <a href="https://github.com/coleoguy" target="_blank"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>
+          <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&hl=en" target="_blank"><i class="bi bi-mortarboard-fill" aria-hidden="true"></i> Google Scholar</a>
+          <a href="https://www.youtube.com/channel/UCGPj5iydCkn_5DanItR-C0w/" target="_blank"><i class="bi bi-youtube" aria-hidden="true"></i> YouTube</a>
+          <a href="https://artsci.tamu.edu/news/newsfeed.html?tags=biology" target="_blank"><i class="bi bi-newspaper" aria-hidden="true"></i> Department News</a>
         </div>
       </div>
     </section>
@@ -360,7 +325,7 @@
         <h2>Dr. Blackmon's Schedule</h2>
       </div>
       <div class="container">
-        <iframe loading="lazy" title="calendar" src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=coleoguy%40gmail.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="100%" height="500"></iframe>
+        <iframe loading="lazy" title="Dr. Blackmon's weekly schedule" src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=coleoguy%40gmail.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="100%" height="500"></iframe>
       </div>
     </section>
 
@@ -373,20 +338,14 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 

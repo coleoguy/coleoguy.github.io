@@ -1,1 +1,14 @@
 .fuse_hidden*
+
+# OS / editor cruft
+.DS_Store
+.Rhistory
+.Rapp.history
+.RData
+*.swp
+*.swo
+*~
+
+# Local-only dev notes
+next-session-tasks.md
+context.md

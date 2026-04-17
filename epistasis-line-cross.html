@@ -428,6 +428,32 @@
       color: var(--accent, #c9a227);
     }
   </style>
+
+  <!-- Structured Data (added by audit) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Epistasis and the Shifting Balance",
+    "url": "https://coleoguy.github.io/epistasis-line-cross.html",
+    "description": "Visual guide to epistasis, line cross analysis, and Wright's shifting balance theory. Magnitude/sign/reciprocal sign epistasis, the joint-scaling test, SAGA/SAGA2, and 1,600+ empirical datasets.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Evolutionary biology"
+    },
+    "keywords": ["epistasis", "line cross analysis", "shifting balance", "SAGA", "Wright-Fisher debate", "quantitative genetics"],
+    "publisher": {
+      "@type": "ResearchOrganization",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    }
+  }
+  </script>
 </head>
 
 <body class="resources-page">
@@ -442,7 +468,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -455,7 +481,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -490,7 +516,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 1: WHAT IS EPISTASIS? ═══════════════ -->
     <section class="ep-section" id="sec-what">
@@ -597,7 +622,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 2: THE WRIGHT-FISHER DEBATE ═══════════════ -->
     <section class="ep-section" id="sec-debate">
@@ -715,7 +739,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 3: THE COYNE-GOODNIGHT DEBATE ═══════════════ -->
     <section class="ep-section" id="sec-coyne-goodnight">
       <div class="container">
@@ -778,7 +801,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 4: LINE CROSS ANALYSIS ═══════════════ -->
     <section class="ep-section" id="sec-lca">
@@ -923,7 +945,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 5: SAGA ═══════════════ -->
     <section class="ep-section" id="sec-saga">
       <div class="container">
@@ -971,7 +992,7 @@
             </a>
 
             <div class="software-callout" data-aos="fade-left">
-              <div class="sw-name"><i class="bi bi-box-seam"></i> &nbsp;SAGA2 R Package</div>
+              <div class="sw-name"><i class="bi bi-box-seam" aria-hidden="true"></i> &nbsp;SAGA2 R Package</div>
               <div class="sw-desc">Statistical Analysis of Genetic Architecture &mdash; an information-theoretic approach to line cross analysis with support for sexual dimorphism and genotype-by-environment interactions.</div>
               <p style="font-size:0.85rem; margin-bottom:6px;"><strong>Install:</strong> <code>devtools::install_github("coleoguy/SAGA2")</code></p>
               <p style="font-size:0.85rem; margin-bottom:6px;"><strong>GitHub:</strong> <a href="https://github.com/coleoguy/SAGA2" target="_blank">github.com/coleoguy/SAGA2</a></p>
@@ -989,7 +1010,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 6: WRIGHT WAS RIGHT ═══════════════ -->
     <section class="ep-section" id="sec-wright-was-right">
@@ -1052,7 +1072,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 7: MODERN APPROACHES ═══════════════ -->
     <section class="ep-section" id="sec-modern">
@@ -1170,7 +1189,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 8: WHY EPISTASIS MATTERS ═══════════════ -->
     <section class="ep-section" id="sec-big-picture">
       <div class="container">
@@ -1271,19 +1289,18 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ RELATED RESOURCES ═══════════════ -->
     <section class="section">
       <div class="container" style="max-width: 900px;">
         <div class="related-box" data-aos="fade-up">
           <h3>Explore Further</h3>
           <div class="related-links">
-            <a href="epistasis-database.html" class="related-link"><i class="bi bi-database"></i> Epistasis Database</a>
-            <a href="https://github.com/coleoguy/SAGA2" target="_blank" class="related-link"><i class="bi bi-box-seam"></i> SAGA2 R Package</a>
-            <a href="research.html" class="related-link"><i class="bi bi-search"></i> Lab Research Questions</a>
-            <a href="publications.html" class="related-link"><i class="bi bi-journal-text"></i> Publications</a>
-            <a href="resources.html" class="related-link"><i class="bi bi-collection"></i> All Resources</a>
-            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous"></i> Sex Chromosome Evolution</a>
+            <a href="epistasis-database.html" class="related-link"><i class="bi bi-database" aria-hidden="true"></i> Epistasis Database</a>
+            <a href="https://github.com/coleoguy/SAGA2" target="_blank" class="related-link"><i class="bi bi-box-seam" aria-hidden="true"></i> SAGA2 R Package</a>
+            <a href="research.html" class="related-link"><i class="bi bi-search" aria-hidden="true"></i> Lab Research Questions</a>
+            <a href="publications.html" class="related-link"><i class="bi bi-journal-text" aria-hidden="true"></i> Publications</a>
+            <a href="resources.html" class="related-link"><i class="bi bi-collection" aria-hidden="true"></i> All Resources</a>
+            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous" aria-hidden="true"></i> Sex Chromosome Evolution</a>
           </div>
         </div>
 
@@ -1300,7 +1317,7 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -1412,7 +1429,6 @@
       Plotly.react('chart-drift', traces, layout, pConfig);
     })();
 
-
     // ── Chart 2: Line Cross Expectations (Interactive) ─
     function showLCA(mode) {
       var btns = document.querySelectorAll('#lca-toggle button');
@@ -1470,7 +1486,6 @@
     }
     showLCA('additive');
 
-
     // ── Chart 3: AICc Model Comparison ───────────────
     (function() {
       var models = ['[m]', '[m,a]', '[m,a,d]', '[m,a,aa]', '[m,a,d,aa]', '[m,a,d,ad]', '[m,a,d,aa,ad]', '[m,a,d,aa,ad,dd]'];
@@ -1501,7 +1516,6 @@
       }], layout, pConfig);
     })();
 
-
     // ── Chart 4: Epistasis Prevalence by Trait Category ─
     (function() {
       var categories = ['Morphological', 'Life History', 'Physiological', 'Behavioral'];
@@ -1526,7 +1540,6 @@
 
       Plotly.react('chart-prevalence', traces, layout, pConfig);
     })();
-
 
     // ── Chart 5: Model Support Distribution ──────────
     var modelDistData = {
@@ -1574,7 +1587,6 @@
       }], layout, pConfig);
     }
     showModelDist('all');
-
 
     // ── Redraw all charts on theme toggle ────────────
     var themeBtn = document.getElementById('theme-toggle');

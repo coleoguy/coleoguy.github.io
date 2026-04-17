@@ -1,0 +1,282 @@
+From 7d436a8bedc4df7d83ba904a57bda086067db728 Mon Sep 17 00:00:00 2001
+From: Heath Blackmon <coleoguy@gmail.com>
+Date: Thu, 16 Apr 2026 18:36:43 -0500
+Subject: [PATCH 2/3] Add LICENSE, CITATION.cff, and rewrite README
+
+- LICENSE: MIT for code; CC-BY-4.0 for the assembled karyotype dataset.
+- CITATION.cff: enables GitHub's "Cite this repository" sidebar button
+  and points at the Copeland et al. 2026 preprint (DOI 10.64898/2026.04.14.718287).
+- README.md: reset to manuscript title ("Dismantling Chromosomal Stasis
+  Across the Eukaryotic Tree of Life"), clear repo layout tree, data
+  schema table, reproducibility steps, and proper citation block.
+---
+ CITATION.cff | 130 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ LICENSE      |  27 +++++++++++
+ README.md    |  82 +++++++++++++++++++++++++++-----
+ 3 files changed, 227 insertions(+), 12 deletions(-)
+ create mode 100644 CITATION.cff
+ create mode 100644 LICENSE
+
+diff --git a/CITATION.cff b/CITATION.cff
+new file mode 100644
+index 0000000..11928a9
+--- /dev/null
++++ b/CITATION.cff
+@@ -0,0 +1,130 @@
++cff-version: 1.2.0
++message: "If you use this dataset or code, please cite the preprint below."
++title: "Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life"
++authors:
++  - family-names: Copeland
++    given-names: Megan
++  - family-names: McConnell
++    given-names: Meghann
++  - family-names: Barboza
++    given-names: Andres
++  - family-names: Abraham
++    given-names: Hannah M.
++  - family-names: Alfieri
++    given-names: James
++  - family-names: Arackal
++    given-names: Steven
++  - family-names: Bernard
++    given-names: Carrie E.
++  - family-names: Bryant
++    given-names: Kiedon
++  - family-names: Cast
++    given-names: Shelbie
++  - family-names: Chien
++    given-names: Sean
++  - family-names: Clark
++    given-names: Emily
++  - family-names: Cruz
++    given-names: Cassandra E.
++  - family-names: Diaz
++    given-names: Aileen Y.
++  - family-names: Deiterman
++    given-names: Olivia
++  - family-names: Girish
++    given-names: Riya
++  - family-names: Harper
++    given-names: Kaya
++  - family-names: Hjelmen
++    given-names: Carl E.
++  - family-names: Thompson
++    given-names: Michelle J.
++  - family-names: Koehl
++    given-names: Rachel
++  - family-names: Koneru
++    given-names: Tanvi
++  - family-names: Laird
++    given-names: Kenzie
++  - family-names: Lee
++    given-names: Yoonseo
++  - family-names: Lopez
++    given-names: Virginia R.
++  - family-names: Murphy
++    given-names: Mallory
++  - family-names: Perez
++    given-names: Nayeli
++  - family-names: Schmalz
++    given-names: Sarah
++  - family-names: Sylvester
++    given-names: Terrence
++  - family-names: Blackmon
++    given-names: Heath
++    orcid: "https://orcid.org/0000-0002-3730-0985"
++date-released: 2026-04-14
++doi: 10.64898/2026.04.14.718287
++url: "https://doi.org/10.64898/2026.04.14.718287"
++repository-code: "https://github.com/coleoguy/metazoa-chromosomes"
++license: MIT
++preferred-citation:
++  type: article
++  title: "Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life"
++  year: 2026
++  journal: bioRxiv
++  doi: 10.64898/2026.04.14.718287
++  url: "https://www.biorxiv.org/content/early/2026/04/16/2026.04.14.718287"
++  authors:
++    - family-names: Copeland
++      given-names: Megan
++    - family-names: McConnell
++      given-names: Meghann
++    - family-names: Barboza
++      given-names: Andres
++    - family-names: Abraham
++      given-names: Hannah M.
++    - family-names: Alfieri
++      given-names: James
++    - family-names: Arackal
++      given-names: Steven
++    - family-names: Bernard
++      given-names: Carrie E.
++    - family-names: Bryant
++      given-names: Kiedon
++    - family-names: Cast
++      given-names: Shelbie
++    - family-names: Chien
++      given-names: Sean
++    - family-names: Clark
++      given-names: Emily
++    - family-names: Cruz
++      given-names: Cassandra E.
++    - family-names: Diaz
++      given-names: Aileen Y.
++    - family-names: Deiterman
++      given-names: Olivia
++    - family-names: Girish
++      given-names: Riya
++    - family-names: Harper
++      given-names: Kaya
++    - family-names: Hjelmen
++      given-names: Carl E.
++    - family-names: Thompson
++      given-names: Michelle J.
++    - family-names: Koehl
++      given-names: Rachel
++    - family-names: Koneru
++      given-names: Tanvi
++    - family-names: Laird
++      given-names: Kenzie
++    - family-names: Lee
++      given-names: Yoonseo
++    - family-names: Lopez
++      given-names: Virginia R.
++    - family-names: Murphy
++      given-names: Mallory
++    - family-names: Perez
++      given-names: Nayeli
++    - family-names: Schmalz
++      given-names: Sarah
++    - family-names: Sylvester
++      given-names: Terrence
++    - family-names: Blackmon
++      given-names: Heath
+diff --git a/LICENSE b/LICENSE
+new file mode 100644
+index 0000000..049e182
+--- /dev/null
++++ b/LICENSE
+@@ -0,0 +1,27 @@
++MIT License
++
++Copyright (c) 2026 Heath Blackmon and contributors
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in all
++copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++SOFTWARE.
++
++---
++
++The dataset in data/cures-karyotype-database.csv and the per-clade CSVs in
++data/chrome/ are released under the Creative Commons Attribution 4.0
++International License (CC-BY-4.0). See https://creativecommons.org/licenses/by/4.0/
+diff --git a/README.md b/README.md
+index 96c5ea3..78364a7 100644
+--- a/README.md
++++ b/README.md
+@@ -1,16 +1,74 @@
+-# CURE-chromosome-number-evolution
++# Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life
+ 
+-The in this repository recapitulate analyss of chromosome Evolution
+-CURE Project. This project investigates rate variation in fusion, fission, demiploidy,
+-and whole genome duplication.
++Data, phylogenies, and analysis code for Copeland et al. (2026), which estimates rate variation in fusion, fission, polyploidy, and demi-polyploidy across 56 clades spanning the eukaryotic tree of life.
+ 
+-1.  README.md: The file that you are reading
+-2.  **data**
+-3.  chrome: contains csv files with phenotype data for all clades
+-4.  trees: contains phylogenies for all clades
+-5.  **script**: contains all scripts for data validation and analysis
+-6.  **results**: contains all results
+-7.  **figures**: contains scripts to produce each figure.
++Karyotype records were collected by undergraduate researchers through Course-based Undergraduate Research Experiences (CUREs) at Texas A&M University. An interactive browser for the full dataset is available at [coleoguy.github.io/cures-karyotype-database.html](https://coleoguy.github.io/cures-karyotype-database.html).
+ 
++## Repository layout
+ 
+-TODO: Check first page of manuscript
++```
++metazoa-chromosomes/
++├── data/
++│   ├── chrome/             # per-clade CSVs of species × haploid number
++│   ├── trees/              # per-clade source phylogenies (Newick/Nexus)
++│   ├── pruned-trees/       # trees pruned to match chromosome-data tips
++│   ├── clade.ages.csv      # crown ages used in rate calculations
++│   ├── tracking-sheet.xlsx # CURES student dataset provenance
++│   └── cures-karyotype-database.csv   # full 63,542-row combined dataset
++├── analysis-scripts/       # core MCMC rate estimation and diagnostics
++├── adequacy-scripts/       # sampling and tree-size sensitivity analyses
++├── results/                # MCMC output, AIC tables, posterior predictive sims
++└── figures/                # scripts and source files for each manuscript figure
++```
++
++## Data
++
++`data/cures-karyotype-database.csv` holds the complete assembled dataset: 63,542 species × haploid number records across 56 clades, with one karyotype-source citation per clade.
++
++| column | description |
++|---|---|
++| `clade` | clade name (e.g. *Accipitriformes*, *Fabaceae*) |
++| `species` | species binomial |
++| `haploid_number` | haploid chromosome number (n) |
++| `citation` | karyotype source for the clade |
++
++Per-clade CSVs in `data/chrome/` are the analysis-ready files used by the R scripts.
++
++## Reproducing the analyses
++
++Primary dependencies: R (≥ 4.2), `chromePlus`, `diversitree`, `ape`, `phytools`, `coda`.
++
++From `analysis-scripts/`:
++
++1. `produce_pruned_trees.r` — match chromosome datasets to trees, write pruned trees.
++2. `parallele.analysis.exponential.r` and `parallele.analysis.uniform.r` — run the full chromosome-evolution model across all clades under each prior.
++3. `ESS.checker.R`, `checkMCMCs.R` — MCMC diagnostics.
++4. `generate.PPS.R` — posterior predictive simulations per clade.
++5. `model.choice.sensitivity.R`, `best.model.R`, `uni-vs-exp.R` — model comparison across parameterizations and priors.
++
++Adequacy checks (`adequacy-scripts/`) assess how tree size and sampling influence posterior rate estimates using the scarab dataset and matched simulations.
++
++## Citation
++
++If you use this dataset or any of these scripts, please cite:
++
++Copeland, M., McConnell, M., Barboza, A., Abraham, H.M., Alfieri, J., Arackal, S., Bernard, C.E., Bryant, K., Cast, S., Chien, S., Clark, E., Cruz, C.E., Diaz, A.Y., Deiterman, O., Girish, R., Harper, K., Hjelmen, C.E., Thompson, M.J., Koehl, R., Koneru, T., Laird, K., Lee, Y., Lopez, V.R., Murphy, M., Perez, N., Schmalz, S., Sylvester, T., and Blackmon, H. (2026). Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life. *bioRxiv* 2026.04.14.718287. https://doi.org/10.64898/2026.04.14.718287
++
++```bibtex
++@article{Copeland2026.04.14.718287,
++  author    = {Copeland, Megan and McConnell, Meghann and Barboza, Andres and Abraham, Hannah M and Alfieri, James and Arackal, Steven and Bernard, Carrie E and Bryant, Kiedon and Cast, Shelbie and Chien, Sean and Clark, Emily and Cruz, Cassandra E and Diaz, Aileen Y and Deiterman, Olivia and Girish, Riya and Harper, Kaya and Hjelmen, Carl E and Thompson, Michelle J and Koehl, Rachel and Koneru, Tanvi and Laird, Kenzie and Lee, Yoonseo and Lopez, Virginia R and Murphy, Mallory and Perez, Nayeli and Schmalz, Sarah and Sylvester, Terrence and Blackmon, Heath},
++  title     = {Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life},
++  year      = {2026},
++  doi       = {10.64898/2026.04.14.718287},
++  publisher = {Cold Spring Harbor Laboratory},
++  journal   = {bioRxiv},
++  elocation-id = {2026.04.14.718287},
++  url       = {https://www.biorxiv.org/content/early/2026/04/16/2026.04.14.718287}
++}
++```
++
++Please also cite the original karyotype sources listed in the `citation` column of `data/cures-karyotype-database.csv`.
++
++## License
++
++Code is released under the MIT License (see `LICENSE`). The assembled dataset is released under CC-BY-4.0; please cite the paper above when reusing the data.
+-- 
+2.34.1
+

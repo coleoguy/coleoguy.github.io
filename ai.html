@@ -32,7 +32,6 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
-
   <style>
     /* ── AI hero ──────────────────────────────────────────── */
     .ai-hero {
@@ -351,7 +350,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -364,7 +363,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -381,10 +380,10 @@
         </p>
         <div class="hero-ctas" data-aos="fade-up" data-aos-delay="140">
           <a href="#projects" class="btn-accent">
-            <i class="bi bi-grid-3x3-gap-fill"></i> See our projects
+            <i class="bi bi-grid-3x3-gap-fill" aria-hidden="true"></i> See our projects
           </a>
           <a href="join.html" class="btn-ghost">
-            <i class="bi bi-person-plus"></i> Join the lab
+            <i class="bi bi-person-plus" aria-hidden="true"></i> Join the lab
           </a>
         </div>
       </div>
@@ -462,7 +461,7 @@
                 </div>
               </div>
               <p class="pc-desc">An autonomous agent that searches PubMed and CrossRef, triages papers with Claude Haiku, fetches PDFs via Unpaywall, and extracts structured karyotype records with Claude Sonnet. Currently at 629+ records across 144 beetle families, running 730 search terms.</p>
-              <a href="subpages/karyotype-agent.html" class="pc-link">Learn more <i class="bi bi-arrow-right"></i></a>
+              <a href="subpages/karyotype-agent.html" class="pc-link">Learn more <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -477,7 +476,7 @@
                 </div>
               </div>
               <p class="pc-desc">We gave a Claude-powered agent a complete research problem in claw evolution and asked it to carry the project from hypothesis to manuscript. The goal is to understand where AI reasoning works in biology and where it breaks down. Manuscript in preparation.</p>
-              <a href="research.html" class="pc-link">See research program <i class="bi bi-arrow-right"></i></a>
+              <a href="research.html" class="pc-link">See research program <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -492,7 +491,7 @@
                 </div>
               </div>
               <p class="pc-desc">Penalized likelihood method for estimating branch-specific rate scalars on phylogenies. We used AI tools throughout method development, simulation, and manuscript writing. Planned application to pathogen drug-resistance rate estimation (NHGRI PAR-25-228).</p>
-              <a href="resources.html" class="pc-link">R packages <i class="bi bi-arrow-right"></i></a>
+              <a href="resources.html" class="pc-link">R packages <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -507,7 +506,7 @@
                 </div>
               </div>
               <p class="pc-desc">Six interactive karyotype databases covering Coleoptera, Diptera, Amphibia, Mammalia, Drosophila, and Polyneoptera. Over 20,000 records total. All static, downloadable, and machine-readable.</p>
-              <a href="karyotypes/index.html" class="pc-link">Browse databases <i class="bi bi-arrow-right"></i></a>
+              <a href="karyotypes/index.html" class="pc-link">Browse databases <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -522,7 +521,7 @@
                 </div>
               </div>
               <p class="pc-desc">Interactive Wright-Fisher simulator supporting drift, selection, mutation, migration, and bottlenecks. Built entirely through AI-assisted coding as a teaching tool and a test of what a coding agent can produce without manual intervention.</p>
-              <a href="subpages/popgen-sim.html" class="pc-link">Open simulator <i class="bi bi-arrow-right"></i></a>
+              <a href="subpages/popgen-sim.html" class="pc-link">Open simulator <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -537,7 +536,7 @@
                 </div>
               </div>
               <p class="pc-desc">Theory paper on sex-autosome fusion fixation probability. We used AI tools for symbolic derivations, analytical cross-checks, and drafting. A useful test case for how AI assistance affects throughput and error rate in theoretical work.</p>
-              <a href="research.html" class="pc-link">Research page <i class="bi bi-arrow-right"></i></a>
+              <a href="research.html" class="pc-link">Research page <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -568,7 +567,7 @@
                 </div>
               </div>
               <p class="pc-desc" style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">Undergraduate research course where each student conducts an original evolutionary biology project using phylogenetic comparative methods and AI-assisted analysis. Spring 2026 cohort.</p>
-              <a href="biolai-cure.html" class="pc-link">Meet the cohort <i class="bi bi-arrow-right"></i></a>
+              <a href="biolai-cure.html" class="pc-link">Meet the cohort <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -582,7 +581,7 @@
                 </div>
               </div>
               <p class="pc-desc" style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">Formal 10-credit-hour concentration in the Texas A&amp;M Biology BS and PhD programs. Built to develop skills that transfer across tools, not just familiarity with whatever is current.</p>
-              <a href="tamu-ai-concentration.html" class="pc-link">View concentration <i class="bi bi-arrow-right"></i></a>
+              <a href="tamu-ai-concentration.html" class="pc-link">View concentration <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -596,7 +595,7 @@
                 </div>
               </div>
               <p class="pc-desc" style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">Practical guides to AI tools and prompting techniques written for biologists. Covers literature review, data analysis, coding assistance, and writing workflows.</p>
-              <a href="subpages/AI-Tools.html" class="pc-link">Browse guides <i class="bi bi-arrow-right"></i></a>
+              <a href="subpages/AI-Tools.html" class="pc-link">Browse guides <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -665,10 +664,10 @@
         <p>We are recruiting graduate students and postdocs interested in using AI tools in evolutionary biology research. Get in touch if that sounds like you.</p>
         <div class="hero-ctas">
           <a href="join.html" class="btn-accent">
-            <i class="bi bi-person-plus"></i> Join the lab
+            <i class="bi bi-person-plus" aria-hidden="true"></i> Join the lab
           </a>
           <a href="research.html" class="btn-ghost">
-            <i class="bi bi-journal-text"></i> Our research
+            <i class="bi bi-journal-text" aria-hidden="true"></i> Our research
           </a>
         </div>
       </div>
@@ -685,7 +684,7 @@
   </footer>
 
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
+    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
   </a>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,21 @@
+<footer class="site-footer">
+  <div class="container">
+    <p><a href="{{ '/' | relative_url }}">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
+  </div>
+</footer>
+
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+
+<div id="preloader"></div>
+
+<!-- Vendor JS (only the libraries actually used site-wide) -->
+<script src="{{ '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/vendor/aos/aos.js' | relative_url }}"></script>
+{%- if page.glightbox %}
+<script src="{{ '/assets/vendor/glightbox/js/glightbox.min.js' | relative_url }}"></script>
+{%- endif %}
+
+<!-- Main JS -->
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+{{ page.extra_scripts }}

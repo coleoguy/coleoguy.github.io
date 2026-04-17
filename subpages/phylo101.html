@@ -40,7 +40,7 @@
         <a href="../index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -52,7 +52,7 @@
           <li><a href="../join.html">Join</a></li>
           <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -96,7 +96,7 @@
     <section class="content-section" data-aos="fade-up">
       <div class="container">
         <h2>
-          <i class="bi bi-file-earmark-pdf"></i> Workshop Materials
+          <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Workshop Materials
         </h2>
         <p>
           Access the lecture slides and workshop recording below. The lecture slides cover all major topics presented during the workshop, providing a comprehensive overview of phylogenetics principles, methods, and applications.
@@ -107,7 +107,7 @@
             <div class="resource-item" data-aos="fade-up">
               <div class="resource-link">
                 <h4>
-                  <i class="bi bi-file-pdf"></i>
+                  <i class="bi bi-file-pdf" aria-hidden="true"></i>
                   <a href="teaching/phylogenetics-101.pdf" target="_blank">PDF Lecture Slides</a>
                 </h4>
               </div>
@@ -121,7 +121,7 @@
             <div class="resource-item" data-aos="fade-up">
               <div class="resource-link">
                 <h4>
-                  <i class="bi bi-file-earmark-powerpoint"></i>
+                  <i class="bi bi-file-earmark-powerpoint" aria-hidden="true"></i>
                   <a href="teaching/phylogenetics-101.pptx" target="_blank">PPTX Lecture Slides</a>
                 </h4>
               </div>
@@ -135,7 +135,7 @@
         <div class="resource-item mt-4" data-aos="fade-up">
           <div class="resource-link">
             <h4>
-              <i class="bi bi-camera-video"></i>
+              <i class="bi bi-camera-video" aria-hidden="true"></i>
               <a href="https://tamu.zoom.us/rec/share/oXLTgNnuanxoNq3OQ4Ek6Hc0KTe7RXDOPTFQmJqi99UERU2gTwuyoJlqL2qPAk_a.5rMITmzamvTv84Pn" target="_blank">Workshop Recording</a>
             </h4>
           </div>
@@ -152,7 +152,7 @@
     <section class="content-section" data-aos="fade-up">
       <div class="container">
         <h2>
-          <i class="bi bi-database"></i> Practice Datasets
+          <i class="bi bi-database" aria-hidden="true"></i> Practice Datasets
         </h2>
         <p>
           The following datasets are provided for hands-on practice during and after the workshop. Each dataset demonstrates different aspects of phylogenetic analysis and can be used with various phylogenetics software packages.
@@ -161,7 +161,7 @@
         <!-- Ape Dataset -->
         <div class="dataset-category mt-5" data-aos="fade-up">
           <h3>
-            <i class="bi bi-diagram-3"></i> Ape Phylogeny Dataset
+            <i class="bi bi-diagram-3" aria-hidden="true"></i> Ape Phylogeny Dataset
           </h3>
           <p>
             The ape dataset represents a well-studied primate phylogeny, making it ideal for learning sequence alignment and phylogenetic tree building. This dataset provides a diverse set of primate sequences that are well-characterized in the literature, allowing you to practice alignment methods and verify your results against known evolutionary relationships.
@@ -213,7 +213,7 @@
         <!-- Scarab Dataset -->
         <div class="dataset-category mt-5" data-aos="fade-up">
           <h3>
-            <i class="bi bi-bug"></i> Scarab Beetle Dataset
+            <i class="bi bi-bug" aria-hidden="true"></i> Scarab Beetle Dataset
           </h3>
           <p>
             The scarab beetle dataset represents a more complex phylogenetic problem drawn from Coleoptera (beetles), one of the most diverse animal groups. This dataset is well-suited for applying the techniques learned in the workshop to a real research dataset with greater evolutionary complexity and diversity. It provides excellent practice for advanced tree building and assessment approaches.
@@ -258,7 +258,7 @@
     <section class="content-section" data-aos="fade-up">
       <div class="container">
         <h2>
-          <i class="bi bi-tools"></i> Software & Tools
+          <i class="bi bi-tools" aria-hidden="true"></i> Software & Tools
         </h2>
         <p>
           The following software packages are commonly used in phylogenetic analysis and are recommended for the types of analyses covered in this workshop:
@@ -311,7 +311,7 @@
         </div>
 
         <div class="alert alert-info mt-4" data-aos="fade-up">
-          <i class="bi bi-info-circle"></i>
+          <i class="bi bi-info-circle" aria-hidden="true"></i>
           <strong>Getting Started:</strong> Start with MEGA if you are new to phylogenetics, as it offers an intuitive interface and integrates alignment, tree building, and visualization. Once comfortable with the fundamentals, explore RAxML and MrBayes for more advanced analyses.
         </div>
       </div>
@@ -323,7 +323,7 @@
     <section class="content-section" data-aos="fade-up">
       <div class="container">
         <h2>
-          <i class="bi bi-envelope"></i> Contact & Questions
+          <i class="bi bi-envelope" aria-hidden="true"></i> Contact & Questions
         </h2>
         <p>
           For questions about this workshop, the materials provided, or guidance on phylogenetic analyses, please contact:
@@ -347,7 +347,7 @@
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
   <div id="preloader"></div>
 
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

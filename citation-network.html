@@ -25,7 +25,6 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
-
   <style>
     :root { --gold: #c9a227; --teal: #34d399; }
 
@@ -241,7 +240,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -254,7 +253,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -282,7 +281,7 @@
     <strong id="stat-citations">—</strong> total citations<br>
     <strong id="stat-connections">—</strong> co-author connections
     <hr class="stats-divider">
-    <a href="publications.html"><i class="bi bi-arrow-left"></i> Publications</a>
+    <a href="publications.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Publications</a>
   </div>
 
   <!-- Legend -->
@@ -302,10 +301,10 @@
   <!-- Controls -->
   <div id="net-controls">
     <button class="net-btn" id="btn-reset" onclick="resetZoom()">
-      <i class="bi bi-arrows-fullscreen"></i> Reset
+      <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i> Reset
     </button>
     <button class="net-btn" id="btn-labels" onclick="toggleLabels()">
-      <i class="bi bi-tag"></i> Labels
+      <i class="bi bi-tag" aria-hidden="true"></i> Labels
     </button>
   </div>
 
@@ -313,7 +312,7 @@
   <div id="net-hint">hover · drag · scroll to zoom · click to open paper</div>
 
   <!-- Scroll Top (hidden but required by main.js) -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important;"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important;"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>

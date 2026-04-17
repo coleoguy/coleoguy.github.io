@@ -257,6 +257,32 @@
       color: var(--text-muted, rgba(200,197,190,0.45));
     }
   </style>
+
+  <!-- Structured Data (added by audit) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Evolution of Genome Structure",
+    "url": "https://coleoguy.github.io/genome-structure-evolution.html",
+    "description": "Visual guide to chromosome fusions, fissions, polyploidy, demiploidy, meiotic drive, and the forces shaping karyotype evolution across the tree of life.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Evolutionary biology"
+    },
+    "keywords": ["karyotype evolution", "chromosome fusion", "polyploidy", "meiotic drive", "genome structure", "chromePlus"],
+    "publisher": {
+      "@type": "ResearchOrganization",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    }
+  }
+  </script>
 </head>
 
 <body class="resources-page">
@@ -270,7 +296,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -283,7 +309,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -319,7 +345,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 1: WHAT IS GENOME STRUCTURE? ═══════════════ -->
     <section class="gs-section" id="sec-what">
@@ -428,7 +453,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 2: FUSIONS ═══════════════ -->
     <section class="gs-section" id="sec-fusions">
@@ -546,7 +570,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 3: FISSIONS ═══════════════ -->
     <section class="gs-section" id="sec-fissions">
       <div class="container">
@@ -642,7 +665,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 4: WHOLE-GENOME DUPLICATION ═══════════════ -->
     <section class="gs-section" id="sec-wgd">
@@ -757,7 +779,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 5: MEIOTIC DRIVE ═══════════════ -->
     <section class="gs-section" id="sec-drive">
       <div class="container">
@@ -860,7 +881,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 6: STASIS VS. LABILITY ═══════════════ -->
     <section class="gs-section" id="sec-stasis">
       <div class="container">
@@ -933,7 +953,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 7: MODERN METHODS ═══════════════ -->
     <section class="gs-section" id="sec-methods">
@@ -1037,7 +1056,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 8: WHAT WE DON'T KNOW ═══════════════ -->
     <section class="gs-section" id="sec-unknown">
       <div class="container">
@@ -1100,19 +1118,18 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ RELATED RESOURCES ═══════════════ -->
     <section class="section">
       <div class="container" style="max-width: 900px;">
         <div class="related-box" data-aos="fade-up">
           <h3>Explore Further</h3>
           <div class="related-links">
-            <a href="karyotypes/index.html" class="related-link"><i class="bi bi-database"></i> Karyotype Databases</a>
-            <a href="phylo-methods/discrete.html" class="related-link"><i class="bi bi-box-seam"></i> chromePlus R Package</a>
-            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous"></i> Sex Chromosome Evolution</a>
-            <a href="chromosome-evolution-history.html" class="related-link"><i class="bi bi-clock-history"></i> Intellectual History</a>
-            <a href="research.html" class="related-link"><i class="bi bi-search"></i> Lab Research Questions</a>
-            <a href="publications.html" class="related-link"><i class="bi bi-journal-text"></i> Publications</a>
+            <a href="karyotypes/index.html" class="related-link"><i class="bi bi-database" aria-hidden="true"></i> Karyotype Databases</a>
+            <a href="phylo-methods/discrete.html" class="related-link"><i class="bi bi-box-seam" aria-hidden="true"></i> chromePlus R Package</a>
+            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous" aria-hidden="true"></i> Sex Chromosome Evolution</a>
+            <a href="chromosome-evolution-history.html" class="related-link"><i class="bi bi-clock-history" aria-hidden="true"></i> Intellectual History</a>
+            <a href="research.html" class="related-link"><i class="bi bi-search" aria-hidden="true"></i> Lab Research Questions</a>
+            <a href="publications.html" class="related-link"><i class="bi bi-journal-text" aria-hidden="true"></i> Publications</a>
           </div>
         </div>
 
@@ -1128,7 +1145,7 @@
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
   <div id="preloader"></div>
 
   <!-- Vendor JS -->

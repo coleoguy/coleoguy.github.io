@@ -494,7 +494,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -507,7 +507,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -517,14 +517,14 @@
   <!-- ═══════════════════════════════════════════════════ -->
   <div id="phylo-app">
     <div class="phylo-toolbar">
-      <h2><i class="bi bi-tree"></i> Phylogenetic Tree Explorer</h2>
+      <h2><i class="bi bi-tree" aria-hidden="true"></i> Phylogenetic Tree Explorer</h2>
       <div class="phylo-controls">
         <div class="toggle-group">
           <button class="toggle-btn active" data-mode="phylogram">Phylogram</button>
           <button class="toggle-btn" data-mode="cladogram">Cladogram</button>
           <button class="toggle-btn" data-mode="radial">Radial</button>
         </div>
-        <button class="phylo-btn" id="load-newick"><i class="bi bi-file-earmark-code"></i> Load Newick</button>
+        <button class="phylo-btn" id="load-newick"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> Load Newick</button>
         <button class="phylo-btn" id="expand-all">Expand All</button>
         <button class="phylo-btn" id="reset-zoom">Reset Zoom</button>
       </div>
@@ -551,7 +551,7 @@
         <label>Tree File</label>
         <div class="file-input-wrap">
           <input type="file" id="newick-file" accept=".nwk,.tre,.tree,.nex,.txt,.newick">
-          <span class="file-label-btn"><i class="bi bi-upload"></i> Choose .nwk / .tre</span>
+          <span class="file-label-btn"><i class="bi bi-upload" aria-hidden="true"></i> Choose .nwk / .tre</span>
         </div>
         <span class="file-name" id="newick-file-name"></span>
       </div>
@@ -563,7 +563,7 @@
         <label>Trait Data</label>
         <div class="file-input-wrap">
           <input type="file" id="trait-file" accept=".csv,.tsv,.txt">
-          <span class="file-label-btn"><i class="bi bi-upload"></i> Choose .csv / .tsv</span>
+          <span class="file-label-btn"><i class="bi bi-upload" aria-hidden="true"></i> Choose .csv / .tsv</span>
         </div>
         <span class="file-name" id="trait-file-name"></span>
       </div>
@@ -583,7 +583,7 @@ Dynastes_tityus,Scarabaeidae,2n=20,Nearctic"></textarea>
   </div>
 
   <!-- Elements expected by main.js -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <!-- Vendor JS -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

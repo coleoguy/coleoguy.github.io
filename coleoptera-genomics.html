@@ -486,6 +486,32 @@
       color: var(--text-muted, rgba(200,197,190,0.45));
     }
   </style>
+
+  <!-- Structured Data (added by audit) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Coleoptera Genomics",
+    "url": "https://coleoguy.github.io/coleoptera-genomics.html",
+    "description": "Visual guide to beetle genomics: reference genomes across coleopteran families, Stevens elements, dosage compensation, and the genomic basis of beetle species richness.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Evolutionary biology"
+    },
+    "keywords": ["Coleoptera", "beetle genomics", "Stevens elements", "dosage compensation", "comparative genomics"],
+    "publisher": {
+      "@type": "ResearchOrganization",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    }
+  }
+  </script>
 </head>
 
 <body class="resources-page">
@@ -500,7 +526,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -513,7 +539,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -560,7 +586,6 @@
         <img src="assets/img/study-systems/chrysina-beyeri.jpg" alt="Chrysina beyeri scarab beetle" class="hero-photo">
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 1: WHY BEETLE GENOMES MATTER ═══════════════ -->
     <section class="cg-section" id="sec-why">
@@ -642,7 +667,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 2: STEVENS ELEMENTS ═══════════════ -->
     <section class="cg-section" id="sec-stevens">
@@ -793,7 +817,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 3: LAB-PRODUCED GENOMES ═══════════════ -->
     <section class="cg-section" id="sec-genomes">
       <div class="container">
@@ -908,7 +931,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 4: DOSAGE COMPENSATION ═══════════════ -->
     <section class="cg-section" id="sec-dosage">
@@ -1052,7 +1074,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 5: POPULATION SIZE & GENE FLOW ═══════════════ -->
     <section class="cg-section" id="sec-popgen">
       <div class="container">
@@ -1186,7 +1207,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 6: BEETLE PHYLOGENOMICS ═══════════════ -->
     <section class="cg-section" id="sec-phylo">
       <div class="container">
@@ -1253,7 +1273,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- ═══════════════ SECTION 7: COMPARATIVE GENOMICS ═══════════════ -->
     <section class="cg-section" id="sec-comparative">
@@ -1332,7 +1351,6 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ SECTION 8: FUTURE / BIG PICTURE ═══════════════ -->
     <section class="cg-section" id="sec-future">
       <div class="container">
@@ -1402,19 +1420,18 @@
       </div>
     </section>
 
-
     <!-- ═══════════════ RELATED RESOURCES ═══════════════ -->
     <section class="cg-section" id="sec-resources" style="border-bottom:none;">
       <div class="container">
         <div class="related-box" data-aos="fade-up">
           <h3>Related Resources</h3>
           <div class="related-links">
-            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Sex Chromosome Evolution</a>
-            <a href="genome-structure-evolution.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Genome Structure Evolution</a>
-            <a href="research.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Research Overview</a>
-            <a href="publications.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Publications</a>
-            <a href="https://github.com/coleoguy/chromePlus" target="_blank" class="related-link"><i class="bi bi-github"></i> chromePlus R Package</a>
-            <a href="resources.html" class="related-link"><i class="bi bi-arrow-right-circle"></i> Karyotype Databases</a>
+            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Sex Chromosome Evolution</a>
+            <a href="genome-structure-evolution.html" class="related-link"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Genome Structure Evolution</a>
+            <a href="research.html" class="related-link"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Research Overview</a>
+            <a href="publications.html" class="related-link"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Publications</a>
+            <a href="https://github.com/coleoguy/chromePlus" target="_blank" class="related-link"><i class="bi bi-github" aria-hidden="true"></i> chromePlus R Package</a>
+            <a href="resources.html" class="related-link"><i class="bi bi-arrow-right-circle" aria-hidden="true"></i> Karyotype Databases</a>
           </div>
         </div>
 
@@ -1430,7 +1447,7 @@
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
   <div id="preloader"></div>
 
   <!-- Vendor JS -->

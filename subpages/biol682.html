@@ -42,7 +42,7 @@
         <a href="../index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -55,7 +55,7 @@
           <li><a href="../news.html">News</a></li>
           <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -79,41 +79,41 @@
         </div>
 
         <div class="materials-block mt-5" data-aos="fade-up" data-aos-delay="100">
-          <h4><i class="bi bi-journal-text"></i> Course Materials</h4>
+          <h4><i class="bi bi-journal-text" aria-hidden="true"></i> Course Materials</h4>
 
           <div class="material-list">
 
             <div class="material-item">
               <a href="../20_Writing_Flaws_Life_Sciences.pdf" target="_blank" class="material-link">
-                <i class="bi bi-file-earmark-pdf"></i> 20 Writing Flaws in the Life Sciences
+                <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> 20 Writing Flaws in the Life Sciences
               </a>
               <p>A concise guide to the most common writing problems in biological manuscripts — from vague hedging and buried leads to misused jargon and passive voice overload. Use this as a checklist when self-editing drafts.</p>
             </div>
 
             <div class="material-item">
               <a href="../revision_prompt.pdf" target="_blank" class="material-link">
-                <i class="bi bi-file-earmark-pdf"></i> Revision Prompt
+                <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Revision Prompt
               </a>
               <p>An example of a well-crafted LLM prompt for getting detailed revision feedback on a manuscript draft. Notice how specific and structured it is — then try writing your own short, vague prompt for the same task and compare the quality of the responses you get back.</p>
             </div>
 
             <div class="material-item">
               <a href="../revision_prompt_response.pdf" target="_blank" class="material-link">
-                <i class="bi bi-file-earmark-pdf"></i> Revision Prompt Response
+                <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Revision Prompt Response
               </a>
               <p>The LLM's response to the revision prompt above. Notice the depth and specificity of the feedback — this is what a carefully structured prompt produces. Experiment by giving an LLM a simple prompt like "review my paper" and see how different the output is.</p>
             </div>
 
             <div class="material-item">
               <a href="../peer_review_prompt.pdf" target="_blank" class="material-link">
-                <i class="bi bi-file-earmark-pdf"></i> Peer Review Prompt
+                <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Peer Review Prompt
               </a>
               <p>Another example of a well-crafted LLM prompt, this time focused on getting peer review feedback. Shows how to structure a prompt that produces a useful, detailed critique rather than generic commentary.</p>
             </div>
 
             <div class="material-item">
               <a href="../Science_Review_Simulation.docx.pdf" target="_blank" class="material-link">
-                <i class="bi bi-file-earmark-pdf"></i> Science Review Simulation
+                <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Science Review Simulation
               </a>
               <p>The LLM's response to the peer review prompt above. Shows the kind of detailed, reviewer-style critique a well-structured prompt can generate. Try asking an LLM to simply "review my paper" and compare the results.</p>
             </div>
@@ -132,7 +132,7 @@
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
   <div id="preloader"></div>
 
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -303,7 +303,7 @@
     document.body.classList.add('scrolled');
     window.addEventListener('load', function() { document.body.classList.add('scrolled'); });
   </script>
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -311,7 +311,7 @@
         <a href="../index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -323,7 +323,7 @@
           <li><a href="../join.html">Join</a></li>
           <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -348,7 +348,7 @@
     <section class="content-section">
       <div class="container">
         <a href="../karyotypes/index.html" class="back-link">
-          <i class="bi bi-arrow-left"></i> All karyotype databases
+          <i class="bi bi-arrow-left" aria-hidden="true"></i> All karyotype databases
         </a>
 
         <div class="stat-grid" data-aos="fade-up">
@@ -632,7 +632,7 @@
   </footer>
 
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
+    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
   </a>
 
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

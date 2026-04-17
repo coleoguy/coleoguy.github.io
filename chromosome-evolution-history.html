@@ -36,7 +36,6 @@
   <!-- Site CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-
   <!-- Playfair Display for header -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
@@ -214,6 +213,32 @@
       text-decoration: none;
     }
   </style>
+
+  <!-- Structured Data (added by audit) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Chromosome Evolution: A Century of Ideas",
+    "url": "https://coleoguy.github.io/chromosome-evolution-history.html",
+    "description": "Intellectual history of karyotype evolution research from Stebbins and White through Lande, Rieseberg, Mayrose's ChromEvol, and Zenil-Ferguson's BiChroM/ChromoSSE.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Evolutionary biology"
+    },
+    "keywords": ["karyotype evolution", "intellectual history", "ChromEvol", "BiChroM", "ChromoSSE", "Stebbins", "Lande"],
+    "publisher": {
+      "@type": "ResearchOrganization",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    }
+  }
+  </script>
 </head>
 
 <body class="resources-page">
@@ -225,7 +250,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
         </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
       </div>
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -238,7 +263,7 @@
           <li><a href="news.html">News</a></li>
           <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
       </nav>
     </div>
   </header>
@@ -329,11 +354,11 @@
           <div class="related-box" data-aos="fade-up">
             <h3>Explore Further</h3>
             <div class="related-links">
-              <a href="karyotypes/index.html" class="related-link"><i class="bi bi-database"></i> Karyotype Databases</a>
-              <a href="phylo-methods/discrete.html" class="related-link"><i class="bi bi-box-seam"></i> chromePlus R Package</a>
-              <a href="phylo-methods/index.html" class="related-link"><i class="bi bi-tree"></i> PCM Methods Guide</a>
-              <a href="research.html" class="related-link"><i class="bi bi-search"></i> Lab Research Questions</a>
-              <a href="publications.html" class="related-link"><i class="bi bi-journal-text"></i> Publications</a>
+              <a href="karyotypes/index.html" class="related-link"><i class="bi bi-database" aria-hidden="true"></i> Karyotype Databases</a>
+              <a href="phylo-methods/discrete.html" class="related-link"><i class="bi bi-box-seam" aria-hidden="true"></i> chromePlus R Package</a>
+              <a href="phylo-methods/index.html" class="related-link"><i class="bi bi-tree" aria-hidden="true"></i> PCM Methods Guide</a>
+              <a href="research.html" class="related-link"><i class="bi bi-search" aria-hidden="true"></i> Lab Research Questions</a>
+              <a href="publications.html" class="related-link"><i class="bi bi-journal-text" aria-hidden="true"></i> Publications</a>
             </div>
           </div>
 
@@ -352,7 +377,7 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>

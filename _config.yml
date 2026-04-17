@@ -1,0 +1,41 @@
+title: Blackmon Lab
+description: The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.
+url: https://coleoguy.github.io
+baseurl: ""
+
+# Default OpenGraph image and other metadata used by _includes/head.html
+og_image: https://coleoguy.github.io/assets/img/slide-beetle.jpg
+ga_id: G-4J0HZ3LNQX
+
+# Jekyll: don't process the existing static HTML pages unless they declare a layout.
+# Pages without front-matter are passed through unchanged.
+include:
+  - llms.txt
+  - llms-full.txt
+  - robots.txt
+  - sitemap.xml
+
+exclude:
+  - README.md
+  - "*.pdf"
+  - "*.docx"
+  - "*.pptx"
+  - "*.csv"
+  - "*.xlsx"
+  - "blackmon.pubs"
+  - "deprecated"
+  - "metazoa-patches"
+  - "rseminar/.Rhistory"
+  - "subpages/teaching"
+  - "subpages/karyotype-data"
+  - "subpages/tau-data"
+  - "subpages/LCA-database"
+  - "app"
+  - "data"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "vendor"
+  - "node_modules"
+
+# Use the default empty Jekyll plugins so this works on GitHub Pages without a Gemfile.
+plugins: []

@@ -1,0 +1,49 @@
+{%- comment -%}
+  Shared <head> block for all pages that opt into the default layout.
+  Pages can set: title, description, og_title, og_description, og_url, og_image,
+  canonical, keywords (string), extra_head (raw HTML for per-page <style>, JSON-LD, etc.)
+{%- endcomment -%}
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>{{ page.title | default: site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+
+<meta property="og:title" content="{{ page.og_title | default: page.title | default: site.title }}" />
+<meta property="og:description" content="{{ page.og_description | default: page.description | default: site.description }}" />
+<meta property="og:url" content="{{ page.og_url | default: page.canonical | default: site.url | append: page.url }}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Blackmon Lab" />
+<meta property="og:image" content="{{ page.og_image | default: site.og_image }}" />
+
+{%- if page.keywords %}
+<meta name="keywords" content="{{ page.keywords }}">
+{%- endif %}
+{%- if page.canonical %}
+<link rel="canonical" href="{{ page.canonical }}">
+{%- endif %}
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.ga_id }}');
+</script>
+
+<!-- Favicons -->
+<link href="{{ '/assets/img/favicon.ico' | relative_url }}" rel="icon">
+<link href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}" rel="apple-touch-icon">
+
+<!-- Vendor CSS -->
+<link href="{{ '/assets/vendor/bootstrap/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
+<link href="{{ '/assets/vendor/bootstrap-icons/bootstrap-icons.css' | relative_url }}" rel="stylesheet">
+<link href="{{ '/assets/vendor/aos/aos.css' | relative_url }}" rel="stylesheet">
+{%- if page.glightbox %}
+<link href="{{ '/assets/vendor/glightbox/css/glightbox.min.css' | relative_url }}" rel="stylesheet">
+{%- endif %}
+
+<!-- Main CSS -->
+<link href="{{ '/assets/css/main.css' | relative_url }}" rel="stylesheet">
+
+{{ page.extra_head }}
