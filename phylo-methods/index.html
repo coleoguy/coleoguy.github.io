@@ -151,10 +151,6 @@ extra_head: |
         transform: translateX(6px);
       }
     </style>
-extra_scripts: |
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/js/main.js"></script>
 ---
 
 <section class="hero-section">
@@ -162,8 +158,17 @@ extra_scripts: |
         <h1>Phylogenetic Comparative Methods</h1>
         <div class="subtitle">A guide from first principles to working analyses</div>
         <div class="intro-text">
-          Phylogenetic comparative methods exist because closely related species are not independent observations. Drop two squirrel species and a bat into the same scatter plot and the squirrels will sit near each other not because of any process you care about but simply because they share an ancestor &mdash; the data <em>look</em> like 3 points but contain perhaps 1.5 independent observations. Without correction, ordinary regression and correlation overstate evidence by treating shared ancestry as if it were replicated independent draws (the <em>phylogenetic pseudoreplication</em> problem; Felsenstein 1985). PCMs let us test evolutionary hypotheses by accounting for that shared history. Whether you are studying how body size evolves, mapping the origin of complex traits, or testing correlations between characters, the phylogeny is your map to understanding the data.
+          Closely related species are not independent observations &mdash; treat them as such and you will overstate evidence. Phylogenetic comparative methods correct for that shared history so you can test real evolutionary hypotheses about trait evolution, character correlation, and diversification.
         </div>
+      </div>
+    </section>
+
+    <section class="py-4" style="background: var(--bg-raised); border-bottom: 1px solid var(--border);">
+      <div class="container-xl" style="max-width: 900px;">
+        <div style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">Why this matters</div>
+        <p style="color: var(--text); font-size: 1.02rem; line-height: 1.75; margin: 0;">
+          Drop two squirrel species and a bat into the same scatter plot and the squirrels will sit near each other &mdash; not because of any process you care about, but simply because they share an ancestor. The data <em>look</em> like 3 points but contain perhaps 1.5 independent observations. Ordinary regression and correlation overstate evidence by treating shared ancestry as if it were replicated independent draws (the <em>phylogenetic pseudoreplication</em> problem; <a href="https://www.journals.uchicago.edu/doi/10.1086/284325" target="_blank" style="color: var(--accent);">Felsenstein 1985</a>). The methods below are the toolkit for doing it right.
+        </p>
       </div>
     </section>
 

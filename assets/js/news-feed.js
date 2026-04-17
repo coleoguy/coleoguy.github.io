@@ -32,6 +32,13 @@
     return colors[cat] || '#c9a227';
   }
 
+  function titleHTML(item) {
+    if (item.link) {
+      return `<h4 class="news-title"><a href="${item.link}" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor;">${item.title}</a></h4>`;
+    }
+    return `<h4 class="news-title">${item.title}</h4>`;
+  }
+
   function renderCards(items) {
     let html = '<div class="news-grid">';
     for (const item of items) {
@@ -44,7 +51,7 @@
               <i class="bi ${item.icon}" style="color: ${color}" aria-hidden="true"></i>
               <span class="news-date">${formatDate(item.date)}</span>
             </div>
-            <h4 class="news-title">${item.title}</h4>
+            ${titleHTML(item)}
             <p class="news-body">${item.body}</p>
             <span class="news-category" style="color: ${color}; border-color: ${color}">${item.category}</span>
           </div>
@@ -76,7 +83,7 @@
               <span class="news-date">${formatDate(item.date)}</span>
               <span class="news-category" style="color: ${color}; border-color: ${color}">${item.category}</span>
             </div>
-            <h4 class="news-title">${item.title}</h4>
+            ${titleHTML(item)}
             <p class="news-body">${item.body}</p>
           </div>
         </div>
