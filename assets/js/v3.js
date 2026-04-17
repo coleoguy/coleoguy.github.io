@@ -21,6 +21,17 @@
     });
   }
 
+  // Collapsible sidebar tree categories
+  document.querySelectorAll('.tree > li > span').forEach(span => {
+    const li = span.parentElement;
+    const ul = li.querySelector(':scope > ul');
+    if (!ul) return;
+    if (ul.querySelector('a.active')) {
+      li.classList.add('open');
+    }
+    span.addEventListener('click', () => li.classList.toggle('open'));
+  });
+
   // Command palette
   const PAL_ITEMS = [];
   document.querySelectorAll('.tree li a[href]').forEach(a => {

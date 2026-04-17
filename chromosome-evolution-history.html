@@ -1,308 +1,279 @@
----
-layout: default
-title: A History of Chromosome Number Evolution - Blackmon Lab
-description: From counting to modeling, a century of ideas on karyotype change, tracing the intellectual arc of chromosome number evolution research from Stebbins to modern probabilistic models.
-canonical: https://coleoguy.github.io/chromosome-evolution-history.html
-keywords: chromosome number evolution, karyotype, polyploidy, dysploidy, ChromEvol, Stebbins, Mayrose, cytogenetics, Blackmon Lab
-body_class: resources-page
-nav_active: resources
-extra_head: |
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Chromosome Evolution: A Century of Ideas",
-      "url": "https://coleoguy.github.io/chromosome-evolution-history.html",
-      "description": "Intellectual history of karyotype evolution research from Stebbins and White through Lande, Rieseberg, Mayrose's ChromEvol, and Zenil-Ferguson's BiChroM/ChromoSSE.",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "Blackmon Lab",
-        "url": "https://coleoguy.github.io"
-      },
-      "about": {
-        "@type": "Thing",
-        "name": "Evolutionary biology"
-      },
-      "keywords": ["karyotype evolution", "intellectual history", "ChromEvol", "BiChroM", "ChromoSSE", "Stebbins", "Lande"],
-      "publisher": {
-        "@type": "ResearchOrganization",
-        "name": "Blackmon Lab",
-        "url": "https://coleoguy.github.io"
-      }
-    }
-    </script>
-  <style>
-      /* ── Page-specific editorial styles ─────────────────────── */
-  
-      .chev-header {
-        padding: 130px 0 60px;
-        border-bottom: 1px solid var(--border);
-        text-align: center;
-      }
-  
-      .chev-kicker {
-        font-size: 0.65rem;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 14px;
-      }
-  
-      .chev-header h1 {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(2rem, 5vw, 3.2rem);
-        font-weight: 700;
-        color: var(--text-heading, #f8f4ed);
-        line-height: 1.15;
-        margin-bottom: 14px;
-      }
-  
-      .chev-header .subtitle {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-style: italic;
-        font-size: 1.05rem;
-        color: var(--text-secondary, rgba(200,197,190,0.65));
-        max-width: 600px;
-        margin: 0 auto;
-      }
-  
-      /* ── Content body ─────────────────────────────────────── */
-      .newspaper-wrap {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 48px 20px 48px;
-      }
-  
-      /* Decorative rule */
-      .paper-rule {
-        text-align: center;
-        color: var(--accent);
-        font-size: 13px;
-        letter-spacing: 0.4em;
-        margin: 0 0 36px;
-      }
-      .paper-rule::before,
-      .paper-rule::after {
-        content: '';
-        display: inline-block;
-        width: 80px;
-        height: 1px;
-        background: var(--accent);
-        vertical-align: middle;
-        margin: 0 12px;
-        opacity: 0.5;
-      }
-  
-      /* Single-column flow */
-      .col-grid {
-        display: block;
-      }
-  
-      /* Section heads */
-      .col-grid h2 {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: var(--accent);
-        border-bottom: 1px solid rgba(201,162,39,0.25);
-        padding-bottom: 6px;
-        margin: 36px 0 14px;
-      }
-      .col-grid h2:first-child { margin-top: 0; }
-  
-      /* Body text */
-      .col-grid p {
-        font-size: 1rem;
-        line-height: 1.85;
-        color: var(--text);
-        margin-bottom: 16px;
-      }
-      .col-grid p:last-child { margin-bottom: 0; }
-  
-      /* Intro paragraph */
-      .lead-para {
-        font-size: 1.08rem !important;
-        color: var(--text-heading) !important;
-        line-height: 1.85 !important;
-      }
-  
-      /* Pull quote */
-      .pullquote {
-        border-left: 3px solid var(--accent);
-        padding: 12px 20px;
-        margin: 24px 0;
-        font-style: italic;
-        font-size: 1rem;
-        color: var(--accent);
-        line-height: 1.6;
-      }
-  
-      /* Inline link style, visible in both themes */
-      .col-grid a {
-        color: var(--accent);
-        text-decoration: underline;
-        text-decoration-color: rgba(201,162,39,0.4);
-        text-underline-offset: 2px;
-        transition: text-decoration-color 0.15s;
-      }
-      .col-grid a:hover { text-decoration-color: var(--accent); }
-  
-      /* Strong text */
-      .col-grid strong {
-        font-weight: 600;
-        color: var(--text-heading);
-      }
-  
-      /* Bottom ornament */
-      .paper-foot {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 18px;
-        border-top: 1px solid rgba(201,162,39,0.2);
-        font-size: 0.7rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--text-muted);
-      }
-  
-      /* Related resources box */
-      .related-box {
-        margin-top: 48px;
-        padding: 28px 32px;
-        border: 1px solid rgba(201,162,39,0.2);
-        border-radius: 10px;
-        background: rgba(201,162,39,0.03);
-      }
-      .related-box h3 {
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 16px;
-      }
-      .related-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      .related-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 14px;
-        border: 1px solid rgba(201,162,39,0.25);
-        border-radius: 20px;
-        font-size: 0.8rem;
-        color: var(--text);
-        text-decoration: none;
-        transition: all 0.18s;
-      }
-      .related-link i { color: var(--accent); font-size: 0.75rem; }
-      .related-link:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-        text-decoration: none;
-      }
-    </style>
----
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History of chromosome evolution · Blackmon Lab</title>
+<meta name="description" content="A century of chromosome evolution research. From cytological description (Stebbins, White) to likelihood-based inference (Mayrose, Freyman & Höhna), tracing the intellectual arc of the field.">
+<link rel="icon" href="assets/img/favicon.ico">
 
-<!-- Page Header -->
-    <section class="chev-header" data-aos="fade-up">
-      <div class="container">
-        <div class="chev-kicker">A Brief Intellectual History</div>
-        <h1>Chromosome Number Evolution</h1>
-        <div class="subtitle">From counting to modeling, a century of ideas on karyotype change</div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+</head>
+
+<body>
+
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+    </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="karyotype.html">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html" class="active">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb">
+      <a href="index.html">Home</a> › Research › <strong>History of the field</strong>
+    </div>
+
+    <h1 class="title" id="history">A century of chromosome evolution research.</h1>
+
+    <p class="lede">
+      From cytological description (Stebbins, White) to likelihood-based inference (Mayrose, Freyman &amp; Höhna), chromosome evolution research has gone through several near-total reinventions. Each wave discarded most of the apparatus of the last one. This page tracks the arc.
+    </p>
+
+    <h2>The cytological era</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">1950</span>
+          <span class="sum-head">Stebbins elevates karyotype change to a central speciation mechanism</span>
+          <span class="sum-trail">Variation and Evolution in Plants.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>G. Ledyard Stebbins, in his landmark 1950 synthesis <em>Variation and Evolution in Plants</em>, framed polyploidy (whole-genome duplication) and dysploidy (single-chromosome gains and losses) as paths to reproductive isolation. The view dominated for decades: polyploidy was the engine of speciation in plants, full stop. The limitation, visible only later, was that the framework had no formal way to estimate rates from a phylogeny. It was a mechanism without an inference procedure.</p>
       </div>
-    </section>
+    </details>
 
-    <!-- Newspaper content -->
-    <section class="section">
-      <div class="container">
-        <div class="newspaper-wrap" data-aos="fade-up">
-
-          <div class="paper-rule">✦ ✦ ✦</div>
-
-          <div class="col-grid">
-
-            <!-- Full-width intro -->
-            <div class="col-full">
-              <p class="lead-para">Few topics in evolutionary biology have moved in and out of fashion as sharply as chromosome number evolution. It was once the centerpiece of speciation theory. Sequence-level genomics pushed it aside for a while. Now quantitative methods have brought it back, and the field has traced a long arc from counting chromosomes under a microscope to fitting probabilistic models on phylogenies. The scientists who drove each turn looked nothing alike.</p>
-            </div>
-
-            <!-- LEFT COLUMN -->
-            <div>
-              <h2>The Cytological Foundations</h2>
-              <p>The field was born from the microscope. In the early twentieth century, botanists and cytologists recognized that chromosome number varied dramatically across species and, crucially, that polyploidy (whole-genome duplication) was both common and associated with speciation. <strong>G. Ledyard Stebbins</strong>, in his landmark 1950 synthesis <em>Variation and Evolution in Plants</em>, elevated karyotype change to a central mechanism of plant diversification, framing polyploidy and dysploidy (single-chromosome gains and losses) as paths to reproductive isolation. Stebbins' view dominated for decades; polyploidy was the mechanism of speciation in plants, full stop.</p>
-
-              <p>In animals, the conversation was different and rougher. <strong>M.J.D. White</strong>, in <em>Animal Cytology and Evolution</em> (1954, revised 1973), documented the astonishing diversity of animal karyotypes and advanced "stasipatric speciation", the controversial proposal that chromosomal rearrangements could drive speciation even without geographic isolation. White's model positioned structural chromosome change as the motor of animal species diversification, a view that generated fierce debate and never reached consensus, but cemented the idea that karyotype mattered beyond plants. The sheer breadth of animal karyotype diversity White catalogued is now accessible in <a href="karyotypes/index.html">comparative databases</a> spanning beetles, flies, amphibians, and mammals.</p>
-
-              <div class="pullquote">"Chromosome number is not a passive record of ancestry; it is an active participant in speciation." The implicit thesis of the cytological era.</div>
-
-              <h2>The Population Genetic Challenge</h2>
-              <p><strong>Russell Lande's</strong> 1979 theoretical paper in <em>Evolution</em> was a cold-water moment for chromosomal speciation theory. Using population genetic models, Lande showed that underdominant chromosomal rearrangements, which reduce heterozygote fitness, face severe barriers to fixation in large populations, making them poor candidates for common speciation events. This effectively challenged White's stasipatric model on theoretical grounds, and for a time the field retreated. Interest in chromosome-number evolution as a speciation mechanism waned through the 1980s and into the early molecular era, as allozymes and later DNA sequences came to dominate evolutionary biology.</p>
-
-              <p>The plant polyploidy literature never collapsed in the same way, sustained by undeniable empirical examples, but even there the question of whether polyploidy accelerated or retarded diversification remained unresolved for decades.</p>
-            </div>
-
-            <!-- RIGHT COLUMN -->
-            <div>
-              <h2>The Hybrid Speciation Synthesis</h2>
-              <p><strong>Loren Rieseberg</strong> (<a href="https://botany.ubc.ca/people/loren-rieseberg/" target="_blank">UBC</a>) revitalized the chromosomal speciation debate in the 1990s–2000s through his extraordinary work on sunflowers. By experimentally recreating natural hybrid species of <em>Helianthus</em>, Rieseberg demonstrated that chromosomal rearrangements accumulate predictably during hybrid speciation and act as barriers to gene flow, not through underdominance alone, but through recombination suppression. His work reframed structural chromosome change as a speciation mechanism that was both common and tractable, winning him a MacArthur Fellowship and reshaping how speciation geneticists thought about genome architecture.</p>
-
-              <h2>The Probabilistic Revolution</h2>
-              <p>The modern era of chromosome-number evolution research is largely a story of methods. <strong>Itay Mayrose</strong> (<a href="https://www.tau.ac.il/~itaymay/" target="_blank">Tel Aviv University</a>) transformed the field by developing likelihood-based probabilistic models of chromosome number change on phylogenies. His ChromEvol framework (2010, 2014) provided the first statistically rigorous way to infer rates of polyploidization and dysploidy across trees, and his provocative 2011 <em>Science</em> paper, showing recently formed polyploids diversify more slowly than diploid relatives, challenged decades of received wisdom about polyploidy as a speciation engine.</p>
-
-              <p><strong>Rosana Zenil-Ferguson</strong> (<a href="https://roszenil.github.io/" target="_blank">University of Kentucky</a>) extended this program by coupling chromosome evolution to diversification dynamics. Her BiChroM and ChromoSSE models allow chromosome number change to interact with trait evolution and with speciation and extinction rates, and her work on holocentric lineages like <em>Carex</em> showed that dysploidy itself can be a driver, not merely a marker, of rapid diversification. Her models treat the karyotype as dynamic and causally important, and they sit at the current methodological edge of the field.</p>
-
-              <h2>Open Questions &amp; The Road Ahead</h2>
-              <p>Major tensions remain. The relationship between chromosome number change and diversification rate is contested. Mayrose's 2011 polyploidy-slows-diversification result was challenged on methodological grounds, principally by Soltis et al. (2014), who argued the BiSSE-style framework underlying the analysis confounds polyploidy with the trait-dependent extinction signal it claims to measure (the Maddison & FitzJohn / Rabosky-Goldberg critique of state-dependent diversification methods more broadly), and by Tank et al. (2015) who pointed to evidence for delayed (not slowed) diversification after WGD. Newer hidden-state and posterior-predictive approaches (Beaulieu & O'Meara 2016; Caetano et al. 2018) have largely re-litigated the question rather than resolving it; the empirical signal depends on which clade, which calibration, and which model. The role of dysploidy versus polyploidy also varies a great deal across clades. In animals, systematic phylogenetic comparative work of the kind Mayrose and Zenil-Ferguson built for plants has lagged. The <a href="research.html">Blackmon Lab's work</a> on beetles and the <a href="karyotypes/index.html">karyotype databases</a> are part of filling that gap. Model adequacy (whether our probabilistic models of chromosome change capture the biology well enough to trust the inferences) is an increasingly recognized problem. The next decade will likely see integration of mechanistic cytogenetic knowledge (centromere biology, recombination landscape) with macroevolutionary inference. The <a href="phylo-methods/discrete.html">chromePlus</a> R package developed in this lab extends the ChromEvol framework to let a binary trait (such as sex determination system) influence rates of chromosome change, asking whether having sex chromosomes speeds up or slows down karyotype evolution.</p>
-            </div>
-
-          </div><!-- /.col-grid -->
-
-          <div class="paper-rule" style="margin: 32px 0 28px;">✦ ✦ ✦</div>
-
-          <!-- Blackmon Lab contributions, full width -->
-          <div class="col-grid">
-            <div class="col-full">
-              <h2>What Has This Lab Added to the Picture?</h2>
-              <p class="lead-para" style="font-size:0.95rem;">The Blackmon Lab at Texas A&M has contributed to several fronts of the animal karyotype evolution literature, an area that, relative to plants, has lagged badly in the probabilistic inference era.</p>
-            </div>
-
-            <div>
-              <h2>Comparative Databases</h2>
-              <p>One persistent bottleneck for macroevolutionary analyses of animal karyotypes has been the absence of curated, machine-readable data. We built the <a href="karyotypes/index.html">Coleoptera Karyotype Database</a> (Blackmon &amp; Demuth, 2015), one of the largest cytogenetic datasets for any animal order, and followed it with amphibian (Perkins et al., 2019) and Diptera databases. Together these now hold more than 14,000 records and have made comparative analyses in animals tractable at scales that were not possible before. An autonomous AI-assisted data collection system is currently extending Coleoptera coverage.</p>
-
-              <h2>Connecting Traits to Karyotype Rates</h2>
-              <p>The <a href="phylo-methods/discrete.html">chromePlus</a> R package (available on GitHub) extends the ChromEvol framework by allowing a binary trait, sex determination system, mating strategy, presence of B chromosomes, or any other two-state character, to modulate the rates of dysploidy and polyploidy. This answers a question the earlier methods left untouched: does karyotype evolution run faster or slower depending on the genomic or ecological context of a lineage? The package fits these joint models via MCMC within the <code>diversitree</code> ecosystem, returning posterior distributions over rate parameters and enabling formal Bayes factor comparisons between models with and without trait-dependent rates.</p>
-            </div>
-
-            <div>
-              <h2>Theory of Sex Chromosome Fixation</h2>
-              <p>While much of the comparative literature describes patterns of sex chromosome diversity, the lab has also contributed theoretical population genetic work on the <em>mechanisms</em> driving those patterns, specifically, the fixation probability of mutations that expand the non-recombining region of a sex chromosome. <strong>Blackmon & Demuth (2014, <em>BioEssays</em>)</strong> introduced a comparative framework for estimating tempo and mode of sex chromosome system change; <strong>Blackmon & Brandvain (2017, <em>Genetics</em>)</strong> derived the conditions under which sexually antagonistic alleles favor fusion of an autosome to an existing sex chromosome and showed how short-term resolution of intralocus conflict can dominate long-term structural fragility; subsequent work (Wilhoit, Alexander & Blackmon 2024) refined those predictions by distinguishing PAR from non-PAR fusions. Together this line of work bridges Lande's framework (underdominant rearrangements are hard to fix) with the empirical observation that sex chromosome differentiation does, somehow, proceed, and explains why some lineages accumulate ancient highly degenerate sex chromosomes while others retain young, nearly-identical ones.</p>
-
-              <h2>Karyotype Evolution in Beetles as a Model System</h2>
-              <p>Coleoptera are the most species-rich order of animals and show extraordinary diversity in both chromosome number and sex chromosome systems, making them an ideal system for testing macroevolutionary hypotheses about karyotype change. The lab's empirical and comparative work in beetles has documented patterns of sex chromosome turnover, dysploidy rates, and the relationship between karyotype diversity and clade diversification in ways that complement the plant-centric literature.</p>
-
-              <p><strong>The biggest unresolved beetle question</strong> is the simplest to state: <em>why are some beetle clades karyotypically dynamic while others are static?</em> Carabidae and Staphylinidae span enormous ranges in 2n. Coccinellidae, Chrysomelidae, and many scarabs barely move from a clade-typical number despite comparable species richness and ages. None of the obvious candidate explanations (effective population size, recombination rate, sex-determination system, holocentric vs monocentric architecture) cleanly predicts this pattern across the order. Resolving it probably requires both deeper sampling (the <a href="karyotypes/index.html">Coleoptera karyotype database</a> is the substrate) and the kind of mechanism-aware model adequacy testing the field is just beginning to develop. Our <a href="research.html">current research questions</a>, including whether there is an ideal chromosome number and what forces drive the divergence of sex chromosomes, draw on both probabilistic inference and population genetic theory.</p>
-            </div>
-          </div>
-
-          <!-- Related resources -->
-          <div class="related-box" data-aos="fade-up">
-            <h3>Explore Further</h3>
-            <div class="related-links">
-              <a href="karyotypes/index.html" class="related-link"><i class="bi bi-database" aria-hidden="true"></i> Karyotype Databases</a>
-              <a href="phylo-methods/discrete.html" class="related-link"><i class="bi bi-box-seam" aria-hidden="true"></i> chromePlus R Package</a>
-              <a href="phylo-methods/index.html" class="related-link"><i class="bi bi-tree" aria-hidden="true"></i> PCM Methods Guide</a>
-              <a href="research.html" class="related-link"><i class="bi bi-search" aria-hidden="true"></i> Lab Research Questions</a>
-              <a href="publications.html" class="related-link"><i class="bi bi-journal-text" aria-hidden="true"></i> Publications</a>
-            </div>
-          </div>
-
-          <div class="paper-foot">Prepared for the Blackmon Lab &nbsp;·&nbsp; Texas A&amp;M University &nbsp;·&nbsp; March 2026</div>
-
-        </div><!-- /.newspaper-wrap -->
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">1973</span>
+          <span class="sum-head">White catalogues animal karyotypes and proposes stasipatric speciation</span>
+          <span class="sum-trail">Animal Cytology and Evolution, revised edition.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>M.J.D. White, in <em>Animal Cytology and Evolution</em> (1954, revised 1973), documented the astonishing diversity of animal karyotypes and advanced "stasipatric speciation", the proposal that chromosomal rearrangements could drive speciation even without geographic isolation. The idea generated fierce debate and never reached consensus. What endured was the breadth of the catalogue itself. White established that karyotype mattered beyond plants, and that animal cytogenetic diversity was real, heterogeneous, and worth explaining.</p>
       </div>
-    </section>
+    </details>
+
+    <h2>The population genetics moment</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">1979</span>
+          <span class="sum-head">Lande shows underdominant rearrangements cannot fix in large populations</span>
+          <span class="sum-trail">A cold-water moment for chromosomal speciation.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Russell Lande's 1979 paper in <em>Evolution</em> applied diffusion theory to chromosomal rearrangements and showed that underdominant variants, which reduce heterozygote fitness, face severe barriers to fixation in large populations. This was a direct theoretical challenge to White's stasipatric model. For a decade the field retreated. Allozymes and then DNA sequences took over the speciation conversation, and chromosome-number evolution largely disappeared from the front of evolutionary biology.</p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">1990s</span>
+          <span class="sum-head">King, Rieseberg, and the revival through hybrid speciation</span>
+          <span class="sum-trail">Recombination suppression, not underdominance, becomes the mechanism.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Max King's 1993 <em>Species Evolution: The Role of Chromosome Change</em> re-argued the case for structural change as a speciation force, and Loren Rieseberg's experimental sunflower work through the 1990s and 2000s reframed the mechanism. Chromosomal rearrangements were shown to accumulate predictably during hybrid speciation and to act as barriers to gene flow through recombination suppression rather than underdominance alone. The theoretical block Lande had raised was circumvented, and karyotype change returned as a tractable speciation mechanism.</p>
+      </div>
+    </details>
+
+    <blockquote class="pullquote">
+      Each wave in this field rebuilt the toolkit. The cytologists had microscopes and no inference; the population geneticists had equations and no data; the modern era has both, and is still arguing about what the results mean.
+    </blockquote>
+
+    <h2>Probabilistic inference</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">2010</span>
+          <span class="sum-head">Mayrose ships ChromEvol, the first likelihood model for chromosome number</span>
+          <span class="sum-trail">Rates of polyploidization and dysploidy, finally estimable on a tree.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Itay Mayrose and colleagues released ChromEvol (2010, 2014), providing the first statistically rigorous framework for inferring rates of polyploidy and dysploidy from a phylogeny. The provocative 2011 <em>Science</em> paper that followed, showing recently formed polyploids diversify more slowly than diploid relatives, challenged decades of received wisdom about polyploidy as a speciation engine and was re-litigated throughout the decade. Whatever the verdict, the method itself permanently changed what counted as a claim about chromosome evolution.</p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">2018</span>
+          <span class="sum-head">Freyman &amp; Höhna couple chromosome change to diversification</span>
+          <span class="sum-trail">ChromoSSE, and the joint modeling era.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Will Freyman and Sebastian Höhna's ChromoSSE (2018) extended the probabilistic program by letting chromosome number change interact with speciation and extinction rates directly. Rosana Zenil-Ferguson's BiChroM built in parallel, coupling chromosome evolution to trait evolution. These joint models treat the karyotype as dynamic and causally important, rather than as a passive marker. Their assumptions are under active scrutiny, as all state-dependent models are, but they defined the methodological edge that the current literature is still arguing about.</p>
+      </div>
+    </details>
+
+    <h2>The current moment</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">2020s</span>
+          <span class="sum-head">CURE-based datasets make animal karyotype inference tractable</span>
+          <span class="sum-trail">The data bottleneck, finally addressed at scale.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The probabilistic methods of Mayrose and Freyman &amp; Höhna were built for plants, where curated chromosome-count datasets already existed. Animals lagged badly. The emergence of course-based undergraduate research experiences as a data collection pipeline, together with open cytogenetic databases for beetles, flies, amphibians, and mammals, has changed that. Animal comparative work is now possible at scales that were out of reach a decade ago, and the results are starting to show that stasis in groups like birds was an artifact of undersampling, not biology.</p>
+        <div class="layer-links">
+          <a href="karyotype.html">The lab's current work on karyotype rates →</a>
+          <a href="cures-karyotype-database.html">The CUREs database →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Now</span>
+          <span class="sum-head">AI literature mining as the next data layer</span>
+          <span class="sum-trail">TraitTrawler and the end of the extraction bottleneck.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Language models have made it possible to extract structured cytogenetic claims from the primary literature at a rate no graduate student can match. TraitTrawler and related agents are not replacing the careful curation the field requires, but they are reshaping what the curation job looks like: the humans now validate and adjudicate rather than read every paper from cover to cover. The bet is that this turns the historical bottleneck, which was always data extraction and never research questions, into something a lab of reasonable size can actually clear.</p>
+        <div class="layer-links">
+          <a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler on GitHub →</a>
+          <a href="ai.html">The AI program →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Open</span>
+          <span class="sum-head">What the next reinvention has to explain</span>
+          <span class="sum-trail">Model adequacy, mechanism, and the animal gap.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Three threads are unresolved. Whether state-dependent diversification methods can be trusted without hidden-state correction is still contested (Beaulieu &amp; O'Meara 2016; Caetano et al. 2018). Whether our rate models capture the biology well enough to trust the inferences, the model adequacy problem, is only starting to be tested. And the animal literature, despite the CUREs-era data, has yet to produce a probabilistic synthesis of the scope Mayrose and Zenil-Ferguson built for plants. The next decade's work is almost certainly on integrating mechanistic cytogenetics (centromere biology, recombination landscape) with macroevolutionary inference.</p>
+      </div>
+    </details>
+<footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<script src="assets/js/v3.js"></script>
+</body>
+</html>

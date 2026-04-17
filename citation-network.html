@@ -1,275 +1,427 @@
----
-layout: default
-title: Publication Network - Blackmon Lab
-description: Interactive force-directed graph of Blackmon Lab publications, colored by year and connected by shared co-authorship.
-canonical: https://coleoguy.github.io/citation-network.html
-body_class: publications-page
-nav_active: publications
-extra_head: |
-  <style>
-      :root { --gold: #c9a227; --teal: #34d399; }
-  
-      body { background: #080808; overflow: hidden; }
-  
-      /* Full-bleed canvas below fixed header */
-      #network-wrap {
-        position: fixed;
-        top: 80px; left: 0; right: 0; bottom: 0;
-      }
-      #network-svg { width: 100%; height: 100%; display: block; }
-  
-      /* Links */
-      .net-link { stroke: rgba(201,162,39,0.55); }
-  
-      /* Nodes */
-      .net-node circle {
-        cursor: pointer;
-        transition: filter 0.15s;
-      }
-      .net-node:hover circle { filter: brightness(1.4) drop-shadow(0 0 6px rgba(255,255,255,0.4)); }
-  
-      /* Tooltip */
-      #net-tooltip {
-        position: fixed;
-        background: rgba(12,12,12,0.97);
-        border: 1px solid rgba(201,162,39,0.28);
-        border-radius: 9px;
-        padding: 13px 16px;
-        max-width: 310px;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.12s;
-        font-family: var(--font-body, system-ui, sans-serif);
-      }
-      #net-tooltip.visible { opacity: 1; }
-      #net-tooltip .tt-title {
-        font-size: 12.5px;
-        font-weight: 600;
-        color: #f0ede8;
-        line-height: 1.45;
-        margin-bottom: 7px;
-      }
-      #net-tooltip .tt-meta {
-        font-size: 11px;
-        color: rgba(200,197,192,0.6);
-        line-height: 1.7;
-      }
-      #net-tooltip .tt-citations { color: var(--gold); font-weight: 700; }
-      #net-tooltip .tt-open {
-        display: inline-block;
-        margin-top: 6px;
-        font-size: 10px;
-        color: rgba(200,197,192,0.35);
-        font-style: italic;
-      }
-  
-      /* Stats panel, top-left */
-      #net-stats {
-        position: fixed;
-        top: 96px; left: 18px;
-        background: rgba(8,8,8,0.88);
-        border: 1px solid rgba(201,162,39,0.14);
-        border-radius: 9px;
-        padding: 14px 18px;
-        font-family: var(--font-mono, monospace);
-        font-size: 11px;
-        color: rgba(200,197,192,0.65);
-        z-index: 100;
-        line-height: 2;
-        display: none;
-      }
-      #net-stats strong { color: var(--gold); }
-      .stats-divider {
-        border: none;
-        border-top: 1px solid rgba(201,162,39,0.1);
-        margin: 8px 0;
-      }
-      #net-stats a {
-        color: rgba(200,197,192,0.4);
-        text-decoration: none;
-        font-size: 10px;
-        transition: color 0.2s;
-      }
-      #net-stats a:hover { color: var(--gold); }
-  
-      /* Legend, bottom-right */
-      #net-legend {
-        position: fixed;
-        bottom: 22px; right: 18px;
-        background: rgba(8,8,8,0.88);
-        border: 1px solid rgba(201,162,39,0.14);
-        border-radius: 9px;
-        padding: 13px 16px;
-        z-index: 100;
-        font-size: 10.5px;
-        color: rgba(200,197,192,0.6);
-        display: none;
-        min-width: 160px;
-      }
-      #net-legend .leg-heading {
-        font-weight: 600;
-        color: rgba(200,197,192,0.8);
-        margin-bottom: 5px;
-        font-family: var(--font-mono, monospace);
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-      #legend-bar {
-        display: block;
-        width: 148px;
-        height: 7px;
-        border-radius: 4px;
-        margin: 4px 0 3px;
-      }
-      .leg-row {
-        display: flex;
-        justify-content: space-between;
-        font-size: 10px;
-        color: rgba(200,197,192,0.4);
-        margin-bottom: 10px;
-      }
-      #size-legend {
-        display: flex;
-        align-items: flex-end;
-        gap: 8px;
-        margin-top: 4px;
-      }
-      .leg-note {
-        margin-top: 10px;
-        padding-top: 8px;
-        border-top: 1px solid rgba(201,162,39,0.1);
-        font-size: 10px;
-        color: rgba(200,197,192,0.3);
-        line-height: 1.6;
-      }
-  
-      /* Controls, bottom-left */
-      #net-controls {
-        position: fixed;
-        bottom: 22px; left: 18px;
-        display: none;
-        gap: 8px;
-        z-index: 100;
-      }
-      .net-btn {
-        background: rgba(8,8,8,0.9);
-        border: 1px solid rgba(201,162,39,0.18);
-        border-radius: 6px;
-        padding: 7px 12px;
-        font-size: 11px;
-        color: rgba(200,197,192,0.65);
-        cursor: pointer;
-        transition: all 0.18s;
-        font-family: var(--font-mono, monospace);
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .net-btn:hover { border-color: var(--gold); color: var(--gold); }
-      .net-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,162,39,0.06); }
-  
-      /* Loading */
-      #net-loading {
-        position: fixed;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: rgba(200,197,192,0.55);
-        font-family: var(--font-mono, monospace);
-        font-size: 12px;
-        z-index: 200;
-      }
-      .net-spinner {
-        width: 30px; height: 30px;
-        border: 2px solid rgba(201,162,39,0.15);
-        border-top-color: var(--gold);
-        border-radius: 50%;
-        animation: spin 0.85s linear infinite;
-        margin: 0 auto 12px;
-      }
-      @keyframes spin { to { transform: rotate(360deg); } }
-  
-      /* Fade-out hint */
-      #net-hint {
-        position: fixed;
-        bottom: 60px; left: 50%;
-        transform: translateX(-50%);
-        font-family: var(--font-mono, monospace);
-        font-size: 10px;
-        color: rgba(200,197,192,0.28);
-        z-index: 100;
-        pointer-events: none;
-        white-space: nowrap;
-        transition: opacity 1.5s ease;
-      }
-  
-      /* Highlighted nodes */
-      .net-node.dimmed circle { opacity: 0.1; }
-      .net-link.dimmed { stroke-opacity: 0.04 !important; }
-      .net-link:not(.dimmed) { stroke: rgba(201,162,39,0.9); }
-    </style>
-extra_scripts: |
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
----
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citation network · Blackmon Lab</title>
+<meta name="description" content="Interactive force-directed graph of Blackmon Lab publications, colored by year and connected by shared co-authorship.">
+<link rel="icon" href="assets/img/favicon.ico">
 
-<!-- Loading -->
-  <div id="net-loading">
-    <div class="net-spinner"></div>
-    Fetching publication data from OpenAlex…
-  </div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- SVG canvas -->
-  <div id="network-wrap">
-    <svg id="network-svg"></svg>
-  </div>
+<link rel="stylesheet" href="assets/css/v3.css">
 
-  <!-- Floating tooltip -->
-  <div id="net-tooltip">
-    <div class="tt-title"></div>
-    <div class="tt-meta"></div>
-  </div>
+<!-- Page-specific viz styles -->
+<style>
+  :root { --gold: var(--accent); --teal: #34d399; }
 
-  <!-- Stats panel -->
-  <div id="net-stats">
-    <strong id="stat-papers"></strong> papers<br>
-    <strong id="stat-citations"></strong> total citations<br>
-    <strong id="stat-connections"></strong> co-author connections
-    <hr class="stats-divider">
-    <a href="publications.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Publications</a>
-  </div>
+  /* Visualization container, lives inside the v3 column */
+  #network-wrap {
+    position: relative;
+    width: 100%;
+    height: 720px;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1.2rem 0 2rem;
+  }
+  #network-svg { width: 100%; height: 100%; display: block; }
 
-  <!-- Legend -->
-  <div id="net-legend">
-    <div class="leg-heading">Year</div>
-    <canvas id="legend-bar" width="148" height="7"></canvas>
-    <div class="leg-row"><span id="leg-year-min">2012</span><span id="leg-year-max">2026</span></div>
-    <div class="leg-heading">Citations</div>
-    <div id="size-legend"></div>
-    <div class="leg-note">
-      Edges = shared co-authors<br>
-      Click node to open paper<br>
-      Scroll to zoom · drag to pan
+  /* Links */
+  .net-link { stroke: var(--accent-dim); }
+
+  /* Nodes */
+  .net-node circle {
+    cursor: pointer;
+    transition: filter 0.15s;
+  }
+  .net-node:hover circle { filter: brightness(1.4) drop-shadow(0 0 6px rgba(255,255,255,0.4)); }
+
+  /* Tooltip */
+  #net-tooltip {
+    position: fixed;
+    background: rgba(12,12,12,0.97);
+    border: 1px solid var(--accent-dim);
+    border-radius: 9px;
+    padding: 13px 16px;
+    max-width: 310px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.12s;
+    font-family: system-ui, sans-serif;
+  }
+  #net-tooltip.visible { opacity: 1; }
+  #net-tooltip .tt-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #f0ede8;
+    line-height: 1.45;
+    margin-bottom: 7px;
+  }
+  #net-tooltip .tt-meta {
+    font-size: 11px;
+    color: rgba(200,197,192,0.6);
+    line-height: 1.7;
+  }
+  #net-tooltip .tt-citations { color: var(--gold); font-weight: 700; }
+  #net-tooltip .tt-open {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 10px;
+    color: rgba(200,197,192,0.35);
+    font-style: italic;
+  }
+
+  /* Existing hidden stats panel, still populated by JS but not shown (v3 stats-row above takes its place) */
+  #net-stats { display: none !important; }
+
+  /* Legend, bottom-right of viz container */
+  #net-legend {
+    position: absolute;
+    bottom: 14px; right: 14px;
+    background: rgba(8,8,8,0.88);
+    border: 1px solid var(--accent-dim);
+    border-radius: 9px;
+    padding: 13px 16px;
+    z-index: 5;
+    font-size: 10.5px;
+    color: rgba(200,197,192,0.6);
+    display: none;
+    min-width: 160px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  #net-legend .leg-heading {
+    font-weight: 600;
+    color: rgba(200,197,192,0.8);
+    margin-bottom: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  #legend-bar {
+    display: block;
+    width: 148px;
+    height: 7px;
+    border-radius: 4px;
+    margin: 4px 0 3px;
+  }
+  .leg-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: rgba(200,197,192,0.4);
+    margin-bottom: 10px;
+  }
+  #size-legend {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .leg-note {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--accent-dim);
+    font-size: 10px;
+    color: rgba(200,197,192,0.3);
+    line-height: 1.6;
+  }
+
+  /* Controls, bottom-left of viz container */
+  #net-controls {
+    position: absolute;
+    bottom: 14px; left: 14px;
+    display: none;
+    gap: 8px;
+    z-index: 5;
+  }
+  .net-btn {
+    background: rgba(8,8,8,0.9);
+    border: 1px solid var(--accent-dim);
+    border-radius: 6px;
+    padding: 7px 12px;
+    font-size: 11px;
+    color: rgba(200,197,192,0.65);
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: 'JetBrains Mono', monospace;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .net-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .net-btn.active { border-color: var(--gold); color: var(--gold); background: var(--accent-dim); }
+
+  /* Loading, centred in viz container */
+  #net-loading {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgba(200,197,192,0.55);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    z-index: 10;
+  }
+  .net-spinner {
+    width: 30px; height: 30px;
+    border: 2px solid var(--accent-dim);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.85s linear infinite;
+    margin: 0 auto 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Fade-out hint, inside viz container */
+  #net-hint {
+    position: absolute;
+    bottom: 60px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(200,197,192,0.28);
+    z-index: 5;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: opacity 1.5s ease;
+  }
+
+  /* Highlighted nodes */
+  .net-node.dimmed circle { opacity: 0.1; }
+  .net-link.dimmed { stroke-opacity: 0.04 !important; }
+  .net-link:not(.dimmed) { stroke: var(--accent-dim); }
+
+  /* ── Light-mode overrides ── */
+  html[data-theme="light"] #net-tooltip {
+    background: var(--paper-raised);
+    border-color: var(--rule);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+  html[data-theme="light"] #net-tooltip .tt-title { color: var(--ink); }
+  html[data-theme="light"] #net-tooltip .tt-meta { color: var(--ink-dim); }
+  html[data-theme="light"] #net-tooltip .tt-open { color: var(--ink-faint); }
+
+  html[data-theme="light"] #net-legend {
+    background: var(--paper-raised);
+    border-color: var(--rule);
+    color: var(--ink-dim);
+  }
+  html[data-theme="light"] #net-legend .leg-heading { color: var(--ink-faint); }
+  html[data-theme="light"] #net-legend .leg-row { color: var(--ink-faint); }
+  html[data-theme="light"] #net-legend .leg-note { color: var(--ink-faint); border-top-color: var(--rule); }
+
+  html[data-theme="light"] #net-controls .net-btn {
+    background: var(--paper-raised);
+    border-color: var(--rule);
+    color: var(--ink-dim);
+  }
+  html[data-theme="light"] #net-controls .net-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  html[data-theme="light"] #net-loading { color: var(--ink-dim); }
+  html[data-theme="light"] #net-hint { color: var(--ink-faint); }
+  html[data-theme="light"] #network-svg text { fill: var(--ink-dim); }
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+</head>
+
+<body>
+
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
     </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html" class="active">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="karyotype.html">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb">
+      <a href="index.html">Home</a> › Databases › <strong>Citation network</strong>
+    </div>
+
+    <h1 class="title">Citation network of the lab.</h1>
+
+    <p class="lede">
+      A force-directed view of every paper the lab has published, pulled live from OpenAlex. Each node is a paper, sized by its citation count and coloured by year. Edges connect papers that share a non-Heath co-author, so clusters of collaboration emerge without being imposed. Hover to inspect a paper, click to open it.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num"><span id="stat-papers">-</span></div>
+        <span class="stat-label">Papers indexed</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span id="stat-citations">-</span></div>
+        <span class="stat-label">Total citations</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span id="stat-connections">-</span></div>
+        <span class="stat-label">Co-author connections</span>
+      </div>
+    </div>
+
+    <h2>The graph</h2>
+
+    <!-- SVG canvas + floating chrome -->
+    <div id="network-wrap">
+      <svg id="network-svg"></svg>
+
+      <!-- Loading -->
+      <div id="net-loading">
+        <div class="net-spinner"></div>
+        Fetching publication data from OpenAlex…
+      </div>
+
+      <!-- Stats panel (kept for JS compatibility, hidden via CSS; v3 stats-row above is the visible surface) -->
+      <div id="net-stats">
+        <strong id="net-stats-papers"></strong>
+      </div>
+
+      <!-- Legend -->
+      <div id="net-legend">
+        <div class="leg-heading">Year</div>
+        <canvas id="legend-bar" width="148" height="7"></canvas>
+        <div class="leg-row"><span id="leg-year-min">2012</span><span id="leg-year-max">2026</span></div>
+        <div class="leg-heading">Citations</div>
+        <div id="size-legend"></div>
+        <div class="leg-note">
+          Edges = shared co-authors<br>
+          Click node to open paper<br>
+          Scroll to zoom, drag to pan
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div id="net-controls">
+        <button class="net-btn" id="btn-reset" onclick="resetZoom()">Reset</button>
+        <button class="net-btn" id="btn-labels" onclick="toggleLabels()">Labels</button>
+      </div>
+
+      <!-- Hint -->
+      <div id="net-hint">hover · drag · scroll to zoom · click to open paper</div>
+    </div>
+
+    <!-- Floating tooltip (must live outside network-wrap so it can escape viz bounds) -->
+    <div id="net-tooltip">
+      <div class="tt-title"></div>
+      <div class="tt-meta"></div>
+    </div>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
   </div>
+</div>
 
-  <!-- Controls -->
-  <div id="net-controls">
-    <button class="net-btn" id="btn-reset" onclick="resetZoom()">
-      <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i> Reset
-    </button>
-    <button class="net-btn" id="btn-labels" onclick="toggleLabels()">
-      <i class="bi bi-tag" aria-hidden="true"></i> Labels
-    </button>
-  </div>
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
 
-  <!-- Hint -->
-  <div id="net-hint">hover · drag · scroll to zoom · click to open paper</div>
+<!-- D3 for the visualization -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 
-  <!-- Scroll Top (hidden but required by main.js) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-  <script>
+<!-- Page-specific viz script, preserved verbatim -->
+<script>
     const ORCID      = '0000-0002-5433-4036';
     const HEATH_ORCID = `https://orcid.org/${ORCID}`;
     const API_URL    = `https://api.openalex.org/works?filter=author.orcid:${ORCID}&per-page=100&sort=cited_by_count:desc`;
@@ -281,7 +433,7 @@ extra_scripts: |
 
     // Gold → teal color ramp matching site palette
     const colorFor = year =>
-      d3.interpolateRgb('#c9a227', '#34d399')((year - yearMin) / Math.max(1, yearMax - yearMin));
+      d3.interpolateRgb('var(--accent)', '#34d399')((year - yearMin) / Math.max(1, yearMax - yearMin));
 
     const nodeR = citations => Math.max(5, Math.min(28, 4.5 + Math.sqrt(citations) * 1.9));
 
@@ -542,4 +694,8 @@ extra_scripts: |
     function clip(s, n) { return s && s.length > n ? s.slice(0, n) + '…' : s || ''; }
 
     init();
-  </script>
+</script>
+
+<script src="assets/js/v3.js"></script>
+</body>
+</html>

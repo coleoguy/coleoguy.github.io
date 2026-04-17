@@ -1,602 +1,466 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Experimental Design in Biology - Blackmon Lab</title>
-  <meta name="description" content="BIOL 683: Experimental Design in Biology. Dataset-focused approach with R and AI tools, learning vibe coding and modern statistical methods.">
-    <meta property="og:title" content="Experimental Design in Biology - Blackmon Lab" />
-    <meta property="og:description" content="BIOL 683: Experimental Design in Biology. Dataset-focused approach with R and AI tools, learning vibe coding and modern statistical methods." />
-    <meta property="og:url" content="https://coleoguy.github.io/subpages/expdes.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="experimental design, statistics, R programming, data analysis, AI tools, Texas A&M, Blackmon Lab">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experimental Design in Biology · Blackmon Lab</title>
+<meta name="description" content="BIOL 683: Experimental Design in Biology. Dataset-focused approach with R and AI tools, learning vibe coding and modern statistical methods.">
+<link rel="icon" href="../assets/img/favicon.ico">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Favicons -->
-  <link href="../assets/img/favicon.ico" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="stylesheet" href="../assets/css/v3.css">
 
-  <!-- Vendor CSS Files -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<style>
+  .info-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 24px;
+    row-gap: 8px;
+    margin: 18px 0;
+    font-size: 15px;
+  }
+  .info-grid dt {
+    font-family: var(--font-mono, monospace);
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-top: 3px;
+  }
+  .info-grid dd {
+    margin: 0;
+    color: var(--ink);
+  }
 
-  <!-- Main CSS File -->
-  <link href="../assets/css/main.css" rel="stylesheet">
+  .goals-list {
+    list-style: none;
+    padding-left: 0;
+    max-width: 42em;
+  }
+  .goals-list li {
+    position: relative;
+    padding: 6px 0 6px 22px;
+    line-height: 1.55;
+  }
+  .goals-list li::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
 
-  <style>
-    .schedule-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 30px 0;
-      background: var(--bg-color, #1a1a1a);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
+  .resource-row {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .resource-row:last-child { border-bottom: none; }
+  .resource-row .res-link {
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .resource-row .res-link:hover { text-decoration: underline; }
+  .resource-row .res-desc {
+    display: block;
+    color: var(--ink-dim, var(--ink-faint));
+    font-size: 14px;
+    margin-top: 3px;
+    max-width: 44em;
+  }
 
-    .schedule-table thead {
-      background: var(--accent-color, #d4a574);
-      color: #1a1a1a;
-      font-weight: 600;
-    }
+  .res-group-head {
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 28px 0 6px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
 
-    .schedule-table th {
-      padding: 15px;
-      text-align: left;
-      border: 1px solid #333;
-    }
+  .sched-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 14px 0 30px 0;
+  }
+  .sched-table th, .sched-table td {
+    text-align: left;
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .sched-table th {
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+    border-bottom: 1px solid var(--rule-strong, var(--rule));
+  }
+  .sched-table td.week {
+    font-family: var(--font-mono, monospace);
+    color: var(--accent);
+    font-weight: 600;
+    width: 48px;
+  }
+  .sched-table td.dates {
+    font-family: var(--font-mono, monospace);
+    font-size: 13px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .sched-table td.focus {
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+  .sched-table tr.exam-row td {
+    background: var(--highlight);
+  }
+  .sched-table tr.exam-row td.week,
+  .sched-table tr.exam-row td.topic {
+    color: var(--accent);
+    font-weight: 600;
+    font-style: normal;
+  }
+</style>
 
-    .schedule-table td {
-      padding: 12px 15px;
-      border: 1px solid #333;
-      color: #e8e8e8;
-    }
-
-    .schedule-table tbody tr:hover {
-      background: rgba(212, 165, 116, 0.1);
-    }
-
-    .schedule-table tbody tr:nth-child(even) {
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .week-number {
-      font-weight: 600;
-      color: #d4a574;
-    }
-
-    .dataset-focus {
-      font-style: italic;
-      color: #b8b8b8;
-      font-size: 0.95em;
-    }
-
-    .resource-link {
-      color: #d4a574;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .resource-link:hover {
-      text-decoration: underline;
-      color: #e8c9a0;
-    }
-
-    .resource-category {
-      margin: 40px 0 25px 0;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #d4a574;
-    }
-
-    .resource-category h4 {
-      color: #d4a574;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .resource-item {
-      margin: 12px 0;
-      padding: 10px;
-      background: rgba(212, 165, 116, 0.05);
-      border-left: 3px solid #d4a574;
-      border-radius: 4px;
-    }
-
-    .resource-desc {
-      color: #b8b8b8;
-      font-size: 0.9em;
-      margin-top: 5px;
-    }
-
-    .course-info-box {
-      background: rgba(212, 165, 116, 0.08);
-      border: 1px solid #d4a574;
-      border-radius: 8px;
-      padding: 25px;
-      margin: 25px 0;
-    }
-
-    .course-info-box h3 {
-      color: #d4a574;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .info-item {
-      margin: 10px 0;
-      line-height: 1.6;
-    }
-
-    .info-item strong {
-      color: #d4a574;
-      display: inline-block;
-      min-width: 120px;
-    }
-
-    .goals-list {
-      list-style: none;
-      padding: 0;
-      margin: 15px 0;
-    }
-
-    .goals-list li {
-      padding: 10px 0 10px 30px;
-      position: relative;
-      line-height: 1.6;
-    }
-
-    .goals-list li:before {
-      content: "▸";
-      position: absolute;
-      left: 0;
-      color: #d4a574;
-      font-size: 1.2em;
-    }
-
-    .test-week {
-      background: rgba(212, 165, 116, 0.15);
-      font-weight: 600;
-      color: #d4a574;
-    }
-
-    .no-class {
-      background: rgba(100, 100, 100, 0.2);
-      font-style: italic;
-      color: #a8a8a8;
-    }
-
-    .page-header h1 {
-      font-size: 3em;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .page-subtitle {
-      font-size: 1.2em;
-      color: #d4a574;
-      margin-bottom: 30px;
-      font-weight: 500;
-    }
-
-    main section {
-      margin-bottom: 40px;
-    }
-
-    main h2 {
-      color: #d4a574;
-      font-weight: 600;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      font-size: 1.8em;
-    }
-
-    main h3 {
-      color: #e8e8e8;
-      margin-top: 20px;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    main p {
-      line-height: 1.7;
-      color: #d0d0d0;
-      margin-bottom: 15px;
-    }
-  </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
 </head>
 
-<body class="expdes-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
+<body>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../research.html">Research</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../ai.html">AI</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="../index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
     </div>
-  </header>
 
-  <main class="main">
-
-    <!-- Page Header -->
-    <section class="page-header" data-aos="fade-up">
-      <div class="container">
-        <h1>Experimental Design in Biology</h1>
-        <p class="page-subtitle">BIOL 683 | Fall 2026</p>
-        <div style="text-align: center; margin-top: 30px;">
-          <img src="expd/hero.jpg" alt="Experimental Design Course" class="img-fluid" style="max-width: 100%; border-radius: 8px;">
-        </div>
-      </div>
-    </section>
-
-    <!-- Main Content -->
-    <section class="container">
-
-      <!-- Course Information -->
-      <section id="course-info" data-aos="fade-up">
-        <h2>Course Information</h2>
-        <div class="course-info-box">
-          <div class="info-item">
-            <strong>Course Number:</strong> BIOL 683
-          </div>
-          <div class="info-item">
-            <strong>Course Title:</strong> Experimental Design in Biology
-          </div>
-          <div class="info-item">
-            <strong>Semester:</strong> Fall 2026
-          </div>
-          <div class="info-item">
-            <strong>Time:</strong> TR 8:00–9:15 AM
-          </div>
-          <div class="info-item">
-            <strong>Location:</strong> ILCB 237
-          </div>
-          <div class="info-item">
-            <strong>Credit Hours:</strong> 3
-          </div>
-          <div class="info-item">
-            <strong>Syllabus:</strong> <a href="https://tamu.simplesyllabus.com/doc/kz573btd2/Fall-2026-College-Station-BIOL-683-600-%2845087%29-EXPERIMENTAL-DESIGN-BIOL?mode=view" target="_blank" class="resource-link">Official TAMU Syllabus</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Instructor Information -->
-      <section id="instructor" data-aos="fade-up">
-        <h2>Instructor</h2>
-        <div class="course-info-box">
-          <div class="info-item">
-            <strong>Name:</strong> Heath Blackmon
-          </div>
-          <div class="info-item">
-            <strong>Office:</strong> BSBW 425
-          </div>
-          <div class="info-item">
-            <strong>Email:</strong> <a href="mailto:blackmon@tamu.edu" class="resource-link">blackmon@tamu.edu</a>
-          </div>
-          <div class="info-item">
-            <strong>Office Hours:</strong> TR 9:30–10:30 AM, or by appointment
-          </div>
-        </div>
-      </section>
-
-      <!-- Course Goals -->
-      <section id="goals" data-aos="fade-up">
-        <h2>Course Goals and Philosophy</h2>
-        <p>
-          This course prepares PhD students to be rigorous, fast, and AI-savvy scientists. Students will learn R programming
-          through a "vibe coding" approach-building intuition and working alongside AI tools-while progressing through a carefully
-          sequenced series of datasets that grow in complexity. Each week builds skills in data visualization, hypothesis testing,
-          model building, and critical evaluation of both statistical methods and AI-generated output.
-        </p>
-        <p>
-          By the end of the course, you will understand when and how to apply t-tests, chi-square tests, linear models, generalized
-          linear models, mixed effects models, dimensional reduction techniques, and Bayesian MCMC approaches-not just as isolated
-          methods, but as part of a cohesive analytical toolkit.
-        </p>
-        <h3>Learning Objectives</h3>
-        <ul class="goals-list">
-          <li>Develop practical proficiency in R for data visualization, manipulation, and analysis.</li>
-          <li>Learn "vibe coding": using AI as a coding partner while understanding the logic behind your analyses.</li>
-          <li>Progress through increasing complexity in experimental design and statistical methods.</li>
-          <li>Master hypothesis testing and model selection frameworks.</li>
-          <li>Apply mixed effects models, dimensional reduction, and Bayesian methods to real biological data.</li>
-          <li>Critically evaluate statistical output, model assumptions, and AI-generated suggestions.</li>
-          <li>Communicate results clearly through code, visualizations, and scientific writing.</li>
-          <li>Practice responsible and ethical use of AI in research.</li>
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../news.html">News</a></li>
+          <li><a href="../calendar.html">Calendar</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
         </ul>
-      </section>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="../cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="../karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="../epistasis-database.html">Epistasis database</a></li>
+          <li><a href="../tau_database.html">Tau database</a></li>
+          <li><a href="../citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="../karyotype.html">Karyotype evolution</a></li>
+          <li><a href="../sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="../genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="../selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="../epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="../chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="../coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="../ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="../lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="../phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="../phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="popgen-sim.html" target="_blank">Pop-gen simulator</a></li>
+          <li><a href="evobir.html" target="_blank">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="../biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="biol682.html" target="_blank">BIOL 682</a></li>
+          <li><a href="expdes.html" class="active">Experimental design</a></li>
+          <li><a href="grad101.html" target="_blank">Grad 101</a></li>
+          <li><a href="AI-Tools.html" target="_blank">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
 
-      <!-- Resources & Tools -->
-      <section id="resources" data-aos="fade-up">
-        <h2>Course Resources & Tools</h2>
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
 
-        <div class="resource-category">
-          <h4><i class="bi bi-book-half" aria-hidden="true"></i> Guides & References</h4>
-        </div>
-        <div class="resource-item">
-          <a href="teaching/expdes/prompting.html" target="_blank" class="resource-link">Prompting Guide</a>
-          <div class="resource-desc">Best practices for working effectively with AI tools in data analysis and coding.</div>
-        </div>
-        <div class="resource-item">
-          <a href="teaching/expdes/guide.html" target="_blank" class="resource-link">Statistical Methods Guide</a>
-          <div class="resource-desc">Reference for when to use different statistical approaches.</div>
-        </div>
-        <div class="resource-item">
-          <a href="teaching/expdes/methods.html" target="_blank" class="resource-link">Statistical Methods: Deep Dive</a>
-          <div class="resource-desc">Detailed explanations and mathematical foundations of key methods.</div>
-        </div>
-        <div class="resource-item">
-          <a href="teaching/expdes/test.picker.html" target="_blank" class="resource-link">Method Choice Tool</a>
-          <div class="resource-desc">Interactive guide to help you choose the right statistical test for your data.</div>
-        </div>
+    <div class="crumb">
+      <a href="../index.html">HOME</a> &rsaquo; TEACHING &rsaquo; <strong>EXPERIMENTAL DESIGN</strong>
+    </div>
 
-        <div class="resource-category">
-          <h4><i class="bi bi-database" aria-hidden="true"></i> Datasets</h4>
-        </div>
-        <div class="resource-item">
-          <a href="teaching/expdes/datasets.html" target="_blank" class="resource-link">Course Datasets</a>
-          <div class="resource-desc">Curated biological datasets used throughout the course, organized by topic and complexity.</div>
-        </div>
+    <h1 class="title">Experimental Design in Biology.</h1>
 
-        <div class="resource-category">
-          <h4><i class="bi bi-calculator" aria-hidden="true"></i> Interactive Tools</h4>
-        </div>
-        <div class="resource-item">
-          <a href="teaching/expdes/distribution.app.R" target="_blank" class="resource-link">Distribution Simulator</a>
-          <div class="resource-desc">Interactive R app to explore probability distributions and sampling behavior.</div>
-        </div>
-        <div class="resource-item">
-          <a href="teaching/expdes/t-testapp.R" target="_blank" class="resource-link">T-test Simulator</a>
-          <div class="resource-desc">Interactive app to visualize how t-tests work with different sample sizes and effect sizes.</div>
-        </div>
-      </section>
+    <p class="lede">
+      BIOL 683. A graduate seminar in experimental design that prepares PhD students to be rigorous, fast, and AI-savvy scientists. R programming through "vibe coding", a carefully sequenced dataset progression, and statistical methods from t-tests through Bayesian MCMC.
+    </p>
 
-      <!-- Course Schedule -->
-      <section id="schedule" data-aos="fade-up">
-        <h2>Course Schedule – Fall 2026</h2>
-        <p style="color: #b8b8b8; margin-bottom: 20px;">
-          <em>A dataset-focused progression from foundational R and vibe coding through advanced statistical methods.</em>
-        </p>
+    <h2>Course information</h2>
 
-        <table class="schedule-table">
-          <thead>
-            <tr>
-              <th style="width: 8%;">Week</th>
-              <th style="width: 18%;">Dates</th>
-              <th style="width: 28%;">Topic</th>
-              <th style="width: 28%;">Dataset Focus</th>
-              <th style="width: 18%;">Resources</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Week 1 -->
-            <tr>
-              <td class="week-number">1</td>
-              <td>Aug 24–30</td>
-              <td>Orientation & The AI Scientist</td>
-              <td class="dataset-focus">Course philosophy, vibe coding intro, AI tools setup</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <dl class="info-grid">
+      <dt>Number</dt><dd>BIOL 683</dd>
+      <dt>Title</dt><dd>Experimental Design in Biology</dd>
+      <dt>Semester</dt><dd>Fall 2026</dd>
+      <dt>Time</dt><dd>TR 8:00 to 9:15 AM</dd>
+      <dt>Location</dt><dd>ILCB 237</dd>
+      <dt>Credits</dt><dd>3</dd>
+      <dt>Syllabus</dt><dd><a href="https://tamu.simplesyllabus.com/doc/kz573btd2/Fall-2026-College-Station-BIOL-683-600-%2845087%29-EXPERIMENTAL-DESIGN-BIOL?mode=view" target="_blank">Official TAMU syllabus</a></dd>
+    </dl>
 
-            <!-- Week 2 -->
-            <tr>
-              <td class="week-number">2</td>
-              <td>Aug 31–Sep 6</td>
-              <td>Foundations of R & Vibe Coding</td>
-              <td class="dataset-focus">Base R syntax, reading data, using AI as coding partner</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <h2>Instructor</h2>
 
-            <!-- Week 3 -->
-            <tr>
-              <td class="week-number">3</td>
-              <td>Sep 7–13</td>
-              <td>Data Visualization with Base R</td>
-              <td class="dataset-focus"><strong>Morphometric Measurements:</strong> Plotting, histograms, boxplots</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <dl class="info-grid">
+      <dt>Name</dt><dd>Heath Blackmon</dd>
+      <dt>Office</dt><dd>BSBW 425</dd>
+      <dt>Email</dt><dd><a href="mailto:blackmon@tamu.edu">blackmon@tamu.edu</a></dd>
+      <dt>Hours</dt><dd>TR 9:30 to 10:30 AM, or by appointment</dd>
+    </dl>
 
-            <!-- Week 4 -->
-            <tr>
-              <td class="week-number">4</td>
-              <td>Sep 14–20</td>
-              <td>Statistical Thinking & Distributions</td>
-              <td class="dataset-focus"><strong>Ecological Count Data:</strong> Probability, distributions, hypothesis framework</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <h2>Goals and philosophy</h2>
 
-            <!-- Week 5 -->
-            <tr>
-              <td class="week-number">5</td>
-              <td>Sep 21–27</td>
-              <td>T-tests & Permutation Tests</td>
-              <td class="dataset-focus"><strong>Field Experiment Data:</strong> Comparing two treatment groups</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <p>
+      This course prepares PhD students to be rigorous, fast, and AI-savvy scientists. Students learn R programming through a "vibe coding" approach, building intuition and working alongside AI tools, while progressing through a carefully sequenced series of datasets that grow in complexity. Each week builds skills in data visualization, hypothesis testing, model building, and critical evaluation of both statistical methods and AI-generated output.
+    </p>
+    <p>
+      By the end of the course, students understand when and how to apply t-tests, chi-square tests, linear models, generalized linear models, mixed effects models, dimensional reduction techniques, and Bayesian MCMC approaches, not as isolated methods but as part of a cohesive analytical toolkit.
+    </p>
 
-            <!-- Week 6 -->
-            <tr class="test-week">
-              <td class="week-number">6</td>
-              <td>Sep 28–Oct 4</td>
-              <td>Test Week 1: AI-Critical Thinking Exam</td>
-              <td class="dataset-focus">Synthesizing weeks 1–5; evaluating AI-generated analyses</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <h3>Learning objectives</h3>
+    <ul class="goals-list">
+      <li>Develop practical proficiency in R for data visualization, manipulation, and analysis.</li>
+      <li>Learn "vibe coding": using AI as a coding partner while understanding the logic behind your analyses.</li>
+      <li>Progress through increasing complexity in experimental design and statistical methods.</li>
+      <li>Master hypothesis testing and model selection frameworks.</li>
+      <li>Apply mixed effects models, dimensional reduction, and Bayesian methods to real biological data.</li>
+      <li>Critically evaluate statistical output, model assumptions, and AI-generated suggestions.</li>
+      <li>Communicate results clearly through code, visualizations, and scientific writing.</li>
+      <li>Practice responsible and ethical use of AI in research.</li>
+    </ul>
 
-            <!-- Week 7 -->
-            <tr>
-              <td class="week-number">7</td>
-              <td>Oct 5–11</td>
-              <td>Chi-Square & Tests of Proportions</td>
-              <td class="dataset-focus"><strong>Categorical Data:</strong> Genetic cross ratios or species surveys</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <h2>Resources and tools</h2>
 
-            <!-- Week 8 -->
-            <tr>
-              <td class="week-number">8</td>
-              <td>Oct 12–18</td>
-              <td>Linear Models Part 1: ANOVA & Regression</td>
-              <td class="dataset-focus"><strong>Multi-factor Experimental Data:</strong> Comparing multiple groups and continuous predictors</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <div class="res-group-head">Guides and references</div>
+    <div class="resource-row">
+      <a href="teaching/expdes/prompting.html" target="_blank" class="res-link">Prompting guide</a>
+      <span class="res-desc">Best practices for working effectively with AI tools in data analysis and coding.</span>
+    </div>
+    <div class="resource-row">
+      <a href="teaching/expdes/guide.html" target="_blank" class="res-link">Statistical methods guide</a>
+      <span class="res-desc">Reference for when to use different statistical approaches.</span>
+    </div>
+    <div class="resource-row">
+      <a href="teaching/expdes/methods.html" target="_blank" class="res-link">Statistical methods: deep dive</a>
+      <span class="res-desc">Detailed explanations and mathematical foundations of key methods.</span>
+    </div>
+    <div class="resource-row">
+      <a href="teaching/expdes/test.picker.html" target="_blank" class="res-link">Method choice tool</a>
+      <span class="res-desc">Interactive guide to help you choose the right statistical test for your data.</span>
+    </div>
 
-            <!-- Week 9 -->
-            <tr>
-              <td class="week-number">9</td>
-              <td>Oct 19–25</td>
-              <td>Generalized Linear Models & Model Selection</td>
-              <td class="dataset-focus"><strong>Count/Binary Response Data:</strong> GLMs, AIC-based model selection</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <div class="res-group-head">Datasets</div>
+    <div class="resource-row">
+      <a href="teaching/expdes/datasets.html" target="_blank" class="res-link">Course datasets</a>
+      <span class="res-desc">Curated biological datasets used throughout the course, organized by topic and complexity.</span>
+    </div>
 
-            <!-- Week 10 -->
-            <tr>
-              <td class="week-number">10</td>
-              <td>Oct 26–Nov 1</td>
-              <td>Mixed Effects Models</td>
-              <td class="dataset-focus"><strong>Longitudinal or Multi-site Data:</strong> Random effects, nested designs</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <div class="res-group-head">Interactive tools</div>
+    <div class="resource-row">
+      <a href="teaching/expdes/distribution.app.R" target="_blank" class="res-link">Distribution simulator</a>
+      <span class="res-desc">Interactive R app to explore probability distributions and sampling behavior.</span>
+    </div>
+    <div class="resource-row">
+      <a href="teaching/expdes/t-testapp.R" target="_blank" class="res-link">T-test simulator</a>
+      <span class="res-desc">Interactive app to visualize how t-tests work with different sample sizes and effect sizes.</span>
+    </div>
 
-            <!-- Week 11 -->
-            <tr>
-              <td class="week-number">11</td>
-              <td>Nov 2–8</td>
-              <td>Dimensional Reduction</td>
-              <td class="dataset-focus"><strong>Multivariate Data:</strong> PCA, ordination techniques</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <h2>Course schedule, Fall 2026</h2>
+    <p><em>A dataset-focused progression from foundational R and vibe coding through advanced statistical methods.</em></p>
 
-            <!-- Week 12 -->
-            <tr>
-              <td class="week-number">12</td>
-              <td>Nov 9–15</td>
-              <td>Bayesian Methods & MCMC</td>
-              <td class="dataset-focus"><strong>Phylogenetic/Evolutionary Parameters:</strong> Priors, posteriors, convergence diagnostics</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <table class="sched-table">
+      <thead>
+        <tr>
+          <th>Wk</th>
+          <th>Dates</th>
+          <th>Topic</th>
+          <th>Dataset focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="week">1</td>
+          <td class="dates">Aug 24 to 30</td>
+          <td class="topic">Orientation and the AI scientist</td>
+          <td class="focus">Course philosophy, vibe coding intro, AI tools setup</td>
+        </tr>
+        <tr>
+          <td class="week">2</td>
+          <td class="dates">Aug 31 to Sep 6</td>
+          <td class="topic">Foundations of R and vibe coding</td>
+          <td class="focus">Base R syntax, reading data, using AI as coding partner</td>
+        </tr>
+        <tr>
+          <td class="week">3</td>
+          <td class="dates">Sep 7 to 13</td>
+          <td class="topic">Data visualization with base R</td>
+          <td class="focus"><strong>Morphometric measurements:</strong> plotting, histograms, boxplots</td>
+        </tr>
+        <tr>
+          <td class="week">4</td>
+          <td class="dates">Sep 14 to 20</td>
+          <td class="topic">Statistical thinking and distributions</td>
+          <td class="focus"><strong>Ecological count data:</strong> probability, distributions, hypothesis framework</td>
+        </tr>
+        <tr>
+          <td class="week">5</td>
+          <td class="dates">Sep 21 to 27</td>
+          <td class="topic">T-tests and permutation tests</td>
+          <td class="focus"><strong>Field experiment data:</strong> comparing two treatment groups</td>
+        </tr>
+        <tr class="exam-row">
+          <td class="week">6</td>
+          <td class="dates">Sep 28 to Oct 4</td>
+          <td class="topic">Test week 1: AI-critical thinking exam</td>
+          <td class="focus">Synthesizing weeks 1 to 5; evaluating AI-generated analyses</td>
+        </tr>
+        <tr>
+          <td class="week">7</td>
+          <td class="dates">Oct 5 to 11</td>
+          <td class="topic">Chi-square and tests of proportions</td>
+          <td class="focus"><strong>Categorical data:</strong> genetic cross ratios or species surveys</td>
+        </tr>
+        <tr>
+          <td class="week">8</td>
+          <td class="dates">Oct 12 to 18</td>
+          <td class="topic">Linear models part 1: ANOVA and regression</td>
+          <td class="focus"><strong>Multi-factor experimental data:</strong> comparing multiple groups and continuous predictors</td>
+        </tr>
+        <tr>
+          <td class="week">9</td>
+          <td class="dates">Oct 19 to 25</td>
+          <td class="topic">Generalized linear models and model selection</td>
+          <td class="focus"><strong>Count/binary response data:</strong> GLMs, AIC-based model selection</td>
+        </tr>
+        <tr>
+          <td class="week">10</td>
+          <td class="dates">Oct 26 to Nov 1</td>
+          <td class="topic">Mixed effects models</td>
+          <td class="focus"><strong>Longitudinal or multi-site data:</strong> random effects, nested designs</td>
+        </tr>
+        <tr>
+          <td class="week">11</td>
+          <td class="dates">Nov 2 to 8</td>
+          <td class="topic">Dimensional reduction</td>
+          <td class="focus"><strong>Multivariate data:</strong> PCA, ordination techniques</td>
+        </tr>
+        <tr>
+          <td class="week">12</td>
+          <td class="dates">Nov 9 to 15</td>
+          <td class="topic">Bayesian methods and MCMC</td>
+          <td class="focus"><strong>Phylogenetic/evolutionary parameters:</strong> priors, posteriors, convergence diagnostics</td>
+        </tr>
+        <tr>
+          <td class="week">13</td>
+          <td class="dates">Nov 16 to 22</td>
+          <td class="topic">Choosing your approach: final data discussion</td>
+          <td class="focus">Integrating methods; planning final project analyses</td>
+        </tr>
+        <tr>
+          <td class="week">14</td>
+          <td class="dates">Nov 23 to 29</td>
+          <td class="topic">Advanced plotting and work on final</td>
+          <td class="focus">Publication-quality visualizations; no class Thursday (Thanksgiving)</td>
+        </tr>
+        <tr>
+          <td class="week">15</td>
+          <td class="dates">Nov 30 to Dec 6</td>
+          <td class="topic">Work on final project</td>
+          <td class="focus">Completion and presentation prep</td>
+        </tr>
+      </tbody>
+    </table>
 
-            <!-- Week 13 -->
-            <tr>
-              <td class="week-number">13</td>
-              <td>Nov 16–22</td>
-              <td>Choosing Your Approach: Final Data Discussion</td>
-              <td class="dataset-focus">Integrating methods; planning final project analyses</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
+    <h2>How the course works</h2>
 
-            <!-- Week 14 -->
-            <tr>
-              <td class="week-number">14</td>
-              <td>Nov 23–29</td>
-              <td>Advanced Plotting & Work on Final</td>
-              <td class="dataset-focus">Publication-quality visualizations; refining final analyses</td>
-              <td style="color: #no-class;">No class Thursday (Thanksgiving)</td>
-            </tr>
+    <h3>Vibe coding philosophy</h3>
+    <p>
+      "Vibe coding" is about building intuition and confidence in your data analysis skills. Rather than memorizing syntax, you learn to understand the logic of statistical approaches and use AI tools (like ChatGPT or Copilot) as your coding partner, asking them for help with implementation while you focus on the conceptual work. You learn to critique AI suggestions, catch errors, and understand why certain approaches work better than others.
+    </p>
 
-            <!-- Week 15 -->
-            <tr>
-              <td class="week-number">15</td>
-              <td>Nov 30–Dec 6</td>
-              <td>Work on Final Project</td>
-              <td class="dataset-focus">Completion and presentation prep</td>
-              <td style="color: #a8a8a8;">TBD</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+    <h3>Dataset progression</h3>
+    <p>
+      Each week focuses on a specific biological dataset that demonstrates the week's statistical concept. The datasets increase in complexity: starting with simple morphometric measurements for visualization, progressing through experimental comparisons, categorical data, multi-factor designs, and finally to advanced methods like mixed models and Bayesian approaches. By working with real (or realistic) biological data, students see how methods apply in practice.
+    </p>
 
-      <!-- Course Structure -->
-      <section id="structure" data-aos="fade-up">
-        <h2>How This Course Works</h2>
-        <h3>Vibe Coding Philosophy</h3>
-        <p>
-          "Vibe coding" is about building intuition and confidence in your data analysis skills. Rather than memorizing syntax,
-          you'll learn to understand the logic of statistical approaches and use AI tools (like ChatGPT or Copilot) as your coding
-          partner-asking them for help with implementation while you focus on the conceptual work. You'll learn to critique AI suggestions,
-          catch errors, and understand why certain approaches work better than others.
-        </p>
+    <h3>Assessment</h3>
+    <p>
+      <strong>Test week 1 (week 6):</strong> an AI-critical thinking exam where students analyze a dataset and an AI-generated analysis, identifying strengths, weaknesses, and what they would do differently.
+    </p>
+    <p>
+      <strong>Final project:</strong> a comprehensive data analysis project where students choose a dataset of interest, apply appropriate statistical methods from the course, and present findings clearly with publication-quality visualizations.
+    </p>
 
-        <h3>Dataset Progression</h3>
-        <p>
-          Each week focuses on a specific biological dataset that demonstrates the week's statistical concept. The datasets increase
-          in complexity: starting with simple morphometric measurements for visualization, progressing through experimental comparisons,
-          categorical data, multi-factor designs, and finally to advanced methods like mixed models and Bayesian approaches. By working
-          with real (or realistic) biological data, you'll see how methods apply in practice.
-        </p>
-
-        <h3>Assessment Structure</h3>
-        <p>
-          <strong>Test Week 1 (Week 6):</strong> An AI-Critical Thinking Exam where you'll analyze a dataset and an AI-generated analysis,
-          identifying strengths, weaknesses, and what you would do differently.
-        </p>
-        <p>
-          <strong>Final Project:</strong> A comprehensive data analysis project where you choose a dataset of interest, apply appropriate
-          statistical methods learned in the course, and present your findings clearly with publication-quality visualizations.
-        </p>
-      </section>
-
-    </section>
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
 
   </main>
+</div>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="../assets/js/main.js"></script>
-
+<script src="../assets/js/v3.js"></script>
 </body>
-
 </html>

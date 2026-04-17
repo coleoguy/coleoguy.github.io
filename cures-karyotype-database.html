@@ -1,291 +1,394 @@
----
-layout: default
-title: CUREs Karyotype Database, Blackmon Lab
-description: Interactive database of 63,542 chromosome number records across 56 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;M University.
-canonical: https://coleoguy.github.io/cures-karyotype-database.html
-keywords: karyotype, chromosome number, CUREs, database, Blackmon Lab, Texas A&M, evolutionary biology
-extra_head: |
-  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-  <style>
-  /* Scope the database app so it doesn't clash with site main.css */
-  .db-app { font-family:'Space Grotesk',sans-serif; color:#c8c5c0; min-height:80vh; }
-  .db-app a:not(.sitename):not(.logo):not(.nav-cta) { color:#c9a227; text-decoration:none; }
-  .db-app a:not(.sitename):not(.logo):not(.nav-cta):hover { text-decoration:underline; }
-  
-  /* Old custom header styles removed, now using site header */
-  
-  /* LAYOUT */
-  .db-container { display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 56px - 48px); }
-  @media(max-width:900px) { .db-container { grid-template-columns:1fr; } }
-  
-  /* SIDEBAR */
-  .sidebar { background:#1e1c19; border-right:1px solid #2a2825; padding:20px; position:sticky; top:0; height:calc(100vh - 56px); overflow-y:auto; }
-  .sidebar h3 { color:#c9a227; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; margin-top:16px; }
-  .sidebar h3:first-child { margin-top:0; }
-  .record-count { font-size:42px; font-weight:700; color:#c9a227; line-height:1.1; }
-  .record-label { font-size:12px; color:#a09d98; margin-bottom:16px; }
-  select, .search-input {
-    width:100%; padding:8px 10px; background:#141311; border:1px solid #2a2825;
-    color:#c8c5c0; border-radius:4px; font-family:inherit; font-size:13px; margin-bottom:8px;
-  }
-  select:focus, .search-input:focus { border-color:#c9a227; outline:none; }
-  .reset-btn {
-    width:100%; padding:8px; background:transparent; border:1px solid #c9a227;
-    color:#c9a227; border-radius:4px; cursor:pointer; font-family:inherit; font-size:12px;
-    text-transform:uppercase; letter-spacing:0.5px; margin-top:12px;
-  }
-  .reset-btn:hover { background:#c9a227; color:#141311; }
-  .repo-link {
-    display:block; margin-top:14px; padding:8px 10px; text-align:center;
-    background:transparent; border:1px solid #2a2825; color:#a09d98 !important;
-    border-radius:4px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px;
-    text-decoration:none !important; transition:all 0.15s ease;
-  }
-  .repo-link:hover { border-color:#c9a227; color:#c9a227 !important; text-decoration:none !important; }
-  .repo-link i { margin-right:6px; font-size:13px; vertical-align:-1px; }
-  .light-mode .repo-link { border-color:#d5d0c8; color:#6b6b6b !important; }
-  .light-mode .repo-link:hover { border-color:#c9a227; color:#8b7a2e !important; }
-  
-  /* Citation block on Overview tab */
-  .cite-box { background:#1e1c19; border:1px solid #2a2825; border-radius:6px; padding:16px 18px; }
-  .cite-ref { font-size:13px; line-height:1.55; color:#c8c5c0; margin:0 0 10px 0; }
-  .cite-ref a { color:#c9a227; }
-  .cite-toggle {
-    background:transparent; border:1px solid #c9a227; color:#c9a227;
-    padding:5px 12px; border-radius:4px; font-size:11px; font-family:inherit;
-    text-transform:uppercase; letter-spacing:0.5px; cursor:pointer;
-  }
-  .cite-toggle:hover { background:#c9a227; color:#141311; }
-  .cite-bib {
-    margin-top:12px; padding:12px; background:#141311; border:1px solid #2a2825;
-    border-radius:4px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size:11.5px; color:#c8c5c0; overflow-x:auto; white-space:pre-wrap; word-break:break-word;
-  }
-  .light-mode .cite-box { background:#f0ede8; border-color:#d5d0c8; }
-  .light-mode .cite-ref { color:#3a3a3a; }
-  .light-mode .cite-ref a { color:#8b7a2e; }
-  .light-mode .cite-bib { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
-  
-  /* MAIN */
-  .main { padding:24px; overflow-x:auto; }
-  
-  /* TABS */
-  .tabs { display:flex; gap:0; border-bottom:1px solid #2a2825; margin-bottom:24px; }
-  .tab {
-    padding:10px 20px; font-size:13px; font-weight:600; text-transform:uppercase;
-    letter-spacing:0.5px; cursor:pointer; color:#a09d98; border-bottom:2px solid transparent;
-    transition:all 0.2s;
-  }
-  .tab:hover { color:#c8c5c0; }
-  .tab.active { color:#c9a227; border-bottom-color:#c9a227; }
-  .tab-content { display:none; }
-  .tab-content.active { display:block; }
-  
-  /* OVERVIEW CARDS */
-  .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:24px; }
-  .card {
-    background:#1e1c19; border:1px solid #2a2825; border-radius:6px; padding:20px;
-  }
-  .card-value { font-size:32px; font-weight:700; color:#c9a227; }
-  .card-label { font-size:12px; color:#a09d98; margin-top:4px; text-transform:uppercase; letter-spacing:0.5px; }
-  
-  /* TABLE */
-  .table-controls { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px; }
-  .csv-btn {
-    padding:6px 14px; background:#c9a227; color:#141311; border:none; border-radius:4px;
-    cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;
-    text-transform:uppercase; letter-spacing:0.5px;
-  }
-  .csv-btn:hover { background:#b08d1f; }
-  .page-info { color:#a09d98; font-size:13px; }
-  table { width:100%; border-collapse:collapse; }
-  thead th {
-    text-align:left; padding:10px 12px; font-size:11px; text-transform:uppercase;
-    letter-spacing:0.5px; color:#a09d98; border-bottom:1px solid #2a2825; cursor:pointer;
-    user-select:none; white-space:nowrap;
-  }
-  thead th:hover { color:#c9a227; }
-  thead th .sort-arrow { font-size:10px; margin-left:4px; }
-  tbody td {
-    padding:8px 12px; font-size:13px; border-bottom:1px solid rgba(42,40,37,0.5);
-  }
-  tbody tr:hover { background:rgba(201,162,39,0.05); }
-  .species-name { font-style:italic; }
-  .clade-badge {
-    display:inline-block; padding:2px 8px; background:rgba(201,162,39,0.15);
-    color:#c9a227; border-radius:3px; font-size:11px; font-weight:500;
-  }
-  .pagination { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:16px; }
-  .page-btn {
-    padding:6px 12px; background:#1e1c19; border:1px solid #2a2825; color:#c8c5c0;
-    border-radius:4px; cursor:pointer; font-family:inherit; font-size:12px;
-  }
-  .page-btn:hover { border-color:#c9a227; color:#c9a227; }
-  .page-btn:disabled { opacity:0.3; cursor:default; }
-  .page-btn.active { background:#c9a227; color:#141311; border-color:#c9a227; }
-  
-  /* PLOT */
-  #plotArea { width:100%; min-height:500px; }
-  
-  /* OVERVIEW EXTRAS */
-  .clade-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:8px; margin-top:16px; }
-  .clade-item {
-    display:flex; justify-content:space-between; padding:8px 12px;
-    background:#1e1c19; border:1px solid #2a2825; border-radius:4px; font-size:12px;
-  }
-  .clade-item-name { color:#c8c5c0; }
-  .clade-item-count { color:#c9a227; font-weight:600; }
-  
-  /* DB FOOTER (internal data footer) */
-  .db-footer {
-    background:#141311; border-top:1px solid #2a2825; padding:14px 24px;
-    display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#a09d98;
-    flex-wrap:wrap; gap:8px;
-  }
-  /* ── Light-mode overrides for the database app ── */
-  .light-mode .db-app { color:#3a3a3a; }
-  .light-mode .sidebar { background:#f0ede8; border-right-color:#d5d0c8; }
-  .light-mode .sidebar h3 { color:#8b7a2e; }
-  .light-mode .record-count { color:#8b7a2e; }
-  .light-mode .record-label { color:#6b6b6b; }
-  .light-mode select, .light-mode .search-input { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
-  .light-mode select:focus, .light-mode .search-input:focus { border-color:#c9a227; }
-  .light-mode .tab { color:#6b6b6b; }
-  .light-mode .tab:hover { color:#3a3a3a; }
-  .light-mode .tab.active { color:#8b7a2e; border-bottom-color:#c9a227; }
-  .light-mode .card { background:#f0ede8; border-color:#d5d0c8; }
-  .light-mode .card-value { color:#8b7a2e; }
-  .light-mode .card-label { color:#6b6b6b; }
-  .light-mode thead th { color:#6b6b6b; border-bottom-color:#d5d0c8; }
-  .light-mode thead th:hover { color:#8b7a2e; }
-  .light-mode tbody td { border-bottom-color:rgba(0,0,0,0.08); color:#3a3a3a; }
-  .light-mode tbody tr:hover { background:rgba(201,162,39,0.08); }
-  .light-mode .clade-badge { background:rgba(201,162,39,0.12); color:#8b7a2e; }
-  .light-mode .page-btn { background:#f0ede8; border-color:#d5d0c8; color:#3a3a3a; }
-  .light-mode .page-btn:hover { border-color:#c9a227; color:#8b7a2e; }
-  .light-mode .page-btn.active { background:#c9a227; color:#fff; }
-  .light-mode .page-info { color:#6b6b6b; }
-  .light-mode .clade-item { background:#f0ede8; border-color:#d5d0c8; }
-  .light-mode .clade-item-name { color:#3a3a3a; }
-  .light-mode .clade-item-count { color:#8b7a2e; }
-  .light-mode .db-footer { background:#f0ede8; border-top-color:#d5d0c8; color:#6b6b6b; }
-  .light-mode .tabs { border-bottom-color:#d5d0c8; }
-  .light-mode .db-container { border-color:#d5d0c8; }
-  .light-mode #plotType { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
-  
-  /* Citation appeal box (ethical-ask) */
-  .cite-appeal {
-    background:#1e1c19; border-left:3px solid #c9a227; border-radius:4px;
-    padding:14px 18px; margin-bottom:16px; font-size:13px; line-height:1.55; color:#c8c5c0;
-  }
-  .cite-appeal strong { color:#c9a227; }
-  .cite-appeal ul { margin:8px 0 0 0; padding-left:20px; }
-  .cite-appeal li { margin-bottom:4px; }
-  .light-mode .cite-appeal { background:#f0ede8; color:#3a3a3a; border-left-color:#c9a227; }
-  .light-mode .cite-appeal strong { color:#8b7a2e; }
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CUREs karyotype database · Blackmon Lab</title>
+<meta name="description" content="Interactive database of 63,682 chromosome-number records across 55 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;M University.">
+<link rel="canonical" href="https://coleoguy.github.io/cures-karyotype-database.html">
+<meta name="keywords" content="karyotype, chromosome number, CUREs, database, Blackmon Lab, Texas A&M, evolutionary biology">
+<link rel="icon" href="assets/img/favicon.ico">
 
-  /* Sources tab list */
-  .sources-list { display:flex; flex-direction:column; gap:10px; }
-  .source-item {
-    background:#1e1c19; border:1px solid #2a2825; border-radius:6px; padding:14px 16px;
-  }
-  .source-head {
-    display:flex; justify-content:space-between; align-items:baseline; gap:10px;
-    margin-bottom:6px; flex-wrap:wrap;
-  }
-  .source-clade { color:#c9a227; font-weight:600; font-size:14px; }
-  .source-count { color:#a09d98; font-size:12px; }
-  .source-cite { font-size:12.5px; line-height:1.5; color:#c8c5c0; margin:0; }
-  .source-cite a { color:#c9a227; }
-  .source-link {
-    display:inline-block; margin-top:8px; padding:4px 10px; font-size:11px;
-    border:1px solid #c9a227; color:#c9a227 !important; border-radius:3px;
-    text-transform:uppercase; letter-spacing:0.5px; text-decoration:none !important;
-  }
-  .source-link:hover { background:#c9a227; color:#141311 !important; }
-  .light-mode .source-item { background:#f0ede8; border-color:#d5d0c8; }
-  .light-mode .source-clade { color:#8b7a2e; }
-  .light-mode .source-count { color:#6b6b6b; }
-  .light-mode .source-cite { color:#3a3a3a; }
-  .light-mode .source-cite a, .light-mode .source-link { color:#8b7a2e !important; border-color:#8b7a2e; }
-  .light-mode .source-link:hover { background:#8b7a2e; color:#fff !important; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  /* Loading state */
-  .db-loading { padding:40px; text-align:center; color:#a09d98; font-size:14px; }
-  .light-mode .db-loading { color:#6b6b6b; }
+<link rel="stylesheet" href="assets/css/v3.css">
 
-  /* Citation cell: truncate by default, expand on click */
-  .cite-cell { max-width:360px; color:#a09d98; font-size:12px; line-height:1.35; cursor:pointer; }
-  .cite-cell .cite-text {
-    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
-    overflow:hidden; text-overflow:ellipsis;
-  }
-  .cite-cell.expanded .cite-text { display:block; -webkit-line-clamp:unset; overflow:visible; }
-  .cite-cell:hover { color:#c9a227; }
-  .light-mode .cite-cell { color:#6b6b6b; }
-  .light-mode .cite-cell:hover { color:#8b7a2e; }
-  </style>
----
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
-<div class="db-app" style="padding-top: 70px;">
-<div class="db-container">
-  <div class="sidebar">
-    <div class="record-count" id="recCount">63,542</div>
-    <div class="record-label">matching records &middot; 56 clades</div>
+<style>
+/* ── Page-specific CSS for the interactive CUREs database view ──
+   Scoped under .db-app so it does not clash with v3.css.
+   Light-mode selectors re-expressed for v3 theming via [data-theme="light"].
+*/
+.db-app {
+  font-family: var(--font-sans, 'Source Serif 4', Georgia, serif);
+  color: var(--ink, #c8c5c0);
+  margin-top: 28px;
+}
+.db-app a:not(.sitename):not(.logo):not(.nav-cta) { color: var(--accent, var(--accent)); text-decoration: none; }
+.db-app a:not(.sitename):not(.logo):not(.nav-cta):hover { text-decoration: underline; }
 
-    <h3>Clade</h3>
-    <select id="cladeFilter"><option value="">All clades</option></select>
+/* DB internal two-column layout (independent of site layout) */
+.db-container {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+  border: 1px solid #2a2825;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1e1c19;
+}
+@media (max-width: 900px) { .db-container { grid-template-columns: 1fr; } }
 
-    <h3>Search species</h3>
-    <input type="text" class="search-input" id="searchBox" placeholder="Type to search...">
+.db-sidebar { background: #141311; border-right: 1px solid #2a2825; padding: 18px; }
+@media (max-width: 900px) { .db-sidebar { border-right: none; border-bottom: 1px solid #2a2825; } }
+.db-sidebar h3 { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 8px; font-family: var(--font-mono, ui-monospace, monospace); font-weight: 500; }
+.db-sidebar h3:first-of-type { margin-top: 0; }
+.record-count { font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1.1; font-family: var(--font-sans, 'Source Serif 4', Georgia, serif); }
+.record-label { font-size: 11px; color: #a09d98; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+.db-app select, .db-app .search-input {
+  width: 100%; padding: 7px 9px; background: #141311; border: 1px solid #2a2825;
+  color: #c8c5c0; border-radius: 4px; font-family: inherit; font-size: 12.5px; margin-bottom: 8px;
+}
+.db-app select:focus, .db-app .search-input:focus { border-color: var(--accent); outline: none; }
+.reset-btn {
+  width: 100%; padding: 7px; background: transparent; border: 1px solid var(--accent);
+  color: var(--accent); border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;
+}
+.reset-btn:hover { background: var(--accent); color: #141311; }
+.repo-link {
+  display: block; margin-top: 10px; padding: 7px 9px; text-align: center;
+  background: transparent; border: 1px solid #2a2825; color: #a09d98 !important;
+  border-radius: 4px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px;
+  text-decoration: none !important; transition: all 0.15s ease;
+}
+.repo-link:hover { border-color: var(--accent); color: var(--accent) !important; }
+.repo-link i { margin-right: 5px; font-size: 12px; vertical-align: -1px; }
 
-    <button class="reset-btn" id="resetBtn">Reset filters</button>
+/* Main pane */
+.db-main { padding: 18px 20px; min-width: 0; }
 
-    <a href="https://github.com/coleoguy/metazoa-chromosomes" target="_blank" rel="noopener" class="repo-link">
-      <i class="bi bi-github" aria-hidden="true"></i> GitHub Repository for This Database
-    </a>
+/* Tabs */
+.tabs { display: flex; gap: 0; border-bottom: 1px solid #2a2825; margin-bottom: 18px; flex-wrap: wrap; }
+.tab {
+  padding: 9px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; cursor: pointer; color: #a09d98; border-bottom: 2px solid transparent;
+  transition: all 0.2s; font-family: var(--font-mono, ui-monospace, monospace);
+}
+.tab:hover { color: #c8c5c0; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 
-    <a href="https://doi.org/10.64898/2026.04.14.718287" target="_blank" rel="noopener" class="repo-link">
-      <i class="bi bi-file-earmark-text" aria-hidden="true"></i> bioRxiv Preprint
-    </a>
-  </div>
+/* Overview cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.card { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 14px; }
+.card-value { font-size: 24px; font-weight: 700; color: var(--accent); font-family: var(--font-sans, 'Source Serif 4', Georgia, serif); }
+.card-label { font-size: 10px; color: #a09d98; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-  <div class="main">
-    <div class="tabs">
-      <div class="tab active" data-tab="overview">Overview</div>
-      <div class="tab" data-tab="sources">Sources by Clade</div>
-      <div class="tab" data-tab="table">Data Table</div>
-      <div class="tab" data-tab="plot">Plot</div>
+/* Citation block */
+.cite-box { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 14px 16px; }
+.cite-ref { font-size: 12.5px; line-height: 1.55; color: #c8c5c0; margin: 0 0 10px 0; }
+.cite-ref a { color: var(--accent); }
+.cite-toggle {
+  background: transparent; border: 1px solid var(--accent); color: var(--accent);
+  padding: 5px 11px; border-radius: 4px; font-size: 10.5px; font-family: inherit;
+  text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer;
+}
+.cite-toggle:hover { background: var(--accent); color: #141311; }
+.cite-bib {
+  margin-top: 12px; padding: 11px; background: #0f0e0c; border: 1px solid #2a2825;
+  border-radius: 4px; font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px; color: #c8c5c0; overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+}
+
+/* Table */
+.table-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+.csv-btn {
+  padding: 5px 12px; background: var(--accent); color: #141311; border: none; border-radius: 4px;
+  cursor: pointer; font-family: inherit; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.csv-btn:hover { background: #b08d1f; }
+.page-info { color: #a09d98; font-size: 12px; }
+.db-app table { width: 100%; border-collapse: collapse; }
+.db-app thead th {
+  text-align: left; padding: 9px 11px; font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: 0.5px; color: #a09d98; border-bottom: 1px solid #2a2825; cursor: pointer;
+  user-select: none; white-space: nowrap; font-family: var(--font-mono, ui-monospace, monospace);
+}
+.db-app thead th:hover { color: var(--accent); }
+.db-app thead th .sort-arrow { font-size: 9px; margin-left: 3px; }
+.db-app tbody td {
+  padding: 7px 11px; font-size: 12.5px; border-bottom: 1px solid rgba(42, 40, 37, 0.5);
+}
+.db-app tbody tr:hover { background: var(--accent-dim); }
+.species-name { font-style: italic; }
+.clade-badge {
+  display: inline-block; padding: 2px 7px; background: var(--accent-dim);
+  color: var(--accent); border-radius: 3px; font-size: 10.5px; font-weight: 500;
+}
+.pagination { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+.page-btn {
+  padding: 5px 10px; background: #141311; border: 1px solid #2a2825; color: #c8c5c0;
+  border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 11.5px;
+}
+.page-btn:hover { border-color: var(--accent); color: var(--accent); }
+.page-btn:disabled { opacity: 0.3; cursor: default; }
+.page-btn.active { background: var(--accent); color: #141311; border-color: var(--accent); }
+
+/* Plot */
+#plotArea { width: 100%; min-height: 450px; }
+
+/* Clade grid */
+.clade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px; margin-top: 12px; }
+.clade-item {
+  display: flex; justify-content: space-between; padding: 7px 10px;
+  background: #141311; border: 1px solid #2a2825; border-radius: 4px; font-size: 11.5px;
+}
+.clade-item-name { color: #c8c5c0; }
+.clade-item-count { color: var(--accent); font-weight: 600; }
+
+/* Internal DB footer */
+.db-footer-in {
+  background: #0f0e0c; border-top: 1px solid #2a2825; padding: 10px 18px;
+  display: flex; justify-content: space-between; align-items: center; font-size: 10.5px; color: #a09d98;
+  flex-wrap: wrap; gap: 8px; font-family: var(--font-mono, ui-monospace, monospace);
+}
+
+/* Citation appeal */
+.cite-appeal {
+  background: #141311; border-left: 3px solid var(--accent); border-radius: 4px;
+  padding: 12px 16px; margin-bottom: 14px; font-size: 12.5px; line-height: 1.55; color: #c8c5c0;
+}
+.cite-appeal strong { color: var(--accent); }
+.cite-appeal ul { margin: 8px 0 0 0; padding-left: 18px; }
+.cite-appeal li { margin-bottom: 4px; }
+
+/* Sources list */
+.sources-list { display: flex; flex-direction: column; gap: 10px; }
+.source-item { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 12px 14px; }
+.source-head {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  margin-bottom: 6px; flex-wrap: wrap;
+}
+.source-clade { color: var(--accent); font-weight: 600; font-size: 13px; }
+.source-count { color: #a09d98; font-size: 11px; }
+.source-cite { font-size: 12px; line-height: 1.5; color: #c8c5c0; margin: 0; }
+.source-cite a { color: var(--accent); }
+.source-link {
+  display: inline-block; margin-top: 8px; padding: 3px 9px; font-size: 10.5px;
+  border: 1px solid var(--accent); color: var(--accent) !important; border-radius: 3px;
+  text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none !important;
+}
+.source-link:hover { background: var(--accent); color: #141311 !important; }
+
+/* Loading and citation cells */
+.db-loading { padding: 30px; text-align: center; color: #a09d98; font-size: 13px; }
+.cite-cell { max-width: 340px; color: #a09d98; font-size: 11.5px; line-height: 1.35; cursor: pointer; }
+.cite-cell .cite-text {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.cite-cell.expanded .cite-text { display: block; -webkit-line-clamp: unset; overflow: visible; }
+.cite-cell:hover { color: var(--accent); }
+
+/* ── Light-mode overrides (v3 uses [data-theme="light"] on <html>) ── */
+[data-theme="light"] .db-app { color: #3a3a3a; }
+[data-theme="light"] .db-container { background: #faf8f3; border-color: #d5d0c8; }
+[data-theme="light"] .db-sidebar { background: #f0ede8; border-right-color: #d5d0c8; }
+[data-theme="light"] .db-sidebar { border-bottom-color: #d5d0c8; }
+[data-theme="light"] .db-sidebar h3 { color: #8b7a2e; }
+[data-theme="light"] .record-count { color: #8b7a2e; }
+[data-theme="light"] .record-label { color: #6b6b6b; }
+[data-theme="light"] .db-app select, [data-theme="light"] .db-app .search-input { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
+[data-theme="light"] .db-app select:focus, [data-theme="light"] .db-app .search-input:focus { border-color: var(--accent); }
+[data-theme="light"] .repo-link { border-color: #d5d0c8; color: #6b6b6b !important; }
+[data-theme="light"] .repo-link:hover { border-color: var(--accent); color: #8b7a2e !important; }
+[data-theme="light"] .tab { color: #6b6b6b; }
+[data-theme="light"] .tab:hover { color: #3a3a3a; }
+[data-theme="light"] .tab.active { color: #8b7a2e; border-bottom-color: var(--accent); }
+[data-theme="light"] .tabs { border-bottom-color: #d5d0c8; }
+[data-theme="light"] .card { background: #fff; border-color: #d5d0c8; }
+[data-theme="light"] .card-value { color: #8b7a2e; }
+[data-theme="light"] .card-label { color: #6b6b6b; }
+[data-theme="light"] .cite-box { background: #fff; border-color: #d5d0c8; }
+[data-theme="light"] .cite-ref { color: #3a3a3a; }
+[data-theme="light"] .cite-ref a { color: #8b7a2e; }
+[data-theme="light"] .cite-bib { background: #f0ede8; border-color: #d5d0c8; color: #3a3a3a; }
+[data-theme="light"] .db-app thead th { color: #6b6b6b; border-bottom-color: #d5d0c8; }
+[data-theme="light"] .db-app thead th:hover { color: #8b7a2e; }
+[data-theme="light"] .db-app tbody td { border-bottom-color: rgba(0, 0, 0, 0.08); color: #3a3a3a; }
+[data-theme="light"] .db-app tbody tr:hover { background: var(--accent-dim); }
+[data-theme="light"] .clade-badge { background: var(--accent-dim); color: #8b7a2e; }
+[data-theme="light"] .page-btn { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
+[data-theme="light"] .page-btn:hover { border-color: var(--accent); color: #8b7a2e; }
+[data-theme="light"] .page-btn.active { background: var(--accent); color: #fff; }
+[data-theme="light"] .page-info { color: #6b6b6b; }
+[data-theme="light"] .clade-item { background: #fff; border-color: #d5d0c8; }
+[data-theme="light"] .clade-item-name { color: #3a3a3a; }
+[data-theme="light"] .clade-item-count { color: #8b7a2e; }
+[data-theme="light"] .db-footer-in { background: #f0ede8; border-top-color: #d5d0c8; color: #6b6b6b; }
+[data-theme="light"] #plotType { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
+[data-theme="light"] .cite-appeal { background: #f0ede8; color: #3a3a3a; border-left-color: var(--accent); }
+[data-theme="light"] .cite-appeal strong { color: #8b7a2e; }
+[data-theme="light"] .source-item { background: #fff; border-color: #d5d0c8; }
+[data-theme="light"] .source-clade { color: #8b7a2e; }
+[data-theme="light"] .source-count { color: #6b6b6b; }
+[data-theme="light"] .source-cite { color: #3a3a3a; }
+[data-theme="light"] .source-cite a, [data-theme="light"] .source-link { color: #8b7a2e !important; border-color: #8b7a2e; }
+[data-theme="light"] .source-link:hover { background: #8b7a2e; color: #fff !important; }
+[data-theme="light"] .db-loading { color: #6b6b6b; }
+[data-theme="light"] .cite-cell { color: #6b6b6b; }
+[data-theme="light"] .cite-cell:hover { color: #8b7a2e; }
+
+/* Wrap the v3 main column wider for this data-heavy page */
+main.column.column-wide { max-width: 1100px; }
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+</head>
+
+<body>
+
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>&#8984;K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+<div class="shell">
+
+  <!-- Phylogenetic sidebar -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> &middot; <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
     </div>
 
-    <!-- OVERVIEW -->
-    <div class="tab-content active" id="tab-overview">
-      <div class="cards">
-        <div class="card"><div class="card-value" id="statRecords">63,542</div><div class="card-label">Total Records</div></div>
-        <div class="card"><div class="card-value" id="statSpecies">0</div><div class="card-label">Unique Species</div></div>
-        <div class="card"><div class="card-value" id="statClades">56</div><div class="card-label">Clades</div></div>
-        <div class="card"><div class="card-value" id="statMedian">0</div><div class="card-label">Median Haploid Number</div></div>
-        <div class="card"><div class="card-value" id="statRange">0</div><div class="card-label">Haploid Range</div></div>
-      </div>
-      <h3 style="color:#c9a227;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Records by Clade</h3>
-      <div class="clade-grid" id="cladeGrid"></div>
-
-      <h3 style="color:#c9a227;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-top:28px;margin-bottom:12px;">How to Cite, Please Read</h3>
-      <div class="cite-appeal">
-        Every record in this database comes from a primary source: a paper, dissertation, or dataset whose authors did the slow, careful work of generating these chromosome counts. Citations matter. They are how careers get evaluated, how grants get awarded, and how the people whose work we depend on get credit. Please cite responsibly.
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
         <ul>
-          <li><strong>Using data from a single clade?</strong> Cite the original source for that clade (see the <em>Sources by Clade</em> tab, or the citation column in the data table). Do <strong>not</strong> cite this database in place of the primary work.</li>
-          <li><strong>Combining data across multiple clades?</strong> Cite this database (Copeland et al. 2026) <strong>and</strong> list the clade-level sources you drew on in your supplementary materials.</li>
-          <li><strong>Downloading the full dataset?</strong> The CSV file ships with a <code>citation</code> column for exactly this reason. Please carry that column through your analyses so the original authors can be credited downstream.</li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
         </ul>
-      </div>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html" class="active">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="karyotype.html">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
 
-      <h3 style="color:#c9a227;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-top:20px;margin-bottom:12px;">Cite This Database</h3>
-      <div class="cite-box">
-        <p class="cite-ref">
-          Copeland, M., McConnell, M., Barboza, A., Abraham, H.M., Alfieri, J., Arackal, S., Bernard, C.E., Bryant, K., Cast, S., Chien, S., Clark, E., Cruz, C.E., Diaz, A.Y., Deiterman, O., Girish, R., Harper, K., Hjelmen, C.E., Thompson, M.J., Koehl, R., Koneru, T., Laird, K., Lee, Y., Lopez, V.R., Murphy, M., Perez, N., Schmalz, S., Sylvester, T., and Blackmon, H. (2026). Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life. <em>bioRxiv</em> 2026.04.14.718287. <a href="https://doi.org/10.64898/2026.04.14.718287" target="_blank" rel="noopener">https://doi.org/10.64898/2026.04.14.718287</a>
-        </p>
-        <button class="cite-toggle" id="citeBibBtn" type="button">Show BibTeX</button>
+  <!-- Main reading column -->
+  <main class="column column-wide" id="content">
+
+    <div class="crumb">
+      <a href="index.html">Home</a> &rsaquo; Databases &rsaquo; <strong>CUREs karyotypes</strong>
+    </div>
+
+    <h1 class="title">The CUREs karyotype database.</h1>
+
+    <p class="lede">
+      63,682 chromosome-number records spanning 55 eukaryotic clades, each tied to its primary source. The dataset was assembled over several years by rolling cohorts of undergraduate researchers in our CUREs program, and it ships as open JSON and CSV so other labs and AI agents can build on it without scraping. This page is the data backing the 2026 preprint.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">63,682</div>
+        <span class="stat-label">Karyotype records</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">55</div>
+        <span class="stat-label">Eukaryotic clades</span>
+      </div>
+    </div>
+
+    <div class="agent-box">
+      <span class="agent-line"><span class="agent-tag">CUREs</span>41 records added this month by undergraduate researchers</span>
+      <span class="agent-line"><span class="agent-tag">Repository</span>Open JSON and CSV, citations preserved on every row</span>
+      <span class="agent-line"><span class="agent-tag">Preprint</span>Copeland, McConnell, Barboza et al. 2026, bioRxiv</span>
+    </div>
+
+    <h2>How to use the data</h2>
+
+    <p>
+      Every record in this database comes from a primary source: a paper, dissertation, or dataset whose authors did the slow, careful work of generating these chromosome counts. Citations matter. They are how careers get evaluated, how grants get awarded, and how the people whose work we depend on get credit. Please cite responsibly.
+    </p>
+
+    <ul>
+      <li><strong>Using data from a single clade?</strong> Cite the original source for that clade (see the Sources tab, or the citation column in the data table). Do <strong>not</strong> cite this database in place of the primary work.</li>
+      <li><strong>Combining data across multiple clades?</strong> Cite this database (Copeland et al. 2026) <strong>and</strong> list the clade-level sources you drew on in your supplementary materials.</li>
+      <li><strong>Downloading the full dataset?</strong> The CSV file ships with a <code>citation</code> column for exactly this reason. Please carry that column through your analyses so the original authors can be credited downstream.</li>
+    </ul>
+
+    <h3 style="font-family: var(--font-mono, ui-monospace, monospace); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent, var(--accent)); margin-top: 24px; margin-bottom: 10px;">How to cite</h3>
+
+    <div class="cite-box">
+      <p class="cite-ref">
+        Copeland, M., McConnell, M., Barboza, A., Abraham, H.M., Alfieri, J., Arackal, S., Bernard, C.E., Bryant, K., Cast, S., Chien, S., Clark, E., Cruz, C.E., Diaz, A.Y., Deiterman, O., Girish, R., Harper, K., Hjelmen, C.E., Thompson, M.J., Koehl, R., Koneru, T., Laird, K., Lee, Y., Lopez, V.R., Murphy, M., Perez, N., Schmalz, S., Sylvester, T., and Blackmon, H. (2026). Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life. <em>bioRxiv</em> 2026.04.14.718287. <a href="https://doi.org/10.64898/2026.04.14.718287" target="_blank" rel="noopener">https://doi.org/10.64898/2026.04.14.718287</a>
+      </p>
+      <button class="cite-toggle" id="citeBibBtn" type="button">Show BibTeX</button>
 <pre class="cite-bib" id="citeBib" hidden>@article{Copeland2026.04.14.718287,
   author    = {Copeland, Megan and McConnell, Meghann and Barboza, Andres and Abraham, Hannah M and Alfieri, James and Arackal, Steven and Bernard, Carrie E and Bryant, Kiedon and Cast, Shelbie and Chien, Sean and Clark, Emily and Cruz, Cassandra E and Diaz, Aileen Y and Deiterman, Olivia and Girish, Riya and Harper, Kaya and Hjelmen, Carl E and Thompson, Michelle J and Koehl, Rachel and Koneru, Tanvi and Laird, Kenzie and Lee, Yoonseo and Lopez, Virginia R and Murphy, Mallory and Perez, Nayeli and Schmalz, Sarah and Sylvester, Terrence and Blackmon, Heath},
   title     = {Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life},
@@ -296,69 +399,174 @@ extra_head: |
   elocation-id = {2026.04.14.718287},
   url       = {https://www.biorxiv.org/content/early/2026/04/16/2026.04.14.718287}
 }</pre>
-      </div>
     </div>
 
-    <!-- SOURCES -->
-    <div class="tab-content" id="tab-sources">
-      <div class="cite-appeal" style="margin-bottom:18px;">
-        Each clade below is backed by a single primary source. If your work uses data from <strong>one clade only</strong>, please cite that source directly. Those authors generated the counts you are using. Cite the database paper (Copeland et al. 2026) only when your analysis spans multiple clades.
-      </div>
-      <div class="sources-list" id="sourcesList"><div class="db-loading">Loading sources…</div></div>
-    </div>
+    <h2>Browse the data</h2>
 
-    <!-- TABLE -->
-    <div class="tab-content" id="tab-table">
-      <div class="table-controls">
-        <span class="page-info" id="pageInfo"></span>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button class="csv-btn" id="csvBtn" title="Download the currently filtered records as CSV">&#11015; Download filtered CSV</button>
-          <a class="csv-btn" href="data/cures-karyotype-database.csv" download title="Download the full dataset (63,542 records with citations)" style="text-decoration:none; display:inline-block;">&#11015; Full dataset (CSV)</a>
+    <p>
+      The interactive viewer below loads the full dataset and lets you filter by clade, search for species, sort any column, download the filtered subset as CSV, and plot distributions. All 63,682 records are available through the Data Table tab; source citations for each clade live on the Sources tab.
+    </p>
+
+    <div class="db-app">
+      <div class="db-container">
+        <div class="db-sidebar">
+          <div class="record-count" id="recCount">63,682</div>
+          <div class="record-label">matching records &middot; 55 clades</div>
+
+          <h3>Clade</h3>
+          <select id="cladeFilter"><option value="">All clades</option></select>
+
+          <h3>Search species</h3>
+          <input type="text" class="search-input" id="searchBox" placeholder="Type to search...">
+
+          <button class="reset-btn" id="resetBtn">Reset filters</button>
+
+          <a href="https://github.com/coleoguy/metazoa-chromosomes" target="_blank" rel="noopener" class="repo-link">
+            <i class="bi bi-github" aria-hidden="true"></i> GitHub Repository for This Database
+          </a>
+
+          <a href="https://doi.org/10.64898/2026.04.14.718287" target="_blank" rel="noopener" class="repo-link">
+            <i class="bi bi-file-earmark-text" aria-hidden="true"></i> bioRxiv Preprint
+          </a>
+        </div>
+
+        <div class="db-main">
+          <div class="tabs">
+            <div class="tab active" data-tab="overview">Overview</div>
+            <div class="tab" data-tab="sources">Sources by Clade</div>
+            <div class="tab" data-tab="table">Data Table</div>
+            <div class="tab" data-tab="plot">Plot</div>
+          </div>
+
+          <!-- OVERVIEW -->
+          <div class="tab-content active" id="tab-overview">
+            <div class="cards">
+              <div class="card"><div class="card-value" id="statRecords">63,682</div><div class="card-label">Total Records</div></div>
+              <div class="card"><div class="card-value" id="statSpecies">0</div><div class="card-label">Unique Species</div></div>
+              <div class="card"><div class="card-value" id="statClades">55</div><div class="card-label">Clades</div></div>
+              <div class="card"><div class="card-value" id="statMedian">0</div><div class="card-label">Median Haploid Number</div></div>
+              <div class="card"><div class="card-value" id="statRange">0</div><div class="card-label">Haploid Range</div></div>
+            </div>
+            <h3 style="color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-family:var(--font-mono, ui-monospace, monospace);font-weight:500;">Records by Clade</h3>
+            <div class="clade-grid" id="cladeGrid"></div>
+
+            <h3 style="color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-top:24px;margin-bottom:10px;font-family:var(--font-mono, ui-monospace, monospace);font-weight:500;">How to Cite, Please Read</h3>
+            <div class="cite-appeal">
+              Every record in this database comes from a primary source: a paper, dissertation, or dataset whose authors did the slow, careful work of generating these chromosome counts. Citations matter. They are how careers get evaluated, how grants get awarded, and how the people whose work we depend on get credit. Please cite responsibly.
+              <ul>
+                <li><strong>Using data from a single clade?</strong> Cite the original source for that clade (see the <em>Sources by Clade</em> tab, or the citation column in the data table). Do <strong>not</strong> cite this database in place of the primary work.</li>
+                <li><strong>Combining data across multiple clades?</strong> Cite this database (Copeland et al. 2026) <strong>and</strong> list the clade-level sources you drew on in your supplementary materials.</li>
+                <li><strong>Downloading the full dataset?</strong> The CSV file ships with a <code>citation</code> column for exactly this reason. Please carry that column through your analyses so the original authors can be credited downstream.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- SOURCES -->
+          <div class="tab-content" id="tab-sources">
+            <div class="cite-appeal" style="margin-bottom:16px;">
+              Each clade below is backed by a single primary source. If your work uses data from <strong>one clade only</strong>, please cite that source directly. Those authors generated the counts you are using. Cite the database paper (Copeland et al. 2026) only when your analysis spans multiple clades.
+            </div>
+            <div class="sources-list" id="sourcesList"><div class="db-loading">Loading sources&hellip;</div></div>
+          </div>
+
+          <!-- TABLE -->
+          <div class="tab-content" id="tab-table">
+            <div class="table-controls">
+              <span class="page-info" id="pageInfo"></span>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button class="csv-btn" id="csvBtn" title="Download the currently filtered records as CSV">&#11015; Download filtered CSV</button>
+                <a class="csv-btn" href="data/cures-karyotype-database.csv" download title="Download the full dataset with citations" style="text-decoration:none; display:inline-block;">&#11015; Full dataset (CSV)</a>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th data-col="c">Clade <span class="sort-arrow"></span></th>
+                  <th data-col="s">Species <span class="sort-arrow"></span></th>
+                  <th data-col="h">Haploid Number <span class="sort-arrow"></span></th>
+                  <th data-col="cit">Citation <span class="sort-arrow"></span></th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"><tr><td colspan="4" class="db-loading">Loading data&hellip;</td></tr></tbody>
+            </table>
+            <div class="pagination" id="pagination"></div>
+          </div>
+
+          <!-- PLOT -->
+          <div class="tab-content" id="tab-plot">
+            <div style="margin-bottom:14px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+              <label style="font-size:11px; color:#a09d98; text-transform:uppercase; letter-spacing:0.5px; font-family:var(--font-mono, ui-monospace, monospace);">
+                Plot type:
+                <select id="plotType" style="margin-left:6px; padding:5px 9px; background:#141311; border:1px solid #2a2825; color:#c8c5c0; border-radius:4px; font-family:inherit; font-size:12px;">
+                  <option value="histogram">Haploid Number Distribution</option>
+                  <option value="bar">Records per Clade</option>
+                  <option value="box">Haploid Number by Clade</option>
+                </select>
+              </label>
+            </div>
+            <div id="plotArea"></div>
+          </div>
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th data-col="c">Clade <span class="sort-arrow"></span></th>
-            <th data-col="s">Species <span class="sort-arrow"></span></th>
-            <th data-col="h">Haploid Number <span class="sort-arrow"></span></th>
-            <th data-col="cit">Citation <span class="sort-arrow"></span></th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"><tr><td colspan="4" class="db-loading">Loading data…</td></tr></tbody>
-      </table>
-      <div class="pagination" id="pagination"></div>
+
+      <div class="db-footer-in">
+        <div>CUREs Karyotype Database v1.1 &middot; April 2026</div>
+        <div><a href="data/cures-karyotype-data.json">data/cures-karyotype-data.json</a></div>
+      </div>
     </div>
 
-    <!-- PLOT -->
-    <div class="tab-content" id="tab-plot">
-      <div style="margin-bottom:16px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
-        <label style="font-size:12px; color:#a09d98; text-transform:uppercase; letter-spacing:0.5px;">
-          Plot type:
-          <select id="plotType" style="margin-left:6px; padding:6px 10px; background:#1e1c19; border:1px solid #2a2825; color:#c8c5c0; border-radius:4px; font-family:inherit; font-size:13px;">
-            <option value="histogram">Haploid Number Distribution</option>
-            <option value="bar">Records per Clade</option>
-            <option value="box">Haploid Number by Clade</option>
-          </select>
-        </label>
-      </div>
-      <div id="plotArea"></div>
-    </div>
+    <h2>About the CUREs program</h2>
+
+    <p>
+      This database is one output of the <a href="biolai-cure.html">Biology &amp; AI CURE</a> at Texas A&amp;M, a course-based research program that embeds undergraduates in real research from their first semester. The workflow that produced this dataset was genuinely collaborative between students, AI, and human experts.
+    </p>
+
+    <p>
+      Students used AI tools to locate candidate records in the primary literature, then evaluated each one for appropriateness — checking that the source was a credible cytogenetic study and that the count was unambiguous. Faculty and graduate students independently reviewed the curated records, providing a second pass over every entry before it entered the database. On the computation side, students used AI to help write and debug parsing scripts. Over the arc of the course, that work converged on a single script capable of handling every dataset format in the collection. Both students and faculty then ran that script independently, and the outputs were compared as a final quality check. The result is a dataset no single graduate student could have compiled in a reasonable timeframe, built by people who were learning the biology and the tooling at the same time.
+    </p>
+
+    <p>
+      <a href="biolai-cure.html">Read about the CURE program &rarr;</a>
+    </p>
+
+    <footer class="colophon">
+      <span>Blackmon Lab &middot; <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Department of Biology</a> &middot; <a href="https://www.tamu.edu/" target="_blank" rel="noopener">Texas A&amp;M University</a></span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to&hellip;" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
   </div>
 </div>
 
-<div class="db-footer">
-  <div>CUREs Karyotype Database v1.1 &middot; April 2026</div>
-</div>
-</div><!-- /.db-app -->
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
 
+<script src="assets/js/v3.js"></script>
+
+<!-- ============================================================
+     Interactive CUREs database driver (preserved from v1 page).
+     The only logical change is the light-mode detection: v3 uses
+     document.documentElement[data-theme] instead of a body class.
+     ============================================================ -->
 <script>
 (function(){
-  // ── State ────────────────────────────────────────────────────────────────
-  let CLADES = [];        // array of clade names
-  let SOURCES = [];       // array of {clade, n, citation, url}
-  let CITATIONS = {};     // clade -> citation
-  let RECORDS = [];       // array of {c, s, h}
+  // State
+  let CLADES = [];
+  let SOURCES = [];
+  let CITATIONS = {};
+  let RECORDS = [];
   let filtered = [];
   let page = 1;
   const PER_PAGE = 50;
@@ -374,7 +582,7 @@ extra_head: |
       .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
-  // ── Load JSON ────────────────────────────────────────────────────────────
+  // Load JSON
   fetch('data/cures-karyotype-data.json')
     .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
     .then(init)
@@ -394,7 +602,6 @@ extra_head: |
       c: CLADES[r[0]], s: r[1], h: r[2],
     }));
 
-    // Populate clade filter
     CLADES.forEach(c => {
       const opt = document.createElement('option');
       opt.value = c; opt.textContent = c;
@@ -406,10 +613,9 @@ extra_head: |
     applyFilters();
   }
 
-  // ── Sources tab ──────────────────────────────────────────────────────────
+  // Sources tab
   function renderSources() {
     const html = SOURCES.map(s => {
-      // Strip the URL out of the citation so it isn't duplicated
       let citeText = s.citation;
       if (s.url) citeText = citeText.replace(s.url, '').replace(/\s+$/,'').replace(/[\s,;]+$/,'');
       return (
@@ -428,7 +634,7 @@ extra_head: |
     $('sourcesList').innerHTML = html;
   }
 
-  // ── Overview ─────────────────────────────────────────────────────────────
+  // Overview
   function renderOverview() {
     $('statRecords').textContent = RECORDS.length.toLocaleString();
     const species = new Set(RECORDS.map(r => r.s));
@@ -441,10 +647,9 @@ extra_head: |
         ? haps[(haps.length-1)/2]
         : ((haps[haps.length/2 - 1] + haps[haps.length/2]) / 2);
       $('statMedian').textContent = (Math.round(median*10)/10).toString();
-      $('statRange').textContent  = haps[0] + '–' + haps[haps.length-1];
+      $('statRange').textContent  = haps[0] + '-' + haps[haps.length-1];
     }
 
-    // Records by clade grid
     const counts = {};
     RECORDS.forEach(r => { counts[r.c] = (counts[r.c]||0) + 1; });
     const grid = Object.entries(counts).sort((a,b) => b[1] - a[1]);
@@ -454,7 +659,7 @@ extra_head: |
     ).join('');
   }
 
-  // ── Filters / table ──────────────────────────────────────────────────────
+  // Filters / table
   function applyFilters() {
     const clade = cladeSelect.value;
     const q = searchBox.value.trim().toLowerCase();
@@ -495,7 +700,6 @@ extra_head: |
           '<td class="cite-cell" title="Click to expand"><span class="cite-text">' + escapeHtml(cite) + '</span></td>' +
         '</tr>';
       }).join('');
-      // Click-to-expand citation cells
       $('tableBody').querySelectorAll('.cite-cell').forEach(el => {
         el.addEventListener('click', () => el.classList.toggle('expanded'));
       });
@@ -503,7 +707,7 @@ extra_head: |
     renderPagination();
     const end = Math.min(start + PER_PAGE, filtered.length);
     $('pageInfo').textContent =
-      filtered.length ? ('Showing ' + (start+1).toLocaleString() + '–' + end.toLocaleString() + ' of ' + filtered.length.toLocaleString()) : '';
+      filtered.length ? ('Showing ' + (start+1).toLocaleString() + '-' + end.toLocaleString() + ' of ' + filtered.length.toLocaleString()) : '';
   }
 
   function renderPagination() {
@@ -519,35 +723,35 @@ extra_head: |
       return b;
     };
     pag.innerHTML = '';
-    pag.appendChild(btn('‹ Prev', page-1, { disabled: page === 1 }));
-    // condensed page numbers
+    pag.appendChild(btn('\u2039 Prev', page-1, { disabled: page === 1 }));
     const pages = new Set([1, totalPages, page-1, page, page+1]);
     let prev = 0;
     [...pages].filter(p => p >= 1 && p <= totalPages).sort((a,b)=>a-b).forEach(p => {
       if (p - prev > 1) {
         const span = document.createElement('span');
-        span.textContent = '…'; span.style.color = '#a09d98'; span.style.padding = '0 4px';
+        span.textContent = '\u2026'; span.style.color = '#a09d98'; span.style.padding = '0 4px';
         pag.appendChild(span);
       }
       pag.appendChild(btn(String(p), p, { active: p === page }));
       prev = p;
     });
-    pag.appendChild(btn('Next ›', page+1, { disabled: page === totalPages }));
+    pag.appendChild(btn('Next \u203a', page+1, { disabled: page === totalPages }));
   }
 
-  // ── Plot ─────────────────────────────────────────────────────────────────
+  // Plot
   function renderPlot() {
     const plotArea = $('plotArea');
     if (!window.Plotly || !filtered.length) {
       plotArea.innerHTML = '<div class="db-loading">No data to plot.</div>';
       return;
     }
-    const isLight = document.body.classList.contains('light-mode');
+    // v3 theme detection: root [data-theme], not body class
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const fg = isLight ? '#3a3a3a' : '#c8c5c0';
     const grid = isLight ? '#d5d0c8' : '#2a2825';
     const layout = {
       paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
-      font:{ color:fg, family:'Space Grotesk, sans-serif' },
+      font:{ color:fg, family:'Source Serif 4, Georgia, serif' },
       margin:{ t:50, l:60, r:30, b:80 },
       xaxis:{ gridcolor:grid, zerolinecolor:grid },
       yaxis:{ gridcolor:grid, zerolinecolor:grid },
@@ -556,10 +760,10 @@ extra_head: |
     if (plotType === 'histogram') {
       Plotly.newPlot(plotArea, [{
         x: filtered.map(d => d.h).filter(h => Number.isFinite(h)),
-        type:'histogram', marker:{ color:'#c9a227' }, nbinsx:50,
+        type:'histogram', marker:{ color:'var(--accent)' }, nbinsx:50,
       }], {
         ...layout,
-        title:{ text:'Haploid Number Distribution', font:{ size:16, color:'#c9a227' } },
+        title:{ text:'Haploid Number Distribution', font:{ size:16, color:'var(--accent)' } },
         xaxis:{ ...layout.xaxis, title:'Haploid Number (n)' },
         yaxis:{ ...layout.yaxis, title:'Number of Species' },
       }, { responsive:true });
@@ -569,10 +773,10 @@ extra_head: |
       const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
       Plotly.newPlot(plotArea, [{
         x: sorted.map(e => e[0]), y: sorted.map(e => e[1]),
-        type:'bar', marker:{ color:'#c9a227' },
+        type:'bar', marker:{ color:'var(--accent)' },
       }], {
         ...layout,
-        title:{ text:'Records per Clade', font:{ size:16, color:'#c9a227' } },
+        title:{ text:'Records per Clade', font:{ size:16, color:'var(--accent)' } },
         xaxis:{ ...layout.xaxis, tickangle:-45 },
         yaxis:{ ...layout.yaxis, title:'Number of Records' },
       }, { responsive:true });
@@ -586,12 +790,12 @@ extra_head: |
       const top = Object.entries(groups).sort((a,b) => b[1].length - a[1].length).slice(0, 20);
       const traces = top.map(([clade, vals]) => ({
         y: vals, name: clade, type:'box',
-        marker:{ color:'#c9a227' }, line:{ color:'#c9a227' },
+        marker:{ color:'var(--accent)' }, line:{ color:'var(--accent)' },
         boxpoints:false,
       }));
       Plotly.newPlot(plotArea, traces, {
         ...layout,
-        title:{ text:'Haploid Number by Clade (top 20)', font:{ size:16, color:'#c9a227' } },
+        title:{ text:'Haploid Number by Clade (top 20)', font:{ size:16, color:'var(--accent)' } },
         showlegend:false,
         yaxis:{ ...layout.yaxis, title:'Haploid Number' },
         xaxis:{ ...layout.xaxis, tickangle:-45 },
@@ -599,7 +803,7 @@ extra_head: |
     }
   }
 
-  // ── Event listeners ──────────────────────────────────────────────────────
+  // Event listeners
   cladeSelect.addEventListener('change', applyFilters);
   searchBox.addEventListener('input', applyFilters);
   $('resetBtn').addEventListener('click', () => {
@@ -610,23 +814,23 @@ extra_head: |
     applyFilters();
   });
 
-  document.querySelectorAll('.tab').forEach(tab => {
+  document.querySelectorAll('.db-app .tab').forEach(tab => {
     tab.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.db-app .tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.db-app .tab-content').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
       if (tab.dataset.tab === 'plot') setTimeout(renderPlot, 50);
     });
   });
 
-  document.querySelectorAll('thead th').forEach(th => {
+  document.querySelectorAll('.db-app thead th').forEach(th => {
     th.addEventListener('click', () => {
       const col = th.dataset.col;
       if (sortCol === col) sortAsc = !sortAsc;
       else { sortCol = col; sortAsc = true; }
-      document.querySelectorAll('.sort-arrow').forEach(s => s.textContent = '');
-      th.querySelector('.sort-arrow').textContent = sortAsc ? ' ▲' : ' ▼';
+      document.querySelectorAll('.db-app .sort-arrow').forEach(s => s.textContent = '');
+      th.querySelector('.sort-arrow').textContent = sortAsc ? ' \u25b2' : ' \u25bc';
       applyFilters();
     });
   });
@@ -657,9 +861,13 @@ extra_head: |
     }
   })();
 
-  // Re-render plot when theme toggles
+  // Re-render plot when v3 theme toggles (observe data-theme on <html>)
   new MutationObserver(() => {
-    if (document.querySelector('.tab[data-tab="plot"]').classList.contains('active')) renderPlot();
-  }).observe(document.body, { attributes:true, attributeFilter:['class'] });
+    const plotTab = document.querySelector('.db-app .tab[data-tab="plot"]');
+    if (plotTab && plotTab.classList.contains('active')) renderPlot();
+  }).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
 })();
 </script>
+
+</body>
+</html>

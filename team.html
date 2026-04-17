@@ -1,281 +1,357 @@
----
-layout: default
-title: Team - Blackmon Lab
-description: Meet the members of the Blackmon Lab at Texas A&M University, including graduate students, research staff, undergraduates, and alumni studying genome evolution.
-canonical: https://coleoguy.github.io/team.html
-keywords: Blackmon Lab, team, Heath Blackmon, Texas A&M, evolutionary biology, lab members
-body_class: team-page
-nav_active: team
-extra_head: |
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Blackmon Lab Team",
-      "description": "Lab members studying genome structure evolution at Texas A&M University.",
-      "url": "https://coleoguy.github.io/team.html",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "Blackmon Lab",
-        "url": "https://coleoguy.github.io"
-      },
-      "about": {
-        "@type": "Person",
-        "name": "Heath Blackmon",
-        "jobTitle": "Associate Professor",
-        "affiliation": {
-          "@type": "CollegeOrUniversity",
-          "name": "Texas A&M University"
-        },
-        "url": "https://coleoguy.github.io",
-        "sameAs": [
-          "https://scholar.google.com/citations?user=ytApUl0AAAAJ",
-          "https://orcid.org/0000-0002-5433-4036",
-          "https://github.com/coleoguy"
-        ]
-      }
-    }
-    </script>
----
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team · Blackmon Lab</title>
+<meta name="description" content="Blackmon Lab, Texas A&M Biology. Evolution studied broadly, through autonomous AI agents and open machine-readable datasets.">
+<link rel="icon" href="assets/img/favicon.ico">
 
-<!-- Page Header -->
-    <section class="page-header">
-      <div class="container" data-aos="fade-up">
-        <h1>Team</h1>
-        <div class="photo-strip" style="overflow: hidden; max-height: 160px; margin-top: 30px;">
-          <div class="photo-strip-track">
-            <img src="assets/img/slide-labgroup.jpg" alt="Lab group photo">
-            <img src="assets/img/slide-halloween.jpg" alt="Halloween party">
-            <img src="assets/img/slide-tailgate.jpg" alt="TAMU tailgate">
-            <img src="assets/img/slide-pumpkins.jpg" alt="Pumpkin carving">
-            <img src="assets/img/slide-labnight.jpg" alt="Lab meeting">
-            <img src="assets/img/slide-labmeeting.jpg" alt="Lab meeting">
-            <img src="assets/img/slide-whiteboard2.jpg" alt="Whiteboard work">
-            <img src="assets/img/slide-conference1.jpg" alt="Conference">
-          </div>
-        </div>
-        <script>document.addEventListener('DOMContentLoaded',function(){var t=document.querySelector('.photo-strip-track');if(t){t.innerHTML+=t.innerHTML;}})</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+</head>
+
+<body>
+
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+    </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="team.html" class="active">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="karyotype.html">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; TEAM</div>
+
+    <h1 class="title">Twenty scientists, one lab.</h1>
+
+    <p class="lede">
+      A lot of what we do here hinges on bringing undergraduates into fundamental research earlier than most labs do. Ten of the people listed below are undergraduate researchers running their own projects, often publishing before they graduate. The list that follows covers the principal investigator, research staff, graduate students, a post-bacc, undergraduate researchers, and alumni.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <span class="stat-label">PhD students</span>
       </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="section">
-      <div class="container" data-aos="fade-up">
-
-        <style>
-          /* Tighter grid for member cards, no half-row empty gaps */
-          .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 18px;
-            margin-bottom: 18px;
-          }
-          .team-grid > .member-card { margin-bottom: 0; }
-          .member-card.member-card-pi { max-width: 840px; margin-bottom: 24px; }
-          .member-card.compact { padding: 14px 18px; min-height: 0; }
-          .member-card.compact img { width: 64px; height: 64px; }
-          .member-card.compact .member-info h5 { margin-bottom: 2px; font-size: 14px; }
-          .member-card.compact .compact-role {
-            font-size: 11px;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-          }
-          /* Alumni as a compact grid of cards, not bullets */
-          .alumni-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 10px;
-            padding: 0;
-            list-style: none;
-            margin: 0 0 16px;
-          }
-          .alumni-grid .alumni-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            transition: border-color 0.2s, background 0.2s;
-          }
-          .alumni-grid .alumni-card:hover {
-            border-color: var(--border-hover);
-            background: var(--bg-card-hover);
-          }
-          .alumni-grid .alumni-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-heading);
-          }
-          .alumni-grid .alumni-affil {
-            display: block;
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 4px;
-          }
-          .alumni-grid .alumni-card a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-          }
-          .alumni-grid .alumni-card a:hover { text-decoration: underline; }
-          .team-intro {
-            font-size: 15px;
-            color: var(--text-secondary);
-            max-width: 58ch;
-            line-height: 1.7;
-            margin-bottom: 12px;
-          }
-        </style>
-
-        <p class="team-intro">
-          A lot of what we do hinges on bringing undergraduates into fundamental research earlier than most labs do. Eleven of the people below are undergraduate researchers running their own projects.
-        </p>
-
-        <!-- Principal Investigator -->
-        <h4 class="member-category">Principal Investigator</h4>
-        <div class="member-card member-card-pi">
-          <img loading="lazy" src="assets/img/heath.jpg" alt="Heath Blackmon">
-          <div class="member-info">
-            <h5>Heath Blackmon</h5>
-            <p>Heath earned his Ph.D. in 2015 from the Demuth lab at UT Arlington, where he studied the evolution of sex chromosomes and karyotypes in Coleoptera. He then completed a postdoc at the University of Minnesota with Emma Goldberg and Yaniv Brandvain. He opened the Blackmon Lab at Texas A&M in the fall of 2017. <a href="blackmon-cv.pdf" target="_blank">Curriculum Vitae</a></p>
-          </div>
-        </div>
-
-        <!-- Research Staff -->
-        <h4 class="member-category">Research Staff</h4>
-        <div class="team-grid">
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/LT.jpg" alt="LT Blackmon">
-            <div class="member-info">
-              <h5>LT Blackmon</h5>
-              <p>Founding member of the lab. LT assists with fieldwork and is currently working on morphometrics of Chrysina species.</p>
-            </div>
-          </div>
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/kenzie.jpeg" alt="Kenzie Laird">
-            <div class="member-info">
-              <h5>Kenzie Laird</h5>
-              <p>Research tech responsible for model organism care. Kenzie is also working on discrete trait PCMs and Betta Fish aggression. She is also a champion archer.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Graduate Students -->
-        <h4 class="member-category">Graduate Students</h4>
-        <div class="team-grid">
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/schien.jpg" alt="Sean Chien">
-            <div class="member-info">
-              <h5>Sean Chien</h5>
-              <p>Joined 2022 &middot; Biology Ph.D. &middot; Sean is broadly interested in evolutionary biology and Coleoptera. When he is not in the lab he loves fishing. <a href="https://seanchien4.github.io/" target="_blank">Website</a></p>
-            </div>
-          </div>
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/mcopeland.JPG" alt="Megan Copeland">
-            <div class="member-info">
-              <h5>Megan Copeland</h5>
-              <p>Joined 2022 &middot; Biology Ph.D. &middot; Megan is interested in genome structure and has a background in genomics, bioinformatics, and forensics. <a href="https://megan-copeland.github.io/" target="_blank">Website</a></p>
-            </div>
-          </div>
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/abarboza.jpg" alt="Andres Barboza Pereira">
-            <div class="member-info">
-              <h5>Andres Barboza Pereira</h5>
-              <p>Joined 2023 &middot; Genetics Ph.D. &middot; Andres specializes in theoretical evolution and population genetics, with a focus on bioinformatics and genomics. His current research is focused on assembling scarab beetle genomes and developing computational tools to support the conservation of Chondrichthyes (sharks and rays). <a href="http://andresdbp.github.io/" target="_blank">Website</a></p>
-            </div>
-          </div>
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/kaya-new.jpg" alt="Kaya Harper">
-            <div class="member-info">
-              <h5>Kaya Harper</h5>
-              <p>Joined 2023 &middot; Biology Ph.D. &middot; Kaya's research explores how environmental variation shapes genomic architecture, epigenetic regulation, and phenotypic plasticity across natural populations. She is particularly interested in how evolutionary processes interact with human-driven environmental change to influence adaptation, resilience, and vulnerability under shifting climatic conditions. Outside the lab, she enjoys running, hiking, scuba diving, and exploring the kinds of dynamic landscapes that continually inspire her work. <a href="https://kayaharper.github.io/" target="_blank">Website</a></p>
-            </div>
-          </div>
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/shelbie.jpg" alt="Shelbie Weaver">
-            <div class="member-info">
-              <h5>Shelbie Weaver</h5>
-              <p>Joined 2025 &middot; EEB Ph.D. &middot; Shelbie is interested in the evolution and ecology of crustaceans, studying crab freshwater invasion. <a href="https://scholar.google.com/citations?user=5gGQotEAAAAJ&hl=en&oi=sra" target="_blank">Google Scholar</a></p>
-            </div>
-          </div>
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/kiedon.jpg" alt="Kiedon Bryant">
-            <div class="member-info">
-              <h5>Kiedon Bryant</h5>
-              <p>Joined 2025 &middot; Biology Ph.D. &middot; Kiedon is interested in using both empirical and theoretical approaches to study the behavioral ecology of fishes and the evolution of mating systems. <a href="https://scholar.google.com/citations?user=6pue-hkAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Post-Bacc Students -->
-        <h4 class="member-category">Post-Bacc Students</h4>
-        <div class="team-grid">
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/meg.jpg" alt="Meghann McConnell">
-            <div class="member-info">
-              <h5>Meghann McConnell</h5>
-              <p>Joined 2025 &middot; Meghann is broadly interested in comparative phylogenetic approaches focused on questions about chromosome number transitions to alternative meiosis mechanisms. She is also interested in creating novel model approaches for understanding trait evolution.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Undergraduate Researchers: full-bio cards first, then name-only cards -->
-        <h4 class="member-category">Undergraduate Researchers</h4>
-        <div class="team-grid">
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/bella.jpg" alt="Bella Steele">
-            <div class="member-info">
-              <h5>Bella Steele</h5>
-              <p>Bella is working on a project that focuses on computational and evolutionary work.</p>
-            </div>
-          </div>
-          <div class="member-card">
-            <img loading="lazy" src="assets/img/sarah-schmalz.jpg" alt="Sarah Schmalz">
-            <div class="member-info">
-              <h5>Sarah Schmalz</h5>
-              <p>Sarah Schmalz is a senior Biology major and University Honors student interested in the intersection of evolutionary genomics and bioinformatics. Her current research focuses on extending mathematical models for sex-autosome fusions by incorporating fixation weights to better predict genomic architecture.</p>
-            </div>
-          </div>
-          <div class="member-card compact"><div class="member-info"><h5>Emily Clark</h5><span class="compact-role">Undergraduate researcher</span></div></div>
-          <div class="member-card compact"><div class="member-info"><h5>Olivia Deiterman</h5><span class="compact-role">Undergraduate researcher</span></div></div>
-          <div class="member-card compact"><div class="member-info"><h5>Riya Girish</h5><span class="compact-role">Undergraduate researcher</span></div></div>
-          <div class="member-card compact"><div class="member-info"><h5>Anna Klein</h5><span class="compact-role">Undergraduate researcher</span></div></div>
-          <div class="member-card compact"><div class="member-info"><h5>Rachel Koehl</h5><span class="compact-role">Undergraduate researcher</span></div></div>
-          <div class="member-card compact"><div class="member-info"><h5>Mallory Murphy</h5><span class="compact-role">Undergraduate researcher</span></div></div>
-          <div class="member-card compact"><div class="member-info"><h5>Alex Rathsack</h5><span class="compact-role">Undergraduate researcher</span></div></div>
-        </div>
-
-        <!-- Alumni as a compact grid of cards -->
-        <h4 class="member-category">Alumni</h4>
-        <div class="alumni-grid">
-          <div class="alumni-card"><span class="alumni-name">Kevin Bolwerk</span></div>
-          <div class="alumni-card"><span class="alumni-name">Sally Bounds</span></div>
-          <div class="alumni-card"><span class="alumni-name">Jimena Garcia</span></div>
-          <div class="alumni-card"><span class="alumni-name">Wyatt Stogsdill</span></div>
-          <div class="alumni-card"><span class="alumni-name">Runyan Zhou</span></div>
-          <div class="alumni-card"><span class="alumni-name">Zhaobo Hu</span><span class="alumni-affil">Ph.D. student, <a href="https://wright-lab.com/" target="_blank">Wright Lab</a>, Southeastern Louisiana University</span></div>
-          <div class="alumni-card"><a href="https://jorjaelliott.github.io/" target="_blank"><span class="alumni-name">Jorja Burch</span></a><span class="alumni-affil">Wiley Publishers</span></div>
-          <div class="alumni-card"><a href="https://scholar.google.com/citations?user=g5RzjxUAAAAJ&hl=en&oi=ao" target="_blank"><span class="alumni-name">Emma Lehmberg</span></a></div>
-          <div class="alumni-card"><a href="https://cehjelmen.github.io/" target="_blank"><span class="alumni-name">Carl Hjelmen</span></a><span class="alumni-affil">Asst. Professor, Utah Valley University</span></div>
-          <div class="alumni-card"><a href="https://scholar.google.com/citations?user=1-NTzLkAAAAJ&hl=en&oi=ao" target="_blank"><span class="alumni-name">Michelle Jonika</span></a></div>
-          <div class="alumni-card"><a href="https://priscilla-glenn.github.io/" target="_blank"><span class="alumni-name">Priscilla Glenn</span></a><span class="alumni-affil">Postdoc, Texas A&amp;M</span></div>
-          <div class="alumni-card"><a href="https://jamiealfieri.github.io/" target="_blank"><span class="alumni-name">Jamie Alfieri</span></a><span class="alumni-affil">Postdoc, UT Austin</span></div>
-          <div class="alumni-card"><a href="https://tsylvester8.github.io/" target="_blank"><span class="alumni-name">Terrence Sylvester</span></a><span class="alumni-affil">Postdoc, UT Memphis</span></div>
-          <div class="alumni-card"><a href="https://scholar.google.com/citations?user=kyxh-AcAAAAJ&hl=en" target="_blank"><span class="alumni-name">Sarah Ruckman</span></a><span class="alumni-affil">Ph.D. student, FSU</span></div>
-          <div class="alumni-card"><a href="https://nw-anderson.github.io/" target="_blank"><span class="alumni-name">Nathan Anderson</span></a><span class="alumni-affil">Ph.D. student, UW Madison</span></div>
-          <div class="alumni-card"><a href="https://github.com/johnathanlo" target="_blank"><span class="alumni-name">Johnathan Lo</span></a><span class="alumni-affil">Ph.D. student, Berkeley</span></div>
-          <div class="alumni-card"><a href="https://scholar.google.com/citations?user=9vsdZUcAAAAJ&hl=en&oi=ao" target="_blank"><span class="alumni-name">Zachary Hoover</span></a><span class="alumni-affil">Ph.D. student, Texas A&amp;M</span></div>
-          <div class="alumni-card"><span class="alumni-name">Annabel Perry</span><span class="alumni-affil">Ph.D. student, Harvard</span></div>
-          <div class="alumni-card"><a href="https://scholar.google.com/citations?user=T6kxaGMAAAAJ&hl=en&oi=ao" target="_blank"><span class="alumni-name">Max Chin</span></a><span class="alumni-affil">Ph.D. student, UC Davis</span></div>
-          <div class="alumni-card"><a href="https://scholar.google.com/citations?user=a2Go4VEAAAAJ&hl=en&oi=ao" target="_blank"><span class="alumni-name">Kayla Wilhoit</span></a><span class="alumni-affil">Ph.D. student, Duke</span></div>
-        </div>
-
+      <div class="stat">
+        <div class="stat-num">10</div>
+        <span class="stat-label">Undergraduate researchers</span>
       </div>
-    </section>
-
-    <section class="section" style="padding-top: 0;">
-      <div class="container" style="text-align: center;">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSetCNyrkLefggX1K5I_7ll_KXFmy9KeG0qN6PaEt1E7mOzD3w/viewform?usp=sharing&ouid=104518398367976445175" target="_blank" class="btn-outline" style="display: inline-flex; align-items: center; gap: 8px;"><i class="bi bi-pencil-square" aria-hidden="true"></i> Submit Website Changes</a>
+      <div class="stat">
+        <div class="stat-num">21</div>
+        <span class="stat-label">Alumni</span>
       </div>
-    </section>
+      <div class="stat">
+        <div class="stat-num">2017</div>
+        <span class="stat-label">Lab founded</span>
+      </div>
+    </div>
+
+    <!-- ── Principal investigator ─────────────────────── -->
+    <h2>Principal investigator</h2>
+    <div class="team-grid">
+      <div class="member member-wide">
+        <img src="assets/img/heath.jpg" alt="Heath Blackmon">
+        <div class="m-info">
+          <div class="m-name">Heath Blackmon</div>
+          <span class="m-role">Associate Professor · Opened the lab in 2017</span>
+          <div class="m-bio">Heath earned his PhD in 2015 from the Demuth lab at UT Arlington, where he studied the evolution of sex chromosomes and karyotypes in Coleoptera. He then completed a postdoc at the University of Minnesota with Emma Goldberg and Yaniv Brandvain, and opened the Blackmon Lab at Texas A&amp;M in the fall of 2017. He also chairs the TAMU EEB interdisciplinary doctoral program. <a href="blackmon-cv.pdf" target="_blank">Curriculum Vitae</a> · <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ" target="_blank">Google Scholar</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Research staff ─────────────────────────────── -->
+    <h2>Research staff</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="assets/img/LT.jpg" alt="LT Blackmon">
+        <div class="m-info">
+          <div class="m-name">LT Blackmon</div>
+          <span class="m-role">Founding member</span>
+          <div class="m-bio">Assists with fieldwork and is currently working on morphometrics of Chrysina species.</div>
+        </div>
+      </div>
+      <div class="member">
+        <img src="assets/img/kenzie.jpeg" alt="Kenzie Laird">
+        <div class="m-info">
+          <div class="m-name">Kenzie Laird</div>
+          <span class="m-role">Research tech</span>
+          <div class="m-bio">Responsible for model organism care. She is also working on discrete trait PCMs and Betta fish aggression. Champion archer.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Graduate students ──────────────────────────── -->
+    <h2>Graduate students</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="assets/img/schien.jpg" alt="Sean Chien">
+        <div class="m-info">
+          <div class="m-name">Sean Chien</div>
+          <span class="m-role">Biology PhD · Joined 2022</span>
+          <div class="m-bio">Broadly interested in evolutionary biology and Coleoptera. When he is not in the lab he loves fishing. <a href="https://seanchien4.github.io/" target="_blank">Website</a></div>
+        </div>
+      </div>
+      <div class="member">
+        <img src="assets/img/mcopeland.JPG" alt="Megan Copeland">
+        <div class="m-info">
+          <div class="m-name">Megan Copeland</div>
+          <span class="m-role">Biology PhD · Joined 2022</span>
+          <div class="m-bio">Interested in genome structure, with a background in genomics, bioinformatics, and forensics. <a href="https://megan-copeland.github.io/" target="_blank">Website</a></div>
+        </div>
+      </div>
+      <div class="member">
+        <img src="assets/img/abarboza.jpg" alt="Andres Barboza Pereira">
+        <div class="m-info">
+          <div class="m-name">Andres Barboza Pereira</div>
+          <span class="m-role">Genetics PhD · Joined 2023</span>
+          <div class="m-bio">Specializes in theoretical evolution and population genetics, with a focus on bioinformatics and genomics. His current research is focused on assembling scarab beetle genomes and developing computational tools to support the conservation of Chondrichthyes (sharks and rays). <a href="http://andresdbp.github.io/" target="_blank">Website</a></div>
+        </div>
+      </div>
+      <div class="member">
+        <img src="assets/img/kaya-new.jpg" alt="Kaya Harper">
+        <div class="m-info">
+          <div class="m-name">Kaya Harper</div>
+          <span class="m-role">Biology PhD · Joined 2023</span>
+          <div class="m-bio">Her research explores how environmental variation shapes genomic architecture, epigenetic regulation, and phenotypic plasticity across natural populations, and how evolutionary processes interact with human-driven environmental change to influence adaptation, resilience, and vulnerability under shifting climatic conditions. Outside the lab she runs, hikes, scuba dives, and explores the kinds of dynamic landscapes that inspire her work. <a href="https://kayaharper.github.io/" target="_blank">Website</a></div>
+        </div>
+      </div>
+      <div class="member">
+        <img src="assets/img/shelbie.jpg" alt="Shelbie Cast">
+        <div class="m-info">
+          <div class="m-name">Shelbie Cast</div>
+          <span class="m-role">EEB PhD · Joined 2025</span>
+          <div class="m-bio">Interested in the evolution and ecology of crustaceans, studying crab freshwater invasion. <a href="https://scholar.google.com/citations?user=5gGQotEAAAAJ&amp;hl=en&amp;oi=sra" target="_blank">Google Scholar</a></div>
+        </div>
+      </div>
+      <div class="member">
+        <img src="assets/img/kiedon.jpg" alt="Kiedon Bryant">
+        <div class="m-info">
+          <div class="m-name">Kiedon Bryant</div>
+          <span class="m-role">Biology PhD · Joined 2025</span>
+          <div class="m-bio">Uses both empirical and theoretical approaches to study the behavioral ecology of fishes and the evolution of mating systems. <a href="https://scholar.google.com/citations?user=6pue-hkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank">Google Scholar</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Post-bacc students ─────────────────────────── -->
+    <h2>Post-bacc students</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="assets/img/meg.jpg" alt="Meghann McConnell">
+        <div class="m-info">
+          <div class="m-name">Meghann McConnell</div>
+          <span class="m-role">Post-bacc · Joined 2025</span>
+          <div class="m-bio">Broadly interested in comparative phylogenetic approaches focused on questions about chromosome number transitions to alternative meiosis mechanisms. She is also interested in creating novel model approaches for understanding trait evolution.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Undergraduate researchers ──────────────────── -->
+    <h2>Undergraduate researchers</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="assets/img/bella.jpg" alt="Bella Steele">
+        <div class="m-info">
+          <div class="m-name">Bella Steele</div>
+          <span class="m-role">Undergraduate researcher</span>
+          <div class="m-bio">Working on a project focused on computational and evolutionary biology.</div>
+        </div>
+      </div>
+      <div class="member">
+        <img src="assets/img/sarah-schmalz.jpg" alt="Sarah Schmalz">
+        <div class="m-info">
+          <div class="m-name">Sarah Schmalz</div>
+          <span class="m-role">Undergraduate researcher</span>
+          <div class="m-bio">Senior Biology major and University Honors student interested in the intersection of evolutionary genomics and bioinformatics. Her current research focuses on extending mathematical models for sex-autosome fusions by incorporating fixation weights to better predict genomic architecture.</div>
+        </div>
+      </div>
+      <div class="member">
+        <div class="m-info">
+          <div class="m-name">Emily Clark</div>
+          <span class="m-role">Undergraduate researcher</span>
+        </div>
+      </div>
+      <div class="member">
+        <div class="m-info">
+          <div class="m-name">Olivia Deiterman</div>
+          <span class="m-role">Undergraduate researcher</span>
+        </div>
+      </div>
+      <div class="member">
+        <div class="m-info">
+          <div class="m-name">Riya Girish</div>
+          <span class="m-role">Undergraduate researcher</span>
+        </div>
+      </div>
+      <div class="member">
+        <div class="m-info">
+          <div class="m-name">Anna Klein</div>
+          <span class="m-role">Undergraduate researcher</span>
+        </div>
+      </div>
+      <div class="member">
+        <div class="m-info">
+          <div class="m-name">Mallory Murphy</div>
+          <span class="m-role">Undergraduate researcher</span>
+        </div>
+      </div>
+      <div class="member">
+        <div class="m-info">
+          <div class="m-name">Alex Rathsack</div>
+          <span class="m-role">Undergraduate researcher</span>
+        </div>
+      </div>
+      <div class="member">
+        <div class="m-info">
+          <div class="m-name">Tewobola Olasehinde</div>
+          <span class="m-role">Undergraduate researcher</span>
+        </div>
+      </div>
+      <div class="member">
+        <div class="m-info">
+          <div class="m-name">Gabe Rodriguez</div>
+          <span class="m-role">Undergraduate researcher</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Alumni ─────────────────────────────────────── -->
+    <h2>Alumni</h2>
+    <div class="alumni-grid">
+      <div class="alumni-card"><span class="a-name">Kevin Bolwerk</span></div>
+      <div class="alumni-card"><span class="a-name">Sally Bounds</span></div>
+      <div class="alumni-card"><span class="a-name">Jimena Garcia</span></div>
+      <div class="alumni-card"><span class="a-name">Wyatt Stogsdill</span></div>
+      <div class="alumni-card"><span class="a-name">Runyan Zhou</span></div>
+      <div class="alumni-card"><span class="a-name">Zhaobo Hu</span><span class="a-affil">PhD student, <a href="https://wright-lab.com/" target="_blank">Wright Lab</a>, Southeastern Louisiana University</span></div>
+      <div class="alumni-card"><a href="https://jorjaelliott.github.io/" target="_blank"><span class="a-name">Jorja Burch</span></a><span class="a-affil">Wiley Publishers</span></div>
+      <div class="alumni-card"><a href="https://scholar.google.com/citations?user=g5RzjxUAAAAJ&amp;hl=en&amp;oi=ao" target="_blank"><span class="a-name">Emma Lehmberg</span></a></div>
+      <div class="alumni-card"><a href="https://cehjelmen.github.io/" target="_blank"><span class="a-name">Carl Hjelmen</span></a><span class="a-affil">Asst. Professor, Utah Valley University</span></div>
+      <div class="alumni-card"><a href="https://scholar.google.com/citations?user=1-NTzLkAAAAJ&amp;hl=en&amp;oi=ao" target="_blank"><span class="a-name">Michelle Jonika</span></a></div>
+      <div class="alumni-card"><a href="https://priscilla-glenn.github.io/" target="_blank"><span class="a-name">Priscilla Glenn</span></a><span class="a-affil">Postdoc, Texas A&amp;M</span></div>
+      <div class="alumni-card"><a href="https://jamiealfieri.github.io/" target="_blank"><span class="a-name">Jamie Alfieri</span></a><span class="a-affil">Postdoc, UT Austin</span></div>
+      <div class="alumni-card"><a href="https://tsylvester8.github.io/" target="_blank"><span class="a-name">Terrence Sylvester</span></a><span class="a-affil">Postdoc, UT Memphis</span></div>
+      <div class="alumni-card"><a href="https://scholar.google.com/citations?user=kyxh-AcAAAAJ&amp;hl=en" target="_blank"><span class="a-name">Sarah Ruckman</span></a><span class="a-affil">PhD student, FSU</span></div>
+      <div class="alumni-card"><a href="https://nw-anderson.github.io/" target="_blank"><span class="a-name">Nathan Anderson</span></a><span class="a-affil">PhD student, UW Madison</span></div>
+      <div class="alumni-card"><a href="https://github.com/johnathanlo" target="_blank"><span class="a-name">Johnathan Lo</span></a><span class="a-affil">PhD student, Berkeley</span></div>
+      <div class="alumni-card"><a href="https://scholar.google.com/citations?user=9vsdZUcAAAAJ&amp;hl=en&amp;oi=ao" target="_blank"><span class="a-name">Zachary Hoover</span></a><span class="a-affil">PhD student, Texas A&amp;M</span></div>
+      <div class="alumni-card"><span class="a-name">Annabel Perry</span><span class="a-affil">PhD student, Harvard</span></div>
+      <div class="alumni-card"><a href="https://scholar.google.com/citations?user=T6kxaGMAAAAJ&amp;hl=en&amp;oi=ao" target="_blank"><span class="a-name">Max Chin</span></a><span class="a-affil">PhD student, UC Davis</span></div>
+      <div class="alumni-card"><a href="https://scholar.google.com/citations?user=a2Go4VEAAAAJ&amp;hl=en&amp;oi=ao" target="_blank"><span class="a-name">Kayla Wilhoit</span></a><span class="a-affil">PhD student, Duke</span></div>
+      <div class="alumni-card"><span class="a-name">Rachel Koehl</span></div>
+    </div>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="assets/js/v3.js"></script>
+</body>
+</html>

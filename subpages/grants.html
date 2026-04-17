@@ -1,264 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Graduate Funding Opportunities - Blackmon Lab</title>
-  <meta name="description" content="Curated list of grants, fellowships, and funding opportunities for graduate students and postdocs in biology and evolution. Blackmon Lab, Texas A&M University.">
-    <meta property="og:title" content="Graduate Funding Opportunities - Blackmon Lab" />
-    <meta property="og:description" content="Curated list of grants, fellowships, and funding opportunities for graduate students and postdocs in biology and evolution. Blackmon Lab, Texas A&amp;M University." />
-    <meta property="og:url" content="https://coleoguy.github.io/subpages/grants.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="graduate funding, biology fellowships, NSF GRFP, NIH fellowship, ecology grants, evolution grants, TAMU biology">
-  <link rel="canonical" href="https://coleoguy.github.io/subpages/grants.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graduate funding opportunities · Blackmon Lab</title>
+<meta name="description" content="Curated list of grants, fellowships, and funding opportunities for graduate students and postdocs in biology and evolution. Blackmon Lab, Texas A&M University.">
+<link rel="icon" href="../assets/img/favicon.ico">
 
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
+<link rel="stylesheet" href="../assets/css/v3.css">
 
-  <link href="../assets/img/favicon.ico" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<style>
+  .grants-section-head {
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 36px 0 8px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .grant-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    columns: 2;
+    column-gap: 40px;
+  }
+  .grant-list li {
+    padding: 6px 0;
+    break-inside: avoid;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .grant-list a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+    padding-bottom: 1px;
+  }
+  .grant-list a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .grant-list .note {
+    display: block;
+    color: var(--ink-faint);
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 2px;
+  }
+  @media (max-width: 700px) {
+    .grant-list { columns: 1; }
+  }
 
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  .credit-line {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-top: -4px;
+    margin-bottom: 22px;
+    max-width: 42em;
+  }
+  .credit-line a {
+    color: var(--ink-faint);
+    border-bottom: 1px dotted var(--rule);
+    text-decoration: none;
+  }
+  .credit-line a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>
 
-  <link href="../assets/css/main.css" rel="stylesheet">
-
-  <style>
-    .grants-section-heading {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-      margin-top: 44px;
-      margin-bottom: 4px;
-    }
-    .grant-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      columns: 2;
-      column-gap: 40px;
-    }
-    .grant-list li {
-      padding: 5px 0;
-      break-inside: avoid;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    .grant-list a {
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .grant-list a:hover {
-      color: var(--accent);
-    }
-    .grant-list .note {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-    @media (max-width: 640px) {
-      .grant-list { columns: 1; }
-    }
-  </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
 </head>
 
 <body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../research.html">Research</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../ai.html">AI</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="../index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
     </div>
-  </header>
 
-  <main class="main">
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../news.html">News</a></li>
+          <li><a href="../calendar.html">Calendar</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="../cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="../karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="../epistasis-database.html">Epistasis database</a></li>
+          <li><a href="../tau_database.html">Tau database</a></li>
+          <li><a href="../citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="../karyotype.html">Karyotype evolution</a></li>
+          <li><a href="../sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="../genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="../selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="../epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="../chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="../coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="../ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="../lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="../phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="../phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="popgen-sim.html" target="_blank">Pop-gen simulator</a></li>
+          <li><a href="evobir.html" target="_blank">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="../biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="biol682.html" target="_blank">BIOL 682</a></li>
+          <li><a href="grad101.html" target="_blank">Grad 101</a></li>
+          <li><a href="AI-Tools.html" target="_blank">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
 
-    <section class="page-header">
-      <div class="container">
-        <h1>Graduate Funding Opportunities</h1>
-        <p>Grants, fellowships, and awards for graduate students and postdocs in biology</p>
-        <p style="margin-top: 14px; font-size: 0.85rem; opacity: 0.6;">Many of these opportunities were originally compiled with generous contributions from <a href="https://sites.ua.edu/rlearley/" target="_blank" style="color: inherit; border-bottom: 1px solid rgba(255,255,255,0.25);">Dr. Ryan Earley's lab</a> at the University of Alabama, thank you.</p>
-      </div>
-    </section>
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
 
-    <section class="section" style="padding-top: 24px; padding-bottom: 60px;">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
+    <div class="crumb">
+      <a href="../index.html">HOME</a> &rsaquo; <strong>GRANTS</strong>
+    </div>
 
-            <!-- Internal / TAMU -->
-            <h4 class="grants-section-heading" data-aos="fade-up">Internal Grants &amp; Awards</h4>
-            <ul class="grant-list">
-              <li><a href="https://graduatestudies.tamu.edu/funding/" target="_blank">TAMU Graduate Studies Funding</a> <span class="note">fellowships, assistantships, awards</span></li>
-              <li><a href="https://research.tamu.edu/research-development/internal-funding-opportunities/" target="_blank">TAMU Internal Funding Opportunities</a></li>
-              <li><a href="https://www.sigmaxi.org/programs/grants-in-aid" target="_blank">Sigma Xi Grants-in-Aid of Research</a></li>
-            </ul>
+    <h1 class="title">Graduate funding opportunities.</h1>
 
-            <!-- General Fellowships -->
-            <h4 class="grants-section-heading" data-aos="fade-up">General Grants &amp; Fellowships</h4>
-            <ul class="grant-list">
-              <li><a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=6201" target="_blank">NSF Graduate Research Fellowship (GRFP)</a></li>
-              <li><a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=504876" target="_blank">NSF Graduate Research Opportunities Worldwide</a></li>
-              <li><a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=505127" target="_blank">NSF Graduate Research Internship Program</a></li>
-              <li><a href="https://researchtraining.nih.gov/programs/training-grants" target="_blank">NIH Training Grants (NRSA)</a></li>
-              <li><a href="https://grants.nih.gov/grants/guide/pa-files/PA-18-671.html" target="_blank">NIH Kirschstein Predoctoral (F31)</a></li>
-              <li><a href="https://ndseg.sysplus.com/" target="_blank">National Defense Science &amp; Engineering Graduate Fellowship</a></li>
-              <li><a href="http://www.hertzfoundation.org/" target="_blank">Hertz Foundation Graduate Fellowship</a></li>
-              <li><a href="http://sites.nationalacademies.org/pga/fordfellowships/" target="_blank">Ford Foundation Fellowship</a></li>
-              <li><a href="https://www.gwis.org/page/fellowship_program" target="_blank">Graduate Women in Science (GWIS)</a></li>
-              <li><a href="https://www.aauw.org/resources/programs/fellowships-grants/current-opportunities/american/dissertation-fellowships/" target="_blank">AAUW Dissertation Fellowships</a></li>
-              <li><a href="http://hhwf.org/research-fellowship/" target="_blank">Helen Hay Whitney Postdoctoral Fellowship</a></li>
-              <li><a href="http://www.hfsp.org/funding/postdoctoral-fellowships" target="_blank">Human Frontier Science Postdoctoral Fellowship</a></li>
-              <li><a href="http://www.jsmf.org/programs/cs/index.htm" target="_blank">James S. McDonnell Foundation Postdoctoral Fellowship</a> <span class="note">Complex Systems</span></li>
-              <li><a href="https://royalsociety.org/grants/schemes/international-exchanges/" target="_blank">The Royal Society International Exchange</a></li>
-              <li><a href="https://pointfoundation.org/" target="_blank">Point Foundation</a> <span class="note">national LGBTQ+ scholarship</span></li>
-              <li><a href="https://www.truman.gov/" target="_blank">Harry S. Truman Scholarship</a> <span class="note">$30K, public service focus</span></li>
-              <li><a href="https://www.sreb.org/doctoral-scholars-program" target="_blank">Southern Regional Education Board Doctoral Fellowship</a></li>
-              <li><a href="http://www.the-aps.org/mm/Education/Minority-Program/Educational-Projects/Porter-Physiology-Development-Fellowship" target="_blank">APS Porter Physiology Fellowship</a> <span class="note">minority program</span></li>
-              <li><a href="http://www.the-aps.org/mm/Education/Undergraduate/Educational-Projects/UGSRFs.aspx" target="_blank">APS Summer Undergraduate Research Fellowship</a></li>
-              <li><a href="https://www.sacnas.org/who-we-are/" target="_blank">SACNAS</a> <span class="note">Chicanos/Hispanics &amp; Native Americans in Science</span></li>
-              <li><a href="https://www.publicservicedegrees.org/financial-aid/lgbtqia-students-scholarships-resources/" target="_blank">LGBTQIA+ Scholarships &amp; Resources Guide</a></li>
-              <li><a href="https://www.healthadministrationdegrees.com/scholarships-for-lgbtq-students/" target="_blank">LGBTQ+ Health Careers Scholarships</a></li>
-              <li><a href="http://www.biologists.com/travelling-fellowships/" target="_blank">Company of Biologists Travel &amp; Research Grants</a></li>
-              <li><a href="https://thebhwgroup.com/scholarship" target="_blank">Women in STEM Scholarship (BHW)</a></li>
-              <li><a href="https://www.unigo.com/scholarships/our-scholarships/zombie-apocalypse-scholarship" target="_blank">Zombie Apocalypse Scholarship</a> <span class="note">yes, it's real</span></li>
-            </ul>
+    <p class="lede">
+      Grants, fellowships, and awards for graduate students and postdocs in biology. Start early, apply widely, and let multiple small awards add up into full support.
+    </p>
 
-            <!-- Taxon-Based -->
-            <h4 class="grants-section-heading" data-aos="fade-up">Taxon-Based Grants</h4>
-            <ul class="grant-list">
-              <li><a href="https://www.coleopsoc.org/society-info/prizes-and-awards/graduate-student-research-enhancement-award/" target="_blank">Coleopterists Society Graduate Student Research Enhancement Award</a> <span class="note">two $5,000 awards; applications due March 1</span></li>
-              <li><a href="https://www.coleopsoc.org/society-info/prizes-and-awards/" target="_blank">Coleopterists Society Jean-Théodore Lacordaire Prize</a> <span class="note">best dissertation paper in beetle systematics/biology</span></li>
-              <li><a href="https://entsoc.org/awards/student" target="_blank">Entomological Society of America Student Awards</a> <span class="note">travel, biodiversity research, and branch awards</span></li>
-              <li><a href="https://ssarherps.org/ssar-awards/" target="_blank">Society for Study of Amphibians &amp; Reptiles</a></li>
-              <li><a href="http://asih.org/student-awards/gaige-fund-award" target="_blank">ASIH Gaige Fund</a> <span class="note">herpetology</span></li>
-              <li><a href="http://asih.org/student-awards/raney-fund-award" target="_blank">ASIH Raney Fund</a> <span class="note">ichthyology</span></li>
-              <li><a href="https://cichlid.org/?page_id=60" target="_blank">American Cichlid Association Guy Jordan Fund</a></li>
-              <li><a href="http://www.nanfa.org/grants.shtml" target="_blank">North American Native Fishes Association</a></li>
-              <li><a href="https://americanornithology.org/awards/student-research-grants/" target="_blank">American Ornithological Society Student Research Grants</a> <span class="note">up to $2,500 for research in ornithology</span></li>
-              <li><a href="https://wilsonsociety.org/awards/research-grants/" target="_blank">Wilson Ornithological Society Research Grants</a> <span class="note">multiple awards up to $1,500 for ornithological research</span></li>
-              <li><a href="https://botany.org/home/awards/graduate-student-research-awards.html" target="_blank">Botanical Society of America Graduate Student Research Award</a> <span class="note">up to $500 for plant biology research</span></li>
-              <li><a href="http://www.psaalgae.org/" target="_blank">Phycological Society of America</a></li>
-              <li><a href="http://www.fsbi.org.uk/research-grants/" target="_blank">Fisheries Society of the British Isles Research Grant</a></li>
-              <li><a href="http://www.fsbi.org.uk/grants/phd-studentships/" target="_blank">Fisheries Society of the British Isles PhD Studentship</a></li>
-              <li><a href="http://www.malacological.org/" target="_blank">American Malacological Society (Carriker Award)</a></li>
-              <li><a href="http://www.conchologistsofamerica.org/grants/" target="_blank">Conchologists of America Malacology Grant</a></li>
-              <li><a href="http://bsp.uk.net/awards-grants/" target="_blank">British Society for Parasitology Expeditionary Scholarship</a></li>
-              <li><a href="https://www.fieldinclusive.org/student-travel-awards/" target="_blank">Field Inclusive Conference Travel Awards</a> <span class="note">ornithology</span></li>
-            </ul>
+    <p class="credit-line">
+      Many of these opportunities were originally compiled with generous contributions from <a href="https://sites.ua.edu/rlearley/" target="_blank">Dr. Ryan Earley's lab</a> at the University of Alabama, thank you.
+    </p>
 
-            <!-- Ecology & Evolution -->
-            <h4 class="grants-section-heading" data-aos="fade-up">Ecology &amp; Evolution Grants</h4>
-            <ul class="grant-list">
-              <li><a href="http://www.amphilsoc.org/grants/lewisandclark" target="_blank">Lewis &amp; Clark Field Research Grant</a></li>
-              <li><a href="http://www.evolutionsociety.org/" target="_blank">Society for the Study of Evolution</a></li>
-              <li><a href="https://www.evolutionsociety.org/content/society-awards-and-prizes/the-rosemary-grant-advanced-award.html" target="_blank">SSE Rosemary Grant Advanced Award</a> <span class="note">up to $3,500 for dissertation research by PhD students in evolution; two rounds/yr</span></li>
-              <li><a href="https://genetics-gsa.org/awards/" target="_blank">GSA DeLill Nasser Award</a> <span class="note">up to $1,000 for conference attendance or lab course; awarded twice per year</span></li>
-              <li><a href="https://www.amgeneticassoc.org/awards/awards-for-students-and-early-career-scientists/" target="_blank">American Genetic Association Early Career Grant</a> <span class="note">up to $2,000 for genetics/genomics research; open to grad students and postdocs</span></li>
-              <li><a href="https://www.smbe.org/young-investigator-travel-award/" target="_blank">SMBE Young Investigator Travel Award</a> <span class="note">$2,500–$3,500 for grad students &amp; postdocs to attend SMBE annual meeting</span></li>
-              <li><a href="https://www.amnat.org/awards.html" target="_blank">American Society for Naturalists</a></li>
-              <li><a href="http://www.sicb.org/grants/researchgrant.php3" target="_blank">Society for Integrative &amp; Comparative Biology</a></li>
-              <li><a href="https://www.esa.org/esa/education-and-diversity/student-resources/" target="_blank">Ecological Society of America</a></li>
-              <li><a href="http://www.animalbehaviorsociety.org/web/awards.php" target="_blank">Animal Behavior Society</a></li>
-              <li><a href="http://rggs.amnh.org/pages/academics_and_research/fellowship_and_grant_opportunities" target="_blank">American Museum of Natural History</a></li>
-              <li><a href="https://mcz.harvard.edu/funding" target="_blank">Museum of Comparative Zoology, Harvard</a></li>
-              <li><a href="http://www.ansp.org/research/fellowships-endowments/jessup-mchenry/" target="_blank">Jessup &amp; McHenry Awards, ANS Philadelphia</a></li>
-              <li><a href="https://www.nationalgeographic.org/grants/" target="_blank">National Geographic Young Explorers</a></li>
-              <li><a href="http://www.explorers.org/index.php/expeditions/funding/expedition_grants" target="_blank">Explorer's Club Student Grants</a></li>
-              <li><a href="https://www.systbio.org/graduate-student-research-awards.html" target="_blank">Society of Systematic Biologists</a></li>
-              <li><a href="https://www.rwpzoo.org/dansforth-conservation-grants" target="_blank">Danforth Conservation Grants</a></li>
-              <li><a href="https://www.thewaltdisneycompany.com/disney-conservation-fund/" target="_blank">Disney Animal Conservation Fund</a></li>
-              <li><a href="https://www.linnean.org/the-society/medals-awards-prizes-grants/percy-sladen-memorial-fund-grants" target="_blank">Linnean Society Percy Sladen Memorial Fund</a></li>
-              <li><a href="http://thewetlandfoundation.org/" target="_blank">The Wetland Foundation</a></li>
-              <li><a href="http://www.sws.org/Awards-and-Grants/student-research-grants.html" target="_blank">Society of Wetland Scientists Student Grants</a></li>
-              <li><a href="https://coast.noaa.gov/nerrs/" target="_blank">NERRS Fellowship</a> <span class="note">Nat'l Estuarine Research Reserve System</span></li>
-              <li><a href="https://fosterscholars.noaa.gov/" target="_blank">Dr. Nancy Foster Scholarship (NOAA)</a></li>
-              <li><a href="http://www.noaa.gov/office-education/hollings-scholarship" target="_blank">NOAA Hollings Scholarship</a></li>
-              <li><a href="http://www.tropicalstudies.org/" target="_blank">Organization for Tropical Studies</a></li>
-              <li><a href="https://ecsa.international/grants-and-awards" target="_blank">Estuarine Coastal Sciences Association Small Grants</a></li>
-              <li><a href="https://mote.org/research/internships/college-internship-program-overview" target="_blank">Mote Marine Lab College Internship</a></li>
-              <li><a href="https://mote.org/research/internships/research-experiences-for-undergraduates-reu-program" target="_blank">Mote Marine Lab REU Program</a></li>
-              <li><a href="http://www.naml.org/members/directory.php" target="_blank">Marine Labs Directory</a> <span class="note">internship opportunities</span></li>
-              <li><a href="http://www.wdhof.org" target="_blank">Women Divers Hall of Fame Grants</a></li>
-            </ul>
+    <div class="grants-section-head">Internal grants and awards</div>
+    <ul class="grant-list">
+      <li><a href="https://graduatestudies.tamu.edu/funding/" target="_blank">TAMU Graduate Studies Funding</a><span class="note">Fellowships, assistantships, awards</span></li>
+      <li><a href="https://research.tamu.edu/research-development/internal-funding-opportunities/" target="_blank">TAMU Internal Funding Opportunities</a></li>
+      <li><a href="https://www.sigmaxi.org/programs/grants-in-aid" target="_blank">Sigma Xi Grants-in-Aid of Research</a></li>
+    </ul>
 
-            <!-- Microbiology -->
-            <h4 class="grants-section-heading" data-aos="fade-up">Microbiology</h4>
-            <ul class="grant-list">
-              <li><a href="https://www.asm.org/index.php/about-the-american-society-for-microbiology/awards-and-recognition" target="_blank">American Society for Microbiology Awards</a></li>
-            </ul>
+    <div class="grants-section-head">General grants and fellowships</div>
+    <ul class="grant-list">
+      <li><a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=6201" target="_blank">NSF Graduate Research Fellowship (GRFP)</a></li>
+      <li><a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=504876" target="_blank">NSF Graduate Research Opportunities Worldwide</a></li>
+      <li><a href="http://www.nsf.gov/funding/pgm_summ.jsp?pims_id=505127" target="_blank">NSF Graduate Research Internship Program</a></li>
+      <li><a href="https://researchtraining.nih.gov/programs/training-grants" target="_blank">NIH Training Grants (NRSA)</a></li>
+      <li><a href="https://grants.nih.gov/grants/guide/pa-files/PA-18-671.html" target="_blank">NIH Kirschstein Predoctoral (F31)</a></li>
+      <li><a href="https://ndseg.sysplus.com/" target="_blank">National Defense Science and Engineering Graduate Fellowship</a></li>
+      <li><a href="http://www.hertzfoundation.org/" target="_blank">Hertz Foundation Graduate Fellowship</a></li>
+      <li><a href="http://sites.nationalacademies.org/pga/fordfellowships/" target="_blank">Ford Foundation Fellowship</a></li>
+      <li><a href="https://www.gwis.org/page/fellowship_program" target="_blank">Graduate Women in Science (GWIS)</a></li>
+      <li><a href="https://www.aauw.org/resources/programs/fellowships-grants/current-opportunities/american/dissertation-fellowships/" target="_blank">AAUW Dissertation Fellowships</a></li>
+      <li><a href="http://hhwf.org/research-fellowship/" target="_blank">Helen Hay Whitney Postdoctoral Fellowship</a></li>
+      <li><a href="http://www.hfsp.org/funding/postdoctoral-fellowships" target="_blank">Human Frontier Science Postdoctoral Fellowship</a></li>
+      <li><a href="http://www.jsmf.org/programs/cs/index.htm" target="_blank">James S. McDonnell Foundation Postdoctoral Fellowship</a><span class="note">Complex Systems</span></li>
+      <li><a href="https://royalsociety.org/grants/schemes/international-exchanges/" target="_blank">The Royal Society International Exchange</a></li>
+      <li><a href="https://pointfoundation.org/" target="_blank">Point Foundation</a><span class="note">National LGBTQ+ scholarship</span></li>
+      <li><a href="https://www.truman.gov/" target="_blank">Harry S. Truman Scholarship</a><span class="note">$30K, public service focus</span></li>
+      <li><a href="https://www.sreb.org/doctoral-scholars-program" target="_blank">Southern Regional Education Board Doctoral Fellowship</a></li>
+      <li><a href="http://www.the-aps.org/mm/Education/Minority-Program/Educational-Projects/Porter-Physiology-Development-Fellowship" target="_blank">APS Porter Physiology Fellowship</a><span class="note">Minority program</span></li>
+      <li><a href="http://www.the-aps.org/mm/Education/Undergraduate/Educational-Projects/UGSRFs.aspx" target="_blank">APS Summer Undergraduate Research Fellowship</a></li>
+      <li><a href="https://www.sacnas.org/who-we-are/" target="_blank">SACNAS</a><span class="note">Chicanos/Hispanics and Native Americans in Science</span></li>
+      <li><a href="https://www.publicservicedegrees.org/financial-aid/lgbtqia-students-scholarships-resources/" target="_blank">LGBTQIA+ Scholarships and Resources Guide</a></li>
+      <li><a href="https://www.healthadministrationdegrees.com/scholarships-for-lgbtq-students/" target="_blank">LGBTQ+ Health Careers Scholarships</a></li>
+      <li><a href="http://www.biologists.com/travelling-fellowships/" target="_blank">Company of Biologists Travel and Research Grants</a></li>
+      <li><a href="https://thebhwgroup.com/scholarship" target="_blank">Women in STEM Scholarship (BHW)</a></li>
+      <li><a href="https://www.unigo.com/scholarships/our-scholarships/zombie-apocalypse-scholarship" target="_blank">Zombie Apocalypse Scholarship</a><span class="note">Yes, it's real</span></li>
+    </ul>
 
-            <!-- Neuroscience -->
-            <h4 class="grants-section-heading" data-aos="fade-up">Neuroscience</h4>
-            <ul class="grant-list">
-              <li><a href="https://sbn.org/awards/award-deadlines-and-submission.aspx" target="_blank">Society for Behavioral Neuroendocrinology</a></li>
-              <li><a href="https://meetings.cshl.edu/" target="_blank">Cold Spring Harbor / Marine Biological Labs</a></li>
-              <li><a href="https://www.sfn.org/Awards-and-Funding/Individual-Prizes-and-Fellowships/Fellowships/Neuroscience-Scholars-Program" target="_blank">Society for Neuroscience Scholars Program</a></li>
-            </ul>
+    <div class="grants-section-head">Taxon-based grants</div>
+    <ul class="grant-list">
+      <li><a href="https://www.coleopsoc.org/society-info/prizes-and-awards/graduate-student-research-enhancement-award/" target="_blank">Coleopterists Society Graduate Student Research Enhancement Award</a><span class="note">Two $5,000 awards; applications due March 1</span></li>
+      <li><a href="https://www.coleopsoc.org/society-info/prizes-and-awards/" target="_blank">Coleopterists Society Jean-Théodore Lacordaire Prize</a><span class="note">Best dissertation paper in beetle systematics/biology</span></li>
+      <li><a href="https://entsoc.org/awards/student" target="_blank">Entomological Society of America Student Awards</a><span class="note">Travel, biodiversity research, and branch awards</span></li>
+      <li><a href="https://ssarherps.org/ssar-awards/" target="_blank">Society for Study of Amphibians and Reptiles</a></li>
+      <li><a href="http://asih.org/student-awards/gaige-fund-award" target="_blank">ASIH Gaige Fund</a><span class="note">Herpetology</span></li>
+      <li><a href="http://asih.org/student-awards/raney-fund-award" target="_blank">ASIH Raney Fund</a><span class="note">Ichthyology</span></li>
+      <li><a href="https://cichlid.org/?page_id=60" target="_blank">American Cichlid Association Guy Jordan Fund</a></li>
+      <li><a href="http://www.nanfa.org/grants.shtml" target="_blank">North American Native Fishes Association</a></li>
+      <li><a href="https://americanornithology.org/awards/student-research-grants/" target="_blank">American Ornithological Society Student Research Grants</a><span class="note">Up to $2,500 for research in ornithology</span></li>
+      <li><a href="https://wilsonsociety.org/awards/research-grants/" target="_blank">Wilson Ornithological Society Research Grants</a><span class="note">Multiple awards up to $1,500 for ornithological research</span></li>
+      <li><a href="https://botany.org/home/awards/graduate-student-research-awards.html" target="_blank">Botanical Society of America Graduate Student Research Award</a><span class="note">Up to $500 for plant biology research</span></li>
+      <li><a href="http://www.psaalgae.org/" target="_blank">Phycological Society of America</a></li>
+      <li><a href="http://www.fsbi.org.uk/research-grants/" target="_blank">Fisheries Society of the British Isles Research Grant</a></li>
+      <li><a href="http://www.fsbi.org.uk/grants/phd-studentships/" target="_blank">Fisheries Society of the British Isles PhD Studentship</a></li>
+      <li><a href="http://www.malacological.org/" target="_blank">American Malacological Society (Carriker Award)</a></li>
+      <li><a href="http://www.conchologistsofamerica.org/grants/" target="_blank">Conchologists of America Malacology Grant</a></li>
+      <li><a href="http://bsp.uk.net/awards-grants/" target="_blank">British Society for Parasitology Expeditionary Scholarship</a></li>
+      <li><a href="https://www.fieldinclusive.org/student-travel-awards/" target="_blank">Field Inclusive Conference Travel Awards</a><span class="note">Ornithology</span></li>
+    </ul>
 
-            <!-- Searchable resources -->
-            <h4 class="grants-section-heading" data-aos="fade-up">Search Engines &amp; Aggregators</h4>
-            <ul class="grant-list">
-              <li><a href="http://www.ncsu.edu/grad/financial-support/fellowships.html" target="_blank">NC State Graduate Fellowships List</a></li>
-              <li><a href="http://sciencecareers.sciencemag.org/funding" target="_blank">Science Careers Funding Search Engine</a></li>
-              <li><a href="https://stemstudy.com/high-schoolers-guide-to-engineering-college/" target="_blank">STEM Career Preparation Guide</a></li>
-              <li><a href="https://www.datascienceprograms.org/careers" target="_blank">Data Science Careers Guide</a></li>
-            </ul>
+    <div class="grants-section-head">Ecology and evolution grants</div>
+    <ul class="grant-list">
+      <li><a href="http://www.amphilsoc.org/grants/lewisandclark" target="_blank">Lewis and Clark Field Research Grant</a></li>
+      <li><a href="http://www.evolutionsociety.org/" target="_blank">Society for the Study of Evolution</a></li>
+      <li><a href="https://www.evolutionsociety.org/content/society-awards-and-prizes/the-rosemary-grant-advanced-award.html" target="_blank">SSE Rosemary Grant Advanced Award</a><span class="note">Up to $3,500 for dissertation research by PhD students in evolution; two rounds/yr</span></li>
+      <li><a href="https://genetics-gsa.org/awards/" target="_blank">GSA DeLill Nasser Award</a><span class="note">Up to $1,000 for conference attendance or lab course; awarded twice per year</span></li>
+      <li><a href="https://www.amgeneticassoc.org/awards/awards-for-students-and-early-career-scientists/" target="_blank">American Genetic Association Early Career Grant</a><span class="note">Up to $2,000 for genetics/genomics research; open to grad students and postdocs</span></li>
+      <li><a href="https://www.smbe.org/young-investigator-travel-award/" target="_blank">SMBE Young Investigator Travel Award</a><span class="note">$2,500 to $3,500 for grad students and postdocs to attend SMBE annual meeting</span></li>
+      <li><a href="https://www.amnat.org/awards.html" target="_blank">American Society for Naturalists</a></li>
+      <li><a href="http://www.sicb.org/grants/researchgrant.php3" target="_blank">Society for Integrative and Comparative Biology</a></li>
+      <li><a href="https://www.esa.org/esa/education-and-diversity/student-resources/" target="_blank">Ecological Society of America</a></li>
+      <li><a href="http://www.animalbehaviorsociety.org/web/awards.php" target="_blank">Animal Behavior Society</a></li>
+      <li><a href="http://rggs.amnh.org/pages/academics_and_research/fellowship_and_grant_opportunities" target="_blank">American Museum of Natural History</a></li>
+      <li><a href="https://mcz.harvard.edu/funding" target="_blank">Museum of Comparative Zoology, Harvard</a></li>
+      <li><a href="http://www.ansp.org/research/fellowships-endowments/jessup-mchenry/" target="_blank">Jessup and McHenry Awards, ANS Philadelphia</a></li>
+      <li><a href="https://www.nationalgeographic.org/grants/" target="_blank">National Geographic Young Explorers</a></li>
+      <li><a href="http://www.explorers.org/index.php/expeditions/funding/expedition_grants" target="_blank">Explorer's Club Student Grants</a></li>
+      <li><a href="https://www.systbio.org/graduate-student-research-awards.html" target="_blank">Society of Systematic Biologists</a></li>
+      <li><a href="https://www.rwpzoo.org/dansforth-conservation-grants" target="_blank">Danforth Conservation Grants</a></li>
+      <li><a href="https://www.thewaltdisneycompany.com/disney-conservation-fund/" target="_blank">Disney Animal Conservation Fund</a></li>
+      <li><a href="https://www.linnean.org/the-society/medals-awards-prizes-grants/percy-sladen-memorial-fund-grants" target="_blank">Linnean Society Percy Sladen Memorial Fund</a></li>
+      <li><a href="http://thewetlandfoundation.org/" target="_blank">The Wetland Foundation</a></li>
+      <li><a href="http://www.sws.org/Awards-and-Grants/student-research-grants.html" target="_blank">Society of Wetland Scientists Student Grants</a></li>
+      <li><a href="https://coast.noaa.gov/nerrs/" target="_blank">NERRS Fellowship</a><span class="note">Nat'l Estuarine Research Reserve System</span></li>
+      <li><a href="https://fosterscholars.noaa.gov/" target="_blank">Dr. Nancy Foster Scholarship (NOAA)</a></li>
+      <li><a href="http://www.noaa.gov/office-education/hollings-scholarship" target="_blank">NOAA Hollings Scholarship</a></li>
+      <li><a href="http://www.tropicalstudies.org/" target="_blank">Organization for Tropical Studies</a></li>
+      <li><a href="https://ecsa.international/grants-and-awards" target="_blank">Estuarine Coastal Sciences Association Small Grants</a></li>
+      <li><a href="https://mote.org/research/internships/college-internship-program-overview" target="_blank">Mote Marine Lab College Internship</a></li>
+      <li><a href="https://mote.org/research/internships/research-experiences-for-undergraduates-reu-program" target="_blank">Mote Marine Lab REU Program</a></li>
+      <li><a href="http://www.naml.org/members/directory.php" target="_blank">Marine Labs Directory</a><span class="note">Internship opportunities</span></li>
+      <li><a href="http://www.wdhof.org" target="_blank">Women Divers Hall of Fame Grants</a></li>
+    </ul>
 
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="grants-section-head">Microbiology</div>
+    <ul class="grant-list">
+      <li><a href="https://www.asm.org/index.php/about-the-american-society-for-microbiology/awards-and-recognition" target="_blank">American Society for Microbiology Awards</a></li>
+    </ul>
+
+    <div class="grants-section-head">Neuroscience</div>
+    <ul class="grant-list">
+      <li><a href="https://sbn.org/awards/award-deadlines-and-submission.aspx" target="_blank">Society for Behavioral Neuroendocrinology</a></li>
+      <li><a href="https://meetings.cshl.edu/" target="_blank">Cold Spring Harbor / Marine Biological Labs</a></li>
+      <li><a href="https://www.sfn.org/Awards-and-Funding/Individual-Prizes-and-Fellowships/Fellowships/Neuroscience-Scholars-Program" target="_blank">Society for Neuroscience Scholars Program</a></li>
+    </ul>
+
+    <div class="grants-section-head">Search engines and aggregators</div>
+    <ul class="grant-list">
+      <li><a href="http://www.ncsu.edu/grad/financial-support/fellowships.html" target="_blank">NC State Graduate Fellowships List</a></li>
+      <li><a href="http://sciencecareers.sciencemag.org/funding" target="_blank">Science Careers Funding Search Engine</a></li>
+      <li><a href="https://stemstudy.com/high-schoolers-guide-to-engineering-college/" target="_blank">STEM Career Preparation Guide</a></li>
+      <li><a href="https://www.datascienceprograms.org/careers" target="_blank">Data Science Careers Guide</a></li>
+    </ul>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
 
   </main>
+</div>
 
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
-      </div>
-    </div>
-  </footer>
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
-  </a>
-
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/js/main.js"></script>
-
+<script src="../assets/js/v3.js"></script>
 </body>
-
 </html>

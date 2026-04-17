@@ -1,463 +1,510 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Foundational Resources - Blackmon Lab</title>
-  <meta name="description" content="Curated list of foundational software, tools, and databases for biological research. Covers coding, genomics, phylogenetics, ecology, writing, and career resources.">
-  <meta property="og:title" content="Foundational Resources - Blackmon Lab" />
-  <meta property="og:description" content="Curated list of foundational software, tools, and databases for biological research. Covers coding, genomics, phylogenetics, ecology, writing, and career resources." />
-  <meta property="og:url" content="https://coleoguy.github.io/subpages/resources.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="biology, software, resources, R, phylogenetics, genomics, TAMU">
-  <link rel="canonical" href="https://coleoguy.github.io/subpages/resources.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundational resources · Blackmon Lab</title>
+<meta name="description" content="Curated list of foundational software, tools, and databases for biological research. Covers coding, genomics, phylogenetics, ecology, writing, and career resources.">
+<link rel="icon" href="../assets/img/favicon.ico">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link href="../assets/img/favicon.ico" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="stylesheet" href="../assets/css/v3.css">
 
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+<style>
+  .res-section-head {
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 36px 0 8px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .res-section-head:first-of-type { margin-top: 8px; }
 
-  <link href="../assets/css/main.css" rel="stylesheet">
+  .res-row {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .res-row:last-child { border-bottom: none; }
+  .res-row .res-name {
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .res-row .res-name:hover { text-decoration: underline; }
+  .res-row .res-desc {
+    display: block;
+    color: var(--ink-faint);
+    font-size: 14px;
+    margin-top: 3px;
+    max-width: 46em;
+    line-height: 1.5;
+  }
+  .res-row .mentor-note {
+    display: block;
+    color: var(--ink-dim, var(--ink));
+    font-size: 13px;
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .res-row .mentor-note strong { font-style: normal; }
+
+  .community-box {
+    margin-top: 44px;
+    padding: 20px 22px;
+    border: 1px solid var(--rule);
+    background: var(--highlight);
+    border-radius: 4px;
+  }
+  .community-box h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .community-box p { max-width: 44em; margin-bottom: 0; }
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
 </head>
 
 <body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../research.html">Research</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../ai.html">AI</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="../index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
     </div>
-  </header>
-
-  <main class="main">
-
-    <section class="page-header">
-      <div class="container">
-        <h1>Foundational Tools & Resources</h1>
-        <p class="lead">A curated list of the tools, software, and databases that constitute the backbone of modern biological research.</p>
-      </div>
-    </section>
-
-    <section class="resources section">
-      <div class="container">
-
-        <!-- Section 1: Lab Management & Protocols -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-flask" aria-hidden="true"></i> 1. The "Must Haves" (Lab Management & Protocols)
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://www.protocols.io/" target="_blank" class="resource-link"><strong>Protocols.io</strong></a>
-            <p class="resource-desc">The open-access standard for sharing detailed methods. <span class="mentor-note">Essential for reproducibility; don't just keep it in a paper notebook.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.quartzy.com/" target="_blank" class="resource-link"><strong>Quartzy</strong></a>
-            <p class="resource-desc">Lab supply management and ordering. <span class="mentor-note">Great for keeping the lab manager (and the budget) sane.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://openwetware.org/wiki/Main_Page" target="_blank" class="resource-link"><strong>OpenWetWare</strong></a>
-            <p class="resource-desc">Wiki-based lab protocols. <span class="mentor-note">A bit old-school, but still a goldmine for classic molecular recipes.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.addgene.org/" target="_blank" class="resource-link"><strong>Addgene</strong></a>
-            <p class="resource-desc">Non-profit plasmid repository. <span class="mentor-note">If you need a construct, look here before you try to build it yourself.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://ehs.tamu.edu/" target="_blank" class="resource-link"><strong>TAMU EHS</strong></a>
-            <p class="resource-desc">Environmental Health & Safety. <span class="mentor-note">Bookmark the safety data sheets (SDS). Boring, but legally required.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 2: Data Science & Coding -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-code-slash" aria-hidden="true"></i> 2. Data Science & Coding (The Backbone)
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://www.r-project.org/" target="_blank" class="resource-link"><strong>R Project</strong></a>
-            <p class="resource-desc">The statistical lingua franca of biology. <span class="mentor-note">You cannot avoid this. Learn it early.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://posit.co/download/rstudio-desktop/" target="_blank" class="resource-link"><strong>RStudio (Posit)</strong></a>
-            <p class="resource-desc">The essential IDE for R. <span class="mentor-note">Do not try to use the base R GUI; this is the industry standard.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.python.org/" target="_blank" class="resource-link"><strong>Python</strong></a>
-            <p class="resource-desc">The glue of bioinformatics. <span class="mentor-note">Better than R for heavy text processing and building complex pipelines.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.anaconda.com/" target="_blank" class="resource-link"><strong>Anaconda/Conda</strong></a>
-            <p class="resource-desc">Package manager for Python/R. <span class="mentor-note">Saves you from "dependency hell" when installing software.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://jupyter.org/" target="_blank" class="resource-link"><strong>Jupyter Notebooks</strong></a>
-            <p class="resource-desc">Interactive computing. <span class="mentor-note">Great for teaching and sharing analyses, less great for production pipelines.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://git-scm.com/" target="_blank" class="resource-link"><strong>Git</strong></a> & <a href="https://github.com/" target="_blank" class="resource-link"><strong>GitHub</strong></a>
-            <p class="resource-desc">Version control and hosting. <span class="mentor-note">Steep learning curve, but saves you when you delete your thesis analysis by accident. If it's not on GitHub, did you even write it?</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://stackoverflow.com/" target="_blank" class="resource-link"><strong>Stack Overflow</strong></a>
-            <p class="resource-desc">The oracle. <span class="mentor-note">Copy-pasting from here is 50% of a bioinformatician's job.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://regex101.com/" target="_blank" class="resource-link"><strong>Regex101</strong></a>
-            <p class="resource-desc">Regular expression tester. <span class="mentor-note">A life-saver for cleaning messy data files.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://hprc.tamu.edu/" target="_blank" class="resource-link"><strong>TAMU HPRC</strong></a>
-            <p class="resource-desc">Texas A&M High Performance Research Computing. <span class="mentor-note">When your laptop creates smoke, move your job here. Excellent support team.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 3: Statistics & Reproducibility -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-bar-chart" aria-hidden="true"></i> 3. Statistics & Reproducibility
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower" target="_blank" class="resource-link"><strong>G*Power</strong></a>
-            <p class="resource-desc">Statistical power analysis. <span class="mentor-note">Use this <strong>before</strong> you start your experiment, not after you realize your p-value is 0.06.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://osf.io/" target="_blank" class="resource-link"><strong>OSF (Open Science Framework)</strong></a>
-            <p class="resource-desc">Project management for open science. <span class="mentor-note">The best place to pre-register your studies.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://datadryad.org/" target="_blank" class="resource-link"><strong>Dryad</strong></a> & <a href="https://zenodo.org/" target="_blank" class="resource-link"><strong>Zenodo</strong></a>
-            <p class="resource-desc">Data repositories. <span class="mentor-note">The standard for ecology/evolution papers. Zenodo gives you a DOI for code or posters.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 4: Genomics -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-dna" aria-hidden="true"></i> 4. Genomics: The Heavy Lifters
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://www.bioconductor.org/" target="_blank" class="resource-link"><strong>Bioconductor</strong></a>
-            <p class="resource-desc">The R repository for genomic data. <span class="mentor-note">Essential, but updates can sometimes break your old scripts.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="http://www.htslib.org/" target="_blank" class="resource-link"><strong>Samtools</strong></a>
-            <p class="resource-desc">The swiss-army knife for DNA sequencing data. <span class="mentor-note">Fast, command-line based, and absolutely essential.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://bedtools.readthedocs.io/en/latest/" target="_blank" class="resource-link"><strong>BEDTools</strong></a>
-            <p class="resource-desc">"Genome arithmetic." <span class="mentor-note">For when you need to know what overlaps with what.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank" class="resource-link"><strong>FastQC</strong></a> & <a href="http://www.usadellab.org/cms/?page=trimmomatic" target="_blank" class="resource-link"><strong>Trimmomatic</strong></a>
-            <p class="resource-desc">Quality control and cleaning. <span class="mentor-note">The first things you run on any new dataset.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://software.broadinstitute.org/software/igv/" target="_blank" class="resource-link"><strong>IGV (Integrative Genomics Viewer)</strong></a>
-            <p class="resource-desc">Visualizing genome alignments. <span class="mentor-note">The best way to "see" your mutations and verify your code isn't lying to you.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 5: Phylogenetics -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-diagram-3" aria-hidden="true"></i> 5. Phylogenetics: Inference & Visualization
-          </h4>
-
-          <div class="resource-item">
-            <a href="http://www.iqtree.org/" target="_blank" class="resource-link"><strong>IQ-TREE</strong></a>
-            <p class="resource-desc">Modern Maximum Likelihood. <span class="mentor-note">Currently the best balance of speed and accuracy for most users.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://github.com/amkozlov/raxml-ng" target="_blank" class="resource-link"><strong>RAxML-NG</strong></a>
-            <p class="resource-desc">The successor to the classic RAxML. <span class="mentor-note">Great for massive datasets.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="http://mrbayes.net/" target="_blank" class="resource-link"><strong>MrBayes</strong></a> / <a href="https://revbayes.github.io/" target="_blank" class="resource-link"><strong>RevBayes</strong></a>
-            <p class="resource-desc">Bayesian inference. <span class="mentor-note">MrBayes is the classic; RevBayes is powerful but has a steep learning curve.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="http://tree.bio.ed.ac.uk/software/figtree/" target="_blank" class="resource-link"><strong>FigTree</strong></a>
-            <p class="resource-desc">The classic tree viewer. <span class="mentor-note">Simple and effective, though showing its age.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://itol.embl.de/" target="_blank" class="resource-link"><strong>iTOL (Interactive Tree of Life)</strong></a>
-            <p class="resource-desc">Web-based tree annotator. <span class="mentor-note">Makes beautiful publication-quality figures, but it is online-only.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://yulab-smu.top/treedata-book/" target="_blank" class="resource-link"><strong>ggtree</strong></a>
-            <p class="resource-desc">R package for trees. <span class="mentor-note">Hard to learn, but allows for fully programmable and reproducible tree graphics.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 6: Ecology, Fieldwork & Geospatial -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-geo-alt" aria-hidden="true"></i> 6. Ecology, Fieldwork & Geospatial
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://qgis.org/" target="_blank" class="resource-link"><strong>QGIS</strong></a>
-            <p class="resource-desc">Free, open-source GIS. <span class="mentor-note">Just as capable as ArcGIS, but free. A must-learn for any field biologist.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.inaturalist.org/" target="_blank" class="resource-link"><strong>iNaturalist</strong></a>
-            <p class="resource-desc">Citizen science data. <span class="mentor-note">A massive database of species occurrences and a great way to verify ID.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.gbif.org/" target="_blank" class="resource-link"><strong>GBIF</strong></a>
-            <p class="resource-desc">Global Biodiversity Information Facility. <span class="mentor-note">The raw data hose for biogeography.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.worldclim.org/" target="_blank" class="resource-link"><strong>WorldClim</strong></a>
-            <p class="resource-desc">Global climate data. <span class="mentor-note">The standard input for niche modeling.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://biodiversityinformatics.amnh.org/open_source/maxent/" target="_blank" class="resource-link"><strong>Maxent</strong></a>
-            <p class="resource-desc">Species distribution modeling. <span class="mentor-note">User-friendly, but very easy to misuse statistically. Read the manual carefully.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 7: Molecular Biology & General Tools -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-droplet" aria-hidden="true"></i> 7. Molecular Biology & General Tools
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://www.snapgene.com/snapgene-viewer" target="_blank" class="resource-link"><strong>SnapGene Viewer</strong></a>
-            <p class="resource-desc">Plasmid mapping. <span class="mentor-note">The industry standard viewer is free and excellent.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://jorgensen.biology.utah.edu/wayned/ape/" target="_blank" class="resource-link"><strong>ApE (A Plasmid Editor)</strong></a>
-            <p class="resource-desc">Free cloning tool. <span class="mentor-note">Ugly interface, but rock-solid logic for planning constructs.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://primer3.ut.ee/" target="_blank" class="resource-link"><strong>Primer3</strong></a>
-            <p class="resource-desc">PCR primer design. <span class="mentor-note">The engine behind almost every primer tool on the web.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://imagej.nih.gov/ij/" target="_blank" class="resource-link"><strong>ImageJ / Fiji</strong></a>
-            <p class="resource-desc">Scientific image analysis. <span class="mentor-note">Java-based and clunky, but the absolute king of microscopy analysis.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.uniprot.org/" target="_blank" class="resource-link"><strong>UniProt</strong></a> & <a href="https://www.rcsb.org/" target="_blank" class="resource-link"><strong>PDB</strong></a>
-            <p class="resource-desc">Protein databases. <span class="mentor-note">The gold standards for protein annotation and 3D structure.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 8: Writing, Citing & Publishing -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-pencil-square" aria-hidden="true"></i> 8. Writing, Citing & Publishing
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://www.overleaf.com/" target="_blank" class="resource-link"><strong>Overleaf</strong></a>
-            <p class="resource-desc">Online LaTeX editor. <span class="mentor-note">The best way to write collaborative papers without formatting headaches.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.zotero.org/" target="_blank" class="resource-link"><strong>Zotero</strong></a>
-            <p class="resource-desc">Reference manager. <span class="mentor-note">Free, open-source, and arguably better than EndNote. Use the browser connector!</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://v2.sherpa.ac.uk/romeo/" target="_blank" class="resource-link"><strong>Sherpa Romeo</strong></a>
-            <p class="resource-desc">Copyright policies. <span class="mentor-note">Checks if you are legally allowed to post your PDF on your website.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://orcid.org/" target="_blank" class="resource-link"><strong>ORCID</strong></a>
-            <p class="resource-desc">Digital ID. <span class="mentor-note">Get one. Now. It follows you forever.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.biorxiv.org/" target="_blank" class="resource-link"><strong>BioRxiv</strong></a>
-            <p class="resource-desc">The biology preprint server. <span class="mentor-note">Post your paper here before you submit to a journal to get early feedback.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://writingcenter.tamu.edu/" target="_blank" class="resource-link"><strong>TAMU Writing Center</strong></a>
-            <p class="resource-desc">University resource. <span class="mentor-note">They have specific consultants for scientific writing and dissertation formatting.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 9: Graphics & Visualization -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-palette" aria-hidden="true"></i> 9. Graphics & Visualization (Non-Data)
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://inkscape.org/" target="_blank" class="resource-link"><strong>Inkscape</strong></a>
-            <p class="resource-desc">Vector graphics editor. <span class="mentor-note">The free, open-source alternative to Adobe Illustrator. Incredibly powerful.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.gimp.org/" target="_blank" class="resource-link"><strong>GIMP</strong></a>
-            <p class="resource-desc">Raster image editor. <span class="mentor-note">Free Photoshop. Capable tool, but has a definite learning curve.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://colorbrewer2.org/" target="_blank" class="resource-link"><strong>ColorBrewer</strong></a>
-            <p class="resource-desc">Color advice. <span class="mentor-note">Stop using default red/green color scales! Use this to make accessible maps.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://biorender.com/" target="_blank" class="resource-link"><strong>BioRender</strong></a>
-            <p class="resource-desc">Scientific illustration. <span class="mentor-note">Makes professional diagrams easy, but be aware everyone's figures are starting to look the same.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 10: Career, Culture & Sanity -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-rocket" aria-hidden="true"></i> 10. Career, Culture & Sanity
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://academictree.org/" target="_blank" class="resource-link"><strong>Academic Tree</strong></a>
-            <p class="resource-desc">Genealogy of science. <span class="mentor-note">Find out who your academic "grandparents" are. Fun for seeing lineage.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://phdcomics.com/" target="_blank" class="resource-link"><strong>PhD Comics</strong></a>
-            <p class="resource-desc">The documentary of our lives. <span class="mentor-note">It stops being funny and starts being painful around year 4.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://xkcd.com/" target="_blank" class="resource-link"><strong>XKCD</strong></a>
-            <p class="resource-desc">Nerdy humor. <span class="mentor-note">There is a relevant comic for everything in science.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.researchgate.net/" target="_blank" class="resource-link"><strong>ResearchGate</strong></a>
-            <p class="resource-desc">Social network for scientists. <span class="mentor-note">Spams your email, but actually useful for asking authors for PDFs.</span></p>
-          </div>
-        </div>
-
-        <!-- Section 11: Mentoring & Grad School Survival -->
-        <div class="resource-section">
-          <h4 class="resource-category">
-            <i class="bi bi-mortarboard" aria-hidden="true"></i> 11. Mentoring & Grad School Survival
-          </h4>
-
-          <div class="resource-item">
-            <a href="https://theprofessorisin.com/" target="_blank" class="resource-link"><strong>The Professor Is In</strong></a>
-            <p class="resource-desc">Career advice. <span class="mentor-note">Hard truths about the academic job market. Read this early, not right before you graduate.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.science.org/careers" target="_blank" class="resource-link"><strong>Science Careers (AAAS)</strong></a>
-            <p class="resource-desc">Career resources. <span class="mentor-note">Excellent articles on non-academic paths and lab management.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://myidp.sciencecareers.org/" target="_blank" class="resource-link"><strong>Individual Development Plan (IDP)</strong></a>
-            <p class="resource-desc">Career planning tool. <span class="mentor-note">A structured way to plan your career goals. Required by many grants, but useful for everyone.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://grad.tamu.edu/" target="_blank" class="resource-link"><strong>TAMU Grad School</strong></a>
-            <p class="resource-desc">Graduate school resources. <span class="mentor-note">Know the rules. They control your dates, deadlines, and dissertation formatting.</span></p>
-          </div>
-
-          <div class="resource-item">
-            <a href="https://www.facultydiversity.org/" target="_blank" class="resource-link"><strong>National Center for Faculty Development & Diversity</strong></a>
-            <p class="resource-desc">Professional development. <span class="mentor-note">A&M usually has a membership. Great for writing accountability and time management.</span></p>
-          </div>
-        </div>
-
-        <!-- Community Contribution -->
-        <div class="community-contribution">
-          <h5>Community Contribution</h5>
-          <p>This list is living and breathing. If you are a student or faculty member and have a tool that saved your thesis or accelerated your research, please <a href="mailto:blackmon@tamu.edu">email us</a>. We are especially looking for resources that help early graduate students navigate the first few years.</p>
-        </div>
-
-      </div>
-    </section>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../news.html">News</a></li>
+          <li><a href="../calendar.html">Calendar</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="../cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="../karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="../epistasis-database.html">Epistasis database</a></li>
+          <li><a href="../tau_database.html">Tau database</a></li>
+          <li><a href="../citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="../karyotype.html">Karyotype evolution</a></li>
+          <li><a href="../sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="../genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="../selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="../epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="../chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="../coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="../ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="../lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="../phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="../phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="popgen-sim.html" target="_blank">Pop-gen simulator</a></li>
+          <li><a href="evobir.html" target="_blank">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="../biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="biol682.html" target="_blank">BIOL 682</a></li>
+          <li><a href="grad101.html" target="_blank">Grad 101</a></li>
+          <li><a href="AI-Tools.html" target="_blank">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb">
+      <a href="../index.html">HOME</a> &rsaquo; <strong>RESOURCES</strong>
+    </div>
+
+    <h1 class="title">Foundational tools and resources.</h1>
+
+    <p class="lede">
+      A curated list of the tools, software, and databases that constitute the backbone of modern biological research. Grouped by area, with short mentor notes about when and why to reach for each one.
+    </p>
+
+    <div class="res-section-head">1. The must-haves: lab management and protocols</div>
+    <div class="res-row">
+      <a href="https://www.protocols.io/" target="_blank" class="res-name">Protocols.io</a>
+      <span class="res-desc">The open-access standard for sharing detailed methods.</span>
+      <span class="mentor-note">Essential for reproducibility; don't just keep it in a paper notebook.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.quartzy.com/" target="_blank" class="res-name">Quartzy</a>
+      <span class="res-desc">Lab supply management and ordering.</span>
+      <span class="mentor-note">Great for keeping the lab manager (and the budget) sane.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://openwetware.org/wiki/Main_Page" target="_blank" class="res-name">OpenWetWare</a>
+      <span class="res-desc">Wiki-based lab protocols.</span>
+      <span class="mentor-note">A bit old-school, but still a goldmine for classic molecular recipes.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.addgene.org/" target="_blank" class="res-name">Addgene</a>
+      <span class="res-desc">Non-profit plasmid repository.</span>
+      <span class="mentor-note">If you need a construct, look here before you try to build it yourself.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://ehs.tamu.edu/" target="_blank" class="res-name">TAMU EHS</a>
+      <span class="res-desc">Environmental Health and Safety.</span>
+      <span class="mentor-note">Bookmark the safety data sheets (SDS). Boring, but legally required.</span>
+    </div>
+
+    <div class="res-section-head">2. Data science and coding, the backbone</div>
+    <div class="res-row">
+      <a href="https://www.r-project.org/" target="_blank" class="res-name">R Project</a>
+      <span class="res-desc">The statistical lingua franca of biology.</span>
+      <span class="mentor-note">You cannot avoid this. Learn it early.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://posit.co/download/rstudio-desktop/" target="_blank" class="res-name">RStudio (Posit)</a>
+      <span class="res-desc">The essential IDE for R.</span>
+      <span class="mentor-note">Do not try to use the base R GUI; this is the industry standard.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.python.org/" target="_blank" class="res-name">Python</a>
+      <span class="res-desc">The glue of bioinformatics.</span>
+      <span class="mentor-note">Better than R for heavy text processing and building complex pipelines.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.anaconda.com/" target="_blank" class="res-name">Anaconda/Conda</a>
+      <span class="res-desc">Package manager for Python/R.</span>
+      <span class="mentor-note">Saves you from "dependency hell" when installing software.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://jupyter.org/" target="_blank" class="res-name">Jupyter Notebooks</a>
+      <span class="res-desc">Interactive computing.</span>
+      <span class="mentor-note">Great for teaching and sharing analyses, less great for production pipelines.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://git-scm.com/" target="_blank" class="res-name">Git</a> &amp; <a href="https://github.com/" target="_blank" class="res-name">GitHub</a>
+      <span class="res-desc">Version control and hosting.</span>
+      <span class="mentor-note">Steep learning curve, but saves you when you delete your thesis analysis by accident. If it's not on GitHub, did you even write it?</span>
+    </div>
+    <div class="res-row">
+      <a href="https://stackoverflow.com/" target="_blank" class="res-name">Stack Overflow</a>
+      <span class="res-desc">The oracle.</span>
+      <span class="mentor-note">Copy-pasting from here is 50% of a bioinformatician's job.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://regex101.com/" target="_blank" class="res-name">Regex101</a>
+      <span class="res-desc">Regular expression tester.</span>
+      <span class="mentor-note">A life-saver for cleaning messy data files.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://hprc.tamu.edu/" target="_blank" class="res-name">TAMU HPRC</a>
+      <span class="res-desc">Texas A&amp;M High Performance Research Computing.</span>
+      <span class="mentor-note">When your laptop creates smoke, move your job here. Excellent support team.</span>
+    </div>
+
+    <div class="res-section-head">3. Statistics and reproducibility</div>
+    <div class="res-row">
+      <a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower" target="_blank" class="res-name">G*Power</a>
+      <span class="res-desc">Statistical power analysis.</span>
+      <span class="mentor-note">Use this <strong>before</strong> you start your experiment, not after you realize your p-value is 0.06.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://osf.io/" target="_blank" class="res-name">OSF (Open Science Framework)</a>
+      <span class="res-desc">Project management for open science.</span>
+      <span class="mentor-note">The best place to pre-register your studies.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://datadryad.org/" target="_blank" class="res-name">Dryad</a> &amp; <a href="https://zenodo.org/" target="_blank" class="res-name">Zenodo</a>
+      <span class="res-desc">Data repositories.</span>
+      <span class="mentor-note">The standard for ecology/evolution papers. Zenodo gives you a DOI for code or posters.</span>
+    </div>
+
+    <div class="res-section-head">4. Genomics, the heavy lifters</div>
+    <div class="res-row">
+      <a href="https://www.bioconductor.org/" target="_blank" class="res-name">Bioconductor</a>
+      <span class="res-desc">The R repository for genomic data.</span>
+      <span class="mentor-note">Essential, but updates can sometimes break your old scripts.</span>
+    </div>
+    <div class="res-row">
+      <a href="http://www.htslib.org/" target="_blank" class="res-name">Samtools</a>
+      <span class="res-desc">The swiss-army knife for DNA sequencing data.</span>
+      <span class="mentor-note">Fast, command-line based, and absolutely essential.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://bedtools.readthedocs.io/en/latest/" target="_blank" class="res-name">BEDTools</a>
+      <span class="res-desc">"Genome arithmetic."</span>
+      <span class="mentor-note">For when you need to know what overlaps with what.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank" class="res-name">FastQC</a> &amp; <a href="http://www.usadellab.org/cms/?page=trimmomatic" target="_blank" class="res-name">Trimmomatic</a>
+      <span class="res-desc">Quality control and cleaning.</span>
+      <span class="mentor-note">The first things you run on any new dataset.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://software.broadinstitute.org/software/igv/" target="_blank" class="res-name">IGV (Integrative Genomics Viewer)</a>
+      <span class="res-desc">Visualizing genome alignments.</span>
+      <span class="mentor-note">The best way to "see" your mutations and verify your code isn't lying to you.</span>
+    </div>
+
+    <div class="res-section-head">5. Phylogenetics: inference and visualization</div>
+    <div class="res-row">
+      <a href="http://www.iqtree.org/" target="_blank" class="res-name">IQ-TREE</a>
+      <span class="res-desc">Modern maximum likelihood.</span>
+      <span class="mentor-note">Currently the best balance of speed and accuracy for most users.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://github.com/amkozlov/raxml-ng" target="_blank" class="res-name">RAxML-NG</a>
+      <span class="res-desc">The successor to the classic RAxML.</span>
+      <span class="mentor-note">Great for massive datasets.</span>
+    </div>
+    <div class="res-row">
+      <a href="http://mrbayes.net/" target="_blank" class="res-name">MrBayes</a> / <a href="https://revbayes.github.io/" target="_blank" class="res-name">RevBayes</a>
+      <span class="res-desc">Bayesian inference.</span>
+      <span class="mentor-note">MrBayes is the classic; RevBayes is powerful but has a steep learning curve.</span>
+    </div>
+    <div class="res-row">
+      <a href="http://tree.bio.ed.ac.uk/software/figtree/" target="_blank" class="res-name">FigTree</a>
+      <span class="res-desc">The classic tree viewer.</span>
+      <span class="mentor-note">Simple and effective, though showing its age.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://itol.embl.de/" target="_blank" class="res-name">iTOL (Interactive Tree of Life)</a>
+      <span class="res-desc">Web-based tree annotator.</span>
+      <span class="mentor-note">Makes beautiful publication-quality figures, but it is online-only.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://yulab-smu.top/treedata-book/" target="_blank" class="res-name">ggtree</a>
+      <span class="res-desc">R package for trees.</span>
+      <span class="mentor-note">Hard to learn, but allows for fully programmable and reproducible tree graphics.</span>
+    </div>
+
+    <div class="res-section-head">6. Ecology, fieldwork, and geospatial</div>
+    <div class="res-row">
+      <a href="https://qgis.org/" target="_blank" class="res-name">QGIS</a>
+      <span class="res-desc">Free, open-source GIS.</span>
+      <span class="mentor-note">Just as capable as ArcGIS, but free. A must-learn for any field biologist.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.inaturalist.org/" target="_blank" class="res-name">iNaturalist</a>
+      <span class="res-desc">Citizen science data.</span>
+      <span class="mentor-note">A massive database of species occurrences and a great way to verify ID.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.gbif.org/" target="_blank" class="res-name">GBIF</a>
+      <span class="res-desc">Global Biodiversity Information Facility.</span>
+      <span class="mentor-note">The raw data hose for biogeography.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.worldclim.org/" target="_blank" class="res-name">WorldClim</a>
+      <span class="res-desc">Global climate data.</span>
+      <span class="mentor-note">The standard input for niche modeling.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://biodiversityinformatics.amnh.org/open_source/maxent/" target="_blank" class="res-name">Maxent</a>
+      <span class="res-desc">Species distribution modeling.</span>
+      <span class="mentor-note">User-friendly, but very easy to misuse statistically. Read the manual carefully.</span>
+    </div>
+
+    <div class="res-section-head">7. Molecular biology and general tools</div>
+    <div class="res-row">
+      <a href="https://www.snapgene.com/snapgene-viewer" target="_blank" class="res-name">SnapGene Viewer</a>
+      <span class="res-desc">Plasmid mapping.</span>
+      <span class="mentor-note">The industry standard viewer is free and excellent.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://jorgensen.biology.utah.edu/wayned/ape/" target="_blank" class="res-name">ApE (A Plasmid Editor)</a>
+      <span class="res-desc">Free cloning tool.</span>
+      <span class="mentor-note">Ugly interface, but rock-solid logic for planning constructs.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://primer3.ut.ee/" target="_blank" class="res-name">Primer3</a>
+      <span class="res-desc">PCR primer design.</span>
+      <span class="mentor-note">The engine behind almost every primer tool on the web.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://imagej.nih.gov/ij/" target="_blank" class="res-name">ImageJ / Fiji</a>
+      <span class="res-desc">Scientific image analysis.</span>
+      <span class="mentor-note">Java-based and clunky, but the absolute king of microscopy analysis.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.uniprot.org/" target="_blank" class="res-name">UniProt</a> &amp; <a href="https://www.rcsb.org/" target="_blank" class="res-name">PDB</a>
+      <span class="res-desc">Protein databases.</span>
+      <span class="mentor-note">The gold standards for protein annotation and 3D structure.</span>
+    </div>
+
+    <div class="res-section-head">8. Writing, citing, and publishing</div>
+    <div class="res-row">
+      <a href="https://www.overleaf.com/" target="_blank" class="res-name">Overleaf</a>
+      <span class="res-desc">Online LaTeX editor.</span>
+      <span class="mentor-note">The best way to write collaborative papers without formatting headaches.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.zotero.org/" target="_blank" class="res-name">Zotero</a>
+      <span class="res-desc">Reference manager.</span>
+      <span class="mentor-note">Free, open-source, and arguably better than EndNote. Use the browser connector!</span>
+    </div>
+    <div class="res-row">
+      <a href="https://v2.sherpa.ac.uk/romeo/" target="_blank" class="res-name">Sherpa Romeo</a>
+      <span class="res-desc">Copyright policies.</span>
+      <span class="mentor-note">Checks if you are legally allowed to post your PDF on your website.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://orcid.org/" target="_blank" class="res-name">ORCID</a>
+      <span class="res-desc">Digital ID.</span>
+      <span class="mentor-note">Get one. Now. It follows you forever.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.biorxiv.org/" target="_blank" class="res-name">BioRxiv</a>
+      <span class="res-desc">The biology preprint server.</span>
+      <span class="mentor-note">Post your paper here before you submit to a journal to get early feedback.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://writingcenter.tamu.edu/" target="_blank" class="res-name">TAMU Writing Center</a>
+      <span class="res-desc">University resource.</span>
+      <span class="mentor-note">They have specific consultants for scientific writing and dissertation formatting.</span>
+    </div>
+
+    <div class="res-section-head">9. Graphics and visualization (non-data)</div>
+    <div class="res-row">
+      <a href="https://inkscape.org/" target="_blank" class="res-name">Inkscape</a>
+      <span class="res-desc">Vector graphics editor.</span>
+      <span class="mentor-note">The free, open-source alternative to Adobe Illustrator. Incredibly powerful.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.gimp.org/" target="_blank" class="res-name">GIMP</a>
+      <span class="res-desc">Raster image editor.</span>
+      <span class="mentor-note">Free Photoshop. Capable tool, but has a definite learning curve.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://colorbrewer2.org/" target="_blank" class="res-name">ColorBrewer</a>
+      <span class="res-desc">Color advice.</span>
+      <span class="mentor-note">Stop using default red/green color scales. Use this to make accessible maps.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://biorender.com/" target="_blank" class="res-name">BioRender</a>
+      <span class="res-desc">Scientific illustration.</span>
+      <span class="mentor-note">Makes professional diagrams easy, but be aware everyone's figures are starting to look the same.</span>
+    </div>
+
+    <div class="res-section-head">10. Career, culture, and sanity</div>
+    <div class="res-row">
+      <a href="https://academictree.org/" target="_blank" class="res-name">Academic Tree</a>
+      <span class="res-desc">Genealogy of science.</span>
+      <span class="mentor-note">Find out who your academic "grandparents" are. Fun for seeing lineage.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://phdcomics.com/" target="_blank" class="res-name">PhD Comics</a>
+      <span class="res-desc">The documentary of our lives.</span>
+      <span class="mentor-note">It stops being funny and starts being painful around year 4.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://xkcd.com/" target="_blank" class="res-name">XKCD</a>
+      <span class="res-desc">Nerdy humor.</span>
+      <span class="mentor-note">There is a relevant comic for everything in science.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.researchgate.net/" target="_blank" class="res-name">ResearchGate</a>
+      <span class="res-desc">Social network for scientists.</span>
+      <span class="mentor-note">Spams your email, but actually useful for asking authors for PDFs.</span>
+    </div>
+
+    <div class="res-section-head">11. Mentoring and grad school survival</div>
+    <div class="res-row">
+      <a href="https://theprofessorisin.com/" target="_blank" class="res-name">The Professor Is In</a>
+      <span class="res-desc">Career advice.</span>
+      <span class="mentor-note">Hard truths about the academic job market. Read this early, not right before you graduate.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.science.org/careers" target="_blank" class="res-name">Science Careers (AAAS)</a>
+      <span class="res-desc">Career resources.</span>
+      <span class="mentor-note">Excellent articles on non-academic paths and lab management.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://myidp.sciencecareers.org/" target="_blank" class="res-name">Individual Development Plan (IDP)</a>
+      <span class="res-desc">Career planning tool.</span>
+      <span class="mentor-note">A structured way to plan your career goals. Required by many grants, but useful for everyone.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://grad.tamu.edu/" target="_blank" class="res-name">TAMU Grad School</a>
+      <span class="res-desc">Graduate school resources.</span>
+      <span class="mentor-note">Know the rules. They control your dates, deadlines, and dissertation formatting.</span>
+    </div>
+    <div class="res-row">
+      <a href="https://www.facultydiversity.org/" target="_blank" class="res-name">National Center for Faculty Development &amp; Diversity</a>
+      <span class="res-desc">Professional development.</span>
+      <span class="mentor-note">A&amp;M usually has a membership. Great for writing accountability and time management.</span>
+    </div>
+
+    <div class="community-box">
+      <h3>Community contribution</h3>
+      <p>This list is living and breathing. If you are a student or faculty member and have a tool that saved your thesis or accelerated your research, please <a href="mailto:blackmon@tamu.edu">email us</a>. We are especially looking for resources that help early graduate students navigate the first few years.</p>
+    </div>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
 
   </main>
+</div>
 
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center">
-        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
-      </div>
-    </div>
-  </footer>
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/js/main.js"></script>
-
+<script src="../assets/js/v3.js"></script>
 </body>
-
 </html>

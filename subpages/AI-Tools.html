@@ -1,358 +1,678 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>AI Tools for Scientists - Blackmon Lab</title>
-  <meta name="description" content="A curated guide to AI tools for scientists: frontier models, prompt engineering, literature search, writing, data analysis, and more. From the Blackmon Lab at Texas A&M.">
-    <meta property="og:title" content="AI Tools for Scientists - Blackmon Lab" />
-    <meta property="og:description" content="A curated guide to AI tools for scientists: frontier models, prompt engineering, literature search, writing, data analysis, and more. From the Blackmon Lab at Texas A&amp;M." />
-    <meta property="og:url" content="https://coleoguy.github.io/subpages/AI-Tools.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="AI tools, biology, research, LLM, ChatGPT, Claude, literature review, prompt engineering, Blackmon Lab">
-  <link rel="canonical" href="https://coleoguy.github.io/subpages/AI-Tools.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI tools and prompting guide · Blackmon Lab</title>
+<meta name="description" content="Practical guides for biologists on using AI tools for literature review, data analysis, coding assistance, and writing workflows.">
+<link rel="icon" href="../assets/img/favicon.ico">
 
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
+<link rel="stylesheet" href="../assets/css/v3.css">
 
-  <link href="../assets/img/favicon.ico" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <link href="../assets/css/main.css" rel="stylesheet">
-
-  <style>
-    .tools-category {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      font-family: var(--font-heading);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-      margin-top: 44px;
-      margin-bottom: 18px;
-    }
-    .tools-category i {
-      color: var(--accent);
-      margin-right: 8px;
-    }
-    .tool-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .tool-list li {
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .tool-list li:last-child {
-      border-bottom: none;
-    }
-    .tool-name {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-    .tool-name:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
-    }
-    .mentor-note {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      line-height: 1.65;
-      margin-top: 4px;
-    }
-    .philosophy-box {
-      background: var(--bg-card);
-      border: 1px solid var(--accent-border);
-      border-left: 3px solid var(--accent);
-      border-radius: 8px;
-      padding: 22px 24px;
-      margin: 28px 0 8px;
-    }
-    .philosophy-box strong {
-      color: var(--text-heading);
-      font-family: var(--font-heading);
-    }
-    .philosophy-box p {
-      color: var(--text-secondary);
-      font-size: 0.925rem;
-      line-height: 1.75;
-      margin: 0;
-    }
-    .intro-lead {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.75;
-      margin-bottom: 0;
-    }
-    .category-note {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      font-style: italic;
-      line-height: 1.7;
-      margin-bottom: 12px;
-    }
-  </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
 </head>
 
 <body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../research.html">Research</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../ai.html">AI</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- Phylogenetic sidebar -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="../index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
     </div>
-  </header>
 
-  <main class="main">
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../news.html">News</a></li>
+          <li><a href="../calendar.html">Calendar</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="../cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="../karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="../epistasis-database.html">Epistasis database</a></li>
+          <li><a href="../tau_database.html">Tau database</a></li>
+          <li><a href="../citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="../karyotype.html">Karyotype evolution</a></li>
+          <li><a href="../sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="../genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="../selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="../epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="../chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="../coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="../ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="../lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="../phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="../phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="popgen-sim.html" target="_blank">Pop-gen simulator</a></li>
+          <li><a href="evobir.html" target="_blank">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="../biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="biol682.html">BIOL 682</a></li>
+          <li><a href="grad101.html">Grad 101</a></li>
+          <li><a href="AI-Tools.html" class="active">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
 
-    <section class="page-header">
-      <div class="container">
-        <h1>AI Tools for Scientists</h1>
-        <p>A curated guide to tools that are actually worth your time</p>
-      </div>
-    </section>
+  <!-- Main reading column -->
+  <main class="column" id="content">
 
-    <section class="section" style="padding-top: 32px; padding-bottom: 60px;">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
+    <div class="crumb">
+      <a href="../index.html">Home</a> › Teaching › <strong>AI tools guide</strong>
+    </div>
 
-            <p class="intro-lead">
-              A curated list of AI-powered tools to assist with literature review, writing, data analysis, and teaching.
-            </p>
+    <h1 class="title" id="ai-tools">AI tools and prompting guide.</h1>
 
-            <div class="philosophy-box" data-aos="fade-up">
-              <p><strong>AI Philosophy:</strong> Our mission is to understand life and champion open science by sharing that knowledge with the world. We use AI to remove barriers to that mission, using it to code faster, write clearer, and think bigger. Yet, these powerful tools demand equally rigorous oversight. We use AI to expand our minds, not replace them, demanding 100% verification to ensure our work is transparent, reproducible, and stands on a bedrock of accuracy.</p>
-            </div>
+    <p class="lede">
+      Practical guides for biologists on using AI tools for literature review, data analysis, coding assistance, and writing workflows.
+    </p>
 
-            <!-- Frontier Models -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-cpu" aria-hidden="true"></i>Frontier Models (The Engines)</h4>
-            <p class="category-note">These are not simple chatbots; they are reasoning engines. With the right prompting strategy (giving context, persona, and constraints), they can draft entire manuscripts, synthesize vast literature, and code complex pipelines. If you use them lazily, you get garbage. If you drive them like a Ferrari, you win.</p>
-            <ul class="tool-list">
-              <li>
-                <a href="https://chat.openai.com/" target="_blank" class="tool-name">ChatGPT (OpenAI)</a>
-                <p class="mentor-note">The original heavy hitter. The "o1" model is currently the king of complex reasoning. If you are using the free version (GPT-3.5 or 4o-mini) for science, you are wasting your time. Pay for the real tools.</p>
-              </li>
-              <li>
-                <a href="https://claude.ai/" target="_blank" class="tool-name">Claude (Anthropic)</a>
-                <p class="mentor-note">Currently the best prose writer of the bunch. It sounds less "robotic" than the others and handles massive text inputs (like whole books) beautifully. If you need to draft a paper, start here.</p>
-              </li>
-              <li>
-                <a href="https://gemini.google.com/" target="_blank" class="tool-name">Gemini (Google)</a>
-                <p class="mentor-note">Fully integrated into the Google ecosystem and has a massive context window. Can be brilliant at multimodal tasks, but can also be confidently wrong. Don't let it do your thinking for you - check its work. Currently this is my go-to for many tasks.</p>
-              </li>
-            </ul>
-            <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:14px;">The power of these tools is highly dependent on your prompting. See my guide to <a href="./Prompting.html" style="color:var(--accent);">prompting</a> - especially the "mega-prompts" section, which is where the real capability is unlocked.</p>
+    <blockquote class="pullquote">
+      Our mission is to understand life and champion open science by sharing that knowledge with the world. We use AI to remove barriers to that mission, to code faster, write clearer, and think bigger. These powerful tools demand equally rigorous oversight. We use AI to expand our minds, not replace them, demanding 100% verification so our work is transparent, reproducible, and stands on a bedrock of accuracy.
+    </blockquote>
 
-            <!-- Prompt Engineering -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-code-square" aria-hidden="true"></i>Prompt Engineering (Tools to Build Tools)</h4>
-            <p class="category-note">If you are building complex workflows (mega-prompts), you cannot just type into a chat window. You need environments that let you test, iterate, and save your "source code."</p>
-            <ul class="tool-list">
-              <li>
-                <a href="https://console.anthropic.com/workbench" target="_blank" class="tool-name">Anthropic Workbench</a>
-                <p class="mentor-note">The best place to build prompts. It has a "Generate a Prompt" feature where you describe a task, and it writes a structured mega-prompt for you. Essential for system prompt testing.</p>
-              </li>
-              <li>
-                <a href="https://platform.openai.com/playground" target="_blank" class="tool-name">OpenAI Playground</a>
-                <p class="mentor-note">Stop using the normal ChatGPT interface for complex tasks. The Playground lets you edit the "System" message separately from the "User" message, which is critical for getting the AI to stay in character.</p>
-              </li>
-              <li>
-                <a href="https://github.com/danielmiessler/fabric" target="_blank" class="tool-name">Fabric (GitHub)</a>
-                <p class="mentor-note">An open-source project by Daniel Miessler. A massive library of "Patterns" (mega-prompts) for analyzing life, science, and security. A goldmine for seeing how experts structure their requests.</p>
-              </li>
-              <li>
-                <a href="https://promptperfect.jina.ai/" target="_blank" class="tool-name">PromptPerfect</a>
-                <p class="mentor-note">Takes your rough prompt and rewrites it into a detailed, optimized version. Good for learning how to be more specific.</p>
-              </li>
-              <li>
-                <a href="https://www.typingmind.com/" target="_blank" class="tool-name">TypingMind</a>
-                <p class="mentor-note">A much better UI for ChatGPT/Claude. Lets you create a "Prompt Library" where you can save your favorite mega-prompts and call them up with a slash command (e.g., /review).</p>
-              </li>
-            </ul>
+    <h2>Frontier models, the engines</h2>
 
-            <!-- Literature Search -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-journal-text" aria-hidden="true"></i>Literature Search &amp; Discovery</h4>
-            <ul class="tool-list">
-              <li>
-                <a href="https://notebooklm.google.com/" target="_blank" class="tool-name">Google NotebookLM</a>
-                <p class="mentor-note">AI research assistant that lets you upload your own PDFs and sources to answer questions and summarize content strictly from your material. Can generate podcast-style audio summaries of documents you provide.</p>
-              </li>
-              <li>
-                <a href="https://elicit.com/" target="_blank" class="tool-name">Elicit</a>
-                <p class="mentor-note">Automates literature reviews by finding relevant papers and summarizing key takeaways in a table format.</p>
-              </li>
-              <li>
-                <a href="https://www.researchrabbit.ai/" target="_blank" class="tool-name">ResearchRabbit</a>
-                <p class="mentor-note">Visualizes citation networks to help you discover new papers relevant to your seed collection.</p>
-              </li>
-              <li>
-                <a href="https://consensus.app/" target="_blank" class="tool-name">Consensus</a>
-                <p class="mentor-note">AI-powered search engine that extracts and aggregates answers to scientific questions directly from peer-reviewed literature.</p>
-              </li>
-              <li>
-                <a href="https://scite.ai/" target="_blank" class="tool-name">Scite</a>
-                <p class="mentor-note">Smart citation tool that classifies citations to show whether a paper supports, mentions, or contrasts with the cited claim.</p>
-              </li>
-              <li>
-                <a href="https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkkhpimeberhenkegkbjiggojh" target="_blank" class="tool-name">Google Scholar AI</a>
-                <p class="mentor-note">Gemini chat with access to Google Scholar. Great for finding papers that speak to a complex idea or question.</p>
-              </li>
-              <li>
-                <a href="https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkkhpimeberhenkegkbjiggojh" target="_blank" class="tool-name">Google Scholar PDF Reader</a>
-                <p class="mentor-note">Chrome extension that adds an AI sidebar to online PDFs to generate outlines and summaries while you read.</p>
-              </li>
-              <li>
-                <a href="https://www.connectedpapers.com/" target="_blank" class="tool-name">Connected Papers</a>
-                <p class="mentor-note">Creates a graph of similar papers based on co-citation and bibliographic coupling.</p>
-              </li>
-              <li>
-                <a href="https://www.scholarcy.com/" target="_blank" class="tool-name">Scholarcy</a>
-                <p class="mentor-note">Breaks down complex papers into digestible flashcards, highlighting key findings and methodology.</p>
-              </li>
-            </ul>
+    <p>These are not simple chatbots. They are reasoning engines. With the right prompting strategy (context, persona, constraints), they can draft entire manuscripts, synthesize vast literature, and code complex pipelines. Used lazily, you get garbage. Driven like a Ferrari, you win.</p>
 
-            <!-- Writing -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-pencil" aria-hidden="true"></i>Writing &amp; Editing</h4>
-            <ul class="tool-list">
-              <li>
-                <a href="https://paperpal.com/" target="_blank" class="tool-name">Paperpal</a>
-                <p class="mentor-note">AI writing assistant trained on academic manuscripts to check grammar and style against journal standards.</p>
-              </li>
-              <li>
-                <a href="https://www.writefull.com/" target="_blank" class="tool-name">Writefull</a>
-                <p class="mentor-note">Provides language feedback using a database of published scientific papers to ensure academic tone.</p>
-              </li>
-              <li>
-                <a href="https://www.deepl.com/" target="_blank" class="tool-name">DeepL</a>
-                <p class="mentor-note">Highly accurate AI translation tool useful for clarifying complex phrasing.</p>
-              </li>
-              <li>
-                <a href="https://www.grammarly.com/" target="_blank" class="tool-name">Grammarly</a>
-                <p class="mentor-note">Standard tool for catching typos, tone issues, and basic grammatical errors.</p>
-              </li>
-            </ul>
-
-            <!-- Data Analysis -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-bar-chart" aria-hidden="true"></i>Data Analysis &amp; Coding</h4>
-            <ul class="tool-list">
-              <li>
-                <a href="https://github.com/features/copilot" target="_blank" class="tool-name">GitHub Copilot</a>
-                <p class="mentor-note">AI pair programmer that integrates into code editors (RStudio/VS Code) to autocomplete code.</p>
-              </li>
-              <li>
-                <a href="https://julius.ai/" target="_blank" class="tool-name">Julius AI</a>
-                <p class="mentor-note">Data analysis assistant that lets you upload datasets and ask questions in plain English to generate plots.</p>
-              </li>
-              <li>
-                <a href="https://rtutor.ai/" target="_blank" class="tool-name">RTutor</a>
-                <p class="mentor-note">Generates R code and plots by asking questions in natural language; great for syntax checks.</p>
-              </li>
-            </ul>
-
-            <!-- Figures -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-image" aria-hidden="true"></i>Figures &amp; Visualization</h4>
-            <ul class="tool-list">
-              <li>
-                <a href="https://biorender.com/" target="_blank" class="tool-name">BioRender</a>
-                <p class="mentor-note">Industry standard for creating professional biological diagrams and pathways.</p>
-              </li>
-              <li>
-                <a href="https://firefly.adobe.com/" target="_blank" class="tool-name">Adobe Firefly</a>
-                <p class="mentor-note">Generative tool integrated into Adobe apps to create vector graphics and illustrations from text.</p>
-              </li>
-              <li>
-                <span class="tool-name" style="cursor:default;">Midjourney / DALL-E</span>
-                <p class="mentor-note">Generative AI tools for conceptual cover art or presentation backgrounds.</p>
-              </li>
-            </ul>
-
-            <!-- Teaching -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-easel" aria-hidden="true"></i>Teaching &amp; Presentations</h4>
-            <ul class="tool-list">
-              <li>
-                <a href="https://gamma.app/" target="_blank" class="tool-name">Gamma</a>
-                <p class="mentor-note">Generates polished slide decks and presentations from a simple text outline.</p>
-              </li>
-              <li>
-                <a href="https://curipod.com/" target="_blank" class="tool-name">Curipod</a>
-                <p class="mentor-note">Interactive presentation tool that uses AI to generate polls and questions to engage students.</p>
-              </li>
-              <li>
-                <a href="https://quizlet.com/" target="_blank" class="tool-name">Quizlet</a>
-                <p class="mentor-note">Automatically generates flashcards and practice tests from lecture notes.</p>
-              </li>
-            </ul>
-
-            <!-- Productivity -->
-            <h4 class="tools-category" data-aos="fade-up"><i class="bi bi-clipboard-check" aria-hidden="true"></i>Productivity &amp; Lab Management</h4>
-            <ul class="tool-list">
-              <li>
-                <a href="https://otter.ai/" target="_blank" class="tool-name">Otter.ai</a>
-                <p class="mentor-note">Meeting assistant that records audio and generates summaries of lab meetings.</p>
-              </li>
-              <li>
-                <a href="https://www.notion.so/" target="_blank" class="tool-name">Notion</a>
-                <p class="mentor-note">Workspace tool with AI to help organize lab wikis and summarize protocols.</p>
-              </li>
-            </ul>
-
-          </div>
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">OpenAI</span>
+          <span class="sum-head">ChatGPT</span>
+          <span class="sum-trail">The original heavy hitter, strongest on complex reasoning in its top-tier models.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The "o1" family is currently the king of complex reasoning. If you are using the free version (GPT-3.5 or 4o-mini) for science, you are wasting your time. Pay for the real tools.</p>
+        <div class="layer-links">
+          <a href="https://chat.openai.com/" target="_blank">ChatGPT →</a>
         </div>
       </div>
-    </section>
+    </details>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Anthropic</span>
+          <span class="sum-head">Claude</span>
+          <span class="sum-trail">Currently the best prose writer of the bunch, and very strong on long-context inputs.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Sounds less robotic than the others and handles massive text inputs (whole books) beautifully. If you need to draft a paper, start here.</p>
+        <div class="layer-links">
+          <a href="https://claude.ai/" target="_blank">Claude →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Google</span>
+          <span class="sum-head">Gemini</span>
+          <span class="sum-trail">Fully integrated into the Google ecosystem, with a massive context window.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Brilliant at multimodal tasks, but can also be confidently wrong. Do not let it do your thinking for you, check its work. Currently my go-to for many tasks.</p>
+        <div class="layer-links">
+          <a href="https://gemini.google.com/" target="_blank">Gemini →</a>
+        </div>
+      </div>
+    </details>
+
+    <p>The power of these tools is highly dependent on your prompting. See the guide to <a href="./Prompting.html">prompting</a>, especially the mega-prompts section, where the real capability is unlocked.</p>
+
+    <h2>Prompt engineering, tools to build tools</h2>
+
+    <p>If you are building complex workflows (mega-prompts), you cannot just type into a chat window. You need environments that let you test, iterate, and save your source code.</p>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Anthropic</span>
+          <span class="sum-head">Anthropic Workbench</span>
+          <span class="sum-trail">Best place to build prompts, with a "Generate a Prompt" feature that writes structured mega-prompts for you.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Essential for system-prompt testing. Describe a task and it writes a structured mega-prompt you can iterate on.</p>
+        <div class="layer-links">
+          <a href="https://console.anthropic.com/workbench" target="_blank">Anthropic Workbench →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">OpenAI</span>
+          <span class="sum-head">OpenAI Playground</span>
+          <span class="sum-trail">Lets you edit system and user messages separately, critical for keeping the model in character.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Stop using the normal ChatGPT interface for complex tasks. The Playground separates the System message from the User message, which is critical for getting the AI to stay in role.</p>
+        <div class="layer-links">
+          <a href="https://platform.openai.com/playground" target="_blank">OpenAI Playground →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Open source</span>
+          <span class="sum-head">Fabric</span>
+          <span class="sum-trail">A library of "Patterns" (mega-prompts) for analyzing life, science, and security.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Open-source project by Daniel Miessler. A goldmine for seeing how experts structure their requests.</p>
+        <div class="layer-links">
+          <a href="https://github.com/danielmiessler/fabric" target="_blank">Fabric on GitHub →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Jina</span>
+          <span class="sum-head">PromptPerfect</span>
+          <span class="sum-trail">Rewrites your rough prompt into a detailed, optimized version.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Good for learning how to be more specific, and as a sanity check on your own prompts.</p>
+        <div class="layer-links">
+          <a href="https://promptperfect.jina.ai/" target="_blank">PromptPerfect →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Third-party</span>
+          <span class="sum-head">TypingMind</span>
+          <span class="sum-trail">A better UI for ChatGPT and Claude, with a prompt library you can call with a slash command.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Save your favorite mega-prompts and trigger them with commands like <code>/review</code>.</p>
+        <div class="layer-links">
+          <a href="https://www.typingmind.com/" target="_blank">TypingMind →</a>
+        </div>
+      </div>
+    </details>
+
+    <h2>Literature search and discovery</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Google</span>
+          <span class="sum-head">NotebookLM</span>
+          <span class="sum-trail">AI research assistant grounded in your uploaded PDFs and sources.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Answers questions and summarizes strictly from the material you provide, and can generate podcast-style audio summaries of your documents.</p>
+        <div class="layer-links">
+          <a href="https://notebooklm.google.com/" target="_blank">NotebookLM →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Elicit</span>
+          <span class="sum-head">Elicit</span>
+          <span class="sum-trail">Automates literature reviews, with summaries in a table format.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Finds relevant papers and summarizes key takeaways in a side-by-side table that is great for scoping a new topic.</p>
+        <div class="layer-links">
+          <a href="https://elicit.com/" target="_blank">Elicit →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">ResearchRabbit</span>
+          <span class="sum-head">ResearchRabbit</span>
+          <span class="sum-trail">Visualizes citation networks to help you discover papers near your seed collection.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Starts from a small set of papers you already trust and expands outward along citation, co-author, and similarity links.</p>
+        <div class="layer-links">
+          <a href="https://www.researchrabbit.ai/" target="_blank">ResearchRabbit →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Consensus</span>
+          <span class="sum-head">Consensus</span>
+          <span class="sum-trail">AI-powered search that extracts answers directly from peer-reviewed literature.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Aggregates findings across many papers, which is useful when you want to see the weight of evidence for a specific claim.</p>
+        <div class="layer-links">
+          <a href="https://consensus.app/" target="_blank">Consensus →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Scite</span>
+          <span class="sum-head">Scite</span>
+          <span class="sum-trail">Classifies citations as supporting, mentioning, or contrasting with the cited claim.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Invaluable when you want to know whether a paper is widely backed, quietly contested, or routinely contradicted.</p>
+        <div class="layer-links">
+          <a href="https://scite.ai/" target="_blank">Scite →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Google</span>
+          <span class="sum-head">Google Scholar AI</span>
+          <span class="sum-trail">Gemini chat with access to Google Scholar.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Great for finding papers that speak to a complex idea or question you cannot yet phrase as a single keyword query.</p>
+        <div class="layer-links">
+          <a href="https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkkhpimeberhenkegkbjiggojh" target="_blank">Chrome extension →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Google</span>
+          <span class="sum-head">Google Scholar PDF Reader</span>
+          <span class="sum-trail">Adds an AI sidebar to online PDFs, with outlines and summaries while you read.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Sits next to a paper in your browser and gives you inline outlines, summaries, and jump points.</p>
+        <div class="layer-links">
+          <a href="https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkkhpimeberhenkegkbjiggojh" target="_blank">Chrome extension →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Connected Papers</span>
+          <span class="sum-head">Connected Papers</span>
+          <span class="sum-trail">Graph of similar papers based on co-citation and bibliographic coupling.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Good for seeing the shape of a literature at a glance, especially when starting a new topic.</p>
+        <div class="layer-links">
+          <a href="https://www.connectedpapers.com/" target="_blank">Connected Papers →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Scholarcy</span>
+          <span class="sum-head">Scholarcy</span>
+          <span class="sum-trail">Breaks down complex papers into digestible flashcards.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Highlights key findings and methodology, which is useful for keeping a running reading log.</p>
+        <div class="layer-links">
+          <a href="https://www.scholarcy.com/" target="_blank">Scholarcy →</a>
+        </div>
+      </div>
+    </details>
+
+    <h2>Writing and editing</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Paperpal</span>
+          <span class="sum-head">Paperpal</span>
+          <span class="sum-trail">AI writing assistant trained on academic manuscripts.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Checks grammar and style against journal standards, not generic English.</p>
+        <div class="layer-links">
+          <a href="https://paperpal.com/" target="_blank">Paperpal →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Writefull</span>
+          <span class="sum-head">Writefull</span>
+          <span class="sum-trail">Language feedback using a corpus of published scientific papers.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Compares your phrasing against how published scientists actually write, which is a better rubric than generic grammar rules.</p>
+        <div class="layer-links">
+          <a href="https://www.writefull.com/" target="_blank">Writefull →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">DeepL</span>
+          <span class="sum-head">DeepL</span>
+          <span class="sum-trail">Highly accurate AI translation.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Useful for clarifying complex phrasing, and for working with collaborators across languages.</p>
+        <div class="layer-links">
+          <a href="https://www.deepl.com/" target="_blank">DeepL →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Grammarly</span>
+          <span class="sum-head">Grammarly</span>
+          <span class="sum-trail">Standard tool for catching typos, tone, and basic grammatical errors.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Good as a final sweep before a draft goes out, not as a substitute for careful reading.</p>
+        <div class="layer-links">
+          <a href="https://www.grammarly.com/" target="_blank">Grammarly →</a>
+        </div>
+      </div>
+    </details>
+
+    <h2>Data analysis and coding</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">GitHub</span>
+          <span class="sum-head">GitHub Copilot</span>
+          <span class="sum-trail">AI pair programmer that integrates with RStudio and VS Code.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Autocompletes code in context. Best treated as a very fast junior collaborator whose work you still need to read.</p>
+        <div class="layer-links">
+          <a href="https://github.com/features/copilot" target="_blank">GitHub Copilot →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Julius</span>
+          <span class="sum-head">Julius AI</span>
+          <span class="sum-trail">Data analysis assistant for plain-English queries on uploaded datasets.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Upload a dataset, ask questions in natural language, and get plots and summary tables.</p>
+        <div class="layer-links">
+          <a href="https://julius.ai/" target="_blank">Julius AI →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">RTutor</span>
+          <span class="sum-head">RTutor</span>
+          <span class="sum-trail">Generates R code and plots from natural language.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Great for syntax checks and for quickly prototyping a plot before you refine it by hand.</p>
+        <div class="layer-links">
+          <a href="https://rtutor.ai/" target="_blank">RTutor →</a>
+        </div>
+      </div>
+    </details>
+
+    <h2>Figures and visualization</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">BioRender</span>
+          <span class="sum-head">BioRender</span>
+          <span class="sum-trail">Industry standard for professional biological diagrams and pathways.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Prebuilt icons for cells, organisms, and pathways, with enough flexibility to make publication-ready figures.</p>
+        <div class="layer-links">
+          <a href="https://biorender.com/" target="_blank">BioRender →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Adobe</span>
+          <span class="sum-head">Adobe Firefly</span>
+          <span class="sum-trail">Generative tool integrated into Adobe apps, for vector graphics from text.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Useful for conceptual art and cover figures, especially when you need vector output.</p>
+        <div class="layer-links">
+          <a href="https://firefly.adobe.com/" target="_blank">Adobe Firefly →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Generative art</span>
+          <span class="sum-head">Midjourney / DALL-E</span>
+          <span class="sum-trail">Generative AI for conceptual cover art or presentation backgrounds.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Strong for illustrative work at the edges of a talk or paper. Do not treat the outputs as factual diagrams.</p>
+      </div>
+    </details>
+
+    <h2>Teaching and presentations</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Gamma</span>
+          <span class="sum-head">Gamma</span>
+          <span class="sum-trail">Generates polished slide decks from a simple text outline.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Good starting point for a deck you will then tune by hand.</p>
+        <div class="layer-links">
+          <a href="https://gamma.app/" target="_blank">Gamma →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Curipod</span>
+          <span class="sum-head">Curipod</span>
+          <span class="sum-trail">Interactive presentation tool with AI-generated polls and questions.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Useful for live classrooms where you want students responding to prompts as you teach.</p>
+        <div class="layer-links">
+          <a href="https://curipod.com/" target="_blank">Curipod →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Quizlet</span>
+          <span class="sum-head">Quizlet</span>
+          <span class="sum-trail">Automatically generates flashcards and practice tests from lecture notes.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Best for student self-quizzing, especially on vocabulary-heavy content.</p>
+        <div class="layer-links">
+          <a href="https://quizlet.com/" target="_blank">Quizlet →</a>
+        </div>
+      </div>
+    </details>
+
+    <h2>Productivity and lab management</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Otter.ai</span>
+          <span class="sum-head">Otter.ai</span>
+          <span class="sum-trail">Meeting assistant that records audio and generates summaries.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Useful for lab meetings, but run it only with the group's consent and with a clear retention policy.</p>
+        <div class="layer-links">
+          <a href="https://otter.ai/" target="_blank">Otter.ai →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Notion</span>
+          <span class="sum-head">Notion</span>
+          <span class="sum-trail">Workspace with AI for organizing lab wikis and summarizing protocols.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Good central home for protocols, onboarding docs, and running lab wikis.</p>
+        <div class="layer-links">
+          <a href="https://www.notion.so/" target="_blank">Notion →</a>
+        </div>
+      </div>
+    </details>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
 
   </main>
+</div>
 
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
-      </div>
-    </div>
-  </footer>
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
-  </a>
-
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/js/main.js"></script>
-
+<script src="../assets/js/v3.js"></script>
 </body>
-
 </html>

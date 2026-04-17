@@ -1,88 +1,290 @@
----
-layout: default
-title: Join the Lab - Blackmon Lab
-description: Information for prospective students and researchers interested in joining the Blackmon Lab at Texas A&M University.
-canonical: https://coleoguy.github.io/join.html
-keywords: join lab, Blackmon Lab, graduate school, Texas A&M, evolutionary biology, postdoc
-body_class: join-page
-nav_active: join
----
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the lab · Blackmon Lab</title>
+<meta name="description" content="Blackmon Lab, Texas A&M Biology. Evolution studied broadly, through autonomous AI agents and open machine-readable datasets.">
+<link rel="icon" href="assets/img/favicon.ico">
 
-<!-- Page Header -->
-<section class="page-header">
-  <div class="container">
-    <h1>Joining our Team</h1>
-    <p>We believe in creating a supportive environment for all lab members to reach their full potential.</p>
-    <div class="photo-strip" style="overflow: hidden; max-height: 160px; margin-top: 30px;">
-      <div class="photo-strip-track">
-        <img src="assets/img/slide-labgroup.jpg" alt="Lab group photo">
-        <img src="assets/img/slide-labnight.jpg" alt="Lab at night">
-        <img src="assets/img/slide-tailgate.jpg" alt="TAMU tailgate">
-        <img src="assets/img/slide-halloween.jpg" alt="Halloween party">
-        <img src="assets/img/slide-pumpkins.jpg" alt="Pumpkin carving">
-        <img src="assets/img/slide-fieldwork1.jpg" alt="Fieldwork">
-        <img src="assets/img/slide-whiteboard1.jpg" alt="Whiteboard work">
-        <img src="assets/img/slide-desert.jpg" alt="Desert fieldwork">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+</head>
+
+<body>
+
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+    </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="join.html" class="active">Join</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="karyotype.html">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; JOIN THE LAB</div>
+
+    <h1 class="title">Joining the lab</h1>
+
+    <p class="lede">
+      We're always looking for graduate students, undergraduates, and postdocs who want to work on evolutionary biology with a layer of AI in the pipeline. Everyone here, including the PI, operates to the same set of explicit expectations.
+    </p>
+
+    <h2>Lab meetings</h2>
+    <p>Fridays at 11:00 AM in BSBW 425. Required for all members. If we're discussing a paper, come with at least one question or comment. Zoom: <a href="https://tamu.zoom.us/j/580704236" target="_blank">https://tamu.zoom.us/j/580704236</a></p>
+
+    <h2>Expectations</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Role</span>
+          <span class="sum-head">All lab members</span>
+          <span class="sum-trail">6 expectations</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <ul>
+          <li>Attend lab meetings</li>
+          <li>Take ownership and responsibility for assigned projects and tasks</li>
+          <li>Take care of our space (clean up after yourself)</li>
+          <li>Arrive at scheduled meetings on time and prepared</li>
+          <li>Participate in lab functions</li>
+          <li>Respond to all emails within 24 hours</li>
+        </ul>
       </div>
-    </div>
-    <script>document.addEventListener('DOMContentLoaded',function(){var t=document.querySelector('.photo-strip-track');if(t){t.innerHTML+=t.innerHTML;}})</script>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Role</span>
+          <span class="sum-head">Graduate students</span>
+          <span class="sum-trail">7 expectations</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <ul>
+          <li>Attend weekly seminars and job seminars</li>
+          <li>Attend journal club</li>
+          <li>Apply for grants/fellowships</li>
+          <li>Present research at conferences</li>
+          <li>Mentor one or more undergraduate</li>
+          <li>Publish 3 papers during PhD</li>
+          <li>Read all standard lab readings prior to end of second year</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Role</span>
+          <span class="sum-head">Undergraduate students</span>
+          <span class="sum-trail">2 expectations</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <ul>
+          <li>Devote a minimum of 10 hours a week to lab work</li>
+          <li>Contribute to discussions in lab meeting</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Role</span>
+          <span class="sum-head">Postdoctoral researchers</span>
+          <span class="sum-trail">2 expectations</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <ul>
+          <li>Mentor graduate students</li>
+          <li>Apply for fellowships/jobs</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Role</span>
+          <span class="sum-head">Dr. Blackmon</span>
+          <span class="sum-trail">3 expectations</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <ul>
+          <li>Meet with students at scheduled times</li>
+          <li>Give feedback on papers/applications within 2 weeks max</li>
+          <li>Secure funding for lab</li>
+        </ul>
+      </div>
+    </details>
+
+    <h2>How to apply</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Prospective graduate students</span>
+          <span class="sum-head">Apply through TAMU Biology or EEB</span>
+          <span class="sum-trail">Email Heath before you apply.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Applications go through the TAMU Biology PhD program or the TAMU Ecology &amp; Evolutionary Biology (EEB) interdisciplinary PhD program. Before you submit, email Heath so we can talk about fit and whether the lab is recruiting in your area. Strong computational grounding helps but is not required. Willingness to read primary literature, break things, and recover is required.</p>
+        <div class="layer-links">
+          <a href="mailto:coleoguy@tamu.edu">Email Heath &rarr;</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Undergraduates at TAMU</span>
+          <span class="sum-head">Two ways in</span>
+          <span class="sum-trail">Minimum 10 hours per week from day one.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The first path is the Biology &amp; AI CURE, a course-based undergraduate research experience where each student runs an original comparative project. The second path is a direct email to Heath with a short pitch for a project you'd like to work on. Either way, the lab expects a minimum of 10 hours per week, lab-meeting participation, and ownership of whatever you take on.</p>
+        <div class="layer-links">
+          <a href="biolai-cure.html">Biology &amp; AI CURE &rarr;</a>
+          <a href="mailto:coleoguy@tamu.edu">Email Heath &rarr;</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Postdocs and collaborators</span>
+          <span class="sum-head">Email directly</span>
+          <span class="sum-trail">TraitTrawler and comparative-methods collaborations especially welcome.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Postdoc inquiries and outside collaborations go through direct email. We are actively looking for partners who want to point TraitTrawler at a new clade or trait, and for comparative-methods collaborations on sex chromosomes, karyotype evolution, and epistasis. The fastest path is a short email describing what you want to do.</p>
+        <div class="layer-links">
+          <a href="mailto:coleoguy@tamu.edu">Email Heath &rarr;</a>
+          <a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler on GitHub &rarr;</a>
+        </div>
+      </div>
+    </details>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
   </div>
-</section>
+</div>
 
-<section class="section">
-  <div class="container" data-aos="fade-up">
-    <p class="join-intro">We are always seeking new students that can bring diverse perspectives, enthusiasm, and dedication into the lab. We believe strongly in the importance of creating a supportive environment for all lab members to reach their full potential. To achieve this we have explicit expectations for all lab members including Dr. Blackmon.</p>
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
 
-    <div class="expectations-group">
-      <h5>All Lab Members</h5>
-      <ul class="expectation-list">
-        <li>Attend lab meetings</li>
-        <li>Take ownership and responsibility for assigned projects and tasks</li>
-        <li>Take care of our space (clean up after yourself)</li>
-        <li>Arrive at scheduled meetings on time and prepared</li>
-        <li>Participate in lab functions</li>
-        <li>Respond to all emails within 24 hours</li>
-      </ul>
-
-      <h5>Graduate Students</h5>
-      <ul class="expectation-list">
-        <li>Attend weekly seminars and job seminars</li>
-        <li>Attend journal club</li>
-        <li>Apply for grants/fellowships</li>
-        <li>Present research at conferences</li>
-        <li>Mentor one or more undergraduate</li>
-        <li>Publish 3 papers during PhD</li>
-        <li>Read all standard lab readings prior to end of second year</li>
-      </ul>
-
-      <h5>Undergraduate Students</h5>
-      <ul class="expectation-list">
-        <li>Devote a minimum of 10 hours a week to lab work</li>
-        <li>Contribute to discussions in lab meeting</li>
-      </ul>
-
-      <h5>Postdoctoral Researchers</h5>
-      <ul class="expectation-list">
-        <li>Mentor graduate students</li>
-        <li>Apply for fellowships/jobs</li>
-      </ul>
-
-      <h5>Dr. Blackmon</h5>
-      <ul class="expectation-list">
-        <li>Meet with students at scheduled times</li>
-        <li>Give feedback on papers/applications within 2 weeks max</li>
-        <li>Secure funding for lab</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Lab Meetings & Contact -->
-<section class="section">
-  <div class="container" data-aos="fade-up">
-    <div class="lab-meeting-info">
-      <p><strong style="color: var(--text-heading);">Lab Meetings</strong> are mandatory for all lab members and occur on Fridays at 10:00 AM in BSBW 425. If we are discussing a paper, all students are expected to come with either questions or comments.</p>
-      <a href="https://tamu.zoom.us/j/580704236" target="_blank" class="zoom-link"><i class="bi bi-camera-video" aria-hidden="true"></i> Meet with Dr. Blackmon on Zoom</a>
-    </div>
-  </div>
-</section>
+<script src="assets/js/v3.js"></script>
+</body>
+</html>

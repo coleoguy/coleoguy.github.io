@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phylogenies · PCM guide · Blackmon Lab</title>
+<meta name="description" content="What is a phylogeny? Interactive D3 visualization exploring tree reading, cladograms vs phylograms, branch lengths, and tree rotation.">
+<link rel="icon" href="../assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/css/v3.css">
+
+<style>
+  .page-header {
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 60px 0;
+    border-bottom: 1px solid var(--rule);
+    background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    font-family: var(--font-text);
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .page-header .subtitle {
+    font-size: 1.1rem;
+    color: var(--ink);
+    max-width: 700px;
+  }
+
+  .content-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .content-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-family: var(--font-text);
+    color: var(--ink);
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+
+  .section-text {
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    max-width: 900px;
+  }
+
+  .viz-container {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 40px;
+    margin: 40px 0;
+  }
+
+  .d3-tree-container {
+    width: 100%;
+    min-height: 580px;
+    background: linear-gradient(to bottom, var(--accent-dim), transparent);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .tree-control {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .tree-toggle {
+    padding: 10px 20px;
+    border: 1px solid var(--accent-dim);
+    background: transparent;
+    color: var(--accent);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+  }
+
+  .tree-toggle:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+  }
+
+  .tree-toggle.active {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+  }
+
+  svg text {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    fill: var(--ink);
+  }
+
+  svg .node {
+    fill: var(--ink-dim);
+  }
+
+  svg .node.tip {
+    fill: var(--accent);
+    font-weight: 600;
+  }
+
+  svg .node.internal {
+    fill: var(--ink-faint);
+  }
+
+  svg .link {
+    stroke: var(--ink-dim);
+    stroke-width: 2;
+    fill: none;
+  }
+
+  svg .link.highlight {
+    stroke: var(--accent);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 5px var(--accent-dim));
+  }
+
+  .rotations-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+  }
+
+  .rotation-box {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .rotation-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .rotation-svg {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 15px;
+  }
+
+  .rotation-note {
+    font-size: 0.9rem;
+    color: var(--ink-dim);
+    line-height: 1.6;
+  }
+
+  .highlight-text {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .branch-length-svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .example-box {
+    background: var(--accent-dim);
+    border-left: 4px solid var(--accent);
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 4px;
+  }
+
+  .example-label {
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+</style>
+
+</head>
+
+<body>
+
+<div class="proto-banner">
+  v3 prototype, scholarly + phylogenetic sidebar. Compare to <a href="../homepage-v2.html">v2</a> and <a href="../index.html">v1</a>.
+</div>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="../homepage-v3.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+    </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="../team-v3.html">Team</a></li>
+          <li><a href="../publications-v3.html">Publications</a></li>
+          <li><a href="../news-v3.html">News</a></li>
+          <li><a href="../calendar-v3.html">Calendar</a></li>
+          <li><a href="../join-v3.html">Join</a></li>
+          <li><a href="../gallery-v3.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="../cures-karyotype-database-v3.html">CUREs karyotypes</a></li>
+          <li><a href="../karyotypes/index-v3.html">Six karyotype DBs</a></li>
+          <li><a href="../epistasis-database-v3.html">Epistasis database</a></li>
+          <li><a href="../tau_database-v3.html">Tau database</a></li>
+          <li><a href="../citation-network-v3.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="../karyotype-v3.html">Karyotype evolution</a></li>
+          <li><a href="../sex-chromosome-evolution-v3.html">Sex chromosomes</a></li>
+          <li><a href="../genome-structure-evolution-v3.html">Genome structure</a></li>
+          <li><a href="../selection-v3.html">Selection &amp; adaptation</a></li>
+          <li><a href="../epistasis-line-cross-v3.html">Epistasis</a></li>
+          <li><a href="../chromosome-evolution-history-v3.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="../coleoptera-genomics-v3.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="../ai-v3.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="../lead-investigator-v3.html">Lead Investigator</a></li>
+          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="../phylo-explorer-v3.html">Tree explorer</a></li>
+          <li><a href="index.html" class="active">PCM guide</a></li>
+          <li><a href="../subpages/popgen-sim-v3.html">Pop-gen simulator</a></li>
+          <li><a href="../subpages/evobir-v3.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="../biolai-cure-v3.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="../subpages/biol682-v3.html">BIOL 682</a></li>
+          <li><a href="../subpages/grad101-v3.html">Grad 101</a></li>
+          <li><a href="../subpages/AI-Tools-v3.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb">
+      <a href="../homepage-v3.html">Home</a> &rsaquo; Tools &rsaquo; <a href="index.html">PCM guide</a> &rsaquo; <strong>Phylogenies</strong>
+    </div>
+
+    <h1 class="title">Phylogenies: trees, branch lengths, and why evolution is not a ladder.</h1>
+
+    <p class="lede">
+      A phylogeny is a branching hypothesis about how species are related. This page walks through how to read one, why layout is irrelevant, what branch lengths actually encode, and why shared ancestry is the reason you cannot run ordinary statistics across species.
+    </p>
+
+    <h2>What is a phylogeny?</h2>
+    <p class="section-text">A phylogeny is a branching diagram showing the evolutionary relationships among species. Each tip represents a living (or extinct) species. Each internal node marks the point at which an ancestral population split into two descendant lineages, a hypothesized speciation event, not a single ancestor individual. The branches connecting them represent time or expected evolutionary change, depending on how the tree was estimated.</p>
+    <p class="section-text">Think of the phylogeny as a family tree of life. Just as your grandparents had children who had children, species have common ancestors. The phylogeny is a hypothesis about how all these ancestors and descendants are related.</p>
+    <p class="section-text">Below is an interactive phylogeny of 15 vertebrate species. Hover over the tips to see the species highlighted, along with its entire ancestral lineage.</p>
+
+    <div class="viz-container">
+      <div class="tree-control">
+        <button class="tree-toggle active" onclick="toggleBranchLengths()" id="lengthToggle">Show branch lengths</button>
+      </div>
+      <div class="d3-tree-container" id="d3TreeContainer"></div>
+    </div>
+
+    <h2>Reading a phylogeny</h2>
+    <p class="section-text">A key insight: the horizontal position of species in a phylogeny does not matter. You can rotate branches around any internal node and get a topology that is logically identical. Below are three different "rotations" of the same six-species tree. They look different, but they show the same relationships.</p>
+
+    <div class="rotations-container">
+      <!-- All three layouts show the same topology: ((A,B),((C,D),(E,F)))
+           Tips at x=240 (layouts 1&2) or y=220 (layout 3, top-down)
+           Internal nodes: AB@(140,40), CD@(160,120), EF@(160,200),
+           CDEF@(100,160), root@(30,100) -->
+
+      <div class="rotation-box">
+        <div class="rotation-title">Layout 1: horizontal</div>
+        <svg class="rotation-svg" viewBox="0 0 280 255">
+          <!-- Branches: M parentX,parentY V childY H childX -->
+          <!-- root(30,100) → AB(140,40) -->
+          <path d="M30,100 V40 H140" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- root(30,100) → CDEF(100,160) -->
+          <path d="M30,100 V160 H100" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- AB(140,40) → A tip(240,20) -->
+          <path d="M140,40 V20 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- AB(140,40) → B tip(240,60) -->
+          <path d="M140,40 V60 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- CDEF(100,160) → CD(160,120) -->
+          <path d="M100,160 V120 H160" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- CDEF(100,160) → EF(160,200) -->
+          <path d="M100,160 V200 H160" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- CD(160,120) → C tip(240,100) -->
+          <path d="M160,120 V100 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- CD(160,120) → D tip(240,140) -->
+          <path d="M160,120 V140 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- EF(160,200) → E tip(240,180) -->
+          <path d="M160,200 V180 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- EF(160,200) → F tip(240,220) -->
+          <path d="M160,200 V220 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+
+          <!-- Internal nodes -->
+          <circle cx="30"  cy="100" r="3" fill="var(--ink-dim)"/>
+          <circle cx="140" cy="40"  r="3" fill="var(--ink-dim)"/>
+          <circle cx="100" cy="160" r="3" fill="var(--ink-dim)"/>
+          <circle cx="160" cy="120" r="3" fill="var(--ink-dim)"/>
+          <circle cx="160" cy="200" r="3" fill="var(--ink-dim)"/>
+
+          <!-- Tips -->
+          <circle cx="240" cy="20"  r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="60"  r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="100" r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="140" r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="180" r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="220" r="5" fill="var(--accent)"/>
+
+          <!-- Labels -->
+          <text x="249" y="24"  font-size="13" fill="var(--ink)" font-style="italic">A</text>
+          <text x="249" y="64"  font-size="13" fill="var(--ink)" font-style="italic">B</text>
+          <text x="249" y="104" font-size="13" fill="var(--ink)" font-style="italic">C</text>
+          <text x="249" y="144" font-size="13" fill="var(--ink)" font-style="italic">D</text>
+          <text x="249" y="184" font-size="13" fill="var(--ink)" font-style="italic">E</text>
+          <text x="249" y="224" font-size="13" fill="var(--ink)" font-style="italic">F</text>
+        </svg>
+        <div class="rotation-note">A &amp; B are sisters. C &amp; D are sisters. E &amp; F are sisters. (CD) and (EF) form a clade.</div>
+      </div>
+
+      <div class="rotation-box">
+        <div class="rotation-title">Layout 2: branches rotated</div>
+        <!-- Same topology, some branches rotated: B on top of A; EF above CD; D above C -->
+        <!-- Tip order: B=20, A=60, E=100, F=140, D=180, C=220 -->
+        <!-- Nodes: BA@(140,40), EF@(160,120), DC@(160,200), EFDC@(100,160), root@(30,100) -->
+        <svg class="rotation-svg" viewBox="0 0 280 255">
+          <!-- root → BA -->
+          <path d="M30,100 V40 H140" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- root → EFDC -->
+          <path d="M30,100 V160 H100" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- BA → B(240,20) -->
+          <path d="M140,40 V20 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- BA → A(240,60) -->
+          <path d="M140,40 V60 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- EFDC → EF(160,120) -->
+          <path d="M100,160 V120 H160" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- EFDC → DC(160,200) -->
+          <path d="M100,160 V200 H160" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- EF → E(240,100) -->
+          <path d="M160,120 V100 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- EF → F(240,140) -->
+          <path d="M160,120 V140 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- DC → D(240,180) -->
+          <path d="M160,200 V180 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- DC → C(240,220) -->
+          <path d="M160,200 V220 H240" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+
+          <!-- Internal nodes -->
+          <circle cx="30"  cy="100" r="3" fill="var(--ink-dim)"/>
+          <circle cx="140" cy="40"  r="3" fill="var(--ink-dim)"/>
+          <circle cx="100" cy="160" r="3" fill="var(--ink-dim)"/>
+          <circle cx="160" cy="120" r="3" fill="var(--ink-dim)"/>
+          <circle cx="160" cy="200" r="3" fill="var(--ink-dim)"/>
+
+          <!-- Tips -->
+          <circle cx="240" cy="20"  r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="60"  r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="100" r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="140" r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="180" r="5" fill="var(--accent)"/>
+          <circle cx="240" cy="220" r="5" fill="var(--accent)"/>
+
+          <!-- Labels, same topology, different arrangement -->
+          <text x="249" y="24"  font-size="13" fill="var(--ink)" font-style="italic">B</text>
+          <text x="249" y="64"  font-size="13" fill="var(--ink)" font-style="italic">A</text>
+          <text x="249" y="104" font-size="13" fill="var(--ink)" font-style="italic">E</text>
+          <text x="249" y="144" font-size="13" fill="var(--ink)" font-style="italic">F</text>
+          <text x="249" y="184" font-size="13" fill="var(--ink)" font-style="italic">D</text>
+          <text x="249" y="224" font-size="13" fill="var(--ink)" font-style="italic">C</text>
+        </svg>
+        <div class="rotation-note">Identical topology, A &amp; B still sisters, (CD) and (EF) still a clade. Branches were just rotated.</div>
+      </div>
+
+      <div class="rotation-box">
+        <div class="rotation-title">Layout 3: top-down</div>
+        <!-- Same topology rotated 90°. Root at top, tips at bottom.
+             Tips at y=220: A=25, B=69, C=113, D=157, E=201, F=245
+             AB@(47,120), CD@(135,150), EF@(223,150), CDEF@(179,80), root@(113,25) -->
+        <svg class="rotation-svg" viewBox="0 0 280 255">
+          <!-- Branches: M parentX,parentY H childX V childY -->
+          <!-- root(113,25) → AB(47,120) -->
+          <path d="M113,25 H47 V120" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- root(113,25) → CDEF(179,80) -->
+          <path d="M113,25 H179 V80" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- AB(47,120) → A(25,220) -->
+          <path d="M47,120 H25 V220" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- AB(47,120) → B(69,220) -->
+          <path d="M47,120 H69 V220" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- CDEF(179,80) → CD(135,150) -->
+          <path d="M179,80 H135 V150" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- CDEF(179,80) → EF(223,150) -->
+          <path d="M179,80 H223 V150" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- CD(135,150) → C(113,220) -->
+          <path d="M135,150 H113 V220" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- CD(135,150) → D(157,220) -->
+          <path d="M135,150 H157 V220" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- EF(223,150) → E(201,220) -->
+          <path d="M223,150 H201 V220" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+          <!-- EF(223,150) → F(245,220) -->
+          <path d="M223,150 H245 V220" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+
+          <!-- Internal nodes -->
+          <circle cx="113" cy="25"  r="3" fill="var(--ink-dim)"/>
+          <circle cx="47"  cy="120" r="3" fill="var(--ink-dim)"/>
+          <circle cx="179" cy="80"  r="3" fill="var(--ink-dim)"/>
+          <circle cx="135" cy="150" r="3" fill="var(--ink-dim)"/>
+          <circle cx="223" cy="150" r="3" fill="var(--ink-dim)"/>
+
+          <!-- Tips -->
+          <circle cx="25"  cy="220" r="5" fill="var(--accent)"/>
+          <circle cx="69"  cy="220" r="5" fill="var(--accent)"/>
+          <circle cx="113" cy="220" r="5" fill="var(--accent)"/>
+          <circle cx="157" cy="220" r="5" fill="var(--accent)"/>
+          <circle cx="201" cy="220" r="5" fill="var(--accent)"/>
+          <circle cx="245" cy="220" r="5" fill="var(--accent)"/>
+
+          <!-- Labels below tips -->
+          <text x="25"  y="238" font-size="13" text-anchor="middle" fill="var(--ink)" font-style="italic">A</text>
+          <text x="69"  y="238" font-size="13" text-anchor="middle" fill="var(--ink)" font-style="italic">B</text>
+          <text x="113" y="238" font-size="13" text-anchor="middle" fill="var(--ink)" font-style="italic">C</text>
+          <text x="157" y="238" font-size="13" text-anchor="middle" fill="var(--ink)" font-style="italic">D</text>
+          <text x="201" y="238" font-size="13" text-anchor="middle" fill="var(--ink)" font-style="italic">E</text>
+          <text x="245" y="238" font-size="13" text-anchor="middle" fill="var(--ink)" font-style="italic">F</text>
+        </svg>
+        <div class="rotation-note">Same topology rotated 90°. Root at top, time runs downward. All relationships identical to layouts 1 &amp; 2.</div>
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="example-label">Key point</div>
+      <p class="section-text" style="margin: 0;">What matters in a phylogeny is <span class="highlight-text">which species are nested within which clades</span>. The visual layout is irrelevant. A and B can be on the left or right, at the top or bottom. What matters is that they share a most recent common ancestor that is not shared with C, D, E, or F.</p>
+    </div>
+
+    <h2>Branch lengths</h2>
+    <p class="section-text">In some phylogenies, the length of branches encodes information about evolutionary time or the amount of change. A long branch means more time has passed, or more genetic change has accumulated. A short branch means the lineages diverged recently.</p>
+    <p class="section-text">This distinction is crucial. A <span class="highlight-text">cladogram</span> shows topology but ignores branch lengths. A <span class="highlight-text">chronogram</span> or <span class="highlight-text">phylogram</span> uses branch length to encode meaningful information.</p>
+
+    <div class="viz-container">
+      <!-- Chronogram: 5-taxon vertebrate tree
+           x=80 = 500 mya (root), x=820 = 0 mya (present), scale = 1.48 px/mya
+           Tips y: Fish=70, Frog=160, Lizard=250, Croc=340, Human=430
+           Nodes (x=time-position, y=midpoint of descendant tip range):
+             Root(80, 250), Tetrapod(265, 295), LizCrocHuman(361, 340), CrocHuman(450, 385)
+           Paths: M node.x,node.y  V child.y  H child.x   (shoulder at node.x) -->
+      <svg class="branch-length-svg" viewBox="0 0 960 520">
+        <!-- Title -->
+        <text x="480" y="28" text-anchor="middle" font-size="15" fill="var(--ink)" font-weight="600">Vertebrate chronogram: branch length = evolutionary time</text>
+
+        <!-- === BRANCHES (shoulder at parent x, then horizontal to child) === -->
+        <!-- Root(80,250) → Fish(820,70) -->
+        <path d="M80,250 V70 H820"  stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+        <!-- Root(80,250) → Tetrapod(265,295) -->
+        <path d="M80,250 V295 H265" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+        <!-- Tetrapod(265,295) → Frog(820,160) -->
+        <path d="M265,295 V160 H820" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+        <!-- Tetrapod(265,295) → LizCrocHuman(361,340) -->
+        <path d="M265,295 V340 H361" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+        <!-- LizCrocHuman(361,340) → Lizard(820,250) -->
+        <path d="M361,340 V250 H820" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+        <!-- LizCrocHuman(361,340) → CrocHuman(450,385) -->
+        <path d="M361,340 V385 H450" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+        <!-- CrocHuman(450,385) → Croc(820,340) -->
+        <path d="M450,385 V340 H820" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+        <!-- CrocHuman(450,385) → Human(820,430) -->
+        <path d="M450,385 V430 H820" stroke="var(--ink-dim)" stroke-width="2" fill="none"/>
+
+        <!-- === INTERNAL NODES === -->
+        <circle cx="80"  cy="250" r="4" fill="var(--ink-dim)"/>
+        <circle cx="265" cy="295" r="4" fill="var(--ink-dim)"/>
+        <circle cx="361" cy="340" r="4" fill="var(--ink-dim)"/>
+        <circle cx="450" cy="385" r="4" fill="var(--ink-dim)"/>
+
+        <!-- === TIP NODES === -->
+        <circle cx="820" cy="70"  r="5" fill="var(--accent)"/>
+        <circle cx="820" cy="160" r="5" fill="var(--accent)"/>
+        <circle cx="820" cy="250" r="5" fill="var(--accent)"/>
+        <circle cx="820" cy="340" r="5" fill="var(--accent)"/>
+        <circle cx="820" cy="430" r="5" fill="var(--accent)"/>
+
+        <!-- === TIP LABELS === -->
+        <text x="830" y="74"  font-size="13" fill="var(--ink)" font-style="italic">Fish</text>
+        <text x="830" y="164" font-size="13" fill="var(--ink)" font-style="italic">Frog</text>
+        <text x="830" y="254" font-size="13" fill="var(--ink)" font-style="italic">Lizard</text>
+        <text x="830" y="344" font-size="13" fill="var(--ink)" font-style="italic">Crocodile</text>
+        <text x="830" y="434" font-size="13" fill="var(--ink)" font-style="italic">Human</text>
+
+        <!-- === NODE AGE LABELS (above node, at node's x) === -->
+        <text x="80"  y="45"  text-anchor="middle" font-size="10" fill="var(--ink-dim)">~500 mya</text>
+        <text x="265" y="45"  text-anchor="middle" font-size="10" fill="var(--ink-dim)">~375 mya</text>
+        <text x="361" y="45"  text-anchor="middle" font-size="10" fill="var(--ink-dim)">~310 mya</text>
+        <text x="450" y="45"  text-anchor="middle" font-size="10" fill="var(--ink-dim)">~250 mya</text>
+        <!-- dashed vertical guides from age labels to axis -->
+        <line x1="80"  y1="50" x2="80"  y2="456" stroke="var(--ink-dim)" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+        <line x1="265" y1="50" x2="265" y2="456" stroke="var(--ink-dim)" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+        <line x1="361" y1="50" x2="361" y2="456" stroke="var(--ink-dim)" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+        <line x1="450" y1="50" x2="450" y2="456" stroke="var(--ink-dim)" stroke-width="1" stroke-dasharray="4,4" opacity="0.35"/>
+
+        <!-- === TIME AXIS === -->
+        <line x1="80" y1="458" x2="820" y2="458" stroke="var(--ink-dim)" stroke-width="2"/>
+
+        <!-- Tick at 500 mya (x=80) -->
+        <line x1="80"  y1="453" x2="80"  y2="463" stroke="var(--ink-dim)" stroke-width="1.5"/>
+        <text x="80"  y="476" text-anchor="middle" font-size="11" fill="var(--ink-dim)">500</text>
+        <!-- Tick at 400 mya (x=228) -->
+        <line x1="228" y1="453" x2="228" y2="463" stroke="var(--ink-dim)" stroke-width="1.5"/>
+        <text x="228" y="476" text-anchor="middle" font-size="11" fill="var(--ink-dim)">400</text>
+        <!-- Tick at 300 mya (x=376) -->
+        <line x1="376" y1="453" x2="376" y2="463" stroke="var(--ink-dim)" stroke-width="1.5"/>
+        <text x="376" y="476" text-anchor="middle" font-size="11" fill="var(--ink-dim)">300</text>
+        <!-- Tick at 200 mya (x=524) -->
+        <line x1="524" y1="453" x2="524" y2="463" stroke="var(--ink-dim)" stroke-width="1.5"/>
+        <text x="524" y="476" text-anchor="middle" font-size="11" fill="var(--ink-dim)">200</text>
+        <!-- Tick at 100 mya (x=672) -->
+        <line x1="672" y1="453" x2="672" y2="463" stroke="var(--ink-dim)" stroke-width="1.5"/>
+        <text x="672" y="476" text-anchor="middle" font-size="11" fill="var(--ink-dim)">100</text>
+        <!-- Tick at present (x=820) -->
+        <line x1="820" y1="453" x2="820" y2="463" stroke="var(--ink-dim)" stroke-width="1.5"/>
+        <text x="820" y="476" text-anchor="middle" font-size="11" fill="var(--ink-dim)">0</text>
+
+        <!-- Axis title -->
+        <text x="450" y="498" text-anchor="middle" font-size="12" fill="var(--ink-dim)">Millions of years ago (mya)</text>
+      </svg>
+    </div>
+
+    <p class="section-text">In the chronogram above, the horizontal axis represents time. The branch leading to Fish is the longest because it diverged from the other vertebrates around 500 million years ago. Humans and Chimpanzees share a much more recent common ancestor, so the branches separating them are shorter.</p>
+
+    <h2>Why phylogenies matter for statistics</h2>
+    <p class="section-text">Here is a critical problem that motivates phylogenetic comparative methods: if you study 1000 species of beetles, you do not have 1000 independent observations. If 500 of those species are sisters (they share a most recent common ancestor that lived 2 million years ago), then those 500 species are not independent. They inherited many traits from their common ancestor.</p>
+    <p class="section-text">This is the problem of <span class="highlight-text">phylogenetic non-independence</span>. When you analyze traits across species, you must account for the fact that species are related by descent. Otherwise, you violate the assumption of independence that underlies standard statistical tests.</p>
+
+    <div class="example-box">
+      <div class="example-label">Example</div>
+      <p class="section-text" style="margin: 0;">Imagine you want to test whether body size predicts home range across 100 carnivore species. If you use linear regression, you assume the 100 data points are independent. But suppose 50 species are recently evolved lion relatives. They inherited similar body sizes and home ranges from their common ancestor. Now your sample size is effectively much smaller than 100.</p>
+    </div>
+
+    <p class="section-text">The phylogeny gives you the structure to correct for this non-independence. By accounting for the shared ancestry among species, phylogenetic comparative methods let you extract the evolutionary signal from the phylogenetic noise.</p>
+
+    <h2>How phylogenies are built</h2>
+    <p class="section-text">Phylogenies are not observed directly. They are inferred from genetic data (DNA sequences), morphological characters (body shape, skeletal features), or a combination of both. The most common method is <span class="highlight-text">maximum likelihood (ML)</span>, which finds the tree that makes your data most probable under a statistical model of evolution.</p>
+    <p class="section-text">Another popular approach is <span class="highlight-text">Bayesian inference</span>, which uses Bayes' theorem to calculate a probability distribution over all possible trees. Both methods account for uncertainty in the tree topology.</p>
+    <p class="section-text">For the purposes of comparative methods, the key insight is this: the phylogeny you use is an estimate, not a fact. It comes with uncertainty. Some internal branches may be poorly supported. Good practice includes checking the support values (bootstrap percentages in ML, posterior probabilities in Bayesian methods) and sometimes using methods that account for topological uncertainty.</p>
+    <p class="section-text">Two cautions on tree interpretation that catch many practitioners. (1) <strong>Branch lengths can mean different things.</strong> A <em>chronogram</em> has branch lengths in units of time (calendar years, MYA); a <em>phylogram</em> from a substitution-rate analysis has branch lengths in units of <em>expected number of substitutions per site</em>. They are not interchangeable. Using a phylogram where comparative methods expect a chronogram (or vice versa) silently biases every downstream result. (2) <strong>Bootstrap and posterior probability are not on the same scale.</strong> A clade with bootstrap = 80% does not have posterior probability &asymp; 0.80; the two measure different things and behave differently with informative-but-conflicting data. Don't mix them. Comparative methods today often integrate over a posterior sample of trees rather than fixing a single point estimate. That propagates topological and branch-length uncertainty into the final inference (Felsenstein 1985, <em>Am. Nat.</em> 125:1&ndash;15, the foundational paper).</p>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+    <script>
+    // 15-taxon vertebrate phylogeny with branch lengths (divergence times in mya)
+    // Topology is a rooted Newick-style tree. Divergence ages are approximate.
+    (function () {
+      var tree = {
+        name: "root", age: 615, children: [
+          { name: "Lamprey", age: 0 },
+          { name: "Gnathostomes", age: 473, children: [
+            { name: "Shark", age: 0 },
+            { name: "Osteichthyes", age: 435, children: [
+              { name: "Zebrafish", age: 0 },
+              { name: "Sarcopterygii", age: 410, children: [
+                { name: "Coelacanth", age: 0 },
+                { name: "Tetrapoda", age: 360, children: [
+                  { name: "Amphibia", age: 265, children: [
+                    { name: "Frog", age: 0 },
+                    { name: "Salamander", age: 0 }
+                  ]},
+                  { name: "Amniota", age: 320, children: [
+                    { name: "Mammalia", age: 177, children: [
+                      { name: "Platypus", age: 0 },
+                      { name: "Theria", age: 160, children: [
+                        { name: "Kangaroo", age: 0 },
+                        { name: "Placentalia", age: 96, children: [
+                          { name: "Mouse", age: 0 },
+                          { name: "Primates", age: 7, children: [
+                            { name: "Chimp", age: 0 },
+                            { name: "Human", age: 0 }
+                          ]}
+                        ]}
+                      ]}
+                    ]},
+                    { name: "Reptilia", age: 280, children: [
+                      { name: "Turtle", age: 0 },
+                      { name: "Archosauria", age: 240, children: [
+                        { name: "Crocodile", age: 0 },
+                        { name: "Chicken", age: 0 }
+                      ]}
+                    ]}
+                  ]}
+                ]}
+              ]}
+            ]}
+          ]}
+        ]
+      };
+
+      // Assign an index to each tip in display order (depth-first, left-to-right).
+      var tipIndex = 0;
+      function indexNode(node) {
+        if (!node.children) { node.tipIndex = tipIndex++; return; }
+        node.children.forEach(indexNode);
+      }
+      indexNode(tree);
+
+      // Compute y (row) and both x variants for every node.
+      // yRow: tip = tipIndex; internal = mean of child yRows.
+      // xClado: scaled by node depth in edges (tips at rightmost column).
+      // xPhylo: scaled by node age (root at left, tips at x=1, present day).
+      var nTips = tipIndex;
+      var maxDepth = 0;
+      function computeDepth(node, d) {
+        node.depth = d;
+        if (d > maxDepth) maxDepth = d;
+        if (node.children) node.children.forEach(function (c) { computeDepth(c, d + 1); });
+      }
+      computeDepth(tree, 0);
+
+      var rootAge = tree.age; // 615 in this tree
+      function computeCoords(node) {
+        if (node.children) {
+          node.children.forEach(computeCoords);
+          var ys = node.children.map(function (c) { return c.yRow; });
+          node.yRow = (Math.min.apply(null, ys) + Math.max.apply(null, ys)) / 2;
+        } else {
+          node.yRow = node.tipIndex;
+        }
+        // cladogram x: tips go to rightmost column, internals by depth
+        node.xClado = node.children ? node.depth / (maxDepth + 1) : 1;
+        // phylogram x: proportional to time before present
+        // root at age=615 mya sits at x=0, present day (age=0) at x=1
+        node.xPhylo = 1 - (node.age / rootAge);
+      }
+      computeCoords(tree);
+
+      // Collect every tip and every parent-child edge in arrays for rendering.
+      var tips = [];
+      var edges = [];
+      function collect(node, parent) {
+        if (parent) edges.push({ parent: parent, child: node });
+        if (!node.children) tips.push(node);
+        else node.children.forEach(function (c) { collect(c, node); });
+      }
+      collect(tree, null);
+
+      // SVG layout
+      var W = 900, H = 560;
+      var padL = 40, padR = 180, padT = 30, padB = 30;
+      var innerW = W - padL - padR;
+      var innerH = H - padT - padB;
+      var rowStep = innerH / Math.max(1, nTips - 1);
+      function xpx(xUnit) { return padL + xUnit * innerW; }
+      function ypx(yRow)  { return padT + yRow * rowStep; }
+
+      var container = document.getElementById("d3TreeContainer");
+      if (!container) return;
+
+      var svgNS = "http://www.w3.org/2000/svg";
+      var svg = document.createElementNS(svgNS, "svg");
+      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("height", "auto");
+      svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      svg.style.display = "block";
+      container.appendChild(svg);
+
+      // Build edge paths (one per parent-child pair). Store the two key coords
+      // as data attributes so we can redraw cheaply on toggle.
+      var edgePaths = [];
+      edges.forEach(function (e) {
+        var path = document.createElementNS(svgNS, "path");
+        path.setAttribute("class", "link");
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", "var(--ink-dim)");
+        path.setAttribute("stroke-width", "2");
+        path.dataset.parent = e.parent.name;
+        path.dataset.child = e.child.name;
+        svg.appendChild(path);
+        edgePaths.push({ el: path, parent: e.parent, child: e.child });
+      });
+
+      // Tip circles + labels; internal node dots.
+      var tipCircles = [];
+      tips.forEach(function (t) {
+        var c = document.createElementNS(svgNS, "circle");
+        c.setAttribute("r", "5");
+        c.setAttribute("class", "node tip");
+        c.setAttribute("fill", "var(--accent)");
+        c.dataset.tip = t.name;
+        svg.appendChild(c);
+        var label = document.createElementNS(svgNS, "text");
+        label.setAttribute("font-size", "13");
+        label.setAttribute("fill", "var(--ink)");
+        label.setAttribute("font-style", "italic");
+        label.setAttribute("dominant-baseline", "middle");
+        label.textContent = t.name;
+        label.dataset.tip = t.name;
+        svg.appendChild(label);
+        tipCircles.push({ circle: c, label: label, node: t });
+      });
+
+      var internalDots = [];
+      function collectInternal(node) {
+        if (!node.children) return;
+        var d = document.createElementNS(svgNS, "circle");
+        d.setAttribute("r", "3");
+        d.setAttribute("fill", "var(--ink-dim)");
+        d.setAttribute("class", "node internal");
+        svg.appendChild(d);
+        internalDots.push({ dot: d, node: node });
+        node.children.forEach(collectInternal);
+      }
+      collectInternal(tree);
+
+      // For each tip, precompute its ancestral chain (for hover highlight).
+      function ancestryOf(tipName) {
+        var chain = [];
+        function walk(node, path) {
+          if (node.name === tipName && !node.children) {
+            chain = path.concat([node]);
+            return true;
+          }
+          if (!node.children) return false;
+          for (var i = 0; i < node.children.length; i++) {
+            if (walk(node.children[i], path.concat([node]))) return true;
+          }
+          return false;
+        }
+        walk(tree, []);
+        return chain;
+      }
+
+      // Hover behavior: highlight edges on the path from root to the hovered tip.
+      tipCircles.forEach(function (tc) {
+        function enter() {
+          var chain = ancestryOf(tc.node.name);
+          var nameSet = {};
+          for (var i = 0; i < chain.length; i++) nameSet[chain[i].name] = true;
+          edgePaths.forEach(function (ep) {
+            if (nameSet[ep.parent.name] && nameSet[ep.child.name]) {
+              ep.el.setAttribute("class", "link highlight");
+              ep.el.setAttribute("stroke", "var(--accent)");
+              ep.el.setAttribute("stroke-width", "3");
+            }
+          });
+        }
+        function leave() {
+          edgePaths.forEach(function (ep) {
+            ep.el.setAttribute("class", "link");
+            ep.el.setAttribute("stroke", "var(--ink-dim)");
+            ep.el.setAttribute("stroke-width", "2");
+          });
+        }
+        tc.circle.addEventListener("mouseenter", enter);
+        tc.circle.addEventListener("mouseleave", leave);
+        tc.label.addEventListener("mouseenter", enter);
+        tc.label.addEventListener("mouseleave", leave);
+        tc.circle.style.cursor = "pointer";
+        tc.label.style.cursor = "pointer";
+      });
+
+      // Current mode: false = cladogram (default), true = phylogram
+      var showBranchLengths = false;
+
+      function layout() {
+        function xOf(node) {
+          return showBranchLengths ? xpx(node.xPhylo) : xpx(node.xClado);
+        }
+        // Edges: elbow path, shoulder at parent's x then horizontal to child x
+        edgePaths.forEach(function (ep) {
+          var px = xOf(ep.parent), py = ypx(ep.parent.yRow);
+          var cx = xOf(ep.child),  cy = ypx(ep.child.yRow);
+          ep.el.setAttribute("d", "M" + px + "," + py + " V" + cy + " H" + cx);
+        });
+        // Tips and labels
+        tipCircles.forEach(function (tc) {
+          var cx = xOf(tc.node);
+          var cy = ypx(tc.node.yRow);
+          tc.circle.setAttribute("cx", cx);
+          tc.circle.setAttribute("cy", cy);
+          tc.label.setAttribute("x", cx + 9);
+          tc.label.setAttribute("y", cy);
+        });
+        // Internal node dots
+        internalDots.forEach(function (d) {
+          d.dot.setAttribute("cx", xOf(d.node));
+          d.dot.setAttribute("cy", ypx(d.node.yRow));
+        });
+      }
+
+      // Initial draw
+      layout();
+
+      // Expose toggle to the global scope so the inline onclick can find it.
+      window.toggleBranchLengths = function () {
+        showBranchLengths = !showBranchLengths;
+        layout();
+        var btn = document.getElementById("lengthToggle");
+        if (btn) {
+          btn.textContent = showBranchLengths ? "Hide branch lengths" : "Show branch lengths";
+          btn.classList.toggle("active", showBranchLengths);
+        }
+      };
+
+      // Make sure the button starts in the correct initial state (cladogram view).
+      var btn = document.getElementById("lengthToggle");
+      if (btn) {
+        btn.textContent = "Show branch lengths";
+        btn.classList.remove("active");
+      }
+    })();
+    </script>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="../assets/js/v3.js"></script>
+</body>
+</html>

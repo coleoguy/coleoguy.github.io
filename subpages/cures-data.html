@@ -1,290 +1,443 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta name="author" content="Heath Blackmon">
-  <title>How To Wrangle a Bunch of Data - Blackmon Lab</title>
-  <meta name="description" content="An R tutorial on reading, merging, filtering, and visualizing data from multiple CSV files. Blackmon Lab, Texas A&M University.">
-    <meta property="og:title" content="How To Wrangle a Bunch of Data - Blackmon Lab" />
-    <meta property="og:description" content="An R tutorial on reading, merging, filtering, and visualizing data from multiple CSV files. Blackmon Lab, Texas A&amp;M University." />
-    <meta property="og:url" content="https://coleoguy.github.io/subpages/cures-data.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="R, data wrangling, ggplot2, CSV, tutorial, Blackmon Lab, Texas A&M">
-  <link rel="canonical" href="https://coleoguy.github.io/subpages/cures-data.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wrangling CUREs data · Blackmon Lab</title>
+<meta name="description" content="An R tutorial on reading, merging, filtering, and visualizing karyotype data from many CSV files, written for CUREs students. Blackmon Lab, Texas A&amp;M University.">
+<link rel="icon" href="../assets/img/favicon.ico">
 
-  <!-- Open Graph -->
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
+<link rel="stylesheet" href="../assets/css/v3.css">
 
-  <link href="../assets/img/favicon.ico" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<style>
+  /* ── CUREs data tutorial (v3 scoped styles) ────────────────── */
 
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  .tut-toc {
+    margin-bottom: 28px;
+    padding: 16px 20px;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .tut-toc .tut-toc-head {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .tut-toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    columns: 1;
+    column-gap: 32px;
+  }
+  @media (min-width: 700px) { .tut-toc ul { columns: 2; } }
+  .tut-toc li { margin-bottom: 4px; font-size: 0.92rem; }
+  .tut-toc a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  .tut-toc a:hover { color: var(--accent); }
 
-  <link href="../assets/css/main.css" rel="stylesheet">
+  .tut-code {
+    background: var(--paper-sunk);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    overflow-x: auto;
+    margin: 14px 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink);
+    line-height: 1.55;
+    white-space: pre;
+  }
+  .tut-code.output {
+    border-left-color: var(--ink-faint);
+    color: var(--ink-dim);
+    font-size: 0.8rem;
+  }
+  .tut-code code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+  }
 
-  <style>
-    /* Code block styling */
-    pre {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 12px 16px;
-      color: var(--text);
-      overflow-x: auto;
-    }
-    code {
-      background: var(--bg-card);
-      color: var(--accent);
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-family: var(--font-mono);
-    }
-    pre code {
-      background: none;
-      color: var(--text);
-      padding: 0;
-    }
-    .hljs-literal { color: #990073; }
-    .hljs-number { color: #099; }
-    .hljs-comment { color: #998; font-style: italic; }
-    .hljs-keyword { color: #900; font-weight: bold; }
-    .hljs-string { color: #d14; }
+  p code, li code {
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
 
-    /* Table styling */
-    .table { color: var(--text); border-color: var(--border); }
-    .table thead th { border-color: var(--border); color: var(--text-heading); background-color: var(--bg-card); }
-    .table tbody td { border-color: var(--border); }
-    .table tbody tr:hover { background-color: var(--bg-card); }
+  .tut-fig {
+    margin: 18px 0;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .tut-fig img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  .tut-fig .caption {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+    margin-top: 8px;
+  }
 
-    /* Figure captions */
-    .figure { margin: 24px 0; }
-    .figure img { max-width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--border); }
-    .figure .caption { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
+  .tut-section h3 {
+    font-family: var(--font-text);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 30px 0 10px;
+  }
+  .tut-section h4 {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 20px 0 8px;
+  }
 
-    /* TOC styling */
-    #TOC { margin-bottom: 32px; padding: 18px 22px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
-    #TOC ul { list-style: none; padding-left: 0; margin: 0; }
-    #TOC li { margin-bottom: 6px; }
-    #TOC a { color: var(--text-secondary); font-size: 0.9rem; }
-    #TOC a:hover { color: var(--accent); }
-  </style>
+  .tut-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 18px 0;
+  }
+  .tut-table th {
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--paper-raised);
+    border-bottom: 1px solid var(--rule-strong);
+    text-align: left;
+  }
+  .tut-table th.num, .tut-table td.num { text-align: right; font-family: var(--font-mono); }
+  .tut-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+  }
+  .tut-table tr:last-child td { border-bottom: none; }
+  .tut-table tr:hover td { background: var(--accent-dim); }
+
+  .tut-byline {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin-top: 4px;
+    margin-bottom: 24px;
+  }
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
 </head>
 
 <body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../research.html">Research</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../resources.html" class="active">Resources</a></li>
-          <li><a href="../ai.html">AI</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../news.html">News</a></li>
-          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
 
-  <main class="main">
-    <section class="page-header section">
-      <div class="container" data-aos="fade-up">
-        <h1>How To Wrangle a Bunch of Data</h1>
-        <p>By Heath Blackmon</p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-8">
-
-<div id="TOC">
-<ul>
-<li><a href="#reading-files-into-r">Reading files into R</a></li>
-<li><a href="#reading-the-data">Reading the data</a></li>
-<li><a href="#data-munging">Data Munging</a></li>
-<li><a href="#plotting">Plotting</a></li>
-<li><a href="#visualizations">Visualizations</a></li>
-<li><a href="#final-thoughts">Final thoughts</a></li>
-</ul>
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
 </div>
 
-<div id="reading-files-into-r" class="section level1">
-<h1>Reading files into R</h1>
-<p>Lets say you have a bunch of data files you want to read into one data frame. This is the first step.</p>
-<pre class="r"><code># Get list of all CSV files in directory
-file_list &lt;- list.files(path = &quot;./&quot;, pattern = &quot;\\.csv$&quot;, full.names = TRUE)
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="../index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+    </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../news.html">News</a></li>
+          <li><a href="../calendar.html">Calendar</a></li>
+          <li><a href="../join.html">Join</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="../cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="../karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="../epistasis-database.html">Epistasis database</a></li>
+          <li><a href="../tau_database.html">Tau database</a></li>
+          <li><a href="../citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="../karyotype.html">Karyotype evolution</a></li>
+          <li><a href="../sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="../genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="../selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="../epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="../chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="../coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="../ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="../lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="../phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="../phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="popgen-sim.html" target="_blank">Pop-gen simulator</a></li>
+          <li><a href="evobir.html" target="_blank">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="../biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="biol682.html" target="_blank">BIOL 682</a></li>
+          <li><a href="grad101.html" target="_blank">Grad 101</a></li>
+          <li><a href="AI-Tools.html" target="_blank">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb">
+      <a href="../index.html">Home</a> › Databases › <strong>CUREs data</strong>
+    </div>
+
+    <h1 class="title" id="cures-data">How to wrangle a bunch of data.</h1>
+    <p class="tut-byline">By Heath Blackmon</p>
+
+    <p class="lede">
+      A short tutorial for CUREs students on taking a folder of messy CSV files, loading them into R, joining them into a single data frame, filtering out bad rows, and then running through six ways to visualize the same data. The point is not the plots themselves. The point is that once the loop exists, any number of new files can be dropped into the folder and everything downstream still works.
+    </p>
+
+    <div class="tut-toc">
+      <div class="tut-toc-head">In this tutorial</div>
+      <ul>
+        <li><a href="#reading-files-into-r">Reading files into R</a></li>
+        <li><a href="#reading-the-data">Reading the data</a></li>
+        <li><a href="#data-munging">Data munging</a></li>
+        <li><a href="#plotting">Plotting</a></li>
+        <li><a href="#visualizations">Summary table</a></li>
+        <li><a href="#final-thoughts">Final thoughts</a></li>
+      </ul>
+    </div>
+
+    <div class="tut-section" id="reading-files-into-r">
+      <h3>Reading files into R</h3>
+      <p>Let's say you have a bunch of data files you want to read into one data frame. This is the first step.</p>
+      <div class="tut-code"># Get list of all CSV files in directory
+file_list &lt;- list.files(path = "./", pattern = "\\.csv$", full.names = TRUE)
 
 # Initialize list to store data
-all_data &lt;- list()</code></pre>
-</div>
-<div id="reading-the-data" class="section level2">
-<h2>Reading the data</h2>
-<p>Lets write a loop that will work its way through each file.</p>
-<pre class="r"><code># Loop through each file
+all_data &lt;- list()</div>
+    </div>
+
+    <div class="tut-section" id="reading-the-data">
+      <h3>Reading the data</h3>
+      <p>Let's write a loop that will work its way through each file.</p>
+      <div class="tut-code"># Loop through each file
 for (file in file_list) {
   df &lt;- read.csv(file)
-  if (!&quot;haploid&quot; %in% names(df)) {
-    cat(&quot;Missing &#39;haploid&#39; column in:&quot;, basename(file), &quot;\n&quot;)
+  if (!"haploid" %in% names(df)) {
+    cat("Missing 'haploid' column in:", basename(file), "\n")
     next
   }
   file_name &lt;- tools::file_path_sans_ext(basename(file))
   temp_df &lt;- data.frame(file = file_name, haploid = df$haploid)
   all_data[[length(all_data) + 1]] &lt;- temp_df
-}</code></pre>
-</div>
-<div id="data-munging" class="section level2">
-<h2>Data Munging</h2>
-<p>Now we need to get our data in order</p>
-<pre class="r"><code>final_df &lt;- do.call(rbind, all_data)
-drop &lt;- !is.na(as.numeric(final_df$haploid))</code></pre>
-<pre><code>## Warning: NAs introduced by coercion</code></pre>
-<pre class="r"><code>final_df &lt;- final_df[drop,]
-final_df$haploid &lt;- as.numeric(final_df$haploid)</code></pre>
-</div>
-<div id="plotting" class="section level2">
-<h2>Plotting</h2>
-<p>These are all bad examples but you could use them as starting points</p>
-<pre class="r"><code># 1) Boxplot + jitter (good for comparing distributions across files)
+}</div>
+    </div>
+
+    <div class="tut-section" id="data-munging">
+      <h3>Data munging</h3>
+      <p>Now we need to get our data in order.</p>
+      <div class="tut-code">final_df &lt;- do.call(rbind, all_data)
+drop &lt;- !is.na(as.numeric(final_df$haploid))</div>
+      <div class="tut-code output">## Warning: NAs introduced by coercion</div>
+      <div class="tut-code">final_df &lt;- final_df[drop,]
+final_df$haploid &lt;- as.numeric(final_df$haploid)</div>
+    </div>
+
+    <div class="tut-section" id="plotting">
+      <h3>Plotting</h3>
+      <p>These are all bad examples, but you could use them as starting points.</p>
+
+      <div class="tut-code"># 1) Boxplot + jitter (good for comparing distributions across files)
 ggplot(final_df, aes(x = reorder(file, haploid, median, na.rm = TRUE), y = haploid)) +
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(width = 0.15, alpha = 0.5, size = 1) +
   coord_flip() +
-  labs(x = &quot;file&quot;, y = &quot;haploid&quot;, title = &quot;Boxplot + jitter by file&quot;) +
-  theme_minimal()</code></pre>
-<pre><code>## `geom_boxplot()` removes missing values</code></pre>
-<div class="figure">
-<img src="cures-data_files/figure-html/unnamed-chunk-4-1.png" alt="Boxplot with jitter of haploid numbers by file" width="576" height="384" />
-</div>
-<pre class="r"><code># 2) Density plot (good for looking at distribution shape)
+  labs(x = "file", y = "haploid", title = "Boxplot + jitter by file") +
+  theme_minimal()</div>
+      <div class="tut-code output">## `geom_boxplot()` removes missing values</div>
+      <div class="tut-fig">
+        <img src="cures-data_files/figure-html/unnamed-chunk-4-1.png" alt="Boxplot with jitter of haploid numbers by file" width="576" height="384">
+      </div>
+
+      <div class="tut-code"># 2) Density plot (good for looking at distribution shape)
 ggplot(final_df, aes(x = haploid, fill = file)) +
   geom_density(alpha = 0.6) +
-  labs(x = &quot;haploid&quot;, y = &quot;Density&quot;, title = &quot;Density plot by file&quot;, fill = &quot;File&quot;) +
-  theme_minimal()</code></pre>
-<pre><code>## Warning: Groups with fewer than two observations have been dropped</code></pre>
-<div class="figure">
-<img src="cures-data_files/figure-html/unnamed-chunk-4-2.png" alt="Density plot of haploid numbers by file" width="576" height="384" />
-</div>
-<pre class="r"><code># 3) Violin plot (like a box plot but shows distribution)
+  labs(x = "haploid", y = "Density", title = "Density plot by file", fill = "File") +
+  theme_minimal()</div>
+      <div class="tut-code output">## Warning: Groups with fewer than two observations have been dropped</div>
+      <div class="tut-fig">
+        <img src="cures-data_files/figure-html/unnamed-chunk-4-2.png" alt="Density plot of haploid numbers by file" width="576" height="384">
+      </div>
+
+      <div class="tut-code"># 3) Violin plot (like a box plot but shows distribution)
 ggplot(final_df, aes(x = reorder(file, haploid, median, na.rm = TRUE), y = haploid)) +
   geom_violin() +
   geom_jitter(width = 0.1, alpha = 0.5, size = 1) +
   coord_flip() +
-  labs(x = &quot;file&quot;, y = &quot;haploid&quot;, title = &quot;Violin plot by file&quot;) +
-  theme_minimal()</code></pre>
-<pre><code>## `geom_violin()` removes missing values</code></pre>
-<div class="figure">
-<img src="cures-data_files/figure-html/unnamed-chunk-4-3.png" alt="Violin plot of haploid numbers by file" width="576" height="384" />
-</div>
-<pre class="r"><code># 4) Histogram faceted by file
-ggplot(final_df, aes(x = haploid, fill = &quot;#FF6B6B&quot;)) +
+  labs(x = "file", y = "haploid", title = "Violin plot by file") +
+  theme_minimal()</div>
+      <div class="tut-code output">## `geom_violin()` removes missing values</div>
+      <div class="tut-fig">
+        <img src="cures-data_files/figure-html/unnamed-chunk-4-3.png" alt="Violin plot of haploid numbers by file" width="576" height="384">
+      </div>
+
+      <div class="tut-code"># 4) Histogram faceted by file
+ggplot(final_df, aes(x = haploid, fill = "#FF6B6B")) +
   geom_histogram(bins = 20) +
   facet_wrap(~ file) +
-  labs(x = &quot;haploid&quot;, y = &quot;Count&quot;, title = &quot;Histogram by file&quot;) +
+  labs(x = "haploid", y = "Count", title = "Histogram by file") +
   theme_minimal() +
-  theme(legend.position = &quot;none&quot;)</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="figure">
-<img src="cures-data_files/figure-html/unnamed-chunk-4-4.png" alt="Histogram of haploid numbers faceted by file" width="576" height="384" />
-</div>
-<pre class="r"><code># 5) Cumulative distribution
+  theme(legend.position = "none")</div>
+      <div class="tut-code output">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</div>
+      <div class="tut-fig">
+        <img src="cures-data_files/figure-html/unnamed-chunk-4-4.png" alt="Histogram of haploid numbers faceted by file" width="576" height="384">
+      </div>
+
+      <div class="tut-code"># 5) Cumulative distribution
 ggplot(final_df, aes(x = haploid, color = file)) +
   stat_ecdf() +
-  labs(x = &quot;haploid&quot;, y = &quot;Cumulative probability&quot;, title = &quot;Cumulative distribution by file&quot;, color = &quot;File&quot;) +
-  theme_minimal()</code></pre>
-<div class="figure">
-<img src="cures-data_files/figure-html/unnamed-chunk-4-5.png" alt="Cumulative distribution of haploid numbers by file" width="576" height="384" />
-</div>
-<pre class="r"><code># 6) Ridge plot using ggridges (good for looking at distributions across groups)
+  labs(x = "haploid", y = "Cumulative probability", title = "Cumulative distribution by file", color = "File") +
+  theme_minimal()</div>
+      <div class="tut-fig">
+        <img src="cures-data_files/figure-html/unnamed-chunk-4-5.png" alt="Cumulative distribution of haploid numbers by file" width="576" height="384">
+      </div>
+
+      <div class="tut-code"># 6) Ridge plot using ggridges (good for looking at distributions across groups)
 ggplot(final_df, aes(x = haploid, y = file, fill = after_stat(x))) +
   ggridges::geom_density_ridges_gradient() +
-  labs(x = &quot;haploid&quot;, title = &quot;Ridge plot by file&quot;, fill = &quot;haploid&quot;) +
+  labs(x = "haploid", title = "Ridge plot by file", fill = "haploid") +
   theme_minimal() +
-  theme(axis.title.y = element_blank())</code></pre>
-<div class="figure">
-<img src="cures-data_files/figure-html/unnamed-chunk-4-6.png" alt="Ridge plot of haploid numbers by file" width="576" height="384" />
-</div>
-</div>
-<div id="visualizations" class="section level2">
-<h2>Visualizations</h2>
-<p>Here is a summary table of the data</p>
-<table class="table table-condensed">
-<thead>
-<tr>
-<th align="left">file</th>
-<th align="right">min</th>
-<th align="right">max</th>
-<th align="right">mean</th>
-<th align="right">median</th>
-<th align="right">sd</th>
-</tr>
-</thead>
-<tbody>
-<tr><td align="left">chr10L</td><td align="right">0.02</td><td align="right">0.99</td><td align="right">0.52</td><td align="right">0.52</td><td align="right">0.28</td></tr>
-<tr><td align="left">chr10R</td><td align="right">0.02</td><td align="right">0.99</td><td align="right">0.52</td><td align="right">0.52</td><td align="right">0.28</td></tr>
-<tr><td align="left">chr2L</td><td align="right">0.01</td><td align="right">1.00</td><td align="right">0.48</td><td align="right">0.47</td><td align="right">0.30</td></tr>
-<tr><td align="left">chr2R</td><td align="right">0.01</td><td align="right">1.00</td><td align="right">0.50</td><td align="right">0.51</td><td align="right">0.29</td></tr>
-<tr><td align="left">chr3L</td><td align="right">0.01</td><td align="right">1.00</td><td align="right">0.48</td><td align="right">0.48</td><td align="right">0.30</td></tr>
-<tr><td align="left">chr3R</td><td align="right">0.01</td><td align="right">1.00</td><td align="right">0.49</td><td align="right">0.50</td><td align="right">0.29</td></tr>
-<tr><td align="left">chrX</td><td align="right">0.02</td><td align="right">0.99</td><td align="right">0.48</td><td align="right">0.47</td><td align="right">0.30</td></tr>
-</tbody>
-</table>
-</div>
-<div id="final-thoughts" class="section level2">
-<h2>Final thoughts</h2>
-<p>The key here is that you can write a loop to do things to multiple files. The structure I showed above is useful for reading in a bunch of files, filtering data, merging data, and preprocessing. These are foundational skills for data wrangling in R.</p>
-</div>
-
-          </div>
-          <div class="col-lg-4">
-          </div>
-        </div>
+  theme(axis.title.y = element_blank())</div>
+      <div class="tut-fig">
+        <img src="cures-data_files/figure-html/unnamed-chunk-4-6.png" alt="Ridge plot of haploid numbers by file" width="576" height="384">
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
     </div>
-  </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
+    <div class="tut-section" id="visualizations">
+      <h3>Summary table</h3>
+      <p>Here is a summary table of the data.</p>
+      <table class="tut-table">
+        <thead>
+          <tr>
+            <th>file</th>
+            <th class="num">min</th>
+            <th class="num">max</th>
+            <th class="num">mean</th>
+            <th class="num">median</th>
+            <th class="num">sd</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>chr10L</td><td class="num">0.02</td><td class="num">0.99</td><td class="num">0.52</td><td class="num">0.52</td><td class="num">0.28</td></tr>
+          <tr><td>chr10R</td><td class="num">0.02</td><td class="num">0.99</td><td class="num">0.52</td><td class="num">0.52</td><td class="num">0.28</td></tr>
+          <tr><td>chr2L</td><td class="num">0.01</td><td class="num">1.00</td><td class="num">0.48</td><td class="num">0.47</td><td class="num">0.30</td></tr>
+          <tr><td>chr2R</td><td class="num">0.01</td><td class="num">1.00</td><td class="num">0.50</td><td class="num">0.51</td><td class="num">0.29</td></tr>
+          <tr><td>chr3L</td><td class="num">0.01</td><td class="num">1.00</td><td class="num">0.48</td><td class="num">0.48</td><td class="num">0.30</td></tr>
+          <tr><td>chr3R</td><td class="num">0.01</td><td class="num">1.00</td><td class="num">0.49</td><td class="num">0.50</td><td class="num">0.29</td></tr>
+          <tr><td>chrX</td><td class="num">0.02</td><td class="num">0.99</td><td class="num">0.48</td><td class="num">0.47</td><td class="num">0.30</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+    <div class="tut-section" id="final-thoughts">
+      <h3>Final thoughts</h3>
+      <p>The key here is that you can write a loop to do things to multiple files. The structure above is useful for reading in a bunch of files, filtering data, merging data, and preprocessing. These are foundational skills for data wrangling in R.</p>
+    </div>
 
-  <!-- Vendor JS -->
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
 
-  <!-- Main JS -->
-  <script src="../assets/js/main.js"></script>
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<script src="../assets/js/v3.js"></script>
 </body>
 </html>

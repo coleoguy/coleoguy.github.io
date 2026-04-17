@@ -169,6 +169,24 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   background: var(--accent);
 }
 
+/* Collapsible tree categories */
+.tree > li > ul { display: none; }
+.tree > li.open > ul { display: block; }
+.tree > li > span {
+  cursor: pointer;
+  user-select: none;
+}
+.tree > li > span::before {
+  content: '+';
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+  margin-right: 5px;
+  display: inline-block;
+  width: 8px;
+}
+.tree > li.open > span::before { content: '−'; }
+
 /* Main reading column */
 main.column {
   padding: 32px 56px 120px;

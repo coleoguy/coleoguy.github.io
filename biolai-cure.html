@@ -1,822 +1,822 @@
----
-layout: default
-title: "CURE in Evolutionary Biology and AI: Student Showcase"
-description: Meet the students of the BiolAI CURE program and their evolutionary biology research projects at the Blackmon Lab, Texas A&M University.
-body_class: index-page
-extra_head: |
-  <style>
-      .showcase-hero {
-        padding: 120px 0 30px;
-        text-align: center;
-      }
-      .showcase-hero h1 {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 2.8rem;
-        font-weight: 700;
-        color: var(--text-heading, #f0f0f0);
-        margin-bottom: 12px;
-      }
-      .showcase-hero h1 .accent {
-        color: var(--accent, #c9a227);
-      }
-      .showcase-hero .lead {
-        color: var(--text-secondary, #a0a0a0);
-        font-size: 1.1rem;
-        max-width: 740px;
-        margin: 0 auto 16px;
-        line-height: 1.75;
-      }
-      .showcase-hero .badge-count {
-        display: inline-block;
-        background: rgba(201,162,39,0.12);
-        color: var(--accent, #c9a227);
-        border: 1px solid rgba(201,162,39,0.25);
-        border-radius: 20px;
-        padding: 6px 18px;
-        font-size: 0.88rem;
-        font-weight: 600;
-        margin-top: 8px;
-      }
-  
-      .cure-about {
-        max-width: 800px;
-        margin: 0 auto 40px;
-        background: var(--bg-card, #111111);
-        border: 1px solid var(--border, #1a1a1a);
-        border-radius: 14px;
-        padding: 32px 36px;
-      }
-      .cure-about h2 {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: var(--accent, #c9a227);
-        margin-bottom: 12px;
-      }
-      .cure-about p {
-        color: var(--text-secondary, #a0a0a0);
-        font-size: 0.95rem;
-        line-height: 1.75;
-        margin: 0;
-      }
-  
-      .pi-card {
-        background: linear-gradient(135deg, rgba(201,162,39,0.08) 0%, var(--bg-card, #111111) 100%);
-        border: 1px solid rgba(201,162,39,0.3);
-        border-radius: 14px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 40px;
-        max-width: 360px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .pi-card .student-photo-wrap {
-        padding: 32px 24px 0;
-      }
-      .pi-card .student-avatar {
-        width: 120px;
-        height: 120px;
-        font-size: 2.8rem;
-        border-color: rgba(201,162,39,0.3);
-      }
-      .pi-card .student-info {
-        padding: 16px 28px 28px;
-      }
-      .pi-label {
-        font-size: 0.72rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--accent, #c9a227);
-        background: rgba(201,162,39,0.12);
-        border: 1px solid rgba(201,162,39,0.2);
-        border-radius: 6px;
-        padding: 2px 8px;
-        margin-left: 8px;
-        vertical-align: middle;
-      }
-  
-      .student-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 24px;
-        padding: 0 0 60px;
-      }
-  
-      .student-card {
-        background: var(--bg-card, #111111);
-        border: 1px solid var(--border, #1a1a1a);
-        border-radius: 14px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-      }
-      .student-card:hover {
-        border-color: rgba(201,162,39,0.4);
-        box-shadow: 0 6px 28px rgba(201,162,39,0.06);
-        transform: translateY(-2px);
-      }
-  
-      .student-photo-wrap {
-        text-align: center;
-        padding: 28px 24px 0;
-      }
-  
-      .student-avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background: rgba(201,162,39,0.06);
-        border: 2px solid rgba(201,162,39,0.15);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.4rem;
-        line-height: 1;
-        overflow: hidden;
-      }
-      .student-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-  
-      .student-info {
-        padding: 16px 24px 24px;
-        text-align: center;
-      }
-  
-      .student-info h3 {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.08rem;
-        font-weight: 600;
-        color: var(--text-heading, #f0f0f0);
-        margin: 0 0 4px;
-      }
-  
-      .student-meta {
-        font-size: 0.78rem;
-        color: var(--text-muted, #666);
-        margin-bottom: 2px;
-      }
-      .student-hometown {
-        font-size: 0.73rem;
-        color: var(--text-muted, #555);
-        margin-bottom: 8px;
-        font-style: italic;
-        font-weight: 500;
-      }
-  
-      .clade-badge {
-        display: inline-block;
-        background: rgba(201,162,39,0.08);
-        color: var(--accent, #c9a227);
-        border: 1px solid rgba(201,162,39,0.18);
-        border-radius: 10px;
-        padding: 1px 10px;
-        font-size: 0.75rem;
-        font-weight: 500;
-        margin-bottom: 10px;
-      }
-  
-      .student-info p {
-        color: var(--text-secondary, #a0a0a0);
-        font-size: 0.88rem;
-        line-height: 1.65;
-        margin: 0;
-        text-align: left;
-      }
-  
-      .acknowledgment {
-        text-align: center;
-        padding: 20px 0 0;
-        color: var(--text-muted, #555);
-        font-size: 0.82rem;
-        line-height: 1.6;
-      }
-      .acknowledgment a {
-        color: var(--accent, #c9a227);
-        text-decoration: none;
-      }
-      .acknowledgment a:hover {
-        text-decoration: underline;
-      }
-  
-      @media (max-width: 480px) {
-        .student-grid { grid-template-columns: 1fr; }
-        .showcase-hero h1 { font-size: 2rem; }
-        .cure-about { padding: 24px 20px; }
-        .pi-card { max-width: 100%; }
-      }
-    </style>
----
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biology &amp; AI CURE · Blackmon Lab</title>
+<meta name="description" content="Spring 2026 cohort of the Biology and AI CURE at Texas A&M. Undergraduates run original evolutionary-biology projects using phylogenetic comparative methods and AI-assisted analysis.">
+<link rel="icon" href="assets/img/favicon.ico">
 
-<section class="showcase-hero">
-      <div class="container" data-aos="fade-up">
-        <h1>Biology and AI <span class="accent">CURE</span> Showcase</h1>
-        <p class="lead">Meet the Spring 2026 cohort and their independent research projects in evolutionary biology. <strong>Every student below is running an original research project using phylogenetic comparative methods and AI-assisted analysis.</strong></p>
-        <div class="badge-count"><i class="bi bi-people-fill" aria-hidden="true"></i>&ensp;51 Student Researchers</div>
-      </div>
-    </section>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <section class="section" style="padding-top: 0;">
-      <div class="container">
+<link rel="stylesheet" href="assets/css/v3.css">
 
-        <div class="cure-about" data-aos="fade-up">
-          <h2>What is a CURE?</h2>
-          <p>A Course-based Undergraduate Research Experience (CURE) replaces cookbook labs with real research. Every student in a CURE works on a question whose answer is unknown, so their work can feed into real publications. In Dr. Blackmon's Biology and AI CURE, students pair evolutionary biology with AI tools to build phylogenetic datasets, run comparative analyses, and interpret results at a level usually reserved for graduate students. <strong style="color: var(--accent, #c9a227);">These are not class exercises. They are real research projects carried out by undergraduates from across the university.</strong></p>
-        </div>
+<style>
+  /* CURE showcase: student grid, scoped to this page */
+  .cure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 18px 0 28px;
+  }
+  .cure-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: border-color 0.15s;
+  }
+  .cure-card:hover { border-color: var(--rule-strong); }
+  .cure-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--paper-sunk);
+    border: 1px solid var(--rule);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    line-height: 1;
+    overflow: hidden;
+  }
+  .cure-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .cure-body { flex: 1; min-width: 0; }
+  .cure-name { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .cure-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+    display: block;
+  }
+  .cure-hometown {
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .cure-clade {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+  .cure-clade i { font-style: italic; }
+  .cure-proj {
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.55;
+    margin-top: 8px;
+  }
+  .cure-card.pi {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--accent-dim), var(--paper-raised));
+    border-color: var(--rule-strong);
+  }
+  .cure-card.pi .cure-avatar { width: 64px; height: 64px; }
+  .pi-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1px solid var(--rule-strong);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .ack {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: center;
+    padding: 20px 0 0;
+    border-top: 1px solid var(--rule);
+    margin-top: 24px;
+  }
+  .ack a { color: var(--accent); }
+</style>
 
-        <div class="student-grid">
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐟</div>
-            </div>
-            <div class="student-info">
-              <h3>Anabiya Ali</h3>
-              <div class="student-meta">Freshman · Biology</div>
-              <div class="student-hometown">Houston, Texas</div>
-              <span class="clade-badge"><i>Cyprinidae</i></span>
-              <p>Anabiya is exploring whether extreme heat environments push fish toward genetic sex determination by mapping sex-determining mechanisms against temperature extremes across freshwater minnows. She is using data on sex determination mode and 95th-percentile maximum temperatures in Cyprinidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/khadija-ansari.jpg" alt="Khadija Ansari"></div></div>
-            <div class="student-info">
-              <h3>Khadija Ansari</h3>
-              <div class="student-meta">Freshman · Biology</div>
-              <div class="student-hometown">Spring, Texas</div>
-              <span class="clade-badge"><i>Cetaceans</i></span>
-              <p>Khadija is investigating the paradox of chromosomal stability in whales and dolphins: most share 2n=44, yet harbor remarkable micro-scale genomic variation. She is exploring whether habitat fragmentation drives cryptic chromosomal restructuring in Cetaceans.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐹</div>
-            </div>
-            <div class="student-info">
-              <h3>Steven Arackal</h3>
-              <div class="student-meta">Senior · Biology</div>
-              <span class="clade-badge"><i>Cricetidae</i></span>
-              <p>Steven is asking whether investment in touch and vision evolve in lockstep across rodents by measuring skull morphology traits linked to sensory structures. He is collecting tactile and visual trait measurements from Cricetidae skulls.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🪰</div>
-            </div>
-            <div class="student-info">
-              <h3>Dharshini Baskaran</h3>
-              <div class="student-meta">Junior · Neuroscience</div>
-              <span class="clade-badge"><i>Drosophilidae</i></span>
-              <p>Dharshini is investigating whether specialist fruit flies have streamlined their taste receptor toolkit compared to generalists. She is comparing gustatory receptor gene repertoire sizes against host plant breadth across Drosophilidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/carrie-bernard.jpg" alt="Carrie Bernard"></div></div>
-            <div class="student-info">
-              <h3>Carrie Bernard</h3>
-              <div class="student-meta">Junior · Biology</div>
-              <div class="student-hometown">Austin, Texas</div>
-              <span class="clade-badge"><i>Odonata</i></span>
-              <p>Carrie is in her second semester working in Dr. Blackmon's CUREs course. She is testing whether habitat type (lentic ponds versus lotic streams) drives the evolution of sexual size dimorphism in dragonflies and damselflies. She is collecting size dimorphism and habitat data across Odonata.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/alexa-burgos.jpg" alt="Alexa Burgos"></div></div>
-            <div class="student-info">
-              <h3>Alexa Burgos</h3>
-              <div class="student-meta">Junior · Biology</div>
-              <div class="student-hometown">McAllen, Texas</div>
-              <span class="clade-badge"><i>Phasmatodea</i></span>
-              <p>Alexa is investigating whether flash-displaying hidden wing colors in stick insects represents an evolutionary stepping stone from camouflage to full warning coloration. She is mapping deimatic and aposematic traits across Phasmatodea.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🪲</div>
-            </div>
-            <div class="student-info">
-              <h3>Ruben Carreno</h3>
-              <div class="student-meta">Senior · Biomedical Sciences</div>
-              <span class="clade-badge"><i>Hemiptera</i></span>
-              <p>Ruben is uncovering the evolutionary rules that govern diet transitions (sap-feeding, seed-eating, and predation) across one of the most ecologically diverse insect orders. He is tracing dietary shifts across a phylogeny of Hemiptera.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/emily-chew.jpg" alt="Emily Chew"></div></div>
-            <div class="student-info">
-              <h3>Emily Chew</h3>
-              <div class="student-meta">Sophomore · Biomedical Sciences</div>
-              <div class="student-hometown">Flower Mound, TX</div>
-              <span class="clade-badge"><i>Lepidoptera</i></span>
-              <p>Emily is exploring whether island butterfly and moth populations show accelerated chromosome evolution compared to their mainland relatives. She is comparing chromosomal change rates across island versus mainland Lepidoptera.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🌱</div>
-            </div>
-            <div class="student-info">
-              <h3>Isabella Collins</h3>
-              <div class="student-meta">Sophomore · Molecular &amp; Cell Biology</div>
-              <div class="student-hometown">Corpus Christi, TX</div>
-              <span class="clade-badge"><i>Brassicaceae</i></span>
-              <p>Isabella is testing whether how a plant disperses its seeds (by wind, water, or animal) shapes the pace of its chromosome evolution. She is collecting dispersal mode, dispersal distance, and genome size data across Brassicaceae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦅</div>
-            </div>
-            <div class="student-info">
-              <h3>Camille Cordell</h3>
-              <div class="student-meta">Junior · Biochemistry &amp; Biophysics</div>
-              <div class="student-hometown">North Richland Hills, Texas</div>
-              <span class="clade-badge"><i>Accipitriformes</i></span>
-              <p>Camille is asking whether hawks and eagles with larger geographic ranges experience different rates of chromosome number evolution than range-restricted species. She is mapping haploid chromosome numbers against range size in Accipitriformes.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦎</div>
-            </div>
-            <div class="student-info">
-              <h3>Ishan Dash</h3>
-              <div class="student-meta">Sophomore · Biology</div>
-              <div class="student-hometown">Dallas, Texas</div>
-              <span class="clade-badge"><i>Scincoidea</i></span>
-              <p>Ishan is testing the drift barrier hypothesis by examining whether island-endemic skinks, with their smaller population sizes, show faster chromosomal evolution than mainland relatives. He is compiling chromosome counts and island-versus-mainland status across Scincoidea.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐔</div>
-            </div>
-            <div class="student-info">
-              <h3>Sophia Dong</h3>
-              <div class="student-meta">Sophomore · Biology</div>
-              <span class="clade-badge"><i>Galliformes</i></span>
-              <p>Sophia is testing whether mating system and sexual dimorphism evolve in concert across game birds, as sexual selection theory predicts. She is measuring six skeletal dimorphism traits and scoring mating systems in Galliformes.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🕷️</div>
-            </div>
-            <div class="student-info">
-              <h3>Robin Flanagan</h3>
-              <div class="student-meta">Senior · Biology</div>
-              <div class="student-hometown">Waco, TX</div>
-              <span class="clade-badge"><i>Araneae</i></span>
-              <p>Robin is investigating whether colonizing islands triggers shifts in spider silk properties, linking biogeography to biomaterial evolution. They are collecting tensile strength measurements and island-versus-mainland status across Araneae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/maya-friedman.jpg" alt="Maya Friedman"></div></div>
-            <div class="student-info">
-              <h3>Maya Friedman</h3>
-              <div class="student-meta">Junior · Biomedical Sciences</div>
-              <div class="student-hometown">Sugar Land, Texas</div>
-              <span class="clade-badge"><i>Testudines</i></span>
-              <p>Maya is testing whether habitat (marine, freshwater, or terrestrial) shapes the pace of chromosome number evolution in turtles. She is analyzing haploid numbers for 141 Testudines species alongside their habitat classifications.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🌲</div>
-            </div>
-            <div class="student-info">
-              <h3>Ananya Gudapati</h3>
-              <div class="student-meta">Sophomore · Biology</div>
-              <div class="student-hometown">Katy, Texas</div>
-              <span class="clade-badge"><i>Gymnosperms</i></span>
-              <p>Ananya is exploring whether genome size and wood density evolve together in conifers and their relatives, linking cellular-level genomics to whole-organism traits. He is collecting genome size and wood density measurements across Gymnosperms.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦗</div>
-            </div>
-            <div class="student-info">
-              <h3>Bevin Haynes</h3>
-              <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
-              <span class="clade-badge"><i>Orthoptera</i></span>
-              <p>Bevin is asking whether having a massive genome speeds up or slows down chromosomal rearrangement and lineage diversification in grasshoppers and crickets. She is compiling genome sizes and chromosome data across Orthoptera.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/anaya-hooda.jpg" alt="Anaya Hooda"></div></div>
-            <div class="student-info">
-              <h3>Anaya Hooda</h3>
-              <div class="student-meta">Junior · Neuroscience</div>
-              <div class="student-hometown">Houston, Texas</div>
-              <span class="clade-badge"><i>Serpentes</i></span>
-              <p>Anaya is testing whether the reduced population sizes of island snakes accelerate their chromosome number evolution compared to continental species. She is collecting chromosome counts and geographic data across Serpentes.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦇</div>
-            </div>
-            <div class="student-info">
-              <h3>Andrew Jordan</h3>
-              <div class="student-meta">Senior · Genetics</div>
-              <span class="clade-badge"><i>Chiroptera</i></span>
-              <p>Andrew is testing a new hypothesis: that the tail membrane (uropatagium) of bats co-evolves with echolocation, pushing back on the field&#x27;s narrow focus on wing shape. He is measuring uropatagium dimensions and call parameters across Chiroptera.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦘</div>
-            </div>
-            <div class="student-info">
-              <h3>Lynn Khalidi</h3>
-              <div class="student-meta">Sophomore · Neuroscience</div>
-              <span class="clade-badge"><i>Marsupialia</i></span>
-              <p>Lynn is investigating whether arboreal versus terrestrial lifestyles shape body size and litter size evolution in marsupials. She is collecting life history and ecological data across Marsupialia.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🪲</div>
-            </div>
-            <div class="student-info">
-              <h3>Ruth Koffi</h3>
-              <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
-              <span class="clade-badge"><i>Scarabaeidae</i></span>
-              <p>Ruth is testing the drift barrier hypothesis in beetles by asking whether flightless scarab species, with their smaller and more isolated populations, show faster chromosome evolution. She is mapping winglessness and chromosome data across Scarabaeidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/amrutha-kosanaum.jpg" alt="Amrutha Kosanaum"></div></div>
-            <div class="student-info">
-              <h3>Amrutha Kosanaum</h3>
-              <div class="student-meta">Senior · Biology</div>
-              <div class="student-hometown">Houston, TX</div>
-              <span class="clade-badge"><i>Anura</i></span>
-              <p>Amrutha is asking whether the way a frog develops (hatching as a tadpole versus emerging fully formed) predicts the rate of chromosome evolution. She is using AmphiBIO development mode data and chromosome counts across Anura.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐒</div>
-            </div>
-            <div class="student-info">
-              <h3>Sienna Kramer</h3>
-              <div class="student-meta">Junior · General Studies</div>
-              <span class="clade-badge"><i>Primates</i></span>
-              <p>Sienna is investigating whether sperm competition reshapes both testes investment and sperm energetic design in primates, connecting mating behavior to cellular-level evolution. She is collecting testes size and sperm midpiece length data across Primates.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐝</div>
-            </div>
-            <div class="student-info">
-              <h3>Joy Lee</h3>
-              <div class="student-meta">Freshman · Biology</div>
-              <div class="student-hometown">Katy, Texas</div>
-              <span class="clade-badge"><i>Hymenoptera</i></span>
-              <p>Joy is testing whether specialist parasitoid wasps, locked into narrow host relationships, experience faster chromosomal evolution than their generalist relatives. She is collecting host specificity and haploid chromosome numbers across Hymenoptera.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/virginia-lopez.jpg" alt="Virginia R. Lopez"></div></div>
-            <div class="student-info">
-              <h3>Virginia R. Lopez</h3>
-              <div class="student-meta">Senior · Biology · Minor in Medical Anthropology</div>
-              <div class="student-hometown">Brownsville, Texas</div>
-              <span class="clade-badge"><i>Asteraceae</i></span>
-              <p>Virginia is asking whether genome size constrains how many ecoregions a plant species can occupy, linking genome architecture to ecological range. She is analyzing genome size and ecoregion counts across the sunflower family Asteraceae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/srija-manapuri.jpg" alt="Srija Manapuri"></div></div>
-            <div class="student-info">
-              <h3>Srija Manapuri</h3>
-              <div class="student-meta">Junior · Forensic &amp; Investigative Sciences · Political Science</div>
-              <span class="clade-badge"><i>Coleoptera</i></span>
-              <p>Srija is asking whether genome size predicts rates of chromosome evolution across beetles, one of the most species-rich animal orders on Earth. She is compiling genome and chromosome data across Coleoptera.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/ryan-matta.jpg" alt="Ryan Matta"></div></div>
-            <div class="student-info">
-              <h3>Ryan Matta</h3>
-              <div class="student-meta">Freshman · Microbiology</div>
-              <div class="student-hometown">Spring, TX</div>
-              <span class="clade-badge"><i>Curculionidae</i></span>
-              <p>Ryan is testing whether weevil rostrum shape tracks the plant structures they use for egg-laying, supporting an adaptive multi-optimum model of evolution. He is measuring rostrum morphology and oviposition guild across Curculionidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐟</div>
-            </div>
-            <div class="student-info">
-              <h3>Janie Menjivar</h3>
-              <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
-              <span class="clade-badge"><i>Gobiidae</i></span>
-              <p>Janie is exploring the convergent evolution of pelvic suction disks in goby fishes, asking whether substrate type drives repeated adaptation of this attachment structure. She is measuring relative pelvic disk area and habitat type across Gobiidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦈</div>
-            </div>
-            <div class="student-info">
-              <h3>Robert Millikan</h3>
-              <div class="student-meta">Junior · Biological &amp; Environmental Sciences</div>
-              <span class="clade-badge"><i>Chondrichthyes</i></span>
-              <p>Robert is asking whether jaw suspension type acts as an evolutionary constraint on morphological diversification in sharks and rays. He is collecting jaw morphology trait data across Chondrichthyes.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🍄</div>
-            </div>
-            <div class="student-info">
-              <h3>Olivia Montorello</h3>
-              <div class="student-meta">Senior · Public Health</div>
-              <span class="clade-badge"><i>Fungi</i></span>
-              <p>Olivia is investigating whether genome size predicts the rate of chromosome number evolution in fungi, connecting genome architecture to karyotype dynamics. She is compiling genome and chromosome data across Fungi.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/jackson-moore.jpg" alt="Jackson Moore"></div></div>
-            <div class="student-info">
-              <h3>Jackson Moore</h3>
-              <div class="student-meta">Senior · Biology</div>
-              <span class="clade-badge"><i>Palaeognathae</i></span>
-              <p>Jackson is testing whether habitat drives wing size evolution through selection versus drift in flightless ratites and their flying relatives, the tinamous. He is testing his hypothesis on recently extinct taxa (moa) alongside the extant diversity of Palaeognathae, collecting body mass, wing length, and habitat data.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/samy-muktevi.jpg" alt="Samy Muktevi"></div></div>
-            <div class="student-info">
-              <h3>Samy Muktevi</h3>
-              <div class="student-meta">Freshman · Biology</div>
-              <div class="student-hometown">Cypress, TX</div>
-              <span class="clade-badge"><i>Orchidaceae</i></span>
-              <p>Samy is asking whether polyploidy (whole-genome duplication) gives orchids a colonization advantage by expanding their geographic ranges. She is mapping ploidy level against range size across Orchidaceae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐠</div>
-            </div>
-            <div class="student-info">
-              <h3>Meghana Munduru</h3>
-              <div class="student-meta">Junior · Psychology</div>
-              <span class="clade-badge"><i>Characidae</i></span>
-              <p>Meghana is testing whether reproductive mode shapes genome size evolution in tetras and characins, linking life history strategy to molecular architecture. She is collecting reproductive and genomic data across Characidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐡</div>
-            </div>
-            <div class="student-info">
-              <h3>Soniya Muñoz</h3>
-              <div class="student-meta">Senior · Zoology</div>
-              <div class="student-hometown">Fort Worth, Texas</div>
-              <span class="clade-badge"><i>Siluriformes</i></span>
-              <p>Soniya is asking a fascinating evolutionary sequence question: did catfish become nocturnal before or after evolving body armor? She is scoring armor presence and activity pattern across Siluriformes.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐟</div>
-            </div>
-            <div class="student-info">
-              <h3>Anna Brooke Naegle</h3>
-              <div class="student-meta">Freshman · Ecology &amp; Conservation Biology</div>
-              <div class="student-hometown">Fort Worth, TX</div>
-              <span class="clade-badge"><i>Nothobranchiidae</i></span>
-              <p>Anna is exploring whether the boom-and-bust lifecycle of annual killifish, driven by seasonal rainfall, accelerates their chromosome evolution. She is linking precipitation seasonality to chromosome data in Nothobranchiidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/tewobola-olasehinde.jpg" alt="Tewobola Olasehinde"></div></div>
-            <div class="student-info">
-              <h3>Tewobola Olasehinde</h3>
-              <div class="student-meta">Senior · Biological &amp; Environmental Sciences</div>
-              <span class="clade-badge"><i>Carnivora</i></span>
-              <p>Tewobola is taking a computational approach to ask whether domestication shifts the shape of the protein-coding landscape in carnivore genomes. They are comparing proteome embedding patterns between domestic and wild Carnivora.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">☕</div>
-            </div>
-            <div class="student-info">
-              <h3>Bhakti Patel</h3>
-              <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
-              <span class="clade-badge"><i>Coffeeae (Rubiaceae)</i></span>
-              <p>Bhakti is tracing the evolutionary history of caffeine biosynthesis to determine whether this iconic chemical defense evolved once or arose independently multiple times in the coffee tribe. She is scoring caffeine production across approximately 50 species of Coffeeae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🌷</div>
-            </div>
-            <div class="student-info">
-              <h3>Samshritha Pochanapeddi</h3>
-              <div class="student-meta">Senior · Biochemistry &amp; Biophysics</div>
-              <span class="clade-badge"><i>Liliaceae</i></span>
-              <p>Samshritha is investigating whether genome size influences the rate of chromosome evolution across lilies, connecting molecular-level variation to karyotype dynamics. She is using chromosome counts and genome size data from Kew and NCBI across Liliaceae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/anjalika-sachan.jpg" alt="Anjalika Sachan"></div></div>
-            <div class="student-info">
-              <h3>Anjalika Sachan</h3>
-              <div class="student-meta">Junior · Neuroscience</div>
-              <div class="student-hometown">Austin, Texas</div>
-              <span class="clade-badge"><i>Pteridophyta (Ferns)</i></span>
-              <p>Anjalika is testing whether genome size predicts rates of chromosome evolution in ferns, a group famous for their enormous genomes. She is using the Kew Plant DNA C-values Database and chromosome counts across Pteridophyta.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🐟</div>
-            </div>
-            <div class="student-info">
-              <h3>Evelyn Sanchez</h3>
-              <div class="student-meta">Freshman · Biology</div>
-              <div class="student-hometown">Dallas, TX</div>
-              <span class="clade-badge"><i>Anabantiformes</i></span>
-              <p>Evelyn is investigating whether reliance on the labyrinth organ (an air-breathing adaptation) correlates with body size and chromosome number evolution in gouramis and their relatives. She is collecting trait data across Anabantiformes.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦎</div>
-            </div>
-            <div class="student-info">
-              <h3>Kiara Santiago</h3>
-              <div class="student-meta">Junior · Biochemistry &amp; Biophysics</div>
-              <span class="clade-badge"><i>Gekkonidae</i></span>
-              <p>Kiara is studying chromosome evolution in geckos, one of the most species-rich lizard families. She is collecting karyotype data across Gekkonidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦎</div>
-            </div>
-            <div class="student-info">
-              <h3>Hamzah Sheikh</h3>
-              <div class="student-meta">Sophomore · Biology</div>
-              <span class="clade-badge"><i>Iguania</i></span>
-              <p>Hamzah is testing whether island iguanas and their relatives show faster chromosome evolution than mainland populations, applying the drift barrier framework to reptiles. He is compiling chromosome data across Iguania.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🌶️</div>
-            </div>
-            <div class="student-info">
-              <h3>Dana Stavinoha</h3>
-              <div class="student-meta">Sophomore · Genetics</div>
-              <span class="clade-badge"><i>Solanaceae</i></span>
-              <p>Dana is asking whether the presence of B chromosomes (those extra genomic passengers) correlates with genome size evolution in nightshades. She is mapping B chromosome presence and genome size across Solanaceae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/ava-tingue.jpg" alt="Ava Tingue"></div></div>
-            <div class="student-info">
-              <h3>Ava Tingue</h3>
-              <div class="student-meta">Freshman · Biology</div>
-              <div class="student-hometown">Flower Mound, Texas</div>
-              <span class="clade-badge"><i>Chrysomelidae</i></span>
-              <p>Ava is testing whether genome size predicts the rate of chromosome number evolution in leaf beetles, one of the most diverse herbivore radiations. She is compiling genome and chromosome data across Chrysomelidae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/keagan-tran.jpg" alt="Keagan Tran"></div></div>
-            <div class="student-info">
-              <h3>Keagan Tran</h3>
-              <div class="student-meta">Sophomore · Biology</div>
-              <div class="student-hometown">Tomball, TX</div>
-              <span class="clade-badge"><i>Blattodea</i></span>
-              <p>Keagan is asking whether the evolution of eusociality breaks the classic flight-fecundity trade-off in cockroaches and termites. They are collecting flight capability and fecundity data across Blattodea.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🦂</div>
-            </div>
-            <div class="student-info">
-              <h3>Felix Vasili</h3>
-              <div class="student-meta">Freshman · Neuroscience</div>
-              <span class="clade-badge"><i>Scorpiones</i></span>
-              <p>Felix is investigating whether a burrowing lifestyle drives the convergent evolution of pectine tooth counts across scorpion lineages. He is compiling pectine morphology and ecology data across Scorpiones.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="150">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/thomas-vela.jpg" alt="Thomas Vela"></div></div>
-            <div class="student-info">
-              <h3>Thomas Vela</h3>
-              <div class="student-meta">Senior · Biology</div>
-              <div class="student-hometown">McAllen, Texas</div>
-              <span class="clade-badge"><i>Muridae</i></span>
-              <p>Thomas is testing the drift barrier hypothesis by asking whether rodents with small home ranges and low population density show faster chromosome evolution. He is using home range, population density, chromosome count, and genome size data across Muridae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/maryjo-velasquez.jpg" alt="MaryJo Velasquez"></div></div>
-            <div class="student-info">
-              <h3>MaryJo Velasquez</h3>
-              <div class="student-meta">Senior · Genetics</div>
-              <div class="student-hometown">Austin, TX</div>
-              <span class="clade-badge"><i>Caudata</i></span>
-              <p>Mary-Jo is testing whether paedomorphosis (retaining juvenile traits into adulthood) correlates with accelerated chromosome evolution in salamanders. She is mapping developmental strategy against karyotype change rates across Caudata.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="250">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🌸</div>
-            </div>
-            <div class="student-info">
-              <h3>Samhita Vemuri</h3>
-              <div class="student-meta">Junior · Genetics</div>
-              <span class="clade-badge"><i>Passifloraceae</i></span>
-              <p>Samhita is exploring whether climate (cold and seasonal versus warm and tropical) predicts genome size across passionflowers and their relatives. She is collecting climate and genomic data across Passifloraceae.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/emma-walker.jpg" alt="Emma Walker"></div></div>
-            <div class="student-info">
-              <h3>Emma Walker</h3>
-              <div class="student-meta">Sophomore · Zoology</div>
-              <div class="student-hometown">Waco, TX</div>
-              <span class="clade-badge"><i>Passeriformes</i></span>
-              <p>Emma is testing whether migratory songbirds show different chromosome evolution rates than sedentary species, linking behavioral ecology to genome architecture. She is collecting migratory status and chromosome numbers across Passeriformes.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="50">
-            <div class="student-photo-wrap">
-              <div class="student-avatar"><img src="assets/img/cure/mackenzie-wilkerson.jpg" alt="MacKenzie Wilkerson"></div></div>
-            <div class="student-info">
-              <h3>MacKenzie Wilkerson</h3>
-              <div class="student-meta">Junior · Microbiology</div>
-              <div class="student-hometown">Frisco, Texas</div>
-              <span class="clade-badge"><i>Coccinellidae</i></span>
-              <p>MacKenzie is quantifying elytral melanism in ladybugs to test whether coloration patterns reflect a thermoregulation–habitat trade-off. She is measuring percent black dorsal surface across species in her Coccinellidae phylogeny.</p>
-            </div>
-          </div>
-          <div class="student-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="student-photo-wrap">
-              <div class="student-avatar">🔬</div>
-            </div>
-            <div class="student-info">
-              <h3>Aiden Nychka</h3>
-              <div class="student-meta">Senior · Genetics</div>
-              
-              <p>Aiden's project details coming soon.</p>
-            </div>
-          </div>
-        </div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+</head>
 
-          <div class="pi-card" data-aos="fade-up">
-            <div class="student-photo-wrap">
-              <div class="student-avatar pi-avatar"><img src="assets/img/heath.jpg" alt="Heath Blackmon"></div>
-            </div>
-            <div class="student-info">
-              <h3>Heath Blackmon</h3>
-              <div class="student-meta">Fort Worth, Texas</div>
-              <span class="clade-badge"><i>Metazoa</i></span>
-              <p>Heath Blackmon is an associate professor and evolutionary biologist leading the Biology and AI CURE. He is testing the Drift Barrier Hypothesis by determining whether large genomes lead to higher rates of chromosome evolution. He is using a dataset of haploid chromosome numbers and sex chromosome systems spanning all of Metazoa.</p>
-            </div>
-          </div>
+<body>
 
-      </div>
-    </section>
 
-    <div class="acknowledgment">
-      This program is made possible by the generous support of <a href="https://artsci.tamu.edu/news/2025/11/investing-in-student-discovery-former-zoology-student-supports-biology-cures-program.html" target="_blank">Bonsall S. Wilton '72</a> and the Wilton CUREs Excellence Endowment.
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
     </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="karyotype.html">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; TEACHING &rsaquo; BIOLOGY &amp; AI CURE</div>
+
+    <h1 class="title">Fifty-one undergraduates, fifty-one original projects.</h1>
+
+    <p class="lede">
+      The Biology and AI CURE is a course where students run their own evolutionary-biology research projects using phylogenetic comparative methods and AI-assisted analysis. Every card below is a question whose answer is unknown, carried by an undergraduate from hypothesis through data assembly to results that feed into real publications.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">51</div>
+        <span class="stat-label">Student researchers</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">51</div>
+        <span class="stat-label">Original projects</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Spring</div>
+        <span class="stat-label">2026 cohort</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">PCM + AI</div>
+        <span class="stat-label">Methods stack</span>
+      </div>
+    </div>
+
+    <h2>What a CURE is</h2>
+    <p>
+      A Course-based Undergraduate Research Experience (CURE) replaces cookbook labs with real research. Every student works on a question whose answer is unknown, so the work can feed into real publications. In this course students pair evolutionary biology with AI tools to build phylogenetic datasets, run comparative analyses, and interpret results at a level usually reserved for graduate students. These are not class exercises: they are original research projects carried out by undergraduates from across the university.
+    </p>
+
+    <h2>Spring 2026 cohort</h2>
+
+    <div class="cure-grid">
+      <div class="cure-card">
+        <div class="cure-avatar">🐟</div>
+        <div class="cure-body">
+          <div class="cure-name">Anabiya Ali</div>
+          <span class="cure-meta">Freshman · Biology</span>
+          <div class="cure-hometown">Houston, Texas</div>
+          <span class="cure-clade"><i>Cyprinidae</i></span>
+          <p class="cure-proj">Exploring whether extreme heat environments push fish toward genetic sex determination by mapping sex-determining mechanisms against temperature extremes across freshwater minnows. Uses data on sex determination mode and 95th-percentile maximum temperatures in Cyprinidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/khadija-ansari.jpg" alt="Khadija Ansari"></div>
+        <div class="cure-body">
+          <div class="cure-name">Khadija Ansari</div>
+          <span class="cure-meta">Freshman · Biology</span>
+          <div class="cure-hometown">Spring, Texas</div>
+          <span class="cure-clade"><i>Cetaceans</i></span>
+          <p class="cure-proj">Investigating the paradox of chromosomal stability in whales and dolphins: most share 2n=44, yet harbor remarkable micro-scale genomic variation. Exploring whether habitat fragmentation drives cryptic chromosomal restructuring in Cetaceans.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐹</div>
+        <div class="cure-body">
+          <div class="cure-name">Steven Arackal</div>
+          <span class="cure-meta">Senior · Biology</span>
+          <span class="cure-clade"><i>Cricetidae</i></span>
+          <p class="cure-proj">Asking whether investment in touch and vision evolve in lockstep across rodents by measuring skull morphology traits linked to sensory structures. Collecting tactile and visual trait measurements from Cricetidae skulls.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🪰</div>
+        <div class="cure-body">
+          <div class="cure-name">Dharshini Baskaran</div>
+          <span class="cure-meta">Junior · Neuroscience</span>
+          <span class="cure-clade"><i>Drosophilidae</i></span>
+          <p class="cure-proj">Investigating whether specialist fruit flies have streamlined their taste receptor toolkit compared to generalists. Comparing gustatory receptor gene repertoire sizes against host plant breadth across Drosophilidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/carrie-bernard.jpg" alt="Carrie Bernard"></div>
+        <div class="cure-body">
+          <div class="cure-name">Carrie Bernard</div>
+          <span class="cure-meta">Junior · Biology</span>
+          <div class="cure-hometown">Austin, Texas</div>
+          <span class="cure-clade"><i>Odonata</i></span>
+          <p class="cure-proj">In her second semester working in Dr. Blackmon's CUREs course. Testing whether habitat type (lentic ponds versus lotic streams) drives the evolution of sexual size dimorphism in dragonflies and damselflies. Collecting size dimorphism and habitat data across Odonata.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/alexa-burgos.jpg" alt="Alexa Burgos"></div>
+        <div class="cure-body">
+          <div class="cure-name">Alexa Burgos</div>
+          <span class="cure-meta">Junior · Biology</span>
+          <div class="cure-hometown">McAllen, Texas</div>
+          <span class="cure-clade"><i>Phasmatodea</i></span>
+          <p class="cure-proj">Investigating whether flash-displaying hidden wing colors in stick insects represents an evolutionary stepping stone from camouflage to full warning coloration. Mapping deimatic and aposematic traits across Phasmatodea.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🪲</div>
+        <div class="cure-body">
+          <div class="cure-name">Ruben Carreno</div>
+          <span class="cure-meta">Senior · Biomedical Sciences</span>
+          <span class="cure-clade"><i>Hemiptera</i></span>
+          <p class="cure-proj">Uncovering the evolutionary rules that govern diet transitions (sap-feeding, seed-eating, and predation) across one of the most ecologically diverse insect orders. Tracing dietary shifts across a phylogeny of Hemiptera.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/emily-chew.jpg" alt="Emily Chew"></div>
+        <div class="cure-body">
+          <div class="cure-name">Emily Chew</div>
+          <span class="cure-meta">Sophomore · Biomedical Sciences</span>
+          <div class="cure-hometown">Flower Mound, TX</div>
+          <span class="cure-clade"><i>Lepidoptera</i></span>
+          <p class="cure-proj">Exploring whether island butterfly and moth populations show accelerated chromosome evolution compared to their mainland relatives. Comparing chromosomal change rates across island versus mainland Lepidoptera.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🌱</div>
+        <div class="cure-body">
+          <div class="cure-name">Isabella Collins</div>
+          <span class="cure-meta">Sophomore · Molecular &amp; Cell Biology</span>
+          <div class="cure-hometown">Corpus Christi, TX</div>
+          <span class="cure-clade"><i>Brassicaceae</i></span>
+          <p class="cure-proj">Testing whether how a plant disperses its seeds (by wind, water, or animal) shapes the pace of its chromosome evolution. Collecting dispersal mode, dispersal distance, and genome size data across Brassicaceae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦅</div>
+        <div class="cure-body">
+          <div class="cure-name">Camille Cordell</div>
+          <span class="cure-meta">Junior · Biochemistry &amp; Biophysics</span>
+          <div class="cure-hometown">North Richland Hills, Texas</div>
+          <span class="cure-clade"><i>Accipitriformes</i></span>
+          <p class="cure-proj">Asking whether hawks and eagles with larger geographic ranges experience different rates of chromosome number evolution than range-restricted species. Mapping haploid chromosome numbers against range size in Accipitriformes.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦎</div>
+        <div class="cure-body">
+          <div class="cure-name">Ishan Dash</div>
+          <span class="cure-meta">Sophomore · Biology</span>
+          <div class="cure-hometown">Dallas, Texas</div>
+          <span class="cure-clade"><i>Scincoidea</i></span>
+          <p class="cure-proj">Testing the drift barrier hypothesis by examining whether island-endemic skinks, with their smaller population sizes, show faster chromosomal evolution than mainland relatives. Compiling chromosome counts and island-versus-mainland status across Scincoidea.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐔</div>
+        <div class="cure-body">
+          <div class="cure-name">Sophia Dong</div>
+          <span class="cure-meta">Sophomore · Biology</span>
+          <span class="cure-clade"><i>Galliformes</i></span>
+          <p class="cure-proj">Testing whether mating system and sexual dimorphism evolve in concert across game birds, as sexual selection theory predicts. Measuring six skeletal dimorphism traits and scoring mating systems in Galliformes.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🕷️</div>
+        <div class="cure-body">
+          <div class="cure-name">Robin Flanagan</div>
+          <span class="cure-meta">Senior · Biology</span>
+          <div class="cure-hometown">Waco, TX</div>
+          <span class="cure-clade"><i>Araneae</i></span>
+          <p class="cure-proj">Investigating whether colonizing islands triggers shifts in spider silk properties, linking biogeography to biomaterial evolution. Collecting tensile strength measurements and island-versus-mainland status across Araneae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/maya-friedman.jpg" alt="Maya Friedman"></div>
+        <div class="cure-body">
+          <div class="cure-name">Maya Friedman</div>
+          <span class="cure-meta">Junior · Biomedical Sciences</span>
+          <div class="cure-hometown">Sugar Land, Texas</div>
+          <span class="cure-clade"><i>Testudines</i></span>
+          <p class="cure-proj">Testing whether habitat (marine, freshwater, or terrestrial) shapes the pace of chromosome number evolution in turtles. Analyzing haploid numbers for 141 Testudines species alongside their habitat classifications.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🌲</div>
+        <div class="cure-body">
+          <div class="cure-name">Ananya Gudapati</div>
+          <span class="cure-meta">Sophomore · Biology</span>
+          <div class="cure-hometown">Katy, Texas</div>
+          <span class="cure-clade"><i>Gymnosperms</i></span>
+          <p class="cure-proj">Exploring whether genome size and wood density evolve together in conifers and their relatives, linking cellular-level genomics to whole-organism traits. Collecting genome size and wood density measurements across Gymnosperms.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦗</div>
+        <div class="cure-body">
+          <div class="cure-name">Bevin Haynes</div>
+          <span class="cure-meta">Senior · Biochemistry &amp; Biophysics</span>
+          <span class="cure-clade"><i>Orthoptera</i></span>
+          <p class="cure-proj">Asking whether having a massive genome speeds up or slows down chromosomal rearrangement and lineage diversification in grasshoppers and crickets. Compiling genome sizes and chromosome data across Orthoptera.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/anaya-hooda.jpg" alt="Anaya Hooda"></div>
+        <div class="cure-body">
+          <div class="cure-name">Anaya Hooda</div>
+          <span class="cure-meta">Junior · Neuroscience</span>
+          <div class="cure-hometown">Houston, Texas</div>
+          <span class="cure-clade"><i>Serpentes</i></span>
+          <p class="cure-proj">Testing whether the reduced population sizes of island snakes accelerate their chromosome number evolution compared to continental species. Collecting chromosome counts and geographic data across Serpentes.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦇</div>
+        <div class="cure-body">
+          <div class="cure-name">Andrew Jordan</div>
+          <span class="cure-meta">Senior · Genetics</span>
+          <span class="cure-clade"><i>Chiroptera</i></span>
+          <p class="cure-proj">Testing a new hypothesis: that the tail membrane (uropatagium) of bats co-evolves with echolocation, pushing back on the field's narrow focus on wing shape. Measuring uropatagium dimensions and call parameters across Chiroptera.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦘</div>
+        <div class="cure-body">
+          <div class="cure-name">Lynn Khalidi</div>
+          <span class="cure-meta">Sophomore · Neuroscience</span>
+          <span class="cure-clade"><i>Marsupialia</i></span>
+          <p class="cure-proj">Investigating whether arboreal versus terrestrial lifestyles shape body size and litter size evolution in marsupials. Collecting life history and ecological data across Marsupialia.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🪲</div>
+        <div class="cure-body">
+          <div class="cure-name">Ruth Koffi</div>
+          <span class="cure-meta">Senior · Biochemistry &amp; Biophysics</span>
+          <span class="cure-clade"><i>Scarabaeidae</i></span>
+          <p class="cure-proj">Testing the drift barrier hypothesis in beetles by asking whether flightless scarab species, with their smaller and more isolated populations, show faster chromosome evolution. Mapping winglessness and chromosome data across Scarabaeidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/amrutha-kosanaum.jpg" alt="Amrutha Kosanaum"></div>
+        <div class="cure-body">
+          <div class="cure-name">Amrutha Kosanaum</div>
+          <span class="cure-meta">Senior · Biology</span>
+          <div class="cure-hometown">Houston, TX</div>
+          <span class="cure-clade"><i>Anura</i></span>
+          <p class="cure-proj">Asking whether the way a frog develops (hatching as a tadpole versus emerging fully formed) predicts the rate of chromosome evolution. Uses AmphiBIO development mode data and chromosome counts across Anura.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐒</div>
+        <div class="cure-body">
+          <div class="cure-name">Sienna Kramer</div>
+          <span class="cure-meta">Junior · General Studies</span>
+          <span class="cure-clade"><i>Primates</i></span>
+          <p class="cure-proj">Investigating whether sperm competition reshapes both testes investment and sperm energetic design in primates, connecting mating behavior to cellular-level evolution. Collecting testes size and sperm midpiece length data across Primates.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐝</div>
+        <div class="cure-body">
+          <div class="cure-name">Joy Lee</div>
+          <span class="cure-meta">Freshman · Biology</span>
+          <div class="cure-hometown">Katy, Texas</div>
+          <span class="cure-clade"><i>Hymenoptera</i></span>
+          <p class="cure-proj">Testing whether specialist parasitoid wasps, locked into narrow host relationships, experience faster chromosomal evolution than their generalist relatives. Collecting host specificity and haploid chromosome numbers across Hymenoptera.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/virginia-lopez.jpg" alt="Virginia R. Lopez"></div>
+        <div class="cure-body">
+          <div class="cure-name">Virginia R. Lopez</div>
+          <span class="cure-meta">Senior · Biology · Minor in Medical Anthropology</span>
+          <div class="cure-hometown">Brownsville, Texas</div>
+          <span class="cure-clade"><i>Asteraceae</i></span>
+          <p class="cure-proj">Asking whether genome size constrains how many ecoregions a plant species can occupy, linking genome architecture to ecological range. Analyzing genome size and ecoregion counts across the sunflower family Asteraceae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/srija-manapuri.jpg" alt="Srija Manapuri"></div>
+        <div class="cure-body">
+          <div class="cure-name">Srija Manapuri</div>
+          <span class="cure-meta">Junior · Forensic &amp; Investigative Sciences · Political Science</span>
+          <span class="cure-clade"><i>Coleoptera</i></span>
+          <p class="cure-proj">Asking whether genome size predicts rates of chromosome evolution across beetles, one of the most species-rich animal orders on Earth. Compiling genome and chromosome data across Coleoptera.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/ryan-matta.jpg" alt="Ryan Matta"></div>
+        <div class="cure-body">
+          <div class="cure-name">Ryan Matta</div>
+          <span class="cure-meta">Freshman · Microbiology</span>
+          <div class="cure-hometown">Spring, TX</div>
+          <span class="cure-clade"><i>Curculionidae</i></span>
+          <p class="cure-proj">Testing whether weevil rostrum shape tracks the plant structures they use for egg-laying, supporting an adaptive multi-optimum model of evolution. Measuring rostrum morphology and oviposition guild across Curculionidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐟</div>
+        <div class="cure-body">
+          <div class="cure-name">Janie Menjivar</div>
+          <span class="cure-meta">Senior · Biochemistry &amp; Biophysics</span>
+          <span class="cure-clade"><i>Gobiidae</i></span>
+          <p class="cure-proj">Exploring the convergent evolution of pelvic suction disks in goby fishes, asking whether substrate type drives repeated adaptation of this attachment structure. Measuring relative pelvic disk area and habitat type across Gobiidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦈</div>
+        <div class="cure-body">
+          <div class="cure-name">Robert Millikan</div>
+          <span class="cure-meta">Junior · Biological &amp; Environmental Sciences</span>
+          <span class="cure-clade"><i>Chondrichthyes</i></span>
+          <p class="cure-proj">Asking whether jaw suspension type acts as an evolutionary constraint on morphological diversification in sharks and rays. Collecting jaw morphology trait data across Chondrichthyes.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🍄</div>
+        <div class="cure-body">
+          <div class="cure-name">Olivia Montorello</div>
+          <span class="cure-meta">Senior · Public Health</span>
+          <span class="cure-clade"><i>Fungi</i></span>
+          <p class="cure-proj">Investigating whether genome size predicts the rate of chromosome number evolution in fungi, connecting genome architecture to karyotype dynamics. Compiling genome and chromosome data across Fungi.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/jackson-moore.jpg" alt="Jackson Moore"></div>
+        <div class="cure-body">
+          <div class="cure-name">Jackson Moore</div>
+          <span class="cure-meta">Senior · Biology</span>
+          <span class="cure-clade"><i>Palaeognathae</i></span>
+          <p class="cure-proj">Testing whether habitat drives wing size evolution through selection versus drift in flightless ratites and their flying relatives, the tinamous. Testing his hypothesis on recently extinct taxa (moa) alongside the extant diversity of Palaeognathae, collecting body mass, wing length, and habitat data.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/samy-muktevi.jpg" alt="Samy Muktevi"></div>
+        <div class="cure-body">
+          <div class="cure-name">Samy Muktevi</div>
+          <span class="cure-meta">Freshman · Biology</span>
+          <div class="cure-hometown">Cypress, TX</div>
+          <span class="cure-clade"><i>Orchidaceae</i></span>
+          <p class="cure-proj">Asking whether polyploidy (whole-genome duplication) gives orchids a colonization advantage by expanding their geographic ranges. Mapping ploidy level against range size across Orchidaceae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐠</div>
+        <div class="cure-body">
+          <div class="cure-name">Meghana Munduru</div>
+          <span class="cure-meta">Junior · Psychology</span>
+          <span class="cure-clade"><i>Characidae</i></span>
+          <p class="cure-proj">Testing whether reproductive mode shapes genome size evolution in tetras and characins, linking life history strategy to molecular architecture. Collecting reproductive and genomic data across Characidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐡</div>
+        <div class="cure-body">
+          <div class="cure-name">Soniya Muñoz</div>
+          <span class="cure-meta">Senior · Zoology</span>
+          <div class="cure-hometown">Fort Worth, Texas</div>
+          <span class="cure-clade"><i>Siluriformes</i></span>
+          <p class="cure-proj">Asking a fascinating evolutionary sequence question: did catfish become nocturnal before or after evolving body armor? Scoring armor presence and activity pattern across Siluriformes.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐟</div>
+        <div class="cure-body">
+          <div class="cure-name">Anna Brooke Naegle</div>
+          <span class="cure-meta">Freshman · Ecology &amp; Conservation Biology</span>
+          <div class="cure-hometown">Fort Worth, TX</div>
+          <span class="cure-clade"><i>Nothobranchiidae</i></span>
+          <p class="cure-proj">Exploring whether the boom-and-bust lifecycle of annual killifish, driven by seasonal rainfall, accelerates their chromosome evolution. Linking precipitation seasonality to chromosome data in Nothobranchiidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/tewobola-olasehinde.jpg" alt="Tewobola Olasehinde"></div>
+        <div class="cure-body">
+          <div class="cure-name">Tewobola Olasehinde</div>
+          <span class="cure-meta">Senior · Biological &amp; Environmental Sciences</span>
+          <span class="cure-clade"><i>Carnivora</i></span>
+          <p class="cure-proj">Taking a computational approach to ask whether domestication shifts the shape of the protein-coding landscape in carnivore genomes. Comparing proteome embedding patterns between domestic and wild Carnivora.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">☕</div>
+        <div class="cure-body">
+          <div class="cure-name">Bhakti Patel</div>
+          <span class="cure-meta">Senior · Biochemistry &amp; Biophysics</span>
+          <span class="cure-clade"><i>Coffeeae (Rubiaceae)</i></span>
+          <p class="cure-proj">Tracing the evolutionary history of caffeine biosynthesis to determine whether this iconic chemical defense evolved once or arose independently multiple times in the coffee tribe. Scoring caffeine production across approximately 50 species of Coffeeae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🌷</div>
+        <div class="cure-body">
+          <div class="cure-name">Samshritha Pochanapeddi</div>
+          <span class="cure-meta">Senior · Biochemistry &amp; Biophysics</span>
+          <span class="cure-clade"><i>Liliaceae</i></span>
+          <p class="cure-proj">Investigating whether genome size influences the rate of chromosome evolution across lilies, connecting molecular-level variation to karyotype dynamics. Using chromosome counts and genome size data from Kew and NCBI across Liliaceae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/anjalika-sachan.jpg" alt="Anjalika Sachan"></div>
+        <div class="cure-body">
+          <div class="cure-name">Anjalika Sachan</div>
+          <span class="cure-meta">Junior · Neuroscience</span>
+          <div class="cure-hometown">Austin, Texas</div>
+          <span class="cure-clade"><i>Pteridophyta (Ferns)</i></span>
+          <p class="cure-proj">Testing whether genome size predicts rates of chromosome evolution in ferns, a group famous for their enormous genomes. Using the Kew Plant DNA C-values Database and chromosome counts across Pteridophyta.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🐟</div>
+        <div class="cure-body">
+          <div class="cure-name">Evelyn Sanchez</div>
+          <span class="cure-meta">Freshman · Biology</span>
+          <div class="cure-hometown">Dallas, TX</div>
+          <span class="cure-clade"><i>Anabantiformes</i></span>
+          <p class="cure-proj">Investigating whether reliance on the labyrinth organ (an air-breathing adaptation) correlates with body size and chromosome number evolution in gouramis and their relatives. Collecting trait data across Anabantiformes.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦎</div>
+        <div class="cure-body">
+          <div class="cure-name">Kiara Santiago</div>
+          <span class="cure-meta">Junior · Biochemistry &amp; Biophysics</span>
+          <span class="cure-clade"><i>Gekkonidae</i></span>
+          <p class="cure-proj">Studying chromosome evolution in geckos, one of the most species-rich lizard families. Collecting karyotype data across Gekkonidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦎</div>
+        <div class="cure-body">
+          <div class="cure-name">Hamzah Sheikh</div>
+          <span class="cure-meta">Sophomore · Biology</span>
+          <span class="cure-clade"><i>Iguania</i></span>
+          <p class="cure-proj">Testing whether island iguanas and their relatives show faster chromosome evolution than mainland populations, applying the drift barrier framework to reptiles. Compiling chromosome data across Iguania.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🌶️</div>
+        <div class="cure-body">
+          <div class="cure-name">Dana Stavinoha</div>
+          <span class="cure-meta">Sophomore · Genetics</span>
+          <span class="cure-clade"><i>Solanaceae</i></span>
+          <p class="cure-proj">Asking whether the presence of B chromosomes (those extra genomic passengers) correlates with genome size evolution in nightshades. Mapping B chromosome presence and genome size across Solanaceae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/ava-tingue.jpg" alt="Ava Tingue"></div>
+        <div class="cure-body">
+          <div class="cure-name">Ava Tingue</div>
+          <span class="cure-meta">Freshman · Biology</span>
+          <div class="cure-hometown">Flower Mound, Texas</div>
+          <span class="cure-clade"><i>Chrysomelidae</i></span>
+          <p class="cure-proj">Testing whether genome size predicts the rate of chromosome number evolution in leaf beetles, one of the most diverse herbivore radiations. Compiling genome and chromosome data across Chrysomelidae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/keagan-tran.jpg" alt="Keagan Tran"></div>
+        <div class="cure-body">
+          <div class="cure-name">Keagan Tran</div>
+          <span class="cure-meta">Sophomore · Biology</span>
+          <div class="cure-hometown">Tomball, TX</div>
+          <span class="cure-clade"><i>Blattodea</i></span>
+          <p class="cure-proj">Asking whether the evolution of eusociality breaks the classic flight-fecundity trade-off in cockroaches and termites. Collecting flight capability and fecundity data across Blattodea.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🦂</div>
+        <div class="cure-body">
+          <div class="cure-name">Felix Vasili</div>
+          <span class="cure-meta">Freshman · Neuroscience</span>
+          <span class="cure-clade"><i>Scorpiones</i></span>
+          <p class="cure-proj">Investigating whether a burrowing lifestyle drives the convergent evolution of pectine tooth counts across scorpion lineages. Compiling pectine morphology and ecology data across Scorpiones.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/thomas-vela.jpg" alt="Thomas Vela"></div>
+        <div class="cure-body">
+          <div class="cure-name">Thomas Vela</div>
+          <span class="cure-meta">Senior · Biology</span>
+          <div class="cure-hometown">McAllen, Texas</div>
+          <span class="cure-clade"><i>Muridae</i></span>
+          <p class="cure-proj">Testing the drift barrier hypothesis by asking whether rodents with small home ranges and low population density show faster chromosome evolution. Using home range, population density, chromosome count, and genome size data across Muridae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/maryjo-velasquez.jpg" alt="MaryJo Velasquez"></div>
+        <div class="cure-body">
+          <div class="cure-name">MaryJo Velasquez</div>
+          <span class="cure-meta">Senior · Genetics</span>
+          <div class="cure-hometown">Austin, TX</div>
+          <span class="cure-clade"><i>Caudata</i></span>
+          <p class="cure-proj">Testing whether paedomorphosis (retaining juvenile traits into adulthood) correlates with accelerated chromosome evolution in salamanders. Mapping developmental strategy against karyotype change rates across Caudata.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🌸</div>
+        <div class="cure-body">
+          <div class="cure-name">Samhita Vemuri</div>
+          <span class="cure-meta">Junior · Genetics</span>
+          <span class="cure-clade"><i>Passifloraceae</i></span>
+          <p class="cure-proj">Exploring whether climate (cold and seasonal versus warm and tropical) predicts genome size across passionflowers and their relatives. Collecting climate and genomic data across Passifloraceae.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/emma-walker.jpg" alt="Emma Walker"></div>
+        <div class="cure-body">
+          <div class="cure-name">Emma Walker</div>
+          <span class="cure-meta">Sophomore · Zoology</span>
+          <div class="cure-hometown">Waco, TX</div>
+          <span class="cure-clade"><i>Passeriformes</i></span>
+          <p class="cure-proj">Testing whether migratory songbirds show different chromosome evolution rates than sedentary species, linking behavioral ecology to genome architecture. Collecting migratory status and chromosome numbers across Passeriformes.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar"><img src="assets/img/cure/mackenzie-wilkerson.jpg" alt="MacKenzie Wilkerson"></div>
+        <div class="cure-body">
+          <div class="cure-name">MacKenzie Wilkerson</div>
+          <span class="cure-meta">Junior · Microbiology</span>
+          <div class="cure-hometown">Frisco, Texas</div>
+          <span class="cure-clade"><i>Coccinellidae</i></span>
+          <p class="cure-proj">Quantifying elytral melanism in ladybugs to test whether coloration patterns reflect a thermoregulation and habitat trade-off. Measuring percent black dorsal surface across species in her Coccinellidae phylogeny.</p>
+        </div>
+      </div>
+
+      <div class="cure-card">
+        <div class="cure-avatar">🔬</div>
+        <div class="cure-body">
+          <div class="cure-name">Aiden Nychka</div>
+          <span class="cure-meta">Senior · Genetics</span>
+          <p class="cure-proj">Project details coming soon.</p>
+        </div>
+      </div>
+
+      <div class="cure-card pi">
+        <div class="cure-avatar"><img src="assets/img/heath.jpg" alt="Heath Blackmon"></div>
+        <div class="cure-body">
+          <div class="cure-name">Heath Blackmon<span class="pi-tag">PI</span></div>
+          <span class="cure-meta">Fort Worth, Texas</span>
+          <span class="cure-clade"><i>Metazoa</i></span>
+          <p class="cure-proj">Heath Blackmon is an associate professor and evolutionary biologist leading the Biology and AI CURE. He is testing the Drift Barrier Hypothesis by determining whether large genomes lead to higher rates of chromosome evolution, using a dataset of haploid chromosome numbers and sex chromosome systems spanning all of Metazoa.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="ack">
+      This program is made possible by the generous support of <a href="https://artsci.tamu.edu/news/2025/11/investing-in-student-discovery-former-zoology-student-supports-biology-cures-program.html" target="_blank">Bonsall S. Wilton '72</a> and the Wilton CUREs Excellence Endowment.
+    </p>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="assets/js/v3.js"></script>
+</body>
+</html>

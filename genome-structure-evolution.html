@@ -1,1078 +1,363 @@
----
-layout: default
-title: Evolution of Genome Structure - Blackmon Lab
-description: A visual guide to the evolution of gross genome structure, chromosome fusions, fissions, whole-genome duplication, and the forces that shape karyotype evolution across the tree of life.
-canonical: https://coleoguy.github.io/genome-structure-evolution.html
-keywords: genome structure, chromosome evolution, karyotype, polyploidy, Robertsonian translocation, fission, fusion, meiotic drive, ChromEvol, Blackmon Lab
-body_class: resources-page
-nav_active: resources
-extra_head: |
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Evolution of Genome Structure",
-      "url": "https://coleoguy.github.io/genome-structure-evolution.html",
-      "description": "Visual guide to chromosome fusions, fissions, polyploidy, demiploidy, meiotic drive, and the forces shaping karyotype evolution across the tree of life.",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "Blackmon Lab",
-        "url": "https://coleoguy.github.io"
-      },
-      "about": {
-        "@type": "Thing",
-        "name": "Evolutionary biology"
-      },
-      "keywords": ["karyotype evolution", "chromosome fusion", "polyploidy", "meiotic drive", "genome structure", "chromePlus"],
-      "publisher": {
-        "@type": "ResearchOrganization",
-        "name": "Blackmon Lab",
-        "url": "https://coleoguy.github.io"
-      }
-    }
-    </script>
-  <style>
-      /* ── Scroll progress bar ─────────────────────────── */
-      #scroll-progress {
-        position: fixed; top: 62px; left: 0; height: 3px; width: 0%;
-        background: var(--accent, #c9a227); z-index: 1050; transition: width 0.05s linear;
-      }
-  
-      /* ── Hero ─────────────────────────────────────────── */
-      .gs-hero {
-        padding: 140px 0 60px; text-align: center;
-        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-      }
-      .gs-hero .kicker {
-        font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em;
-        text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 14px;
-      }
-      .gs-hero h1 {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700;
-        color: var(--text-heading, #f8f4ed); line-height: 1.15; margin-bottom: 14px;
-      }
-      .gs-hero .subtitle {
-        font-family: 'Playfair Display', Georgia, serif; font-style: italic;
-        font-size: 1.05rem; color: var(--text-secondary, rgba(200,197,190,0.65));
-        max-width: 720px; margin: 0 auto 28px;
-      }
-      .audio-wrap {
-        display: inline-flex; align-items: center; gap: 12px;
-        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-        border-radius: 10px; padding: 12px 20px; margin-top: 10px;
-      }
-      .audio-wrap .audio-label {
-        font-size: 0.75rem; color: var(--text-muted, rgba(200,197,190,0.45));
-        text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
-      }
-      .audio-wrap audio { height: 32px; }
-  
-      /* ── Split-panel sections ─────────────────────────── */
-      .gs-section {
-        padding: 56px 0;
-        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-      }
-      .gs-section:nth-child(even) { background: rgba(255,255,255,0.015); }
-      .light-mode .gs-section:nth-child(even) { background: rgba(0,0,0,0.02); }
-  
-      .gs-theory { padding-right: 28px; border-right: 1px solid rgba(201,162,39,0.15); }
-      .gs-evidence { padding-left: 28px; }
-      @media (max-width: 991.98px) {
-        .gs-theory, .gs-evidence { padding: 0; border-right: none; }
-        .gs-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
-      }
-  
-      .gs-kicker {
-        font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
-        text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 6px;
-      }
-      .gs-section h2 {
-        font-size: 1.45rem; font-weight: 700; color: var(--text-heading, #eae7e2);
-        margin-bottom: 16px; line-height: 1.25;
-      }
-      .gs-section h3 {
-        font-size: 1.05rem; font-weight: 600; color: var(--accent, #c9a227); margin: 24px 0 8px;
-      }
-      .gs-section h3:first-child { margin-top: 0; }
-      .gs-section p {
-        font-size: 0.95rem; line-height: 1.8; color: var(--text, #c8c5c0); margin-bottom: 14px;
-      }
-      .gs-section a {
-        color: var(--accent, #c9a227); text-decoration: underline;
-        text-decoration-color: rgba(201,162,39,0.4); text-underline-offset: 2px;
-      }
-      .gs-section a:hover { text-decoration-color: var(--accent); }
-      .gs-section strong { font-weight: 600; color: var(--text-heading, #eae7e2); }
-  
-      .pullquote {
-        border-left: 3px solid var(--accent, #c9a227);
-        padding: 10px 18px; margin: 20px 0; font-style: italic;
-        font-size: 0.95rem; color: var(--accent, #c9a227); line-height: 1.6;
-      }
-  
-      /* ── Paper masthead cards ─────────────────────────── */
-      .paper-masthead {
-        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-        border-radius: 10px; padding: 18px 20px; margin-bottom: 14px;
-        transition: border-color 0.2s; text-decoration: none; display: block;
-      }
-      .paper-masthead:hover { border-color: rgba(201,162,39,0.5); text-decoration: none; }
-      .paper-masthead .journal {
-        font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.18em;
-        color: var(--accent, #c9a227); font-weight: 700; margin-bottom: 5px;
-      }
-      .paper-masthead .paper-title {
-        font-size: 0.92rem; font-weight: 600; color: var(--text-heading, #eae7e2);
-        line-height: 1.35; margin-bottom: 5px;
-      }
-      .paper-masthead .authors {
-        font-size: 0.78rem; color: var(--text-secondary, rgba(200,197,190,0.65)); line-height: 1.4;
-      }
-      .paper-masthead .pub-year {
-        font-size: 0.7rem; color: var(--text-muted, rgba(200,197,190,0.45)); margin-top: 4px;
-      }
-      .badge-f1000 {
-        display: inline-block; background: var(--accent, #c9a227); color: #080808;
-        font-size: 0.55rem; font-weight: 700; padding: 2px 7px; border-radius: 3px;
-        letter-spacing: 0.05em; margin-left: 6px; vertical-align: middle;
-      }
-  
-      /* ── Diagram containers ────────────────────────────── */
-      .diagram-box {
-        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-        border-radius: 10px; padding: 24px; margin: 20px 0; text-align: center;
-      }
-      .diagram-box svg { max-width: 100%; height: auto; }
-      .diagram-caption {
-        font-size: 0.72rem; color: var(--text-muted, rgba(200,197,190,0.45));
-        margin-top: 10px; text-transform: uppercase; letter-spacing: 0.1em;
-      }
-  
-      /* ── SVG colors ────────────────────────────────────── */
-      .chr-auto { fill: #555; }
-      .chr-sex { fill: var(--accent, #c9a227); }
-      .chr-sex-dim { fill: rgba(201,162,39,0.35); }
-      .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
-      .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
-      .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
-      .chr-arrow { fill: var(--accent, #c9a227); }
-      .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
-      .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
-      .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
-      .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
-      .chr-region { fill: rgba(201,162,39,0.12); }
-  
-      .light-mode .chr-auto { fill: #bbb; }
-      .light-mode .chr-label { fill: #333; }
-      .light-mode .chr-label-sm { fill: #777; }
-      .light-mode .chr-heading { fill: #222; }
-      .light-mode .chr-line { stroke: #ccc; }
-      .light-mode .chr-line-dash { stroke: #ccc; }
-  
-      /* ── Chart containers ──────────────────────────────── */
-      .chart-box {
-        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-        border-radius: 10px; padding: 16px; margin: 16px 0;
-      }
-      .chart-box .chart-title {
-        font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-        letter-spacing: 0.12em; color: var(--accent, #c9a227); margin-bottom: 8px; text-align: center;
-      }
-  
-      /* ── Stat callout ──────────────────────────────────── */
-      .stat-callout {
-        display: flex; align-items: center; gap: 14px;
-        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-        border-radius: 10px; padding: 14px 18px; margin: 12px 0;
-      }
-      .stat-callout .stat-num {
-        font-size: 1.6rem; font-weight: 700; color: var(--accent, #c9a227);
-        line-height: 1; white-space: nowrap;
-      }
-      .stat-callout .stat-text {
-        font-size: 0.82rem; color: var(--text, #c8c5c0); line-height: 1.4;
-      }
-  
-      /* ── Toggle buttons ────────────────────────────────── */
-      .chart-toggle {
-        display: flex; gap: 6px; justify-content: center; margin-bottom: 10px;
-      }
-      .chart-toggle button {
-        font-size: 0.7rem; padding: 4px 12px;
-        border: 1px solid var(--border, rgba(255,255,255,0.10));
-        border-radius: 16px; background: transparent; color: var(--text, #c8c5c0);
-        cursor: pointer; transition: all 0.18s;
-      }
-      .chart-toggle button.active, .chart-toggle button:hover {
-        border-color: var(--accent, #c9a227); color: var(--accent, #c9a227);
-        background: rgba(201,162,39,0.08);
-      }
-  
-      /* ── Comparison table ──────────────────────────────── */
-      .cmp-table {
-        width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.82rem;
-      }
-      .cmp-table th {
-        text-align: left; padding: 8px 12px; font-size: 0.65rem; font-weight: 700;
-        text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent, #c9a227);
-        border-bottom: 1px solid rgba(201,162,39,0.25);
-      }
-      .cmp-table td {
-        padding: 8px 12px; border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-        color: var(--text, #c8c5c0); vertical-align: top;
-      }
-      .cmp-table tr:last-child td { border-bottom: none; }
-  
-      /* ── Related resources box ─────────────────────────── */
-      .related-box {
-        margin-top: 48px; padding: 28px 32px;
-        border: 1px solid rgba(201,162,39,0.2); border-radius: 10px;
-        background: rgba(201,162,39,0.03);
-      }
-      .related-box h3 {
-        font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
-        text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 16px;
-      }
-      .related-links { display: flex; flex-wrap: wrap; gap: 10px; }
-      .related-link {
-        display: inline-flex; align-items: center; gap: 6px;
-        padding: 6px 14px; border: 1px solid rgba(201,162,39,0.25);
-        border-radius: 20px; font-size: 0.8rem; color: var(--text, #c8c5c0);
-        text-decoration: none; transition: all 0.18s;
-      }
-      .related-link i { color: var(--accent); font-size: 0.75rem; }
-      .related-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-  
-      .paper-foot {
-        text-align: center; margin-top: 40px; padding-top: 18px;
-        border-top: 1px solid rgba(201,162,39,0.2);
-        font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-        color: var(--text-muted, rgba(200,197,190,0.45));
-      }
-    </style>
-extra_scripts: |
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
----
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genome structure · Blackmon Lab</title>
+<meta name="description" content="Fusions, fissions, and whole-genome duplication across the tree of life. Chromosome number varies from 2n=2 to 2n=1260. A visual tour of how and why, from the Blackmon Lab.">
+<link rel="icon" href="assets/img/favicon.ico">
 
-<!-- ═══════════════ HERO ═══════════════ -->
-    <section class="gs-hero" data-aos="fade-up">
-      <div class="container">
-        <div class="kicker">A Visual Guide</div>
-        <h1>The Evolution of Genome Structure</h1>
-        <div class="subtitle">Fusions, fissions, and whole-genome duplications: why chromosome number changes in some lineages and stays frozen in others</div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        <!-- Decorative SVG: stylized karyotype -->
-        <svg width="200" height="70" viewBox="0 0 200 70" style="margin-bottom: 18px; opacity: 0.7;">
-          <rect x="10" y="5" width="10" height="55" rx="5" class="chr-auto" opacity="0.6"/>
-          <rect x="26" y="5" width="10" height="55" rx="5" class="chr-auto" opacity="0.6"/>
-          <rect x="44" y="10" width="10" height="48" rx="5" class="chr-auto" opacity="0.5"/>
-          <rect x="60" y="10" width="10" height="48" rx="5" class="chr-auto" opacity="0.5"/>
-          <rect x="78" y="14" width="10" height="40" rx="5" class="chr-auto" opacity="0.4"/>
-          <rect x="94" y="14" width="10" height="40" rx="5" class="chr-auto" opacity="0.4"/>
-          <rect x="112" y="18" width="10" height="32" rx="5" class="chr-sex" opacity="0.7"/>
-          <rect x="128" y="18" width="10" height="32" rx="5" class="chr-sex" opacity="0.7"/>
-          <rect x="146" y="22" width="9" height="26" rx="4.5" class="chr-auto" opacity="0.35"/>
-          <rect x="161" y="22" width="9" height="26" rx="4.5" class="chr-auto" opacity="0.35"/>
-          <rect x="176" y="26" width="8" height="20" rx="4" class="chr-auto" opacity="0.25"/>
-          <rect x="189" y="26" width="8" height="20" rx="4" class="chr-auto" opacity="0.25"/>
-        </svg>
+<link rel="stylesheet" href="assets/css/v3.css">
 
-        <div class="audio-wrap">
-          <span class="audio-label">Listen: AI-Generated Research Podcast</span>
-          <audio controls preload="none" src="assets/chromosomenumber.wav"></audio>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+</head>
+
+<body>
+
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+    </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="karyotype.html">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html" class="active">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb">
+      <a href="index.html">Home</a> › Research › <strong>Genome structure</strong>
+    </div>
+
+    <h1 class="title" id="genome-structure">Fusions, fissions, and polyploidy.</h1>
+
+    <p class="lede">
+      Chromosome number changes by fusion, fission, or whole-genome duplication. Some lineages do all three repeatedly; others stay frozen for tens of millions of years. This page is a visual tour of how and why.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">2&ndash;1,260</div>
+        <span class="stat-label">2n range across eukaryotes</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">63,682</div>
+        <span class="stat-label">Karyotypes analyzed (Copeland &amp; Blackmon 2026)</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <span class="stat-label">Orders of magnitude in rate variation</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">55</div>
+        <span class="stat-label">Eukaryotic clades compared</span>
+      </div>
+    </div>
+
+    <h2>What genome structure is</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Foundations</span>
+          <span class="sum-head">Karyotype is number, size, shape, and banding of chromosomes</span>
+          <span class="sum-trail">The fern <em>Ophioglossum reticulatum</em> has 2n = 1,260. The jack jumper ant <em>Myrmecia pilosula</em> has 2n = 2.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>A genome is the full DNA complement of a species, physically organized into chromosomes. The karyotype describes how many chromosomes a species has and what they look like. Mammals cluster near 2n = 40&ndash;60, birds near 2n = 80, and flowering plants span 2n = 4 to 640. Numbers like these are not random. They reflect hundreds of millions of years of fusions, fissions, and whole-genome duplications.</p>
+        <p>The central questions are simple to state and hard to answer. Why does chromosome number change? What favors fusions over fissions? Why do some clades evolve rapidly and others barely change?</p>
+        <div class="layer-links">
+          <a href="karyotypes/index.html">Browse the karyotype databases →</a>
+          <a href="karyotype.html">Karyotype evolution overview →</a>
         </div>
       </div>
-    </section>
+    </details>
 
-    <!-- ═══════════════ SECTION 1: WHAT IS GENOME STRUCTURE? ═══════════════ -->
-    <section class="gs-section" id="sec-what">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">Foundations</div>
-            <h2>What Is Genome Structure?</h2>
-            <p>Every species has a genome: the complete set of DNA encoding its biology. But genomes are not just sequences of bases. They are physically organized into <strong>chromosomes</strong>, discrete linear (or circular) packages of DNA bound to proteins. The <strong>karyotype</strong> of a species describes how many chromosomes it has and what they look like. That includes their number, size, shape, and banding patterns.</p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Canonical references</span>
+          <span class="sum-head">Stebbins 1950 and White 1973 set the agenda</span>
+          <span class="sum-trail">Plant polyploidy, animal karyotype diversity, and the stasipatric speciation hypothesis.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>G.L. Stebbins, <em>Variation and Evolution in Plants</em> (Columbia University Press, 1950), elevated polyploidy and dysploidy to central mechanisms of plant diversification. M.J.D. White, <em>Animal Cytology and Evolution</em>, 3rd ed. (Cambridge University Press, 1973), provided the encyclopedic documentation of animal karyotype diversity and the controversial stasipatric speciation hypothesis. Both books still define the vocabulary of the field.</p>
+      </div>
+    </details>
 
-            <p>Chromosome number varies enormously across life. The fern <em>Ophioglossum reticulatum</em> holds the record at <strong>2n = 1,260</strong>. The jack jumper ant <em>Myrmecia pilosula</em> has <strong>2n = 2</strong>, a single pair. Most mammals cluster around 2n = 40&ndash;60, while most birds sit near 2n = 80. These are not random numbers. They reflect hundreds of millions of years of mutations that <strong>fused</strong> chromosomes together, <strong>split</strong> them apart, or <strong>duplicated</strong> entire genomes.</p>
+    <h2>Fusions and fissions</h2>
 
-            <p>The central questions of genome structure evolution are deceptively simple: <strong>Why does chromosome number change? What forces favor fusions over fissions? Why do some clades evolve rapidly while others barely change?</strong> Answering them requires integrating cytogenetics, population genetics, phylogenetic comparative methods, and genomics.</p>
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Fusions</span>
+          <span class="sum-head">Robertsonian and tandem fusions reduce chromosome number by one</span>
+          <span class="sum-trail">Human chromosome 2 is a telomeric fusion of two ancestral ape chromosomes.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>A Robertsonian translocation joins two acrocentric chromosomes at their centromeres, producing one metacentric. This is the most common type of fusion in mammals. A tandem fusion attaches one chromosome to the telomere of another. Human chromosome 2 is a telomeric fusion of two ancestral ape chromosomes, still separate in the other great apes, which is why humans have 2n = 46 while the other great apes have 2n = 48.</p>
+        <p>The deep problem: a new fusion starts in one individual as a heterozygote. At meiosis the unpaired trivalent can missegregate. If the heterozygote has reduced fertility (underdominance), how does the fusion ever spread?</p>
+      </div>
+    </details>
 
-            <!-- SVG: Chromosome number diversity -->
-            <div class="diagram-box" data-aos="zoom-in">
-              <svg viewBox="0 0 460 180" width="100%" aria-labelledby="svg-diversity-title">
-                <title id="svg-diversity-title">Diversity of chromosome numbers across life</title>
-                <text x="230" y="18" class="chr-heading" text-anchor="middle">Chromosome Number Across Life</text>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Lande 1979</span>
+          <span class="sum-head">Underdominance should make fusion fixation nearly impossible in large populations</span>
+          <span class="sum-trail">The paper that challenged chromosomal speciation theory on population genetic grounds.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>R. Lande, "Effective deme sizes for the fixation of underdominant chromosomal rearrangements," <em>Evolution</em> (1979), used diffusion theory to show that underdominant rearrangements have exponentially small fixation probabilities in large populations. Escape routes proposed since then: small demes and drift, meiotic drive biasing transmission, weakly underdominant fusions, recombination suppression near adapted gene complexes, and monobrachial homology, where populations fix different Robertsonian fusions sharing overlapping arms so that F<sub>1</sub> hybrids form sterile multivalent chains and rings.</p>
+        <p>M. King, <em>Species Evolution: The Role of Chromosome Change</em> (Cambridge University Press, 1993), made the opposing case that chromosomal rearrangements are a primary driver of animal speciation.</p>
+      </div>
+    </details>
 
-                <!-- Scale bar -->
-                <line x1="30" y1="155" x2="430" y2="155" class="chr-line"/>
-                <text x="30" y="172" class="chr-label-sm" text-anchor="middle">2</text>
-                <text x="130" y="172" class="chr-label-sm" text-anchor="middle">~40</text>
-                <text x="230" y="172" class="chr-label-sm" text-anchor="middle">~80</text>
-                <text x="330" y="172" class="chr-label-sm" text-anchor="middle">~200</text>
-                <text x="430" y="172" class="chr-label-sm" text-anchor="middle">1260</text>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Fissions</span>
+          <span class="sum-head">Splitting requires a neocentromere and new telomeres</span>
+          <span class="sum-trail">Henikoff &amp; Malik 2002; Marshall et al. 2008 showed neocentromeres form faster than once thought.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>A fission splits one chromosome into two, raising the chromosome number. The break must acquire a new centromere and new telomeres or the fragments are lost at cell division. Cytogenetic and ChIP-seq surveys (Henikoff &amp; Malik 2002; Marshall et al. 2008) show that functional neocentromeres can arise epigenetically at non-canonical sequence locations on much shorter timescales than previously assumed, even within human pedigrees. The bottleneck is not centromere formation per se but the joint requirement for centromere stability, telomere capping, and avoidance of dicentric configurations during transmission.</p>
+        <p>Fusion versus fission balance varies a lot. Mammals favor fusions (2n ranges from 6 to 102). Birds are narrowly bounded around 2n = 78&ndash;82. Coleoptera swing both ways (2n = 4 to 69). Lepidoptera often fission (2n = 14 to 446). Angiosperms do everything, with polyploidy dominating (2n = 4 to 640). The Coleoptera Karyotype Database (Blackmon &amp; Demuth, <em>The Coleopterists Bulletin</em>, 2015) is one of the largest cytogenetic datasets for any animal order.</p>
+      </div>
+    </details>
 
-                <!-- Tick marks -->
-                <line x1="30" y1="152" x2="30" y2="158" class="chr-line"/>
-                <line x1="130" y1="152" x2="130" y2="158" class="chr-line"/>
-                <line x1="230" y1="152" x2="230" y2="158" class="chr-line"/>
-                <line x1="330" y1="152" x2="330" y2="158" class="chr-line"/>
-                <line x1="430" y1="152" x2="430" y2="158" class="chr-line"/>
+    <h2>Polyploidy</h2>
 
-                <!-- Jack jumper ant -->
-                <circle cx="30" cy="130" r="4" class="chr-sex"/>
-                <text x="30" y="118" class="chr-label-sm" text-anchor="middle">Jack jumper</text>
-                <text x="30" y="108" class="chr-label-sm" text-anchor="middle">ant (2n=2)</text>
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Whole-genome duplication</span>
+          <span class="sum-head">Autopolyploidy doubles within a species; allopolyploidy pairs doubling with hybridization</span>
+          <span class="sum-trail">Common in plants (30&ndash;70% of angiosperms), rare in sexually reproducing animals.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Autopolyploidy is genome doubling within a single species, often via an unreduced gamete. Allopolyploidy combines genome doubling with hybridization: two species hybridize and the hybrid doubles. Allopolyploids are often immediately reproductively isolated from both parents, making polyploidy a potential instantaneous speciation mechanism. In animals it is largely restricted to parthenogenetic lineages and a few sexually reproducing groups (some fish, frogs, insects). The sex chromosome "poison pill" hypothesis suggests polyploidy disrupts sex determination in species with differentiated sex chromosomes.</p>
+      </div>
+    </details>
 
-                <!-- Humans -->
-                <circle cx="148" cy="130" r="5" class="chr-sex"/>
-                <text x="148" y="118" class="chr-label-sm" text-anchor="middle">Humans</text>
-                <text x="148" y="108" class="chr-label-sm" text-anchor="middle">(2n=46)</text>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Mayrose et al. 2011</span>
+          <span class="sum-head">Recently formed polyploids diversify more slowly than their diploid relatives</span>
+          <span class="sum-trail">The jackpot hypothesis replaced with something closer to a dead end, or at least a context-dependent one.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>I. Mayrose, S.H. Zhan, C.J. Rothfels, K. Magnuson-Ford, M.S. Barker, L.H. Rieseberg, S.P. Otto, "Recently formed polyploid plants diversify at lower rates," <em>Science</em> (2011), used phylogenetic methods to challenge the prevailing view that polyploidy drives diversification. The result is contested: methodological assumptions have been questioned, and some plant clades clearly show polyploidy-associated radiations. The answer likely depends on context.</p>
+        <p>The methodological machinery for asking these questions was built in the same period. ChromEvol (I. Mayrose, M.S. Barker, S.P. Otto, "Probabilistic models of chromosome number evolution and the inference of polyploidy," <em>Systematic Biology</em>, 2010) was the first likelihood-based framework for inferring rates of dysploidy and polyploidy on phylogenies. ChromoSSE (R. Zenil-Ferguson, J.G. Burleigh, W.A. Freyman, B.R. Igic, I. Mayrose, E.E. Goldberg, <em>Systematic Biology</em>, 2018) couples chromosome number evolution to speciation and extinction rates.</p>
+      </div>
+    </details>
 
-                <!-- Mammals cluster -->
-                <rect x="118" y="60" width="50" height="24" rx="12" class="chr-region" opacity="0.5"/>
-                <text x="143" y="76" class="chr-label-sm" text-anchor="middle">Mammals</text>
-                <text x="143" y="50" class="chr-label-sm" text-anchor="middle">~40-60</text>
+    <blockquote class="pullquote">
+      Is polyploidy a dead end, a launching pad, or just a different way to build a genome? It probably depends on the clade and the context.
+    </blockquote>
 
-                <!-- Birds cluster -->
-                <rect x="210" y="60" width="40" height="24" rx="12" class="chr-sex" opacity="0.15"/>
-                <text x="230" y="76" class="chr-label-sm" text-anchor="middle">Birds</text>
-                <text x="230" y="50" class="chr-label-sm" text-anchor="middle">~80</text>
+    <h2>Meiotic drive</h2>
 
-                <!-- Butterflies -->
-                <circle cx="100" cy="130" r="4" class="chr-sex" opacity="0.6"/>
-                <text x="100" y="118" class="chr-label-sm" text-anchor="middle">Some</text>
-                <text x="100" y="108" class="chr-label-sm" text-anchor="middle">butterflies</text>
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Pardo-Manuel de Villena &amp; Sapienza 2001</span>
+          <span class="sum-head">Asymmetric female meiosis creates an arena for centromeric competition</span>
+          <span class="sum-trail">Only one of four meiotic products becomes the egg. Centromeres that bind more kinetochore proteins can "win".</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>F. Pardo-Manuel de Villena &amp; C. Sapienza, "Female meiosis drives karyotypic evolution in mammals," <em>Genetics</em> (2001), proposed that asymmetric female meiosis drives centromere evolution and shapes mammalian karyotypes. Standard population genetics assumes each chromosome has a 50% chance of transmission via fair Mendelian segregation. Meiotic drive violates that: chromosomes that preferentially orient toward the egg pole at meiosis I are transmitted at above 50%, independent of their effects on organismal fitness. The centromere itself is under selection.</p>
+      </div>
+    </details>
 
-                <!-- Carp -->
-                <circle cx="290" cy="130" r="4" class="chr-sex" opacity="0.5"/>
-                <text x="290" y="118" class="chr-label-sm" text-anchor="middle">Goldfish</text>
-                <text x="290" y="108" class="chr-label-sm" text-anchor="middle">(2n=100+)</text>
-
-                <!-- Fern -->
-                <circle cx="430" cy="130" r="5" class="chr-sex"/>
-                <text x="430" y="118" class="chr-label-sm" text-anchor="middle">Adder's</text>
-                <text x="430" y="108" class="chr-label-sm" text-anchor="middle">tongue fern</text>
-                <text x="430" y="98" class="chr-label-sm" text-anchor="middle">(2n=1260)</text>
-              </svg>
-              <div class="diagram-caption">Diploid chromosome number (2n) spans three orders of magnitude across eukaryotes</div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">The Data</div>
-            <h2>Scale of Karyotype Diversity</h2>
-
-            <div class="stat-callout" data-aos="fade-left">
-              <div class="stat-num">14,000+</div>
-              <div class="stat-text">Cytogenetic records in the Blackmon Lab karyotype databases, spanning beetles, flies, amphibians, mammals, and more. <a href="karyotypes/index.html">Explore the databases &rarr;</a></div>
-            </div>
-
-            <div class="stat-callout" data-aos="fade-left">
-              <div class="stat-num">630x</div>
-              <div class="stat-text">The range of chromosome number variation across eukaryotes, from 2n = 2 (one pair) to 2n = 1,260 (630 pairs)</div>
-            </div>
-
-            <p>We still lack good answers to basic questions. We know <em>how</em> chromosomes fuse and split, but we often cannot explain <em>why</em> a particular lineage has the number it does. The field has swung back and forth between viewing karyotype change as a driver of speciation and viewing it as selectively neutral background noise.</p>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Book &middot; Columbia University Press</div>
-              <div class="paper-title">Variation and Evolution in Plants</div>
-              <div class="authors">G.L. Stebbins</div>
-              <div class="pub-year">1950: Elevated polyploidy and dysploidy to central mechanisms of plant diversification</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Book &middot; Cambridge University Press</div>
-              <div class="paper-title">Animal Cytology and Evolution (3rd ed.)</div>
-              <div class="authors">M.J.D. White</div>
-              <div class="pub-year">1973: The encyclopedic documentation of animal karyotype diversity and the (controversial) stasipatric speciation hypothesis</div>
-            </div>
-          </div>
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Blackmon et al. 2019</span>
+          <span class="sum-head">Female meiotic drive leaves a detectable phylogenetic signature in mammalian karyotype evolution</span>
+          <span class="sum-trail">Chromosome number evolution is biased toward fusions, consistent with drive favoring metacentrics.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>H. Blackmon, J. Justison, I. Mayrose, E.E. Goldberg, "Meiotic drive shapes rates of karyotype evolution in mammals," <em>Evolution</em> (2019), used phylogenetic comparative methods to test the de Villena and Sapienza mechanism across mammals. The key finding: in mammals, chromosome number evolution is biased toward fusions in a pattern consistent with female meiotic drive favoring metacentric chromosomes. That gives a mechanistic explanation for why mammalian karyotypes tend to evolve toward lower chromosome numbers.</p>
+        <p>How general is this? Asymmetric female meiosis is shared by most animals and plants, but the strength of resulting selection depends on how reliably the centromere can bias spindle orientation, effective population size, and the sex-determination system. Whether comparable trends operate in ZW systems (female meiosis is still asymmetric, but Z and W centromeres differ) is largely untested. Ongoing work in the lab on birds, Lepidoptera, and ZW fish is aimed at answering that.</p>
+        <p>Rapid real-time evidence for chromosomal drift: Britton-Davidian et al., "Rapid chromosomal evolution in island mice," <em>PNAS</em> (2000), documented dramatic Robertsonian fusion accumulation on Madeira, showing how fast karyotype change can happen in small populations.</p>
+        <div class="layer-links">
+          <a href="https://doi.org/10.1111/evo.13831" target="_blank">Blackmon et al. 2019 →</a>
+          <a href="phylo-methods/discrete.html">chromePlus guide →</a>
         </div>
       </div>
-    </section>
+    </details>
 
-    <!-- ═══════════════ SECTION 2: FUSIONS ═══════════════ -->
-    <section class="gs-section" id="sec-fusions">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">Joining Together</div>
-            <h2>Chromosome Fusions</h2>
+    <h2>Stasis is not what we thought</h2>
 
-            <p>A <strong>fusion</strong> joins two chromosomes into one, reducing the chromosome number by one. There are two main types:</p>
-
-            <h3>Robertsonian Translocations (Centric Fusions)</h3>
-            <p>Two <strong>acrocentric</strong> chromosomes (with the centromere near one end) fuse at their centromeres, producing a single <strong>metacentric</strong> chromosome (centromere in the middle). One centromere is typically lost or inactivated. This is the most common type of fusion in mammals. Human chromosome 2 is a related but distinct case: a <em>telomeric</em> fusion of two ancestral ape chromosomes (still present as separate chromosomes in the other great apes), which is why humans have 2n = 46 while the other great apes have 2n = 48.</p>
-
-            <h3>Tandem (End-to-End) Fusions</h3>
-            <p>One chromosome attaches to the end (telomere) of another. Less common than Robertsonian translocations in mammals but important in insects and other groups. The resulting chromosome retains both centromeres initially, though one is usually silenced.</p>
-
-            <!-- SVG: Fusion mechanics -->
-            <div class="diagram-box" data-aos="zoom-in">
-              <svg viewBox="0 0 460 230" width="100%" aria-labelledby="svg-fusion-title">
-                <title id="svg-fusion-title">Two types of chromosome fusion</title>
-
-                <!-- Robertsonian -->
-                <text x="130" y="18" class="chr-heading" text-anchor="middle">Robertsonian Fusion</text>
-                <!-- Two acrocentrics -->
-                <rect x="40" y="35" width="10" height="15" rx="5" class="chr-auto" opacity="0.7"/>
-                <rect x="40" y="50" width="10" height="45" rx="5" class="chr-auto"/>
-                <circle cx="45" cy="50" r="3" class="chr-sex" opacity="0.8"/>
-                <text x="45" y="28" class="chr-label-sm" text-anchor="middle">cen</text>
-
-                <rect x="70" y="35" width="10" height="15" rx="5" class="chr-auto" opacity="0.7"/>
-                <rect x="70" y="50" width="10" height="45" rx="5" class="chr-auto"/>
-                <circle cx="75" cy="50" r="3" class="chr-sex" opacity="0.8"/>
-
-                <!-- Arrow -->
-                <line x1="100" y1="62" x2="140" y2="62" class="chr-line-accent"/>
-                <polygon points="137,57 147,62 137,67" class="chr-arrow"/>
-
-                <!-- Fused metacentric -->
-                <rect x="160" y="30" width="12" height="35" rx="6" class="chr-auto"/>
-                <circle cx="166" cy="62" r="3" class="chr-sex" opacity="0.8"/>
-                <rect x="160" y="65" width="12" height="35" rx="6" class="chr-auto"/>
-                <text x="166" y="118" class="chr-label-sm" text-anchor="middle">Metacentric</text>
-                <text x="166" y="130" class="chr-label-sm" text-anchor="middle">(2n &minus; 1)</text>
-
-                <!-- Vertical separator -->
-                <line x1="230" y1="25" x2="230" y2="140" class="chr-line-dash"/>
-
-                <!-- Tandem -->
-                <text x="350" y="18" class="chr-heading" text-anchor="middle">Tandem Fusion</text>
-                <!-- Two chromosomes -->
-                <rect x="270" y="40" width="10" height="40" rx="5" class="chr-auto"/>
-                <circle cx="275" cy="55" r="3" class="chr-sex" opacity="0.8"/>
-
-                <rect x="300" y="45" width="10" height="30" rx="5" class="chr-auto"/>
-                <circle cx="305" cy="57" r="3" class="chr-sex" opacity="0.8"/>
-
-                <!-- Arrow -->
-                <line x1="325" y1="62" x2="365" y2="62" class="chr-line-accent"/>
-                <polygon points="362,57 372,62 362,67" class="chr-arrow"/>
-
-                <!-- Fused tandem -->
-                <rect x="385" y="30" width="10" height="40" rx="5" class="chr-auto"/>
-                <circle cx="390" cy="45" r="3" class="chr-sex" opacity="0.8"/>
-                <rect x="385" y="73" width="10" height="30" rx="5" class="chr-auto"/>
-                <circle cx="390" cy="85" r="3" class="chr-sex" opacity="0.3"/>
-                <text x="397" y="87" class="chr-label-sm" text-anchor="start" style="opacity:0.5; font-style:italic">silenced</text>
-                <text x="390" y="118" class="chr-label-sm" text-anchor="middle">End-to-end</text>
-                <text x="390" y="130" class="chr-label-sm" text-anchor="middle">(2n &minus; 1)</text>
-
-                <!-- Bottom: the fixation problem -->
-                <rect x="20" y="150" width="420" height="70" rx="8" class="chr-region" opacity="0.3"/>
-                <text x="230" y="170" class="chr-heading" text-anchor="middle" style="font-size:11px">The Fixation Problem</text>
-                <text x="230" y="188" class="chr-label-sm" text-anchor="middle">A fusion heterozygote (2n/2n-1) may have reduced fertility if the trivalent</text>
-                <text x="230" y="200" class="chr-label-sm" text-anchor="middle">mispairs at meiosis. This underdominance creates a barrier to fixation</text>
-                <text x="230" y="212" class="chr-label-sm" text-anchor="middle">in large populations, Lande's (1979) key insight.</text>
-              </svg>
-              <div class="diagram-caption">Two mechanisms of chromosome fusion and the underdominance barrier to fixation</div>
-            </div>
-
-            <p>The critical challenge: a new fusion starts in a <strong>single individual</strong>. That individual is heterozygous, one copy of the fused chromosome and two unfused copies. During meiosis, these three chromosomes must pair as a <strong>trivalent</strong>, which can missegregate. If the heterozygote has reduced fertility (<strong>underdominance</strong>), how does the fusion ever spread through the population?</p>
-          </div>
-
-          <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">The Classic Problem</div>
-            <h2>Underdominance and Fixation</h2>
-
-            <p><strong>Russell Lande's</strong> 1979 paper was a watershed. Using diffusion theory, Lande showed that underdominant rearrangements face severe barriers to fixation in large populations. The probability of fixation is exponentially small unless the population is very small or the heterozygote disadvantage is very mild. This result seemed to doom chromosomal speciation theory: if fusions can barely fix, how can they drive speciation?</p>
-
-            <p>Possible solutions to the fixation problem:</p>
-            <table class="cmp-table">
-              <tr><th>Mechanism</th><th>How It Helps</th></tr>
-              <tr><td><strong>Small populations</strong></td><td>Drift can fix mildly underdominant mutations in small demes</td></tr>
-              <tr><td><strong>Meiotic drive</strong></td><td>If the fused chromosome is preferentially transmitted, it can overcome underdominance</td></tr>
-              <tr><td><strong>Weak underdominance</strong></td><td>Some fusions may have negligible fitness costs in heterozygotes</td></tr>
-              <tr><td><strong>Recombination suppression</strong></td><td>Fusions near adapted gene complexes may be favored</td></tr>
-              <tr><td><strong>Monobrachial homology</strong></td><td>Different populations fix <em>different</em> Robertsonian fusions involving overlapping arms; F<sub>1</sub> hybrids form complex multivalents at meiosis (chains and rings of three or more chromosomes), which mis-segregate. Hybrids are sterile or sub-fertile, so even mildly underdominant fusions can persist within populations and ultimately drive reproductive isolation between them.</td></tr>
-            </table>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Evolution</div>
-              <div class="paper-title">Effective deme sizes for the fixation of underdominant chromosomal rearrangements</div>
-              <div class="authors">R. Lande</div>
-              <div class="pub-year">1979: The paper that challenged chromosomal speciation theory on population genetic grounds</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Book &middot; Cambridge University Press</div>
-              <div class="paper-title">Species Evolution: The Role of Chromosome Change</div>
-              <div class="authors">M. King</div>
-              <div class="pub-year">1993: The case for chromosomal rearrangements as a primary driver of animal speciation</div>
-            </div>
-          </div>
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Copeland &amp; Blackmon 2026, bioRxiv</span>
+          <span class="sum-head">Chromosome number evolves at rates spanning seven orders of magnitude</span>
+          <span class="sum-trail">63,682 karyotypes, 55 eukaryotic clades. Birds are not static. Ecology beats architecture.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>M. Copeland &amp; H. Blackmon, "Chromosome number evolves at rates spanning seven orders of magnitude across eukaryotes," bioRxiv preprint (2026, not yet peer-reviewed), compiled 63,682 karyotypes across 55 eukaryotic clades and estimated rates of dysploidy and polyploidy on each clade's phylogeny using chromePlus. The headline result: rates vary by seven orders of magnitude across the tree of life, and the classic picture of chromosomal stasis does not survive contact with a large comparative dataset.</p>
+        <p>All three bird orders analyzed (<em>Accipitriformes</em>, <em>Passeriformes</em>, <em>Galliformes</em>) exceed the global median rate. The appearance of stasis in birds, most species near 2n = 80, masks active dynamics underneath. Holocentric chromosomes were expected to tolerate rearrangements more easily than monocentric ones, but Orchidaceae (monocentric) evolve chromosome number about 34&times; faster than Odonata (holocentric). The same pattern shows up across the dataset: ecology and life history matter more than chromosome architecture for setting the tempo.</p>
+        <p>Fast and slow clades show up in every kingdom. The slowest clade is an animal (Cetacea); the fastest is a plant (Asteraceae). There is no "animal rate" or "plant rate".</p>
+        <div class="layer-links">
+          <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank">Read on bioRxiv →</a>
+          <a href="cures-karyotype-database.html">The underlying CUREs data →</a>
         </div>
       </div>
-    </section>
+    </details>
 
-    <!-- ═══════════════ SECTION 3: FISSIONS ═══════════════ -->
-    <section class="gs-section" id="sec-fissions">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">Splitting Apart</div>
-            <h2>Chromosome Fissions</h2>
-
-            <p>A <strong>fission</strong> splits one chromosome into two, increasing the chromosome number. This requires that the broken chromosome somehow acquires a <strong>new centromere</strong> (neocentromere) and <strong>new telomeres</strong> at the break points, otherwise the fragments will be lost during cell division. Neocentromere formation was once thought to be vanishingly rare, but cytogenetic and ChIP-seq surveys (Henikoff & Malik 2002; Marshall et al. 2008) show that functional neocentromeres can arise epigenetically at non-canonical sequence locations on much shorter timescales than previously assumed, even within human pedigrees. The bottleneck is therefore not centromere <em>formation</em> per se but the joint requirement for centromere stability, telomere capping (often via telomerase action at the new break), and avoidance of dicentric configurations during transmission.</p>
-
-            <h3>How Fissions Work</h3>
-            <p>Fissions are mechanistically more challenging than fusions. A fusion simply joins existing chromosomes; a fission must <strong>create</strong> new functional elements. Neocentromeres can arise from latent centromeric sequences or through epigenetic activation of non-centromeric DNA. Telomeres can be added <em>de novo</em> by telomerase or by recombination-based mechanisms. Despite these hurdles, fissions are clearly common, many lineages show net increases in chromosome number over evolutionary time.</p>
-
-            <h3>Fissions and Chromosome Shape</h3>
-            <p>A metacentric chromosome (centromere in the middle) can fission at the centromere to produce two acrocentric chromosomes. This is effectively the <strong>reverse of a Robertsonian fusion</strong>. The interplay between fusions and fissions, combined with changes in centromere position (pericentric inversions), determines the overall shape distribution of karyotypes.</p>
-
-            <!-- SVG: Fission diagram -->
-            <div class="diagram-box" data-aos="zoom-in">
-              <svg viewBox="0 0 400 160" width="100%" aria-labelledby="svg-fission-title">
-                <title id="svg-fission-title">Chromosome fission produces two daughter chromosomes</title>
-
-                <!-- Metacentric -->
-                <rect x="50" y="25" width="14" height="45" rx="7" class="chr-auto"/>
-                <circle cx="57" cy="55" r="3.5" class="chr-sex" opacity="0.8"/>
-                <rect x="50" y="72" width="14" height="45" rx="7" class="chr-auto"/>
-                <text x="57" y="18" class="chr-heading" text-anchor="middle" style="font-size:11px">Metacentric</text>
-
-                <!-- Break point indicator -->
-                <line x1="38" y1="68" x2="76" y2="68" stroke="rgba(220,80,80,0.7)" stroke-width="2" stroke-dasharray="3 2"/>
-                <text x="80" y="72" class="chr-label-sm" text-anchor="start" style="fill:rgba(220,80,80,0.7)">Break</text>
-
-                <!-- Arrow -->
-                <line x1="110" y1="68" x2="160" y2="68" class="chr-line-accent"/>
-                <polygon points="157,63 167,68 157,73" class="chr-arrow"/>
-
-                <!-- Two acrocentrics -->
-                <rect x="185" y="30" width="12" height="15" rx="6" class="chr-auto" opacity="0.7"/>
-                <rect x="185" y="46" width="12" height="35" rx="6" class="chr-auto"/>
-                <circle cx="191" cy="46" r="3" class="chr-sex" opacity="0.8"/>
-                <text x="191" y="96" class="chr-label-sm" text-anchor="middle">+ centromere</text>
-
-                <rect x="220" y="40" width="12" height="10" rx="6" class="chr-auto" opacity="0.7"/>
-                <rect x="220" y="51" width="12" height="30" rx="6" class="chr-auto"/>
-                <circle cx="226" cy="51" r="3" class="chr-sex" opacity="0.6"/>
-                <text x="226" y="96" class="chr-label-sm" text-anchor="middle">neocentromere</text>
-                <text x="226" y="108" class="chr-label-sm" text-anchor="middle" style="font-style:italic; opacity:0.6">+ new telomeres</text>
-
-                <!-- Result -->
-                <text x="310" y="60" class="chr-label" text-anchor="middle">Result:</text>
-                <text x="310" y="78" class="chr-label-accent" text-anchor="middle">2n + 1</text>
-                <text x="310" y="96" class="chr-label-sm" text-anchor="middle">Two acrocentric</text>
-                <text x="310" y="108" class="chr-label-sm" text-anchor="middle">chromosomes</text>
-              </svg>
-              <div class="diagram-caption">Centric fission splits a metacentric into two acrocentric chromosomes</div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">Patterns</div>
-            <h2>The Fusion&ndash;Fission Balance</h2>
-
-            <p>In most animal groups, fusions appear to be more common than fissions. The net direction of chromosome number change (whether a clade tends to fuse or fission over time) varies a lot across taxa, and it is one of the main observables that models of karyotype evolution try to explain.</p>
-
-            <p>Some patterns are striking:</p>
-            <table class="cmp-table">
-              <tr><th>Group</th><th>Dominant Trend</th><th>Chromosome Range</th></tr>
-              <tr><td>Mammals</td><td>Fusions dominate</td><td>2n = 6 to 2n = 102</td></tr>
-              <tr><td>Birds</td><td>Remarkably stable</td><td>Most 2n &asymp; 78&ndash;82</td></tr>
-              <tr><td>Coleoptera</td><td>Variable; both directions</td><td>2n = 4 to 2n = 69</td></tr>
-              <tr><td>Lepidoptera</td><td>Fissions common</td><td>2n = 14 to 2n = 446</td></tr>
-              <tr><td>Flowering plants</td><td>Both; polyploidy dominant</td><td>2n = 4 to 2n = 640</td></tr>
-            </table>
-
-            <!-- Plotly: Chromosome number distributions -->
-            <div class="chart-box" data-aos="fade-left">
-              <div class="chart-title">Chromosome Number Distribution by Clade</div>
-              <div class="chart-toggle" id="clade-toggle">
-                <button class="active" onclick="showClade('mammals')">Mammals</button>
-                <button onclick="showClade('beetles')">Beetles</button>
-                <button onclick="showClade('birds')">Birds</button>
-                <button onclick="showClade('lepidoptera')">Lepidoptera</button>
-              </div>
-              <div id="chart-chrnum" style="width:100%; height:280px;"></div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">The Coleopterists Bulletin</div>
-              <div class="paper-title">Coleoptera Karyotype Database</div>
-              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
-              <div class="pub-year">2015: One of the largest cytogenetic datasets for any animal order</div>
-            </div>
-          </div>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Drift papers, 2024</span>
+          <span class="sum-head">For most of animal evolution, drift does more work than selection</span>
+          <span class="sum-trail">Two companion papers on beetles and carnivores.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>H. Blackmon, M.M. Jonika, J.M. Alfieri, L. Fardoun, J.P. Demuth, "Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera," <em>Journal of Heredity</em> (2024), shows that drift, not selection, is the dominant force shaping chromosome number evolution in beetles. M.M. Jonika, K.T. Wilhoit, M. Chin, A. Arekere, H. Blackmon, "Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora," <em>Journal of Heredity</em> (2024), extends the finding to carnivores: range size (a proxy for effective population size) predicts karyotype evolution rates better than any measure of selective pressure.</p>
+        <p>Historical precedent: G.L. Bush, S.M. Case, A.C. Wilson, J.L. Patton, "Rates of chromosomal evolution in mammals," <em>Evolution</em> (1977), was the first comparative analysis showing chromosomal rates correlate with social structure and life history. L.H. Rieseberg, "Chromosomal rearrangements and speciation," <em>Trends in Ecology &amp; Evolution</em> (2001), reviewed how rearrangements accumulate during speciation and act as barriers to gene flow.</p>
+        <div class="layer-links">
+          <a href="https://doi.org/10.1093/jhered/esae025" target="_blank">Jonika 2024 (Carnivora) →</a>
+          <a href="selection.html">Selection vs. drift, longer treatment →</a>
         </div>
       </div>
-    </section>
+    </details>
 
-    <!-- ═══════════════ SECTION 4: WHOLE-GENOME DUPLICATION ═══════════════ -->
-    <section class="gs-section" id="sec-wgd">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">Doubling Everything</div>
-            <h2>Whole-Genome Duplication (Polyploidy)</h2>
-
-            <p>Polyploidy is the duplication of the entire genome. In a single event, chromosome number doubles. The new polyploid has twice as many chromosomes as its progenitor, with duplicate copies of every gene.</p>
-
-            <h3>Autopolyploidy vs. Allopolyploidy</h3>
-            <p><strong>Autopolyploidy</strong> results from genome doubling within a single species (e.g., a failure of meiosis produces an unreduced gamete). The resulting organism has four copies of each chromosome. <strong>Allopolyploidy</strong> combines genome duplication with hybridization: two different species hybridize, and the hybrid undergoes genome doubling. Allopolyploids are often immediately reproductively isolated from both parents, making polyploidy a potential <strong>instantaneous speciation</strong> mechanism.</p>
-
-            <h3>Polyploidy in Plants vs. Animals</h3>
-            <p>Polyploidy is common in plants, perhaps 30&ndash;70% of flowering plant species are polyploid or have polyploid ancestry. In animals, it is much rarer, largely restricted to parthenogenetic lineages and a few sexually reproducing groups (some fish, frogs, insects). The sex chromosome "poison pill" hypothesis suggests that polyploidy disrupts sex determination in species with differentiated sex chromosomes, acting as a barrier to polyploidy establishment in most animals.</p>
-
-            <!-- SVG: Polyploidy diagram -->
-            <div class="diagram-box" data-aos="zoom-in">
-              <svg viewBox="0 0 440 200" width="100%" aria-labelledby="svg-poly-title">
-                <title id="svg-poly-title">Autopolyploidy and allopolyploidy</title>
-
-                <!-- Autopolyploidy -->
-                <text x="110" y="18" class="chr-heading" text-anchor="middle">Autopolyploidy</text>
-                <!-- Diploid -->
-                <rect x="30" y="35" width="10" height="35" rx="5" class="chr-auto"/>
-                <rect x="45" y="35" width="10" height="35" rx="5" class="chr-auto"/>
-                <rect x="65" y="40" width="9" height="28" rx="4.5" class="chr-auto" opacity="0.6"/>
-                <rect x="79" y="40" width="9" height="28" rx="4.5" class="chr-auto" opacity="0.6"/>
-                <text x="55" y="85" class="chr-label-sm" text-anchor="middle">Diploid (2n)</text>
-                <!-- Arrow -->
-                <line x1="100" y1="55" x2="120" y2="55" class="chr-line-accent"/>
-                <polygon points="117,50 127,55 117,60" class="chr-arrow"/>
-                <text x="113" y="45" class="chr-label-sm" text-anchor="middle" style="font-size:8px">WGD</text>
-                <!-- Tetraploid -->
-                <rect x="135" y="35" width="10" height="35" rx="5" class="chr-auto"/>
-                <rect x="148" y="35" width="10" height="35" rx="5" class="chr-auto"/>
-                <rect x="161" y="35" width="10" height="35" rx="5" class="chr-auto"/>
-                <rect x="174" y="35" width="10" height="35" rx="5" class="chr-auto"/>
-                <rect x="135" y="80" width="9" height="28" rx="4.5" class="chr-auto" opacity="0.6"/>
-                <rect x="148" y="80" width="9" height="28" rx="4.5" class="chr-auto" opacity="0.6"/>
-                <rect x="161" y="80" width="9" height="28" rx="4.5" class="chr-auto" opacity="0.6"/>
-                <rect x="174" y="80" width="9" height="28" rx="4.5" class="chr-auto" opacity="0.6"/>
-                <text x="157" y="123" class="chr-label-sm" text-anchor="middle">Tetraploid (4n)</text>
-
-                <!-- Separator -->
-                <line x1="220" y1="20" x2="220" y2="140" class="chr-line-dash"/>
-
-                <!-- Allopolyploidy -->
-                <text x="340" y="18" class="chr-heading" text-anchor="middle">Allopolyploidy</text>
-                <!-- Species A -->
-                <rect x="245" y="35" width="10" height="35" rx="5" class="chr-sex" opacity="0.7"/>
-                <rect x="258" y="35" width="10" height="35" rx="5" class="chr-sex" opacity="0.7"/>
-                <text x="256" y="85" class="chr-label-sm" text-anchor="middle">Species A</text>
-                <!-- X between -->
-                <text x="286" y="58" class="chr-label-accent" text-anchor="middle" style="font-size:14px">&#215;</text>
-                <!-- Species B -->
-                <rect x="300" y="38" width="9" height="30" rx="4.5" class="chr-auto"/>
-                <rect x="313" y="38" width="9" height="30" rx="4.5" class="chr-auto"/>
-                <text x="311" y="85" class="chr-label-sm" text-anchor="middle">Species B</text>
-                <!-- Arrow -->
-                <line x1="335" y1="55" x2="358" y2="55" class="chr-line-accent"/>
-                <polygon points="355,50 365,55 355,60" class="chr-arrow"/>
-                <!-- Allopolyploid -->
-                <rect x="370" y="35" width="10" height="35" rx="5" class="chr-sex" opacity="0.7"/>
-                <rect x="383" y="35" width="10" height="35" rx="5" class="chr-sex" opacity="0.7"/>
-                <rect x="370" y="80" width="9" height="30" rx="4.5" class="chr-auto"/>
-                <rect x="383" y="80" width="9" height="30" rx="4.5" class="chr-auto"/>
-                <text x="386" y="125" class="chr-label-sm" text-anchor="middle">A + B genomes</text>
-                <text x="386" y="138" class="chr-label-sm" text-anchor="middle" style="font-style:italic">(new species)</text>
-
-                <!-- Bottom note -->
-                <text x="220" y="165" class="chr-label-sm" text-anchor="middle">Polyploidy is common in plants (~30-70% of angiosperms) but rare in sexually reproducing animals</text>
-                <text x="220" y="180" class="chr-label-sm" text-anchor="middle" style="font-style:italic">Sex chromosomes may act as a barrier to polyploidy establishment in animals</text>
-              </svg>
-              <div class="diagram-caption">Two pathways to polyploidy: within-species genome doubling vs. hybridization + doubling</div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">Does Polyploidy Help or Hurt?</div>
-            <h2>The Polyploidy Paradox</h2>
-
-            <p>For decades, polyploidy was assumed to be an evolutionary "jackpot": instant gene duplication, instant reproductive isolation, and a burst of evolutionary novelty. Then <strong>Itay Mayrose</strong> and colleagues used phylogenetic methods to show in 2011 that recently formed polyploid lineages actually <strong>diversify more slowly</strong> than their diploid relatives. Polyploidy may cause a brief burst of speciation followed by elevated extinction, something closer to a dead end than a jackpot.</p>
-
-            <p>The result remains contested. The methodological assumptions have been questioned, and some plant clades clearly show polyploidy-associated radiations. The answer probably depends on context: polyploidy may help adaptation in some ecologies and hurt in others.</p>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Science</div>
-              <div class="paper-title">Recently formed polyploid plants diversify at lower rates</div>
-              <div class="authors">I. Mayrose, S.H. Zhan, C.J. Rothfels, K. Magnuson-Ford, M.S. Barker, L.H. Rieseberg, S.P. Otto</div>
-              <div class="pub-year">2011: Challenged the prevailing view that polyploidy drives diversification</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Systematic Biology</div>
-              <div class="paper-title">Probabilistic models of chromosome number evolution and the inference of polyploidy</div>
-              <div class="authors">I. Mayrose, M.S. Barker, S.P. Otto</div>
-              <div class="pub-year">2010: ChromEvol: the first likelihood-based framework for inferring rates of dysploidy and polyploidy on phylogenies</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Systematic Biology</div>
-              <div class="paper-title">ChromoSSE: testing hypotheses of chromosome number evolution with phylogenetic state-dependent speciation and extinction models</div>
-              <div class="authors">R. Zenil-Ferguson &amp; colleagues</div>
-              <div class="pub-year">ChromoSSE and BiChroM models, coupling chromosome evolution to diversification dynamics, allowing karyotype change to interact with speciation and extinction rates</div>
-            </div>
-
-            <div class="pullquote">"Is polyploidy a dead end, a launching pad, or just a different way to build a genome? It probably depends on the clade and the context."</div>
-          </div>
-        </div>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Open questions</span>
+          <span class="sum-head">Is karyotype change adaptive? Do 3D genome structures matter? Can we predict karyotypes at all?</span>
+          <span class="sum-trail">The honest answer to most "why does this species have <em>n</em> chromosomes" questions is still: we do not know.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Model adequacy is an increasingly recognized problem. Our probabilistic models are simple Markov processes assuming constant (or trait-dependent) rates across entire clades. Chromosome evolution is clearly episodic and context-dependent. Recent work has begun to address this: ChromoSSE (Freyman &amp; H&ouml;hna 2018; Zenil-Ferguson et al.) lets rates of dysploidy, polyploidy, and demiploidy vary jointly with diversification; hidden-state models (Beaulieu &amp; O'Meara 2016, HiSSE; Caetano et al. 2018) let unobserved variables modulate transition rates within a clade. Posterior predictive simulation is now standard.</p>
+        <p>Other gaps: the fitness effects of structural rearrangements in natural populations are almost never measured directly; comparative data on 3D genome organization (chromosome territories, TADs, long-range regulation) across species with different karyotypes barely exists; and given phylogeny, ecology, life history, and meiotic system, we cannot yet predict a species' karyotype. The field is honest about this. It should be.</p>
+        <p>Related foundational reading: M. Lynch, <em>The Origins of Genome Architecture</em> (Sinauer Associates, 2007), argues that genome complexity often evolves through drift and mutation pressure rather than adaptation. H. Blackmon, N. Hardy, L. Ross, "The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability," <em>Evolution</em> (2015), shows how alternative sex determination systems constrain genome architecture. H. Blackmon &amp; J.P. Demuth, "Genomic origins of insect sex chromosomes," <em>Current Opinion in Insect Science</em> (2015), covers the insect side.</p>
       </div>
-    </section>
-
-    <!-- ═══════════════ SECTION 5: MEIOTIC DRIVE ═══════════════ -->
-    <section class="gs-section" id="sec-drive">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">Biased Transmission</div>
-            <h2>Meiotic Drive and Karyotype Evolution</h2>
-
-            <p>Standard population genetics assumes that each allele (or chromosome) has a 50% chance of being transmitted to the next generation through fair Mendelian segregation. <strong>Meiotic drive</strong> violates this assumption: some chromosomes are preferentially transmitted, gaining a segregation advantage independent of their effects on organismal fitness.</p>
-
-            <h3>Female Meiotic Drive</h3>
-            <p>In female meiosis (of most animals), only <strong>one of four</strong> meiotic products becomes the egg; the other three become polar bodies that are discarded. If a chromosome can preferentially orient itself toward the egg pole of the meiotic spindle, it will be transmitted at >50%. This is <strong>centromere-mediated drive</strong>, and it may be one of the most important forces shaping karyotype evolution.</p>
-
-            <p>The key insight from <strong>de Villena &amp; Sapienza (2001)</strong>: asymmetric female meiosis creates an arena for centromeric competition. Centromeres that bind more kinetochore proteins can "win" the competition for the egg pole. The <strong>centromere itself</strong> is therefore under selection, and changes in chromosome structure that affect centromere behavior (fusions, fissions) can be favored or disfavored by drive regardless of their effects on the organism.</p>
-
-            <!-- SVG: Female meiosis drive -->
-            <div class="diagram-box" data-aos="zoom-in">
-              <svg viewBox="0 0 420 220" width="100%" aria-labelledby="svg-drive-title">
-                <title id="svg-drive-title">Female meiotic drive, asymmetric meiosis</title>
-
-                <text x="210" y="18" class="chr-heading" text-anchor="middle">Asymmetric Female Meiosis</text>
-
-                <!-- Cell with chromosomes -->
-                <ellipse cx="100" cy="75" rx="55" ry="40" fill="none" class="chr-line" stroke-width="1.5"/>
-                <text x="100" y="42" class="chr-label-sm" text-anchor="middle">Oocyte</text>
-                <!-- Two chromosome versions -->
-                <rect x="72" y="60" width="10" height="30" rx="5" class="chr-sex"/>
-                <text x="77" y="56" class="chr-label-sm" text-anchor="middle" style="fill:var(--accent)">Strong</text>
-                <rect x="108" y="62" width="8" height="25" rx="4" class="chr-auto" opacity="0.6"/>
-                <text x="112" y="56" class="chr-label-sm" text-anchor="middle">Weak</text>
-
-                <!-- Arrow to egg -->
-                <line x1="77" y1="115" x2="77" y2="145" class="chr-line-accent"/>
-                <polygon points="74,142 77,152 80,142" class="chr-arrow"/>
-                <!-- Arrow to polar body -->
-                <line x1="112" y1="115" x2="112" y2="145" class="chr-line-dash"/>
-
-                <!-- Egg -->
-                <ellipse cx="77" cy="175" rx="30" ry="20" fill="none" class="chr-line-accent"/>
-                <rect x="72" y="168" width="10" height="15" rx="5" class="chr-sex"/>
-                <text x="77" y="202" class="chr-label-accent" text-anchor="middle">Egg</text>
-
-                <!-- Polar body -->
-                <ellipse cx="112" cy="175" rx="15" ry="10" fill="none" class="chr-line" opacity="0.4"/>
-                <rect x="109" y="171" width="6" height="8" rx="3" class="chr-auto" opacity="0.3"/>
-                <text x="112" y="195" class="chr-label-sm" text-anchor="middle" style="opacity:0.5">Polar body</text>
-                <text x="112" y="207" class="chr-label-sm" text-anchor="middle" style="opacity:0.4; font-style:italic">discarded</text>
-
-                <!-- Right side: explanation -->
-                <text x="280" y="65" class="chr-label" text-anchor="start">Only 1 of 4 meiotic</text>
-                <text x="280" y="80" class="chr-label" text-anchor="start">products becomes</text>
-                <text x="280" y="95" class="chr-label" text-anchor="start">the egg.</text>
-                <text x="280" y="125" class="chr-label" text-anchor="start">Chromosomes with</text>
-                <text x="280" y="140" class="chr-label-accent" text-anchor="start">"stronger" centromeres</text>
-                <text x="280" y="155" class="chr-label" text-anchor="start">preferentially orient</text>
-                <text x="280" y="170" class="chr-label" text-anchor="start">toward the egg pole.</text>
-                <text x="280" y="200" class="chr-label-sm" text-anchor="start" style="font-style:italic">This creates selection on centromere</text>
-                <text x="280" y="215" class="chr-label-sm" text-anchor="start" style="font-style:italic">strength, independent of gene content.</text>
-              </svg>
-              <div class="diagram-caption">Asymmetric female meiosis creates an opportunity for centromere-mediated drive</div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">Drive Shapes Karyotypes</div>
-            <h2>Evidence for Meiotic Drive in Karyotype Evolution</h2>
-
-            <p>If meiotic drive influences which chromosome configurations are preferentially transmitted, it should leave detectable signatures in comparative data. The Blackmon Lab tested this directly in mammals.</p>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Evolution</div>
-              <div class="paper-title">Meiotic drive shapes rates of karyotype evolution in mammals</div>
-              <div class="authors">H. Blackmon, J. Justison, I. Mayrose, E.E. Goldberg</div>
-              <div class="pub-year">2019: Using phylogenetic comparative methods, showed that female meiotic drive biases the direction of chromosome number evolution in mammals</div>
-            </div>
-
-            <p>The key finding: in mammals, chromosome number evolution is <strong>biased toward fusions</strong> in a pattern consistent with female meiotic drive favoring metacentric chromosomes. That gives a mechanistic explanation for why mammalian karyotypes tend to evolve toward lower chromosome numbers.</p>
-            <p><em>How general is this?</em> The de Villena & Sapienza mechanism requires asymmetric female meiosis (only one of the four meiotic products becomes the egg). That asymmetry is shared by most animals and plants, but the strength of the resulting selection depends on how reliably the centromere can bias spindle orientation, on effective population size, and on the sex-determination system. Whether comparable centromere-driven trends operate in ZW systems (where female meiosis is still asymmetric, but Z and W centromeres differ) is largely untested. Our ongoing work on birds, Lepidoptera, and ZW fish is aimed at answering that.</p>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Genetics</div>
-              <div class="paper-title">Female meiosis drives karyotypic evolution in mammals</div>
-              <div class="authors">F.P. de Villena &amp; E. Sapienza</div>
-              <div class="pub-year">2001: The landmark proposal that asymmetric female meiosis drives centromere evolution and shapes mammalian karyotypes</div>
-            </div>
-
-            <!-- Plotly: Fusion vs fission rates -->
-            <div class="chart-box" data-aos="fade-left">
-              <div class="chart-title">Rates of Chromosome Gain vs. Loss in Mammals</div>
-              <div id="chart-rates" style="width:100%; height:300px;"></div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Proceedings of the National Academy of Sciences</div>
-              <div class="paper-title">Rapid chromosomal evolution in island mice</div>
-              <div class="authors">B. Britton-Davidian, J. Catalan, M. da Graça Ramalhinho, G. Ganem, J.C. Auffray, R. Capela, M. Biscoito, J.B. Searle, M.L. Mathias</div>
-              <div class="pub-year">2000: Dramatic Robertsonian fusion accumulation on Madeira island, showing rapid karyotype change in small populations</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════ SECTION 6: STASIS VS. LABILITY ═══════════════ -->
-    <section class="gs-section" id="sec-stasis">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">Rethinking Stasis</div>
-            <h2>Rates of Karyotype Evolution Span Seven Orders of Magnitude</h2>
-
-            <p>For decades, a common assumption held that chromosome number is <strong>evolutionarily conservative</strong>: most lineages sit near a stable karyotype, punctuated by rare bursts of change. A large new analysis pushes back on that picture. Copeland et al. (2026, <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank">bioRxiv</a>, preprint, not yet peer-reviewed) compiled <strong>63,682 karyotypes</strong> across <strong>56 eukaryotic clades</strong> spanning animals, plants, fungi, and more, and estimated rates of dysploidy and polyploidy on each clade's phylogeny using chromePlus. Rates of chromosome number evolution vary by <strong>seven orders of magnitude</strong> across the tree of life.</p>
-
-            <h3>Stasis Is Rarer Than It Looks</h3>
-            <p>Groups traditionally considered "static" are anything but. All three bird orders analyzed (<em>Accipitriformes</em>, <em>Passeriformes</em>, and <em>Galliformes</em>) <strong>exceed the global median rate</strong> of chromosome number change. The appearance of stasis in birds (most species near 2n &asymp; 80) masks active dynamics underneath.</p>
-
-            <h3>Ecology Beats Architecture</h3>
-            <p>A long-standing hypothesis predicted that chromosome architecture should set the rate: holocentric chromosomes (where the centromere spans the whole chromosome) should tolerate rearrangements more easily than monocentric ones. The data say otherwise. <strong>Orchidaceae</strong> (monocentric) evolve chromosome number ~34&times; faster than <strong>Odonata</strong> (holocentric). The same pattern shows up across the dataset: <strong>ecology and life history matter more than chromosome structure</strong> for setting the tempo.</p>
-
-            <h3>Rate Variation Is Kingdom-Agnostic</h3>
-            <p>Fast and slow clades show up in every kingdom. The slowest clade in the dataset is an animal (Cetacea); the fastest is a plant (Asteraceae). Insects, vertebrates, angiosperms, and fungi all span the full range. There is no "animal rate" or "plant rate"; the forces shaping tempo are not kingdom-specific.</p>
-          </div>
-
-          <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">Real Data, 55 Clades</div>
-            <h2>Total Dysploidy Rate Across Eukaryotes</h2>
-
-            <!-- Plotly: Rate variation across clades, real MCMC posteriors -->
-            <div class="chart-box" data-aos="fade-left">
-              <div class="chart-title">Total Dysploidy Rate (ascending + descending + polyploidy)</div>
-              <div id="chart-stasis" style="width:100%; height:640px;"></div>
-              <p class="diagram-caption" style="font-size:0.75rem; opacity:0.7; margin-top:4px;">Posterior median rates estimated via chromePlus MCMC on trees scaled to unit depth. Dashed line = global median. Data from Copeland et al. (2026, bioRxiv preprint). Clades colored by higher classification.</p>
-            </div>
-
-            <div class="stat-callout" data-aos="fade-left">
-              <div class="stat-num">55</div>
-              <div class="stat-text">Eukaryotic clades analyzed, spanning insects, vertebrates, plants, fungi, arachnids, and more, from 63,682 karyotype records</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left" style="border-left: 3px solid var(--accent);">
-              <div class="journal"><span style="background:#c9a227;color:#000;padding:1px 6px;border-radius:3px;font-size:0.7rem;">SUBMITTED</span></div>
-              <div class="paper-title">Chromosome number evolves at rates spanning seven orders of magnitude across eukaryotes</div>
-              <div class="authors">M. Copeland, H. Blackmon</div>
-              <div class="pub-year">2025: CURE-based study of 63,682 karyotypes across 56 clades showing that stasis is rarer than assumed and that rate variation is kingdom-agnostic</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Evolution</div>
-              <div class="paper-title">Modes and rates of chromosomal speciation</div>
-              <div class="authors">G.L. Bush, S.M. Case, A.C. Wilson, J.L. Patton</div>
-              <div class="pub-year">1977: First comparative analysis showing chromosomal rates of change correlate with social structure and life history</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Journal of Heredity</div>
-              <div class="paper-title">Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera</div>
-              <div class="authors">H. Blackmon, M.M. Jonika, J.M. Alfieri, L. Fardoun, J.P. Demuth</div>
-              <div class="pub-year">2024: Demonstrates that drift, not selection, is the dominant force shaping chromosome number evolution in beetles</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Journal of Heredity</div>
-              <div class="paper-title">Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora</div>
-              <div class="authors">M.M. Jonika, K.T. Wilhoit, M. Chin, A. Arekere, H. Blackmon</div>
-              <div class="pub-year">2024: Range size (a proxy for effective population size) predicts rates of karyotype change in carnivores, consistent with drift as the primary force</div>
-            </div>
-
-            <div class="stat-callout" data-aos="fade-left">
-              <div class="stat-num" style="font-size:1.2rem;">Q2</div>
-              <div class="stat-text">Why does chromosome number evolve rapidly in some clades but remains nearly static in others? <a href="research.html">&rarr; Lab research questions</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════ SECTION 7: MODERN METHODS ═══════════════ -->
-    <section class="gs-section" id="sec-methods">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">Tools of the Trade</div>
-            <h2>Modeling Chromosome Evolution</h2>
-
-            <p>The modern study of karyotype evolution is built on <strong>probabilistic models</strong> fitted to phylogenies. Instead of simply counting chromosome numbers and drawing arrows, we can now estimate <strong>rates</strong> of fusion, fission, and polyploidy, test whether these rates differ between lineages, and ask whether traits (like sex determination system or ecology) influence the pace of karyotype change.</p>
-
-            <h3>ChromEvol</h3>
-            <p>Developed by <strong>Itay Mayrose</strong>, ChromEvol fits continuous-time Markov models of chromosome number change to a phylogeny with observed tip counts. It estimates rates of ascending dysploidy (gains of individual chromosomes), descending dysploidy (losses), and polyploidy (whole-genome duplication). This was the first framework to bring statistical rigor to the field.</p>
-
-            <h3>chromePlus</h3>
-            <p>Developed in the <strong>Blackmon Lab</strong>, <a href="phylo-methods/discrete.html">chromePlus</a> extends ChromEvol by allowing a <strong>binary trait</strong> (e.g., sex determination system, life history strategy, ecological niche) to modulate the rates of dysploidy and polyploidy. This lets you ask: does having sex chromosomes speed up or slow down karyotype evolution? Do island species evolve faster than mainland relatives?</p>
-
-            <h3>ChromoSSE / BiChroM</h3>
-            <p><strong>Rosana Zenil-Ferguson</strong> took the next step by coupling chromosome number evolution to <strong>diversification dynamics</strong>. Her models allow karyotype change to influence speciation and extinction rates (and vice versa), testing whether chromosome evolution is a cause or consequence of clade diversification.</p>
-
-            <!-- SVG: Modeling framework -->
-            <div class="diagram-box" data-aos="zoom-in">
-              <svg viewBox="0 0 420 160" width="100%" aria-labelledby="svg-model-title">
-                <title id="svg-model-title">Probabilistic modeling framework for karyotype evolution</title>
-
-                <text x="210" y="18" class="chr-heading" text-anchor="middle">Modeling Karyotype Evolution on Phylogenies</text>
-
-                <!-- Tree structure -->
-                <line x1="40" y1="35" x2="40" y2="130" class="chr-line" stroke-width="2"/>
-                <line x1="40" y1="55" x2="90" y2="55" class="chr-line" stroke-width="2"/>
-                <line x1="90" y1="55" x2="90" y2="85" class="chr-line" stroke-width="2"/>
-                <line x1="90" y1="55" x2="120" y2="40" class="chr-line" stroke-width="2"/>
-                <line x1="90" y1="85" x2="120" y2="85" class="chr-line" stroke-width="2"/>
-                <line x1="40" y1="100" x2="80" y2="100" class="chr-line" stroke-width="2"/>
-                <line x1="80" y1="100" x2="120" y2="90" class="chr-line" stroke-width="2"/>
-                <line x1="80" y1="100" x2="120" y2="115" class="chr-line" stroke-width="2"/>
-                <line x1="40" y1="130" x2="120" y2="130" class="chr-line" stroke-width="2"/>
-
-                <!-- Tip counts -->
-                <text x="126" y="43" class="chr-label-accent" text-anchor="start">2n=24</text>
-                <text x="126" y="88" class="chr-label-accent" text-anchor="start">2n=22</text>
-                <text x="126" y="93" class="chr-label-accent" text-anchor="start">2n=20</text>
-                <text x="126" y="118" class="chr-label-accent" text-anchor="start">2n=26</text>
-                <text x="126" y="133" class="chr-label-accent" text-anchor="start">2n=48</text>
-
-                <!-- Arrow to model -->
-                <line x1="190" y1="85" x2="220" y2="85" class="chr-line-accent"/>
-                <polygon points="217,80 227,85 217,90" class="chr-arrow"/>
-
-                <!-- Model box -->
-                <rect x="230" y="40" width="170" height="95" rx="8" class="chr-region" opacity="0.4"/>
-                <text x="315" y="58" class="chr-heading" text-anchor="middle" style="font-size:11px">Estimated Parameters</text>
-                <text x="245" y="76" class="chr-label-sm" text-anchor="start">&#955; = chromosome gain rate</text>
-                <text x="245" y="92" class="chr-label-sm" text-anchor="start">&#948; = chromosome loss rate</text>
-                <text x="245" y="108" class="chr-label-sm" text-anchor="start">&#961; = polyploidy rate</text>
-                <text x="245" y="124" class="chr-label-sm" text-anchor="start">&#916; = trait effect on rates</text>
-              </svg>
-              <div class="diagram-caption">Phylogenetic models estimate rates of chromosome change from observed tip data</div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">The Blackmon Lab Toolkit</div>
-            <h2>Pushing the Methods Forward</h2>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Systematic Biology</div>
-              <div class="paper-title">Probabilistic models of chromosome number evolution and the inference of polyploidy</div>
-              <div class="authors">I. Mayrose, M.S. Barker, S.P. Otto</div>
-              <div class="pub-year">2010: ChromEvol: the framework that brought statistical rigor to karyotype evolution</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">R Package &middot; GitHub</div>
-              <div class="paper-title">chromePlus: phylogenetic models of chromosome evolution with trait-dependent rates</div>
-              <div class="authors">H. Blackmon &amp; colleagues</div>
-              <div class="pub-year">Extends ChromEvol to test whether traits modulate rates of karyotype change. <a href="phylo-methods/discrete.html">Guide &rarr;</a></div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Systematic Biology</div>
-              <div class="paper-title">ChromoSSE: a state-dependent diversification model coupling karyotype evolution and speciation</div>
-              <div class="authors">R. Zenil-Ferguson, J.G. Burleigh, W.A. Freyman, B.R. Igic, I. Mayrose, E.E. Goldberg</div>
-              <div class="pub-year">2018: Allows chromosome number to influence speciation and extinction rates, and vice versa</div>
-            </div>
-
-            <!-- Plotly: Rates under different models -->
-            <div class="chart-box" data-aos="fade-left">
-              <div class="chart-title">Fusion vs. Fission Rates Across Taxa</div>
-              <div id="chart-models" style="width:100%; height:280px;"></div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Trends in Ecology &amp; Evolution</div>
-              <div class="paper-title">Chromosomal rearrangements and speciation</div>
-              <div class="authors">L.H. Rieseberg</div>
-              <div class="pub-year">2001: Review of how chromosomal rearrangements accumulate during speciation and act as barriers to gene flow, with evidence from Helianthus hybrid species</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════ SECTION 8: WHAT WE DON'T KNOW ═══════════════ -->
-    <section class="gs-section" id="sec-unknown">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 gs-theory" data-aos="fade-up">
-            <div class="gs-kicker">Honest Gaps</div>
-            <h2>What We Do Not Know</h2>
-
-            <p>For all the progress of the last two decades, the field of genome structure evolution is remarkably honest about its <strong>open questions</strong>. Several fundamental problems remain stubbornly unresolved:</p>
-
-            <h3>Is Karyotype Change Adaptive?</h3>
-            <p>We still do not know whether most chromosome fusions and fissions are <strong>selectively favored, neutral, or slightly deleterious</strong>. The population genetic models assume underdominance, but the actual fitness effects of structural rearrangements in natural populations are almost never measured directly. It is entirely possible that many rearrangements are effectively neutral once they fix.</p>
-
-            <h3>What Is the Role of 3D Genome Organization?</h3>
-            <p>Chromosomes are not randomly arranged in the nucleus. They occupy <strong>territories</strong>, fold into <strong>topologically associating domains</strong> (TADs), and interact through <strong>long-range regulatory elements</strong>. Rearrangements that disrupt these structures could have large fitness effects. But we have almost no comparative data on 3D genome organization across species with different karyotypes.</p>
-
-            <h3>Why Do Models Fail?</h3>
-            <p><strong>Model adequacy</strong> is an increasingly recognized problem. Our probabilistic models of chromosome number change are simple Markov processes. They assume constant rates (or at best trait-dependent rates) across entire clades. But chromosome evolution is clearly episodic, context-dependent, and mechanistically complex. Whether our models capture the relevant biology is an open and important question. Recent work has begun to address this directly: ChromoSSE (Freyman & H&ouml;hna 2018; Zenil-Ferguson et al.) allows rates of dysploidy, polyploidy, and demiploidy to vary jointly with diversification, and hidden-state models (Beaulieu & O'Meara 2016, HiSSE; Caetano et al. 2018) let unobserved variables modulate transition rates within a clade. Posterior predictive simulation is now a standard adequacy check, if simulating from the fitted model produces summaries (mean, variance, frequency of polyploid tips) that don't match the data, the model is missing something real. We don't yet have a fully episodic, mechanism-aware framework for chromosome evolution, but the methodological vocabulary for building one is in place.</p>
-
-            <h3>Can We Predict Karyotype Evolution?</h3>
-            <p>Given a species' phylogenetic position, ecology, life history, and meiotic system, can we predict its karyotype? Currently, <strong>no</strong>. This is humbling. It suggests that important forces remain unidentified or that stochastic processes dominate in ways our deterministic models cannot capture.</p>
-          </div>
-
-          <div class="col-lg-6 gs-evidence" data-aos="fade-up" data-aos-delay="100">
-            <div class="gs-kicker">The Road Ahead</div>
-            <h2>Where the Field Is Going</h2>
-
-            <p>Several emerging directions offer hope:</p>
-
-            <p><strong>Long-read sequencing</strong> is finally delivering chromosome-level assemblies across hundreds of species (Earth BioGenome Project, Vertebrate Genomes Project, Darwin Tree of Life). For the first time, we will be able to study structural rearrangements at sequence-level resolution across the tree of life, rather than relying solely on cytogenetic observations.</p>
-
-            <p><strong>Centromere biology</strong> is undergoing a revolution. New sequencing technologies can now read through the repetitive satellite DNA that constitutes centromeres, allowing us to study centromere evolution directly. Understanding how centromeres evolve is crucial to understanding meiotic drive and its role in karyotype evolution.</p>
-
-            <p><strong>Integration with functional genomics.</strong> Hi-C, ATAC-seq, and other chromatin-level assays applied across species will reveal whether rearrangements disrupt functional genome architecture, providing a missing link between structural change and fitness.</p>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Current Opinion in Insect Science</div>
-              <div class="paper-title">Genomic origins of insect sex chromosomes</div>
-              <div class="authors">H. Blackmon &amp; J.P. Demuth</div>
-              <div class="pub-year">2015</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Evolution</div>
-              <div class="paper-title">The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability</div>
-              <div class="authors">H. Blackmon, N. Hardy, L. Ross</div>
-              <div class="pub-year">2015: How alternative sex determination systems constrain genome architecture</div>
-            </div>
-
-            <div class="paper-masthead" data-aos="fade-left">
-              <div class="journal">Book &middot; Sinauer Associates</div>
-              <div class="paper-title">The origins of genome architecture</div>
-              <div class="authors">M. Lynch</div>
-              <div class="pub-year">2007: Michael Lynch's influential argument that genome complexity often evolves through drift and mutation pressure rather than adaptation</div>
-            </div>
-
-            <div class="pullquote">"Ask why a given species has 24 chromosomes and the honest answer is usually: we do not know. That should bother us."</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════ RELATED RESOURCES ═══════════════ -->
-    <section class="section">
-      <div class="container" style="max-width: 900px;">
-        <div class="related-box" data-aos="fade-up">
-          <h3>Explore Further</h3>
-          <div class="related-links">
-            <a href="karyotypes/index.html" class="related-link"><i class="bi bi-database" aria-hidden="true"></i> Karyotype Databases</a>
-            <a href="phylo-methods/discrete.html" class="related-link"><i class="bi bi-box-seam" aria-hidden="true"></i> chromePlus R Package</a>
-            <a href="sex-chromosome-evolution.html" class="related-link"><i class="bi bi-gender-ambiguous" aria-hidden="true"></i> Sex Chromosome Evolution</a>
-            <a href="chromosome-evolution-history.html" class="related-link"><i class="bi bi-clock-history" aria-hidden="true"></i> Intellectual History</a>
-            <a href="research.html" class="related-link"><i class="bi bi-search" aria-hidden="true"></i> Lab Research Questions</a>
-            <a href="publications.html" class="related-link"><i class="bi bi-journal-text" aria-hidden="true"></i> Publications</a>
-          </div>
-        </div>
-
-        <div class="paper-foot">Blackmon Lab &nbsp;&middot;&nbsp; Texas A&amp;M University &nbsp;&middot;&nbsp; April 2026</div>
-      </div>
-    </section>
+    </details>
+
+    <blockquote class="pullquote">
+      Ask why a given species has 24 chromosomes and the honest answer is usually: we do not know. That should bother us.
+    </blockquote>
+<footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<script src="assets/js/v3.js"></script>
+</body>
+</html>

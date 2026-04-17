@@ -1,71 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coleoptera Karyotype Database - Blackmon Lab</title>
-  <meta name="description" content="Interactive database of 4,960 Coleoptera karyotypes compiled from 252 publications. Browse, filter, and download beetle chromosome data.">
-    <meta property="og:title" content="Coleoptera Karyotype Database - Blackmon Lab" />
-    <meta property="og:description" content="Searchable karyotype database for Coleoptera (beetles). 4,960 records with chromosome numbers, sex systems, and references." />
-    <meta property="og:url" content="https://coleoguy.github.io/subpages/karyotype-data/coleoptera.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <link rel="canonical" href="https://coleoguy.github.io/karyotypes/coleoptera.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coleoptera karyotypes · Blackmon Lab</title>
+<meta name="description" content="Interactive database of 4,960 Coleoptera karyotypes compiled from 252 publications. Browse, filter, and download beetle chromosome data.">
+<link rel="icon" href="../../assets/img/favicon.ico">
 
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@type": "Dataset",
-  "name": "Coleoptera Karyotype Database",
-  "description": "Curated database of 4,960 beetle karyotype records compiled from 252 publications, including chromosome numbers, sex chromosome systems, and taxonomic information.",
-  "url": "https://coleoguy.github.io/subpages/karyotype-data/coleoptera.html",
-  "keywords": [
-    "Coleoptera",
-    "beetles",
-    "karyotype",
-    "chromosome number",
-    "sex chromosomes"
-  ],
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "creator": {
-    "@type": "Person",
-    "name": "Heath Blackmon",
-    "affiliation": {
-      "@type": "CollegeOrUniversity",
-      "name": "Texas A&M University"
-    },
-    "sameAs": "https://orcid.org/0000-0002-5433-4036"
-  },
-  "provider": {
-    "@type": "ResearchOrganization",
-    "name": "Blackmon Lab",
-    "url": "https://coleoguy.github.io"
-  },
-  "measurementTechnique": "Literature compilation from published cytogenetic studies",
-  "variableMeasured": [
-    "Diploid chromosome number (2n)",
-    "Sex chromosome system",
-    "Karyotype formula"
-  ]
-}
-  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <link href="../../assets/img/favicon.ico" rel="icon">
-  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../../assets/css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/v3.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
   <style>
     /* ── Layout ── */
@@ -81,8 +28,8 @@
 
     /* ── Sidebar ── */
     .db-sidebar {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
       border-radius: 12px;
       padding: 22px 18px;
       position: sticky;
@@ -91,61 +38,61 @@
     .filter-label {
       display: block;
       font-size: 10px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       text-transform: uppercase;
       letter-spacing: 0.9px;
       margin-bottom: 5px;
-      font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+      font-family: var(--font-mono);
     }
     .filter-select, .filter-input {
       width: 100%;
-      background: var(--bg, #080808);
-      border: 1px solid var(--border);
+      background: var(--paper-sunk);
+      border: 1px solid var(--rule);
       border-radius: 6px;
-      color: var(--text, #c8c5c0);
+      color: var(--ink);
       padding: 7px 10px;
       font-size: 13px;
       outline: none;
       transition: border-color 0.2s;
     }
     .filter-select:focus, .filter-input:focus {
-      border-color: var(--accent, #c9a227);
+      border-color: var(--accent, var(--accent));
     }
     .sidebar-section { margin-bottom: 14px; }
     .record-count {
-      font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+      font-family: var(--font-mono);
       font-size: 26px;
       font-weight: 700;
-      color: var(--accent, #c9a227);
+      color: var(--accent, var(--accent));
       margin: 18px 0 4px;
       line-height: 1;
     }
     .record-label {
       font-size: 11px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       margin-bottom: 14px;
     }
     .reset-btn {
       width: 100%;
       background: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid var(--rule);
       border-radius: 6px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       padding: 7px;
       font-size: 12px;
       cursor: pointer;
       transition: all 0.2s;
-      font-family: var(--font-heading, sans-serif);
+      font-family: var(--font-mono);
     }
     .reset-btn:hover {
-      border-color: rgba(201,162,39,0.4);
-      color: var(--accent, #c9a227);
+      border-color: var(--rule-strong);
+      color: var(--accent, var(--accent));
     }
 
     /* ── Tabs ── */
     .db-tabs {
       display: flex;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--rule);
       margin-bottom: 22px;
       gap: 0;
       overflow-x: auto;
@@ -154,9 +101,9 @@
       background: transparent;
       border: none;
       border-bottom: 2px solid transparent;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       padding: 10px 18px;
-      font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+      font-family: var(--font-mono);
       font-size: 13px;
       font-weight: 500;
       cursor: pointer;
@@ -164,8 +111,8 @@
       margin-bottom: -1px;
       white-space: nowrap;
     }
-    .tab-btn.active { color: var(--accent, #c9a227); border-bottom-color: var(--accent, #c9a227); }
-    .tab-btn:hover:not(.active) { color: var(--text, #c8c5c0); }
+    .tab-btn.active { color: var(--accent, var(--accent)); border-bottom-color: var(--accent, var(--accent)); }
+    .tab-btn:hover:not(.active) { color: var(--ink); }
     .tab-pane { display: none; }
     .tab-pane.active { display: block; }
 
@@ -177,23 +124,23 @@
       margin-bottom: 28px;
     }
     .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
       border-radius: 10px;
       padding: 18px 14px;
       text-align: center;
     }
     .stat-card .snum {
-      font-family: var(--font-heading, sans-serif);
+      font-family: var(--font-mono);
       font-size: 26px;
       font-weight: 700;
-      color: var(--accent, #c9a227);
+      color: var(--accent, var(--accent));
       display: block;
       line-height: 1.1;
     }
     .stat-card .slabel {
       font-size: 10px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       text-transform: uppercase;
       letter-spacing: 0.8px;
       margin-top: 4px;
@@ -203,14 +150,14 @@
       max-width: 780px;
       line-height: 1.8;
       font-size: 14px;
-      color: var(--text-secondary, #a09d98);
+      color: var(--ink-dim);
     }
     .info-text p { margin-bottom: 12px; }
-    .info-text a { color: var(--accent, #c9a227); }
+    .info-text a { color: var(--accent, var(--accent)); }
     .usage-note {
       font-size: 12px !important;
-      color: var(--text-muted) !important;
-      border-left: 2px solid var(--border);
+      color: var(--ink-faint) !important;
+      border-left: 2px solid var(--rule);
       padding-left: 12px;
     }
 
@@ -231,10 +178,10 @@
     }
     .toggle-label-head {
       font-size: 10px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      font-family: var(--font-heading, sans-serif);
+      font-family: var(--font-mono);
       margin-right: 4px;
     }
     .col-toggle {
@@ -242,38 +189,38 @@
       align-items: center;
       gap: 5px;
       font-size: 12px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       cursor: pointer;
       padding: 4px 10px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--rule);
       border-radius: 20px;
       transition: all 0.2s;
       user-select: none;
     }
-    .col-toggle:hover { border-color: rgba(201,162,39,0.35); color: var(--text, #c8c5c0); }
+    .col-toggle:hover { border-color: var(--rule-strong); color: var(--ink); }
     .col-toggle input { display: none; }
     .col-toggle.checked {
-      background: rgba(201,162,39,0.08);
-      border-color: rgba(201,162,39,0.4);
-      color: var(--accent, #c9a227);
+      background: var(--accent-dim);
+      border-color: var(--rule-strong);
+      color: var(--accent, var(--accent));
     }
     .download-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       padding: 7px 16px;
-      background: rgba(201,162,39,0.1);
-      border: 1px solid rgba(201,162,39,0.35);
+      background: var(--accent-dim);
+      border: 1px solid var(--rule-strong);
       border-radius: 7px;
-      color: var(--accent, #c9a227);
+      color: var(--accent, var(--accent));
       font-size: 13px;
-      font-family: var(--font-heading, sans-serif);
+      font-family: var(--font-mono);
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
     }
-    .download-btn:hover { background: rgba(201,162,39,0.2); }
+    .download-btn:hover { background: var(--accent-dim); }
     .table-wrapper { overflow-x: auto; }
     #data-table {
       width: 100%;
@@ -281,40 +228,40 @@
       font-size: 13px;
     }
     #data-table th {
-      color: var(--text-muted);
-      font-family: var(--font-heading, sans-serif);
+      color: var(--ink-faint);
+      font-family: var(--font-mono);
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.9px;
       padding: 8px 12px;
       text-align: left;
       white-space: nowrap;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--rule);
     }
     #data-table td {
       padding: 7px 12px;
-      color: var(--text, #c8c5c0);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
       max-width: 320px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    #data-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
+    #data-table tbody tr:hover td { background: var(--accent-dim); }
     .sex-badge {
       display: inline-block;
       padding: 2px 8px;
       border-radius: 4px;
       font-size: 11px;
-      font-family: var(--font-mono, monospace);
-      background: rgba(201,162,39,0.1);
-      color: var(--accent, #c9a227);
-      border: 1px solid rgba(201,162,39,0.3);
+      font-family: var(--font-mono);
+      background: var(--accent-dim);
+      color: var(--accent, var(--accent));
+      border: 1px solid var(--rule-strong);
     }
     .sex-badge.unreported {
-      background: rgba(255,255,255,0.04);
-      color: var(--text-muted);
-      border-color: var(--border);
+      background: var(--rule);
+      color: var(--ink-faint);
+      border-color: var(--rule);
     }
 
     /* ── Pagination ── */
@@ -327,24 +274,24 @@
       flex-wrap: wrap;
     }
     .page-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
+      color: var(--ink-faint);
       padding: 5px 11px;
       border-radius: 5px;
       font-size: 12px;
       cursor: pointer;
       transition: all 0.2s;
-      font-family: var(--font-heading, sans-serif);
+      font-family: var(--font-mono);
     }
     .page-btn:hover, .page-btn.active {
-      background: rgba(201,162,39,0.1);
-      border-color: rgba(201,162,39,0.4);
-      color: var(--accent, #c9a227);
+      background: var(--accent-dim);
+      border-color: var(--rule-strong);
+      color: var(--accent, var(--accent));
     }
     .page-info {
       font-size: 11px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       margin-left: 8px;
     }
 
@@ -358,17 +305,17 @@
     .plot-control label {
       display: block;
       font-size: 10px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       text-transform: uppercase;
       letter-spacing: 0.8px;
       margin-bottom: 5px;
-      font-family: var(--font-heading, sans-serif);
+      font-family: var(--font-mono);
     }
     .plot-control select {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
       border-radius: 6px;
-      color: var(--text, #c8c5c0);
+      color: var(--ink);
       padding: 7px 10px;
       font-size: 13px;
       outline: none;
@@ -380,25 +327,25 @@
     .citations-list { max-width: 900px; }
     .citation-item {
       font-size: 12px;
-      color: var(--text-secondary, #a09d98);
+      color: var(--ink-dim);
       line-height: 1.7;
       padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--rule);
       display: flex;
       gap: 10px;
     }
     .citation-num {
-      color: var(--accent, #c9a227);
-      font-family: var(--font-mono, monospace);
+      color: var(--accent, var(--accent));
+      font-family: var(--font-mono);
       font-size: 11px;
       min-width: 28px;
       padding-top: 2px;
     }
     .cit-search {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
       border-radius: 6px;
-      color: var(--text, #c8c5c0);
+      color: var(--ink);
       padding: 8px 12px;
       font-size: 13px;
       width: 100%;
@@ -411,61 +358,128 @@
     #loading-state {
       text-align: center;
       padding: 80px 20px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
     }
     .spin {
       display: inline-block;
       animation: spin 1s linear infinite;
       font-size: 2rem;
-      color: var(--accent, #c9a227);
+      color: var(--accent, var(--accent));
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .empty-msg {
       text-align: center;
       padding: 48px;
-      color: var(--text-muted);
+      color: var(--ink-faint);
       font-size: 14px;
     }
   </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
 </head>
 
 <body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../../research.html">Research</a></li>
-          <li><a href="../../publications.html">Publications</a></li>
-          <li><a href="../../team.html">Team</a></li>
-          <li><a href="../../resources.html" class="active">Resources</a></li>
-          <li><a href="../../ai.html">AI</a></li>
-          <li><a href="../../join.html">Join</a></li>
-          <li><a href="../../news.html">News</a></li>
-          <li><a href="../../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-sm-none bi bi-list"></i>
-      </nav>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>&#8984;K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+<div class="shell">
+
+  <!-- Phylogenetic sidebar -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="../../index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> &middot; <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
     </div>
-  </header>
 
-  <main class="main">
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="../../team.html">Team</a></li>
+          <li><a href="../../publications.html">Publications</a></li>
+          <li><a href="../../news.html">News</a></li>
+          <li><a href="../../calendar.html">Calendar</a></li>
+          <li><a href="../../join.html">Join</a></li>
+          <li><a href="../../gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="../../cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="../../karyotypes/index.html" class="active">Six karyotype DBs</a></li>
+          <li><a href="../../epistasis-database.html">Epistasis database</a></li>
+          <li><a href="../../tau_database.html">Tau database</a></li>
+          <li><a href="../../citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="../../karyotype.html">Karyotype evolution</a></li>
+          <li><a href="../../sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="../../genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="../../selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="../../epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="../../chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="../../coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="../../ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="../../lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="../../llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="../../phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="../../phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="popgen-sim.html" target="_blank">Pop-gen simulator</a></li>
+          <li><a href="evobir.html" target="_blank">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="../../biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="biol682.html" target="_blank">BIOL 682</a></li>
+          <li><a href="grad101.html" target="_blank">Grad 101</a></li>
+          <li><a href="../AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
 
-    <section class="page-header">
-      <div class="container">
-        <h1>Coleoptera Karyotype Database</h1>
-        <p>4,960 records · 252 publications · <a href="../../karyotypes/index.html" style="color: var(--accent);">All karyotype databases</a></p>
-      </div>
-    </section>
+  <!-- Main reading column -->
+  <main class="column column-wide" id="content">
 
+    <div class="crumb">
+      <a href="../../index.html">Home</a> &rsaquo; <a href="../../karyotypes/index.html">Databases</a> &rsaquo; <a href="../../karyotypes/index.html">Six karyotype DBs</a> &rsaquo; <strong>Coleoptera</strong>
+    </div>
+
+    <h1 class="title">Coleoptera karyotypes.</h1>
+
+    <p class="lede">
+      A curated database of 4,960 beetle karyotypes drawn from 252 published cytogenetic studies. Filter by suborder, family, genus, or sex chromosome system, and plot or export the filtered subset as CSV.
+    </p>
+
+    <div class="db-wrapper">
     <section class="section" style="padding-top: 16px;">
       <div class="container-fluid" style="max-width: 1380px; padding: 0 24px;">
 
@@ -530,7 +544,7 @@
                 <p><strong>Submitting data:</strong> If you are aware of records that should be added, please <a href="mailto:coleochromosomes@gmail.com">contact us</a>.</p>
                 <p class="usage-note">Data taken from this database must not be reproduced in published lists, online databases, or other formats without permission. Provided solely for personal and academic use.</p>
                 <p><strong>Citation:</strong> <a href="https://bioone.org/journals/the-coleopterists-bulletin/volume-69/issue-1/0010-065X-69.1.174/Coleoptera-Karyotype-Database/10.1649/0010-065X-69.1.174.full" target="_blank">Blackmon, H. and Demuth, J.P. (2015). Coleoptera Karyotype Database. <em>The Coleopterists Bulletin</em>, 69(1), 174–175.</a></p>
-                <p style="color: var(--text-muted); font-size: 12px;">Version 1.4 · Last updated 30 October 2020</p>
+                <p style="color: var(--ink-faint); font-size: 12px;">Version 1.4 · Last updated 30 October 2020</p>
               </div>
             </div>
 
@@ -581,7 +595,7 @@
             <div id="tab-citations" class="tab-pane">
               <input type="text" id="cit-search" class="cit-search" placeholder="Search citations…">
               <div class="citations-list" id="citations-list">
-                <p style="color: var(--text-muted); font-size: 13px;">Loading citations…</p>
+                <p style="color: var(--ink-faint); font-size: 13px;">Loading citations…</p>
               </div>
             </div>
 
@@ -591,22 +605,31 @@
       </div>
     </section>
 
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
     </div>
-  </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  <div id="preloader"></div>
+    <footer class="colophon">
+      <span>Blackmon Lab &middot; Department of Biology &middot; Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../../llms.txt">llms.txt</a>
+        <a href="../../llms-full.txt">llms-full.txt</a>
+        <a href="../../data/">/data</a>
+        <a href="../../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
 
-  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/js/main.js"></script>
+  </main>
+</div>
 
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to..." autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
 
-  <!-- Plotly for interactive boxplot -->
+<script src="../../assets/js/v3.js"></script>
+<!-- Plotly for interactive boxplot -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
 
   <script>
@@ -644,7 +667,7 @@
   ];
 
   const PLOT_PALETTE = [
-    '#c9a227','#a78bfa','#34d399','#f87171','#60a5fa',
+    'var(--accent)','#a78bfa','#34d399','#f87171','#60a5fa',
     '#fb923c','#e879f9','#4ade80','#38bdf8','#f472b6',
     '#facc15','#818cf8','#86efac','#fda4af','#93c5fd'
   ];
@@ -1077,6 +1100,5 @@
     return s.length % 2 ? s[m] : (s[m-1] + s[m]) / 2;
   }
   </script>
-
 </body>
 </html>
