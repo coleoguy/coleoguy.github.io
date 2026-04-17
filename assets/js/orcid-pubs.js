@@ -116,8 +116,43 @@
     container.innerHTML = '<p class="pub-loading">Loading publications from ORCID<span class="loading-dots"></span></p>';
   }
 
+  // Try the local snapshot first (fast, resilient to ORCID outages),
+  // then refresh from the live ORCID API in the background.
+  async function loadFromSnapshot() {
+    const url = new URL('data/publications.json', document.baseURI).toString();
+    const resp = await fetch(url, { cache: 'no-cache' });
+    if (!resp.ok) throw new Error('snapshot HTTP ' + resp.status);
+    const json = await resp.json();
+    return json.works || [];
+  }
+
+  async function loadFromOrcid() {
+    const resp = await fetch(`${BASE_URL}/works`, {
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+    const json = await resp.json();
+    const groups = json.group || [];
+    const ALLOWED_TYPES = ['journal-article', 'book', 'book-chapter', 'preprint'];
+    const works = groups.map(extractSummary).filter(Boolean)
+      .filter(w => ALLOWED_TYPES.includes(w.type));
+
+    const putCodes = works.map(w => w.putCode).filter(Boolean);
+    const authorMap = {};
+    for (let i = 0; i < putCodes.length; i += BATCH_SIZE) {
+      const batch = putCodes.slice(i, i + BATCH_SIZE);
+      const batchResults = await fetchAuthorsBatch(batch);
+      Object.assign(authorMap, batchResults);
+    }
+    for (const w of works) {
+      if (authorMap[w.putCode]) w.authors = authorMap[w.putCode];
+    }
+    return works;
+  }
+
   async function fetchPubs() {
-    // Check cache
+    // Try in-session cache first
     try {
       const cached = sessionStorage.getItem(CACHE_KEY);
       if (cached) {
@@ -131,45 +166,33 @@
 
     showLoading();
 
+    // Snapshot is the primary source: fast, deterministic, resilient.
+    let snapshotWorks = null;
     try {
-      // Step 1: Get all work summaries
-      const resp = await fetch(`${BASE_URL}/works`, {
-        headers: { 'Accept': 'application/json' }
-      });
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-
-      const json = await resp.json();
-      const groups = json.group || [];
-      const ALLOWED_TYPES = ['journal-article', 'book', 'book-chapter', 'preprint'];
-      const works = groups.map(extractSummary).filter(Boolean)
-        .filter(w => ALLOWED_TYPES.includes(w.type));
-
-      // Step 2: Fetch authors in batches
-      const putCodes = works.map(w => w.putCode).filter(Boolean);
-      const authorMap = {};
-
-      for (let i = 0; i < putCodes.length; i += BATCH_SIZE) {
-        const batch = putCodes.slice(i, i + BATCH_SIZE);
-        const batchResults = await fetchAuthorsBatch(batch);
-        Object.assign(authorMap, batchResults);
-      }
-
-      // Merge authors into works
-      for (const w of works) {
-        if (authorMap[w.putCode]) {
-          w.authors = authorMap[w.putCode];
-        }
-      }
-
-      // Cache the full data
+      snapshotWorks = await loadFromSnapshot();
+      renderPubs(snapshotWorks);
       try {
-        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: works, ts: Date.now() }));
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: snapshotWorks, ts: Date.now() }));
       } catch (e) { /* storage full, ignore */ }
+    } catch (e) {
+      console.warn('publications snapshot unavailable, falling back to live ORCID:', e);
+    }
 
-      renderPubs(works);
+    // Fetch from ORCID in the background to pick up new pubs since the last snapshot.
+    try {
+      const fresh = await loadFromOrcid();
+      if (!snapshotWorks || fresh.length !== snapshotWorks.length) {
+        renderPubs(fresh);
+        try {
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: fresh, ts: Date.now() }));
+        } catch (e) { /* storage full, ignore */ }
+      }
     } catch (err) {
-      console.error('ORCID fetch failed:', err);
-      showError();
+      if (!snapshotWorks) {
+        console.error('ORCID fetch failed and no snapshot available:', err);
+        showError();
+      }
+      // else: snapshot already rendered; live fetch failure is silent
     }
   }
 

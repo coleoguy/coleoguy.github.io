@@ -1,277 +1,235 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="What is a phylogeny? Interactive D3.js visualization exploring tree reading, cladograms vs phylograms, branch lengths, and tree rotation." />
-    <meta property="og:title" content="Phylogenies - Phylogenetic Comparative Methods" />
-    <meta property="og:description" content="What is a phylogeny? Interactive D3.js visualization exploring tree reading, cladograms vs phylograms, branch lengths, and tree rotation." />
-    <meta property="og:url" content="https://coleoguy.github.io/phylo-methods/phylogenies.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-
-  <title>Phylogenies - Phylogenetic Comparative Methods</title>
-
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../assets/css/main.css" rel="stylesheet">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
+---
+layout: default
+title: Phylogenies - Phylogenetic Comparative Methods
+description: What is a phylogeny? Interactive D3.js visualization exploring tree reading, cladograms vs phylograms, branch lengths, and tree rotation.
+extra_head: |
   <style>
-    .page-header {
-      min-height: 350px;
-      display: flex;
-      align-items: center;
-      padding: 120px 0 60px 0;
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
-    }
+      .page-header {
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        padding: 120px 0 60px 0;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
+      }
+  
+      .page-header h1 {
+        font-size: 3rem;
+        font-family: var(--font-heading);
+        color: var(--text-heading);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+  
+      .page-header .subtitle {
+        font-size: 1.1rem;
+        color: var(--text);
+        max-width: 700px;
+      }
+  
+      .content-section {
+        padding: 80px 0;
+        border-bottom: 1px solid var(--border);
+      }
+  
+      .content-section:last-of-type {
+        border-bottom: none;
+      }
+  
+      .section-title {
+        font-size: 2rem;
+        font-family: var(--font-heading);
+        color: var(--text-heading);
+        margin-bottom: 40px;
+        font-weight: 600;
+      }
+  
+      .section-text {
+        font-size: 1rem;
+        color: var(--text);
+        line-height: 1.8;
+        margin-bottom: 30px;
+        max-width: 900px;
+      }
+  
+      .viz-container {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 40px;
+        margin: 40px 0;
+      }
+  
+      .d3-tree-container {
+        width: 100%;
+        min-height: 580px;
+        background: linear-gradient(to bottom, rgba(201,162,39,0.03), transparent);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+  
+      .tree-control {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+  
+      .tree-toggle {
+        padding: 10px 20px;
+        border: 1px solid var(--accent-border);
+        background: transparent;
+        color: var(--accent);
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+      }
+  
+      .tree-toggle:hover {
+        background: var(--accent-dim);
+        border-color: var(--accent);
+      }
+  
+      .tree-toggle.active {
+        background: var(--accent-dim);
+        border-color: var(--accent);
+      }
+  
+      svg text {
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        fill: var(--text);
+      }
+  
+      svg .node {
+        fill: var(--text-secondary);
+      }
+  
+      svg .node.tip {
+        fill: var(--accent);
+        font-weight: 600;
+      }
+  
+      svg .node.internal {
+        fill: var(--text-muted);
+      }
+  
+      svg .link {
+        stroke: var(--text-secondary);
+        stroke-width: 2;
+        fill: none;
+      }
+  
+      svg .link.highlight {
+        stroke: var(--accent);
+        stroke-width: 3;
+        filter: drop-shadow(0 0 5px rgba(201,162,39,0.4));
+      }
+  
+      .rotations-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin: 40px 0;
+      }
+  
+      .rotation-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 30px;
+        text-align: center;
+      }
+  
+      .rotation-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        margin-bottom: 20px;
+      }
+  
+      .rotation-svg {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 15px;
+      }
+  
+      .rotation-note {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+  
+      .highlight-text {
+        color: var(--accent);
+        font-weight: 600;
+      }
+  
+      .branch-length-svg {
+        width: 100%;
+        height: auto;
+      }
+  
+      .nav-buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 1px solid var(--border);
+      }
+  
+      .nav-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: var(--accent-dim);
+        color: var(--accent);
+        border: 1px solid var(--accent-border);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        cursor: pointer;
+      }
+  
+      .nav-button:hover {
+        background: rgba(201,162,39,0.15);
+        border-color: var(--accent);
+      }
+  
+      .nav-button.prev {
+        margin-right: auto;
+      }
+  
+      .example-box {
+        background: rgba(201,162,39,0.05);
+        border-left: 4px solid var(--accent);
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 4px;
+      }
+  
+      .example-label {
+        font-size: 0.85rem;
+        font-family: var(--font-mono);
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+    </style>
+extra_scripts: |
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+---
 
-    .page-header h1 {
-      font-size: 3rem;
-      font-family: var(--font-heading);
-      color: var(--text-heading);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .page-header .subtitle {
-      font-size: 1.1rem;
-      color: var(--text);
-      max-width: 700px;
-    }
-
-    .content-section {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .content-section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-family: var(--font-heading);
-      color: var(--text-heading);
-      margin-bottom: 40px;
-      font-weight: 600;
-    }
-
-    .section-text {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.8;
-      margin-bottom: 30px;
-      max-width: 900px;
-    }
-
-    .viz-container {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 40px;
-      margin: 40px 0;
-    }
-
-    .d3-tree-container {
-      width: 100%;
-      min-height: 580px;
-      background: linear-gradient(to bottom, rgba(201,162,39,0.03), transparent);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .tree-control {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .tree-toggle {
-      padding: 10px 20px;
-      border: 1px solid var(--accent-border);
-      background: transparent;
-      color: var(--accent);
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      transition: all 0.3s ease;
-    }
-
-    .tree-toggle:hover {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-    }
-
-    .tree-toggle.active {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-    }
-
-    svg text {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      fill: var(--text);
-    }
-
-    svg .node {
-      fill: var(--text-secondary);
-    }
-
-    svg .node.tip {
-      fill: var(--accent);
-      font-weight: 600;
-    }
-
-    svg .node.internal {
-      fill: var(--text-muted);
-    }
-
-    svg .link {
-      stroke: var(--text-secondary);
-      stroke-width: 2;
-      fill: none;
-    }
-
-    svg .link.highlight {
-      stroke: var(--accent);
-      stroke-width: 3;
-      filter: drop-shadow(0 0 5px rgba(201,162,39,0.4));
-    }
-
-    .rotations-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-    }
-
-    .rotation-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .rotation-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      margin-bottom: 20px;
-    }
-
-    .rotation-svg {
-      width: 100%;
-      height: 300px;
-      margin-bottom: 15px;
-    }
-
-    .rotation-note {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    .highlight-text {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .branch-length-svg {
-      width: 100%;
-      height: auto;
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 20px;
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-
-    .nav-button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .nav-button:hover {
-      background: rgba(201,162,39,0.15);
-      border-color: var(--accent);
-    }
-
-    .nav-button.prev {
-      margin-right: auto;
-    }
-
-    .example-box {
-      background: rgba(201,162,39,0.05);
-      border-left: 4px solid var(--accent);
-      padding: 20px;
-      margin: 30px 0;
-      border-radius: 4px;
-    }
-
-    .example-label {
-      font-size: 0.85rem;
-      font-family: var(--font-mono);
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-  </style>
-</head>
-<body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../research.html">Research</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../ai.html">AI</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="page-header">
+<section class="page-header">
       <div class="container-xl">
         <h1>Phylogenies</h1>
         <div class="subtitle">Understanding trees, branch lengths, and why evolution is not a ladder</div>
@@ -606,195 +564,3 @@
         </div>
       </div>
     </section>
-  </main>
-
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
-  </a>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/js/main.js"></script>
-
-  <script>
-    // Vertebrate phylogeny with approximate divergence ages (mya)
-    const vertebrateData = {
-      name: "Vertebrata", age: 500,
-      children: [
-        { name: "Fish", age: 0 },
-        {
-          name: "Tetrapoda", age: 375,
-          children: [
-            { name: "Frog", age: 0 },
-            { name: "Salamander", age: 0 },
-            {
-              name: "Amniota", age: 340,
-              children: [
-                {
-                  name: "Mammalia", age: 310,
-                  children: [
-                    {
-                      name: "Primates", age: 85,
-                      children: [
-                        { name: "Human", age: 0 },
-                        { name: "Chimpanzee", age: 0 }
-                      ]
-                    },
-                    { name: "Elephant", age: 0 },
-                    {
-                      name: "Carnivora", age: 95,
-                      children: [
-                        { name: "Lion", age: 0 },
-                        { name: "Dog", age: 0 }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  name: "Reptilia", age: 310,
-                  children: [
-                    { name: "Lizard", age: 0 },
-                    {
-                      name: "Archosauria", age: 250,
-                      children: [
-                        { name: "Crocodile", age: 0 },
-                        {
-                          name: "Aves", age: 150,
-                          children: [
-                            { name: "Chicken", age: 0 },
-                            { name: "Ostrich", age: 0 }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    };
-
-    let showBranchLengths = false;
-
-    function renderTree() {
-      const container = document.getElementById('d3TreeContainer');
-      container.innerHTML = '';
-
-      const width = Math.max(container.offsetWidth || 700, 500);
-      const height = 560;
-      const margin = { top: 20, right: 160, bottom: 20, left: 30 };
-      const innerWidth  = width  - margin.left - margin.right;
-      const innerHeight = height - margin.top  - margin.bottom;
-
-      const svg = d3.select('#d3TreeContainer').append('svg')
-        .attr('width', width)
-        .attr('height', height)
-        .style('display', 'block');
-
-      const g = svg.append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-
-      const root = d3.hierarchy(vertebrateData);
-
-      // d3.cluster: x → vertical position (0..innerHeight), y → horizontal (0..innerWidth)
-      d3.cluster().size([innerHeight, innerWidth])(root);
-
-      if (showBranchLengths) {
-        // Override horizontal (y) position based on node age; tips at innerWidth
-        const maxAge = 500;
-        root.each(d => {
-          d.y = (1 - d.data.age / maxAge) * innerWidth;
-        });
-      }
-
-      // Right-angle (phylogram-style) links: shoulder at parent x, then horizontal to child x
-      g.selectAll('.link')
-        .data(root.links())
-        .enter()
-        .append('path')
-        .attr('class', 'link')
-        .attr('d', d =>
-          `M${d.source.y},${d.source.x} V${d.target.x} H${d.target.y}`
-        );
-
-      const nodes = g.selectAll('.node')
-        .data(root.descendants())
-        .enter()
-        .append('g')
-        .attr('class', d => `node ${d.children ? 'internal' : 'tip'}`)
-        .attr('transform', d => `translate(${d.y},${d.x})`);
-
-      // Circles
-      nodes.append('circle')
-        .attr('r', d => d.children ? 3 : 5)
-        .style('fill', d => d.children ? 'var(--text-secondary)' : 'var(--accent)');
-
-      // Tip labels only — to the right of each tip
-      nodes.filter(d => !d.children)
-        .append('text')
-        .attr('dx', 10)
-        .attr('dy', 4)
-        .text(d => d.data.name)
-        .style('font-size', '12px')
-        .style('fill', 'var(--text)')
-        .style('font-style', 'italic');
-
-      // Hover: highlight path from tip to root
-      nodes.on('mouseenter', function(event, d) {
-        if (!d.children) highlightLineage(d, g);
-      }).on('mouseleave', function() {
-        clearHighlight(g);
-      });
-    }
-
-    function getAncestors(node) {
-      const a = [];
-      let cur = node;
-      while (cur) { a.push(cur); cur = cur.parent; }
-      return a;
-    }
-
-    function highlightLineage(node, g) {
-      const ancestors = new Set(getAncestors(node));
-      g.selectAll('.link')
-        .classed('highlight', d => ancestors.has(d.target));
-      g.selectAll('.node circle')
-        .style('fill', d => ancestors.has(d)
-          ? 'var(--accent)'
-          : (d.children ? 'var(--text-secondary)' : 'var(--accent)'))
-        .style('filter', d => ancestors.has(d)
-          ? 'drop-shadow(0 0 6px rgba(201,162,39,0.6))'
-          : 'none');
-    }
-
-    function clearHighlight(g) {
-      g.selectAll('.link').classed('highlight', false);
-      g.selectAll('.node circle')
-        .style('fill', d => d.children ? 'var(--text-secondary)' : 'var(--accent)')
-        .style('filter', 'none');
-    }
-
-    function toggleBranchLengths() {
-      showBranchLengths = !showBranchLengths;
-      const btn = document.getElementById('lengthToggle');
-      btn.textContent = showBranchLengths ? 'Hide branch lengths' : 'Show branch lengths';
-      btn.classList.toggle('active', showBranchLengths);
-      renderTree();
-    }
-
-    renderTree();
-    window.addEventListener('resize', renderTree);
-  </script>
-</body>
-</html>

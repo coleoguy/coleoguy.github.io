@@ -1,345 +1,302 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mk model, ancestral state reconstruction, stochastic character mapping, and chromePlus. Interactive guide to discrete trait evolution on phylogenies." />
-    <meta property="og:title" content="Discrete Trait Evolution - Phylogenetic Comparative Methods" />
-    <meta property="og:description" content="Mk model, ancestral state reconstruction, stochastic character mapping, and chromePlus. Interactive guide to discrete trait evolution on phylogenies." />
-    <meta property="og:url" content="https://coleoguy.github.io/phylo-methods/discrete.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-
-  <title>Discrete Trait Evolution - Phylogenetic Comparative Methods</title>
-
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../assets/css/main.css" rel="stylesheet">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
+---
+layout: default
+title: Discrete Trait Evolution - Phylogenetic Comparative Methods
+description: Mk model, ancestral state reconstruction, stochastic character mapping, and chromePlus. Interactive guide to discrete trait evolution on phylogenies.
+extra_head: |
   <style>
-    .page-header {
-      min-height: 350px;
-      display: flex;
-      align-items: center;
-      padding: 120px 0 60px 0;
-      border-bottom: 1px solid var(--border);
-    }
+      .page-header {
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        padding: 120px 0 60px 0;
+        border-bottom: 1px solid var(--border);
+      }
+  
+      .page-header h1 {
+        font-size: 3rem;
+        font-family: var(--font-heading);
+        color: var(--text-heading);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+  
+      .page-header .subtitle {
+        font-size: 1.1rem;
+        color: var(--text);
+        max-width: 700px;
+      }
+  
+      .content-section {
+        padding: 80px 0;
+        border-bottom: 1px solid var(--border);
+      }
+  
+      .content-section:last-of-type {
+        border-bottom: none;
+      }
+  
+      .section-title {
+        font-size: 2rem;
+        font-family: var(--font-heading);
+        color: var(--text-heading);
+        margin-bottom: 40px;
+        font-weight: 600;
+      }
+  
+      .section-text {
+        font-size: 1rem;
+        color: var(--text);
+        line-height: 1.8;
+        margin-bottom: 30px;
+        max-width: 900px;
+      }
+  
+      .viz-container {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 40px;
+        margin: 40px 0;
+      }
+  
+      .asr-demo {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+  
+      .asr-canvas-container {
+        width: 100%;
+        height: 500px;
+        background: linear-gradient(to bottom, rgba(201,162,39,0.05), transparent);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+  
+      .asr-button-group {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+  
+      .asr-button {
+        padding: 12px 24px;
+        border: 1px solid var(--accent-border);
+        background: transparent;
+        color: var(--accent);
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.3s ease;
+      }
+  
+      .asr-button:hover {
+        background: var(--accent-dim);
+        border-color: var(--accent);
+      }
+  
+      .asr-button.primary {
+        background: var(--accent-dim);
+        border-color: var(--accent);
+      }
+  
+      .info-box {
+        background: rgba(201,162,39,0.05);
+        border-left: 4px solid var(--accent);
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text);
+      }
+  
+      .highlight-text {
+        color: var(--accent);
+        font-weight: 600;
+      }
+  
+      .markov-diagram {
+        width: 100%;
+        height: 300px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+  
+      .markov-canvas {
+        width: 100%;
+        height: 100%;
+      }
+  
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 25px 0;
+      }
+  
+      .control-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+  
+      .slider-row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+  
+      input[type="range"] {
+        flex: 1;
+        height: 6px;
+        border-radius: 3px;
+        background: var(--bg);
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+  
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        box-shadow: 0 0 8px rgba(201,162,39,0.4);
+      }
+  
+      input[type="range"]::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 0 8px rgba(201,162,39,0.4);
+      }
+  
+      .slider-value {
+        font-family: var(--font-mono);
+        color: var(--accent);
+        min-width: 50px;
+        text-align: right;
+      }
+  
+      .code-block {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        padding: 20px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 20px 0;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+  
+      .code-block .keyword {
+        color: #fb923c;
+      }
+  
+      .code-block .string {
+        color: #34d399;
+      }
+  
+      .code-block .comment {
+        color: var(--text-secondary);
+      }
+  
+      .charmap-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin: 40px 0;
+      }
+  
+      .charmap-panel {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        padding: 25px;
+        border-radius: 8px;
+        text-align: center;
+      }
+  
+      .charmap-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        margin-bottom: 20px;
+        font-family: var(--font-mono);
+      }
+  
+      .charmap-svg {
+        width: 100%;
+        height: 280px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        margin-bottom: 15px;
+      }
+  
+      .charmap-description {
+        font-size: 0.85rem;
+        color: var(--text);
+        line-height: 1.5;
+      }
+  
+      .nav-buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 1px solid var(--border);
+      }
+  
+      .nav-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: var(--accent-dim);
+        color: var(--accent);
+        border: 1px solid var(--accent-border);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        cursor: pointer;
+      }
+  
+      .nav-button:hover {
+        background: rgba(201,162,39,0.15);
+        border-color: var(--accent);
+      }
+  
+      .nav-button.prev {
+        margin-right: auto;
+      }
+    </style>
+extra_scripts: |
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+---
 
-    .page-header h1 {
-      font-size: 3rem;
-      font-family: var(--font-heading);
-      color: var(--text-heading);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .page-header .subtitle {
-      font-size: 1.1rem;
-      color: var(--text);
-      max-width: 700px;
-    }
-
-    .content-section {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .content-section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-family: var(--font-heading);
-      color: var(--text-heading);
-      margin-bottom: 40px;
-      font-weight: 600;
-    }
-
-    .section-text {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.8;
-      margin-bottom: 30px;
-      max-width: 900px;
-    }
-
-    .viz-container {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 40px;
-      margin: 40px 0;
-    }
-
-    .asr-demo {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    .asr-canvas-container {
-      width: 100%;
-      height: 500px;
-      background: linear-gradient(to bottom, rgba(201,162,39,0.05), transparent);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    .asr-button-group {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .asr-button {
-      padding: 12px 24px;
-      border: 1px solid var(--accent-border);
-      background: transparent;
-      color: var(--accent);
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
-    }
-
-    .asr-button:hover {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-    }
-
-    .asr-button.primary {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-    }
-
-    .info-box {
-      background: rgba(201,162,39,0.05);
-      border-left: 4px solid var(--accent);
-      padding: 20px;
-      margin: 30px 0;
-      border-radius: 4px;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--text);
-    }
-
-    .highlight-text {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .markov-diagram {
-      width: 100%;
-      height: 300px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .markov-canvas {
-      width: 100%;
-      height: 100%;
-    }
-
-    .control-group {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin: 25px 0;
-    }
-
-    .control-label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .slider-row {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    input[type="range"] {
-      flex: 1;
-      height: 6px;
-      border-radius: 3px;
-      background: var(--bg);
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent);
-      cursor: pointer;
-      box-shadow: 0 0 8px rgba(201,162,39,0.4);
-    }
-
-    input[type="range"]::-moz-range-thumb {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent);
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 0 8px rgba(201,162,39,0.4);
-    }
-
-    .slider-value {
-      font-family: var(--font-mono);
-      color: var(--accent);
-      min-width: 50px;
-      text-align: right;
-    }
-
-    .code-block {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 20px;
-      border-radius: 6px;
-      overflow-x: auto;
-      margin: 20px 0;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .code-block .keyword {
-      color: #fb923c;
-    }
-
-    .code-block .string {
-      color: #34d399;
-    }
-
-    .code-block .comment {
-      color: var(--text-secondary);
-    }
-
-    .charmap-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin: 40px 0;
-    }
-
-    .charmap-panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 25px;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .charmap-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      margin-bottom: 20px;
-      font-family: var(--font-mono);
-    }
-
-    .charmap-svg {
-      width: 100%;
-      height: 280px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      margin-bottom: 15px;
-    }
-
-    .charmap-description {
-      font-size: 0.85rem;
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 20px;
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-
-    .nav-button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .nav-button:hover {
-      background: rgba(201,162,39,0.15);
-      border-color: var(--accent);
-    }
-
-    .nav-button.prev {
-      margin-right: auto;
-    }
-  </style>
-</head>
-<body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../research.html">Research</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../ai.html">AI</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="page-header">
+<section class="page-header">
       <div class="container-xl">
         <h1>Discrete Trait Evolution</h1>
         <div class="subtitle">Wings, sex determination, and other binary (or multistate) characters</div>
@@ -709,372 +666,3 @@
         </div>
       </div>
     </section>
-  </main>
-
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
-  </a>
-
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/js/main.js"></script>
-
-  <script>
-    // Markov chain diagram with sliders
-    function drawMarkovDiagram() {
-      const canvas = document.getElementById('markovCanvas');
-      canvas.width  = canvas.offsetWidth  || 500;
-      canvas.height = canvas.offsetHeight || 280;
-      const ctx = canvas.getContext('2d');
-      const width = canvas.width;
-      const height = canvas.height;
-
-      const q01 = parseFloat(document.getElementById('q01Slider').value);
-      const q10 = parseFloat(document.getElementById('q10Slider').value);
-
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'rgba(8,8,8,0.3)';
-      ctx.fillRect(0, 0, width, height);
-
-      // States A and B
-      const xA = width * 0.3;
-      const xB = width * 0.7;
-      const y = height / 2;
-      const radius = 30;
-
-      // Draw circles
-      ctx.strokeStyle = 'rgba(201,162,39,0.6)';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(xA, y, radius, 0, 2 * Math.PI);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(xB, y, radius, 0, 2 * Math.PI);
-      ctx.stroke();
-
-      // Labels in circles
-      ctx.fillStyle = 'rgba(200,197,192,0.9)';
-      ctx.font = 'bold 24px Arial';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('A', xA, y);
-      ctx.fillText('B', xB, y);
-
-      // Draw arrows
-      ctx.strokeStyle = 'rgba(201,162,39,0.7)';
-      ctx.fillStyle = 'rgba(201,162,39,0.7)';
-      ctx.lineWidth = 2;
-
-      // A to B arrow (top)
-      const arrowY1 = y - 25;
-      ctx.beginPath();
-      ctx.moveTo(xA + 25, arrowY1);
-      ctx.quadraticCurveTo((xA + xB) / 2, arrowY1 - 30, xB - 25, arrowY1);
-      ctx.stroke();
-
-      // Arrowhead for A->B
-      ctx.beginPath();
-      ctx.moveTo(xB - 25, arrowY1);
-      ctx.lineTo(xB - 20, arrowY1 - 6);
-      ctx.lineTo(xB - 20, arrowY1 + 6);
-      ctx.fill();
-
-      // B to A arrow (bottom)
-      const arrowY2 = y + 25;
-      ctx.strokeStyle = 'rgba(52,211,153,0.7)';
-      ctx.fillStyle = 'rgba(52,211,153,0.7)';
-      ctx.beginPath();
-      ctx.moveTo(xB - 25, arrowY2);
-      ctx.quadraticCurveTo((xA + xB) / 2, arrowY2 + 30, xA + 25, arrowY2);
-      ctx.stroke();
-
-      // Arrowhead for B->A
-      ctx.beginPath();
-      ctx.moveTo(xA + 25, arrowY2);
-      ctx.lineTo(xA + 20, arrowY2 + 6);
-      ctx.lineTo(xA + 20, arrowY2 - 6);
-      ctx.fill();
-
-      // Labels on arrows
-      ctx.fillStyle = 'rgba(200,197,192,0.9)';
-      ctx.font = '12px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('q01 = ' + q01.toFixed(1), (xA + xB) / 2, y - 50);
-      ctx.fillText('q10 = ' + q10.toFixed(1), (xA + xB) / 2, y + 50);
-
-      // Calculate stationary frequencies
-      const pi_B = q01 / (q01 + q10);
-      const pi_A = q10 / (q01 + q10);
-
-      document.getElementById('freqA').textContent = (pi_A * 100).toFixed(0) + '%';
-      document.getElementById('freqB').textContent = (pi_B * 100).toFixed(0) + '%';
-    }
-
-    document.getElementById('q01Slider').addEventListener('input', function() {
-      document.getElementById('q01Value').textContent = this.value;
-      drawMarkovDiagram();
-    });
-
-    document.getElementById('q10Slider').addEventListener('input', function() {
-      document.getElementById('q10Value').textContent = this.value;
-      drawMarkovDiagram();
-    });
-
-    // ASR visualization — clean 4-tip balanced tree matching charmap topology ((T1,T2),(T3,T4))
-    const asrTree = [
-      { id: 0, parent: null, children: [1, 2] },        // root
-      { id: 1, parent: 0,    children: [3, 4] },        // upper-pair
-      { id: 2, parent: 0,    children: [5, 6] },        // lower-pair
-      { id: 3, parent: 1,    children: [], state: 0 },  // T1: State A
-      { id: 4, parent: 1,    children: [], state: 0 },  // T2: State A
-      { id: 5, parent: 2,    children: [], state: 1 },  // T3: State B
-      { id: 6, parent: 2,    children: [], state: 1 },  // T4: State B
-    ];
-
-    // Layout coordinates: root left, tips right — matches charmap SVG topology
-    const asrCoords = [
-      { x: 60,  y: 250 },   // 0: root
-      { x: 240, y: 150 },   // 1: upper-pair node
-      { x: 240, y: 350 },   // 2: lower-pair node
-      { x: 420, y: 80  },   // 3: T1
-      { x: 420, y: 220 },   // 4: T2
-      { x: 420, y: 280 },   // 5: T3
-      { x: 420, y: 420 },   // 6: T4
-    ];
-
-    const tipLabels = ['Sp. 1 (A)', 'Sp. 2 (A)', 'Sp. 3 (B)', 'Sp. 4 (B)'];
-
-    function makeSVGEl(tag, attrs) {
-      const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
-      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
-      return el;
-    }
-
-    function drawPie(svg, cx, cy, r, probA) {
-      if (probA >= 0.99) {
-        svg.appendChild(makeSVGEl('circle', { cx, cy, r, fill: '#34d399', opacity: '0.9' }));
-        return;
-      }
-      if (probA <= 0.01) {
-        svg.appendChild(makeSVGEl('circle', { cx, cy, r, fill: 'var(--accent)', opacity: '0.9' }));
-        return;
-      }
-      const angle = probA * 2 * Math.PI;
-      const x1 = cx + r * Math.cos(-Math.PI / 2);
-      const y1 = cy + r * Math.sin(-Math.PI / 2);
-      const x2 = cx + r * Math.cos(-Math.PI / 2 + angle);
-      const y2 = cy + r * Math.sin(-Math.PI / 2 + angle);
-      const large = angle > Math.PI ? 1 : 0;
-      svg.appendChild(makeSVGEl('path', {
-        d: `M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${large},1 ${x2},${y2} Z`,
-        fill: '#34d399', opacity: '0.9'
-      }));
-      svg.appendChild(makeSVGEl('path', {
-        d: `M${cx},${cy} L${x2},${y2} A${r},${r} 0 ${1 - large},1 ${x1},${y1} Z`,
-        fill: 'var(--accent)', opacity: '0.9'
-      }));
-    }
-
-    function drawASR(showReconstructed = false) {
-      const container = document.getElementById('asrContainer');
-      const svg = makeSVGEl('svg', { viewBox: '0 0 580 500', width: '100%', height: '100%' });
-
-      // Branches as right-angle elbow paths
-      for (let i = 1; i < asrTree.length; i++) {
-        const p = asrCoords[asrTree[i].parent];
-        const c = asrCoords[i];
-        svg.appendChild(makeSVGEl('path', {
-          d: `M${p.x},${p.y} V${c.y} H${c.x}`,
-          stroke: 'rgba(154,151,147,0.55)', 'stroke-width': '2', fill: 'none'
-        }));
-      }
-
-      // Nodes
-      for (let i = 0; i < asrTree.length; i++) {
-        const node = asrTree[i];
-        const { x, y } = asrCoords[i];
-
-        if (node.children.length === 0) {
-          // Tip
-          const color = node.state === 0 ? '#34d399' : 'var(--accent)';
-          svg.appendChild(makeSVGEl('circle', { cx: x, cy: y, r: '8', fill: color }));
-          const lbl = makeSVGEl('text', {
-            x: x + 14, y: y + 4, 'font-size': '13', fill: 'rgba(200,197,192,0.8)',
-            'font-style': 'italic'
-          });
-          lbl.textContent = tipLabels[i - 3];
-          svg.appendChild(lbl);
-        } else if (showReconstructed) {
-          // Marginal probability pie
-          const probA = i === 0 ? 0.5 + Math.random() * 0.3 : 0.25 + Math.random() * 0.5;
-          drawPie(svg, x, y, 14, probA);
-        } else {
-          svg.appendChild(makeSVGEl('circle', {
-            cx: x, cy: y, r: '6', fill: 'rgba(157,150,142,0.55)'
-          }));
-        }
-      }
-
-      // Legend (only when reconstructed)
-      if (showReconstructed) {
-        const leg = makeSVGEl('text', {
-          x: '300', y: '475', 'font-size': '11', fill: 'rgba(200,197,192,0.6)',
-          'text-anchor': 'middle'
-        });
-        leg.textContent = 'Pie charts = P(State A) / P(State B) at each internal node';
-        svg.appendChild(leg);
-      }
-
-      container.innerHTML = '';
-      container.appendChild(svg);
-    }
-
-    function runASR() {
-      drawASR(true);
-    }
-
-    // ── ML vs Bayesian interactive canvas ─────────────────────
-    function drawMLBayes() {
-      const canvas = document.getElementById('mlBayesCanvas');
-      if (!canvas) return;
-      const cssW = canvas.offsetWidth;
-      canvas.width  = cssW > 10 ? cssW : (canvas.width > 10 ? canvas.width : 700);
-      canvas.height = 240;
-      const ctx = canvas.getContext('2d');
-      const W = canvas.width, H = canvas.height;
-
-      ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = 'rgba(8,8,8,0.55)';
-      ctx.fillRect(0, 0, W, H);
-
-      const mL = 36, mR = 24, mT = 22, mB = 38;
-      const pW = W - mL - mR, pH = H - mT - mB;
-      const N = 400;
-
-      const dataK  = parseFloat(document.getElementById('dataStrengthSlider').value);
-      const priorK = parseFloat(document.getElementById('priorStrengthSlider').value);
-
-      // Parameter space: θ ∈ [0, 1] (e.g. a rate scaled 0–1)
-      // Likelihood: Gaussian centered at 0.6, width controlled by dataK
-      // Prior: Gaussian centered at 0.35 (slightly off true value), width by priorK
-      const likeMu = 0.60, likeSD = 0.25 / Math.sqrt(dataK);
-      const priorMu = 0.35, priorSD = 0.30 / Math.sqrt(priorK);
-
-      const pts = Array.from({ length: N + 1 }, (_, k) => {
-        const theta = k / N;
-        const like  = Math.exp(-0.5 * ((theta - likeMu) / likeSD) ** 2);
-        const prior = Math.exp(-0.5 * ((theta - priorMu) / priorSD) ** 2);
-        return { theta, like, prior, post: like * prior };
-      });
-
-      // Normalize each curve to [0,1] for display
-      const maxLike  = Math.max(...pts.map(p => p.like));
-      const maxPrior = Math.max(...pts.map(p => p.prior));
-      const maxPost  = Math.max(...pts.map(p => p.post));
-
-      const tx = theta => mL + theta * pW;
-      const ty = (v, mx) => mT + pH - (v / mx) * pH;
-
-      function drawCurve(color, getter, norm, fill) {
-        ctx.beginPath();
-        ctx.moveTo(tx(pts[0].theta), ty(getter(pts[0]), norm));
-        for (let k = 1; k <= N; k++) {
-          ctx.lineTo(tx(pts[k].theta), ty(getter(pts[k]), norm));
-        }
-        if (fill) {
-          ctx.lineTo(tx(pts[N].theta), mT + pH);
-          ctx.lineTo(tx(pts[0].theta), mT + pH);
-          ctx.closePath();
-          ctx.fillStyle = fill;
-          ctx.fill();
-        }
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 2.5;
-        ctx.stroke();
-      }
-
-      // Fill areas (transparent)
-      drawCurve('rgba(52,211,153,0.9)',  p => p.like,  maxLike,  'rgba(52,211,153,0.07)');
-      drawCurve('rgba(201,162,39,0.9)',  p => p.post,  maxPost,  'rgba(201,162,39,0.10)');
-
-      // Prior dashed
-      ctx.save();
-      ctx.setLineDash([5, 4]);
-      drawCurve('rgba(154,151,147,0.65)', p => p.prior, maxPrior, null);
-      ctx.setLineDash([]);
-      ctx.restore();
-
-      // ML estimate: vertical line at likeMu
-      ctx.strokeStyle = 'rgba(52,211,153,0.85)';
-      ctx.lineWidth = 1.5;
-      ctx.setLineDash([4, 3]);
-      ctx.beginPath();
-      ctx.moveTo(tx(likeMu), mT);
-      ctx.lineTo(tx(likeMu), mT + pH);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      // Axis
-      ctx.strokeStyle = 'rgba(154,151,147,0.35)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(mL, mT + pH); ctx.lineTo(mL + pW, mT + pH);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(mL, mT); ctx.lineTo(mL, mT + pH);
-      ctx.stroke();
-
-      // x-axis ticks and labels
-      ctx.fillStyle = 'rgba(200,197,192,0.5)';
-      ctx.font = '9px monospace';
-      ctx.textAlign = 'center';
-      [0, 0.2, 0.4, 0.6, 0.8, 1.0].forEach(v => {
-        const x = tx(v);
-        ctx.beginPath();
-        ctx.moveTo(x, mT + pH);
-        ctx.lineTo(x, mT + pH + 4);
-        ctx.strokeStyle = 'rgba(154,151,147,0.35)';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        ctx.fillText(v.toFixed(1), x, mT + pH + 14);
-      });
-
-      // Axis label
-      ctx.fillStyle = 'rgba(200,197,192,0.45)';
-      ctx.font = '10px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('θ  (parameter value)', mL + pW / 2, H - 5);
-
-      // ML estimate label
-      const mlX = tx(likeMu);
-      ctx.fillStyle = 'rgba(52,211,153,0.85)';
-      ctx.font = 'bold 9px monospace';
-      ctx.textAlign = mlX > W / 2 ? 'right' : 'left';
-      ctx.fillText('ML = ' + likeMu.toFixed(2), mlX + (mlX > W / 2 ? -5 : 5), mT + 14);
-    }
-
-    document.getElementById('dataStrengthSlider').addEventListener('input', function() {
-      document.getElementById('dataStrengthValue').textContent = parseFloat(this.value).toFixed(1);
-      drawMLBayes();
-    });
-    document.getElementById('priorStrengthSlider').addEventListener('input', function() {
-      document.getElementById('priorStrengthValue').textContent = parseFloat(this.value).toFixed(1);
-      drawMLBayes();
-    });
-
-    // Initial draw
-    drawMarkovDiagram();
-    drawASR(false);
-    requestAnimationFrame(drawMLBayes);
-  </script>
-</body>
-</html>

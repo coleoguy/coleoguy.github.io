@@ -1,264 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publication Network - Blackmon Lab</title>
-  <meta name="description" content="Interactive force-directed graph of Blackmon Lab publications, colored by year and connected by shared co-authorship.">
-    <meta property="og:title" content="Publication Network - Blackmon Lab" />
-    <meta property="og:description" content="Interactive force-directed citation network for Blackmon Lab publications. Explore connections between papers, co-authors, and citation counts." />
-    <meta property="og:url" content="https://coleoguy.github.io/citation-network.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <link rel="canonical" href="https://coleoguy.github.io/citation-network.html">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-
+---
+layout: default
+title: Publication Network - Blackmon Lab
+description: Interactive force-directed graph of Blackmon Lab publications, colored by year and connected by shared co-authorship.
+canonical: https://coleoguy.github.io/citation-network.html
+body_class: publications-page
+nav_active: publications
+extra_head: |
   <style>
-    :root { --gold: #c9a227; --teal: #34d399; }
+      :root { --gold: #c9a227; --teal: #34d399; }
+  
+      body { background: #080808; overflow: hidden; }
+  
+      /* Full-bleed canvas below fixed header */
+      #network-wrap {
+        position: fixed;
+        top: 80px; left: 0; right: 0; bottom: 0;
+      }
+      #network-svg { width: 100%; height: 100%; display: block; }
+  
+      /* Links */
+      .net-link { stroke: rgba(201,162,39,0.55); }
+  
+      /* Nodes */
+      .net-node circle {
+        cursor: pointer;
+        transition: filter 0.15s;
+      }
+      .net-node:hover circle { filter: brightness(1.4) drop-shadow(0 0 6px rgba(255,255,255,0.4)); }
+  
+      /* Tooltip */
+      #net-tooltip {
+        position: fixed;
+        background: rgba(12,12,12,0.97);
+        border: 1px solid rgba(201,162,39,0.28);
+        border-radius: 9px;
+        padding: 13px 16px;
+        max-width: 310px;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.12s;
+        font-family: var(--font-body, system-ui, sans-serif);
+      }
+      #net-tooltip.visible { opacity: 1; }
+      #net-tooltip .tt-title {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #f0ede8;
+        line-height: 1.45;
+        margin-bottom: 7px;
+      }
+      #net-tooltip .tt-meta {
+        font-size: 11px;
+        color: rgba(200,197,192,0.6);
+        line-height: 1.7;
+      }
+      #net-tooltip .tt-citations { color: var(--gold); font-weight: 700; }
+      #net-tooltip .tt-open {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 10px;
+        color: rgba(200,197,192,0.35);
+        font-style: italic;
+      }
+  
+      /* Stats panel — top-left */
+      #net-stats {
+        position: fixed;
+        top: 96px; left: 18px;
+        background: rgba(8,8,8,0.88);
+        border: 1px solid rgba(201,162,39,0.14);
+        border-radius: 9px;
+        padding: 14px 18px;
+        font-family: var(--font-mono, monospace);
+        font-size: 11px;
+        color: rgba(200,197,192,0.65);
+        z-index: 100;
+        line-height: 2;
+        display: none;
+      }
+      #net-stats strong { color: var(--gold); }
+      .stats-divider {
+        border: none;
+        border-top: 1px solid rgba(201,162,39,0.1);
+        margin: 8px 0;
+      }
+      #net-stats a {
+        color: rgba(200,197,192,0.4);
+        text-decoration: none;
+        font-size: 10px;
+        transition: color 0.2s;
+      }
+      #net-stats a:hover { color: var(--gold); }
+  
+      /* Legend — bottom-right */
+      #net-legend {
+        position: fixed;
+        bottom: 22px; right: 18px;
+        background: rgba(8,8,8,0.88);
+        border: 1px solid rgba(201,162,39,0.14);
+        border-radius: 9px;
+        padding: 13px 16px;
+        z-index: 100;
+        font-size: 10.5px;
+        color: rgba(200,197,192,0.6);
+        display: none;
+        min-width: 160px;
+      }
+      #net-legend .leg-heading {
+        font-weight: 600;
+        color: rgba(200,197,192,0.8);
+        margin-bottom: 5px;
+        font-family: var(--font-mono, monospace);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      #legend-bar {
+        display: block;
+        width: 148px;
+        height: 7px;
+        border-radius: 4px;
+        margin: 4px 0 3px;
+      }
+      .leg-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        color: rgba(200,197,192,0.4);
+        margin-bottom: 10px;
+      }
+      #size-legend {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .leg-note {
+        margin-top: 10px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(201,162,39,0.1);
+        font-size: 10px;
+        color: rgba(200,197,192,0.3);
+        line-height: 1.6;
+      }
+  
+      /* Controls — bottom-left */
+      #net-controls {
+        position: fixed;
+        bottom: 22px; left: 18px;
+        display: none;
+        gap: 8px;
+        z-index: 100;
+      }
+      .net-btn {
+        background: rgba(8,8,8,0.9);
+        border: 1px solid rgba(201,162,39,0.18);
+        border-radius: 6px;
+        padding: 7px 12px;
+        font-size: 11px;
+        color: rgba(200,197,192,0.65);
+        cursor: pointer;
+        transition: all 0.18s;
+        font-family: var(--font-mono, monospace);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .net-btn:hover { border-color: var(--gold); color: var(--gold); }
+      .net-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,162,39,0.06); }
+  
+      /* Loading */
+      #net-loading {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: rgba(200,197,192,0.55);
+        font-family: var(--font-mono, monospace);
+        font-size: 12px;
+        z-index: 200;
+      }
+      .net-spinner {
+        width: 30px; height: 30px;
+        border: 2px solid rgba(201,162,39,0.15);
+        border-top-color: var(--gold);
+        border-radius: 50%;
+        animation: spin 0.85s linear infinite;
+        margin: 0 auto 12px;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+  
+      /* Fade-out hint */
+      #net-hint {
+        position: fixed;
+        bottom: 60px; left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-mono, monospace);
+        font-size: 10px;
+        color: rgba(200,197,192,0.28);
+        z-index: 100;
+        pointer-events: none;
+        white-space: nowrap;
+        transition: opacity 1.5s ease;
+      }
+  
+      /* Highlighted nodes */
+      .net-node.dimmed circle { opacity: 0.1; }
+      .net-link.dimmed { stroke-opacity: 0.04 !important; }
+      .net-link:not(.dimmed) { stroke: rgba(201,162,39,0.9); }
+    </style>
+extra_scripts: |
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+---
 
-    body { background: #080808; overflow: hidden; }
-
-    /* Full-bleed canvas below fixed header */
-    #network-wrap {
-      position: fixed;
-      top: 80px; left: 0; right: 0; bottom: 0;
-    }
-    #network-svg { width: 100%; height: 100%; display: block; }
-
-    /* Links */
-    .net-link { stroke: rgba(201,162,39,0.55); }
-
-    /* Nodes */
-    .net-node circle {
-      cursor: pointer;
-      transition: filter 0.15s;
-    }
-    .net-node:hover circle { filter: brightness(1.4) drop-shadow(0 0 6px rgba(255,255,255,0.4)); }
-
-    /* Tooltip */
-    #net-tooltip {
-      position: fixed;
-      background: rgba(12,12,12,0.97);
-      border: 1px solid rgba(201,162,39,0.28);
-      border-radius: 9px;
-      padding: 13px 16px;
-      max-width: 310px;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.12s;
-      font-family: var(--font-body, system-ui, sans-serif);
-    }
-    #net-tooltip.visible { opacity: 1; }
-    #net-tooltip .tt-title {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #f0ede8;
-      line-height: 1.45;
-      margin-bottom: 7px;
-    }
-    #net-tooltip .tt-meta {
-      font-size: 11px;
-      color: rgba(200,197,192,0.6);
-      line-height: 1.7;
-    }
-    #net-tooltip .tt-citations { color: var(--gold); font-weight: 700; }
-    #net-tooltip .tt-open {
-      display: inline-block;
-      margin-top: 6px;
-      font-size: 10px;
-      color: rgba(200,197,192,0.35);
-      font-style: italic;
-    }
-
-    /* Stats panel — top-left */
-    #net-stats {
-      position: fixed;
-      top: 96px; left: 18px;
-      background: rgba(8,8,8,0.88);
-      border: 1px solid rgba(201,162,39,0.14);
-      border-radius: 9px;
-      padding: 14px 18px;
-      font-family: var(--font-mono, monospace);
-      font-size: 11px;
-      color: rgba(200,197,192,0.65);
-      z-index: 100;
-      line-height: 2;
-      display: none;
-    }
-    #net-stats strong { color: var(--gold); }
-    .stats-divider {
-      border: none;
-      border-top: 1px solid rgba(201,162,39,0.1);
-      margin: 8px 0;
-    }
-    #net-stats a {
-      color: rgba(200,197,192,0.4);
-      text-decoration: none;
-      font-size: 10px;
-      transition: color 0.2s;
-    }
-    #net-stats a:hover { color: var(--gold); }
-
-    /* Legend — bottom-right */
-    #net-legend {
-      position: fixed;
-      bottom: 22px; right: 18px;
-      background: rgba(8,8,8,0.88);
-      border: 1px solid rgba(201,162,39,0.14);
-      border-radius: 9px;
-      padding: 13px 16px;
-      z-index: 100;
-      font-size: 10.5px;
-      color: rgba(200,197,192,0.6);
-      display: none;
-      min-width: 160px;
-    }
-    #net-legend .leg-heading {
-      font-weight: 600;
-      color: rgba(200,197,192,0.8);
-      margin-bottom: 5px;
-      font-family: var(--font-mono, monospace);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    #legend-bar {
-      display: block;
-      width: 148px;
-      height: 7px;
-      border-radius: 4px;
-      margin: 4px 0 3px;
-    }
-    .leg-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 10px;
-      color: rgba(200,197,192,0.4);
-      margin-bottom: 10px;
-    }
-    #size-legend {
-      display: flex;
-      align-items: flex-end;
-      gap: 8px;
-      margin-top: 4px;
-    }
-    .leg-note {
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(201,162,39,0.1);
-      font-size: 10px;
-      color: rgba(200,197,192,0.3);
-      line-height: 1.6;
-    }
-
-    /* Controls — bottom-left */
-    #net-controls {
-      position: fixed;
-      bottom: 22px; left: 18px;
-      display: none;
-      gap: 8px;
-      z-index: 100;
-    }
-    .net-btn {
-      background: rgba(8,8,8,0.9);
-      border: 1px solid rgba(201,162,39,0.18);
-      border-radius: 6px;
-      padding: 7px 12px;
-      font-size: 11px;
-      color: rgba(200,197,192,0.65);
-      cursor: pointer;
-      transition: all 0.18s;
-      font-family: var(--font-mono, monospace);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .net-btn:hover { border-color: var(--gold); color: var(--gold); }
-    .net-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,162,39,0.06); }
-
-    /* Loading */
-    #net-loading {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: rgba(200,197,192,0.55);
-      font-family: var(--font-mono, monospace);
-      font-size: 12px;
-      z-index: 200;
-    }
-    .net-spinner {
-      width: 30px; height: 30px;
-      border: 2px solid rgba(201,162,39,0.15);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin 0.85s linear infinite;
-      margin: 0 auto 12px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Fade-out hint */
-    #net-hint {
-      position: fixed;
-      bottom: 60px; left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-mono, monospace);
-      font-size: 10px;
-      color: rgba(200,197,192,0.28);
-      z-index: 100;
-      pointer-events: none;
-      white-space: nowrap;
-      transition: opacity 1.5s ease;
-    }
-
-    /* Highlighted nodes */
-    .net-node.dimmed circle { opacity: 0.1; }
-    .net-link.dimmed { stroke-opacity: 0.04 !important; }
-    .net-link:not(.dimmed) { stroke: rgba(201,162,39,0.9); }
-  </style>
-</head>
-
-<body class="publications-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html" class="active">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Loading -->
+<!-- Loading -->
   <div id="net-loading">
     <div class="net-spinner"></div>
     Fetching publication data from OpenAlex…
@@ -312,10 +268,6 @@
   <div id="net-hint">hover · drag · scroll to zoom · click to open paper</div>
 
   <!-- Scroll Top (hidden but required by main.js) -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display:none!important;"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
   <script>
     const ORCID      = '0000-0002-5433-4036';
@@ -591,5 +543,3 @@
 
     init();
   </script>
-</body>
-</html>

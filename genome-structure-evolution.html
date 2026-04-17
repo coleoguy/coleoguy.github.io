@@ -1,322 +1,261 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evolution of Genome Structure - Blackmon Lab</title>
-  <meta name="description" content="A visual guide to the evolution of gross genome structure — chromosome fusions, fissions, whole-genome duplication, and the forces that shape karyotype evolution across the tree of life.">
-  <meta property="og:title" content="Evolution of Genome Structure - Blackmon Lab" />
-  <meta property="og:description" content="How and why chromosome number changes — fusions, fissions, polyploidy, meiotic drive, and the puzzle of karyotype stasis." />
-  <meta property="og:url" content="https://coleoguy.github.io/genome-structure-evolution.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="genome structure, chromosome evolution, karyotype, polyploidy, Robertsonian translocation, fission, fusion, meiotic drive, ChromEvol, Blackmon Lab">
-  <link rel="canonical" href="https://coleoguy.github.io/genome-structure-evolution.html">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Vendor CSS -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Site CSS -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- Playfair Display for hero -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-  <style>
-    /* ── Scroll progress bar ─────────────────────────── */
-    #scroll-progress {
-      position: fixed; top: 62px; left: 0; height: 3px; width: 0%;
-      background: var(--accent, #c9a227); z-index: 1050; transition: width 0.05s linear;
-    }
-
-    /* ── Hero ─────────────────────────────────────────── */
-    .gs-hero {
-      padding: 140px 0 60px; text-align: center;
-      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-    }
-    .gs-hero .kicker {
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 14px;
-    }
-    .gs-hero h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700;
-      color: var(--text-heading, #f8f4ed); line-height: 1.15; margin-bottom: 14px;
-    }
-    .gs-hero .subtitle {
-      font-family: 'Playfair Display', Georgia, serif; font-style: italic;
-      font-size: 1.05rem; color: var(--text-secondary, rgba(200,197,190,0.65));
-      max-width: 720px; margin: 0 auto 28px;
-    }
-    .audio-wrap {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px; padding: 12px 20px; margin-top: 10px;
-    }
-    .audio-wrap .audio-label {
-      font-size: 0.75rem; color: var(--text-muted, rgba(200,197,190,0.45));
-      text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
-    }
-    .audio-wrap audio { height: 32px; }
-
-    /* ── Split-panel sections ─────────────────────────── */
-    .gs-section {
-      padding: 56px 0;
-      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-    }
-    .gs-section:nth-child(even) { background: rgba(255,255,255,0.015); }
-    .light-mode .gs-section:nth-child(even) { background: rgba(0,0,0,0.02); }
-
-    .gs-theory { padding-right: 28px; border-right: 1px solid rgba(201,162,39,0.15); }
-    .gs-evidence { padding-left: 28px; }
-    @media (max-width: 991.98px) {
-      .gs-theory, .gs-evidence { padding: 0; border-right: none; }
-      .gs-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
-    }
-
-    .gs-kicker {
-      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 6px;
-    }
-    .gs-section h2 {
-      font-size: 1.45rem; font-weight: 700; color: var(--text-heading, #eae7e2);
-      margin-bottom: 16px; line-height: 1.25;
-    }
-    .gs-section h3 {
-      font-size: 1.05rem; font-weight: 600; color: var(--accent, #c9a227); margin: 24px 0 8px;
-    }
-    .gs-section h3:first-child { margin-top: 0; }
-    .gs-section p {
-      font-size: 0.95rem; line-height: 1.8; color: var(--text, #c8c5c0); margin-bottom: 14px;
-    }
-    .gs-section a {
-      color: var(--accent, #c9a227); text-decoration: underline;
-      text-decoration-color: rgba(201,162,39,0.4); text-underline-offset: 2px;
-    }
-    .gs-section a:hover { text-decoration-color: var(--accent); }
-    .gs-section strong { font-weight: 600; color: var(--text-heading, #eae7e2); }
-
-    .pullquote {
-      border-left: 3px solid var(--accent, #c9a227);
-      padding: 10px 18px; margin: 20px 0; font-style: italic;
-      font-size: 0.95rem; color: var(--accent, #c9a227); line-height: 1.6;
-    }
-
-    /* ── Paper masthead cards ─────────────────────────── */
-    .paper-masthead {
-      background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px; padding: 18px 20px; margin-bottom: 14px;
-      transition: border-color 0.2s; text-decoration: none; display: block;
-    }
-    .paper-masthead:hover { border-color: rgba(201,162,39,0.5); text-decoration: none; }
-    .paper-masthead .journal {
-      font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.18em;
-      color: var(--accent, #c9a227); font-weight: 700; margin-bottom: 5px;
-    }
-    .paper-masthead .paper-title {
-      font-size: 0.92rem; font-weight: 600; color: var(--text-heading, #eae7e2);
-      line-height: 1.35; margin-bottom: 5px;
-    }
-    .paper-masthead .authors {
-      font-size: 0.78rem; color: var(--text-secondary, rgba(200,197,190,0.65)); line-height: 1.4;
-    }
-    .paper-masthead .pub-year {
-      font-size: 0.7rem; color: var(--text-muted, rgba(200,197,190,0.45)); margin-top: 4px;
-    }
-    .badge-f1000 {
-      display: inline-block; background: var(--accent, #c9a227); color: #080808;
-      font-size: 0.55rem; font-weight: 700; padding: 2px 7px; border-radius: 3px;
-      letter-spacing: 0.05em; margin-left: 6px; vertical-align: middle;
-    }
-
-    /* ── Diagram containers ────────────────────────────── */
-    .diagram-box {
-      background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px; padding: 24px; margin: 20px 0; text-align: center;
-    }
-    .diagram-box svg { max-width: 100%; height: auto; }
-    .diagram-caption {
-      font-size: 0.72rem; color: var(--text-muted, rgba(200,197,190,0.45));
-      margin-top: 10px; text-transform: uppercase; letter-spacing: 0.1em;
-    }
-
-    /* ── SVG colors ────────────────────────────────────── */
-    .chr-auto { fill: #555; }
-    .chr-sex { fill: var(--accent, #c9a227); }
-    .chr-sex-dim { fill: rgba(201,162,39,0.35); }
-    .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
-    .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
-    .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
-    .chr-arrow { fill: var(--accent, #c9a227); }
-    .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
-    .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
-    .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
-    .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
-    .chr-region { fill: rgba(201,162,39,0.12); }
-
-    .light-mode .chr-auto { fill: #bbb; }
-    .light-mode .chr-label { fill: #333; }
-    .light-mode .chr-label-sm { fill: #777; }
-    .light-mode .chr-heading { fill: #222; }
-    .light-mode .chr-line { stroke: #ccc; }
-    .light-mode .chr-line-dash { stroke: #ccc; }
-
-    /* ── Chart containers ──────────────────────────────── */
-    .chart-box {
-      background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px; padding: 16px; margin: 16px 0;
-    }
-    .chart-box .chart-title {
-      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.12em; color: var(--accent, #c9a227); margin-bottom: 8px; text-align: center;
-    }
-
-    /* ── Stat callout ──────────────────────────────────── */
-    .stat-callout {
-      display: flex; align-items: center; gap: 14px;
-      background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px; padding: 14px 18px; margin: 12px 0;
-    }
-    .stat-callout .stat-num {
-      font-size: 1.6rem; font-weight: 700; color: var(--accent, #c9a227);
-      line-height: 1; white-space: nowrap;
-    }
-    .stat-callout .stat-text {
-      font-size: 0.82rem; color: var(--text, #c8c5c0); line-height: 1.4;
-    }
-
-    /* ── Toggle buttons ────────────────────────────────── */
-    .chart-toggle {
-      display: flex; gap: 6px; justify-content: center; margin-bottom: 10px;
-    }
-    .chart-toggle button {
-      font-size: 0.7rem; padding: 4px 12px;
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 16px; background: transparent; color: var(--text, #c8c5c0);
-      cursor: pointer; transition: all 0.18s;
-    }
-    .chart-toggle button.active, .chart-toggle button:hover {
-      border-color: var(--accent, #c9a227); color: var(--accent, #c9a227);
-      background: rgba(201,162,39,0.08);
-    }
-
-    /* ── Comparison table ──────────────────────────────── */
-    .cmp-table {
-      width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.82rem;
-    }
-    .cmp-table th {
-      text-align: left; padding: 8px 12px; font-size: 0.65rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent, #c9a227);
-      border-bottom: 1px solid rgba(201,162,39,0.25);
-    }
-    .cmp-table td {
-      padding: 8px 12px; border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-      color: var(--text, #c8c5c0); vertical-align: top;
-    }
-    .cmp-table tr:last-child td { border-bottom: none; }
-
-    /* ── Related resources box ─────────────────────────── */
-    .related-box {
-      margin-top: 48px; padding: 28px 32px;
-      border: 1px solid rgba(201,162,39,0.2); border-radius: 10px;
-      background: rgba(201,162,39,0.03);
-    }
-    .related-box h3 {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 16px;
-    }
-    .related-links { display: flex; flex-wrap: wrap; gap: 10px; }
-    .related-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 14px; border: 1px solid rgba(201,162,39,0.25);
-      border-radius: 20px; font-size: 0.8rem; color: var(--text, #c8c5c0);
-      text-decoration: none; transition: all 0.18s;
-    }
-    .related-link i { color: var(--accent); font-size: 0.75rem; }
-    .related-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-
-    .paper-foot {
-      text-align: center; margin-top: 40px; padding-top: 18px;
-      border-top: 1px solid rgba(201,162,39,0.2);
-      font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-    }
-  </style>
-
-  <!-- Structured Data (added by audit) -->
+---
+layout: default
+title: Evolution of Genome Structure - Blackmon Lab
+description: A visual guide to the evolution of gross genome structure — chromosome fusions, fissions, whole-genome duplication, and the forces that shape karyotype evolution across the tree of life.
+canonical: https://coleoguy.github.io/genome-structure-evolution.html
+keywords: genome structure, chromosome evolution, karyotype, polyploidy, Robertsonian translocation, fission, fusion, meiotic drive, ChromEvol, Blackmon Lab
+body_class: resources-page
+nav_active: resources
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Evolution of Genome Structure",
-    "url": "https://coleoguy.github.io/genome-structure-evolution.html",
-    "description": "Visual guide to chromosome fusions, fissions, polyploidy, demiploidy, meiotic drive, and the forces shaping karyotype evolution across the tree of life.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Evolutionary biology"
-    },
-    "keywords": ["karyotype evolution", "chromosome fusion", "polyploidy", "meiotic drive", "genome structure", "chromePlus"],
-    "publisher": {
-      "@type": "ResearchOrganization",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Evolution of Genome Structure",
+      "url": "https://coleoguy.github.io/genome-structure-evolution.html",
+      "description": "Visual guide to chromosome fusions, fissions, polyploidy, demiploidy, meiotic drive, and the forces shaping karyotype evolution across the tree of life.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Evolutionary biology"
+      },
+      "keywords": ["karyotype evolution", "chromosome fusion", "polyploidy", "meiotic drive", "genome structure", "chromePlus"],
+      "publisher": {
+        "@type": "ResearchOrganization",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      }
     }
-  }
-  </script>
-</head>
+    </script>
+  <style>
+      /* ── Scroll progress bar ─────────────────────────── */
+      #scroll-progress {
+        position: fixed; top: 62px; left: 0; height: 3px; width: 0%;
+        background: var(--accent, #c9a227); z-index: 1050; transition: width 0.05s linear;
+      }
+  
+      /* ── Hero ─────────────────────────────────────────── */
+      .gs-hero {
+        padding: 140px 0 60px; text-align: center;
+        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+      }
+      .gs-hero .kicker {
+        font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em;
+        text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 14px;
+      }
+      .gs-hero h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700;
+        color: var(--text-heading, #f8f4ed); line-height: 1.15; margin-bottom: 14px;
+      }
+      .gs-hero .subtitle {
+        font-family: 'Playfair Display', Georgia, serif; font-style: italic;
+        font-size: 1.05rem; color: var(--text-secondary, rgba(200,197,190,0.65));
+        max-width: 720px; margin: 0 auto 28px;
+      }
+      .audio-wrap {
+        display: inline-flex; align-items: center; gap: 12px;
+        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px; padding: 12px 20px; margin-top: 10px;
+      }
+      .audio-wrap .audio-label {
+        font-size: 0.75rem; color: var(--text-muted, rgba(200,197,190,0.45));
+        text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+      }
+      .audio-wrap audio { height: 32px; }
+  
+      /* ── Split-panel sections ─────────────────────────── */
+      .gs-section {
+        padding: 56px 0;
+        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+      }
+      .gs-section:nth-child(even) { background: rgba(255,255,255,0.015); }
+      .light-mode .gs-section:nth-child(even) { background: rgba(0,0,0,0.02); }
+  
+      .gs-theory { padding-right: 28px; border-right: 1px solid rgba(201,162,39,0.15); }
+      .gs-evidence { padding-left: 28px; }
+      @media (max-width: 991.98px) {
+        .gs-theory, .gs-evidence { padding: 0; border-right: none; }
+        .gs-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
+      }
+  
+      .gs-kicker {
+        font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+        text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 6px;
+      }
+      .gs-section h2 {
+        font-size: 1.45rem; font-weight: 700; color: var(--text-heading, #eae7e2);
+        margin-bottom: 16px; line-height: 1.25;
+      }
+      .gs-section h3 {
+        font-size: 1.05rem; font-weight: 600; color: var(--accent, #c9a227); margin: 24px 0 8px;
+      }
+      .gs-section h3:first-child { margin-top: 0; }
+      .gs-section p {
+        font-size: 0.95rem; line-height: 1.8; color: var(--text, #c8c5c0); margin-bottom: 14px;
+      }
+      .gs-section a {
+        color: var(--accent, #c9a227); text-decoration: underline;
+        text-decoration-color: rgba(201,162,39,0.4); text-underline-offset: 2px;
+      }
+      .gs-section a:hover { text-decoration-color: var(--accent); }
+      .gs-section strong { font-weight: 600; color: var(--text-heading, #eae7e2); }
+  
+      .pullquote {
+        border-left: 3px solid var(--accent, #c9a227);
+        padding: 10px 18px; margin: 20px 0; font-style: italic;
+        font-size: 0.95rem; color: var(--accent, #c9a227); line-height: 1.6;
+      }
+  
+      /* ── Paper masthead cards ─────────────────────────── */
+      .paper-masthead {
+        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px; padding: 18px 20px; margin-bottom: 14px;
+        transition: border-color 0.2s; text-decoration: none; display: block;
+      }
+      .paper-masthead:hover { border-color: rgba(201,162,39,0.5); text-decoration: none; }
+      .paper-masthead .journal {
+        font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.18em;
+        color: var(--accent, #c9a227); font-weight: 700; margin-bottom: 5px;
+      }
+      .paper-masthead .paper-title {
+        font-size: 0.92rem; font-weight: 600; color: var(--text-heading, #eae7e2);
+        line-height: 1.35; margin-bottom: 5px;
+      }
+      .paper-masthead .authors {
+        font-size: 0.78rem; color: var(--text-secondary, rgba(200,197,190,0.65)); line-height: 1.4;
+      }
+      .paper-masthead .pub-year {
+        font-size: 0.7rem; color: var(--text-muted, rgba(200,197,190,0.45)); margin-top: 4px;
+      }
+      .badge-f1000 {
+        display: inline-block; background: var(--accent, #c9a227); color: #080808;
+        font-size: 0.55rem; font-weight: 700; padding: 2px 7px; border-radius: 3px;
+        letter-spacing: 0.05em; margin-left: 6px; vertical-align: middle;
+      }
+  
+      /* ── Diagram containers ────────────────────────────── */
+      .diagram-box {
+        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px; padding: 24px; margin: 20px 0; text-align: center;
+      }
+      .diagram-box svg { max-width: 100%; height: auto; }
+      .diagram-caption {
+        font-size: 0.72rem; color: var(--text-muted, rgba(200,197,190,0.45));
+        margin-top: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+      }
+  
+      /* ── SVG colors ────────────────────────────────────── */
+      .chr-auto { fill: #555; }
+      .chr-sex { fill: var(--accent, #c9a227); }
+      .chr-sex-dim { fill: rgba(201,162,39,0.35); }
+      .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
+      .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
+      .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
+      .chr-arrow { fill: var(--accent, #c9a227); }
+      .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
+      .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
+      .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
+      .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+      .chr-region { fill: rgba(201,162,39,0.12); }
+  
+      .light-mode .chr-auto { fill: #bbb; }
+      .light-mode .chr-label { fill: #333; }
+      .light-mode .chr-label-sm { fill: #777; }
+      .light-mode .chr-heading { fill: #222; }
+      .light-mode .chr-line { stroke: #ccc; }
+      .light-mode .chr-line-dash { stroke: #ccc; }
+  
+      /* ── Chart containers ──────────────────────────────── */
+      .chart-box {
+        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px; padding: 16px; margin: 16px 0;
+      }
+      .chart-box .chart-title {
+        font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.12em; color: var(--accent, #c9a227); margin-bottom: 8px; text-align: center;
+      }
+  
+      /* ── Stat callout ──────────────────────────────────── */
+      .stat-callout {
+        display: flex; align-items: center; gap: 14px;
+        background: var(--bg-card, #1a1a1a); border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px; padding: 14px 18px; margin: 12px 0;
+      }
+      .stat-callout .stat-num {
+        font-size: 1.6rem; font-weight: 700; color: var(--accent, #c9a227);
+        line-height: 1; white-space: nowrap;
+      }
+      .stat-callout .stat-text {
+        font-size: 0.82rem; color: var(--text, #c8c5c0); line-height: 1.4;
+      }
+  
+      /* ── Toggle buttons ────────────────────────────────── */
+      .chart-toggle {
+        display: flex; gap: 6px; justify-content: center; margin-bottom: 10px;
+      }
+      .chart-toggle button {
+        font-size: 0.7rem; padding: 4px 12px;
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 16px; background: transparent; color: var(--text, #c8c5c0);
+        cursor: pointer; transition: all 0.18s;
+      }
+      .chart-toggle button.active, .chart-toggle button:hover {
+        border-color: var(--accent, #c9a227); color: var(--accent, #c9a227);
+        background: rgba(201,162,39,0.08);
+      }
+  
+      /* ── Comparison table ──────────────────────────────── */
+      .cmp-table {
+        width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.82rem;
+      }
+      .cmp-table th {
+        text-align: left; padding: 8px 12px; font-size: 0.65rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent, #c9a227);
+        border-bottom: 1px solid rgba(201,162,39,0.25);
+      }
+      .cmp-table td {
+        padding: 8px 12px; border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+        color: var(--text, #c8c5c0); vertical-align: top;
+      }
+      .cmp-table tr:last-child td { border-bottom: none; }
+  
+      /* ── Related resources box ─────────────────────────── */
+      .related-box {
+        margin-top: 48px; padding: 28px 32px;
+        border: 1px solid rgba(201,162,39,0.2); border-radius: 10px;
+        background: rgba(201,162,39,0.03);
+      }
+      .related-box h3 {
+        font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+        text-transform: uppercase; color: var(--accent, #c9a227); margin-bottom: 16px;
+      }
+      .related-links { display: flex; flex-wrap: wrap; gap: 10px; }
+      .related-link {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 6px 14px; border: 1px solid rgba(201,162,39,0.25);
+        border-radius: 20px; font-size: 0.8rem; color: var(--text, #c8c5c0);
+        text-decoration: none; transition: all 0.18s;
+      }
+      .related-link i { color: var(--accent); font-size: 0.75rem; }
+      .related-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  
+      .paper-foot {
+        text-align: center; margin-top: 40px; padding-top: 18px;
+        border-top: 1px solid rgba(201,162,39,0.2);
+        font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+      }
+    </style>
+extra_scripts: |
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+---
 
-<body class="resources-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <div id="scroll-progress"></div>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html" class="active">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- ═══════════════ HERO ═══════════════ -->
+<!-- ═══════════════ HERO ═══════════════ -->
     <section class="gs-hero" data-aos="fade-up">
       <div class="container">
         <div class="kicker">A Visual Guide</div>
@@ -1136,184 +1075,3 @@
         <div class="paper-foot">Blackmon Lab &nbsp;&middot;&nbsp; Texas A&amp;M University &nbsp;&middot;&nbsp; April 2026</div>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-  <div id="preloader"></div>
-
-  <!-- Vendor JS -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-
-  <!-- Plotly -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
-
-  <script>
-    // ── Helpers ──────────────────────────────────────
-    function isLight() { return document.body.classList.contains('light-mode'); }
-    function txtColor() { return isLight() ? '#333' : '#c8c5c0'; }
-    function gridColor() { return isLight() ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'; }
-    function baseLayout(title) {
-      return {
-        title: { text: title || '', font: { family: 'Inter, sans-serif', size: 13, color: txtColor() } },
-        paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { family: 'Inter, sans-serif', color: txtColor(), size: 11 },
-        margin: { l: 50, r: 20, t: title ? 36 : 10, b: 50 },
-        xaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
-        yaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
-      };
-    }
-    var pConfig = { displaylogo: false, responsive: true, modeBarButtonsToRemove: ['lasso2d','select2d'] };
-
-    // ── Scroll progress ─────────────────────────────
-    window.addEventListener('scroll', function() {
-      var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-      document.getElementById('scroll-progress').style.width = pct + '%';
-    });
-
-    // ── rnorm helper ────────────────────────────────
-    function rnorm(n, mu, sd) {
-      var out = [];
-      for (var i = 0; i < n; i++) {
-        var u = 0, v = 0;
-        while (u === 0) u = Math.random();
-        while (v === 0) v = Math.random();
-        out.push(Math.max(1, Math.round(mu + sd * Math.sqrt(-2*Math.log(u)) * Math.cos(2*Math.PI*v))));
-      }
-      return out;
-    }
-
-    // ── Chart 1: Chromosome number distributions ────
-    var cladeData = {
-      mammals: { vals: rnorm(300, 48, 12), color: 'rgba(201,162,39,0.6)', name: 'Mammals (2n)', range: [0, 110] },
-      beetles: { vals: rnorm(400, 22, 8), color: 'rgba(201,162,39,0.6)', name: 'Coleoptera (2n)', range: [0, 70] },
-      birds: { vals: rnorm(250, 80, 3), color: 'rgba(201,162,39,0.6)', name: 'Birds (2n)', range: [60, 100] },
-      lepidoptera: { vals: rnorm(200, 62, 35), color: 'rgba(201,162,39,0.6)', name: 'Lepidoptera (2n)', range: [0, 450] }
-    };
-
-    function showClade(clade) {
-      var btns = document.querySelectorAll('#clade-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      var idx = { mammals: 0, beetles: 1, birds: 2, lepidoptera: 3 }[clade];
-      btns[idx].classList.add('active');
-      var d = cladeData[clade];
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Diploid Chromosome Number (2n)', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Number of Species', font: { size: 11, color: txtColor() } };
-      layout.xaxis.range = d.range;
-      layout.margin.b = 60;
-      Plotly.react('chart-chrnum', [{
-        x: d.vals, type: 'histogram', name: d.name,
-        marker: { color: d.color, line: { color: '#c9a227', width: 0.5 } },
-        xbins: { size: clade === 'lepidoptera' ? 10 : clade === 'birds' ? 1 : 2 },
-        hovertemplate: '2n=%{x}: %{y} species<extra></extra>'
-      }], layout, pConfig);
-    }
-    showClade('mammals');
-
-    // ── Chart 2: Fusion vs fission rates (mammals) ──
-    (function() {
-      var orders = ['Primates','Rodentia','Carnivora','Chiroptera','Artiodactyla','Perissodactyla','Eulipotyphla','Marsupialia'];
-      var fusionR = [0.18, 0.25, 0.12, 0.30, 0.22, 0.08, 0.15, 0.35];
-      var fissionR = [0.08, 0.10, 0.06, 0.12, 0.05, 0.04, 0.09, 0.14];
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Mammalian Order', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Estimated Rate', font: { size: 11, color: txtColor() } };
-      layout.xaxis.tickangle = -35;
-      layout.margin.b = 80;
-      layout.barmode = 'group';
-      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
-      Plotly.react('chart-rates', [
-        { x: orders, y: fusionR, type: 'bar', name: 'Fusion rate',
-          marker: { color: 'rgba(201,162,39,0.75)', line: { color: '#c9a227', width: 1 } },
-          hovertemplate: '%{x}: %{y:.2f}<extra>Fusion</extra>' },
-        { x: orders, y: fissionR, type: 'bar', name: 'Fission rate',
-          marker: { color: 'rgba(150,150,150,0.6)', line: { color: '#999', width: 1 } },
-          hovertemplate: '%{x}: %{y:.2f}<extra>Fission</extra>' }
-      ], layout, pConfig);
-    })();
-
-    // ── Chart 3: Real dysploidy rates from Copeland et al. (submitted) ────────────
-    (function() {
-      // Posterior median total rates (asc + desc + poly) from chromePlus MCMC — 55 clades (excl. Magnoliaceae)
-      var clades = ['Cetacea','Odonata','Cyprinidae','Hydrophilidae','Caudata','Scincoidea','Tenebrionidae','Scarabaeoidea','Marsupialia','Rubiaceae','Drosophilidae','Characiformes','Coccinellidae','Phasmatodea','Testudines','Curculionidae','Serpentes','Gekkonidae','Anabantiformes','Fabaceae','Dytiscidae','Blattodea','Brassicaceae','Hemiptera','Chrysomelidae','Passifloraceae','Orthoptera','Cichlidae','Gymnospermae','Accipitriformes','Carnivora','Carabidae','Chiroptera','Liliaceae','Araneae','Fungi','Iguania','Nothobranchiidae','Gobiidae','Scorpiones','Muridae','Passeriformes','Primates','Bryophytes','Galliformes','Anura','Siluriformes','Hymenoptera','Cricetidae','Orchidaceae','Solanaceae','Lepidoptera','Chondrichthyes','Pteridophytes','Asteraceae'];
-      var rates = [0.24,0.39,0.66,1.08,1.31,1.44,1.47,1.53,1.53,1.59,1.81,1.83,2.31,2.45,2.80,2.94,3.24,3.35,3.56,3.56,3.67,3.75,3.87,3.97,4.16,4.28,4.36,4.39,4.82,4.92,4.93,5.24,5.37,5.73,5.82,6.13,7.05,7.35,7.61,7.62,7.87,8.00,8.36,8.83,9.76,11.14,11.72,11.82,11.92,13.38,14.29,15.08,16.02,17.20,42.80];
-      // Higher classification for coloring
-      var higher = ['Mammalia','Insecta','Actinopterygii','Insecta','Amphibia','Reptilia','Insecta','Insecta','Mammalia','Angiospermae','Insecta','Actinopterygii','Insecta','Insecta','Reptilia','Insecta','Reptilia','Reptilia','Actinopterygii','Angiospermae','Insecta','Insecta','Angiospermae','Insecta','Insecta','Angiospermae','Insecta','Actinopterygii','Gymnospermae','Reptilia','Mammalia','Insecta','Mammalia','Angiospermae','Arachnida','Fungi','Reptilia','Actinopterygii','Actinopterygii','Arachnida','Mammalia','Reptilia','Mammalia','Bryophyta','Reptilia','Amphibia','Actinopterygii','Insecta','Mammalia','Angiospermae','Angiospermae','Insecta','Chondrichthyes','Pteridophyta','Angiospermae'];
-      var classColors = {
-        'Mammalia':'#6096BA','Insecta':'#8E3B9E','Actinopterygii':'#0077B6','Amphibia':'#48CAE4',
-        'Reptilia':'#F48C06','Angiospermae':'#84D957','Gymnospermae':'#0B4218','Arachnida':'#D00000',
-        'Fungi':'#E6AB02','Bryophyta':'#1D3557','Chondrichthyes':'#023E8A','Pteridophyta':'#2E8B57'
-      };
-      var barColors = higher.map(function(h) { return classColors[h] || '#888'; });
-      var medianRate = 4.39;
-      var layout = baseLayout('');
-      layout.yaxis = { title: { text: '', font: { size: 11, color: txtColor() } }, automargin: true, tickfont: { size: 8, color: txtColor() } };
-      layout.xaxis = { title: { text: 'Total dysploidy rate (per unit tree depth)', font: { size: 11, color: txtColor() } }, type: 'log', gridcolor: gridColor(), tickfont: { size: 9, color: txtColor() } };
-      layout.margin = { l: 110, r: 20, t: 10, b: 50 };
-      layout.height = 640;
-      layout.shapes = [{ type: 'line', x0: medianRate, x1: medianRate, y0: -0.5, y1: 54.5, xref: 'x', yref: 'y', line: { color: 'rgba(201,162,39,0.6)', width: 2, dash: 'dash' } }];
-      layout.annotations = [
-        { x: Math.log10(medianRate), y: 1.02, xref: 'x', yref: 'paper', showarrow: false,
-          text: 'median', font: { size: 9, color: 'rgba(201,162,39,0.8)' } }
-      ];
-      Plotly.react('chart-stasis', [{
-        y: clades, x: rates, type: 'bar', orientation: 'h',
-        marker: { color: barColors, line: { color: barColors, width: 0.5 } },
-        hovertemplate: '%{y}: rate = %{x:.2f}<extra></extra>'
-      }], layout, pConfig);
-    })();
-
-    // ── Chart 4: Model comparison ───────────────────
-    (function() {
-      var taxa = ['Mammals','Beetles','Carex (sedges)','Helianthus (sunflowers)','Drosophila'];
-      var fusion = [0.22, 0.18, 0.12, 0.08, 0.15];
-      var fission = [0.09, 0.14, 0.20, 0.05, 0.06];
-      var polyploidy = [0.001, 0.0, 0.15, 0.25, 0.0];
-
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: '', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Rate Parameter', font: { size: 11, color: txtColor() } };
-      layout.barmode = 'group';
-      layout.xaxis.tickangle = -25;
-      layout.margin.b = 80;
-      layout.legend = { x: 0.6, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
-
-      Plotly.react('chart-models', [
-        { x: taxa, y: fusion, type: 'bar', name: 'Fusion',
-          marker: { color: 'rgba(201,162,39,0.75)' }, hovertemplate: '%{x}: %{y:.3f}<extra>Fusion</extra>' },
-        { x: taxa, y: fission, type: 'bar', name: 'Fission',
-          marker: { color: 'rgba(150,150,150,0.6)' }, hovertemplate: '%{x}: %{y:.3f}<extra>Fission</extra>' },
-        { x: taxa, y: polyploidy, type: 'bar', name: 'Polyploidy',
-          marker: { color: 'rgba(100,160,220,0.7)' }, hovertemplate: '%{x}: %{y:.3f}<extra>Polyploidy</extra>' }
-      ], layout, pConfig);
-    })();
-
-    // ── Theme toggle: redraw charts ─────────────────
-    var themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function() {
-        setTimeout(function() {
-          var activeClade = document.querySelector('#clade-toggle button.active').textContent.toLowerCase();
-          showClade(activeClade);
-          ['chart-rates','chart-stasis','chart-models'].forEach(function(id) {
-            var el = document.getElementById(id);
-            if (el && el.data) {
-              Plotly.relayout(id, { 'font.color': txtColor(), 'xaxis.gridcolor': gridColor(), 'yaxis.gridcolor': gridColor(),
-                'xaxis.title.font.color': txtColor(), 'yaxis.title.font.color': txtColor() });
-            }
-          });
-        }, 100);
-      });
-    }
-  </script>
-</body>
-</html>

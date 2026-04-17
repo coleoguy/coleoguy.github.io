@@ -1,349 +1,306 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pagel&#39;s lambda and PGLS-ANCOVA for mixed trait models. Interactive phylogenetic comparative methods guide." />
-    <meta property="og:title" content="Discrete + Continuous - Phylogenetic Comparative Methods" />
-    <meta property="og:description" content="Pagel&#39;s lambda and PGLS-ANCOVA for mixed trait models. Interactive phylogenetic comparative methods guide." />
-    <meta property="og:url" content="https://coleoguy.github.io/phylo-methods/discrete-continuous.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-
-  <title>Discrete + Continuous - Phylogenetic Comparative Methods</title>
-
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../assets/css/main.css" rel="stylesheet">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
+---
+layout: default
+title: Discrete + Continuous - Phylogenetic Comparative Methods
+description: Pagel&#39;s lambda and PGLS-ANCOVA for mixed trait models. Interactive phylogenetic comparative methods guide.
+extra_head: |
   <style>
-    .page-header {
-      min-height: 350px;
-      display: flex;
-      align-items: center;
-      padding: 120px 0 60px 0;
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
-    }
+      .page-header {
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        padding: 120px 0 60px 0;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(12,12,12,1) 0%, rgba(26,26,26,0.5) 100%);
+      }
+  
+      .page-header h1 {
+        font-size: 3rem;
+        font-family: var(--font-heading);
+        color: var(--text-heading);
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+  
+      .page-header .subtitle {
+        font-size: 1.1rem;
+        color: var(--text);
+        max-width: 700px;
+      }
+  
+      .content-section {
+        padding: 80px 0;
+        border-bottom: 1px solid var(--border);
+      }
+  
+      .content-section:last-of-type {
+        border-bottom: none;
+      }
+  
+      .section-title {
+        font-size: 2rem;
+        font-family: var(--font-heading);
+        color: var(--text-heading);
+        margin-bottom: 40px;
+        font-weight: 600;
+      }
+  
+      .section-text {
+        font-size: 1rem;
+        color: var(--text);
+        line-height: 1.8;
+        margin-bottom: 30px;
+        max-width: 900px;
+      }
+  
+      .viz-container {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 40px;
+        margin: 40px 0;
+      }
+  
+      .interactive-plot {
+        width: 100%;
+        height: 450px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        margin-bottom: 25px;
+      }
+  
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+  
+      .control-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+  
+      .button-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+  
+      .viz-button {
+        padding: 10px 20px;
+        border: 1px solid var(--accent-border);
+        background: transparent;
+        color: var(--accent);
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.3s ease;
+      }
+  
+      .viz-button:hover {
+        background: var(--accent-dim);
+        border-color: var(--accent);
+      }
+  
+      .viz-button.active {
+        background: var(--accent-dim);
+        border-color: var(--accent);
+      }
+  
+      .info-box {
+        background: rgba(201,162,39,0.05);
+        border-left: 4px solid var(--accent);
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text);
+      }
+  
+      .highlight-text {
+        color: var(--accent);
+        font-weight: 600;
+      }
+  
+      .heatmap-container {
+        width: 100%;
+        height: 350px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        margin: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+  
+      .heatmap-canvas {
+        width: 100%;
+        height: 100%;
+      }
+  
+      .slider-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+  
+      input[type="range"] {
+        flex: 1;
+        height: 6px;
+        border-radius: 3px;
+        background: var(--bg);
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+  
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        box-shadow: 0 0 8px rgba(201,162,39,0.4);
+      }
+  
+      input[type="range"]::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent);
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 0 8px rgba(201,162,39,0.4);
+      }
+  
+      .slider-value {
+        font-family: var(--font-mono);
+        color: var(--accent);
+        min-width: 50px;
+        text-align: right;
+      }
+  
+      .code-block {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        padding: 20px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 20px 0;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+  
+      .code-block .keyword {
+        color: #fb923c;
+      }
+  
+      .code-block .string {
+        color: #34d399;
+      }
+  
+      .code-block .comment {
+        color: var(--text-secondary);
+      }
+  
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 40px 0;
+      }
+  
+      .comparison-panel {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        padding: 25px;
+        border-radius: 8px;
+      }
+  
+      .panel-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        margin-bottom: 20px;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+      }
+  
+      .legend {
+        display: flex;
+        gap: 25px;
+        margin-top: 20px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        flex-wrap: wrap;
+      }
+  
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+  
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+      }
+  
+      .nav-buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 1px solid var(--border);
+      }
+  
+      .nav-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: var(--accent-dim);
+        color: var(--accent);
+        border: 1px solid var(--accent-border);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        cursor: pointer;
+      }
+  
+      .nav-button:hover {
+        background: rgba(201,162,39,0.15);
+        border-color: var(--accent);
+      }
+  
+      .nav-button.prev {
+        margin-right: auto;
+      }
+    </style>
+extra_scripts: |
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/js/main.js"></script>
+---
 
-    .page-header h1 {
-      font-size: 3rem;
-      font-family: var(--font-heading);
-      color: var(--text-heading);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .page-header .subtitle {
-      font-size: 1.1rem;
-      color: var(--text);
-      max-width: 700px;
-    }
-
-    .content-section {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .content-section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      font-family: var(--font-heading);
-      color: var(--text-heading);
-      margin-bottom: 40px;
-      font-weight: 600;
-    }
-
-    .section-text {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.8;
-      margin-bottom: 30px;
-      max-width: 900px;
-    }
-
-    .viz-container {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 40px;
-      margin: 40px 0;
-    }
-
-    .interactive-plot {
-      width: 100%;
-      height: 450px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      margin-bottom: 25px;
-    }
-
-    .control-group {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .control-label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .viz-button {
-      padding: 10px 20px;
-      border: 1px solid var(--accent-border);
-      background: transparent;
-      color: var(--accent);
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
-    }
-
-    .viz-button:hover {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-    }
-
-    .viz-button.active {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-    }
-
-    .info-box {
-      background: rgba(201,162,39,0.05);
-      border-left: 4px solid var(--accent);
-      padding: 20px;
-      margin: 30px 0;
-      border-radius: 4px;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--text);
-    }
-
-    .highlight-text {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .heatmap-container {
-      width: 100%;
-      height: 350px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      margin: 30px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .heatmap-canvas {
-      width: 100%;
-      height: 100%;
-    }
-
-    .slider-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    input[type="range"] {
-      flex: 1;
-      height: 6px;
-      border-radius: 3px;
-      background: var(--bg);
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent);
-      cursor: pointer;
-      box-shadow: 0 0 8px rgba(201,162,39,0.4);
-    }
-
-    input[type="range"]::-moz-range-thumb {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent);
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 0 8px rgba(201,162,39,0.4);
-    }
-
-    .slider-value {
-      font-family: var(--font-mono);
-      color: var(--accent);
-      min-width: 50px;
-      text-align: right;
-    }
-
-    .code-block {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 20px;
-      border-radius: 6px;
-      overflow-x: auto;
-      margin: 20px 0;
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .code-block .keyword {
-      color: #fb923c;
-    }
-
-    .code-block .string {
-      color: #34d399;
-    }
-
-    .code-block .comment {
-      color: var(--text-secondary);
-    }
-
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin: 40px 0;
-    }
-
-    .comparison-panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 25px;
-      border-radius: 8px;
-    }
-
-    .panel-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      margin-bottom: 20px;
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-    }
-
-    .legend {
-      display: flex;
-      gap: 25px;
-      margin-top: 20px;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      flex-wrap: wrap;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .legend-color {
-      width: 12px;
-      height: 12px;
-      border-radius: 2px;
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 20px;
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-
-    .nav-button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .nav-button:hover {
-      background: rgba(201,162,39,0.15);
-      border-color: var(--accent);
-    }
-
-    .nav-button.prev {
-      margin-right: auto;
-    }
-  </style>
-</head>
-<body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="../index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../research.html">Research</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../resources.html">Resources</a></li>
-          <li><a href="../ai.html">AI</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="page-header">
+<section class="page-header">
       <div class="container-xl">
         <h1>Discrete + Continuous</h1>
         <div class="subtitle">Combining different data types in a single phylogenetic analysis</div>
@@ -576,262 +533,3 @@
         </div>
       </div>
     </section>
-  </main>
-
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
-  </a>
-
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/js/main.js"></script>
-
-  <script>
-    // ANCOVA demo
-    let ancovMode = 'naive';
-
-    const speciesDataANCOV = [
-      { x: 0.2, y: 3.2, group: 'A' },
-      { x: 0.3, y: 3.5, group: 'A' },
-      { x: 0.25, y: 3.0, group: 'A' },
-      { x: 0.35, y: 3.8, group: 'A' },
-      { x: 0.15, y: 2.8, group: 'A' },
-      { x: 0.8, y: 7.5, group: 'B' },
-      { x: 0.9, y: 8.0, group: 'B' },
-      { x: 0.85, y: 7.2, group: 'B' },
-      { x: 0.95, y: 8.3, group: 'B' },
-      { x: 0.75, y: 7.0, group: 'B' }
-    ];
-
-    function drawANCOVPlot() {
-      const canvas = document.getElementById('ancovPlot');
-      canvas.width  = canvas.offsetWidth  || 700;
-      canvas.height = canvas.offsetHeight || 400;
-      const ctx = canvas.getContext('2d');
-      const width = canvas.width;
-      const height = canvas.height;
-
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'rgba(8,8,8,0.3)';
-      ctx.fillRect(0, 0, width, height);
-
-      const margin = 50;
-      const plotWidth = width - 2 * margin;
-      const plotHeight = height - 2 * margin;
-
-      // Draw axes
-      ctx.strokeStyle = 'rgba(154,151,147,0.3)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(margin, height - margin);
-      ctx.lineTo(width - margin, height - margin);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.moveTo(margin, margin);
-      ctx.lineTo(margin, height - margin);
-      ctx.stroke();
-
-      // Axis labels
-      ctx.fillStyle = 'rgba(200,197,192,0.6)';
-      ctx.font = '11px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('Categorical Predictor', width / 2, height - 20);
-      ctx.save();
-      ctx.translate(20, height / 2);
-      ctx.rotate(-Math.PI / 2);
-      ctx.fillText('Continuous Response', 0, 0);
-      ctx.restore();
-
-      // Draw data points
-      speciesDataANCOV.forEach((point, idx) => {
-        const px = margin + (point.x) * plotWidth;
-        const py = height - margin - (point.y / 9) * plotHeight;
-
-        ctx.fillStyle = point.group === 'A' ? '#34d399' : 'var(--accent)';
-        ctx.beginPath();
-        ctx.arc(px, py, 4, 0, 2 * Math.PI);
-        ctx.fill();
-      });
-
-      // Draw regression lines based on mode
-      if (ancovMode === 'naive' || ancovMode === 'pgls') {
-        // Group A line
-        ctx.strokeStyle = '#34d399';
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        ctx.moveTo(margin + (0.1 * plotWidth), height - margin - (2.5 / 9) * plotHeight);
-        ctx.lineTo(margin + (0.4 * plotWidth), height - margin - (3.9 / 9) * plotHeight);
-        ctx.stroke();
-
-        // Group B line
-        ctx.strokeStyle = 'var(--accent)';
-        ctx.beginPath();
-        ctx.moveTo(margin + (0.7 * plotWidth), height - margin - (6.8 / 9) * plotHeight);
-        ctx.lineTo(margin + (1.0 * plotWidth), height - margin - (8.2 / 9) * plotHeight);
-        ctx.stroke();
-      }
-
-      // Draw phylogeny inset if requested
-      if (ancovMode === 'phylo' || ancovMode === 'pgls') {
-        // Small right-angle cladogram inset in upper-left corner of plot area
-        const tx = margin + 12;   // inset origin x
-        const ty = margin + 12;   // inset origin y
-        const tw = 72;            // inset width
-        const th = 72;            // inset height
-        const midY = ty + th / 2;
-        const topY = ty + th * 0.2;
-        const botY = ty + th * 0.8;
-
-        ctx.strokeStyle = 'rgba(200,197,192,0.25)';
-        ctx.lineWidth = 1.5;
-        // Root to group A (right-angle elbow)
-        ctx.beginPath();
-        ctx.moveTo(tx, midY);
-        ctx.lineTo(tx, topY);
-        ctx.lineTo(tx + tw * 0.55, topY);
-        ctx.stroke();
-        // Root to group B
-        ctx.beginPath();
-        ctx.moveTo(tx, midY);
-        ctx.lineTo(tx, botY);
-        ctx.lineTo(tx + tw * 0.55, botY);
-        ctx.stroke();
-        // Root dot
-        ctx.fillStyle = 'rgba(200,197,192,0.3)';
-        ctx.beginPath();
-        ctx.arc(tx, midY, 3, 0, 2 * Math.PI);
-        ctx.fill();
-        // Group A circle + label
-        ctx.fillStyle = 'rgba(52,211,153,0.25)';
-        ctx.beginPath();
-        ctx.arc(tx + tw * 0.55, topY, 14, 0, 2 * Math.PI);
-        ctx.fill();
-        // Group B circle + label
-        ctx.fillStyle = 'rgba(201,162,39,0.25)';
-        ctx.beginPath();
-        ctx.arc(tx + tw * 0.55, botY, 14, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.fillStyle = 'rgba(200,197,192,0.55)';
-        ctx.font = '9px monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('A', tx + tw * 0.55, topY + 3);
-        ctx.fillText('B', tx + tw * 0.55, botY + 3);
-      }
-    }
-
-    function switchANCOVAMode(mode) {
-      ancovMode = mode;
-      document.querySelectorAll('#ancovPlot').forEach(el => el.parentElement.querySelectorAll('.viz-button').forEach(btn => btn.classList.remove('active')));
-      event.target.classList.add('active');
-      drawANCOVPlot();
-    }
-
-    // Lambda heatmap
-    function drawHeatmap() {
-      const canvas = document.getElementById('heatmapCanvas');
-      // Always re-measure from CSS layout; reset buffer so canvas clears cleanly
-      const cssW = canvas.offsetWidth;
-      canvas.width  = cssW > 10 ? cssW : (canvas.width > 10 ? canvas.width : 600);
-      canvas.height = 320;
-      const ctx = canvas.getContext('2d');
-      const width  = canvas.width;
-      const height = canvas.height;
-
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'rgba(8,8,8,0.6)';
-      ctx.fillRect(0, 0, width, height);
-
-      const lambda = parseFloat(document.getElementById('lambdaSlider').value);
-      const nSpecies = 8;
-
-      const pad  = 48;
-      const cellSize = Math.floor((Math.min(width, height) - pad * 2) / nSpecies);
-      const gridW = cellSize * nSpecies;
-      const startX = Math.round((width  - gridW) / 2);
-      const startY = 18;
-
-      // Correlation matrix: diagonal=1, off-diagonal scaled by lambda
-      const corr = Array.from({ length: nSpecies }, (_, i) =>
-        Array.from({ length: nSpecies }, (_, j) => {
-          if (i === j) return 1;
-          const dist = Math.abs(i - j) / nSpecies;
-          return Math.exp(-dist * 6) * lambda + (1 - lambda) * (0.05 + dist * 0.02);
-        })
-      );
-
-      // Color map: near-zero → deep slate-blue; high → bright gold
-      function corrColor(v) {
-        // v in [0,1]: 0 = cold, 1 = hot
-        const r = Math.round(v * 201 + (1 - v) * 22);
-        const g = Math.round(v * 162 + (1 - v) * 36);
-        const b = Math.round(v *  39 + (1 - v) * 80);
-        return `rgb(${r},${g},${b})`;
-      }
-
-      // Draw cells
-      for (let i = 0; i < nSpecies; i++) {
-        for (let j = 0; j < nSpecies; j++) {
-          ctx.fillStyle = corrColor(corr[i][j]);
-          ctx.fillRect(startX + j * cellSize, startY + i * cellSize, cellSize, cellSize);
-          ctx.strokeStyle = 'rgba(0,0,0,0.35)';
-          ctx.lineWidth = 0.5;
-          ctx.strokeRect(startX + j * cellSize, startY + i * cellSize, cellSize, cellSize);
-        }
-      }
-
-      // Axis labels
-      ctx.fillStyle = 'rgba(200,197,192,0.65)';
-      ctx.font = `${Math.max(8, Math.round(cellSize * 0.38))}px monospace`;
-      for (let i = 0; i < nSpecies; i++) {
-        ctx.textAlign = 'right';
-        ctx.fillText('S' + (i + 1), startX - 5, startY + i * cellSize + cellSize * 0.65);
-        ctx.textAlign = 'center';
-        ctx.fillText('S' + (i + 1), startX + i * cellSize + cellSize / 2, startY + gridW + 13);
-      }
-
-      // Color legend bar
-      const legX = startX;
-      const legY = startY + gridW + 26;
-      const legW = gridW;
-      const legH = 10;
-      for (let px = 0; px < legW; px++) {
-        ctx.fillStyle = corrColor(px / legW);
-        ctx.fillRect(legX + px, legY, 1, legH);
-      }
-      ctx.strokeStyle = 'rgba(154,151,147,0.3)';
-      ctx.lineWidth = 0.5;
-      ctx.strokeRect(legX, legY, legW, legH);
-      ctx.fillStyle = 'rgba(200,197,192,0.55)';
-      ctx.font = '9px monospace';
-      ctx.textAlign = 'left';
-      ctx.fillText('low corr', legX, legY + legH + 11);
-      ctx.textAlign = 'right';
-      ctx.fillText('high corr', legX + legW, legY + legH + 11);
-    }
-
-    document.getElementById('lambdaSlider').addEventListener('input', function() {
-      document.getElementById('lambdaValue').textContent = parseFloat(this.value).toFixed(2);
-      drawHeatmap();
-    });
-
-    // Initial draws — defer to next frame so CSS layout is complete
-    requestAnimationFrame(() => {
-      drawANCOVPlot();
-      drawHeatmap();
-    });
-    window.addEventListener('resize', () => {
-      drawANCOVPlot();
-      drawHeatmap();
-    });
-  </script>
-</body>
-</html>

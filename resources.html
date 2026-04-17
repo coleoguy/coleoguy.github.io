@@ -1,162 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Resources - Blackmon Lab</title>
-  <meta name="description" content="Software, R packages, databases, teaching materials, and tools from the Blackmon Lab at Texas A&M University for evolutionary biology research.">
-    <meta property="og:title" content="Resources - Blackmon Lab" />
-    <meta property="og:description" content="Software, R packages, databases, teaching materials, and tools from the Blackmon Lab at Texas A&amp;M University for evolutionary biology research." />
-    <meta property="og:url" content="https://coleoguy.github.io/resources.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <link rel="canonical" href="https://coleoguy.github.io/resources.html">
-
-  <meta name="keywords" content="R packages, evobiR, chromePlus, karyotype database, phylogenetics, teaching, Texas A&M, Blackmon Lab">
-
-  <!-- Open Graph -->
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-
-  <!-- Structured Data -->
+---
+layout: default
+title: Resources - Blackmon Lab
+description: Software, R packages, databases, teaching materials, and tools from the Blackmon Lab at Texas A&M University for evolutionary biology research.
+canonical: https://coleoguy.github.io/resources.html
+keywords: R packages, evobiR, chromePlus, karyotype database, phylogenetics, teaching, Texas A&M, Blackmon Lab
+nav_active: resources
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Blackmon Lab Resources",
-    "description": "Software, R packages, databases, teaching materials, and tools for evolutionary biology research.",
-    "url": "https://coleoguy.github.io/resources.html",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Blackmon Lab Resources",
+      "description": "Software, R packages, databases, teaching materials, and tools for evolutionary biology research.",
+      "url": "https://coleoguy.github.io/resources.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      }
     }
-  }
-  </script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-
+    </script>
   <style>
-    /* ── Compact resource layout ─────────────────────── */
-    .res-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0 52px;
-      align-items: start;
-    }
-    @media (max-width: 900px) { .res-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 580px) { .res-grid { grid-template-columns: 1fr; } }
+      /* ── Compact resource layout ─────────────────────── */
+      .res-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0 52px;
+        align-items: start;
+      }
+      @media (max-width: 900px) { .res-grid { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 580px) { .res-grid { grid-template-columns: 1fr; } }
+  
+      .res-col h3 {
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227) !important;
+        border-bottom: 1px solid rgba(201,162,39,0.25);
+        padding-bottom: 6px;
+        margin: 0 0 4px;
+      }
+  
+      .res-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 32px;
+      }
+  
+      .res-list li {
+        padding: 6px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        line-height: 1.35;
+      }
+  
+      .res-list li:last-child { border-bottom: none; }
+  
+      .res-list a {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--text-heading, #222);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .res-list a:hover { color: var(--accent, #c9a227); }
+  
+      .res-list small {
+        display: block;
+        font-size: 0.73rem;
+        color: var(--text, #555);
+        opacity: 0.7;
+        margin-top: 1px;
+        line-height: 1.4;
+      }
+  
+      .res-list small a {
+        font-size: inherit;
+        font-weight: 400;
+        color: var(--accent, #c9a227);
+        opacity: 0.7;
+      }
+      .res-list small a:hover { opacity: 1; }
+  
+      .res-divider {
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        border-bottom: 1px solid rgba(201,162,39,0.25);
+        padding-bottom: 6px;
+        margin-top: 24px;
+        display: block;
+      }
+    </style>
+---
 
-    .res-col h3 {
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227) !important;
-      border-bottom: 1px solid rgba(201,162,39,0.25);
-      padding-bottom: 6px;
-      margin: 0 0 4px;
-    }
-
-    .res-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 32px;
-    }
-
-    .res-list li {
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      line-height: 1.35;
-    }
-
-    .res-list li:last-child { border-bottom: none; }
-
-    .res-list a {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text-heading, #222);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .res-list a:hover { color: var(--accent, #c9a227); }
-
-    .res-list small {
-      display: block;
-      font-size: 0.73rem;
-      color: var(--text, #555);
-      opacity: 0.7;
-      margin-top: 1px;
-      line-height: 1.4;
-    }
-
-    .res-list small a {
-      font-size: inherit;
-      font-weight: 400;
-      color: var(--accent, #c9a227);
-      opacity: 0.7;
-    }
-    .res-list small a:hover { opacity: 1; }
-
-    .res-divider {
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      border-bottom: 1px solid rgba(201,162,39,0.25);
-      padding-bottom: 6px;
-      margin-top: 24px;
-      display: block;
-    }
-  </style>
-</head>
-
-<body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html" class="active">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <section class="page-header">
+<section class="page-header">
       <div class="container">
         <h1>Resources</h1>
         <p>Software, datasets, teaching materials, and tools produced by our lab.</p>
@@ -294,10 +234,6 @@
                 <small>Paper review, qual exam simulation, and more</small>
               </li>
               <li>
-                <a href="subpages/karyotype-agent.html">Karyotype Data Agent</a>
-                <small>Autonomous literature-mining agent for cytogenetic records</small>
-              </li>
-              <li>
                 <a href="ai.html">All AI Projects &rarr;</a>
               </li>
             </ul>
@@ -369,20 +305,3 @@
         </div>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-  <div id="preloader"></div>
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-</body>
-</html>

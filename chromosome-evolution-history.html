@@ -1,276 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A History of Chromosome Number Evolution - Blackmon Lab</title>
-  <meta name="description" content="From counting to modeling — a century of ideas on karyotype change, tracing the intellectual arc of chromosome number evolution research from Stebbins to modern probabilistic models.">
-    <meta property="og:title" content="A History of Chromosome Number Evolution - Blackmon Lab" />
-    <meta property="og:description" content="From counting to modeling — a century of ideas on karyotype change, tracing the intellectual arc of chromosome number evolution research from Stebbins to modern probabilistic models." />
-    <meta property="og:url" content="https://coleoguy.github.io/chromosome-evolution-history.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="chromosome number evolution, karyotype, polyploidy, dysploidy, ChromEvol, Stebbins, Mayrose, cytogenetics, Blackmon Lab">
-  <link rel="canonical" href="https://coleoguy.github.io/chromosome-evolution-history.html">
-
-  <!-- Open Graph -->
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Vendor CSS -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Site CSS -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- Playfair Display for header -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-  <style>
-    /* ── Page-specific editorial styles ─────────────────────── */
-
-    .chev-header {
-      padding: 130px 0 60px;
-      border-bottom: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .chev-kicker {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    .chev-header h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      color: var(--text-heading, #f8f4ed);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-
-    .chev-header .subtitle {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* ── Content body ─────────────────────────────────────── */
-    .newspaper-wrap {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 48px 20px 48px;
-    }
-
-    /* Decorative rule */
-    .paper-rule {
-      text-align: center;
-      color: var(--accent);
-      font-size: 13px;
-      letter-spacing: 0.4em;
-      margin: 0 0 36px;
-    }
-    .paper-rule::before,
-    .paper-rule::after {
-      content: '';
-      display: inline-block;
-      width: 80px;
-      height: 1px;
-      background: var(--accent);
-      vertical-align: middle;
-      margin: 0 12px;
-      opacity: 0.5;
-    }
-
-    /* Single-column flow */
-    .col-grid {
-      display: block;
-    }
-
-    /* Section heads */
-    .col-grid h2 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      border-bottom: 1px solid rgba(201,162,39,0.25);
-      padding-bottom: 6px;
-      margin: 36px 0 14px;
-    }
-    .col-grid h2:first-child { margin-top: 0; }
-
-    /* Body text */
-    .col-grid p {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-    .col-grid p:last-child { margin-bottom: 0; }
-
-    /* Intro paragraph */
-    .lead-para {
-      font-size: 1.08rem !important;
-      color: var(--text-heading) !important;
-      line-height: 1.85 !important;
-    }
-
-    /* Pull quote */
-    .pullquote {
-      border-left: 3px solid var(--accent);
-      padding: 12px 20px;
-      margin: 24px 0;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--accent);
-      line-height: 1.6;
-    }
-
-    /* Inline link style — visible in both themes */
-    .col-grid a {
-      color: var(--accent);
-      text-decoration: underline;
-      text-decoration-color: rgba(201,162,39,0.4);
-      text-underline-offset: 2px;
-      transition: text-decoration-color 0.15s;
-    }
-    .col-grid a:hover { text-decoration-color: var(--accent); }
-
-    /* Strong text */
-    .col-grid strong {
-      font-weight: 600;
-      color: var(--text-heading);
-    }
-
-    /* Bottom ornament */
-    .paper-foot {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(201,162,39,0.2);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* Related resources box */
-    .related-box {
-      margin-top: 48px;
-      padding: 28px 32px;
-      border: 1px solid rgba(201,162,39,0.2);
-      border-radius: 10px;
-      background: rgba(201,162,39,0.03);
-    }
-    .related-box h3 {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-    .related-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .related-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border: 1px solid rgba(201,162,39,0.25);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.18s;
-    }
-    .related-link i { color: var(--accent); font-size: 0.75rem; }
-    .related-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-  </style>
-
-  <!-- Structured Data (added by audit) -->
+---
+layout: default
+title: A History of Chromosome Number Evolution - Blackmon Lab
+description: From counting to modeling — a century of ideas on karyotype change, tracing the intellectual arc of chromosome number evolution research from Stebbins to modern probabilistic models.
+canonical: https://coleoguy.github.io/chromosome-evolution-history.html
+keywords: chromosome number evolution, karyotype, polyploidy, dysploidy, ChromEvol, Stebbins, Mayrose, cytogenetics, Blackmon Lab
+body_class: resources-page
+nav_active: resources
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Chromosome Evolution: A Century of Ideas",
-    "url": "https://coleoguy.github.io/chromosome-evolution-history.html",
-    "description": "Intellectual history of karyotype evolution research from Stebbins and White through Lande, Rieseberg, Mayrose's ChromEvol, and Zenil-Ferguson's BiChroM/ChromoSSE.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Evolutionary biology"
-    },
-    "keywords": ["karyotype evolution", "intellectual history", "ChromEvol", "BiChroM", "ChromoSSE", "Stebbins", "Lande"],
-    "publisher": {
-      "@type": "ResearchOrganization",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Chromosome Evolution: A Century of Ideas",
+      "url": "https://coleoguy.github.io/chromosome-evolution-history.html",
+      "description": "Intellectual history of karyotype evolution research from Stebbins and White through Lande, Rieseberg, Mayrose's ChromEvol, and Zenil-Ferguson's BiChroM/ChromoSSE.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Evolutionary biology"
+      },
+      "keywords": ["karyotype evolution", "intellectual history", "ChromEvol", "BiChroM", "ChromoSSE", "Stebbins", "Lande"],
+      "publisher": {
+        "@type": "ResearchOrganization",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      }
     }
-  }
-  </script>
-</head>
+    </script>
+  <style>
+      /* ── Page-specific editorial styles ─────────────────────── */
+  
+      .chev-header {
+        padding: 130px 0 60px;
+        border-bottom: 1px solid var(--border);
+        text-align: center;
+      }
+  
+      .chev-kicker {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 14px;
+      }
+  
+      .chev-header h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 700;
+        color: var(--text-heading, #f8f4ed);
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+  
+      .chev-header .subtitle {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+        max-width: 600px;
+        margin: 0 auto;
+      }
+  
+      /* ── Content body ─────────────────────────────────────── */
+      .newspaper-wrap {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 48px 20px 48px;
+      }
+  
+      /* Decorative rule */
+      .paper-rule {
+        text-align: center;
+        color: var(--accent);
+        font-size: 13px;
+        letter-spacing: 0.4em;
+        margin: 0 0 36px;
+      }
+      .paper-rule::before,
+      .paper-rule::after {
+        content: '';
+        display: inline-block;
+        width: 80px;
+        height: 1px;
+        background: var(--accent);
+        vertical-align: middle;
+        margin: 0 12px;
+        opacity: 0.5;
+      }
+  
+      /* Single-column flow */
+      .col-grid {
+        display: block;
+      }
+  
+      /* Section heads */
+      .col-grid h2 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--accent);
+        border-bottom: 1px solid rgba(201,162,39,0.25);
+        padding-bottom: 6px;
+        margin: 36px 0 14px;
+      }
+      .col-grid h2:first-child { margin-top: 0; }
+  
+      /* Body text */
+      .col-grid p {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: var(--text);
+        margin-bottom: 16px;
+      }
+      .col-grid p:last-child { margin-bottom: 0; }
+  
+      /* Intro paragraph */
+      .lead-para {
+        font-size: 1.08rem !important;
+        color: var(--text-heading) !important;
+        line-height: 1.85 !important;
+      }
+  
+      /* Pull quote */
+      .pullquote {
+        border-left: 3px solid var(--accent);
+        padding: 12px 20px;
+        margin: 24px 0;
+        font-style: italic;
+        font-size: 1rem;
+        color: var(--accent);
+        line-height: 1.6;
+      }
+  
+      /* Inline link style — visible in both themes */
+      .col-grid a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-color: rgba(201,162,39,0.4);
+        text-underline-offset: 2px;
+        transition: text-decoration-color 0.15s;
+      }
+      .col-grid a:hover { text-decoration-color: var(--accent); }
+  
+      /* Strong text */
+      .col-grid strong {
+        font-weight: 600;
+        color: var(--text-heading);
+      }
+  
+      /* Bottom ornament */
+      .paper-foot {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(201,162,39,0.2);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+  
+      /* Related resources box */
+      .related-box {
+        margin-top: 48px;
+        padding: 28px 32px;
+        border: 1px solid rgba(201,162,39,0.2);
+        border-radius: 10px;
+        background: rgba(201,162,39,0.03);
+      }
+      .related-box h3 {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 16px;
+      }
+      .related-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .related-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border: 1px solid rgba(201,162,39,0.25);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: var(--text);
+        text-decoration: none;
+        transition: all 0.18s;
+      }
+      .related-link i { color: var(--accent); font-size: 0.75rem; }
+      .related-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        text-decoration: none;
+      }
+    </style>
+---
 
-<body class="resources-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html" class="active">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Page Header -->
+<!-- Page Header -->
     <section class="chev-header" data-aos="fade-up">
       <div class="container">
         <div class="chev-kicker">A Brief Intellectual History</div>
@@ -367,25 +304,3 @@
         </div><!-- /.newspaper-wrap -->
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-
-</body>
-</html>

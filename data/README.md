@@ -1,5 +1,69 @@
 # Data
 
+This directory holds the JSON/CSV data the site fetches at runtime. Files here are loaded by `cures-karyotype-database.html`, `tau_database.html`, `news.html`, and the publications widget. Updating these files updates the site without touching any HTML.
+
+## Files
+
+| File | Used by | Records | Refresh |
+|------|---------|---------|---------|
+| `cures-karyotype-database.csv` | (download from CUREs DB page) | 63,542 | manual |
+| `cures-karyotype-data.json` | `cures-karyotype-database.html` | 63,542 | re-export from the master CSV when records are added |
+| `tau-database.json` | `tau_database.html` | 1,960 | re-export from `subpages/tau-data/results.csv` when updated |
+| `news.json` | `news.html` + homepage feed | (variable) | edit by hand to add/edit lab news cards |
+| `publications.json` | `publications.html` | 57 (snapshot) | re-snapshot from ORCID when a new pub appears (script below) |
+
+## Refreshing the publications snapshot
+
+The publications page tries `data/publications.json` first and falls back to a live ORCID API call. The snapshot keeps the page fast and resilient when ORCID is slow or down. To regenerate:
+
+```sh
+cd ~/Desktop/GitHub/coleoguy.github.io
+python3 << 'EOF'
+import json, urllib.request, time
+ORCID = "0000-0002-5433-4036"
+BASE = f"https://pub.orcid.org/v3.0/{ORCID}"
+def fetch(url):
+    req = urllib.request.Request(url, headers={'Accept': 'application/json'})
+    with urllib.request.urlopen(req, timeout=30) as r: return json.loads(r.read())
+data = fetch(f"{BASE}/works")
+ALLOWED = {'journal-article', 'book', 'book-chapter', 'preprint'}
+works, put_codes = [], []
+for g in data.get('group', []):
+    s = g.get('work-summary', [{}])[0] or {}
+    pc = s.get('put-code')
+    title = (s.get('title') or {}).get('title', {}).get('value', '')
+    journal = (s.get('journal-title') or {}).get('value', '')
+    year = (s.get('publication-date') or {}).get('year', {}).get('value', '')
+    typ = s.get('type', '')
+    doi = ''; doi_url = ''
+    for eid in (s.get('external-ids') or {}).get('external-id', []):
+        if eid.get('external-id-type') == 'doi':
+            doi = eid.get('external-id-value', '')
+            doi_url = (eid.get('external-id-url') or {}).get('value') or f'https://doi.org/{doi}'
+            break
+    if not title or typ not in ALLOWED: continue
+    works.append({'putCode': pc, 'title': title, 'journal': journal, 'year': year,
+                  'doi': doi, 'doiUrl': doi_url, 'type': typ, 'authors': ''})
+    put_codes.append(pc)
+authors = {}
+for i in range(0, len(put_codes), 25):
+    batch = put_codes[i:i+25]
+    b = fetch(f"{BASE}/works/{','.join(str(p) for p in batch)}")
+    for entry in b.get('bulk', []):
+        w = entry.get('work', {})
+        contribs = (w.get('contributors') or {}).get('contributor', [])
+        names = [(c.get('credit-name') or {}).get('value') for c in contribs
+                 if (c.get('contributor-attributes') or {}).get('contributor-role') == 'author']
+        authors[w.get('put-code')] = ', '.join(n for n in names if n)
+    time.sleep(0.2)
+for w in works:
+    if w['putCode'] in authors: w['authors'] = authors[w['putCode']]
+with open('data/publications.json', 'w') as f:
+    json.dump({'orcid': ORCID, 'fetched_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), 'works': works}, f, indent=2, ensure_ascii=False)
+print(f"Wrote {len(works)} works to data/publications.json")
+EOF
+```
+
 ## cures-karyotype-database.csv
 
 Chromosome number records collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&M University. Accompanies the interactive browser at [coleoguy.github.io/cures-karyotype-database.html](https://coleoguy.github.io/cures-karyotype-database.html).

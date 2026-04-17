@@ -169,9 +169,9 @@ Searchable database of 1,634 free-running circadian period (tau) measurements ac
 The Blackmon Lab is building AI-native workflows for evolutionary biology. Full program overview:
 URL: https://coleoguy.github.io/ai.html
 
-### Autonomous Karyotype Data Collector
-URL: https://coleoguy.github.io/subpages/karyotype-agent.html
-An autonomous AI agent that crawls PubMed and CrossRef, triages papers with Claude Haiku, fetches PDFs via Unpaywall, and extracts structured karyotype records with Claude Sonnet. Currently building a Coleoptera karyotype database (629+ records). Uses 730 search terms across 144 beetle families. 33-field output schema per record including taxonomy, 2n, sex chromosome system, karyotype formula, collection locality, and extraction confidence.
+### TraitTrawler — Autonomous Literature Mining
+URL: https://github.com/coleoguy/TraitTrawler
+A general-purpose autonomous pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref for scientific papers, retrieves full-text PDFs through a 12-source cascade (DOI content negotiation, PMC, Unpaywall, OpenAlex, publisher URLs, Europe PMC, Semantic Scholar, CORE, bioRxiv/medRxiv, Internet Archive, DOAJ, browser-based institutional access), extracts structured trait data with mandatory double-entry verification, and writes validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade.
 
 ### AI as Lead Investigator
 An experiment in research autonomy: a Claude-powered agent that formulates hypotheses about claw evolution, selects comparative methods, runs analyses, interprets results, and drafts a manuscript. Manuscript in preparation.

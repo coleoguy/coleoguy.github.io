@@ -1,273 +1,221 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>CURE in Evolutionary Biology and AI: Student Showcase</title>
-  <meta name="description" content="Meet the students of the BiolAI CURE program and their evolutionary biology research projects at the Blackmon Lab, Texas A&M University.">
-    <meta property="og:title" content="CURE in Evolutionary Biology and AI: Student Showcase" />
-    <meta property="og:description" content="Bio &amp; AI CURE: Course-Based Undergraduate Research Experience combining phylogenetic comparative methods with AI-assisted analysis. Spring 2026." />
-    <meta property="og:url" content="https://coleoguy.github.io/biolai-cure.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-
+---
+layout: default
+title: "CURE in Evolutionary Biology and AI: Student Showcase"
+description: Meet the students of the BiolAI CURE program and their evolutionary biology research projects at the Blackmon Lab, Texas A&M University.
+body_class: index-page
+extra_head: |
   <style>
-    .showcase-hero {
-      padding: 120px 0 30px;
-      text-align: center;
-    }
-    .showcase-hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--text-heading, #f0f0f0);
-      margin-bottom: 12px;
-    }
-    .showcase-hero h1 .accent {
-      color: var(--accent, #c9a227);
-    }
-    .showcase-hero .lead {
-      color: var(--text-secondary, #a0a0a0);
-      font-size: 1.1rem;
-      max-width: 740px;
-      margin: 0 auto 16px;
-      line-height: 1.75;
-    }
-    .showcase-hero .badge-count {
-      display: inline-block;
-      background: rgba(201,162,39,0.12);
-      color: var(--accent, #c9a227);
-      border: 1px solid rgba(201,162,39,0.25);
-      border-radius: 20px;
-      padding: 6px 18px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-top: 8px;
-    }
+      .showcase-hero {
+        padding: 120px 0 30px;
+        text-align: center;
+      }
+      .showcase-hero h1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--text-heading, #f0f0f0);
+        margin-bottom: 12px;
+      }
+      .showcase-hero h1 .accent {
+        color: var(--accent, #c9a227);
+      }
+      .showcase-hero .lead {
+        color: var(--text-secondary, #a0a0a0);
+        font-size: 1.1rem;
+        max-width: 740px;
+        margin: 0 auto 16px;
+        line-height: 1.75;
+      }
+      .showcase-hero .badge-count {
+        display: inline-block;
+        background: rgba(201,162,39,0.12);
+        color: var(--accent, #c9a227);
+        border: 1px solid rgba(201,162,39,0.25);
+        border-radius: 20px;
+        padding: 6px 18px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+  
+      .cure-about {
+        max-width: 800px;
+        margin: 0 auto 40px;
+        background: var(--bg-card, #111111);
+        border: 1px solid var(--border, #1a1a1a);
+        border-radius: 14px;
+        padding: 32px 36px;
+      }
+      .cure-about h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--accent, #c9a227);
+        margin-bottom: 12px;
+      }
+      .cure-about p {
+        color: var(--text-secondary, #a0a0a0);
+        font-size: 0.95rem;
+        line-height: 1.75;
+        margin: 0;
+      }
+  
+      .pi-card {
+        background: linear-gradient(135deg, rgba(201,162,39,0.08) 0%, var(--bg-card, #111111) 100%);
+        border: 1px solid rgba(201,162,39,0.3);
+        border-radius: 14px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pi-card .student-photo-wrap {
+        padding: 32px 24px 0;
+      }
+      .pi-card .student-avatar {
+        width: 120px;
+        height: 120px;
+        font-size: 2.8rem;
+        border-color: rgba(201,162,39,0.3);
+      }
+      .pi-card .student-info {
+        padding: 16px 28px 28px;
+      }
+      .pi-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent, #c9a227);
+        background: rgba(201,162,39,0.12);
+        border: 1px solid rgba(201,162,39,0.2);
+        border-radius: 6px;
+        padding: 2px 8px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+  
+      .student-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+        padding: 0 0 60px;
+      }
+  
+      .student-card {
+        background: var(--bg-card, #111111);
+        border: 1px solid var(--border, #1a1a1a);
+        border-radius: 14px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      }
+      .student-card:hover {
+        border-color: rgba(201,162,39,0.4);
+        box-shadow: 0 6px 28px rgba(201,162,39,0.06);
+        transform: translateY(-2px);
+      }
+  
+      .student-photo-wrap {
+        text-align: center;
+        padding: 28px 24px 0;
+      }
+  
+      .student-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(201,162,39,0.06);
+        border: 2px solid rgba(201,162,39,0.15);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.4rem;
+        line-height: 1;
+        overflow: hidden;
+      }
+      .student-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+  
+      .student-info {
+        padding: 16px 24px 24px;
+        text-align: center;
+      }
+  
+      .student-info h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.08rem;
+        font-weight: 600;
+        color: var(--text-heading, #f0f0f0);
+        margin: 0 0 4px;
+      }
+  
+      .student-meta {
+        font-size: 0.78rem;
+        color: var(--text-muted, #666);
+        margin-bottom: 2px;
+      }
+      .student-hometown {
+        font-size: 0.73rem;
+        color: var(--text-muted, #555);
+        margin-bottom: 8px;
+        font-style: italic;
+        font-weight: 500;
+      }
+  
+      .clade-badge {
+        display: inline-block;
+        background: rgba(201,162,39,0.08);
+        color: var(--accent, #c9a227);
+        border: 1px solid rgba(201,162,39,0.18);
+        border-radius: 10px;
+        padding: 1px 10px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+  
+      .student-info p {
+        color: var(--text-secondary, #a0a0a0);
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin: 0;
+        text-align: left;
+      }
+  
+      .acknowledgment {
+        text-align: center;
+        padding: 20px 0 0;
+        color: var(--text-muted, #555);
+        font-size: 0.82rem;
+        line-height: 1.6;
+      }
+      .acknowledgment a {
+        color: var(--accent, #c9a227);
+        text-decoration: none;
+      }
+      .acknowledgment a:hover {
+        text-decoration: underline;
+      }
+  
+      @media (max-width: 480px) {
+        .student-grid { grid-template-columns: 1fr; }
+        .showcase-hero h1 { font-size: 2rem; }
+        .cure-about { padding: 24px 20px; }
+        .pi-card { max-width: 100%; }
+      }
+    </style>
+---
 
-    .cure-about {
-      max-width: 800px;
-      margin: 0 auto 40px;
-      background: var(--bg-card, #111111);
-      border: 1px solid var(--border, #1a1a1a);
-      border-radius: 14px;
-      padding: 32px 36px;
-    }
-    .cure-about h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--accent, #c9a227);
-      margin-bottom: 12px;
-    }
-    .cure-about p {
-      color: var(--text-secondary, #a0a0a0);
-      font-size: 0.95rem;
-      line-height: 1.75;
-      margin: 0;
-    }
-
-    .pi-card {
-      background: linear-gradient(135deg, rgba(201,162,39,0.08) 0%, var(--bg-card, #111111) 100%);
-      border: 1px solid rgba(201,162,39,0.3);
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 40px;
-      max-width: 360px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .pi-card .student-photo-wrap {
-      padding: 32px 24px 0;
-    }
-    .pi-card .student-avatar {
-      width: 120px;
-      height: 120px;
-      font-size: 2.8rem;
-      border-color: rgba(201,162,39,0.3);
-    }
-    .pi-card .student-info {
-      padding: 16px 28px 28px;
-    }
-    .pi-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent, #c9a227);
-      background: rgba(201,162,39,0.12);
-      border: 1px solid rgba(201,162,39,0.2);
-      border-radius: 6px;
-      padding: 2px 8px;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-
-    .student-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-      padding: 0 0 60px;
-    }
-
-    .student-card {
-      background: var(--bg-card, #111111);
-      border: 1px solid var(--border, #1a1a1a);
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-    }
-    .student-card:hover {
-      border-color: rgba(201,162,39,0.4);
-      box-shadow: 0 6px 28px rgba(201,162,39,0.06);
-      transform: translateY(-2px);
-    }
-
-    .student-photo-wrap {
-      text-align: center;
-      padding: 28px 24px 0;
-    }
-
-    .student-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: rgba(201,162,39,0.06);
-      border: 2px solid rgba(201,162,39,0.15);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.4rem;
-      line-height: 1;
-      overflow: hidden;
-    }
-    .student-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .student-info {
-      padding: 16px 24px 24px;
-      text-align: center;
-    }
-
-    .student-info h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.08rem;
-      font-weight: 600;
-      color: var(--text-heading, #f0f0f0);
-      margin: 0 0 4px;
-    }
-
-    .student-meta {
-      font-size: 0.78rem;
-      color: var(--text-muted, #666);
-      margin-bottom: 2px;
-    }
-    .student-hometown {
-      font-size: 0.73rem;
-      color: var(--text-muted, #555);
-      margin-bottom: 8px;
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    .clade-badge {
-      display: inline-block;
-      background: rgba(201,162,39,0.08);
-      color: var(--accent, #c9a227);
-      border: 1px solid rgba(201,162,39,0.18);
-      border-radius: 10px;
-      padding: 1px 10px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .student-info p {
-      color: var(--text-secondary, #a0a0a0);
-      font-size: 0.88rem;
-      line-height: 1.65;
-      margin: 0;
-      text-align: left;
-    }
-
-    .acknowledgment {
-      text-align: center;
-      padding: 20px 0 0;
-      color: var(--text-muted, #555);
-      font-size: 0.82rem;
-      line-height: 1.6;
-    }
-    .acknowledgment a {
-      color: var(--accent, #c9a227);
-      text-decoration: none;
-    }
-    .acknowledgment a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 480px) {
-      .student-grid { grid-template-columns: 1fr; }
-      .showcase-hero h1 { font-size: 2rem; }
-      .cure-about { padding: 24px 20px; }
-      .pi-card { max-width: 100%; }
-    }
-  </style>
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-</head>
-
-<body class="index-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <section class="showcase-hero">
+<section class="showcase-hero">
       <div class="container" data-aos="fade-up">
         <h1>Biology and AI <span class="accent">CURE</span> Showcase</h1>
         <p class="lead">Meet the Spring 2026 cohort and their independent research projects in evolutionary biology. <strong>Every student below is conducting original research using phylogenetic comparative methods and AI-assisted analysis.</strong></p>
@@ -872,41 +820,3 @@
     <div class="acknowledgment">
       This program is made possible by the generous support of <a href="https://artsci.tamu.edu/news/2025/11/investing-in-student-discovery-former-zoology-student-supports-biology-cures-program.html" target="_blank">Bonsall S. Wilton '72</a> and the Wilton CUREs Excellence Endowment.
     </div>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-  <div id="preloader"></div>
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-
-  <!-- Shuffle student cards on each page load -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var grid = document.querySelector('.student-grid');
-      if (!grid) return;
-      var cards = Array.from(grid.children);
-      // Fisher-Yates shuffle
-      for (var i = cards.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        grid.appendChild(cards[j]);
-        cards[j] = cards[i];
-      }
-      // Re-append last card to ensure all are in DOM
-      grid.appendChild(cards[0]);
-      // Reset AOS delays so animations still work smoothly
-      grid.querySelectorAll('.student-card').forEach(function(card, idx) {
-        card.setAttribute('data-aos-delay', Math.min(idx * 20, 200));
-      });
-    });
-  </script>
-</body>
-</html>

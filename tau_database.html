@@ -1,157 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Circadian Period (τ) Database — Blackmon Lab</title>
-  <meta name="description" content="Searchable database of free-running circadian period (τ) measurements across the tree of life. Blackmon Lab, Texas A&M University.">
-  <meta property="og:title" content="Circadian Period (τ) Database — Blackmon Lab">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Blackmon Lab">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
-
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-
+---
+layout: default
+title: Circadian Period (τ) Database — Blackmon Lab
+description: Searchable database of free-running circadian period (τ) measurements across the tree of life. Blackmon Lab, Texas A&M University.
+extra_head: |
   <style>
-    .db-app { padding-top: 80px; min-height: 80vh; }
-    .db-container { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem; }
+      .db-app { padding-top: 80px; min-height: 80vh; }
+      .db-container { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem; }
+  
+      /* Stats row */
+      .stats-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+      .stat-card {
+        background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+        padding: 1rem 1.4rem; flex: 1; min-width: 150px;
+      }
+      .stat-card .val {
+        display: block; font-size: 1.8rem; font-weight: 700; color: var(--accent);
+        font-family: var(--font-heading); line-height: 1.2;
+      }
+      .stat-card .label {
+        font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;
+        letter-spacing: 0.8px; font-family: var(--font-heading);
+      }
+  
+      /* Tabs */
+      .tab-bar { display: flex; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); }
+      .tab-btn {
+        background: none; border: none; padding: 0.65rem 1.4rem; font-size: 0.88rem; font-weight: 600;
+        font-family: var(--font-heading); cursor: pointer; color: var(--text-muted);
+        border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s;
+        letter-spacing: 0.3px;
+      }
+      .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+      .tab-btn:hover:not(.active) { color: var(--text-secondary); }
+      .tab-pane { display: none; }
+      .tab-pane.active { display: block; }
+  
+      /* Cards */
+      .db-card {
+        background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+        padding: 1.4rem; margin-bottom: 1.5rem; transition: border-color 0.2s;
+      }
+      .db-card h2 {
+        font-size: 0.95rem; font-weight: 600; font-family: var(--font-heading);
+        color: var(--text-secondary); margin-bottom: 1rem; letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+  
+      /* Plots grid */
+      .plots-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+      @media (max-width: 900px) { .plots-row { grid-template-columns: 1fr; } }
+  
+      /* Filters */
+      .filters { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+      .filters label { font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); font-family: var(--font-heading); }
+      .filters select, .filters input {
+        font-size: 0.82rem; padding: 0.35rem 0.6rem; background: var(--bg-raised);
+        color: var(--text); border: 1px solid var(--border); border-radius: 6px; outline: none;
+      }
+      .filters select:focus, .filters input:focus { border-color: var(--accent-border); }
+      .filters input[type=text] { width: 200px; }
+  
+      /* Table */
+      .table-wrap { max-height: 620px; overflow: auto; border: 1px solid var(--border); border-radius: 8px; }
+      table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+      thead { position: sticky; top: 0; background: var(--bg-raised); border-bottom: 2px solid var(--accent-border); }
+      th {
+        padding: 0.6rem 0.8rem; text-align: left; cursor: pointer; white-space: nowrap; user-select: none;
+        font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.6px;
+        color: var(--text-secondary); text-transform: uppercase;
+      }
+      th:hover { color: var(--accent); }
+      td { padding: 0.45rem 0.8rem; border-bottom: 1px solid var(--border); white-space: nowrap; color: var(--text); }
+      tr:hover td { background: var(--bg-card-hover); }
+      .sort-arrow { font-size: 0.65rem; margin-left: 3px; color: var(--accent); }
+      .count-badge {
+        background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border);
+        padding: 0.1rem 0.6rem; border-radius: 10px; font-size: 0.75rem; font-family: var(--font-mono); margin-left: 0.5rem;
+      }
+      a.doi { color: var(--accent); text-decoration: none; }
+      a.doi:hover { text-decoration: underline; }
+  
+      /* Custom plot builder */
+      .builder-controls { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; margin-bottom: 1rem; }
+      .builder-controls label {
+        display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem;
+        font-weight: 600; font-family: var(--font-heading); color: var(--text-secondary); letter-spacing: 0.3px;
+      }
+      .builder-controls select {
+        font-size: 0.82rem; padding: 0.35rem 0.6rem; background: var(--bg-raised);
+        color: var(--text); border: 1px solid var(--border); border-radius: 6px; min-width: 160px; outline: none;
+      }
+      .builder-controls select:focus { border-color: var(--accent-border); }
+      .draw-btn {
+        padding: 0.42rem 1.4rem; background: var(--accent-dim); color: var(--accent);
+        border: 1px solid var(--accent-border); border-radius: 6px; font-size: 0.85rem;
+        font-weight: 600; font-family: var(--font-heading); cursor: pointer; align-self: flex-end;
+        transition: background 0.2s, color 0.2s; letter-spacing: 0.3px;
+      }
+      .draw-btn:hover { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+      /* Tau symbol in serif italic so it reads clearly as τ, not T */
+      .tau-sym { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-style: italic; }
+      /* Intro block */
+      .db-intro { margin-bottom: 1.8rem; }
+      .db-intro p { font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary); }
+      .db-intro p + p { margin-top: 0.8rem; }
+    </style>
+---
 
-    /* Stats row */
-    .stats-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .stat-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
-      padding: 1rem 1.4rem; flex: 1; min-width: 150px;
-    }
-    .stat-card .val {
-      display: block; font-size: 1.8rem; font-weight: 700; color: var(--accent);
-      font-family: var(--font-heading); line-height: 1.2;
-    }
-    .stat-card .label {
-      font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;
-      letter-spacing: 0.8px; font-family: var(--font-heading);
-    }
-
-    /* Tabs */
-    .tab-bar { display: flex; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); }
-    .tab-btn {
-      background: none; border: none; padding: 0.65rem 1.4rem; font-size: 0.88rem; font-weight: 600;
-      font-family: var(--font-heading); cursor: pointer; color: var(--text-muted);
-      border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s;
-      letter-spacing: 0.3px;
-    }
-    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
-    .tab-btn:hover:not(.active) { color: var(--text-secondary); }
-    .tab-pane { display: none; }
-    .tab-pane.active { display: block; }
-
-    /* Cards */
-    .db-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
-      padding: 1.4rem; margin-bottom: 1.5rem; transition: border-color 0.2s;
-    }
-    .db-card h2 {
-      font-size: 0.95rem; font-weight: 600; font-family: var(--font-heading);
-      color: var(--text-secondary); margin-bottom: 1rem; letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    /* Plots grid */
-    .plots-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-    @media (max-width: 900px) { .plots-row { grid-template-columns: 1fr; } }
-
-    /* Filters */
-    .filters { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
-    .filters label { font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); font-family: var(--font-heading); }
-    .filters select, .filters input {
-      font-size: 0.82rem; padding: 0.35rem 0.6rem; background: var(--bg-raised);
-      color: var(--text); border: 1px solid var(--border); border-radius: 6px; outline: none;
-    }
-    .filters select:focus, .filters input:focus { border-color: var(--accent-border); }
-    .filters input[type=text] { width: 200px; }
-
-    /* Table */
-    .table-wrap { max-height: 620px; overflow: auto; border: 1px solid var(--border); border-radius: 8px; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-    thead { position: sticky; top: 0; background: var(--bg-raised); border-bottom: 2px solid var(--accent-border); }
-    th {
-      padding: 0.6rem 0.8rem; text-align: left; cursor: pointer; white-space: nowrap; user-select: none;
-      font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.6px;
-      color: var(--text-secondary); text-transform: uppercase;
-    }
-    th:hover { color: var(--accent); }
-    td { padding: 0.45rem 0.8rem; border-bottom: 1px solid var(--border); white-space: nowrap; color: var(--text); }
-    tr:hover td { background: var(--bg-card-hover); }
-    .sort-arrow { font-size: 0.65rem; margin-left: 3px; color: var(--accent); }
-    .count-badge {
-      background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border);
-      padding: 0.1rem 0.6rem; border-radius: 10px; font-size: 0.75rem; font-family: var(--font-mono); margin-left: 0.5rem;
-    }
-    a.doi { color: var(--accent); text-decoration: none; }
-    a.doi:hover { text-decoration: underline; }
-
-    /* Custom plot builder */
-    .builder-controls { display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; margin-bottom: 1rem; }
-    .builder-controls label {
-      display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem;
-      font-weight: 600; font-family: var(--font-heading); color: var(--text-secondary); letter-spacing: 0.3px;
-    }
-    .builder-controls select {
-      font-size: 0.82rem; padding: 0.35rem 0.6rem; background: var(--bg-raised);
-      color: var(--text); border: 1px solid var(--border); border-radius: 6px; min-width: 160px; outline: none;
-    }
-    .builder-controls select:focus { border-color: var(--accent-border); }
-    .draw-btn {
-      padding: 0.42rem 1.4rem; background: var(--accent-dim); color: var(--accent);
-      border: 1px solid var(--accent-border); border-radius: 6px; font-size: 0.85rem;
-      font-weight: 600; font-family: var(--font-heading); cursor: pointer; align-self: flex-end;
-      transition: background 0.2s, color 0.2s; letter-spacing: 0.3px;
-    }
-    .draw-btn:hover { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
-    /* Tau symbol in serif italic so it reads clearly as τ, not T */
-    .tau-sym { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-style: italic; }
-    /* Intro block */
-    .db-intro { margin-bottom: 1.8rem; }
-    .db-intro p { font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary); }
-    .db-intro p + p { margin-top: 0.8rem; }
-  </style>
-</head>
-<body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <section class="page-header">
+<section class="page-header">
     <div class="container">
       <h1>Circadian Period (<span class="tau-sym">τ</span>) Database</h1>
       <p>Free-running period measurements across the tree of life &nbsp;·&nbsp; <a href="resources.html">Resources</a></p>
@@ -230,289 +186,3 @@
   </div>
     </div><!-- /.db-container -->
   </div><!-- /.db-app -->
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-
-<script>
-let DATA = [];
-// --- Summary stats ---
-const taus = DATA.filter(d => d.tau_mean_hours != null).map(d => d.tau_mean_hours);
-const nSpecies = new Set(DATA.map(d => d.species).filter(Boolean)).size;
-const nSources = new Set(DATA.map(d => d.source).filter(Boolean)).size;
-const nKingdoms = new Set(DATA.map(d => d.kingdom).filter(Boolean)).size;
-document.getElementById("stats").innerHTML = [
-  ["Records", DATA.length], ["Species", nSpecies], ["Sources", nSources],
-  ["Kingdoms", nKingdoms], ["Mean \u03C4", (taus.reduce((a,b)=>a+b,0)/taus.length).toFixed(2)+" h"]
-].map(([l,v]) => `<div class="stat-card"><div class="val">${v}</div><div class="label">${l}</div></div>`).join("");
-
-// --- Plots ---
-function getLayout(extra) {
-  extra = extra || {};
-  const isLight = document.body.classList.contains('light-mode');
-  const bg = isLight ? '#ffffff' : '#1a1a1a';
-  const gc = isLight ? '#e8e3da' : '#2a2825';
-  const fc = isLight ? '#3a3330' : '#c8c5c0';
-  const xaxis = Object.assign({gridcolor:gc, zerolinecolor:gc}, extra.xaxis || {});
-  const yaxis = Object.assign({gridcolor:gc, zerolinecolor:gc}, extra.yaxis || {});
-  const base = {
-    paper_bgcolor:bg, plot_bgcolor:bg,
-    colorway:['#c9a227','#4a9eff','#e05252','#48bb78','#a855f7','#f97316','#06b6d4','#ec4899'],
-    font:{family:'Space Grotesk, sans-serif', color:fc, size:11},
-    margin:{t:10, b:100, l:60, r:60}, height:340
-  };
-  return Object.assign({}, base, extra, {xaxis:xaxis, yaxis:yaxis});
-}
-
-// Pre-compute data-derived traces (layout re-applied on theme change)
-const classCounts = {};
-DATA.forEach(d => { if(d.class && d.tau_mean_hours!=null) classCounts[d.class] = (classCounts[d.class]||0)+1; });
-const topClasses = Object.entries(classCounts).sort((a,b)=>b[1]-a[1]).slice(0,12).map(e=>e[0]);
-const classTraces = topClasses.map(c => ({
-  y: DATA.filter(d=>d.class===c && d.tau_mean_hours!=null).map(d=>d.tau_mean_hours),
-  name: c, type:"box"
-}));
-const lights = [...new Set(DATA.map(d=>d.light_condition).filter(Boolean))].sort();
-const lightTraces = lights.map(l => ({
-  y: DATA.filter(d=>d.light_condition===l && d.tau_mean_hours!=null).map(d=>d.tau_mean_hours),
-  name: l, type:"box"
-}));
-const orderCounts = {};
-DATA.forEach(d => { if(d.order) orderCounts[d.order] = (orderCounts[d.order]||0)+1; });
-const topOrders = Object.entries(orderCounts).sort((a,b)=>b[1]-a[1]).slice(0,20);
-
-function drawPresetPlots() {
-  Plotly.newPlot("histPlot",
-    [{x:taus, type:"histogram", nbinsx:60, marker:{color:"#c9a227"}}],
-    getLayout({xaxis:{title:"τ (hours)"}, yaxis:{title:"Count"}}), {responsive:true});
-  Plotly.newPlot("classPlot", classTraces,
-    getLayout({showlegend:false, yaxis:{title:"τ (hours)"}, xaxis:{tickangle:-45}}), {responsive:true});
-  Plotly.newPlot("lightPlot", lightTraces,
-    getLayout({showlegend:false, yaxis:{title:"τ (hours)"}, xaxis:{tickangle:-45}}), {responsive:true});
-  Plotly.newPlot("orderPlot",
-    [{x:topOrders.map(e=>e[0]), y:topOrders.map(e=>e[1]), type:"bar", marker:{color:"#c9a227"}}],
-    getLayout({xaxis:{tickangle:-45}, yaxis:{title:"Records"}}), {responsive:true});
-}
-// (drawPresetPlots called from bootstrap below after data loads)
-
-// --- Table ---
-const cols = [
-  {key:"kingdom", label:"Kingdom"}, {key:"phylum", label:"Phylum"}, {key:"class", label:"Class"},
-  {key:"order", label:"Order"}, {key:"family", label:"Family"}, {key:"species", label:"Species"},
-  {key:"tau_mean_hours", label:"\u03C4 (h)"}, {key:"light_condition", label:"Light Condition"},
-  {key:"genotype", label:"Genotype"}, {key:"source", label:"Source"}
-];
-
-// Populate filters
-function populateSelect(id, key) {
-  const sel = document.getElementById(id);
-  const vals = [...new Set(DATA.map(d=>d[key]).filter(Boolean))].sort();
-  vals.forEach(v => { const o = document.createElement("option"); o.value=v; o.textContent=v; sel.appendChild(o); });
-}
-// (populateSelect calls deferred to bootstrap below)
-
-// Header
-const thead = document.getElementById("thead");
-let sortCol = null, sortAsc = true;
-cols.forEach((c,i) => {
-  const th = document.createElement("th");
-  th.textContent = c.label;
-  th.onclick = () => { sortAsc = sortCol===i ? !sortAsc : true; sortCol=i; renderTable(); };
-  thead.appendChild(th);
-});
-
-function renderTable() {
-  const search = document.getElementById("search").value.toLowerCase();
-  const fC = document.getElementById("fClass").value;
-  const fO = document.getElementById("fOrder").value;
-  const fL = document.getElementById("fLight").value;
-  const fS = document.getElementById("fSex").value;
-
-  let rows = DATA.filter(d => {
-    if(fC && d.class !== fC) return false;
-    if(fO && d.order !== fO) return false;
-    if(fL && d.light_condition !== fL) return false;
-    if(fS && d.sex !== fS) return false;
-    if(search) {
-      const hay = cols.map(c => String(d[c.key]||"")).join(" ").toLowerCase();
-      if(!hay.includes(search)) return false;
-    }
-    return true;
-  });
-
-  if(sortCol !== null) {
-    const key = cols[sortCol].key;
-    rows.sort((a,b) => {
-      let va = a[key], vb = b[key];
-      if(va == null) return 1; if(vb == null) return -1;
-      if(typeof va === "number") return sortAsc ? va-vb : vb-va;
-      return sortAsc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
-    });
-  }
-
-  document.getElementById("rowCount").textContent = rows.length + " rows";
-  const tbody = document.getElementById("tbody");
-  tbody.innerHTML = rows.map(d => "<tr>" + cols.map(c => {
-    let v = d[c.key];
-    if(v == null || v === "") v = "—";
-    if(c.key === "doi" && d.doi) v = `<a class="doi" href="https://doi.org/${d.doi}" target="_blank">${d.doi.length > 25 ? d.doi.slice(0,25)+"…" : d.doi}</a>`;
-    if(c.key === "species") v = `<em>${v}</em>`;
-    if(c.key === "tau_mean_hours" && typeof d[c.key] === "number") v = d[c.key].toFixed(2);
-    if(c.key === "tau_sd_hours" && typeof d[c.key] === "number") v = d[c.key].toFixed(3);
-    if(c.key === "temperature_celsius" && typeof d[c.key] === "number") v = d[c.key].toFixed(1);
-    return `<td>${v}</td>`;
-  }).join("") + "</tr>").join("");
-
-  // Update sort arrows
-  thead.querySelectorAll("th").forEach((th,i) => {
-    th.innerHTML = cols[i].label + (sortCol===i ? `<span class="sort-arrow">${sortAsc?"▲":"▼"}</span>` : "");
-  });
-}
-
-document.getElementById("search").addEventListener("input", renderTable);
-["fClass","fOrder","fLight","fSex"].forEach(id => document.getElementById(id).addEventListener("change", renderTable));
-// (initial renderTable() deferred to bootstrap below)
-
-// --- Custom Plot Builder ---
-const catFields = [
-  {key:"kingdom",label:"Kingdom"},{key:"phylum",label:"Phylum"},{key:"class",label:"Class"},
-  {key:"order",label:"Order"},{key:"family",label:"Family"},
-  {key:"light_condition",label:"Light Condition"},{key:"sex",label:"Sex"},
-  {key:"genotype",label:"Genotype"},{key:"measurement_method",label:"Method"}
-];
-const numFields = [
-  {key:"tau_mean_hours",label:"\u03C4 Mean (h)"},{key:"tau_sd_hours",label:"\u03C4 SD (h)"},
-  {key:"sample_size",label:"Sample Size"},{key:"temperature_celsius",label:"Temperature (\u00B0C)"}
-];
-(function populateBuilder() {
-  const xSel = document.getElementById("bX");
-  const ySel = document.getElementById("bY");
-  const cSel = document.getElementById("bColor");
-  [...catFields, ...numFields].forEach(f => {
-    const o = document.createElement("option"); o.value = f.key; o.textContent = f.label; xSel.appendChild(o);
-  });
-  numFields.forEach(f => {
-    const o = document.createElement("option"); o.value = f.key; o.textContent = f.label; ySel.appendChild(o);
-  });
-  const none = document.createElement("option"); none.value = ""; none.textContent = "None"; cSel.appendChild(none);
-  catFields.forEach(f => {
-    const o = document.createElement("option"); o.value = f.key; o.textContent = f.label; cSel.appendChild(o);
-  });
-})();
-
-function updateBuilderUI() {
-  const type = document.getElementById("bType").value;
-  document.getElementById("yRow").style.display = (type === "histogram" || type === "bar") ? "none" : "";
-}
-
-function drawCustomPlot() {
-  const type = document.getElementById("bType").value;
-  const xKey = document.getElementById("bX").value;
-  const yKey = document.getElementById("bY").value;
-  const colorKey = document.getElementById("bColor").value;
-  const xLabel = [...catFields, ...numFields].find(f => f.key === xKey)?.label || xKey;
-  const yLabel = numFields.find(f => f.key === yKey)?.label || yKey;
-  const yTitle = (type === "histogram" || type === "bar") ? "Count" : yLabel;
-  const cLayout = getLayout({
-    margin:{t:30, b:100, l:60, r:20}, height:420,
-    xaxis:{title:xLabel, tickangle:-45}, yaxis:{title:yTitle}
-  });
-  let traces = [];
-  if (type === "histogram") {
-    const xVals = DATA.map(d => d[xKey]).filter(v => v != null && v !== "");
-    traces = [{x:xVals, type:"histogram", nbinsx:50, marker:{color:"#c9a227"}}];
-  } else if (type === "scatter") {
-    if (colorKey) {
-      const groups = [...new Set(DATA.map(d => d[colorKey]).filter(Boolean))].sort();
-      traces = groups.map(g => ({
-        x: DATA.filter(d => d[colorKey]===g && d[xKey]!=null && d[yKey]!=null).map(d => d[xKey]),
-        y: DATA.filter(d => d[colorKey]===g && d[xKey]!=null && d[yKey]!=null).map(d => d[yKey]),
-        name:g, type:"scatter", mode:"markers", marker:{size:6, opacity:0.7}
-      }));
-    } else {
-      traces = [{
-        x: DATA.filter(d => d[xKey]!=null && d[yKey]!=null).map(d => d[xKey]),
-        y: DATA.filter(d => d[xKey]!=null && d[yKey]!=null).map(d => d[yKey]),
-        type:"scatter", mode:"markers", marker:{size:6, color:"#c9a227", opacity:0.7}
-      }];
-    }
-  } else if (type === "box") {
-    const groups = [...new Set(DATA.map(d => d[xKey]).filter(Boolean))].sort();
-    if (colorKey) {
-      const colorGroups = [...new Set(DATA.map(d => d[colorKey]).filter(Boolean))].sort();
-      traces = groups.flatMap(g => colorGroups.map(cg => ({
-        y: DATA.filter(d => d[xKey]===g && d[colorKey]===cg && d[yKey]!=null).map(d => d[yKey]),
-        name:cg, x0:g, type:"box", boxpoints:"outliers"
-      })));
-      cLayout.showlegend = true;
-    } else {
-      traces = groups.map(g => ({
-        y: DATA.filter(d => d[xKey]===g && d[yKey]!=null).map(d => d[yKey]),
-        name:g, type:"box", showlegend:false, boxpoints:"outliers"
-      }));
-    }
-  } else if (type === "bar") {
-    const counts = {};
-    DATA.forEach(d => { const v = d[xKey]; if(v) counts[v] = (counts[v]||0)+1; });
-    const sorted = Object.entries(counts).sort((a,b) => b[1]-a[1]);
-    traces = [{x:sorted.map(e=>e[0]), y:sorted.map(e=>e[1]), type:"bar", marker:{color:"#c9a227"}}];
-  }
-  Plotly.newPlot("customPlot", traces, cLayout, {responsive:true});
-}
-
-document.getElementById("bType").addEventListener("change", updateBuilderUI);
-updateBuilderUI();
-
-// --- Tab switching ---
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
-    btn.classList.add("active");
-    document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
-    if (btn.dataset.tab === "plots") {
-      ["histPlot","classPlot","lightPlot","orderPlot"].forEach(id => {
-        const el = document.getElementById(id);
-        if (el && el.data) Plotly.Plots.resize(el);
-      });
-    }
-  });
-});
-
-// --- Re-render plots on theme change ---
-new MutationObserver(function() {
-  drawPresetPlots();
-  const cp = document.getElementById("customPlot");
-  if (cp && cp.data && cp.data.length) drawCustomPlot();
-}).observe(document.body, {attributeFilter: ['class']});
-
-// --- Bootstrap: fetch data, then populate UI ---
-fetch('data/tau-database.json', { cache: 'no-cache' })
-  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  .then(d => {
-    DATA = d;
-    drawPresetPlots();
-    populateSelect("fClass","class");
-    populateSelect("fOrder","order");
-    populateSelect("fLight","light_condition");
-    populateSelect("fSex","sex");
-    renderTable();
-  })
-  .catch(err => {
-    console.error('Failed to load tau database:', err);
-    const tbody = document.getElementById('tbody');
-    if (tbody) tbody.innerHTML = '<tr><td colspan="10" style="padding:30px;text-align:center;color:#c9a227">Could not load tau database. Please refresh.</td></tr>';
-  });
-
-</script>
-</body>
-</html>

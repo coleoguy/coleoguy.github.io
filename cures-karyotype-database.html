@@ -1,246 +1,189 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CUREs Karyotype Database — Blackmon Lab</title>
-<meta name="description" content="Interactive database of 63,542 chromosome number records across 56 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;M University.">
-    <meta property="og:title" content="CUREs Karyotype Database — Blackmon Lab" />
-    <meta property="og:description" content="Interactive database of 63,542 chromosome number records across 56 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;amp;M University." />
-    <meta property="og:url" content="https://coleoguy.github.io/cures-karyotype-database.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-<meta name="keywords" content="karyotype, chromosome number, CUREs, database, Blackmon Lab, Texas A&M, evolutionary biology">
-<link rel="canonical" href="https://coleoguy.github.io/cures-karyotype-database.html">
-
-<!-- Open Graph -->
-<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4J0HZ3LNQX');
-</script>
-
-<link href="assets/img/favicon.ico" rel="icon">
-<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-<!-- Site-wide CSS -->
-<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="assets/vendor/aos/aos.css" rel="stylesheet">
-<link href="assets/css/main.css" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-<style>
-/* Scope the database app so it doesn't clash with site main.css */
-.db-app { font-family:'Space Grotesk',sans-serif; color:#c8c5c0; min-height:80vh; }
-.db-app a:not(.sitename):not(.logo):not(.nav-cta) { color:#c9a227; text-decoration:none; }
-.db-app a:not(.sitename):not(.logo):not(.nav-cta):hover { text-decoration:underline; }
-
-/* Old custom header styles removed — now using site header */
-
-/* LAYOUT */
-.db-container { display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 56px - 48px); }
-@media(max-width:900px) { .db-container { grid-template-columns:1fr; } }
-
-/* SIDEBAR */
-.sidebar { background:#1e1c19; border-right:1px solid #2a2825; padding:20px; position:sticky; top:0; height:calc(100vh - 56px); overflow-y:auto; }
-.sidebar h3 { color:#c9a227; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; margin-top:16px; }
-.sidebar h3:first-child { margin-top:0; }
-.record-count { font-size:42px; font-weight:700; color:#c9a227; line-height:1.1; }
-.record-label { font-size:12px; color:#a09d98; margin-bottom:16px; }
-select, .search-input {
-  width:100%; padding:8px 10px; background:#141311; border:1px solid #2a2825;
-  color:#c8c5c0; border-radius:4px; font-family:inherit; font-size:13px; margin-bottom:8px;
-}
-select:focus, .search-input:focus { border-color:#c9a227; outline:none; }
-.reset-btn {
-  width:100%; padding:8px; background:transparent; border:1px solid #c9a227;
-  color:#c9a227; border-radius:4px; cursor:pointer; font-family:inherit; font-size:12px;
-  text-transform:uppercase; letter-spacing:0.5px; margin-top:12px;
-}
-.reset-btn:hover { background:#c9a227; color:#141311; }
-.repo-link {
-  display:block; margin-top:14px; padding:8px 10px; text-align:center;
-  background:transparent; border:1px solid #2a2825; color:#a09d98 !important;
-  border-radius:4px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px;
-  text-decoration:none !important; transition:all 0.15s ease;
-}
-.repo-link:hover { border-color:#c9a227; color:#c9a227 !important; text-decoration:none !important; }
-.repo-link i { margin-right:6px; font-size:13px; vertical-align:-1px; }
-.light-mode .repo-link { border-color:#d5d0c8; color:#6b6b6b !important; }
-.light-mode .repo-link:hover { border-color:#c9a227; color:#8b7a2e !important; }
-
-/* Citation block on Overview tab */
-.cite-box { background:#1e1c19; border:1px solid #2a2825; border-radius:6px; padding:16px 18px; }
-.cite-ref { font-size:13px; line-height:1.55; color:#c8c5c0; margin:0 0 10px 0; }
-.cite-ref a { color:#c9a227; }
-.cite-toggle {
-  background:transparent; border:1px solid #c9a227; color:#c9a227;
-  padding:5px 12px; border-radius:4px; font-size:11px; font-family:inherit;
-  text-transform:uppercase; letter-spacing:0.5px; cursor:pointer;
-}
-.cite-toggle:hover { background:#c9a227; color:#141311; }
-.cite-bib {
-  margin-top:12px; padding:12px; background:#141311; border:1px solid #2a2825;
-  border-radius:4px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size:11.5px; color:#c8c5c0; overflow-x:auto; white-space:pre-wrap; word-break:break-word;
-}
-.light-mode .cite-box { background:#f0ede8; border-color:#d5d0c8; }
-.light-mode .cite-ref { color:#3a3a3a; }
-.light-mode .cite-ref a { color:#8b7a2e; }
-.light-mode .cite-bib { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
-
-/* MAIN */
-.main { padding:24px; overflow-x:auto; }
-
-/* TABS */
-.tabs { display:flex; gap:0; border-bottom:1px solid #2a2825; margin-bottom:24px; }
-.tab {
-  padding:10px 20px; font-size:13px; font-weight:600; text-transform:uppercase;
-  letter-spacing:0.5px; cursor:pointer; color:#a09d98; border-bottom:2px solid transparent;
-  transition:all 0.2s;
-}
-.tab:hover { color:#c8c5c0; }
-.tab.active { color:#c9a227; border-bottom-color:#c9a227; }
-.tab-content { display:none; }
-.tab-content.active { display:block; }
-
-/* OVERVIEW CARDS */
-.cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:24px; }
-.card {
-  background:#1e1c19; border:1px solid #2a2825; border-radius:6px; padding:20px;
-}
-.card-value { font-size:32px; font-weight:700; color:#c9a227; }
-.card-label { font-size:12px; color:#a09d98; margin-top:4px; text-transform:uppercase; letter-spacing:0.5px; }
-
-/* TABLE */
-.table-controls { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px; }
-.csv-btn {
-  padding:6px 14px; background:#c9a227; color:#141311; border:none; border-radius:4px;
-  cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;
-  text-transform:uppercase; letter-spacing:0.5px;
-}
-.csv-btn:hover { background:#b08d1f; }
-.page-info { color:#a09d98; font-size:13px; }
-table { width:100%; border-collapse:collapse; }
-thead th {
-  text-align:left; padding:10px 12px; font-size:11px; text-transform:uppercase;
-  letter-spacing:0.5px; color:#a09d98; border-bottom:1px solid #2a2825; cursor:pointer;
-  user-select:none; white-space:nowrap;
-}
-thead th:hover { color:#c9a227; }
-thead th .sort-arrow { font-size:10px; margin-left:4px; }
-tbody td {
-  padding:8px 12px; font-size:13px; border-bottom:1px solid rgba(42,40,37,0.5);
-}
-tbody tr:hover { background:rgba(201,162,39,0.05); }
-.species-name { font-style:italic; }
-.clade-badge {
-  display:inline-block; padding:2px 8px; background:rgba(201,162,39,0.15);
-  color:#c9a227; border-radius:3px; font-size:11px; font-weight:500;
-}
-.pagination { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:16px; }
-.page-btn {
-  padding:6px 12px; background:#1e1c19; border:1px solid #2a2825; color:#c8c5c0;
-  border-radius:4px; cursor:pointer; font-family:inherit; font-size:12px;
-}
-.page-btn:hover { border-color:#c9a227; color:#c9a227; }
-.page-btn:disabled { opacity:0.3; cursor:default; }
-.page-btn.active { background:#c9a227; color:#141311; border-color:#c9a227; }
-
-/* PLOT */
-#plotArea { width:100%; min-height:500px; }
-
-/* OVERVIEW EXTRAS */
-.clade-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:8px; margin-top:16px; }
-.clade-item {
-  display:flex; justify-content:space-between; padding:8px 12px;
-  background:#1e1c19; border:1px solid #2a2825; border-radius:4px; font-size:12px;
-}
-.clade-item-name { color:#c8c5c0; }
-.clade-item-count { color:#c9a227; font-weight:600; }
-
-/* DB FOOTER (internal data footer) */
-.db-footer {
-  background:#141311; border-top:1px solid #2a2825; padding:14px 24px;
-  display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#a09d98;
-  flex-wrap:wrap; gap:8px;
-}
-/* ── Light-mode overrides for the database app ── */
-.light-mode .db-app { color:#3a3a3a; }
-.light-mode .sidebar { background:#f0ede8; border-right-color:#d5d0c8; }
-.light-mode .sidebar h3 { color:#8b7a2e; }
-.light-mode .record-count { color:#8b7a2e; }
-.light-mode .record-label { color:#6b6b6b; }
-.light-mode select, .light-mode .search-input { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
-.light-mode select:focus, .light-mode .search-input:focus { border-color:#c9a227; }
-.light-mode .tab { color:#6b6b6b; }
-.light-mode .tab:hover { color:#3a3a3a; }
-.light-mode .tab.active { color:#8b7a2e; border-bottom-color:#c9a227; }
-.light-mode .card { background:#f0ede8; border-color:#d5d0c8; }
-.light-mode .card-value { color:#8b7a2e; }
-.light-mode .card-label { color:#6b6b6b; }
-.light-mode thead th { color:#6b6b6b; border-bottom-color:#d5d0c8; }
-.light-mode thead th:hover { color:#8b7a2e; }
-.light-mode tbody td { border-bottom-color:rgba(0,0,0,0.08); color:#3a3a3a; }
-.light-mode tbody tr:hover { background:rgba(201,162,39,0.08); }
-.light-mode .clade-badge { background:rgba(201,162,39,0.12); color:#8b7a2e; }
-.light-mode .page-btn { background:#f0ede8; border-color:#d5d0c8; color:#3a3a3a; }
-.light-mode .page-btn:hover { border-color:#c9a227; color:#8b7a2e; }
-.light-mode .page-btn.active { background:#c9a227; color:#fff; }
-.light-mode .page-info { color:#6b6b6b; }
-.light-mode .clade-item { background:#f0ede8; border-color:#d5d0c8; }
-.light-mode .clade-item-name { color:#3a3a3a; }
-.light-mode .clade-item-count { color:#8b7a2e; }
-.light-mode .db-footer { background:#f0ede8; border-top-color:#d5d0c8; color:#6b6b6b; }
-.light-mode .tabs { border-bottom-color:#d5d0c8; }
-.light-mode .db-container { border-color:#d5d0c8; }
-.light-mode #plotType { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
-
-/* Citation cell: truncate by default, expand on click */
-.cite-cell { max-width:360px; color:#a09d98; font-size:12px; line-height:1.35; cursor:pointer; }
-.cite-cell .cite-text {
-  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
-  overflow:hidden; text-overflow:ellipsis;
-}
-.cite-cell.expanded .cite-text { display:block; -webkit-line-clamp:unset; overflow:visible; }
-.cite-cell:hover { color:#c9a227; }
-.light-mode .cite-cell { color:#6b6b6b; }
-.light-mode .cite-cell:hover { color:#8b7a2e; }
-</style>
-</head>
-<body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
+---
+layout: default
+title: CUREs Karyotype Database — Blackmon Lab
+description: Interactive database of 63,542 chromosome number records across 56 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;M University.
+canonical: https://coleoguy.github.io/cures-karyotype-database.html
+keywords: karyotype, chromosome number, CUREs, database, Blackmon Lab, Texas A&M, evolutionary biology
+extra_head: |
+  <style>
+  /* Scope the database app so it doesn't clash with site main.css */
+  .db-app { font-family:'Space Grotesk',sans-serif; color:#c8c5c0; min-height:80vh; }
+  .db-app a:not(.sitename):not(.logo):not(.nav-cta) { color:#c9a227; text-decoration:none; }
+  .db-app a:not(.sitename):not(.logo):not(.nav-cta):hover { text-decoration:underline; }
+  
+  /* Old custom header styles removed — now using site header */
+  
+  /* LAYOUT */
+  .db-container { display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 56px - 48px); }
+  @media(max-width:900px) { .db-container { grid-template-columns:1fr; } }
+  
+  /* SIDEBAR */
+  .sidebar { background:#1e1c19; border-right:1px solid #2a2825; padding:20px; position:sticky; top:0; height:calc(100vh - 56px); overflow-y:auto; }
+  .sidebar h3 { color:#c9a227; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; margin-top:16px; }
+  .sidebar h3:first-child { margin-top:0; }
+  .record-count { font-size:42px; font-weight:700; color:#c9a227; line-height:1.1; }
+  .record-label { font-size:12px; color:#a09d98; margin-bottom:16px; }
+  select, .search-input {
+    width:100%; padding:8px 10px; background:#141311; border:1px solid #2a2825;
+    color:#c8c5c0; border-radius:4px; font-family:inherit; font-size:13px; margin-bottom:8px;
+  }
+  select:focus, .search-input:focus { border-color:#c9a227; outline:none; }
+  .reset-btn {
+    width:100%; padding:8px; background:transparent; border:1px solid #c9a227;
+    color:#c9a227; border-radius:4px; cursor:pointer; font-family:inherit; font-size:12px;
+    text-transform:uppercase; letter-spacing:0.5px; margin-top:12px;
+  }
+  .reset-btn:hover { background:#c9a227; color:#141311; }
+  .repo-link {
+    display:block; margin-top:14px; padding:8px 10px; text-align:center;
+    background:transparent; border:1px solid #2a2825; color:#a09d98 !important;
+    border-radius:4px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px;
+    text-decoration:none !important; transition:all 0.15s ease;
+  }
+  .repo-link:hover { border-color:#c9a227; color:#c9a227 !important; text-decoration:none !important; }
+  .repo-link i { margin-right:6px; font-size:13px; vertical-align:-1px; }
+  .light-mode .repo-link { border-color:#d5d0c8; color:#6b6b6b !important; }
+  .light-mode .repo-link:hover { border-color:#c9a227; color:#8b7a2e !important; }
+  
+  /* Citation block on Overview tab */
+  .cite-box { background:#1e1c19; border:1px solid #2a2825; border-radius:6px; padding:16px 18px; }
+  .cite-ref { font-size:13px; line-height:1.55; color:#c8c5c0; margin:0 0 10px 0; }
+  .cite-ref a { color:#c9a227; }
+  .cite-toggle {
+    background:transparent; border:1px solid #c9a227; color:#c9a227;
+    padding:5px 12px; border-radius:4px; font-size:11px; font-family:inherit;
+    text-transform:uppercase; letter-spacing:0.5px; cursor:pointer;
+  }
+  .cite-toggle:hover { background:#c9a227; color:#141311; }
+  .cite-bib {
+    margin-top:12px; padding:12px; background:#141311; border:1px solid #2a2825;
+    border-radius:4px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size:11.5px; color:#c8c5c0; overflow-x:auto; white-space:pre-wrap; word-break:break-word;
+  }
+  .light-mode .cite-box { background:#f0ede8; border-color:#d5d0c8; }
+  .light-mode .cite-ref { color:#3a3a3a; }
+  .light-mode .cite-ref a { color:#8b7a2e; }
+  .light-mode .cite-bib { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
+  
+  /* MAIN */
+  .main { padding:24px; overflow-x:auto; }
+  
+  /* TABS */
+  .tabs { display:flex; gap:0; border-bottom:1px solid #2a2825; margin-bottom:24px; }
+  .tab {
+    padding:10px 20px; font-size:13px; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.5px; cursor:pointer; color:#a09d98; border-bottom:2px solid transparent;
+    transition:all 0.2s;
+  }
+  .tab:hover { color:#c8c5c0; }
+  .tab.active { color:#c9a227; border-bottom-color:#c9a227; }
+  .tab-content { display:none; }
+  .tab-content.active { display:block; }
+  
+  /* OVERVIEW CARDS */
+  .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:24px; }
+  .card {
+    background:#1e1c19; border:1px solid #2a2825; border-radius:6px; padding:20px;
+  }
+  .card-value { font-size:32px; font-weight:700; color:#c9a227; }
+  .card-label { font-size:12px; color:#a09d98; margin-top:4px; text-transform:uppercase; letter-spacing:0.5px; }
+  
+  /* TABLE */
+  .table-controls { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px; }
+  .csv-btn {
+    padding:6px 14px; background:#c9a227; color:#141311; border:none; border-radius:4px;
+    cursor:pointer; font-family:inherit; font-size:12px; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.5px;
+  }
+  .csv-btn:hover { background:#b08d1f; }
+  .page-info { color:#a09d98; font-size:13px; }
+  table { width:100%; border-collapse:collapse; }
+  thead th {
+    text-align:left; padding:10px 12px; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.5px; color:#a09d98; border-bottom:1px solid #2a2825; cursor:pointer;
+    user-select:none; white-space:nowrap;
+  }
+  thead th:hover { color:#c9a227; }
+  thead th .sort-arrow { font-size:10px; margin-left:4px; }
+  tbody td {
+    padding:8px 12px; font-size:13px; border-bottom:1px solid rgba(42,40,37,0.5);
+  }
+  tbody tr:hover { background:rgba(201,162,39,0.05); }
+  .species-name { font-style:italic; }
+  .clade-badge {
+    display:inline-block; padding:2px 8px; background:rgba(201,162,39,0.15);
+    color:#c9a227; border-radius:3px; font-size:11px; font-weight:500;
+  }
+  .pagination { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:16px; }
+  .page-btn {
+    padding:6px 12px; background:#1e1c19; border:1px solid #2a2825; color:#c8c5c0;
+    border-radius:4px; cursor:pointer; font-family:inherit; font-size:12px;
+  }
+  .page-btn:hover { border-color:#c9a227; color:#c9a227; }
+  .page-btn:disabled { opacity:0.3; cursor:default; }
+  .page-btn.active { background:#c9a227; color:#141311; border-color:#c9a227; }
+  
+  /* PLOT */
+  #plotArea { width:100%; min-height:500px; }
+  
+  /* OVERVIEW EXTRAS */
+  .clade-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:8px; margin-top:16px; }
+  .clade-item {
+    display:flex; justify-content:space-between; padding:8px 12px;
+    background:#1e1c19; border:1px solid #2a2825; border-radius:4px; font-size:12px;
+  }
+  .clade-item-name { color:#c8c5c0; }
+  .clade-item-count { color:#c9a227; font-weight:600; }
+  
+  /* DB FOOTER (internal data footer) */
+  .db-footer {
+    background:#141311; border-top:1px solid #2a2825; padding:14px 24px;
+    display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#a09d98;
+    flex-wrap:wrap; gap:8px;
+  }
+  /* ── Light-mode overrides for the database app ── */
+  .light-mode .db-app { color:#3a3a3a; }
+  .light-mode .sidebar { background:#f0ede8; border-right-color:#d5d0c8; }
+  .light-mode .sidebar h3 { color:#8b7a2e; }
+  .light-mode .record-count { color:#8b7a2e; }
+  .light-mode .record-label { color:#6b6b6b; }
+  .light-mode select, .light-mode .search-input { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
+  .light-mode select:focus, .light-mode .search-input:focus { border-color:#c9a227; }
+  .light-mode .tab { color:#6b6b6b; }
+  .light-mode .tab:hover { color:#3a3a3a; }
+  .light-mode .tab.active { color:#8b7a2e; border-bottom-color:#c9a227; }
+  .light-mode .card { background:#f0ede8; border-color:#d5d0c8; }
+  .light-mode .card-value { color:#8b7a2e; }
+  .light-mode .card-label { color:#6b6b6b; }
+  .light-mode thead th { color:#6b6b6b; border-bottom-color:#d5d0c8; }
+  .light-mode thead th:hover { color:#8b7a2e; }
+  .light-mode tbody td { border-bottom-color:rgba(0,0,0,0.08); color:#3a3a3a; }
+  .light-mode tbody tr:hover { background:rgba(201,162,39,0.08); }
+  .light-mode .clade-badge { background:rgba(201,162,39,0.12); color:#8b7a2e; }
+  .light-mode .page-btn { background:#f0ede8; border-color:#d5d0c8; color:#3a3a3a; }
+  .light-mode .page-btn:hover { border-color:#c9a227; color:#8b7a2e; }
+  .light-mode .page-btn.active { background:#c9a227; color:#fff; }
+  .light-mode .page-info { color:#6b6b6b; }
+  .light-mode .clade-item { background:#f0ede8; border-color:#d5d0c8; }
+  .light-mode .clade-item-name { color:#3a3a3a; }
+  .light-mode .clade-item-count { color:#8b7a2e; }
+  .light-mode .db-footer { background:#f0ede8; border-top-color:#d5d0c8; color:#6b6b6b; }
+  .light-mode .tabs { border-bottom-color:#d5d0c8; }
+  .light-mode .db-container { border-color:#d5d0c8; }
+  .light-mode #plotType { background:#fff; border-color:#d5d0c8; color:#3a3a3a; }
+  
+  /* Citation cell: truncate by default, expand on click */
+  .cite-cell { max-width:360px; color:#a09d98; font-size:12px; line-height:1.35; cursor:pointer; }
+  .cite-cell .cite-text {
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow:hidden; text-overflow:ellipsis;
+  }
+  .cite-cell.expanded .cite-text { display:block; -webkit-line-clamp:unset; overflow:visible; }
+  .cite-cell:hover { color:#c9a227; }
+  .light-mode .cite-cell { color:#6b6b6b; }
+  .light-mode .cite-cell:hover { color:#8b7a2e; }
+  </style>
+---
 
 <div class="db-app" style="padding-top: 70px;">
 <div class="db-container">
@@ -347,339 +290,3 @@ tbody tr:hover { background:rgba(201,162,39,0.05); }
   <div>CUREs Karyotype Database v1.1 &middot; April 2026</div>
 </div>
 </div><!-- /.db-app -->
-
-<footer class="site-footer">
-  <div class="container">
-    <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-  </div>
-</footer>
-
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-<!-- Site JS -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/js/main.js"></script>
-
-<script>
-let DATA = [];
-const CLADES = ["Accipitriformes", "Anabantiformes", "Anura", "Araneae", "Asteraceae", "Blattodea", "Brassicaceae", "Bryophyta", "Carabidae", "Carnivora", "Caudata", "Cetacea", "Characidae", "Chiroptera", "Chondrichthyes", "Chrysomelidae", "Cichlidae", "Coccinellidae", "Cricetidae", "Curculionidae", "Cyprinidae", "Drosophilidae", "Dytiscidae", "Fabaceae", "Fungi", "Galliformes", "Gekkonidae", "Gobiidae", "Gymnospermae", "Hemiptera", "Hydrophilidae", "Hymenoptera", "Iguania", "Lepidoptera", "Liliaceae", "Magnoliaceae", "Marsupialia", "Muridae", "Nothobranchiidae", "Odonata", "Orchidaceae", "Orthoptera", "Passeriformes", "Passifloraceae", "Phasmatodea", "Primates", "Pteridophyta", "Rubiaceae", "Scarabidae", "Scincoidea", "Scorpiones", "Serpentes", "Siluriformes", "Solanaceae", "Tenebrionidae", "Testudines"];
-
-const CITATIONS = {
-  "Accipitriformes": "Alfieri, J., Bolwerk, K., & Blackmon, H., 2024. From Micro to Macro: Avian Chromosome Evolution is Dominated by Natural Selection. bioRxiv https://doi.org/10.1101/2024.11.29.626112",
-  "Anabantiformes": "Fish Karyome Database, mail.nbfgr.res.in/Fish_Karyome/; Arai, R. (2011) Fish Karyotypes: A Check List. Springer, Tokyo, 97-116. https://doi.org/10.1007/978-4-431-53877-6",
-  "Anura": "Perkins, R.D., Gamboa, J.R., Jonika, M.M., Lo, J., Shum, A., Adams, R.H. and Blackmon, H., 2019. A database of amphibian karyotypes. Chromosome Research, 27(4), pp.313-319.",
-  "Araneae": "Spider Database, Arthropoda Cytogenetics.",
-  "Asteraceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Blattodea": "Sylvester, T., Hjelmen, C.E., Hanrahan, S.J., Lenhart, P.A., Johnston, J.S. and Blackmon, H., 2020. Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects. Proceedings of the Royal Society B, 287(1935), p.20201388.",
-  "Brassicaceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Bryophyta": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Carabidae": "Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. The Coleopterists Bulletin, 69(1), pp.174-175.",
-  "Carnivora": "Jonika, M.M., Wilhoit, K.T., Chin, M., Arekere, A., and Blackmon, H., 2024. Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora. Journal of Heredity, 115(5), pp.524-531. https://doi.org/10.1093/jhered/esae025",
-  "Caudata": "Perkins, R.D., Gamboa, J.R., Jonika, M.M., Lo, J., Shum, A., Adams, R.H. and Blackmon, H., 2019. A database of amphibian karyotypes. Chromosome Research, 27(4), pp.313-319.",
-  "Cetacea": "Karyotype.org",
-  "Characidae": "Fish Karyome Database, mail.nbfgr.res.in/Fish_Karyome/; Arai, R. (2011) Fish Karyotypes: A Check List. Springer, Tokyo, 97-116. https://doi.org/10.1007/978-4-431-53877-6",
-  "Chiroptera": "Jonika, M.M., Wilhoit, K.T., Chin, M., Arekere, A., and Blackmon, H., 2024. Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora. Journal of Heredity, 115(5), pp.524-531. https://doi.org/10.1093/jhered/esae025",
-  "Chondrichthyes": "Fish Karyome Database, mail.nbfgr.res.in/Fish_Karyome/; Arai, R. (2011) Fish Karyotypes: A Check List. Springer, Tokyo, 97-116. https://doi.org/10.1007/978-4-431-53877-6",
-  "Chrysomelidae": "Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. The Coleopterists Bulletin, 69(1), pp.174-175.",
-  "Cichlidae": "Fish Karyome Database, mail.nbfgr.res.in/Fish_Karyome/; Arai, R. (2011) Fish Karyotypes: A Check List. Springer, Tokyo, 97-116. https://doi.org/10.1007/978-4-431-53877-6",
-  "Coccinellidae": "Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. The Coleopterists Bulletin, 69(1), pp.174-175.",
-  "Cricetidae": "Jonika, M.M., Wilhoit, K.T., Chin, M., Arekere, A., and Blackmon, H., 2024. Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora. Journal of Heredity, 115(5), pp.524-531. https://doi.org/10.1093/jhered/esae025",
-  "Curculionidae": "Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. The Coleopterists Bulletin, 69(1), pp.174-175.",
-  "Cyprinidae": "Fish Karyome Database, mail.nbfgr.res.in/Fish_Karyome/; Arai, R. (2011) Fish Karyotypes: A Check List. Springer, Tokyo, 97-116. https://doi.org/10.1007/978-4-431-53877-6",
-  "Drosophilidae": "Morelli, M.W., Blackmon, H., and Hjelmen, C.E. Diptera and Drosophila karyotype database. Frontiers in Ecology and Evolution. doi:10.3389",
-  "Dytiscidae": "Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. The Coleopterists Bulletin, 69(1), pp.174-175.",
-  "Fabaceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Fungi": "Zolan, M.E., 1995. Chromosome-length polymorphism in fungi. Microbiological Reviews, 59(4), pp.686-698.",
-  "Galliformes": "Alfieri, J.M., Hingoranee, R., Athrey, G.N., and Blackmon, H., 2024. Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes). Journal of Heredity. https://doi.org/10.1093/jhered/esad059",
-  "Gekkonidae": "Roman-Palacios, C. ACC: Amphibian, Chelonian, and Squamate Chromosome Count Database. https://cromanpa94.github.io/ACC/",
-  "Gobiidae": "Fish Karyome Database, mail.nbfgr.res.in/Fish_Karyome/; Arai, R. (2011) Fish Karyotypes: A Check List. Springer, Tokyo, 97-116. https://doi.org/10.1007/978-4-431-53877-6",
-  "Gymnospermae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Hemiptera": "Tree of Sex Consortium, 2014. Tree of sex: a database of sexual systems. Scientific Data, 1, p.140015.",
-  "Hydrophilidae": "Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. The Coleopterists Bulletin, 69(1), pp.174-175.",
-  "Hymenoptera": "Cardoso, D.C., Santos, H.G., Cristiano, M.P. The Ant Chromosome database - ACdb: an online resource for ant (Hymenoptera: Formicidae) chromosome researchers. Myrmecological News, 2018;27:87-91. doi:10.25849/myrmecol.news_027:087",
-  "Iguania": "Roman-Palacios, C. ACC: Amphibian, Chelonian, and Squamate Chromosome Count Database. https://cromanpa94.github.io/ACC/",
-  "Lepidoptera": "Lewis, J.J., et al. A global phylogeny of butterflies reveals their evolutionary history, ancestral host plants and biogeographic origins. https://www.pnas.org/doi/full/10.1073/pnas.1907847116",
-  "Liliaceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Magnoliaceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Marsupialia": "Blackmon, H., Justison, J., Mayrose, I., and Goldberg, E.E. Meiotic drive shapes rates of karyotype evolution in mammals. Evolution, 73(3), pp.511-523. https://doi.org/10.1111/evo.13682",
-  "Muridae": "Jonika, M.M., Wilhoit, K.T., Chin, M., Arekere, A., and Blackmon, H., 2024. Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora. Journal of Heredity, 115(5), pp.524-531. https://doi.org/10.1093/jhered/esae025",
-  "Nothobranchiidae": "Fish Karyome Database, mail.nbfgr.res.in/Fish_Karyome/; Arai, R. (2011) Fish Karyotypes: A Check List. Springer, Tokyo, 97-116. https://doi.org/10.1007/978-4-431-53877-6",
-  "Odonata": "Kuznetsova, V.G., & Golub, N.V. (2020). A checklist of chromosome numbers and a review of karyotype variation in Odonata of the world. Comparative Cytogenetics, 14(4), 501-540. https://doi.org/10.3897/CompCytogen.v14i4.57062",
-  "Orchidaceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Orthoptera": "Polyneoptera Database. https://evobir.shinyapps.io/PolyneopteraDB/",
-  "Passeriformes": "Alfieri, J., Bolwerk, K., & Blackmon, H., 2024. From Micro to Macro: Avian Chromosome Evolution is Dominated by Natural Selection. bioRxiv https://doi.org/10.1101/2024.11.29.626112",
-  "Passifloraceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Phasmatodea": "Sylvester, T., Hjelmen, C.E., Hanrahan, S.J., Lenhart, P.A., Johnston, J.S. and Blackmon, H., 2020. Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects. Proceedings of the Royal Society B, 287(1935). doi:10.1098/rspb.2020.1388",
-  "Primates": "Jonika, M.M., Wilhoit, K.T., Chin, M., Arekere, A., and Blackmon, H., 2024. Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora. Journal of Heredity, 115(5), pp.524-531. https://doi.org/10.1093/jhered/esae025; Karyotype.org",
-  "Pteridophyta": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Rubiaceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Scarabidae": "Chien, S. and Blackmon, H. Chromosomal Rearrangements: Tempo and Mode of Karyotype Evolution in Scarabaeoidea.",
-  "Scincoidea": "Roman-Palacios, C. ACC: Amphibian, Chelonian, and Squamate Chromosome Count Database. https://cromanpa94.github.io/ACC/",
-  "Scorpiones": "Scorpion Database, Arthropoda Cytogenetics.",
-  "Serpentes": "Roman-Palacios, C. ACC: Amphibian, Chelonian, and Squamate Chromosome Count Database. https://cromanpa94.github.io/ACC/",
-  "Siluriformes": "Fish Karyome Database, mail.nbfgr.res.in/Fish_Karyome/; Arai, R. (2011) Fish Karyotypes: A Check List. Springer, Tokyo, 97-116. https://doi.org/10.1007/978-4-431-53877-6",
-  "Solanaceae": "Chromosome Counts Database (CCDB). https://ccdb.tau.ac.il/",
-  "Tenebrionidae": "Blackmon, H. and Demuth, J.P., 2015. Coleoptera karyotype database. The Coleopterists Bulletin, 69(1), pp.174-175.",
-  "Testudines": "Roman-Palacios, C. ACC: Amphibian, Chelonian, and Squamate Chromosome Count Database. https://cromanpa94.github.io/ACC/"
-};
-const PER_PAGE = 100;
-let filtered = DATA;
-let sortCol = null, sortAsc = true;
-let currentPage = 1;
-
-// Populate clade filter
-const cladeSelect = document.getElementById('cladeFilter');
-CLADES.forEach(c => {
-  const o = document.createElement('option');
-  o.value = c; o.textContent = c;
-  cladeSelect.appendChild(o);
-});
-
-function applyFilters() {
-  const clade = cladeSelect.value;
-  const search = document.getElementById('searchBox').value.toLowerCase().trim();
-  filtered = DATA.filter(d => {
-    if (clade && d.c !== clade) return false;
-    if (search && !d.s.toLowerCase().includes(search)) return false;
-    return true;
-  });
-  if (sortCol) {
-    filtered.sort((a, b) => {
-      let va = sortCol === 'cit' ? (CITATIONS[a.c] || '') : a[sortCol];
-      let vb = sortCol === 'cit' ? (CITATIONS[b.c] || '') : b[sortCol];
-      if (typeof va === 'string') va = va.toLowerCase();
-      if (typeof vb === 'string') vb = vb.toLowerCase();
-      if (va < vb) return sortAsc ? -1 : 1;
-      if (va > vb) return sortAsc ? 1 : -1;
-      return 0;
-    });
-  }
-  currentPage = 1;
-  updateAll();
-}
-
-function updateAll() {
-  updateCount();
-  updateOverview();
-  renderTable();
-  renderPlot();
-}
-
-function updateCount() {
-  document.getElementById('recCount').textContent = filtered.length.toLocaleString();
-}
-
-function updateOverview() {
-  const n = filtered.length;
-  document.getElementById('statRecords').textContent = n.toLocaleString();
-  const species = new Set(filtered.map(d => d.s));
-  document.getElementById('statSpecies').textContent = species.size.toLocaleString();
-  const clades = new Set(filtered.map(d => d.c));
-  document.getElementById('statClades').textContent = clades.size.toLocaleString();
-  if (n > 0) {
-    const haps = filtered.map(d => d.h).sort((a,b) => a-b);
-    const med = n % 2 === 0 ? (haps[n/2-1] + haps[n/2]) / 2 : haps[Math.floor(n/2)];
-    document.getElementById('statMedian').textContent = med;
-    document.getElementById('statRange').textContent = haps[0] + ' – ' + haps[n-1];
-  } else {
-    document.getElementById('statMedian').textContent = '—';
-    document.getElementById('statRange').textContent = '—';
-  }
-  // Clade grid
-  const cladeCounts = {};
-  filtered.forEach(d => { cladeCounts[d.c] = (cladeCounts[d.c] || 0) + 1; });
-  const grid = document.getElementById('cladeGrid');
-  const entries = Object.entries(cladeCounts).sort((a,b) => b[1] - a[1]);
-  grid.innerHTML = entries.map(([c, n]) =>
-    `<div class="clade-item"><span class="clade-item-name">${c}</span><span class="clade-item-count">${n.toLocaleString()}</span></div>`
-  ).join('');
-}
-
-function renderTable() {
-  const start = (currentPage - 1) * PER_PAGE;
-  const end = Math.min(start + PER_PAGE, filtered.length);
-  const tbody = document.getElementById('tableBody');
-  let html = '';
-  for (let i = start; i < end; i++) {
-    const d = filtered[i];
-    const cite = CITATIONS[d.c] || "";
-    html += `<tr><td><span class="clade-badge">${d.c}</span></td><td class="species-name">${d.s}</td><td>${d.h}</td><td class="cite-cell" title="Click to expand"><span class="cite-text">${cite}</span></td></tr>`;
-  }
-  tbody.innerHTML = html;
-  tbody.querySelectorAll('.cite-cell').forEach(c => {
-    c.addEventListener('click', () => c.classList.toggle('expanded'));
-  });
-  document.getElementById('pageInfo').textContent =
-    filtered.length > 0 ? `Showing ${start+1}–${end} of ${filtered.length.toLocaleString()}` : 'No records';
-  renderPagination();
-}
-
-function renderPagination() {
-  const totalPages = Math.ceil(filtered.length / PER_PAGE);
-  const pag = document.getElementById('pagination');
-  if (totalPages <= 1) { pag.innerHTML = ''; return; }
-  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>&#9664; Prev</button>`;
-  // Show smart page range
-  const pages = [];
-  pages.push(1);
-  for (let p = Math.max(2, currentPage - 2); p <= Math.min(totalPages - 1, currentPage + 2); p++) pages.push(p);
-  if (totalPages > 1) pages.push(totalPages);
-  const unique = [...new Set(pages)].sort((a,b) => a-b);
-  let last = 0;
-  unique.forEach(p => {
-    if (p - last > 1) html += `<span style="color:#a09d98">…</span>`;
-    html += `<button class="page-btn ${p===currentPage?'active':''}" onclick="goPage(${p})">${p}</button>`;
-    last = p;
-  });
-  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''}>Next &#9654;</button>`;
-  pag.innerHTML = html;
-}
-
-window.goPage = function(p) {
-  const totalPages = Math.ceil(filtered.length / PER_PAGE);
-  if (p < 1 || p > totalPages) return;
-  currentPage = p;
-  renderTable();
-  document.getElementById('tab-table').scrollIntoView({behavior:'smooth', block:'start'});
-};
-
-function renderPlot() {
-  const plotType = document.getElementById('plotType').value;
-  const plotArea = document.getElementById('plotArea');
-  const isLight = document.body.classList.contains('light-mode');
-  const layout = {
-    paper_bgcolor: isLight ? '#ffffff' : '#1a1916',
-    plot_bgcolor:  isLight ? '#ffffff' : '#1a1916',
-    font:{ family:'Space Grotesk', color: isLight ? '#3a3a3a' : '#c8c5c0' },
-    margin:{ t:40, r:20, b:60, l:60 },
-    xaxis:{ gridcolor: isLight ? '#e0ddd6' : '#2a2825', zerolinecolor: isLight ? '#d5d0c8' : '#2a2825' },
-    yaxis:{ gridcolor: isLight ? '#e0ddd6' : '#2a2825', zerolinecolor: isLight ? '#d5d0c8' : '#2a2825' },
-  };
-
-  if (plotType === 'histogram') {
-    const haps = filtered.map(d => d.h).filter(h => h > 0 && h <= 200);
-    Plotly.newPlot(plotArea, [{
-      x: haps, type:'histogram',
-      marker:{ color:'#c9a227' },
-      xbins:{ size:1 },
-    }], {
-      ...layout,
-      title:{ text:'Distribution of Haploid Chromosome Numbers', font:{ size:16, color:'#c9a227' } },
-      xaxis:{ ...layout.xaxis, title:'Haploid Number' },
-      yaxis:{ ...layout.yaxis, title:'Count' },
-    }, { responsive:true });
-  } else if (plotType === 'bar') {
-    const counts = {};
-    filtered.forEach(d => { counts[d.c] = (counts[d.c] || 0) + 1; });
-    const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
-    Plotly.newPlot(plotArea, [{
-      x: sorted.map(e => e[0]), y: sorted.map(e => e[1]),
-      type:'bar', marker:{ color:'#c9a227' },
-    }], {
-      ...layout,
-      title:{ text:'Records per Clade', font:{ size:16, color:'#c9a227' } },
-      xaxis:{ ...layout.xaxis, tickangle:-45 },
-      yaxis:{ ...layout.yaxis, title:'Number of Records' },
-    }, { responsive:true });
-  } else if (plotType === 'box') {
-    // Group by clade, show top 20 by count
-    const groups = {};
-    filtered.forEach(d => { if (!groups[d.c]) groups[d.c] = []; groups[d.c].push(d.h); });
-    const top = Object.entries(groups).sort((a,b) => b[1].length - a[1].length).slice(0, 20);
-    const traces = top.map(([clade, vals]) => ({
-      y: vals, name: clade, type:'box',
-      marker:{ color:'#c9a227' }, line:{ color:'#c9a227' },
-      boxpoints:false,
-    }));
-    Plotly.newPlot(plotArea, traces, {
-      ...layout,
-      title:{ text:'Haploid Number by Clade (top 20)', font:{ size:16, color:'#c9a227' } },
-      showlegend:false,
-      yaxis:{ ...layout.yaxis, title:'Haploid Number' },
-      xaxis:{ ...layout.xaxis, tickangle:-45 },
-    }, { responsive:true });
-  }
-}
-
-// Event listeners
-cladeSelect.addEventListener('change', applyFilters);
-document.getElementById('searchBox').addEventListener('input', applyFilters);
-document.getElementById('resetBtn').addEventListener('click', () => {
-  cladeSelect.value = '';
-  document.getElementById('searchBox').value = '';
-  sortCol = null; sortAsc = true;
-  applyFilters();
-});
-
-// Tabs
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-    if (tab.dataset.tab === 'plot') setTimeout(renderPlot, 50);
-  });
-});
-
-// Sort
-document.querySelectorAll('thead th').forEach(th => {
-  th.addEventListener('click', () => {
-    const col = th.dataset.col;
-    if (sortCol === col) sortAsc = !sortAsc;
-    else { sortCol = col; sortAsc = true; }
-    // Update arrows
-    document.querySelectorAll('.sort-arrow').forEach(s => s.textContent = '');
-    th.querySelector('.sort-arrow').textContent = sortAsc ? ' ▲' : ' ▼';
-    applyFilters();
-  });
-});
-
-// CSV download
-document.getElementById('csvBtn').addEventListener('click', () => {
-  let csv = 'Clade,Species,Haploid,Citation\n';
-  filtered.forEach(d => {
-    const cite = (CITATIONS[d.c] || '').replace(/"/g, '""');
-    csv += `"${d.c}","${d.s}",${d.h},"${cite}"\n`;
-  });
-  const blob = new Blob([csv], { type:'text/csv' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'cures_karyotype_data.csv';
-  a.click();
-});
-
-// Plot type change
-document.getElementById('plotType').addEventListener('change', renderPlot);
-
-// Citation BibTeX toggle
-(() => {
-  const btn = document.getElementById('citeBibBtn');
-  const bib = document.getElementById('citeBib');
-  if (btn && bib) {
-    btn.addEventListener('click', () => {
-      const shown = !bib.hasAttribute('hidden');
-      if (shown) { bib.setAttribute('hidden', ''); btn.textContent = 'Show BibTeX'; }
-      else { bib.removeAttribute('hidden'); btn.textContent = 'Hide BibTeX'; }
-    });
-  }
-})();
-
-// Init
-// Init: fetch data, then bootstrap UI
-fetch('data/cures-karyotype-data.json')
-  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  .then(d => { DATA = d; filtered = DATA; applyFilters(); })
-  .catch(err => {
-    console.error('Failed to load karyotype data:', err);
-    const tbody = document.getElementById('tableBody');
-    if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="padding:30px;text-align:center;color:#c9a227">Could not load karyotype data. Please refresh.</td></tr>';
-  });
-
-// Re-render plot when theme changes (light ↔ dark)
-new MutationObserver(() => renderPlot()).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-</script>
-</body>
-</html>

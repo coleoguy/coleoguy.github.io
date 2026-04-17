@@ -161,7 +161,6 @@ Software, datasets, teaching materials, and tools produced by our lab.
 - TraitTrawler AI-powered trait data collection from the literature
 - AI Tools for Biologists Curated tools for data-driven biology
 - AI Prompting Guide Paper review, qual exam simulation, and more
-- Karyotype Data Agent Autonomous literature-mining agent for cytogenetic records
 - All AI Projects →
 
 #### Courses & Teaching
@@ -206,8 +205,8 @@ All databases, code, and workflows are published openly so other comparative bio
 
 ### Research projects
 Active and recent projects using AI tools in the lab.
-Autonomous Karyotype Data Collector
-An autonomous agent that searches PubMed and CrossRef, triages papers with Claude Haiku, fetches PDFs via Unpaywall, and extracts structured karyotype records with Claude Sonnet. Currently at 629+ records across 144 beetle families, running 730 search terms.
+TraitTrawler
+A general-purpose autonomous literature-mining pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref, retrieves full-text PDFs through a 12-source cascade, and extracts structured trait data with mandatory double-entry verification before writing validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade. https://github.com/coleoguy/TraitTrawler
 AI as Lead Investigator
 We gave a Claude-powered agent a complete research problem in claw evolution and asked it to carry the project from hypothesis to manuscript. The goal is to understand where AI reasoning works in biology and where it breaks down. Manuscript in preparation.
 RateScape

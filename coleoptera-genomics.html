@@ -1,552 +1,489 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coleoptera Genomics — Blackmon Lab</title>
-  <meta name="description" content="A visual guide to beetle genomics — from reference genomes and chromosomal elements to dosage compensation, population genetics, and the most species-rich order on Earth.">
-  <meta property="og:title" content="Coleoptera Genomics — Blackmon Lab" />
-  <meta property="og:description" content="A visual guide to beetle genomics — reference genomes, chromosomal elements, dosage compensation, and population genetics in the most species-rich order on Earth." />
-  <meta property="og:url" content="https://coleoguy.github.io/coleoptera-genomics.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="Coleoptera, beetle genomics, insect genomes, Stevens elements, dosage compensation, Tribolium, Chrysina, population genetics">
-  <link rel="canonical" href="https://coleoguy.github.io/coleoptera-genomics.html">
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/study-systems/chrysina-beyeri.jpg">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Vendor CSS -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Site CSS -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- Playfair Display for hero -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-  <style>
-    /* ── Scroll progress bar ─────────────────────────── */
-    #scroll-progress {
-      position: fixed;
-      top: 62px;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: var(--accent, #c9a227);
-      z-index: 1050;
-      transition: width 0.05s linear;
-    }
-
-    /* ── Hero ─────────────────────────────────────────── */
-    .cg-hero {
-      padding: 140px 0 60px;
-      text-align: center;
-      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-    }
-    .cg-hero .kicker {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 14px;
-    }
-    .cg-hero h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      color: var(--text-heading, #f8f4ed);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-    .cg-hero .subtitle {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-      max-width: 700px;
-      margin: 0 auto 28px;
-    }
-    .cg-hero .hero-photo {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent, #c9a227);
-      margin-top: 18px;
-      filter: saturate(1.1);
-    }
-
-    /* ── Split-panel sections ─────────────────────────── */
-    .cg-section {
-      padding: 56px 0;
-      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-    }
-    .cg-section:nth-child(even) {
-      background: rgba(255,255,255,0.015);
-    }
-    .body-light .cg-section:nth-child(even),
-    .light-mode .cg-section:nth-child(even) {
-      background: rgba(0,0,0,0.02);
-    }
-
-    .cg-theory {
-      padding-right: 28px;
-      border-right: 1px solid rgba(201,162,39,0.15);
-    }
-    .cg-evidence {
-      padding-left: 28px;
-    }
-    @media (max-width: 991.98px) {
-      .cg-theory, .cg-evidence { padding: 0; border-right: none; }
-      .cg-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
-    }
-
-    .cg-kicker {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 6px;
-    }
-    .cg-section h2 {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--text-heading, #eae7e2);
-      margin-bottom: 16px;
-      line-height: 1.25;
-    }
-    .cg-section h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--accent, #c9a227);
-      margin: 24px 0 8px;
-    }
-    .cg-section h3:first-child { margin-top: 0; }
-    .cg-section p {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--text, #c8c5c0);
-      margin-bottom: 14px;
-    }
-    .cg-section a {
-      color: var(--accent, #c9a227);
-      text-decoration: underline;
-      text-decoration-color: rgba(201,162,39,0.4);
-      text-underline-offset: 2px;
-    }
-    .cg-section a:hover { text-decoration-color: var(--accent); }
-    .cg-section strong {
-      font-weight: 600;
-      color: var(--text-heading, #eae7e2);
-    }
-
-    .pullquote {
-      border-left: 3px solid var(--accent, #c9a227);
-      padding: 10px 18px;
-      margin: 20px 0;
-      font-style: italic;
-      font-size: 0.95rem;
-      color: var(--accent, #c9a227);
-      line-height: 1.6;
-    }
-
-    /* ── Paper masthead cards ─────────────────────────── */
-    .paper-masthead {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin-bottom: 14px;
-      transition: border-color 0.2s;
-      text-decoration: none;
-      display: block;
-    }
-    .paper-masthead:hover {
-      border-color: rgba(201,162,39,0.5);
-      text-decoration: none;
-    }
-    .paper-masthead .journal {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent, #c9a227);
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-    .paper-masthead .paper-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--text-heading, #eae7e2);
-      line-height: 1.35;
-      margin-bottom: 5px;
-    }
-    .paper-masthead .authors {
-      font-size: 0.78rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-      line-height: 1.4;
-    }
-    .paper-masthead .pub-year {
-      font-size: 0.7rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      margin-top: 4px;
-    }
-    .badge-f1000 {
-      display: inline-block;
-      background: var(--accent, #c9a227);
-      color: #080808;
-      font-size: 0.55rem;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 3px;
-      letter-spacing: 0.05em;
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-
-    /* ── Diagram containers ────────────────────────────── */
-    .diagram-box {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 24px;
-      margin: 20px 0;
-      text-align: center;
-    }
-    .diagram-box svg { max-width: 100%; height: auto; }
-    .diagram-caption {
-      font-size: 0.72rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      margin-top: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* ── SVG colors via CSS ────────────────────────────── */
-    .chr-auto { fill: #555; }
-    .chr-sex { fill: var(--accent, #c9a227); }
-    .chr-sex-dim { fill: rgba(201,162,39,0.35); }
-    .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
-    .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
-    .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
-    .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
-    .chr-arrow { fill: var(--accent, #c9a227); }
-    .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
-    .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
-    .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
-    .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
-    .chr-region { fill: rgba(201,162,39,0.12); }
-
-    .light-mode .chr-auto { fill: #bbb; }
-    .light-mode .chr-label { fill: #333; }
-    .light-mode .chr-label-sm { fill: #777; }
-    .light-mode .chr-heading { fill: #222; }
-    .light-mode .chr-line { stroke: #ccc; }
-    .light-mode .chr-line-dash { stroke: #ccc; }
-
-    /* ── Plotly chart containers ────────────────────────── */
-    .chart-box {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 16px;
-      margin: 16px 0;
-    }
-    .chart-box .chart-title {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent, #c9a227);
-      margin-bottom: 8px;
-      text-align: center;
-    }
-
-    /* ── Stat callout ──────────────────────────────────── */
-    .stat-callout {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin: 12px 0;
-    }
-    .stat-callout .stat-num {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--accent, #c9a227);
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .stat-callout .stat-text {
-      font-size: 0.82rem;
-      color: var(--text, #c8c5c0);
-      line-height: 1.4;
-    }
-
-    /* ── Toggle buttons for charts ─────────────────────── */
-    .chart-toggle {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-    .chart-toggle button {
-      font-size: 0.7rem;
-      padding: 4px 12px;
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 16px;
-      background: transparent;
-      color: var(--text, #c8c5c0);
-      cursor: pointer;
-      transition: all 0.18s;
-    }
-    .chart-toggle button.active,
-    .chart-toggle button:hover {
-      border-color: var(--accent, #c9a227);
-      color: var(--accent, #c9a227);
-      background: rgba(201,162,39,0.08);
-    }
-
-    /* ── Genome cards (NEW) ────────────────────────────── */
-    .genome-card {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-left: 4px solid var(--accent, #c9a227);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 16px;
-      transition: border-color 0.2s;
-    }
-    .genome-card:hover {
-      border-color: rgba(201,162,39,0.5);
-      border-left-color: var(--accent, #c9a227);
-    }
-    .genome-card .genome-species {
-      font-size: 1.0rem;
-      font-weight: 600;
-      font-style: italic;
-      color: var(--text-heading, #eae7e2);
-      margin-bottom: 2px;
-    }
-    .genome-card .genome-common {
-      font-size: 0.78rem;
-      color: var(--accent, #c9a227);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .genome-card .genome-family {
-      font-size: 0.72rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      margin-bottom: 10px;
-    }
-    .genome-card .genome-desc {
-      font-size: 0.85rem;
-      color: var(--text, #c8c5c0);
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-    .genome-card .genome-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-    .genome-card .genome-stat {
-      font-size: 0.72rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-    }
-    .genome-card .genome-stat strong {
-      color: var(--accent, #c9a227);
-      font-weight: 700;
-    }
-    .genome-card .genome-why {
-      font-size: 0.78rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      font-style: italic;
-      margin-top: 6px;
-    }
-    .genome-card .genome-badge {
-      display: inline-block;
-      background: rgba(201,162,39,0.12);
-      color: var(--accent, #c9a227);
-      font-size: 0.6rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    /* ── Dosage compensation mechanism cards ──────────── */
-    .mech-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 14px 0;
-    }
-    @media (max-width: 767.98px) {
-      .mech-grid { grid-template-columns: 1fr; }
-    }
-    .mech-card {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 14px;
-      text-align: center;
-    }
-    .mech-card .mech-organism {
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent, #c9a227);
-      margin-bottom: 6px;
-    }
-    .mech-card .mech-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-heading, #eae7e2);
-      margin-bottom: 4px;
-    }
-    .mech-card .mech-desc {
-      font-size: 0.75rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-      line-height: 1.45;
-    }
-
-    /* ── Related resources box ─────────────────────────── */
-    .related-box {
-      margin-top: 48px;
-      padding: 28px 32px;
-      border: 1px solid rgba(201,162,39,0.2);
-      border-radius: 10px;
-      background: rgba(201,162,39,0.03);
-    }
-    .related-box h3 {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 16px;
-    }
-    .related-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .related-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border: 1px solid rgba(201,162,39,0.25);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--text, #c8c5c0);
-      text-decoration: none;
-      transition: all 0.18s;
-    }
-    .related-link i { color: var(--accent); font-size: 0.75rem; }
-    .related-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .paper-foot {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(201,162,39,0.2);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-    }
-  </style>
-
-  <!-- Structured Data (added by audit) -->
+---
+layout: default
+title: Coleoptera Genomics — Blackmon Lab
+description: A visual guide to beetle genomics — from reference genomes and chromosomal elements to dosage compensation, population genetics, and the most species-rich order on Earth.
+canonical: https://coleoguy.github.io/coleoptera-genomics.html
+keywords: Coleoptera, beetle genomics, insect genomes, Stevens elements, dosage compensation, Tribolium, Chrysina, population genetics
+og_image: https://coleoguy.github.io/assets/img/study-systems/chrysina-beyeri.jpg
+body_class: resources-page
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Coleoptera Genomics",
-    "url": "https://coleoguy.github.io/coleoptera-genomics.html",
-    "description": "Visual guide to beetle genomics: reference genomes across coleopteran families, Stevens elements, dosage compensation, and the genomic basis of beetle species richness.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Evolutionary biology"
-    },
-    "keywords": ["Coleoptera", "beetle genomics", "Stevens elements", "dosage compensation", "comparative genomics"],
-    "publisher": {
-      "@type": "ResearchOrganization",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Coleoptera Genomics",
+      "url": "https://coleoguy.github.io/coleoptera-genomics.html",
+      "description": "Visual guide to beetle genomics: reference genomes across coleopteran families, Stevens elements, dosage compensation, and the genomic basis of beetle species richness.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Evolutionary biology"
+      },
+      "keywords": ["Coleoptera", "beetle genomics", "Stevens elements", "dosage compensation", "comparative genomics"],
+      "publisher": {
+        "@type": "ResearchOrganization",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      }
     }
-  }
-  </script>
-</head>
+    </script>
+  <style>
+      /* ── Scroll progress bar ─────────────────────────── */
+      #scroll-progress {
+        position: fixed;
+        top: 62px;
+        left: 0;
+        height: 3px;
+        width: 0%;
+        background: var(--accent, #c9a227);
+        z-index: 1050;
+        transition: width 0.05s linear;
+      }
+  
+      /* ── Hero ─────────────────────────────────────────── */
+      .cg-hero {
+        padding: 140px 0 60px;
+        text-align: center;
+        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+      }
+      .cg-hero .kicker {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 14px;
+      }
+      .cg-hero h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 700;
+        color: var(--text-heading, #f8f4ed);
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+      .cg-hero .subtitle {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+        max-width: 700px;
+        margin: 0 auto 28px;
+      }
+      .cg-hero .hero-photo {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--accent, #c9a227);
+        margin-top: 18px;
+        filter: saturate(1.1);
+      }
+  
+      /* ── Split-panel sections ─────────────────────────── */
+      .cg-section {
+        padding: 56px 0;
+        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+      }
+      .cg-section:nth-child(even) {
+        background: rgba(255,255,255,0.015);
+      }
+      .body-light .cg-section:nth-child(even),
+      .light-mode .cg-section:nth-child(even) {
+        background: rgba(0,0,0,0.02);
+      }
+  
+      .cg-theory {
+        padding-right: 28px;
+        border-right: 1px solid rgba(201,162,39,0.15);
+      }
+      .cg-evidence {
+        padding-left: 28px;
+      }
+      @media (max-width: 991.98px) {
+        .cg-theory, .cg-evidence { padding: 0; border-right: none; }
+        .cg-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
+      }
+  
+      .cg-kicker {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 6px;
+      }
+      .cg-section h2 {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: var(--text-heading, #eae7e2);
+        margin-bottom: 16px;
+        line-height: 1.25;
+      }
+      .cg-section h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--accent, #c9a227);
+        margin: 24px 0 8px;
+      }
+      .cg-section h3:first-child { margin-top: 0; }
+      .cg-section p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--text, #c8c5c0);
+        margin-bottom: 14px;
+      }
+      .cg-section a {
+        color: var(--accent, #c9a227);
+        text-decoration: underline;
+        text-decoration-color: rgba(201,162,39,0.4);
+        text-underline-offset: 2px;
+      }
+      .cg-section a:hover { text-decoration-color: var(--accent); }
+      .cg-section strong {
+        font-weight: 600;
+        color: var(--text-heading, #eae7e2);
+      }
+  
+      .pullquote {
+        border-left: 3px solid var(--accent, #c9a227);
+        padding: 10px 18px;
+        margin: 20px 0;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: var(--accent, #c9a227);
+        line-height: 1.6;
+      }
+  
+      /* ── Paper masthead cards ─────────────────────────── */
+      .paper-masthead {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 18px 20px;
+        margin-bottom: 14px;
+        transition: border-color 0.2s;
+        text-decoration: none;
+        display: block;
+      }
+      .paper-masthead:hover {
+        border-color: rgba(201,162,39,0.5);
+        text-decoration: none;
+      }
+      .paper-masthead .journal {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent, #c9a227);
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      .paper-masthead .paper-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--text-heading, #eae7e2);
+        line-height: 1.35;
+        margin-bottom: 5px;
+      }
+      .paper-masthead .authors {
+        font-size: 0.78rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+        line-height: 1.4;
+      }
+      .paper-masthead .pub-year {
+        font-size: 0.7rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        margin-top: 4px;
+      }
+      .badge-f1000 {
+        display: inline-block;
+        background: var(--accent, #c9a227);
+        color: #080808;
+        font-size: 0.55rem;
+        font-weight: 700;
+        padding: 2px 7px;
+        border-radius: 3px;
+        letter-spacing: 0.05em;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+  
+      /* ── Diagram containers ────────────────────────────── */
+      .diagram-box {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 24px;
+        margin: 20px 0;
+        text-align: center;
+      }
+      .diagram-box svg { max-width: 100%; height: auto; }
+      .diagram-caption {
+        font-size: 0.72rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+  
+      /* ── SVG colors via CSS ────────────────────────────── */
+      .chr-auto { fill: #555; }
+      .chr-sex { fill: var(--accent, #c9a227); }
+      .chr-sex-dim { fill: rgba(201,162,39,0.35); }
+      .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
+      .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
+      .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
+      .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
+      .chr-arrow { fill: var(--accent, #c9a227); }
+      .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
+      .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
+      .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
+      .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+      .chr-region { fill: rgba(201,162,39,0.12); }
+  
+      .light-mode .chr-auto { fill: #bbb; }
+      .light-mode .chr-label { fill: #333; }
+      .light-mode .chr-label-sm { fill: #777; }
+      .light-mode .chr-heading { fill: #222; }
+      .light-mode .chr-line { stroke: #ccc; }
+      .light-mode .chr-line-dash { stroke: #ccc; }
+  
+      /* ── Plotly chart containers ────────────────────────── */
+      .chart-box {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 16px;
+        margin: 16px 0;
+      }
+      .chart-box .chart-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent, #c9a227);
+        margin-bottom: 8px;
+        text-align: center;
+      }
+  
+      /* ── Stat callout ──────────────────────────────────── */
+      .stat-callout {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin: 12px 0;
+      }
+      .stat-callout .stat-num {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--accent, #c9a227);
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .stat-callout .stat-text {
+        font-size: 0.82rem;
+        color: var(--text, #c8c5c0);
+        line-height: 1.4;
+      }
+  
+      /* ── Toggle buttons for charts ─────────────────────── */
+      .chart-toggle {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .chart-toggle button {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 16px;
+        background: transparent;
+        color: var(--text, #c8c5c0);
+        cursor: pointer;
+        transition: all 0.18s;
+      }
+      .chart-toggle button.active,
+      .chart-toggle button:hover {
+        border-color: var(--accent, #c9a227);
+        color: var(--accent, #c9a227);
+        background: rgba(201,162,39,0.08);
+      }
+  
+      /* ── Genome cards (NEW) ────────────────────────────── */
+      .genome-card {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-left: 4px solid var(--accent, #c9a227);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 16px;
+        transition: border-color 0.2s;
+      }
+      .genome-card:hover {
+        border-color: rgba(201,162,39,0.5);
+        border-left-color: var(--accent, #c9a227);
+      }
+      .genome-card .genome-species {
+        font-size: 1.0rem;
+        font-weight: 600;
+        font-style: italic;
+        color: var(--text-heading, #eae7e2);
+        margin-bottom: 2px;
+      }
+      .genome-card .genome-common {
+        font-size: 0.78rem;
+        color: var(--accent, #c9a227);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .genome-card .genome-family {
+        font-size: 0.72rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        margin-bottom: 10px;
+      }
+      .genome-card .genome-desc {
+        font-size: 0.85rem;
+        color: var(--text, #c8c5c0);
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+      .genome-card .genome-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+      .genome-card .genome-stat {
+        font-size: 0.72rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+      }
+      .genome-card .genome-stat strong {
+        color: var(--accent, #c9a227);
+        font-weight: 700;
+      }
+      .genome-card .genome-why {
+        font-size: 0.78rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        font-style: italic;
+        margin-top: 6px;
+      }
+      .genome-card .genome-badge {
+        display: inline-block;
+        background: rgba(201,162,39,0.12);
+        color: var(--accent, #c9a227);
+        font-size: 0.6rem;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: 4px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+  
+      /* ── Dosage compensation mechanism cards ──────────── */
+      .mech-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 14px 0;
+      }
+      @media (max-width: 767.98px) {
+        .mech-grid { grid-template-columns: 1fr; }
+      }
+      .mech-card {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 14px;
+        text-align: center;
+      }
+      .mech-card .mech-organism {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--accent, #c9a227);
+        margin-bottom: 6px;
+      }
+      .mech-card .mech-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-heading, #eae7e2);
+        margin-bottom: 4px;
+      }
+      .mech-card .mech-desc {
+        font-size: 0.75rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+        line-height: 1.45;
+      }
+  
+      /* ── Related resources box ─────────────────────────── */
+      .related-box {
+        margin-top: 48px;
+        padding: 28px 32px;
+        border: 1px solid rgba(201,162,39,0.2);
+        border-radius: 10px;
+        background: rgba(201,162,39,0.03);
+      }
+      .related-box h3 {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 16px;
+      }
+      .related-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .related-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border: 1px solid rgba(201,162,39,0.25);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: var(--text, #c8c5c0);
+        text-decoration: none;
+        transition: all 0.18s;
+      }
+      .related-link i { color: var(--accent); font-size: 0.75rem; }
+      .related-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        text-decoration: none;
+      }
+  
+      .paper-foot {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(201,162,39,0.2);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+      }
+    </style>
+extra_scripts: |
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+---
 
-<body class="resources-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <!-- Scroll progress -->
-  <div id="scroll-progress"></div>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- ═══════════════ HERO ═══════════════ -->
+<!-- ═══════════════ HERO ═══════════════ -->
     <section class="cg-hero" data-aos="fade-up">
       <div class="container">
         <div class="kicker">A Visual Guide</div>
@@ -1438,359 +1375,3 @@
         <div class="paper-foot">Blackmon Lab &middot; Texas A&amp;M University &middot; Coleoptera Genomics</div>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-  <div id="preloader"></div>
-
-  <!-- Vendor JS -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-
-  <!-- Plotly -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
-
-  <script>
-    /* ── Scroll progress bar ─────────────────────────── */
-    (function() {
-      var bar = document.getElementById('scroll-progress');
-      if (!bar) return;
-      window.addEventListener('scroll', function() {
-        var h = document.documentElement;
-        var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-        bar.style.width = pct + '%';
-      });
-    })();
-
-    /* ── Plotly helpers ──────────────────────────────── */
-    function isLight() { return document.body.classList.contains('light-mode'); }
-    function txtColor() { return isLight() ? '#333' : '#c8c5c0'; }
-    function gridColor() { return isLight() ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'; }
-    function bgColor() { return 'rgba(0,0,0,0)'; }
-    function baseLayout(title) {
-      return {
-        title: title ? { text: title, font: { size: 13, color: txtColor() } } : undefined,
-        font: { family: 'Inter, sans-serif', color: txtColor(), size: 11 },
-        paper_bgcolor: bgColor(),
-        plot_bgcolor: bgColor(),
-        margin: { l: 50, r: 20, t: title ? 36 : 16, b: 50 },
-        xaxis: { gridcolor: gridColor(), zerolinecolor: gridColor(), tickfont: { size: 10 } },
-        yaxis: { gridcolor: gridColor(), zerolinecolor: gridColor(), tickfont: { size: 10 } }
-      };
-    }
-    var pConfig = { displaylogo: false, responsive: true, modeBarButtonsToRemove: ['lasso2d','select2d'] };
-
-    /* ── Helper: random normal ───────────────────────── */
-    function rnorm(n, mu, sd) {
-      var out = [];
-      for (var i = 0; i < n; i++) {
-        var u = 0, v = 0;
-        while (u === 0) u = Math.random();
-        while (v === 0) v = Math.random();
-        out.push(mu + sd * Math.sqrt(-2*Math.log(u)) * Math.cos(2*Math.PI*v));
-      }
-      return out;
-    }
-
-    /* ═══ CHART 1: Synteny Dot Plot ═══════════════════ */
-    (function() {
-      // Simulated synteny between Tribolium (10 chr) and another beetle (7 chr)
-      // Each dot = an orthologous gene pair
-      var colors = ['#c9a227','#7a9e3e','#4a8cb5','#b5564a','#8b6db5','#888','#666','#c9a227','#7a9e3e','#4a8cb5'];
-      var xAll = [], yAll = [], cAll = [], textAll = [];
-      var elementNames = ['S1','S2','S3','S4','S5','S6','S7','S8','S9','S10'];
-      // Map: Tribolium chr -> other species chr (with some fusions)
-      var mapping = [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,1],[9,2],[10,3]];
-      for (var m = 0; m < mapping.length; m++) {
-        var tchr = mapping[m][0];
-        var ochr = mapping[m][1];
-        var npts = 15 + Math.floor(Math.random() * 15);
-        for (var j = 0; j < npts; j++) {
-          var xv = tchr + (Math.random() - 0.5) * 0.6;
-          var yv = ochr + (Math.random() - 0.5) * 0.6;
-          xAll.push(xv);
-          yAll.push(yv);
-          cAll.push(colors[m % colors.length]);
-          textAll.push(elementNames[m]);
-        }
-      }
-      var traces = [{
-        x: xAll, y: yAll, mode: 'markers', type: 'scatter',
-        marker: { color: cAll, size: 5, opacity: 0.7 },
-        text: textAll,
-        hovertemplate: 'Tribolium chr %{x:.0f}<br>Species B chr %{y:.0f}<br>Element: %{text}<extra></extra>'
-      }];
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Tribolium castaneum chromosome', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Species B chromosome', font: { size: 11, color: txtColor() } };
-      layout.xaxis.range = [0.2, 10.8];
-      layout.yaxis.range = [0.2, 7.8];
-      layout.xaxis.dtick = 1;
-      layout.yaxis.dtick = 1;
-      layout.showlegend = false;
-      Plotly.newPlot('chart-synteny', traces, layout, pConfig);
-    })();
-
-    /* ═══ CHART 2: Coverage Scatter ═══════════════════ */
-    (function() {
-      // Simulated read depth data
-      var autoF = rnorm(300, 1.0, 0.08);
-      var autoM = rnorm(300, 1.0, 0.08);
-      var xF = rnorm(60, 1.0, 0.07);
-      var xM = rnorm(60, 0.5, 0.06);
-      var yF = rnorm(15, 0.02, 0.015);
-      var yM = rnorm(15, 0.5, 0.08);
-      // Clamp Y female near zero
-      yF = yF.map(function(v) { return Math.max(0, v); });
-
-      var traces = [
-        { x: autoF, y: autoM, mode: 'markers', name: 'Autosomes',
-          marker: { color: 'rgba(150,150,150,0.5)', size: 5 },
-          hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>Autosome</extra>' },
-        { x: xF, y: xM, mode: 'markers', name: 'X-linked',
-          marker: { color: 'rgba(201,162,39,0.8)', size: 7, symbol: 'diamond' },
-          hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>X-linked</extra>' },
-        { x: yF, y: yM, mode: 'markers', name: 'Y-linked',
-          marker: { color: 'rgba(220,80,80,0.7)', size: 7, symbol: 'square' },
-          hovertemplate: 'F: %{x:.2f}, M: %{y:.2f}<extra>Y-linked</extra>' }
-      ];
-      var shapes = [
-        { type: 'line', x0: 0, x1: 1.4, y0: 0, y1: 1.4, line: { color: 'rgba(255,255,255,0.15)', width: 1, dash: 'dot' } },
-        { type: 'line', x0: 0, x1: 1.4, y0: 0, y1: 0.7, line: { color: 'rgba(201,162,39,0.25)', width: 1, dash: 'dot' } }
-      ];
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Female Normalized Read Depth', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Male Normalized Read Depth', font: { size: 11, color: txtColor() } };
-      layout.xaxis.range = [-0.1, 1.45];
-      layout.yaxis.range = [-0.1, 1.45];
-      layout.shapes = shapes;
-      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
-      Plotly.newPlot('chart-coverage', traces, layout, pConfig);
-    })();
-
-    /* ═══ CHART 3: Expression Ratio Violin ════════════ */
-    var exprData = {
-      tribolium: {
-        autosomal: rnorm(300, 1.0, 0.18),
-        xlinked: rnorm(80, 0.72, 0.18),
-        note: 'Tribolium: incomplete dosage compensation'
-      },
-      dendroctonus: {
-        autosomal: rnorm(300, 1.0, 0.17),
-        xlinked: rnorm(80, 0.88, 0.20),
-        note: 'Dendroctonus: moderate compensation'
-      },
-      chrysina: {
-        autosomal: rnorm(300, 1.0, 0.19),
-        xlinked: rnorm(80, 0.60, 0.16),
-        note: 'Chrysina: minimal compensation'
-      }
-    };
-
-    function showExprMode(mode) {
-      var btns = document.querySelectorAll('#expr-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      var idx = mode === 'tribolium' ? 0 : mode === 'dendroctonus' ? 1 : 2;
-      btns[idx].classList.add('active');
-
-      var d = exprData[mode];
-      var traces = [
-        { y: d.autosomal, type: 'violin', name: 'Autosomal', side: 'positive',
-          line: { color: 'rgba(150,150,150,0.7)' }, fillcolor: 'rgba(150,150,150,0.2)',
-          meanline: { visible: true }, box: { visible: true }, bandwidth: 0.06 },
-        { y: d.xlinked, type: 'violin', name: 'X-linked', side: 'positive',
-          line: { color: '#c9a227' }, fillcolor: 'rgba(201,162,39,0.2)',
-          meanline: { visible: true }, box: { visible: true }, bandwidth: 0.06 }
-      ];
-      var layout = baseLayout('');
-      layout.yaxis.title = { text: 'Male : Female Expression Ratio', font: { size: 11, color: txtColor() } };
-      layout.yaxis.range = [0, 2.0];
-      layout.legend = { x: 0.65, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
-      layout.shapes = [{ type: 'line', x0: -0.5, x1: 2, y0: 1, y1: 1,
-        line: { color: 'rgba(255,255,255,0.2)', width: 1, dash: 'dash' } }];
-      layout.annotations = [{ x: 0.5, y: -0.14, xref: 'paper', yref: 'paper',
-        text: d.note, showarrow: false, font: { size: 10, color: txtColor(), style: 'italic' } }];
-      Plotly.react('chart-expression', traces, layout, pConfig);
-    }
-    showExprMode('tribolium');
-
-    /* ═══ CHART 4: PSMC Ne Through Time ═══════════════ */
-    var psmcData = {};
-    (function() {
-      // Time points (log scale, years ago)
-      var times = [];
-      for (var t = 3; t <= 7; t += 0.1) { times.push(Math.pow(10, t)); }
-
-      // Dendroctonus: large Ne, expansion
-      var dendNe = times.map(function(t) {
-        return 500000 + 200000 * Math.sin(Math.log10(t) * 2) + 100000 * Math.cos(Math.log10(t) * 3);
-      });
-      // Chrysina: moderate Ne, bottleneck
-      var chrNe = times.map(function(t) {
-        var base = 100000;
-        if (t > 30000 && t < 200000) base = 30000; // bottleneck
-        return base + 20000 * Math.sin(Math.log10(t) * 1.5);
-      });
-      // Endemic flightless species: small Ne, declining
-      var endNe = times.map(function(t) {
-        return Math.max(500, 50000 * Math.exp(-Math.log10(t) * 0.4) + 3000 * Math.sin(Math.log10(t) * 2));
-      });
-
-      psmcData = {
-        times: times,
-        dendroctonus: dendNe,
-        chrysina: chrNe,
-        endemic: endNe
-      };
-    })();
-
-    function showPSMCSpecies(sp) {
-      var btns = document.querySelectorAll('#psmc-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      var idx = sp === 'all' ? 0 : sp === 'dendroctonus' ? 1 : sp === 'chrysina' ? 2 : 3;
-      btns[idx].classList.add('active');
-
-      var traces = [];
-      if (sp === 'all' || sp === 'dendroctonus') {
-        traces.push({
-          x: psmcData.times, y: psmcData.dendroctonus, mode: 'lines', name: 'D. frontalis',
-          line: { color: '#c9a227', width: 2 }
-        });
-      }
-      if (sp === 'all' || sp === 'chrysina') {
-        traces.push({
-          x: psmcData.times, y: psmcData.chrysina, mode: 'lines', name: 'C. gloriosa',
-          line: { color: '#7a9e3e', width: 2 }
-        });
-      }
-      if (sp === 'all' || sp === 'endemic') {
-        traces.push({
-          x: psmcData.times, y: psmcData.endemic, mode: 'lines', name: 'Endemic spp.',
-          line: { color: '#b5564a', width: 2, dash: 'dash' }
-        });
-      }
-
-      var layout = baseLayout('');
-      layout.xaxis.type = 'log';
-      layout.xaxis.title = { text: 'Years Ago', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Effective Population Size (Ne)', font: { size: 11, color: txtColor() } };
-      layout.xaxis.autorange = 'reversed';
-      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
-      Plotly.react('chart-psmc', traces, layout, pConfig);
-    }
-    showPSMCSpecies('all');
-
-    /* ═══ CHART 5: Species Richness by Clade ══════════ */
-    (function() {
-      var clades = ['Polyphaga','Adephaga','Archostemata','Myxophaga'];
-      var counts = [350000, 45000, 40, 100];
-      var suborders = ['Polyphaga','Adephaga','Archostemata','Myxophaga'];
-      var colorMap = { 'Polyphaga': '#c9a227', 'Adephaga': '#7a9e3e', 'Archostemata': '#4a8cb5', 'Myxophaga': '#b5564a' };
-      var barColors = suborders.map(function(s) { return colorMap[s]; });
-
-      var traces = [{
-        x: clades, y: counts, type: 'bar',
-        marker: { color: barColors, opacity: 0.85 },
-        hovertemplate: '%{x}: %{y:,} species<extra></extra>'
-      }];
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Suborder', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Described Species', font: { size: 11, color: txtColor() } };
-      layout.yaxis.type = 'log';
-      layout.margin.b = 90;
-      layout.xaxis.tickangle = -45;
-      layout.showlegend = false;
-      Plotly.newPlot('chart-phylo', traces, layout, pConfig);
-    })();
-
-    /* ═══ CHART 6: Genome Size Variation ══════════════ */
-    var genomeSizeData = {
-      families: ['Chrysomelidae','Curculionidae','Cerambycidae','Scarabaeidae',
-        'Staphylinidae','Carabidae','Tenebrionidae','Buprestidae',
-        'Elateridae','Coccinellidae','Lucanidae','Dynastinae'],
-      sizes: [580, 680, 900, 750, 350, 420, 250, 310, 520, 380, 1100, 1400],
-      chrNums: [22, 22, 20, 20, 18, 24, 20, 16, 18, 18, 20, 20],
-      suborders: ['Polyphaga','Polyphaga','Polyphaga','Polyphaga',
-        'Polyphaga','Adephaga','Polyphaga','Polyphaga',
-        'Polyphaga','Polyphaga','Polyphaga','Polyphaga']
-    };
-
-    function showGenomeSizeMode(mode) {
-      var btns = document.querySelectorAll('#genomesize-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      if (mode === 'size') btns[0].classList.add('active');
-      else btns[1].classList.add('active');
-
-      var d = genomeSizeData;
-      var colorMap = { 'Polyphaga': '#c9a227', 'Adephaga': '#7a9e3e' };
-      var barColors = d.suborders.map(function(s) { return colorMap[s] || '#888'; });
-
-      var yVals = mode === 'size' ? d.sizes : d.chrNums;
-      var yTitle = mode === 'size' ? 'Genome Size (Mb)' : 'Diploid Chromosome Number (2n)';
-
-      var traces = [{
-        x: d.families, y: yVals, type: 'bar',
-        marker: { color: barColors, opacity: 0.85 },
-        hovertemplate: '%{x}: %{y}<extra></extra>'
-      }];
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: '', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: yTitle, font: { size: 11, color: txtColor() } };
-      layout.margin.b = 100;
-      layout.xaxis.tickangle = -45;
-      layout.showlegend = false;
-      Plotly.react('chart-genomesize', traces, layout, pConfig);
-    }
-    showGenomeSizeMode('size');
-
-    /* ═══ Redraw all charts on theme toggle ═══════════ */
-    var themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function() {
-        setTimeout(function() {
-          // Re-render toggled charts
-          var activeExpr = document.querySelector('#expr-toggle button.active');
-          if (activeExpr) {
-            var txt = activeExpr.textContent.toLowerCase();
-            showExprMode(txt);
-          }
-          var activePSMC = document.querySelector('#psmc-toggle button.active');
-          if (activePSMC) {
-            var txt2 = activePSMC.textContent.toLowerCase().replace(/\s/g, '').replace('spp.', '');
-            if (txt2.indexOf('all') >= 0) showPSMCSpecies('all');
-            else if (txt2.indexOf('dend') >= 0) showPSMCSpecies('dendroctonus');
-            else if (txt2.indexOf('chry') >= 0) showPSMCSpecies('chrysina');
-            else showPSMCSpecies('endemic');
-          }
-          var activeGS = document.querySelector('#genomesize-toggle button.active');
-          if (activeGS) {
-            showGenomeSizeMode(activeGS.textContent.toLowerCase().indexOf('chrom') >= 0 ? 'chrnum' : 'size');
-          }
-          // Relayout static charts
-          var staticCharts = ['chart-synteny', 'chart-coverage', 'chart-phylo'];
-          staticCharts.forEach(function(id) {
-            var el = document.getElementById(id);
-            if (el && el.data) {
-              Plotly.relayout(id, {
-                'font.color': txtColor(),
-                'xaxis.gridcolor': gridColor(),
-                'yaxis.gridcolor': gridColor(),
-                'xaxis.title.font.color': txtColor(),
-                'yaxis.title.font.color': txtColor()
-              });
-            }
-          });
-        }, 100);
-      });
-    }
-  </script>
-</body>
-</html>

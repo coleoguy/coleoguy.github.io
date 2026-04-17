@@ -1,84 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Publications - Blackmon Lab</title>
-  <meta name="description" content="Peer-reviewed publications from the Blackmon Lab at Texas A&M University, studying genome structure, sex chromosomes, and evolutionary biology.">
-    <meta property="og:title" content="Publications - Blackmon Lab" />
-    <meta property="og:description" content="Peer-reviewed publications from the Blackmon Lab at Texas A&amp;M University, studying genome structure, sex chromosomes, and evolutionary biology." />
-    <meta property="og:url" content="https://coleoguy.github.io/publications.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="publications, evolutionary biology, genome structure, sex chromosomes, karyotype, Texas A&M, Blackmon Lab">
-  <link rel="canonical" href="https://coleoguy.github.io/publications.html">
-
-  <!-- Open Graph -->
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- Structured Data -->
+---
+layout: default
+title: Publications - Blackmon Lab
+description: Peer-reviewed publications from the Blackmon Lab at Texas A&M University, studying genome structure, sex chromosomes, and evolutionary biology.
+canonical: https://coleoguy.github.io/publications.html
+keywords: publications, evolutionary biology, genome structure, sex chromosomes, karyotype, Texas A&M, Blackmon Lab
+body_class: publications-page
+nav_active: publications
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Publications - Blackmon Lab",
-    "description": "Peer-reviewed publications from the Blackmon Lab",
-    "url": "https://coleoguy.github.io/publications.html"
-  }
-  </script>
-</head>
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Publications - Blackmon Lab",
+      "description": "Peer-reviewed publications from the Blackmon Lab",
+      "url": "https://coleoguy.github.io/publications.html"
+    }
+    </script>
+extra_scripts: |
+  <script src="/assets/js/orcid-pubs.js"></script>
+  <script src="/assets/js/scholar-metrics.js"></script>
+---
 
-<body class="publications-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html" class="active">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Page Header -->
+<!-- Page Header -->
     <section class="page-header section">
       <div class="container" data-aos="fade-up">
         <h1>Publications</h1>
@@ -104,31 +47,3 @@
         <div id="publications-list"></div>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-  <!-- ORCID Publications -->
-  <script src="assets/js/orcid-pubs.js"></script>
-
-  <!-- Scholar Metrics -->
-  <script src="assets/js/scholar-metrics.js"></script>
-</body>
-</html>

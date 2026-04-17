@@ -1,93 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Research - Blackmon Lab</title>
-  <meta name="description" content="The Blackmon Lab studies genome evolution across the tree of life, investigating sex chromosomes, chromosome number, and the genetic basis of adaptation using theoretical, comparative, and experimental approaches.">
-    <meta property="og:title" content="Research - Blackmon Lab" />
-    <meta property="og:description" content="The Blackmon Lab studies genome evolution across the tree of life, investigating sex chromosomes, chromosome number, and the genetic basis of adaptation using theoretical, comparative, and experimental approaches." />
-    <meta property="og:url" content="https://coleoguy.github.io/research.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="evolutionary biology, genome evolution, sex chromosomes, chromosome number, karyotype, Texas A&M, Blackmon Lab">
-  <link rel="canonical" href="https://coleoguy.github.io/research.html">
-
-  <!-- Open Graph -->
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-
-  <!-- Structured Data -->
+---
+layout: default
+title: Research - Blackmon Lab
+description: The Blackmon Lab studies genome evolution across the tree of life, investigating sex chromosomes, chromosome number, and the genetic basis of adaptation using theoretical, comparative, and experimental approaches.
+canonical: https://coleoguy.github.io/research.html
+keywords: evolutionary biology, genome evolution, sex chromosomes, chromosome number, karyotype, Texas A&M, Blackmon Lab
+body_class: research-page
+nav_active: research
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ResearchProject",
-    "name": "Blackmon Lab Research",
-    "description": "The Blackmon Lab studies how and why the structure of genomes evolves, using theoretical population genetics, comparative methods, and genetics/genomics.",
-    "url": "https://coleoguy.github.io/research.html",
-    "parentOrganization": {
-      "@type": "CollegeOrUniversity",
-      "name": "Texas A&M University"
-    },
-    "memberOf": {
-      "@type": "Organization",
-      "name": "Department of Biology"
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchProject",
+      "name": "Blackmon Lab Research",
+      "description": "The Blackmon Lab studies how and why the structure of genomes evolves, using theoretical population genetics, comparative methods, and genetics/genomics.",
+      "url": "https://coleoguy.github.io/research.html",
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "Texas A&M University"
+      },
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Department of Biology"
+      }
     }
-  }
-  </script>
+    </script>
+---
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-</head>
-
-<body class="research-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html" class="active">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Page Header -->
+<!-- Page Header -->
     <section class="page-header" data-aos="fade-up">
       <div class="container">
         <h1>Research</h1>
@@ -189,25 +128,3 @@
         </div>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-</body>
-</html>

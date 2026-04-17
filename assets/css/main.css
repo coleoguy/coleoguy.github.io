@@ -1443,6 +1443,55 @@ table th {
 }
 
 /* ========================
+   FEATURED PAPER CALLOUT (index)
+======================== */
+.featured-paper {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,162,39,0.06) 100%);
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+}
+.featured-paper-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.featured-paper-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+.featured-paper-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+}
+.featured-paper-summary {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 18px;
+}
+.featured-paper-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.featured-paper-actions .btn-gold,
+.featured-paper-actions .btn-outline {
+  font-size: 0.85rem;
+  padding: 8px 18px;
+}
+
+/* ========================
    HUB NAV CARDS (index)
 ======================== */
 .hub-grid {

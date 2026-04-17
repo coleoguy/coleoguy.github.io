@@ -1,115 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Blackmon Lab - Evolutionary Biology at Texas A&M</title>
-  <meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
-    <meta property="og:title" content="Blackmon Lab - Evolutionary Biology at Texas A&amp;M" />
-    <meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&amp;M University." />
-    <meta property="og:url" content="https://coleoguy.github.io/index.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="evolutionary biology, genome structure, sex chromosomes, karyotype, Texas A&M, Blackmon Lab">
-  <link rel="canonical" href="https://coleoguy.github.io/">
-
-  <!-- Open Graph -->
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-
-  <!-- Structured Data -->
+---
+layout: default
+title: Blackmon Lab - Evolutionary Biology at Texas A&M
+description: The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.
+canonical: https://coleoguy.github.io/
+keywords: evolutionary biology, genome structure, sex chromosomes, karyotype, Texas A&M, Blackmon Lab
+body_class: index-page
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ResearchOrganization",
-    "name": "Blackmon Lab",
-    "url": "https://coleoguy.github.io",
-    "logo": "https://coleoguy.github.io/assets/img/blackmon_black.png",
-    "description": "The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University. Research focuses on sex chromosomes, chromosome number evolution, and the genetic basis of adaptation.",
-    "parentOrganization": {
-      "@type": "CollegeOrUniversity",
-      "name": "Texas A&M University",
-      "url": "https://www.tamu.edu"
-    },
-    "department": {
-      "@type": "Organization",
-      "name": "Department of Biology",
-      "url": "https://bio.tamu.edu"
-    },
-    "sameAs": [
-      "https://github.com/coleoguy",
-      "https://scholar.google.com/citations?user=ytApUl0AAAAJ"
-    ],
-    "member": {
-      "@type": "Person",
-      "name": "Heath Blackmon",
-      "jobTitle": "Associate Professor",
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchOrganization",
+      "name": "Blackmon Lab",
       "url": "https://coleoguy.github.io",
-      "sameAs": [
-        "https://orcid.org/0000-0002-5433-4036",
-        "https://scholar.google.com/citations?user=ytApUl0AAAAJ",
-        "https://github.com/coleoguy"
-      ],
-      "affiliation": {
+      "logo": "https://coleoguy.github.io/assets/img/blackmon_black.png",
+      "description": "The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University. Research focuses on sex chromosomes, chromosome number evolution, and the genetic basis of adaptation.",
+      "parentOrganization": {
         "@type": "CollegeOrUniversity",
-        "name": "Texas A&M University"
+        "name": "Texas A&M University",
+        "url": "https://www.tamu.edu"
       },
-      "knowsAbout": ["evolutionary biology", "population genetics", "sex chromosomes", "karyotype evolution", "phylogenetic comparative methods", "comparative genomics"]
+      "department": {
+        "@type": "Organization",
+        "name": "Department of Biology",
+        "url": "https://bio.tamu.edu"
+      },
+      "sameAs": [
+        "https://github.com/coleoguy",
+        "https://scholar.google.com/citations?user=ytApUl0AAAAJ"
+      ],
+      "member": {
+        "@type": "Person",
+        "name": "Heath Blackmon",
+        "jobTitle": "Associate Professor",
+        "url": "https://coleoguy.github.io",
+        "sameAs": [
+          "https://orcid.org/0000-0002-5433-4036",
+          "https://scholar.google.com/citations?user=ytApUl0AAAAJ",
+          "https://github.com/coleoguy"
+        ],
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "Texas A&M University"
+        },
+        "knowsAbout": ["evolutionary biology", "population genetics", "sex chromosomes", "karyotype evolution", "phylogenetic comparative methods", "comparative genomics"]
+      }
     }
-  }
-  </script>
+    </script>
+extra_scripts: |
+  <script src="/assets/js/scholar-metrics.js"></script>
+  <script src="/assets/js/news-feed.js"></script>
+---
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-</head>
-
-<body class="index-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Hero Section -->
+<!-- Hero Section -->
     <section id="hero" class="hero section">
       <div class="hero-ambient"></div>
       <div class="container hero-content" data-aos="fade-up" data-aos-delay="100">
@@ -127,23 +69,23 @@
 
     <!-- Photo Strip -->
     <section style="padding: 10px 0 0; overflow: hidden; max-height: 210px;">
-      <div class="photo-strip" style="overflow: hidden; max-height: 200px;">
+      <div class="photo-strip" style="overflow: hidden; max-height: 200px;" aria-label="Lab life photo strip">
         <div class="photo-strip-track">
-          <img src="assets/img/slide-fieldwork1.jpg" alt="Fieldwork">
-          <img src="assets/img/slide-labmeeting.jpg" alt="Lab meeting">
-          <img src="assets/img/slide-beetle.jpg" alt="Beetle research">
-          <img src="assets/img/slide-conference1.jpg" alt="Conference">
-          <img src="assets/img/slide-whiteboard1.jpg" alt="Whiteboard work">
-          <img src="assets/img/slide-fieldwork2.jpg" alt="Beetle trapping">
-          <img src="assets/img/slide-poster1.jpg" alt="Poster presentation">
-          <img src="assets/img/slide-desert.jpg" alt="Desert fieldwork">
-          <img src="assets/img/slide-whiteboard2.jpg" alt="Lab meeting">
-          <img src="assets/img/slide-presentation.jpg" alt="Lab presentation">
-          <img src="assets/img/slide-labgroup.jpg" alt="Lab group photo">
-          <img src="assets/img/slide-halloween.jpg" alt="Halloween party">
-          <img src="assets/img/slide-tailgate.jpg" alt="TAMU tailgate">
-          <img src="assets/img/slide-labnight.jpg" alt="Lab night">
-          <img src="assets/img/slide-pumpkins.jpg" alt="Pumpkin carving">
+          <img src="assets/img/slide-fieldwork1.jpg" alt="Desert fieldwork at dawn">
+          <img src="assets/img/slide-labmeeting.jpg" alt="Lab meeting around the conference table">
+          <img src="assets/img/slide-beetle.jpg" alt="Iridescent jewel scarab beetle in hand">
+          <img src="assets/img/slide-conference1.jpg" alt="Lab member presenting a conference poster">
+          <img src="assets/img/slide-whiteboard1.jpg" alt="Equations and diagrams on a whiteboard">
+          <img src="assets/img/slide-fieldwork2.jpg" alt="Setting beetle traps in the field">
+          <img src="assets/img/slide-poster1.jpg" alt="Student standing with a poster at a symposium">
+          <img src="assets/img/slide-desert.jpg" alt="Desert landscape during a collecting trip">
+          <img src="assets/img/slide-whiteboard2.jpg" alt="Group at the whiteboard working out a problem">
+          <img src="assets/img/slide-presentation.jpg" alt="Lab member giving a research talk">
+          <img src="assets/img/slide-labgroup.jpg" alt="Full lab group photo">
+          <img src="assets/img/slide-halloween.jpg" alt="Lab Halloween costume party">
+          <img src="assets/img/slide-tailgate.jpg" alt="Lab tailgate at a Texas A&amp;M football game">
+          <img src="assets/img/slide-labnight.jpg" alt="Late-night lab work session">
+          <img src="assets/img/slide-pumpkins.jpg" alt="Carved pumpkins from the lab pumpkin party">
         </div>
       </div>
     </section>
@@ -157,6 +99,23 @@
         }
       });
     </script>
+
+    <!-- Featured Work -->
+    <section class="section" style="padding: 30px 0 0;">
+      <div class="container" data-aos="fade-up">
+        <div class="featured-paper">
+          <div class="featured-paper-eyebrow">Featured · April 2026 preprint</div>
+          <h3 class="featured-paper-title">Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life</h3>
+          <p class="featured-paper-meta">Copeland M, McConnell M, Barboza A, et al. — bioRxiv (2026)</p>
+          <p class="featured-paper-summary">63,682 karyotypes across 55 eukaryotic clades show dysploidy rates vary <strong>844-fold</strong>, and that even birds — the textbook example of chromosomal stasis — exceed the global median once microchromosome dynamics are resolved. Stasis isn't kingdom-deep; it's life-history-deep.</p>
+          <div class="featured-paper-actions">
+            <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank" class="btn-gold">Read on bioRxiv</a>
+            <a href="cures-karyotype-database.html" class="btn-outline">Explore the data</a>
+            <a href="news.html" class="btn-outline">More lab news</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Live Metrics Banner -->
     <section class="section" style="padding: 30px 0 0;">
@@ -328,29 +287,3 @@
         <iframe loading="lazy" title="Dr. Blackmon's weekly schedule" src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=coleoguy%40gmail.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="100%" height="500"></iframe>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-  <!-- Scholar Metrics & News Feed -->
-  <script src="assets/js/scholar-metrics.js"></script>
-  <script src="assets/js/news-feed.js"></script>
-</body>
-</html>

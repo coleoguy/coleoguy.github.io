@@ -1,454 +1,398 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selection in Evolution — Blackmon Lab</title>
-  <meta name="description" content="A visual guide to selection — natural, artificial, sexual, background, and indirect selection on recombination modifiers. From Darwin to modern population genetics.">
-  <meta property="og:title" content="Selection in Evolution — Blackmon Lab" />
-  <meta property="og:description" content="A visual guide to selection — natural, artificial, sexual, background, and indirect selection on recombination modifiers in evolutionary biology." />
-  <meta property="og:url" content="https://coleoguy.github.io/selection.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="natural selection, sexual selection, sexual antagonism, background selection, genetic drift, effective population size, recombination, inversions, artificial selection">
-  <link rel="canonical" href="https://coleoguy.github.io/selection.html">
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-  <style>
-    /* ── Scroll progress bar ─────────────────────────── */
-    #scroll-progress {
-      position: fixed;
-      top: 62px;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: var(--accent, #c9a227);
-      z-index: 1050;
-      transition: width 0.05s linear;
-    }
-
-    /* ── Hero ─────────────────────────────────────────── */
-    .sl-hero {
-      padding: 140px 0 60px;
-      text-align: center;
-      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-    }
-    .sl-hero .kicker {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 14px;
-    }
-    .sl-hero h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      color: var(--text-heading, #f8f4ed);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-    .sl-hero .subtitle {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-      max-width: 700px;
-      margin: 0 auto 28px;
-    }
-
-    /* ── Split-panel sections ─────────────────────────── */
-    .sl-section {
-      padding: 56px 0;
-      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-    }
-    .sl-section:nth-child(even) {
-      background: rgba(255,255,255,0.015);
-    }
-    .body-light .sl-section:nth-child(even),
-    .light-mode .sl-section:nth-child(even) {
-      background: rgba(0,0,0,0.02);
-    }
-
-    .sl-theory {
-      padding-right: 28px;
-      border-right: 1px solid rgba(201,162,39,0.15);
-    }
-    .sl-evidence {
-      padding-left: 28px;
-    }
-    @media (max-width: 991.98px) {
-      .sl-theory, .sl-evidence { padding: 0; border-right: none; }
-      .sl-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
-    }
-
-    .sl-kicker {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 6px;
-    }
-    .sl-section h2 {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--text-heading, #eae7e2);
-      margin-bottom: 16px;
-      line-height: 1.25;
-    }
-    .sl-section h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--accent, #c9a227);
-      margin: 24px 0 8px;
-    }
-    .sl-section h3:first-child { margin-top: 0; }
-    .sl-section p {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--text, #c8c5c0);
-      margin-bottom: 14px;
-    }
-    .sl-section a {
-      color: var(--accent, #c9a227);
-      text-decoration: underline;
-      text-decoration-color: rgba(201,162,39,0.4);
-      text-underline-offset: 2px;
-    }
-    .sl-section a:hover { text-decoration-color: var(--accent); }
-    .sl-section strong {
-      font-weight: 600;
-      color: var(--text-heading, #eae7e2);
-    }
-
-    .pullquote {
-      border-left: 3px solid var(--accent, #c9a227);
-      padding: 10px 18px;
-      margin: 20px 0;
-      font-style: italic;
-      font-size: 0.95rem;
-      color: var(--accent, #c9a227);
-      line-height: 1.6;
-    }
-
-    /* ── Paper masthead cards ─────────────────────────── */
-    .paper-masthead {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin-bottom: 14px;
-      transition: border-color 0.2s;
-      text-decoration: none;
-      display: block;
-    }
-    .paper-masthead:hover {
-      border-color: rgba(201,162,39,0.5);
-      text-decoration: none;
-    }
-    .paper-masthead .journal {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent, #c9a227);
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-    .paper-masthead .paper-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--text-heading, #eae7e2);
-      line-height: 1.35;
-      margin-bottom: 5px;
-    }
-    .paper-masthead .authors {
-      font-size: 0.78rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-      line-height: 1.4;
-    }
-    .paper-masthead .pub-year {
-      font-size: 0.7rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      margin-top: 4px;
-    }
-
-    /* ── Organism cards ────────────────────────────────── */
-    .org-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin: 16px 0;
-    }
-    .org-card {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-    }
-    .org-card img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      filter: grayscale(30%);
-      transition: filter 0.3s;
-    }
-    .org-card:hover img { filter: grayscale(0%); }
-    .org-card .org-info {
-      padding: 8px 10px;
-    }
-    .org-card .org-name {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-heading, #eae7e2);
-    }
-    .org-card .org-system {
-      font-size: 0.7rem;
-      color: var(--accent, #c9a227);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-    }
-
-    /* ── Diagram containers ────────────────────────────── */
-    .diagram-box {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 24px;
-      margin: 20px 0;
-      text-align: center;
-    }
-    .diagram-box svg { max-width: 100%; height: auto; }
-    .diagram-caption {
-      font-size: 0.72rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      margin-top: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* ── SVG colors via CSS ────────────────────────────── */
-    .chr-auto { fill: #555; }
-    .chr-sex { fill: var(--accent, #c9a227); }
-    .chr-sex-dim { fill: rgba(201,162,39,0.35); }
-    .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
-    .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
-    .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
-    .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
-    .chr-arrow { fill: var(--accent, #c9a227); }
-    .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
-    .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
-    .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
-    .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
-    .chr-region { fill: rgba(201,162,39,0.12); }
-    .chr-del { fill: #b04040; }
-    .chr-del-dim { fill: rgba(176,64,64,0.35); }
-    .chr-neutral { fill: #888; }
-
-    .light-mode .chr-auto { fill: #bbb; }
-    .light-mode .chr-label { fill: #333; }
-    .light-mode .chr-label-sm { fill: #777; }
-    .light-mode .chr-heading { fill: #222; }
-    .light-mode .chr-line { stroke: #ccc; }
-    .light-mode .chr-line-dash { stroke: #ccc; }
-    .light-mode .chr-neutral { fill: #aaa; }
-
-    /* ── Plotly chart containers ────────────────────────── */
-    .chart-box {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 16px;
-      margin: 16px 0;
-    }
-    .chart-box .chart-title {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent, #c9a227);
-      margin-bottom: 8px;
-      text-align: center;
-    }
-
-    /* ── Toggle buttons for charts ─────────────────────── */
-    .chart-toggle {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-    .chart-toggle button {
-      font-size: 0.7rem;
-      padding: 4px 12px;
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 16px;
-      background: transparent;
-      color: var(--text, #c8c5c0);
-      cursor: pointer;
-      transition: all 0.18s;
-    }
-    .chart-toggle button.active,
-    .chart-toggle button:hover {
-      border-color: var(--accent, #c9a227);
-      color: var(--accent, #c9a227);
-      background: rgba(201,162,39,0.08);
-    }
-
-    /* ── Stat callout ──────────────────────────────────── */
-    .stat-callout {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin: 12px 0;
-    }
-    .stat-callout .stat-num {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--accent, #c9a227);
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .stat-callout .stat-text {
-      font-size: 0.82rem;
-      color: var(--text, #c8c5c0);
-      line-height: 1.4;
-    }
-
-    /* ── Related resources box ─────────────────────────── */
-    .related-box {
-      margin-top: 48px;
-      padding: 28px 32px;
-      border: 1px solid rgba(201,162,39,0.2);
-      border-radius: 10px;
-      background: rgba(201,162,39,0.03);
-    }
-    .related-box h3 {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 16px;
-    }
-    .related-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .related-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border: 1px solid rgba(201,162,39,0.25);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--text, #c8c5c0);
-      text-decoration: none;
-      transition: all 0.18s;
-    }
-    .related-link i { color: var(--accent); font-size: 0.75rem; }
-    .related-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .paper-foot {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(201,162,39,0.2);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-    }
-  </style>
-
-  <!-- Structured Data (added by audit) -->
+---
+layout: default
+title: Selection in Evolution — Blackmon Lab
+description: A visual guide to selection — natural, artificial, sexual, background, and indirect selection on recombination modifiers. From Darwin to modern population genetics.
+canonical: https://coleoguy.github.io/selection.html
+keywords: natural selection, sexual selection, sexual antagonism, background selection, genetic drift, effective population size, recombination, inversions, artificial selection
+body_class: resources-page
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Selection in Evolution",
-    "url": "https://coleoguy.github.io/selection.html",
-    "description": "Visual guide to natural, artificial, sexual, background, and indirect selection. From Darwin to modern population genetics with interactive fitness landscapes.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Evolutionary biology"
-    },
-    "keywords": ["natural selection", "sexual selection", "background selection", "fitness landscape", "population genetics"],
-    "publisher": {
-      "@type": "ResearchOrganization",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Selection in Evolution",
+      "url": "https://coleoguy.github.io/selection.html",
+      "description": "Visual guide to natural, artificial, sexual, background, and indirect selection. From Darwin to modern population genetics with interactive fitness landscapes.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Evolutionary biology"
+      },
+      "keywords": ["natural selection", "sexual selection", "background selection", "fitness landscape", "population genetics"],
+      "publisher": {
+        "@type": "ResearchOrganization",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      }
     }
-  }
-  </script>
-</head>
+    </script>
+  <style>
+      /* ── Scroll progress bar ─────────────────────────── */
+      #scroll-progress {
+        position: fixed;
+        top: 62px;
+        left: 0;
+        height: 3px;
+        width: 0%;
+        background: var(--accent, #c9a227);
+        z-index: 1050;
+        transition: width 0.05s linear;
+      }
+  
+      /* ── Hero ─────────────────────────────────────────── */
+      .sl-hero {
+        padding: 140px 0 60px;
+        text-align: center;
+        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+      }
+      .sl-hero .kicker {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 14px;
+      }
+      .sl-hero h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 700;
+        color: var(--text-heading, #f8f4ed);
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+      .sl-hero .subtitle {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+        max-width: 700px;
+        margin: 0 auto 28px;
+      }
+  
+      /* ── Split-panel sections ─────────────────────────── */
+      .sl-section {
+        padding: 56px 0;
+        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+      }
+      .sl-section:nth-child(even) {
+        background: rgba(255,255,255,0.015);
+      }
+      .body-light .sl-section:nth-child(even),
+      .light-mode .sl-section:nth-child(even) {
+        background: rgba(0,0,0,0.02);
+      }
+  
+      .sl-theory {
+        padding-right: 28px;
+        border-right: 1px solid rgba(201,162,39,0.15);
+      }
+      .sl-evidence {
+        padding-left: 28px;
+      }
+      @media (max-width: 991.98px) {
+        .sl-theory, .sl-evidence { padding: 0; border-right: none; }
+        .sl-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
+      }
+  
+      .sl-kicker {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 6px;
+      }
+      .sl-section h2 {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: var(--text-heading, #eae7e2);
+        margin-bottom: 16px;
+        line-height: 1.25;
+      }
+      .sl-section h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--accent, #c9a227);
+        margin: 24px 0 8px;
+      }
+      .sl-section h3:first-child { margin-top: 0; }
+      .sl-section p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--text, #c8c5c0);
+        margin-bottom: 14px;
+      }
+      .sl-section a {
+        color: var(--accent, #c9a227);
+        text-decoration: underline;
+        text-decoration-color: rgba(201,162,39,0.4);
+        text-underline-offset: 2px;
+      }
+      .sl-section a:hover { text-decoration-color: var(--accent); }
+      .sl-section strong {
+        font-weight: 600;
+        color: var(--text-heading, #eae7e2);
+      }
+  
+      .pullquote {
+        border-left: 3px solid var(--accent, #c9a227);
+        padding: 10px 18px;
+        margin: 20px 0;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: var(--accent, #c9a227);
+        line-height: 1.6;
+      }
+  
+      /* ── Paper masthead cards ─────────────────────────── */
+      .paper-masthead {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 18px 20px;
+        margin-bottom: 14px;
+        transition: border-color 0.2s;
+        text-decoration: none;
+        display: block;
+      }
+      .paper-masthead:hover {
+        border-color: rgba(201,162,39,0.5);
+        text-decoration: none;
+      }
+      .paper-masthead .journal {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent, #c9a227);
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      .paper-masthead .paper-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--text-heading, #eae7e2);
+        line-height: 1.35;
+        margin-bottom: 5px;
+      }
+      .paper-masthead .authors {
+        font-size: 0.78rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+        line-height: 1.4;
+      }
+      .paper-masthead .pub-year {
+        font-size: 0.7rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        margin-top: 4px;
+      }
+  
+      /* ── Organism cards ────────────────────────────────── */
+      .org-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 16px 0;
+      }
+      .org-card {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        overflow: hidden;
+        text-align: center;
+      }
+      .org-card img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        filter: grayscale(30%);
+        transition: filter 0.3s;
+      }
+      .org-card:hover img { filter: grayscale(0%); }
+      .org-card .org-info {
+        padding: 8px 10px;
+      }
+      .org-card .org-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-heading, #eae7e2);
+      }
+      .org-card .org-system {
+        font-size: 0.7rem;
+        color: var(--accent, #c9a227);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+      }
+  
+      /* ── Diagram containers ────────────────────────────── */
+      .diagram-box {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 24px;
+        margin: 20px 0;
+        text-align: center;
+      }
+      .diagram-box svg { max-width: 100%; height: auto; }
+      .diagram-caption {
+        font-size: 0.72rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+  
+      /* ── SVG colors via CSS ────────────────────────────── */
+      .chr-auto { fill: #555; }
+      .chr-sex { fill: var(--accent, #c9a227); }
+      .chr-sex-dim { fill: rgba(201,162,39,0.35); }
+      .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
+      .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
+      .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
+      .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
+      .chr-arrow { fill: var(--accent, #c9a227); }
+      .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
+      .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
+      .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
+      .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+      .chr-region { fill: rgba(201,162,39,0.12); }
+      .chr-del { fill: #b04040; }
+      .chr-del-dim { fill: rgba(176,64,64,0.35); }
+      .chr-neutral { fill: #888; }
+  
+      .light-mode .chr-auto { fill: #bbb; }
+      .light-mode .chr-label { fill: #333; }
+      .light-mode .chr-label-sm { fill: #777; }
+      .light-mode .chr-heading { fill: #222; }
+      .light-mode .chr-line { stroke: #ccc; }
+      .light-mode .chr-line-dash { stroke: #ccc; }
+      .light-mode .chr-neutral { fill: #aaa; }
+  
+      /* ── Plotly chart containers ────────────────────────── */
+      .chart-box {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 16px;
+        margin: 16px 0;
+      }
+      .chart-box .chart-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent, #c9a227);
+        margin-bottom: 8px;
+        text-align: center;
+      }
+  
+      /* ── Toggle buttons for charts ─────────────────────── */
+      .chart-toggle {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .chart-toggle button {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 16px;
+        background: transparent;
+        color: var(--text, #c8c5c0);
+        cursor: pointer;
+        transition: all 0.18s;
+      }
+      .chart-toggle button.active,
+      .chart-toggle button:hover {
+        border-color: var(--accent, #c9a227);
+        color: var(--accent, #c9a227);
+        background: rgba(201,162,39,0.08);
+      }
+  
+      /* ── Stat callout ──────────────────────────────────── */
+      .stat-callout {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin: 12px 0;
+      }
+      .stat-callout .stat-num {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--accent, #c9a227);
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .stat-callout .stat-text {
+        font-size: 0.82rem;
+        color: var(--text, #c8c5c0);
+        line-height: 1.4;
+      }
+  
+      /* ── Related resources box ─────────────────────────── */
+      .related-box {
+        margin-top: 48px;
+        padding: 28px 32px;
+        border: 1px solid rgba(201,162,39,0.2);
+        border-radius: 10px;
+        background: rgba(201,162,39,0.03);
+      }
+      .related-box h3 {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 16px;
+      }
+      .related-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .related-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border: 1px solid rgba(201,162,39,0.25);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: var(--text, #c8c5c0);
+        text-decoration: none;
+        transition: all 0.18s;
+      }
+      .related-link i { color: var(--accent); font-size: 0.75rem; }
+      .related-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        text-decoration: none;
+      }
+  
+      .paper-foot {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(201,162,39,0.2);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+      }
+    </style>
+extra_scripts: |
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+---
 
-<body class="resources-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <!-- Scroll progress -->
-  <div id="scroll-progress"></div>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- ═══════════════ HERO ═══════════════ -->
+<!-- ═══════════════ HERO ═══════════════ -->
     <section class="sl-hero" data-aos="fade-up">
       <div class="container">
         <div class="kicker">A Visual Guide</div>
@@ -1480,322 +1424,10 @@
                 <a href="epistasis-database.html" class="related-link"><i class="bi bi-diagram-3" aria-hidden="true"></i> Epistasis Database</a>
                 <a href="coleoptera-genomics.html" class="related-link"><i class="bi bi-bug" aria-hidden="true"></i> Coleoptera Genomics</a>
                 <a href="publications.html" class="related-link"><i class="bi bi-journal-text" aria-hidden="true"></i> Publications</a>
-                <a href="popgen.html" class="related-link"><i class="bi bi-graph-up" aria-hidden="true"></i> PopGen Simulator</a>
+                <a href="subpages/popgen-sim.html" class="related-link"><i class="bi bi-graph-up" aria-hidden="true"></i> PopGen Simulator</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-  <div id="preloader"></div>
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
-
-  <script>
-    /* ── Plotly helpers ─────────────────────────────── */
-    function isLight() { return document.body.classList.contains('light-mode'); }
-    function txtColor() { return isLight() ? '#333' : '#c8c5c0'; }
-    function gridColor() { return isLight() ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'; }
-    function baseLayout(title) {
-      return {
-        title: { text: title || '', font: { family: 'Inter, sans-serif', size: 13, color: txtColor() } },
-        paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { family: 'Inter, sans-serif', color: txtColor(), size: 11 },
-        margin: { l: 50, r: 20, t: title ? 36 : 10, b: 50 },
-        xaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
-        yaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
-      };
-    }
-    var pConfig = { displaylogo: false, responsive: true, modeBarButtonsToRemove: ['lasso2d','select2d'] };
-
-    /* ── Scroll progress bar ─────────────────────────── */
-    window.addEventListener('scroll', function() {
-      var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-      document.getElementById('scroll-progress').style.width = pct + '%';
-    });
-
-    /* ── Chart 1: Fixation Probability ───────────────── */
-    function fixProb(s, Ne) {
-      if (Math.abs(s) < 1e-10) return 1.0 / (2.0 * Ne);
-      var num = 1.0 - Math.exp(-2.0 * s);
-      var den = 1.0 - Math.exp(-4.0 * Ne * s);
-      if (Math.abs(den) < 1e-30) return 1.0 / (2.0 * Ne);
-      return num / den;
-    }
-
-    var fixationNeVals = [10, 100, 1000, 10000];
-    var fixationTraces = [];
-    var sVals = [];
-    for (var i = -100; i <= 100; i++) { sVals.push(i * 0.001); }
-
-    var neColors = ['rgba(201,162,39,0.4)', 'rgba(201,162,39,0.6)', 'rgba(201,162,39,0.8)', '#c9a227'];
-    fixationNeVals.forEach(function(ne, idx) {
-      var yVals = sVals.map(function(s) { return fixProb(s, ne); });
-      fixationTraces.push({
-        x: sVals, y: yVals, mode: 'lines',
-        name: 'Ne = ' + ne,
-        line: { color: neColors[idx], width: idx === 3 ? 2.5 : 1.5 },
-        hovertemplate: 's = %{x:.3f}<br>P(fix) = %{y:.4f}<extra>Ne=' + ne + '</extra>'
-      });
-    });
-
-    // Neutral baseline 1/(2N) for reference
-    fixationTraces.push({
-      x: sVals,
-      y: sVals.map(function() { return 1.0 / (2.0 * 100); }),
-      mode: 'lines', name: '1/(2N), N=100',
-      line: { color: 'rgba(136,136,136,0.4)', width: 1, dash: 'dash' },
-      hoverinfo: 'skip'
-    });
-
-    var fixationVisibility = { all: fixationTraces.map(function() { return true; }),
-      small: [true, false, false, false, false],
-      med: [false, false, true, false, false],
-      large: [false, false, false, true, false]
-    };
-
-    function drawFixation(vis) {
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Selection coefficient (s)', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Fixation probability', font: { size: 11, color: txtColor() } };
-      layout.xaxis.range = [-0.1, 0.1];
-      layout.yaxis.range = [0, 0.25];
-      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10, color: txtColor() } };
-      layout.showlegend = true;
-      var traces = fixationTraces.map(function(t, i) {
-        var tr = Object.assign({}, t);
-        tr.visible = vis[i];
-        return tr;
-      });
-      Plotly.react('chart-fixation', traces, layout, pConfig);
-    }
-
-    function toggleNe(mode) {
-      var btns = document.querySelectorAll('#ne-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      event.target.classList.add('active');
-      drawFixation(fixationVisibility[mode]);
-    }
-    drawFixation(fixationVisibility.all);
-
-    /* ── Chart 2: Diversity Along Chromosome ─────────── */
-    function generateDiversity(mode) {
-      var x = [], y = [];
-      for (var i = 0; i <= 200; i++) {
-        x.push(i);
-        var base = 0.01 + 0.002 * Math.sin(i * 0.05);
-        // Add noise
-        base += (Math.random() - 0.5) * 0.002;
-        if (mode === 'sweep') {
-          // Sharp dip around position 100
-          var dist = Math.abs(i - 100);
-          if (dist < 25) {
-            base -= 0.008 * Math.exp(-dist * dist / 80);
-          }
-        } else {
-          // Broad reduction near centromere (position 0-40) and telomere
-          if (i < 40) {
-            base -= 0.004 * (1 - i / 40);
-          }
-          if (i > 170) {
-            base -= 0.003 * ((i - 170) / 30);
-          }
-          // Moderate reduction at low-recombination region
-          if (i > 80 && i < 130) {
-            base -= 0.003;
-          }
-        }
-        y.push(Math.max(0.001, base));
-      }
-      return { x: x, y: y };
-    }
-
-    function showDiversityMode(mode) {
-      var btns = document.querySelectorAll('#diversity-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      if (mode === 'sweep') btns[0].classList.add('active');
-      else btns[1].classList.add('active');
-
-      var data = generateDiversity(mode);
-      var traces = [{
-        x: data.x, y: data.y, mode: 'lines',
-        line: { color: '#c9a227', width: 1.5 },
-        fill: 'tozeroy', fillcolor: 'rgba(201,162,39,0.1)',
-        hovertemplate: 'Position: %{x}<br>\u03C0: %{y:.4f}<extra></extra>'
-      }];
-
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Chromosome position', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Nucleotide diversity (\u03C0)', font: { size: 11, color: txtColor() } };
-      layout.yaxis.range = [0, 0.015];
-
-      if (mode === 'sweep') {
-        layout.shapes = [{
-          type: 'rect', x0: 85, x1: 115, y0: 0, y1: 1, yref: 'paper',
-          fillcolor: 'rgba(201,162,39,0.08)', line: { width: 0 }
-        }];
-        layout.annotations = [{
-          x: 100, y: 0.013, text: 'Sweep', showarrow: true, arrowhead: 2,
-          ax: 0, ay: -25, font: { size: 10, color: '#c9a227' }
-        }];
-      } else {
-        layout.shapes = [{
-          type: 'rect', x0: 80, x1: 130, y0: 0, y1: 1, yref: 'paper',
-          fillcolor: 'rgba(176,64,64,0.06)', line: { width: 0 }
-        }];
-        layout.annotations = [{
-          x: 105, y: 0.013, text: 'Low recomb.', showarrow: true, arrowhead: 2,
-          ax: 0, ay: -25, font: { size: 10, color: txtColor() }
-        }, {
-          x: 20, y: 0.013, text: 'Centromere', showarrow: true, arrowhead: 2,
-          ax: 0, ay: -25, font: { size: 10, color: txtColor() }
-        }];
-      }
-      Plotly.react('chart-diversity', traces, layout, pConfig);
-    }
-    showDiversityMode('sweep');
-
-    /* ── Chart 3: Inversion Frequency Dynamics ───────── */
-    function simInversion(mode) {
-      var gens = [], freq = [];
-      var p = 0.01;
-      for (var g = 0; g <= 500; g++) {
-        gens.push(g);
-        freq.push(p);
-        if (mode === 'adaptive') {
-          // Selection favoring inversion; frequency-dependent advantage weakens as inversion spreads
-          var s_local = 0.02 * (1 - p);
-          p = p + s_local * p * (1 - p) + (Math.random() - 0.5) * 0.008;
-        } else {
-          // Neutral drift
-          p = p + (Math.random() - 0.5) * 0.015;
-        }
-        p = Math.max(0, Math.min(1, p));
-      }
-      return { x: gens, y: freq };
-    }
-
-    function showInversion(mode) {
-      var btns = document.querySelectorAll('#inversion-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      if (mode === 'neutral') btns[0].classList.add('active');
-      else btns[1].classList.add('active');
-
-      // Run 5 replicate simulations
-      var traces = [];
-      for (var r = 0; r < 5; r++) {
-        var data = simInversion(mode);
-        traces.push({
-          x: data.x, y: data.y, mode: 'lines',
-          line: { color: mode === 'adaptive' ? 'rgba(201,162,39,' + (0.4 + r * 0.12) + ')' : 'rgba(136,136,136,' + (0.3 + r * 0.1) + ')', width: 1.5 },
-          showlegend: false,
-          hovertemplate: 'Gen %{x}<br>Freq: %{y:.3f}<extra></extra>'
-        });
-      }
-
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Generation', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Inversion frequency', font: { size: 11, color: txtColor() } };
-      layout.yaxis.range = [0, 1];
-      Plotly.react('chart-inversion', traces, layout, pConfig);
-    }
-    showInversion('adaptive');
-
-    /* ── Chart 4: Breeder's Equation Response ────────── */
-    function simBreeder(h2) {
-      var S = 2.0; // selection differential (constant truncation)
-      var gens = [], meanTrait = [], neutralLine = [];
-      var mu = 10.0;
-      for (var g = 0; g <= 30; g++) {
-        gens.push(g);
-        meanTrait.push(mu);
-        neutralLine.push(10.0);
-        mu = mu + h2 * S;
-      }
-      return { gens: gens, response: meanTrait, neutral: neutralLine };
-    }
-
-    function showBreeder(level) {
-      var btns = document.querySelectorAll('#breeder-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      var h2 = level === 'high' ? 0.8 : level === 'med' ? 0.4 : 0.1;
-      var idx = level === 'high' ? 0 : level === 'med' ? 1 : 2;
-      btns[idx].classList.add('active');
-
-      var data = simBreeder(h2);
-      var traces = [{
-        x: data.gens, y: data.response, mode: 'lines',
-        name: 'Response (h\u00B2 = ' + h2 + ')',
-        line: { color: '#c9a227', width: 2.5 },
-        hovertemplate: 'Gen %{x}<br>Mean: %{y:.1f}<extra></extra>'
-      }, {
-        x: data.gens, y: data.neutral, mode: 'lines',
-        name: 'No selection',
-        line: { color: 'rgba(136,136,136,0.4)', width: 1, dash: 'dash' },
-        hoverinfo: 'skip'
-      }];
-
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Generation', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Mean trait value', font: { size: 11, color: txtColor() } };
-      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10, color: txtColor() } };
-      layout.annotations = [{
-        x: 15, y: data.response[15], text: 'R = h\u00B2S = ' + h2 + ' \u00D7 2 = ' + (h2 * 2).toFixed(1) + ' per gen',
-        showarrow: true, arrowhead: 2, ax: 40, ay: -30,
-        font: { size: 10, color: '#c9a227' }
-      }];
-      Plotly.react('chart-breeder', traces, layout, pConfig);
-    }
-    showBreeder('high');
-
-    /* ── Redraw charts on theme toggle ───────────────── */
-    var themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function() {
-        setTimeout(function() {
-          // Redraw all charts
-          var neActiveBtn = document.querySelector('#ne-toggle button.active');
-          if (neActiveBtn) {
-            var txt = neActiveBtn.textContent || neActiveBtn.innerText;
-            if (txt.indexOf('10000') > -1) toggleNe('large');
-            else if (txt.indexOf('1000') > -1) toggleNe('med');
-            else if (txt.indexOf('10') > -1 && txt.indexOf('1000') === -1 && txt.indexOf('10000') === -1) toggleNe('small');
-            else drawFixation(fixationVisibility.all);
-          }
-
-          var divActiveBtn = document.querySelector('#diversity-toggle button.active');
-          if (divActiveBtn) {
-            showDiversityMode(divActiveBtn.textContent.indexOf('Background') > -1 ? 'background' : 'sweep');
-          }
-
-          var invActiveBtn = document.querySelector('#inversion-toggle button.active');
-          if (invActiveBtn) {
-            showInversion(invActiveBtn.textContent.indexOf('No') > -1 ? 'neutral' : 'adaptive');
-          }
-
-          var brActiveBtn = document.querySelector('#breeder-toggle button.active');
-          if (brActiveBtn) {
-            var btxt = brActiveBtn.textContent || brActiveBtn.innerText;
-            if (btxt.indexOf('0.8') > -1) showBreeder('high');
-            else if (btxt.indexOf('0.4') > -1) showBreeder('med');
-            else showBreeder('low');
-          }
-        }, 100);
-      });
-    }
-  </script>
-</body>
-</html>

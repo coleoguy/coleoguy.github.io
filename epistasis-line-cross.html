@@ -1,494 +1,430 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Epistasis & the Shifting Balance — Blackmon Lab</title>
-  <meta name="description" content="A visual guide to epistasis, line cross analysis, and the shifting balance theory — from Wright and Fisher to modern quantitative genetics.">
-  <meta property="og:title" content="Epistasis & the Shifting Balance — Blackmon Lab" />
-  <meta property="og:description" content="A visual guide to epistasis, line cross analysis, and the shifting balance theory — from Wright and Fisher to modern quantitative genetics." />
-  <meta property="og:url" content="https://coleoguy.github.io/epistasis-line-cross.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="epistasis, line cross analysis, shifting balance, Wright, Fisher, genetic architecture, SAGA, quantitative genetics">
-  <link rel="canonical" href="https://coleoguy.github.io/epistasis-line-cross.html">
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Vendor CSS -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Site CSS -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- Playfair Display for hero -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-  <style>
-    /* ── Scroll progress bar ─────────────────────────── */
-    #scroll-progress {
-      position: fixed;
-      top: 62px;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: var(--accent, #c9a227);
-      z-index: 1050;
-      transition: width 0.05s linear;
-    }
-
-    /* ── Hero ─────────────────────────────────────────── */
-    .ep-hero {
-      padding: 140px 0 60px;
-      text-align: center;
-      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-    }
-    .ep-hero .kicker {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 14px;
-    }
-    .ep-hero h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      color: var(--text-heading, #f8f4ed);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-    .ep-hero .subtitle {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-      max-width: 700px;
-      margin: 0 auto 28px;
-    }
-    .audio-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 12px 20px;
-      margin-top: 10px;
-    }
-    .audio-wrap .audio-label {
-      font-size: 0.75rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
-    }
-    .audio-wrap audio { height: 32px; }
-
-    /* ── Split-panel sections ─────────────────────────── */
-    .ep-section {
-      padding: 56px 0;
-      border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
-    }
-    .ep-section:nth-child(even) {
-      background: rgba(255,255,255,0.015);
-    }
-    .body-light .ep-section:nth-child(even),
-    .light-mode .ep-section:nth-child(even) {
-      background: rgba(0,0,0,0.02);
-    }
-
-    .ep-theory {
-      padding-right: 28px;
-      border-right: 1px solid rgba(201,162,39,0.15);
-    }
-    .ep-evidence {
-      padding-left: 28px;
-    }
-    @media (max-width: 991.98px) {
-      .ep-theory, .ep-evidence { padding: 0; border-right: none; }
-      .ep-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
-    }
-
-    .ep-kicker {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 6px;
-    }
-    .ep-section h2 {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--text-heading, #eae7e2);
-      margin-bottom: 16px;
-      line-height: 1.25;
-    }
-    .ep-section h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--accent, #c9a227);
-      margin: 24px 0 8px;
-    }
-    .ep-section h3:first-child { margin-top: 0; }
-    .ep-section p {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--text, #c8c5c0);
-      margin-bottom: 14px;
-    }
-    .ep-section a {
-      color: var(--accent, #c9a227);
-      text-decoration: underline;
-      text-decoration-color: rgba(201,162,39,0.4);
-      text-underline-offset: 2px;
-    }
-    .ep-section a:hover { text-decoration-color: var(--accent); }
-    .ep-section strong {
-      font-weight: 600;
-      color: var(--text-heading, #eae7e2);
-    }
-
-    .pullquote {
-      border-left: 3px solid var(--accent, #c9a227);
-      padding: 10px 18px;
-      margin: 20px 0;
-      font-style: italic;
-      font-size: 0.95rem;
-      color: var(--accent, #c9a227);
-      line-height: 1.6;
-    }
-
-    /* ── Paper masthead cards ─────────────────────────── */
-    .paper-masthead {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin-bottom: 14px;
-      transition: border-color 0.2s;
-      text-decoration: none;
-      display: block;
-    }
-    .paper-masthead:hover {
-      border-color: rgba(201,162,39,0.5);
-      text-decoration: none;
-    }
-    .paper-masthead .journal {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent, #c9a227);
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-    .paper-masthead .paper-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--text-heading, #eae7e2);
-      line-height: 1.35;
-      margin-bottom: 5px;
-    }
-    .paper-masthead .authors {
-      font-size: 0.78rem;
-      color: var(--text-secondary, rgba(200,197,190,0.65));
-      line-height: 1.4;
-    }
-    .paper-masthead .pub-year {
-      font-size: 0.7rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      margin-top: 4px;
-    }
-    .badge-f1000 {
-      display: inline-block;
-      background: var(--accent, #c9a227);
-      color: #080808;
-      font-size: 0.55rem;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 3px;
-      letter-spacing: 0.05em;
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-
-    /* ── Stat callout ──────────────────────────────────── */
-    .stat-callout {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin: 12px 0;
-    }
-    .stat-callout .stat-num {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--accent, #c9a227);
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .stat-callout .stat-text {
-      font-size: 0.82rem;
-      color: var(--text, #c8c5c0);
-      line-height: 1.4;
-    }
-
-    /* ── Software callout ──────────────────────────────── */
-    .software-callout {
-      background: rgba(201,162,39,0.06);
-      border: 1px solid rgba(201,162,39,0.25);
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin: 16px 0;
-    }
-    .software-callout .sw-name {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent, #c9a227);
-      margin-bottom: 6px;
-    }
-    .software-callout .sw-desc {
-      font-size: 0.85rem;
-      color: var(--text, #c8c5c0);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-    .software-callout code {
-      font-size: 0.8rem;
-      background: rgba(0,0,0,0.2);
-      padding: 2px 6px;
-      border-radius: 3px;
-      color: var(--accent, #c9a227);
-    }
-
-    /* ── Diagram containers ────────────────────────────── */
-    .diagram-box {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 24px;
-      margin: 20px 0;
-      text-align: center;
-    }
-    .diagram-box svg { max-width: 100%; height: auto; }
-    .diagram-caption {
-      font-size: 0.72rem;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-      margin-top: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* ── SVG colors via CSS ────────────────────────────── */
-    .chr-auto { fill: #555; }
-    .chr-sex { fill: var(--accent, #c9a227); }
-    .chr-sex-dim { fill: rgba(201,162,39,0.35); }
-    .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
-    .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
-    .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
-    .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
-    .chr-arrow { fill: var(--accent, #c9a227); }
-    .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
-    .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
-    .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
-    .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
-    .chr-region { fill: rgba(201,162,39,0.12); }
-
-    .light-mode .chr-auto { fill: #bbb; }
-    .light-mode .chr-label { fill: #333; }
-    .light-mode .chr-label-sm { fill: #777; }
-    .light-mode .chr-heading { fill: #222; }
-    .light-mode .chr-line { stroke: #ccc; }
-    .light-mode .chr-line-dash { stroke: #ccc; }
-
-    /* ── Plotly chart containers ────────────────────────── */
-    .chart-box {
-      background: var(--bg-card, #1a1a1a);
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 10px;
-      padding: 16px;
-      margin: 16px 0;
-    }
-    .chart-box .chart-title {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent, #c9a227);
-      margin-bottom: 8px;
-      text-align: center;
-    }
-
-    /* ── Toggle buttons for charts ─────────────────────── */
-    .chart-toggle {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-    .chart-toggle button {
-      font-size: 0.7rem;
-      padding: 4px 12px;
-      border: 1px solid var(--border, rgba(255,255,255,0.10));
-      border-radius: 16px;
-      background: transparent;
-      color: var(--text, #c8c5c0);
-      cursor: pointer;
-      transition: all 0.18s;
-    }
-    .chart-toggle button.active,
-    .chart-toggle button:hover {
-      border-color: var(--accent, #c9a227);
-      color: var(--accent, #c9a227);
-      background: rgba(201,162,39,0.08);
-    }
-
-    /* ── Related resources box ─────────────────────────── */
-    .related-box {
-      margin-top: 48px;
-      padding: 28px 32px;
-      border: 1px solid rgba(201,162,39,0.2);
-      border-radius: 10px;
-      background: rgba(201,162,39,0.03);
-    }
-    .related-box h3 {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent, #c9a227);
-      margin-bottom: 16px;
-    }
-    .related-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .related-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border: 1px solid rgba(201,162,39,0.25);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--text, #c8c5c0);
-      text-decoration: none;
-      transition: all 0.18s;
-    }
-    .related-link i { color: var(--accent); font-size: 0.75rem; }
-    .related-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .paper-foot {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(201,162,39,0.2);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted, rgba(200,197,190,0.45));
-    }
-
-    /* ── Debate note ───────────────────────────────────── */
-    .debate-note {
-      background: rgba(201,162,39,0.06);
-      border: 1px solid rgba(201,162,39,0.2);
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin: 16px 0;
-      font-size: 0.85rem;
-      color: var(--text, #c8c5c0);
-      line-height: 1.5;
-    }
-    .debate-note strong {
-      color: var(--accent, #c9a227);
-    }
-  </style>
-
-  <!-- Structured Data (added by audit) -->
+---
+layout: default
+title: Epistasis & the Shifting Balance — Blackmon Lab
+description: A visual guide to epistasis, line cross analysis, and the shifting balance theory — from Wright and Fisher to modern quantitative genetics.
+canonical: https://coleoguy.github.io/epistasis-line-cross.html
+keywords: epistasis, line cross analysis, shifting balance, Wright, Fisher, genetic architecture, SAGA, quantitative genetics
+body_class: resources-page
+extra_head: |
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Epistasis and the Shifting Balance",
-    "url": "https://coleoguy.github.io/epistasis-line-cross.html",
-    "description": "Visual guide to epistasis, line cross analysis, and Wright's shifting balance theory. Magnitude/sign/reciprocal sign epistasis, the joint-scaling test, SAGA/SAGA2, and 1,600+ empirical datasets.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Evolutionary biology"
-    },
-    "keywords": ["epistasis", "line cross analysis", "shifting balance", "SAGA", "Wright-Fisher debate", "quantitative genetics"],
-    "publisher": {
-      "@type": "ResearchOrganization",
-      "name": "Blackmon Lab",
-      "url": "https://coleoguy.github.io"
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Epistasis and the Shifting Balance",
+      "url": "https://coleoguy.github.io/epistasis-line-cross.html",
+      "description": "Visual guide to epistasis, line cross analysis, and Wright's shifting balance theory. Magnitude/sign/reciprocal sign epistasis, the joint-scaling test, SAGA/SAGA2, and 1,600+ empirical datasets.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Evolutionary biology"
+      },
+      "keywords": ["epistasis", "line cross analysis", "shifting balance", "SAGA", "Wright-Fisher debate", "quantitative genetics"],
+      "publisher": {
+        "@type": "ResearchOrganization",
+        "name": "Blackmon Lab",
+        "url": "https://coleoguy.github.io"
+      }
     }
-  }
-  </script>
-</head>
+    </script>
+  <style>
+      /* ── Scroll progress bar ─────────────────────────── */
+      #scroll-progress {
+        position: fixed;
+        top: 62px;
+        left: 0;
+        height: 3px;
+        width: 0%;
+        background: var(--accent, #c9a227);
+        z-index: 1050;
+        transition: width 0.05s linear;
+      }
+  
+      /* ── Hero ─────────────────────────────────────────── */
+      .ep-hero {
+        padding: 140px 0 60px;
+        text-align: center;
+        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+      }
+      .ep-hero .kicker {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 14px;
+      }
+      .ep-hero h1 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 700;
+        color: var(--text-heading, #f8f4ed);
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+      .ep-hero .subtitle {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+        max-width: 700px;
+        margin: 0 auto 28px;
+      }
+      .audio-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 12px 20px;
+        margin-top: 10px;
+      }
+      .audio-wrap .audio-label {
+        font-size: 0.75rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+      }
+      .audio-wrap audio { height: 32px; }
+  
+      /* ── Split-panel sections ─────────────────────────── */
+      .ep-section {
+        padding: 56px 0;
+        border-bottom: 1px solid var(--border, rgba(255,255,255,0.10));
+      }
+      .ep-section:nth-child(even) {
+        background: rgba(255,255,255,0.015);
+      }
+      .body-light .ep-section:nth-child(even),
+      .light-mode .ep-section:nth-child(even) {
+        background: rgba(0,0,0,0.02);
+      }
+  
+      .ep-theory {
+        padding-right: 28px;
+        border-right: 1px solid rgba(201,162,39,0.15);
+      }
+      .ep-evidence {
+        padding-left: 28px;
+      }
+      @media (max-width: 991.98px) {
+        .ep-theory, .ep-evidence { padding: 0; border-right: none; }
+        .ep-evidence { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border, rgba(255,255,255,0.10)); }
+      }
+  
+      .ep-kicker {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 6px;
+      }
+      .ep-section h2 {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: var(--text-heading, #eae7e2);
+        margin-bottom: 16px;
+        line-height: 1.25;
+      }
+      .ep-section h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--accent, #c9a227);
+        margin: 24px 0 8px;
+      }
+      .ep-section h3:first-child { margin-top: 0; }
+      .ep-section p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--text, #c8c5c0);
+        margin-bottom: 14px;
+      }
+      .ep-section a {
+        color: var(--accent, #c9a227);
+        text-decoration: underline;
+        text-decoration-color: rgba(201,162,39,0.4);
+        text-underline-offset: 2px;
+      }
+      .ep-section a:hover { text-decoration-color: var(--accent); }
+      .ep-section strong {
+        font-weight: 600;
+        color: var(--text-heading, #eae7e2);
+      }
+  
+      .pullquote {
+        border-left: 3px solid var(--accent, #c9a227);
+        padding: 10px 18px;
+        margin: 20px 0;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: var(--accent, #c9a227);
+        line-height: 1.6;
+      }
+  
+      /* ── Paper masthead cards ─────────────────────────── */
+      .paper-masthead {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 18px 20px;
+        margin-bottom: 14px;
+        transition: border-color 0.2s;
+        text-decoration: none;
+        display: block;
+      }
+      .paper-masthead:hover {
+        border-color: rgba(201,162,39,0.5);
+        text-decoration: none;
+      }
+      .paper-masthead .journal {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent, #c9a227);
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      .paper-masthead .paper-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--text-heading, #eae7e2);
+        line-height: 1.35;
+        margin-bottom: 5px;
+      }
+      .paper-masthead .authors {
+        font-size: 0.78rem;
+        color: var(--text-secondary, rgba(200,197,190,0.65));
+        line-height: 1.4;
+      }
+      .paper-masthead .pub-year {
+        font-size: 0.7rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        margin-top: 4px;
+      }
+      .badge-f1000 {
+        display: inline-block;
+        background: var(--accent, #c9a227);
+        color: #080808;
+        font-size: 0.55rem;
+        font-weight: 700;
+        padding: 2px 7px;
+        border-radius: 3px;
+        letter-spacing: 0.05em;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+  
+      /* ── Stat callout ──────────────────────────────────── */
+      .stat-callout {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin: 12px 0;
+      }
+      .stat-callout .stat-num {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--accent, #c9a227);
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .stat-callout .stat-text {
+        font-size: 0.82rem;
+        color: var(--text, #c8c5c0);
+        line-height: 1.4;
+      }
+  
+      /* ── Software callout ──────────────────────────────── */
+      .software-callout {
+        background: rgba(201,162,39,0.06);
+        border: 1px solid rgba(201,162,39,0.25);
+        border-radius: 10px;
+        padding: 18px 20px;
+        margin: 16px 0;
+      }
+      .software-callout .sw-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--accent, #c9a227);
+        margin-bottom: 6px;
+      }
+      .software-callout .sw-desc {
+        font-size: 0.85rem;
+        color: var(--text, #c8c5c0);
+        line-height: 1.5;
+        margin-bottom: 8px;
+      }
+      .software-callout code {
+        font-size: 0.8rem;
+        background: rgba(0,0,0,0.2);
+        padding: 2px 6px;
+        border-radius: 3px;
+        color: var(--accent, #c9a227);
+      }
+  
+      /* ── Diagram containers ────────────────────────────── */
+      .diagram-box {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 24px;
+        margin: 20px 0;
+        text-align: center;
+      }
+      .diagram-box svg { max-width: 100%; height: auto; }
+      .diagram-caption {
+        font-size: 0.72rem;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+  
+      /* ── SVG colors via CSS ────────────────────────────── */
+      .chr-auto { fill: #555; }
+      .chr-sex { fill: var(--accent, #c9a227); }
+      .chr-sex-dim { fill: rgba(201,162,39,0.35); }
+      .chr-outline { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; fill: none; }
+      .chr-label { fill: var(--text, #c8c5c0); font-family: 'Inter', sans-serif; font-size: 11px; }
+      .chr-label-sm { fill: var(--text-muted, rgba(200,197,190,0.45)); font-family: 'Inter', sans-serif; font-size: 9px; }
+      .chr-label-accent { fill: var(--accent, #c9a227); font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; }
+      .chr-arrow { fill: var(--accent, #c9a227); }
+      .chr-line { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; }
+      .chr-line-accent { stroke: var(--accent, #c9a227); stroke-width: 1.5; }
+      .chr-line-dash { stroke: var(--text-muted, rgba(200,197,190,0.45)); stroke-width: 1; stroke-dasharray: 4 3; }
+      .chr-heading { fill: var(--text-heading, #eae7e2); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; }
+      .chr-region { fill: rgba(201,162,39,0.12); }
+  
+      .light-mode .chr-auto { fill: #bbb; }
+      .light-mode .chr-label { fill: #333; }
+      .light-mode .chr-label-sm { fill: #777; }
+      .light-mode .chr-heading { fill: #222; }
+      .light-mode .chr-line { stroke: #ccc; }
+      .light-mode .chr-line-dash { stroke: #ccc; }
+  
+      /* ── Plotly chart containers ────────────────────────── */
+      .chart-box {
+        background: var(--bg-card, #1a1a1a);
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 10px;
+        padding: 16px;
+        margin: 16px 0;
+      }
+      .chart-box .chart-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent, #c9a227);
+        margin-bottom: 8px;
+        text-align: center;
+      }
+  
+      /* ── Toggle buttons for charts ─────────────────────── */
+      .chart-toggle {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .chart-toggle button {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+        border: 1px solid var(--border, rgba(255,255,255,0.10));
+        border-radius: 16px;
+        background: transparent;
+        color: var(--text, #c8c5c0);
+        cursor: pointer;
+        transition: all 0.18s;
+      }
+      .chart-toggle button.active,
+      .chart-toggle button:hover {
+        border-color: var(--accent, #c9a227);
+        color: var(--accent, #c9a227);
+        background: rgba(201,162,39,0.08);
+      }
+  
+      /* ── Related resources box ─────────────────────────── */
+      .related-box {
+        margin-top: 48px;
+        padding: 28px 32px;
+        border: 1px solid rgba(201,162,39,0.2);
+        border-radius: 10px;
+        background: rgba(201,162,39,0.03);
+      }
+      .related-box h3 {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent, #c9a227);
+        margin-bottom: 16px;
+      }
+      .related-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .related-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border: 1px solid rgba(201,162,39,0.25);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: var(--text, #c8c5c0);
+        text-decoration: none;
+        transition: all 0.18s;
+      }
+      .related-link i { color: var(--accent); font-size: 0.75rem; }
+      .related-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        text-decoration: none;
+      }
+  
+      .paper-foot {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(201,162,39,0.2);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted, rgba(200,197,190,0.45));
+      }
+  
+      /* ── Debate note ───────────────────────────────────── */
+      .debate-note {
+        background: rgba(201,162,39,0.06);
+        border: 1px solid rgba(201,162,39,0.2);
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin: 16px 0;
+        font-size: 0.85rem;
+        color: var(--text, #c8c5c0);
+        line-height: 1.5;
+      }
+      .debate-note strong {
+        color: var(--accent, #c9a227);
+      }
+    </style>
+extra_scripts: |
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+---
 
-<body class="resources-page">
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <!-- Scroll progress -->
-  <div id="scroll-progress"></div>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- ═══════════════ HERO ═══════════════ -->
+<!-- ═══════════════ HERO ═══════════════ -->
     <section class="ep-hero" data-aos="fade-up">
       <div class="container">
         <div class="kicker">A Visual Guide</div>
@@ -996,7 +932,7 @@
               <div class="sw-desc">Statistical Analysis of Genetic Architecture &mdash; an information-theoretic approach to line cross analysis with support for sexual dimorphism and genotype-by-environment interactions.</div>
               <p style="font-size:0.85rem; margin-bottom:6px;"><strong>Install:</strong> <code>devtools::install_github("coleoguy/SAGA2")</code></p>
               <p style="font-size:0.85rem; margin-bottom:6px;"><strong>GitHub:</strong> <a href="https://github.com/coleoguy/SAGA2" target="_blank">github.com/coleoguy/SAGA2</a></p>
-              <p style="font-size:0.85rem; margin-bottom:0;"><strong>Vignette:</strong> <a href="saga.pdf">saga.pdf</a></p>
+              <p style="font-size:0.85rem; margin-bottom:0;"><strong>Vignette:</strong> <a href="subpages/saga.pdf">saga.pdf</a></p>
             </div>
 
             <!-- Plotly: AICc comparison chart -->
@@ -1307,314 +1243,3 @@
         <div class="paper-foot">Blackmon Lab &nbsp;&middot;&nbsp; Texas A&amp;M University &nbsp;&middot;&nbsp; April 2026</div>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p><a href="https://coleoguy.github.io">Blackmon Lab</a> &middot; <a href="https://bio.tamu.edu" target="_blank">Department of Biology</a> &middot; <a href="https://www.tamu.edu" target="_blank">Texas A&amp;M University</a></p>
-    </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-
-  <!-- Plotly -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
-
-  <script>
-    // ── Helpers ──────────────────────────────────────
-    function isLight() { return document.body.classList.contains('light-mode'); }
-    function txtColor() { return isLight() ? '#333' : '#c8c5c0'; }
-    function gridColor() { return isLight() ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.06)'; }
-    function baseLayout(title) {
-      return {
-        title: { text: title || '', font: { family: 'Inter, sans-serif', size: 13, color: txtColor() } },
-        paper_bgcolor: 'rgba(0,0,0,0)',
-        plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { family: 'Inter, sans-serif', color: txtColor(), size: 11 },
-        margin: { l: 50, r: 20, t: title ? 36 : 10, b: 50 },
-        xaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
-        yaxis: { gridcolor: gridColor(), zerolinecolor: gridColor() },
-      };
-    }
-    var pConfig = { displaylogo: false, responsive: true, modeBarButtonsToRemove: ['lasso2d','select2d'] };
-
-    // ── Scroll progress bar ─────────────────────────
-    window.addEventListener('scroll', function() {
-      var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-      document.getElementById('scroll-progress').style.width = pct + '%';
-    });
-
-    // ── Helper: seeded random for reproducibility ────
-    function seededRandom(seed) {
-      var x = Math.sin(seed) * 10000;
-      return x - Math.floor(x);
-    }
-    function rnorm(n, mu, sd, seed) {
-      var out = [];
-      for (var i = 0; i < n; i++) {
-        var u = 0, v = 0;
-        while (u === 0) u = seededRandom(seed + i * 2);
-        while (v === 0) v = seededRandom(seed + i * 2 + 1);
-        out.push(mu + sd * Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v));
-      }
-      return out;
-    }
-
-    // ── Chart 1: Genetic Drift Simulation ────────────
-    (function() {
-      // Simulate allele frequency trajectories
-      function driftPath(N, gen, startFreq, seed) {
-        var path = [startFreq];
-        var p = startFreq;
-        for (var g = 1; g <= gen; g++) {
-          // Binomial sampling approximated
-          var successes = 0;
-          for (var i = 0; i < 2 * N; i++) {
-            if (seededRandom(seed + g * 1000 + i) < p) successes++;
-          }
-          p = successes / (2 * N);
-          if (p <= 0) p = 0;
-          if (p >= 1) p = 1;
-          path.push(p);
-        }
-        return path;
-      }
-
-      var gens = 100;
-      var x = [];
-      for (var i = 0; i <= gens; i++) x.push(i);
-
-      var traces = [];
-      // Small populations (N=20)
-      var colors20 = ['rgba(201,162,39,0.7)', 'rgba(201,162,39,0.5)', 'rgba(201,162,39,0.3)'];
-      for (var r = 0; r < 3; r++) {
-        traces.push({
-          x: x, y: driftPath(20, gens, 0.5, 42 + r * 100),
-          mode: 'lines', name: r === 0 ? 'N = 20' : '',
-          line: { color: colors20[r], width: 1.5 },
-          legendgroup: 'small', showlegend: r === 0
-        });
-      }
-      // Large populations (N=500)
-      var colors500 = ['rgba(150,150,150,0.7)', 'rgba(150,150,150,0.5)', 'rgba(150,150,150,0.3)'];
-      for (var r = 0; r < 3; r++) {
-        traces.push({
-          x: x, y: driftPath(500, gens, 0.5, 999 + r * 100),
-          mode: 'lines', name: r === 0 ? 'N = 500' : '',
-          line: { color: colors500[r], width: 1.5 },
-          legendgroup: 'large', showlegend: r === 0
-        });
-      }
-
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Generation', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Allele Frequency', font: { size: 11, color: txtColor() } };
-      layout.yaxis.range = [0, 1];
-      layout.legend = { x: 0.02, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
-      layout.shapes = [{ type: 'line', x0: 0, x1: gens, y0: 0.5, y1: 0.5,
-        line: { color: 'rgba(255,255,255,0.15)', width: 1, dash: 'dash' } }];
-      layout.annotations = [{ x: 0.5, y: -0.16, xref: 'paper', yref: 'paper',
-        text: 'Small populations (gold) drift dramatically; large populations (gray) stay near starting frequency',
-        showarrow: false, font: { size: 9, color: txtColor() } }];
-      Plotly.react('chart-drift', traces, layout, pConfig);
-    })();
-
-    // ── Chart 2: Line Cross Expectations (Interactive) ─
-    function showLCA(mode) {
-      var btns = document.querySelectorAll('#lca-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      if (mode === 'additive') btns[0].classList.add('active');
-      else btns[1].classList.add('active');
-
-      var generations = ['P1', 'BC1', 'F1', 'F2', 'BC2', 'P2'];
-
-      if (mode === 'additive') {
-        var means = [120, 110, 100, 100, 90, 80];
-        var errors = [3, 4, 3.5, 4, 4, 3];
-        var colors = generations.map(function() { return 'rgba(150,150,150,0.7)'; });
-        var borderColors = generations.map(function() { return 'rgba(150,150,150,1)'; });
-      } else {
-        var means = [120, 115, 108, 95, 85, 80];
-        var errors = [3, 4.5, 3.5, 5, 4, 3];
-        var colors = ['rgba(150,150,150,0.7)', 'rgba(201,162,39,0.7)', 'rgba(201,162,39,0.7)',
-                      'rgba(201,162,39,0.9)', 'rgba(201,162,39,0.7)', 'rgba(150,150,150,0.7)'];
-        var borderColors = ['rgba(150,150,150,1)', '#c9a227', '#c9a227', '#c9a227', '#c9a227', 'rgba(150,150,150,1)'];
-      }
-
-      var traces = [{
-        x: generations, y: means, type: 'bar',
-        error_y: { type: 'data', array: errors, visible: true, color: txtColor(), thickness: 1.5 },
-        marker: { color: colors, line: { color: borderColors, width: 1.5 } },
-        hovertemplate: '%{x}: %{y:.1f} +/- %{error_y.array:.1f}<extra></extra>'
-      }];
-
-      // Add expected midparent line
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Generation', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Trait Mean', font: { size: 11, color: txtColor() } };
-      layout.yaxis.range = [60, 135];
-      layout.shapes = [
-        { type: 'line', x0: -0.5, x1: 5.5, y0: 100, y1: 100,
-          line: { color: 'rgba(255,255,255,0.2)', width: 1, dash: 'dash' } }
-      ];
-      layout.annotations = [
-        { x: 5.3, y: 100, text: 'midparent', showarrow: false,
-          font: { size: 9, color: 'rgba(255,255,255,0.4)' } }
-      ];
-      if (mode === 'epistatic') {
-        // Add expected additive line for reference
-        layout.shapes.push({
-          type: 'line', x0: 0, x1: 5, y0: 120, y1: 80,
-          line: { color: 'rgba(255,255,255,0.12)', width: 1, dash: 'dot' }
-        });
-        layout.annotations.push({
-          x: 4.8, y: 83, text: 'additive expectation', showarrow: false,
-          font: { size: 8, color: 'rgba(255,255,255,0.3)' }
-        });
-      }
-      Plotly.react('chart-lca', traces, layout, pConfig);
-    }
-    showLCA('additive');
-
-    // ── Chart 3: AICc Model Comparison ───────────────
-    (function() {
-      var models = ['[m]', '[m,a]', '[m,a,d]', '[m,a,aa]', '[m,a,d,aa]', '[m,a,d,ad]', '[m,a,d,aa,ad]', '[m,a,d,aa,ad,dd]'];
-      var weights = [0.01, 0.05, 0.12, 0.28, 0.32, 0.08, 0.10, 0.04];
-
-      var colors = weights.map(function(w) {
-        return w >= 0.25 ? 'rgba(201,162,39,0.85)' : 'rgba(150,150,150,0.6)';
-      });
-
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Genetic Architecture Model', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'AICc Weight', font: { size: 11, color: txtColor() } };
-      layout.xaxis.tickangle = -35;
-      layout.margin.b = 80;
-      layout.yaxis.range = [0, 0.4];
-      layout.annotations = [
-        { x: 4, y: 0.34, text: 'Best supported', showarrow: true, arrowhead: 2, arrowcolor: '#c9a227',
-          font: { size: 9, color: '#c9a227' }, ax: 30, ay: -20 },
-        { x: 0.5, y: -0.22, xref: 'paper', yref: 'paper',
-          text: 'm = mean, a = additive, d = dominance, aa/ad/dd = epistasis types',
-          showarrow: false, font: { size: 8, color: txtColor() } }
-      ];
-
-      Plotly.react('chart-aicc', [{
-        x: models, y: weights, type: 'bar',
-        marker: { color: colors, line: { color: '#c9a227', width: 0.5 } },
-        hovertemplate: '%{x}: weight = %{y:.3f}<extra></extra>'
-      }], layout, pConfig);
-    })();
-
-    // ── Chart 4: Epistasis Prevalence by Trait Category ─
-    (function() {
-      var categories = ['Morphological', 'Life History', 'Physiological', 'Behavioral'];
-      var withEpistasis = [68, 72, 58, 64];
-      var withoutEpistasis = [32, 28, 42, 36];
-
-      var layout = baseLayout('');
-      layout.barmode = 'stack';
-      layout.xaxis.title = { text: 'Trait Category', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: 'Percentage of Crosses', font: { size: 11, color: txtColor() } };
-      layout.yaxis.range = [0, 105];
-      layout.legend = { x: 0.55, y: 0.98, bgcolor: 'rgba(0,0,0,0)', font: { size: 10 } };
-
-      var traces = [
-        { x: categories, y: withEpistasis, type: 'bar', name: 'Epistasis detected',
-          marker: { color: 'rgba(201,162,39,0.75)', line: { color: '#c9a227', width: 1 } },
-          hovertemplate: '%{x}: %{y}%<extra>Epistasis detected</extra>' },
-        { x: categories, y: withoutEpistasis, type: 'bar', name: 'Additive sufficient',
-          marker: { color: 'rgba(150,150,150,0.5)', line: { color: 'rgba(150,150,150,0.8)', width: 1 } },
-          hovertemplate: '%{x}: %{y}%<extra>Additive sufficient</extra>' }
-      ];
-
-      Plotly.react('chart-prevalence', traces, layout, pConfig);
-    })();
-
-    // ── Chart 5: Model Support Distribution ──────────
-    var modelDistData = {
-      all: {
-        labels: ['Additive Only', 'Add + Dominance', 'Add + Epistasis', 'Full Model'],
-        values: [12, 18, 42, 28],
-        note: 'All taxa combined (n > 1,600 crosses)'
-      },
-      plants: {
-        labels: ['Additive Only', 'Add + Dominance', 'Add + Epistasis', 'Full Model'],
-        values: [9, 15, 45, 31],
-        note: 'Plants only (n = 428 crosses)'
-      },
-      animals: {
-        labels: ['Additive Only', 'Add + Dominance', 'Add + Epistasis', 'Full Model'],
-        values: [14, 20, 40, 26],
-        note: 'Animals only (n = 618 crosses)'
-      }
-    };
-
-    function showModelDist(taxon) {
-      var btns = document.querySelectorAll('#model-toggle button');
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      var idx = taxon === 'all' ? 0 : taxon === 'plants' ? 1 : 2;
-      btns[idx].classList.add('active');
-
-      var d = modelDistData[taxon];
-      var colors = ['rgba(150,150,150,0.6)', 'rgba(180,160,100,0.6)', 'rgba(201,162,39,0.75)', 'rgba(201,162,39,0.9)'];
-
-      var layout = baseLayout('');
-      layout.xaxis.title = { text: 'Best-Supported Architecture', font: { size: 11, color: txtColor() } };
-      layout.yaxis.title = { text: '% of Crosses', font: { size: 11, color: txtColor() } };
-      layout.yaxis.range = [0, 55];
-      layout.xaxis.tickangle = -20;
-      layout.margin.b = 80;
-      layout.annotations = [
-        { x: 0.5, y: -0.22, xref: 'paper', yref: 'paper',
-          text: d.note, showarrow: false, font: { size: 9, color: txtColor(), style: 'italic' } }
-      ];
-
-      Plotly.react('chart-models', [{
-        x: d.labels, y: d.values, type: 'bar',
-        marker: { color: colors, line: { color: '#c9a227', width: 0.5 } },
-        hovertemplate: '%{x}: %{y}%<extra></extra>'
-      }], layout, pConfig);
-    }
-    showModelDist('all');
-
-    // ── Redraw all charts on theme toggle ────────────
-    var themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function() {
-        setTimeout(function() {
-          // Rerun interactive charts
-          showLCA(document.querySelector('#lca-toggle button.active').textContent.includes('Epistasis') ? 'epistatic' : 'additive');
-          showModelDist(
-            document.querySelector('#model-toggle button.active').textContent.toLowerCase().replace(/\s/g, '') === 'plants' ? 'plants' :
-            document.querySelector('#model-toggle button.active').textContent.toLowerCase().replace(/\s/g, '') === 'animals' ? 'animals' : 'all'
-          );
-          // Relayout static charts
-          var staticCharts = ['chart-drift', 'chart-aicc', 'chart-prevalence'];
-          staticCharts.forEach(function(id) {
-            var el = document.getElementById(id);
-            if (el && el.data) {
-              Plotly.relayout(id, {
-                'font.color': txtColor(),
-                'xaxis.gridcolor': gridColor(), 'yaxis.gridcolor': gridColor(),
-                'xaxis.title.font.color': txtColor(), 'yaxis.title.font.color': txtColor(),
-                'xaxis.zerolinecolor': gridColor(), 'yaxis.zerolinecolor': gridColor()
-              });
-            }
-          });
-        }, 100);
-      });
-    }
-  </script>
-</body>
-</html>

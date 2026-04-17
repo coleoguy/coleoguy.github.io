@@ -1,376 +1,321 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>AI-Native Biology - Blackmon Lab</title>
-  <meta name="description" content="The Blackmon Lab at Texas A&M uses AI to accelerate research in evolutionary biology. Autonomous literature agents, AI-assisted theory, and practical curricula for biologists.">
-    <meta property="og:title" content="AI-Native Biology - Blackmon Lab" />
-    <meta property="og:description" content="The Blackmon Lab at Texas A&amp;M uses AI to accelerate research in evolutionary biology. Autonomous literature agents, AI-assisted theory, and practical curricula for biologists." />
-    <meta property="og:url" content="https://coleoguy.github.io/ai.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Blackmon Lab" />
-  <meta name="keywords" content="AI in biology, AI-native biology, autonomous agents, evolutionary biology AI, karyotype agent, TAMU AI, Blackmon Lab">
-  <link rel="canonical" href="https://coleoguy.github.io/ai.html">
-
-  <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4J0HZ3LNQX');
-  </script>
-
-  <link href="assets/img/favicon.ico" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-
+---
+layout: default
+title: AI-Native Biology - Blackmon Lab
+description: The Blackmon Lab at Texas A&M uses AI to accelerate research in evolutionary biology. Autonomous literature agents, AI-assisted theory, and practical curricula for biologists.
+canonical: https://coleoguy.github.io/ai.html
+keywords: AI in biology, AI-native biology, autonomous agents, evolutionary biology AI, karyotype agent, TAMU AI, Blackmon Lab
+nav_active: ai
+extra_head: |
   <style>
-    /* ── AI hero ──────────────────────────────────────────── */
-    .ai-hero {
-      padding: 100px 0 80px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .ai-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,162,39,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .ai-hero .eyebrow {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
-      background: var(--accent-dim);
-      border-radius: 20px;
-      padding: 5px 16px;
-      margin-bottom: 24px;
-    }
-    .ai-hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 700;
-      color: var(--text-heading);
-      line-height: 1.15;
-      margin-bottom: 24px;
-      font-family: var(--font-heading);
-    }
-    .ai-hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-    }
-    .ai-hero .lead {
-      font-size: 1.15rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto 40px;
-      line-height: 1.75;
-    }
-    .ai-hero .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-    }
-    .btn-accent {
-      background: var(--accent);
-      color: #000;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 11px 28px;
-      border-radius: 8px;
-      border: none;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .btn-accent:hover { background: var(--accent-hover); color: #000; transform: translateY(-1px); }
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      padding: 10px 24px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .btn-ghost:hover { border-color: var(--border-hover); color: var(--text-heading); }
+      /* ── AI hero ──────────────────────────────────────────── */
+      .ai-hero {
+        padding: 100px 0 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .ai-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,162,39,0.08) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .ai-hero .eyebrow {
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid var(--accent-border);
+        background: var(--accent-dim);
+        border-radius: 20px;
+        padding: 5px 16px;
+        margin-bottom: 24px;
+      }
+      .ai-hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 700;
+        color: var(--text-heading);
+        line-height: 1.15;
+        margin-bottom: 24px;
+        font-family: var(--font-heading);
+      }
+      .ai-hero h1 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .ai-hero .lead {
+        font-size: 1.15rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.75;
+      }
+      .ai-hero .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      .btn-accent {
+        background: var(--accent);
+        color: #000;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 11px 28px;
+        border-radius: 8px;
+        border: none;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .btn-accent:hover { background: var(--accent-hover); color: #000; transform: translateY(-1px); }
+      .btn-ghost {
+        background: transparent;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        padding: 10px 24px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        text-decoration: none;
+        transition: border-color 0.2s, color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .btn-ghost:hover { border-color: var(--border-hover); color: var(--text-heading); }
+  
+      /* ── Divider ──────────────────────────────────────────── */
+      .section-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 0;
+      }
+  
+      /* ── Vision section ───────────────────────────────────── */
+      .vision-section {
+        padding: 80px 0;
+      }
+      .vision-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-top: 48px;
+      }
+      .vision-cell {
+        background: var(--bg-card);
+        padding: 36px 32px;
+        transition: background 0.2s;
+      }
+      .vision-cell:hover { background: var(--bg-card-hover); }
+      .vision-cell .vc-icon {
+        font-size: 2rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .vision-cell h4 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        margin-bottom: 10px;
+        font-family: var(--font-heading);
+      }
+      .vision-cell p {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin: 0;
+      }
+      @media (max-width: 768px) {
+        .vision-grid { grid-template-columns: 1fr; }
+      }
+      @media (min-width: 769px) and (max-width: 992px) {
+        .vision-grid { grid-template-columns: 1fr 1fr; }
+      }
+  
+      /* ── Section label ────────────────────────────────────── */
+      .section-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 10px;
+        display: block;
+      }
+      .section-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--text-heading);
+        font-family: var(--font-heading);
+        margin-bottom: 12px;
+      }
+      .section-body {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.75;
+        max-width: 640px;
+      }
+  
+      /* ── Project cards ────────────────────────────────────── */
+      .projects-section {
+        padding: 80px 0;
+        background: var(--bg-raised);
+      }
+      .project-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px 26px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: border-color 0.2s, transform 0.2s;
+      }
+      .project-card:hover {
+        border-color: var(--border-hover);
+        transform: translateY(-2px);
+      }
+      .project-card.featured {
+        border-color: var(--accent-border);
+        background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,162,39,0.04) 100%);
+      }
+      .pc-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .pc-icon {
+        font-size: 1.8rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .pc-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        font-family: var(--font-heading);
+        margin: 0 0 4px;
+      }
+      .pc-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 2px 9px;
+        border-radius: 10px;
+      }
+      .status-active   { background: rgba(74,222,128,0.12); color: #4ade80; }
+      .status-complete { background: rgba(148,163,184,0.12); color: #94a3b8; }
+      .status-paper    { background: rgba(167,139,250,0.12); color: #a78bfa; }
+      .status-teaching { background: rgba(251,191,36,0.12); color: #fbbf24; }
+      .pc-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+      .pc-desc {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        flex: 1;
+        margin-bottom: 18px;
+      }
+      .pc-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--accent);
+        text-decoration: none;
+        margin-top: auto;
+        transition: gap 0.15s;
+      }
+      .pc-link:hover { gap: 9px; color: var(--accent-hover); }
+  
+      /* ── Teaching section ─────────────────────────────────── */
+      .teaching-section {
+        padding: 80px 0;
+      }
+      .teaching-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px 26px;
+        height: 100%;
+        transition: border-color 0.2s;
+      }
+      .teaching-card:hover { border-color: var(--border-hover); }
+  
+      /* ── Principles section ───────────────────────────────── */
+      .principles-section {
+        padding: 80px 0;
+        background: var(--bg-raised);
+      }
+      .principle-row {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .principle-row:last-child { border-bottom: none; }
+      .principle-num {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent-border);
+        font-family: var(--font-heading);
+        flex-shrink: 0;
+        width: 56px;
+        line-height: 1;
+        margin-top: 4px;
+      }
+      .principle-content h5 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        font-family: var(--font-heading);
+        margin-bottom: 8px;
+      }
+      .principle-content p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.75;
+        margin: 0;
+      }
+  
+      /* ── CTA section ──────────────────────────────────────── */
+      .cta-section {
+        padding: 80px 0;
+        text-align: center;
+      }
+      .cta-section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-heading);
+        font-family: var(--font-heading);
+        margin-bottom: 16px;
+      }
+      .cta-section p {
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        max-width: 560px;
+        margin: 0 auto 36px;
+        line-height: 1.75;
+      }
+    </style>
+---
 
-    /* ── Divider ──────────────────────────────────────────── */
-    .section-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0;
-    }
-
-    /* ── Vision section ───────────────────────────────────── */
-    .vision-section {
-      padding: 80px 0;
-    }
-    .vision-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 48px;
-    }
-    .vision-cell {
-      background: var(--bg-card);
-      padding: 36px 32px;
-      transition: background 0.2s;
-    }
-    .vision-cell:hover { background: var(--bg-card-hover); }
-    .vision-cell .vc-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .vision-cell h4 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      margin-bottom: 10px;
-      font-family: var(--font-heading);
-    }
-    .vision-cell p {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin: 0;
-    }
-    @media (max-width: 768px) {
-      .vision-grid { grid-template-columns: 1fr; }
-    }
-    @media (min-width: 769px) and (max-width: 992px) {
-      .vision-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    /* ── Section label ────────────────────────────────────── */
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-      display: block;
-    }
-    .section-title {
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: var(--text-heading);
-      font-family: var(--font-heading);
-      margin-bottom: 12px;
-    }
-    .section-body {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      max-width: 640px;
-    }
-
-    /* ── Project cards ────────────────────────────────────── */
-    .projects-section {
-      padding: 80px 0;
-      background: var(--bg-raised);
-    }
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px 26px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .project-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-    }
-    .project-card.featured {
-      border-color: var(--accent-border);
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,162,39,0.04) 100%);
-    }
-    .pc-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    .pc-icon {
-      font-size: 1.8rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .pc-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      font-family: var(--font-heading);
-      margin: 0 0 4px;
-    }
-    .pc-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 2px 9px;
-      border-radius: 10px;
-    }
-    .status-active   { background: rgba(74,222,128,0.12); color: #4ade80; }
-    .status-complete { background: rgba(148,163,184,0.12); color: #94a3b8; }
-    .status-paper    { background: rgba(167,139,250,0.12); color: #a78bfa; }
-    .status-teaching { background: rgba(251,191,36,0.12); color: #fbbf24; }
-    .pc-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-    .pc-desc {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      flex: 1;
-      margin-bottom: 18px;
-    }
-    .pc-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
-      margin-top: auto;
-      transition: gap 0.15s;
-    }
-    .pc-link:hover { gap: 9px; color: var(--accent-hover); }
-
-    /* ── Teaching section ─────────────────────────────────── */
-    .teaching-section {
-      padding: 80px 0;
-    }
-    .teaching-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px 26px;
-      height: 100%;
-      transition: border-color 0.2s;
-    }
-    .teaching-card:hover { border-color: var(--border-hover); }
-
-    /* ── Principles section ───────────────────────────────── */
-    .principles-section {
-      padding: 80px 0;
-      background: var(--bg-raised);
-    }
-    .principle-row {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .principle-row:last-child { border-bottom: none; }
-    .principle-num {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent-border);
-      font-family: var(--font-heading);
-      flex-shrink: 0;
-      width: 56px;
-      line-height: 1;
-      margin-top: 4px;
-    }
-    .principle-content h5 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text-heading);
-      font-family: var(--font-heading);
-      margin-bottom: 8px;
-    }
-    .principle-content p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      margin: 0;
-    }
-
-    /* ── CTA section ──────────────────────────────────────── */
-    .cta-section {
-      padding: 80px 0;
-      text-align: center;
-    }
-    .cta-section h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-heading);
-      font-family: var(--font-heading);
-      margin-bottom: 16px;
-    }
-    .cta-section p {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      max-width: 560px;
-      margin: 0 auto 36px;
-      line-height: 1.75;
-    }
-  </style>
-</head>
-
-<body>
-  <script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <div class="logo-group d-flex align-items-center gap-2">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Blackmon<span class="accent">Lab</span></h1>
-        </a>
-        <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode"><i class="bi bi-sun-fill" aria-hidden="true"></i></button>
-      </div>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="ai.html" class="active">AI</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="gallery.html" class="nav-cta">Lab Life</a></li>
-        </ul>
-        <button class="mobile-nav-toggle d-sm-none" aria-label="Open navigation menu" aria-expanded="false"><i class="bi bi-list" aria-hidden="true"></i></button>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- ── Hero ──────────────────────────────────────────── -->
+<!-- ── Hero ──────────────────────────────────────────── -->
     <section class="ai-hero">
       <div class="container">
         <div class="eyebrow" data-aos="fade-down">Blackmon Lab · Texas A&amp;M University</div>
@@ -450,18 +395,18 @@
 
         <div class="row g-4">
 
-          <!-- Karyotype Agent -->
+          <!-- TraitTrawler -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
             <div class="project-card featured">
               <div class="pc-header">
-                <span class="pc-icon">🪲</span>
+                <span class="pc-icon">🤖</span>
                 <div>
-                  <p class="pc-title">Autonomous Karyotype Data Collector</p>
+                  <p class="pc-title">TraitTrawler</p>
                   <span class="pc-status status-active"><span class="pc-dot"></span>Active</span>
                 </div>
               </div>
-              <p class="pc-desc">An autonomous agent that searches PubMed and CrossRef, triages papers with Claude Haiku, fetches PDFs via Unpaywall, and extracts structured karyotype records with Claude Sonnet. Currently at 629+ records across 144 beetle families, running 730 search terms.</p>
-              <a href="subpages/karyotype-agent.html" class="pc-link">Learn more <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+              <p class="pc-desc">A general-purpose autonomous literature-mining pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref, retrieves full-text PDFs through a 12-source cascade, and extracts structured trait data with mandatory double-entry verification before writing validated records to CSV. Generalizes the lab's earlier domain-specific agent to any trait, any clade.</p>
+              <a href="https://github.com/coleoguy/TraitTrawler" target="_blank" class="pc-link">View on GitHub <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -672,24 +617,3 @@
         </div>
       </div>
     </section>
-
-  </main>
-
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright text-center">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Blackmon Lab</strong> <span>All Rights Reserved</span></p>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
-  </a>
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/js/main.js"></script>
-
-</body>
-</html>
