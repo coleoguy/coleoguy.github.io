@@ -78,7 +78,7 @@
         <span>AI agents</span>
         <ul>
           <li><a href="ai.html" class="active">Overview</a></li>
-          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="traittrawler.html">TraitTrawler</a></li>
           <li><a href="lead-investigator.html">Lead Investigator</a></li>
           <li><a href="llms.txt" target="_blank">llms.txt</a></li>
         </ul>
@@ -154,9 +154,9 @@
         </span>
       </summary>
       <div class="layer-body">
-        <p>A general-purpose pipeline for building trait datasets from the primary literature. It starts from a keyword search across PubMed, OpenAlex, bioRxiv, and Crossref. Full-text PDFs are retrieved through a 12-source cascade. Structured trait data are extracted with mandatory double-entry verification: two independent extractions must agree before the record is written to CSV. TraitTrawler generalizes the cytogenetics agent that built our CUREs dataset so it can be pointed at any trait on any phylogenetic scale.</p>
+        <p>A general-purpose pipeline for building trait datasets from the primary literature. It starts from a keyword search across PubMed, OpenAlex, bioRxiv, and Crossref, retrieves full-text PDFs, and enforces a grounding invariant: every extracted claim must appear verbatim in the cited page of a SHA256-hashed source PDF before the row is written. TraitTrawler generalizes from version one, which was built only to collect karyotype data, to any trait at any phylogenetic scale.</p>
         <div class="layer-links">
-          <a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler on GitHub &rarr;</a>
+          <a href="traittrawler.html">TraitTrawler &rarr;</a>
         </div>
       </div>
     </details>
