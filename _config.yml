@@ -7,8 +7,12 @@ baseurl: ""
 og_image: https://coleoguy.github.io/assets/img/slide-beetle.jpg
 ga_id: G-4J0HZ3LNQX
 
-# Jekyll: don't process the existing static HTML pages unless they declare a layout.
-# Pages without front-matter are passed through unchanged.
+# Jekyll: pages without front-matter are passed through unchanged.
+# We `include` files that start with `.` or `_` so they get served (they would otherwise be hidden from the build).
+# We `exclude` only things that are clearly NOT meant to be served.
+# IMPORTANT: do NOT exclude `data/`, `subpages/`, `*.pdf`, `*.csv`, etc. — those are
+# actively fetched/linked by the site. The earlier broad exclusion broke the news feed,
+# the karyotype + tau databases, and several download links.
 include:
   - llms.txt
   - llms-full.txt
@@ -17,25 +21,16 @@ include:
 
 exclude:
   - README.md
-  - "*.pdf"
-  - "*.docx"
-  - "*.pptx"
-  - "*.csv"
-  - "*.xlsx"
-  - "blackmon.pubs"
-  - "deprecated"
-  - "metazoa-patches"
-  - "rseminar/.Rhistory"
-  - "subpages/teaching"
-  - "subpages/karyotype-data"
-  - "subpages/tau-data"
-  - "subpages/LCA-database"
-  - "app"
-  - "data"
+  - "deprecated/"
+  - "metazoa-patches/"
   - "Gemfile"
   - "Gemfile.lock"
-  - "vendor"
-  - "node_modules"
+  - "vendor/"
+  - "node_modules/"
+  - "_includes/MIGRATION.md"
+  - "*.Rhistory"
+  - ".Rapp.history"
+  - ".RData"
 
 # Use the default empty Jekyll plugins so this works on GitHub Pages without a Gemfile.
 plugins: []
