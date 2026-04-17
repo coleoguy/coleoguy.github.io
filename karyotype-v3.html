@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karyotype evolution · Blackmon Lab</title>
+<meta name="description" content="Karyotype evolution at the scale of the eukaryotic tree of life. Six open databases, a CURE program, and phylogenetic comparative methods, from the Blackmon Lab.">
+<link rel="icon" href="assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/v3.css">
+
+</head>
+
+<body>
+
+<div class="proto-banner">
+  v3 prototype, scholarly + phylogenetic sidebar. Compare to <a href="homepage-v2.html">v2</a> and <a href="index.html">v1</a>.
+</div>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="homepage-v3.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil">TAMU · Biology</span>
+    </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="#karyotype" class="active">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+          <li><a href="research.html">Betta fish</a></li>
+          <li><a href="research.html">Tomatoes</a></li>
+          <li><a href="research.html">Crabs</a></li>
+          <li><a href="research.html">Mammals</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler</a></li>
+          <li><a href="ai.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>
+          <li><a href="stegg.html">STEGG</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="tamu-ai-concentration.html">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb">
+      <a href="#">Home</a> › Research › <strong>Karyotype evolution</strong>
+    </div>
+
+    <h1 class="title" id="karyotype">Karyotype evolution, at the scale of a tree of life.</h1>
+
+    <p class="lede">
+      How many chromosomes a species has, how they're arranged, and how fast that changes varies wildly across life. This part of the lab tries to explain why. We work on it with phylogenetic comparative methods, a long-running CURE program, and a growing layer of AI agents that handle the parts of the job humans shouldn't have to.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">63,682</div>
+        <span class="stat-label">Karyotypes indexed</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">55</div>
+        <span class="stat-label">Eukaryotic clades</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">844&times;</div>
+        <span class="stat-label">Range of dysploidy rates</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <span class="stat-label">Open databases</span>
+      </div>
+    </div>
+
+    <div class="agent-box">
+      <span class="agent-line"><span class="agent-tag">CUREs</span>41 karyotypes added this month by undergraduate researchers</span>
+      <span class="agent-line"><span class="agent-tag">TraitTrawler</span>127 papers triaged this week, 14 extractions validated</span>
+      <span class="agent-line"><span class="agent-tag">Lead Investigator</span>v0.7 currently working through claw-evolution hypotheses</span>
+    </div>
+
+    <h2>What we've built</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Dataset</span>
+          <span class="sum-head">Six karyotype databases, 20,000+ species, all machine-readable</span>
+          <span class="sum-trail">Coleoptera, Diptera, Amphibia, Mammalia, Drosophila, Polyneoptera.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Each database is curated from the primary literature, checked against voucher citations, and published as both a browsable page and a static JSON export. Other labs and AI agents can consume them without scraping. The Coleoptera database alone has 8,000 species and is the most comprehensive cytogenetic dataset for any insect order.</p>
+        <div class="layer-links">
+          <a href="karyotypes/index.html">Browse all six →</a>
+          <a href="data/">Raw JSON exports →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">CUREs program</span>
+          <span class="sum-head">A course-based research program that feeds the dataset</span>
+          <span class="sum-trail">Undergraduates collect, validate, and publish karyotype records as part of their coursework.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The CUREs cytogenetics dataset covers 63,682 karyotype records across 55 eukaryotic clades, assembled by rolling cohorts of undergraduate researchers over several years. Students learn how to read a cytogenetic paper, verify a karyotype claim, and add it to a shared database. The result is a dataset no single graduate student could have compiled, and a training pipeline that puts undergrads on real research from their first semester.</p>
+        <div class="layer-links">
+          <a href="cures-karyotype-database.html">Explore the CUREs database →</a>
+          <a href="biolai-cure.html">The current cohort →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Methods</span>
+          <span class="sum-head">Probabilistic models for chromosome number evolution</span>
+          <span class="sum-trail">chromePlus, chromePlusBinary, and related tools for inference on phylogenies.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The models couple chromosome number change (dysploidy, polyploidy) to binary or discrete traits, so you can ask whether karyotype evolution is biased by sex-chromosome state, ploidy, or any other categorical variable. We use them for all of the comparative work on this page and ship them as R packages.</p>
+        <div class="layer-links">
+          <a href="https://github.com/coleoguy/chromePlus" target="_blank">chromePlus on GitHub →</a>
+          <a href="phylo-methods/index.html">PCM guide →</a>
+        </div>
+      </div>
+    </details>
+
+    <h2>What we've found</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">April 2026 preprint</span>
+          <span class="sum-head">Dysploidy rates vary 844-fold, and even birds aren't static</span>
+          <span class="sum-trail">Copeland, McConnell, Barboza et al., 2026.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Working from the CUREs dataset, we measured rates of chromosome number change across 55 eukaryotic clades. The slowest and fastest clades differ by a factor of 844. Birds, which textbooks treat as the canonical example of chromosomal stasis, sit above the global median once microchromosome dynamics are accounted for. The takeaway: stasis is not a property of a kingdom. It tracks life history.</p>
+        <div class="layer-links">
+          <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank">Read on bioRxiv →</a>
+          <a href="cures-karyotype-database.html">The underlying data →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Drift papers, 2024</span>
+          <span class="sum-head">For most of animal evolution, drift does more work than selection</span>
+          <span class="sum-trail">Two companion papers on beetles and carnivores.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Comparative work across Coleoptera and Carnivora shows that effective population size (or its proxy, range size) predicts karyotype evolution rates better than any measure of selective pressure. The implication is uncomfortable for the classic adaptive accounts of chromosome evolution: a lot of what looks selected is just what happens when populations get small.</p>
+        <div class="layer-links">
+          <a href="https://doi.org/10.1093/jhered/esae025" target="_blank">Jonika 2024 (Carnivora) →</a>
+          <a href="selection.html">Selection vs. drift, longer treatment →</a>
+        </div>
+      </div>
+    </details>
+
+    <blockquote class="pullquote">
+      Stasis tracks life history, not taxonomic group. Where you sit on the tree is less important than how big your populations are and how long your generations last.
+    </blockquote>
+
+    <h2>What's next</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">AI lead investigator</span>
+          <span class="sum-head">An agent carrying a complete project from hypothesis to manuscript</span>
+          <span class="sum-trail">We expect it to fail. That's the point.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>We gave a Claude-powered agent a real research problem in claw evolution and asked it to run the full arc: form hypotheses, select comparative methods, run analyses, write up. It will fail in places, and each failure teaches us how to design the next version. The goal is not a robot PI. It's an agent that works at our side as scientific collaborator, programmer, and an army of students and postdocs, doing meaningful work when the task is correctly scoped, tested, and examined.</p>
+        <div class="layer-links">
+          <a href="ai.html">The full program →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Scaling up</span>
+          <span class="sum-head">Extending the CUREs model to other traits and other clades</span>
+          <span class="sum-trail">Morphology, behavior, ecology. Not just chromosomes.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>TraitTrawler is the generalization of our cytogenetics agent: a literature-mining pipeline that can be pointed at any trait and any clade and produce a validated dataset. The vision is a future where the bottleneck for comparative biology is not data extraction but research questions. We are actively looking for collaborators who want to run it on their systems.</p>
+        <div class="layer-links">
+          <a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler on GitHub →</a>
+          <a href="join.html">Work with us →</a>
+        </div>
+      </div>
+    </details>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<script src="assets/js/v3.js"></script>
+</body>
+</html>
