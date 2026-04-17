@@ -1475,6 +1475,124 @@ table th {
 }
 
 /* ========================
+   MANIFESTO BANNER ("Evolution 1.0 → AI 1.1")
+======================== */
+.manifesto-section { padding: 60px 0 30px; }
+
+.manifesto {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 48px 44px;
+  background:
+    linear-gradient(135deg, rgba(201,162,39,0.08) 0%, rgba(201,162,39,0.02) 60%, transparent 100%),
+    var(--bg-card);
+  border: 1px solid var(--accent-border);
+  border-left: 4px solid var(--accent);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* faint dot pattern in the corner so it has a hint of the same ambient */
+.manifesto::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 70%;
+  height: 200%;
+  background-image: radial-gradient(circle, rgba(201,162,39,0.10) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 60% 60% at 70% 50%, #000 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 70% 50%, #000 20%, transparent 70%);
+  pointer-events: none;
+  animation: dotfield-drift 90s linear infinite;
+}
+
+.manifesto > * { position: relative; z-index: 1; }
+
+.manifesto-versions {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text-heading);
+  margin-bottom: 24px;
+  line-height: 1.05;
+}
+
+.manifesto-v strong {
+  font-weight: 700;
+  font-feature-settings: "tnum" 1;
+}
+
+.manifesto-v-next {
+  color: var(--accent);
+}
+
+.manifesto-arrow {
+  color: var(--text-muted);
+  font-size: 0.85em;
+  font-weight: 300;
+  transform: translateY(-2px);
+}
+
+.manifesto-body {
+  font-size: 1.03rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0;
+  max-width: 720px;
+}
+
+.manifesto-body strong {
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.manifesto-highlight {
+  color: var(--accent) !important;
+  font-weight: 700 !important;
+}
+
+.manifesto-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.manifesto-actions .btn-gold,
+.manifesto-actions .btn-outline {
+  font-size: 0.85rem;
+  padding: 9px 20px;
+}
+
+@media (max-width: 600px) {
+  .manifesto { padding: 32px 24px; }
+  .manifesto-versions { gap: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manifesto::after { animation: none; }
+}
+
+/* light mode */
+body.light-mode .manifesto {
+  background:
+    linear-gradient(135deg, rgba(201,162,39,0.10) 0%, rgba(201,162,39,0.02) 60%, transparent 100%),
+    #FFFFFF;
+  border-color: rgba(201,162,39,0.35);
+}
+body.light-mode .manifesto::after {
+  background-image: radial-gradient(circle, rgba(80,0,0,0.08) 1px, transparent 1.4px);
+}
+
+/* ========================
    FEATURED PAPER CALLOUT (index)
 ======================== */
 .featured-paper {

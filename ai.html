@@ -321,7 +321,7 @@ extra_head: |
         <div class="eyebrow" data-aos="fade-down">Blackmon Lab · Texas A&amp;M University</div>
         <h1 data-aos="fade-up">AI in<br><em>Evolutionary Biology</em></h1>
         <p class="lead" data-aos="fade-up" data-aos-delay="80">
-          We use AI tools to accelerate research in evolutionary biology. Our work spans autonomous literature-mining agents, AI-assisted theoretical derivations, and practical curricula for biology students and researchers.
+          This is one of the most exciting moments in the history of science: tools that can read, reason about, and connect the literature at a scale no individual researcher ever could. We work to bring those tools into evolutionary biology in a way that earns trust — autonomous literature-mining agents, AI-assisted theoretical work, and curricula that prepare the next generation of biologists to use AI thoughtfully and well.
         </p>
         <div class="hero-ctas" data-aos="fade-up" data-aos-delay="140">
           <a href="#projects" class="btn-accent">
@@ -336,6 +336,26 @@ extra_head: |
 
     <div class="section-divider"></div>
 
+    <!-- Manifesto: Evolution 1.0 → AI 1.1 -->
+    <section class="section manifesto-section" data-aos="fade-up">
+      <div class="container">
+        <div class="manifesto">
+          <div class="manifesto-versions">
+            <span class="manifesto-v">Evolution <strong>1.0</strong></span>
+            <span class="manifesto-arrow" aria-hidden="true">→</span>
+            <span class="manifesto-v manifesto-v-next">AI <strong>1.1</strong></span>
+          </div>
+          <p class="manifesto-body">
+            Darwin gave biology its operating system in 1859. <strong>Evolution 1.0</strong> &mdash; a framework so generative that nothing in our field has made sense without it for 165 years.
+            <strong class="manifesto-highlight">AI 1.1</strong> is the next instrument biologists pick up: a tool that lets us read the literature, integrate the data, and reason about life at scales no individual researcher ever could. Same discipline. Same questions. Vastly bigger reach.
+          </p>
+          <p class="manifesto-body" style="margin-top: 18px;">
+            We treat this as a <em>release</em>, not a revolution &mdash; an incremental but real upgrade to how science gets done. Our role is to ship it responsibly: agent-readable data, validated pipelines, published failure modes, and a generation of biologists trained to use these tools well. <strong>Open, reproducible, machine-legible science should become standard practice across every field that wants its work to remain useful.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Vision ────────────────────────────────────────── -->
     <section class="vision-section">
       <div class="container">
@@ -343,7 +363,7 @@ extra_head: |
           <span class="section-label">Our approach</span>
           <h2 class="section-title">How we use AI in the lab</h2>
           <p class="section-body mx-auto" style="text-align:center;">
-            We use AI as a research tool, not just a productivity shortcut. That means autonomous pipelines with validated outputs, workflows that scale to problems a single lab couldn't otherwise tackle, and curricula that give students practical skills alongside the critical thinking to evaluate AI outputs.
+            We treat AI as a partner in expanding what biology can know — not a productivity hack and not a replacement for thinking. That looks like autonomous pipelines with validated outputs, workflows that open up questions a single lab could never tackle alone, and curricula that prepare students to use these tools with the same care and skepticism they'd bring to any other instrument.
           </p>
         </div>
 
@@ -366,7 +386,7 @@ extra_head: |
           <div class="vision-cell">
             <span class="vc-icon">📊</span>
             <h4>Data at scale</h4>
-            <p>Cytogenetics data from the past 80 years are scattered across hundreds of journals in multiple languages. AI makes it feasible to extract, standardize, and analyze this literature at a scale that wouldn't be practical otherwise.</p>
+            <p>Cytogenetics data from the past 80 years are scattered across hundreds of journals in multiple languages — much of it functionally invisible. AI makes it feasible to recover that literature, standardize it, and put it back into circulation as a public resource any researcher (or research agent) can build on.</p>
           </div>
           <div class="vision-cell">
             <span class="vc-icon">🔬</span>
@@ -376,7 +396,7 @@ extra_head: |
           <div class="vision-cell">
             <span class="vc-icon">🌐</span>
             <h4>Open and reproducible</h4>
-            <p>All databases, code, and workflows are published openly so other comparative biology labs can replicate and build on them.</p>
+            <p>All databases, code, and workflows are published openly — for other labs, for students learning the methods, and for the AI systems that will increasingly read and reason about scientific literature on everyone's behalf.</p>
           </div>
         </div>
       </div>
@@ -465,7 +485,7 @@ extra_head: |
                   <span class="pc-status status-complete"><span class="pc-dot"></span>Live</span>
                 </div>
               </div>
-              <p class="pc-desc">A deliberate effort to make every public artifact in the lab — pages, datasets, publications, news — legible to autonomous research agents. Includes <code>llms.txt</code> and a comprehensive <code>llms-full.txt</code>, machine-readable JSON exports of every database (CUREs karyotypes, tau, news, publications), structured JSON-LD on every page, and an open <code>data/</code> directory. The principle: science that is hard for AI to read is science that gets cited less in the next decade.</p>
+              <p class="pc-desc">A deliberate effort to make every public artifact in the lab — pages, datasets, publications, news — legible to autonomous research agents. Includes <code>llms.txt</code> and a comprehensive <code>llms-full.txt</code>, machine-readable JSON exports of every database (CUREs karyotypes, tau, news, publications), structured JSON-LD on every page, and an open <code>data/</code> directory. The principle: scientific knowledge that AI can read is knowledge AI can use to help other researchers. Open formats are an act of contribution &mdash; and they should become standard practice for journals, data repositories, and scientists across every field that wants its work to remain useful.</p>
               <a href="llms.txt" target="_blank" class="pc-link">View llms.txt <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
@@ -542,7 +562,7 @@ extra_head: |
           <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-right">
             <span class="section-label">How we approach it</span>
             <h2 class="section-title">Principles</h2>
-            <p class="section-body">Some constraints we try to stick to.</p>
+            <p class="section-body">A few commitments we hold ourselves to. Some are guardrails; some are the reason we do this work in the first place.</p>
           </div>
           <div class="col-lg-7 offset-lg-1" data-aos="fade-left">
             <div class="principle-row">
@@ -580,6 +600,13 @@ extra_head: |
                 <p>A general-purpose AI applied to a specialized scientific problem produces generic results. Effective use requires encoding expert knowledge in prompts, constraints, and validation rules — not assuming the model already carries it.</p>
               </div>
             </div>
+            <div class="principle-row">
+              <div class="principle-num">06</div>
+              <div class="principle-content">
+                <h5>Build for the commons</h5>
+                <p>The point of doing science is to add to humanity's shared body of understanding. Tools, data, and ideas leave this lab in formats other people — and the AI systems they use — can pick up and run with. We are not the last people who will work on these questions, and the goal is to leave the next set of researchers more equipped than we found them.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -590,8 +617,8 @@ extra_head: |
     <!-- ── CTA ────────────────────────────────────────────── -->
     <section class="cta-section">
       <div class="container" data-aos="fade-up">
-        <h2>Join the lab</h2>
-        <p>We are recruiting graduate students and postdocs interested in using AI tools in evolutionary biology research. Get in touch if that sounds like you.</p>
+        <h2>Help us figure this out</h2>
+        <p>This is the moment to do this work, and there is plenty more of it than any one lab can do alone. If you are a prospective grad student, postdoc, or collaborator who wants to think carefully about how AI and evolutionary biology should grow up together, please get in touch.</p>
         <div class="hero-ctas">
           <a href="join.html" class="btn-accent">
             <i class="bi bi-person-plus" aria-hidden="true"></i> Join the lab
