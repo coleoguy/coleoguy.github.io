@@ -10,7 +10,7 @@ ga_id: G-4J0HZ3LNQX
 # Jekyll: pages without front-matter are passed through unchanged.
 # We `include` files that start with `.` or `_` so they get served (they would otherwise be hidden from the build).
 # We `exclude` only things that are clearly NOT meant to be served.
-# IMPORTANT: do NOT exclude `data/`, `subpages/`, `*.pdf`, `*.csv`, etc. — those are
+# IMPORTANT: do NOT exclude `data/`, `subpages/`, `*.pdf`, `*.csv`, etc., those are
 # actively fetched/linked by the site. The earlier broad exclusion broke the news feed,
 # the karyotype + tau databases, and several download links.
 include:

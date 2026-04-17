@@ -239,7 +239,7 @@ extra_scripts: |
     <section class="content-section">
       <div class="container-xl">
         <h2 class="section-title">What is a phylogeny?</h2>
-        <p class="section-text">A phylogeny is a branching diagram showing the evolutionary relationships among species. Each tip represents a living (or extinct) species. Each internal node marks the point at which an ancestral population split into two descendant lineages &mdash; a hypothesized speciation event, not a single ancestor individual. The branches connecting them represent time or expected evolutionary change, depending on how the tree was estimated.</p>
+        <p class="section-text">A phylogeny is a branching diagram showing the evolutionary relationships among species. Each tip represents a living (or extinct) species. Each internal node marks the point at which an ancestral population split into two descendant lineages, a hypothesized speciation event, not a single ancestor individual. The branches connecting them represent time or expected evolutionary change, depending on how the tree was estimated.</p>
         <p class="section-text">Think of the phylogeny as a family tree of life. Just as your grandparents had children who had children, species have common ancestors. The phylogeny is a hypothesis about how all these ancestors and descendants are related.</p>
         <p class="section-text">Below is an interactive phylogeny of 15 vertebrate species. Hover over the tips to see the species highlighted, along with its entire ancestral lineage.</p>
 
@@ -356,7 +356,7 @@ extra_scripts: |
               <circle cx="240" cy="180" r="5" fill="var(--accent)"/>
               <circle cx="240" cy="220" r="5" fill="var(--accent)"/>
 
-              <!-- Labels — same topology, different arrangement -->
+              <!-- Labels, same topology, different arrangement -->
               <text x="249" y="24"  font-size="13" fill="var(--text)" font-style="italic">B</text>
               <text x="249" y="64"  font-size="13" fill="var(--text)" font-style="italic">A</text>
               <text x="249" y="104" font-size="13" fill="var(--text)" font-style="italic">E</text>
@@ -364,7 +364,7 @@ extra_scripts: |
               <text x="249" y="184" font-size="13" fill="var(--text)" font-style="italic">D</text>
               <text x="249" y="224" font-size="13" fill="var(--text)" font-style="italic">C</text>
             </svg>
-            <div class="rotation-note">Identical topology — A &amp; B still sisters, (CD) and (EF) still a clade. Branches were just rotated.</div>
+            <div class="rotation-note">Identical topology, A &amp; B still sisters, (CD) and (EF) still a clade. Branches were just rotated.</div>
           </div>
 
           <div class="rotation-box">
@@ -547,7 +547,7 @@ extra_scripts: |
         <p class="section-text">Phylogenies are not observed directly. They are inferred from genetic data (DNA sequences), morphological characters (body shape, skeletal features), or a combination of both. The most common method is <span class="highlight-text">maximum likelihood (ML)</span>, which finds the tree that makes your data most probable under a statistical model of evolution.</p>
         <p class="section-text">Another popular approach is <span class="highlight-text">Bayesian inference</span>, which uses Bayes' theorem to calculate a probability distribution over all possible trees. Both methods account for uncertainty in the tree topology.</p>
         <p class="section-text">For the purposes of comparative methods, the key insight is this: the phylogeny you use is an estimate, not a fact. It comes with uncertainty. Some internal branches may be poorly supported. Good practice includes checking the support values (bootstrap percentages in ML, posterior probabilities in Bayesian methods) and sometimes using methods that account for topological uncertainty.</p>
-        <p class="section-text"><em>Two cautions on tree interpretation that catch many practitioners:</em> (1) <strong>Branch lengths can mean different things.</strong> A <em>chronogram</em> has branch lengths in units of time (calendar years, MYA); a <em>phylogram</em> from a substitution-rate analysis has branch lengths in units of <em>expected number of substitutions per site</em>. They are not interchangeable &mdash; using a phylogram where comparative methods expect a chronogram (or vice versa) silently biases every downstream result. (2) <strong>Bootstrap and posterior probability are not on the same scale.</strong> A clade with bootstrap = 80% does not have posterior probability ≈ 0.80; the two measure different things and behave differently with informative-but-conflicting data. Don't mix them. Comparative methods today often integrate over a posterior sample of trees rather than fixing a single point estimate &mdash; this propagates topological and branch-length uncertainty into the final inference (Felsenstein 1985, <em>Am. Nat.</em> 125:1&ndash;15, the foundational paper).</p>
+        <p class="section-text">Two cautions on tree interpretation that catch many practitioners. (1) <strong>Branch lengths can mean different things.</strong> A <em>chronogram</em> has branch lengths in units of time (calendar years, MYA); a <em>phylogram</em> from a substitution-rate analysis has branch lengths in units of <em>expected number of substitutions per site</em>. They are not interchangeable. Using a phylogram where comparative methods expect a chronogram (or vice versa) silently biases every downstream result. (2) <strong>Bootstrap and posterior probability are not on the same scale.</strong> A clade with bootstrap = 80% does not have posterior probability ≈ 0.80; the two measure different things and behave differently with informative-but-conflicting data. Don't mix them. Comparative methods today often integrate over a posterior sample of trees rather than fixing a single point estimate. That propagates topological and branch-length uncertainty into the final inference (Felsenstein 1985, <em>Am. Nat.</em> 125:1&ndash;15, the foundational paper).</p>
       </div>
     </section>
 

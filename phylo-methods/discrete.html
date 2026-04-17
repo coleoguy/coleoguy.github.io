@@ -314,7 +314,7 @@ extra_scripts: |
     <section class="content-section">
       <div class="container-xl">
         <h2 class="section-title">The Mk model</h2>
-        <p class="section-text">The <span class="highlight-text">Mk model</span> (Lewis 2001, <em>Syst. Biol.</em> 50:913&ndash;925; likelihood computation in Pagel 1994 and Nielsen 2002) is the standard framework for discrete trait evolution. Imagine a trait with two states: State A and State B. At any point in time, a lineage can change from A to B, or from B to A, according to certain instantaneous rates &mdash; entries in a <em>Q</em> matrix, not directly observable counts. <em>A warning that matters later:</em> if branch lengths are not absolute, the Mk model is only identifiable up to a scaling of all rates by a constant; this creates the well-known <a href="likelihood-ridges.html" style="color: var(--accent);">likelihood ridge problem</a> when transition rates wander to unrealistically high values during ML optimization.</p>
+        <p class="section-text">The <span class="highlight-text">Mk model</span> (Lewis 2001, <em>Syst. Biol.</em> 50:913&ndash;925; likelihood computation in Pagel 1994 and Nielsen 2002) is the standard framework for discrete trait evolution. Imagine a trait with two states: State A and State B. At any point in time, a lineage can change from A to B, or from B to A, according to certain instantaneous rates, entries in a <em>Q</em> matrix, not directly observable counts. <em>A warning that matters later:</em> if branch lengths are not absolute, the Mk model is only identifiable up to a scaling of all rates by a constant; this creates the well-known <a href="likelihood-ridges.html" style="color: var(--accent);">likelihood ridge problem</a> when transition rates wander to unrealistically high values during ML optimization.</p>
         <p class="section-text">These rates are encoded in a matrix called Q. For a two-state system, Q has four entries: q01 (rate of change from A to B) and q10 (rate from B to A). Under a Markov process, the probability of being in each state evolves according to these rates.</p>
 
         <div class="viz-container">
@@ -383,8 +383,8 @@ extra_scripts: |
     <section class="content-section">
       <div class="container-xl">
         <h2 class="section-title">Stochastic character mapping</h2>
-        <p class="section-text">ASR gives you point estimates (maximum likelihood) of ancestral states. But there is uncertainty. The actual history of character evolution could have taken many different paths, all consistent with the tip data. Crucially, the probabilities at internal nodes are <em>conditional on the fitted model</em>: if you assumed a symmetric Mk2 but the true rate matrix is biased toward losses, your ASR will be confidently wrong. Sensitivity to model choice is one of the most underappreciated issues in PCMs &mdash; reconstructing under several plausible models and reporting the consensus, or formally averaging across models, is much safer than reporting a single ASR as a point estimate.</p>
-        <p class="section-text"><span class="highlight-text">Stochastic character mapping</span> samples many possible histories from the conditional distribution given the tip data, the tree, and the fitted model. The samples represent uncertainty about <em>where</em> and <em>when</em> changes happened on the tree &mdash; not uncertainty about the model itself. You can then describe what happened: how many transitions occurred, on which branches, and in which direction.</p>
+        <p class="section-text">ASR gives you point estimates (maximum likelihood) of ancestral states. But there is uncertainty. The actual history of character evolution could have taken many different paths, all consistent with the tip data. Crucially, the probabilities at internal nodes are <em>conditional on the fitted model</em>: if you assumed a symmetric Mk2 but the true rate matrix is biased toward losses, your ASR will be confidently wrong. Sensitivity to model choice is one of the most underappreciated issues in PCMs. Reconstructing under several plausible models and reporting the consensus, or formally averaging across models, is much safer than reporting a single ASR as a point estimate.</p>
+        <p class="section-text"><span class="highlight-text">Stochastic character mapping</span> samples many possible histories from the conditional distribution given the tip data, the tree, and the fitted model. The samples represent uncertainty about <em>where</em> and <em>when</em> changes happened on the tree, not uncertainty about the model itself. You can then describe what happened: how many transitions occurred, on which branches, and in which direction.</p>
 
         <div class="charmap-container">
           <div class="charmap-panel">
@@ -422,7 +422,7 @@ extra_scripts: |
               <path d="M30,150 V100 H130" stroke="#34d399" stroke-width="2.5" fill="none"/>
               <path d="M130,100 V70 H210" stroke="#34d399" stroke-width="2.5" fill="none"/>
               <path d="M130,100 V130 H210" stroke="#34d399" stroke-width="2.5" fill="none"/>
-              <!-- Right clade branches: B (gold) — transition at root→lower-pair -->
+              <!-- Right clade branches: B (gold), transition at root→lower-pair -->
               <path d="M30,150 V200 H130" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
               <path d="M130,200 V170 H210" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
               <path d="M130,200 V230 H210" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
@@ -443,9 +443,9 @@ extra_scripts: |
             <div class="charmap-title">Panel C: Possible History 2</div>
             <svg class="charmap-svg" viewBox="0 0 300 300">
               <!-- History 2: root=B, transition B→A on left branch -->
-              <!-- Left clade stem: B (gold) — colored by root state -->
+              <!-- Left clade stem: B (gold), colored by root state -->
               <path d="M30,150 V100 H130" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
-              <!-- Left clade descendants: A (green) — after transition at upper-pair node -->
+              <!-- Left clade descendants: A (green), after transition at upper-pair node -->
               <path d="M130,100 V70 H210" stroke="#34d399" stroke-width="2.5" fill="none"/>
               <path d="M130,100 V130 H210" stroke="#34d399" stroke-width="2.5" fill="none"/>
               <!-- Right clade branches: B (gold) throughout -->
@@ -508,7 +508,7 @@ extra_scripts: |
     <section class="content-section">
       <div class="container-xl">
         <h2 class="section-title">Chromosome number as a discrete trait: chromePlus</h2>
-        <p class="section-text">Chromosome number is one of the most dynamic features of eukaryotic genomes. Across species, chromosomes fuse, split, and duplicate — sometimes driving reproductive isolation and speciation. Modeling how chromosome number evolves requires treating it as a special kind of discrete trait where the state space is large (chromosome numbers from 1 to 100+) and the transitions have biological structure: gains of one, losses of one, and whole-genome duplications (polyploidy) all have distinct rates. For a history of how scientists developed these ideas — from Stebbins and White to Mayrose and Zenil-Ferguson — see the <a href="../chromosome-evolution-history.html" class="highlight-text">Intellectual History of Chromosome Number Evolution</a>. Empirical karyotype data for thousands of species is available in the <a href="../karyotypes/index.html" class="highlight-text">Karyotype Databases</a>.</p>
+        <p class="section-text">Chromosome number is one of the most dynamic features of eukaryotic genomes. Across species, chromosomes fuse, split, and duplicate, sometimes driving reproductive isolation and speciation. Modeling how chromosome number evolves requires treating it as a special kind of discrete trait where the state space is large (chromosome numbers from 1 to 100+) and the transitions have biological structure: gains of one, losses of one, and whole-genome duplications (polyploidy) all have distinct rates. For a history of how scientists developed these ideas, from Stebbins and White to Mayrose and Zenil-Ferguson, see the <a href="../chromosome-evolution-history.html" class="highlight-text">Intellectual History of Chromosome Number Evolution</a>. Empirical karyotype data for thousands of species is available in the <a href="../karyotypes/index.html" class="highlight-text">Karyotype Databases</a>.</p>
         <p class="section-text"><a href="https://github.com/coleoguy/chromePlus" target="_blank" class="highlight-text">chromePlus</a> is an R package developed in this lab that extends the <em>chromEvol</em> framework within the <code>diversitree</code> ecosystem. It fits Markov chain models of chromosome evolution on phylogenies using MCMC, and critically, allows a binary trait (such as sex determination system, mating strategy, or presence of B chromosomes) to influence the rates of chromosome change. This lets you ask: does having sex chromosomes speed up or slow down karyotype evolution?</p>
 
         <div class="viz-container" style="padding: 30px;">
@@ -518,26 +518,26 @@ extra_scripts: |
               <div style="display: flex; flex-direction: column; gap: 10px;">
                 <div style="display: flex; align-items: center; gap: 12px;">
                   <span style="background: rgba(52,211,153,0.15); border: 1px solid #34d399; border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: #34d399; min-width: 60px; text-align: center;">+1</span>
-                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Dysploidy gain — one chromosome added</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Dysploidy gain, one chromosome added</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
                   <span style="background: rgba(244,63,94,0.12); border: 1px solid rgba(244,63,94,0.5); border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(244,63,94,0.85); min-width: 60px; text-align: center;">−1</span>
-                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Dysploidy loss — one chromosome removed</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Dysploidy loss, one chromosome removed</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
                   <span style="background: rgba(201,162,39,0.12); border: 1px solid var(--accent-border); border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); min-width: 60px; text-align: center;">×2</span>
-                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Polyploidy — whole-genome duplication</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Polyploidy, whole-genome duplication</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
                   <span style="background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.5); border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(139,92,246,0.85); min-width: 60px; text-align: center;">½</span>
-                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Demiploidy — half-genome reduction event</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Demiploidy, half-genome reduction event</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
                   <span style="background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.5); border-radius: 4px; padding: 3px 10px; font-family: var(--font-mono); font-size: 0.8rem; color: rgba(56,189,248,0.85); min-width: 60px; text-align: center;">A↔B</span>
-                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Binary trait transition — changes the rate regime</span>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Binary trait transition, changes the rate regime</span>
                 </div>
               </div>
-              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 18px; line-height: 1.7;">Each of these rates can be conditioned on the binary trait state — so you can model a world where sex-chromosome-bearing lineages (state B) have faster dysploidy rates than those without (state A).</p>
+              <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 18px; line-height: 1.7;">Each of these rates can be conditioned on the binary trait state, so you can model a world where sex-chromosome-bearing lineages (state B) have faster dysploidy rates than those without (state A).</p>
             </div>
             <div>
               <svg viewBox="0 0 280 260" style="width: 100%; border: 1px solid var(--border); border-radius: 8px; background: var(--bg);">
@@ -599,22 +599,22 @@ extra_scripts: |
     <section class="content-section">
       <div class="container-xl">
         <h2 class="section-title">Maximum likelihood vs Bayesian inference</h2>
-        <p class="section-text">All of the methods on this page require fitting a model to data — estimating rate parameters like q01 and q10. There are two major philosophies for doing this, and both appear in phylogenetic software. Understanding the difference matters because they answer subtly different questions and have very different computational demands.</p>
+        <p class="section-text">All of the methods on this page require fitting a model to data, estimating rate parameters like q01 and q10. There are two major philosophies for doing this, and both appear in phylogenetic software. Understanding the difference matters because they answer subtly different questions and have very different computational demands.</p>
 
         <div class="viz-container" style="padding: 30px 30px 20px;">
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
             <!-- MLE panel -->
             <div>
               <h5 style="color: var(--text-heading); font-family: var(--font-heading); font-size: 1rem; margin-bottom: 12px;">Maximum Likelihood (ML)</h5>
-              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">The likelihood function L(θ | data) describes how probable the observed data are for each possible value of the parameter θ. Maximum likelihood finds the single value of θ that makes the data most probable — the peak of this surface.</p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">The likelihood function L(θ | data) describes how probable the observed data are for each possible value of the parameter θ. Maximum likelihood finds the single value of θ that makes the data most probable, the peak of this surface.</p>
               <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">This is computationally fast because you only need to find one point. Tools like <code>ape::ace(method="ML")</code> and <code>corHMM</code> use numerical optimization (gradient descent or Nelder–Mead) to locate the peak quickly, even for large trees.</p>
-              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75;">The cost: you get a point estimate, not a distribution. Standard errors can be approximated from the curvature of the likelihood surface, but this assumes the surface is roughly parabolic near the peak — an assumption that can break down with sparse data.</p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75;">The cost: you get a point estimate, not a distribution. Standard errors can be approximated from the curvature of the likelihood surface, but this assumes the surface is roughly parabolic near the peak, an assumption that can break down with sparse data.</p>
             </div>
             <!-- Bayesian panel -->
             <div>
               <h5 style="color: var(--text-heading); font-family: var(--font-heading); font-size: 1rem; margin-bottom: 12px;">Bayesian Inference</h5>
-              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">Bayes' theorem says: <em>posterior ∝ likelihood × prior</em>. Rather than finding the single best θ, Bayesian inference characterizes the full posterior distribution over θ — the probability of each parameter value given the data and your prior beliefs.</p>
-              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">This is elegant because it propagates uncertainty naturally. You don't just get a best estimate — you get a credible interval that directly means "there is 95% posterior probability the parameter lies here." Stochastic character mapping is inherently Bayesian for exactly this reason.</p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">Bayes' theorem says: <em>posterior ∝ likelihood × prior</em>. Rather than finding the single best θ, Bayesian inference characterizes the full posterior distribution over θ. That is the probability of each parameter value given the data and your prior beliefs.</p>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: 16px;">Uncertainty propagates naturally. You get a credible interval that directly means "there is 95% posterior probability the parameter lies here." Stochastic character mapping is inherently Bayesian for exactly this reason.</p>
               <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75;">The cost: the posterior is rarely tractable analytically. In practice, MCMC (Markov chain Monte Carlo) is used to sample from it, which requires running a chain for tens of thousands of iterations. For complex models on large trees, this can take hours or days.</p>
             </div>
           </div>
@@ -648,7 +648,7 @@ extra_scripts: |
           </div>
         </div>
 
-        <p class="section-text" style="margin-top: 30px;">In practice: use ML when you need fast answers or are running many model comparisons (e.g., testing 10 different rate matrices). Use Bayesian methods (MCMC) when you need full uncertainty quantification, want to formally incorporate prior information, or are working with models too complex for numerical optimization (like chromePlus, or joint inference of rates and ancestral states). There is also a practical numerical reason to prefer MCMC: discrete trait models can have flat <a href="likelihood-ridges.html" style="color: var(--accent);">likelihood ridges at unrealistically high rate values</a>, where many parameter combinations fit the data nearly equally well — MCMC with priors prevents optimizers from wandering into this region.</p>
+        <p class="section-text" style="margin-top: 30px;">In practice: use ML when you need fast answers or are running many model comparisons (e.g., testing 10 different rate matrices). Use Bayesian methods (MCMC) when you need full uncertainty quantification, want to formally incorporate prior information, or are working with models too complex for numerical optimization (like chromePlus, or joint inference of rates and ancestral states). There is also a practical numerical reason to prefer MCMC: discrete trait models can have flat <a href="likelihood-ridges.html" style="color: var(--accent);">likelihood ridges at unrealistically high rate values</a>, where many parameter combinations fit the data nearly equally well. MCMC with a sensible prior keeps optimizers from wandering into that region.</p>
       </div>
     </section>
 

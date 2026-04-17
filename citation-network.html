@@ -64,7 +64,7 @@ extra_head: |
         font-style: italic;
       }
   
-      /* Stats panel — top-left */
+      /* Stats panel, top-left */
       #net-stats {
         position: fixed;
         top: 96px; left: 18px;
@@ -93,7 +93,7 @@ extra_head: |
       }
       #net-stats a:hover { color: var(--gold); }
   
-      /* Legend — bottom-right */
+      /* Legend, bottom-right */
       #net-legend {
         position: fixed;
         bottom: 22px; right: 18px;
@@ -145,7 +145,7 @@ extra_head: |
         line-height: 1.6;
       }
   
-      /* Controls — bottom-left */
+      /* Controls, bottom-left */
       #net-controls {
         position: fixed;
         bottom: 22px; left: 18px;
@@ -233,9 +233,9 @@ extra_scripts: |
 
   <!-- Stats panel -->
   <div id="net-stats">
-    <strong id="stat-papers">—</strong> papers<br>
-    <strong id="stat-citations">—</strong> total citations<br>
-    <strong id="stat-connections">—</strong> co-author connections
+    <strong id="stat-papers"></strong> papers<br>
+    <strong id="stat-citations"></strong> total citations<br>
+    <strong id="stat-connections"></strong> co-author connections
     <hr class="stats-divider">
     <a href="publications.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Publications</a>
   </div>
@@ -402,7 +402,7 @@ extra_scripts: |
         .on('mouseout',   hideTip)
         .on('click',      handleClick);
 
-      // Labels (hidden by default) — keep group ref separate so toggle works
+      // Labels (hidden by default), keep group ref separate so toggle works
       labelGroup = g.append('g').style('display', 'none');
       labelSel = labelGroup
         .selectAll('text')

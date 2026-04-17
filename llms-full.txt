@@ -1,4 +1,4 @@
-# Blackmon Lab — Full content snapshot for LLMs
+# Blackmon Lab, Full content snapshot for LLMs
 
 > Plain-text snapshot of the public pages of https://coleoguy.github.io
 > Generated for LLM/agent consumption. For machine-readable per-page metadata, see llms.txt.
@@ -6,7 +6,7 @@
 
 This file consolidates the visible text content of every major page on the site so
 language model agents can cite, summarize, or answer questions without rendering JS.
-Auto-generated outlines and body text only — interactive widgets, plots, and tables
+Auto-generated outlines and body text only, interactive widgets, plots, and tables
 are not represented here. For databases (karyotype, tau, epistasis), see their
 underlying JSON/CSV files in /data/ and /subpages/karyotype-data/.
 
@@ -127,8 +127,8 @@ Description: Software, R packages, databases, teaching materials, and tools from
 Software, datasets, teaching materials, and tools produced by our lab.
 
 #### Software & R Packages
-- chromePlus Markov models for chromosome + binary trait evolution — guide
-- evobiR Analysis, simulation & teaching functions — vignette
+- chromePlus Markov models for chromosome + binary trait evolution, guide
+- evobiR Analysis, simulation & teaching functions, vignette
 - SAGA2 Model-averaged line cross analysis (AICc)
 - DirectRepeateR Direct repeat annotation in genome assemblies
 - micRocounter Fast 2–6mer repeat identification
@@ -136,23 +136,23 @@ Software, datasets, teaching materials, and tools produced by our lab.
 
 #### Databases
 - Epistasis Database 1,600+ datasets from 130+ papers on the role of epistasis in trait divergence
-- Karyotype Databases 14,000+ cytogenetic records — beetles, flies, amphibians, mammals, Polyneoptera
+- Karyotype Databases 14,000+ cytogenetic records, beetles, flies, amphibians, mammals, Polyneoptera
 - Circadian Period (τ) Database 1,634 free-running period measurements across the tree of life
 - Tree of Sex Database 30,000+ records on sex determination across the tree of life
 - Public Data Sources AVONET, PanTHERIA, GBIF, Open Tree of Life, Dryad & more
 
 #### Visual Guides
-- How Sex Chromosomes Evolve From autosomes to X, Y, Z, W — diagrams, interactive charts, and key papers
+- How Sex Chromosomes Evolve From autosomes to X, Y, Z, W, diagrams, interactive charts, and key papers
 - Evolution of Genome Structure Fusions, fissions, polyploidy, meiotic drive, and karyotype stasis
 - Epistasis & the Shifting Balance Line cross analysis, SAGA, and the Wright–Fisher debate
-- Selection in Evolution Natural, sexual, background, and indirect selection — drift vs. selection
+- Selection in Evolution Natural, sexual, background, and indirect selection, drift vs. selection
 - Coleoptera Genomics Beetle genomes, Stevens elements, dosage compensation, and population genetics
-- History of Chromosome Evolution Stebbins to ChromEvol — a century of ideas
+- History of Chromosome Evolution Stebbins to ChromEvol, a century of ideas
 - Publication Network Interactive co-authorship graph
 
 #### Interactive Tools
 - Population Genetics Simulator Wright-Fisher: drift, selection, mutation, migration, sex chromosomes
-- Birth-Death Tree Simulator Same rates, different outcomes — stochasticity of macroevolution
+- Birth-Death Tree Simulator Same rates, different outcomes, stochasticity of macroevolution
 - Phylogenetic Tree Explorer Load Newick, explore traits, multiple layouts
 - CaveCrawler Interactive cave fish ( Astyanax ) bioinformatics
 - Research Glossary PCM, chromosome evolution, and pop-gen terms defined
@@ -170,7 +170,7 @@ Software, datasets, teaching materials, and tools produced by our lab.
 - Experimental Design Statistically tractable experiment design using R
 - BIOL 682: Communication in Bio Sci Scientific writing, storytelling, peer review & revision
 - CURE Data Guide Undergrad research: chromosome number evolution
-- Foundations of Evo Bio Seminar — foundational papers of the modern synthesis
+- Foundations of Evo Bio Seminar, foundational papers of the modern synthesis
 - Fall 2025 Journal Club JEB 2024 reading list
 
 #### For Graduate Students
@@ -197,7 +197,7 @@ We are testing whether a Claude-powered agent can act as principal investigator 
 **AI-literate biologists**
 Biology students need practical fluency with AI tools alongside the critical thinking to evaluate their outputs. We have built curricula at the undergraduate and graduate levels at Texas A&M to develop both.
 **Data at scale**
-Cytogenetics data from the past 80 years are scattered across hundreds of journals in multiple languages. AI makes it feasible to extract, standardize, and analyze this literature at a scale that wouldn't be practical otherwise.
+Cytogenetics data from the past 80 years are scattered across hundreds of journals in multiple languages. AI lets us extract, standardize, and analyze this literature without the usual limits on person-hours.
 **Validated outputs**
 Every AI extraction gets a confidence score. Flagged records are routed to domain experts. Validation is built into the pipeline design, not added as an afterthought.
 **Open and reproducible**
@@ -229,11 +229,11 @@ Practical guides to AI tools and prompting techniques written for biologists. Co
 
 ### Principles
 Some constraints we try to stick to.
-Every AI output is verified before it enters a publication, dataset, or decision. The form of verification — computational check, statistical test, expert review — depends on the task, but the expectation is universal.
-Search, extraction, reformatting, summarizing, and consistency checking are good uses of AI. Deciding what question is scientifically worth asking, whether a result makes biological sense, and what to conclude — those stay with the researcher.
+Every AI output is verified before it enters a publication, dataset, or decision. The form of verification, computational check, statistical test, expert review, depends on the task, but the expectation is universal.
+Search, extraction, reformatting, summarizing, and consistency checking are good uses of AI. Deciding what question is scientifically worth asking, whether a result makes biological sense, and what to conclude, those stay with the researcher.
 Reproducible science requires knowing not just what AI generated, but what it was asked, with what model, and under what constraints. Prompts, model versions, and pipeline configurations are part of the methods section.
 We care as much about documenting where AI reasoning breaks down as demonstrating what it can do. Systematically testing the limits of a tool is as scientifically valuable as deploying it successfully.
-A general-purpose AI applied to a specialized scientific problem produces generic results. Effective use requires encoding expert knowledge in prompts, constraints, and validation rules — not assuming the model already carries it.
+A general-purpose AI applied to a specialized scientific problem produces generic results. Effective use requires encoding expert knowledge in prompts, constraints, and validation rules, not assuming the model already carries it.
 
 ### Join the lab
 We are recruiting graduate students and postdocs interested in using AI tools in evolutionary biology research. Get in touch if that sounds like you.
@@ -347,7 +347,7 @@ Bevin is asking whether having a massive genome speeds up or slows down chromoso
 Anaya is testing whether the reduced population sizes of island snakes accelerate their chromosome number evolution compared to continental species. She is collecting chromosome counts and geographic data across Serpentes.
 
 #### Andrew Jordan
-Andrew is pioneering a new hypothesis: that the tail membrane (uropatagium) of bats co-evolves with echolocation, challenging the field's narrow focus on wing shape alone. He is measuring uropatagium dimensions and call parameters across Chiroptera.
+Andrew is testing a new hypothesis: that the tail membrane (uropatagium) of bats co-evolves with echolocation, pushing past the field's focus on wing shape alone. He is measuring uropatagium dimensions and call parameters across Chiroptera.
 
 #### Lynn Khalidi
 Lynn is investigating whether arboreal versus terrestrial lifestyles shape body size and litter size evolution in marsupials. She is collecting life history and ecological data across Marsupialia.
@@ -398,7 +398,7 @@ Soniya is asking a fascinating evolutionary sequence question: did catfish becom
 Anna is exploring whether the boom-and-bust lifecycle of annual killifish-driven by seasonal rainfall-accelerates their chromosome evolution. She is linking precipitation seasonality to chromosome data in Nothobranchiidae.
 
 #### Tewobola Olasehinde
-Tewobola is pioneering a computational approach asking whether domestication shifts the shape of the protein-coding landscape in carnivore genomes. They are comparing proteome embedding patterns between domestic and wild Carnivora.
+Tewobola is building a computational approach asking whether domestication shifts the shape of the protein-coding landscape in carnivore genomes. They are comparing proteome embedding patterns between domestic and wild Carnivora.
 
 #### Bhakti Patel
 Bhakti is tracing the evolutionary history of caffeine biosynthesis to determine whether this iconic chemical defense evolved once or arose independently multiple times in the coffee tribe. She is scoring caffeine production across approximately 50 species of Coffeeae.
@@ -511,53 +511,53 @@ Every course in this concentration is built around one idea: you don't need to b
 ## How Sex Chromosomes Evolve - Blackmon Lab
 
 URL: https://coleoguy.github.io/sex-chromosome-evolution.html
-Description: A visual guide to sex chromosome evolution — from ordinary autosomes to the X, Y, Z, and W chromosomes that determine sex across the tree of life. Covers identification methods, dosage compensation, degeneration, and more.
+Description: A visual guide to sex chromosome evolution, from ordinary autosomes to the X, Y, Z, and W chromosomes that determine sex across the tree of life. Covers identification methods, dosage compensation, degeneration, and more.
 
 # How Sex Chromosomes Evolve
 
 ### What Are Sex Chromosomes?
-Most chromosomes come in matched pairs — one from each parent. These are autosomes , and both copies carry the same genes. Sex chromosomes are different. They are the chromosomes that differ between males and females of a species and typically carry or are linked to the gene that triggers sex determination.
-In XY systems (mammals, many insects, some fish), males carry one X and one Y, while females carry two Xs. The Y is typically small and gene-poor. In ZW systems (birds, snakes, butterflies), it is the female who is the heterogametic sex — carrying one Z and one W — while males have two Zs. In X0 systems , the Y has been lost entirely: males have a single X and no partner for it.
+Most chromosomes come in matched pairs, one from each parent. These are autosomes , and both copies carry the same genes. Sex chromosomes are different. They are the chromosomes that differ between males and females of a species and typically carry or are linked to the gene that triggers sex determination.
+In XY systems (mammals, many insects, some fish), males carry one X and one Y, while females carry two Xs. The Y is typically small and gene-poor. In ZW systems (birds, snakes, butterflies), it is the female who is the heterogametic sex, carrying one Z and one W, while males have two Zs. In X0 systems , the Y has been lost entirely: males have a single X and no partner for it.
 A crucial insight: sex chromosomes are not a fixed feature of life . They have evolved independently hundreds of times across the tree of life. Every pair of sex chromosomes started as an ordinary pair of autosomes.
 But sex determination goes far beyond chromosomes. Some organisms use environmental cues (temperature in many reptiles), haplodiploidy (ploidy level determines sex in bees and ants), or vastly more complex genetic architectures. Understanding this diversity is key to understanding why sex chromosomes evolve the way they do.
 
 ### Diversity of Sex Determination
 
-### Beyond XY and ZW — The Wild Diversity
+### Beyond XY and ZW, The Wild Diversity
 
 #### UV Sex Chromosomes
-In some algae and bryophytes (liverworts, mosses), sex is determined in the haploid phase of the life cycle. After meiosis, spores carry either a U chromosome (producing female gametophytes) or a V chromosome (producing male gametophytes). This is fundamentally different from XY/ZW systems because selection on sex-linked genes operates on haploid individuals — there is no "heterozygous shelter" for deleterious mutations. The liverwort Marchantia polymorpha and the green alga Volvox are model systems for studying UV chromosomes.
+In some algae and bryophytes (liverworts, mosses), sex is determined in the haploid phase of the life cycle. After meiosis, spores carry either a U chromosome (producing female gametophytes) or a V chromosome (producing male gametophytes). This is fundamentally different from XY/ZW systems because selection on sex-linked genes operates on haploid individuals, there is no "heterozygous shelter" for deleterious mutations. The liverwort Marchantia polymorpha and the green alga Volvox are model systems for studying UV chromosomes.
 
 #### Fungal Mating-Type Chromosomes
-Fungi push the boundaries of what "sex chromosomes" can mean. The mushroom Schizophyllum commune has over 23,000 mating types , controlled by two unlinked loci with hundreds of alleles each. Meanwhile, Cryptococcus neoformans and Ustilago maydis have large mating-type chromosomes with suppressed recombination that show striking parallels to animal and plant sex chromosomes — including degeneration, gene loss, and accumulation of transposable elements. These independently evolved systems demonstrate that the same evolutionary forces shape sex-linked genomic regions across all of life.
+Fungi push the boundaries of what "sex chromosomes" can mean. The mushroom Schizophyllum commune has over 23,000 mating types , controlled by two unlinked loci with hundreds of alleles each. Meanwhile, Cryptococcus neoformans and Ustilago maydis have large mating-type chromosomes with suppressed recombination that show striking parallels to animal and plant sex chromosomes, including degeneration, gene loss, and accumulation of transposable elements. These independently evolved systems demonstrate that the same evolutionary forces shape sex-linked genomic regions across all of life.
 
 #### Haplodiploidy
-In Hymenoptera (ants, bees, wasps) and some other arthropods, there are no sex chromosomes at all . Males develop from unfertilized eggs and are haploid; females develop from fertilized eggs and are diploid. Ploidy is sex determination. This system has profound consequences for the evolution of genome architecture and social behavior — it means that sisters share 75% of their genes, which Hamilton argued was a key driver of eusociality.
+In Hymenoptera (ants, bees, wasps) and some other arthropods, there are no sex chromosomes at all . Males develop from unfertilized eggs and are haploid; females develop from fertilized eggs and are diploid. Ploidy is sex determination. This system has profound consequences for the evolution of genome architecture and social behavior, it means that sisters share 75% of their genes, which Hamilton argued was a key driver of eusociality.
 
 #### Environmental Sex Determination
-Many reptiles (most turtles, all crocodilians) determine sex by the temperature experienced during embryonic development. Some fish change sex in response to social cues — clownfish are protandrous hermaphrodites, meaning the dominant male in a group changes to female if the breeding female dies. Transitions between genetic and environmental sex determination happen repeatedly across the tree of life, and understanding why organisms switch is an active area of research.
+Many reptiles (most turtles, all crocodilians) determine sex by the temperature experienced during embryonic development. Some fish change sex in response to social cues, clownfish are protandrous hermaphrodites, meaning the dominant male in a group changes to female if the breeding female dies. Transitions between genetic and environmental sex determination happen repeatedly across the tree of life, and understanding why organisms switch is an active area of research.
 
 ### The Same Forces, Again and Again
 The remarkable thing about sex-linked genomic regions is how convergent their evolution is. Whether we look at animal X/Y chromosomes, plant sex chromosomes, fungal mating-type regions, or algal U/V chromosomes, we see the same features evolve independently: recombination suppression , degeneration of the heterogametic chromosome , and accumulation of repetitive elements . This convergence tells us that the evolutionary forces shaping these regions are powerful and predictable.
 
 ### From Autosomes to Sex Chromosomes
 Every pair of sex chromosomes began as an ordinary pair of autosomes. The transformation unfolds in stages:
-Step 1: A sex-determining gene appears. A mutation arises on one copy of an autosome that triggers male or female development. This could be a novel gene, a translocated gene, or a regulatory change. Now one homolog carries a sex-determiner and the other does not — this is the birth of a proto-sex chromosome.
+Step 1: A sex-determining gene appears. A mutation arises on one copy of an autosome that triggers male or female development. This could be a novel gene, a translocated gene, or a regulatory change. Now one homolog carries a sex-determiner and the other does not, this is the birth of a proto-sex chromosome.
 Step 2: Sexually antagonistic alleles accumulate. Genes that benefit one sex but harm the other ("sexually antagonistic" genes) are favored near the sex-determiner. A male-benefit allele, for example, is advantageous when linked to the male-determining gene because it will always be in males.
 Step 3: Recombination is suppressed. Selection favors chromosomal inversions or other rearrangements that prevent the sex-determiner from recombining away from the sexually antagonistic alleles. The non-recombining region expands, sometimes in discrete "evolutionary strata."
 Step 4: The proto-Y degenerates. Without recombination to purge deleterious mutations, the proto-Y chromosome accumulates genetic damage. Genes are lost, repetitive elements invade, and the chromosome physically shrinks.
 
 #### Alternative Models: Not Just Sexually Antagonistic Selection
-The classic model — sexually antagonistic selection drives recombination suppression — has been the dominant framework since Rice (1987) . But it is not the only game in town. Thomas Lenormand and colleagues have developed models showing that recombination suppression can spread through other mechanisms, including the sheltering of deleterious recessive alleles and regulatory degeneration. In their models, expansion of the non-recombining region may be driven by drift or neutral processes as much as by selection. This is an active and genuinely unresolved debate in the field.
+The classic model, sexually antagonistic selection drives recombination suppression, has been the dominant framework since Rice (1987) . But it is not the only game in town. Thomas Lenormand and colleagues have developed models showing that recombination suppression can spread through other mechanisms, including the sheltering of deleterious recessive alleles and regulatory degeneration. In their models, expansion of the non-recombining region may be driven by drift or neutral processes as much as by selection. This is an active and genuinely unresolved debate in the field.
 
 ### The Theoretical Foundation
 
 ### Why the Y (or W) Degenerates
 Once recombination stops, a chromosome is on a one-way path toward decay. Several mutually reinforcing processes drive this:
-Muller's ratchet — In small populations, the class of chromosomes with the fewest deleterious mutations can be lost by drift. Without recombination to recreate the least-loaded class, the ratchet clicks forward: the minimum number of mutations on the chromosome only ever increases.
-Background selection — Purifying selection against deleterious alleles on the non-recombining chromosome reduces the effective population size of the entire chromosome, making it more vulnerable to drift.
-Genetic hitchhiking — When a beneficial mutation sweeps to fixation on the Y, it drags along any linked deleterious alleles. Without recombination, the good and the bad travel together.
-Hill-Robertson interference — The general phenomenon: selection at one locus interferes with selection at linked loci. On a non-recombining chromosome, every gene interferes with every other gene.
+Muller's ratchet, In small populations, the class of chromosomes with the fewest deleterious mutations can be lost by drift. Without recombination to recreate the least-loaded class, the ratchet clicks forward: the minimum number of mutations on the chromosome only ever increases.
+Background selection, Purifying selection against deleterious alleles on the non-recombining chromosome reduces the effective population size of the entire chromosome, making it more vulnerable to drift.
+Genetic hitchhiking, When a beneficial mutation sweeps to fixation on the Y, it drags along any linked deleterious alleles. Without recombination, the good and the bad travel together.
+Hill-Robertson interference, The general phenomenon: selection at one locus interferes with selection at linked loci. On a non-recombining chromosome, every gene interferes with every other gene.
 The result: gene loss, accumulation of transposable elements, heterochromatinization, and physical shrinkage. The human Y retains only ~55 protein-coding genes, down from the ~800+ on the X.
 
 #### The Drift vs. Selection Debate
@@ -571,47 +571,47 @@ Brian Charlesworth's models emphasize deterministic forces: background selection
 The simplest and most powerful approach: sequence both males and females, then map their reads to the genome assembly. X-linked scaffolds will have approximately half the read depth in males (who have one X) compared to females (who have two). Y-linked scaffolds will have reads from males but zero coverage from females . Autosomes will show equal coverage in both sexes.
 
 #### Expression-Based Identification
-Compare gene expression (RNA-seq) between males and females across scaffolds. X-linked genes will show characteristic expression patterns that depend on whether dosage compensation exists. Without compensation, X-linked genes are expressed at roughly half the level in males compared to females. With compensation, expression is equalized — but the mechanism of equalization differs among taxa (see Section 6).
+Compare gene expression (RNA-seq) between males and females across scaffolds. X-linked genes will show characteristic expression patterns that depend on whether dosage compensation exists. Without compensation, X-linked genes are expressed at roughly half the level in males compared to females. With compensation, expression is equalized, but the mechanism of equalization differs among taxa (see Section 6).
 
 #### Additional Approaches
-Heterozygosity : Females (XX) will be heterozygous on X-linked loci, while males (XY) will be hemizygous — meaning variant calls from males on X-linked scaffolds will look homozygous. K-mer methods : male-specific k-mers identify Y-linked sequences. Synteny : comparing to related species with known sex chromosomes can identify conserved sex-linked regions.
+Heterozygosity : Females (XX) will be heterozygous on X-linked loci, while males (XY) will be hemizygous, meaning variant calls from males on X-linked scaffolds will look homozygous. K-mer methods : male-specific k-mers identify Y-linked sequences. Synteny : comparing to related species with known sex chromosomes can identify conserved sex-linked regions.
 
 ### Example Plots and Patterns
 
 ### Dosage Compensation
-When one sex has a single copy of a large, gene-rich chromosome and the other sex has two, there is a dosage problem . X-linked genes in males (XY) are expressed from one copy, while autosomal genes are expressed from two. This imbalance disrupts the stoichiometry of protein complexes and regulatory networks. Many organisms have evolved mechanisms to equalize — or compensate — this dosage difference.
+When one sex has a single copy of a large, gene-rich chromosome and the other sex has two, there is a dosage problem . X-linked genes in males (XY) are expressed from one copy, while autosomal genes are expressed from two. This imbalance disrupts the stoichiometry of protein complexes and regulatory networks. Many organisms have evolved mechanisms to equalize, or compensate, this dosage difference.
 
 #### Three Classic Mechanisms
 
 #### Compensation Is Far From Universal
-A major insight from the last two decades of comparative work: dosage compensation is not universal . Many organisms with differentiated sex chromosomes show incomplete or no dosage compensation. Birds (ZW) lack a chromosome-wide compensation mechanism — Z-linked genes are simply expressed at higher levels in males (ZZ) than females (ZW). Snakes show partial compensation that varies across the chromosome. Lepidoptera are similar. This means that sex-biased gene expression is pervasive in these lineages, with profound implications for sexual dimorphism, disease, and adaptation.
+A major insight from the last two decades of comparative work: dosage compensation is not universal . Many organisms with differentiated sex chromosomes show incomplete or no dosage compensation. Birds (ZW) lack a chromosome-wide compensation mechanism, Z-linked genes are simply expressed at higher levels in males (ZZ) than females (ZW). Snakes show partial compensation that varies across the chromosome. Lepidoptera are similar. This means that sex-biased gene expression is pervasive in these lineages, with profound implications for sexual dimorphism, disease, and adaptation.
 
 ### Different Solutions in Different Lineages
 
 ### Fusions, Turnovers, and Neo-Sex Chromosomes
-Sex chromosomes are not static. They undergo turnovers — a new sex-determining gene arises on a different chromosome, and the old sex chromosomes revert to behaving as autosomes. They also undergo fusions — an autosome fuses to an existing sex chromosome, creating a "neo" sex chromosome with both old sex-linked genes and newly sex-linked autosomal genes.
+Sex chromosomes are not static. They undergo turnovers, a new sex-determining gene arises on a different chromosome, and the old sex chromosomes revert to behaving as autosomes. They also undergo fusions, an autosome fuses to an existing sex chromosome, creating a "neo" sex chromosome with both old sex-linked genes and newly sex-linked autosomal genes.
 
 #### Neo-Sex Chromosomes
-When an autosome fuses to a Y chromosome, the fused portion becomes a neo-Y , and its free homolog becomes a neo-X . The neo-Y portion is now non-recombining (at least in the fused region) and will begin to degenerate — giving us a window into the early stages of sex chromosome evolution happening in real time. Species with neo-sex chromosomes are invaluable natural experiments.
+When an autosome fuses to a Y chromosome, the fused portion becomes a neo-Y , and its free homolog becomes a neo-X . The neo-Y portion is now non-recombining (at least in the fused region) and will begin to degenerate, giving us a window into the early stages of sex chromosome evolution happening in real time. Species with neo-sex chromosomes are invaluable natural experiments.
 
 #### What Determines Whether a Fusion Spreads?
-Not all fusions to sex chromosomes are equal. Fusions involving the pseudoautosomal region (PAR) — the small region where the X and Y still recombine — have very different dynamics than fusions to the non-PAR portion. The probability that a fusion becomes established in a population depends on meiotic mechanics, selection, drift, and the specific location of the fusion breakpoint.
+Not all fusions to sex chromosomes are equal. Fusions involving the pseudoautosomal region (PAR), the small region where the X and Y still recombine, have very different dynamics than fusions to the non-PAR portion. The probability that a fusion becomes established in a population depends on meiotic mechanics, selection, drift, and the specific location of the fusion breakpoint.
 
 ### The Mechanics of Sex Chromosome Change
 
 ### Why Study Sex Chromosome Evolution?
 
 #### Speciation
-Sex chromosomes play an outsized role in reproductive isolation between species. Haldane's rule — the observation that when hybrids are inviable or sterile, it is the heterogametic sex (XY or ZW) that is affected first — points directly to the special role of sex chromosomes in speciation. The large-X effect (or large-Z effect) means that genes on sex chromosomes contribute disproportionately to hybrid incompatibility. Understanding how sex chromosomes evolve is essential to understanding how species form.
+Sex chromosomes play an outsized role in reproductive isolation between species. Haldane's rule, the observation that when hybrids are inviable or sterile, it is the heterogametic sex (XY or ZW) that is affected first, points directly to the special role of sex chromosomes in speciation. The large-X effect (or large-Z effect) means that genes on sex chromosomes contribute disproportionately to hybrid incompatibility. Understanding how sex chromosomes evolve is essential to understanding how species form.
 
 #### Human Disease
-Many genetic disorders are X-linked : hemophilia, Duchenne muscular dystrophy, red-green color blindness, fragile X syndrome. Because males have only one X, they lack a backup copy — recessive mutations on the X are always expressed in males. Understanding why particular genes ended up on the sex chromosomes, and how dosage compensation works (and fails), has direct medical relevance.
+Many genetic disorders are X-linked : hemophilia, Duchenne muscular dystrophy, red-green color blindness, fragile X syndrome. Because males have only one X, they lack a backup copy, recessive mutations on the X are always expressed in males. Understanding why particular genes ended up on the sex chromosomes, and how dosage compensation works (and fails), has direct medical relevance.
 
 #### Sexual Dimorphism
-Sex chromosomes are a genomic reservoir for sexually antagonistic variation — genes that benefit one sex at the cost of the other. The genomic architecture of sex determination shapes how much males and females can differ in morphology, behavior, and physiology. The evolution of sex chromosomes is inextricable from the evolution of sex differences.
+Sex chromosomes are a genomic reservoir for sexually antagonistic variation, genes that benefit one sex at the cost of the other. The genomic architecture of sex determination shapes how much males and females can differ in morphology, behavior, and physiology. The evolution of sex chromosomes is inextricable from the evolution of sex differences.
 
 #### Convergent Evolution
-The same suite of features — recombination suppression, degeneration, dosage compensation, accumulation of repetitive elements — evolves independently in animals, plants, fungi, and algae. This convergence reveals deep rules of genome evolution that transcend any particular lineage. Sex chromosomes are a window into what happens whenever a region of a genome stops recombining.
+The same suite of features, recombination suppression, degeneration, dosage compensation, accumulation of repetitive elements, evolves independently in animals, plants, fungi, and algae. This convergence reveals deep rules of genome evolution that transcend any particular lineage. Sex chromosomes are a window into what happens whenever a region of a genome stops recombining.
 
 ### Open Questions
 Some of the major questions driving current research in the Blackmon Lab and the field:
@@ -621,13 +621,13 @@ Some of the major questions driving current research in the Blackmon Lab and the
 ## Evolution of Genome Structure - Blackmon Lab
 
 URL: https://coleoguy.github.io/genome-structure-evolution.html
-Description: A visual guide to the evolution of gross genome structure — chromosome fusions, fissions, whole-genome duplication, and the forces that shape karyotype evolution across the tree of life.
+Description: A visual guide to the evolution of gross genome structure, chromosome fusions, fissions, whole-genome duplication, and the forces that shape karyotype evolution across the tree of life.
 
 # The Evolution of Genome Structure
 
 ### What Is Genome Structure?
-Every species has a genome — the complete set of DNA encoding its biology. But genomes are not just sequences of bases. They are physically organized into chromosomes : discrete, linear (or circular) packages of DNA bound to proteins. The karyotype of a species describes how many chromosomes it has and what they look like — their number, size, shape, and banding patterns.
-Chromosome number varies enormously across life. The fern Ophioglossum reticulatum holds the record at 2n = 1,260 . The jack jumper ant Myrmecia pilosula has 2n = 2 — a single pair. Most mammals cluster around 2n = 40–60, while most birds sit near 2n = 80. These are not random numbers. They reflect hundreds of millions of years of mutations that fused chromosomes together, split them apart, or duplicated entire genomes.
+Every species has a genome, the complete set of DNA encoding its biology. But genomes are not just sequences of bases. They are physically organized into chromosomes : discrete, linear (or circular) packages of DNA bound to proteins. The karyotype of a species describes how many chromosomes it has and what they look like, their number, size, shape, and banding patterns.
+Chromosome number varies enormously across life. The fern Ophioglossum reticulatum holds the record at 2n = 1,260 . The jack jumper ant Myrmecia pilosula has 2n = 2, a single pair. Most mammals cluster around 2n = 40–60, while most birds sit near 2n = 80. These are not random numbers. They reflect hundreds of millions of years of mutations that fused chromosomes together, split them apart, or duplicated entire genomes.
 The central questions of genome structure evolution are deceptively simple: Why does chromosome number change? What forces favor fusions over fissions? Why do some clades evolve rapidly while others barely change? Answering them requires integrating cytogenetics, population genetics, phylogenetic comparative methods, and genomics.
 
 ### Scale of Karyotype Diversity
@@ -637,40 +637,40 @@ Surprisingly, we still lack good answers to basic questions. We know how chromos
 A fusion joins two chromosomes into one, reducing the chromosome number by one. There are two main types:
 
 #### Robertsonian Translocations (Centric Fusions)
-Two acrocentric chromosomes (with the centromere near one end) fuse at their centromeres, producing a single metacentric chromosome (centromere in the middle). One centromere is typically lost or inactivated. This is the most common type of fusion in mammals — human chromosome 2 is an end-to-end (telomeric) fusion of two ancestral ape chromosomes, which is why humans have 2n = 46 while the other great apes have 2n = 48.
+Two acrocentric chromosomes (with the centromere near one end) fuse at their centromeres, producing a single metacentric chromosome (centromere in the middle). One centromere is typically lost or inactivated. This is the most common type of fusion in mammals, human chromosome 2 is an end-to-end (telomeric) fusion of two ancestral ape chromosomes, which is why humans have 2n = 46 while the other great apes have 2n = 48.
 
 #### Tandem (End-to-End) Fusions
 One chromosome attaches to the end (telomere) of another. Less common than Robertsonian translocations in mammals but important in insects and other groups. The resulting chromosome retains both centromeres initially, though one is usually silenced.
-The critical challenge: a new fusion starts in a single individual . That individual is heterozygous — one copy of the fused chromosome and two unfused copies. During meiosis, these three chromosomes must pair as a trivalent , which can missegregate. If the heterozygote has reduced fertility ( underdominance ), how does the fusion ever spread through the population?
+The critical challenge: a new fusion starts in a single individual . That individual is heterozygous, one copy of the fused chromosome and two unfused copies. During meiosis, these three chromosomes must pair as a trivalent , which can missegregate. If the heterozygote has reduced fertility ( underdominance ), how does the fusion ever spread through the population?
 
 ### Underdominance and Fixation
-Russell Lande's 1979 paper was a watershed. Using diffusion theory, Lande showed that underdominant rearrangements face severe barriers to fixation in large populations — the probability of fixation is exponentially small unless the population is very small or the heterozygote disadvantage is very mild. This result seemed to doom chromosomal speciation theory: if fusions can barely fix, how can they drive speciation?
+Russell Lande's 1979 paper was a watershed. Using diffusion theory, Lande showed that underdominant rearrangements face severe barriers to fixation in large populations, the probability of fixation is exponentially small unless the population is very small or the heterozygote disadvantage is very mild. This result seemed to doom chromosomal speciation theory: if fusions can barely fix, how can they drive speciation?
 Possible solutions to the fixation problem:
 
 ### Chromosome Fissions
-A fission splits one chromosome into two, increasing the chromosome number. This requires that the broken chromosome somehow acquires a new centromere (neocentromere) and new telomeres at the break points — otherwise the fragments will be lost during cell division.
+A fission splits one chromosome into two, increasing the chromosome number. This requires that the broken chromosome somehow acquires a new centromere (neocentromere) and new telomeres at the break points, otherwise the fragments will be lost during cell division.
 
 #### How Fissions Work
-Fissions are mechanistically more challenging than fusions. A fusion simply joins existing chromosomes; a fission must create new functional elements. Neocentromeres can arise from latent centromeric sequences or through epigenetic activation of non-centromeric DNA. Telomeres can be added de novo by telomerase or by recombination-based mechanisms. Despite these hurdles, fissions are clearly common — many lineages show net increases in chromosome number over evolutionary time.
+Fissions are mechanistically more challenging than fusions. A fusion simply joins existing chromosomes; a fission must create new functional elements. Neocentromeres can arise from latent centromeric sequences or through epigenetic activation of non-centromeric DNA. Telomeres can be added de novo by telomerase or by recombination-based mechanisms. Despite these hurdles, fissions are clearly common, many lineages show net increases in chromosome number over evolutionary time.
 
 #### Fissions and Chromosome Shape
 A metacentric chromosome (centromere in the middle) can fission at the centromere to produce two acrocentric chromosomes. This is effectively the reverse of a Robertsonian fusion . The interplay between fusions and fissions, combined with changes in centromere position (pericentric inversions), determines the overall shape distribution of karyotypes.
 
 ### The Fusion–Fission Balance
-In most animal groups, fusions appear to be more common than fissions. The net direction of chromosome number change — whether a clade tends to fuse or fission over time — varies enormously and is one of the key observables that models of karyotype evolution try to explain.
+In most animal groups, fusions appear to be more common than fissions. The net direction of chromosome number change, whether a clade tends to fuse or fission over time, varies enormously and is one of the key observables that models of karyotype evolution try to explain.
 Some patterns are striking:
 
 ### Whole-Genome Duplication (Polyploidy)
-Polyploidy — the duplication of the entire genome — is the most dramatic change in genome structure. In a single event, chromosome number doubles. The new polyploid has twice as many chromosomes as its progenitor, with duplicate copies of every gene.
+Polyploidy, the duplication of the entire genome, is the most dramatic change in genome structure. In a single event, chromosome number doubles. The new polyploid has twice as many chromosomes as its progenitor, with duplicate copies of every gene.
 
 #### Autopolyploidy vs. Allopolyploidy
 Autopolyploidy results from genome doubling within a single species (e.g., a failure of meiosis produces an unreduced gamete). The resulting organism has four copies of each chromosome. Allopolyploidy combines genome duplication with hybridization: two different species hybridize, and the hybrid undergoes genome doubling. Allopolyploids are often immediately reproductively isolated from both parents, making polyploidy a potential instantaneous speciation mechanism.
 
 #### Polyploidy in Plants vs. Animals
-Polyploidy is common in plants — perhaps 30–70% of flowering plant species are polyploid or have polyploid ancestry. In animals, it is much rarer, largely restricted to parthenogenetic lineages and a few sexually reproducing groups (some fish, frogs, insects). The sex chromosome "poison pill" hypothesis suggests that polyploidy disrupts sex determination in species with differentiated sex chromosomes, acting as a barrier to polyploidy establishment in most animals.
+Polyploidy is common in plants, perhaps 30–70% of flowering plant species are polyploid or have polyploid ancestry. In animals, it is much rarer, largely restricted to parthenogenetic lineages and a few sexually reproducing groups (some fish, frogs, insects). The sex chromosome "poison pill" hypothesis suggests that polyploidy disrupts sex determination in species with differentiated sex chromosomes, acting as a barrier to polyploidy establishment in most animals.
 
 ### The Polyploidy Paradox
-For decades, polyploidy was assumed to be an evolutionary "jackpot" — instant gene duplication, instant reproductive isolation, and a burst of evolutionary novelty. Then Itay Mayrose and colleagues dropped a bomb in 2011: using phylogenetic methods, they showed that recently formed polyploid lineages actually diversify more slowly than their diploid relatives. Polyploidy may cause a brief burst of speciation followed by elevated extinction — an "evolutionary dead end" (or at least a speed bump).
+For decades, polyploidy was assumed to be an evolutionary "jackpot", instant gene duplication, instant reproductive isolation, and a burst of evolutionary novelty. Then Itay Mayrose and colleagues dropped a bomb in 2011: using phylogenetic methods, they showed that recently formed polyploid lineages actually diversify more slowly than their diploid relatives. Polyploidy may cause a brief burst of speciation followed by elevated extinction, an "evolutionary dead end" (or at least a speed bump).
 This result remains contested. The methodological assumptions have been questioned, and some plant clades clearly show polyploidy-associated radiations. The truth is likely nuanced: polyploidy may facilitate adaptation in some ecological contexts while being a liability in others.
 
 ### Meiotic Drive and Karyotype Evolution
@@ -685,16 +685,16 @@ If meiotic drive influences which chromosome configurations are preferentially t
 The key finding: in mammals, chromosome number evolution is biased toward fusions in a pattern consistent with female meiotic drive favoring metacentric chromosomes. This provides a mechanistic explanation for why mammalian karyotypes tend to evolve toward lower chromosome numbers.
 
 ### Rates of Karyotype Evolution Span Seven Orders of Magnitude
-For decades, a common assumption held that chromosome number is evolutionarily conservative — that most lineages sit near a stable karyotype, punctuated by rare bursts of change. A massive new analysis shatters this view. Copeland et al. (submitted) compiled 63,682 karyotypes across 56 eukaryotic clades — spanning animals, plants, fungi, and more — and estimated rates of dysploidy and polyploidy on each clade's phylogeny using chromePlus. The result: rates of chromosome number evolution vary by seven orders of magnitude across the tree of life.
+For decades, a common assumption held that chromosome number is evolutionarily conservative, that most lineages sit near a stable karyotype, punctuated by rare bursts of change. A massive new analysis shatters this view. Copeland et al. (submitted) compiled 63,682 karyotypes across 56 eukaryotic clades, spanning animals, plants, fungi, and more, and estimated rates of dysploidy and polyploidy on each clade's phylogeny using chromePlus. The result: rates of chromosome number evolution vary by seven orders of magnitude across the tree of life.
 
 #### Stasis Is Rarer Than You Think
-Perhaps the most surprising finding is that groups traditionally considered "static" are anything but. All three bird orders analyzed ( Accipitriformes , Passeriformes , and Galliformes ) exceed the global median rate of chromosome number change. The appearance of stasis in birds — most species near 2n ≈ 80 — masks genuinely active evolutionary dynamics.
+Perhaps the most surprising finding is that groups traditionally considered "static" are anything but. All three bird orders analyzed ( Accipitriformes , Passeriformes , and Galliformes ) exceed the global median rate of chromosome number change. The appearance of stasis in birds, most species near 2n ≈ 80, masks genuinely active evolutionary dynamics.
 
 #### Ecology Trumps Architecture
 A longstanding hypothesis predicted that chromosome architecture should dictate rates: holocentric chromosomes (where the centromere spans the entire chromosome) should tolerate rearrangements more readily than monocentric ones. The data say otherwise. Orchidaceae (monocentric) evolve chromosome number ~34× faster than Odonata (holocentric). This pattern, replicated across the dataset, argues that ecology and life history matter more than chromosome structure for setting the tempo of karyotype evolution.
 
 #### Rate Variation Is Kingdom-Agnostic
-Fast and slow clades are found in every kingdom. The slowest clade in the dataset is an animal (Cetacea); the fastest is a plant (Asteraceae). Insects, vertebrates, angiosperms, and fungi all span the full range. There is no "animal rate" or "plant rate" — the forces shaping karyotype tempo are universal.
+Fast and slow clades are found in every kingdom. The slowest clade in the dataset is an animal (Cetacea); the fastest is a plant (Asteraceae). Insects, vertebrates, angiosperms, and fungi all span the full range. There is no "animal rate" or "plant rate", the forces shaping karyotype tempo are universal.
 
 ### Total Dysploidy Rate Across Eukaryotes
 Posterior median rates estimated via chromePlus MCMC on trees scaled to unit depth. Dashed line = global median. Data from Copeland et al. (submitted). Clades colored by higher classification.
@@ -732,58 +732,58 @@ Given a species' phylogenetic position, ecology, life history, and meiotic syste
 Several emerging directions offer hope:
 Long-read sequencing is finally delivering chromosome-level assemblies across hundreds of species (Earth BioGenome Project, Vertebrate Genomes Project, Darwin Tree of Life). For the first time, we will be able to study structural rearrangements at sequence-level resolution across the tree of life, rather than relying solely on cytogenetic observations.
 Centromere biology is undergoing a revolution. New sequencing technologies can now read through the repetitive satellite DNA that constitutes centromeres, allowing us to study centromere evolution directly. Understanding how centromeres evolve is crucial to understanding meiotic drive and its role in karyotype evolution.
-Integration with functional genomics — Hi-C, ATAC-seq, and other chromatin-level assays across species will reveal whether rearrangements disrupt functional genome architecture, providing the missing link between structural change and fitness.
+Integration with functional genomics, Hi-C, ATAC-seq, and other chromatin-level assays across species will reveal whether rearrangements disrupt functional genome architecture, providing the missing link between structural change and fitness.
 
 #### Explore Further
 
-## Selection in Evolution — Blackmon Lab
+## Selection in Evolution, Blackmon Lab
 
 URL: https://coleoguy.github.io/selection.html
-Description: A visual guide to selection — natural, artificial, sexual, background, and indirect selection on recombination modifiers. From Darwin to modern population genetics.
+Description: A visual guide to selection, natural, artificial, sexual, background, and indirect selection on recombination modifiers. From Darwin to modern population genetics.
 
 # Selection in Evolution
 
 ### What Is Selection?
-Selection is differential survival and reproduction based on heritable phenotypic variation. It is the only evolutionary force that consistently produces adaptation — the fit between organism and environment that pervades the living world. While mutation generates variation, recombination shuffles it, and drift randomly eliminates it, only selection can build complex adaptations over time.
+Selection is differential survival and reproduction based on heritable phenotypic variation. It is the only evolutionary force that consistently produces adaptation, the fit between organism and environment that pervades the living world. While mutation generates variation, recombination shuffles it, and drift randomly eliminates it, only selection can build complex adaptations over time.
 Darwin's insight was deceptively simple: variation exists , much of it is heritable , and not all individuals reproduce equally . The result is cumulative, directional change in the composition of populations. Individuals that happen to carry traits that improve their survival or reproductive success leave more offspring, and those offspring inherit the very traits that gave their parents an advantage.
 
 #### The Mathematics of Selection
 For a single locus with two alleles under additive (semi-dominant) selection, the change in frequency of the favored allele per generation is approximately:
 where s is the selection coefficient and p is the allele frequency. The general form, Δp = sp(1−p)[ph + (1−p)(1−h)] / w̄, accounts for dominance ( h ) and mean fitness (w̄). But real selection is far more complex. The breeder's equation captures the response to selection on a quantitative trait:
 where R is the response (change in mean phenotype), h² is heritability, and S is the selection differential. This deceptively simple equation encodes a profound truth: the rate of evolutionary change depends on both the strength of selection and the amount of heritable variation available.
-Selection acts on phenotypes , not genotypes directly. The mapping from genotype to phenotype to fitness is where all the complexity lives — pleiotropy, epistasis, genotype-by-environment interactions, and developmental constraints all mediate how genotypic variation translates into fitness differences.
+Selection acts on phenotypes , not genotypes directly. The mapping from genotype to phenotype to fitness is where all the complexity lives, pleiotropy, epistasis, genotype-by-environment interactions, and developmental constraints all mediate how genotypic variation translates into fitness differences.
 
 #### Types of Selection
-Directional selection favors one phenotypic extreme, shifting the mean. Stabilizing selection favors the mean, reducing variance. Disruptive selection favors both extremes, increasing variance and potentially driving speciation. Frequency-dependent selection changes in direction depending on how common a phenotype is — negative frequency dependence maintains diversity, positive frequency dependence eliminates it. Density-dependent selection varies with population density, often favoring different life-history strategies at high vs. low density.
+Directional selection favors one phenotypic extreme, shifting the mean. Stabilizing selection favors the mean, reducing variance. Disruptive selection favors both extremes, increasing variance and potentially driving speciation. Frequency-dependent selection changes in direction depending on how common a phenotype is, negative frequency dependence maintains diversity, positive frequency dependence eliminates it. Density-dependent selection varies with population density, often favoring different life-history strategies at high vs. low density.
 
 ### The Intellectual Lineage
 The theory of selection has been built by generations of thinkers, from Darwin's original verbal argument to the rigorous mathematical framework of population genetics. Each step clarified how selection acts, how it interacts with other forces, and how it produces the patterns we observe in living organisms.
 
-### Drift vs. Selection — The Role of N e
+### Drift vs. Selection, The Role of N e
 Whether selection or drift dominates at a given locus depends on the effective population size (N e ) and the selection coefficient (s). The critical threshold is:
 When |N e s| >> 1, selection dominates: beneficial alleles spread to fixation, deleterious alleles are purged. When |N e s| < < 1, drift dominates: alleles behave as if effectively neutral, regardless of their actual fitness effects. Their fate becomes a random walk governed by sampling variance in small populations.
-This means that what counts as "neutral" depends on population size. In large populations (bacteria with very large N e , insect species with huge census sizes), even very weakly selected alleles — those with s = 10 −7 — are visible to selection. In small populations (endangered species, island endemics, organisms that have passed through severe bottlenecks), even moderately deleterious mutations with s = 10 −3 can drift to fixation as if they were neutral.
+This means that what counts as "neutral" depends on population size. In large populations (bacteria with very large N e , insect species with huge census sizes), even very weakly selected alleles, those with s = 10 −7, are visible to selection. In small populations (endangered species, island endemics, organisms that have passed through severe bottlenecks), even moderately deleterious mutations with s = 10 −3 can drift to fixation as if they were neutral.
 
 #### The Nearly Neutral Theory
-Ohta (1973) recognized that most new mutations are not strictly neutral but slightly deleterious . Their evolutionary fate depends critically on N e . As N e decreases, the boundary of effective neutrality expands, and more slightly deleterious mutations drift to fixation. This leads to genomic decay — an accumulation of mildly harmful substitutions in small populations.
+Ohta (1973) recognized that most new mutations are not strictly neutral but slightly deleterious . Their evolutionary fate depends critically on N e . As N e decreases, the boundary of effective neutrality expands, and more slightly deleterious mutations drift to fixation. This leads to genomic decay, an accumulation of mildly harmful substitutions in small populations.
 
 #### Implications for Genome Evolution
-Small-N e lineages accumulate more slightly deleterious mutations, exhibit weaker codon usage bias, harbor more pseudogenes, and potentially experience faster rates of chromosome rearrangement fixation. Lynch (2007) argued powerfully that most of genome architecture — intron proliferation, genome size expansion, mobile element accumulation — is driven not by adaptation but by the inability of selection to prevent genomic bloat in organisms with small effective population sizes.
+Small-N e lineages accumulate more slightly deleterious mutations, exhibit weaker codon usage bias, harbor more pseudogenes, and potentially experience faster rates of chromosome rearrangement fixation. Lynch (2007) argued powerfully that most of genome architecture, intron proliferation, genome size expansion, mobile element accumulation, is driven not by adaptation but by the inability of selection to prevent genomic bloat in organisms with small effective population sizes.
 
 ### The Drift–Selection Balance
 Computed from the Kimura (1962) diffusion approximation for a new mutation in a diploid population. For beneficial mutations with large N e , fixation probability approaches ~2s.
 
 ### Sexual Selection and Sexual Antagonism
 Sexual selection arises from variation in mating success rather than survival. Darwin recognized two distinct mechanisms: intrasexual selection (competition among members of one sex, typically males, for access to mates) and intersexual selection (mate choice, typically by females, favoring particular traits in the other sex).
-Sexual selection can drive the rapid evolution of extreme traits — peacock tails, beetle horns, bird song complexity, elaborate courtship dances. These traits may reduce survival but increase mating success. The tension between natural and sexual selection produces some of the most dramatic phenotypes in nature.
+Sexual selection can drive the rapid evolution of extreme traits, peacock tails, beetle horns, bird song complexity, elaborate courtship dances. These traits may reduce survival but increase mating success. The tension between natural and sexual selection produces some of the most dramatic phenotypes in nature.
 
 #### Sexual Antagonism
 Sexual antagonism occurs when alleles benefit one sex but harm the other. This conflict is pervasive because the same genome must produce both males and females, yet the optimal phenotype for each sex is often different. Traits that maximize male fitness (large body size, aggression, ornamentation) may reduce female fitness, and vice versa.
-Intralocus sexual conflict occurs when a single locus is under opposing selection in males and females. Resolution mechanisms include: (1) sex-limited expression — the allele is expressed only in the sex it benefits, (2) gene duplication and divergence — each sex uses a different copy, or (3) movement to sex chromosomes — the allele becomes X- or Y-linked where it spends more or less time in one sex.
+Intralocus sexual conflict occurs when a single locus is under opposing selection in males and females. Resolution mechanisms include: (1) sex-limited expression, the allele is expressed only in the sex it benefits, (2) gene duplication and divergence, each sex uses a different copy, or (3) movement to sex chromosomes, the allele becomes X- or Y-linked where it spends more or less time in one sex.
 
 #### Sex Chromosomes as Resolution
-Sexually antagonistic alleles benefit from sex-linkage. A female-beneficial allele gains an advantage by being X-linked (it spends two-thirds of its time in females in an XY system). A male-beneficial allele gains from being Y-linked (exclusively male-transmitted). This creates selection to expand sex-linked regions and is a major force driving the evolution of sex chromosomes — a topic the Blackmon Lab studies extensively.
-Intersexual selection can maintain genetic variation through the genic capture model: if female choice targets condition-dependent traits, then many loci throughout the genome — all those that affect organismal condition — become indirect targets of sexual selection.
+Sexually antagonistic alleles benefit from sex-linkage. A female-beneficial allele gains an advantage by being X-linked (it spends two-thirds of its time in females in an XY system). A male-beneficial allele gains from being Y-linked (exclusively male-transmitted). This creates selection to expand sex-linked regions and is a major force driving the evolution of sex chromosomes, a topic the Blackmon Lab studies extensively.
+Intersexual selection can maintain genetic variation through the genic capture model: if female choice targets condition-dependent traits, then many loci throughout the genome, all those that affect organismal condition, become indirect targets of sexual selection.
 
 ### Sexual Selection in Theory and Practice
 
@@ -791,29 +791,29 @@ Intersexual selection can maintain genetic variation through the genic capture m
 Selection at one locus affects allele frequencies at linked loci . This “linked selection” has profound consequences for genome evolution and explains many patterns that cannot be understood by looking at individual loci in isolation.
 
 #### Background Selection
-Charlesworth, Morgan, and Charlesworth (1993) formalized background selection : purifying selection against deleterious mutations at linked loci reduces the effective population size (N e ) at nearby neutral sites. The stronger the purifying selection and the lower the recombination rate, the greater the reduction. Regions of the genome with little recombination — near centromeres, on sex chromosomes, within inversions — have reduced diversity, reduced efficacy of selection, and faster accumulation of deleterious mutations.
+Charlesworth, Morgan, and Charlesworth (1993) formalized background selection : purifying selection against deleterious mutations at linked loci reduces the effective population size (N e ) at nearby neutral sites. The stronger the purifying selection and the lower the recombination rate, the greater the reduction. Regions of the genome with little recombination, near centromeres, on sex chromosomes, within inversions, have reduced diversity, reduced efficacy of selection, and faster accumulation of deleterious mutations.
 
 #### Genetic Hitchhiking
-Maynard Smith and Haigh (1974) described genetic hitchhiking : when a beneficial mutation sweeps to fixation, it drags along linked neutral (and even slightly deleterious) variants, creating a selective sweep — a region of drastically reduced diversity surrounding the selected site. Sweeps leave a characteristic molecular signature: reduced heterozygosity, an excess of rare alleles, and elevated linkage disequilibrium. These signatures allow us to detect recent positive selection in genome scans.
+Maynard Smith and Haigh (1974) described genetic hitchhiking : when a beneficial mutation sweeps to fixation, it drags along linked neutral (and even slightly deleterious) variants, creating a selective sweep, a region of drastically reduced diversity surrounding the selected site. Sweeps leave a characteristic molecular signature: reduced heterozygosity, an excess of rare alleles, and elevated linkage disequilibrium. These signatures allow us to detect recent positive selection in genome scans.
 
 #### Hill-Robertson Interference
 Hill-Robertson interference occurs when selection at multiple linked loci interferes with itself. Beneficial alleles at one locus may be linked to deleterious alleles at another, preventing either from reaching its optimal frequency. This mutual interference reduces the overall efficacy of selection and is one of the most important theoretical justifications for the evolution of recombination.
 
 #### Consequences
-Together, these linked selection effects explain: (1) why diversity correlates with recombination rate across the genome, (2) why non-recombining regions (Y chromosomes, inversions) degenerate , (3) why recombination itself evolves — any modifier that increases recombination can be favored because it breaks up the negative associations created by Hill-Robertson interference.
+Together, these linked selection effects explain: (1) why diversity correlates with recombination rate across the genome, (2) why non-recombining regions (Y chromosomes, inversions) degenerate , (3) why recombination itself evolves, any modifier that increases recombination can be favored because it breaks up the negative associations created by Hill-Robertson interference.
 
 ### The Papers That Built the Framework
 Simulated/illustrative data showing expected diversity patterns; not empirical observations.
 
-### Indirect Selection — Recombination Modifiers
+### Indirect Selection, Recombination Modifiers
 Some of the most consequential selection in genome evolution is indirect : it acts not on the phenotype produced by a mutation, but on the effect that mutation has on linkage relationships among other genes.
 
 #### Inversions and Supergenes
-A chromosomal inversion captures a block of genes in a non-recombining unit. If the captured block includes locally adapted alleles or sexually antagonistic alleles, the inversion can be favored by indirect selection — not because the inversion itself is beneficial, but because it preserves beneficial gene combinations that would be broken up by recombination in the standard arrangement.
-This is the theoretical basis for supergenes — regions of suppressed recombination that maintain co-adapted allele complexes. Spectacular examples include: Heliconius butterfly wing pattern mimicry (controlled by inversions on a single chromosome), white-throated sparrow behavioral morphs (a massive inversion on chromosome 2), and fire ant social chromosomes (a supergene determines whether colonies have one or multiple queens).
+A chromosomal inversion captures a block of genes in a non-recombining unit. If the captured block includes locally adapted alleles or sexually antagonistic alleles, the inversion can be favored by indirect selection, not because the inversion itself is beneficial, but because it preserves beneficial gene combinations that would be broken up by recombination in the standard arrangement.
+This is the theoretical basis for supergenes, regions of suppressed recombination that maintain co-adapted allele complexes. Spectacular examples include: Heliconius butterfly wing pattern mimicry (controlled by inversions on a single chromosome), white-throated sparrow behavioral morphs (a massive inversion on chromosome 2), and fire ant social chromosomes (a supergene determines whether colonies have one or multiple queens).
 
 #### Chromosome Fusions
-Chromosome fusions change the recombination landscape. A fusion between an autosome and a sex chromosome creates a neo-sex chromosome , instantly altering which genes are sex-linked and changing the selective regime for those genes. The Blackmon Lab has shown that fusions to sex chromosomes are not random — fusions to the non-PAR (pseudoautosomal region) portions of sex chromosomes are favored differently than fusions to PAR regions, with important implications for the rate and direction of sex chromosome evolution.
+Chromosome fusions change the recombination landscape. A fusion between an autosome and a sex chromosome creates a neo-sex chromosome , instantly altering which genes are sex-linked and changing the selective regime for those genes. The Blackmon Lab has shown that fusions to sex chromosomes are not random, fusions to the non-PAR (pseudoautosomal region) portions of sex chromosomes are favored differently than fusions to PAR regions, with important implications for the rate and direction of sex chromosome evolution.
 
 #### Recombination Rate Evolution
 The recombination rate itself evolves. Modifiers that increase or decrease recombination can be favored depending on the fitness landscape. In a rugged epistatic landscape , reduced recombination can preserve good gene combinations. In a changing environment , increased recombination generates the novel combinations needed to adapt. The tension between these forces shapes recombination rate variation both within and between species.
@@ -822,17 +822,17 @@ The recombination rate itself evolves. Modifiers that increase or decrease recom
 Simulated trajectories illustrating frequency-dependent selection dynamics; not empirical data.
 
 ### Artificial Selection and Domestication
-Artificial selection applies the same evolutionary principles — heritable variation + differential reproduction = evolutionary change — but with human preference replacing ecological fitness as the selective environment. Darwin began the Origin with artificial selection precisely because it made the mechanism of selection tangible and undeniable.
+Artificial selection applies the same evolutionary principles, heritable variation + differential reproduction = evolutionary change, but with human preference replacing ecological fitness as the selective environment. Darwin began the Origin with artificial selection precisely because it made the mechanism of selection tangible and undeniable.
 
 #### Domestication as Evolutionary Experiment
-Domesticated species have experienced intense selection on specific traits — yield, behavior, morphology, color — for hundreds to thousands of generations. This creates dramatic phenotypic change while revealing the genetic architecture of adaptation. Key insights from domestication include:
-(1) Response can be rapid and dramatic. The difference between a wolf and a Chihuahua, between red junglefowl and a modern broiler chicken, between wild teosinte and modern maize — all achieved in a few thousand generations or less.
-(2) Correlated responses reveal genetic architecture. Selecting for tameness in foxes produced floppy ears, curly tails, and piebald coats — the "domestication syndrome." These correlated responses reveal pleiotropy and genetic correlations that constrain and channel evolutionary change.
+Domesticated species have experienced intense selection on specific traits, yield, behavior, morphology, color, for hundreds to thousands of generations. This creates dramatic phenotypic change while revealing the genetic architecture of adaptation. Key insights from domestication include:
+(1) Response can be rapid and dramatic. The difference between a wolf and a Chihuahua, between red junglefowl and a modern broiler chicken, between wild teosinte and modern maize, all achieved in a few thousand generations or less.
+(2) Correlated responses reveal genetic architecture. Selecting for tameness in foxes produced floppy ears, curly tails, and piebald coats, the "domestication syndrome." These correlated responses reveal pleiotropy and genetic correlations that constrain and channel evolutionary change.
 (3) Domestication bottlenecks reduce diversity. Most domesticated species have dramatically reduced genetic diversity compared to their wild ancestors, making them vulnerable to novel diseases and environmental changes.
-(4) Relaxed selection reveals costs. When natural selection on anti-predator behavior, immune function, or other wild-type traits is relaxed, those traits degrade — showing that they were maintained by ongoing selection in the wild.
+(4) Relaxed selection reveals costs. When natural selection on anti-predator behavior, immune function, or other wild-type traits is relaxed, those traits degrade, showing that they were maintained by ongoing selection in the wild.
 
 #### Lab Study Systems
-The Blackmon Lab uses domesticated species as models for understanding how selection reshapes genomes. Betta fish ( Betta splendens ) have been selectively bred for centuries for coloration, fin morphology, and aggression — creating extreme phenotypic diversity from a single wild ancestor. Chickens , domesticated from red junglefowl, are now the world's most abundant bird and a model for studying rapid adaptation under intense artificial selection.
+The Blackmon Lab uses domesticated species as models for understanding how selection reshapes genomes. Betta fish ( Betta splendens ) have been selectively bred for centuries for coloration, fin morphology, and aggression, creating extreme phenotypic diversity from a single wild ancestor. Chickens , domesticated from red junglefowl, are now the world's most abundant bird and a model for studying rapid adaptation under intense artificial selection.
 
 ### Learning from What We've Bred
 The Blackmon Lab asks: "How does domestication impact organisms? What can we learn about adaptation and radiation from studying domestication?" Domesticated species offer tractable systems where the selection history is at least partially known, allowing us to connect genotype to phenotype to fitness in ways that are difficult in wild populations.
@@ -842,13 +842,13 @@ Simulated response to truncation selection under the breeder's equation; illustr
 Selection drives speciation in multiple ways, each involving the buildup of reproductive isolation between diverging populations.
 
 #### Ecological Speciation
-Divergent natural selection in different environments creates reproductive isolation as a byproduct of adaptation. Populations adapting to different ecological niches — different food sources, different habitats, different climates — accumulate genetic differences that reduce hybrid fitness. The key insight is that reproductive isolation is not the target of selection but an incidental consequence of adaptation to different environments.
+Divergent natural selection in different environments creates reproductive isolation as a byproduct of adaptation. Populations adapting to different ecological niches, different food sources, different habitats, different climates, accumulate genetic differences that reduce hybrid fitness. The key insight is that reproductive isolation is not the target of selection but an incidental consequence of adaptation to different environments.
 
 #### Sexual Selection and Speciation
-Divergent mate preferences can drive rapid reproductive isolation even without ecological divergence . Lande's (1981) models showed that Fisherian runaway processes — where female preferences and male ornaments coevolve in a positive feedback loop — can cause rapid, arbitrary divergence in mating signals between populations, leading to prezygotic isolation.
+Divergent mate preferences can drive rapid reproductive isolation even without ecological divergence . Lande's (1981) models showed that Fisherian runaway processes, where female preferences and male ornaments coevolve in a positive feedback loop, can cause rapid, arbitrary divergence in mating signals between populations, leading to prezygotic isolation.
 
 #### Reinforcement
-When hybrids are less fit, selection favors increased assortative mating — individuals preferring mates from their own population. This strengthens reproductive barriers in sympatry, a process called reinforcement or the "Wallace effect." Reinforcement completes the speciation process by converting partial barriers into complete ones.
+When hybrids are less fit, selection favors increased assortative mating, individuals preferring mates from their own population. This strengthens reproductive barriers in sympatry, a process called reinforcement or the "Wallace effect." Reinforcement completes the speciation process by converting partial barriers into complete ones.
 
 #### Dobzhansky-Muller Incompatibilities
 Independently derived mutations that function well in their home genetic background but interact negatively in hybrids create Dobzhansky-Muller incompatibilities . This is epistatic selection against hybrid genotypes: allele A from population 1 and allele B from population 2 have never been tested together, and when combined in a hybrid, they fail. These incompatibilities accumulate roughly as the square of divergence time (the "snowball" effect).
@@ -857,15 +857,15 @@ Independently derived mutations that function well in their home genetic backgro
 Haldane's rule : in crosses between species, the heterogametic sex (XY males or ZW females) is more often inviable or infertile. Multiple explanations contribute: the dominance theory (recessive incompatibilities on the X are exposed in hemizygous males), faster-X evolution (hemizygous selection accelerates divergence of X-linked genes), and meiotic drive (selfish genetic elements on sex chromosomes cause hybrid dysfunction).
 
 #### Genomic Islands of Speciation
-In the face of gene flow, selection creates "genomic islands of speciation" — regions that resist introgression because they contain locally adapted or incompatible alleles, while the rest of the genome freely introgresses. These islands are often associated with inversions or low-recombination regions, connecting speciation to the genome architecture themes discussed above.
+In the face of gene flow, selection creates "genomic islands of speciation", regions that resist introgression because they contain locally adapted or incompatible alleles, while the rest of the genome freely introgresses. These islands are often associated with inversions or low-recombination regions, connecting speciation to the genome architecture themes discussed above.
 
 ### How Species Are Born
 
-### The Big Picture — How Selection Shapes Genomes
+### The Big Picture, How Selection Shapes Genomes
 The genome is shaped by the interplay of all forms of selection simultaneously . No single force acts in isolation, and the patterns we observe in any genome are the cumulative result of millions of years of these forces interacting with each other and with the nonadaptive process of genetic drift.
 
 #### The Forces in Concert
-Natural selection maintains gene function and drives adaptation to the ecological environment. Sexual selection drives rapid divergence between species and sexual dimorphism within them. Background selection erodes diversity in low-recombination regions, reducing the efficacy of selection precisely where it is most needed. Indirect selection on recombination modifiers shapes genome architecture — recombination rates, chromosome number, inversion polymorphism. And the balance between drift and selection (N e s) determines which of these forces dominates at any given locus in any given species.
+Natural selection maintains gene function and drives adaptation to the ecological environment. Sexual selection drives rapid divergence between species and sexual dimorphism within them. Background selection erodes diversity in low-recombination regions, reducing the efficacy of selection precisely where it is most needed. Indirect selection on recombination modifiers shapes genome architecture, recombination rates, chromosome number, inversion polymorphism. And the balance between drift and selection (N e s) determines which of these forces dominates at any given locus in any given species.
 
 #### Unresolved Questions
 (1) How much of the genome is under selection? Estimates range from less than 5% (only protein-coding regions) to over 80% (ENCODE functional annotations). The answer depends critically on what we mean by "functional" and on N e .
@@ -877,37 +877,37 @@ Natural selection maintains gene function and drives adaptation to the ecologica
 
 #### Explore More
 
-## Epistasis & the Shifting Balance — Blackmon Lab
+## Epistasis & the Shifting Balance, Blackmon Lab
 
 URL: https://coleoguy.github.io/epistasis-line-cross.html
-Description: A visual guide to epistasis, line cross analysis, and the shifting balance theory — from Wright and Fisher to modern quantitative genetics.
+Description: A visual guide to epistasis, line cross analysis, and the shifting balance theory, from Wright and Fisher to modern quantitative genetics.
 
 # Epistasis & the Shifting Balance
 
 ### What Is Epistasis?
 Epistasis is the interaction between genes. More precisely, epistasis occurs when the phenotypic effect of an allele at one locus depends on the genotype at another locus. This is distinct from additive effects, where each allele contributes independently and predictably to the phenotype regardless of the genetic background.
-Why does this matter? If genetic architectures are primarily additive, populations will tend to evolve smoothly toward a single optimum — a process well described by Fisher's infinitesimal model. But if epistasis is common, populations can get "trapped" on local fitness peaks . The response to selection depends critically on genetic background, and the adaptive landscape becomes rugged and multi-peaked.
+Why does this matter? If genetic architectures are primarily additive, populations will tend to evolve smoothly toward a single optimum, a process well described by Fisher's infinitesimal model. But if epistasis is common, populations can get "trapped" on local fitness peaks . The response to selection depends critically on genetic background, and the adaptive landscape becomes rugged and multi-peaked.
 
 #### Types of Epistasis
 Magnitude epistasis: The interaction changes the size of an allele's effect. An allele that increases body size by 2mm in one genetic background might increase it by only 0.5mm in another. The direction is the same, but the magnitude differs.
 Sign epistasis: The interaction reverses the direction of an allele's effect. An allele that is beneficial in one genetic background becomes deleterious in another. This is more consequential because it means that whether an allele is favored by selection depends on what else is in the genome.
-Reciprocal sign epistasis: Both alleles at the interacting loci reverse their effects depending on the other. This is the most important type for evolutionary theory because it is the necessary and sufficient condition for the existence of multiple fitness peaks. When reciprocal sign epistasis exists, there is no single-step mutational path from one peak to another that is always uphill — the population must cross a valley.
+Reciprocal sign epistasis: Both alleles at the interacting loci reverse their effects depending on the other. This is the most important type for evolutionary theory because it is the necessary and sufficient condition for the existence of multiple fitness peaks. When reciprocal sign epistasis exists, there is no single-step mutational path from one peak to another that is always uphill, the population must cross a valley.
 
 ### The Papers That Launched a Field
 
 ### Wright vs. Fisher
-The most consequential intellectual conflict in 20th-century evolutionary genetics pitted two titans against each other: Ronald A. Fisher and Sewall Wright . Their disagreement was not about whether evolution occurs, but about how it works at the genetic level — and their differing views continue to shape the field today.
+The most consequential intellectual conflict in 20th-century evolutionary genetics pitted two titans against each other: Ronald A. Fisher and Sewall Wright . Their disagreement was not about whether evolution occurs, but about how it works at the genetic level, and their differing views continue to shape the field today.
 
 #### Fisher's View
-Fisher argued that evolution is primarily driven by natural selection acting on additive genetic variance in large, panmictic (freely interbreeding) populations. In this framework, epistasis is statistical noise — it contributes little to the response to selection because recombination breaks up favorable gene combinations every generation. His Fundamental Theorem of Natural Selection states that the rate of increase in fitness equals the additive genetic variance in fitness. Evolution, in Fisher's view, is a smooth, deterministic, hill-climbing process. Drift is negligible in populations o...
+Fisher argued that evolution is primarily driven by natural selection acting on additive genetic variance in large, panmictic (freely interbreeding) populations. In this framework, epistasis is statistical noise, it contributes little to the response to selection because recombination breaks up favorable gene combinations every generation. His Fundamental Theorem of Natural Selection states that the rate of increase in fitness equals the additive genetic variance in fitness. Evolution, in Fisher's view, is a smooth, deterministic, hill-climbing process. Drift is negligible in populations o...
 
 #### Wright's View
-Wright saw a fundamentally different picture. He argued that real populations are structured into small, partially isolated demes (subpopulations). In small demes, genetic drift is a powerful force that can push populations away from their current fitness peak. Gene interactions (epistasis) create multiple adaptive peaks in the fitness landscape. Wright proposed that drift, migration, and selection work together to allow populations to explore and ultimately find the highest peaks — his famous shifting balance theory .
+Wright saw a fundamentally different picture. He argued that real populations are structured into small, partially isolated demes (subpopulations). In small demes, genetic drift is a powerful force that can push populations away from their current fitness peak. Gene interactions (epistasis) create multiple adaptive peaks in the fitness landscape. Wright proposed that drift, migration, and selection work together to allow populations to explore and ultimately find the highest peaks, his famous shifting balance theory .
 
 #### The Three Phases of the Shifting Balance
-Phase 1 — Random drift: Within small demes, genetic drift causes random fluctuations in allele frequencies. This exploration of genotype space can move a population off its current local fitness peak and into the domain of attraction of a different peak.
-Phase 2 — Mass selection within demes: Once drift has carried a deme into the basin of attraction of a new (possibly higher) peak, ordinary natural selection pushes the population uphill toward that new peak.
-Phase 3 — Interdeme selection: Demes sitting on higher peaks have greater average fitness, producing more emigrants. These migrants carry favorable gene combinations to neighboring demes, pulling the entire metapopulation toward the global optimum. This is a form of group selection, mediated by differential migration.
+Phase 1, Random drift: Within small demes, genetic drift causes random fluctuations in allele frequencies. This exploration of genotype space can move a population off its current local fitness peak and into the domain of attraction of a different peak.
+Phase 2, Mass selection within demes: Once drift has carried a deme into the basin of attraction of a new (possibly higher) peak, ordinary natural selection pushes the population uphill toward that new peak.
+Phase 3, Interdeme selection: Demes sitting on higher peaks have greater average fitness, producing more emigrants. These migrants carry favorable gene combinations to neighboring demes, pulling the entire metapopulation toward the global optimum. This is a form of group selection, mediated by differential migration.
 
 ### The Papers
 Note: This chart shows simulated data for illustrative purposes.
@@ -924,16 +924,16 @@ The bottom line: Simpler models based on mass selection acting on additive varia
 #### The Defense (Wade & Goodnight 1998)
 Wade and Goodnight argued that Coyne et al. had set up straw man versions of Wright's theory. Their key points:
 Tribolium experiments: Laboratory experiments with flour beetles demonstrated that population structure and epistasis interact to produce evolutionary outcomes that mass selection cannot . When populations were subdivided and subjected to group selection, they responded far more than predicted by additive models alone.
-Variance conversion: This is perhaps the most important theoretical insight. When populations go through bottlenecks (genetic drift changes allele frequencies), epistatic variance can be "converted" to additive variance . This happens because drift changes the genetic background against which other alleles are measured. An allele whose effect was previously masked by interactions becomes exposed when its interacting partners change in frequency. This means drift doesn't just add noise — it fundamentally changes the substrate on which selection acts .
+Variance conversion: This is perhaps the most important theoretical insight. When populations go through bottlenecks (genetic drift changes allele frequencies), epistatic variance can be "converted" to additive variance . This happens because drift changes the genetic background against which other alleles are measured. An allele whose effect was previously masked by interactions becomes exposed when its interacting partners change in frequency. This means drift doesn't just add noise, it fundamentally changes the substrate on which selection acts .
 The resolution? The debate remains formally unresolved. But what is not debated is that epistasis is real and common. The question is: how much does it matter for adaptive evolution in nature?
 
 ### Four Papers, Two Perspectives
 
-### Measuring Epistasis — Line Cross Analysis
+### Measuring Epistasis, Line Cross Analysis
 How do we actually detect and measure epistasis? One of the most powerful classical approaches is line cross analysis (LCA) .
 
 #### The Basic Idea
-Cross two divergent lines — these can be different populations, species, or artificially selected lines that differ in a trait of interest. Then create a series of composite generations : the F1 (first filial generation), F2 (second filial), backcrosses to each parent (BC1 and BC2), and potentially additional generations. Measure the trait in every generation. The pattern of generation means reveals the genetic architecture underlying the trait difference.
+Cross two divergent lines, these can be different populations, species, or artificially selected lines that differ in a trait of interest. Then create a series of composite generations : the F1 (first filial generation), F2 (second filial), backcrosses to each parent (BC1 and BC2), and potentially additional generations. Measure the trait in every generation. The pattern of generation means reveals the genetic architecture underlying the trait difference.
 
 #### What the Patterns Tell Us
 If inheritance is purely additive: The F1 mean falls exactly at the midparent value (halfway between P1 and P2). The F2 mean equals the F1 mean. Backcross means fall midway between the F1 and the respective parent. Everything is clean, predictable, and linear.
@@ -944,13 +944,13 @@ If epistasis is present: These simple expectations break down. F2 means deviate 
 The classical method is the joint-scaling test (Cavalli 1952, Hayman 1958, Mather & Jinks 1982). This involves fitting models of increasing complexity (additive only, additive + dominance, additive + dominance + epistasis) and testing whether each additional parameter significantly improves the fit. The problem: this relies on sequential hypothesis testing, which has well-known issues with statistical power, model selection bias, and the arbitrary nature of p-value thresholds.
 
 ### The Joint-Scaling Test
-Toggle between additive and epistatic models to see how gene interactions distort generation means from their expected values. In the epistatic model, note how the F2 deviates from the F1, and backcross means are pulled asymmetrically — these are the signatures of epistasis that line cross analysis detects. (Illustrative data — values are theoretical expectations, not from a specific experiment.)
+Toggle between additive and epistatic models to see how gene interactions distort generation means from their expected values. In the epistatic model, note how the F2 deviates from the F1, and backcross means are pulled asymmetrically, these are the signatures of epistasis that line cross analysis detects. (Illustrative data, values are theoretical expectations, not from a specific experiment.)
 
-### SAGA — A Better Approach to Line Cross Analysis
+### SAGA, A Better Approach to Line Cross Analysis
 The Blackmon Lab developed SAGA (Statistical Analysis of Genetic Architecture) to address the fundamental limitations of the traditional joint-scaling test.
 
 #### The Problem with Sequential Testing
-The traditional approach fits a sequence of models — additive, then additive + dominance, then additive + dominance + epistasis — and uses chi-squared tests to determine when to stop adding parameters. This has several well-known problems:
+The traditional approach fits a sequence of models, additive, then additive + dominance, then additive + dominance + epistasis, and uses chi-squared tests to determine when to stop adding parameters. This has several well-known problems:
 Multiple testing: Each sequential test increases the overall false positive rate. The order in which parameters are tested matters, and different orders can give different conclusions.
 All-or-nothing: You either reject or fail to reject each model. There is no way to express uncertainty about which model is best, or to average across models when several are similarly supported.
 Lack of parsimony penalty: Chi-squared tests do not inherently penalize model complexity. A model with more parameters will always fit better, even if the additional parameters are capturing noise rather than signal.
@@ -970,32 +970,32 @@ The current implementation is the SAGA2 R package , freely available on GitHub. 
 Install: devtools::install_github("coleoguy/SAGA2")
 GitHub: github.com/coleoguy/SAGA2
 Vignette: saga.pdf
-This chart illustrates how SAGA evaluates all candidate models simultaneously using AICc weights. The traditional approach (sequential testing) would select the first "non-significant" model and stop. SAGA instead provides the relative support for each architecture, revealing that multiple models may be similarly supported. (Illustrative data — values are simulated to demonstrate the method.)
+This chart illustrates how SAGA evaluates all candidate models simultaneously using AICc weights. The traditional approach (sequential testing) would select the first "non-significant" model and stop. SAGA instead provides the relative support for each architecture, revealing that multiple models may be similarly supported. (Illustrative data, values are simulated to demonstrate the method.)
 
 ### Wright Was Right
-The Blackmon Lab put Wright's ideas to the most comprehensive empirical test ever conducted. In Burch et al. 2024 , the lab analyzed over 1,600 line cross datasets spanning plants and animals — the largest survey of epistasis in the history of genetics.
+The Blackmon Lab put Wright's ideas to the most comprehensive empirical test ever conducted. In Burch et al. 2024 , the lab analyzed over 1,600 line cross datasets spanning plants and animals, the largest survey of epistasis in the history of genetics.
 
 #### Key Findings
-Epistasis is pervasive. It was detected in the majority of crosses examined. This is not a marginal effect confined to a few unusual systems — it is a widespread feature of genetic architecture across the tree of life.
+Epistasis is pervasive. It was detected in the majority of crosses examined. This is not a marginal effect confined to a few unusual systems, it is a widespread feature of genetic architecture across the tree of life.
 The importance varies, but it is rarely absent. Different taxa and trait categories show different levels of epistasis, but purely additive models were rarely the best-supported architecture. Morphological traits, life history traits, physiological traits, and behavioral traits all showed substantial epistatic contributions.
-The patterns are consistent with Wright's vision. Complex genetic architectures where gene interactions matter are the norm, not the exception. The additive-variance-centric view of evolution — Fisher's view — captures an important part of the picture, but it is incomplete.
+The patterns are consistent with Wright's vision. Complex genetic architectures where gene interactions matter are the norm, not the exception. The additive-variance-centric view of evolution, Fisher's view, captures an important part of the picture, but it is incomplete.
 
 #### Recognition
-This paper was selected for the 2025 Society for the Study of Evolution President's Award for Outstanding Dissertation Paper — one of SSE's most prestigious honors, recognizing the most impactful dissertation-based publications in the field.
+This paper was selected for the 2025 Society for the Study of Evolution President's Award for Outstanding Dissertation Paper, one of SSE's most prestigious honors, recognizing the most impactful dissertation-based publications in the field.
 
 #### Implications
 If epistasis is truly pervasive, then several major conclusions follow:
 The response to selection is context-dependent. An allele that is beneficial in one population may be neutral or harmful in another, depending on the epistatic context. This complicates predictions about evolutionary trajectories.
 Population structure matters. If the fitness landscape is rugged (multi-peaked), then the size and connectivity of populations affects which peaks can be reached. Wright's emphasis on population structure was prescient.
-Additive variance is not the whole story. Fisher's fundamental theorem, while mathematically elegant, applies only to the additive component of fitness variation. If epistasis converts to additive variance through drift (as Wright and later Goodnight showed), then the interplay between drift and selection becomes crucial — exactly as Wright argued.
+Additive variance is not the whole story. Fisher's fundamental theorem, while mathematically elegant, applies only to the additive component of fitness variation. If epistasis converts to additive variance through drift (as Wright and later Goodnight showed), then the interplay between drift and selection becomes crucial, exactly as Wright argued.
 
 ### The Largest Survey of Epistasis
 
-### Beyond Line Crosses — Modern Approaches
+### Beyond Line Crosses, Modern Approaches
 Line cross analysis is powerful but limited to systems where controlled crosses are possible. Modern genomics has opened entirely new windows on epistasis.
 
 #### GWAS Epistasis Scans
-Genome-wide association studies can be extended to test all pairwise (or higher-order) combinations of SNPs for interactions. With n SNPs, there are n ²/2 pairwise interactions to test — a massive multiple testing burden that requires enormous sample sizes and sophisticated computational methods. Despite these challenges, GWAS epistasis scans have revealed significant gene-gene interactions for complex traits including height, body mass index, and disease risk in humans.
+Genome-wide association studies can be extended to test all pairwise (or higher-order) combinations of SNPs for interactions. With n SNPs, there are n ²/2 pairwise interactions to test, a massive multiple testing burden that requires enormous sample sizes and sophisticated computational methods. Despite these challenges, GWAS epistasis scans have revealed significant gene-gene interactions for complex traits including height, body mass index, and disease risk in humans.
 
 #### QTL Mapping
 In structured experimental crosses (F2 populations, recombinant inbred lines, MAGIC populations), researchers can map epistatic QTL interactions with greater statistical power than GWAS. The advantage is that linkage disequilibrium is controlled by the experimental design. Studies in model organisms have repeatedly found that epistatic QTL are common and can explain substantial fractions of phenotypic variance that additive QTL miss.
@@ -1007,26 +1007,26 @@ Allow mutations to accumulate in replicate lines under minimal selection, then m
 Fisher's geometric model (FGM) predicts specific patterns of epistasis: mutations of large effect should show diminishing returns (negative epistasis), while mutations near an optimum should show increasingly negative interactions. In contrast, Wright's landscape model predicts a mix of positive and negative epistasis depending on the ruggedness of the landscape and where the population sits relative to peaks and valleys. Empirical patterns tend to show more complexity than either model alone predicts.
 
 #### Machine Learning Approaches
-Random forests, gradient boosting, and neural networks can capture non-linear (epistatic) genotype-phenotype relationships without requiring explicit specification of interaction terms. These approaches are increasingly used for phenotype prediction and have shown improved accuracy when epistasis is present. The major challenge is interpretability — a neural network may capture epistatic effects perfectly but tell you nothing about which specific genes are interacting or why.
+Random forests, gradient boosting, and neural networks can capture non-linear (epistatic) genotype-phenotype relationships without requiring explicit specification of interaction terms. These approaches are increasingly used for phenotype prediction and have shown improved accuracy when epistasis is present. The major challenge is interpretability, a neural network may capture epistatic effects perfectly but tell you nothing about which specific genes are interacting or why.
 
 ### Essential Reading
 
 ### Why Epistasis Matters
 
 #### Speciation
-Dobzhansky-Muller incompatibilities are, at their core, epistasis. An allele that functions perfectly well in its home genetic background causes problems — reduced fitness, sterility, or inviability — when placed into a hybrid genetic background. This is the genetic basis of reproductive isolation , and therefore speciation. Without epistasis, speciation through the accumulation of genetic incompatibilities would be impossible.
+Dobzhansky-Muller incompatibilities are, at their core, epistasis. An allele that functions perfectly well in its home genetic background causes problems, reduced fitness, sterility, or inviability, when placed into a hybrid genetic background. This is the genetic basis of reproductive isolation , and therefore speciation. Without epistasis, speciation through the accumulation of genetic incompatibilities would be impossible.
 
 #### Disease
-Many complex diseases involve gene-gene interactions . The "missing heritability" problem — the observation that identified GWAS variants explain only a fraction of the heritability estimated from family studies — may partly reflect undetected epistatic interactions. If the effect of a risk allele depends on variants at other loci, standard additive GWAS approaches will underestimate its contribution. Accounting for epistasis could close the gap between observed and predicted heritability for diseases like diabetes, heart disease, and psychiatric disorders.
+Many complex diseases involve gene-gene interactions . The "missing heritability" problem, the observation that identified GWAS variants explain only a fraction of the heritability estimated from family studies, may partly reflect undetected epistatic interactions. If the effect of a risk allele depends on variants at other loci, standard additive GWAS approaches will underestimate its contribution. Accounting for epistasis could close the gap between observed and predicted heritability for diseases like diabetes, heart disease, and psychiatric disorders.
 
 #### Agriculture
-Heterosis (hybrid vigor) — the phenomenon where F1 hybrids outperform both parents — involves non-additive genetic effects. Whether heterosis is primarily due to dominance (masking of deleterious recessives) or epistasis (favorable interactions between alleles from different parents) remains debated, but epistatic contributions are increasingly recognized. Understanding these interactions is crucial for modern breeding programs that seek to predict hybrid performance from parental genotypes.
+Heterosis (hybrid vigor), the phenomenon where F1 hybrids outperform both parents, involves non-additive genetic effects. Whether heterosis is primarily due to dominance (masking of deleterious recessives) or epistasis (favorable interactions between alleles from different parents) remains debated, but epistatic contributions are increasingly recognized. Understanding these interactions is crucial for modern breeding programs that seek to predict hybrid performance from parental genotypes.
 
 #### Drug Resistance
 Combinations of resistance mutations can interact in unexpected ways. Some combinations are more than the sum of their parts (positive epistasis, accelerating resistance evolution), while others are less than the sum (negative epistasis, potentially constraining it). Understanding the epistatic landscape of drug resistance is critical for designing combination therapies and predicting the evolutionary trajectory of pathogens and cancers.
 
 #### The Fundamental Question
-Is evolution primarily a smooth, additive, hill-climbing process (Fisher)? Or is it navigation of a rugged landscape requiring drift, population structure, and gene interaction to find global optima (Wright)? A century of accumulating data increasingly suggests: both views capture important truths, but Wright's emphasis on epistasis was more prescient than the field long acknowledged. The Blackmon Lab's comprehensive analysis of line cross data provides perhaps the strongest evidence yet that epistasis is a fundamental and pervasive feature of genetic architecture — not a statistical curios...
+Is evolution primarily a smooth, additive, hill-climbing process (Fisher)? Or is it navigation of a rugged landscape requiring drift, population structure, and gene interaction to find global optima (Wright)? A century of accumulating data increasingly suggests: both views capture important truths, but Wright's emphasis on epistasis was more prescient than the field long acknowledged. The Blackmon Lab's comprehensive analysis of line cross data provides perhaps the strongest evidence yet that epistasis is a fundamental and pervasive feature of genetic architecture, not a statistical curios...
 
 ### Epistasis Across Biology
 Explore our research page to learn more about how the Blackmon Lab studies genetic architecture, epistasis, and the forces shaping genome evolution across the tree of life.
@@ -1036,77 +1036,77 @@ Explore our research page to learn more about how the Blackmon Lab studies genet
 ## A History of Chromosome Number Evolution - Blackmon Lab
 
 URL: https://coleoguy.github.io/chromosome-evolution-history.html
-Description: From counting to modeling — a century of ideas on karyotype change, tracing the intellectual arc of chromosome number evolution research from Stebbins to modern probabilistic models.
+Description: From counting to modeling, a century of ideas on karyotype change, tracing the intellectual arc of chromosome number evolution research from Stebbins to modern probabilistic models.
 
 # Chromosome Number Evolution
-Few topics in evolutionary biology have cycled so dramatically in and out of fashion as the evolution of chromosome number. Once the centerpiece of speciation theory, then eclipsed by sequence-level genomics, and now experiencing a vigorous quantitative renaissance, the field traces an arc from cytological description to phylogenetic inference — and the scientists who drove each turn could hardly have been more different from one another.
+Few topics in evolutionary biology have cycled so dramatically in and out of fashion as the evolution of chromosome number. Once the centerpiece of speciation theory, then eclipsed by sequence-level genomics, and now experiencing a vigorous quantitative renaissance, the field traces an arc from cytological description to phylogenetic inference, and the scientists who drove each turn could hardly have been more different from one another.
 
 ### The Cytological Foundations
-The field was born from the microscope. In the early twentieth century, botanists and cytologists recognized that chromosome number varied dramatically across species and — crucially — that polyploidy (whole-genome duplication) was both common and associated with speciation. G. Ledyard Stebbins , in his landmark 1950 synthesis Variation and Evolution in Plants , elevated karyotype change to a central mechanism of plant diversification, framing polyploidy and dysploidy (single-chromosome gains and losses) as paths to reproductive isolation. Stebbins' view dominated for decades; polyploidy wa...
-In animals, the conversation was different and rougher. M.J.D. White , in Animal Cytology and Evolution (1954, revised 1973), documented the astonishing diversity of animal karyotypes and advanced "stasipatric speciation" — the controversial proposal that chromosomal rearrangements could drive speciation even without geographic isolation. White's model positioned structural chromosome change as the motor of animal species diversification, a view that generated fierce debate and never reached consensus, but cemented the idea that karyotype mattered beyond plants. The sheer breadth of animal ...
+The field was born from the microscope. In the early twentieth century, botanists and cytologists recognized that chromosome number varied dramatically across species and, crucially, that polyploidy (whole-genome duplication) was both common and associated with speciation. G. Ledyard Stebbins , in his landmark 1950 synthesis Variation and Evolution in Plants , elevated karyotype change to a central mechanism of plant diversification, framing polyploidy and dysploidy (single-chromosome gains and losses) as paths to reproductive isolation. Stebbins' view dominated for decades; polyploidy wa...
+In animals, the conversation was different and rougher. M.J.D. White , in Animal Cytology and Evolution (1954, revised 1973), documented the astonishing diversity of animal karyotypes and advanced "stasipatric speciation", the controversial proposal that chromosomal rearrangements could drive speciation even without geographic isolation. White's model positioned structural chromosome change as the motor of animal species diversification, a view that generated fierce debate and never reached consensus, but cemented the idea that karyotype mattered beyond plants. The sheer breadth of animal ...
 
 ### The Population Genetic Challenge
-Russell Lande's 1979 theoretical paper in Evolution was a cold-water moment for chromosomal speciation theory. Using population genetic models, Lande showed that underdominant chromosomal rearrangements — which reduce heterozygote fitness — face severe barriers to fixation in large populations, making them poor candidates for common speciation events. This effectively challenged White's stasipatric model on theoretical grounds, and for a time the field retreated. Interest in chromosome-number evolution as a speciation mechanism waned through the 1980s and into the early molecular era, as al...
+Russell Lande's 1979 theoretical paper in Evolution was a cold-water moment for chromosomal speciation theory. Using population genetic models, Lande showed that underdominant chromosomal rearrangements, which reduce heterozygote fitness, face severe barriers to fixation in large populations, making them poor candidates for common speciation events. This effectively challenged White's stasipatric model on theoretical grounds, and for a time the field retreated. Interest in chromosome-number evolution as a speciation mechanism waned through the 1980s and into the early molecular era, as al...
 The plant polyploidy literature never collapsed in the same way, sustained by undeniable empirical examples, but even there the question of whether polyploidy accelerated or retarded diversification remained unresolved for decades.
 
 ### The Hybrid Speciation Synthesis
-Loren Rieseberg ( UBC ) revitalized the chromosomal speciation debate in the 1990s–2000s through his extraordinary work on sunflowers. By experimentally recreating natural hybrid species of Helianthus , Rieseberg demonstrated that chromosomal rearrangements accumulate predictably during hybrid speciation and act as barriers to gene flow — not through underdominance alone, but through recombination suppression. His work reframed structural chromosome change as a speciation mechanism that was both common and tractable, winning him a MacArthur Fellowship and reshaping how speciation geneticist...
+Loren Rieseberg ( UBC ) revitalized the chromosomal speciation debate in the 1990s–2000s through his extraordinary work on sunflowers. By experimentally recreating natural hybrid species of Helianthus , Rieseberg demonstrated that chromosomal rearrangements accumulate predictably during hybrid speciation and act as barriers to gene flow, not through underdominance alone, but through recombination suppression. His work reframed structural chromosome change as a speciation mechanism that was both common and tractable, winning him a MacArthur Fellowship and reshaping how speciation geneticist...
 
 ### The Probabilistic Revolution
-The modern era of chromosome-number evolution research is largely a story of methods. Itay Mayrose ( Tel Aviv University ) transformed the field by developing likelihood-based probabilistic models of chromosome number change on phylogenies. His ChromEvol framework (2010, 2014) provided the first statistically rigorous way to infer rates of polyploidization and dysploidy across trees, and his provocative 2011 Science paper — showing recently formed polyploids diversify more slowly than diploid relatives — challenged decades of received wisdom about polyploidy as a speciation engine.
-Rosana Zenil-Ferguson ( University of Kentucky ) extended this program by coupling chromosome evolution to diversification dynamics. Her BiChroM and ChromoSSE models allow chromosome number change to interact with trait evolution and with speciation and extinction rates, and her work on holocentric lineages like Carex revealed that dysploidy itself can be a driver — not merely a marker — of rapid diversification. Zenil-Ferguson represents the cutting edge: state-dependent diversification models that treat the karyotype as dynamic and causally important.
+The modern era of chromosome-number evolution research is largely a story of methods. Itay Mayrose ( Tel Aviv University ) transformed the field by developing likelihood-based probabilistic models of chromosome number change on phylogenies. His ChromEvol framework (2010, 2014) provided the first statistically rigorous way to infer rates of polyploidization and dysploidy across trees, and his provocative 2011 Science paper, showing recently formed polyploids diversify more slowly than diploid relatives, challenged decades of received wisdom about polyploidy as a speciation engine.
+Rosana Zenil-Ferguson ( University of Kentucky ) extended this program by coupling chromosome evolution to diversification dynamics. Her BiChroM and ChromoSSE models allow chromosome number change to interact with trait evolution and with speciation and extinction rates, and her work on holocentric lineages like Carex revealed that dysploidy itself can be a driver, not merely a marker, of rapid diversification. Zenil-Ferguson represents the cutting edge: state-dependent diversification models that treat the karyotype as dynamic and causally important.
 
 ### Open Questions & The Road Ahead
-Major tensions remain. The relationship between chromosome number change and diversification rate is contested: Mayrose's polyploidy-slows-diversification result has been challenged on methodological grounds, and the role of dysploidy versus polyploidy varies enormously across clades. In animals, systematic phylogenetic comparative work of the kind Mayrose and Zenil-Ferguson built for plants has lagged — the Blackmon Lab's work on beetles and the karyotype databases represent important inroads. Model adequacy — whether our probabilistic models of chromosome change are biologically realistic...
+Major tensions remain. The relationship between chromosome number change and diversification rate is contested: Mayrose's polyploidy-slows-diversification result has been challenged on methodological grounds, and the role of dysploidy versus polyploidy varies enormously across clades. In animals, systematic phylogenetic comparative work of the kind Mayrose and Zenil-Ferguson built for plants has lagged, the Blackmon Lab's work on beetles and the karyotype databases represent important inroads. Model adequacy, whether our probabilistic models of chromosome change are biologically realistic...
 
 ### What Has This Lab Added to the Picture?
-The Blackmon Lab at Texas A&M has contributed to several fronts of the animal karyotype evolution literature — an area that, relative to plants, has lagged badly in the probabilistic inference era.
+The Blackmon Lab at Texas A&M has contributed to several fronts of the animal karyotype evolution literature, an area that, relative to plants, has lagged badly in the probabilistic inference era.
 
 ### Comparative Databases at Scale
-One persistent bottleneck for macroevolutionary analyses of animal karyotypes has been the absence of curated, machine-readable data. The lab addressed this directly with the Coleoptera Karyotype Database (Blackmon & Demuth, 2015) — one of the largest and most taxonomically comprehensive cytogenetic datasets for any animal order — followed by amphibian (Perkins et al., 2019) and Diptera databases. Together these now span more than 14,000 records and have enabled comparative analyses at scales not previously possible in animals. An autonomous AI-assisted data collection system is actively ex...
+One persistent bottleneck for macroevolutionary analyses of animal karyotypes has been the absence of curated, machine-readable data. The lab addressed this directly with the Coleoptera Karyotype Database (Blackmon & Demuth, 2015), one of the largest and most taxonomically comprehensive cytogenetic datasets for any animal order, followed by amphibian (Perkins et al., 2019) and Diptera databases. Together these now span more than 14,000 records and have enabled comparative analyses at scales not previously possible in animals. An autonomous AI-assisted data collection system is actively ex...
 
 ### Connecting Traits to Karyotype Rates
-The chromePlus R package (available on GitHub) extends the ChromEvol framework by allowing a binary trait — sex determination system, mating strategy, presence of B chromosomes, or any other two-state character — to modulate the rates of dysploidy and polyploidy. This answers a question the earlier methods left untouched: does karyotype evolution run faster or slower depending on the genomic or ecological context of a lineage? The package fits these joint models via MCMC within the diversitree ecosystem, returning posterior distributions over rate parameters and enabling formal Bayes factor...
+The chromePlus R package (available on GitHub) extends the ChromEvol framework by allowing a binary trait, sex determination system, mating strategy, presence of B chromosomes, or any other two-state character, to modulate the rates of dysploidy and polyploidy. This answers a question the earlier methods left untouched: does karyotype evolution run faster or slower depending on the genomic or ecological context of a lineage? The package fits these joint models via MCMC within the diversitree ecosystem, returning posterior distributions over rate parameters and enabling formal Bayes factor...
 
 ### Theory of Sex Chromosome Fixation
-While much of the comparative literature describes patterns of sex chromosome diversity, the lab has also contributed theoretical population genetic work on the mechanisms driving those patterns — specifically, the fixation probability of mutations that expand the non-recombining region of a sex chromosome. This work bridges Lande's population genetic framework (which showed how hard it is for underdominant rearrangements to fix) with the empirical observation that sex chromosome differentiation does, somehow, proceed. Understanding the conditions under which fusions and inversions can spre...
+While much of the comparative literature describes patterns of sex chromosome diversity, the lab has also contributed theoretical population genetic work on the mechanisms driving those patterns, specifically, the fixation probability of mutations that expand the non-recombining region of a sex chromosome. This work bridges Lande's population genetic framework (which showed how hard it is for underdominant rearrangements to fix) with the empirical observation that sex chromosome differentiation does, somehow, proceed. Understanding the conditions under which fusions and inversions can spre...
 
 ### Karyotype Evolution in Beetles as a Model System
-Coleoptera are the most species-rich order of animals and show extraordinary diversity in both chromosome number and sex chromosome systems — making them an ideal system for testing macroevolutionary hypotheses about karyotype change. The lab's empirical and comparative work in beetles has documented patterns of sex chromosome turnover, dysploidy rates, and the relationship between karyotype diversity and clade diversification in ways that complement the plant-centric literature. The current research questions pursued by the lab — including whether there is an ideal chromosome number and wh...
+Coleoptera are the most species-rich order of animals and show extraordinary diversity in both chromosome number and sex chromosome systems, making them an ideal system for testing macroevolutionary hypotheses about karyotype change. The lab's empirical and comparative work in beetles has documented patterns of sex chromosome turnover, dysploidy rates, and the relationship between karyotype diversity and clade diversification in ways that complement the plant-centric literature. The current research questions pursued by the lab, including whether there is an ideal chromosome number and wh...
 
 #### Explore Further
 
-## Coleoptera Genomics — Blackmon Lab
+## Coleoptera Genomics, Blackmon Lab
 
 URL: https://coleoguy.github.io/coleoptera-genomics.html
-Description: A visual guide to beetle genomics — from reference genomes and chromosomal elements to dosage compensation, population genetics, and the most species-rich order on Earth.
+Description: A visual guide to beetle genomics, from reference genomes and chromosomal elements to dosage compensation, population genetics, and the most species-rich order on Earth.
 
 # Coleoptera Genomics
 
 ### Why Beetle Genomes Matter
-Coleoptera is the most species-rich order of any organism on Earth. With approximately 400,000 described species , beetles account for roughly 25% of all known animal species and about 40% of all insects. No other order — of any kingdom — comes close.
+Coleoptera is the most species-rich order of any organism on Earth. With approximately 400,000 described species , beetles account for roughly 25% of all known animal species and about 40% of all insects. No other order, of any kingdom, comes close.
 Beetles occupy nearly every terrestrial and freshwater habitat on the planet. They include critical pollinators (scarabs, longhorns), decomposers (burying beetles, dung beetles), agricultural pests (Colorado potato beetle, boll weevil, bark beetles), and forest ecosystem engineers (bark beetles that drive succession in conifer forests).
 Yet genomic resources for Coleoptera have lagged far behind Diptera (flies) and Lepidoptera (butterflies and moths). For years, Tribolium castaneum (the red flour beetle) was essentially the only high-quality beetle reference genome. This meant that the most species-rich order of life was also one of the least genomically characterized.
-The genomic revolution in Coleoptera is now underway. New long-read sequencing technologies — PacBio HiFi and Oxford Nanopore — combined with Hi-C chromosome scaffolding have made chromosome-level beetle assemblies achievable for any species, not just model organisms.
+The genomic revolution in Coleoptera is now underway. New long-read sequencing technologies, PacBio HiFi and Oxford Nanopore, combined with Hi-C chromosome scaffolding have made chromosome-level beetle assemblies achievable for any species, not just model organisms.
 Understanding beetle genomes matters for multiple reasons:
-- Pest management — bark beetles, crop pests, and stored-product beetles cause billions of dollars in damage annually. Genomics enables targeted control strategies.
-- Conservation — endangered beetle species need genomic baselines for population viability and genetic rescue.
-- Fundamental biology — why are there so many beetle species? What is different about their genomes?
-- Comparative genomics — beetles span 325+ million years of evolution, providing a massive comparative framework.
+- Pest management, bark beetles, crop pests, and stored-product beetles cause billions of dollars in damage annually. Genomics enables targeted control strategies.
+- Conservation, endangered beetle species need genomic baselines for population viability and genetic rescue.
+- Fundamental biology, why are there so many beetle species? What is different about their genomes?
+- Comparative genomics, beetles span 325+ million years of evolution, providing a massive comparative framework.
 
 #### Key Papers
 
-### Stevens Elements — The Chromosomal Building Blocks
+### Stevens Elements, The Chromosomal Building Blocks
 Just as Drosophila has Muller elements (A–F), beetles have their own set of conserved chromosomal elements. We call these Stevens elements , named after Nettie Stevens , who discovered sex chromosomes in 1905 while studying the mealworm beetle Tenebrio molitor .
 Stevens elements represent ancestral linkage groups that have been conserved across beetle evolution despite hundreds of millions of years of divergence. Even when chromosome numbers change dramatically through fusions and fissions, the gene content of these elements tends to stay together as syntenic blocks.
 The Tribolium castaneum genome (2n = 20, or 10 chromosome pairs) provided the initial framework for defining these elements. Comparative mapping to other beetle species reveals remarkable conservation of synteny blocks, even across species with radically different chromosome numbers.
 
 #### Why Stevens Elements Matter
 Understanding these conserved elements is essential for:
-- Tracing the history of chromosome rearrangements — which fusions and fissions occurred in a lineage
-- Determining sex chromosome homology — identifying which element became the X or Y in different species
-- Understanding dosage compensation — are the same genes compensated when different elements become sex-linked?
-- Reconstructing ancestral karyotypes — what did the beetle ancestor's chromosomes look like?
+- Tracing the history of chromosome rearrangements, which fusions and fissions occurred in a lineage
+- Determining sex chromosome homology, identifying which element became the X or Y in different species
+- Understanding dosage compensation, are the same genes compensated when different elements become sex-linked?
+- Reconstructing ancestral karyotypes, what did the beetle ancestor's chromosomes look like?
 
 #### Key Papers
 Note: Data shown are simulated for illustrative purposes and do not represent real synteny analyses.
@@ -1114,22 +1114,22 @@ Note: Data shown are simulated for illustrative purposes and do not represent re
 ### Lab-Produced Genomes
 The Blackmon Lab is actively generating chromosome-level genome assemblies for beetle species chosen to answer specific evolutionary questions. Each genome project targets a species that fills a key gap in our understanding of beetle genome evolution.
 Our approach combines multiple technologies:
-- PacBio HiFi sequencing — highly accurate long reads (>99.9% accuracy, 15–20 kb read lengths) for contiguous assembly
-- Hi-C scaffolding — chromosome conformation capture to order and orient contigs into chromosome-level scaffolds
-- RNA-seq — transcriptome data for gene annotation and expression analysis
+- PacBio HiFi sequencing, highly accurate long reads (>99.9% accuracy, 15–20 kb read lengths) for contiguous assembly
+- Hi-C scaffolding, chromosome conformation capture to order and orient contigs into chromosome-level scaffolds
+- RNA-seq, transcriptome data for gene annotation and expression analysis
 Assemblies are evaluated using BUSCO completeness scores (typically >95% for our chromosome-level assemblies) and compared to karyotype data from our comprehensive databases of over 14,000 beetle karyotype records.
-Each genome below was chosen not just for its biological interest, but for its strategic placement in the beetle tree of life — filling phylogenetic gaps and enabling comparative analyses that would be impossible with genomes from model organisms alone.
+Each genome below was chosen not just for its biological interest, but for its strategic placement in the beetle tree of life, filling phylogenetic gaps and enabling comparative analyses that would be impossible with genomes from model organisms alone.
 
 #### Our Genomes
 
 ### Dosage Compensation in Beetles
 Most beetles have XY sex determination , though some possess more exotic systems: Xyp (parachute sex chromosomes), neo-XY (autosome fused to an ancestral sex chromosome), or X0 (Y chromosome lost entirely). Beetles have more sex chromosome system diversity than almost any other order.
-Dosage compensation addresses a fundamental problem: males have one X chromosome while females have two. This means X-linked genes are at half dosage in the heterogametic sex — potentially halving the expression of hundreds of genes.
+Dosage compensation addresses a fundamental problem: males have one X chromosome while females have two. This means X-linked genes are at half dosage in the heterogametic sex, potentially halving the expression of hundreds of genes.
 
 #### Solutions Across Life
 
 #### What About Beetles?
-The answer is complex and varies across species. Tribolium castaneum shows incomplete dosage compensation — some X-linked genes are compensated (expression ratio near 1:1 between sexes), while others are not (expression ratio near 0.5 in males). This incomplete pattern may be ancestral for beetles.
+The answer is complex and varies across species. Tribolium castaneum shows incomplete dosage compensation, some X-linked genes are compensated (expression ratio near 1:1 between sexes), while others are not (expression ratio near 0.5 in males). This incomplete pattern may be ancestral for beetles.
 The Blackmon Lab investigates dosage compensation patterns across beetle species using RNA-seq and coverage-based sex chromosome identification . By comparing male and female read depth across the genome, we can identify sex-linked scaffolds without any prior genetic map.
 
 #### Key Papers
@@ -1146,7 +1146,7 @@ Flightless beetle species tend to have:
 - Smaller effective population sizes
 - Stronger population genetic structure (higher Fst)
 - Higher rates of allopatric speciation
-- Potentially faster chromosome evolution — connecting to the drift barrier hypothesis for karyotype change
+- Potentially faster chromosome evolution, connecting to the drift barrier hypothesis for karyotype change
 
 #### Population Genomic Approaches
 Modern population genomics uses several complementary approaches:
@@ -1164,10 +1164,10 @@ Genomic data has transformed beetle systematics. Transcriptomes and whole genome
 
 #### The Four Beetle Suborders
 Coleoptera is divided into four suborders, each with a distinctive body plan and ecology:
-- Adephaga — ground beetles, tiger beetles, diving beetles (~45,000 species). Predatory, with strong mandibles.
-- Archostemata — reticulated beetles (~40 species). Ancient relicts, the most basal living beetles.
-- Myxophaga — tiny aquatic beetles (~100 species). Algae feeders in water films.
-- Polyphaga — the vast majority (~350,000 species). Includes weevils, scarabs, longhorns, ladybugs, fireflies, and nearly every beetle you have ever seen.
+- Adephaga, ground beetles, tiger beetles, diving beetles (~45,000 species). Predatory, with strong mandibles.
+- Archostemata, reticulated beetles (~40 species). Ancient relicts, the most basal living beetles.
+- Myxophaga, tiny aquatic beetles (~100 species). Algae feeders in water films.
+- Polyphaga, the vast majority (~350,000 species). Includes weevils, scarabs, longhorns, ladybugs, fireflies, and nearly every beetle you have ever seen.
 
 #### Key Resolved Relationships
 Genomic phylogenetics has resolved several long-standing debates:
@@ -1183,15 +1183,15 @@ With multiple chromosome-level beetle genomes now available, comparative genomic
 
 #### Genome Size Variation
 Beetles show substantial genome size variation, from compact genomes of approximately 150 Mb in some small species to bloated genomes exceeding 2 Gb in others. What drives this variation? Three major forces contribute:
-- Transposable element dynamics — TE expansions can dramatically inflate genome size, while efficient deletion mechanisms keep some genomes compact
-- DNA deletion rates — species with faster rates of DNA loss tend to have smaller genomes
-- Polyploidy — rare in beetles but documented in some weevil lineages
+- Transposable element dynamics, TE expansions can dramatically inflate genome size, while efficient deletion mechanisms keep some genomes compact
+- DNA deletion rates, species with faster rates of DNA loss tend to have smaller genomes
+- Polyploidy, rare in beetles but documented in some weevil lineages
 
 #### Gene Family Evolution
 Beetles have expanded and contracted specific gene families relative to other insects. Two families are particularly dynamic:
-- Olfactory receptors (ORs) — expanded in bark beetles that must locate host trees and pheromone sources over long distances
-- Gustatory receptors (GRs) — expanded in phytophagous species that must evaluate host plant chemistry
-- Cytochrome P450s — detoxification genes expanded in species feeding on chemically defended plants
+- Olfactory receptors (ORs), expanded in bark beetles that must locate host trees and pheromone sources over long distances
+- Gustatory receptors (GRs), expanded in phytophagous species that must evaluate host plant chemistry
+- Cytochrome P450s, detoxification genes expanded in species feeding on chemically defended plants
 
 #### Synteny and Chromosome Evolution
 Despite chromosome number variation ranging from 2n = 4 (some bark beetles) to 2n = 72+ (some longhorns), many synteny blocks are conserved across hundreds of millions of years. Chromosome fusions and fissions reshuffle these blocks without disrupting the genes within them, consistent with the Stevens element framework.
@@ -1205,15 +1205,15 @@ Transposable elements make up a variable fraction of beetle genomes. Some lineag
 Large-scale initiatives are rapidly expanding beetle genomic resources. The Earth BioGenome Project , i5K (5,000 insect genomes), and national genome projects around the world are making beetle genomes available at an accelerating pace.
 
 #### Coming Frontiers
-- Pan-genomes — capturing structural variation within species, moving beyond single reference genomes to understand the full complement of genetic diversity
-- Population-level resequencing — whole-genome resequencing of hundreds of individuals across hundreds of beetle species, revealing selection pressures and demographic histories
-- Functional genomics — CRISPR gene editing in non-model beetles, moving from correlation to causation in understanding gene function
-- Conservation genomics — genetic rescue and monitoring for endangered species, using genomic data to guide management decisions
-- Metagenomics — beetle-microbiome interactions, particularly the obligate symbioses in bark beetles and grain beetles that enable exploitation of nutritionally poor substrates
+- Pan-genomes, capturing structural variation within species, moving beyond single reference genomes to understand the full complement of genetic diversity
+- Population-level resequencing, whole-genome resequencing of hundreds of individuals across hundreds of beetle species, revealing selection pressures and demographic histories
+- Functional genomics, CRISPR gene editing in non-model beetles, moving from correlation to causation in understanding gene function
+- Conservation genomics, genetic rescue and monitoring for endangered species, using genomic data to guide management decisions
+- Metagenomics, beetle-microbiome interactions, particularly the obligate symbioses in bark beetles and grain beetles that enable exploitation of nutritionally poor substrates
 
 #### The Big Question
-Why are there so many beetle species? Is it adaptive radiation into new ecological niches? Key innovations (phytophagy, complete metamorphosis, elytra protecting flight wings)? Geographic opportunity? Or something about their genomes — perhaps high rates of chromosome rearrangement that promote speciation, or gene family expansions that enable rapid adaptation?
-Comparative genomics across the order may finally answer Haldane's famous (possibly apocryphal) quip about "an inordinate fondness for beetles." The answer is likely multifactorial, and it will require exactly the kind of integrative approach our lab takes — combining karyotype databases, genome assemblies, population genomics, and phylogenetic comparative methods.
+Why are there so many beetle species? Is it adaptive radiation into new ecological niches? Key innovations (phytophagy, complete metamorphosis, elytra protecting flight wings)? Geographic opportunity? Or something about their genomes, perhaps high rates of chromosome rearrangement that promote speciation, or gene family expansions that enable rapid adaptation?
+Comparative genomics across the order may finally answer Haldane's famous (possibly apocryphal) quip about "an inordinate fondness for beetles." The answer is likely multifactorial, and it will require exactly the kind of integrative approach our lab takes, combining karyotype databases, genome assemblies, population genomics, and phylogenetic comparative methods.
 
 #### The Blackmon Lab's Contribution
 Our karyotype databases (14,000+ records for beetles alone), genome assemblies , and population genomic studies provide the foundation for answering these questions at genomic scale. By integrating cytogenetic, genomic, and phylogenetic data, we aim to understand not just how beetle genomes evolve, but why they evolve the way they do.
@@ -1238,14 +1238,14 @@ Submitting data: If you are aware of any available records that should be added 
 Usage rights: Data taken from the database must not be reproduced in published lists, online databases, or other formats, nor redistributed without permission. The information in this database is provided solely for personal and academic use, and must not be used for the purposes of financial gain.
 Current version: 1.0 · Last updated: 14 July 2023
 
-## Circadian Period (τ) Database — Blackmon Lab
+## Circadian Period (τ) Database, Blackmon Lab
 
 URL: https://coleoguy.github.io/tau_database.html
 Description: Searchable database of free-running circadian period (τ) measurements across the tree of life. Blackmon Lab, Texas A&M University.
 
 # Circadian Period ( τ ) Database
 Free-running period measurements across the tree of life · Resources
-The free-running circadian period, τ (tau), is the intrinsic period of an organism's biological clock measured in the absence of external time cues such as light-dark cycles. Under constant conditions — typically constant darkness (DD) or constant light (LL) — circadian rhythms persist with a period that reflects the endogenous pacemaker. In most organisms τ is close to, but not exactly, 24 hours, and it varies across taxa, life history stages, and genetic backgrounds.
+The free-running circadian period, τ (tau), is the intrinsic period of an organism's biological clock measured in the absence of external time cues such as light-dark cycles. Under constant conditions, typically constant darkness (DD) or constant light (LL), circadian rhythms persist with a period that reflects the endogenous pacemaker. In most organisms τ is close to, but not exactly, 24 hours, and it varies across taxa, life history stages, and genetic backgrounds.
 This database compiles free-running period measurements from the primary literature spanning bacteria, fungi, plants, protists, and animals. Records include the mean τ , experimental light condition, species identity, genotype, and source citation. Use the Plots tab to explore distributions across taxa and conditions, or the Data tab to search and filter individual records.
 
 ### τ Distribution (all records)
@@ -1260,7 +1260,7 @@ This database compiles free-running period measurements from the primary literat
 
 ### Data Table
 
-## CUREs Karyotype Database — Blackmon Lab
+## CUREs Karyotype Database, Blackmon Lab
 
 URL: https://coleoguy.github.io/cures-karyotype-database.html
 Description: Interactive database of 63,542 chromosome number records across 56 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&M University.
@@ -1312,7 +1312,7 @@ Wings vs no wings. XY vs X0 sex determination. How do we model traits that come 
 What happens when you need both types of data in the same analysis? Learn phylogenetic ANCOVA, threshold models, and how to integrate multiple types of data.
 
 ### Birth-Death Simulator
-Same rates, wildly different trees. Run paired birth-death simulations and see how stochastic macroevolution produces unpredictable diversity — even when underlying rates are identical.
+Same rates, wildly different trees. Run paired birth-death simulations and see how stochastic macroevolution produces unpredictable diversity, even when underlying rates are identical.
 
 ## Phylogenies - Phylogenetic Comparative Methods
 
@@ -1410,20 +1410,20 @@ The test compares two models: one where the traits evolve independently (simpler
 The ape package has the ace function for maximum likelihood ancestral state reconstruction. The phytools package has more advanced functions including stochastic character mapping:
 
 ### Chromosome number as a discrete trait: chromePlus
-Chromosome number is one of the most dynamic features of eukaryotic genomes. Across species, chromosomes fuse, split, and duplicate — sometimes driving reproductive isolation and speciation. Modeling how chromosome number evolves requires treating it as a special kind of discrete trait where the state space is large (chromosome numbers from 1 to 100+) and the transitions have biological structure: gains of one, losses of one, and whole-genome duplications (polyploidy) all have distinct rates. For a history of how scientists developed these ideas — from Stebbins and White to Mayrose and Zeni...
+Chromosome number is one of the most dynamic features of eukaryotic genomes. Across species, chromosomes fuse, split, and duplicate, sometimes driving reproductive isolation and speciation. Modeling how chromosome number evolves requires treating it as a special kind of discrete trait where the state space is large (chromosome numbers from 1 to 100+) and the transitions have biological structure: gains of one, losses of one, and whole-genome duplications (polyploidy) all have distinct rates. For a history of how scientists developed these ideas, from Stebbins and White to Mayrose and Zeni...
 chromePlus is an R package developed in this lab that extends the chromEvol framework within the diversitree ecosystem. It fits Markov chain models of chromosome evolution on phylogenies using MCMC, and critically, allows a binary trait (such as sex determination system, mating strategy, or presence of B chromosomes) to influence the rates of chromosome change. This lets you ask: does having sex chromosomes speed up or slow down karyotype evolution?
 The model tracks a state space combining chromosome number and binary trait. From any state, five types of events can occur:
-Each of these rates can be conditioned on the binary trait state — so you can model a world where sex-chromosome-bearing lineages (state B) have faster dysploidy rates than those without (state A).
+Each of these rates can be conditioned on the binary trait state, so you can model a world where sex-chromosome-bearing lineages (state B) have faster dysploidy rates than those without (state A).
 A polyploidy event in the ancestor of the gold clade doubled the chromosome number. dysploidy then reduced n=18 → n=17 in one lineage.
 In R, chromePlus wraps MCMC inference around these models, returning posterior distributions over rate parameters. You can compare models (e.g., rates equal vs rates free between binary trait states) using Bayes factors from the MCMC output.
 
 ### Maximum likelihood vs Bayesian inference
-All of the methods on this page require fitting a model to data — estimating rate parameters like q01 and q10. There are two major philosophies for doing this, and both appear in phylogenetic software. Understanding the difference matters because they answer subtly different questions and have very different computational demands.
-The likelihood function L(θ | data) describes how probable the observed data are for each possible value of the parameter θ. Maximum likelihood finds the single value of θ that makes the data most probable — the peak of this surface.
+All of the methods on this page require fitting a model to data, estimating rate parameters like q01 and q10. There are two major philosophies for doing this, and both appear in phylogenetic software. Understanding the difference matters because they answer subtly different questions and have very different computational demands.
+The likelihood function L(θ | data) describes how probable the observed data are for each possible value of the parameter θ. Maximum likelihood finds the single value of θ that makes the data most probable, the peak of this surface.
 This is computationally fast because you only need to find one point. Tools like ape::ace(method="ML") and corHMM use numerical optimization (gradient descent or Nelder–Mead) to locate the peak quickly, even for large trees.
-The cost: you get a point estimate, not a distribution. Standard errors can be approximated from the curvature of the likelihood surface, but this assumes the surface is roughly parabolic near the peak — an assumption that can break down with sparse data.
-Bayes' theorem says: posterior ∝ likelihood × prior . Rather than finding the single best θ, Bayesian inference characterizes the full posterior distribution over θ — the probability of each parameter value given the data and your prior beliefs.
-This is elegant because it propagates uncertainty naturally. You don't just get a best estimate — you get a credible interval that directly means "there is 95% posterior probability the parameter lies here." Stochastic character mapping is inherently Bayesian for exactly this reason.
+The cost: you get a point estimate, not a distribution. Standard errors can be approximated from the curvature of the likelihood surface, but this assumes the surface is roughly parabolic near the peak, an assumption that can break down with sparse data.
+Bayes' theorem says: posterior ∝ likelihood × prior . Rather than finding the single best θ, Bayesian inference characterizes the full posterior distribution over θ, the probability of each parameter value given the data and your prior beliefs.
+This is elegant because it propagates uncertainty naturally. You don't just get a best estimate, you get a credible interval that directly means "there is 95% posterior probability the parameter lies here." Stochastic character mapping is inherently Bayesian for exactly this reason.
 The cost: the posterior is rarely tractable analytically. In practice, MCMC (Markov chain Monte Carlo) is used to sample from it, which requires running a chain for tens of thousands of iterations. For complex models on large trees, this can take hours or days.
 Adjust the sliders to see how the likelihood surface and prior shape the posterior distribution. The ML estimate is the peak of the likelihood curve; the Bayesian posterior is the product of likelihood × prior (renormalized).
 In practice: use ML when you need fast answers or are running many model comparisons (e.g., testing 10 different rate matrices). Use Bayesian methods (MCMC) when you need full uncertainty quantification, want to formally incorporate prior information, or are working with models too complex for numerical optimization (like chromePlus, or joint inference of rates and ancestral states). There is also a practical numerical reason to prefer MCMC: discrete trait models can have flat likelihood ridges at unrealistically high rate values , where many parameter combinations fit the data nearly equal...
@@ -1476,10 +1476,10 @@ Description: Interactive birth-death process simulator showing how identical evo
 # Birth-Death Tree Simulator
 
 ### What are you looking at?
-Each panel simulates a birth-death process starting from a single lineage. At any moment, each living lineage can speciate (split into two daughters, rate λ) or go extinct (rate μ). The two simulations use identical parameter values — but because speciation and extinction are stochastic events , the resulting trees are completely different every time.
+Each panel simulates a birth-death process starting from a single lineage. At any moment, each living lineage can speciate (split into two daughters, rate λ) or go extinct (rate μ). The two simulations use identical parameter values, but because speciation and extinction are stochastic events , the resulting trees are completely different every time.
 Gold branches are lineages that survive to the present. Grey branches went extinct before the end time. Red dots mark extinction events.
-This variability is why two clades evolving at the same rates can end up with very different numbers of species, and why detecting shifts in diversification rate requires careful statistical methods — a lot of the apparent signal can be noise. Try increasing μ toward λ (high turnover) and watch how often complete extinction occurs. Try low μ and high λ for explosive radiations.
-The net diversification rate is r = λ − μ . When r is small or negative, trees frequently go extinct entirely — even with a positive expected trajectory, any single realization can die out by chance (the stochastic extinction problem ).
+This variability is why two clades evolving at the same rates can end up with very different numbers of species, and why detecting shifts in diversification rate requires careful statistical methods, a lot of the apparent signal can be noise. Try increasing μ toward λ (high turnover) and watch how often complete extinction occurs. Try low μ and high λ for explosive radiations.
+The net diversification rate is r = λ − μ . When r is small or negative, trees frequently go extinct entirely, even with a positive expected trajectory, any single realization can die out by chance (the stochastic extinction problem ).
 
 ## Likelihood Ridges in Discrete Trait Models - Phylogenetic Comparative Methods
 
@@ -1491,7 +1491,7 @@ Description: Understanding likelihood ridges in discrete trait Mk models. Why hi
 ### The Core Problem
 Maximum likelihood estimation of discrete trait models comes with a well-known identifiability problem. When transition rates become very high relative to tree depth, something surprising happens: trait states get "scrambled" across the phylogeny. Every lineage rapidly visits every state many times, and the phylogenetic signal gets washed out.
 In this limit, the expected distribution of tip states converges on the stationary distribution of the Markov chain. This distribution is determined only by the ratio of rates, not their absolute magnitude. Consider a simple example: a model with q 01 = 0.1 and q 10 = 0.1 (slow rates) can produce nearly the same distribution of tip states as q 01 = 100 and q 10 = 100 (very fast rates), if the tip data show a roughly 50/50 split between states.
-This creates a likelihood ridge : a long plateau in parameter space extending from biologically realistic rate values (say, 0.001–1 events per unit branch length) out to arbitrarily high values. Along this ridge, the likelihood changes only minimally. The ridge runs along the direction of proportional rate scaling —both rates increase together while maintaining their ratio.
+This creates a likelihood ridge : a long plateau in parameter space extending from biologically realistic rate values (say, 0.001–1 events per unit branch length) out to arbitrarily high values. Along this ridge, the likelihood changes only minimally. The ridge runs along the direction of proportional rate scaling ,both rates increase together while maintaining their ratio.
 
 ### Why This Matters
 - Unrealistic estimates: Maximum likelihood optimizers (like optim() in R) can wander up the ridge and return estimates of q = 50 or q = 500 events per unit branch length when the true value is 0.5. Both fit the data similarly well, but only one is biologically plausible.
@@ -1531,4 +1531,4 @@ See the discrete trait evolution guide for more on model selection and the Mk fr
 
 ### Summary
 Likelihood ridges are an inherent feature of discrete trait inference, not a bug but a signature of model identifiability. When tip states are close to equilibrium proportions, high rates become nearly indistinguishable from low rates. This is a genuine inference problem: the data alone may not constrain rates well.
-The solutions—priors, multiple starts, penalization, and bounds—all aim to break the ridge by adding external information or constraints. In practice, Bayesian MCMC with informative priors is the gold standard because it explicitly encodes what you know (or want to assume) about plausible rate ranges. When in doubt, compare results across methods and always sanity-check your rate estimates.
+The solutions,priors, multiple starts, penalization, and bounds,all aim to break the ridge by adding external information or constraints. In practice, Bayesian MCMC with informative priors is the gold standard because it explicitly encodes what you know (or want to assume) about plausible rate ranges. When in doubt, compare results across methods and always sanity-check your rate estimates.

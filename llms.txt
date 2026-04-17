@@ -1,10 +1,10 @@
-# Blackmon Lab — Evolutionary Biology at Texas A&M University
+# Blackmon Lab, Evolutionary Biology at Texas A&M University
 
 > The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches.
 
 ## About
 
-The Blackmon Lab is led by Dr. Heath Blackmon in the Department of Biology at Texas A&M University. The lab investigates how and why genomes evolve structurally, with a focus on sex chromosomes, chromosome number evolution, and the genetic basis of adaptation. Study organisms include beetles, tomatoes, betta fish, chickens, and mammals. The lab uses three approaches: theoretical population genetics, comparative phylogenetic methods, and genetics/genomics.
+The Blackmon Lab is led by Dr. Heath Blackmon in the Department of Biology at Texas A&M University. The lab studies how and why genomes evolve structurally, with a focus on sex chromosomes, chromosome number evolution, and the genetic basis of adaptation. Study organisms include beetles, tomatoes, betta fish, chickens, and mammals. The lab uses three approaches: theoretical population genetics, comparative phylogenetic methods, and genetics/genomics.
 
 ## Key Research Questions
 
@@ -18,7 +18,7 @@ The Blackmon Lab is led by Dr. Heath Blackmon in the Department of Biology at Te
 
 ## Principal Investigator
 
-Heath Blackmon, Ph.D. — Associate Head, Department of Biology, Texas A&M University
+Heath Blackmon, Ph.D., Associate Head, Department of Biology, Texas A&M University
 - ORCID: https://orcid.org/0000-0002-5433-4036
 - Google Scholar: https://scholar.google.com/citations?user=ytApUl0AAAAJ
 - GitHub: https://github.com/coleoguy
@@ -48,10 +48,10 @@ Heath Blackmon, Ph.D. — Associate Head, Department of Biology, Texas A&M Unive
 - STEGG Conference: https://coleoguy.github.io/stegg.html
 - AI Concentration: https://coleoguy.github.io/tamu-ai-concentration.html
 - PCM Guide (index): https://coleoguy.github.io/phylo-methods/index.html
-- PCM Guide — Phylogenies: https://coleoguy.github.io/phylo-methods/phylogenies.html
-- PCM Guide — Continuous Traits: https://coleoguy.github.io/phylo-methods/continuous.html
-- PCM Guide — Discrete Traits: https://coleoguy.github.io/phylo-methods/discrete.html
-- PCM Guide — Discrete + Continuous: https://coleoguy.github.io/phylo-methods/discrete-continuous.html
+- PCM Guide, Phylogenies: https://coleoguy.github.io/phylo-methods/phylogenies.html
+- PCM Guide, Continuous Traits: https://coleoguy.github.io/phylo-methods/continuous.html
+- PCM Guide, Discrete Traits: https://coleoguy.github.io/phylo-methods/discrete.html
+- PCM Guide, Discrete + Continuous: https://coleoguy.github.io/phylo-methods/discrete-continuous.html
 - Sex Chromosome Evolution (visual guide): https://coleoguy.github.io/sex-chromosome-evolution.html
 - Coleoptera Genomics (visual guide): https://coleoguy.github.io/coleoptera-genomics.html
 - Genome Structure Evolution (visual guide): https://coleoguy.github.io/genome-structure-evolution.html
@@ -66,7 +66,7 @@ Heath Blackmon, Ph.D. — Associate Head, Department of Biology, Texas A&M Unive
 
 ## Recent Publications (2026)
 
-- **Copeland M, McConnell M, Barboza A, ... Blackmon H** (2026). *Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life.* bioRxiv preprint. DOI: https://doi.org/10.64898/2026.04.14.718287 — Largest analysis of dysploidy rates to date (63,682 karyotypes, 55 clades), showing 844-fold rate variation and that birds are not the textbook example of stasis once microchromosomes are resolved.
+- **Copeland M, McConnell M, Barboza A, ... Blackmon H** (2026). *Dismantling Chromosomal Stasis Across the Eukaryotic Tree of Life.* bioRxiv preprint. DOI: https://doi.org/10.64898/2026.04.14.718287. Largest analysis of dysploidy rates to date (63,682 karyotypes, 55 clades). Rates vary 844-fold, and birds exceed the global median once microchromosomes are resolved.
 - **Chien S, ... Blackmon H et al.** (2026). *Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (Cheirotonus formosanus): Discovery of a Putative Y-Linked Scaffold and Demographic History.* Ecology and Evolution. DOI: https://doi.org/10.1002/ece3.73483
 - **Chien S, Blackmon H** (2026). *Chromosomal Rearrangements: Tempo and Mode of Karyotype Evolution in Scarabaeoidea.* Journal of Evolutionary Biology. DOI: https://doi.org/10.1093/jeb/voag025
 - **Eales JG, Copeland M, MacKenzie DS** (2026). *Peripheral and central regulation of thyroid status in teleost fish with particular reference to tetraploid juvenile salmonids and Parr-Smolt transformation.* General and Comparative Endocrinology. DOI: https://doi.org/10.1016/j.ygcen.2026.114929
@@ -77,7 +77,7 @@ Department of Biology, Texas A&M University, College Station, TX 77843
 
 ## Interactive Tools & Databases
 
-The lab hosts several fully client-side interactive tools directly on this site (no server required):
+The lab hosts several client-side interactive tools directly on this site (no server required):
 
 ### Population Genetics Simulator
 URL: https://coleoguy.github.io/subpages/popgen-sim.html
@@ -108,7 +108,7 @@ Brownian motion simulation, phylogenetic signal, PGLS regression. Includes live 
 
 ### Discrete Trait Evolution
 URL: https://coleoguy.github.io/phylo-methods/discrete.html
-Mk model, ancestral state reconstruction, stochastic character mapping, Pagel's test. Includes interactive Markov diagram, ASR visualization with marginal probability pies, and stochastic character mapping panels. Also covers chromePlus (R package for chromosome number evolution — gain/loss/polyploidy/demiploidy with binary trait modulation) and a comparison of maximum likelihood vs Bayesian inference with an interactive posterior/likelihood/prior canvas.
+Mk model, ancestral state reconstruction, stochastic character mapping, Pagel's test. Includes interactive Markov diagram, ASR visualization with marginal probability pies, and stochastic character mapping panels. Also covers chromePlus (R package for chromosome number evolution, gain/loss/polyploidy/demiploidy with binary trait modulation) and a comparison of maximum likelihood vs Bayesian inference with an interactive posterior/likelihood/prior canvas.
 
 ### Discrete + Continuous (ANCOVA, Pagel's Lambda)
 URL: https://coleoguy.github.io/phylo-methods/discrete-continuous.html
@@ -116,20 +116,20 @@ PGLS-ANCOVA for mixed trait models, Pagel's lambda phylogenetic signal parameter
 
 ### Birth-Death Tree Simulator
 URL: https://coleoguy.github.io/phylo-methods/bd-simulator.html
-Interactive birth-death tree simulator using the Gillespie algorithm. Runs two independent simulations with identical λ (speciation) and μ (extinction) rates, showing how stochastic macroevolutionary processes produce radically different tree topologies and diversity. Adjustable sliders for λ, μ, and crown age. Visual: gold=surviving lineages, grey=extinct lineages, red dots=extinction events, teal dots=extant tips. Paired panels illustrate how the same net diversification rate (r = λ − μ) can yield very different outcomes.
+Interactive birth-death tree simulator using the Gillespie algorithm. Runs two independent simulations with identical λ (speciation) and μ (extinction) rates, showing how stochastic macroevolutionary processes produce very different tree topologies and diversity. Adjustable sliders for λ, μ, and crown age. Visual: gold=surviving lineages, grey=extinct lineages, red dots=extinction events, teal dots=extant tips. Paired panels illustrate how the same net diversification rate (r = λ − μ) can yield very different outcomes.
 
 ### Likelihood Ridges in Discrete Trait Models
 URL: https://coleoguy.github.io/phylo-methods/likelihood-ridges.html
-Conceptual guide explaining a key numerical challenge in Mk-model maximum likelihood estimation: high rate parameters proportional to trait spread across the tree can fit data nearly as well as the true MLE, creating a flat ridge in likelihood space at biologically unrealistic values. Explains why MCMC with priors or multiple starting points is essential, and what happens when optimization wanders into this region. Includes interactive likelihood surface visualization and links to discrete trait methods.
+Guide to a numerical challenge in Mk-model maximum likelihood estimation: high rate parameters proportional to trait spread across the tree can fit data nearly as well as the true MLE, creating a flat ridge in likelihood space at biologically unrealistic values. Explains why MCMC with priors or multiple starting points matters, and what happens when optimization wanders into this region. Includes interactive likelihood surface visualization and links to discrete trait methods.
 
-## Chromosome Number Evolution — Intellectual History
+## Chromosome Number Evolution, Intellectual History
 
-A standalone editorial page tracing a century of ideas on karyotype evolution, from the cytological foundations (Stebbins, White) through the population genetic challenge (Lande), the hybrid speciation synthesis (Rieseberg), and the probabilistic revolution (Mayrose ChromEvol, Zenil-Ferguson BiChroM/ChromoSSE). Ends with open questions and the Blackmon Lab's contributions. Newspaper-style two-column layout. Links to karyotype databases, chromePlus, and the PCM guide.
+A standalone editorial page tracing a century of ideas on karyotype evolution: cytological foundations (Stebbins, White), the population genetic challenge (Lande), the hybrid speciation synthesis (Rieseberg), and the probabilistic methods era (Mayrose ChromEvol, Zenil-Ferguson BiChroM/ChromoSSE). Ends with open questions and the Blackmon Lab's contributions. Newspaper-style two-column layout. Links to karyotype databases, chromePlus, and the PCM guide.
 URL: https://coleoguy.github.io/chromosome-evolution-history.html
 
 ## Citation Network
 
-An interactive force-directed graph showing the lab's publication network. Nodes are papers sized by citation count and colored by year (gold→teal). Edges connect papers that share co-authors. Built with D3.js, fetches live data from OpenAlex by ORCID. Supports pan/zoom, hover tooltips, node dimming, and click-to-DOI. Includes a stats overlay (paper count, total citations, connections) and a color/size legend.
+An interactive force-directed graph of the lab's publication network. Nodes are papers, sized by citation count and colored by year (gold to teal). Edges connect papers that share co-authors. Built with D3.js, fetches data from OpenAlex by ORCID. Supports pan/zoom, hover tooltips, node dimming, and click-to-DOI. Includes a stats overlay (paper count, total citations, connections) and a color/size legend.
 URL: https://coleoguy.github.io/citation-network.html
 
 ## Visual Guides to Evolutionary Biology
@@ -138,7 +138,7 @@ In addition to the Chromosome Evolution History page and the PCM interactive gui
 
 ### Sex Chromosome Evolution
 URL: https://coleoguy.github.io/sex-chromosome-evolution.html
-A visual guide to sex chromosome evolution, from ordinary autosomes to the X, Y, Z, and W chromosomes that determine sex across the tree of life. Covers identification methods (cytogenetics, sequencing), Ohno's law, Y/W degeneration, dosage compensation (XCI, hypertranscription, incomplete compensation in ZW systems), and evolutionary turnover. Includes interactive diagrams, phylogenetic distribution of sex determination systems, and key papers.
+A visual guide to sex chromosome evolution, from ordinary autosomes to the X, Y, Z, and W chromosomes that determine sex across the tree of life. Covers identification methods (cytogenetics, sequencing), Ohno's law, Y/W degeneration, dosage compensation (XCI, hypertranscription, incomplete compensation in ZW systems), and turnover. Includes interactive diagrams, phylogenetic distribution of sex determination systems, and key papers.
 
 ### Coleoptera Genomics
 URL: https://coleoguy.github.io/coleoptera-genomics.html
@@ -158,18 +158,18 @@ A visual guide to epistasis, line cross analysis, and Wright's shifting balance 
 
 ### Epistasis Database
 URL: https://coleoguy.github.io/epistasis-database.html
-Interactive database of 1,600+ line cross datasets from 130+ publications quantifying the relative contributions of additive, dominance, and epistatic genetic effects to trait divergence across plants and animals. Features cumulative distribution plots, ternary (additive/dominance/epistasis) visualization, searchable/sortable data table with individual dataset downloads, and full citation list. Replaces a former Shiny application; runs entirely client-side.
+Interactive database of 1,600+ line cross datasets from 130+ publications, quantifying the relative contributions of additive, dominance, and epistatic genetic effects to trait divergence across plants and animals. Includes cumulative distribution plots, ternary (additive/dominance/epistasis) visualization, searchable/sortable data table with individual dataset downloads, and full citation list. Replaces a former Shiny application; runs entirely client-side.
 
 ### Circadian Period Database
 URL: https://coleoguy.github.io/tau_database.html
-Searchable database of 1,634 free-running circadian period (tau) measurements across the tree of life. Includes species, common name, tau value, light regime, sex, and citation for each record. Fully client-side with filtering and download.
+Searchable database of 1,634 free-running circadian period (tau) measurements across the tree of life. Includes species, common name, tau value, light regime, sex, and citation for each record. Client-side with filtering and download.
 
 ## AI-Native Biology Program
 
 The Blackmon Lab is building AI-native workflows for evolutionary biology. Full program overview:
 URL: https://coleoguy.github.io/ai.html
 
-### TraitTrawler — Autonomous Literature Mining
+### TraitTrawler, Autonomous Literature Mining
 URL: https://github.com/coleoguy/TraitTrawler
 A general-purpose autonomous pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref for scientific papers, retrieves full-text PDFs through a 12-source cascade (DOI content negotiation, PMC, Unpaywall, OpenAlex, publisher URLs, Europe PMC, Semantic Scholar, CORE, bioRxiv/medRxiv, Internet Archive, DOAJ, browser-based institutional access), extracts structured trait data with mandatory double-entry verification, and writes validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade.
 
@@ -182,7 +182,7 @@ Course-Based Undergraduate Research Experience (Spring 2026) where students cond
 
 ### AI in Biology Concentration (Texas A&M)
 URL: https://coleoguy.github.io/tamu-ai-concentration.html
-Formal degree concentration at Texas A&M — 10 semester hours of AI-focused coursework in Biology BS and PhD programs.
+Formal degree concentration at Texas A&M, 10 semester hours of AI-focused coursework in Biology BS and PhD programs.
 
 ## Public Data Sources for Evolutionary Biology
 
@@ -196,10 +196,10 @@ URL: https://coleoguy.github.io/subpages/glossary.html
 
 ## Phylogenetic Tree Explorer
 
-Interactive D3.js-based phylogenetic tree viewer. Users paste or upload a Newick string and optionally a CSV/TSV trait file. Supports three layout modes: cladogram (equal leaf spacing), phylogram (branch lengths proportional to evolutionary distance), and radial (fan layout). Features include clade collapsing/expanding on click, hover tooltips with node info, trait-based tip coloring with legend, zoom/pan, and SVG export. Demo data shows a beetle phylogeny with habitat traits. Fully client-side, no server required.
+Interactive D3.js-based phylogenetic tree viewer. Users paste or upload a Newick string and optionally a CSV/TSV trait file. Supports three layout modes: cladogram (equal leaf spacing), phylogram (branch lengths proportional to evolutionary distance), and radial (fan layout). Includes clade collapsing/expanding on click, hover tooltips with node info, trait-based tip coloring with legend, zoom/pan, and SVG export. Demo data shows a beetle phylogeny with habitat traits. Client-side, no server required.
 URL: https://coleoguy.github.io/phylo-explorer.html
 
 ## BIOL 682: Communication in the Biological Sciences
 
-Course materials for BIOL 682 — scientific writing, storytelling, peer review, and revision in the biological sciences. Includes downloadable PDFs on common writing flaws in life sciences manuscripts, structured revision prompts, example revision responses, and peer review guidelines.
+Course materials for BIOL 682, scientific writing, storytelling, peer review, and revision in the biological sciences. Includes downloadable PDFs on common writing flaws in life sciences manuscripts, structured revision prompts, example revision responses, and peer review guidelines.
 URL: https://coleoguy.github.io/subpages/biol682.html

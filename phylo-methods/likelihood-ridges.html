@@ -238,7 +238,7 @@ extra_head: |
 <section class="page-header">
       <div class="container-xl">
         <h1>Likelihood Ridges in Discrete Trait Models</h1>
-        <div class="subtitle">Why high rates can fit your data — and why that's a problem</div>
+        <div class="subtitle">Why high rates can fit your data, and why that's a problem</div>
       </div>
     </section>
 
@@ -255,7 +255,7 @@ extra_head: |
         </p>
 
         <p class="section-text">
-          This creates a <span class="highlight-text">likelihood ridge</span>: a long plateau in parameter space extending from biologically realistic rate values (say, 0.001–1 events per unit branch length) out to arbitrarily high values. Along this ridge, the likelihood changes only minimally. The ridge runs along the direction of <em>proportional rate scaling</em>—both rates increase together while maintaining their ratio.
+          This creates a <span class="highlight-text">likelihood ridge</span>: a long plateau in parameter space extending from biologically realistic rate values (say, 0.001–1 events per unit branch length) out to arbitrarily high values. Along this ridge, the likelihood changes only minimally. The ridge runs along the direction of <em>proportional rate scaling</em>: both rates increase together while maintaining their ratio.
         </p>
 
         <div class="info-box">
@@ -332,7 +332,7 @@ extra_head: |
           </div>
 
           <div class="info-box" style="margin-top: 30px;">
-            <strong>How to read this:</strong> The green vertical line marks the maximum likelihood estimate (MLE). The shaded teal region shows the likelihood ridge—where the log-likelihood stays within 2 units of the peak. When the proportion is near 0.5, notice how the ridge extends far to the right (high q values). When the proportion moves away from 0.5, the ridge narrows and the likelihood becomes more peaked. This is why balanced trait distributions are problematic: the ridge becomes pronounced and high rates remain plausible.
+            <strong>How to read this:</strong> The green vertical line marks the maximum likelihood estimate (MLE). The shaded teal region shows the likelihood ridge: the range of q where the log-likelihood stays within 2 units of the peak. When the proportion is near 0.5, notice how the ridge extends far to the right (high q values). When the proportion moves away from 0.5, the ridge narrows and the likelihood becomes more peaked. This is why balanced trait distributions are problematic: the ridge becomes pronounced and high rates remain plausible.
           </div>
         </div>
       </div>
@@ -415,8 +415,8 @@ extra_head: |
         </p>
 
         <p class="section-text">
-          The solutions—priors, multiple starts, penalization, and bounds—all aim to break the ridge by adding external information or constraints. In practice, <span class="highlight-text">Bayesian MCMC with informative priors is the gold standard</span> because it explicitly encodes what you know (or want to assume) about plausible rate ranges.</p>
-          <p><em>One critical nuance.</em> MCMC with an <strong>uninformative</strong> prior (e.g., Uniform(0, ∞) or Exponential with very large mean) will <em>still wander up the ridge</em>, because the likelihood is genuinely flat there and the prior offers no counter-pressure. The fix is not just &ldquo;use Bayesian methods&rdquo; but &ldquo;use a meaningfully informative prior&rdquo; &mdash; an Exponential with mean equal to the expected number of transitions per million years for the trait class, or a tight Lognormal centered on a biologically plausible rate. Without that, MCMC and ML can give the same misleading answer. Likewise, the &ldquo;multiple starting points&rdquo; strategy works because different starts sample different regions of the ridge; from any one starting point the optimizer converges deterministically. See Revell & Harmon (2008, <em>Evol. Bioinform.</em>) and Harmon (2019, <em>Phylogenetic Comparative Methods</em>) for explicit treatments of these issues.</p>
+          The solutions (priors, multiple starts, penalization, and bounds) all aim to break the ridge by adding external information or constraints. In practice, <span class="highlight-text">Bayesian MCMC with an informative prior is the most reliable approach</span> because it explicitly encodes what you know (or want to assume) about plausible rate ranges.</p>
+          <p>One nuance worth stating clearly. MCMC with an <strong>uninformative</strong> prior (e.g., Uniform(0, ∞) or Exponential with very large mean) will <em>still wander up the ridge</em>, because the likelihood is genuinely flat there and the prior offers no counter-pressure. Switching to Bayesian methods is not the fix on its own. What matters is a meaningfully informative prior: an Exponential with mean equal to the expected number of transitions per million years for the trait class, or a tight Lognormal centered on a biologically plausible rate. Without that, MCMC and ML can give the same misleading answer. Likewise, the multiple-starting-points strategy works because different starts sample different regions of the ridge; from any one starting point the optimizer converges deterministically. See Revell & Harmon (2008, <em>Evol. Bioinform.</em>) and Harmon (2019, <em>Phylogenetic Comparative Methods</em>) for explicit treatments of these issues.</p>
           <p>When in doubt, compare results across methods and always sanity-check your rate estimates.
         </p>
       </div>

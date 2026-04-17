@@ -321,7 +321,7 @@ extra_head: |
         <div class="eyebrow" data-aos="fade-down">Blackmon Lab · Texas A&amp;M University</div>
         <h1 data-aos="fade-up">AI in<br><em>Evolutionary Biology</em></h1>
         <p class="lead" data-aos="fade-up" data-aos-delay="80">
-          This is one of the most exciting moments in the history of science: tools that can read, reason about, and connect the literature at a scale no individual researcher ever could. We work to bring those tools into evolutionary biology in a way that earns trust — autonomous literature-mining agents, AI-assisted theoretical work, and curricula that prepare the next generation of biologists to use AI thoughtfully and well.
+          A lot has changed in the last few years. We now have tools that can read papers, pull data out of them, and work through analyses that used to take a career. Our lab is bringing those tools into evolutionary biology in a way that holds up under scrutiny. That includes autonomous literature-mining agents, AI-assisted theoretical work, and courses that teach biology students how to use these tools without getting burned by them.
         </p>
         <div class="hero-ctas" data-aos="fade-up" data-aos-delay="140">
           <a href="#projects" class="btn-accent">
@@ -346,11 +346,10 @@ extra_head: |
             <span class="manifesto-v manifesto-v-next">AI <strong>1.1</strong></span>
           </div>
           <p class="manifesto-body">
-            Darwin gave biology its operating system in 1859. <strong>Evolution 1.0</strong> &mdash; a framework so generative that nothing in our field has made sense without it for 165 years.
-            <strong class="manifesto-highlight">AI 1.1</strong> is the next instrument biologists pick up: a tool that lets us read the literature, integrate the data, and reason about life at scales no individual researcher ever could. Same discipline. Same questions. Vastly bigger reach.
+            Darwin's 1859 book is still the framework biology runs on, and has been for 165 years. We call that <strong>Evolution 1.0</strong>. What we're calling <strong class="manifesto-highlight">AI 1.1</strong> is a newer layer on top: software that can read the literature, pull structured data out of it, and help us work through comparative problems at scales a single lab can't reach on its own. The questions haven't changed. Our reach has.
           </p>
           <p class="manifesto-body" style="margin-top: 18px;">
-            We treat this as a <em>release</em>, not a revolution &mdash; an incremental but real upgrade to how science gets done. Our role is to ship it responsibly: agent-readable data, validated pipelines, published failure modes, and a generation of biologists trained to use these tools well. <strong>Open, reproducible, machine-legible science should become standard practice across every field that wants its work to remain useful.</strong>
+            We think of this as a <em>release</em>, not a revolution. It's an incremental but real change in how science gets done, and our job is to roll it out carefully: agent-readable data, pipelines whose outputs are validated, honest documentation of what broke, and biology students who know how to use the tools. <strong>Open, reproducible, machine-readable science should be standard practice in any field that wants its work to still be useful in ten years.</strong>
           </p>
         </div>
       </div>
@@ -363,7 +362,7 @@ extra_head: |
           <span class="section-label">Our approach</span>
           <h2 class="section-title">How we use AI in the lab</h2>
           <p class="section-body mx-auto" style="text-align:center;">
-            We treat AI as a partner in expanding what biology can know — not a productivity hack and not a replacement for thinking. That looks like autonomous pipelines with validated outputs, workflows that open up questions a single lab could never tackle alone, and curricula that prepare students to use these tools with the same care and skepticism they'd bring to any other instrument.
+            We use AI to get at questions a single lab couldn't handle on its own. It's not a productivity hack, and it isn't a substitute for thinking. In practice that means pipelines where every output is validated before it's used, workflows that let us do comparative work at scales we couldn't reach before, and courses that teach students to treat these tools with the same skepticism they'd bring to any other piece of lab equipment.
           </p>
         </div>
 
@@ -386,7 +385,7 @@ extra_head: |
           <div class="vision-cell">
             <span class="vc-icon">📊</span>
             <h4>Data at scale</h4>
-            <p>Cytogenetics data from the past 80 years are scattered across hundreds of journals in multiple languages — much of it functionally invisible. AI makes it feasible to recover that literature, standardize it, and put it back into circulation as a public resource any researcher (or research agent) can build on.</p>
+            <p>Cytogenetic data from the last 80 years is scattered across hundreds of journals in several languages, and much of it is effectively invisible to anyone doing a search today. AI makes it feasible to recover that work, standardize it, and put it back in circulation as a public resource other researchers (and their AI tools) can build on.</p>
           </div>
           <div class="vision-cell">
             <span class="vc-icon">🔬</span>
@@ -396,7 +395,7 @@ extra_head: |
           <div class="vision-cell">
             <span class="vc-icon">🌐</span>
             <h4>Open and reproducible</h4>
-            <p>All databases, code, and workflows are published openly — for other labs, for students learning the methods, and for the AI systems that will increasingly read and reason about scientific literature on everyone's behalf.</p>
+            <p>All databases, code, and workflows are published openly. They're meant to be useful to other labs, to students learning the methods, and to the AI systems that will increasingly read and summarize scientific literature.</p>
           </div>
         </div>
       </div>
@@ -485,7 +484,7 @@ extra_head: |
                   <span class="pc-status status-complete"><span class="pc-dot"></span>Live</span>
                 </div>
               </div>
-              <p class="pc-desc">A deliberate effort to make every public artifact in the lab — pages, datasets, publications, news — legible to autonomous research agents. Includes <code>llms.txt</code> and a comprehensive <code>llms-full.txt</code>, machine-readable JSON exports of every database (CUREs karyotypes, tau, news, publications), structured JSON-LD on every page, and an open <code>data/</code> directory. The principle: scientific knowledge that AI can read is knowledge AI can use to help other researchers. Open formats are an act of contribution &mdash; and they should become standard practice for journals, data repositories, and scientists across every field that wants its work to remain useful.</p>
+              <p class="pc-desc">An ongoing effort to make everything we publish (pages, datasets, publications, news) readable by AI agents. Includes <code>llms.txt</code> and a full <code>llms-full.txt</code>, JSON exports of every database (CUREs karyotypes, tau, news, publications), JSON-LD on every page, and an open <code>data/</code> directory. The idea is simple: if AI tools can read our work, they can use it to help other researchers. Open formats are a form of contribution, and they should be standard for journals, repositories, and scientists in any field that wants its work to remain useful.</p>
               <a href="llms.txt" target="_blank" class="pc-link">View llms.txt <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
@@ -569,14 +568,14 @@ extra_head: |
               <div class="principle-num">01</div>
               <div class="principle-content">
                 <h5>Validate before trusting</h5>
-                <p>Every AI output is verified before it enters a publication, dataset, or decision. The form of verification — computational check, statistical test, expert review — depends on the task, but the expectation is universal.</p>
+                <p>Every AI output is verified before it enters a publication, dataset, or decision. The form of verification (computational check, statistical test, expert review) depends on the task, but some form of verification is always required.</p>
               </div>
             </div>
             <div class="principle-row">
               <div class="principle-num">02</div>
               <div class="principle-content">
                 <h5>AI amplifies effort; researchers supply judgment</h5>
-                <p>Search, extraction, reformatting, summarizing, and consistency checking are good uses of AI. Deciding what question is scientifically worth asking, whether a result makes biological sense, and what to conclude — those stay with the researcher.</p>
+                <p>Search, extraction, reformatting, summarizing, and consistency checking are good uses of AI. Deciding what question is worth asking, whether a result makes biological sense, and what to conclude: that stays with the researcher.</p>
               </div>
             </div>
             <div class="principle-row">
@@ -597,14 +596,14 @@ extra_head: |
               <div class="principle-num">05</div>
               <div class="principle-content">
                 <h5>Make domain knowledge explicit</h5>
-                <p>A general-purpose AI applied to a specialized scientific problem produces generic results. Effective use requires encoding expert knowledge in prompts, constraints, and validation rules — not assuming the model already carries it.</p>
+                <p>A general-purpose AI applied to a specialized scientific problem gives you generic results. Getting something useful means putting the expert knowledge into your prompts, constraints, and validation rules, not assuming the model already has it.</p>
               </div>
             </div>
             <div class="principle-row">
               <div class="principle-num">06</div>
               <div class="principle-content">
                 <h5>Build for the commons</h5>
-                <p>The point of doing science is to add to humanity's shared body of understanding. Tools, data, and ideas leave this lab in formats other people — and the AI systems they use — can pick up and run with. We are not the last people who will work on these questions, and the goal is to leave the next set of researchers more equipped than we found them.</p>
+                <p>The point of science is to add to what we collectively understand. Tools, data, and ideas leave this lab in formats other people (and the AI tools they use) can pick up and run with. We're not the last people who'll work on these questions, and we want whoever comes next to be better equipped than we were.</p>
               </div>
             </div>
           </div>

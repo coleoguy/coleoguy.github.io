@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CUREs Karyotype Database — Blackmon Lab
+title: CUREs Karyotype Database, Blackmon Lab
 description: Interactive database of 63,542 chromosome number records across 56 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;M University.
 canonical: https://coleoguy.github.io/cures-karyotype-database.html
 keywords: karyotype, chromosome number, CUREs, database, Blackmon Lab, Texas A&M, evolutionary biology
@@ -12,7 +12,7 @@ extra_head: |
   .db-app a:not(.sitename):not(.logo):not(.nav-cta) { color:#c9a227; text-decoration:none; }
   .db-app a:not(.sitename):not(.logo):not(.nav-cta):hover { text-decoration:underline; }
   
-  /* Old custom header styles removed — now using site header */
+  /* Old custom header styles removed, now using site header */
   
   /* LAYOUT */
   .db-container { display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 56px - 48px); }
@@ -270,13 +270,13 @@ extra_head: |
       <h3 style="color:#c9a227;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Records by Clade</h3>
       <div class="clade-grid" id="cladeGrid"></div>
 
-      <h3 style="color:#c9a227;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-top:28px;margin-bottom:12px;">How to Cite — Please Read</h3>
+      <h3 style="color:#c9a227;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-top:28px;margin-bottom:12px;">How to Cite, Please Read</h3>
       <div class="cite-appeal">
-        Every record in this database originates from a primary source — a paper, dissertation, or dataset whose authors did the slow, careful work of generating these chromosome counts. Citations are the currency of academic science: they are how careers are evaluated, how grants are awarded, and how the people whose work we depend on get credit. Please cite responsibly.
+        Every record in this database comes from a primary source: a paper, dissertation, or dataset whose authors did the slow, careful work of generating these chromosome counts. Citations matter. They are how careers get evaluated, how grants get awarded, and how the people whose work we depend on get credit. Please cite responsibly.
         <ul>
           <li><strong>Using data from a single clade?</strong> Cite the original source for that clade (see the <em>Sources by Clade</em> tab, or the citation column in the data table). Do <strong>not</strong> cite this database in place of the primary work.</li>
           <li><strong>Combining data across multiple clades?</strong> Cite this database (Copeland et al. 2026) <strong>and</strong> list the clade-level sources you drew on in your supplementary materials.</li>
-          <li><strong>Downloading the full dataset?</strong> The CSV file ships with a <code>citation</code> column for exactly this reason — please carry that column through your analyses so the original authors can be credited downstream.</li>
+          <li><strong>Downloading the full dataset?</strong> The CSV file ships with a <code>citation</code> column for exactly this reason. Please carry that column through your analyses so the original authors can be credited downstream.</li>
         </ul>
       </div>
 
@@ -302,7 +302,7 @@ extra_head: |
     <!-- SOURCES -->
     <div class="tab-content" id="tab-sources">
       <div class="cite-appeal" style="margin-bottom:18px;">
-        Each clade below is backed by a single primary source. If your work uses data from <strong>one clade only</strong>, please cite that source directly — those authors generated the counts you are using. Cite the database paper (Copeland et al. 2026) only when your analysis spans multiple clades.
+        Each clade below is backed by a single primary source. If your work uses data from <strong>one clade only</strong>, please cite that source directly. Those authors generated the counts you are using. Cite the database paper (Copeland et al. 2026) only when your analysis spans multiple clades.
       </div>
       <div class="sources-list" id="sourcesList"><div class="db-loading">Loading sources…</div></div>
     </div>
@@ -491,7 +491,7 @@ extra_head: |
         return '<tr>' +
           '<td><span class="clade-badge">' + escapeHtml(r.c) + '</span></td>' +
           '<td class="species-name">' + escapeHtml(r.s) + '</td>' +
-          '<td>' + (r.h == null ? '—' : r.h) + '</td>' +
+          '<td>' + (r.h == null ? '' : r.h) + '</td>' +
           '<td class="cite-cell" title="Click to expand"><span class="cite-text">' + escapeHtml(cite) + '</span></td>' +
         '</tr>';
       }).join('');

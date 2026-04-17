@@ -198,7 +198,7 @@ extra_scripts: |
 <section class="page-header">
       <div class="container-xl">
         <h1>Birth-Death Tree Simulator</h1>
-        <div class="subtitle">Two trees, same rates, very different outcomes — the stochastic heart of macroevolution</div>
+        <div class="subtitle">Run two simulations with identical birth and death rates. The trees still look nothing alike.</div>
       </div>
     </section>
 
@@ -238,7 +238,7 @@ extra_scripts: |
           <div class="tree-panel">
             <div class="tree-panel-head">
               <span class="run-label">Run 1</span>
-              <span class="run-stats" id="stats1">—</span>
+              <span class="run-stats" id="stats1">,</span>
             </div>
             <div class="tree-canvas-wrap">
               <canvas class="tree-canvas" id="canvas1"></canvas>
@@ -248,7 +248,7 @@ extra_scripts: |
           <div class="tree-panel">
             <div class="tree-panel-head">
               <span class="run-label">Run 2</span>
-              <span class="run-stats" id="stats2">—</span>
+              <span class="run-stats" id="stats2">,</span>
             </div>
             <div class="tree-canvas-wrap">
               <canvas class="tree-canvas" id="canvas2"></canvas>
@@ -260,11 +260,11 @@ extra_scripts: |
         <!-- Explanation -->
         <div class="explanation" data-aos="fade-up">
           <h2>What are you looking at?</h2>
-          <p>Each panel simulates a <span class="highlight-text">birth-death process</span> starting from a single lineage. At any moment, each living lineage can speciate (split into two daughters, rate λ) or go extinct (rate μ). Both simulations use the same <em>parameter values</em> (λ and μ) — but because speciation and extinction are <span class="highlight-text">stochastic events</span>, the resulting trees are completely different every time. "Identical" here refers to rates, not outcomes.</p>
-          <p><em>Two consequences worth knowing.</em> (1) <strong>The pull of the present.</strong> Empirical phylogenies are conditioned on the clade surviving to the present &mdash; lineages that went extinct early are simply absent. This conditioning systematically biases naive extinction-rate estimates downward, and is why "extinction rate ≈ 0" estimates from molecular phylogenies should always be read with skepticism (Nee, May & Harvey 1994; Rabosky 2010). (2) <strong>Tree shape statistics</strong> &mdash; the Colless and Sackin imbalance indices, the gamma statistic &mdash; quantify how lopsided or front-loaded a tree is. The simulator's two trees can have wildly different Colless values despite identical rates, which is exactly why tree shape alone is a poor estimator of diversification rates: shape is a statistic of one stochastic realization, not a robust signal of the underlying process.</p>
+          <p>Each panel simulates a <span class="highlight-text">birth-death process</span> starting from a single lineage. At any moment, each living lineage can speciate (split into two daughters, rate λ) or go extinct (rate μ). Both simulations use the same <em>parameter values</em> (λ and μ). Because speciation and extinction are <span class="highlight-text">stochastic events</span>, the resulting trees are different every time. The rates are identical; the outcomes are not.</p>
+          <p>Two consequences worth knowing. (1) <strong>The pull of the present.</strong> Empirical phylogenies are conditioned on the clade surviving to the present. Lineages that went extinct early are simply absent. This conditioning systematically biases naive extinction-rate estimates downward, and is why "extinction rate ≈ 0" estimates from molecular phylogenies should always be read with skepticism (Nee, May & Harvey 1994; Rabosky 2010). (2) <strong>Tree shape statistics</strong> (the Colless and Sackin imbalance indices, the gamma statistic) quantify how lopsided or front-loaded a tree is. The simulator's two trees can have very different Colless values despite identical rates, which is exactly why tree shape alone is a poor estimator of diversification rates: shape is a statistic of one stochastic realization, not a robust signal of the underlying process.</p>
           <p><span class="highlight-text" style="color: #c9a227;">Gold branches</span> are lineages that survive to the present. <span class="highlight-text" style="color: rgba(100,90,80,0.9);">Grey branches</span> went extinct before the end time. <span style="color:rgba(220,80,60,0.8);">Red dots</span> mark extinction events.</p>
-          <p>This variability is why two clades evolving at the same rates can end up with very different numbers of species, and why detecting shifts in diversification rate requires careful statistical methods — a lot of the apparent signal can be noise. Try increasing μ toward λ (high turnover) and watch how often complete extinction occurs. Try low μ and high λ for explosive radiations.</p>
-          <p>The net diversification rate is <span class="highlight-text">r = λ − μ</span>. When r is small or negative, trees frequently go extinct entirely — even with a positive expected trajectory, any single realization can die out by chance (the <span class="highlight-text">stochastic extinction problem</span>).</p>
+          <p>This variability is why two clades evolving at the same rates can end up with very different numbers of species, and why detecting shifts in diversification rate requires careful statistical methods. A lot of the apparent signal can just be noise. Try increasing μ toward λ (high turnover) and watch how often complete extinction occurs. Try low μ and high λ for explosive radiations.</p>
+          <p>The net diversification rate is <span class="highlight-text">r = λ − μ</span>. When r is small or negative, trees frequently go extinct entirely. Even with a positive expected trajectory, any single realization can die out by chance (the <span class="highlight-text">stochastic extinction problem</span>).</p>
         </div>
 
         <!-- Nav buttons -->
