@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI in the lab · Blackmon Lab</title>
 <meta name="description" content="How the Blackmon Lab uses AI: literature-mining agents, an agent running a research project end-to-end, agent-readable publishing, and courses that put undergraduates on real problems.">
+<meta property="og:title" content="AI in the lab · Blackmon Lab">
+<meta property="og:description" content="How the Blackmon Lab uses AI: literature-mining agents, an agent running a research project end-to-end, agent-readable publishing, and courses that put undergraduates on real problems.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+<meta property="og:url" content="https://coleoguy.github.io/ai.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://coleoguy.github.io/ai.html">
+<meta name="author" content="Heath Blackmon">
 <link rel="icon" href="assets/img/favicon.ico">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,6 +124,8 @@
       Evolutionary biology has been running on Darwin's 1859 framework for 165 years. What's new is a layer of agents on top: software that reads the literature, pulls structured data out of it, and helps us run comparative work at scales a single lab cannot reach on its own. One of our projects hands a full research problem to an agent and lets it run. We expect it to fail, and that is the point.
     </p>
 
+    <p class="ai-role-note">AI handles search, extraction, and verification at scale. Researchers supply the questions, the skepticism, and the judgment. That division is non-negotiable.</p>
+
     <div class="stats-row">
       <div class="stat">
         <div class="stat-num">5</div>
@@ -136,14 +147,14 @@
 
     <div class="agent-box" id="agent-box">
       <span class="agent-line"><span class="agent-tag">TraitTrawler</span>127 papers triaged this week, 14 extractions validated</span>
-      <span class="agent-line"><span class="agent-tag">Lead Investigator</span>v0.7 currently working through claw-evolution hypotheses</span>
+      <span class="agent-line"><span class="agent-tag">Lead Investigator</span>in design — scaffolding and failure modes being stress-tested</span>
       <span class="agent-line"><span class="agent-tag">CUREs</span>41 karyotypes added this month by undergraduate researchers</span>
       <span class="agent-line"><span class="agent-tag">llms.txt</span>updated two days ago, 166KB agent context</span>
     </div>
 
     <!-- ── Projects ───────────────────────────────── -->
     <h2>Projects</h2>
-    <p>Five projects are active. Three are agents running unattended; one is an experiment in handing an agent a full research problem; one is a teaching tool built almost entirely by AI-assisted coding.</p>
+    <p>Five projects are active. Three are agents running semi-autonomously; one is an experiment in handing an agent a full research problem; one is a teaching tool built almost entirely by AI-assisted coding.</p>
 
     <details class="layer" open>
       <summary>
@@ -165,12 +176,12 @@
       <summary>
         <span class="layer-summary-text">
           <span class="sum-kicker">AI as lead investigator</span>
-          <span class="sum-head">An agent running a project end-to-end. We expect it to fail.</span>
-          <span class="sum-trail">A Claude-powered agent carrying a real problem in claw evolution from hypothesis to manuscript.</span>
+          <span class="sum-head">An experiment in whether an agent can carry a research problem start to finish.</span>
+          <span class="sum-trail">An experiment growing out of TraitTrawler: can an agent carry a research problem from literature to manuscript?</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>We handed a complete research problem to a Claude-powered agent and asked it to run the project: form hypotheses, select comparative methods, run analyses, draft a manuscript. We expect it to fail, and the failure is the point. Each breakdown teaches us how to design the next version: an agent that works at our side as scientific collaborator, programmer, and an army of students and postdocs, doing meaningful work when the task is correctly scoped, tested, and examined.</p>
+        <p>TraitTrawler proved an agent can extract structured trait data from the literature at scale. The natural next question is whether one can reason about it. We are building an experiment to find out — designing scaffolding that lets a Claude-powered agent carry a research problem from hypotheses through comparative analysis to a manuscript draft. We are still stress-testing each step. Every breakdown teaches us where the next version needs work. The goal is not a robot PI. It's an agent that works at our side as scientific collaborator, programmer, and an army of students and postdocs.</p>
         <div class="layer-links">
           <a href="research.html">Research program &rarr;</a>
         </div>
@@ -388,6 +399,8 @@
     <footer class="colophon">
       <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
       <span class="endpoints">
+        <a href="https://github.com/coleoguy" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:coleoguy@tamu.edu">Email</a>
         <a href="llms.txt">llms.txt</a>
         <a href="llms-full.txt">llms-full.txt</a>
         <a href="data/">/data</a>

@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI as lead investigator · Blackmon Lab</title>
 <meta name="description" content="An AI agent running a complete evolutionary-biology project from hypothesis to manuscript. We expect it to fail, and the failure is the point. Blackmon Lab at Texas A&M.">
+<meta property="og:title" content="AI as lead investigator · Blackmon Lab">
+<meta property="og:description" content="An AI agent running a complete evolutionary-biology project from hypothesis to manuscript. We expect it to fail, and the failure is the point. Blackmon Lab at Texas A&M.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+<meta property="og:url" content="https://coleoguy.github.io/lead-investigator.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://coleoguy.github.io/lead-investigator.html">
+<meta name="author" content="Heath Blackmon">
 <link rel="icon" href="assets/img/favicon.ico">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,20 +118,20 @@
 
     <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; LEAD INVESTIGATOR</div>
 
-    <h1 class="title">An AI agent, running a real research project.</h1>
+    <h1 class="title">Can an agent carry a research project start to finish?</h1>
 
     <p class="lede">
-      We handed a Claude-powered agent a complete research problem in claw evolution and asked it to carry the whole arc: form hypotheses, pick comparative methods, run the analyses, draft the manuscript. We expect it to fail, and the failure is the point. Each breakdown teaches us how to design the next version. The goal is not a robot PI. It's an agent that works at our side as scientific collaborator, programmer, and an army of students and postdocs, doing meaningful work when the task is correctly scoped, tested, and examined.
+      TraitTrawler proved an agent can extract structured trait data from the literature at scale. The natural next question is whether one can reason about it — form hypotheses, pick comparative methods, run the analyses, draft a manuscript. We are building an experiment to find out. We are still designing the scaffolding and stress-testing each step. Every breakdown teaches us how to design the next version. The goal is not a robot PI. It's an agent that works at our side as scientific collaborator, programmer, and an army of students and postdocs — doing meaningful work when the task is correctly scoped, tested, and examined.
     </p>
 
     <div class="stats-row">
       <div class="stat">
         <div class="stat-num">v0.7</div>
-        <span class="stat-label">Current agent version</span>
+        <span class="stat-label">Design iteration</span>
       </div>
       <div class="stat">
-        <div class="stat-num">1</div>
-        <span class="stat-label">Complete project underway</span>
+        <div class="stat-num">Active</div>
+        <span class="stat-label">Development status</span>
       </div>
       <div class="stat">
         <div class="stat-num">Claude</div>
@@ -135,28 +144,28 @@
     </div>
 
     <div class="agent-box">
-      <span class="agent-line"><span class="agent-tag">Task</span>claw evolution across Coleoptera, hypothesis through manuscript</span>
-      <span class="agent-line"><span class="agent-tag">Status</span>currently working through candidate hypotheses, cross-checking against the literature</span>
-      <span class="agent-line"><span class="agent-tag">Last human review</span>two days ago, structured critique of comparative-method choice</span>
-      <span class="agent-line"><span class="agent-tag">Failures logged</span>on track to publish; see the log once the project wraps</span>
+      <span class="agent-line"><span class="agent-tag">Scope</span>hypothesis formation through comparative analysis to manuscript draft</span>
+      <span class="agent-line"><span class="agent-tag">Status</span>designing scaffolding; stress-testing hypothesis-formation and literature-grounding steps</span>
+      <span class="agent-line"><span class="agent-tag">Origin</span>outgrowth of TraitTrawler — extraction at scale was step one; reasoning is step two</span>
+      <span class="agent-line"><span class="agent-tag">Failures logged</span>each breakdown is data; published as the design evolves</span>
     </div>
 
     <h2>Why we're doing this</h2>
     <p>There is a lot of hype right now about AI agents doing science. Most of it is either demos on synthetic problems or benchmark tests on narrow tasks. Very little of it tells you whether an agent can carry a real evolutionary-biology project end to end. We wanted to know.</p>
     <p>We also wanted a training corpus for the agent we actually want to build, which is not an autonomous scientist but a scientific collaborator. To design that, we need to understand where today's models break down on the specific shape of work we do. The only way to learn that is to push one until it breaks.</p>
 
-    <h2>What the agent is doing</h2>
+    <h2>What we're building</h2>
 
     <details class="layer" open>
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">Problem</span>
-          <span class="sum-head">Claw evolution in Coleoptera</span>
-          <span class="sum-trail">A real open question in the lab, not a synthetic benchmark.</span>
+          <span class="sum-kicker">Design</span>
+          <span class="sum-head">A real research problem, not a synthetic benchmark</span>
+          <span class="sum-trail">The same kind of problem a beginning graduate student would get.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Beetle tarsal claws vary wildly in shape, and the functional correlates are only partially understood. The agent was handed the same problem a beginning graduate student would get: morphological variation, a growing literature, and a phylogeny. It has access to comparative-methods libraries, the lab's karyotype and trait databases, and the relevant primary literature via retrieval. It does not have access to co-authors.</p>
+        <p>The agent will be given an open question from the lab's research program — morphological or genomic variation, a growing literature, and a phylogeny — the same inputs a beginning graduate student would get. It has access to comparative-methods libraries, the lab's trait and karyotype databases, and the primary literature via retrieval. It does not have access to co-authors. We are still deciding which problem to hand it; the scaffolding comes first.</p>
       </div>
     </details>
 
@@ -269,6 +278,8 @@
     <footer class="colophon">
       <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
       <span class="endpoints">
+        <a href="https://github.com/coleoguy" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:coleoguy@tamu.edu">Email</a>
         <a href="llms.txt">llms.txt</a>
         <a href="llms-full.txt">llms-full.txt</a>
         <a href="data/">/data</a>

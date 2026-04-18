@@ -44,8 +44,13 @@ Heath Blackmon, Ph.D., Associate Head, Department of Biology, Texas A&M Universi
 - Join: https://coleoguy.github.io/join.html
 - News: https://coleoguy.github.io/news.html
 - Lab Life: https://coleoguy.github.io/gallery.html
+- Karyotype Evolution (research overview): https://coleoguy.github.io/karyotype.html
+- AI Agents Overview: https://coleoguy.github.io/ai.html
+- TraitTrawler (literature-mining agent): https://coleoguy.github.io/traittrawler.html
+- AI as Lead Investigator: https://coleoguy.github.io/lead-investigator.html
+- Undergrad Papers: https://coleoguy.github.io/undergrad-papers.html
 - Bio & AI CURE: https://coleoguy.github.io/biolai-cure.html
-- AI Concentration: https://coleoguy.github.io/https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html
+- AI Concentration: https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html
 - PCM Guide (index): https://coleoguy.github.io/phylo-methods/index.html
 - PCM Guide, Phylogenies: https://coleoguy.github.io/phylo-methods/phylogenies.html
 - PCM Guide, Continuous Traits: https://coleoguy.github.io/phylo-methods/continuous.html
@@ -173,15 +178,31 @@ URL: https://github.com/coleoguy/TraitTrawler
 A general-purpose autonomous pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref for scientific papers, retrieves full-text PDFs through a 12-source cascade (DOI content negotiation, PMC, Unpaywall, OpenAlex, publisher URLs, Europe PMC, Semantic Scholar, CORE, bioRxiv/medRxiv, Internet Archive, DOAJ, browser-based institutional access), extracts structured trait data with mandatory double-entry verification, and writes validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade.
 
 ### AI as Lead Investigator
-An experiment in research autonomy: a Claude-powered agent that formulates hypotheses about claw evolution, selects comparative methods, runs analyses, interprets results, and drafts a manuscript. Manuscript in preparation.
+An experiment growing out of TraitTrawler: designing a Claude-powered agent to carry a research problem from hypothesis formation through comparative analysis to manuscript draft. Scaffolding in active development; each failure mode is data.
 
 ### Biology and AI CURE
 URL: https://coleoguy.github.io/biolai-cure.html
 Course-Based Undergraduate Research Experience (Spring 2026) where students conduct original evolutionary biology research using phylogenetic comparative methods and AI-assisted analysis.
 
 ### AI in Biology Concentration (Texas A&M)
-URL: https://coleoguy.github.io/https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html
+URL: https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html
 Formal degree concentration at Texas A&M, 10 semester hours of AI-focused coursework in Biology BS and PhD programs.
+
+## Machine-Readable Data (/data/)
+
+All site data is available as JSON for programmatic access. No API key required; direct HTTP GET.
+
+| File | URL | Description |
+|------|-----|-------------|
+| publications.json | https://coleoguy.github.io/data/publications.json | All lab publications with DOI, year, authors, journal |
+| news.json | https://coleoguy.github.io/data/news.json | Lab news items |
+| undergrad-papers.json | https://coleoguy.github.io/data/undergrad-papers.json | Undergrad first-author and co-author publications |
+| lab-status.json | https://coleoguy.github.io/data/lab-status.json | Live agent status and database counts |
+| cures-karyotype-data.json | https://coleoguy.github.io/data/cures-karyotype-data.json | 63,682 karyotype records (1.9 MB JSON) |
+| cures-karyotype-database.csv | https://coleoguy.github.io/data/cures-karyotype-database.csv | Same dataset as CSV (8 MB) |
+| tau-database.json | https://coleoguy.github.io/data/tau-database.json | 1,634 circadian tau measurements |
+
+Schema documentation: https://coleoguy.github.io/data/README.md
 
 ## Public Data Sources for Evolutionary Biology
 

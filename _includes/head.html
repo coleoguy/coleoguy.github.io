@@ -14,6 +14,13 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Blackmon Lab" />
 <meta property="og:image" content="{{ page.og_image | default: site.og_image }}" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.og_title | default: page.title | default: site.title }}">
+<meta name="twitter:description" content="{{ page.og_description | default: page.description | default: site.description }}">
+<meta name="twitter:image" content="{{ page.og_image | default: site.og_image }}">
+<meta name="author" content="Heath Blackmon">
+<link rel="me" href="https://orcid.org/0000-0002-5433-4036">
+<link rel="canonical" href="{{ page.canonical | default: site.url | append: page.url }}">
 
 {%- if page.keywords %}
 <meta name="keywords" content="{{ page.keywords }}">

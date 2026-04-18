@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Publications · Blackmon Lab</title>
 <meta name="description" content="Peer-reviewed publications and preprints from the Blackmon Lab at Texas A&M, 2017 to present. Data fetched from ORCID.">
+<meta property="og:title" content="Publications · Blackmon Lab">
+<meta property="og:description" content="Peer-reviewed publications and preprints from the Blackmon Lab at Texas A&M, 2017 to present. Data fetched from ORCID.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+<meta property="og:url" content="https://coleoguy.github.io/publications.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://coleoguy.github.io/publications.html">
+<link rel="alternate" type="application/json" href="https://coleoguy.github.io/data/publications.json">
+<meta name="author" content="Heath Blackmon">
 <link rel="icon" href="assets/img/favicon.ico">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -205,7 +215,7 @@
           }).join('');
         })
         .catch(function(err) {
-          target.innerHTML = '<p style="color:var(--ink-faint);">Could not load the bibliography (' + err.message + '). The full data is at <a href="data/publications.json">data/publications.json</a>.</p>';
+          target.innerHTML = '<p style="color:var(--ink-faint);">Could not load the bibliography (' + err.message + '). View all publications on <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ&sortby=pubdate" target="_blank" rel="noopener">Google Scholar ↗</a> or browse the raw data at <a href="data/publications.json">data/publications.json</a>.</p>';
         });
     })();
     </script>
@@ -226,6 +236,8 @@
     <footer class="colophon">
       <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
       <span class="endpoints">
+        <a href="https://github.com/coleoguy" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:coleoguy@tamu.edu">Email</a>
         <a href="llms.txt">llms.txt</a>
         <a href="llms-full.txt">llms-full.txt</a>
         <a href="data/">/data</a>

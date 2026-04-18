@@ -208,7 +208,7 @@ Active and recent projects using AI tools in the lab.
 TraitTrawler
 A general-purpose autonomous literature-mining pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref, retrieves full-text PDFs through a 12-source cascade, and extracts structured trait data with mandatory double-entry verification before writing validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade. https://github.com/coleoguy/TraitTrawler
 AI as Lead Investigator
-We gave a Claude-powered agent a complete research problem in claw evolution and asked it to carry the project from hypothesis to manuscript. The goal is to understand where AI reasoning works in biology and where it breaks down. Manuscript in preparation.
+An experiment growing out of TraitTrawler: designing a Claude-powered agent to carry a research problem from hypothesis formation through comparative analysis to manuscript draft. Scaffolding in active development; each failure mode is data for the next design iteration.
 RateScape
 Penalized likelihood method for estimating branch-specific rate scalars on phylogenies. We used AI tools throughout method development, simulation, and manuscript writing. Planned application to pathogen drug-resistance rate estimation (NHGRI PAR-25-228).
 Karyotype Databases

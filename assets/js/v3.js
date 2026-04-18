@@ -162,6 +162,41 @@
       .catch(() => {});
   }
 
+  // Mobile navigation toggle — injected into .column on small screens
+  (function() {
+    const sidebar = document.querySelector('.sidebar');
+    const mainCol = document.querySelector('.column');
+    if (!sidebar || !mainCol) return;
+
+    const openBtn = document.createElement('button');
+    openBtn.className = 'mobile-nav-btn';
+    openBtn.setAttribute('aria-label', 'Open navigation menu');
+    openBtn.textContent = '\u2630 Menu';
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'mobile-nav-close';
+    closeBtn.setAttribute('aria-label', 'Close navigation menu');
+    closeBtn.textContent = '\u2715 Close menu';
+    sidebar.insertBefore(closeBtn, sidebar.firstChild);
+
+    function openNav() {
+      sidebar.classList.add('mobile-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNav() {
+      sidebar.classList.remove('mobile-open');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    sidebar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', function() { if (window.innerWidth < 900) closeNav(); });
+    });
+
+    mainCol.insertBefore(openBtn, mainCol.firstChild);
+  })();
+
   // News feed (fires only if the page has a target)
   const newsTarget = document.getElementById('recent-news');
   if (newsTarget) {
