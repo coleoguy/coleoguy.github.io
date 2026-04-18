@@ -93,14 +93,14 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 10px; }
 
 .brand {
-  display: flex; align-items: baseline; gap: 10px;
+  display: flex; align-items: center; gap: 10px;
   margin-bottom: 10px;
 }
 .brand .root-dot {
   width: 9px; height: 9px; border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
-  transform: translateY(-1px);
+  transform: translateZ(0);
 }
 .brand .brand-name {
   font-weight: 600;
@@ -158,17 +158,6 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   background: var(--branch);
 }
 
-/* Connector from brand root-dot down to trunk */
-.brand { position: relative; }
-.brand::after {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  bottom: -10px;
-  width: 1px;
-  background: var(--branch);
-}
 
 .tree > li > a, .tree > li > span {
   font-family: var(--font-mono);
