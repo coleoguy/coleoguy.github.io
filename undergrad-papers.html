@@ -190,7 +190,7 @@
     <h1 class="title">Undergraduate-led papers</h1>
 
     <p class="lede">
-      A core conviction of this lab is that undergraduates can do original science, not just assist with it. The papers below have an undergraduate as first author. Each one represents a project conceived, executed, and written by a student who was still completing their bachelor's degree.
+      A core conviction of this lab is that undergraduates can do original science, not just assist with it. Eight papers have an undergraduate as first author; six more undergrads appear as co-authors on additional publications. Twelve undergraduates in total have contributed to the peer-reviewed literature from this lab.
     </p>
 
     <div class="stats-row">
@@ -199,20 +199,21 @@
         <span class="stat-label">First-author papers</span>
       </div>
       <div class="stat">
-        <div class="stat-num">6</div>
-        <span class="stat-label">Undergraduate authors</span>
+        <div class="stat-num">12</div>
+        <span class="stat-label">Undergrads with publications</span>
       </div>
-      <div class="stat">
-        <div class="stat-num">2019–2024</div>
-        <span class="stat-label">Years active</span>
-      </div>
-      <div class="stat">
-        <div class="stat-num">5 of 6</div>
+<div class="stat">
+        <div class="stat-num">5</div>
         <span class="stat-label">Now in PhD programs</span>
       </div>
     </div>
 
+    <h2>First-author papers</h2>
     <div id="ug-papers-list" class="ug-list"></div>
+
+    <h2>Co-author contributions</h2>
+    <p>These undergraduates contributed as co-authors on papers led by graduate students or faculty.</p>
+    <div id="ug-coauthor-list" class="ug-list"></div>
 
     <footer class="colophon">
       <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
@@ -348,6 +349,125 @@
 </div>`;
     }).join('');
     return `<h3 class="year-heading">${esc(y)}</h3>${items}`;
+  }).join('');
+})();
+</script>
+
+<script>
+(function () {
+  const coauthors = [
+    {
+      name: "Max Chin",
+      author_now: "PhD student · UC Davis",
+      papers: [
+        {
+          title: "Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora",
+          full_authors: "Michelle M. Jonika, Kayla T. Wilhoit, Maximos Chin, Abhimanyu Arekere, Heath Blackmon",
+          journal: "Journal of Heredity",
+          year: 2024,
+          doiUrl: "https://doi.org/10.1093/jhered/esae025"
+        },
+        {
+          title: "Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution",
+          full_authors: "Jorja Burch, Maximos Chin, Brian E. Fontenot, Sabyasachi Mandal, Thomas D. McKnight, Jeffery P. Demuth, Heath Blackmon",
+          journal: "Evolution",
+          year: 2024,
+          doiUrl: "https://doi.org/10.1093/evolut/qpae003"
+        }
+      ]
+    },
+    {
+      name: "Zachary Hoover",
+      author_now: "PhD student · TAMU",
+      papers: [
+        {
+          title: "A reference quality genome assembly for the jewel scarab Chrysina gloriosa",
+          full_authors: "Terrence Sylvester, Zachary Hoover, Carl E. Hjelmen, Michelle M. Jonika, Leslie T. Blackmon, James M. Alfieri, J. Spencer Johnston, Sean Chien, Tahmineh Esfandani, Heath Blackmon",
+          journal: "G3: Genes, Genomes, and Genetics",
+          year: 2024,
+          doiUrl: "https://doi.org/10.1093/g3journal/jkae084"
+        }
+      ]
+    },
+    {
+      name: "Crystal Nava",
+      author_now: "PhD student · TAMU",
+      papers: [
+        {
+          title: "Assessing the opportunity for selection to impact morphological traits in crosses between populations",
+          full_authors: "Jorja Burch, Crystal Nava, Heath Blackmon",
+          journal: "PeerJ",
+          year: 2024,
+          doiUrl: "https://doi.org/10.7717/peerj.17985"
+        }
+      ]
+    },
+    {
+      name: "Amy Shum",
+      author_now: null,
+      papers: [
+        {
+          title: "A database of amphibian karyotypes",
+          full_authors: "Riddhi D. Perkins, Julio Rincones Gamboa, Michelle M. Jonika, Johnathan Lo, Amy Shum, Richard H. Adams, Heath Blackmon",
+          journal: "Chromosome Research",
+          year: 2019,
+          doiUrl: "https://doi.org/10.1007/s10577-019-09613-1"
+        }
+      ]
+    },
+    {
+      name: "Abhimanyu Arekere",
+      author_now: null,
+      papers: [
+        {
+          title: "Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora",
+          full_authors: "Michelle M. Jonika, Kayla T. Wilhoit, Maximos Chin, Abhimanyu Arekere, Heath Blackmon",
+          journal: "Journal of Heredity",
+          year: 2024,
+          doiUrl: "https://doi.org/10.1093/jhered/esae025"
+        }
+      ]
+    },
+    {
+      name: "Leen Fardoun",
+      author_now: null,
+      papers: [
+        {
+          title: "Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera",
+          full_authors: "Heath Blackmon, Michelle M. Jonika, James M. Alfieri, Leen Fardoun, Jeffery P. Demuth",
+          journal: "Journal of Heredity",
+          year: 2024,
+          doiUrl: "https://doi.org/10.1093/jhered/esae001"
+        }
+      ]
+    }
+  ];
+
+  const target = document.getElementById('ug-coauthor-list');
+  if (!target) return;
+
+  function esc(s) {
+    return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  target.innerHTML = coauthors.map(person => {
+    const nowHtml = person.author_now
+      ? `<span class="ug-now">${esc(person.author_now)}</span>`
+      : '';
+    const papersHtml = person.papers.map(p =>
+      `<div style="margin-bottom:10px;">
+        <a class="ug-paper-title" href="${esc(p.doiUrl)}" target="_blank" rel="noopener">${esc(p.title)}</a>
+        <div class="ug-paper-meta">
+          <span class="ug-journal">${esc(p.journal)}</span> &middot; ${esc(String(p.year))} &middot; ${esc(p.full_authors)}
+        </div>
+      </div>`
+    ).join('');
+    return `<div class="ug-entry">
+  <div class="ug-author-block">
+    <span class="ug-name">${esc(person.name)}</span>${nowHtml}
+  </div>
+  <div class="ug-paper-body">${papersHtml}</div>
+</div>`;
   }).join('');
 })();
 </script>

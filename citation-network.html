@@ -433,8 +433,15 @@
     let yearMin = 2012, yearMax = 2026;
 
     // Gold → teal color ramp matching site palette
-    const colorFor = year =>
-      d3.interpolateRgb('var(--accent)', '#34d399')((year - yearMin) / Math.max(1, yearMax - yearMin));
+    // CSS variables must be resolved at runtime — D3 cannot parse 'var(--accent)' directly
+    let _colorInterp = null;
+    const colorFor = year => {
+      if (!_colorInterp) {
+        const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#500000';
+        _colorInterp = d3.interpolateRgb(accent, '#34d399');
+      }
+      return _colorInterp((year - yearMin) / Math.max(1, yearMax - yearMin));
+    };
 
     const nodeR = citations => Math.max(5, Math.min(28, 4.5 + Math.sqrt(citations) * 1.9));
 
