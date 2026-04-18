@@ -196,12 +196,13 @@
     </div>
 
     <div class="ask-bar">
-      <label for="ask-input" class="ask-label">Ask our NotebookLM</label>
+      <label for="ask-input" class="ask-label">Ask the lab</label>
       <form class="ask-form" id="ask-form" onsubmit="return askTheLab(event);">
         <input type="text" id="ask-input" placeholder="What kinds of sex chromosome systems have you found in beetles?" autocomplete="off">
-        <button type="submit" aria-label="Send">&rarr;</button>
+        <button type="submit" id="ask-submit" aria-label="Send">&rarr;</button>
       </form>
-      <p class="ask-note">Your question gets copied to the clipboard and the notebook opens in a pinned tab. The notebook is indexed on every paper and page in the lab.</p>
+      <div id="ask-answer" class="ask-answer"></div>
+      <p class="ask-note">Indexed on every paper and page in the lab. <a href="https://notebooklm.google.com/notebook/6a3182b5-d5fe-471e-8513-a68c672d8f28" target="blackmon-notebooklm" rel="noopener">Open NotebookLM →</a></p>
     </div>
 
     <!-- ── What we work on ────────────────────────────── -->

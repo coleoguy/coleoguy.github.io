@@ -3,6 +3,7 @@
 (function () {
   const NOTEBOOK_URL = 'https://notebooklm.google.com/notebook/6a3182b5-d5fe-471e-8513-a68c672d8f28';
   const NB_TAB = 'blackmon-notebooklm';
+  const WORKER_URL = 'https://blackmon-lab-chat.blackmon.workers.dev';
 
   // Theme toggle
   const root = document.documentElement;
@@ -96,34 +97,91 @@
     });
   }
 
-  // Ask the lab (clipboard + pinned NotebookLM tab)
+  // Ask the lab — streams answer from Cloudflare Worker (Gemini 2.0 Flash).
+  // Falls back to clipboard + NotebookLM when WORKER_URL is not set.
   window.askTheLab = function (e) {
     e.preventDefault();
     const field = document.getElementById('ask-input');
+    const submit = document.getElementById('ask-submit');
+    const answerDiv = document.getElementById('ask-answer');
     const toast = document.getElementById('ask-toast');
     const q = (field?.value || '').trim();
-    const flash = (msg) => {
-      if (!toast) return;
-      toast.textContent = msg;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2400);
-    };
+
     if (!q) {
       window.open(NOTEBOOK_URL, NB_TAB);
       return false;
     }
-    const openAndFlash = (copied) => {
-      window.open(NOTEBOOK_URL, NB_TAB);
-      flash(copied ? 'Question copied. Paste it into the NotebookLM tab.' : 'NotebookLM opened. Paste your question.');
-      if (field) field.value = '';
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(q)
-        .then(() => openAndFlash(true))
-        .catch(() => openAndFlash(false));
-    } else {
-      openAndFlash(false);
+
+    if (!WORKER_URL) {
+      const flash = (msg) => {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2400);
+      };
+      const openAndFlash = (copied) => {
+        window.open(NOTEBOOK_URL, NB_TAB);
+        flash(copied ? 'Question copied. Paste it into the NotebookLM tab.' : 'NotebookLM opened. Paste your question.');
+        if (field) field.value = '';
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(q).then(() => openAndFlash(true)).catch(() => openAndFlash(false));
+      } else {
+        openAndFlash(false);
+      }
+      return false;
     }
+
+    if (field) field.disabled = true;
+    if (submit) submit.disabled = true;
+    if (answerDiv) {
+      answerDiv.classList.add('show');
+      answerDiv.innerHTML = '<span class="ask-thinking">Thinking</span>';
+    }
+
+    fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: q })
+    })
+      .then(r => r.json())
+      .then(data => {
+        if (!answerDiv) return;
+        if (data.answer) {
+          const p = document.createElement('p');
+          p.style.margin = '0';
+          p.textContent = data.answer;
+          const link = document.createElement('a');
+          link.href = NOTEBOOK_URL;
+          link.target = NB_TAB;
+          link.rel = 'noopener';
+          link.className = 'ask-nb-link';
+          link.textContent = 'Go deeper in NotebookLM →';
+          answerDiv.innerHTML = '';
+          answerDiv.appendChild(p);
+          answerDiv.appendChild(link);
+        } else {
+          throw new Error('empty');
+        }
+      })
+      .catch(() => {
+        if (!answerDiv) return;
+        const span = document.createElement('span');
+        span.className = 'ask-error';
+        span.textContent = "Couldn't get a response. ";
+        const link = document.createElement('a');
+        link.href = NOTEBOOK_URL;
+        link.target = NB_TAB;
+        link.textContent = 'Open NotebookLM →';
+        answerDiv.innerHTML = '';
+        answerDiv.appendChild(span);
+        answerDiv.appendChild(link);
+      })
+      .finally(() => {
+        if (field) { field.disabled = false; field.value = ''; }
+        if (submit) submit.disabled = false;
+      });
+
     return false;
   };
 

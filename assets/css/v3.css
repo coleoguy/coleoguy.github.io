@@ -598,6 +598,41 @@ footer.colophon .endpoints a {
   color: var(--ink-faint);
   margin-top: 10px;
 }
+.ask-note a { color: var(--ink-faint); }
+.ask-note a:hover { color: var(--accent); }
+.ask-answer {
+  display: none;
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: var(--paper-sunk);
+  border-left: 2px solid var(--accent);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-dim);
+  border-radius: 0 4px 4px 0;
+}
+.ask-answer.show { display: block; }
+.ask-thinking {
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.ask-thinking::after {
+  content: '▌';
+  animation: blink-cursor 0.9s step-end infinite;
+}
+@keyframes blink-cursor { 50% { opacity: 0; } }
+.ask-answer .ask-error { color: var(--accent); }
+.ask-nb-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.ask-nb-link:hover { color: var(--accent); }
 .ask-toast {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
   background: var(--ink); color: var(--paper);
