@@ -22,13 +22,22 @@
     });
   }
 
-  // Collapsible sidebar tree categories — collapsed by default, open if active link inside
+  // Collapsible sidebar tree — persisted in localStorage, active section always open
+  const TREE_KEY = 'sidebar-open';
+  function treeGetOpen() {
+    try { return JSON.parse(localStorage.getItem(TREE_KEY)) || []; } catch(e) { return []; }
+  }
+  function treeSaveOpen() {
+    const names = [...document.querySelectorAll('.tree > li.open > span')].map(s => s.textContent.trim());
+    try { localStorage.setItem(TREE_KEY, JSON.stringify(names)); } catch(e) {}
+  }
+  const savedOpen = treeGetOpen();
   document.querySelectorAll('.tree > li > span').forEach(span => {
     const li = span.parentElement;
     const ul = li.querySelector(':scope > ul');
     if (!ul) return;
-    if (ul.querySelector('a.active')) li.classList.add('open');
-    span.addEventListener('click', () => li.classList.toggle('open'));
+    if (ul.querySelector('a.active') || savedOpen.includes(span.textContent.trim())) li.classList.add('open');
+    span.addEventListener('click', () => { li.classList.toggle('open'); treeSaveOpen(); });
   });
 
   // Command palette
