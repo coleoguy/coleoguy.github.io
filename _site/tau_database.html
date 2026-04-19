@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tau database · Blackmon Lab</title>
+<meta name="description" content="Searchable database of free-running circadian period (tau) measurements across the tree of life. Blackmon Lab, Texas A&M University.">
+<meta property="og:title" content="Tau database · Blackmon Lab">
+<meta property="og:description" content="Searchable database of free-running circadian period (tau) measurements across the tree of life. Blackmon Lab, Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+<meta property="og:url" content="https://coleoguy.github.io/tau_database.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://coleoguy.github.io/tau_database.html">
+<link rel="alternate" type="application/json" href="https://coleoguy.github.io/data/tau-database.json">
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+<style>
+  /* ── Stats row ────────────────────────────────────────── */
+  .tau-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin: 28px 0;
+  }
+  .tau-stat {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .tau-stat .snum {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+  .tau-stat .slabel {
+    display: block;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    margin-top: 5px;
+  }
+
+  /* ── Tabs ─────────────────────────────────────────────── */
+  .tau-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+  .tau-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color .2s, border-color .2s;
+    letter-spacing: .3px;
+  }
+  .tau-tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tau-tab-btn:hover:not(.active) { color: var(--ink-dim); }
+  .tau-pane { display: none; }
+  .tau-pane.active { display: block; }
+
+  /* ── Plot cards ───────────────────────────────────────── */
+  .plot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 800px) { .plot-grid { grid-template-columns: 1fr; } }
+  .plot-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .plot-card h3 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: .7px;
+    margin-bottom: 12px;
+  }
+  .plot-card.full { grid-column: 1 / -1; }
+
+  /* ── Custom builder ───────────────────────────────────── */
+  .builder-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 14px;
+  }
+  .builder-row label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .builder-row select {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 6px 8px;
+    background: var(--paper-sunk, var(--paper));
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    min-width: 140px;
+    outline: none;
+  }
+  .builder-row select:focus { border-color: var(--accent); }
+  .draw-btn {
+    padding: 7px 18px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--rule-strong, var(--rule));
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .draw-btn:hover { background: var(--accent); color: #0a0a0a; }
+
+  /* ── Data tab ─────────────────────────────────────────── */
+  .data-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+    margin-bottom: 16px;
+  }
+  .data-controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .data-controls select,
+  .data-controls input[type=text] {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 6px 8px;
+    background: var(--paper-sunk, var(--paper));
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    outline: none;
+  }
+  .data-controls input[type=text] { width: 180px; }
+  .data-controls select:focus,
+  .data-controls input:focus { border-color: var(--accent); }
+  .reset-btn {
+    padding: 7px 14px;
+    background: transparent;
+    color: var(--ink-faint);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all .2s;
+    align-self: flex-end;
+  }
+  .reset-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .dl-btn {
+    padding: 7px 14px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--rule-strong, var(--rule));
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    align-self: flex-end;
+  }
+  .dl-btn:hover { background: var(--accent); color: #0a0a0a; }
+
+  .row-badge {
+    display: inline-block;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--rule);
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    margin-left: 8px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  thead { position: sticky; top: 0; background: var(--paper-raised); }
+  th {
+    padding: 8px 10px;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--ink-dim);
+    border-bottom: 2px solid var(--rule);
+  }
+  th:hover { color: var(--accent); }
+  td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  tr:hover td { background: var(--paper-raised); }
+  td a { color: var(--accent); text-decoration: none; }
+  td a:hover { text-decoration: underline; }
+  .sort-arrow { font-size: 9px; margin-left: 3px; color: var(--accent); }
+
+  /* ── Error banner ─────────────────────────────────────── */
+  .load-error {
+    background: var(--accent-dim);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 18px 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-dim);
+    margin: 24px 0;
+  }
+  .load-error strong { color: var(--ink); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Tau Database",
+  "description": "Searchable database of free-running circadian period (tau) measurements across the tree of life, curated by the Blackmon Lab at Texas A&M University.",
+  "url": "https://coleoguy.github.io/tau_database.html",
+  "creator": {
+    "@type": "Organization",
+    "name": "Blackmon Lab",
+    "url": "https://coleoguy.github.io"
+  },
+  "keywords": ["circadian rhythm", "tau", "free-running period", "comparative biology", "tree of life"]
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Essays</span>
+      <ul>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Databases</span>
+      <ul>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/karyotypes/index.html">Six karyotype DBs</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Research</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; adaptation</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Organisms</span>
+      <ul>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI agents</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Tools</span>
+      <ul>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+    <div class="crumb">
+      <a href="index.html">Home</a> › <a href="tau_database.html">Databases</a> › <strong>Tau database</strong>
+    </div>
+
+    <h1 class="title" id="tau">Circadian Period (&tau;) Database</h1>
+
+    <p class="lede">
+      The free-running circadian period, &tau;, is the period of an organism's biological clock measured without external time cues. This database compiles &tau; measurements from the primary literature across bacteria, fungi, plants, protists, and animals. Each record includes the mean &tau;, experimental light condition, species, genotype, and source citation.
+    </p>
+
+    <!-- Stats computed from data -->
+    <div class="tau-stats" id="tau-stats">
+      <div class="tau-stat"><span class="snum">—</span><span class="slabel">Records</span></div>
+      <div class="tau-stat"><span class="snum">—</span><span class="slabel">Species</span></div>
+      <div class="tau-stat"><span class="snum">—</span><span class="slabel">Classes</span></div>
+      <div class="tau-stat"><span class="snum">—</span><span class="slabel">Median &tau; (hrs)</span></div>
+    </div>
+
+    <div id="load-error" class="load-error" style="display:none;">
+      <strong>Data couldn't be loaded.</strong> This page fetches <code>data/tau-database.json</code>; open it through a web server or on GitHub Pages rather than directly from your filesystem.
+    </div>
+
+    <!-- Tabs -->
+    <div class="tau-tabs">
+      <button class="tau-tab-btn active" data-tab="plots">Plots</button>
+      <button class="tau-tab-btn" data-tab="data">Data</button>
+    </div>
+
+    <!-- ── Plots pane ─────────────────────────────────── -->
+    <div class="tau-pane active" id="tau-pane-plots">
+      <div class="plot-grid">
+        <div class="plot-card">
+          <h3>&tau; Distribution (all records)</h3>
+          <div id="p-hist"></div>
+        </div>
+        <div class="plot-card">
+          <h3>&tau; by Taxonomic Class</h3>
+          <div id="p-class"></div>
+        </div>
+        <div class="plot-card">
+          <h3>&tau; by Light Condition</h3>
+          <div id="p-light"></div>
+        </div>
+        <div class="plot-card">
+          <h3>Records by Order (top 20)</h3>
+          <div id="p-order"></div>
+        </div>
+      </div>
+
+      <div class="plot-card full">
+        <h3>Custom Plot Builder</h3>
+        <div class="builder-row">
+          <label>Plot type
+            <select id="b-type">
+              <option value="histogram">Histogram</option>
+              <option value="box" selected>Box</option>
+              <option value="scatter">Scatter</option>
+              <option value="bar">Bar (count)</option>
+            </select>
+          </label>
+          <label>X axis
+            <select id="b-x">
+              <option value="class">Class</option>
+              <option value="order">Order</option>
+              <option value="kingdom">Kingdom</option>
+              <option value="light_condition">Light condition</option>
+              <option value="sex">Sex</option>
+              <option value="tau_mean_hours">τ mean (hrs)</option>
+            </select>
+          </label>
+          <label id="b-y-wrap">Y axis
+            <select id="b-y">
+              <option value="tau_mean_hours" selected>τ mean (hrs)</option>
+              <option value="tau_sd_hours">τ SD</option>
+              <option value="sample_size">Sample size</option>
+              <option value="paper_year">Year</option>
+            </select>
+          </label>
+          <label>Color by
+            <select id="b-color">
+              <option value="kingdom" selected>Kingdom</option>
+              <option value="class">Class</option>
+              <option value="order">Order</option>
+              <option value="light_condition">Light condition</option>
+              <option value="sex">Sex</option>
+            </select>
+          </label>
+          <button class="draw-btn" onclick="drawCustom()">Draw</button>
+        </div>
+        <div id="p-custom"></div>
+      </div>
+    </div>
+
+    <!-- ── Data pane ──────────────────────────────────── -->
+    <div class="tau-pane" id="tau-pane-data">
+      <div class="data-controls">
+        <label>Search
+          <input type="text" id="d-search" placeholder="species, strain, author…">
+        </label>
+        <label>Class
+          <select id="d-class"><option value="">All</option></select>
+        </label>
+        <label>Order
+          <select id="d-order"><option value="">All</option></select>
+        </label>
+        <label>Light
+          <select id="d-light"><option value="">All</option></select>
+        </label>
+        <label>Sex
+          <select id="d-sex"><option value="">All</option></select>
+        </label>
+        <button class="reset-btn" onclick="resetFilters()">Reset</button>
+        <button class="dl-btn" onclick="downloadCSV()">Download CSV</button>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--ink-dim);">
+          Showing <span id="row-count" class="row-badge">—</span> records
+        </span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr id="t-head"></tr></thead>
+          <tbody id="t-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="colophon">
+      <span><a href="index.html">Blackmon Lab</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Department of Biology</a> · <a href="https://www.tamu.edu/" target="_blank" rel="noopener">Texas A&amp;M University</a></span>
+      <span class="endpoints">
+        <a href="https://github.com/coleoguy" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:blackmon@tamu.edu">Email</a>
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  var allData = [];
+  var filteredData = [];
+  var sortCol = null, sortAsc = true;
+
+  /* ── Theme colors ──────────────────────────────────── */
+  function theme() {
+    var light = (document.documentElement.getAttribute('data-theme') || 'light') === 'light';
+    return {
+      paper:  light ? '#f9f7f4' : '#0f1117',
+      plot:   light ? '#f0ede8' : '#161820',
+      text:   light ? '#1a1917' : '#d0cdc8',
+      grid:   light ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.07)',
+      accent: '#d4a855',
+      green:  '#34d399',
+      light:  light
+    };
+  }
+
+  function plotlyLayout(extra) {
+    var t = theme();
+    var base = {
+      paper_bgcolor: t.paper,
+      plot_bgcolor:  t.plot,
+      font: { color: t.text, family: '"JetBrains Mono", monospace', size: 10 },
+      margin: { t: 20, r: 16, b: 60, l: 56 },
+      xaxis: { gridcolor: t.grid, linecolor: t.grid, zerolinecolor: t.grid },
+      yaxis: { gridcolor: t.grid, linecolor: t.grid, zerolinecolor: t.grid },
+      showlegend: false,
+    };
+    return Object.assign(base, extra || {});
+  }
+
+  var cfg = { responsive: true, displayModeBar: false };
+
+  /* ── Load data ─────────────────────────────────────── */
+  function loadData() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'data/tau-database.json', true);
+    xhr.onload = function () {
+      if (xhr.status === 0 || (xhr.status >= 200 && xhr.status < 300)) {
+        try {
+          allData = JSON.parse(xhr.responseText);
+          filteredData = allData.slice();
+          init();
+        } catch (e) {
+          showError();
+        }
+      } else {
+        showError();
+      }
+    };
+    xhr.onerror = function () { showError(); };
+    xhr.send();
+  }
+
+  function showError() {
+    document.getElementById('load-error').style.display = '';
+  }
+
+  /* ── Init after data loads ─────────────────────────── */
+  function init() {
+    updateStats();
+    populateFilters();
+    drawPlots();
+    setupTabs();
+    setupFilters();
+    renderTable();
+    // Rebuild on theme change
+    new MutationObserver(function (ms) {
+      ms.forEach(function (m) {
+        if (m.attributeName === 'data-theme') { drawPlots(); drawCustom(); }
+      });
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+
+  /* ── Stats row ─────────────────────────────────────── */
+  function updateStats() {
+    var taus = allData.map(function (r) { return r.tau_mean_hours; }).filter(Boolean);
+    var species = new Set(allData.map(function (r) { return (r.genus || '') + ' ' + (r.species || ''); })).size;
+    var classes = new Set(allData.map(function (r) { return r.class; }).filter(Boolean)).size;
+    taus.sort(function (a, b) { return a - b; });
+    var med = taus.length ? taus[Math.floor(taus.length / 2)].toFixed(2) : '—';
+    var el = document.getElementById('tau-stats');
+    el.innerHTML =
+      stat(allData.length.toLocaleString(), 'Records') +
+      stat(species.toLocaleString(), 'Species') +
+      stat(classes, 'Classes') +
+      stat(med, 'Median &tau; (hrs)');
+  }
+  function stat(val, label) {
+    return '<div class="tau-stat"><span class="snum">' + val + '</span><span class="slabel">' + label + '</span></div>';
+  }
+
+  /* ── Tabs ──────────────────────────────────────────── */
+  function setupTabs() {
+    document.querySelectorAll('.tau-tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.tau-tab-btn').forEach(function (b) { b.classList.remove('active'); });
+        document.querySelectorAll('.tau-pane').forEach(function (p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        document.getElementById('tau-pane-' + btn.dataset.tab).classList.add('active');
+        if (btn.dataset.tab === 'plots') { drawPlots(); drawCustom(); }
+      });
+    });
+  }
+
+  /* ── Plotly helpers ────────────────────────────────── */
+  function vals(data, key) {
+    return data.map(function (r) { return r[key]; }).filter(function (v) { return v != null; });
+  }
+
+  var PALETTE = [
+    '#d4a855','#34d399','#60a5fa','#f472b6','#a78bfa',
+    '#fb923c','#38bdf8','#4ade80','#e879f9','#facc15',
+    '#f87171','#2dd4bf','#818cf8','#fbbf24','#86efac'
+  ];
+
+  function colorFor(key, values) {
+    var uniq = Array.from(new Set(values.filter(Boolean))).sort();
+    var map = {};
+    uniq.forEach(function (v, i) { map[v] = PALETTE[i % PALETTE.length]; });
+    return { map: map, uniq: uniq };
+  }
+
+  /* ── Fixed plots ───────────────────────────────────── */
+  function drawPlots() {
+    if (!allData.length) return;
+    var t = theme();
+
+    // 1. Histogram of τ distribution
+    var tauVals = allData.map(function (r) { return r.tau_mean_hours; }).filter(function (v) { return v >= 16 && v <= 36; });
+    Plotly.react('p-hist', [{
+      type: 'histogram', x: tauVals, nbinsx: 40,
+      marker: { color: t.accent, opacity: 0.85 }
+    }], plotlyLayout({
+      xaxis: { title: 'τ (hours)', gridcolor: t.grid },
+      yaxis: { title: 'Count', gridcolor: t.grid }
+    }), cfg);
+
+    // 2. Box by class (≥8 records)
+    var classCounts = {};
+    allData.forEach(function (r) { if (r.class) classCounts[r.class] = (classCounts[r.class] || 0) + 1; });
+    var bigClasses = Object.keys(classCounts).filter(function (c) { return classCounts[c] >= 8; });
+    // Sort by median tau
+    var classMeds = {};
+    bigClasses.forEach(function (c) {
+      var ts = allData.filter(function (r) { return r.class === c; }).map(function (r) { return r.tau_mean_hours; }).filter(Boolean).sort(function (a, b) { return a - b; });
+      classMeds[c] = ts[Math.floor(ts.length / 2)] || 24;
+    });
+    bigClasses.sort(function (a, b) { return classMeds[a] - classMeds[b]; });
+    var classTraces = bigClasses.map(function (c, i) {
+      return {
+        type: 'box', name: c,
+        y: allData.filter(function (r) { return r.class === c; }).map(function (r) { return r.tau_mean_hours; }).filter(Boolean),
+        marker: { color: PALETTE[i % PALETTE.length] },
+        boxpoints: false, showlegend: false
+      };
+    });
+    Plotly.react('p-class', classTraces, plotlyLayout({
+      xaxis: { tickangle: -35, gridcolor: t.grid },
+      yaxis: { title: 'τ (hours)', gridcolor: t.grid },
+      margin: { t: 20, r: 16, b: 100, l: 56 }
+    }), cfg);
+
+    // 3. Box by light condition (simplify to main groups)
+    var lightMap = { 'DD': 'DD', 'LL': 'LL', 'LD': 'LD' };
+    var lightData = {};
+    allData.forEach(function (r) {
+      var lc = r.light_condition || '';
+      var grp = lightMap[lc] || (lc.indexOf('LL') === 0 ? 'LL_other' : lc ? 'Other' : null);
+      if (grp) { lightData[grp] = lightData[grp] || []; lightData[grp].push(r.tau_mean_hours); }
+    });
+    var lightOrder = ['DD', 'LL', 'LD', 'LL_other', 'Other'];
+    var lightTraces = lightOrder.filter(function (g) { return lightData[g] && lightData[g].length >= 5; }).map(function (g, i) {
+      return {
+        type: 'box', name: g,
+        y: lightData[g].filter(Boolean),
+        marker: { color: PALETTE[i % PALETTE.length] },
+        boxpoints: false, showlegend: false
+      };
+    });
+    Plotly.react('p-light', lightTraces, plotlyLayout({
+      yaxis: { title: 'τ (hours)', gridcolor: t.grid },
+      xaxis: { gridcolor: t.grid }
+    }), cfg);
+
+    // 4. Bar by order (top 20)
+    var orderCounts = {};
+    allData.forEach(function (r) { if (r.order) orderCounts[r.order] = (orderCounts[r.order] || 0) + 1; });
+    var topOrders = Object.entries(orderCounts).sort(function (a, b) { return b[1] - a[1]; }).slice(0, 20);
+    Plotly.react('p-order', [{
+      type: 'bar',
+      x: topOrders.map(function (e) { return e[0]; }),
+      y: topOrders.map(function (e) { return e[1]; }),
+      marker: { color: topOrders.map(function (_, i) { return PALETTE[i % PALETTE.length]; }) }
+    }], plotlyLayout({
+      xaxis: { tickangle: -40, gridcolor: t.grid },
+      yaxis: { title: 'Records', gridcolor: t.grid },
+      margin: { t: 20, r: 16, b: 120, l: 56 }
+    }), cfg);
+  }
+
+  /* ── Custom plot builder ───────────────────────────── */
+  window.drawCustom = function () {
+    if (!allData.length) return;
+    var t = theme();
+    var type   = document.getElementById('b-type').value;
+    var xKey   = document.getElementById('b-x').value;
+    var yKey   = document.getElementById('b-y').value;
+    var colKey = document.getElementById('b-color').value;
+
+    // Show/hide y-axis selector
+    var showY = (type === 'box' || type === 'scatter' || type === 'histogram');
+    document.getElementById('b-y-wrap').style.display = (type === 'bar') ? 'none' : '';
+
+    var colorInfo = colorFor(colKey, allData.map(function (r) { return r[colKey]; }));
+    var traces = [];
+
+    if (type === 'histogram') {
+      colorInfo.uniq.forEach(function (cv, i) {
+        var xs = allData.filter(function (r) { return r[colKey] == cv; }).map(function (r) { return r[xKey]; }).filter(function (v) { return v != null; });
+        if (xs.length) traces.push({ type: 'histogram', x: xs, name: cv || '?', opacity: 0.7, marker: { color: colorInfo.map[cv] } });
+      });
+      if (!traces.length) {
+        var xs = allData.map(function (r) { return r[xKey]; }).filter(function (v) { return v != null; });
+        traces.push({ type: 'histogram', x: xs, marker: { color: t.accent } });
+      }
+      Plotly.react('p-custom', traces, plotlyLayout({ barmode: 'overlay', xaxis: { title: xKey }, showlegend: true }), cfg);
+
+    } else if (type === 'scatter') {
+      colorInfo.uniq.forEach(function (cv, i) {
+        var sub = allData.filter(function (r) { return r[colKey] == cv; });
+        traces.push({ type: 'scatter', mode: 'markers', name: cv || '?',
+          x: sub.map(function (r) { return r[xKey]; }),
+          y: sub.map(function (r) { return r[yKey]; }),
+          marker: { color: colorInfo.map[cv], size: 5, opacity: 0.7 }
+        });
+      });
+      Plotly.react('p-custom', traces, plotlyLayout({ xaxis: { title: xKey }, yaxis: { title: yKey }, showlegend: true }), cfg);
+
+    } else if (type === 'box') {
+      var groups = Array.from(new Set(allData.map(function (r) { return r[xKey]; }).filter(Boolean))).sort();
+      groups.forEach(function (g, i) {
+        traces.push({ type: 'box', name: g,
+          y: allData.filter(function (r) { return r[xKey] === g; }).map(function (r) { return r[yKey]; }).filter(Boolean),
+          marker: { color: PALETTE[i % PALETTE.length] }, boxpoints: false
+        });
+      });
+      Plotly.react('p-custom', traces, plotlyLayout({
+        xaxis: { title: xKey, tickangle: -35 },
+        yaxis: { title: yKey },
+        margin: { t: 20, r: 16, b: 100, l: 56 }
+      }), cfg);
+
+    } else if (type === 'bar') {
+      var counts = {};
+      allData.forEach(function (r) { var v = r[xKey] || '?'; counts[v] = (counts[v] || 0) + 1; });
+      var sorted = Object.entries(counts).sort(function (a, b) { return b[1] - a[1]; }).slice(0, 30);
+      traces.push({ type: 'bar',
+        x: sorted.map(function (e) { return e[0]; }),
+        y: sorted.map(function (e) { return e[1]; }),
+        marker: { color: sorted.map(function (_, i) { return PALETTE[i % PALETTE.length]; }) }
+      });
+      Plotly.react('p-custom', traces, plotlyLayout({
+        xaxis: { title: xKey, tickangle: -40 },
+        yaxis: { title: 'Count' },
+        margin: { t: 20, r: 16, b: 120, l: 56 }
+      }), cfg);
+    }
+  };
+
+  /* ── Filters ───────────────────────────────────────── */
+  function uniq(key) {
+    return Array.from(new Set(allData.map(function (r) { return r[key]; }).filter(Boolean))).sort();
+  }
+  function populate(id, vals) {
+    var el = document.getElementById(id);
+    el.innerHTML = '<option value="">All</option>';
+    vals.forEach(function (v) { el.innerHTML += '<option>' + v + '</option>'; });
+  }
+
+  function populateFilters() {
+    populate('d-class', uniq('class'));
+    populate('d-order', uniq('order'));
+    populate('d-light', uniq('light_condition'));
+    populate('d-sex',   uniq('sex'));
+  }
+
+  function setupFilters() {
+    ['d-search','d-class','d-order','d-light','d-sex'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', applyFilters);
+    });
+  }
+
+  function applyFilters() {
+    var q      = (document.getElementById('d-search').value || '').toLowerCase();
+    var cls    = document.getElementById('d-class').value;
+    var order  = document.getElementById('d-order').value;
+    var light  = document.getElementById('d-light').value;
+    var sex    = document.getElementById('d-sex').value;
+    filteredData = allData.filter(function (r) {
+      if (cls   && r.class           !== cls)   return false;
+      if (order && r.order           !== order) return false;
+      if (light && r.light_condition !== light) return false;
+      if (sex   && r.sex             !== sex)   return false;
+      if (q) {
+        var hay = [r.species, r.genus, r.strain, r.genotype, r.first_author, r.order, r.class].map(function (v) { return (v || '').toLowerCase(); }).join(' ');
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+    sortCol = null;
+    renderTable();
+  }
+
+  window.resetFilters = function () {
+    document.getElementById('d-search').value = '';
+    ['d-class','d-order','d-light','d-sex'].forEach(function (id) {
+      document.getElementById(id).value = '';
+    });
+    applyFilters();
+  };
+
+  /* ── Table ─────────────────────────────────────────── */
+  var COLS = [
+    { key: 'species',         label: 'Species' },
+    { key: 'class',           label: 'Class' },
+    { key: 'order',           label: 'Order' },
+    { key: 'tau_mean_hours',  label: 'τ (hrs)' },
+    { key: 'tau_sd_hours',    label: 'τ SD' },
+    { key: 'sample_size',     label: 'n' },
+    { key: 'sex',             label: 'Sex' },
+    { key: 'light_condition', label: 'Light' },
+    { key: 'genotype',        label: 'Genotype' },
+    { key: 'paper_year',      label: 'Year' },
+    { key: 'doi',             label: 'DOI' },
+  ];
+
+  function renderTable() {
+    // Sort if needed
+    if (sortCol !== null) {
+      var key = COLS[sortCol].key;
+      filteredData.sort(function (a, b) {
+        var av = a[key], bv = b[key];
+        if (av == null) return 1; if (bv == null) return -1;
+        return sortAsc ? (av < bv ? -1 : av > bv ? 1 : 0) : (av < bv ? 1 : av > bv ? -1 : 0);
+      });
+    }
+
+    document.getElementById('row-count').textContent = filteredData.length.toLocaleString();
+
+    // Header
+    var thead = document.getElementById('t-head');
+    thead.innerHTML = COLS.map(function (c, i) {
+      var arrow = sortCol === i ? (sortAsc ? ' ▲' : ' ▼') : '';
+      return '<th onclick="sortBy(' + i + ')">' + c.label + '<span class="sort-arrow">' + arrow + '</span></th>';
+    }).join('');
+
+    // Body (show first 500 rows)
+    var shown = filteredData.slice(0, 500);
+    var html = shown.map(function (r) {
+      return '<tr>' + COLS.map(function (c) {
+        var v = r[c.key];
+        if (v == null || v === '') return '<td>—</td>';
+        if (c.key === 'doi') return '<td><a href="https://doi.org/' + v + '" target="_blank" rel="noopener">' + v + '</a></td>';
+        if (c.key === 'species' || c.key === 'genus') return '<td><em>' + v + '</em></td>';
+        if (typeof v === 'number') return '<td>' + (Number.isInteger(v) ? v : v.toFixed(2)) + '</td>';
+        return '<td>' + v + '</td>';
+      }).join('') + '</tr>';
+    }).join('');
+    if (filteredData.length > 500) {
+      html += '<tr><td colspan="' + COLS.length + '" style="text-align:center;color:var(--ink-faint);font-style:italic;padding:12px;">Showing first 500 of ' + filteredData.length.toLocaleString() + ' records. Download CSV for full dataset.</td></tr>';
+    }
+    document.getElementById('t-body').innerHTML = html;
+  }
+
+  window.sortBy = function (i) {
+    if (sortCol === i) { sortAsc = !sortAsc; } else { sortCol = i; sortAsc = true; }
+    renderTable();
+  };
+
+  /* ── Download CSV ──────────────────────────────────── */
+  window.downloadCSV = function () {
+    var keys = ['kingdom','phylum','class','order','family','genus','species','tau_mean_hours','tau_sd_hours','sample_size','sex','age_class','genotype','strain','light_condition','temperature_celsius','measurement_method','tissue_or_output','first_author','paper_year','doi'];
+    var header = keys.join(',');
+    var rows = filteredData.map(function (r) {
+      return keys.map(function (k) {
+        var v = r[k];
+        if (v == null) return '';
+        if (typeof v === 'string' && (v.indexOf(',') >= 0 || v.indexOf('"') >= 0)) return '"' + v.replace(/"/g, '""') + '"';
+        return v;
+      }).join(',');
+    });
+    var blob = new Blob([header + '\n' + rows.join('\n')], { type: 'text/csv' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'tau-database.csv'; a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  /* ── Start ─────────────────────────────────────────── */
+  loadData();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Likelihood ridges · PCM guide · Blackmon Lab</title>
+<meta name="description" content="Understanding likelihood ridges in discrete trait Mk models. Why high-rate parameter estimates can mislead maximum likelihood optimization.">
+<meta property="og:title" content="Likelihood ridges · PCM guide · Blackmon Lab">
+<meta property="og:description" content="Understanding likelihood ridges in discrete trait Mk models. Why high-rate parameter estimates can mislead maximum likelihood optimization.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+<meta property="og:url" content="https://coleoguy.github.io/phylo-methods/likelihood-ridges.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://coleoguy.github.io/phylo-methods/likelihood-ridges.html">
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+<style>
+  .viz-container {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 40px;
+    margin: 40px 0;
+  }
+
+  .ridge-canvas-container {
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(to bottom, var(--accent-dim), transparent);
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+  }
+
+  .info-box {
+    background: var(--accent-dim);
+    border-left: 4px solid var(--accent);
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .warning-box {
+    background: rgba(239,68,68,0.05);
+    border-left: 4px solid #ef4444;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .highlight-text {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px 0;
+  }
+
+  .control-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  input[type="range"] {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--paper);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 8px var(--accent-dim);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 8px var(--accent-dim);
+  }
+
+  .slider-value {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  .bullet-list {
+    max-width: 900px;
+    margin: 30px 0;
+  }
+
+  .bullet-list li {
+    color: var(--ink);
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+
+  .code-example {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 15px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: #34d399;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+
+  .canvas-legend {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .legend-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+  }
+
+  .section-text {
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    max-width: 900px;
+  }
+</style>
+
+</head>
+
+<body>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Essays</span>
+      <ul>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Databases</span>
+      <ul>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/karyotypes/index.html">Six karyotype DBs</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Research</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; adaptation</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Organisms</span>
+      <ul>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI agents</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Tools</span>
+      <ul>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+    <div class="crumb">
+      <a href="../index.html">Home</a> &rsaquo; Tools &rsaquo; <a href="index.html">PCM guide</a> &rsaquo; <strong>Likelihood ridges</strong>
+    </div>
+
+    <h1 class="title">Likelihood ridges in discrete trait models.</h1>
+
+    <p class="lede">
+      Maximum likelihood estimation of discrete trait models has a well-known identifiability problem. When transition rates become very high relative to tree depth, the tip states converge on the stationary distribution and the likelihood becomes nearly flat across a huge range of rates. This page shows why, when it matters, and what to do about it.
+    </p>
+
+    <h2>The core problem</h2>
+
+    <p class="section-text">
+      Maximum likelihood estimation of <a href="discrete.html" style="color: var(--accent); text-decoration: underline;">discrete trait models</a> comes with a well-known identifiability problem. When transition rates become very high relative to tree depth, something surprising happens: trait states get "scrambled" across the phylogeny. Every lineage rapidly visits every state many times, and the phylogenetic signal gets washed out.
+    </p>
+
+    <p class="section-text">
+      In this limit, the expected distribution of tip states converges on the <span class="highlight-text">stationary distribution</span> of the Markov chain. This distribution is determined only by the <em>ratio</em> of rates, not their absolute magnitude. Consider a simple example: a model with q<sub>01</sub> = 0.1 and q<sub>10</sub> = 0.1 (slow rates) can produce nearly the same distribution of tip states as q<sub>01</sub> = 100 and q<sub>10</sub> = 100 (very fast rates), if the tip data show a roughly 50/50 split between states.
+    </p>
+
+    <p class="section-text">
+      This creates a <span class="highlight-text">likelihood ridge</span>: a long plateau in parameter space extending from biologically realistic rate values (say, 0.001 to 1 events per unit branch length) out to arbitrarily high values. Along this ridge, the likelihood changes only minimally. The ridge runs along the direction of <em>proportional rate scaling</em>: both rates increase together while maintaining their ratio.
+    </p>
+
+    <div class="info-box">
+      <strong>Mathematical intuition:</strong> Under fast evolution, the probability of observing state 0 at a tip depends on P(0) &asymp; 0.5 + 0.5 &times; exp(&minus;2q&times;t), where q is the rate and t is the branch length. When qt is large, exp(&minus;2qt) &asymp; 0 regardless of whether q = 0.1, 100, or 1000. The stationary distribution q&#x2080;/(q&#x2080;+q&#x2081;) is unaffected by scaling both rates together.
+    </div>
+
+    <h2>Why this matters</h2>
+
+    <ul class="bullet-list">
+      <li>
+        <strong>Unrealistic estimates:</strong> Maximum likelihood optimizers (like <code>optim()</code> in R) can wander up the ridge and return estimates of q = 50 or q = 500 events per unit branch length when the true value is 0.5. Both fit the data similarly well, but only one is biologically plausible.
+      </li>
+      <li>
+        <strong>Slow convergence:</strong> The optimizer can get stuck in the ridge region, requiring many more function evaluations to converge. This wastes computational time and can trigger premature termination warnings.
+      </li>
+      <li>
+        <strong>Unbounded confidence intervals:</strong> Confidence intervals estimated via likelihood profiles will extend far up the ridge, with the upper bound appearing infinite or unreasonably large.
+      </li>
+      <li>
+        <strong>Worst-case scenarios:</strong> The ridge problem is most severe when:
+        <ul style="margin-top: 10px; margin-left: 20px;">
+          <li>Tip states are close to a 50/50 distribution (maximum ridging for two-state models)</li>
+          <li>Trees are large (more tips = stronger constraint on estimates)</li>
+          <li>There is substantial phylogenetic signal (related species share states, consistency across the tree)</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="warning-box">
+      <strong>Red flag:</strong> If your ML estimates return rates much larger than 1 event per unit branch length, suspect ridge wandering. Check your data: are states distributed roughly equally across the tree? Then high rates are riding the ridge.
+    </div>
+
+    <h2>Interactive likelihood ridge visualization</h2>
+
+    <p class="section-text">
+      The plot below shows a simulated likelihood surface for a simple two-state equal-rates model (q&#x2080;&#x2081; = q&#x2081;&#x2080; = q). The x-axis is the rate q on a logarithmic scale; the y-axis is log-likelihood. Use the slider to change the proportion of tips in state 0, and watch how the likelihood ridge forms and shifts.
+    </p>
+
+    <div class="viz-container">
+      <div class="control-group">
+        <label class="control-label">Tip state distribution</label>
+        <div class="slider-row">
+          <label style="width: 160px; color: var(--ink);">Proportion in State 0</label>
+          <input type="range" id="propSlider" min="0.1" max="0.9" step="0.05" value="0.5">
+          <span class="slider-value" id="propValue">0.50</span>
+        </div>
+      </div>
+
+      <div class="ridge-canvas-container">
+        <canvas id="ridgeCanvas" class="ridge-canvas"></canvas>
+      </div>
+
+      <div class="canvas-legend">
+        <div class="legend-item">
+          <div class="legend-box" style="background: var(--accent);"></div>
+          <span>Likelihood curve</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-box" style="background: rgba(78,205,196,0.3);"></div>
+          <span>Ridge region (&Delta;logL &lt; 2)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-box" style="background: rgba(52,211,153,0.8);"></div>
+          <span>MLE position</span>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin-top: 30px;">
+        <strong>How to read this:</strong> The green vertical line marks the maximum likelihood estimate (MLE). The shaded teal region shows the likelihood ridge: the range of q where the log-likelihood stays within 2 units of the peak. When the proportion is near 0.5, notice how the ridge extends far to the right (high q values). When the proportion moves away from 0.5, the ridge narrows and the likelihood becomes more peaked. This is why balanced trait distributions are problematic: the ridge becomes pronounced and high rates remain plausible.
+      </div>
+    </div>
+
+    <h2>Solutions to ridge wandering</h2>
+
+    <h3 style="font-size: 1.5rem; color: var(--ink); margin-top: 40px; margin-bottom: 20px;">1. MCMC with priors</h3>
+    <p class="section-text">
+      <span class="highlight-text">Bayesian MCMC with an exponential or lognormal prior on rates</span> is the most principled solution. A prior naturally penalizes high values that have little data support. The posterior distribution will concentrate near biologically reasonable values unless the data strongly support high rates.
+    </p>
+    <p class="section-text">
+      This is why tools like <strong>chromePlus</strong> and <strong>ChromEvol</strong> offer MCMC alongside maximum likelihood. The prior acts as a regularizer, pulling estimates away from the ridge toward plausible values. For example, an exponential prior with mean 0.5 makes q = 100 orders of magnitude less probable than q = 0.5, even if both fit the likelihood equally well.
+    </p>
+
+    <h3 style="font-size: 1.5rem; color: var(--ink); margin-top: 40px; margin-bottom: 20px;">2. Multiple starting points</h3>
+    <p class="section-text">
+      Running ML optimization from many random starting points samples different regions of parameter space. If most convergences cluster near low-rate solutions but a few wander up the ridge, the true MLE is likely in the low-rate cluster. Compare the converged values: are they stable across runs? If estimates vary wildly, you may be seeing ridge effects.
+    </p>
+
+    <h3 style="font-size: 1.5rem; color: var(--ink); margin-top: 40px; margin-bottom: 20px;">3. Penalized likelihood</h3>
+    <p class="section-text">
+      Adding a regularization term (e.g., an L2 penalty proportional to rate magnitude) creates a unique maximum that concentrates near realistic values. The penalized log-likelihood is:
+    </p>
+    <div class="code-example">
+      penalized.logL = logL(q) &minus; &lambda; &times; q&sup2;
+    </div>
+    <p class="section-text">
+      The penalty weight &lambda; controls how much you trust the prior belief that rates should be small. Cross-validation or information criteria can guide the choice of &lambda;. This is less formal than a full Bayesian approach but faster and often sufficient.
+    </p>
+
+    <h3 style="font-size: 1.5rem; color: var(--ink); margin-top: 40px; margin-bottom: 20px;">4. Rate bounds</h3>
+    <p class="section-text">
+      The simplest (if somewhat arbitrary) approach is to set upper bounds on the rate parameter during optimization. For example, you might constrain q &le; 10 events per unit branch length. This prevents the optimizer from ever reaching the ridge. The downside is that the bound is ad hoc and can artificially truncate the likelihood if the true value happens to exceed it. Still, if you have strong biological priors on reasonable rate ranges, this is practical.
+    </p>
+
+    <h2>chromePlus and ChromEvol: best practices</h2>
+
+    <p class="section-text">
+      The <span class="highlight-text">chromePlus</span> package (developed by the Blackmon Lab) and <strong>ChromEvol</strong> both allow MCMC inference with user-specified priors precisely because of the ridge problem. When rates inferred by maximum likelihood seem unreasonably high (e.g., &gt; 1 event per unit branch length), this is a diagnostic sign of ridge wandering.
+    </p>
+
+    <p class="section-text">
+      To protect yourself:
+    </p>
+
+    <ul class="bullet-list">
+      <li>
+        <strong>Always check biological plausibility.</strong> Does a rate of 50 transitions per unit branch length make sense given what you know about your organism and trait?
+      </li>
+      <li>
+        <strong>Compare ML and MCMC estimates.</strong> If MCMC (with a reasonable prior) gives q = 0.3 but ML gives q = 50, ridge wandering is likely. The MCMC posterior is more trustworthy in this case.
+      </li>
+      <li>
+        <strong>Try multiple starting values.</strong> Run the optimizer from 10 to 50 random starting points. If they converge to a tight cluster, you have confidence. If they scatter wildly, investigate further.
+      </li>
+      <li>
+        <strong>Visualize the likelihood profile.</strong> Plot likelihood against rate for your real data. If you see a long, flat plateau, you are on the ridge. A sharp peak indicates identifiability.
+      </li>
+    </ul>
+
+    <p class="section-text">
+      See the <a href="discrete.html" style="color: var(--accent); text-decoration: underline;">discrete trait evolution guide</a> for more on model selection and the Mk framework. For the <a href="../chromosome-evolution-history.html" style="color: var(--accent); text-decoration: underline;">history of chromosome evolution methods</a>, including the development of these tools, consult the methods review. Explore <a href="../karyotypes/index.html" style="color: var(--accent); text-decoration: underline;">karyotype databases</a> for real data examples.
+    </p>
+
+    <h2>Summary</h2>
+
+    <p class="section-text">
+      Likelihood ridges are an inherent feature of discrete trait inference, not a bug but a signature of model identifiability. When tip states are close to equilibrium proportions, high rates become nearly indistinguishable from low rates. This is a genuine inference problem: the data alone may not constrain rates well.
+    </p>
+
+    <p class="section-text">
+      The solutions (priors, multiple starts, penalization, and bounds) all aim to break the ridge by adding external information or constraints. In practice, <span class="highlight-text">Bayesian MCMC with an informative prior is the most reliable approach</span> because it explicitly encodes what you know (or want to assume) about plausible rate ranges.
+    </p>
+    <p class="section-text">One nuance worth stating clearly. MCMC with an <strong>uninformative</strong> prior (e.g., Uniform(0, &infin;) or Exponential with very large mean) will <em>still wander up the ridge</em>, because the likelihood is genuinely flat there and the prior offers no counter-pressure. Switching to Bayesian methods is not the fix on its own. What matters is a meaningfully informative prior: an Exponential with mean equal to the expected number of transitions per million years for the trait class, or a tight Lognormal centered on a biologically plausible rate. Without that, MCMC and ML can give the same misleading answer. Likewise, the multiple-starting-points strategy works because different starts sample different regions of the ridge; from any one starting point the optimizer converges deterministically. See Revell &amp; Harmon (2008, <em>Evol. Bioinform.</em>) and Harmon (2019, <em>Phylogenetic Comparative Methods</em>) for explicit treatments of these issues.</p>
+    <p class="section-text">When in doubt, compare results across methods and always sanity-check your rate estimates.</p>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+<script>
+(function() {
+  // Ridge visualization for rate matrix identifiability problem
+  // Heatmap of log likelihood over q01 (x axis) and q10 (y axis)
+  var canvas = document.getElementById('ridgeCanvas');
+  var slider = document.getElementById('propSlider');
+  var propValueEl = document.getElementById('propValue');
+  if (!canvas || !slider) return;
+
+  var ctx = canvas.getContext('2d');
+
+  // Sampling grid resolution along each axis
+  var GRID = 80;
+  // Parameter range for both q01 and q10
+  var Q_MIN = 0.1;
+  var Q_MAX = 3.0;
+
+  // Weights for the two likelihood components
+  var K1 = 40;  // ratio component strength
+  var K2 = 10;  // absolute rate component strength
+
+  function sizeCanvas() {
+    var rect = canvas.parentElement.getBoundingClientRect();
+    var dpr = window.devicePixelRatio || 1;
+    var cssW = Math.max(200, Math.floor(rect.width));
+    var cssH = Math.max(200, Math.floor(rect.height));
+    canvas.style.width = cssW + 'px';
+    canvas.style.height = cssH + 'px';
+    canvas.width = Math.floor(cssW * dpr);
+    canvas.height = Math.floor(cssH * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { w: cssW, h: cssH };
+  }
+
+  function currentThemeColors() {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      return {
+        bg: '#0e0e10',
+        text: '#e6e6e6',
+        axis: 'rgba(230,230,230,0.55)',
+        grid: 'rgba(230,230,230,0.12)',
+        accent: 'var(--accent)',
+        contour: 'rgba(78,205,196,0.9)',
+        peak: '#34d399'
+      };
+    }
+    return {
+      bg: '#ffffff',
+      text: '#1a1a1a',
+      axis: 'rgba(26,26,26,0.6)',
+      grid: 'rgba(26,26,26,0.1)',
+      accent: 'var(--accent)',
+      contour: 'rgba(20,150,140,0.9)',
+      peak: '#0f9d58'
+    };
+  }
+
+  // Viridis-like colormap from dark purple to bright yellow
+  function colormap(t) {
+    // t in [0,1]
+    if (t < 0) t = 0;
+    if (t > 1) t = 1;
+    // Stops: dark purple, blue, teal, green, yellow
+    var stops = [
+      [0.00, [ 27,   0,  72]],
+      [0.25, [ 50,  40, 120]],
+      [0.50, [ 30, 110, 130]],
+      [0.75, [ 90, 180,  90]],
+      [1.00, [253, 231,  37]]
+    ];
+    for (var i = 0; i < stops.length - 1; i++) {
+      if (t >= stops[i][0] && t <= stops[i+1][0]) {
+        var u = (t - stops[i][0]) / (stops[i+1][0] - stops[i][0]);
+        var a = stops[i][1], b = stops[i+1][1];
+        var r = Math.round(a[0] + (b[0]-a[0]) * u);
+        var g = Math.round(a[1] + (b[1]-a[1]) * u);
+        var bl = Math.round(a[2] + (b[2]-a[2]) * u);
+        return 'rgb(' + r + ',' + g + ',' + bl + ')';
+      }
+    }
+    return 'rgb(253,231,37)';
+  }
+
+  function computeGrid(prop) {
+    var vals = new Float64Array(GRID * GRID);
+    var vmax = -Infinity, vmin = Infinity;
+    var logTarget = Math.log(2); // peak at q01/q10 = 2
+    for (var j = 0; j < GRID; j++) {
+      var q10 = Q_MIN + (Q_MAX - Q_MIN) * (j / (GRID - 1));
+      for (var i = 0; i < GRID; i++) {
+        var q01 = Q_MIN + (Q_MAX - Q_MIN) * (i / (GRID - 1));
+        var lr = Math.log(q01 / q10) - logTarget;
+        var L1 = -K1 * lr * lr;
+        var dx = q01 - 1.0;
+        var dy = q10 - 0.5;
+        var L2 = -K2 * (dx * dx + dy * dy);
+        var L = (1 - prop) * L1 + prop * L2;
+        vals[j * GRID + i] = L;
+        if (L > vmax) vmax = L;
+        if (L < vmin) vmin = L;
+      }
+    }
+    return { vals: vals, vmax: vmax, vmin: vmin };
+  }
+
+  function qToPx(q, axisMin, axisMax, plotMin, plotMax) {
+    var t = (q - Q_MIN) / (Q_MAX - Q_MIN);
+    return plotMin + t * (plotMax - plotMin);
+  }
+
+  function render() {
+    var size = sizeCanvas();
+    var colors = currentThemeColors();
+    var w = size.w, h = size.h;
+
+    // Plot area with padding for axes
+    var padL = 60, padR = 30, padT = 20, padB = 50;
+    var plotW = w - padL - padR;
+    var plotH = h - padT - padB;
+
+    // Background
+    ctx.fillStyle = colors.bg;
+    ctx.fillRect(0, 0, w, h);
+
+    var prop = parseFloat(slider.value);
+    var grid = computeGrid(prop);
+    var vmax = grid.vmax;
+    var vmin = grid.vmin;
+    // Clamp dynamic range to improve visual contrast
+    var floor = vmax - 20; // show 20 log unit dynamic range at most
+    if (vmin < floor) vmin = floor;
+    var range = Math.max(1e-9, vmax - vmin);
+
+    // Draw heatmap cells
+    var cellW = plotW / GRID;
+    var cellH = plotH / GRID;
+    for (var j = 0; j < GRID; j++) {
+      // y axis: q10 increases upward, so row j (small q10) is at bottom
+      var py = padT + (GRID - 1 - j) * cellH;
+      for (var i = 0; i < GRID; i++) {
+        var v = grid.vals[j * GRID + i];
+        var t = (v - vmin) / range;
+        ctx.fillStyle = colormap(t);
+        ctx.fillRect(padL + i * cellW, py, cellW + 1, cellH + 1);
+      }
+    }
+
+    // Contour at 2 log L units below max
+    var contourLevel = vmax - 2;
+    ctx.strokeStyle = colors.contour;
+    ctx.lineWidth = 1.5;
+    // Use marching squares style approximation: for each cell check sign changes
+    for (var j2 = 0; j2 < GRID - 1; j2++) {
+      for (var i2 = 0; i2 < GRID - 1; i2++) {
+        var a = grid.vals[j2 * GRID + i2] - contourLevel;
+        var b = grid.vals[j2 * GRID + (i2 + 1)] - contourLevel;
+        var c = grid.vals[(j2 + 1) * GRID + (i2 + 1)] - contourLevel;
+        var d = grid.vals[(j2 + 1) * GRID + i2] - contourLevel;
+        // Cell corners in pixel space
+        var x0 = padL + i2 * cellW;
+        var x1 = padL + (i2 + 1) * cellW;
+        var y0 = padT + (GRID - 1 - j2) * cellH;
+        var y1 = padT + (GRID - 1 - (j2 + 1)) * cellH;
+        // Edges: top (a-b), right (b-c), bottom (d-c), left (a-d)
+        var pts = [];
+        if ((a >= 0) !== (b >= 0)) {
+          var t1 = a / (a - b);
+          pts.push([x0 + t1 * (x1 - x0), y0]);
+        }
+        if ((b >= 0) !== (c >= 0)) {
+          var t2 = b / (b - c);
+          pts.push([x1, y0 + t2 * (y1 - y0)]);
+        }
+        if ((d >= 0) !== (c >= 0)) {
+          var t3 = d / (d - c);
+          pts.push([x0 + t3 * (x1 - x0), y1]);
+        }
+        if ((a >= 0) !== (d >= 0)) {
+          var t4 = a / (a - d);
+          pts.push([x0, y0 + t4 * (y1 - y0)]);
+        }
+        if (pts.length >= 2) {
+          ctx.beginPath();
+          ctx.moveTo(pts[0][0], pts[0][1]);
+          ctx.lineTo(pts[1][0], pts[1][1]);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Axes
+    ctx.strokeStyle = colors.axis;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padL, padT);
+    ctx.lineTo(padL, padT + plotH);
+    ctx.lineTo(padL + plotW, padT + plotH);
+    ctx.stroke();
+
+    // Tick labels
+    ctx.fillStyle = colors.text;
+    ctx.font = '11px ' + (getComputedStyle(document.body).fontFamily || 'sans-serif');
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    var ticks = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0];
+    for (var k = 0; k < ticks.length; k++) {
+      var tq = ticks[k];
+      var tx = padL + ((tq - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
+      ctx.fillText(tq.toFixed(1), tx, padT + plotH + 6);
+    }
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    for (var m = 0; m < ticks.length; m++) {
+      var tq2 = ticks[m];
+      var ty = padT + plotH - ((tq2 - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
+      ctx.fillText(tq2.toFixed(1), padL - 8, ty);
+    }
+
+    // Axis titles
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillStyle = colors.text;
+    ctx.font = '12px ' + (getComputedStyle(document.body).fontFamily || 'sans-serif');
+    ctx.fillText('q01 (forward rate)', padL + plotW / 2, h - 6);
+    ctx.save();
+    ctx.translate(14, padT + plotH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText('q10 (reverse rate)', 0, 0);
+    ctx.restore();
+
+    // Mark target ratio line q01 = 2 * q10 for reference
+    ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    // Start where q01 = 2*q10 crosses the bottom or left edge
+    // Parametrize: q10 from Q_MIN up to Q_MAX/2
+    var q10start = Q_MIN;
+    var q01start = 2 * q10start;
+    if (q01start < Q_MIN) { q01start = Q_MIN; q10start = q01start / 2; }
+    var q10end = Math.min(Q_MAX, Q_MAX / 2);
+    var q01end = 2 * q10end;
+    if (q01end > Q_MAX) { q01end = Q_MAX; q10end = q01end / 2; }
+    var xs = padL + ((q01start - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
+    var ys = padT + plotH - ((q10start - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
+    var xe = padL + ((q01end - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
+    var ye = padT + plotH - ((q10end - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
+    ctx.moveTo(xs, ys);
+    ctx.lineTo(xe, ye);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Mark the absolute peak location q01=1, q10=0.5
+    var px = padL + ((1.0 - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
+    var py2 = padT + plotH - ((0.5 - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
+    ctx.fillStyle = colors.peak;
+    ctx.beginPath();
+    ctx.arc(px, py2, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = colors.bg;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+
+  function updateValueDisplay() {
+    if (propValueEl) {
+      propValueEl.textContent = parseFloat(slider.value).toFixed(2);
+    }
+  }
+
+  slider.addEventListener('input', function() {
+    updateValueDisplay();
+    render();
+  });
+
+  // Redraw on theme toggle
+  var themeBtn = document.getElementById('theme-btn');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function() {
+      // Let any theme handler run first, then redraw
+      setTimeout(render, 20);
+    });
+  }
+  // Also watch for data-theme attribute changes in case the toggle is elsewhere
+  var mo = new MutationObserver(function() { render(); });
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  // Redraw on resize
+  var resizeTimer = null;
+  window.addEventListener('resize', function() {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(render, 100);
+  });
+
+  // Initial render on page load
+  updateValueDisplay();
+  render();
+})();
+</script>
+
+</body>
+</html>

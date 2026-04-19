@@ -1,0 +1,77 @@
+{
+  "note": "Curated list of papers where the first author was an undergraduate researcher in the Blackmon Lab at the time of submission. Source: CV superscript notation (1 = undergraduate).",
+  "papers": [
+    {
+      "first_author": "Kayla Wilhoit",
+      "author_now": "PhD student · Duke University",
+      "full_authors": "Kayla T. Wilhoit, E.P. Alexander, Heath Blackmon",
+      "title": "Worse than nothing at all: the inequality of fusions joining autosomes to the PAR and non-PAR portions of sex chromosomes",
+      "journal": "PeerJ",
+      "year": 2024,
+      "doiUrl": "https://doi.org/10.7717/peerj.17740"
+    },
+    {
+      "first_author": "Annabel Perry",
+      "author_now": "PhD student · Harvard University",
+      "full_authors": "Annabel Perry, Dirk Eddelbuettel, Gil Rosenthal, Heath Blackmon",
+      "title": "Polly: An R package for genotyping microsatellites and detecting highly polymorphic DNA markers from short-read data",
+      "journal": "Molecular Ecology Resources",
+      "year": 2024,
+      "doiUrl": "https://doi.org/10.1111/1755-0998.13933"
+    },
+    {
+      "first_author": "Annabel Perry",
+      "author_now": "PhD student · Harvard University",
+      "full_authors": "Annabel Perry, Suzanne E. McGaugh, Alex C. Keene, Heath Blackmon",
+      "title": "CaveCrawler: An interactive analysis suite for cavefish bioinformatics",
+      "journal": "G3: Genes, Genomes, and Genetics",
+      "year": 2022,
+      "doiUrl": "https://doi.org/10.1093/g3journal/jkac132"
+    },
+    {
+      "first_author": "Johnathan Lo",
+      "author_now": "PhD student · UC Berkeley",
+      "full_authors": "Johnathan Lo, Heath Blackmon",
+      "title": "Retrogene survival is not impacted by linkage relationships",
+      "journal": "PeerJ",
+      "year": 2022,
+      "doiUrl": "https://doi.org/10.7717/peerj.12822"
+    },
+    {
+      "first_author": "Nathan Anderson",
+      "author_now": "PhD student · University of Wisconsin–Madison",
+      "full_authors": "Nathan Anderson, Carl E. Hjelmen, Heath Blackmon",
+      "title": "The probability of fusions joining sex chromosomes and autosomes",
+      "journal": "Biology Letters",
+      "year": 2020,
+      "doiUrl": "https://doi.org/10.1098/rsbl.2020.0648"
+    },
+    {
+      "first_author": "Johnathan Lo",
+      "author_now": "PhD student · UC Berkeley",
+      "full_authors": "Johnathan Lo, Michelle M. Jonika, Heath Blackmon",
+      "title": "micRocounter: Microsatellite Characterization in Genome Assemblies",
+      "journal": "G3: Genes, Genomes, and Genetics",
+      "year": 2019,
+      "doiUrl": "https://doi.org/10.1534/g3.119.400335"
+    },
+    {
+      "first_author": "Riddhi Perkins",
+      "author_now": null,
+      "full_authors": "Riddhi D. Perkins, Julio Rincones Gamboa, Michelle M. Jonika, Johnathan Lo, Amy Shum, Richard H. Adams, Heath Blackmon",
+      "title": "A database of amphibian karyotypes",
+      "journal": "Chromosome Research",
+      "year": 2019,
+      "doiUrl": "https://doi.org/10.1007/s10577-019-09613-1"
+    },
+    {
+      "first_author": "Andrew Armstrong",
+      "author_now": null,
+      "full_authors": "Andrew Armstrong, Nathan W. Anderson, Heath Blackmon",
+      "title": "Inferring the potentially complex genetic architectures of adaptation, sexual dimorphism, and genotype by environment interactions by partitioning of mean phenotypes",
+      "journal": "Journal of Evolutionary Biology",
+      "year": 2019,
+      "doiUrl": "https://doi.org/10.1111/jeb.13421"
+    }
+  ]
+}

@@ -1,384 +1,572 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CUREs karyotype database · Blackmon Lab</title>
-<meta name="description" content="Interactive database of 63,682 chromosome-number records across 55 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;M University.">
-<meta property="og:title" content="CUREs karyotype database · Blackmon Lab">
-<meta property="og:description" content="Interactive database of 63,682 chromosome-number records across 55 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;M University.">
-<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Blackmon Lab">
-<meta property="og:url" content="https://coleoguy.github.io/cures-karyotype-database.html">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Dataset",
-  "name": "CUREs Karyotype Database",
-  "description": "63,682 chromosome-number records across 55 clades with source citations, collected through Course-based Undergraduate Research Experiences at Texas A&M University.",
-  "url": "https://coleoguy.github.io/cures-karyotype-database.html",
-  "creator": {
-    "@type": "Organization",
-    "name": "Blackmon Lab",
-    "url": "https://coleoguy.github.io"
-  },
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "keywords": ["karyotype", "chromosome number", "CUREs", "evolutionary biology"],
-  "includedInDataCatalog": {
-    "@type": "DataCatalog",
-    "name": "Blackmon Lab Databases",
-    "url": "https://coleoguy.github.io/karyotypes/index.html"
+---
+layout: default
+title: "CUREs karyotype database · Blackmon Lab"
+description: "Interactive database of 63,682 chromosome-number records across 55 clades with source citations, collected through Course-based Undergraduate Research Experiences (CUREs) at Texas A&amp;M University."
+canonical: "https://coleoguy.github.io/cures-karyotype-database.html"
+extra_head: |
+  <style>
+  /* ── Page-specific CSS for the interactive CUREs database view ──
+     Scoped under .db-app so it does not clash with v3.css.
+     Light-mode selectors re-expressed for v3 theming via [data-theme="light"].
+  */
+  .db-app {
+    font-family: var(--font-sans, 'Source Serif 4', Georgia, serif);
+    color: var(--ink, #c8c5c0);
+    margin-top: 28px;
   }
-}
-</script>
-<link rel="canonical" href="https://coleoguy.github.io/cures-karyotype-database.html">
-<meta name="keywords" content="karyotype, chromosome number, CUREs, database, Blackmon Lab, Texas A&M, evolutionary biology">
-<link rel="icon" href="assets/img/favicon.ico">
+  .db-app a:not(.sitename):not(.logo):not(.nav-cta) { color: var(--accent, var(--accent)); text-decoration: none; }
+  .db-app a:not(.sitename):not(.logo):not(.nav-cta):hover { text-decoration: underline; }
+  
+  /* DB internal two-column layout (independent of site layout) */
+  .db-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 20px;
+    border: 1px solid #2a2825;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1e1c19;
+  }
+  @media (max-width: 900px) { .db-container { grid-template-columns: 1fr; } }
+  
+  .db-sidebar { background: #141311; border-right: 1px solid #2a2825; padding: 18px; }
+  @media (max-width: 900px) { .db-sidebar { border-right: none; border-bottom: 1px solid #2a2825; } }
+  .db-sidebar h3 { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 8px; font-family: var(--font-mono, ui-monospace, monospace); font-weight: 500; }
+  .db-sidebar h3:first-of-type { margin-top: 0; }
+  .record-count { font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1.1; font-family: var(--font-sans, 'Source Serif 4', Georgia, serif); }
+  .record-label { font-size: 11px; color: #a09d98; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .db-app select, .db-app .search-input {
+    width: 100%; padding: 7px 9px; background: #141311; border: 1px solid #2a2825;
+    color: #c8c5c0; border-radius: 4px; font-family: inherit; font-size: 12.5px; margin-bottom: 8px;
+  }
+  .db-app select:focus, .db-app .search-input:focus { border-color: var(--accent); outline: none; }
+  .reset-btn {
+    width: 100%; padding: 7px; background: transparent; border: 1px solid var(--accent);
+    color: var(--accent); border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;
+  }
+  .reset-btn:hover { background: var(--accent); color: #141311; }
+  .repo-link {
+    display: block; margin-top: 10px; padding: 7px 9px; text-align: center;
+    background: transparent; border: 1px solid #2a2825; color: #a09d98 !important;
+    border-radius: 4px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px;
+    text-decoration: none !important; transition: all 0.15s ease;
+  }
+  .repo-link:hover { border-color: var(--accent); color: var(--accent) !important; }
+  .repo-link i { margin-right: 5px; font-size: 12px; vertical-align: -1px; }
+  
+  /* Main pane */
+  .db-main { padding: 18px 20px; min-width: 0; }
+  
+  /* Tabs */
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid #2a2825; margin-bottom: 18px; flex-wrap: wrap; }
+  .tab {
+    padding: 9px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.5px; cursor: pointer; color: #a09d98; border-bottom: 2px solid transparent;
+    transition: all 0.2s; font-family: var(--font-mono, ui-monospace, monospace);
+  }
+  .tab:hover { color: #c8c5c0; }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  
+  /* Overview cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .card { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 14px; }
+  .card-value { font-size: 24px; font-weight: 700; color: var(--accent); font-family: var(--font-sans, 'Source Serif 4', Georgia, serif); }
+  .card-label { font-size: 10px; color: #a09d98; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  
+  /* Citation block */
+  .cite-box { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 14px 16px; }
+  .cite-ref { font-size: 12.5px; line-height: 1.55; color: #c8c5c0; margin: 0 0 10px 0; }
+  .cite-ref a { color: var(--accent); }
+  .cite-toggle {
+    background: transparent; border: 1px solid var(--accent); color: var(--accent);
+    padding: 5px 11px; border-radius: 4px; font-size: 10.5px; font-family: inherit;
+    text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer;
+  }
+  .cite-toggle:hover { background: var(--accent); color: #141311; }
+  .cite-bib {
+    margin-top: 12px; padding: 11px; background: #0f0e0c; border: 1px solid #2a2825;
+    border-radius: 4px; font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 11px; color: #c8c5c0; overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+  }
+  
+  /* Table */
+  .table-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+  .csv-btn {
+    padding: 5px 12px; background: var(--accent); color: #141311; border: none; border-radius: 4px;
+    cursor: pointer; font-family: inherit; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .csv-btn:hover { background: #b08d1f; }
+  .page-info { color: #a09d98; font-size: 12px; }
+  .db-app table { width: 100%; border-collapse: collapse; }
+  .db-app thead th {
+    text-align: left; padding: 9px 11px; font-size: 10.5px; text-transform: uppercase;
+    letter-spacing: 0.5px; color: #a09d98; border-bottom: 1px solid #2a2825; cursor: pointer;
+    user-select: none; white-space: nowrap; font-family: var(--font-mono, ui-monospace, monospace);
+  }
+  .db-app thead th:hover { color: var(--accent); }
+  .db-app thead th .sort-arrow { font-size: 9px; margin-left: 3px; }
+  .db-app tbody td {
+    padding: 7px 11px; font-size: 12.5px; border-bottom: 1px solid rgba(42, 40, 37, 0.5);
+  }
+  .db-app tbody tr:hover { background: var(--accent-dim); }
+  .species-name { font-style: italic; }
+  .clade-badge {
+    display: inline-block; padding: 2px 7px; background: var(--accent-dim);
+    color: var(--accent); border-radius: 3px; font-size: 10.5px; font-weight: 500;
+  }
+  .pagination { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+  .page-btn {
+    padding: 5px 10px; background: #141311; border: 1px solid #2a2825; color: #c8c5c0;
+    border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 11.5px;
+  }
+  .page-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .page-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-btn.active { background: var(--accent); color: #141311; border-color: var(--accent); }
+  
+  /* Plot */
+  #plotArea { width: 100%; min-height: 450px; }
+  
+  /* Clade grid */
+  .clade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px; margin-top: 12px; }
+  .clade-item {
+    display: flex; justify-content: space-between; padding: 7px 10px;
+    background: #141311; border: 1px solid #2a2825; border-radius: 4px; font-size: 11.5px;
+  }
+  .clade-item-name { color: #c8c5c0; }
+  .clade-item-count { color: var(--accent); font-weight: 600; }
+  
+  /* Internal DB footer */
+  .db-footer-in {
+    background: #0f0e0c; border-top: 1px solid #2a2825; padding: 10px 18px;
+    display: flex; justify-content: space-between; align-items: center; font-size: 10.5px; color: #a09d98;
+    flex-wrap: wrap; gap: 8px; font-family: var(--font-mono, ui-monospace, monospace);
+  }
+  
+  /* Citation appeal */
+  .cite-appeal {
+    background: #141311; border-left: 3px solid var(--accent); border-radius: 4px;
+    padding: 12px 16px; margin-bottom: 14px; font-size: 12.5px; line-height: 1.55; color: #c8c5c0;
+  }
+  .cite-appeal strong { color: var(--accent); }
+  .cite-appeal ul { margin: 8px 0 0 0; padding-left: 18px; }
+  .cite-appeal li { margin-bottom: 4px; }
+  
+  /* Sources list */
+  .sources-list { display: flex; flex-direction: column; gap: 10px; }
+  .source-item { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 12px 14px; }
+  .source-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    margin-bottom: 6px; flex-wrap: wrap;
+  }
+  .source-clade { color: var(--accent); font-weight: 600; font-size: 13px; }
+  .source-count { color: #a09d98; font-size: 11px; }
+  .source-cite { font-size: 12px; line-height: 1.5; color: #c8c5c0; margin: 0; }
+  .source-cite a { color: var(--accent); }
+  .source-link {
+    display: inline-block; margin-top: 8px; padding: 3px 9px; font-size: 10.5px;
+    border: 1px solid var(--accent); color: var(--accent) !important; border-radius: 3px;
+    text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none !important;
+  }
+  .source-link:hover { background: var(--accent); color: #141311 !important; }
+  
+  /* Loading and citation cells */
+  .db-loading { padding: 30px; text-align: center; color: #a09d98; font-size: 13px; }
+  .cite-cell { max-width: 340px; color: #a09d98; font-size: 11.5px; line-height: 1.35; cursor: pointer; }
+  .cite-cell .cite-text {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .cite-cell.expanded .cite-text { display: block; -webkit-line-clamp: unset; overflow: visible; }
+  .cite-cell:hover { color: var(--accent); }
+  
+  /* ── Light-mode overrides (v3 uses [data-theme="light"] on <html>) ── */
+  [data-theme="light"] .db-app { color: #3a3a3a; }
+  [data-theme="light"] .db-container { background: #faf8f3; border-color: #d5d0c8; }
+  [data-theme="light"] .db-sidebar { background: #f0ede8; border-right-color: #d5d0c8; }
+  [data-theme="light"] .db-sidebar { border-bottom-color: #d5d0c8; }
+  [data-theme="light"] .db-sidebar h3 { color: #8b7a2e; }
+  [data-theme="light"] .record-count { color: #8b7a2e; }
+  [data-theme="light"] .record-label { color: #6b6b6b; }
+  [data-theme="light"] .db-app select, [data-theme="light"] .db-app .search-input { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
+  [data-theme="light"] .db-app select:focus, [data-theme="light"] .db-app .search-input:focus { border-color: var(--accent); }
+  [data-theme="light"] .repo-link { border-color: #d5d0c8; color: #6b6b6b !important; }
+  [data-theme="light"] .repo-link:hover { border-color: var(--accent); color: #8b7a2e !important; }
+  [data-theme="light"] .tab { color: #6b6b6b; }
+  [data-theme="light"] .tab:hover { color: #3a3a3a; }
+  [data-theme="light"] .tab.active { color: #8b7a2e; border-bottom-color: var(--accent); }
+  [data-theme="light"] .tabs { border-bottom-color: #d5d0c8; }
+  [data-theme="light"] .card { background: #fff; border-color: #d5d0c8; }
+  [data-theme="light"] .card-value { color: #8b7a2e; }
+  [data-theme="light"] .card-label { color: #6b6b6b; }
+  [data-theme="light"] .cite-box { background: #fff; border-color: #d5d0c8; }
+  [data-theme="light"] .cite-ref { color: #3a3a3a; }
+  [data-theme="light"] .cite-ref a { color: #8b7a2e; }
+  [data-theme="light"] .cite-bib { background: #f0ede8; border-color: #d5d0c8; color: #3a3a3a; }
+  [data-theme="light"] .db-app thead th { color: #6b6b6b; border-bottom-color: #d5d0c8; }
+  [data-theme="light"] .db-app thead th:hover { color: #8b7a2e; }
+  [data-theme="light"] .db-app tbody td { border-bottom-color: rgba(0, 0, 0, 0.08); color: #3a3a3a; }
+  [data-theme="light"] .db-app tbody tr:hover { background: var(--accent-dim); }
+  [data-theme="light"] .clade-badge { background: var(--accent-dim); color: #8b7a2e; }
+  [data-theme="light"] .page-btn { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
+  [data-theme="light"] .page-btn:hover { border-color: var(--accent); color: #8b7a2e; }
+  [data-theme="light"] .page-btn.active { background: var(--accent); color: #fff; }
+  [data-theme="light"] .page-info { color: #6b6b6b; }
+  [data-theme="light"] .clade-item { background: #fff; border-color: #d5d0c8; }
+  [data-theme="light"] .clade-item-name { color: #3a3a3a; }
+  [data-theme="light"] .clade-item-count { color: #8b7a2e; }
+  [data-theme="light"] .db-footer-in { background: #f0ede8; border-top-color: #d5d0c8; color: #6b6b6b; }
+  [data-theme="light"] #plotType { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
+  [data-theme="light"] .cite-appeal { background: #f0ede8; color: #3a3a3a; border-left-color: var(--accent); }
+  [data-theme="light"] .cite-appeal strong { color: #8b7a2e; }
+  [data-theme="light"] .source-item { background: #fff; border-color: #d5d0c8; }
+  [data-theme="light"] .source-clade { color: #8b7a2e; }
+  [data-theme="light"] .source-count { color: #6b6b6b; }
+  [data-theme="light"] .source-cite { color: #3a3a3a; }
+  [data-theme="light"] .source-cite a, [data-theme="light"] .source-link { color: #8b7a2e !important; border-color: #8b7a2e; }
+  [data-theme="light"] .source-link:hover { background: #8b7a2e; color: #fff !important; }
+  [data-theme="light"] .db-loading { color: #6b6b6b; }
+  [data-theme="light"] .cite-cell { color: #6b6b6b; }
+  [data-theme="light"] .cite-cell:hover { color: #8b7a2e; }
+  
+  /* Wrap the v3 main column wider for this data-heavy page */
+  main.column.column-wide { max-width: 1100px; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "CUREs Karyotype Database",
+    "description": "63,682 chromosome-number records across 55 clades with source citations, collected through Course-based Undergraduate Research Experiences at Texas A&M University.",
+    "url": "https://coleoguy.github.io/cures-karyotype-database.html",
+    "creator": {
+      "@type": "Organization",
+      "name": "Blackmon Lab",
+      "url": "https://coleoguy.github.io"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "keywords": ["karyotype", "chromosome number", "CUREs", "evolutionary biology"],
+    "includedInDataCatalog": {
+      "@type": "DataCatalog",
+      "name": "Blackmon Lab Databases",
+      "url": "https://coleoguy.github.io/karyotypes/index.html"
+    }
+  }
+  </script>
+extra_scripts: |
+  <script>
+  (function(){
+    // State
+    let CLADES = [];
+    let SOURCES = [];
+    let CITATIONS = {};
+    let RECORDS = [];
+    let filtered = [];
+    let page = 1;
+    const PER_PAGE = 50;
+    let sortCol = null, sortAsc = true;
+  
+    const $ = id => document.getElementById(id);
+    const cladeSelect = $('cladeFilter');
+    const searchBox   = $('searchBox');
+  
+    function escapeHtml(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+  
+    // Load JSON
+    fetch('data/cures-karyotype-data.json')
+      .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .then(init)
+      .catch(err => {
+        $('tableBody').innerHTML =
+          '<tr><td colspan="4" class="db-loading">Failed to load data: ' + escapeHtml(err.message) + '</td></tr>';
+        $('sourcesList').innerHTML =
+          '<div class="db-loading">Failed to load sources.</div>';
+      });
+  
+    function init(payload) {
+      CLADES  = payload.clades || [];
+      SOURCES = payload.sources || [];
+      CITATIONS = {};
+      SOURCES.forEach(s => { CITATIONS[s.clade] = s.citation; });
+      RECORDS = (payload.records || []).map(r => ({
+        c: CLADES[r[0]], s: r[1], h: r[2],
+      }));
+  
+      CLADES.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c; opt.textContent = c;
+        cladeSelect.appendChild(opt);
+      });
+  
+      renderSources();
+      renderOverview();
+      applyFilters();
+    }
+  
+    // Sources tab
+    function renderSources() {
+      const html = SOURCES.map(s => {
+        let citeText = s.citation;
+        if (s.url) citeText = citeText.replace(s.url, '').replace(/\s+$/,'').replace(/[\s,;]+$/,'');
+        return (
+          '<div class="source-item">' +
+            '<div class="source-head">' +
+              '<span class="source-clade">' + escapeHtml(s.clade) + '</span>' +
+              '<span class="source-count">' + s.n.toLocaleString() + ' records</span>' +
+            '</div>' +
+            '<p class="source-cite">' + escapeHtml(citeText) + '</p>' +
+            (s.url
+              ? '<a class="source-link" href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener">View source &rarr;</a>'
+              : '') +
+          '</div>'
+        );
+      }).join('');
+      $('sourcesList').innerHTML = html;
+    }
+  
+    // Overview
+    function renderOverview() {
+      $('statRecords').textContent = RECORDS.length.toLocaleString();
+      const species = new Set(RECORDS.map(r => r.s));
+      $('statSpecies').textContent = species.size.toLocaleString();
+      $('statClades').textContent  = CLADES.length;
+  
+      const haps = RECORDS.map(r => r.h).filter(h => Number.isFinite(h)).sort((a,b)=>a-b);
+      if (haps.length) {
+        const median = haps.length % 2
+          ? haps[(haps.length-1)/2]
+          : ((haps[haps.length/2 - 1] + haps[haps.length/2]) / 2);
+        $('statMedian').textContent = (Math.round(median*10)/10).toString();
+        $('statRange').textContent  = haps[0] + '-' + haps[haps.length-1];
+      }
+  
+      const counts = {};
+      RECORDS.forEach(r => { counts[r.c] = (counts[r.c]||0) + 1; });
+      const grid = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+      $('cladeGrid').innerHTML = grid.map(([c,n]) =>
+        '<div class="clade-item"><span class="clade-item-name">' + escapeHtml(c) +
+        '</span><span class="clade-item-count">' + n.toLocaleString() + '</span></div>'
+      ).join('');
+    }
+  
+    // Filters / table
+    function applyFilters() {
+      const clade = cladeSelect.value;
+      const q = searchBox.value.trim().toLowerCase();
+      filtered = RECORDS.filter(r =>
+        (!clade || r.c === clade) &&
+        (!q || r.s.toLowerCase().includes(q))
+      );
+      if (sortCol) {
+        const dir = sortAsc ? 1 : -1;
+        const key = sortCol === 'cit' ? null : sortCol;
+        filtered.sort((a,b) => {
+          let av, bv;
+          if (key === null) { av = CITATIONS[a.c] || ''; bv = CITATIONS[b.c] || ''; }
+          else { av = a[key]; bv = b[key]; }
+          if (av == null) av = '';
+          if (bv == null) bv = '';
+          if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * dir;
+          return String(av).localeCompare(String(bv)) * dir;
+        });
+      }
+      page = 1;
+      $('recCount').textContent = filtered.length.toLocaleString();
+      renderTable();
+    }
+  
+    function renderTable() {
+      const start = (page - 1) * PER_PAGE;
+      const slice = filtered.slice(start, start + PER_PAGE);
+      if (!slice.length) {
+        $('tableBody').innerHTML = '<tr><td colspan="4" class="db-loading">No records match your filters.</td></tr>';
+      } else {
+        $('tableBody').innerHTML = slice.map(r => {
+          const cite = CITATIONS[r.c] || '';
+          return '<tr>' +
+            '<td><span class="clade-badge">' + escapeHtml(r.c) + '</span></td>' +
+            '<td class="species-name">' + escapeHtml(r.s) + '</td>' +
+            '<td>' + (r.h == null ? '' : r.h) + '</td>' +
+            '<td class="cite-cell" title="Click to expand"><span class="cite-text">' + escapeHtml(cite) + '</span></td>' +
+          '</tr>';
+        }).join('');
+        $('tableBody').querySelectorAll('.cite-cell').forEach(el => {
+          el.addEventListener('click', () => el.classList.toggle('expanded'));
+        });
+      }
+      renderPagination();
+      const end = Math.min(start + PER_PAGE, filtered.length);
+      $('pageInfo').textContent =
+        filtered.length ? ('Showing ' + (start+1).toLocaleString() + '-' + end.toLocaleString() + ' of ' + filtered.length.toLocaleString()) : '';
+    }
+  
+    function renderPagination() {
+      const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+      const pag = $('pagination');
+      if (totalPages <= 1) { pag.innerHTML = ''; return; }
+      const btn = (label, p, opts={}) => {
+        const b = document.createElement('button');
+        b.className = 'page-btn' + (opts.active ? ' active' : '');
+        b.textContent = label;
+        if (opts.disabled) b.disabled = true;
+        else b.addEventListener('click', () => { page = p; renderTable(); });
+        return b;
+      };
+      pag.innerHTML = '';
+      pag.appendChild(btn('\u2039 Prev', page-1, { disabled: page === 1 }));
+      const pages = new Set([1, totalPages, page-1, page, page+1]);
+      let prev = 0;
+      [...pages].filter(p => p >= 1 && p <= totalPages).sort((a,b)=>a-b).forEach(p => {
+        if (p - prev > 1) {
+          const span = document.createElement('span');
+          span.textContent = '\u2026'; span.style.color = '#a09d98'; span.style.padding = '0 4px';
+          pag.appendChild(span);
+        }
+        pag.appendChild(btn(String(p), p, { active: p === page }));
+        prev = p;
+      });
+      pag.appendChild(btn('Next \u203a', page+1, { disabled: page === totalPages }));
+    }
+  
+    // Plot
+    function renderPlot() {
+      const plotArea = $('plotArea');
+      if (!window.Plotly || !filtered.length) {
+        plotArea.innerHTML = '<div class="db-loading">No data to plot.</div>';
+        return;
+      }
+      // v3 theme detection: root [data-theme], not body class
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const fg = isLight ? '#3a3a3a' : '#c8c5c0';
+      const grid = isLight ? '#d5d0c8' : '#2a2825';
+      const layout = {
+        paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
+        font:{ color:fg, family:'Source Serif 4, Georgia, serif' },
+        margin:{ t:50, l:60, r:30, b:80 },
+        xaxis:{ gridcolor:grid, zerolinecolor:grid },
+        yaxis:{ gridcolor:grid, zerolinecolor:grid },
+      };
+      const plotType = $('plotType').value;
+      if (plotType === 'histogram') {
+        Plotly.newPlot(plotArea, [{
+          x: filtered.map(d => d.h).filter(h => Number.isFinite(h)),
+          type:'histogram', marker:{ color:'var(--accent)' }, nbinsx:50,
+        }], {
+          ...layout,
+          title:{ text:'Haploid Number Distribution', font:{ size:16, color:'var(--accent)' } },
+          xaxis:{ ...layout.xaxis, title:'Haploid Number (n)' },
+          yaxis:{ ...layout.yaxis, title:'Number of Species' },
+        }, { responsive:true });
+      } else if (plotType === 'bar') {
+        const counts = {};
+        filtered.forEach(d => { counts[d.c] = (counts[d.c]||0) + 1; });
+        const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+        Plotly.newPlot(plotArea, [{
+          x: sorted.map(e => e[0]), y: sorted.map(e => e[1]),
+          type:'bar', marker:{ color:'var(--accent)' },
+        }], {
+          ...layout,
+          title:{ text:'Records per Clade', font:{ size:16, color:'var(--accent)' } },
+          xaxis:{ ...layout.xaxis, tickangle:-45 },
+          yaxis:{ ...layout.yaxis, title:'Number of Records' },
+        }, { responsive:true });
+      } else if (plotType === 'box') {
+        const groups = {};
+        filtered.forEach(d => {
+          if (!Number.isFinite(d.h)) return;
+          if (!groups[d.c]) groups[d.c] = [];
+          groups[d.c].push(d.h);
+        });
+        const top = Object.entries(groups).sort((a,b) => b[1].length - a[1].length).slice(0, 20);
+        const traces = top.map(([clade, vals]) => ({
+          y: vals, name: clade, type:'box',
+          marker:{ color:'var(--accent)' }, line:{ color:'var(--accent)' },
+          boxpoints:false,
+        }));
+        Plotly.newPlot(plotArea, traces, {
+          ...layout,
+          title:{ text:'Haploid Number by Clade (top 20)', font:{ size:16, color:'var(--accent)' } },
+          showlegend:false,
+          yaxis:{ ...layout.yaxis, title:'Haploid Number' },
+          xaxis:{ ...layout.xaxis, tickangle:-45 },
+        }, { responsive:true });
+      }
+    }
+  
+    // Event listeners
+    cladeSelect.addEventListener('change', applyFilters);
+    searchBox.addEventListener('input', applyFilters);
+    $('resetBtn').addEventListener('click', () => {
+      cladeSelect.value = '';
+      searchBox.value = '';
+      sortCol = null; sortAsc = true;
+      document.querySelectorAll('.sort-arrow').forEach(s => s.textContent = '');
+      applyFilters();
+    });
+  
+    document.querySelectorAll('.db-app .tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.db-app .tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.db-app .tab-content').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+        if (tab.dataset.tab === 'plot') setTimeout(renderPlot, 50);
+      });
+    });
+  
+    document.querySelectorAll('.db-app thead th').forEach(th => {
+      th.addEventListener('click', () => {
+        const col = th.dataset.col;
+        if (sortCol === col) sortAsc = !sortAsc;
+        else { sortCol = col; sortAsc = true; }
+        document.querySelectorAll('.db-app .sort-arrow').forEach(s => s.textContent = '');
+        th.querySelector('.sort-arrow').textContent = sortAsc ? ' \u25b2' : ' \u25bc';
+        applyFilters();
+      });
+    });
+  
+    $('csvBtn').addEventListener('click', () => {
+      let csv = 'Clade,Species,Haploid,Citation\n';
+      filtered.forEach(d => {
+        const cite = (CITATIONS[d.c] || '').replace(/"/g, '""');
+        csv += '"' + d.c + '","' + d.s + '",' + (d.h == null ? '' : d.h) + ',"' + cite + '"\n';
+      });
+      const blob = new Blob([csv], { type:'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'cures_karyotype_filtered.csv';
+      a.click();
+    });
+  
+    $('plotType').addEventListener('change', renderPlot);
+  
+    (() => {
+      const btn = $('citeBibBtn'), bib = $('citeBib');
+      if (btn && bib) {
+        btn.addEventListener('click', () => {
+          const shown = !bib.hasAttribute('hidden');
+          if (shown) { bib.setAttribute('hidden',''); btn.textContent = 'Show BibTeX'; }
+          else { bib.removeAttribute('hidden');     btn.textContent = 'Hide BibTeX'; }
+        });
+      }
+    })();
+  
+    // Re-render plot when v3 theme toggles (observe data-theme on <html>)
+    new MutationObserver(() => {
+      const plotTab = document.querySelector('.db-app .tab[data-tab="plot"]');
+      if (plotTab && plotTab.classList.contains('active')) renderPlot();
+    }).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+  })();
+  </script>
+---
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="assets/css/v3.css">
-
-<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-
-<style>
-/* ── Page-specific CSS for the interactive CUREs database view ──
-   Scoped under .db-app so it does not clash with v3.css.
-   Light-mode selectors re-expressed for v3 theming via [data-theme="light"].
-*/
-.db-app {
-  font-family: var(--font-sans, 'Source Serif 4', Georgia, serif);
-  color: var(--ink, #c8c5c0);
-  margin-top: 28px;
-}
-.db-app a:not(.sitename):not(.logo):not(.nav-cta) { color: var(--accent, var(--accent)); text-decoration: none; }
-.db-app a:not(.sitename):not(.logo):not(.nav-cta):hover { text-decoration: underline; }
-
-/* DB internal two-column layout (independent of site layout) */
-.db-container {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 20px;
-  border: 1px solid #2a2825;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #1e1c19;
-}
-@media (max-width: 900px) { .db-container { grid-template-columns: 1fr; } }
-
-.db-sidebar { background: #141311; border-right: 1px solid #2a2825; padding: 18px; }
-@media (max-width: 900px) { .db-sidebar { border-right: none; border-bottom: 1px solid #2a2825; } }
-.db-sidebar h3 { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 14px 0 8px; font-family: var(--font-mono, ui-monospace, monospace); font-weight: 500; }
-.db-sidebar h3:first-of-type { margin-top: 0; }
-.record-count { font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1.1; font-family: var(--font-sans, 'Source Serif 4', Georgia, serif); }
-.record-label { font-size: 11px; color: #a09d98; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
-.db-app select, .db-app .search-input {
-  width: 100%; padding: 7px 9px; background: #141311; border: 1px solid #2a2825;
-  color: #c8c5c0; border-radius: 4px; font-family: inherit; font-size: 12.5px; margin-bottom: 8px;
-}
-.db-app select:focus, .db-app .search-input:focus { border-color: var(--accent); outline: none; }
-.reset-btn {
-  width: 100%; padding: 7px; background: transparent; border: 1px solid var(--accent);
-  color: var(--accent); border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 11px;
-  text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px;
-}
-.reset-btn:hover { background: var(--accent); color: #141311; }
-.repo-link {
-  display: block; margin-top: 10px; padding: 7px 9px; text-align: center;
-  background: transparent; border: 1px solid #2a2825; color: #a09d98 !important;
-  border-radius: 4px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px;
-  text-decoration: none !important; transition: all 0.15s ease;
-}
-.repo-link:hover { border-color: var(--accent); color: var(--accent) !important; }
-.repo-link i { margin-right: 5px; font-size: 12px; vertical-align: -1px; }
-
-/* Main pane */
-.db-main { padding: 18px 20px; min-width: 0; }
-
-/* Tabs */
-.tabs { display: flex; gap: 0; border-bottom: 1px solid #2a2825; margin-bottom: 18px; flex-wrap: wrap; }
-.tab {
-  padding: 9px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.5px; cursor: pointer; color: #a09d98; border-bottom: 2px solid transparent;
-  transition: all 0.2s; font-family: var(--font-mono, ui-monospace, monospace);
-}
-.tab:hover { color: #c8c5c0; }
-.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-/* Overview cards */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
-.card { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 14px; }
-.card-value { font-size: 24px; font-weight: 700; color: var(--accent); font-family: var(--font-sans, 'Source Serif 4', Georgia, serif); }
-.card-label { font-size: 10px; color: #a09d98; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-/* Citation block */
-.cite-box { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 14px 16px; }
-.cite-ref { font-size: 12.5px; line-height: 1.55; color: #c8c5c0; margin: 0 0 10px 0; }
-.cite-ref a { color: var(--accent); }
-.cite-toggle {
-  background: transparent; border: 1px solid var(--accent); color: var(--accent);
-  padding: 5px 11px; border-radius: 4px; font-size: 10.5px; font-family: inherit;
-  text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer;
-}
-.cite-toggle:hover { background: var(--accent); color: #141311; }
-.cite-bib {
-  margin-top: 12px; padding: 11px; background: #0f0e0c; border: 1px solid #2a2825;
-  border-radius: 4px; font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: 11px; color: #c8c5c0; overflow-x: auto; white-space: pre-wrap; word-break: break-word;
-}
-
-/* Table */
-.table-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
-.csv-btn {
-  padding: 5px 12px; background: var(--accent); color: #141311; border: none; border-radius: 4px;
-  cursor: pointer; font-family: inherit; font-size: 11px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.5px;
-}
-.csv-btn:hover { background: #b08d1f; }
-.page-info { color: #a09d98; font-size: 12px; }
-.db-app table { width: 100%; border-collapse: collapse; }
-.db-app thead th {
-  text-align: left; padding: 9px 11px; font-size: 10.5px; text-transform: uppercase;
-  letter-spacing: 0.5px; color: #a09d98; border-bottom: 1px solid #2a2825; cursor: pointer;
-  user-select: none; white-space: nowrap; font-family: var(--font-mono, ui-monospace, monospace);
-}
-.db-app thead th:hover { color: var(--accent); }
-.db-app thead th .sort-arrow { font-size: 9px; margin-left: 3px; }
-.db-app tbody td {
-  padding: 7px 11px; font-size: 12.5px; border-bottom: 1px solid rgba(42, 40, 37, 0.5);
-}
-.db-app tbody tr:hover { background: var(--accent-dim); }
-.species-name { font-style: italic; }
-.clade-badge {
-  display: inline-block; padding: 2px 7px; background: var(--accent-dim);
-  color: var(--accent); border-radius: 3px; font-size: 10.5px; font-weight: 500;
-}
-.pagination { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
-.page-btn {
-  padding: 5px 10px; background: #141311; border: 1px solid #2a2825; color: #c8c5c0;
-  border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 11.5px;
-}
-.page-btn:hover { border-color: var(--accent); color: var(--accent); }
-.page-btn:disabled { opacity: 0.3; cursor: default; }
-.page-btn.active { background: var(--accent); color: #141311; border-color: var(--accent); }
-
-/* Plot */
-#plotArea { width: 100%; min-height: 450px; }
-
-/* Clade grid */
-.clade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px; margin-top: 12px; }
-.clade-item {
-  display: flex; justify-content: space-between; padding: 7px 10px;
-  background: #141311; border: 1px solid #2a2825; border-radius: 4px; font-size: 11.5px;
-}
-.clade-item-name { color: #c8c5c0; }
-.clade-item-count { color: var(--accent); font-weight: 600; }
-
-/* Internal DB footer */
-.db-footer-in {
-  background: #0f0e0c; border-top: 1px solid #2a2825; padding: 10px 18px;
-  display: flex; justify-content: space-between; align-items: center; font-size: 10.5px; color: #a09d98;
-  flex-wrap: wrap; gap: 8px; font-family: var(--font-mono, ui-monospace, monospace);
-}
-
-/* Citation appeal */
-.cite-appeal {
-  background: #141311; border-left: 3px solid var(--accent); border-radius: 4px;
-  padding: 12px 16px; margin-bottom: 14px; font-size: 12.5px; line-height: 1.55; color: #c8c5c0;
-}
-.cite-appeal strong { color: var(--accent); }
-.cite-appeal ul { margin: 8px 0 0 0; padding-left: 18px; }
-.cite-appeal li { margin-bottom: 4px; }
-
-/* Sources list */
-.sources-list { display: flex; flex-direction: column; gap: 10px; }
-.source-item { background: #141311; border: 1px solid #2a2825; border-radius: 6px; padding: 12px 14px; }
-.source-head {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
-  margin-bottom: 6px; flex-wrap: wrap;
-}
-.source-clade { color: var(--accent); font-weight: 600; font-size: 13px; }
-.source-count { color: #a09d98; font-size: 11px; }
-.source-cite { font-size: 12px; line-height: 1.5; color: #c8c5c0; margin: 0; }
-.source-cite a { color: var(--accent); }
-.source-link {
-  display: inline-block; margin-top: 8px; padding: 3px 9px; font-size: 10.5px;
-  border: 1px solid var(--accent); color: var(--accent) !important; border-radius: 3px;
-  text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none !important;
-}
-.source-link:hover { background: var(--accent); color: #141311 !important; }
-
-/* Loading and citation cells */
-.db-loading { padding: 30px; text-align: center; color: #a09d98; font-size: 13px; }
-.cite-cell { max-width: 340px; color: #a09d98; font-size: 11.5px; line-height: 1.35; cursor: pointer; }
-.cite-cell .cite-text {
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-  overflow: hidden; text-overflow: ellipsis;
-}
-.cite-cell.expanded .cite-text { display: block; -webkit-line-clamp: unset; overflow: visible; }
-.cite-cell:hover { color: var(--accent); }
-
-/* ── Light-mode overrides (v3 uses [data-theme="light"] on <html>) ── */
-[data-theme="light"] .db-app { color: #3a3a3a; }
-[data-theme="light"] .db-container { background: #faf8f3; border-color: #d5d0c8; }
-[data-theme="light"] .db-sidebar { background: #f0ede8; border-right-color: #d5d0c8; }
-[data-theme="light"] .db-sidebar { border-bottom-color: #d5d0c8; }
-[data-theme="light"] .db-sidebar h3 { color: #8b7a2e; }
-[data-theme="light"] .record-count { color: #8b7a2e; }
-[data-theme="light"] .record-label { color: #6b6b6b; }
-[data-theme="light"] .db-app select, [data-theme="light"] .db-app .search-input { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
-[data-theme="light"] .db-app select:focus, [data-theme="light"] .db-app .search-input:focus { border-color: var(--accent); }
-[data-theme="light"] .repo-link { border-color: #d5d0c8; color: #6b6b6b !important; }
-[data-theme="light"] .repo-link:hover { border-color: var(--accent); color: #8b7a2e !important; }
-[data-theme="light"] .tab { color: #6b6b6b; }
-[data-theme="light"] .tab:hover { color: #3a3a3a; }
-[data-theme="light"] .tab.active { color: #8b7a2e; border-bottom-color: var(--accent); }
-[data-theme="light"] .tabs { border-bottom-color: #d5d0c8; }
-[data-theme="light"] .card { background: #fff; border-color: #d5d0c8; }
-[data-theme="light"] .card-value { color: #8b7a2e; }
-[data-theme="light"] .card-label { color: #6b6b6b; }
-[data-theme="light"] .cite-box { background: #fff; border-color: #d5d0c8; }
-[data-theme="light"] .cite-ref { color: #3a3a3a; }
-[data-theme="light"] .cite-ref a { color: #8b7a2e; }
-[data-theme="light"] .cite-bib { background: #f0ede8; border-color: #d5d0c8; color: #3a3a3a; }
-[data-theme="light"] .db-app thead th { color: #6b6b6b; border-bottom-color: #d5d0c8; }
-[data-theme="light"] .db-app thead th:hover { color: #8b7a2e; }
-[data-theme="light"] .db-app tbody td { border-bottom-color: rgba(0, 0, 0, 0.08); color: #3a3a3a; }
-[data-theme="light"] .db-app tbody tr:hover { background: var(--accent-dim); }
-[data-theme="light"] .clade-badge { background: var(--accent-dim); color: #8b7a2e; }
-[data-theme="light"] .page-btn { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
-[data-theme="light"] .page-btn:hover { border-color: var(--accent); color: #8b7a2e; }
-[data-theme="light"] .page-btn.active { background: var(--accent); color: #fff; }
-[data-theme="light"] .page-info { color: #6b6b6b; }
-[data-theme="light"] .clade-item { background: #fff; border-color: #d5d0c8; }
-[data-theme="light"] .clade-item-name { color: #3a3a3a; }
-[data-theme="light"] .clade-item-count { color: #8b7a2e; }
-[data-theme="light"] .db-footer-in { background: #f0ede8; border-top-color: #d5d0c8; color: #6b6b6b; }
-[data-theme="light"] #plotType { background: #fff; border-color: #d5d0c8; color: #3a3a3a; }
-[data-theme="light"] .cite-appeal { background: #f0ede8; color: #3a3a3a; border-left-color: var(--accent); }
-[data-theme="light"] .cite-appeal strong { color: #8b7a2e; }
-[data-theme="light"] .source-item { background: #fff; border-color: #d5d0c8; }
-[data-theme="light"] .source-clade { color: #8b7a2e; }
-[data-theme="light"] .source-count { color: #6b6b6b; }
-[data-theme="light"] .source-cite { color: #3a3a3a; }
-[data-theme="light"] .source-cite a, [data-theme="light"] .source-link { color: #8b7a2e !important; border-color: #8b7a2e; }
-[data-theme="light"] .source-link:hover { background: #8b7a2e; color: #fff !important; }
-[data-theme="light"] .db-loading { color: #6b6b6b; }
-[data-theme="light"] .cite-cell { color: #6b6b6b; }
-[data-theme="light"] .cite-cell:hover { color: #8b7a2e; }
-
-/* Wrap the v3 main column wider for this data-heavy page */
-main.column.column-wide { max-width: 1100px; }
-</style>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
-</head>
-
-<body>
-
-
-<div class="chrome">
-  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>&#8984;K</kbd></button>
-  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">&#9790;</button>
-</div>
-
-<div class="shell">
-
-  <!-- Phylogenetic sidebar -->
-  <aside class="sidebar" aria-label="Site navigation">
-    <div class="brand">
-      <span class="root-dot"></span>
-      <a href="index.html" class="brand-name">Blackmon Lab</a>
-      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> &middot; <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
-    </div>
-
-    <ul class="tree" role="tree">
-      <li>
-        <span>Lab</span>
-        <ul>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="calendar.html">Calendar</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="undergrad-papers.html">Undergrad papers</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Essays</span>
-        <ul>
-          <li><a href="both-sides-are-right.html">Both sides are right</a></li>
-          <li><a href="fragile-y.html">The fragile Y</a></li>
-          <li><a href="y-naught.html">Why not Y naught?</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Databases</span>
-        <ul>
-          <li><a href="cures-karyotype-database.html" class="active">CUREs karyotypes</a></li>
-          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
-          <li><a href="epistasis-database.html">Epistasis database</a></li>
-          <li><a href="tau_database.html">Tau database</a></li>
-          <li><a href="citation-network.html">Citation network</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Research</span>
-        <ul>
-          <li><a href="karyotype.html">Karyotype evolution</a></li>
-          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
-          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
-          <li><a href="selection.html">Selection &amp; adaptation</a></li>
-          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
-          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Organisms</span>
-        <ul>
-          <li><a href="coleoptera-genomics.html">Beetles</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>AI agents</span>
-        <ul>
-          <li><a href="ai.html">Overview</a></li>
-          <li><a href="traittrawler.html">TraitTrawler</a></li>
-          <li><a href="lead-investigator.html">Lead Investigator</a></li>
-          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Tools</span>
-        <ul>
-          <li><a href="phylo-explorer.html">Tree explorer</a></li>
-          <li><a href="phylo-methods/index.html">PCM guide</a></li>
-          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
-          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
-      </li>
-      <li>
-        <span>Teaching</span>
-        <ul>
-          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
-          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
-          <li><a href="subpages/biol682.html">BIOL 682</a></li>
-          <li><a href="subpages/grad101.html">Grad 101</a></li>
-          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
-        </ul>
-      </li>
-    </ul>
-  </aside>
-
-  <!-- Main reading column -->
-  <main class="column column-wide" id="content">
 
     <div class="crumb">
       <a href="index.html">Home</a> &rsaquo; Databases &rsaquo; <strong>CUREs karyotypes</strong>
@@ -576,335 +764,4 @@ main.column.column-wide { max-width: 1100px; }
       </span>
     </footer>
 
-  </main>
-</div>
-
-<!-- Command palette -->
-<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
-  <div class="palette">
-    <input type="text" id="palette-input" placeholder="Jump to&hellip;" autocomplete="off">
-    <div class="palette-results" id="palette-results"></div>
-  </div>
-</div>
-
-<!-- Ask-the-lab toast -->
-<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
-
-<script src="assets/js/v3.js"></script>
-
-<!-- ============================================================
-     Interactive CUREs database driver (preserved from v1 page).
-     The only logical change is the light-mode detection: v3 uses
-     document.documentElement[data-theme] instead of a body class.
-     ============================================================ -->
-<script>
-(function(){
-  // State
-  let CLADES = [];
-  let SOURCES = [];
-  let CITATIONS = {};
-  let RECORDS = [];
-  let filtered = [];
-  let page = 1;
-  const PER_PAGE = 50;
-  let sortCol = null, sortAsc = true;
-
-  const $ = id => document.getElementById(id);
-  const cladeSelect = $('cladeFilter');
-  const searchBox   = $('searchBox');
-
-  function escapeHtml(s) {
-    return String(s == null ? '' : s)
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-  }
-
-  // Load JSON
-  fetch('data/cures-karyotype-data.json')
-    .then(r => { if (!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-    .then(init)
-    .catch(err => {
-      $('tableBody').innerHTML =
-        '<tr><td colspan="4" class="db-loading">Failed to load data: ' + escapeHtml(err.message) + '</td></tr>';
-      $('sourcesList').innerHTML =
-        '<div class="db-loading">Failed to load sources.</div>';
-    });
-
-  function init(payload) {
-    CLADES  = payload.clades || [];
-    SOURCES = payload.sources || [];
-    CITATIONS = {};
-    SOURCES.forEach(s => { CITATIONS[s.clade] = s.citation; });
-    RECORDS = (payload.records || []).map(r => ({
-      c: CLADES[r[0]], s: r[1], h: r[2],
-    }));
-
-    CLADES.forEach(c => {
-      const opt = document.createElement('option');
-      opt.value = c; opt.textContent = c;
-      cladeSelect.appendChild(opt);
-    });
-
-    renderSources();
-    renderOverview();
-    applyFilters();
-  }
-
-  // Sources tab
-  function renderSources() {
-    const html = SOURCES.map(s => {
-      let citeText = s.citation;
-      if (s.url) citeText = citeText.replace(s.url, '').replace(/\s+$/,'').replace(/[\s,;]+$/,'');
-      return (
-        '<div class="source-item">' +
-          '<div class="source-head">' +
-            '<span class="source-clade">' + escapeHtml(s.clade) + '</span>' +
-            '<span class="source-count">' + s.n.toLocaleString() + ' records</span>' +
-          '</div>' +
-          '<p class="source-cite">' + escapeHtml(citeText) + '</p>' +
-          (s.url
-            ? '<a class="source-link" href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener">View source &rarr;</a>'
-            : '') +
-        '</div>'
-      );
-    }).join('');
-    $('sourcesList').innerHTML = html;
-  }
-
-  // Overview
-  function renderOverview() {
-    $('statRecords').textContent = RECORDS.length.toLocaleString();
-    const species = new Set(RECORDS.map(r => r.s));
-    $('statSpecies').textContent = species.size.toLocaleString();
-    $('statClades').textContent  = CLADES.length;
-
-    const haps = RECORDS.map(r => r.h).filter(h => Number.isFinite(h)).sort((a,b)=>a-b);
-    if (haps.length) {
-      const median = haps.length % 2
-        ? haps[(haps.length-1)/2]
-        : ((haps[haps.length/2 - 1] + haps[haps.length/2]) / 2);
-      $('statMedian').textContent = (Math.round(median*10)/10).toString();
-      $('statRange').textContent  = haps[0] + '-' + haps[haps.length-1];
-    }
-
-    const counts = {};
-    RECORDS.forEach(r => { counts[r.c] = (counts[r.c]||0) + 1; });
-    const grid = Object.entries(counts).sort((a,b) => b[1] - a[1]);
-    $('cladeGrid').innerHTML = grid.map(([c,n]) =>
-      '<div class="clade-item"><span class="clade-item-name">' + escapeHtml(c) +
-      '</span><span class="clade-item-count">' + n.toLocaleString() + '</span></div>'
-    ).join('');
-  }
-
-  // Filters / table
-  function applyFilters() {
-    const clade = cladeSelect.value;
-    const q = searchBox.value.trim().toLowerCase();
-    filtered = RECORDS.filter(r =>
-      (!clade || r.c === clade) &&
-      (!q || r.s.toLowerCase().includes(q))
-    );
-    if (sortCol) {
-      const dir = sortAsc ? 1 : -1;
-      const key = sortCol === 'cit' ? null : sortCol;
-      filtered.sort((a,b) => {
-        let av, bv;
-        if (key === null) { av = CITATIONS[a.c] || ''; bv = CITATIONS[b.c] || ''; }
-        else { av = a[key]; bv = b[key]; }
-        if (av == null) av = '';
-        if (bv == null) bv = '';
-        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * dir;
-        return String(av).localeCompare(String(bv)) * dir;
-      });
-    }
-    page = 1;
-    $('recCount').textContent = filtered.length.toLocaleString();
-    renderTable();
-  }
-
-  function renderTable() {
-    const start = (page - 1) * PER_PAGE;
-    const slice = filtered.slice(start, start + PER_PAGE);
-    if (!slice.length) {
-      $('tableBody').innerHTML = '<tr><td colspan="4" class="db-loading">No records match your filters.</td></tr>';
-    } else {
-      $('tableBody').innerHTML = slice.map(r => {
-        const cite = CITATIONS[r.c] || '';
-        return '<tr>' +
-          '<td><span class="clade-badge">' + escapeHtml(r.c) + '</span></td>' +
-          '<td class="species-name">' + escapeHtml(r.s) + '</td>' +
-          '<td>' + (r.h == null ? '' : r.h) + '</td>' +
-          '<td class="cite-cell" title="Click to expand"><span class="cite-text">' + escapeHtml(cite) + '</span></td>' +
-        '</tr>';
-      }).join('');
-      $('tableBody').querySelectorAll('.cite-cell').forEach(el => {
-        el.addEventListener('click', () => el.classList.toggle('expanded'));
-      });
-    }
-    renderPagination();
-    const end = Math.min(start + PER_PAGE, filtered.length);
-    $('pageInfo').textContent =
-      filtered.length ? ('Showing ' + (start+1).toLocaleString() + '-' + end.toLocaleString() + ' of ' + filtered.length.toLocaleString()) : '';
-  }
-
-  function renderPagination() {
-    const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
-    const pag = $('pagination');
-    if (totalPages <= 1) { pag.innerHTML = ''; return; }
-    const btn = (label, p, opts={}) => {
-      const b = document.createElement('button');
-      b.className = 'page-btn' + (opts.active ? ' active' : '');
-      b.textContent = label;
-      if (opts.disabled) b.disabled = true;
-      else b.addEventListener('click', () => { page = p; renderTable(); });
-      return b;
-    };
-    pag.innerHTML = '';
-    pag.appendChild(btn('\u2039 Prev', page-1, { disabled: page === 1 }));
-    const pages = new Set([1, totalPages, page-1, page, page+1]);
-    let prev = 0;
-    [...pages].filter(p => p >= 1 && p <= totalPages).sort((a,b)=>a-b).forEach(p => {
-      if (p - prev > 1) {
-        const span = document.createElement('span');
-        span.textContent = '\u2026'; span.style.color = '#a09d98'; span.style.padding = '0 4px';
-        pag.appendChild(span);
-      }
-      pag.appendChild(btn(String(p), p, { active: p === page }));
-      prev = p;
-    });
-    pag.appendChild(btn('Next \u203a', page+1, { disabled: page === totalPages }));
-  }
-
-  // Plot
-  function renderPlot() {
-    const plotArea = $('plotArea');
-    if (!window.Plotly || !filtered.length) {
-      plotArea.innerHTML = '<div class="db-loading">No data to plot.</div>';
-      return;
-    }
-    // v3 theme detection: root [data-theme], not body class
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const fg = isLight ? '#3a3a3a' : '#c8c5c0';
-    const grid = isLight ? '#d5d0c8' : '#2a2825';
-    const layout = {
-      paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
-      font:{ color:fg, family:'Source Serif 4, Georgia, serif' },
-      margin:{ t:50, l:60, r:30, b:80 },
-      xaxis:{ gridcolor:grid, zerolinecolor:grid },
-      yaxis:{ gridcolor:grid, zerolinecolor:grid },
-    };
-    const plotType = $('plotType').value;
-    if (plotType === 'histogram') {
-      Plotly.newPlot(plotArea, [{
-        x: filtered.map(d => d.h).filter(h => Number.isFinite(h)),
-        type:'histogram', marker:{ color:'var(--accent)' }, nbinsx:50,
-      }], {
-        ...layout,
-        title:{ text:'Haploid Number Distribution', font:{ size:16, color:'var(--accent)' } },
-        xaxis:{ ...layout.xaxis, title:'Haploid Number (n)' },
-        yaxis:{ ...layout.yaxis, title:'Number of Species' },
-      }, { responsive:true });
-    } else if (plotType === 'bar') {
-      const counts = {};
-      filtered.forEach(d => { counts[d.c] = (counts[d.c]||0) + 1; });
-      const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
-      Plotly.newPlot(plotArea, [{
-        x: sorted.map(e => e[0]), y: sorted.map(e => e[1]),
-        type:'bar', marker:{ color:'var(--accent)' },
-      }], {
-        ...layout,
-        title:{ text:'Records per Clade', font:{ size:16, color:'var(--accent)' } },
-        xaxis:{ ...layout.xaxis, tickangle:-45 },
-        yaxis:{ ...layout.yaxis, title:'Number of Records' },
-      }, { responsive:true });
-    } else if (plotType === 'box') {
-      const groups = {};
-      filtered.forEach(d => {
-        if (!Number.isFinite(d.h)) return;
-        if (!groups[d.c]) groups[d.c] = [];
-        groups[d.c].push(d.h);
-      });
-      const top = Object.entries(groups).sort((a,b) => b[1].length - a[1].length).slice(0, 20);
-      const traces = top.map(([clade, vals]) => ({
-        y: vals, name: clade, type:'box',
-        marker:{ color:'var(--accent)' }, line:{ color:'var(--accent)' },
-        boxpoints:false,
-      }));
-      Plotly.newPlot(plotArea, traces, {
-        ...layout,
-        title:{ text:'Haploid Number by Clade (top 20)', font:{ size:16, color:'var(--accent)' } },
-        showlegend:false,
-        yaxis:{ ...layout.yaxis, title:'Haploid Number' },
-        xaxis:{ ...layout.xaxis, tickangle:-45 },
-      }, { responsive:true });
-    }
-  }
-
-  // Event listeners
-  cladeSelect.addEventListener('change', applyFilters);
-  searchBox.addEventListener('input', applyFilters);
-  $('resetBtn').addEventListener('click', () => {
-    cladeSelect.value = '';
-    searchBox.value = '';
-    sortCol = null; sortAsc = true;
-    document.querySelectorAll('.sort-arrow').forEach(s => s.textContent = '');
-    applyFilters();
-  });
-
-  document.querySelectorAll('.db-app .tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.db-app .tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.db-app .tab-content').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-      if (tab.dataset.tab === 'plot') setTimeout(renderPlot, 50);
-    });
-  });
-
-  document.querySelectorAll('.db-app thead th').forEach(th => {
-    th.addEventListener('click', () => {
-      const col = th.dataset.col;
-      if (sortCol === col) sortAsc = !sortAsc;
-      else { sortCol = col; sortAsc = true; }
-      document.querySelectorAll('.db-app .sort-arrow').forEach(s => s.textContent = '');
-      th.querySelector('.sort-arrow').textContent = sortAsc ? ' \u25b2' : ' \u25bc';
-      applyFilters();
-    });
-  });
-
-  $('csvBtn').addEventListener('click', () => {
-    let csv = 'Clade,Species,Haploid,Citation\n';
-    filtered.forEach(d => {
-      const cite = (CITATIONS[d.c] || '').replace(/"/g, '""');
-      csv += '"' + d.c + '","' + d.s + '",' + (d.h == null ? '' : d.h) + ',"' + cite + '"\n';
-    });
-    const blob = new Blob([csv], { type:'text/csv' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'cures_karyotype_filtered.csv';
-    a.click();
-  });
-
-  $('plotType').addEventListener('change', renderPlot);
-
-  (() => {
-    const btn = $('citeBibBtn'), bib = $('citeBib');
-    if (btn && bib) {
-      btn.addEventListener('click', () => {
-        const shown = !bib.hasAttribute('hidden');
-        if (shown) { bib.setAttribute('hidden',''); btn.textContent = 'Show BibTeX'; }
-        else { bib.removeAttribute('hidden');     btn.textContent = 'Hide BibTeX'; }
-      });
-    }
-  })();
-
-  // Re-render plot when v3 theme toggles (observe data-theme on <html>)
-  new MutationObserver(() => {
-    const plotTab = document.querySelector('.db-app .tab[data-tab="plot"]');
-    if (plotTab && plotTab.classList.contains('active')) renderPlot();
-  }).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
-})();
-</script>
-
-</body>
-</html>
+  

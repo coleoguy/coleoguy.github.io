@@ -1,0 +1,190 @@
+{
+  "name": "Blackmon Lab team",
+  "description": "Current members of the Blackmon Lab at Texas A&M University, Department of Biology.",
+  "updated_at": "2026-04-19",
+  "license": "CC BY 4.0",
+  "contact": "blackmon@tamu.edu",
+  "site_page": "https://coleoguy.github.io/team.html",
+  "members": [
+    {
+      "name": "Heath Blackmon",
+      "role": "PI",
+      "year_joined": 2017,
+      "project_tags": ["sex chromosome evolution", "karyotype evolution", "Coleoptera", "phylogenetic comparative methods"],
+      "orcid": "0000-0002-5433-4036",
+      "github": "coleoguy",
+      "email": "blackmon@tamu.edu"
+    },
+    {
+      "name": "Andres Barboza Pereira",
+      "role": "grad student",
+      "year_joined": 2023,
+      "project_tags": ["theoretical evolution", "population genetics", "bioinformatics", "scarab genomes", "Chondrichthyes conservation"],
+      "orcid": null,
+      "github": "andresdbp",
+      "email": null
+    },
+    {
+      "name": "Kiedon Bryant",
+      "role": "grad student",
+      "year_joined": 2025,
+      "project_tags": ["behavioral ecology", "fish", "mating system evolution"],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Shelbie Cast",
+      "role": "grad student",
+      "year_joined": 2025,
+      "project_tags": ["crustacean evolution", "crab freshwater invasion"],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Sean Chien",
+      "role": "grad student",
+      "year_joined": 2022,
+      "project_tags": ["evolutionary biology", "Coleoptera"],
+      "orcid": null,
+      "github": "seanchien4",
+      "email": null
+    },
+    {
+      "name": "Megan Copeland",
+      "role": "grad student",
+      "year_joined": 2022,
+      "project_tags": ["genome structure", "genomics", "bioinformatics", "forensics"],
+      "orcid": null,
+      "github": "megan-copeland",
+      "email": null
+    },
+    {
+      "name": "Kaya Harper",
+      "role": "grad student",
+      "year_joined": 2023,
+      "project_tags": ["environmental genomics", "epigenetics", "phenotypic plasticity", "climate adaptation"],
+      "orcid": null,
+      "github": "kayaharper",
+      "email": null
+    },
+    {
+      "name": "Meghann McConnell",
+      "role": "post-bacc",
+      "year_joined": 2025,
+      "project_tags": ["phylogenetic comparative methods", "chromosome number evolution", "alternative meiosis", "trait evolution models"],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "LT Blackmon",
+      "role": "staff",
+      "year_joined": 2017,
+      "project_tags": ["fieldwork", "Chrysina morphometrics"],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Kenzie Laird",
+      "role": "staff",
+      "year_joined": null,
+      "project_tags": ["model organism care", "discrete trait PCMs", "Betta aggression"],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Emily Clark",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Olivia Deiterman",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Riya Girish",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Anna Klein",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Mallory Murphy",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Tewobola Olasehinde",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Alex Rathsack",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Gabe Rodriguez",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Sarah Schmalz",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": ["evolutionary genomics", "bioinformatics", "sex-autosome fusions"],
+      "orcid": null,
+      "github": null,
+      "email": null
+    },
+    {
+      "name": "Bella Steele",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": ["computational biology", "evolutionary biology"],
+      "orcid": null,
+      "github": null,
+      "email": null
+    }
+  ]
+}

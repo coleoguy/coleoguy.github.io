@@ -1,138 +1,35 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>evobiR · Blackmon Lab</title>
-<meta name="description" content="evobiR is an R package for evolutionary biology. Simulation apps, comparative methods, population genetics, and utility functions, maintained by Heath Blackmon and Richard A. Adams.">
-<link rel="icon" href="../assets/img/favicon.ico">
+---
+layout: default
+title: "evobiR · Blackmon Lab"
+description: "evobiR is an R package for evolutionary biology. Simulation apps, comparative methods, population genetics, and utility functions, maintained by Heath Blackmon and Richard A. Adams."
+extra_head: |
+  <style>
+    .evobir-pre {
+      background: var(--panel, rgba(0,0,0,0.04));
+      border: 1px solid var(--rule, rgba(0,0,0,0.08));
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: 'JetBrains Mono', Consolas, Monaco, 'Courier New', monospace;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--ink, inherit);
+      overflow-x: auto;
+      margin: 10px 0;
+      white-space: pre-wrap;
+    }
+    .evobir-pre code { font-family: inherit; }
+    .layer-body p code,
+    .layer-body li code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 0.85em;
+      background: var(--panel, rgba(0,0,0,0.04));
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+    .layer-body ul { margin-left: 1.2em; }
+  </style>
+---
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="../assets/css/v3.css">
-
-<style>
-  .evobir-pre {
-    background: var(--panel, rgba(0,0,0,0.04));
-    border: 1px solid var(--rule, rgba(0,0,0,0.08));
-    border-radius: 6px;
-    padding: 10px 14px;
-    font-family: 'JetBrains Mono', Consolas, Monaco, 'Courier New', monospace;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    color: var(--ink, inherit);
-    overflow-x: auto;
-    margin: 10px 0;
-    white-space: pre-wrap;
-  }
-  .evobir-pre code { font-family: inherit; }
-  .layer-body p code,
-  .layer-body li code {
-    font-family: 'JetBrains Mono', Consolas, monospace;
-    font-size: 0.85em;
-    background: var(--panel, rgba(0,0,0,0.04));
-    padding: 1px 4px;
-    border-radius: 3px;
-  }
-  .layer-body ul { margin-left: 1.2em; }
-</style>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
-</head>
-
-<body>
-
-
-<div class="chrome">
-  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
-  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
-</div>
-
-<div class="shell">
-
-  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
-  <aside class="sidebar" aria-label="Site navigation">
-    <div class="brand">
-      <span class="root-dot"></span>
-      <a href="../index.html" class="brand-name">Blackmon Lab</a>
-      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
-    </div>
-
-    <ul class="tree" role="tree">
-      <li>
-        <span>Lab</span>
-        <ul>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../news.html">News</a></li>
-          <li><a href="../calendar.html">Calendar</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../undergrad-papers.html">Undergrad papers</a></li>
-          <li><a href="../gallery.html">Gallery</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Databases</span>
-        <ul>
-          <li><a href="../cures-karyotype-database.html">CUREs karyotypes</a></li>
-          <li><a href="../karyotypes/index.html">Six karyotype DBs</a></li>
-          <li><a href="../epistasis-database.html">Epistasis database</a></li>
-          <li><a href="../tau_database.html">Tau database</a></li>
-          <li><a href="../citation-network.html">Citation network</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Research</span>
-        <ul>
-          <li><a href="../karyotype.html">Karyotype evolution</a></li>
-          <li><a href="../sex-chromosome-evolution.html">Sex chromosomes</a></li>
-          <li><a href="../genome-structure-evolution.html">Genome structure</a></li>
-          <li><a href="../selection.html">Selection &amp; adaptation</a></li>
-          <li><a href="../epistasis-line-cross.html">Epistasis</a></li>
-          <li><a href="../chromosome-evolution-history.html">History of the field</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Organisms</span>
-        <ul>
-          <li><a href="../coleoptera-genomics.html">Beetles</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>AI agents</span>
-        <ul>
-          <li><a href="../ai.html">Overview</a></li>
-          <li><a href="../traittrawler.html">TraitTrawler</a></li>
-          <li><a href="../lead-investigator.html">Lead Investigator</a></li>
-          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Tools</span>
-        <ul>
-          <li><a href="../phylo-explorer.html">Tree explorer</a></li>
-          <li><a href="../phylo-methods/index.html">PCM guide</a></li>
-          <li><a href="popgen-sim.html">Pop-gen simulator</a></li>
-          <li><a href="#evobir" class="active">evobiR</a></li>        </ul>
-      </li>
-      <li>
-        <span>Teaching</span>
-        <ul>
-          <li><a href="../biolai-cure.html">Biology &amp; AI CURE</a></li>
-          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
-          <li><a href="biol682.html" target="_blank">BIOL 682</a></li>
-          <li><a href="grad101.html" target="_blank">Grad 101</a></li>
-          <li><a href="AI-Tools.html" target="_blank">AI tools guide</a></li>
-        </ul>
-      </li>
-    </ul>
-  </aside>
-
-  <!-- ── Main reading column ──────────────────────────────── -->
-  <main class="column" id="content">
 
     <div class="crumb">
       <a href="../index.html">Home</a> › Tools › <strong>evobiR</strong>
@@ -525,17 +422,4 @@ ResSel(data = data, traits = c(2, 3), percent = 15,
       </span>
     </footer>
 
-  </main>
-</div>
-
-<!-- Command palette -->
-<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
-  <div class="palette">
-    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
-    <div class="palette-results" id="palette-results"></div>
-  </div>
-</div>
-
-<script src="../assets/js/v3.js"></script>
-</body>
-</html>
+  

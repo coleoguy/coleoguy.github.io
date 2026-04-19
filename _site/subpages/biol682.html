@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIOL 682: Writing, reviewing, responding · Blackmon Lab</title>
+<meta name="description" content="BIOL 682 course materials for scientific communication, writing, storytelling, peer review, and revision in the biological sciences.">
+<meta property="og:title" content="BIOL 682: Writing, reviewing, responding · Blackmon Lab">
+<meta property="og:description" content="BIOL 682 course materials for scientific communication, writing, storytelling, peer review, and revision in the biological sciences.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Essays</span>
+      <ul>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Databases</span>
+      <ul>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/karyotypes/index.html">Six karyotype DBs</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Research</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; adaptation</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Organisms</span>
+      <ul>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI agents</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Tools</span>
+      <ul>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+    <div class="crumb">
+      <a href="../index.html">Home</a> › Teaching › <strong>BIOL 682</strong>
+    </div>
+
+    <h1 class="title" id="biol682">BIOL 682: Writing, reviewing, responding.</h1>
+
+    <p class="lede">
+      Science that isn't communicated well might as well not exist. This course treats scientific writing as a craft that can be taught, practiced, and improved, and works through writing, peer review, and revision as connected skills.
+    </p>
+
+    <h2>Course framing</h2>
+
+    <p>Clear writing and a good story are what separate a finding buried in a forgotten journal from one that changes how a field thinks. Most graduate training treats writing as something students will pick up while running gels and writing code. This course takes the opposite view.</p>
+
+    <p>Every manuscript is a narrative with characters (your study system), conflict (the gap in knowledge), and resolution (your results and what they mean). Learning to see your science as a story, then to tell that story with precision and clarity, pays off at every stage of a career: first-author papers, grant proposals, talks.</p>
+
+    <p>The materials below support the writing, revision, and peer-review components of the course. They are meant to be used iteratively (write, get feedback, revise, repeat), because that is how good scientific prose actually gets made.</p>
+
+    <h2>Course materials</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Self-editing checklist</span>
+          <span class="sum-head">20 Writing Flaws in the Life Sciences</span>
+          <span class="sum-trail">Vague hedging, buried leads, misused jargon, passive-voice overload.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>A short guide to common writing problems in biological manuscripts. Use it as a checklist when self-editing drafts, especially on a second or third pass.</p>
+        <div class="layer-links">
+          <a href="../20_Writing_Flaws_Life_Sciences.pdf" target="_blank">Download PDF →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Revision</span>
+          <span class="sum-head">Revision prompt</span>
+          <span class="sum-trail">Example of a detailed LLM prompt for getting revision feedback on a manuscript draft.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Notice how specific and structured the prompt is. Try writing your own short, vague prompt for the same task and compare the responses you get back.</p>
+        <div class="layer-links">
+          <a href="../revision_prompt.pdf" target="_blank">Download PDF →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Revision</span>
+          <span class="sum-head">Revision prompt response</span>
+          <span class="sum-trail">What a carefully structured prompt actually produces in return.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The LLM's response to the revision prompt above. Notice the depth and specificity of the feedback. Try giving an LLM a simple prompt like "review my paper" and see how different the output is.</p>
+        <div class="layer-links">
+          <a href="../revision_prompt_response.pdf" target="_blank">Download PDF →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Peer review</span>
+          <span class="sum-head">Peer review prompt</span>
+          <span class="sum-trail">Getting a useful, specific critique rather than generic commentary.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Another detailed LLM prompt, this time focused on getting peer-review feedback. Shows how to structure a prompt that produces a real reviewer-style critique rather than generic praise or complaints.</p>
+        <div class="layer-links">
+          <a href="../peer_review_prompt.pdf" target="_blank">Download PDF →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Peer review</span>
+          <span class="sum-head">Science review simulation</span>
+          <span class="sum-trail">Reviewer-style critique from a structured prompt.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The LLM's response to the peer-review prompt above. Try asking an LLM to simply "review my paper" and compare the results.</p>
+        <div class="layer-links">
+          <a href="../Science_Review_Simulation.docx.pdf" target="_blank">Download PDF →</a>
+        </div>
+      </div>
+    </details>
+
+    <blockquote class="pullquote">
+      Write, get feedback, revise, repeat. That iterative loop, not any single template, is what makes scientific prose good.
+    </blockquote>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+</body>
+</html>

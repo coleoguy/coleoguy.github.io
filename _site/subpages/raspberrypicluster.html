@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raspberry Pi cluster · Blackmon Lab</title>
+<meta name="description" content="Documentation of a 26-node Raspberry Pi 4 bioinformatics cluster built and maintained in the Blackmon Lab. Hardware list, OS setup, and network configuration.">
+<meta property="og:title" content="Raspberry Pi cluster · Blackmon Lab">
+<meta property="og:description" content="Documentation of a 26-node Raspberry Pi 4 bioinformatics cluster built and maintained in the Blackmon Lab. Hardware list, OS setup, and network configuration.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+<style>
+  /* ── Raspberry Pi cluster (v3 scoped styles) ────────────────── */
+
+  .pi-cost-table {
+    margin: 18px 0;
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .pi-cost-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper-raised);
+    font-size: 0.9rem;
+  }
+  .pi-cost-table th {
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--paper-raised);
+    border-bottom: 1px solid var(--rule-strong);
+    text-align: left;
+  }
+  .pi-cost-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    vertical-align: top;
+  }
+  .pi-cost-table tr:last-child td { border-bottom: none; }
+  .pi-cost-table tr:hover td { background: var(--accent-dim); }
+  .pi-cost-table .pi-total td {
+    background: var(--accent-dim);
+    color: var(--ink);
+    font-weight: 600;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .pi-cost-table td a {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  .pi-cost-table td a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  .pi-specs {
+    background: var(--accent-dim);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    margin: 18px 0;
+    font-size: 0.98rem;
+  }
+  .pi-specs .highlight {
+    color: var(--accent);
+    font-weight: 600;
+    font-family: var(--font-mono);
+  }
+
+  .pi-code {
+    background: var(--paper-sunk);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    overflow-x: auto;
+    margin: 14px 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink);
+    border-radius: 0 6px 6px 0;
+    white-space: pre;
+    line-height: 1.55;
+  }
+
+  .pi-steplist {
+    margin: 12px 0 16px 20px;
+    color: var(--ink);
+  }
+  .pi-steplist li { margin-bottom: 4px; }
+
+  .pi-note {
+    font-size: 0.95rem;
+    color: var(--ink-dim);
+    margin: 14px 0;
+  }
+  .pi-note strong { color: var(--ink); }
+
+  .pi-subhead {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 20px 0 8px;
+  }
+</style>
+
+</head>
+
+<body>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Essays</span>
+      <ul>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Databases</span>
+      <ul>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/karyotypes/index.html">Six karyotype DBs</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Research</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; adaptation</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Organisms</span>
+      <ul>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI agents</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Tools</span>
+      <ul>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+    <div class="crumb">
+      <a href="../index.html">Home</a> › Tools › <strong>Raspberry Pi cluster</strong>
+    </div>
+
+    <h1 class="title" id="raspberrypi-cluster">Building a Raspberry Pi cluster.</h1>
+
+    <p class="lede">
+      A 26-node Raspberry Pi 4 cluster we built in the lab for embarrassingly parallel jobs and as a teaching platform. This page documents the parts list, the physical build, and the OS and network configuration so that another lab or a student could replicate it. It was never intended to rival a real HPC system. It exists because some jobs fit badly on shared university clusters and because putting hands on the hardware is a legitimate way to learn.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">26</div>
+        <span class="stat-label">Raspberry Pi nodes</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">104</div>
+        <span class="stat-label">Total cores</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">108&nbsp;GB</div>
+        <span class="stat-label">Aggregate RAM</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$2,147</div>
+        <span class="stat-label">All-in hardware cost</span>
+      </div>
+    </div>
+
+    <h2>Why build one</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Rationale</span>
+          <span class="sum-head">Cheap parallelism and a teaching platform in the same box</span>
+          <span class="sum-trail">Not a substitute for a real HPC, but a good complement.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Single-board computers are not suitable for every analysis. They have limited memory and are slower than a contemporary workstation CPU. But they are cheap, they parallelize well for jobs that fit the model, and they make sense for fitting many models to the same dataset, running many iterative simulations, and the rest of the embarrassingly parallel category. A cluster under our own ceiling also lets students experiment with scheduling, MPI, and systems administration in ways that a university HPC does not. The physical cluster is a teaching surface as much as a compute resource.</p>
+      </div>
+    </details>
+
+    <h2>Hardware and supplies</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Parts list</span>
+          <span class="sum-head">Full bill of materials, 26 Pis and supporting gear</span>
+          <span class="sum-trail">Most of it from Amazon and CanaKit. Total hardware: $2,146.66.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Most components were sourced from Amazon. With careful shopping or repurposed equipment the costs could be reduced further.</p>
+        <div class="pi-cost-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Qty</th>
+                <th>Description</th>
+                <th>Source</th>
+                <th>Unit</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>25</td>
+                <td>Raspberry Pi 4 B with 4 GB RAM</td>
+                <td><a href="https://www.canakit.com" target="_blank">canakit</a></td>
+                <td>$55.00</td>
+                <td>$1,375.00</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Raspberry Pi 4 B with 8 GB RAM</td>
+                <td><a href="https://www.canakit.com" target="_blank">canakit</a></td>
+                <td>$89.95</td>
+                <td>$89.95</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Rack and fan setups</td>
+                <td><a href="https://www.amazon.com" target="_blank">amazon</a></td>
+                <td>$25.00</td>
+                <td>$125.00</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Micro SD 32 GB, 5-pack</td>
+                <td><a href="https://www.amazon.com" target="_blank">amazon</a></td>
+                <td>$33.00</td>
+                <td>$198.00</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>24-port Gigabit Ethernet switch</td>
+                <td><a href="https://www.amazon.com" target="_blank">amazon</a></td>
+                <td>$65.90</td>
+                <td>$65.90</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>CAT6 cables 1 foot, 6-pack</td>
+                <td><a href="https://www.amazon.com" target="_blank">amazon</a></td>
+                <td>$12.99</td>
+                <td>$64.95</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>USB-C power cords 8", 3-pack</td>
+                <td><a href="https://www.amazon.com" target="_blank">amazon</a></td>
+                <td>$8.99</td>
+                <td>$71.92</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>USB 60 W charging stations, 6-socket</td>
+                <td><a href="https://www.amazon.com" target="_blank">amazon</a></td>
+                <td>$25.99</td>
+                <td>$155.94</td>
+              </tr>
+              <tr class="pi-total">
+                <td colspan="4"><strong>Total project cost</strong></td>
+                <td><strong>$2,146.66</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="pi-note"><strong>Not included</strong> are items already on hand and donated to the project: a 1 TB SSD external hard drive, monitor, keyboard, mouse, an 8-port Gigabit Ethernet switch, and miscellaneous cables.</p>
+        <p class="pi-note"><strong>Power configuration.</strong> Six 6-port chargers were purchased for 36 total ports for 26 Pis. After research on power requirements, most power packs run only 4 Pis each to ensure adequate power delivery, especially when USB devices are connected.</p>
+        <div class="pi-specs">
+          <strong>Total system specs:</strong> <span class="highlight">104 cores</span> (26 quad-core processors) with <span class="highlight">108 GB of RAM</span>.
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">References</span>
+          <span class="sum-head">Builds that shaped this one</span>
+          <span class="sum-trail">Two excellent tutorials worth reading before starting.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <ul class="pi-steplist">
+          <li><a href="https://magpi.raspberrypi.org/" target="_blank">Build a Raspberry Pi cluster, MagPi Magazine</a></li>
+          <li><a href="https://glmiller.io/2019/09/07/building-a-rpi-cluster-part1/" target="_blank">Five years of Raspberry Pi clusters, G. L. Miller</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <h2>Part 1, physical assembly</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Mechanical build</span>
+          <span class="sum-head">Heatsinks, fan plates, standoffs, three towers</span>
+          <span class="sum-trail">Two towers of 8 Pis, one tower of 9 Pis, plus a separate head node.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Assembling the Pi racks was straightforward:</p>
+        <ol class="pi-steplist">
+          <li>Install heatsinks on all Pis.</li>
+          <li>Attach fans to mounting plates, designed for five Pis each.</li>
+          <li>Combine plates into three towers: two with 8 Pis and one with 9 Pis.</li>
+          <li>Mount each Pi on standoffs and stack plates in towers.</li>
+          <li>Connect fans to pins on the Pi below each plate.</li>
+        </ol>
+        <p>The head node is a separate Raspberry Pi 4 (8 GB RAM version) housed in a standard case. This design lets us later replace the head with a more powerful Linux machine from System76 without disrupting worker nodes. At this stage, cabling, disk setup, and software installation remain.</p>
+      </div>
+    </details>
+
+    <h2>Part 2, operating system and software</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">OS selection</span>
+          <span class="sum-head">Raspbian Buster over Ubuntu Server 20.04</span>
+          <span class="sum-trail">Lower RAM overhead and more responsive on the Pi 4.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Initial testing compared Ubuntu Server 20.04 with a desktop (LUBUNTU) to the standard 32-bit Raspbian (Buster, based on Debian 10). Ubuntu is more general-purpose, but Raspbian was more responsive with lower RAM overhead and was ultimately chosen for all nodes.</p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Head node setup</span>
+          <span class="sum-head">R from source, OpenMPI, the usual dependencies</span>
+          <span class="sum-trail">Compile R, install libraries, install MPI, then clone.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The installation process on the head node follows these steps:</p>
+        <ol class="pi-steplist">
+          <li>Install Raspbian Buster with system updates.</li>
+          <li>Compile R from source (version 4.0.2).</li>
+          <li>Install required system libraries and R packages.</li>
+          <li>Install OpenMPI for distributed computing.</li>
+        </ol>
+        <p class="pi-note"><strong>R compilation.</strong> Compiling R requires installing multiple dependencies. If the configure script fails, search for the missing library using patterns like "how to install libXXX on raspberry pi". Solutions are typically found in the first few results.</p>
+        <div class="pi-code"># Install OpenMPI for message passing
+sudo apt install openmpi-bin openmpi-common libopenmpi3 libopenmpi-dev -y</div>
+        <p class="pi-note"><strong>Note.</strong> PDF man pages failed to build (texi2any version conflict), but base R and all packages installed successfully.</p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">SD card cloning</span>
+          <span class="sum-head">Clone the head node 25 times for workers</span>
+          <span class="sum-trail">About 20 minutes per card. Attach HDMI before first boot.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>After head node configuration, use Raspbian's built-in SD card clone utility to create 25 copies, about 20 minutes per card. To enable headless SSH setup, add an empty file named <code>ssh</code> to the boot folder before first boot. Still, connecting a monitor during initial setup is recommended to verify HDMI detection.</p>
+        <p class="pi-note"><strong>HDMI detection issue.</strong> If Pis boot without HDMI cables connected, they don't start the X11 windowing system, producing no video output even after plugging in a monitor. Always connect HDMI cables before the first boot.</p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Node configuration</span>
+          <span class="sum-head">Hostname, static IP, SSH, reboot</span>
+          <span class="sum-trail">Four quick steps per node, done on first boot.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Configure each node (head first, then workers) by performing these steps on boot:</p>
+        <p class="pi-subhead">1. System configuration</p>
+        <p>Open the Pi configuration application and:</p>
+        <ul class="pi-steplist">
+          <li>Change the hostname: head node "stevens"; worker nodes "node1", "node2", and so on.</li>
+          <li>Update the default password if desired.</li>
+          <li>Select "No" when prompted to reboot. We'll reboot after additional changes.</li>
+        </ul>
+        <p class="pi-note"><strong>Naming convention.</strong> All lab computers are named after great scientists. The head node is named "stevens" after Nettie Stevens, a pioneer in genetics who wrote the groundbreaking <em>Studies in Spermatogenesis</em> volumes (1905, 1906) on sex chromosomes.</p>
+
+        <p class="pi-subhead">2. Static IP configuration</p>
+        <p>Set up static IP addresses so that node identities stay consistent across reboots:</p>
+        <div class="pi-code">sudo nano /etc/dhcpcd.conf</div>
+        <p>Add these lines to the file (increment the third octet for each node):</p>
+        <div class="pi-code">interface eth0
+static ip_address=10.0.0.1/24</div>
+        <p>For example, head node uses 10.0.0.1, node1 uses 10.0.0.2, and so on, up to 10.0.0.26.</p>
+
+        <p class="pi-subhead">3. Enable SSH</p>
+        <p>SSH is disabled by default and does not persist after reboot when enabled through the GUI. Enable it from the command line:</p>
+        <div class="pi-code">sudo systemctl enable ssh
+sudo systemctl start ssh</div>
+        <p>Verify SSH status:</p>
+        <div class="pi-code">sudo service ssh status</div>
+
+        <p class="pi-subhead">4. Reboot and verify</p>
+        <p>After reboot, verify the hostname change and confirm SSH is running.</p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">SSH key exchange</span>
+          <span class="sum-head">Passwordless logins across all nodes</span>
+          <span class="sum-trail">Generate keys, copy to head, then copy head's key to every worker.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Generate SSH keys for passwordless communication between nodes:</p>
+        <div class="pi-code">ssh-keygen -t rsa</div>
+        <p>Press Enter through all prompts to use defaults. Configure key sharing:</p>
+        <p><strong>On worker nodes.</strong> Copy the head node's key:</p>
+        <div class="pi-code">ssh-copy-id 10.0.0.1</div>
+        <p><strong>On head node.</strong> After all nodes are configured, copy the head's key to all workers:</p>
+        <div class="pi-code">ssh-copy-id 10.0.0.2
+ssh-copy-id 10.0.0.3
+# ... continue for all nodes up to 10.0.0.26</div>
+        <p><strong>Verification.</strong> From the head node, test seamless SSH access to a worker:</p>
+        <div class="pi-code">ssh 10.0.0.4</div>
+      </div>
+    </details>
+
+    <h2>Part 3, cabling and finalization</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Cabling</span>
+          <span class="sum-head">It works, but use longer cables than you think you need</span>
+          <span class="sum-trail">Minimal slack is the main regret.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Once all nodes are configured, finalize the physical cabling setup. In hindsight, slightly longer network cables would have provided more flexibility for cable management and rack organization. The current setup works but leaves minimal slack in some cable runs.</p>
+      </div>
+    </details>
+
+    <h2>Part 4, test run</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Benchmarks</span>
+          <span class="sum-head">Distributed computing benchmarks and first job submissions</span>
+          <span class="sum-trail">Coming soon.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p><em>Coming soon: distributed computing benchmarks and first job submissions.</em></p>
+      </div>
+    </details>
+
+    <p class="pi-note" style="margin-top: 32px;"><strong>Last updated:</strong> 2024</p>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+</body>
+</html>

@@ -1,263 +1,556 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birth-death simulator · PCM guide · Blackmon Lab</title>
-<meta name="description" content="Interactive birth-death process simulator showing how identical evolutionary rates produce dramatically different phylogenetic trees by chance alone.">
-<meta property="og:title" content="Birth-death simulator · PCM guide · Blackmon Lab">
-<meta property="og:description" content="Interactive birth-death process simulator showing how identical evolutionary rates produce dramatically different phylogenetic trees by chance alone.">
-<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Blackmon Lab">
-<meta property="og:url" content="https://coleoguy.github.io/phylo-methods/bd-simulator.html">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://coleoguy.github.io/phylo-methods/bd-simulator.html">
-<meta name="author" content="Heath Blackmon">
-<link rel="icon" href="../assets/img/favicon.ico">
+---
+layout: default
+title: "Birth-death simulator · PCM guide · Blackmon Lab"
+description: "Interactive birth-death process simulator showing how identical evolutionary rates produce dramatically different phylogenetic trees by chance alone."
+canonical: "https://coleoguy.github.io/phylo-methods/bd-simulator.html"
+extra_head: |
+  <style>
+    /* Birth-death simulator, styled in v3 tokens */
+    .sim-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 22px 28px;
+      padding: 22px 0 20px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin: 18px 0 24px;
+    }
+    .ctrl-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 180px;
+    }
+    .ctrl-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .ctrl-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ctrl-row input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 140px;
+      height: 3px;
+      background: var(--rule);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .ctrl-row input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px; height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+    .ctrl-row input[type=range]::-moz-range-thumb {
+      width: 14px; height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+    .ctrl-val {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent);
+      min-width: 40px;
+      font-weight: 500;
+    }
+    .btn-simulate {
+      padding: 9px 24px;
+      background: var(--accent);
+      border: none;
+      color: var(--paper);
+      border-radius: 6px;
+      font-family: var(--font-sans, inherit);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      align-self: center;
+    }
+    .btn-simulate:hover { background: var(--accent-hover); }
+    .btn-simulate:active { transform: scale(0.97); }
+  
+    .tree-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 700px) { .tree-panels { grid-template-columns: 1fr; } }
+  
+    .tree-panel {
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .tree-panel-head {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--paper-sunk);
+    }
+    .tree-panel-head .run-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .tree-panel-head .run-stats {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .tree-canvas-wrap { position: relative; }
+    canvas.tree-canvas {
+      display: block;
+      width: 100%;
+      height: 320px;
+    }
+    .extinct-overlay {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: color-mix(in srgb, var(--paper) 85%, transparent);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .extinct-overlay.show { display: flex; }
+  
+    .highlight-text { color: var(--accent); font-weight: 600; }
+  
+    .sim-lede {
+      color: var(--ink-dim);
+      max-width: 38em;
+    }
+  </style>
+extra_scripts: |
+  <script>
+  /* ============================================================
+     Birth-death simulator
+     Two independent Gillespie simulations at identical rates.
+     ============================================================ */
+  (function () {
+    'use strict';
+  
+    // --- DOM refs -------------------------------------------------
+    var lambdaSlider = document.getElementById('lambdaSlider');
+    var muSlider     = document.getElementById('muSlider');
+    var timeSlider   = document.getElementById('timeSlider');
+    var lambdaVal    = document.getElementById('lambdaVal');
+    var muVal        = document.getElementById('muVal');
+    var timeVal      = document.getElementById('timeVal');
+    var canvas1      = document.getElementById('canvas1');
+    var canvas2      = document.getElementById('canvas2');
+    var stats1       = document.getElementById('stats1');
+    var stats2       = document.getElementById('stats2');
+    var extinct1     = document.getElementById('extinct1');
+    var extinct2     = document.getElementById('extinct2');
+  
+    // Latest simulation results are cached so a theme toggle can redraw
+    // without re-rolling the stochastic simulation.
+    var lastResults = [null, null];
+    var lastTotalTime = null;
+  
+    // --- Theme-aware palette (reads live from v3 CSS custom props) -----
+    function palette() {
+      var s = getComputedStyle(document.documentElement);
+      var accent = (s.getPropertyValue('--accent') || '#500000').trim();
+      var inkDim = (s.getPropertyValue('--ink-dim') || '#5a4c46').trim();
+      var inkFaint = (s.getPropertyValue('--ink-faint') || '#8b7a72').trim();
+      var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      return {
+        survivor:   accent,                           // v3 maroon (light) / scaled red (dark)
+        extinct:    dark ? 'rgba(168,156,141,0.42)'   // --ink-dim-ish, translucent
+                         : 'rgba(90,76,70,0.45)',
+        extinctDot: accent,
+        axis:       dark ? 'rgba(168,156,141,0.25)'
+                         : 'rgba(90,76,70,0.22)',
+        axisLabel:  inkFaint
+      };
+    }
+  
+    // --- Slider live readouts ------------------------------------
+    function fmt(slider) {
+      var step = parseFloat(slider.step) || 1;
+      // show 2 decimals when step < 0.1, else 1 decimal
+      return (step < 0.1 ? parseFloat(slider.value).toFixed(2)
+                         : parseFloat(slider.value).toFixed(1));
+    }
+    function syncLabels() {
+      if (lambdaVal) lambdaVal.textContent = fmt(lambdaSlider);
+      if (muVal)     muVal.textContent     = fmt(muSlider);
+      if (timeVal)   timeVal.textContent   = fmt(timeSlider);
+    }
+    [lambdaSlider, muSlider, timeSlider].forEach(function (s) {
+      if (s) s.addEventListener('input', syncLabels);
+    });
+    syncLabels();
+  
+    // --- Gillespie birth-death simulation ------------------------
+    // Returns { nodes, root, survivors, extinctCount, totalEvents, time }
+    // Each node: { id, parent, birthTime, deathTime|null, children:[], isSurvivor:bool }
+    function simulate(lambda, mu, totalTime) {
+      var nodes = [];
+      function makeNode(parent, birthTime) {
+        var n = { id: nodes.length, parent: parent, birthTime: birthTime,
+                  deathTime: null, children: [], isSurvivor: false,
+                  x: 0 };
+        nodes.push(n);
+        if (parent) parent.children.push(n);
+        return n;
+      }
+  
+      var root = makeNode(null, 0);
+      var living = [root];
+      var t = 0;
+      var events = 0;
+      var extinctCount = 0;
+      var rateSum = lambda + mu;
+  
+      // guard against runaway growth / infinite loops in degenerate corners.
+      // Stopping early truncates the tree at time t (as if the user picked a
+      // smaller T); survivors still get closed out at totalTime below.
+      var MAX_EVENTS = 5000;
+      var MAX_LIVING = 400;
+  
+      while (living.length > 0 && events < MAX_EVENTS) {
+        var n = living.length;
+        if (n > MAX_LIVING) break; // tree has exploded; stop so drawing stays usable
+        var total = n * rateSum;
+        if (total <= 0) break; // both rates zero
+        // waiting time ~ Exp(total); inverse-CDF: -ln(U)/total
+        var u = Math.random();
+        if (u <= 0) u = 1e-12;
+        var dt = -Math.log(u) / total;
+        var newT = t + dt;
+        if (newT > totalTime) { t = totalTime; break; }
+        t = newT;
+        events++;
+  
+        var idx = Math.floor(Math.random() * n);
+        var lineage = living[idx];
+  
+        if (Math.random() < lambda / rateSum) {
+          // speciation: lineage splits into two daughters
+          lineage.deathTime = t; // internal node, end-of-branch = split time
+          // Remove parent from living and add two children
+          living.splice(idx, 1);
+          var c1 = makeNode(lineage, t);
+          var c2 = makeNode(lineage, t);
+          living.push(c1);
+          living.push(c2);
+        } else {
+          // extinction
+          lineage.deathTime = t;
+          lineage.isSurvivor = false;
+          extinctCount++;
+          living.splice(idx, 1);
+        }
+      }
+  
+      // Close out surviving lineages at totalTime
+      living.forEach(function (n) {
+        n.deathTime = totalTime;
+        n.isSurvivor = true;
+      });
+  
+      return {
+        nodes: nodes, root: root, survivors: living.slice(),
+        extinctCount: extinctCount, totalEvents: events, time: totalTime
+      };
+    }
+  
+    // --- Tree layout ---------------------------------------------
+    // Assigns x positions to each node. Survivors are evenly spaced along [0,1].
+    // Internal nodes are placed at the midpoint of their subtree's extant tips.
+    // Extinct lineages are placed at the midpoint of their sibling subtree OR
+    // biased toward the parent so their branch is visible but doesn't steal
+    // horizontal space from survivors.
+    function layout(result) {
+      var survivors = result.survivors;
+      // If no survivors, still lay out extinct lineages evenly by birth order
+      if (survivors.length === 0) {
+        var tips = result.nodes.filter(function (n) { return n.children.length === 0; });
+        tips.forEach(function (n, i) {
+          n.x = tips.length === 1 ? 0.5 : i / (tips.length - 1);
+        });
+      } else if (survivors.length === 1) {
+        survivors[0].x = 0.5;
+      } else {
+        survivors.forEach(function (n, i) {
+          n.x = i / (survivors.length - 1);
+        });
+      }
+  
+      // Post-order: each internal node takes midpoint of its extant descendants.
+      // For extinct-only subtrees, take midpoint of all tip descendants.
+      function assignInternal(node) {
+        if (node.children.length === 0) {
+          // tip: if not already set (extinct), assign later
+          return;
+        }
+        node.children.forEach(assignInternal);
+        // Compute mean of child x values that are already positioned (survivors
+        // or previously-assigned internals). For extinct children with no x yet,
+        // we'll handle them below.
+        var xs = [];
+        function collectSurvivorXs(n) {
+          if (n.isSurvivor && n.children.length === 0) { xs.push(n.x); return; }
+          if (n.children.length === 0) return; // extinct tip, skip for now
+          n.children.forEach(collectSurvivorXs);
+        }
+        collectSurvivorXs(node);
+        if (xs.length > 0) {
+          var mean = 0;
+          xs.forEach(function (v) { mean += v; });
+          node.x = mean / xs.length;
+        }
+      }
+      assignInternal(result.root);
+  
+      // Second pass: for internals that got no x (entire subtree extinct),
+      // position them at their parent's x with a small offset so the branch
+      // is visible. Do this top-down.
+      function fillExtinctInternal(node, fallback) {
+        if (node.x === undefined || node.x === null || isNaN(node.x)) {
+          node.x = fallback;
+        }
+        // For extinct tips, place them near parent x but jittered slightly so
+        // sibling extinctions don't overdraw.
+        node.children.forEach(function (c, i) {
+          if (c.children.length === 0 && !c.isSurvivor) {
+            // extinct tip: offset slightly from parent
+            var jitter = (i - (node.children.length - 1) / 2) * 0.018;
+            c.x = node.x + jitter;
+          }
+          fillExtinctInternal(c, node.x);
+        });
+      }
+      // Root fallback: midpoint
+      if (result.root.x === undefined || result.root.x === null || isNaN(result.root.x)) {
+        result.root.x = 0.5;
+      }
+      fillExtinctInternal(result.root, result.root.x);
+    }
+  
+    // --- Canvas sizing (handle devicePixelRatio) -----------------
+    function sizeCanvas(canvas) {
+      var dpr = window.devicePixelRatio || 1;
+      var rect = canvas.getBoundingClientRect();
+      var w = Math.max(1, Math.floor(rect.width));
+      var h = Math.max(1, Math.floor(rect.height));
+      canvas.width  = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      var ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { ctx: ctx, w: w, h: h };
+    }
+  
+    // --- Draw one tree -------------------------------------------
+    function drawTree(canvas, result, totalTime) {
+      var sized = sizeCanvas(canvas);
+      var ctx = sized.ctx;
+      var W = sized.w, H = sized.h;
+      var pal = palette();
+  
+      // Clear
+      ctx.clearRect(0, 0, W, H);
+  
+      // Axis margins
+      var padL = 14, padR = 14, padT = 14, padB = 26;
+      var plotW = W - padL - padR;
+      var plotH = H - padT - padB;
+  
+      // time axis: y = padT + (t/totalTime) * plotH  (time grows downward)
+      function yOf(t) { return padT + (t / totalTime) * plotH; }
+      function xOf(xNorm) {
+        // leave a little inset so branches don't kiss the edges
+        var inset = 0.04;
+        var x = inset + xNorm * (1 - 2 * inset);
+        return padL + x * plotW;
+      }
+  
+      // Time axis (vertical ruler on the right for reference)
+      ctx.strokeStyle = pal.axis;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(W - padR + 4, padT);
+      ctx.lineTo(W - padR + 4, padT + plotH);
+      ctx.stroke();
+      // tick at t=0 and t=totalTime
+      ctx.fillStyle = pal.axisLabel;
+      ctx.font = '10px ' + (getComputedStyle(document.documentElement).getPropertyValue('--font-mono') || 'monospace');
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'top';
+      ctx.fillText('t=0', W - padR + 2, padT - 2);
+      ctx.textBaseline = 'bottom';
+      ctx.fillText('t=' + totalTime.toFixed(1), W - padR + 2, padT + plotH + 2);
+  
+      if (!result || result.nodes.length === 0) return;
+  
+      // Draw edges. Two passes so survivors render on top of extinct lineages.
+      // Each edge: vertical from (x, parentEnd) to (x, myEnd), then a horizontal
+      // segment from sibling's x to connect at the parent's split point.
+      // Implementation: draw horizontal "bar" at node.birthTime between its
+      // children's x positions, and vertical line from (child.x, birthTime)
+      // down to (child.x, deathTime) for each child.
+      function isSubtreeSurvivor(n) {
+        // any survivor descendant? precompute would be cleaner but fine here
+        if (n.isSurvivor && n.children.length === 0) return true;
+        for (var i = 0; i < n.children.length; i++) {
+          if (isSubtreeSurvivor(n.children[i])) return true;
+        }
+        return false;
+      }
+  
+      function drawEdgesPass(wantSurvivor) {
+        result.nodes.forEach(function (n) {
+          var subtreeSurv = isSubtreeSurvivor(n);
+          if (wantSurvivor && !subtreeSurv) return;
+          if (!wantSurvivor && subtreeSurv) return;
+  
+          var color = wantSurvivor ? pal.survivor : pal.extinct;
+          ctx.strokeStyle = color;
+          ctx.lineWidth = wantSurvivor ? 1.6 : 1.1;
+          ctx.lineCap = 'round';
+  
+          // Vertical branch: from node.birthTime to node.deathTime at node.x
+          var x = xOf(n.x);
+          var y1 = yOf(n.birthTime);
+          var y2 = yOf(n.deathTime);
+          ctx.beginPath();
+          ctx.moveTo(x, y1);
+          ctx.lineTo(x, y2);
+          ctx.stroke();
+  
+          // Horizontal split bar at the moment of speciation: runs across
+          // children of this node.
+          if (n.children.length >= 2) {
+            var xs = n.children.map(function (c) { return xOf(c.x); });
+            var minX = Math.min.apply(null, xs);
+            var maxX = Math.max.apply(null, xs);
+            var yBar = yOf(n.deathTime);
+            ctx.beginPath();
+            ctx.moveTo(minX, yBar);
+            ctx.lineTo(maxX, yBar);
+            ctx.stroke();
+          }
+        });
+      }
+  
+      // Extinct first (underneath), then survivors on top.
+      drawEdgesPass(false);
+      drawEdgesPass(true);
+  
+      // Extinction dots at the terminal of each extinct tip
+      ctx.fillStyle = pal.extinctDot;
+      result.nodes.forEach(function (n) {
+        if (n.children.length === 0 && !n.isSurvivor) {
+          var cx = xOf(n.x);
+          var cy = yOf(n.deathTime);
+          ctx.beginPath();
+          ctx.arc(cx, cy, 2.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+    }
+  
+    // --- Update the per-tree stats label -------------------------
+    function setStats(el, result) {
+      if (!el) return;
+      var survivors = result.survivors.length;
+      var ext = result.extinctCount;
+      el.textContent = survivors + ' survivor' + (survivors === 1 ? '' : 's') +
+                       ' / ' + ext + ' extinct';
+    }
+  
+    // --- Public entry point (referenced by inline onclick) -------
+    function runSimulation() {
+      var lambda = parseFloat(lambdaSlider.value);
+      var mu     = parseFloat(muSlider.value);
+      var T      = parseFloat(timeSlider.value);
+      syncLabels();
+  
+      var r1 = simulate(lambda, mu, T);
+      var r2 = simulate(lambda, mu, T);
+      layout(r1);
+      layout(r2);
+  
+      lastResults = [r1, r2];
+      lastTotalTime = T;
+  
+      drawTree(canvas1, r1, T);
+      drawTree(canvas2, r2, T);
+      setStats(stats1, r1);
+      setStats(stats2, r2);
+  
+      // Extinction overlay
+      if (extinct1) extinct1.classList.toggle('show', r1.survivors.length === 0);
+      if (extinct2) extinct2.classList.toggle('show', r2.survivors.length === 0);
+    }
+    // expose for the inline onclick in the markup
+    window.runSimulation = runSimulation;
+  
+    // --- Redraw-on-theme-change ----------------------------------
+    var themeObserver = new MutationObserver(function (mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        if (mutations[i].attributeName === 'data-theme') {
+          if (lastResults[0] && lastResults[1] && lastTotalTime != null) {
+            drawTree(canvas1, lastResults[0], lastTotalTime);
+            drawTree(canvas2, lastResults[1], lastTotalTime);
+          }
+          break;
+        }
+      }
+    });
+    themeObserver.observe(document.documentElement, { attributes: true });
+  
+    // Redraw on resize so canvas fidelity stays crisp
+    var resizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        if (lastResults[0] && lastResults[1] && lastTotalTime != null) {
+          drawTree(canvas1, lastResults[0], lastTotalTime);
+          drawTree(canvas2, lastResults[1], lastTotalTime);
+        }
+      }, 120);
+    });
+  
+    // --- Initial run on load -------------------------------------
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', runSimulation);
+    } else {
+      runSimulation();
+    }
+  })();
+  </script>
+---
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="../assets/css/v3.css">
-
-<style>
-  /* Birth-death simulator, styled in v3 tokens */
-  .sim-controls {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    gap: 22px 28px;
-    padding: 22px 0 20px;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    margin: 18px 0 24px;
-  }
-  .ctrl-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    min-width: 180px;
-  }
-  .ctrl-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .ctrl-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .ctrl-row input[type=range] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 140px;
-    height: 3px;
-    background: var(--rule);
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
-  }
-  .ctrl-row input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 14px; height: 14px;
-    background: var(--accent);
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-  }
-  .ctrl-row input[type=range]::-moz-range-thumb {
-    width: 14px; height: 14px;
-    background: var(--accent);
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-  }
-  .ctrl-val {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--accent);
-    min-width: 40px;
-    font-weight: 500;
-  }
-  .btn-simulate {
-    padding: 9px 24px;
-    background: var(--accent);
-    border: none;
-    color: var(--paper);
-    border-radius: 6px;
-    font-family: var(--font-sans, inherit);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-    align-self: center;
-  }
-  .btn-simulate:hover { background: var(--accent-hover); }
-  .btn-simulate:active { transform: scale(0.97); }
-
-  .tree-panels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin-bottom: 28px;
-  }
-  @media (max-width: 700px) { .tree-panels { grid-template-columns: 1fr; } }
-
-  .tree-panel {
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .tree-panel-head {
-    padding: 10px 16px;
-    border-bottom: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--paper-sunk);
-  }
-  .tree-panel-head .run-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .tree-panel-head .run-stats {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--accent);
-  }
-  .tree-canvas-wrap { position: relative; }
-  canvas.tree-canvas {
-    display: block;
-    width: 100%;
-    height: 320px;
-  }
-  .extinct-overlay {
-    position: absolute;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: color-mix(in srgb, var(--paper) 85%, transparent);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .extinct-overlay.show { display: flex; }
-
-  .highlight-text { color: var(--accent); font-weight: 600; }
-
-  .sim-lede {
-    color: var(--ink-dim);
-    max-width: 38em;
-  }
-</style>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
-</head>
-
-<body>
-
-
-<div class="chrome">
-  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
-  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
-</div>
-
-<div class="shell">
-
-  <aside class="sidebar" aria-label="Site navigation">
-    <div class="brand">
-      <span class="root-dot"></span>
-      <a href="../index.html" class="brand-name">Blackmon Lab</a>
-      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
-    </div>
-
-    <ul class="tree" role="tree">
-      <li>
-        <span>Lab</span>
-        <ul>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../news.html">News</a></li>
-          <li><a href="../calendar.html">Calendar</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../undergrad-papers.html">Undergrad papers</a></li>
-          <li><a href="../gallery.html">Gallery</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Databases</span>
-        <ul>
-          <li><a href="../cures-karyotype-database.html">CUREs karyotypes</a></li>
-          <li><a href="../karyotypes/index.html">Six karyotype DBs</a></li>
-          <li><a href="../epistasis-database.html">Epistasis database</a></li>
-          <li><a href="../tau_database.html">Tau database</a></li>
-          <li><a href="../citation-network.html">Citation network</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Research</span>
-        <ul>
-          <li><a href="../karyotype.html">Karyotype evolution</a></li>
-          <li><a href="../sex-chromosome-evolution.html">Sex chromosomes</a></li>
-          <li><a href="../genome-structure-evolution.html">Genome structure</a></li>
-          <li><a href="../selection.html">Selection &amp; adaptation</a></li>
-          <li><a href="../epistasis-line-cross.html">Epistasis</a></li>
-          <li><a href="../chromosome-evolution-history.html">History of the field</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Organisms</span>
-        <ul>
-          <li><a href="../coleoptera-genomics.html">Beetles</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>AI agents</span>
-        <ul>
-          <li><a href="../ai.html">Overview</a></li>
-          <li><a href="../traittrawler.html">TraitTrawler</a></li>
-          <li><a href="../lead-investigator.html">Lead Investigator</a></li>
-          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Tools</span>
-        <ul>
-          <li><a href="../phylo-explorer.html">Tree explorer</a></li>
-          <li><a href="index.html" class="active">PCM guide</a></li>
-          <li><a href="../subpages/popgen-sim.html">Pop-gen simulator</a></li>
-          <li><a href="../subpages/evobir.html">evobiR</a></li>        </ul>
-      </li>
-      <li>
-        <span>Teaching</span>
-        <ul>
-          <li><a href="../biolai-cure.html">Biology &amp; AI CURE</a></li>
-          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
-          <li><a href="../subpages/biol682.html">BIOL 682</a></li>
-          <li><a href="../subpages/grad101.html">Grad 101</a></li>
-          <li><a href="../subpages/AI-Tools.html">AI tools guide</a></li>
-        </ul>
-      </li>
-    </ul>
-  </aside>
-
-  <main class="column" id="content">
 
     <div class="crumb">
       <a href="../index.html">Home</a> &rsaquo; Tools &rsaquo; <a href="index.html">PCM guide</a> &rsaquo; <strong>Birth-death simulator</strong>
@@ -340,422 +633,4 @@
       </span>
     </footer>
 
-  </main>
-</div>
-
-<!-- Command palette -->
-<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
-  <div class="palette">
-    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
-    <div class="palette-results" id="palette-results"></div>
-  </div>
-</div>
-
-<!-- Ask-the-lab toast -->
-<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
-
-<script src="../assets/js/v3.js"></script>
-
-<script>
-/* ============================================================
-   Birth-death simulator
-   Two independent Gillespie simulations at identical rates.
-   ============================================================ */
-(function () {
-  'use strict';
-
-  // --- DOM refs -------------------------------------------------
-  var lambdaSlider = document.getElementById('lambdaSlider');
-  var muSlider     = document.getElementById('muSlider');
-  var timeSlider   = document.getElementById('timeSlider');
-  var lambdaVal    = document.getElementById('lambdaVal');
-  var muVal        = document.getElementById('muVal');
-  var timeVal      = document.getElementById('timeVal');
-  var canvas1      = document.getElementById('canvas1');
-  var canvas2      = document.getElementById('canvas2');
-  var stats1       = document.getElementById('stats1');
-  var stats2       = document.getElementById('stats2');
-  var extinct1     = document.getElementById('extinct1');
-  var extinct2     = document.getElementById('extinct2');
-
-  // Latest simulation results are cached so a theme toggle can redraw
-  // without re-rolling the stochastic simulation.
-  var lastResults = [null, null];
-  var lastTotalTime = null;
-
-  // --- Theme-aware palette (reads live from v3 CSS custom props) -----
-  function palette() {
-    var s = getComputedStyle(document.documentElement);
-    var accent = (s.getPropertyValue('--accent') || '#500000').trim();
-    var inkDim = (s.getPropertyValue('--ink-dim') || '#5a4c46').trim();
-    var inkFaint = (s.getPropertyValue('--ink-faint') || '#8b7a72').trim();
-    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    return {
-      survivor:   accent,                           // v3 maroon (light) / scaled red (dark)
-      extinct:    dark ? 'rgba(168,156,141,0.42)'   // --ink-dim-ish, translucent
-                       : 'rgba(90,76,70,0.45)',
-      extinctDot: accent,
-      axis:       dark ? 'rgba(168,156,141,0.25)'
-                       : 'rgba(90,76,70,0.22)',
-      axisLabel:  inkFaint
-    };
-  }
-
-  // --- Slider live readouts ------------------------------------
-  function fmt(slider) {
-    var step = parseFloat(slider.step) || 1;
-    // show 2 decimals when step < 0.1, else 1 decimal
-    return (step < 0.1 ? parseFloat(slider.value).toFixed(2)
-                       : parseFloat(slider.value).toFixed(1));
-  }
-  function syncLabels() {
-    if (lambdaVal) lambdaVal.textContent = fmt(lambdaSlider);
-    if (muVal)     muVal.textContent     = fmt(muSlider);
-    if (timeVal)   timeVal.textContent   = fmt(timeSlider);
-  }
-  [lambdaSlider, muSlider, timeSlider].forEach(function (s) {
-    if (s) s.addEventListener('input', syncLabels);
-  });
-  syncLabels();
-
-  // --- Gillespie birth-death simulation ------------------------
-  // Returns { nodes, root, survivors, extinctCount, totalEvents, time }
-  // Each node: { id, parent, birthTime, deathTime|null, children:[], isSurvivor:bool }
-  function simulate(lambda, mu, totalTime) {
-    var nodes = [];
-    function makeNode(parent, birthTime) {
-      var n = { id: nodes.length, parent: parent, birthTime: birthTime,
-                deathTime: null, children: [], isSurvivor: false,
-                x: 0 };
-      nodes.push(n);
-      if (parent) parent.children.push(n);
-      return n;
-    }
-
-    var root = makeNode(null, 0);
-    var living = [root];
-    var t = 0;
-    var events = 0;
-    var extinctCount = 0;
-    var rateSum = lambda + mu;
-
-    // guard against runaway growth / infinite loops in degenerate corners.
-    // Stopping early truncates the tree at time t (as if the user picked a
-    // smaller T); survivors still get closed out at totalTime below.
-    var MAX_EVENTS = 5000;
-    var MAX_LIVING = 400;
-
-    while (living.length > 0 && events < MAX_EVENTS) {
-      var n = living.length;
-      if (n > MAX_LIVING) break; // tree has exploded; stop so drawing stays usable
-      var total = n * rateSum;
-      if (total <= 0) break; // both rates zero
-      // waiting time ~ Exp(total); inverse-CDF: -ln(U)/total
-      var u = Math.random();
-      if (u <= 0) u = 1e-12;
-      var dt = -Math.log(u) / total;
-      var newT = t + dt;
-      if (newT > totalTime) { t = totalTime; break; }
-      t = newT;
-      events++;
-
-      var idx = Math.floor(Math.random() * n);
-      var lineage = living[idx];
-
-      if (Math.random() < lambda / rateSum) {
-        // speciation: lineage splits into two daughters
-        lineage.deathTime = t; // internal node, end-of-branch = split time
-        // Remove parent from living and add two children
-        living.splice(idx, 1);
-        var c1 = makeNode(lineage, t);
-        var c2 = makeNode(lineage, t);
-        living.push(c1);
-        living.push(c2);
-      } else {
-        // extinction
-        lineage.deathTime = t;
-        lineage.isSurvivor = false;
-        extinctCount++;
-        living.splice(idx, 1);
-      }
-    }
-
-    // Close out surviving lineages at totalTime
-    living.forEach(function (n) {
-      n.deathTime = totalTime;
-      n.isSurvivor = true;
-    });
-
-    return {
-      nodes: nodes, root: root, survivors: living.slice(),
-      extinctCount: extinctCount, totalEvents: events, time: totalTime
-    };
-  }
-
-  // --- Tree layout ---------------------------------------------
-  // Assigns x positions to each node. Survivors are evenly spaced along [0,1].
-  // Internal nodes are placed at the midpoint of their subtree's extant tips.
-  // Extinct lineages are placed at the midpoint of their sibling subtree OR
-  // biased toward the parent so their branch is visible but doesn't steal
-  // horizontal space from survivors.
-  function layout(result) {
-    var survivors = result.survivors;
-    // If no survivors, still lay out extinct lineages evenly by birth order
-    if (survivors.length === 0) {
-      var tips = result.nodes.filter(function (n) { return n.children.length === 0; });
-      tips.forEach(function (n, i) {
-        n.x = tips.length === 1 ? 0.5 : i / (tips.length - 1);
-      });
-    } else if (survivors.length === 1) {
-      survivors[0].x = 0.5;
-    } else {
-      survivors.forEach(function (n, i) {
-        n.x = i / (survivors.length - 1);
-      });
-    }
-
-    // Post-order: each internal node takes midpoint of its extant descendants.
-    // For extinct-only subtrees, take midpoint of all tip descendants.
-    function assignInternal(node) {
-      if (node.children.length === 0) {
-        // tip: if not already set (extinct), assign later
-        return;
-      }
-      node.children.forEach(assignInternal);
-      // Compute mean of child x values that are already positioned (survivors
-      // or previously-assigned internals). For extinct children with no x yet,
-      // we'll handle them below.
-      var xs = [];
-      function collectSurvivorXs(n) {
-        if (n.isSurvivor && n.children.length === 0) { xs.push(n.x); return; }
-        if (n.children.length === 0) return; // extinct tip, skip for now
-        n.children.forEach(collectSurvivorXs);
-      }
-      collectSurvivorXs(node);
-      if (xs.length > 0) {
-        var mean = 0;
-        xs.forEach(function (v) { mean += v; });
-        node.x = mean / xs.length;
-      }
-    }
-    assignInternal(result.root);
-
-    // Second pass: for internals that got no x (entire subtree extinct),
-    // position them at their parent's x with a small offset so the branch
-    // is visible. Do this top-down.
-    function fillExtinctInternal(node, fallback) {
-      if (node.x === undefined || node.x === null || isNaN(node.x)) {
-        node.x = fallback;
-      }
-      // For extinct tips, place them near parent x but jittered slightly so
-      // sibling extinctions don't overdraw.
-      node.children.forEach(function (c, i) {
-        if (c.children.length === 0 && !c.isSurvivor) {
-          // extinct tip: offset slightly from parent
-          var jitter = (i - (node.children.length - 1) / 2) * 0.018;
-          c.x = node.x + jitter;
-        }
-        fillExtinctInternal(c, node.x);
-      });
-    }
-    // Root fallback: midpoint
-    if (result.root.x === undefined || result.root.x === null || isNaN(result.root.x)) {
-      result.root.x = 0.5;
-    }
-    fillExtinctInternal(result.root, result.root.x);
-  }
-
-  // --- Canvas sizing (handle devicePixelRatio) -----------------
-  function sizeCanvas(canvas) {
-    var dpr = window.devicePixelRatio || 1;
-    var rect = canvas.getBoundingClientRect();
-    var w = Math.max(1, Math.floor(rect.width));
-    var h = Math.max(1, Math.floor(rect.height));
-    canvas.width  = Math.floor(w * dpr);
-    canvas.height = Math.floor(h * dpr);
-    var ctx = canvas.getContext('2d');
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    return { ctx: ctx, w: w, h: h };
-  }
-
-  // --- Draw one tree -------------------------------------------
-  function drawTree(canvas, result, totalTime) {
-    var sized = sizeCanvas(canvas);
-    var ctx = sized.ctx;
-    var W = sized.w, H = sized.h;
-    var pal = palette();
-
-    // Clear
-    ctx.clearRect(0, 0, W, H);
-
-    // Axis margins
-    var padL = 14, padR = 14, padT = 14, padB = 26;
-    var plotW = W - padL - padR;
-    var plotH = H - padT - padB;
-
-    // time axis: y = padT + (t/totalTime) * plotH  (time grows downward)
-    function yOf(t) { return padT + (t / totalTime) * plotH; }
-    function xOf(xNorm) {
-      // leave a little inset so branches don't kiss the edges
-      var inset = 0.04;
-      var x = inset + xNorm * (1 - 2 * inset);
-      return padL + x * plotW;
-    }
-
-    // Time axis (vertical ruler on the right for reference)
-    ctx.strokeStyle = pal.axis;
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(W - padR + 4, padT);
-    ctx.lineTo(W - padR + 4, padT + plotH);
-    ctx.stroke();
-    // tick at t=0 and t=totalTime
-    ctx.fillStyle = pal.axisLabel;
-    ctx.font = '10px ' + (getComputedStyle(document.documentElement).getPropertyValue('--font-mono') || 'monospace');
-    ctx.textAlign = 'right';
-    ctx.textBaseline = 'top';
-    ctx.fillText('t=0', W - padR + 2, padT - 2);
-    ctx.textBaseline = 'bottom';
-    ctx.fillText('t=' + totalTime.toFixed(1), W - padR + 2, padT + plotH + 2);
-
-    if (!result || result.nodes.length === 0) return;
-
-    // Draw edges. Two passes so survivors render on top of extinct lineages.
-    // Each edge: vertical from (x, parentEnd) to (x, myEnd), then a horizontal
-    // segment from sibling's x to connect at the parent's split point.
-    // Implementation: draw horizontal "bar" at node.birthTime between its
-    // children's x positions, and vertical line from (child.x, birthTime)
-    // down to (child.x, deathTime) for each child.
-    function isSubtreeSurvivor(n) {
-      // any survivor descendant? precompute would be cleaner but fine here
-      if (n.isSurvivor && n.children.length === 0) return true;
-      for (var i = 0; i < n.children.length; i++) {
-        if (isSubtreeSurvivor(n.children[i])) return true;
-      }
-      return false;
-    }
-
-    function drawEdgesPass(wantSurvivor) {
-      result.nodes.forEach(function (n) {
-        var subtreeSurv = isSubtreeSurvivor(n);
-        if (wantSurvivor && !subtreeSurv) return;
-        if (!wantSurvivor && subtreeSurv) return;
-
-        var color = wantSurvivor ? pal.survivor : pal.extinct;
-        ctx.strokeStyle = color;
-        ctx.lineWidth = wantSurvivor ? 1.6 : 1.1;
-        ctx.lineCap = 'round';
-
-        // Vertical branch: from node.birthTime to node.deathTime at node.x
-        var x = xOf(n.x);
-        var y1 = yOf(n.birthTime);
-        var y2 = yOf(n.deathTime);
-        ctx.beginPath();
-        ctx.moveTo(x, y1);
-        ctx.lineTo(x, y2);
-        ctx.stroke();
-
-        // Horizontal split bar at the moment of speciation: runs across
-        // children of this node.
-        if (n.children.length >= 2) {
-          var xs = n.children.map(function (c) { return xOf(c.x); });
-          var minX = Math.min.apply(null, xs);
-          var maxX = Math.max.apply(null, xs);
-          var yBar = yOf(n.deathTime);
-          ctx.beginPath();
-          ctx.moveTo(minX, yBar);
-          ctx.lineTo(maxX, yBar);
-          ctx.stroke();
-        }
-      });
-    }
-
-    // Extinct first (underneath), then survivors on top.
-    drawEdgesPass(false);
-    drawEdgesPass(true);
-
-    // Extinction dots at the terminal of each extinct tip
-    ctx.fillStyle = pal.extinctDot;
-    result.nodes.forEach(function (n) {
-      if (n.children.length === 0 && !n.isSurvivor) {
-        var cx = xOf(n.x);
-        var cy = yOf(n.deathTime);
-        ctx.beginPath();
-        ctx.arc(cx, cy, 2.2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    });
-  }
-
-  // --- Update the per-tree stats label -------------------------
-  function setStats(el, result) {
-    if (!el) return;
-    var survivors = result.survivors.length;
-    var ext = result.extinctCount;
-    el.textContent = survivors + ' survivor' + (survivors === 1 ? '' : 's') +
-                     ' / ' + ext + ' extinct';
-  }
-
-  // --- Public entry point (referenced by inline onclick) -------
-  function runSimulation() {
-    var lambda = parseFloat(lambdaSlider.value);
-    var mu     = parseFloat(muSlider.value);
-    var T      = parseFloat(timeSlider.value);
-    syncLabels();
-
-    var r1 = simulate(lambda, mu, T);
-    var r2 = simulate(lambda, mu, T);
-    layout(r1);
-    layout(r2);
-
-    lastResults = [r1, r2];
-    lastTotalTime = T;
-
-    drawTree(canvas1, r1, T);
-    drawTree(canvas2, r2, T);
-    setStats(stats1, r1);
-    setStats(stats2, r2);
-
-    // Extinction overlay
-    if (extinct1) extinct1.classList.toggle('show', r1.survivors.length === 0);
-    if (extinct2) extinct2.classList.toggle('show', r2.survivors.length === 0);
-  }
-  // expose for the inline onclick in the markup
-  window.runSimulation = runSimulation;
-
-  // --- Redraw-on-theme-change ----------------------------------
-  var themeObserver = new MutationObserver(function (mutations) {
-    for (var i = 0; i < mutations.length; i++) {
-      if (mutations[i].attributeName === 'data-theme') {
-        if (lastResults[0] && lastResults[1] && lastTotalTime != null) {
-          drawTree(canvas1, lastResults[0], lastTotalTime);
-          drawTree(canvas2, lastResults[1], lastTotalTime);
-        }
-        break;
-      }
-    }
-  });
-  themeObserver.observe(document.documentElement, { attributes: true });
-
-  // Redraw on resize so canvas fidelity stays crisp
-  var resizeTimer = null;
-  window.addEventListener('resize', function () {
-    if (resizeTimer) clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      if (lastResults[0] && lastResults[1] && lastTotalTime != null) {
-        drawTree(canvas1, lastResults[0], lastTotalTime);
-        drawTree(canvas2, lastResults[1], lastTotalTime);
-      }
-    }, 120);
-  });
-
-  // --- Initial run on load -------------------------------------
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', runSimulation);
-  } else {
-    runSimulation();
-  }
-})();
-</script>
-</body>
-</html>
+  

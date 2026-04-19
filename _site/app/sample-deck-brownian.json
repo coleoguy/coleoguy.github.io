@@ -1,0 +1,84 @@
+{
+  "deck": {
+    "title": "Brownian Motion",
+    "source": "Felsenstein 1985",
+    "posted": "2026-03-04",
+    "points": 10
+  },
+  "cards": [
+    {
+      "type": "flashcard",
+      "front": "What is Brownian motion in the context of trait evolution?",
+      "back": "A model where trait values change randomly over time in small increments, with variance accumulating proportionally to branch length. It assumes no directional selection — just random drift."
+    },
+    {
+      "type": "flashcard",
+      "front": "What does the parameter σ² (sigma squared) represent in a Brownian motion model?",
+      "back": "The rate of evolutionary change — specifically, the variance in trait change per unit of time. A larger σ² means traits diverge faster across the phylogeny."
+    },
+    {
+      "type": "fitb",
+      "prompt": "Under Brownian motion, the expected trait difference between two species increases with the ______ separating them on the phylogeny.",
+      "answer": "branch length",
+      "alternates": ["time", "divergence time"]
+    },
+    {
+      "type": "fitb",
+      "prompt": "Felsenstein's independent contrasts method corrects for phylogenetic non-independence by computing differences between ______ on the tree.",
+      "answer": "sister taxa",
+      "alternates": ["sister clades", "sister lineages", "closely related taxa"]
+    },
+    {
+      "type": "mcq",
+      "question": "Why is ordinary least squares (OLS) regression inappropriate for comparing traits across species?",
+      "options": [
+        "Species share evolutionary history, making their trait values non-independent",
+        "OLS cannot handle continuous trait data",
+        "Phylogenies are always too small for OLS to be valid",
+        "OLS requires normally distributed residuals, which traits never satisfy"
+      ],
+      "correct": 0,
+      "explanation": "Related species share common ancestors, so their traits are correlated by descent — not independent observations. OLS assumes independence, so it inflates false positive rates. Phylogenetic methods like PGLS or independent contrasts correct for this shared history."
+    },
+    {
+      "type": "flashcard",
+      "front": "What is the key assumption of Felsenstein's phylogenetic independent contrasts (PIC)?",
+      "back": "Traits evolved under Brownian motion along the phylogeny. Under this assumption, standardized contrasts at each internal node are statistically independent and can be used in regression without phylogenetic bias."
+    },
+    {
+      "type": "fitb",
+      "prompt": "The ancestral state at an internal node under Brownian motion is estimated as the ______ average of its descendants, weighted by branch lengths.",
+      "answer": "weighted",
+      "alternates": ["branch-length weighted", "inverse branch length weighted"]
+    },
+    {
+      "type": "mcq",
+      "question": "Which of the following is a biological scenario where Brownian motion is a reasonable evolutionary model?",
+      "options": [
+        "A trait evolving primarily by genetic drift with no consistent selective pressure",
+        "A trait under strong stabilizing selection around a fixed optimum",
+        "A trait that increases linearly with time in all lineages",
+        "A trait that only changes at speciation events"
+      ],
+      "correct": 0,
+      "explanation": "Brownian motion fits traits drifting randomly with no directional force. Stabilizing selection is better modeled by an Ornstein-Uhlenbeck process. Linear directional change would be a trend model. Change only at speciation is a punctuational model — all distinct from BM."
+    },
+    {
+      "type": "flashcard",
+      "front": "What is the phylogenetic variance-covariance matrix (C) used for in PGLS?",
+      "back": "It encodes the expected covariance between species' trait values based on shared branch lengths. Species sharing more evolutionary history have higher covariance. PGLS uses C to correct regression coefficients for phylogenetic non-independence."
+    },
+    {
+      "type": "mcq",
+      "question": "Under Brownian motion, what happens to trait variance as time increases?",
+      "options": [
+        "It increases linearly with time",
+        "It stays constant",
+        "It decreases exponentially",
+        "It increases then plateaus at an equilibrium"
+      ],
+      "correct": 0,
+      "explanation": "A core property of Brownian motion is that variance grows as σ²t — linearly with time. This means longer branches produce more trait divergence. Constant variance would imply stabilizing selection (OU model). Plateauing variance is characteristic of the OU model near its optimum."
+    }
+  ]
+}

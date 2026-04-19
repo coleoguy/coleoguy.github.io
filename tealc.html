@@ -1,0 +1,207 @@
+---
+layout: default
+title: "Tealc · live · Blackmon Lab"
+description: "Live activity feed for Tealc, the Blackmon Lab AI agent. Shows the most recent tool calls, searches, file reads, and notes. Refreshes every 30 seconds."
+canonical: "https://coleoguy.github.io/tealc.html"
+extra_head: |
+  <style>
+    /* Live console additions, using site CSS variables so they follow light/dark theme */
+    .tealc-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border: 1px solid var(--rule);
+      background: var(--paper-sunk);
+      border-radius: 6px;
+      margin: 8px 0 28px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+    .tealc-status-left { display: flex; align-items: center; gap: 12px; }
+    .tealc-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 8px #34d399;
+      animation: tealcPulse 2s infinite;
+      flex-shrink: 0;
+    }
+    .tealc-dot.offline {
+      background: var(--ink-faint);
+      box-shadow: none;
+      animation: none;
+    }
+    @keyframes tealcPulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.35; }
+    }
+    .tealc-status-text { color: var(--ink); }
+    .tealc-last-seen { color: var(--ink-faint); font-size: 12px; }
+  
+    .tealc-feed-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      margin: 24px 0 10px;
+    }
+    .tealc-feed { display: flex; flex-direction: column; gap: 2px; }
+    .tealc-event {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid var(--rule);
+      background: var(--paper-raised);
+      border-radius: 5px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.45;
+      opacity: 0;
+      animation: tealcFadeIn 0.3s forwards;
+    }
+    @keyframes tealcFadeIn { to { opacity: 1; } }
+    .tealc-event-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .tealc-event-body { flex: 1; min-width: 0; }
+    .tealc-event-desc { color: var(--ink); word-break: break-word; }
+    .tealc-event-time { color: var(--ink-faint); font-size: 11px; margin-top: 3px; }
+    .tealc-empty {
+      color: var(--ink-faint);
+      text-align: center;
+      padding: 28px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      border: 1px dashed var(--rule);
+      border-radius: 6px;
+    }
+  </style>
+extra_scripts: |
+  <script>
+  // Tealc live feed: fetches /tealc_activity.json, shows status + recent tool calls
+  (function() {
+    const ICONS = {
+      search:   "🔍",
+      cite:     "📊",
+      email:    "✉",
+      calendar: "📅",
+      drive:    "📁",
+      read:     "📄",
+      note:     "📝",
+      clock:    "🕐",
+      tool:     "⚙",
+    };
+  
+    function timeAgo(isoStr) {
+      const diff = Math.floor((Date.now() - new Date(isoStr)) / 1000);
+      if (diff < 60)    return diff + "s ago";
+      if (diff < 3600)  return Math.floor(diff/60) + "m ago";
+      if (diff < 86400) return Math.floor(diff/3600) + "h ago";
+      return Math.floor(diff/86400) + "d ago";
+    }
+  
+    function localTime(isoStr) {
+      return new Date(isoStr).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    }
+  
+    async function load() {
+      const dot = document.getElementById("statusDot");
+      const statusText = document.getElementById("statusText");
+      const lastSeen = document.getElementById("lastSeen");
+      const feed = document.getElementById("feed");
+  
+      try {
+        const res = await fetch("tealc_activity.json?_=" + Date.now());
+        if (!res.ok) throw new Error("not found");
+        const data = await res.json();
+  
+        const ageSeconds = (Date.now() - new Date(data.last_updated)) / 1000;
+        const isRecent = ageSeconds < 600;
+  
+        if (isRecent) {
+          dot.classList.remove("offline");
+          statusText.textContent = "Online · Tealc is active";
+        } else {
+          dot.classList.add("offline");
+          statusText.textContent = "Offline · showing last known state";
+        }
+        lastSeen.textContent = "Last active " + timeAgo(data.last_updated);
+  
+        const events = data.recent_activity || [];
+        if (events.length === 0) {
+          feed.innerHTML = '<div class="tealc-empty">No activity recorded yet.</div>';
+          return;
+        }
+  
+        feed.innerHTML = events.map(function(e, i) {
+          return '<div class="tealc-event" style="animation-delay:' + (i * 30) + 'ms">' +
+                 '<span class="tealc-event-icon">' + (ICONS[e.type] || "⚙") + '</span>' +
+                 '<div class="tealc-event-body">' +
+                 '<div class="tealc-event-desc">' + e.description + '</div>' +
+                 '<div class="tealc-event-time">' + localTime(e.time) + ' · ' + timeAgo(e.time) + '</div>' +
+                 '</div></div>';
+        }).join("");
+  
+      } catch (err) {
+        dot.classList.add("offline");
+        statusText.textContent = "Offline";
+        lastSeen.textContent = "Could not load activity log";
+        feed.innerHTML = '<div class="tealc-empty">Tealc is offline. The last known state will appear here when he reconnects.</div>';
+      }
+    }
+  
+    load();
+    setInterval(load, 30000);
+  })();
+  </script>
+---
+
+
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; <a href="lead-investigator.html">TEALC</a> &rsaquo; LIVE</div>
+
+    <h1 class="title">Tealc, live</h1>
+
+    <p class="lede">
+      What <a href="lead-investigator.html">Tealc</a> is actually doing right now. The feed below is a rolling log of the agent's most recent tool calls: literature searches, file reads, email drafts, calendar checks, notes. The status dot is green while Tealc has been active in the last ten minutes; otherwise the page shows the last known state. Refreshes every thirty seconds.
+    </p>
+
+    <div class="tealc-status">
+      <div class="tealc-status-left">
+        <span class="tealc-dot" id="statusDot"></span>
+        <span class="tealc-status-text" id="statusText">Loading…</span>
+      </div>
+      <span class="tealc-last-seen" id="lastSeen"></span>
+    </div>
+
+    <div class="tealc-feed-label">Recent activity</div>
+    <div class="tealc-feed" id="feed">
+      <div class="tealc-empty">Loading activity…</div>
+    </div>
+
+    <div class="agent-box" style="margin-top:36px;">
+      <span class="agent-line"><span class="agent-tag">Stack</span>Claude (Sonnet 4.6 / Opus 4.7) · LangGraph ReAct loop · Chainlit UI · SQLite state</span>
+      <span class="agent-line"><span class="agent-tag">Tools</span>literature search · citation tracking · Gmail read and draft · calendar read · Drive search · file read · notes</span>
+      <span class="agent-line"><span class="agent-tag">Rules</span>never sends email unprompted · never grows service load · every action visible in this feed</span>
+    </div>
+
+    <div class="layer-body" style="padding-left:0;">
+      <div class="layer-links">
+        <a href="lead-investigator.html">What Tealc is, in full &rarr;</a>
+        <a href="ai.html">AI in the lab, overview &rarr;</a>
+        <a href="traittrawler.html">TraitTrawler &rarr;</a>
+      </div>
+    </div>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="https://github.com/coleoguy" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:blackmon@tamu.edu">Email</a>
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  

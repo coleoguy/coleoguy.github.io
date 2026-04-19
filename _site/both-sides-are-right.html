@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Both sides are right · Blackmon Lab</title>
+<meta name="description" content="A short essay on why interesting scientific debates are almost never won by one side. The productive question is where in parameter space the system crosses from one regime to the other.">
+<meta property="og:title" content="Both sides are right · Blackmon Lab">
+<meta property="og:description" content="A short essay on why interesting scientific debates are almost never won by one side. The productive question is where in parameter space the system crosses from one regime to the other.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+<meta property="og:url" content="https://coleoguy.github.io/both-sides-are-right.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://coleoguy.github.io/both-sides-are-right.html">
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Essays</span>
+      <ul>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Databases</span>
+      <ul>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/karyotypes/index.html">Six karyotype DBs</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Research</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; adaptation</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Organisms</span>
+      <ul>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI agents</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Tools</span>
+      <ul>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+    <div class="crumb">
+      <a href="index.html">Home</a> › Essays › <strong>Both sides are right</strong>
+    </div>
+
+    <h1 class="title" id="both-sides">Both sides are right.</h1>
+
+    <p class="lede">
+      A quick conversation with <a href="https://connerlab.kbs.msu.edu/" target="_blank" rel="noopener">Jeff Conner</a> got me thinking about something that has bothered me for a while. Reading the literature as a student, I absorbed a framing that treats scientific debates as a scoreboard. This camp is right, that camp is wrong. Pick a side and defend it. I think I adopted that framing too strongly, and I do not think it is the one that moves science forward the fastest. For any debate interesting enough to still be alive after a few decades, both sides are usually right. The productive question is almost never which camp wins. It is where in parameter space the system moves from one regime to the other.
+    </p>
+
+    <p>
+      I should start with an admission. The page you probably got here from is titled <a href="epistasis-line-cross.html">"Wright was right"</a>. I wrote that. I am guilty of the framing this essay is pushing back on, and the rest of the page is partly a note to myself.
+    </p>
+
+    <h2>Fisher and Wright</h2>
+
+    <p>
+      Fisher built a theory around selection on additive variance in large, well-mixed populations. Wright built a theory around drift, epistasis, and shifting balance in structured ones. Generations of evolutionary biologists picked a team. Our 2024 analysis of more than 1,600 line-cross datasets detected epistasis in the majority of crosses, in the sense that the composite genetic effects needed to explain the generation means almost always required interactions between loci and not just additive and dominance terms. That is closer to Wright on the empirics of genetic architecture. It does not make Fisher wrong. Fisher's fundamental theorem is exact for the additive component regardless of how much epistatic variance coexists with it, and epistatic variance in a segregating population can still be modest because interaction effects partially absorb into the additive component as allele frequencies shift. Fisher described one slice of the parameter space and Wright described another. Population size, population structure, allele frequencies, and the strength of selection decide which slice your system is sitting in. "Wright was right" is a fine five-word headline. It is a bad five-word theory.
+    </p>
+
+    <p>
+      An uncomfortable thought I keep coming back to. I wonder how often the side we each gravitate to in these debates is really a function of the organisms we happen to know well and think about often. Fisher built his theory with an eye on large, well-mixed populations. Wright spent years on livestock breeding and on the population structure of small, subdivided groups. My own default is beetles, where population sizes are often small, population structure is real, and epistatic genetic architectures are what the line-cross data keep showing me. It would be strange if that did not tilt how I read the theory. The pattern probably generalizes. Before you trust your own read on any of the debates below, it is worth asking which natural histories have been quietly shaping your priors.
+    </p>
+
+    <p>
+      Once you see this pattern, it shows up everywhere.
+    </p>
+
+    <h2>Neutralism and selectionism</h2>
+
+    <p>
+      Kimura argued that most molecular evolution is drift acting on effectively neutral mutations. His critics argued for pervasive selection. Ohta's nearly-neutral theory made both sides right by pointing out that the fate of a mutation depends on the product of its selection coefficient and the effective population size. Small populations live in a regime where drift dominates and weakly deleterious mutations can fix. Large populations live in a regime where selection dominates and the same mutations are removed. The question was never "drift or selection." The question was always "which side of <em>N<sub>e</sub> &middot; s = 1</em> is this locus in this species on."
+    </p>
+
+    <h2>Gradualism and punctuated equilibrium</h2>
+
+    <p>
+      Darwin, and most of the Modern Synthesis, described evolution as gradual and roughly continuous. Eldredge and Gould looked at the fossil record and described long stasis broken by rapid bursts. Both patterns are real. Whether a lineage looks gradual or punctuated depends on environmental stability, generation time, population structure, and the genetic architecture of the traits you are tracking. The interesting science is not picking a winner. It is working out the conditions under which each pattern should show up.
+    </p>
+
+    <h2>Group selection and individual selection</h2>
+
+    <p>
+      Williams convinced a generation of biologists that naive group selection was weak and usually wrong. Decades later, the Price equation and multilevel selection theory showed that selection can act at any level where there is heritable variation in fitness, and that the balance between levels depends on the ratio of within-group to among-group variance. The early argument was not really about whether group selection can work in principle. It was about where real populations sit on that variance ratio.
+    </p>
+
+    <h2>Allopatric and sympatric speciation</h2>
+
+    <p>
+      Mayr made the case that speciation needs geographic isolation, and for a long time sympatric speciation was treated as a theoretical curiosity. Then clear sympatric cases showed up, and modern speciation theory kept both. Whether new species form under gene flow depends on the strength of divergent selection, the genetic architecture of the traits selection is acting on, and the rate at which assortative mating can build up. Gene flow and divergence are axes, not categories.
+    </p>
+
+    <h2>Niche and neutral community ecology</h2>
+
+    <p>
+      Hubbell's neutral theory predicts community patterns surprisingly well from drift and dispersal alone. Classical niche theory predicts them from competition and environmental filtering. Both turn out to be right at different scales and for different questions. Neither paradigm replaces the other, and the useful move is to ask which processes dominate at the scale you are looking.
+    </p>
+
+    <h2>Why I think this matters</h2>
+
+    <p>
+      I am not claiming nobody is ever wrong. Some claims really do fail, and some debates really do end with one side in the dustbin. What I am claiming is that when a debate persists for decades among careful people, the explanation is almost never that one camp missed something obvious. The explanation is usually that each camp is describing a real regime and the frontier is in mapping the transitions. That is a better thing to teach graduate students than a scorecard of winners and losers. It is also a better way to do science.
+    </p>
+
+    <p>
+      <em>Thanks to Jeff Conner for the short conversation that got me writing this. The essay is strictly my opinion.</em>
+    </p>
+
+<footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+</body>
+</html>

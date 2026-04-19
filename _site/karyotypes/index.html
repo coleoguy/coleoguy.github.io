@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Six karyotype databases · Blackmon Lab</title>
+<meta name="description" content="Six open karyotype databases covering Coleoptera, Diptera, Amphibia, Mammalia, Drosophila, and Polyneoptera. Blackmon Lab, Texas A&amp;M University.">
+<meta property="og:title" content="Six karyotype databases · Blackmon Lab">
+<meta property="og:description" content="Six open karyotype databases covering Coleoptera, Diptera, Amphibia, Mammalia, Drosophila, and Polyneoptera. Blackmon Lab, Texas A&amp;M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+<meta property="og:url" content="https://coleoguy.github.io/karyotypes/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://coleoguy.github.io/karyotypes/index.html">
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body>
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Essays</span>
+      <ul>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Databases</span>
+      <ul>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/karyotypes/index.html">Six karyotype DBs</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Research</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; adaptation</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Organisms</span>
+      <ul>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI agents</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Tools</span>
+      <ul>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+    <div class="crumb">
+      <a href="../index.html">Home</a> › Databases › <strong>Karyotype databases</strong>
+    </div>
+
+    <h1 class="title" id="karyotypes">Six karyotype databases.</h1>
+
+    <p class="lede">
+      Coleoptera, Diptera, Amphibia, Mammalia, Drosophila, Polyneoptera. 20,000+ records total. All static, downloadable, JSON.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">14,037</div>
+        <span class="stat-label">Total records</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20,000+</div>
+        <span class="stat-label">Species covered</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <span class="stat-label">Published datasets</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <span class="stat-label">Years curated</span>
+      </div>
+    </div>
+
+    <h2>The six databases</h2>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">4,960 records</span>
+          <span class="sum-head">Coleoptera</span>
+          <span class="sum-trail">The most comprehensive cytogenetic dataset for any insect order.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Beetles are the largest order of insects and the Coleoptera karyotype database is the deepest cytogenetic resource for any insect group. Every record is traceable to a primary source and verified against the original citation.</p>
+        <div class="layer-links">
+          <a href="../subpages/karyotype-data/coleoptera.html">Open the Coleoptera database →</a>
+          <a href="https://bioone.org/journals/the-coleopterists-bulletin/volume-69/issue-1/0010-065X-69.1.174/Coleoptera-Karyotype-Database/10.1649/0010-065X-69.1.174.full" target="_blank">Blackmon &amp; Demuth 2015 →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer" open>
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">3,443 records</span>
+          <span class="sum-head">Diptera</span>
+          <span class="sum-trail">Flies at the order level, outside the <em>Drosophila</em> radiation.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The Diptera database covers the full order of true flies, complementing the Drosophila-specific database. Together they give a complete picture of karyotype diversity across Diptera.</p>
+        <div class="layer-links">
+          <a href="../subpages/karyotype-data/diptera.html">Open the Diptera database →</a>
+          <a href="https://www.frontiersin.org/journals/ecology-and-evolution" target="_blank">Morelli, Blackmon &amp; Hjelmen →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">2,124 records</span>
+          <span class="sum-head">Amphibia</span>
+          <span class="sum-trail">Frogs, salamanders, and caecilians.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The amphibian database was the first of the lab's karyotype projects to be published as a standalone resource. It covers frogs, salamanders, and caecilians and is a starting point for comparative work on sex-chromosome turnover in anamniotes.</p>
+        <div class="layer-links">
+          <a href="../subpages/karyotype-data/amphibian.html">Open the Amphibian database →</a>
+          <a href="https://link.springer.com/article/10.1007/s10577-019-09613-1" target="_blank">Perkins et al. 2019 →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">1,440 records</span>
+          <span class="sum-head">Mammalia</span>
+          <span class="sum-trail">A curated record of mammalian karyotypes.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>The mammal database focuses on vouchered karyotype counts, with sex-chromosome state where reported. It's the substrate for several of the lab's papers on sex-chromosome and karyotype evolution in Carnivora and beyond.</p>
+        <div class="layer-links">
+          <a href="../subpages/karyotype-data/mammal.html">Open the Mammal database →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">1,247 records</span>
+          <span class="sum-head"><em>Drosophila</em></span>
+          <span class="sum-trail">A dedicated dataset for the fruit fly radiation.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Drosophila has its own database because no other genus is sampled as deeply in the cytogenetic literature. The dataset captures species-level variation in chromosome number and arm configuration across the genus.</p>
+        <div class="layer-links">
+          <a href="../subpages/karyotype-data/drosophila.html">Open the Drosophila database →</a>
+          <a href="https://www.frontiersin.org/journals/ecology-and-evolution" target="_blank">Morelli, Blackmon &amp; Hjelmen →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">823 records</span>
+          <span class="sum-head">Polyneoptera</span>
+          <span class="sum-trail">Grasshoppers, mantises, roaches, stoneflies, and kin.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Polyneoptera karyotypes show lineage-specific chromosome evolution patterns that break the usual assumption of insect chromosomal conservatism. The database was assembled for the Proc. Roy. Soc. B paper on this pattern.</p>
+        <div class="layer-links">
+          <a href="../subpages/karyotype-data/polyneoptera.html">Open the Polyneoptera database →</a>
+          <a href="https://royalsocietypublishing.org/doi/full/10.1098/rspb.2020.1388" target="_blank">Sylvester et al. 2020 →</a>
+        </div>
+      </div>
+    </details>
+
+    <h2>Why these exist</h2>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">The gap</span>
+          <span class="sum-head">Cytogenetic data is fundamental and hard to reach</span>
+          <span class="sum-trail">Scattered across journals, often paywalled.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>How many chromosomes a species has and what kind of sex chromosomes it carries is basic information about its genome, and yet it is scattered across hundreds of journals and frequently behind paywalls. As affordable sequencing makes genome projects easier to start, this is exactly the preliminary information researchers need before they commit a sequencing budget. These databases exist to make that step fast, open, and machine-readable.</p>
+      </div>
+    </details>
+
+    <footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="../llms.txt">llms.txt</a>
+        <a href="../llms-full.txt">llms-full.txt</a>
+        <a href="../data/">/data</a>
+        <a href="../sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+---
+title: "Course Datasets Index: Practice Through Realistic Biological Scenarios"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+> These datasets were created to help you practice core statistical tools in the context of simple, but biologically inspired situations. Each one is small enough to explore manually, rich enough to generate meaningful results, and designed to match the methods you'll encounter in your research life.
+
+# Dataset Descriptions and Download Links
+
+### 🧪 t_test_data.csv
+You're comparing two groups of organisms—perhaps plants given different light conditions or animals fed different diets. You want to know: did the treatment *really* change growth? Use this for t-tests (1-sample and 2-sample) and permutation tests.
+- `group` (Control/Treatment), `value` (growth/weight/etc.)
+- [Download t_test_data.csv](data/t_test_data.csv)
+
+### 🧬 chi_sq_data.csv
+This dataset captures the frequency of different color morphs across habitats. Does the environment affect which morph dominates? Classic chi-square question.
+- `environment`, `morph`, `count`
+- [Download chi_sq_data.csv](data/chi_sq_data.csv)
+
+### 💊 anova_oneway.csv
+Animals were randomly assigned one of three drug treatments, and their behavioral response was measured. ANOVA time: do the means differ? Use for one-way ANOVA with post-hoc testing.
+- `drug` (DrugA/B/C), `response` (e.g., reaction time)
+- [Download anova_oneway.csv](data/anova_oneway.csv)
+
+### ⚧ anova_twoway.csv
+This time, you’re exploring the effect of both treatment and sex on a biological response. Was there an interaction? Use this for two-way ANOVA.
+- `treatment`, `sex`, `response`
+- [Download anova_twoway.csv](data/anova_twoway.csv)
+
+### ⏱ repeated_measures.csv
+Fifteen individuals measured at three time points. Maybe it's a training study or developmental time course—either way, the same animals were measured repeatedly. Use this for repeated measures ANOVA or mixed models.
+- `subject`, `time` (T1/T2/T3), `response`
+- [Download repeated_measures.csv](data/repeated_measures.csv)
+
+### 📏 cor_data.csv
+Wing length vs body mass in insects. Are longer wings associated with heavier bodies? A simple and interpretable dataset for correlation and scatterplots.
+- `wing_length_mm`, `body_mass_g`
+- [Download cor_data.csv](data/cor_data.csv)
+
+### 🐣 reg_data.csv
+You’re studying what predicts reproductive output—mass, age, treatment? A great dataset for linear regression with both continuous and categorical predictors.
+- `fecundity`, `mass_g`, `age_years`, `treatment`
+- [Download reg_data.csv](data/reg_data.csv)
+
+### 🧪 glm_binomial.csv
+Did the treatment improve survival? This binary outcome dataset models survival (yes/no) based on mass and treatment, ideal for logistic regression.
+- `survival` (0/1), `mass_g`, `treatment` (0/1)
+- [Download glm_binomial.csv](data/glm_binomial.csv)
+
+### 🥚 glm_poisson.csv
+How many eggs did an animal lay, depending on food availability and exposure? Count data + log-transformed exposure = Poisson/GLM playground.
+- `eggs_count`, `food_index`, `exposure_offset_log`
+- [Download glm_poisson.csv](data/glm_poisson.csv)
+
+### 🐦 mixed_data.csv
+This dataset tracks how long individual birds take to feed across multiple trials under different treatments. Repeated measures nested in individuals—perfect for mixed-effects models.
+- `subject`, `trial`, `treatment`, `latency_sec`
+- [Download mixed_data.csv](data/mixed_data.csv)
+
+### 📉 np_data.csv
+Two groups measured on a skewed biological trait—maybe hormone levels or infection burden. Use this to practice non-parametric tests like Wilcoxon and Kruskal-Wallis.
+- `group` (A/B), `value`
+- [Download np_data.csv](data/np_data.csv)
+
+### 🌺 multi_trait_data.csv
+Six traits measured on three species of plants or animals. This is your go-to for dimensionality reduction with PCA or MDS. What's the hidden structure?
+- `species`, `trait1` through `trait6`
+- [Download multi_trait_data.csv](data/multi_trait_data.csv)
+
+## R also includes great datasets for practicing
+
+### 🌸 iris – Flower measurements
+
+Measurements of petal and sepal dimensions in 3 iris species. Classic for clustering, classification, and ANOVA.
+
+```
+data(iris)
+head(iris)
+```
+
+### 🌋 faithful – Eruption timing
+
+Eruption durations and waiting times between eruptions at Old Faithful in Yellowstone. Great for learning about distributions.
+
+```
+data(faithful)
+head(faithful)
+```
+
+### 🚗 mtcars – 1974 Car specs
+
+Miles per gallon, horsepower, number of cylinders, and more. Perfect for regression, correlation, and plotting practice.
+
+```
+data(mtcars)
+head(mtcars)
+```
+
+### 🧠 sleep – Sleep two drugs
+
+Paired design study on how two drugs affect sleep in 10 patients. Use it for paired t-tests and boxplots.
+
+```
+data(sleep)
+head(sleep)
+```
+
+### 🧪 ToothGrowth – Vitamin C & teeth
+
+Tooth length of guinea pigs given Vitamin C via orange juice or supplements. Great for comparing groups and effect sizes.
+
+```
+data(ToothGrowth)
+head(ToothGrowth)
+```
+
+### 🐣 ChickWeight – Chick growth
+
+Weight gain of baby chicks on different diets. A go-to for repeated measures and visualizing growth curves.
+
+```
+data(ChickWeight)
+head(ChickWeight)
+```
+
+### 💡 Want more datasets?
+
+```
+data()
+```
+

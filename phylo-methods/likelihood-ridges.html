@@ -1,275 +1,469 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Likelihood ridges · PCM guide · Blackmon Lab</title>
-<meta name="description" content="Understanding likelihood ridges in discrete trait Mk models. Why high-rate parameter estimates can mislead maximum likelihood optimization.">
-<meta property="og:title" content="Likelihood ridges · PCM guide · Blackmon Lab">
-<meta property="og:description" content="Understanding likelihood ridges in discrete trait Mk models. Why high-rate parameter estimates can mislead maximum likelihood optimization.">
-<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Blackmon Lab">
-<meta property="og:url" content="https://coleoguy.github.io/phylo-methods/likelihood-ridges.html">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://coleoguy.github.io/phylo-methods/likelihood-ridges.html">
-<meta name="author" content="Heath Blackmon">
-<link rel="icon" href="../assets/img/favicon.ico">
+---
+layout: default
+title: "Likelihood ridges · PCM guide · Blackmon Lab"
+description: "Understanding likelihood ridges in discrete trait Mk models. Why high-rate parameter estimates can mislead maximum likelihood optimization."
+canonical: "https://coleoguy.github.io/phylo-methods/likelihood-ridges.html"
+extra_head: |
+  <style>
+    .viz-container {
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+  
+    .ridge-canvas-container {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(to bottom, var(--accent-dim), transparent);
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+    }
+  
+    .info-box {
+      background: var(--accent-dim);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+  
+    .warning-box {
+      background: rgba(239,68,68,0.05);
+      border-left: 4px solid #ef4444;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+  
+    .highlight-text {
+      color: var(--accent);
+      font-weight: 600;
+    }
+  
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 25px 0;
+    }
+  
+    .control-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    input[type="range"] {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--paper);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-dim);
+    }
+  
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 8px var(--accent-dim);
+    }
+  
+    .slider-value {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      min-width: 60px;
+      text-align: right;
+    }
+  
+    .bullet-list {
+      max-width: 900px;
+      margin: 30px 0;
+    }
+  
+    .bullet-list li {
+      color: var(--ink);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+  
+    .code-example {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 15px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: #34d399;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+  
+    .canvas-legend {
+      display: flex;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+  
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .legend-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 2px;
+    }
+  
+    .section-text {
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.8;
+      margin-bottom: 30px;
+      max-width: 900px;
+    }
+  </style>
+extra_scripts: |
+  <script>
+  (function() {
+    // Ridge visualization for rate matrix identifiability problem
+    // Heatmap of log likelihood over q01 (x axis) and q10 (y axis)
+    var canvas = document.getElementById('ridgeCanvas');
+    var slider = document.getElementById('propSlider');
+    var propValueEl = document.getElementById('propValue');
+    if (!canvas || !slider) return;
+  
+    var ctx = canvas.getContext('2d');
+  
+    // Sampling grid resolution along each axis
+    var GRID = 80;
+    // Parameter range for both q01 and q10
+    var Q_MIN = 0.1;
+    var Q_MAX = 3.0;
+  
+    // Weights for the two likelihood components
+    var K1 = 40;  // ratio component strength
+    var K2 = 10;  // absolute rate component strength
+  
+    function sizeCanvas() {
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var dpr = window.devicePixelRatio || 1;
+      var cssW = Math.max(200, Math.floor(rect.width));
+      var cssH = Math.max(200, Math.floor(rect.height));
+      canvas.style.width = cssW + 'px';
+      canvas.style.height = cssH + 'px';
+      canvas.width = Math.floor(cssW * dpr);
+      canvas.height = Math.floor(cssH * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { w: cssW, h: cssH };
+    }
+  
+    function currentThemeColors() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        return {
+          bg: '#0e0e10',
+          text: '#e6e6e6',
+          axis: 'rgba(230,230,230,0.55)',
+          grid: 'rgba(230,230,230,0.12)',
+          accent: 'var(--accent)',
+          contour: 'rgba(78,205,196,0.9)',
+          peak: '#34d399'
+        };
+      }
+      return {
+        bg: '#ffffff',
+        text: '#1a1a1a',
+        axis: 'rgba(26,26,26,0.6)',
+        grid: 'rgba(26,26,26,0.1)',
+        accent: 'var(--accent)',
+        contour: 'rgba(20,150,140,0.9)',
+        peak: '#0f9d58'
+      };
+    }
+  
+    // Viridis-like colormap from dark purple to bright yellow
+    function colormap(t) {
+      // t in [0,1]
+      if (t < 0) t = 0;
+      if (t > 1) t = 1;
+      // Stops: dark purple, blue, teal, green, yellow
+      var stops = [
+        [0.00, [ 27,   0,  72]],
+        [0.25, [ 50,  40, 120]],
+        [0.50, [ 30, 110, 130]],
+        [0.75, [ 90, 180,  90]],
+        [1.00, [253, 231,  37]]
+      ];
+      for (var i = 0; i < stops.length - 1; i++) {
+        if (t >= stops[i][0] && t <= stops[i+1][0]) {
+          var u = (t - stops[i][0]) / (stops[i+1][0] - stops[i][0]);
+          var a = stops[i][1], b = stops[i+1][1];
+          var r = Math.round(a[0] + (b[0]-a[0]) * u);
+          var g = Math.round(a[1] + (b[1]-a[1]) * u);
+          var bl = Math.round(a[2] + (b[2]-a[2]) * u);
+          return 'rgb(' + r + ',' + g + ',' + bl + ')';
+        }
+      }
+      return 'rgb(253,231,37)';
+    }
+  
+    function computeGrid(prop) {
+      var vals = new Float64Array(GRID * GRID);
+      var vmax = -Infinity, vmin = Infinity;
+      var logTarget = Math.log(2); // peak at q01/q10 = 2
+      for (var j = 0; j < GRID; j++) {
+        var q10 = Q_MIN + (Q_MAX - Q_MIN) * (j / (GRID - 1));
+        for (var i = 0; i < GRID; i++) {
+          var q01 = Q_MIN + (Q_MAX - Q_MIN) * (i / (GRID - 1));
+          var lr = Math.log(q01 / q10) - logTarget;
+          var L1 = -K1 * lr * lr;
+          var dx = q01 - 1.0;
+          var dy = q10 - 0.5;
+          var L2 = -K2 * (dx * dx + dy * dy);
+          var L = (1 - prop) * L1 + prop * L2;
+          vals[j * GRID + i] = L;
+          if (L > vmax) vmax = L;
+          if (L < vmin) vmin = L;
+        }
+      }
+      return { vals: vals, vmax: vmax, vmin: vmin };
+    }
+  
+    function qToPx(q, axisMin, axisMax, plotMin, plotMax) {
+      var t = (q - Q_MIN) / (Q_MAX - Q_MIN);
+      return plotMin + t * (plotMax - plotMin);
+    }
+  
+    function render() {
+      var size = sizeCanvas();
+      var colors = currentThemeColors();
+      var w = size.w, h = size.h;
+  
+      // Plot area with padding for axes
+      var padL = 60, padR = 30, padT = 20, padB = 50;
+      var plotW = w - padL - padR;
+      var plotH = h - padT - padB;
+  
+      // Background
+      ctx.fillStyle = colors.bg;
+      ctx.fillRect(0, 0, w, h);
+  
+      var prop = parseFloat(slider.value);
+      var grid = computeGrid(prop);
+      var vmax = grid.vmax;
+      var vmin = grid.vmin;
+      // Clamp dynamic range to improve visual contrast
+      var floor = vmax - 20; // show 20 log unit dynamic range at most
+      if (vmin < floor) vmin = floor;
+      var range = Math.max(1e-9, vmax - vmin);
+  
+      // Draw heatmap cells
+      var cellW = plotW / GRID;
+      var cellH = plotH / GRID;
+      for (var j = 0; j < GRID; j++) {
+        // y axis: q10 increases upward, so row j (small q10) is at bottom
+        var py = padT + (GRID - 1 - j) * cellH;
+        for (var i = 0; i < GRID; i++) {
+          var v = grid.vals[j * GRID + i];
+          var t = (v - vmin) / range;
+          ctx.fillStyle = colormap(t);
+          ctx.fillRect(padL + i * cellW, py, cellW + 1, cellH + 1);
+        }
+      }
+  
+      // Contour at 2 log L units below max
+      var contourLevel = vmax - 2;
+      ctx.strokeStyle = colors.contour;
+      ctx.lineWidth = 1.5;
+      // Use marching squares style approximation: for each cell check sign changes
+      for (var j2 = 0; j2 < GRID - 1; j2++) {
+        for (var i2 = 0; i2 < GRID - 1; i2++) {
+          var a = grid.vals[j2 * GRID + i2] - contourLevel;
+          var b = grid.vals[j2 * GRID + (i2 + 1)] - contourLevel;
+          var c = grid.vals[(j2 + 1) * GRID + (i2 + 1)] - contourLevel;
+          var d = grid.vals[(j2 + 1) * GRID + i2] - contourLevel;
+          // Cell corners in pixel space
+          var x0 = padL + i2 * cellW;
+          var x1 = padL + (i2 + 1) * cellW;
+          var y0 = padT + (GRID - 1 - j2) * cellH;
+          var y1 = padT + (GRID - 1 - (j2 + 1)) * cellH;
+          // Edges: top (a-b), right (b-c), bottom (d-c), left (a-d)
+          var pts = [];
+          if ((a >= 0) !== (b >= 0)) {
+            var t1 = a / (a - b);
+            pts.push([x0 + t1 * (x1 - x0), y0]);
+          }
+          if ((b >= 0) !== (c >= 0)) {
+            var t2 = b / (b - c);
+            pts.push([x1, y0 + t2 * (y1 - y0)]);
+          }
+          if ((d >= 0) !== (c >= 0)) {
+            var t3 = d / (d - c);
+            pts.push([x0 + t3 * (x1 - x0), y1]);
+          }
+          if ((a >= 0) !== (d >= 0)) {
+            var t4 = a / (a - d);
+            pts.push([x0, y0 + t4 * (y1 - y0)]);
+          }
+          if (pts.length >= 2) {
+            ctx.beginPath();
+            ctx.moveTo(pts[0][0], pts[0][1]);
+            ctx.lineTo(pts[1][0], pts[1][1]);
+            ctx.stroke();
+          }
+        }
+      }
+  
+      // Axes
+      ctx.strokeStyle = colors.axis;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padL, padT);
+      ctx.lineTo(padL, padT + plotH);
+      ctx.lineTo(padL + plotW, padT + plotH);
+      ctx.stroke();
+  
+      // Tick labels
+      ctx.fillStyle = colors.text;
+      ctx.font = '11px ' + (getComputedStyle(document.body).fontFamily || 'sans-serif');
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      var ticks = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0];
+      for (var k = 0; k < ticks.length; k++) {
+        var tq = ticks[k];
+        var tx = padL + ((tq - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
+        ctx.fillText(tq.toFixed(1), tx, padT + plotH + 6);
+      }
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+      for (var m = 0; m < ticks.length; m++) {
+        var tq2 = ticks[m];
+        var ty = padT + plotH - ((tq2 - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
+        ctx.fillText(tq2.toFixed(1), padL - 8, ty);
+      }
+  
+      // Axis titles
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillStyle = colors.text;
+      ctx.font = '12px ' + (getComputedStyle(document.body).fontFamily || 'sans-serif');
+      ctx.fillText('q01 (forward rate)', padL + plotW / 2, h - 6);
+      ctx.save();
+      ctx.translate(14, padT + plotH / 2);
+      ctx.rotate(-Math.PI / 2);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText('q10 (reverse rate)', 0, 0);
+      ctx.restore();
+  
+      // Mark target ratio line q01 = 2 * q10 for reference
+      ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      // Start where q01 = 2*q10 crosses the bottom or left edge
+      // Parametrize: q10 from Q_MIN up to Q_MAX/2
+      var q10start = Q_MIN;
+      var q01start = 2 * q10start;
+      if (q01start < Q_MIN) { q01start = Q_MIN; q10start = q01start / 2; }
+      var q10end = Math.min(Q_MAX, Q_MAX / 2);
+      var q01end = 2 * q10end;
+      if (q01end > Q_MAX) { q01end = Q_MAX; q10end = q01end / 2; }
+      var xs = padL + ((q01start - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
+      var ys = padT + plotH - ((q10start - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
+      var xe = padL + ((q01end - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
+      var ye = padT + plotH - ((q10end - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
+      ctx.moveTo(xs, ys);
+      ctx.lineTo(xe, ye);
+      ctx.stroke();
+      ctx.setLineDash([]);
+  
+      // Mark the absolute peak location q01=1, q10=0.5
+      var px = padL + ((1.0 - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
+      var py2 = padT + plotH - ((0.5 - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
+      ctx.fillStyle = colors.peak;
+      ctx.beginPath();
+      ctx.arc(px, py2, 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = colors.bg;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+  
+    function updateValueDisplay() {
+      if (propValueEl) {
+        propValueEl.textContent = parseFloat(slider.value).toFixed(2);
+      }
+    }
+  
+    slider.addEventListener('input', function() {
+      updateValueDisplay();
+      render();
+    });
+  
+    // Redraw on theme toggle
+    var themeBtn = document.getElementById('theme-btn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() {
+        // Let any theme handler run first, then redraw
+        setTimeout(render, 20);
+      });
+    }
+    // Also watch for data-theme attribute changes in case the toggle is elsewhere
+    var mo = new MutationObserver(function() { render(); });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  
+    // Redraw on resize
+    var resizeTimer = null;
+    window.addEventListener('resize', function() {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(render, 100);
+    });
+  
+    // Initial render on page load
+    updateValueDisplay();
+    render();
+  })();
+  </script>
+---
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="../assets/css/v3.css">
-
-<style>
-  .viz-container {
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 12px;
-    padding: 40px;
-    margin: 40px 0;
-  }
-
-  .ridge-canvas-container {
-    width: 100%;
-    height: 500px;
-    background: linear-gradient(to bottom, var(--accent-dim), transparent);
-    border-radius: 8px;
-    border: 1px solid var(--rule);
-  }
-
-  .info-box {
-    background: var(--accent-dim);
-    border-left: 4px solid var(--accent);
-    padding: 20px;
-    margin: 30px 0;
-    border-radius: 4px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--ink);
-  }
-
-  .warning-box {
-    background: rgba(239,68,68,0.05);
-    border-left: 4px solid #ef4444;
-    padding: 20px;
-    margin: 30px 0;
-    border-radius: 4px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--ink);
-  }
-
-  .highlight-text {
-    color: var(--accent);
-    font-weight: 600;
-  }
-
-  .control-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 25px 0;
-  }
-
-  .control-label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--ink);
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .slider-row {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  input[type="range"] {
-    flex: 1;
-    height: 6px;
-    border-radius: 3px;
-    background: var(--paper);
-    outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--accent);
-    cursor: pointer;
-    box-shadow: 0 0 8px var(--accent-dim);
-  }
-
-  input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--accent);
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 0 8px var(--accent-dim);
-  }
-
-  .slider-value {
-    font-family: var(--font-mono);
-    color: var(--accent);
-    min-width: 60px;
-    text-align: right;
-  }
-
-  .bullet-list {
-    max-width: 900px;
-    margin: 30px 0;
-  }
-
-  .bullet-list li {
-    color: var(--ink);
-    line-height: 1.8;
-    margin-bottom: 15px;
-  }
-
-  .code-example {
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    padding: 15px;
-    border-radius: 6px;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: #34d399;
-    margin: 20px 0;
-    overflow-x: auto;
-  }
-
-  .canvas-legend {
-    display: flex;
-    gap: 30px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-    font-size: 0.95rem;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .legend-box {
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-  }
-
-  .section-text {
-    font-size: 1rem;
-    color: var(--ink);
-    line-height: 1.8;
-    margin-bottom: 30px;
-    max-width: 900px;
-  }
-</style>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
-</head>
-
-<body>
-
-
-<div class="chrome">
-  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
-  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
-</div>
-
-<div class="shell">
-
-  <aside class="sidebar" aria-label="Site navigation">
-    <div class="brand">
-      <span class="root-dot"></span>
-      <a href="../index.html" class="brand-name">Blackmon Lab</a>
-      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
-    </div>
-
-    <ul class="tree" role="tree">
-      <li>
-        <span>Lab</span>
-        <ul>
-          <li><a href="../team.html">Team</a></li>
-          <li><a href="../publications.html">Publications</a></li>
-          <li><a href="../news.html">News</a></li>
-          <li><a href="../calendar.html">Calendar</a></li>
-          <li><a href="../join.html">Join</a></li>
-          <li><a href="../undergrad-papers.html">Undergrad papers</a></li>
-          <li><a href="../gallery.html">Gallery</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Databases</span>
-        <ul>
-          <li><a href="../cures-karyotype-database.html">CUREs karyotypes</a></li>
-          <li><a href="../karyotypes/index.html">Six karyotype DBs</a></li>
-          <li><a href="../epistasis-database.html">Epistasis database</a></li>
-          <li><a href="../tau_database.html">Tau database</a></li>
-          <li><a href="../citation-network.html">Citation network</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Research</span>
-        <ul>
-          <li><a href="../karyotype.html">Karyotype evolution</a></li>
-          <li><a href="../sex-chromosome-evolution.html">Sex chromosomes</a></li>
-          <li><a href="../genome-structure-evolution.html">Genome structure</a></li>
-          <li><a href="../selection.html">Selection &amp; adaptation</a></li>
-          <li><a href="../epistasis-line-cross.html">Epistasis</a></li>
-          <li><a href="../chromosome-evolution-history.html">History of the field</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Organisms</span>
-        <ul>
-          <li><a href="../coleoptera-genomics.html">Beetles</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>AI agents</span>
-        <ul>
-          <li><a href="../ai.html">Overview</a></li>
-          <li><a href="../traittrawler.html">TraitTrawler</a></li>
-          <li><a href="../lead-investigator.html">Lead Investigator</a></li>
-          <li><a href="../llms.txt" target="_blank">llms.txt</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Tools</span>
-        <ul>
-          <li><a href="../phylo-explorer.html">Tree explorer</a></li>
-          <li><a href="index.html" class="active">PCM guide</a></li>
-          <li><a href="../subpages/popgen-sim.html">Pop-gen simulator</a></li>
-          <li><a href="../subpages/evobir.html">evobiR</a></li>        </ul>
-      </li>
-      <li>
-        <span>Teaching</span>
-        <ul>
-          <li><a href="../biolai-cure.html">Biology &amp; AI CURE</a></li>
-          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
-          <li><a href="../subpages/biol682.html">BIOL 682</a></li>
-          <li><a href="../subpages/grad101.html">Grad 101</a></li>
-          <li><a href="../subpages/AI-Tools.html">AI tools guide</a></li>
-        </ul>
-      </li>
-    </ul>
-  </aside>
-
-  <main class="column" id="content">
 
     <div class="crumb">
       <a href="../index.html">Home</a> &rsaquo; Tools &rsaquo; <a href="index.html">PCM guide</a> &rsaquo; <strong>Likelihood ridges</strong>
@@ -447,324 +641,4 @@
       </span>
     </footer>
 
-  </main>
-</div>
-
-<!-- Command palette -->
-<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
-  <div class="palette">
-    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
-    <div class="palette-results" id="palette-results"></div>
-  </div>
-</div>
-
-<!-- Ask-the-lab toast -->
-<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
-
-<script src="../assets/js/v3.js"></script>
-
-<script>
-(function() {
-  // Ridge visualization for rate matrix identifiability problem
-  // Heatmap of log likelihood over q01 (x axis) and q10 (y axis)
-  var canvas = document.getElementById('ridgeCanvas');
-  var slider = document.getElementById('propSlider');
-  var propValueEl = document.getElementById('propValue');
-  if (!canvas || !slider) return;
-
-  var ctx = canvas.getContext('2d');
-
-  // Sampling grid resolution along each axis
-  var GRID = 80;
-  // Parameter range for both q01 and q10
-  var Q_MIN = 0.1;
-  var Q_MAX = 3.0;
-
-  // Weights for the two likelihood components
-  var K1 = 40;  // ratio component strength
-  var K2 = 10;  // absolute rate component strength
-
-  function sizeCanvas() {
-    var rect = canvas.parentElement.getBoundingClientRect();
-    var dpr = window.devicePixelRatio || 1;
-    var cssW = Math.max(200, Math.floor(rect.width));
-    var cssH = Math.max(200, Math.floor(rect.height));
-    canvas.style.width = cssW + 'px';
-    canvas.style.height = cssH + 'px';
-    canvas.width = Math.floor(cssW * dpr);
-    canvas.height = Math.floor(cssH * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    return { w: cssW, h: cssH };
-  }
-
-  function currentThemeColors() {
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      return {
-        bg: '#0e0e10',
-        text: '#e6e6e6',
-        axis: 'rgba(230,230,230,0.55)',
-        grid: 'rgba(230,230,230,0.12)',
-        accent: 'var(--accent)',
-        contour: 'rgba(78,205,196,0.9)',
-        peak: '#34d399'
-      };
-    }
-    return {
-      bg: '#ffffff',
-      text: '#1a1a1a',
-      axis: 'rgba(26,26,26,0.6)',
-      grid: 'rgba(26,26,26,0.1)',
-      accent: 'var(--accent)',
-      contour: 'rgba(20,150,140,0.9)',
-      peak: '#0f9d58'
-    };
-  }
-
-  // Viridis-like colormap from dark purple to bright yellow
-  function colormap(t) {
-    // t in [0,1]
-    if (t < 0) t = 0;
-    if (t > 1) t = 1;
-    // Stops: dark purple, blue, teal, green, yellow
-    var stops = [
-      [0.00, [ 27,   0,  72]],
-      [0.25, [ 50,  40, 120]],
-      [0.50, [ 30, 110, 130]],
-      [0.75, [ 90, 180,  90]],
-      [1.00, [253, 231,  37]]
-    ];
-    for (var i = 0; i < stops.length - 1; i++) {
-      if (t >= stops[i][0] && t <= stops[i+1][0]) {
-        var u = (t - stops[i][0]) / (stops[i+1][0] - stops[i][0]);
-        var a = stops[i][1], b = stops[i+1][1];
-        var r = Math.round(a[0] + (b[0]-a[0]) * u);
-        var g = Math.round(a[1] + (b[1]-a[1]) * u);
-        var bl = Math.round(a[2] + (b[2]-a[2]) * u);
-        return 'rgb(' + r + ',' + g + ',' + bl + ')';
-      }
-    }
-    return 'rgb(253,231,37)';
-  }
-
-  function computeGrid(prop) {
-    var vals = new Float64Array(GRID * GRID);
-    var vmax = -Infinity, vmin = Infinity;
-    var logTarget = Math.log(2); // peak at q01/q10 = 2
-    for (var j = 0; j < GRID; j++) {
-      var q10 = Q_MIN + (Q_MAX - Q_MIN) * (j / (GRID - 1));
-      for (var i = 0; i < GRID; i++) {
-        var q01 = Q_MIN + (Q_MAX - Q_MIN) * (i / (GRID - 1));
-        var lr = Math.log(q01 / q10) - logTarget;
-        var L1 = -K1 * lr * lr;
-        var dx = q01 - 1.0;
-        var dy = q10 - 0.5;
-        var L2 = -K2 * (dx * dx + dy * dy);
-        var L = (1 - prop) * L1 + prop * L2;
-        vals[j * GRID + i] = L;
-        if (L > vmax) vmax = L;
-        if (L < vmin) vmin = L;
-      }
-    }
-    return { vals: vals, vmax: vmax, vmin: vmin };
-  }
-
-  function qToPx(q, axisMin, axisMax, plotMin, plotMax) {
-    var t = (q - Q_MIN) / (Q_MAX - Q_MIN);
-    return plotMin + t * (plotMax - plotMin);
-  }
-
-  function render() {
-    var size = sizeCanvas();
-    var colors = currentThemeColors();
-    var w = size.w, h = size.h;
-
-    // Plot area with padding for axes
-    var padL = 60, padR = 30, padT = 20, padB = 50;
-    var plotW = w - padL - padR;
-    var plotH = h - padT - padB;
-
-    // Background
-    ctx.fillStyle = colors.bg;
-    ctx.fillRect(0, 0, w, h);
-
-    var prop = parseFloat(slider.value);
-    var grid = computeGrid(prop);
-    var vmax = grid.vmax;
-    var vmin = grid.vmin;
-    // Clamp dynamic range to improve visual contrast
-    var floor = vmax - 20; // show 20 log unit dynamic range at most
-    if (vmin < floor) vmin = floor;
-    var range = Math.max(1e-9, vmax - vmin);
-
-    // Draw heatmap cells
-    var cellW = plotW / GRID;
-    var cellH = plotH / GRID;
-    for (var j = 0; j < GRID; j++) {
-      // y axis: q10 increases upward, so row j (small q10) is at bottom
-      var py = padT + (GRID - 1 - j) * cellH;
-      for (var i = 0; i < GRID; i++) {
-        var v = grid.vals[j * GRID + i];
-        var t = (v - vmin) / range;
-        ctx.fillStyle = colormap(t);
-        ctx.fillRect(padL + i * cellW, py, cellW + 1, cellH + 1);
-      }
-    }
-
-    // Contour at 2 log L units below max
-    var contourLevel = vmax - 2;
-    ctx.strokeStyle = colors.contour;
-    ctx.lineWidth = 1.5;
-    // Use marching squares style approximation: for each cell check sign changes
-    for (var j2 = 0; j2 < GRID - 1; j2++) {
-      for (var i2 = 0; i2 < GRID - 1; i2++) {
-        var a = grid.vals[j2 * GRID + i2] - contourLevel;
-        var b = grid.vals[j2 * GRID + (i2 + 1)] - contourLevel;
-        var c = grid.vals[(j2 + 1) * GRID + (i2 + 1)] - contourLevel;
-        var d = grid.vals[(j2 + 1) * GRID + i2] - contourLevel;
-        // Cell corners in pixel space
-        var x0 = padL + i2 * cellW;
-        var x1 = padL + (i2 + 1) * cellW;
-        var y0 = padT + (GRID - 1 - j2) * cellH;
-        var y1 = padT + (GRID - 1 - (j2 + 1)) * cellH;
-        // Edges: top (a-b), right (b-c), bottom (d-c), left (a-d)
-        var pts = [];
-        if ((a >= 0) !== (b >= 0)) {
-          var t1 = a / (a - b);
-          pts.push([x0 + t1 * (x1 - x0), y0]);
-        }
-        if ((b >= 0) !== (c >= 0)) {
-          var t2 = b / (b - c);
-          pts.push([x1, y0 + t2 * (y1 - y0)]);
-        }
-        if ((d >= 0) !== (c >= 0)) {
-          var t3 = d / (d - c);
-          pts.push([x0 + t3 * (x1 - x0), y1]);
-        }
-        if ((a >= 0) !== (d >= 0)) {
-          var t4 = a / (a - d);
-          pts.push([x0, y0 + t4 * (y1 - y0)]);
-        }
-        if (pts.length >= 2) {
-          ctx.beginPath();
-          ctx.moveTo(pts[0][0], pts[0][1]);
-          ctx.lineTo(pts[1][0], pts[1][1]);
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Axes
-    ctx.strokeStyle = colors.axis;
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(padL, padT);
-    ctx.lineTo(padL, padT + plotH);
-    ctx.lineTo(padL + plotW, padT + plotH);
-    ctx.stroke();
-
-    // Tick labels
-    ctx.fillStyle = colors.text;
-    ctx.font = '11px ' + (getComputedStyle(document.body).fontFamily || 'sans-serif');
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    var ticks = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0];
-    for (var k = 0; k < ticks.length; k++) {
-      var tq = ticks[k];
-      var tx = padL + ((tq - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
-      ctx.fillText(tq.toFixed(1), tx, padT + plotH + 6);
-    }
-    ctx.textAlign = 'right';
-    ctx.textBaseline = 'middle';
-    for (var m = 0; m < ticks.length; m++) {
-      var tq2 = ticks[m];
-      var ty = padT + plotH - ((tq2 - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
-      ctx.fillText(tq2.toFixed(1), padL - 8, ty);
-    }
-
-    // Axis titles
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'bottom';
-    ctx.fillStyle = colors.text;
-    ctx.font = '12px ' + (getComputedStyle(document.body).fontFamily || 'sans-serif');
-    ctx.fillText('q01 (forward rate)', padL + plotW / 2, h - 6);
-    ctx.save();
-    ctx.translate(14, padT + plotH / 2);
-    ctx.rotate(-Math.PI / 2);
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    ctx.fillText('q10 (reverse rate)', 0, 0);
-    ctx.restore();
-
-    // Mark target ratio line q01 = 2 * q10 for reference
-    ctx.strokeStyle = 'rgba(255,255,255,0.35)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    // Start where q01 = 2*q10 crosses the bottom or left edge
-    // Parametrize: q10 from Q_MIN up to Q_MAX/2
-    var q10start = Q_MIN;
-    var q01start = 2 * q10start;
-    if (q01start < Q_MIN) { q01start = Q_MIN; q10start = q01start / 2; }
-    var q10end = Math.min(Q_MAX, Q_MAX / 2);
-    var q01end = 2 * q10end;
-    if (q01end > Q_MAX) { q01end = Q_MAX; q10end = q01end / 2; }
-    var xs = padL + ((q01start - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
-    var ys = padT + plotH - ((q10start - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
-    var xe = padL + ((q01end - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
-    var ye = padT + plotH - ((q10end - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
-    ctx.moveTo(xs, ys);
-    ctx.lineTo(xe, ye);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    // Mark the absolute peak location q01=1, q10=0.5
-    var px = padL + ((1.0 - Q_MIN) / (Q_MAX - Q_MIN)) * plotW;
-    var py2 = padT + plotH - ((0.5 - Q_MIN) / (Q_MAX - Q_MIN)) * plotH;
-    ctx.fillStyle = colors.peak;
-    ctx.beginPath();
-    ctx.arc(px, py2, 4, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = colors.bg;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-  }
-
-  function updateValueDisplay() {
-    if (propValueEl) {
-      propValueEl.textContent = parseFloat(slider.value).toFixed(2);
-    }
-  }
-
-  slider.addEventListener('input', function() {
-    updateValueDisplay();
-    render();
-  });
-
-  // Redraw on theme toggle
-  var themeBtn = document.getElementById('theme-btn');
-  if (themeBtn) {
-    themeBtn.addEventListener('click', function() {
-      // Let any theme handler run first, then redraw
-      setTimeout(render, 20);
-    });
-  }
-  // Also watch for data-theme attribute changes in case the toggle is elsewhere
-  var mo = new MutationObserver(function() { render(); });
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
-  // Redraw on resize
-  var resizeTimer = null;
-  window.addEventListener('resize', function() {
-    if (resizeTimer) clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(render, 100);
-  });
-
-  // Initial render on page load
-  updateValueDisplay();
-  render();
-})();
-</script>
-
-</body>
-</html>
+  

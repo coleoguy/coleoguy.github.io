@@ -1,129 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sex chromosomes · Blackmon Lab</title>
-<meta name="description" content="Sex chromosomes are born from ordinary autosomes, lose recombination, degenerate, and occasionally get replaced entirely. A topic page from the Blackmon Lab covering origins, decay, dosage compensation, and turnovers across the tree of life.">
-<meta property="og:title" content="Sex chromosomes · Blackmon Lab">
-<meta property="og:description" content="Sex chromosomes are born from ordinary autosomes, lose recombination, degenerate, and occasionally get replaced entirely. A topic page from the Blackmon Lab covering origins, decay, dosage compensation, and turnovers across the tree of life.">
-<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Blackmon Lab">
-<meta property="og:url" content="https://coleoguy.github.io/sex-chromosome-evolution.html">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://coleoguy.github.io/sex-chromosome-evolution.html">
-<meta name="author" content="Heath Blackmon">
-<link rel="icon" href="assets/img/favicon.ico">
+---
+layout: default
+title: "Sex chromosomes · Blackmon Lab"
+description: "Sex chromosomes are born from ordinary autosomes, lose recombination, degenerate, and occasionally get replaced entirely. A topic page from the Blackmon Lab covering origins, decay, dosage compensation, and turnovers across the tree of life."
+canonical: "https://coleoguy.github.io/sex-chromosome-evolution.html"
+---
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="assets/css/v3.css">
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
-</head>
-
-<body>
-
-
-<div class="chrome">
-  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
-  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
-</div>
-
-<div class="shell">
-
-  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
-  <aside class="sidebar" aria-label="Site navigation">
-    <div class="brand">
-      <span class="root-dot"></span>
-      <a href="index.html" class="brand-name">Blackmon Lab</a>
-      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
-    </div>
-
-    <ul class="tree" role="tree">
-      <li>
-        <span>Lab</span>
-        <ul>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="calendar.html">Calendar</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="undergrad-papers.html">Undergrad papers</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Essays</span>
-        <ul>
-          <li><a href="both-sides-are-right.html">Both sides are right</a></li>
-          <li><a href="fragile-y.html">The fragile Y</a></li>
-          <li><a href="y-naught.html">Why not Y naught?</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Databases</span>
-        <ul>
-          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
-          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
-          <li><a href="epistasis-database.html">Epistasis database</a></li>
-          <li><a href="tau_database.html">Tau database</a></li>
-          <li><a href="citation-network.html">Citation network</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Research</span>
-        <ul>
-          <li><a href="karyotype.html">Karyotype evolution</a></li>
-          <li><a href="sex-chromosome-evolution.html" class="active">Sex chromosomes</a></li>
-          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
-          <li><a href="selection.html">Selection &amp; adaptation</a></li>
-          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
-          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Organisms</span>
-        <ul>
-          <li><a href="coleoptera-genomics.html">Beetles</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>AI agents</span>
-        <ul>
-          <li><a href="ai.html">Overview</a></li>
-          <li><a href="traittrawler.html">TraitTrawler</a></li>
-          <li><a href="lead-investigator.html">Lead Investigator</a></li>
-          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
-        </ul>
-      </li>
-      <li>
-        <span>Tools</span>
-        <ul>
-          <li><a href="phylo-explorer.html">Tree explorer</a></li>
-          <li><a href="phylo-methods/index.html">PCM guide</a></li>
-          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
-          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
-      </li>
-      <li>
-        <span>Teaching</span>
-        <ul>
-          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
-          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
-          <li><a href="subpages/biol682.html">BIOL 682</a></li>
-          <li><a href="subpages/grad101.html">Grad 101</a></li>
-          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
-        </ul>
-      </li>
-    </ul>
-  </aside>
-
-  <!-- ── Main reading column ──────────────────────────────── -->
-  <main class="column" id="content">
 
     <div class="crumb">
       <a href="index.html">Home</a> › Research › <strong>Sex chromosomes</strong>
@@ -168,7 +49,6 @@
         <p>Sex chromosomes play an outsized role in reproductive isolation between species. Haldane's rule, the observation that when hybrids are inviable or sterile it is the heterogametic sex (XY or ZW) that is affected first, points directly to the special role of sex chromosomes in speciation. The large-X (or large-Z) effect means genes on sex chromosomes contribute disproportionately to hybrid incompatibility.</p>
         <p>Many genetic disorders are X-linked: hemophilia, Duchenne muscular dystrophy, red-green color blindness, fragile X syndrome. Because males have only one X, they lack a backup copy; recessive mutations on the X are always expressed. Sex chromosomes are also a genomic reservoir for sexually antagonistic variation, genes that benefit one sex at the cost of the other, and shape how much males and females can differ in morphology, behavior, and physiology.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-why">Full treatment of why it matters &rarr;</a>
           <a href="selection.html">Selection &amp; adaptation &rarr;</a>
         </div>
       </div>
@@ -186,8 +66,7 @@
         <p>Most chromosomes come in matched pairs (autosomes). Sex chromosomes are the ones that differ between the sexes and typically carry the sex-determining trigger. In XY systems (mammals, many insects, some fish) males are heterogametic; in ZW systems (birds, snakes, butterflies) it's the female; in X0 systems the Y has been lost entirely. UV systems in algae and bryophytes determine sex in the haploid phase; Hymenoptera skip sex chromosomes and use ploidy itself; many reptiles use temperature.</p>
         <p>The punchline: sex chromosomes are not a fixed feature of life. They have evolved independently hundreds of times, and every pair started as an ordinary pair of autosomes.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-what">Systems with diagrams &rarr;</a>
-          <a href="sex-chromosome-evolution.html#sec-diversity">Beyond XY and ZW &rarr;</a>
+          <a href="https://doi.org/10.1371/journal.pbio.1001899" target="_blank" rel="noopener">Bachtrog et al. 2014, PLOS Biology &rarr;</a>
         </div>
       </div>
     </details>
@@ -206,7 +85,6 @@
         <p>Every pair of sex chromosomes began as an ordinary pair of autosomes. Stage 1: a sex-determining gene appears on one copy. Stage 2: sexually antagonistic alleles (good for one sex, bad for the other) accumulate near the sex-determiner because they're now preferentially linked to the right sex. Stage 3: inversions or other rearrangements suppress recombination, locking those alleles together. Stage 4: the non-recombining proto-Y accumulates damage, loses genes, picks up repetitive elements, and shrinks.</p>
         <p>The classic model treats sexually antagonistic selection as the driver (Rice 1987). Some modern work (Lenormand et al. 2020; Jay et al. 2022) shows that recombination suppression can also spread via sheltering of deleterious recessives, even without antagonistic alleles. Strata may form by drift rather than selection. Which mechanism dominates where is an active debate.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-origin">Full origin story with diagrams &rarr;</a>
           <a href="https://doi.org/10.1111/j.1558-5646.1987.tb05864.x" target="_blank">Rice 1987, Evolution &rarr;</a>
         </div>
       </div>
@@ -223,7 +101,6 @@
       <div class="layer-body">
         <p>J.J. Bull's <em>Evolution of Sex Determining Mechanisms</em> (Princeton, 1983) is the foundational text on the diversity and evolution of sex determination. W.R. Rice's 1987 Evolution paper, "The accumulation of sexually antagonistic genes as a selective agent promoting the evolution of reduced recombination," is the single most cited mechanism for sex chromosome differentiation. B. Charlesworth &amp; D. Charlesworth (2000, Phil. Trans. R. Soc. B), "The degeneration of Y chromosomes," is the definitive theoretical framework for why non-recombining chromosomes decay.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-origin">Paper cards with full citations &rarr;</a>
           <a href="https://doi.org/10.1098/rstb.2000.0717" target="_blank">Charlesworth &amp; Charlesworth 2000 &rarr;</a>
         </div>
       </div>
@@ -243,7 +120,6 @@
         <p>Four mutually reinforcing processes drive the decay. Muller's ratchet: in small populations, the least-mutated chromosome class is lost by drift, and without recombination it can't be regenerated, so the minimum load only ever climbs. Background selection against deleterious alleles shrinks the effective population size of the whole chromosome. Genetic hitchhiking drags deleterious alleles to fixation alongside beneficial ones. Hill-Robertson interference generalizes this: every locus on a non-recombining chromosome interferes with every other locus.</p>
         <p>Result: gene loss, transposable element accumulation, heterochromatinization, and physical shrinkage. The human Y retains only ~55 protein-coding genes, down from the ~800+ on the X.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-degeneration">Full treatment with degeneration timeline &rarr;</a>
           <a href="https://doi.org/10.1038/nrg3366" target="_blank">Bachtrog 2013, Nat. Rev. Genet. &rarr;</a>
         </div>
       </div>
@@ -262,7 +138,6 @@
         <p>The drift-vs-selection debate is unresolved. Charlesworth-style models emphasize deterministic forces (background selection, hitchhiking) powerful enough to drive decay in large populations. Bachtrog (2008, 2013) argues drift via Muller's ratchet can dominate, especially in species with small <em>N<sub>e</sub></em>. Modern accounts (Bergero &amp; Charlesworth 2009; Bachtrog 2013) treat degeneration as layered: deterministic and stochastic forces each dominate at different stages and on different gene classes.</p>
         <div class="layer-links">
           <a href="fragile-y.html">Essay: the fragile Y &rarr;</a>
-          <a href="sex-chromosome-evolution.html#sec-degeneration">Testing the fragile Y &rarr;</a>
           <a href="publications.html">All lab publications &rarr;</a>
         </div>
       </div>
@@ -299,7 +174,6 @@
         <p>When one sex has a single copy of a large, gene-rich chromosome and the other has two, protein-complex stoichiometry and regulatory networks break. Some lineages solved it. Mammals silence one X in females (X-inactivation; the Barr body). Drosophila doubles transcription from the single male X via the MSL (Male-Specific Lethal) complex. <em>C. elegans</em> halves expression from both X chromosomes in hermaphrodites via the Dosage Compensation Complex (DCC). Three independent evolutionary solutions to the same dosage problem.</p>
         <p>Judith Mank's 2013 review in <em>Trends in Genetics</em> ("Sex chromosome dosage compensation: definitely not for everyone") reframed the field: global compensation is the exception. Birds (ZW) lack chromosome-wide compensation; Z-linked genes are simply expressed higher in ZZ males than ZW females. Snakes show partial compensation. Lepidoptera are similar. <em>Why</em> some lineages evolve global compensation and others tolerate the imbalance is an open question, with implications for sexual dimorphism, disease, and adaptation the field is only starting to map.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-dosage">Full dosage compensation treatment &rarr;</a>
           <a href="https://doi.org/10.1016/j.tig.2013.09.006" target="_blank">Mank 2013, Trends in Genetics &rarr;</a>
         </div>
       </div>
@@ -316,7 +190,6 @@
       <div class="layer-body">
         <p>Schield, Card, Hales, Perry, Pasquesi, Blackmon, Adams, Corbin, Smith, Ramesh et al. (<em>Genome Research</em> 2019), "The origins and evolution of chromosomes, dosage compensation, and mechanisms underlying venom regulation in snakes," maps the ZW system of snakes at chromosome scale and shows how incomplete compensation plays out across a real genome. Useful as a case study for what sex-biased gene expression actually looks like in a lineage without global compensation.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-dosage">Paper cards and context &rarr;</a>
         </div>
       </div>
     </details>
@@ -335,7 +208,6 @@
         <p>Turnovers: a new sex-determining gene arises on a different chromosome, and the old sex chromosomes revert toward autosomal behavior. Fusions: an autosome joins an existing sex chromosome, creating a neo-Y (or neo-W) that is now non-recombining and will begin degenerating. Species with neo-sex chromosomes are invaluable natural experiments for watching the early stages of sex chromosome evolution in real time.</p>
         <p>Blackmon, Ross &amp; Bachtrog (<em>Journal of Heredity</em> 2017, F1000), "Sex determination, sex chromosomes, and karyotype evolution in insects," is a comprehensive review of the extraordinary diversity of insect sex chromosome systems and their evolutionary dynamics. Anderson, Hjelmen &amp; Blackmon (<em>Biology Letters</em> 2020) work out the probability of fusions joining sex chromosomes and autosomes.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-fusions">Full fusions &amp; turnovers treatment &rarr;</a>
           <a href="https://doi.org/10.1093/jhered/esw047" target="_blank">Blackmon, Ross &amp; Bachtrog 2017 &rarr;</a>
         </div>
       </div>
@@ -353,7 +225,6 @@
         <p>Not all fusions to sex chromosomes behave the same way. Fusions involving the pseudoautosomal region (the small region where X and Y still recombine) behave very differently from non-PAR fusions. Our analytical model (Wilhoit, Alexander &amp; Blackmon, <em>PeerJ</em> 2024, "Worse than nothing at all: the inequality of fusions joining autosomes to the PAR and non-PAR portions of sex chromosomes") shows PAR fusions are actually worse than ordinary autosome-autosome fusions. The fused autosome must still pair at meiosis with the now-slightly-larger sex chromosome, so heterozygotes lose fertility without getting the sex-linkage benefit a true non-PAR fusion would provide.</p>
         <p>Non-PAR fusions, by contrast, can be favored when they bring sexually antagonistic alleles into linkage with the sex-determining locus. That is the classic mechanism behind sex-chromosome turnover. Surveys that lump all sex-chromosome fusions together underestimate selection on the non-PAR class and overestimate the rate at which PAR fusions persist.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-fusions">More on fusion mechanics &rarr;</a>
           <a href="publications.html">Wilhoit et al. 2024 &rarr;</a>
         </div>
       </div>
@@ -377,7 +248,6 @@
         <p>Males have one X and no backup, so recessive X-linked mutations are always expressed. That single fact explains why hemophilia, Duchenne muscular dystrophy, red-green color blindness, and fragile X syndrome show the inheritance patterns they do. Understanding why particular genes ended up on the sex chromosomes, and how dosage compensation works (and fails), has direct medical relevance.</p>
         <p>Beyond medicine: the same suite of features (recombination suppression, degeneration, dosage compensation, accumulation of repetitive elements) evolves independently in animals, plants, fungi, and algae. The convergence is telling us something general about what happens whenever a region of a genome stops recombining. Sex chromosomes are one of the clearest places to study that process.</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-why">Full "why study" section &rarr;</a>
           <a href="genome-structure-evolution.html">Genome structure evolution &rarr;</a>
         </div>
       </div>
@@ -396,7 +266,6 @@
         <p><strong>Q2.</strong> What determines the fate of mutations that expand the proportion of the genome linked to a sex-determining locus?</p>
         <p><strong>Q3.</strong> Are there inherent fitness trade-offs between male and female phenotypes, or can a single genome be fit regardless of sex?</p>
         <div class="layer-links">
-          <a href="sex-chromosome-evolution.html#sec-why">Open questions in context &rarr;</a>
           <a href="join.html">Work with us &rarr;</a>
         </div>
       </div>
@@ -413,17 +282,4 @@
       </span>
     </footer>
 
-  </main>
-</div>
-
-<!-- Command palette -->
-<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
-  <div class="palette">
-    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
-    <div class="palette-results" id="palette-results"></div>
-  </div>
-</div>
-
-<script src="assets/js/v3.js"></script>
-</body>
-</html>
+  

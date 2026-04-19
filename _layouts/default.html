@@ -1,17 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-{% include head.html %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:image" content="{{ page.og_image | default: site.og_image }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+{% if page.canonical %}<meta property="og:url" content="{{ page.og_url | default: page.canonical }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+{% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
+{% if page.alternate %}<link rel="alternate" type="application/json" href="{{ page.alternate }}">{% endif %}
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_id }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.ga_id }}');</script>
+{{ page.extra_head }}
 </head>
-<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
-<script>document.body.classList.add("light-mode");try{if(localStorage.getItem("theme")==="dark"){document.body.classList.remove("light-mode");}}catch(e){}</script>
 
-{% include header.html %}
+<body>
 
-<main class="main">
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  {% include sidebar.html %}
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
 {{ content }}
-</main>
+  </main>
+</div>
 
-{% include footer.html %}
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+{{ page.extra_scripts }}
 </body>
 </html>
