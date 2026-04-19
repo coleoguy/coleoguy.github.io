@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tealc · Blackmon Lab</title>
-<meta name="description" content="Tealc is the lab's own AI agent: administrative assistant today, postdoc as we build, lead investigator as the long arc. Claude + LangGraph, persistent memory, built and tested in the open.">
+<meta name="description" content="Tealc is the Blackmon Lab's in-house AI agent: a trusted right hand that handles the lower-level knowledge work so the PI can focus on thinking and mentoring. Claude + LangGraph, persistent memory, built and tested in the open.">
 <meta property="og:title" content="Tealc · Blackmon Lab">
-<meta property="og:description" content="Tealc is the lab's own AI agent: administrative assistant today, postdoc as we build, lead investigator as the long arc. Claude + LangGraph, persistent memory, built and tested in the open.">
+<meta property="og:description" content="Tealc is the Blackmon Lab's in-house AI agent: a trusted right hand that handles the lower-level knowledge work so the PI can focus on thinking and mentoring. Claude + LangGraph, persistent memory, built and tested in the open.">
 <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Blackmon Lab">
@@ -131,126 +131,95 @@
     <h1 class="title">Tealc: the lab's own agent</h1>
 
     <p class="lede">
-      Tealc is our in-house AI agent. It runs locally on Claude plus LangGraph, keeps persistent memory across sessions, and has its hands on the lab's email, calendar, drive, and research tools. Today it functions as an administrative assistant that can also do real literature work. The next version is a postdoc. The long arc, which is what this page used to be called, is a lead investigator that can carry an evolutionary-biology project from question to manuscript with optional human judgment at the critical checkpoints.
+      Tealc is our in-house AI agent. It runs locally on Claude plus LangGraph, keeps persistent memory across sessions, and has access to the lab's email, calendar, drive, and research tools. The goal is not automation for its own sake. Working scientists accumulate enormous amounts of lower-level knowledge work: literature triage, email, scheduling, tracking student progress, formatting, summarizing. That load crowds out the things that actually require a trained scientist: thinking carefully about a problem, designing a study, and being present for mentees. Tealc is built to absorb that lower tier and hand back the attention it consumes. At its best it works the way a trusted right hand does, handling routine tasks without being asked and surfacing things worth noticing. How far that can extend, how much independent judgment and autonomous work it can take on, is the experiment we are running.
     </p>
 
     <div class="stats-row">
       <div class="stat">
-        <div class="stat-num">15</div>
+        <div class="stat-num">40</div>
         <span class="stat-label">Tools wired in</span>
       </div>
       <div class="stat">
-        <div class="stat-num">Sonnet · Opus</div>
-        <span class="stat-label">Claude models on call</span>
+        <div class="stat-num">7:45 am</div>
+        <span class="stat-label">Daily morning briefing</span>
       </div>
       <div class="stat">
-        <div class="stat-num">SQLite</div>
+        <div class="stat-num">SQLite + Drive</div>
         <span class="stat-label">Persistent memory</span>
       </div>
       <div class="stat">
-        <div class="stat-num">Phase 1</div>
-        <span class="stat-label">Admin assistant · reactive</span>
+        <div class="stat-num">Phases 1–3</div>
+        <span class="stat-label">Complete · Phase 4 next</span>
       </div>
     </div>
 
     <div class="agent-box">
-      <span class="agent-line"><span class="agent-tag">Scope</span>administrative assistant now, postdoc as we build, lead investigator as the long arc</span>
-      <span class="agent-line"><span class="agent-tag">Stack</span>Claude (Sonnet 4.6 default, Opus 4.7 on demand) · LangGraph ReAct loop · Chainlit UI · SQLite state</span>
+      <span class="agent-line"><span class="agent-tag">Scope</span>trusted right hand for lower-level knowledge work; how far independent judgment can scale is the experiment</span>
+      <span class="agent-line"><span class="agent-tag">Stack</span>Claude (Sonnet 4.6 default, Opus 4.7 on demand, Haiku 4.5 for batch jobs) · LangGraph ReAct loop · Chainlit UI · APScheduler · SQLite state</span>
       <span class="agent-line"><span class="agent-tag">Portability</span>code, memory, and credentials sync through Google Drive; runs on any Mac Heath signs into</span>
       <span class="agent-line"><span class="agent-tag">Rules</span>never sends email unprompted · never grows service load · every action visible in the step display</span>
     </div>
 
-    <h2>What Tealc does today</h2>
+    <h2>What's running now</h2>
     <p>
-      The current Tealc is reactive. It works when Heath opens a chat window and asks it to do something. That is still useful, because a single conversation now routinely spans lab email, calendar, drive, and the primary literature without a human stitching those sources together by hand.
+      Tealc runs as two coordinated processes sharing a single SQLite database. The reactive chat handles direct requests: email, calendar, literature, documents, data analysis. The background scheduler runs independently around the clock, surfacing work-ready briefings when the chat opens so the first message of the day is not a prompt but an update.
     </p>
 
     <details class="layer" open>
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">Administrative assistant</span>
-          <span class="sum-head">Email, calendar, drive, files, notes</span>
-          <span class="sum-trail">Reads, drafts, remembers. Sends nothing.</span>
+          <span class="sum-kicker">Admin, literature, and documents</span>
+          <span class="sum-head">Email, calendar, Drive, Docs, Sheets, files, notes</span>
+          <span class="sum-trail">Reads, drafts, writes back. Sends nothing without approval.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Tealc reads Gmail with keyword filters, checks the day's calendar, searches Google Drive by content, opens Google Docs, and reads local files like manuscripts, grant drafts, or data. It can draft reply emails, but drafts always sit in Gmail waiting for a human to approve and send. It keeps a notes table in SQLite that survives across sessions and laptops, so a decision made on Monday is still remembered on Friday.</p>
-        <p>This tier is most of what an administrative assistant does, done in seconds, with total recall.</p>
+        <p>Tealc reads Gmail with keyword filters, manages the calendar (read and write, no invitations sent without explicit approval), searches Google Drive by content, and reads local files including .docx and PDF manuscripts. It drafts reply emails that sit in Gmail waiting for a human to approve. It writes directly into Google Docs and can read and update Google Sheets, including the lab's karyotype databases and CURE data. A notes table in SQLite survives across sessions and machines, so context from one conversation carries into the next.</p>
+        <p>The research tools cover Europe PMC, bioRxiv, and OpenAlex with citation counts and open-access links. A citation tracker monitors who is citing the lab's own work. Tealc can also load the full <a href="llms-full.txt">llms-full.txt</a> snapshot of the lab website, so it starts every conversation with the lab's research program, active projects, and student roster already in context.</p>
       </div>
     </details>
 
     <details class="layer" open>
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">Literature scout</span>
-          <span class="sum-head">PubMed, bioRxiv, OpenAlex, citation tracking</span>
-          <span class="sum-trail">Finds the papers, pulls the citations, summarizes.</span>
+          <span class="sum-kicker">Always-on scheduler</span>
+          <span class="sum-head">Morning briefing, grant radar, student pulse</span>
+          <span class="sum-trail">Work done before the PI sits down. Three background jobs, one shared database.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>The research tools are Europe PMC for full-text literature, bioRxiv for preprints, and OpenAlex for broad search with citation counts and open-access links. A separate citation tracker pulls who is citing the lab's own work. Tealc can also load the full <a href="llms-full.txt">llms-full.txt</a> corpus, so it starts every conversation knowing the lab's research program, active projects, and student roster in detail.</p>
+        <p>Every morning at 7:45 am a background job assembles new citations to the lab's work, overnight preprints in chromosome and sex-chromosome evolution, flagged emails, the day's calendar, and a countdown of the nearest grant deadlines. Claude synthesizes these into a structured briefing under 600 words; if anything is urgent it fires a desktop notification before the chat even opens. Every Monday at 6 am a grant radar job scans NSF and NIH RSS feeds, scores each opportunity against the lab's profile using a fast Claude model, and queues the high-fit entries for review. Every Sunday evening a student pulse job flags anyone with no recent contact or an overdue milestone. Every job is logged to a job-runs audit table and the results surface automatically when the chat opens.</p>
       </div>
     </details>
 
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">Memory</span>
-          <span class="sum-head">Persistent across sessions and machines</span>
-          <span class="sum-trail">SQLite checkpoints, Google Drive sync.</span>
+          <span class="sum-kicker">R execution and student tracking</span>
+          <span class="sum-head">Runs comparative analyses, tracks every student's milestones</span>
+          <span class="sum-trail">ape, phytools, geiger wired in. Milestones, interactions, and overdue flags in SQLite.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Every conversation is checkpointed to SQLite. Notes are a separate table that Tealc can write, list, read, and delete. The whole stack, including the database and the OAuth tokens, lives inside a Google Drive folder, which means a new laptop is three commands away from a fully restored agent with every prior conversation and note intact.</p>
+        <p>Tealc can execute R scripts in a sandboxed working directory, read the output, and interpret the results in the context of the analysis. The R environment has ape, phytools, geiger, diversitree, and tidyverse installed. Every run saves the script and output for reproducibility. For student management, a SQLite database tracks each lab member's role, milestones (qualifier, proposal, defense, paper submissions), and interaction history. Tealc checks this automatically whenever a student's name comes up in conversation and surfaces overdue items without being asked.</p>
       </div>
     </details>
 
-    <h2>The gap we are closing: reactive to always-on</h2>
+    <h2>What we're building next</h2>
     <p>
-      The honest limitation of today's Tealc is that nothing happens at 2 a.m. There is no morning briefing, no background monitoring, no email that says "a paper that cites your 2014 work was posted overnight and here is why it matters." Closing that gap is the current build target.
+      The parts of the job that require the most judgment are also the most time-consuming: reading a manuscript critically, structuring a grant, responding to reviewers, writing recommendation letters. The next phase wires Tealc into those workflows.
     </p>
 
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">Phase 2</span>
-          <span class="sum-head">A scheduler, a briefing, and a 90-day grant radar</span>
-          <span class="sum-trail">APScheduler, launchd, and a briefings table Chainlit reads on open.</span>
-        </span>
-      </summary>
-      <div class="layer-body">
-        <p>A second Python process sharing the same SQLite database runs on a schedule. Every morning it assembles new citations to the lab's work, recent preprints in chromosome and sex-chromosome evolution, flagged emails, the day's calendar, and a countdown of the nearest grant deadlines. When Heath opens the chat, Tealc opens with "here is what I found while you were away" instead of waiting for a prompt. Mac launchd keeps the process alive across reboots.</p>
-      </div>
-    </details>
-
-    <h2>The postdoc we are building toward</h2>
-    <p>
-      A postdoc is a researcher who can read a draft and give a structured critique, run an analysis in R, write a first pass of a manuscript section, suggest three journals and argue for one, and draft a response to reviewers. Tealc will not hit that bar in a single release. It will hit it one tool and one workflow at a time.
-    </p>
-
-    <details class="layer">
-      <summary>
-        <span class="layer-summary-text">
-          <span class="sum-kicker">Phase 3</span>
-          <span class="sum-head">Code execution and document write-back</span>
-          <span class="sum-trail">R and Python sandboxes, Google Docs and Sheets read and write.</span>
-        </span>
-      </summary>
-      <div class="layer-body">
-        <p>Today Tealc reads data. Next it runs analyses. R execution lets it run comparative-methods code, read the output, and interpret results. Python execution lets it parse data files and run everything that is not already in an R package. Google Docs and Sheets write-back lets it drop a figure caption or a paragraph directly into a manuscript, and read the karyotype databases and CURE data the lab maintains in Sheets. Full-text fetch from arXiv and bioRxiv lets it work from complete papers instead of abstracts.</p>
-      </div>
-    </details>
-
-    <details class="layer">
-      <summary>
-        <span class="layer-summary-text">
-          <span class="sum-kicker">Phase 4</span>
+          <span class="sum-kicker">Phase 4 · next milestone</span>
           <span class="sum-head">Manuscript and grant machine</span>
           <span class="sum-trail">Structured critique, journal targeting, response to reviewers.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Given a full draft manuscript, Tealc produces a structured critique: argument flow, methods gaps, framing for the target journal, and the reviews we should expect. Given a grant call and a pile of prior successful grants, it helps structure specific aims, significance, and innovation. Given a manuscript plus reviews, it drafts a point-by-point response. The pattern is always the same: Tealc writes the first pass, a human supplies judgment.</p>
+        <p>Given a full draft manuscript, Tealc produces a structured critique: argument flow, methods gaps, framing for the target journal, and the reviews we should expect. Given a grant call and prior successful grants, it helps structure specific aims, significance, and innovation sections. Given a manuscript plus reviews, it drafts a point-by-point response. Tealc writes the first pass; a human supplies the judgment about what to keep.</p>
       </div>
     </details>
 
@@ -258,25 +227,25 @@
       <summary>
         <span class="layer-summary-text">
           <span class="sum-kicker">Phase 5</span>
-          <span class="sum-head">Student and lab management</span>
-          <span class="sum-trail">Milestone tracker, recommendation letters, lab-meeting agenda.</span>
+          <span class="sum-head">Deeper lab management</span>
+          <span class="sum-trail">Recommendation letters, lab-meeting agendas, alumni tracking.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Every student in the lab has a timeline of chapters, committee meetings, fellowship deadlines, and job-market milestones. Today that lives in a PI's head and on a few scattered documents. Tealc gets a student milestone database, flags who is behind, drafts recommendation letters from a student's CV and Heath's notes, and builds lab-meeting agendas from recent progress notes. An alumni tracker keeps an eye on the careers of people who have left the lab, because how alumni do is one of the real measures of a lab.</p>
+        <p>The milestone tracker is running, but the higher-judgment tasks remain: drafting recommendation letters from a student's CV and the PI's notes, building lab-meeting agendas from recent progress, and tracking what alumni go on to do after they leave. How alumni do is one of the real measures of a lab, and it is the kind of longitudinal signal that falls through the cracks of a busy schedule.</p>
       </div>
     </details>
 
-    <h2>The long arc: lead investigator</h2>
+    <h2>The deeper question</h2>
     <p>
-      The original name of this page was "lead investigator," because the eventual ambition is an agent that can take a research question, design a comparative analysis, pull the data, run the phylogenetic models, interpret the results, and produce a draft manuscript, with human review at the important checkpoints. That is still the north star. It sits at the end of the roadmap because it depends on everything in front of it: code execution, document write-back, persistent project memory, and domain-validation logic that notices when an answer is biologically impossible.
+      Each phase adds capability, but the underlying question stays the same: how much of the knowledge work that fills a scientist's day can be handled by an agent, and how far can its judgment be trusted? The roadmap is structured so that every phase answers a piece of that question with real use, not prototypes. Code execution tells us whether the agent can run and interpret a phylogenetic analysis without supervision. Document write-back tells us whether it can contribute to a manuscript in a way a collaborator would recognize as useful. The student and lab management phase tells us whether it can hold institutional memory the way a long-tenured lab manager would.
     </p>
     <p>
-      We are not trying to build a robot principal investigator. We are trying to learn, one phase at a time, what shape of agent is actually useful to a working scientist, and where today's models break down on the specific kind of work evolutionary biology asks for.
+      We are not trying to replace the thinking that makes science work. The goal is to recover the time and attention that lower-level knowledge work takes from people who trained for years to do something harder. Whether current models can actually do that, and where they fall short on the specific kind of reasoning evolutionary biology demands, is what we are here to find out.
     </p>
 
     <blockquote class="pullquote">
-      Researchers supply the questions, the skepticism, and the judgment. Tealc handles search, extraction, computation, and first drafts. The goal is not a robot PI. It is the most capable postdoc imaginable.
+      The problem is not that scientists lack ambition. It is that the job has grown into something dominated by tasks that do not require the training it took to get here. Tealc is an attempt to fix that.
     </blockquote>
 
     <h2>Design principles</h2>

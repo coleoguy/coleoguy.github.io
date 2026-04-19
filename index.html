@@ -85,7 +85,7 @@ extra_head: |
       <span class="agent-line"><span class="agent-tag">TraitTrawler</span>127 papers triaged this week, 14 extractions validated</span>
       <span class="agent-line"><span class="agent-tag">Fall 2025 CURE</span>Dataset compiled and submitted as preprint to bioRxiv (Copeland et al. 2026)</span>
       <span class="agent-line"><span class="agent-tag">Spring 2026 CURE</span>33 posters to be presented April 23rd</span>
-      <span class="agent-line"><span class="agent-tag">Tealc</span>Phase 1 reactive admin assistant; 15 tools wired, scheduler and code execution in design</span>
+      <span class="agent-line"><span class="agent-tag">Tealc</span>Phases 1–3 complete; 40 tools, always-on scheduler, R execution, Docs/Sheets write-back, student tracker live</span>
       <span class="agent-line"><span class="agent-tag">llms.txt</span>updated two days ago, 166KB agent context</span>
     </div>
 
@@ -177,13 +177,13 @@ extra_head: |
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">Organisms beyond genomes</span>
-          <span class="sum-head">Morphology, behavior, and the genetics of domestication</span>
-          <span class="sum-trail">Iridescent scarab beetles, Betta aggression, Solanum crosses, and freshwater crab invasions.</span>
+          <span class="sum-kicker">Organisms beyond karyotypes</span>
+          <span class="sum-head">Scarab genomes and galliform hybridization</span>
+          <span class="sum-trail">Two reference-quality scarab genomes published in 2024–2026. Domestication and hybrid compatibility across Galliformes.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Not all of the work is about chromosomes. Students in the lab are working on the evolution of male combat morphology in scarabs, the genetic architecture of aggression in Betta splendens, morphological evolution in Solanum hybrids, and the repeated evolution of freshwater living in Brachyuran crabs. Each of these feeds back into the comparative and genomic work.</p>
+        <p>Two reference-quality genomes in two years: <em>Chrysina gloriosa</em> (G3, 2024) and the endangered long-armed scarab <em>Cheirotonus formosanus</em> (Ecology and Evolution, 2026), the latter yielding the first putative Y-linked scaffold in the genus. A separate project found that domesticated galliform lineages are more compatible as hybrid parents than their wild relatives, a genomic signature of relaxed selection on reproductive isolation.</p>
         <div class="layer-links">
           <a href="research.html">Research program &rarr;</a>
           <a href="team.html">Who's on each project &rarr;</a>
@@ -214,15 +214,16 @@ extra_head: |
     <details class="layer" open>
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">AI as lead investigator</span>
-          <span class="sum-head">Can an agent carry a research problem start to finish?</span>
-          <span class="sum-trail">Growing out of TraitTrawler: the same scaffolding, pointed at the whole research arc.</span>
+          <span class="sum-kicker">Tealc</span>
+          <span class="sum-head">A lab-specific AI scientist built phase by phase on production infrastructure</span>
+          <span class="sum-trail">In daily use. Morning briefings, R execution on ape and phytools, grant radar, student tracking — then autonomous research.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>TraitTrawler proved an agent can extract structured trait data from the literature at scale. The natural next question is whether one can reason about it. We are building an experiment to find out, designing scaffolding that lets a Claude-powered agent carry a research problem from hypotheses through comparative analysis to a manuscript draft. We are still stress-testing each step and every breakdown teaches us where the next version needs work. The goal is not a robot PI. It is a collaborator that can do the programming and literature triage that would otherwise take a lab of students and postdocs.</p>
+        <p>Tealc is a persistent, tool-using AI agent running locally on Claude plus LangGraph. In daily use now for administrative work: email, calendar, literature search across PubMed, bioRxiv, and OpenAlex, and persistent notes that survive restarts and new machines. Phase 2 — in active development — makes it always-on: a background scheduler assembles a structured briefing every morning at 7:45am covering new citations, overnight preprints in chromosome evolution, flagged emails, and a 90-day grant countdown. Work done before the PI sits down. Phase 3 adds R execution against ape, phytools, and geiger, so Tealc can run phylogenetic comparative analyses directly, read the output, and interpret results. Phase 4 is a manuscript and grant machine: structured critique, journal targeting, and point-by-point response to reviewers. The long arc — Phase 7 — is a lead investigator that carries an evolutionary-biology project from hypothesis to manuscript draft, with optional human review at the checkpoints. Each phase is instrumented to surface where current models break on real scientific reasoning. That is the publishable result.</p>
         <div class="layer-links">
-          <a href="ai.html">The full experiment &rarr;</a>
+          <a href="lead-investigator.html">Full roadmap &rarr;</a>
+          <a href="tealc.html">Live console &rarr;</a>
         </div>
       </div>
     </details>
