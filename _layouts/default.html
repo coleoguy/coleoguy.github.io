@@ -39,7 +39,7 @@
   {% include sidebar.html %}
 
   <!-- ── Main reading column ─────────────────────────────── -->
-  <main class="column" id="content">
+  <main class="column{% if page.wide %} wide{% endif %}" id="content">
 {{ content }}
   </main>
 </div>
