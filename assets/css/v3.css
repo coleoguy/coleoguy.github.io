@@ -552,7 +552,6 @@ footer.colophon .endpoints a {
   margin: 36px 0 40px;
   padding: 20px 0;
   border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
 }
 .ask-label {
   display: block;
