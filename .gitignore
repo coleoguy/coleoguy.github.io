@@ -12,3 +12,7 @@
 # Local-only dev notes
 next-session-tasks.md
 context.md
+
+# Tealc local audit log (served via Cloudflare Worker, not git)
+tealc_activity.json
+_site/tealc_activity.json

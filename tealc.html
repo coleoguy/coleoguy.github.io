@@ -78,8 +78,9 @@ extra_head: |
   </style>
 extra_scripts: |
   <script>
-  // Tealc live feed: fetches /tealc_activity.json, shows status + recent tool calls
+  // Tealc live feed: fetches from Cloudflare Worker, shows status + recent tool calls
   (function() {
+    const WORKER_URL = 'https://tealc-aquarium.blackmon.workers.dev';
     const ICONS = {
       search:   "🔍",
       cite:     "📊",
@@ -111,7 +112,7 @@ extra_scripts: |
       const feed = document.getElementById("feed");
   
       try {
-        const res = await fetch("tealc_activity.json?_=" + Date.now());
+        const res = await fetch(WORKER_URL + "?_=" + Date.now());
         if (!res.ok) throw new Error("not found");
         const data = await res.json();
   
