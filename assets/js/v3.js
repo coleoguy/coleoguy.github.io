@@ -38,9 +38,6 @@
     const cat = parent ? (parent.querySelector(':scope > span')?.textContent || '') : '';
     PAL_ITEMS.push({ label: a.textContent.trim(), cat: cat, href: a.getAttribute('href') });
   });
-  // Essays and other pages not carried in the sidebar tree, but worth finding via Cmd-K.
-  PAL_ITEMS.push({ label: 'Both sides are right', cat: 'Essays', href: 'both-sides-are-right.html' });
-
   const overlay = document.getElementById('palette-overlay');
   const palInput = document.getElementById('palette-input');
   const palResults = document.getElementById('palette-results');

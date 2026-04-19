@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why not Y naught? · Blackmon Lab</title>
+<meta name="description" content="A short essay on the Y-naught puzzle. When a sex chromosome pair collapses to a single chromosome, it is almost always the Y that is lost, not the X. Walking through the Jonika et al. 2022 argument for why.">
+<meta property="og:title" content="Why not Y naught? · Blackmon Lab">
+<meta property="og:description" content="A short essay on the Y-naught puzzle. When a sex chromosome pair collapses to a single chromosome, it is almost always the Y that is lost, not the X. Walking through the Jonika et al. 2022 argument for why.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Blackmon Lab">
+<meta property="og:url" content="https://coleoguy.github.io/y-naught.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://coleoguy.github.io/y-naught.html">
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+</head>
+
+<body>
+
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>&#8984;K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">&#9790;</button>
+</div>
+
+<div class="shell">
+
+  <!-- ── Phylogenetic sidebar ─────────────────────────────── -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="brand">
+      <span class="root-dot"></span>
+      <a href="index.html" class="brand-name">Blackmon Lab</a>
+      <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+    </div>
+
+    <ul class="tree" role="tree">
+      <li>
+        <span>Lab</span>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="undergrad-papers.html">Undergrad papers</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Essays</span>
+        <ul>
+          <li><a href="both-sides-are-right.html">Both sides are right</a></li>
+          <li><a href="fragile-y.html">The fragile Y</a></li>
+          <li><a href="y-naught.html">Why not Y naught?</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Databases</span>
+        <ul>
+          <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
+          <li><a href="karyotypes/index.html">Six karyotype DBs</a></li>
+          <li><a href="epistasis-database.html">Epistasis database</a></li>
+          <li><a href="tau_database.html">Tau database</a></li>
+          <li><a href="citation-network.html">Citation network</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Research</span>
+        <ul>
+          <li><a href="karyotype.html">Karyotype evolution</a></li>
+          <li><a href="sex-chromosome-evolution.html">Sex chromosomes</a></li>
+          <li><a href="genome-structure-evolution.html">Genome structure</a></li>
+          <li><a href="selection.html">Selection &amp; adaptation</a></li>
+          <li><a href="epistasis-line-cross.html">Epistasis</a></li>
+          <li><a href="chromosome-evolution-history.html">History of the field</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Organisms</span>
+        <ul>
+          <li><a href="coleoptera-genomics.html">Beetles</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>AI agents</span>
+        <ul>
+          <li><a href="ai.html">Overview</a></li>
+          <li><a href="traittrawler.html">TraitTrawler</a></li>
+          <li><a href="lead-investigator.html">Lead Investigator</a></li>
+          <li><a href="llms.txt" target="_blank">llms.txt</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>Tools</span>
+        <ul>
+          <li><a href="phylo-explorer.html">Tree explorer</a></li>
+          <li><a href="phylo-methods/index.html">PCM guide</a></li>
+          <li><a href="subpages/popgen-sim.html">Pop-gen simulator</a></li>
+          <li><a href="subpages/evobir.html">evobiR</a></li>        </ul>
+      </li>
+      <li>
+        <span>Teaching</span>
+        <ul>
+          <li><a href="biolai-cure.html">Biology &amp; AI CURE</a></li>
+          <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+          <li><a href="subpages/biol682.html">BIOL 682</a></li>
+          <li><a href="subpages/grad101.html">Grad 101</a></li>
+          <li><a href="subpages/AI-Tools.html">AI tools guide</a></li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ── Main reading column ──────────────────────────────── -->
+  <main class="column" id="content">
+
+    <div class="crumb">
+      <a href="index.html">Home</a> › Essays › <strong>Why not Y naught</strong>
+    </div>
+
+    <h1 class="title" id="y-naught">Why not Y naught?</h1>
+
+    <p class="lede">
+      Sex chromosome systems collapse from two chromosomes down to one fairly often on evolutionary timescales. When they do, the survivor is almost always the X. The Y goes. Males end up X0, carrying a single X and no partner. The mirror outcome, where the Y survives and the X is gone, is called Y0. It is what you would expect to see if the two chromosomes were symmetric partners. It is essentially unheard of. Michelle Jonika led a short perspective piece that our group published in <em>Heredity</em> in 2022 asking why. This page is a walk through that argument at about the level of a senior undergraduate who has had one solid evolution course.
+    </p>
+
+    <h2>The setup</h2>
+
+    <p>
+      A quick refresher. In species with male heterogamety, females have two copies of one sex chromosome (XX) and males have one of each (XY). Heterogamety just means "the sex with the mismatched pair." In species with female heterogamety, the chromosomes are renamed Z and W, with ZW females and ZZ males. For the rest of this page I will write in terms of XY, but everything carries over to ZW by symmetry.
+    </p>
+
+    <p>
+      Over evolutionary time, Y chromosomes tend to shrink. Once a Y stops recombining with its X across most of its length, it loses genes to mutation, to transposable elements, and to the inability to purge deleterious alleles by recombination. Sometimes the Y shrinks all the way to nothing. Males in that lineage then have a single X and no partner. This is an X0 system, and it is common. Many insect orders use it as their default.
+    </p>
+
+    <h2>The asymmetry</h2>
+
+    <p>
+      Now the puzzle. If an XY system can collapse to X0, why does it not also collapse the other way, leaving the Y as the surviving chromosome and the X as the one lost? That is what Y0 would mean. Males would carry a single Y, no X, and females would be YY.
+    </p>
+
+    <p>
+      In the Jonika et al. survey of 10,754 species with genetic sex determination, roughly 67 percent are XY, roughly 28 percent are X0, and zero are confirmed Y0. Not rare. Absent. The same asymmetry shows up on the ZW side. Among female-heterogametic species, Z0 occurs, but W0 has exactly one confirmed case in the literature, the New Zealand frog <em>Leiopelma hochstetteri</em>, where most populations have females carrying a single univalent W on top of the autosomes and no Z partner.
+    </p>
+
+    <p>
+      One case out of ten thousand is the kind of number that asks for an explanation. The question the paper sets out to answer is what is stopping the Y0 configuration from arising, or from persisting long enough to be seen.
+    </p>
+
+    <h2>The naive expectation</h2>
+
+    <p>
+      It is worth stating the naive expectation and then seeing where it breaks. Meiosis needs to pair and segregate chromosomes. In an X0 male, the lone X gets passed to half the sperm and not the other half, and the cell machinery handles this fine. A Y0 male would face the same mechanical problem with a lone Y, and there is no obvious reason the machinery would care which letter is on the chromosome. Segregation mechanics are not the barrier. The paper explicitly sets this aside. Univalent chromosomes (chromosomes with no partner at meiosis) are known to segregate reliably in X0 and Z0 species, so the bar has already been cleared.
+    </p>
+
+    <p>
+      If segregation is not the problem, then something else has to be suppressing the Y0 configuration. The paper lays out two mechanisms that together can do it.
+    </p>
+
+    <h2>Mutational decay of the lone chromosome</h2>
+
+    <p>
+      The first mechanism is straightforward population genetics. A sex chromosome that does not recombine with a partner across most of its length accumulates mutations faster than it can purge them. This is the standard story for Y chromosome degeneration. What matters for the Y0 question is that the same logic applies to any chromosome that sits alone in the heterogametic sex. The X in an X0 male does recombine freely with the other X during female meiosis, so the X is not stranded. The Y in an X0 male is simply gone. A hypothetical surviving Y in a Y0 system, however, would never recombine with anything, in either sex, ever. It would decay.
+    </p>
+
+    <p>
+      Jonika et al. turn this into a size argument. The rate at which a non-recombining chromosome loses fitness scales with how many sites on it are under selection. Bigger chromosomes have more sites and decay faster. So if a univalent sex-determining chromosome is going to persist at all, it has to be small. A small, nearly-empty chromosome carrying a sex-determining factor and not much else is the shape such a thing would have to take. This matches what we see in X0 and Z0 systems in the sense that the lost chromosome was usually small by the time it disappeared. It also sets a ceiling on how long any Y0 could stick around.
+    </p>
+
+    <h2>Sexual antagonism pulls the system back toward XY</h2>
+
+    <p>
+      The second mechanism is the main contribution of the paper, and it is the one that is easy to miss. Genomes harbor sexually antagonistic alleles. These are alleles that are good for one sex and bad for the other. A common textbook example is a coloration allele that helps males attract mates but makes females more visible to predators. Selection is happy to link such an allele to the sex-determining region, because then the good-for-males variant is preferentially inherited by males and the good-for-females variant by females.
+    </p>
+
+    <p>
+      Now imagine a lineage sitting in the hypothetical Y0 state. A univalent Y carries the male-determining factor. Somewhere on an autosome, a sexually antagonistic locus arises. Any chromosomal rearrangement that fuses that autosome to the Y is favored, because the fusion locks the male-beneficial allele to the male-inherited chromosome. But the moment that fusion happens, the Y is no longer a tiny univalent. It is now a Y plus an old autosome stuck together. Its homologue, the unfused copy of that same autosome present in two copies in females, starts behaving like an X. The system has just slid back into something that looks like XY. The Y0 state was transitory. The same argument applies on the W0 side and predicts the same collapse back toward ZW.
+    </p>
+
+    <p>
+      The paper is explicit that this is what they think is going on. Their proposal is that Y0 and W0 systems may arise in nature repeatedly, but sexual antagonism and mutational decay together keep them unstable and unlikely to fix. We are not seeing them because they do not last.
+    </p>
+
+    <h2>Candidate cases and why they are interesting</h2>
+
+    <p>
+      The paper points at a few systems that look like they might be caught along this trajectory. <em>Leiopelma hochstetteri</em> is the one confirmed W0 example. In fish, several <em>Astyanax</em> species carry B chromosomes (small, often dispensable accessory chromosomes) that appear to act as sex-determining elements. <em>Astyanax mexicanus</em>, the Mexican tetra and cavefish, has a B chromosome that behaves like a male-determining univalent Y, though with leaky inheritance. <em>Astyanax scabripinnis</em> has a B chromosome segregating mostly in females, consistent with a transitional W0-like state. The cichlid <em>Lithochromis rubripinnis</em> shows a female-biased B chromosome that skews clutch sex ratios. None of these are clean Y0 or W0 systems. What they offer is a peek at how such systems might get built and why they might not stay built for long.
+    </p>
+
+    <h2>What this says about sex chromosome evolution</h2>
+
+    <p>
+      The broader point is that sex chromosome systems are not symmetric two-way streets. From a textbook sketch it looks like XY could collapse to X0 or to Y0 with equal ease. From the actual biology, the two outcomes are governed by different forces. X0 works because the surviving chromosome continues to recombine in the homogametic sex. Y0 fails because the surviving chromosome would never recombine anywhere, and because sexual antagonism creates a strong selective pull that tends to rescue the lineage into a bivalent configuration before Y0 can fix.
+    </p>
+
+    <p>
+      This essay walks through a perspective piece, not an experiment. Jonika et al. did not discover a new Y0 species or run a mutation accumulation line. They pulled together the comparative data, noted that the asymmetry is extreme, and proposed a mechanism that fits. The honest test will be more carefully documented transitional systems like <em>Astyanax</em>, and explicit models of how long a univalent sex chromosome can persist before sexual antagonism drags it back into a pair.
+    </p>
+
+    <p>
+      One last thing. There is a separate puzzle about why Y chromosomes are prone to being lost at all, sometimes called the fragile-Y hypothesis. That is a different question with a different answer, covered elsewhere on this site. The Y-naught question takes as given that Y chromosomes do get lost, and asks why, when the loss happens, the X is the one left standing. Different question. Different paper. Different mechanism. Worth not blurring together.
+    </p>
+
+    <p>
+      <em>Reference: Jonika MM, Alfieri JM, Sylvester T, Buhrow AR, Blackmon H. 2022. Why not Y naught. Heredity 129, 75-78. <a href="https://doi.org/10.1038/s41437-022-00543-z" target="_blank" rel="noopener">doi:10.1038/s41437-022-00543-z</a></em>
+    </p>
+
+<footer class="colophon">
+      <span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span>
+      <span class="endpoints">
+        <a href="llms.txt">llms.txt</a>
+        <a href="llms-full.txt">llms-full.txt</a>
+        <a href="data/">/data</a>
+        <a href="sitemap.xml">sitemap.xml</a>
+      </span>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="assets/js/v3.js"></script>
+</body>
+</html>

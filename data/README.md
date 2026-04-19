@@ -1,16 +1,47 @@
 # Data
 
-This directory holds the JSON/CSV data the site fetches at runtime. Files here are loaded by `cures-karyotype-database.html`, `tau_database.html`, `news.html`, and the publications widget. Updating these files updates the site without touching any HTML.
+This directory holds the JSON and CSV data that backs coleoguy.github.io. The site fetches these files at runtime, so updating them updates the site without touching any HTML. The files are also the intended open-data export: everything here is CC BY 4.0 (see `LICENSE`) and the full manifest is in `index.json`.
+
+If you are an agent or a script, start with `index.json`. It lists every file with a description, format, record count, the page it backs, and a primary publication when one exists.
 
 ## Files
 
+### Lab state
+
 | File | Used by | Records | Refresh |
 |------|---------|---------|---------|
-| `cures-karyotype-database.csv` | (download from CUREs DB page) | 63,542 | manual |
-| `cures-karyotype-data.json` | `cures-karyotype-database.html` | 63,542 | re-export from the master CSV when records are added |
-| `tau-database.json` | `tau_database.html` | 1,960 | re-export from `subpages/tau-data/results.csv` when updated |
-| `news.json` | `news.html` + homepage feed | (variable) | edit by hand to add/edit lab news cards |
-| `publications.json` | `publications.html` | 57 (snapshot) | re-snapshot from ORCID when a new pub appears (script below) |
+| `team.json` | `team.html` | 20 | edit by hand when members join or leave |
+| `alumni.json` | `lineage.html` | 21 | edit by hand when alumni update positions |
+| `news.json` | `news.html` + homepage feed | 12 | edit by hand |
+| `lab-status.json` | homepage live-activity strip | 4 signals | edit by hand weekly |
+| `undergrad-papers.json` | `undergrad-papers.html` | 8 | add as undergrad-led papers publish |
+| `prompts.json` | `subpages/Prompting.html` | 7 | pull from github.com/coleoguy/prompting |
+| `publications.json` | `publications.html` | 57 (snapshot) | re-snapshot from ORCID (script below) |
+
+### Databases
+
+| File | Used by | Records | Primary publication |
+|------|---------|---------|---------------------|
+| `cures-karyotype-database.csv` | `cures-karyotype-database.html` | 63,542 | Copeland et al. 2026, bioRxiv |
+| `cures-karyotype-data.json` | `cures-karyotype-database.html` | 63,542 | (JSON form of the CSV above) |
+| `tau-database.json` | `tau_database.html` | 1,960 | re-export from `subpages/tau-data/results.csv` |
+| `epistasis-database.csv` + `epistasis-database.json` | `epistasis-database.html` | 1,606 | Burch et al. 2024, Evolution |
+| `epistasis-database-citations.csv` | — | 128 | primary sources for the 1,606 crosses |
+| `karyotypes-coleoptera.csv` | `karyotypes/index.html` | 4,959 | Blackmon & Demuth 2015 |
+| `karyotypes-diptera.csv` | `karyotypes/index.html` | 3,474 | Morelli, Blackmon & Hjelmen |
+| `karyotypes-amphibia.csv` | `karyotypes/index.html` | 2,124 | Perkins et al. 2019 |
+| `karyotypes-mammalia.csv` | `karyotypes/index.html` | 1,440 | Blackmon Lab, curated |
+| `karyotypes-drosophila.csv` | `karyotypes/index.html` | 1,247 | Morelli, Blackmon & Hjelmen |
+| `karyotypes-polyneoptera.csv` | `karyotypes/index.html` | 823 | Sylvester et al. 2020 |
+| `karyotypes-coleoptera-citations.csv` | — | 251 | primary sources for beetle records |
+| `karyotypes-six-index.json` | — | — | manifest for the six clade CSVs |
+
+### Manifest and licensing
+
+| File | Purpose |
+|------|---------|
+| `index.json` | Full machine-readable manifest of every file in this directory |
+| `LICENSE` | CC BY 4.0 license text and attribution guidance |
 
 ## Refreshing the publications snapshot
 
@@ -98,3 +129,19 @@ Please also cite the original karyotype sources listed in the `citation` column.
   url       = {https://www.biorxiv.org/content/early/2026/04/16/2026.04.14.718287}
 }
 ```
+
+## epistasis-database.csv
+
+Line-cross datasets from plants and animals analyzed in Burch et al. 2024 with the SAGA2 information-theoretic framework. One row per dataset; see `epistasis-database.json` for the full schema and the 128 source citations in `epistasis-database-citations.csv`.
+
+If you use this dataset, please cite:
+
+Burch, B.D., Alexander, E.P., Fu, Y., and Blackmon, H. (2024). Information theoretic line-cross analysis and the evidence for pervasive epistasis. *Evolution* 78(4): 624-634. https://doi.org/10.1093/evolut/qpae003
+
+## Six karyotype databases
+
+The files `karyotypes-coleoptera.csv`, `karyotypes-diptera.csv`, `karyotypes-amphibia.csv`, `karyotypes-mammalia.csv`, `karyotypes-drosophila.csv`, and `karyotypes-polyneoptera.csv` are the raw CSVs behind the clade cards on [coleoguy.github.io/karyotypes/](https://coleoguy.github.io/karyotypes/index.html). Each CSV has its own column set because the databases were built at different times for different projects; `karyotypes-six-index.json` lists them in one place with columns and primary publication for each. Coleoptera ships with a separate `karyotypes-coleoptera-citations.csv` file of primary sources.
+
+## License
+
+All files in this directory are released under CC BY 4.0. See `LICENSE` for the full terms and a short note on how to attribute.

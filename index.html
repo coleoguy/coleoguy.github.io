@@ -96,6 +96,14 @@
         </ul>
       </li>
       <li>
+        <span>Essays</span>
+        <ul>
+          <li><a href="both-sides-are-right.html">Both sides are right</a></li>
+          <li><a href="fragile-y.html">The fragile Y</a></li>
+          <li><a href="y-naught.html">Why not Y naught?</a></li>
+        </ul>
+      </li>
+      <li>
         <span>Databases</span>
         <ul>
           <li><a href="cures-karyotype-database.html">CUREs karyotypes</a></li>
@@ -165,7 +173,7 @@
     <h1 class="title">Evolution studied broadly. AI in service of the biology.</h1>
 
     <p class="lede">
-      We are a biology lab at Texas A&amp;M. We study how evolution works across the tree of life: genome structure, sex chromosomes, karyotypes, morphology, behavior, adaptation. Running underneath all of that is a layer of AI agents we've built so a single lab can do comparative work nobody could reach alone, and a deliberate effort to put undergraduates on real research problems from their first semester. Darwin gave us the framework. We build what comes on top.
+      We are a biology lab at Texas A&amp;M. We study how evolution works across the tree of life: genome structure, sex chromosomes, karyotypes, morphology, behavior, adaptation. Underneath that is a layer of AI agents we've built to pull and organize data from the literature at comparative scale, and a deliberate effort to put undergraduates on real research problems from their first semester.
     </p>
 
     <div class="stats-row">
@@ -191,14 +199,14 @@
       <span class="agent-line"><span class="agent-tag">TraitTrawler</span>127 papers triaged this week, 14 extractions validated</span>
       <span class="agent-line"><span class="agent-tag">Fall 2025 CURE</span>Dataset compiled and submitted as preprint to bioRxiv (Copeland et al. 2026)</span>
       <span class="agent-line"><span class="agent-tag">Spring 2026 CURE</span>33 posters to be presented April 23rd</span>
-      <span class="agent-line"><span class="agent-tag">Lead Investigator</span>in design — scaffolding and failure modes being stress-tested</span>
+      <span class="agent-line"><span class="agent-tag">Lead Investigator</span>in design; scaffolding and failure modes being stress-tested</span>
       <span class="agent-line"><span class="agent-tag">llms.txt</span>updated two days ago, 166KB agent context</span>
     </div>
 
     <div class="ask-bar">
       <label for="ask-input" class="ask-label">Quick question about the lab</label>
       <form class="ask-form" id="ask-form" onsubmit="return askTheLab(event);">
-        <input type="text" id="ask-input" placeholder="What kinds of sex chromosome systems have you found in beetles?" autocomplete="off">
+        <input type="text" id="ask-input" placeholder="How do I join the lab?" autocomplete="off">
         <button type="submit" id="ask-submit" aria-label="Send">&rarr;</button>
       </form>
       <div id="ask-answer" class="ask-answer"></div>
@@ -240,6 +248,8 @@
         <div class="layer-links">
           <a href="sex-chromosome-evolution.html">Visual guide &rarr;</a>
           <a href="coleoptera-genomics.html">Beetle genomics &rarr;</a>
+          <a href="fragile-y.html">The fragile Y &rarr;</a>
+          <a href="y-naught.html">Why not Y naught? &rarr;</a>
         </div>
       </div>
     </details>
@@ -319,12 +329,12 @@
       <summary>
         <span class="layer-summary-text">
           <span class="sum-kicker">AI as lead investigator</span>
-          <span class="sum-head">An experiment in whether an agent can carry a research problem start to finish.</span>
-          <span class="sum-trail">An experiment growing out of TraitTrawler: can an agent carry a research problem from literature to manuscript?</span>
+          <span class="sum-head">Can an agent carry a research problem start to finish?</span>
+          <span class="sum-trail">Growing out of TraitTrawler: the same scaffolding, pointed at the whole research arc.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>TraitTrawler proved an agent can extract structured trait data from the literature at scale. The natural next question is whether one can reason about it. We are building an experiment to find out — designing scaffolding that lets a Claude-powered agent carry a research problem from hypotheses through comparative analysis to a manuscript draft. We are still stress-testing each step. Every breakdown teaches us where the next version needs work. The goal is not a robot PI. It's an agent that works at our side as scientific collaborator, programmer, and an army of students and postdocs.</p>
+        <p>TraitTrawler proved an agent can extract structured trait data from the literature at scale. The natural next question is whether one can reason about it. We are building an experiment to find out, designing scaffolding that lets a Claude-powered agent carry a research problem from hypotheses through comparative analysis to a manuscript draft. We are still stress-testing each step and every breakdown teaches us where the next version needs work. The goal is not a robot PI. It is a collaborator that can do the programming and literature triage that would otherwise take a lab of students and postdocs.</p>
         <div class="layer-links">
           <a href="ai.html">The full experiment &rarr;</a>
         </div>
@@ -340,7 +350,7 @@
         </span>
       </summary>
       <div class="layer-body">
-        <p>If AI tools can read our work, they can use it to help other researchers. So we publish everything in formats agents can consume: <code>llms.txt</code> and a longer <code>llms-full.txt</code> as a single-file snapshot of the whole site; JSON exports of every database; structured JSON-LD on every page; and an open <code>data/</code> directory. This is how we think science should be published in the 2020s, full stop.</p>
+        <p>If AI tools can read our work, they can use it to help other researchers. So we publish everything in formats agents can consume: <code>llms.txt</code> and a longer <code>llms-full.txt</code> as a single-file snapshot of the whole site; JSON exports of every database; structured JSON-LD on every page; and an open <code>data/</code> directory. It is a small amount of extra effort per page and it costs nothing to readers who do not care.</p>
         <div class="layer-links">
           <a href="llms.txt" target="_blank">llms.txt &rarr;</a>
           <a href="llms-full.txt" target="_blank">llms-full.txt &rarr;</a>
@@ -350,7 +360,7 @@
     </details>
 
     <blockquote class="pullquote">
-      The best version of AI in biology isn't a black box that answers your question. It's an agent that reads the same papers you do, does the grunt work you shouldn't have to, and leaves a trail you can audit.
+      Useful AI in biology isn't a black box that answers your question. It's an agent that reads the same papers you do, does the grunt work you shouldn't have to, and leaves a trail you can audit.
     </blockquote>
 
     <!-- ── Teaching ──────────────────────────────────── -->

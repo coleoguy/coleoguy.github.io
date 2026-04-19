@@ -1,0 +1,178 @@
+{
+  "name": "Blackmon Lab open data",
+  "description": "Machine-readable snapshots of the data that powers coleoguy.github.io. Everything here is CC BY 4.0. See LICENSE for terms and README.md for the human-readable walkthrough.",
+  "updated_at": "2026-04-19",
+  "license": "CC BY 4.0",
+  "license_file": "LICENSE",
+  "contact": "blackmon@tamu.edu",
+  "site": "https://coleoguy.github.io/",
+  "agent_entrypoints": [
+    "https://coleoguy.github.io/llms.txt",
+    "https://coleoguy.github.io/llms-full.txt"
+  ],
+  "files": [
+    {
+      "file": "publications.json",
+      "description": "ORCID snapshot of Heath Blackmon's publications. Works array is sorted by year descending.",
+      "format": "json",
+      "records": 57,
+      "backs_page": "publications.html",
+      "source": "ORCID public API, ORCID 0000-0002-5433-4036",
+      "refresh": "re-snapshot when a new publication appears (script in README.md)"
+    },
+    {
+      "file": "team.json",
+      "description": "Current members of the Blackmon Lab. Ordered PI, grad students, post-bacc, staff, undergrads.",
+      "format": "json",
+      "records": 20,
+      "backs_page": "team.html",
+      "refresh": "edit by hand when members join or leave"
+    },
+    {
+      "file": "alumni.json",
+      "description": "Former members of the lab with current positions where known. Fields are filled only when explicitly stated on the lineage page.",
+      "format": "json",
+      "records": 21,
+      "backs_page": "lineage.html",
+      "refresh": "edit by hand when alumni update their positions"
+    },
+    {
+      "file": "news.json",
+      "description": "Lab news cards. Drives the homepage feed and news.html. Most recent first.",
+      "format": "json",
+      "records": 12,
+      "backs_page": "news.html",
+      "refresh": "edit by hand"
+    },
+    {
+      "file": "lab-status.json",
+      "description": "Live-activity signals for the homepage strip. Small set of counters with deltas.",
+      "format": "json",
+      "records": 4,
+      "backs_page": "index.html",
+      "refresh": "edit by hand weekly"
+    },
+    {
+      "file": "undergrad-papers.json",
+      "description": "Papers where the first author was an undergraduate researcher in the lab at time of submission.",
+      "format": "json",
+      "records": 8,
+      "backs_page": "undergrad-papers.html",
+      "refresh": "add entries as undergraduate-led papers are published"
+    },
+    {
+      "file": "prompts.json",
+      "description": "Prompts the lab uses for research tasks. Each prompt is a reusable template.",
+      "format": "json",
+      "records": 7,
+      "backs_page": "subpages/Prompting.html",
+      "source": "Pulled verbatim from github.com/coleoguy/prompting on 2026-04-19."
+    },
+    {
+      "file": "karyotypes-six-index.json",
+      "description": "Manifest for the six karyotype databases. Lists each clade file, its columns, and its primary publication.",
+      "format": "json",
+      "backs_page": "karyotypes/index.html"
+    },
+    {
+      "file": "karyotypes-coleoptera.csv",
+      "description": "Cytogenetic records for beetles (Coleoptera). Columns described in karyotypes-six-index.json.",
+      "format": "csv",
+      "records": 4959,
+      "backs_page": "karyotypes/index.html",
+      "primary_publication": "Blackmon & Demuth 2015, Coleopterists Bulletin 69(1): 174-182, https://doi.org/10.1649/0010-065X-69.1.174",
+      "citation_file": "karyotypes-coleoptera-citations.csv"
+    },
+    {
+      "file": "karyotypes-coleoptera-citations.csv",
+      "description": "Primary source citations for the Coleoptera karyotype records.",
+      "format": "csv",
+      "records": 251
+    },
+    {
+      "file": "karyotypes-diptera.csv",
+      "description": "Cytogenetic records for flies (Diptera) excluding Drosophila.",
+      "format": "csv",
+      "records": 3474,
+      "backs_page": "karyotypes/index.html",
+      "primary_publication": "Morelli, Blackmon & Hjelmen, Frontiers in Ecology and Evolution"
+    },
+    {
+      "file": "karyotypes-amphibia.csv",
+      "description": "Cytogenetic records for amphibians.",
+      "format": "csv",
+      "records": 2124,
+      "backs_page": "karyotypes/index.html",
+      "primary_publication": "Perkins et al. 2019, Chromosome Research, https://doi.org/10.1007/s10577-019-09613-1"
+    },
+    {
+      "file": "karyotypes-mammalia.csv",
+      "description": "Cytogenetic records for mammals.",
+      "format": "csv",
+      "records": 1440,
+      "backs_page": "karyotypes/index.html",
+      "primary_publication": "curated by the Blackmon Lab"
+    },
+    {
+      "file": "karyotypes-drosophila.csv",
+      "description": "Cytogenetic records for Drosophila at the species level.",
+      "format": "csv",
+      "records": 1247,
+      "backs_page": "karyotypes/index.html",
+      "primary_publication": "Morelli, Blackmon & Hjelmen, Frontiers in Ecology and Evolution"
+    },
+    {
+      "file": "karyotypes-polyneoptera.csv",
+      "description": "Cytogenetic records for Polyneoptera (orthopteroid insects).",
+      "format": "csv",
+      "records": 823,
+      "backs_page": "karyotypes/index.html",
+      "primary_publication": "Sylvester et al. 2020, Proc. B, https://doi.org/10.1098/rspb.2020.1388"
+    },
+    {
+      "file": "epistasis-database.json",
+      "description": "Manifest for the line-cross epistasis database.",
+      "format": "json",
+      "backs_page": "epistasis-database.html"
+    },
+    {
+      "file": "epistasis-database.csv",
+      "description": "Over 1,600 line-cross datasets, one row per dataset, with composite genetic effect estimates from SAGA2.",
+      "format": "csv",
+      "records": 1606,
+      "backs_page": "epistasis-database.html",
+      "primary_publication": "Burch et al. 2024, Evolution 78(4): 624-634, https://doi.org/10.1093/evolut/qpae003",
+      "citation_file": "epistasis-database-citations.csv",
+      "columns": ["add", "dom", "epi", "file", "refile", "class", "kingdom", "domestication", "trait", "species", "SCS", "divergence", "weighted", "method"]
+    },
+    {
+      "file": "epistasis-database-citations.csv",
+      "description": "Primary source citations for the line-cross datasets in epistasis-database.csv.",
+      "format": "csv",
+      "records": 128
+    },
+    {
+      "file": "cures-karyotype-database.csv",
+      "description": "Chromosome-number records collected through CURE courses at Texas A&M. One clade-level citation per species.",
+      "format": "csv",
+      "records": 63542,
+      "backs_page": "cures-karyotype-database.html",
+      "primary_publication": "Copeland et al. 2026, bioRxiv 2026.04.14.718287, https://doi.org/10.64898/2026.04.14.718287",
+      "columns": ["clade", "species", "haploid_number", "citation"]
+    },
+    {
+      "file": "cures-karyotype-data.json",
+      "description": "JSON version of the CUREs karyotype database with clade index and source metadata. Used by the interactive browser.",
+      "format": "json",
+      "records": 63542,
+      "backs_page": "cures-karyotype-database.html"
+    },
+    {
+      "file": "tau-database.json",
+      "description": "Circadian free-running-period (tau) measurements across 1,960 records spanning animals, plants, fungi, and bacteria.",
+      "format": "json",
+      "records": 1960,
+      "backs_page": "tau_database.html"
+    }
+  ]
+}
