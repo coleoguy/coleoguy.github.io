@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tealc · Blackmon Lab</title>
-<meta name="description" content="Tealc is the Blackmon Lab's always-on autonomous member: handles all lower-tier knowledge work, runs an executive decision loop every ten minutes, operates fully in the open. Built on Claude + LangGraph, continuously running via launchd.">
+<meta name="description" content="Tealc is the Blackmon Lab's always-on autonomous member: handles lower-tier knowledge work, runs an executive loop every fifteen minutes, and overnight does actual science — literature synthesis, grant drafting, R analyses, hypothesis generation. Built on Claude + LangGraph, running via launchd.">
 <meta property="og:title" content="Tealc · Blackmon Lab">
-<meta property="og:description" content="Tealc is the Blackmon Lab's always-on autonomous member: handles all lower-tier knowledge work, runs an executive decision loop every ten minutes, operates fully in the open. Built on Claude + LangGraph, continuously running via launchd.">
+<meta property="og:description" content="Tealc is the Blackmon Lab's always-on autonomous member: handles lower-tier knowledge work, runs an executive loop every fifteen minutes, and overnight does actual science — literature synthesis, grant drafting, R analyses, hypothesis generation. Built on Claude + LangGraph, running via launchd.">
 <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Blackmon Lab">
@@ -131,16 +131,16 @@
     <h1 class="title">Tealc: the lab's autonomous member</h1>
 
     <p class="lede">
-      Tealc is not a chatbot you summon. It is the lab's always-on autonomous member. It auto-starts on login, runs without supervision, and has access to the lab's full operational surface: email, calendar, Drive, literature databases, student records, grant feeds, R execution. Every ten minutes an executive loop reads a live snapshot of the lab's current state and decides what to do next without being asked: draft a reply to a time-sensitive email, flag a grant deadline, surface an overnight preprint, note that a student has not checked in. A self-review job runs every Sunday and writes a critique of its own decisions from the week prior, identifying where the rules should tighten and where they are too conservative. The result is a member of the lab that is working before you sit down, remembers every conversation, and maintains its own queue of open intentions across sessions. The question driving all of it: how much of the knowledge work that dominates a scientist's day can be absorbed by an autonomous agent, and where does its judgment become unreliable in ways that matter? Tealc handles everything that surrounds the science. Getting that boundary right is the experiment.
+      Tealc is not a chatbot you summon. It is the lab's always-on autonomous member. It auto-starts on login, runs without supervision, and has access to the lab's full operational surface: email, calendar, Drive, literature databases, student records, grant feeds, R execution. Every fifteen minutes an executive loop reads a live snapshot of the lab's current state and decides what to do next without being asked: draft a reply to a time-sensitive email, flag a grant deadline, surface an overnight preprint, note that a student has not checked in. A self-review job runs every Sunday and writes a critique of its own decisions from the week prior, identifying where the rules should tighten and where they are too conservative. The result is a member of the lab that is working before you sit down, remembers every conversation, and maintains its own queue of open intentions across sessions. That boundary is now moving. Overnight, while the lab is idle, Tealc reads and synthesizes new papers tagged to active research projects, drafts the next unfinished section of an active grant or manuscript, runs queued comparative analyses in R, and proposes testable hypotheses from recent literature. Every output lands in a document tagged [draft, needs review]. The morning briefing surfaces what was produced. Whether those drafts are actually useful, and where the model's judgment about what to work on and how to frame it diverges from a scientist's, is what this phase of the experiment is designed to find out.
     </p>
 
     <div class="stats-row">
       <div class="stat">
-        <div class="stat-num">40</div>
+        <div class="stat-num">92</div>
         <span class="stat-label">Tools wired in</span>
       </div>
       <div class="stat">
-        <div class="stat-num">10 min</div>
+        <div class="stat-num">15 min</div>
         <span class="stat-label">Executive loop cadence</span>
       </div>
       <div class="stat">
@@ -154,7 +154,7 @@
     </div>
 
     <div class="agent-box">
-      <span class="agent-line"><span class="agent-tag">Scope</span>autonomous lab member: handles all lower-tier knowledge work, acts on its own judgment between sessions, surfaces what matters without being asked</span>
+      <span class="agent-line"><span class="agent-tag">Scope</span>autonomous lab member: handles lower-tier knowledge work during the day, does science overnight — literature synthesis, grant and manuscript drafting, R analyses, hypothesis generation</span>
       <span class="agent-line"><span class="agent-tag">Stack</span>Claude (Sonnet 4.6 default, Opus 4.7 on demand, Haiku 4.5 for executive loop and batch jobs) · LangGraph ReAct loop · Chainlit UI · APScheduler · SQLite state</span>
       <span class="agent-line"><span class="agent-tag">Portability</span>code, memory, and credentials sync through Google Drive; runs on any Mac via launchd auto-start</span>
       <span class="agent-line"><span class="agent-tag">Rules</span>draft-only on email · advisor mode first, autonomous only after explicit sign-off · every action in the public feed</span>
@@ -162,10 +162,10 @@
 
     <h2>How it works</h2>
     <p>
-      Two processes share a single SQLite database, both auto-started on Mac login via launchd. The reactive chat responds to direct requests. The always-on layer runs continuously: five scheduled jobs, an executive loop firing every ten minutes, and event-driven triggers for real-time signals including incoming email. Together they mean Tealc is never waiting to be useful.
+      Two processes share a single SQLite database, both auto-started on Mac login via launchd. The reactive chat responds to direct requests. The always-on layer runs continuously: scheduled management jobs during the day, science-work jobs overnight, an executive loop firing every fifteen minutes, and event-driven triggers for real-time signals including incoming email.
     </p>
 
-    <details class="layer" open>
+    <details class="layer">
       <summary>
         <span class="layer-summary-text">
           <span class="sum-kicker">Reactive layer</span>
@@ -179,7 +179,7 @@
       </div>
     </details>
 
-    <details class="layer" open>
+    <details class="layer">
       <summary>
         <span class="layer-summary-text">
           <span class="sum-kicker">Always-on layer</span>
@@ -192,16 +192,32 @@
       </div>
     </details>
 
-    <details class="layer" open>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Overnight science</span>
+          <span class="sum-head">Literature synthesis, grant drafting, R analyses, hypothesis generation</span>
+          <span class="sum-trail">Runs while the lab is idle. Every output is a draft for Heath to review in the morning.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Each active research project has an entry in the Goals Sheet with a data directory, current hypothesis, and queued analyses. At midnight a literature synthesis job picks five to eight new papers from the past week tagged to active projects, reads abstracts and opening pages via Sonnet, extracts key findings, and updates a per-project knowledge file in Drive. By morning there is a running annotated bibliography for each project that did not exist the night before.</p>
+        <p>At 1am, if an active grant deadline is within thirty days, a grant drafter job opens the linked artifact, finds the next unfinished section, and drafts a first pass into a new Google Doc tagged [draft, needs review]. This job never overwrites existing text. It writes into a new document that Heath reads in the morning and decides what to keep.</p>
+        <p>Saturday at 3am a database health job runs consistency checks across all six karyotype databases, the Tree of Sex data, and the epistasis database, flagging rows with malformed values, missing chromosome counts, or likely duplicates. Output is a curation briefing and a flagged-rows record. Sunday at 4am a comparative analysis job writes and executes R scripts for each active research project with a defined next action and reports results to an analysis log. Sunday at 5am a hypothesis generator reads the week's literature synthesis notes and the lab's current open questions and proposes one or two new testable hypotheses with suggested methods.</p>
+        <p>All of these jobs run only when the executive loop classifies the lab as deep-idle, meaning no interaction for four or more hours. They do not interrupt daytime work. The morning briefing consolidates what was produced overnight into a single summary Heath reads with coffee.</p>
+      </div>
+    </details>
+
+    <details class="layer">
       <summary>
         <span class="layer-summary-text">
           <span class="sum-kicker">Executive loop</span>
-          <span class="sum-head">Autonomous decisions every ten minutes</span>
+          <span class="sum-head">Autonomous decisions every fifteen minutes</span>
           <span class="sum-trail">Haiku reads lab state, decides what to do next, logs every decision for review.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>The executive loop is the center of Tealc's autonomous operation. Every ten minutes, a lightweight Haiku model reads a live snapshot of the lab's state: open intentions, unread briefings, student statuses, hours since last interaction, active deadlines, current grant draft state. It also reads the top three active goals and their nearest milestones, so every decision is grounded in "what advances goal X right now" rather than just "what is in the inbox." It outputs a structured decision and routes it to the appropriate tool. All decisions start in advisor mode: logged to an <code>executive_decisions</code> table for weekly review. Each reviewed decision can be promoted to run autonomously, building a deliberate escalation path from supervised to trusted. A self-review job runs Sunday evening: Sonnet reads the past week's decisions and tool-call logs, identifies patterns, and writes a critique of where the rules should tighten or loosen. The PI reviews and edits the rules. That loop is how Tealc's judgment improves over time without requiring retraining.</p>
+        <p>The executive loop is the center of Tealc's autonomous operation. Every fifteen minutes, a lightweight Haiku model reads a live snapshot of the lab's state: open intentions, unread briefings, student statuses, hours since last interaction, active deadlines, current grant draft state. It also reads the top three active goals and their nearest milestones, so every decision is grounded in "what advances goal X right now" rather than just "what is in the inbox." It outputs a structured decision and routes it to the appropriate tool. All decisions start in advisor mode: logged to an <code>executive_decisions</code> table for weekly review. Each reviewed decision can be promoted to run autonomously, building a deliberate escalation path from supervised to trusted. A self-review job runs Sunday evening: Sonnet reads the past week's decisions and tool-call logs, identifies patterns, and writes a critique of where the rules should tighten or loosen. The PI reviews and edits the rules. That loop is how Tealc's judgment improves over time without requiring retraining.</p>
         <p>When the PI has been away from the keyboard for several hours, the executive loop knows it has runway for harder work: deeper literature scans, drafting grant text in Docs, longer paper analyses. It schedules lighter interruptions during work hours and heavier background work for evenings. Triage mode engages automatically when the day's calendar is overloaded: Tealc surfaces one thing at a time rather than presenting a menu.</p>
       </div>
     </details>
@@ -245,7 +261,10 @@
 
     <h2>The experiment</h2>
     <p>
-      The architecture is built around a specific question: how much of the knowledge work that occupies a working scientist can be reliably delegated to an autonomous agent, and at what point does the agent's judgment fail in ways that matter to the science? The executive loop's escalation from advisor to autonomous is the primary instrument. Each promoted decision class is a provisional claim that the model's judgment is reliable enough to not require human review for that category. Tracking where promotions hold, where they get revoked, and where the self-review job identifies systematic failures is how the experiment runs.
+      The architecture is built around a question that has sharpened over time. The first phase asked how much of the knowledge work surrounding science could be delegated to an autonomous agent. The current phase asks something harder: can the agent do the science itself, and how would you know if the output was actually good? The overnight jobs produce drafts. The question is whether those drafts are useful in the way a collaborator's draft is useful, or whether they are fluent but wrong in the ways that matter: misframing the hypothesis, missing the key prior result, running the right analysis on the wrong data subset.
+    </p>
+    <p>
+      The executive loop's escalation from advisor to autonomous is the instrument for the management layer. Each promoted decision class is a provisional claim that the model's judgment is reliable enough to not require review. Tracking where promotions hold, where they get revoked, and where the self-review job identifies systematic failures is how that part of the experiment runs.
     </p>
     <p>
       The goal layer adds a concrete measurement instrument that most AI-for-science projects lack. The NAS impact accounting produces a weekly number: what fraction of the working week actually advanced the highest-importance scientific goals versus service drag and maintenance. Citation count, h-index, and i10-index tracking adds a second, slower signal. If those numbers do not move over several months despite the executive loop running, the hypothesis that an autonomous agent can meaningfully reallocate a scientist's time is falsified. If they do move, that is a result the field needs to see, measured rather than claimed.
@@ -261,6 +280,7 @@
     <h2>Design principles</h2>
     <ul>
       <li><strong>Draft-only on email.</strong> Tealc never sends. A human approves every message before it leaves the lab.</li>
+      <li><strong>Science outputs in draft mode.</strong> Every overnight job writes into a new document tagged [draft, needs review]. Tealc never overwrites existing research text. The PI reads what was produced and decides what to keep.</li>
       <li><strong>Advisor before autonomous.</strong> Every new class of autonomous action starts in review mode. Promotion to autonomous operation requires explicit sign-off. Revocation is always one step.</li>
       <li><strong>Self-review loop.</strong> Tealc critiques its own weekly decisions and proposes rule changes. The PI reviews, edits, and applies them. The agent improves from use without retraining.</li>
       <li><strong>Full audit trail.</strong> Every tool call is visible in the Chainlit step display, the job-runs audit table, and the public aquarium feed. Nothing Tealc does is hidden from the human it works with, or from anyone else who wants to look.</li>
