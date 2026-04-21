@@ -7,6 +7,7 @@ papers_supporting: [2868f9fb2c04a641393569fdd996eb3a6385c0c5ef19eff83448aea96d7c
 permalink: /knowledge/topics/diversification_rates/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # Diversification Rates
 
 ## Current understanding
@@ -38,3 +39,4 @@ Additionally, the meiotic drive polarity switching rates [Blackmon et al. 2019, 
 ## Related on the Blackmon Lab site
 
 - [Blackmon et al. 2019](/knowledge/papers/2019_mammals/)
+<!-- tealc:auto-end -->

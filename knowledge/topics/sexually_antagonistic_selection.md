@@ -7,6 +7,7 @@ papers_supporting: [a4b0b03e15616954490c13ea4d103ee11a9801d0bd20d37a97376a3d9361
 permalink: /knowledge/topics/sexually_antagonistic_selection/
 category: "Sex chromosomes"
 ---
+<!-- tealc:auto-start -->
 # Sexually Antagonistic Selection
 
 ## Current understanding
@@ -32,3 +33,4 @@ The implication is that SA selection functions not merely as a force maintaining
 ## Related on the Blackmon Lab site
 
 - [Why not Y naught 2022](/knowledge/papers/2022_why_not/)
+<!-- tealc:auto-end -->

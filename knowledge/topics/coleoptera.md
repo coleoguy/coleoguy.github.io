@@ -7,6 +7,7 @@ papers_supporting: [a73574bbaaa5fe6c06f620cd8793d044d3c5b758777b262d09e80b49d181
 permalink: /knowledge/topics/coleoptera/
 category: "Insects & Coleoptera"
 ---
+<!-- tealc:auto-start -->
 # Coleoptera
 
 ## Current understanding
@@ -32,3 +33,4 @@ None known from the current set of findings. However, the 49% co-occurrence figu
 ## Related on the Blackmon Lab site
 
 - [Blackmon & Demuth 2014](/knowledge/papers/2014d/) — source of the Adephaga Y-chromosome turnover rate estimate.
+<!-- tealc:auto-end -->

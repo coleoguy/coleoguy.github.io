@@ -7,6 +7,7 @@ papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114
 permalink: /knowledge/topics/conservation_genetics/
 category: "Population genetics"
 ---
+<!-- tealc:auto-start -->
 # Conservation Genetics
 
 ## Current understanding
@@ -34,3 +35,4 @@ The inflation documented above is a consequence of applying a **panmictic estima
 ## Related on the Blackmon Lab site
 
 - [Hancock & Blackmon 2020](/knowledge/papers/2020_ghost_of_a_structured/)
+<!-- tealc:auto-end -->

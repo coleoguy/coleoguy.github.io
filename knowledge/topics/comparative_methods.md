@@ -7,6 +7,7 @@ papers_supporting: [f9fb8e258c7b62f338b299e9c6fcbeb81259e1aef5f75ea3c782100d90b4
 permalink: /knowledge/topics/comparative_methods/
 category: "Quantitative genetics & epistasis"
 ---
+<!-- tealc:auto-start -->
 # Comparative Methods
 
 ## Current understanding
@@ -31,3 +32,4 @@ The finding raises a tension between the headline false-positive rates and the m
 ## Related on the Blackmon Lab site
 
 - [Drift drives the evolution 2024](/knowledge/papers/2024_drift_carnivores/)
+<!-- tealc:auto-end -->

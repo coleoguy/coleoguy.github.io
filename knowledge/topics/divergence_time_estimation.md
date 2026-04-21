@@ -7,6 +7,7 @@ papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114
 permalink: /knowledge/topics/divergence_time_estimation/
 category: "Population genetics"
 ---
+<!-- tealc:auto-start -->
 # Divergence Time Estimation
 
 ## Current understanding
@@ -37,3 +38,4 @@ The 700% overestimation figure and the T_D/N_D < 10 threshold both arise from a 
 ## Related on the Blackmon Lab site
 
 - [Ghost of a Structured Ancestor (2020)](/knowledge/papers/2020_ghost_of_a_structured/)
+<!-- tealc:auto-end -->

@@ -7,6 +7,7 @@ papers_supporting: [2da8fb1b5d5f08ca9dccde3a6e1600c4ff6cbfdcb564fa6fd3617d6502e2
 permalink: /knowledge/topics/avian_evolution/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # Avian Evolution
 
 ## Current understanding
@@ -32,3 +33,4 @@ The primary tension in this case study is internal: the finding presents the gre
 ## Related on the Blackmon Lab site
 
 - [Ring Species and Speciation 2012](/knowledge/papers/2012a/)
+<!-- tealc:auto-end -->

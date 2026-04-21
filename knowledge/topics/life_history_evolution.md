@@ -7,6 +7,7 @@ papers_supporting: [9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48
 permalink: /knowledge/topics/life_history_evolution/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # Life History Evolution
 
 ## Current understanding
@@ -34,3 +35,4 @@ The magnitude of the epistatic excess detected in [Wright was right: leveraging 
 ## Related on the Blackmon Lab site
 
 - [Paper page: 2024 Wright](/knowledge/papers/2024_wright/)
+<!-- tealc:auto-end -->

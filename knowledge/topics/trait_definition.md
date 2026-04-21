@@ -7,6 +7,7 @@ papers_supporting: [50ffa26858c4ac0cc040432925613a01d371c052da7ba3e3b12f8becd9ad
 permalink: /knowledge/topics/trait_definition/
 category: "Quantitative genetics & epistasis"
 ---
+<!-- tealc:auto-start -->
 # Trait Definition
 
 ## Current understanding
@@ -33,3 +34,4 @@ The current evidence base consists of a single compound trait comparison from on
 ## Related on the Blackmon Lab site
 
 - [Assessing the opportunity for 2024](/knowledge/papers/2024_solanum/)
+<!-- tealc:auto-end -->

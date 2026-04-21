@@ -7,6 +7,7 @@ papers_supporting: [0f1bc39e2879ec58c1a6e091a838d1861975612f9a803dea779e9576fe26
 permalink: /knowledge/topics/karyotype_database/
 category: "Karyotype evolution"
 ---
+<!-- tealc:auto-start -->
 # Karyotype Database
 
 ## Current understanding
@@ -51,3 +52,4 @@ The Amphibian Karyotype Database's 2,124 records are heavily skewed toward frogs
 - [Paper: 2019 amphibs](/knowledge/papers/2019_amphibs/)
 - [Paper: 2022 why not](/knowledge/papers/2022_why_not/)
 - [Paper: 2024 drift beetles](/knowledge/papers/2024_drift_beetles/)
+<!-- tealc:auto-end -->

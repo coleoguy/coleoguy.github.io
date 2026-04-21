@@ -7,6 +7,7 @@ papers_supporting: [10.1002/ece3.73483, 31776037050f6b89b93887fa1b80196fd3007332
 permalink: /knowledge/topics/genome_assembly/
 category: "Genome structure"
 ---
+<!-- tealc:auto-start -->
 # Genome Assembly
 
 ## Current understanding
@@ -33,3 +34,4 @@ Future work on this topic would benefit from comparative studies formally benchm
 
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
 - [Paper detail page: 2024 Chrysina](/knowledge/papers/2024_chrysina/)
+<!-- tealc:auto-end -->

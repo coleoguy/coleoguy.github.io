@@ -7,6 +7,7 @@ papers_supporting: [10.1002/ece3.73483]
 permalink: /knowledge/topics/demographic_inference/
 category: "Population genetics"
 ---
+<!-- tealc:auto-start -->
 # Demographic Inference
 
 ## Current understanding
@@ -39,3 +40,4 @@ Together, these two approaches illustrate a general principle: short ROH diagnos
 ## Related on the Blackmon Lab site
 
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
+<!-- tealc:auto-end -->

@@ -7,6 +7,7 @@ papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96cc
 permalink: /knowledge/topics/fragile_y_hypothesis/
 category: "Sex chromosomes"
 ---
+<!-- tealc:auto-start -->
 # Fragile Y Hypothesis
 
 ## Current understanding
@@ -69,3 +70,4 @@ Empirical studies directly measuring PAR size and aneuploidy rates across taxa w
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
 - [Paper detail page — 2020 probability (SA-fusion rates in Drosophila)](/knowledge/papers/2020_probability/)
 - [Paper detail page — 2024 worse (PAR fusions under SA selection)](/knowledge/papers/2024_worse/)
+<!-- tealc:auto-end -->

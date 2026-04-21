@@ -7,6 +7,7 @@ papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96cc
 permalink: /knowledge/topics/karyotype_evolution_overview/
 category: "Karyotype evolution"
 ---
+<!-- tealc:auto-start -->
 # Karyotype evolution overview
 
 ## Current understanding
@@ -90,3 +91,4 @@ The uncorrelation between phylogenetic and scaled-variance rate estimates rests 
 - [Blackmon et al. 2015](/knowledge/papers/2015_haplo/)
 - [Blackmon & Demuth 2015](/knowledge/papers/2015a/)
 - [Perkins et al. 2019](/knowledge/papers/2019_amphibs/)
+<!-- tealc:auto-end -->

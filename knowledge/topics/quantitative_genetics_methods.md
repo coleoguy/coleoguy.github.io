@@ -7,6 +7,7 @@ papers_supporting: [9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48
 permalink: /knowledge/topics/quantitative_genetics_methods/
 category: "Quantitative genetics & epistasis"
 ---
+<!-- tealc:auto-start -->
 # Quantitative Genetics Methods
 
 ## Current understanding
@@ -34,3 +35,4 @@ The characterization of the 19% failure rate as evidence of "false positives" in
 ## Related on the Blackmon Lab site
 
 - [Wright was right: leveraging 2024](/knowledge/papers/2024_wright/)
+<!-- tealc:auto-end -->

@@ -7,6 +7,7 @@ papers_supporting: [10.1002/ece3.73483, 10.1534/genetics.117.300382, 8ec28241e31
 permalink: /knowledge/topics/sex_linkage_mutation/
 category: "Sex chromosomes"
 ---
+<!-- tealc:auto-start -->
 # Sex-linkage mutation
 
 ## Current understanding
@@ -47,3 +48,4 @@ The out-of-the-X retrogenesis finding replicates an established pattern rather t
 - [Blackmon & Brandvain 2017](/knowledge/papers/10_1534_genetics_117_300382/)
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
 - [Lo & Blackmon 2022](/knowledge/papers/2022_retrogenes/)
+<!-- tealc:auto-end -->

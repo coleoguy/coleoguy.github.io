@@ -7,6 +7,7 @@ papers_supporting: [10.1002/ece3.73483, 2868f9fb2c04a641393569fdd996eb3a6385c0c5
 permalink: /knowledge/topics/karyotype_evolution/
 category: "Karyotype evolution"
 ---
+<!-- tealc:auto-start -->
 # Karyotype Evolution
 
 ## Current understanding
@@ -50,3 +51,4 @@ Large-scale cytogenetic databases or comparative genomic surveys spanning multip
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
 - [Blackmon & Demuth 2014](/knowledge/papers/2014d/)
 - [Blackmon et al. 2019](/knowledge/papers/2019_mammals/)
+<!-- tealc:auto-end -->

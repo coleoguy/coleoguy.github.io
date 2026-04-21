@@ -7,6 +7,7 @@ papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/transposable_elements/
 category: "Genome structure"
 ---
+<!-- tealc:auto-start -->
 # Transposable Elements
 
 ## Current understanding
@@ -30,3 +31,4 @@ The lab may wish to engage with studies benchmarking repeat annotation tools (e.
 ## Related on the Blackmon Lab site
 
 - Source paper: [Schweizer et al. 2024](/knowledge/papers/10_1093_jhered_esad076/)
+<!-- tealc:auto-end -->

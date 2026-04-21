@@ -7,6 +7,7 @@ papers_supporting: []
 permalink: /knowledge/topics/inversions/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:auto-start -->
 # Inversions
 
 ## Current understanding
@@ -31,3 +32,4 @@ The h < 0.3 dominance threshold is derived from a symmetric fitness model that a
 ## Related on the Blackmon Lab site
 
 - [2017-fragileY paper page](/knowledge/papers/10_1534_genetics_117_300382/)
+<!-- tealc:auto-end -->

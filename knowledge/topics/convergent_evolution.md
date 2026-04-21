@@ -7,6 +7,7 @@ papers_supporting: [74e7bc680605ee2207a1f5cf31811de0fef84fed56357b0bbe6d6ba1443f
 permalink: /knowledge/topics/convergent_evolution/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # Convergent Evolution
 
 ## Current understanding
@@ -36,3 +37,4 @@ The convergence inference rests on FST outliers defined at the lowest 5% diverge
 ## Related on the Blackmon Lab site
 
 - [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/)
+<!-- tealc:auto-end -->

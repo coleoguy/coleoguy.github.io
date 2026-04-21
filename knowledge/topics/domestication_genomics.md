@@ -7,6 +7,7 @@ papers_supporting: [cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a8744
 permalink: /knowledge/topics/domestication_genomics/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # Domestication genomics
 
 ## Current understanding
@@ -32,3 +33,4 @@ The primary internal tension in this literature concerns causality. The finding 
 ## Related on the Blackmon Lab site
 
 - [Sex chromosome evolution](/sex-chromosome-evolution.html) — relevant because domestication events sometimes involve sex-linked loci under artificial selection.
+<!-- tealc:auto-end -->

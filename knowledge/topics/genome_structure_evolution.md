@@ -7,6 +7,7 @@ papers_supporting: [10.1093/jhered/esad076, 3780c17c37d408cf1151745b75b70eea040a
 category: "Genome structure"
 permalink: /knowledge/topics/genome_structure_evolution/
 ---
+<!-- tealc:auto-start -->
 # Genome Structure Evolution
 
 ## Current understanding
@@ -88,3 +89,4 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 - [Lo & Blackmon 2022](/knowledge/papers/2022_retrogenes/)
 - [Wright was right: leveraging 2024](/knowledge/papers/2024_wright/)
 - [Genome assembly of the 2024](/knowledge/papers/2024_spb/)
+<!-- tealc:auto-end -->

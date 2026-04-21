@@ -7,6 +7,7 @@ papers_supporting: [cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a8744
 permalink: /knowledge/topics/domestication/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # Domestication
 
 ## Current understanding
@@ -34,3 +35,4 @@ The primary unresolved issue is **causal direction**: the 2024 study cannot dist
 ## Related on the Blackmon Lab site
 
 - [Domestication is associated with 2024](/knowledge/papers/2024_domestication/)
+<!-- tealc:auto-end -->

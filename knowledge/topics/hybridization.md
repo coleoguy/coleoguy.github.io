@@ -7,6 +7,7 @@ papers_supporting: [9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48
 permalink: /knowledge/topics/hybridization/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # Hybridization
 
 ## Current understanding
@@ -32,3 +33,4 @@ The plant–animal contrast in epistatic contribution should be interpreted caut
 ## Related on the Blackmon Lab site
 
 - [Sex Chromosome Evolution](/sex-chromosome-evolution.html) — sex chromosomes are a frequent substrate for BDMIs and hybrid incompatibilities, making hybridization dynamics directly relevant to their turnover.
+<!-- tealc:auto-end -->

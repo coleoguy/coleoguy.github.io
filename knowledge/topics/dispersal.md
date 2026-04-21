@@ -7,6 +7,7 @@ papers_supporting: [acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe0
 permalink: /knowledge/topics/dispersal/
 category: "Quantitative genetics & epistasis"
 ---
+<!-- tealc:auto-start -->
 # Dispersal
 
 ## Current understanding
@@ -38,3 +39,4 @@ None known from the current evidence base. However, the findings rest on a singl
 ## Related on the Blackmon Lab site
 
 - [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/)
+<!-- tealc:auto-end -->

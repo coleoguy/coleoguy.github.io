@@ -7,6 +7,7 @@ papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96cc
 category: "Insects & Coleoptera"
 permalink: /knowledge/topics/coleoptera_genomics/
 ---
+<!-- tealc:auto-start -->
 # Coleoptera genomics
 
 ## Current understanding
@@ -55,3 +56,4 @@ Beetles (Coleoptera) are the most species-rich animal order, yet chromosome-leve
 - [Blackmon & Demuth 2015](/knowledge/papers/2015a/)
 - [Source paper: 2024 drift beetles — Ne and karyotype evolution in Coleoptera](/knowledge/papers/2024_drift_beetles/)
 - [Source paper: 2024 SPB — *Dendroctonus frontalis* genome](/knowledge/papers/2024_spb/)
+<!-- tealc:auto-end -->

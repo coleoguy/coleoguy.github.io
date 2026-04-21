@@ -7,6 +7,7 @@ papers_supporting: [acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe0
 permalink: /knowledge/topics/artificial_selection/
 category: "Quantitative genetics & epistasis"
 ---
+<!-- tealc:auto-start -->
 # Artificial Selection
 
 ## Current understanding
@@ -35,3 +36,4 @@ No contradictory findings from other papers are currently indexed on this topic.
 ## Related on the Blackmon Lab site
 
 - [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/)
+<!-- tealc:auto-end -->

@@ -7,6 +7,7 @@ papers_supporting: [74e7bc680605ee2207a1f5cf31811de0fef84fed56357b0bbe6d6ba1443f
 permalink: /knowledge/topics/population_genetics/
 category: "Population genetics"
 ---
+<!-- tealc:auto-start -->
 # Population Genetics
 
 ## Current understanding
@@ -34,3 +35,4 @@ None known from current findings. The count of 83 overlapping genes is a snapsho
 ## Related on the Blackmon Lab site
 
 - [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/) — source of the primary finding on this page.
+<!-- tealc:auto-end -->

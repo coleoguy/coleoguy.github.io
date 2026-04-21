@@ -7,6 +7,7 @@ papers_supporting: [10.1002/ece3.73483, 10.1093/jhered/esad076, 31776037050f6b89
 permalink: /knowledge/topics/conservation_genomics/
 category: "Population genetics"
 ---
+<!-- tealc:auto-start -->
 # Conservation Genomics
 
 ## Current understanding
@@ -40,3 +41,4 @@ The Blackmon Lab may wish to engage with the growing Earth BioGenome Project lit
 - [Schweizer et al. 2024](/knowledge/papers/10_1093_jhered_esad076/)
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
 - [A reference quality genome 2024](/knowledge/papers/2024_chrysina/)
+<!-- tealc:auto-end -->

@@ -7,6 +7,7 @@ papers_supporting: [1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba
 permalink: /knowledge/topics/ancestral_state_reconstruction/
 category: "Quantitative genetics & epistasis"
 ---
+<!-- tealc:auto-start -->
 # Ancestral State Reconstruction
 
 ## Current understanding
@@ -34,3 +35,4 @@ The two models applied to Acari haplodiploidy yield divergent origin counts (7.9
 ## Related on the Blackmon Lab site
 
 - [Blackmon et al. 2015](/knowledge/papers/2015_haplo/)
+<!-- tealc:auto-end -->

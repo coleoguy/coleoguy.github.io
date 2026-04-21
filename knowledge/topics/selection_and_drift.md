@@ -7,6 +7,7 @@ papers_supporting: [3780c17c37d408cf1151745b75b70eea040ad4a9fa24b5d3ba4a327fa493
 category: "Quantitative genetics & epistasis"
 permalink: /knowledge/topics/selection_and_drift/
 ---
+<!-- tealc:auto-start -->
 # Selection and Drift
 
 ## Current understanding
@@ -48,3 +49,4 @@ Across all systems, a deeper ambiguity remains: observed patterns are consistent
 - [Drift drives the evolution 2024](/knowledge/papers/2024_drift_beetles/) — source paper with beetle karyotype evolution findings.
 - [Drift drives the evolution 2024](/knowledge/papers/2024_drift_carnivores/) — source paper with Carnivora karyotype evolution findings.
 - [DirectRepeateR: An R package 2025](/knowledge/papers/2025_directrepeater/) — source paper on direct-repeat depletion near exons in *A. aegypti*.
+<!-- tealc:auto-end -->

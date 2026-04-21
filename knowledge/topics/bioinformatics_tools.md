@@ -7,6 +7,7 @@ papers_supporting: [74e7bc680605ee2207a1f5cf31811de0fef84fed56357b0bbe6d6ba1443f
 permalink: /knowledge/topics/bioinformatics_tools/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:auto-start -->
 # Bioinformatics Tools
 
 ## Current understanding
@@ -31,3 +32,4 @@ None known. CaveCrawler is the only tool represented in the current findings. Ad
 ## Related on the Blackmon Lab site
 
 - [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/)
+<!-- tealc:auto-end -->

@@ -7,6 +7,7 @@ papers_supporting: [1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba
 permalink: /knowledge/topics/haplodiploidy_evolution/
 category: "Sex chromosomes"
 ---
+<!-- tealc:auto-start -->
 # Haplodiploidy Evolution
 
 ## Current understanding
@@ -33,3 +34,4 @@ The number of inferred origins is sensitive to dataset construction: origin coun
 ## Related on the Blackmon Lab site
 
 - [Paper page: 2015 haplo](/knowledge/papers/2015_haplo/)
+<!-- tealc:auto-end -->

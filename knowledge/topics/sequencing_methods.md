@@ -7,6 +7,7 @@ papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/sequencing_methods/
 category: "Population genetics"
 ---
+<!-- tealc:auto-start -->
 # Sequencing Methods
 
 ## Current understanding
@@ -30,3 +31,4 @@ While the Mojave poppy bee case demonstrates feasibility, it represents a single
 ## Related on the Blackmon Lab site
 
 - [Schweizer et al. 2024](/knowledge/papers/10_1093_jhered_esad076/)
+<!-- tealc:auto-end -->

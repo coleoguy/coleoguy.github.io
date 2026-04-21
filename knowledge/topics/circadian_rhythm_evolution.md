@@ -7,6 +7,7 @@ papers_supporting: [74e7bc680605ee2207a1f5cf31811de0fef84fed56357b0bbe6d6ba1443f
 permalink: /knowledge/topics/circadian_rhythm_evolution/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:auto-start -->
 # Circadian rhythm evolution
 
 ## Current understanding
@@ -32,3 +33,4 @@ The biological inference that *arpin* plays a functional role in cavefish circad
 ## Related on the Blackmon Lab site
 
 - Paper page: [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/)
+<!-- tealc:auto-end -->

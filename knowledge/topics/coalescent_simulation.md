@@ -7,6 +7,7 @@ papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114
 permalink: /knowledge/topics/coalescent_simulation/
 category: "Population genetics"
 ---
+<!-- tealc:auto-start -->
 # Coalescent Simulation
 
 ## Current understanding
@@ -34,3 +35,4 @@ The 700% overestimation result is specific to SNAPP and a particular simulation 
 ## Related on the Blackmon Lab site
 
 - [Hancock & Blackmon 2020](/knowledge/papers/2020_ghost_of_a_structured/)
+<!-- tealc:auto-end -->

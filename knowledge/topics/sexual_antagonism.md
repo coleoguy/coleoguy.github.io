@@ -7,6 +7,7 @@ papers_supporting: [7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150
 permalink: /knowledge/topics/sexual_antagonism/
 category: "Sex chromosomes"
 ---
+<!-- tealc:auto-start -->
 # Sexual Antagonism
 
 ## Current understanding
@@ -40,3 +41,4 @@ Additionally, the *Habronattus* p-value is sensitive to the assumed ancestral ka
 
 - [The probability of fusions 2020](/knowledge/papers/2020_probability/)
 - [2017-fragileY — paper page](/knowledge/papers/10_1534_genetics_117_300382/)
+<!-- tealc:auto-end -->

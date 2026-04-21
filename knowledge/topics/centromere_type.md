@@ -7,6 +7,7 @@ papers_supporting: [e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00f
 permalink: /knowledge/topics/centromere_type/
 category: "Karyotype evolution"
 ---
+<!-- tealc:auto-start -->
 # Centromere Type
 
 ## Current understanding
@@ -34,3 +35,4 @@ A significant caveat to the monocentric-higher-rate finding is that the signal m
 ## Related on the Blackmon Lab site
 
 - [Jonika et al. 2020](/knowledge/papers/2020_microsats/)
+<!-- tealc:auto-end -->

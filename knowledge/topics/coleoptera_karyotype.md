@@ -7,6 +7,7 @@ papers_supporting: [30b906720b2f4fc5c7b3d85404312dd14cd178f0f94585de42189e9712f1
 permalink: /knowledge/topics/coleoptera_karyotype/
 category: "Insects & Coleoptera"
 ---
+<!-- tealc:auto-start -->
 # Coleoptera Karyotype
 
 ## Current understanding
@@ -29,3 +30,4 @@ The verbatim source quote documenting the upper bound (2n = 70 for *Dixus capito
 ## Related on the Blackmon Lab site
 
 - [Blackmon & Demuth 2015](/knowledge/papers/2014b/)
+<!-- tealc:auto-end -->

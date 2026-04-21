@@ -7,6 +7,7 @@ papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/bee_phylogenomics/
 category: "Insects & Coleoptera"
 ---
+<!-- tealc:auto-start -->
 # Bee Phylogenomics
 
 ## Current understanding
@@ -28,3 +29,4 @@ Broad UCE-based phylogenies of Apoidea (e.g., Bossert et al. 2019, *Insect Syste
 ## Related on the Blackmon Lab site
 
 - [Schweizer et al. 2024](/knowledge/papers/10_1093_jhered_esad076/)
+<!-- tealc:auto-end -->

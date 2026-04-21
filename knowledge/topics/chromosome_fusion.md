@@ -7,6 +7,7 @@ papers_supporting: [7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150
 permalink: /knowledge/topics/chromosome_fusion/
 category: "Karyotype evolution"
 ---
+<!-- tealc:auto-start -->
 # Chromosome Fusion
 
 ## Current understanding
@@ -33,3 +34,4 @@ None known from the currently indexed findings. The main outstanding uncertainty
 ## Related on the Blackmon Lab site
 
 - [The probability of fusions 2020](/knowledge/papers/2020_probability/)
+<!-- tealc:auto-end -->

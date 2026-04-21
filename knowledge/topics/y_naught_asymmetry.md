@@ -7,6 +7,7 @@ papers_supporting: [8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e
 permalink: /knowledge/topics/y_naught_asymmetry/
 category: "Sex chromosomes"
 ---
+<!-- tealc:auto-start -->
 # Y-naught asymmetry
 
 ## Current understanding
@@ -37,3 +38,4 @@ The SA-fusion argument for YO/WO instability [Why not Y naught 2022, Finding 1](
 
 - [Blackmon & Demuth 2015](/knowledge/papers/2015b/) — source of the neo-Y degeneration benchmark discussed above.
 - [Why not Y naught 2022](/knowledge/papers/2022_why_not/) — source of the SA-driven YO/WO instability argument.
+<!-- tealc:auto-end -->

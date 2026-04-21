@@ -7,6 +7,7 @@ papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96cc
 permalink: /knowledge/topics/sex_chromosome_evolution/
 category: "Sex chromosomes"
 ---
+<!-- tealc:auto-start -->
 # Sex Chromosome Evolution
 
 ## Current understanding
@@ -81,3 +82,4 @@ The ancestral-state reconstruction ([Blackmon et al. 2017, Finding 1](/knowledge
 ## Tealc's citation-neighborhood suggestions
 
 The field would benefit from empirical studies directly measuring PAR length and aneuploidy rates across
+<!-- tealc:auto-end -->

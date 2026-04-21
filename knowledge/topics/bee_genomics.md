@@ -7,6 +7,7 @@ papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/bee_genomics/
 category: "Insects & Coleoptera"
 ---
+<!-- tealc:auto-start -->
 # Bee Genomics
 
 ## Current understanding
@@ -30,3 +31,4 @@ The assembly lacks HiC scaffolding, meaning it does not reach chromosome-level c
 ## Related on the Blackmon Lab site
 
 - [Schweizer et al. 2024](/knowledge/papers/10_1093_jhered_esad076/)
+<!-- tealc:auto-end -->

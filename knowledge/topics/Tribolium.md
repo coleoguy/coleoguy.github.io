@@ -7,6 +7,7 @@ papers_supporting: [acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe0
 permalink: /knowledge/topics/Tribolium/
 category: "Insects & Coleoptera"
 ---
+<!-- tealc:auto-start -->
 # Tribolium
 
 ## Current understanding
@@ -35,3 +36,4 @@ Additionally, the epistasis inference from line cross analysis depends on a simu
 ## Related on the Blackmon Lab site
 
 - [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/)
+<!-- tealc:auto-end -->

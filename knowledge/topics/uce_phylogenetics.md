@@ -7,6 +7,7 @@ papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/uce_phylogenetics/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # UCE Phylogenetics
 
 ## Current understanding
@@ -30,3 +31,4 @@ Readers may wish to consult foundational UCE methodology papers (e.g., Faircloth
 ## Related on the Blackmon Lab site
 
 - [Schweizer et al. 2024](/knowledge/papers/10_1093_jhered_esad076/)
+<!-- tealc:auto-end -->

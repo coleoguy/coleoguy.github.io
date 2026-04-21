@@ -7,6 +7,7 @@ papers_supporting: [cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a8744
 permalink: /knowledge/topics/Galliformes/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:auto-start -->
 # Galliformes
 
 ## Current understanding
@@ -37,3 +38,4 @@ Together, these findings frame Galliformes as an order where both ecological man
 ## Related on the Blackmon Lab site
 
 - [Domestication is associated with 2024](/knowledge/papers/2024_domestication/)
+<!-- tealc:auto-end -->

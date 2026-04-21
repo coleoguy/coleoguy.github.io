@@ -7,6 +7,7 @@ papers_supporting: [50ffa26858c4ac0cc040432925613a01d371c052da7ba3e3b12f8becd9ad
 permalink: /knowledge/topics/genetic_architecture/
 category: "Genome structure"
 ---
+<!-- tealc:auto-start -->
 # Genetic Architecture
 
 ## Current understanding
@@ -39,3 +40,4 @@ Additionally, the observation that compound traits behave additively while their
 ## Related on the Blackmon Lab site
 
 - [Assessing the opportunity for 2024](/knowledge/papers/2024_solanum/)
+<!-- tealc:auto-end -->

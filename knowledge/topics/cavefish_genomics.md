@@ -7,6 +7,7 @@ papers_supporting: [74e7bc680605ee2207a1f5cf31811de0fef84fed56357b0bbe6d6ba1443f
 permalink: /knowledge/topics/cavefish_genomics/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:auto-start -->
 # Cavefish Genomics
 
 ## Current understanding
@@ -40,3 +41,4 @@ The *arpin* result is correlative and threshold-dependent: classifying F_ST outl
 ## Related on the Blackmon Lab site
 
 - Paper permalink: [CaveCrawler (2022)](/knowledge/papers/2022_cave_crawler/)
+<!-- tealc:auto-end -->

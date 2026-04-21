@@ -7,6 +7,7 @@ papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114
 permalink: /knowledge/topics/isolation_by_distance/
 category: "Population genetics"
 ---
+<!-- tealc:auto-start -->
 # Isolation By Distance
 
 ## Current understanding
@@ -41,3 +42,4 @@ The quantitative findings above all come from a single simulation framework: a 1
 ## Related on the Blackmon Lab site
 
 - [Hancock & Blackmon 2020](/knowledge/papers/2020_ghost_of_a_structured/)
+<!-- tealc:auto-end -->

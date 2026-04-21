@@ -7,6 +7,7 @@ papers_supporting: [2868f9fb2c04a641393569fdd996eb3a6385c0c5ef19eff83448aea96d7c
 permalink: /knowledge/topics/meiotic_drive/
 category: "Sex chromosomes"
 ---
+<!-- tealc:auto-start -->
 # Meiotic Drive
 
 ## Current understanding
@@ -37,3 +38,4 @@ Despite this evolutionary lability in drive polarity, there is no detectable mac
 ## Related on the Blackmon Lab site
 
 - [Blackmon et al. 2019](/knowledge/papers/2019_mammals/)
+<!-- tealc:auto-end -->

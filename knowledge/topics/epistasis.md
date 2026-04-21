@@ -7,6 +7,7 @@ papers_supporting: [02a1144372eea7637a416bdecad69c824db50c3d41a6f0df6417a02d719d
 permalink: /knowledge/topics/epistasis/
 category: "Quantitative genetics & epistasis"
 ---
+<!-- tealc:auto-start -->
 # Epistasis
 
 ## Current understanding
@@ -60,3 +61,4 @@ Together, these results suggest that epistasis in quantitative traits is (1) mor
 - [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/)
 - [Assessing the opportunity for 2024](/knowledge/papers/2024_solanum/)
 - [Wright was right: leveraging 2024](/knowledge/papers/2024_wright/)
+<!-- tealc:auto-end -->

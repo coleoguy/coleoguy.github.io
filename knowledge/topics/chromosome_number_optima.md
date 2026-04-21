@@ -7,6 +7,7 @@ papers_supporting: [fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3
 permalink: /knowledge/topics/chromosome_number_optima/
 category: "Karyotype evolution"
 ---
+<!-- tealc:auto-start -->
 # Chromosome number optima
 
 ## Current understanding
@@ -35,3 +36,4 @@ No direct contradictions exist among the currently folded-in findings. However, 
 ## Related on the Blackmon Lab site
 
 - [Sex chromosome evolution](/sex-chromosome-evolution.html)
+<!-- tealc:auto-end -->

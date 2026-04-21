@@ -7,6 +7,7 @@ papers_supporting: [1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba
 permalink: /knowledge/topics/chromosome_number_evolution/
 category: "Karyotype evolution"
 ---
+<!-- tealc:auto-start -->
 # Chromosome number evolution
 
 ## Current understanding
@@ -86,3 +87,4 @@ Across a broader insect phylogeny, phylogenetic comparative analyses find no sig
 - [Blackmon et al. 2019](/knowledge/papers/2019_mammals/)
 - [Jonika et al. 2020](/knowledge/papers/2020_microsats/)
 - [Sylvester et al. 2020](/knowledge/papers/2020_polyneoptera/)
+<!-- tealc:auto-end -->
