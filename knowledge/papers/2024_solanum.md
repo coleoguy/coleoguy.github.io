@@ -1,0 +1,57 @@
+---
+layout: default
+title: "2024 solanum"
+doi: 
+fingerprint_sha256: 50ffa26858c4ac0cc040432925613a01d371c052da7ba3e3b12f8becd9ade8b0
+authors: ""
+journal: ""
+year: 
+topics: [epistasis, genetic_architecture, line_cross_analysis, trait_definition]
+tier: canon
+ingested_at: 2026-04-21T19:33:23.982501+00:00
+permalink: /knowledge/papers/2024_solanum/
+---
+
+# 2024 solanum
+
+## Summary
+
+_Ingested 2026-04-21. 3 findings extracted and verified._
+
+## Findings worth citing
+
+<a id="finding-1"></a>
+### Finding 1 — Four of eight morphological traits in S. pennellii × S. lycopersicum crosses had genetic architectures dominated by epistatic effects (>50% contribution), indicating limited accessibility to selection for these traits.
+
+> Four traits (leaf perimeter-area ratio, leaf perimeter, leaf width, and leaf area) had an epistatic contribution greater than 0.5, meaning that their genetic architectures were dominated by epistatic effects.
+— p. 12
+
+*Why this is citable:* Quantifies the prevalence of epistasis in morphological trait divergence between wild and domesticated tomato, supporting claims about epistasis being common in interspecific trait divergence.
+
+*Counter / limitation:* Based on a small cohort set (five cohorts) from only two parental strains; LCA can infer epistasis arising from novel multi-locus genotypes created by crossing rather than from epistasis experienced during divergence.
+
+*Topics:* [epistasis](/knowledge/topics/epistasis/), [genetic_architecture](/knowledge/topics/genetic_architecture/)
+
+<a id="finding-2"></a>
+### Finding 2 — Compound traits (ratios of elemental traits) can show different genetic architectures than their component traits, as leaf width-length ratio was purely additive despite leaf width being dominated by epistatic and maternal effects.
+
+> we found that divergence in the elemental trait of leaf width was dominated by epistatic effects (63% of total composite genetic effects) and to a lesser extent exhibited maternal effects (37% of total composite genetic effects). In contrast, the elemental trait of leaf length was composed of only autosomal additive effects. Finally, when we compare this to the compound trait of leaf width-length ratio we see that it, like leaf length, is dominated by additive effects
+— p. 13
+
+*Why this is citable:* Raises a methodological concern about how trait definition impacts inference of genetic architecture, relevant for citation in studies analyzing ratio or compound morphometric traits.
+
+*Counter / limitation:* This is a single data point (N=1 compound trait comparison) from one cross; the authors themselves acknowledge a systematic study is needed to determine whether this pattern is typical.
+
+*Topics:* [genetic_architecture](/knowledge/topics/genetic_architecture/), [trait_definition](/knowledge/topics/trait_definition/)
+
+<a id="finding-3"></a>
+### Finding 3 — Line cross analysis using the information-theoretic approach with a small cohort set (five cohorts: P1, P2, F2, BC1, rBC2) allows estimation of ten composite genetic effects including three additive, two dominance, and five epistatic types.
+
+> We include both parental cohorts (P1 and P2), an F2 cohort, and two backcrosses (BC1 and rBC2), allowing us to make inferences for ten different genetic effects. Effects include three types of additive genetic effects (autosomal additive, cytotype additive, and maternal effect additive), two types of dominance genetic effects (autosomal dominance and maternal effect dominance), and ﬁve types of epistatic interactions
+— p. 6
+
+*Why this is citable:* Documents the resolution of LCA with a minimal cohort design, useful for methodological citations when justifying experimental designs in quantitative genetics studies of interspecific crosses.
+
+*Counter / limitation:* This minimal cohort set cannot estimate higher-order epistatic interactions beyond two-partner effects, and small sample sizes within cohorts may reduce power to detect composite effects (as seen with areal ratio).
+
+*Topics:* [line_cross_analysis](/knowledge/topics/line_cross_analysis/), [genetic_architecture](/knowledge/topics/genetic_architecture/)
