@@ -19,7 +19,7 @@ This bias is not a generic consequence of shallow divergences (low TD/ND ratios)
 
 ## Supporting evidence
 
-Quantitative simulation under a 10-deme linear stepping-stone model demonstrates that SNAPP overestimates divergence times between end-deme-derived species by approximately 700% when TD/ND = 1 and migration is low (m = 0.001). See [2020 ghost of a structured, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1) for full details.
+Quantitative simulation under a 10-deme linear stepping-stone model demonstrates that SNAPP overestimates divergence times between end-deme-derived species by approximately 700% when TD/ND = 1 and migration is low (m = 0.001). See [Hancock & Blackmon 2020, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1) for full details.
 
 ## Contradictions / open disagreements
 
@@ -33,4 +33,4 @@ The 700% overestimation result is specific to SNAPP and a particular simulation 
 
 ## Related on the Blackmon Lab site
 
-- [Ghost of a Structured Ancestral Population (paper page)](/knowledge/papers/2020_ghost_of_a_structured/)
+- [Hancock & Blackmon 2020](/knowledge/papers/2020_ghost_of_a_structured/)

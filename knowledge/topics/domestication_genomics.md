@@ -17,7 +17,7 @@ Work in Galliformes — the bird order that includes chickens, turkeys, quail, a
 
 ## Supporting evidence
 
-The central quantitative finding comes from a phylogenetically corrected regression in Galliformes: [2024 domestication, Finding 1](/knowledge/papers/2024_domestication/#finding-1) reports a significant association between domestication status and interspecific reproductive compatibility (F₁,₇₄ = 5.43, R² = 0.06, P = 0.02). The domestication index used in this analysis was derived from text-mining an aviculture magazine, offering a continuous proxy for degree of domestication rather than a simple binary classification.
+The central quantitative finding comes from a phylogenetically corrected regression in Galliformes: [Domestication is associated with 2024, Finding 1](/knowledge/papers/2024_domestication/#finding-1) reports a significant association between domestication status and interspecific reproductive compatibility (F₁,₇₄ = 5.43, R² = 0.06, P = 0.02). The domestication index used in this analysis was derived from text-mining an aviculture magazine, offering a continuous proxy for degree of domestication rather than a simple binary classification.
 
 ## Contradictions / open disagreements
 

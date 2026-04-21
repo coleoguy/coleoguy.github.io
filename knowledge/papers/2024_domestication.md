@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2024 domestication"
+title: "Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes)"
 doi: 
 fingerprint_sha256: cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T19:12:07.181997+00:00
 permalink: /knowledge/papers/2024_domestication/
 ---
 
-# 2024 domestication
+# Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes)
 
 ## Summary
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2022 why not"
+title: "Why not Y naught"
 doi: 
 fingerprint_sha256: a4b0b03e15616954490c13ea4d103ee11a9801d0bd20d37a97376a3d936114eb
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T19:05:03.191719+00:00
 permalink: /knowledge/papers/2022_why_not/
 ---
 
-# 2022 why not
+# Why not Y naught
 
 ## Summary
 

@@ -13,13 +13,13 @@ category: "Quantitative genetics & epistasis"
 
 How a trait is defined and measured is not a neutral methodological choice — it can fundamentally reshape inferences about the underlying genetic architecture. A key distinction in quantitative genetics is between **elemental traits** (directly measured quantities, such as leaf width or leaf length) and **compound traits** (derived quantities, typically ratios or indices, such as leaf width-length ratio). These two classes of trait can yield strikingly different pictures of the same biological variation even when they are computed from the same raw measurements.
 
-Evidence from a cross between *Solanum* species illustrates this concretely. Leaf width, an elemental trait, was dominated by epistatic effects (63% of total composite genetic effects) with a substantial maternal component (37%), while leaf length was explained entirely by autosomal additive effects. Crucially, the compound trait — leaf width-length ratio — resembled leaf length rather than leaf width: it too was dominated by additive effects, effectively masking the epistatic and maternal signals present in one of its components ([2024 solanum, Finding 1](/knowledge/papers/2024_solanum/#finding-1)). This suggests that ratio-based trait definitions can arithmetically cancel or dilute non-additive genetic signals that are real and detectable in the component measurements.
+Evidence from a cross between *Solanum* species illustrates this concretely. Leaf width, an elemental trait, was dominated by epistatic effects (63% of total composite genetic effects) with a substantial maternal component (37%), while leaf length was explained entirely by autosomal additive effects. Crucially, the compound trait — leaf width-length ratio — resembled leaf length rather than leaf width: it too was dominated by additive effects, effectively masking the epistatic and maternal signals present in one of its components ([Assessing the opportunity for 2024, Finding 1](/knowledge/papers/2024_solanum/#finding-1)). This suggests that ratio-based trait definitions can arithmetically cancel or dilute non-additive genetic signals that are real and detectable in the component measurements.
 
 The practical implication is significant for any study that uses morphometric ratios or shape indices as phenotypes in QTL mapping, comparative analyses, or genomic prediction: the genetic architecture inferred may be an artifact of trait operationalization rather than a reflection of the biology. Researchers should consider analyzing both elemental and compound forms of a trait whenever possible, and should be cautious about interpreting additivity in ratio traits as evidence that the underlying biology is purely additive.
 
 ## Supporting evidence
 
-- [2024 solanum, Finding 1](/knowledge/papers/2024_solanum/#finding-1) — Leaf width-length ratio showed purely additive genetic architecture despite leaf width being dominated by epistatic (63%) and maternal (37%) effects, demonstrating that compound trait definition can obscure non-additive signals present in elemental components.
+- [Assessing the opportunity for 2024, Finding 1](/knowledge/papers/2024_solanum/#finding-1) — Leaf width-length ratio showed purely additive genetic architecture despite leaf width being dominated by epistatic (63%) and maternal (37%) effects, demonstrating that compound trait definition can obscure non-additive signals present in elemental components.
 
 ## Contradictions / open disagreements
 
@@ -32,4 +32,4 @@ The current evidence base consists of a single compound trait comparison from on
 
 ## Related on the Blackmon Lab site
 
-- [2024 Solanum paper page](/knowledge/papers/2024_solanum/)
+- [Assessing the opportunity for 2024](/knowledge/papers/2024_solanum/)

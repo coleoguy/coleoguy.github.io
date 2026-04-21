@@ -13,13 +13,13 @@ category: "Bioinformatics & tools"
 
 Model organism databases serve as community resources that aggregate multi-study datasets — transcriptomics, population genetics, functional annotation, and genome architecture — into a unified, queryable interface. By centralizing data across experiments, these databases enable cross-study comparisons that individual analyses cannot support, and they lower the barrier for researchers who lack specialized bioinformatics expertise.
 
-A recent example of this approach is CaveCrawler, a Shiny-based web analysis suite built around *Astyanax mexicanus* (the Mexican tetra), a leading model for studying the evolution of cave-associated traits. CaveCrawler integrates transcriptomic and population genetic data from multiple cavefish and surface-fish populations, enriches them with Gene Ontology (GO) term information, and includes genome architecture data — all accessible through an interactive browser interface. The tool was explicitly designed to support "unique biological inferences from cross-study patterns," recognizing that individual datasets are most powerful when interpreted in a shared analytical context. [2022 cave crawler, Finding 1](/knowledge/papers/2022_cave_crawler/#finding-1)
+A recent example of this approach is CaveCrawler, a Shiny-based web analysis suite built around *Astyanax mexicanus* (the Mexican tetra), a leading model for studying the evolution of cave-associated traits. CaveCrawler integrates transcriptomic and population genetic data from multiple cavefish and surface-fish populations, enriches them with Gene Ontology (GO) term information, and includes genome architecture data — all accessible through an interactive browser interface. The tool was explicitly designed to support "unique biological inferences from cross-study patterns," recognizing that individual datasets are most powerful when interpreted in a shared analytical context. [Perry et al. 2022, Finding 1](/knowledge/papers/2022_cave_crawler/#finding-1)
 
 This architecture — a lightweight, interactive front-end (Shiny) wrapping curated multi-source data — reflects a broader trend in model organism informatics: prioritizing accessibility and biological interpretability over raw data volume.
 
 ## Supporting evidence
 
-- **CaveCrawler (*A. mexicanus*)** — Integrates population genetics, transcriptomics, GO annotations, and genome architecture data across multiple Mexican tetra populations in a Shiny web application. [2022 cave crawler, Finding 1](/knowledge/papers/2022_cave_crawler/#finding-1)
+- **CaveCrawler (*A. mexicanus*)** — Integrates population genetics, transcriptomics, GO annotations, and genome architecture data across multiple Mexican tetra populations in a Shiny web application. [Perry et al. 2022, Finding 1](/knowledge/papers/2022_cave_crawler/#finding-1)
 
 ## Contradictions / open disagreements
 
@@ -34,4 +34,4 @@ Additionally, CaveCrawler is species-specific; whether its design principles gen
 
 ## Related on the Blackmon Lab site
 
-- [CaveCrawler paper page](/knowledge/papers/2022_cave_crawler/)
+- [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/)

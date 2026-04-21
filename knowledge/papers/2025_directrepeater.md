@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2025 DirectRepeateR"
+title: "DirectRepeateR: An R package for annotating direct repeats in genome assemblies"
 doi: 
 fingerprint_sha256: 3780c17c37d408cf1151745b75b70eea040ad4a9fa24b5d3ba4a327fa493df88
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T20:45:55.807686+00:00
 permalink: /knowledge/papers/2025_directrepeater/
 ---
 
-# 2025 DirectRepeateR
+# DirectRepeateR: An R package for annotating direct repeats in genome assemblies
 
 ## Summary
 

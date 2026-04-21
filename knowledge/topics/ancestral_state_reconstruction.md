@@ -13,13 +13,13 @@ category: "Quantitative genetics & epistasis"
 
 Ancestral state reconstruction (ASR) is a phylogenetic toolkit for inferring the evolutionary history of discrete or continuous traits across a clade. A central practical challenge is model choice: whether to allow trait transitions in one direction only (irreversible model) or in both directions (reversible model), and how that choice shapes inferred origin counts and the apparent lability of a character.
 
-A vivid illustration comes from the evolution of haplodiploidy in Acari (mites and ticks). Under a one-rate irreversible model — permitting only transitions from diplodiploidy to haplodiploidy — ASR recovers a mean of **12.9 independent origins** of haplodiploidy. Relaxing the constraint to a two-rate model that also allows reversions yields a lower mean of **7.9 origins**, because some internal nodes are reinterpreted as secondary losses rather than independent gains. Despite the apparent numerical support for reversibility, the evidence for actual transitions *back* to diplodiploidy is limited: the signal appears to be driven largely by a single deeply-nested haplodiploid taxon (*Parasitidae* sp.), and removing it shifts model preference back toward irreversibility ([2015 haplo, Finding 1](/knowledge/papers/2015_haplo/#finding-1)).
+A vivid illustration comes from the evolution of haplodiploidy in Acari (mites and ticks). Under a one-rate irreversible model — permitting only transitions from diplodiploidy to haplodiploidy — ASR recovers a mean of **12.9 independent origins** of haplodiploidy. Relaxing the constraint to a two-rate model that also allows reversions yields a lower mean of **7.9 origins**, because some internal nodes are reinterpreted as secondary losses rather than independent gains. Despite the apparent numerical support for reversibility, the evidence for actual transitions *back* to diplodiploidy is limited: the signal appears to be driven largely by a single deeply-nested haplodiploid taxon (*Parasitidae* sp.), and removing it shifts model preference back toward irreversibility ([Blackmon et al. 2015, Finding 1](/knowledge/papers/2015_haplo/#finding-1)).
 
 This example highlights two recurring lessons in ASR practice: (1) origin counts are sensitive to which transitions the model permits, and (2) a handful of phylogenetically anomalous tips can disproportionately influence inferences about reversibility.
 
 ## Supporting evidence
 
-- **Model dependence of origin counts in Acari.** The estimated number of independent origins of haplodiploidy ranges from 7.9 (two-rate model) to 12.9 (one-rate model), with only limited support for the hypothesis that reversions from haplodiploidy back to diplodiploidy are possible. ([2015 haplo, Finding 1](/knowledge/papers/2015_haplo/#finding-1))
+- **Model dependence of origin counts in Acari.** The estimated number of independent origins of haplodiploidy ranges from 7.9 (two-rate model) to 12.9 (one-rate model), with only limited support for the hypothesis that reversions from haplodiploidy back to diplodiploidy are possible. ([Blackmon et al. 2015, Finding 1](/knowledge/papers/2015_haplo/#finding-1))
 
 ## Contradictions / open disagreements
 
@@ -33,4 +33,4 @@ The two models applied to Acari haplodiploidy yield divergent origin counts (7.9
 
 ## Related on the Blackmon Lab site
 
-- [2015 haplo — paper page](/knowledge/papers/2015_haplo/)
+- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/)

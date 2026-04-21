@@ -4,6 +4,7 @@ title: "Software Tools"
 topic_slug: software_tools
 last_updated: 2026-04-21T20:48:02.379515+00:00
 papers_supporting: [3780c17c37d408cf1151745b75b70eea040ad4a9fa24b5d3ba4a327fa493df88]
+category: "Bioinformatics & tools"
 permalink: /knowledge/topics/software_tools/
 ---
 # Software Tools
@@ -16,7 +17,7 @@ Applied to *Aedes aegypti*, DirectRepeateR revealed a striking genome-wide deple
 
 ## Supporting evidence
 
-[2025 DirectRepeateR, Finding 1](/knowledge/papers/2025_directrepeater/#finding-1) reports that in the *A. aegypti* genome, 5,782 out of 80,498 exons were flanked by direct repeats, whereas the Monte Carlo null model predicted just under 40,000 — a ~7-fold deficit that supports the inference of purifying selection against SSA-prone genomic configurations near protein-coding sequence.
+[DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/2025_directrepeater/#finding-1) reports that in the *A. aegypti* genome, 5,782 out of 80,498 exons were flanked by direct repeats, whereas the Monte Carlo null model predicted just under 40,000 — a ~7-fold deficit that supports the inference of purifying selection against SSA-prone genomic configurations near protein-coding sequence.
 
 ## Contradictions / open disagreements
 
@@ -29,4 +30,4 @@ The analysis underlying Finding 1 is currently confined to a single species (*A.
 
 ## Related on the Blackmon Lab site
 
-- [2025 DirectRepeateR paper page](/knowledge/papers/2025_directrepeater/)
+- [DirectRepeateR: An R package 2025](/knowledge/papers/2025_directrepeater/)

@@ -13,13 +13,13 @@ category: "Karyotype evolution"
 
 Centromeres are the chromosomal regions that anchor the kinetochore and mediate accurate segregation during cell division, yet they are paradoxically among the most rapidly evolving portions of eukaryotic genomes. A key axis of variation in centromere organization is whether chromosomes are **monocentric** (a single discrete centromeric domain) or **holocentric** (centromeric activity distributed along the entire chromosome length). This architectural difference has downstream consequences not only for chromosome mechanics but also for the tempo at which repetitive sequences — including microsatellites — evolve across the genome.
 
-Comparative analyses in insects reveal a striking pattern: lineages with monocentric chromosomes evolve microsatellite content at significantly higher rates than lineages with holocentric chromosomes, even though the two groups do not differ in their total microsatellite content at any given point in time. Phylogenetic model comparison across 100 posterior trees overwhelmingly favored a two-rate model (99 of 100 trees), with monocentric lineages consistently showing the elevated rate [2020 microsats, Finding 1](/knowledge/papers/2020_microsats/#finding-1). This suggests that centromere type shapes the *dynamics* of repetitive DNA turnover rather than its equilibrium abundance — a distinction important for understanding how centromeric sequences drive or respond to genome change over evolutionary time.
+Comparative analyses in insects reveal a striking pattern: lineages with monocentric chromosomes evolve microsatellite content at significantly higher rates than lineages with holocentric chromosomes, even though the two groups do not differ in their total microsatellite content at any given point in time. Phylogenetic model comparison across 100 posterior trees overwhelmingly favored a two-rate model (99 of 100 trees), with monocentric lineages consistently showing the elevated rate [Jonika et al. 2020, Finding 1](/knowledge/papers/2020_microsats/#finding-1). This suggests that centromere type shapes the *dynamics* of repetitive DNA turnover rather than its equilibrium abundance — a distinction important for understanding how centromeric sequences drive or respond to genome change over evolutionary time.
 
 One mechanistic interpretation is that the highly localized centromere of monocentric chromosomes creates a hotspot for rapid sequence evolution, possibly through centromere-drive or biased gene conversion, whereas the distributed centromere activity of holocentric chromosomes buffers against rapid change at any single locus. However, the causal arrow remains unclear: centromere architecture could drive microsatellite dynamics, or both could respond to shared genomic or life-history factors.
 
 ## Supporting evidence
 
-- [2020 microsats, Finding 1](/knowledge/papers/2020_microsats/#finding-1): In a phylogenetic comparative study of insects, 99 of 100 posterior trees supported a two-rate model of microsatellite evolution, with consistently higher rates in monocentric lineages. Total microsatellite content did not differ significantly between monocentric and holocentric groups, isolating the effect to evolutionary rate rather than standing abundance.
+- [Jonika et al. 2020, Finding 1](/knowledge/papers/2020_microsats/#finding-1): In a phylogenetic comparative study of insects, 99 of 100 posterior trees supported a two-rate model of microsatellite evolution, with consistently higher rates in monocentric lineages. Total microsatellite content did not differ significantly between monocentric and holocentric groups, isolating the effect to evolutionary rate rather than standing abundance.
 
 ## Contradictions / open disagreements
 
@@ -32,4 +32,4 @@ The two-rate result deserves cautious interpretation. The authors of the 2020 mi
 
 ## Related on the Blackmon Lab site
 
-- [2020 Microsatellites Paper](/knowledge/papers/2020_microsats/)
+- [Jonika et al. 2020](/knowledge/papers/2020_microsats/)

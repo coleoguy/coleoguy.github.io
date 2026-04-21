@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2024 drift carnivores"
+title: "Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora"
 doi: 
 fingerprint_sha256: f9fb8e258c7b62f338b299e9c6fcbeb81259e1aef5f75ea3c782100d90b4a19c
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T19:25:29.998059+00:00
 permalink: /knowledge/papers/2024_drift_carnivores/
 ---
 
-# 2024 drift carnivores
+# Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora
 
 ## Summary
 

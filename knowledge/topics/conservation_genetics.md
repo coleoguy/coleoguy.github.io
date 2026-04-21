@@ -13,13 +13,13 @@ category: "Population genetics"
 
 A recurring challenge in conservation genetics is accurately translating molecular diversity estimates into biologically meaningful parameters — particularly effective population size (Ne) — that can guide management decisions. A key assumption underlying many Ne estimators is that sampled populations are panmictic, but real populations are often spatially structured, fragmented, or distributed across environmental gradients. Violating this assumption can produce severely misleading results.
 
-One well-documented source of bias is **ancestral isolation-by-distance (IBD)**: shared ancestry accumulated across a geographically structured range inflates pairwise nucleotide divergence (π₁₂) between sampled populations. When a standard panmictic formula is applied to that divergence to back-calculate Ne, the resulting estimate can far exceed the true census size. For example, under low but nonzero migration (m = 0.001) in a linear stepping-stone model, end-of-range species show estimated ancestral Ne of roughly 7,370 — more than **seven times** the true census size of 1,000 individuals — while centrally located populations are far less affected (Ne ≈ 1,255) [2020 ghost of a structured, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1). This "ghost" of historical structure lingers in coalescent genealogies long after the demographic event that created it, making it invisible to approaches that treat all divergence as attributable to contemporary population size alone.
+One well-documented source of bias is **ancestral isolation-by-distance (IBD)**: shared ancestry accumulated across a geographically structured range inflates pairwise nucleotide divergence (π₁₂) between sampled populations. When a standard panmictic formula is applied to that divergence to back-calculate Ne, the resulting estimate can far exceed the true census size. For example, under low but nonzero migration (m = 0.001) in a linear stepping-stone model, end-of-range species show estimated ancestral Ne of roughly 7,370 — more than **seven times** the true census size of 1,000 individuals — while centrally located populations are far less affected (Ne ≈ 1,255) [Hancock & Blackmon 2020, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1). This "ghost" of historical structure lingers in coalescent genealogies long after the demographic event that created it, making it invisible to approaches that treat all divergence as attributable to contemporary population size alone.
 
 For conservation practitioners, the implication is significant: populations at the **edges of species' ranges** — which are often of particular conservation interest due to their potential adaptive significance or fragmentation — are precisely those most likely to yield inflated Ne estimates when standard methods are used without accounting for spatial structure. Acting on such estimates could lead managers to conclude that a population is much larger and more genetically diverse than it truly is, potentially understating extinction risk.
 
 ## Supporting evidence
 
-- [2020 ghost of a structured, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1): In a simulated stepping-stone model (TD/ND = 50, m = 0.001, Nc = 1,000), ancestral IBD drives estimated Ne for end-of-range populations to ~7,370, a roughly 7-fold inflation over census size. Center populations are comparatively robust (Ne ≈ 1,255), highlighting that geographic sampling position matters enormously for coalescent-based Ne inference.
+- [Hancock & Blackmon 2020, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1): In a simulated stepping-stone model (TD/ND = 50, m = 0.001, Nc = 1,000), ancestral IBD drives estimated Ne for end-of-range populations to ~7,370, a roughly 7-fold inflation over census size. Center populations are comparatively robust (Ne ≈ 1,255), highlighting that geographic sampling position matters enormously for coalescent-based Ne inference.
 
 ## Contradictions / open disagreements
 
@@ -33,4 +33,4 @@ The inflation documented above is a consequence of applying a **panmictic estima
 
 ## Related on the Blackmon Lab site
 
-- [Ghost of a Structured Past (paper page)](/knowledge/papers/2020_ghost_of_a_structured/)
+- [Hancock & Blackmon 2020](/knowledge/papers/2020_ghost_of_a_structured/)

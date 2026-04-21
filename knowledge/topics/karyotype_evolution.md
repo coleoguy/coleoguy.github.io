@@ -23,13 +23,13 @@ New chromosome-level genome assemblies are also proving instrumental in confirmi
 
 ## Supporting evidence
 
-**Conserved karyotype in Scarabaeidae.** The chromosome-level assembly of the endangered long-armed scarab *Cheirotonus formosanus* yielded 10 primary large scaffolds — 9 putative autosomes plus an X chromosome — directly consistent with the 2n=20 (9AA+XY) modal karyotype documented across the majority of Coleoptera: "The final corrected contact map displayed 10 primary large scaffolds, including 9 autosomes and X chromosomes. This genetic architecture is highly consistent with known cytogenetic data for the group." See [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab, Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1).
+**Conserved karyotype in Scarabaeidae.** The chromosome-level assembly of the endangered long-armed scarab *Cheirotonus formosanus* yielded 10 primary large scaffolds — 9 putative autosomes plus an X chromosome — directly consistent with the 2n=20 (9AA+XY) modal karyotype documented across the majority of Coleoptera: "The final corrected contact map displayed 10 primary large scaffolds, including 9 autosomes and X chromosomes. This genetic architecture is highly consistent with known cytogenetic data for the group." See [Chien et al. 2026, Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1).
 
-**Quantitative Y chromosome turnover in Adephaga.** Despite this conserved backdrop, Y chromosomes in Adephaga are gained and lost at ~0.57 per 100 million years — in near-perfect balance — implying lability even within lineages sharing a broadly conserved autosomal architecture. At least 49% of Y chromosome gains co-occur with autosome number reductions, pointing to X-autosome fusions as a primary engine. See [2014d, Finding 1](/knowledge/papers/2014d/#finding-1).
+**Quantitative Y chromosome turnover in Adephaga.** Despite this conserved backdrop, Y chromosomes in Adephaga are gained and lost at ~0.57 per 100 million years — in near-perfect balance — implying lability even within lineages sharing a broadly conserved autosomal architecture. At least 49% of Y chromosome gains co-occur with autosome number reductions, pointing to X-autosome fusions as a primary engine. See [Blackmon & Demuth 2014, Finding 1](/knowledge/papers/2014d/#finding-1).
 
-**No karyotype-diversification link in mammals.** BiSSE analysis of mammalian phylogenies finds that matched versus mismatched karyotype morphology has no detectable effect on speciation or extinction rates: "mammals with matched or mismatched karyotypes do not have detectably different net diversification rates." See [2019-mammals, Finding 1](/knowledge/papers/2019_mammals/#finding-1).
+**No karyotype-diversification link in mammals.** BiSSE analysis of mammalian phylogenies finds that matched versus mismatched karyotype morphology has no detectable effect on speciation or extinction rates: "mammals with matched or mismatched karyotypes do not have detectably different net diversification rates." See [Blackmon et al. 2019, Finding 1](/knowledge/papers/2019_mammals/#finding-1).
 
-**Clade-specific rates of meiotic drive polarity switching.** Meiotic drive polarity transitions occur at strikingly different rates across mammalian subclades — mean waiting time ~10.8 million years in Cetartiodactyla versus a median of ~90.9 million years in Primates — quantifying the heterogeneity of this chromosomal-change mechanism across the mammalian tree. See [2019-mammals, Finding 2](/knowledge/papers/2019_mammals/#finding-2).
+**Clade-specific rates of meiotic drive polarity switching.** Meiotic drive polarity transitions occur at strikingly different rates across mammalian subclades — mean waiting time ~10.8 million years in Cetartiodactyla versus a median of ~90.9 million years in Primates — quantifying the heterogeneity of this chromosomal-change mechanism across the mammalian tree. See [Blackmon et al. 2019, Finding 2](/knowledge/papers/2019_mammals/#finding-2).
 
 ## Contradictions / open disagreements
 
@@ -47,6 +47,6 @@ Large-scale cytogenetic databases or comparative genomic surveys spanning multip
 
 ## Related on the Blackmon Lab site
 
-- [Chromosome-Level Reference Genome paper page](/knowledge/papers/10_1002_ece3_73483/)
-- [2014d paper page](/knowledge/papers/2014d/)
-- [2019-mammals paper page](/knowledge/papers/2019_mammals/)
+- [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
+- [Blackmon & Demuth 2014](/knowledge/papers/2014d/)
+- [Blackmon et al. 2019](/knowledge/papers/2019_mammals/)

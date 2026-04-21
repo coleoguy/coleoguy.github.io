@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2024 drift beetles"
+title: "Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera"
 doi: 
 fingerprint_sha256: fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3d80e
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T19:18:06.043241+00:00
 permalink: /knowledge/papers/2024_drift_beetles/
 ---
 
-# 2024 drift beetles
+# Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera
 
 ## Summary
 

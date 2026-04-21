@@ -13,11 +13,11 @@ category: "Speciation & macroevolution"
 
 Postzygotic isolation refers to reproductive barriers that act after fertilization, reducing the fitness or fertility of hybrid offspring. It is a key component of speciation, and its strength generally increases with phylogenetic divergence between hybridizing lineages. In birds, the Galliformes provide a particularly informative system for studying the relationship between divergence time and hybrid outcomes, because domestication history has generated a large number of documented hybridization events spanning a wide range of divergence times.
 
-At the extreme end of avian hybridization distance, inter-family crosses within Galliformes — specifically between the helmeted guineafowl (*Numida meleagris*, family Numididae) and various Phasianidae species — appear to represent the most diverged known avian hybrids. These pairs share an estimated divergence time of ~51 million years (MY) based on TimeTree estimates, and all five documented inter-family crosses produced sterile offspring. This pattern is consistent with the general expectation that postzygotic isolation is nearly complete at deep phylogenetic distances, where accumulated genomic incompatibilities (Bateson–Dobzhansky–Muller incompatibilities and related mechanisms) would preclude normal gametogenesis in hybrids. See [2024 domestication, Finding 1](/knowledge/papers/2024_domestication/#finding-1).
+At the extreme end of avian hybridization distance, inter-family crosses within Galliformes — specifically between the helmeted guineafowl (*Numida meleagris*, family Numididae) and various Phasianidae species — appear to represent the most diverged known avian hybrids. These pairs share an estimated divergence time of ~51 million years (MY) based on TimeTree estimates, and all five documented inter-family crosses produced sterile offspring. This pattern is consistent with the general expectation that postzygotic isolation is nearly complete at deep phylogenetic distances, where accumulated genomic incompatibilities (Bateson–Dobzhansky–Muller incompatibilities and related mechanisms) would preclude normal gametogenesis in hybrids. See [Domestication is associated with 2024, Finding 1](/knowledge/papers/2024_domestication/#finding-1).
 
 ## Supporting evidence
 
-- **Sterility at maximum avian divergence:** The five inter-family hybridizations in the Galliformes dataset all involved *N. meleagris* × Phasianidae crosses at ~51 MY divergence, and all produced sterile offspring — establishing an empirical ceiling on avian inter-lineage hybridization with a clear postzygotic consequence. [2024 domestication, Finding 1](/knowledge/papers/2024_domestication/#finding-1)
+- **Sterility at maximum avian divergence:** The five inter-family hybridizations in the Galliformes dataset all involved *N. meleagris* × Phasianidae crosses at ~51 MY divergence, and all produced sterile offspring — establishing an empirical ceiling on avian inter-lineage hybridization with a clear postzygotic consequence. [Domestication is associated with 2024, Finding 1](/knowledge/papers/2024_domestication/#finding-1)
 
 ## Contradictions / open disagreements
 
@@ -30,4 +30,4 @@ One important caveat surrounds the 51 MY upper-bound figure itself. The source p
 
 ## Related on the Blackmon Lab site
 
-- [2024 domestication paper page](/knowledge/papers/2024_domestication/)
+- [Domestication is associated with 2024](/knowledge/papers/2024_domestication/)

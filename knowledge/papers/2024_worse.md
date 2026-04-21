@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2024 worse"
+title: "Worse than nothing at all: the inequality of fusions joining autosomes to the PAR and non-PAR portions of sex chromosomes"
 doi: 
 fingerprint_sha256: c6c1f45b84f53c5ec0361e367e8fab7bf3b8963db5c451a3256e09d2aed98732
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T19:37:12.957606+00:00
 permalink: /knowledge/papers/2024_worse/
 ---
 
-# 2024 worse
+# Worse than nothing at all: the inequality of fusions joining autosomes to the PAR and non-PAR portions of sex chromosomes
 
 ## Summary
 

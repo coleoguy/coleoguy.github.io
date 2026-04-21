@@ -15,7 +15,7 @@ Advances in long-read sequencing — particularly PacBio HiFi — have substanti
 
 ## Supporting evidence
 
-[Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern., Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1) establishes that HiFi sequencing can yield a high-quality reference genome from a single tiny insect preserved under suboptimal conditions. As the authors note: "The high quality of this genome is especially impressive given both the very small size of the organism and the fact that the specimen was not preserved under ideal circumstances (i.e. not snap frozen, stored at −20 °C rather than −80 °C)." This result is particularly relevant for conservation genomics contexts where ideal sample collection protocols cannot always be followed.
+[Schweizer et al. 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1) establishes that HiFi sequencing can yield a high-quality reference genome from a single tiny insect preserved under suboptimal conditions. As the authors note: "The high quality of this genome is especially impressive given both the very small size of the organism and the fact that the specimen was not preserved under ideal circumstances (i.e. not snap frozen, stored at −20 °C rather than −80 °C)." This result is particularly relevant for conservation genomics contexts where ideal sample collection protocols cannot always be followed.
 
 ## Contradictions / open disagreements
 
@@ -29,4 +29,4 @@ While the Mojave poppy bee case demonstrates feasibility, it represents a single
 
 ## Related on the Blackmon Lab site
 
-- [Mojave poppy bee reference genome paper](/knowledge/papers/10_1093_jhered_esad076/)
+- [Schweizer et al. 2024](/knowledge/papers/10_1093_jhered_esad076/)

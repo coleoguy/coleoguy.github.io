@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2024 wright"
+title: "Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution"
 doi: 
 fingerprint_sha256: 9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T20:33:57.904398+00:00
 permalink: /knowledge/papers/2024_wright/
 ---
 
-# 2024 wright
+# Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution
 
 ## Summary
 

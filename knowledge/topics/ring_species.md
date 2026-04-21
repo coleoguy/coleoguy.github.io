@@ -13,17 +13,17 @@ category: "Speciation & macroevolution"
 
 A ring species is a population distributed in a ring-like geographic arrangement in which terminal populations that meet at the 'closing' end of the ring are reproductively isolated from one another, even though gene flow connects them indirectly through the intervening chain of populations. The concept is significant for speciation biology because it offers a rare snapshot of gradual divergence rendered visible in space rather than time — in effect, an observable continuum between a single interbreeding population and two distinct species.
 
-The greenish warbler (*Phylloscopus trochiloides*) is widely regarded as the best-preserved empirical example. Six named subspecies form a loop around the Tibetan Plateau, and where two broadly distributed northern forms — *P. t. plumbeitarsus* and *P. t. viridanus* — meet in central Siberia, they overlap in sympatry without interbreeding, satisfying the core criterion of terminal reproductive isolation [2012a, Finding 1](/knowledge/papers/2012a/#finding-1). This case has made the greenish warbler the canonical touchstone against which other putative ring species are measured.
+The greenish warbler (*Phylloscopus trochiloides*) is widely regarded as the best-preserved empirical example. Six named subspecies form a loop around the Tibetan Plateau, and where two broadly distributed northern forms — *P. t. plumbeitarsus* and *P. t. viridanus* — meet in central Siberia, they overlap in sympatry without interbreeding, satisfying the core criterion of terminal reproductive isolation [Ring Species and Speciation 2012, Finding 1](/knowledge/papers/2012a/#finding-1). This case has made the greenish warbler the canonical touchstone against which other putative ring species are measured.
 
 It is worth noting, however, that "true" ring species meeting all the strict criteria are rare. Many initially proposed examples have been found, on closer inspection, to involve gaps in the ring, secondary contact zones, or other complications that blur the clean conceptual picture. The greenish warbler itself is not immune to such concerns (see below).
 
 ## Supporting evidence
 
-- The greenish warbler ring around the Tibetan Plateau, with sympatric non-interbreeding terminal subspecies in central Siberia, is cited as "perhaps the best remaining example of a ring species," making it the primary model system for testing ring-species theory in nature. [2012a, Finding 1](/knowledge/papers/2012a/#finding-1)
+- The greenish warbler ring around the Tibetan Plateau, with sympatric non-interbreeding terminal subspecies in central Siberia, is cited as "perhaps the best remaining example of a ring species," making it the primary model system for testing ring-species theory in nature. [Ring Species and Speciation 2012, Finding 1](/knowledge/papers/2012a/#finding-1)
 
 ## Contradictions / open disagreements
 
-A notable tension exists even within the greenish warbler example. Although the system is presented as demonstrating a continuous ring, a substantial distributional gap in northeastern China has been documented and attributed to recent deforestation. If the ring is not truly continuous, the system may represent a fragmented chain rather than a strict ring species, which would weaken inferences about unbroken clinal gene flow driving divergence. The claim of a "continuous ring" therefore requires qualification, and readers should consult primary empirical sources (e.g., Irwin et al. 2001; Irwin 2002) for full distributional data. [2012a, Finding 1](/knowledge/papers/2012a/#finding-1)
+A notable tension exists even within the greenish warbler example. Although the system is presented as demonstrating a continuous ring, a substantial distributional gap in northeastern China has been documented and attributed to recent deforestation. If the ring is not truly continuous, the system may represent a fragmented chain rather than a strict ring species, which would weaken inferences about unbroken clinal gene flow driving divergence. The claim of a "continuous ring" therefore requires qualification, and readers should consult primary empirical sources (e.g., Irwin et al. 2001; Irwin 2002) for full distributional data. [Ring Species and Speciation 2012, Finding 1](/knowledge/papers/2012a/#finding-1)
 
 ## Tealc's citation-neighborhood suggestions
 
@@ -33,4 +33,4 @@ A notable tension exists even within the greenish warbler example. Although the 
 
 ## Related on the Blackmon Lab site
 
-- [Paper: 2012a](/knowledge/papers/2012a/)
+- [Ring Species and Speciation 2012](/knowledge/papers/2012a/)

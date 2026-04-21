@@ -19,7 +19,7 @@ The magnitude of the bias depends on the ratio of divergence time to population 
 
 ## Supporting evidence
 
-- [2020 ghost of a structured, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1): Quantifies Ne inflation due to ancestral IBD in a stepping-stone model. At m = 0.001 and TD/ND = 50, end-species pairwise divergence yields Ne ≈ 7,370 versus a true Nc of 1,000, while center-species Ne rises only modestly to ~1,255. The inflation arises because the panmictic estimator (Ne = (π₁₂ − 2TD·μ) / 4μ) cannot distinguish within-deme coalescence from among-deme coalescence accumulated over structured history.
+- [Hancock & Blackmon 2020, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1): Quantifies Ne inflation due to ancestral IBD in a stepping-stone model. At m = 0.001 and TD/ND = 50, end-species pairwise divergence yields Ne ≈ 7,370 versus a true Nc of 1,000, while center-species Ne rises only modestly to ~1,255. The inflation arises because the panmictic estimator (Ne = (π₁₂ − 2TD·μ) / 4μ) cannot distinguish within-deme coalescence from among-deme coalescence accumulated over structured history.
 
 ## Contradictions / open disagreements
 
@@ -32,4 +32,4 @@ The primary tension is methodological rather than empirical: the Ne inflation do
 
 ## Related on the Blackmon Lab site
 
-- [Ghost of a Structured Past (paper page)](/knowledge/papers/2020_ghost_of_a_structured/)
+- [Hancock & Blackmon 2020](/knowledge/papers/2020_ghost_of_a_structured/)

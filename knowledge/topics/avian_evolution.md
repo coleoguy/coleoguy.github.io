@@ -11,13 +11,13 @@ category: "Speciation & macroevolution"
 
 ## Current understanding
 
-Birds have served as model organisms for studying speciation, and few cases have proven more illuminating than ring species — populations that demonstrate, in geographic space, the gradual accumulation of reproductive isolation that normally takes deep time to observe. The greenish warbler (*Phylloscopus trochiloides*) is the most cited living example of this phenomenon. Its six named subspecies are distributed in a ring around the Tibetan Plateau, and in central Siberia the two northernmost forms — *P. t. plumbeitarsus* and *P. t. viridanus* — meet in sympatry without interbreeding, effectively behaving as distinct species at their zone of secondary contact even though gene flow connects them through the rest of the ring. This system provides direct evidence that gradual divergence along a geographic gradient can yield complete reproductive isolation, illustrating speciation as a continuous rather than discrete process ([2012a, Finding 1](/knowledge/papers/2012a/#finding-1)).
+Birds have served as model organisms for studying speciation, and few cases have proven more illuminating than ring species — populations that demonstrate, in geographic space, the gradual accumulation of reproductive isolation that normally takes deep time to observe. The greenish warbler (*Phylloscopus trochiloides*) is the most cited living example of this phenomenon. Its six named subspecies are distributed in a ring around the Tibetan Plateau, and in central Siberia the two northernmost forms — *P. t. plumbeitarsus* and *P. t. viridanus* — meet in sympatry without interbreeding, effectively behaving as distinct species at their zone of secondary contact even though gene flow connects them through the rest of the ring. This system provides direct evidence that gradual divergence along a geographic gradient can yield complete reproductive isolation, illustrating speciation as a continuous rather than discrete process ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/2012a/#finding-1)).
 
 It is important to note, however, that the ring is not fully intact. A significant gap exists in northeastern China, likely the result of recent deforestation, meaning the supposedly unbroken chain of intermediate populations must be inferred rather than directly observed across the entire range. This caveat tempers the strength of the inference that can be drawn from the greenish warbler system alone.
 
 ## Supporting evidence
 
-- **Greenish warbler as ring species.** The six-subspecies ring around the Tibetan Plateau, with sympatric non-interbreeding at the northern terminus, is described as "perhaps the best remaining example of a ring species" — [2012a, Finding 1](/knowledge/papers/2012a/#finding-1).
+- **Greenish warbler as ring species.** The six-subspecies ring around the Tibetan Plateau, with sympatric non-interbreeding at the northern terminus, is described as "perhaps the best remaining example of a ring species" — [Ring Species and Speciation 2012, Finding 1](/knowledge/papers/2012a/#finding-1).
 
 ## Contradictions / open disagreements
 
@@ -31,4 +31,4 @@ The primary tension in this case study is internal: the finding presents the gre
 
 ## Related on the Blackmon Lab site
 
-- [Paper: 2012a](/knowledge/papers/2012a/)
+- [Ring Species and Speciation 2012](/knowledge/papers/2012a/)

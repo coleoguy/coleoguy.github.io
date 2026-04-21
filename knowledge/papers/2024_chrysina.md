@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2024 chrysina"
+title: "A reference quality genome assembly for the jewel scarab Chrysina gloriosa"
 doi: 
 fingerprint_sha256: 31776037050f6b89b93887fa1b80196fd30073325900b9b38adb091f0516948d
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T19:09:19.879957+00:00
 permalink: /knowledge/papers/2024_chrysina/
 ---
 
-# 2024 chrysina
+# A reference quality genome assembly for the jewel scarab Chrysina gloriosa
 
 ## Summary
 

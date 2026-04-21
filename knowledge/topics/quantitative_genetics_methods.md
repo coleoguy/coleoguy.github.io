@@ -13,13 +13,13 @@ category: "Quantitative genetics & epistasis"
 
 Line-cross analysis (LCA) is a foundational tool in quantitative genetics for decomposing the genetic architecture of trait differences between populations or species into additive, dominance, and epistatic components. The traditional approach uses joint-scaling tests with forward model selection — fitting progressively more complex models and retaining those that provide a significant improvement in fit. While widely used, this forward-selection framework does not account for model selection uncertainty, meaning that the chosen "best model" may be one of several plausible explanations for the data.
 
-A model-averaging framework known as SAGA (Scale-Averaged Genetic Architecture) addresses this limitation by computing Akaike weights across all candidate models and summarizing genetic effects via weighted averaging. Applying SAGA to a large corpus of published line-cross datasets reveals a meaningful gap between what traditional analyses report and what survives rigorous information-theoretic scrutiny. Roughly 19% of analyzed datasets yield no genetic effects that clear SAGA's thresholds — a variable-importance score above 0.5 and a 95% confidence interval excluding zero — suggesting that legacy forward-selection LCA carries a non-trivial risk of reporting effects that are not robustly supported [2024 wright, Finding 1](/knowledge/papers/2024_wright/#finding-1). Across the datasets that do meet these thresholds, the number of models included in the confidence model set spans an enormous range (1 to 2002), underscoring just how variable the degree of model uncertainty is across empirical datasets.
+A model-averaging framework known as SAGA (Scale-Averaged Genetic Architecture) addresses this limitation by computing Akaike weights across all candidate models and summarizing genetic effects via weighted averaging. Applying SAGA to a large corpus of published line-cross datasets reveals a meaningful gap between what traditional analyses report and what survives rigorous information-theoretic scrutiny. Roughly 19% of analyzed datasets yield no genetic effects that clear SAGA's thresholds — a variable-importance score above 0.5 and a 95% confidence interval excluding zero — suggesting that legacy forward-selection LCA carries a non-trivial risk of reporting effects that are not robustly supported [Wright was right: leveraging 2024, Finding 1](/knowledge/papers/2024_wright/#finding-1). Across the datasets that do meet these thresholds, the number of models included in the confidence model set spans an enormous range (1 to 2002), underscoring just how variable the degree of model uncertainty is across empirical datasets.
 
 The practical implication is that researchers re-analyzing published data or designing new line-cross experiments should prefer model-averaged approaches over traditional stepwise selection. Model averaging produces estimates that naturally reflect uncertainty over which genetic parameters are present, rather than forcing a binary include/exclude decision for each effect.
 
 ## Supporting evidence
 
-- [2024 wright, Finding 1](/knowledge/papers/2024_wright/#finding-1): Analysis of 1,606 line-cross datasets using SAGA found that 81% met information-theoretic thresholds for at least one genetic effect, while 19% did not — indicating substantial model selection uncertainty that traditional LCA methods ignore.
+- [Wright was right: leveraging 2024, Finding 1](/knowledge/papers/2024_wright/#finding-1): Analysis of 1,606 line-cross datasets using SAGA found that 81% met information-theoretic thresholds for at least one genetic effect, while 19% did not — indicating substantial model selection uncertainty that traditional LCA methods ignore.
 
 ## Contradictions / open disagreements
 
@@ -33,4 +33,4 @@ The characterization of the 19% failure rate as evidence of "false positives" in
 
 ## Related on the Blackmon Lab site
 
-- [2024 wright paper page](/knowledge/papers/2024_wright/)
+- [Wright was right: leveraging 2024](/knowledge/papers/2024_wright/)

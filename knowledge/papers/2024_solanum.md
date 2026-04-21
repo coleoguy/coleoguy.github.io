@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "2024 solanum"
+title: "Assessing the opportunity for selection to impact morphological traits in crosses between two Solanum species"
 doi: 
 fingerprint_sha256: 50ffa26858c4ac0cc040432925613a01d371c052da7ba3e3b12f8becd9ade8b0
 authors: ""
@@ -12,7 +12,7 @@ ingested_at: 2026-04-21T19:33:23.982501+00:00
 permalink: /knowledge/papers/2024_solanum/
 ---
 
-# 2024 solanum
+# Assessing the opportunity for selection to impact morphological traits in crosses between two Solanum species
 
 ## Summary
 
