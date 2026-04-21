@@ -5,6 +5,7 @@ topic_slug: artificial_selection
 last_updated: 2026-04-21T18:49:05.654684+00:00
 papers_supporting: [acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe02b19]
 permalink: /knowledge/topics/artificial_selection/
+category: "Quantitative genetics & epistasis"
 ---
 # Artificial Selection
 

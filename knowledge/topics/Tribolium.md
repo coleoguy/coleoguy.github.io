@@ -5,6 +5,7 @@ topic_slug: Tribolium
 last_updated: 2026-04-21T18:49:51.320398+00:00
 papers_supporting: [acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe02b19]
 permalink: /knowledge/topics/Tribolium/
+category: "Insects & Coleoptera"
 ---
 # Tribolium
 

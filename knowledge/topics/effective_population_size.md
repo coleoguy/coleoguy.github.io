@@ -5,6 +5,7 @@ topic_slug: effective_population_size
 last_updated: 2026-04-21T18:32:03.651467+00:00
 papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114bb78]
 permalink: /knowledge/topics/effective_population_size/
+category: "Population genetics"
 ---
 # Effective Population Size
 

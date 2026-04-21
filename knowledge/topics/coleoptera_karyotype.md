@@ -5,7 +5,7 @@ topic_slug: coleoptera_karyotype
 last_updated: 2026-04-21T17:24:42.719205+00:00
 papers_supporting: [30b906720b2f4fc5c7b3d85404312dd14cd178f0f94585de42189e9712f1ef22]
 permalink: /knowledge/topics/coleoptera_karyotype/
-category: "Coleoptera"
+category: "Insects & Coleoptera"
 ---
 # Coleoptera Karyotype
 

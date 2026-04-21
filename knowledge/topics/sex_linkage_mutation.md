@@ -5,6 +5,7 @@ topic_slug: sex_linkage_mutation
 last_updated: 2026-04-21T19:03:08.836659+00:00
 papers_supporting: [10.1002/ece3.73483, 10.1534/genetics.117.300382, 8ec28241e312e0da2ddec048ec265c68f9b8c4b63678fb482d9e31d34a5690d6]
 permalink: /knowledge/topics/sex_linkage_mutation/
+category: "Sex chromosomes"
 ---
 # Sex-linkage mutation
 

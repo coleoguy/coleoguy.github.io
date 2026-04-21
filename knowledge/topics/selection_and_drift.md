@@ -5,6 +5,7 @@ topic_slug: selection_and_drift
 last_updated: 2026-04-21T19:27:16.966475+00:00
 papers_supporting: [f9fb8e258c7b62f338b299e9c6fcbeb81259e1aef5f75ea3c782100d90b4a19c, fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3d80e]
 permalink: /knowledge/topics/selection_and_drift/
+category: "Quantitative genetics & epistasis"
 ---
 # Selection and Drift
 

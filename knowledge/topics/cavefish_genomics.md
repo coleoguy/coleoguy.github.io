@@ -5,6 +5,7 @@ topic_slug: cavefish_genomics
 last_updated: 2026-04-21T18:53:08.695101+00:00
 papers_supporting: [74e7bc680605ee2207a1f5cf31811de0fef84fed56357b0bbe6d6ba1443f9925]
 permalink: /knowledge/topics/cavefish_genomics/
+category: "Bioinformatics & tools"
 ---
 # Cavefish Genomics
 

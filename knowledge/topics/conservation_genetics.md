@@ -5,6 +5,7 @@ topic_slug: conservation_genetics
 last_updated: 2026-04-21T18:32:24.999366+00:00
 papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114bb78]
 permalink: /knowledge/topics/conservation_genetics/
+category: "Population genetics"
 ---
 # Conservation Genetics
 

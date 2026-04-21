@@ -5,6 +5,7 @@ topic_slug: comparative_methods
 last_updated: 2026-04-21T19:31:37.273020+00:00
 papers_supporting: [f9fb8e258c7b62f338b299e9c6fcbeb81259e1aef5f75ea3c782100d90b4a19c]
 permalink: /knowledge/topics/comparative_methods/
+category: "Quantitative genetics & epistasis"
 ---
 # Comparative Methods
 

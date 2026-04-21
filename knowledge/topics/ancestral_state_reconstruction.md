@@ -5,6 +5,7 @@ topic_slug: ancestral_state_reconstruction
 last_updated: 2026-04-21T18:09:42.808876+00:00
 papers_supporting: [1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca]
 permalink: /knowledge/topics/ancestral_state_reconstruction/
+category: "Quantitative genetics & epistasis"
 ---
 # Ancestral State Reconstruction
 

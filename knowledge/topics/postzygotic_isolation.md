@@ -5,6 +5,7 @@ topic_slug: postzygotic_isolation
 last_updated: 2026-04-21T19:15:33.201614+00:00
 papers_supporting: [cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6]
 permalink: /knowledge/topics/postzygotic_isolation/
+category: "Speciation & macroevolution"
 ---
 # Postzygotic Isolation
 

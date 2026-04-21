@@ -2,9 +2,10 @@
 layout: default
 title: "Genome structure evolution"
 topic_slug: genome_structure_evolution
-last_updated: 2026-04-21T19:01:19.818084+00:00
-papers_supporting: [10.1093/jhered/esad076, 8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, 8ec28241e312e0da2ddec048ec265c68f9b8c4b63678fb482d9e31d34a5690d6, e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
+last_updated: 2026-04-21T20:35:51.170210+00:00
+papers_supporting: [10.1093/jhered/esad076, 8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, 8ec28241e312e0da2ddec048ec265c68f9b8c4b63678fb482d9e31d34a5690d6, 9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b, e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
 permalink: /knowledge/topics/genome_structure_evolution/
+category: "Genome structure"
 ---
 # Genome Structure Evolution
 
@@ -20,6 +21,8 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 
 **Chromosomal identity and sex chromosome origins.** At the broadest scale, comparative genomics across major insect orders reveals that sex chromosomes have independent evolutionary origins: the X chromosomes of *Drosophila melanogaster* and *Anopheles gambiae* share a region of homology, yet that region is not homologous to the X of *Tribolium castaneum* or the Z of *Bombyx mori* — each sex chromosome is instead homologous to a unique autosome in the other species ([2015b, Finding 1](/knowledge/papers/2015b/#finding-1)). This demonstrates that genome structural evolution operates simultaneously at multiple scales, from microsatellite dynamics within lineages all the way to wholesale chromosomal remodeling across deep divergences.
 
+**Epistatic architecture and trait divergence.** Beyond the structural organization of genomes, the genetic interactions encoded within them also vary systematically across the tree of life. A large-scale comparison of hybridization experiments finds that animals exhibit significantly greater epistatic contributions to trait divergence than plants (mean difference of −0.08, empirical p-value = .01), a pattern relevant to understanding how Bateson–Dobzhansky–Muller incompatibilities and other interaction-dependent barriers to gene flow may differ between kingdoms ([2024 wright, Finding 1](/knowledge/papers/2024_wright/#finding-1)). This kingdom-level contrast in genetic architecture adds a functional dimension to genome-structural comparisons: the same genomic features that define structural divergence may also condition the epistatic landscape that emerges when diverged lineages come back into contact.
+
 ## Supporting evidence
 
 - [Reference genome for the Mojave poppy bee (*Perdita meconis*), Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1): RepeatModeler masked 37.3% of the *P. meconis* genome; unclassified repeats (24.87%) dominated, followed by retroelements (6.07%), DNA transposons (4.38%), and rolling circles (0.24%).
@@ -34,6 +37,8 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 
 - [2015b, Finding 1](/knowledge/papers/2015b/#finding-1): The X chromosomes of *D. melanogaster* and *A. gambiae* share a homologous region not homologous to the X of *T. castaneum* or the Z of *B. mori*; each sex chromosome is homologous to a unique autosome, demonstrating independent recruitment across orders.
 
+- [2024 wright, Finding 1](/knowledge/papers/2024_wright/#finding-1): Animals show significantly higher epistatic contributions to trait divergence than plants (mean difference of −0.08, empirical p-value = .01), based on a broad comparative analysis of hybridization experiments.
+
 ## Contradictions / open disagreements
 
 - **Annotation bias vs. genuine TE novelty**: Whether the high unclassified repeat fraction in *Perdita meconis* reflects genuinely novel TE families or simply gaps in available libraries remains unresolved. Broader library construction for bees is needed before family-level abundances can be compared meaningfully across Hymenoptera.
@@ -46,6 +51,8 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 
 - **Cross-species comparability of retrocopy counts**: The large disparity in retrocopy tallies between humans (4,426) and *Drosophila* (82) primarily reflects differences in the depth of prior curation in RetrogeneDB rather than true biological differences in retroposition rate, limiting direct cross-species inference ([2022 retrogenes, Finding 1](/knowledge/papers/2022_retrogenes/#finding-1)).
 
+- **Animal–plant epistasis contrast vs. mating-system confound**: The finding that animals show greater epistatic contributions to trait divergence than plants ([2024 wright, Finding 1](/knowledge/papers/2024_wright/#finding-1)) may be confounded by the plant sample being dominated by domesticated crop crosses and selfing species. Such taxa may have reduced standing genetic variation, which could suppress detectable epistasis independently of any genuine kingdom-level difference in genetic architecture.
+
 ## Tealc's citation-neighborhood suggestions
 
 - Studies benchmarking RepeatModeler performance on Hymenoptera with varying library completeness would contextualize the unclassified repeat fraction in *Perdita meconis*.
@@ -53,6 +60,7 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 - Expanded synteny analyses across a broader set of insect orders (e.g., Lepidoptera, Coleoptera, Hemiptera) would sharpen inference about how many times sex chromosomes have been independently recruited from autosomes.
 - Simulation studies exploring whether faster microsatellite turnover in monocentric lineages could maintain content equilibrium would address the rate-without-content-difference paradox.
 - Analyses integrating retrocopy chromosomal location data with sex chromosome content could test whether retroposition preferentially moves genes on or off sex chromosomes across taxa.
+- Analyses of epistatic architecture in wild-collected plant crosses with outbreeding mating systems would help disentangle mating system from kingdom-level effects on epistasis in the Wright 2024 framework.
 
 ## Related on the Blackmon Lab site
 
@@ -60,3 +68,4 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 - [2015b — sex chromosome origins and insect genome structure](/knowledge/papers/2015b/)
 - [2020 microsats — microsatellite content and evolution across insects](/knowledge/papers/2020_microsats/)
 - [2022 retrogenes — retrocopies and retrogenes in humans and Drosophila](/knowledge/papers/2022_retrogenes/)
+- [2024 wright — epistatic contributions to trait divergence across plants and animals](/knowledge/papers/2024_wright/)

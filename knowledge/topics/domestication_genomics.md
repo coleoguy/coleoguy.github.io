@@ -5,6 +5,7 @@ topic_slug: domestication_genomics
 last_updated: 2026-04-21T19:12:27.956456+00:00
 papers_supporting: [cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6]
 permalink: /knowledge/topics/domestication_genomics/
+category: "Speciation & macroevolution"
 ---
 # Domestication genomics
 

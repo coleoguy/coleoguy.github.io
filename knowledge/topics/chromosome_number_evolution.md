@@ -5,6 +5,7 @@ topic_slug: chromosome_number_evolution
 last_updated: 2026-04-21T19:28:16.910714+00:00
 papers_supporting: [1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca, 2868f9fb2c04a641393569fdd996eb3a6385c0c5ef19eff83448aea96d7cfbc9, 30b906720b2f4fc5c7b3d85404312dd14cd178f0f94585de42189e9712f1ef22, 6e7c688c4f2e3fb47506b929ceb3f93edfad9c61210cfd2602ddcc57bf66d5be, e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035, f9fb8e258c7b62f338b299e9c6fcbeb81259e1aef5f75ea3c782100d90b4a19c, fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3d80e]
 permalink: /knowledge/topics/chromosome_number_evolution/
+category: "Karyotype evolution"
 ---
 # Chromosome number evolution
 

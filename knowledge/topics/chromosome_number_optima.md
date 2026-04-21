@@ -5,6 +5,7 @@ topic_slug: chromosome_number_optima
 last_updated: 2026-04-21T19:22:35.370466+00:00
 papers_supporting: [fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3d80e]
 permalink: /knowledge/topics/chromosome_number_optima/
+category: "Karyotype evolution"
 ---
 # Chromosome number optima
 

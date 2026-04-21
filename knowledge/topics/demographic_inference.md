@@ -5,7 +5,7 @@ topic_slug: demographic_inference
 last_updated: 2026-04-21T15:54:51.025773+00:00
 papers_supporting: [10.1002/ece3.73483]
 permalink: /knowledge/topics/demographic_inference/
-category: "Population genetics & methods"
+category: "Population genetics"
 ---
 # Demographic Inference
 
