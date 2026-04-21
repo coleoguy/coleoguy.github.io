@@ -2,7 +2,7 @@
 layout: default
 title: "Demographic Inference"
 topic_slug: demographic_inference
-last_updated: 2026-04-21T15:35:43.636168+00:00
+last_updated: 2026-04-21T15:54:51.025773+00:00
 papers_supporting: [10.1002/ece3.73483]
 permalink: /knowledge/topics/demographic_inference/
 ---
@@ -10,26 +10,31 @@ permalink: /knowledge/topics/demographic_inference/
 
 ## Current understanding
 
-Demographic inference from genomic data offers two complementary windows into a species' past: PSMC (Pairwise Sequentially Markovian Coalescent) analysis of a single diploid genome to reconstruct long-term effective population size (*N*e) trajectories, and runs-of-homozygosity (ROH) analysis across multiple individuals to distinguish ancient demographic contraction from recent consanguineous mating. Together, these methods are increasingly applied in conservation genomics of non-model and endangered species, where sample sizes are often limited and sequencing platforms may vary.
+Demographic inference from genomic data allows researchers to reconstruct the population history of species — including shifts in effective population size (Ne), bottlenecks, and patterns of inbreeding — even when sampling is limited to a handful of individuals or a single genome. Two complementary approaches are increasingly applied in conservation genomics of non-model organisms: pairwise sequentially Markovian coalescent (PSMC) analysis of whole-genome heterozygosity, and runs-of-homozygosity (ROH) analysis to decompose ancient versus recent reductions in Ne.
 
-A key practical question is whether PSMC-derived *N*e trajectories are sensitive to sequencing platform, an important concern when reference genomes and population samples are generated under different protocols. Work on the endangered scarab *Cheirotonus formosanus* provides direct evidence that broad long-term signals are platform-agnostic: [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) shows that PSMC trajectories from an independently sequenced male (PacBio HiFi) and female (Illumina) genome are nearly identical and their bootstrap intervals overlap, supporting methodological confidence in single-genome inference even when platform differs.
+A key methodological question is whether PSMC trajectories are robust across sequencing platforms and between sexes. Work on the endangered *Cheirotonus formosanus* (long-armed scarab) provides direct evidence that they are: [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) showed that PSMC trajectories reconstructed from independently sequenced male (PacBio HiFi) and female (Illumina) genomes are nearly identical, with overlapping bootstrap intervals. This platform-agnosticism is practically important for conservation programs where only opportunistically collected samples may be available.
 
-ROH length distributions carry a distinct and complementary signal. Short ROH (<1 Mbp) accumulate over many generations of small population size, whereas very long ROH (>5 Mbp) reflect recent relatedness within a pedigree. In *C. formosanus*, [Finding 2](/knowledge/papers/10_1002_ece3_73483/#finding-2) documents a ROH landscape dominated by short segments and a complete absence of segments >5 Mbp, with only medium-length segments (1–5 Mbp) present in a subset of individuals. This pattern is interpreted as evidence of long-term historical low *N*e rather than recent inbreeding, though medium segments suggest localized deme-level relatedness persists.
+ROH analysis offers a complementary temporal lens. In *C. formosanus*, the ROH landscape is dominated by short segments (<1 Mbp), with medium-length segments (1–5 Mbp) present in some individuals but a complete absence of very long segments (>5 Mbp). As documented in [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 2](/knowledge/papers/10_1002_ece3_73483/#finding-2), this pattern is characteristic of historical bottlenecks or long-term persistence at low ancestral Ne, rather than recent consanguineous mating. The medium-length segments hint at localized recent inbreeding within demes, adding resolution that PSMC alone — which cannot reliably address the last ~10 kya — cannot provide.
+
+Together, these two approaches illustrate a general principle: short ROH diagnose ancient demographic restriction, long ROH diagnose recent inbreeding, and PSMC captures broad multi-generational trends. Their concordance in a single endangered beetle provides a useful proof-of-concept for applying multi-method demographic inference to non-model invertebrates with limited genomic resources.
 
 ## Supporting evidence
 
-- **PSMC platform concordance:** [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) — two genomes from the same population but different sequencing platforms yield overlapping *N*e reconstructions, validating single-genome PSMC as robust in invertebrate conservation genomics contexts.
+- **PSMC platform concordance:** [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) — PSMC trajectories from one PacBio HiFi male and one Illumina female *C. formosanus* genome are nearly identical with overlapping bootstrap intervals.
 
-- **ROH as a diagnostic of demographic history:** [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 2](/knowledge/papers/10_1002_ece3_73483/#finding-2) — short-dominated ROH profiles in endangered beetles distinguish chronic small-population history from acute inbreeding, informing conservation management decisions.
+- **ROH length distribution as a demographic signature:** [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 2](/knowledge/papers/10_1002_ece3_73483/#finding-2) — A genome dominated by short ROH and lacking segments >5 Mbp points to long-term historical low Ne rather than recent consanguineous mating in this endangered species.
 
 ## Contradictions / open disagreements
 
-Both findings rest on a single endemic species with limited genomic sampling. The PSMC concordance result uses only two individuals (n=1 per sex), which is a minimal test of platform effects; broader multi-individual or multi-species comparisons are needed before generalizing. For the ROH analysis, the data derive from reduced-representation ddRAD sequencing (n=46) rather than whole-genome resequencing. The authors acknowledge that ddRAD coverage may be insufficient to detect long ROH reliably, meaning the reported absence of >5 Mbp segments could partly reflect data sparsity rather than true demography. Additionally, PSMC cannot resolve demographic events in the last ~10 kya, leaving recent population dynamics uncharacterized by either method.
+**Platform concordance sample size:** The PSMC comparison rests on n=2 genomes (one individual per sex, one per platform) from a single endemic population. This is a weak test; broader sampling across populations or species is needed before platform-agnosticism can be treated as a general rule.
+
+**ROH inference data quality:** The ROH analysis used reduced-representation ddRAD data (n=46 individuals) rather than whole-genome resequencing. The paper acknowledges that ddRAD likely lacks sufficient coverage to fully exploit linkage information, meaning the absence of segments >5 Mbp could partly reflect data sparsity rather than true demographic history. Whole-genome resequencing of the same individuals would be needed to confirm this signal.
 
 ## Tealc's citation-neighborhood suggestions
 
-Future work might cite Li & Durbin (2011, *Nature*) for the PSMC framework itself, McQuillan et al. (2008) for ROH methodology, and Beichman et al. (2018, *Annual Review of Ecology, Evolution, and Systematics*) for a comparative review of single-genome demographic inference methods in conservation contexts.
+- Li & Durbin (2011) *Inference of human population history from individual whole-genome sequences* — the original PSMC paper; useful to cite explicitly when validating the method in non-model organisms.
+- Kardos et al. (2018) work on ROH and inbreeding depression — provides the theoretical framework for interpreting ROH length categories in conservation contexts.
 
 ## Related on the Blackmon Lab site
 
-- [Source paper: Chromosome-Level Reference Genome of *Cheirotonus formosanus*](/knowledge/papers/10_1002_ece3_73483/)
+- [Chromosome-Level Reference Genome of *Cheirotonus formosanus* (source paper)](/knowledge/papers/10_1002_ece3_73483/)

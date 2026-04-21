@@ -2,7 +2,7 @@
 layout: default
 title: "Uce Phylogenetics"
 topic_slug: uce_phylogenetics
-last_updated: 2026-04-21T15:35:05.335861+00:00
+last_updated: 2026-04-21T15:52:11.388204+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/uce_phylogenetics/
 ---
@@ -10,20 +10,22 @@ permalink: /knowledge/topics/uce_phylogenetics/
 
 ## Current understanding
 
-Ultraconserved elements (UCEs) have emerged as powerful markers for phylogenomic inference, providing thousands of loci across diverse taxa with sufficient signal to resolve deep and shallow nodes alike. In Apoidea (bees and relatives), UCE-based phylogenomic approaches applied to large genome datasets can achieve near-complete node resolution, often with maximal bootstrap support across the tree.
+Ultraconserved elements (UCEs) have emerged as a powerful class of molecular markers for resolving deep and shallow phylogenetic relationships across diverse animal lineages. Their near-universal presence across genomes, combined with flanking regions that carry phylogenetically informative variation, makes UCE-based phylogenomics particularly well-suited for large-scale comparative analyses. Within the Hymenoptera, UCE data have been applied to untangle the complex relationships among bees (Apoidea), a group whose phylogenomics has historically been hampered by taxon sampling gaps and limited genomic resources.
+
+A recent phylogenomic analysis leveraging 119 Apoidea genomes used UCE data to produce a well-resolved tree in which the vast majority of nodes received 100% ultrafast bootstrap support. A notable outcome of this analysis was the placement of *Perdita meconis* — representing the first Panurginae genome contributed to Apoidea phylogenetic datasets — as the sister lineage to *Andrena* within family Andrenidae (subfamily Andreninae). This finding helps clarify the internal structure of Andrenidae and demonstrates the utility of UCE-based approaches for integrating newly sequenced genomes into existing phylogenomic frameworks. See [Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern., Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1) for details.
 
 ## Supporting evidence
 
-A recent study by Schweizer et al. (2024) illustrates the resolving power of UCE-based phylogenomics in bees: a analysis of 119 Apoidea genomes — including the first Panurginae genome (*Perdita meconis*) — placed *Perdita meconis* as sister to *Andrena* within Andrenidae, with most nodes receiving 100% ultrafast bootstrap support. As the authors report, "*Perdita meconis* is resolved as the sister group to *Andrena* (family Andrenidae, subfamily Andreninae)." This placement provides a critical anchor for comparative genomic studies of specialist bee lineages. See [Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern., Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1) for details.
+- [Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern., Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1): UCE-based phylogenomic analysis of 119 Apoidea genomes resolves *Perdita meconis* as sister to *Andrena* within Andrenidae, with most nodes at 100% ultrafast bootstrap support.
 
 ## Contradictions / open disagreements
 
-The primary caveat to the Apoidea UCE tree is uneven taxon sampling: Stenotritidae is entirely absent from current genome-scale datasets, Andrenidae is represented by only two genera (*Andrena* and *Perdita*), and Apidae and Halictidae are disproportionately overrepresented due to the predominance of social bee genomics. The sister-group relationship between *Perdita* and *Andrena* therefore remains incompletely tested, and broader sampling — particularly of solitary and understudied lineages — could alter inferred internal topologies within Andrenidae.
+The primary open question concerns the robustness of the *Perdita*–*Andrena* sister-group relationship. Taxon sampling in the 119-genome dataset is heavily skewed toward social bees in Apidae and Halictidae; Stenotritidae is entirely absent, and only one Andrenidae genus (*Andrena*) is represented alongside *Perdita*. Broader sampling of Andrenidae diversity — and inclusion of the missing family Stenotritidae — will be required to confirm the internal topology of Andrenidae using UCE data.
 
 ## Tealc's citation-neighborhood suggestions
 
-Future topic updates should consider integrating UCE methodology papers (e.g., Faircloth et al. foundational UCE work) and broader Apoidea phylogenomic studies to contextualize how taxon and locus sampling choices affect UCE tree topology and support values.
+Readers may wish to consult foundational UCE methodology papers (e.g., Faircloth et al. 2012, *Systematic Biology*) and broader Apoidea phylogenomic studies that pre-date genome-scale UCE approaches, to contextualize the improvements in resolution that UCE phylogenomics provides.
 
 ## Related on the Blackmon Lab site
 
-- [Reference genome for the Mojave poppy bee (*Perdita meconis*)](/knowledge/papers/10_1093_jhered_esad076/)
+- [Paper page: Reference genome for the Mojave poppy bee (*Perdita meconis*)](/knowledge/papers/10_1093_jhered_esad076/)

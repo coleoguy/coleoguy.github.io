@@ -2,47 +2,41 @@
 layout: default
 title: "Sex-linkage mutation"
 topic_slug: sex_linkage_mutation
-last_updated: 2026-04-21T15:35:15.744185+00:00
-papers_supporting: [10.1002/ece3.73483]
-permalink: /knowledge/topics/sex_linkage_mutation/
----
----
-layout: default
-title: "Sex-linkage mutation"
-topic_slug: sex_linkage_mutation
-last_updated: 2026-04-21T14:54:24.027439+00:00
-papers_supporting: [10.1534/genetics.117.300382, 10.1002/ece3.73483]
+last_updated: 2026-04-21T15:59:55.431383+00:00
+papers_supporting: [10.1002/ece3.73483, 10.1534/genetics.117.300382]
 permalink: /knowledge/topics/sex_linkage_mutation/
 ---
 # Sex-linkage mutation
 
 ## Current understanding
 
-A central puzzle in sex chromosome evolution is why sexually antagonistic alleles — variants that benefit one sex at a cost to the other — so often become physically linked to sex-determining regions (SDRs). Theoretical work by Blackmon & Brandvain (2017) shows that this linkage can arise through chromosomal inversions and that the parameter regimes permitting fixation depend critically on the dominance of the male-beneficial allele and the aneuploidy cost the inversion imposes.
+The evolution of sex-linked regions is driven, in large part, by the spread of chromosomal inversions that capture sexually antagonistic alleles and link them to the sex-determining region (SDR). A key theoretical framework holds that this process operates asymmetrically between the X and Y: Y-linked inversions tend to fix (and thereby initiate long-term Y degeneration), while X-linked inversions are more likely to be maintained as stable polymorphisms, depending critically on the dominance of the male-beneficial allele in conflict.
 
-On the Y chromosome, inversions that capture a male-beneficial allele and suppress recombination with the SDR are favored when selection is sufficiently strong. Crucially, even inversions that elevate aneuploidy rates by 4–6% can spread to fixation under realistic conditions: [Long-Term Fragility of Y Chromosomes Is Dominated by Short-Term Resolution of Sexual Antagonism., Finding 1](/knowledge/papers/10_1534_genetics_117_300382/#finding-1) demonstrates that dominance of the male-beneficial allele and a selection coefficient as low as s ≈ 0.2 are sufficient to overcome this cost. This result underpins the paper's broader "long-term fragility from short-term resolution" thesis: each episode of sexual antagonism that is resolved by Y-linkage incrementally degrades Y-chromosome integrity over evolutionary time.
-
-The dynamics on the X chromosome are qualitatively different and depend on the dominance architecture of the male-beneficial allele. When that allele is recessive (dominance coefficient h < ~0.3), an X-chromosome inversion capturing the female-beneficial allele cannot fix; instead it is maintained as a stable polymorphism ([Long-Term Fragility of Y Chromosomes Is Dominated by Short-Term Resolution of Sexual Antagonism., Finding 2](/knowledge/papers/10_1534_genetics_117_300382/#finding-2)). This has implications for the X as a reservoir of sexually antagonistic variation: balanced polymorphisms, not selective sweeps, may be the predominant outcome when male-beneficial alleles are recessive.
-
-Empirical evidence from beetles is beginning to populate the theoretical landscape. A chromosome-level genome assembly of the long-armed scarab *Cheirotonus formosanus* has identified a putative Y-linked scaffold bearing a gene model with KDM5/JARID1 demethylase architecture that is covered by male reads but absent from female data. This pattern is strikingly parallel to KDM5D on the mammalian Y chromosome, suggesting convergent sex-linkage of this gene family across distantly related lineages: [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (<i>Cheirotonus formosanus</i>): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1). Because beetle Y chromosomes are notoriously gene-poor and poorly characterized, this candidate represents a rare anchor point for understanding which gene classes are repeatedly drawn into sex-linkage.
+Under this model, the short-term "solution" to sexual antagonism — locking a male-beneficial allele onto the Y — carries a long-term cost. Because Y chromosome inversions suppress recombination, they inevitably expand a non-recombining region, predisposing the Y to the mutational decay described by the fragile-Y hypothesis. Empirical work is beginning to reveal which gene families end up sex-linked as this process unfolds, and a striking pattern of convergence is emerging: demethylases of the KDM5/JARID1 family appear on the Y chromosome independently in both mammals and beetles.
 
 ## Supporting evidence
 
-The fixation and polymorphism thresholds (s ≈ 0.2 for Y-inversion spread; h < 0.3 for stable X polymorphism) derive from a deterministic three-locus population-genetic model with multiplicative fitness effects and an explicit aneuploidy cost tied to inversion size. These provide a concrete, testable parameter space. The beetle KDM5-like finding rests on InterProScan domain annotations combined with sex-differential read coverage, establishing a candidate Y-linked gene in an insect order where such genes have rarely been characterized.
+Blackmon et al. provide quantitative parameter estimates for when Y-linked capture is evolutionarily viable. [Long-Term Fragility of Y Chromosomes Is Dominated by Short-Term Resolution of Sexual Antagonism., Finding 1](/knowledge/papers/10_1534_genetics_117_300382/#finding-1) shows that Y chromosome inversions linking a male-beneficial allele to the SDR can fix even when they increase aneuploidy by 4–6%, provided the male-beneficial allele is dominant and selection is at least *s* ≈ 0.2. This defines a surprisingly accessible parameter regime: moderate selection plus dominance is sufficient to overcome a substantial chromosomal cost.
+
+The dynamics on the X chromosome differ qualitatively. [Long-Term Fragility of Y Chromosomes Is Dominated by Short-Term Resolution of Sexual Antagonism., Finding 2](/knowledge/papers/10_1534_genetics_117_300382/#finding-2) demonstrates that when the male-beneficial allele is recessive (*h* < ~0.3), an X-linked inversion capturing the female-beneficial allele cannot fix; instead it is maintained as a stable polymorphism. This means that the genetic architecture of the sexually antagonistic locus — particularly allele dominance — determines not just the rate but the qualitative outcome (fixation vs. balanced polymorphism) of sex-linked inversions.
+
+On the empirical side, genome assembly of the long-armed scarab *Cheirotonus formosanus* has yielded evidence about which genes actually reside on a beetle Y chromosome. [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (<i>Cheirotonus formosanus</i>): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) reports that a putative Y-linked scaffold carries a gene model with JARID1/KDM5 family domain architecture, covered exclusively by male reads and absent from female data — interpreted as a KDM5-like demethylase on the Y. This parallels KDM5D on the mammalian Y chromosome, raising the possibility that sex-linkage of this gene family reflects convergent retention of a dosage-sensitive regulator rather than random accumulation of male-beneficial alleles.
+
+Together, these results support the interpretation that sex-linkage "mutations" (inversions expanding the sex-linked region) are strongly filtered by dominance and selection intensity, that the X and Y chromosomes respond differently to the same underlying sexual conflict, and that certain gene families may be preferentially retained on Y chromosomes across deeply diverged lineages.
 
 ## Contradictions / open disagreements
 
-The primary limitation of the theoretical model is its determinism: genetic drift is not incorporated, and the aneuploidy–PAR cost relationship is treated as fixed and multiplicative. In small populations, drift could either destabilize the balanced X polymorphisms predicted when h < 0.3 or prevent fixation of Y inversions even when selection exceeds the modeled threshold.
+The parameter thresholds reported (*s* ≈ 0.2 for Y fixation; *h* < 0.3 for X polymorphism) derive from a deterministic three-locus model with symmetric fitness effects, a fixed multiplicative aneuploidy cost, and no genetic drift. Empirical estimates of aneuploidy costs associated with PAR contraction and real-population drift effects are not incorporated, so the quantitative thresholds may not translate directly to natural populations. Whether drift destabilizes the predicted X-linked polymorphisms at low inversion frequency remains an open question not addressed by the current model.
 
-For the beetle genomic finding, the KDM5-like annotation rests on domain architecture from InterProScan rather than orthology-based gene naming, and the candidate lacks experimental validation. The gene may be a paralog rather than a true ortholog of KDM5D, meaning the convergence with the mammalian Y may be superficial. No contradicting empirical study is yet available to test the population-genetic predictions head-on.
+The KDM5-like candidate from *C. formosanus* rests on domain architecture from InterProScan rather than orthology-based gene naming, and lacks experimental validation. The gene could be a diverged paralog rather than a direct equivalent of mammalian KDM5D, which would weaken the convergence interpretation. Broader sampling of beetle Y chromosome gene content is needed before the parallel can be considered robust.
 
 ## Tealc's citation-neighborhood suggestions
 
-- Empirical studies measuring aneuploidy rates associated with pseudoautosomal boundary inversions in systems with known Y-chromosome age could test the predicted cost thresholds.
-- Population-genetic models incorporating drift alongside sexually antagonistic inversions would help determine how robust the fixation and polymorphism predictions are across a range of effective population sizes.
-- Orthology-based phylogenomic analyses of KDM5 family members across beetles could clarify whether Y-linkage of this demethylase is truly convergent with mammals or instead reflects ancestral retention.
+- Empirical studies measuring aneuploidy rates in taxa with variable PAR lengths would help calibrate the 4–6% cost assumption.
+- Population-genetic models incorporating drift alongside sexually antagonistic selection could test whether the predicted X-linked balanced polymorphisms are robust at realistic effective population sizes.
+- Orthology-based analyses of KDM5 family members across Coleoptera would clarify whether Y-linkage of this demethylase family is genuinely convergent or represents a single origin.
 
 ## Related on the Blackmon Lab site
 
-- [Paper page: Long-Term Fragility of Y Chromosomes Is Dominated by Short-Term Resolution of Sexual Antagonism.](/knowledge/papers/10_1534_genetics_117_300382/)
-- [Paper page: Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (Cheirotonus formosanus): Discovery of a Putative Y-Linked Scaffold and Demographic History.](/knowledge/papers/10_1002_ece3_73483/)
+- [Long-Term Fragility of Y Chromosomes Is Dominated by Short-Term Resolution of Sexual Antagonism](/knowledge/papers/10_1534_genetics_117_300382/)
+- [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History](/knowledge/papers/10_1002_ece3_73483/)

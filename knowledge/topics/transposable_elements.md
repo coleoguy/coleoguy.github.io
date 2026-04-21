@@ -2,7 +2,7 @@
 layout: default
 title: "Transposable Elements"
 topic_slug: transposable_elements
-last_updated: 2026-04-21T15:34:12.509211+00:00
+last_updated: 2026-04-21T15:58:17.268921+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/transposable_elements/
 ---
@@ -10,21 +10,22 @@ permalink: /knowledge/topics/transposable_elements/
 
 ## Current understanding
 
-Transposable elements (TEs) and other repetitive sequences are a major component of eukaryotic genomes, but their abundance and composition vary considerably across taxa. In non-model insects, TE annotation is often limited by the incompleteness of reference repeat libraries, meaning that a large fraction of identified repeats cannot be assigned to known TE families. This annotation gap complicates comparative studies of TE dynamics across lineages.
+Transposable elements (TEs) and other repetitive sequences are a major component of eukaryotic genomes, yet their abundance and classification vary widely across taxa. A key challenge in TE biology is that repeat libraries built primarily from model organisms (e.g., *Drosophila*) leave large fractions of repeats unclassified in non-model species, obscuring the true diversity and activity of TE families.
+
+Data from non-model insects are beginning to fill this gap. In the Mojave poppy bee (*Perdita meconis*), a solitary specialist bee of conservation concern, repetitive elements account for 37.3% of the genome. Within that repeat content, retroelements contribute 6.07% and DNA transposons 4.38%, but a striking 24.87% — nearly two-thirds of all repeat content — remains unclassified. This pattern, reported by [Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern., Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1), underscores how poorly current repeat databases represent the full TE landscape in Hymenoptera and other non-model arthropods.
 
 ## Supporting evidence
 
-A concrete example of TE diversity in a non-model insect comes from the newly assembled genome of *Perdita meconis*, a specialist solitary bee. Repeat masking identified repetitive elements comprising 37.3% of the genome, with contributions from retroelements (6.07%), DNA transposons (4.38%), and rolling circles (0.24%). Strikingly, 24.87% of the genome — nearly two-thirds of all repeat content — was composed of unclassified repeats, underscoring how incomplete reference libraries limit TE annotation in non-*Drosophila* insects. See [Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern., Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1) for details.
+- **Repeat content in *Perdita meconis*:** RepeatModeler masked 37.3% of the *P. meconis* genome, with interspersed repeats broken down as retroelements (6.07%), DNA transposons (4.38%), rolling circles (0.24%), and unclassified repeats (24.87%). See [Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern., Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1).
 
 ## Contradictions / open disagreements
 
-None known from the currently indexed findings. The high unclassified fraction in the *Perdita meconis* genome raises an internal tension: it is difficult to draw firm conclusions about TE family-level dynamics when the majority of repeat content cannot be classified. Broader comparative analyses across Hymenoptera will be needed before generalizations can be made.
+The dominant open question is not a contradiction between papers but an annotation gap: because nearly two-thirds of repeat content in *P. meconis* is unclassified, comparisons of specific TE family abundances across bee lineages are unreliable until more comprehensive, taxon-specific repeat libraries are developed. Estimates of retroelement vs. DNA transposon activity should therefore be treated as lower bounds rather than definitive figures.
 
 ## Tealc's citation-neighborhood suggestions
 
-- Studies benchmarking RepeatModeler performance on hymenopteran genomes would help contextualize the unclassified repeat fraction.
-- Comparative TE surveys across solitary and social bees (e.g., *Apis mellifera*, *Bombus* spp.) could reveal whether the *Perdita* repeat landscape is typical or unusual for the order.
+The lab may wish to engage with studies benchmarking repeat annotation tools (e.g., RepeatModeler2) across insect genomes, as well as comparative TE surveys across Hymenoptera (e.g., work in *Apis*, *Bombus*, and other *Perdita* relatives) that could contextualize the *P. meconis* repeat landscape.
 
 ## Related on the Blackmon Lab site
 
-- [Reference genome for the Mojave poppy bee (*Perdita meconis*)](/knowledge/papers/10_1093_jhered_esad076/)
+- Source paper: [Reference genome for the Mojave poppy bee (*Perdita meconis*)](/knowledge/papers/10_1093_jhered_esad076/)
