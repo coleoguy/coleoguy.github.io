@@ -5,6 +5,7 @@ topic_slug: transposable_elements
 last_updated: 2026-04-21T15:58:17.268921+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/transposable_elements/
+category: "Genome structure"
 ---
 # Transposable Elements
 

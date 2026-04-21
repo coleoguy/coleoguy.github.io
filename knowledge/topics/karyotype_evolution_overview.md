@@ -2,8 +2,8 @@
 layout: default
 title: "Karyotype evolution overview"
 topic_slug: karyotype_evolution_overview
-last_updated: 2026-04-21T18:39:34.543716+00:00
-papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96ccfa84, 0f1bc39e2879ec58c1a6e091a838d1861975612f9a803dea779e9576fe264d44, 1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca, 6e7c688c4f2e3fb47506b929ceb3f93edfad9c61210cfd2602ddcc57bf66d5be, f27df64e71adfbdf80f51dda1ec8b660a6fb871e76d8feb07659ebaa7c6da808]
+last_updated: 2026-04-21T18:44:52.727985+00:00
+papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96ccfa84, 0f1bc39e2879ec58c1a6e091a838d1861975612f9a803dea779e9576fe264d44, 1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca, 6e7c688c4f2e3fb47506b929ceb3f93edfad9c61210cfd2602ddcc57bf66d5be, 7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150f528, f27df64e71adfbdf80f51dda1ec8b660a6fb871e76d8feb07659ebaa7c6da808]
 permalink: /knowledge/topics/karyotype_evolution_overview/
 ---
 # Karyotype evolution overview
@@ -14,7 +14,7 @@ Karyotype evolution — the gain, loss, or rearrangement of chromosomes over evo
 
 **Ancestral polarity of insect sex determination.** Any comparative analysis of sex-chromosome transitions needs a phylogenetic anchor. Likelihood-based ancestral state reconstruction across a database of more than 13,000 insect species places male heterogamety at the insect root with certainty (100% posterior probability), though the system cannot discriminate between XY and XO ancestry (60% and 40%, respectively) [2017 sex chromosomesa, Finding 1](/knowledge/papers/2017_sex_chromosomesa/#finding-1). This establishes that female heterogamety and haplodiploidy are derived states relative to an ancestrally male-heterogametic background, providing the polarity needed to interpret downstream transitions.
 
-**Mechanisms of sex-chromosome system turnover.** Once a lineage is anchored to male heterogamety, how do transitions between XO and XY states occur? Work on Polyneoptera provides a compelling answer: fusions between sex chromosomes and autosomes are the dominant route for XO→XY transitions. Across the 17 genera that contain both XO and XY species, 94% (16/17) show a lower mean number of autosomes in XY species — exactly the signature expected if Y chromosomes arose via fusion rather than neo-sex-chromosome formation [2020 polyneoptera, Finding 1](/knowledge/papers/2020_polyneoptera/#finding-1). This fusion-centric model implies that karyotype evolution (changes in total chromosome number) and sex-chromosome system evolution are mechanistically linked rather than independent processes.
+**Mechanisms of sex-chromosome system turnover.** Once a lineage is anchored to male heterogamety, how do transitions between XO and XY states occur? Work on Polyneoptera provides a compelling answer: fusions between sex chromosomes and autosomes are the dominant route for XO→XY transitions. Across the 17 genera that contain both XO and XY species, 94% (16/17) show a lower mean number of autosomes in XY species — exactly the signature expected if Y chromosomes arose via fusion rather than neo-sex-chromosome formation [2020 polyneoptera, Finding 1](/knowledge/papers/2020_polyneoptera/#finding-1). This fusion-centric model implies that karyotype evolution and sex-chromosome system evolution are mechanistically linked rather than independent processes. However, this pattern is not universal: in Drosophila, sex-chromosome–autosome fusions are dramatically rarer than expected. The observed SA-fusion proportion is 0.155 (credible interval 0.12–0.22) against an expected 0.43 (credible interval 0.42–0.44), with non-overlapping credible intervals [2020 probability, Finding 1](/knowledge/papers/2020_probability/#finding-1). This deficit suggests that the genomic or meiotic environment of a lineage can suppress, rather than promote, sex-autosome fusions.
 
 **Meiotic mechanism and sex-chromosome stability.** A complementary constraint operates through the mechanics of meiosis itself. In beetles (Coleoptera), achiasmatic clades — those in which males lack crossover-based chromosome pairing — show dramatically fewer XO karyotypes than expected if Y-chromosome loss occurred at the same background rate as in chiasmate relatives. Within Adephaga, Trechitae has only 3 XO species where 16 are expected, and Cicindelinae + Colyrinae has only 1 where 6 are expected; fewer than 8% and 5% of simulations, respectively, produce such low counts by chance [2015a, Finding 1](/knowledge/papers/2015a/#finding-1). Together with the Polyneoptera fusion data, this suggests that both the formation and the loss of Y chromosomes are governed by specific cellular mechanisms, not simply by neutral drift.
 
@@ -24,7 +24,7 @@ Karyotype evolution — the gain, loss, or rearrangement of chromosomes over evo
 
 **Amphibian karyotype resources.** Broadening the taxonomic scope requires comprehensive data compilations. The Amphibian Karyotype Database now contains 2,124 records — more than doubling the ~1,000 records available in the previous compilation — with 1,833 Anura, 246 Caudata, and 45 Gymnophiona records [2019 amphibs, Finding 1](/knowledge/papers/2019_amphibs/#finding-1), enabling comparative analyses of chromosome evolution across a vertebrate outgroup with its own distinctive ploidy patterns.
 
-Together, these results indicate that macroevolutionary patterns in chromosome number and sex-chromosome composition are not random — ancestral genomic context, reproductive system, the meiotic machinery of a lineage, and the mechanical routes of structural change (fusions versus fissions versus polyploidy) all shape which karyotypic transitions are likely, accessible, and detectable.
+Together, these results indicate that macroevolutionary patterns in chromosome number and sex-chromosome composition are not random — ancestral genomic context, reproductive system, the meiotic machinery of a lineage, and the mechanical routes of structural change (fusions versus fissions versus polyploidy) all shape which karyotypic transitions are likely, accessible, and detectable. Yet clade-specific dynamics, illustrated starkly by the Drosophila fusion deficit, remind us that no single model applies universally.
 
 ## Supporting evidence
 
@@ -35,12 +35,13 @@ Together, these results indicate that macroevolutionary patterns in chromosome n
 - [2015 haplo, Finding 1](/knowledge/papers/2015_haplo/#finding-1) — Haplodiploid mites have ~2n = 5 fewer chromosomes than diplodiploid mites, significant under both taxonomic and phylogenetic comparative models.
 - [2015 haplo, Finding 2](/knowledge/papers/2015_haplo/#finding-2) — Ancestral chromosome numbers at nodes where haplodiploidy originated (mean 18.4) are significantly lower than expected under independent evolution (null 20.2, P = 0.017), establishing temporal directionality.
 - [2019 amphibs, Finding 1](/knowledge/papers/2019_amphibs/#finding-1) — The Amphibian Karyotype Database contains 2,124 records (1,833 Anura, 246 Caudata, 45 Gymnophiona), more than doubling the last compilation and enabling broad comparative studies.
+- [2020 probability, Finding 1](/knowledge/papers/2020_probability/#finding-1) — In Drosophila, the observed proportion of sex-chromosome–autosome fusions (0.155; CI 0.12–0.22) is far below the expected proportion (0.43; CI 0.42–0.44), with non-overlapping credible intervals — a strong deficit relative to neutral or sexually antagonistic expectations.
 
 ## Contradictions / open disagreements
 
 The ancestral-state reconstruction establishing male heterogamety at the insect root cannot resolve XY vs. XO ancestry (60% vs. 40%), limiting inferences about the polarity of Y-chromosome gain or loss events deep in insect phylogeny [2017 sex chromosomesa, Finding 1](/knowledge/papers/2017_sex_chromosomesa/#finding-1).
 
-The fusion-driven XO→XY result in Polyneoptera is genus-level and correlational: the analysis uses only genera that contain multiple sex-chromosome systems and does not jointly model chromosome number and sex-chromosome state on a fully resolved phylogeny. The authors themselves note that patterns differ at the order level, so the 94% figure should not be treated as a universal rate [2020 polyneoptera, Finding 1](/knowledge/papers/2020_polyneoptera/#finding-1).
+The fusion-driven XO→XY result in Polyneoptera is genus-level and correlational and does not jointly model chromosome number and sex-chromosome state on a fully resolved phylogeny. The authors themselves note that patterns differ at the order level, so the 94% figure should not be treated as a universal rate [2020 polyneoptera, Finding 1](/knowledge/papers/2020_polyneoptera/#finding-1). This interpretation is further complicated by the Drosophila result, where sex-chromosome–autosome fusions are far rarer than expected [2020 probability, Finding 1](/knowledge/papers/2020_probability/#finding-1). Together, these two findings reveal a genuine tension: fusions dominate XO→XY transitions in Polyneoptera yet are actively suppressed in Drosophila. Whether this reflects the influence of achiasmatic male meiosis, Y-chromosome degeneration dynamics, or other clade-specific factors remains unresolved.
 
 The elevated polyploidy rate in asexual Phasmatodea rests on only 13 parthenogenetic species within a single order and depends on ancestral reconstructions of reproductive mode. Whether this pattern generalizes to other asexual insect clades or to asexual taxa in other phyla remains untested [2020 polyneoptera, Finding 2](/knowledge/papers/2020_polyneoptera/#finding-2).
 
@@ -53,13 +54,14 @@ The Amphibian Karyotype Database is heavily biased toward frogs (Anura = 86% of 
 ## Tealc's citation-neighborhood suggestions
 
 - Comparative studies of sex-chromosome system turnover in other hemimetabolous insect orders would test whether the fusion-dominated XO→XY route seen in Polyneoptera is a general feature of insect sex-chromosome evolution.
-- Studies examining the population-genetic consequences of achiasmy (e.g., altered Hill–Robertson interference, reduced purifying selection on sex chromosomes) would help connect the macroevolutionary pattern to a mechanistic model of Y retention.
+- Studies examining the population-genetic consequences of achiasmy (e.g., altered Hill–Robertson interference, reduced purifying selection on sex chromosomes) would help connect the macroevolutionary pattern to a mechanistic model of Y retention and the Drosophila fusion deficit.
 - Analyses of polyploidy in other asexual invertebrate lineages would test whether the Phasmatodea result generalizes beyond a single order.
 - Comparative studies of chromosome number evolution across Hymenoptera or other haplodiploid orders would complement the mite data and test the generality of the haplodiploidy–chromosome-number association.
 - Analyses leveraging the Amphibian Karyotype Database to model rates of chromosome number change across Anura, Caudata, and Gymnophiona would directly parallel the insect and mite work.
 
 ## Related on the Blackmon Lab site
 
+- [2020 probability paper page](/knowledge/papers/2020_probability/)
 - [2020 polyneoptera paper page](/knowledge/papers/2020_polyneoptera/)
 - [2017 sex chromosomesa paper page](/knowledge/papers/2017_sex_chromosomesa/)
 - [2015 haplo paper page](/knowledge/papers/2015_haplo/)

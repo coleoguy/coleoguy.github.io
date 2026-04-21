@@ -5,6 +5,7 @@ topic_slug: holocentric_chromosomes
 last_updated: 2026-04-21T16:44:14.211503+00:00
 papers_supporting: [e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
 permalink: /knowledge/topics/holocentric_chromosomes/
+category: "Karyotype evolution"
 ---
 # Holocentric Chromosomes
 

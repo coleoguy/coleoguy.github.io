@@ -5,6 +5,7 @@ topic_slug: bee_genomics
 last_updated: 2026-04-21T15:50:19.463662+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/bee_genomics/
+category: "Insects & comparative genomics"
 ---
 # Bee Genomics
 

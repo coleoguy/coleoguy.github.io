@@ -5,6 +5,7 @@ topic_slug: coleoptera_genomics
 last_updated: 2026-04-21T18:14:07.402830+00:00
 papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96ccfa84, 10.1002/ece3.73483]
 permalink: /knowledge/topics/coleoptera_genomics/
+category: "Coleoptera"
 ---
 # Coleoptera genomics
 

@@ -5,6 +5,7 @@ topic_slug: genome_assembly
 last_updated: 2026-04-21T15:55:43.901460+00:00
 papers_supporting: [10.1002/ece3.73483]
 permalink: /knowledge/topics/genome_assembly/
+category: "Genome structure"
 ---
 # Genome Assembly
 

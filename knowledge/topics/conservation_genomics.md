@@ -5,6 +5,7 @@ topic_slug: conservation_genomics
 last_updated: 2026-04-21T16:01:53.554400+00:00
 papers_supporting: [10.1002/ece3.73483, 10.1093/jhered/esad076]
 permalink: /knowledge/topics/conservation_genomics/
+category: "Population genetics & methods"
 ---
 # Conservation Genomics
 

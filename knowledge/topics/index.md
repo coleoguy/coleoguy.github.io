@@ -4,6 +4,44 @@ title: "Topics · Knowledge · Blackmon Lab"
 description: "Topic pages in the Blackmon Lab wiki — state-of-understanding synthesized from findings across papers, with contradictions between studies surfaced explicitly."
 permalink: /knowledge/topics/
 canonical: "https://coleoguy.github.io/knowledge/topics/"
+extra_head: |
+  <style>
+    .wiki-cat details { border: 1px solid var(--rule); border-radius: 5px; margin: 6px 0; }
+    .wiki-cat summary {
+      padding: 9px 14px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+    }
+    .wiki-cat summary::-webkit-details-marker { display: none; }
+    .wiki-cat summary::before {
+      content: "▶";
+      font-size: 9px;
+      color: var(--ink-faint);
+      transition: transform 0.15s;
+      flex-shrink: 0;
+    }
+    .wiki-cat details[open] summary::before { transform: rotate(90deg); }
+    .wiki-cat .cat-count {
+      font-weight: 400;
+      color: var(--ink-faint);
+      font-size: 12px;
+    }
+    .wiki-cat ul {
+      margin: 0;
+      padding: 4px 14px 10px 32px;
+      list-style: disc;
+    }
+    .wiki-cat li { padding: 3px 0; font-size: 14px; }
+    .wiki-cat li .meta { font-size: 12px; color: var(--ink-faint); margin-left: 6px; }
+  </style>
 ---
 
 <div class="crumb">
@@ -20,21 +58,26 @@ canonical: "https://coleoguy.github.io/knowledge/topics/"
 </p>
 
 {% assign topic_pages = site.pages | where_exp: "p", "p.url contains '/knowledge/topics/'" | where_exp: "p", "p.url != '/knowledge/topics/'" | sort: "title" %}
+{% assign grouped = topic_pages | group_by: "category" | sort: "name" %}
 
-<ul>
-{% for page in topic_pages %}
-  <li>
-    <a href="{{ page.url }}"><strong>{{ page.title | default: page.name }}</strong></a>
-    {% if page.papers_supporting and page.papers_supporting.size > 0 %}
-      <br><span class="meta">{{ page.papers_supporting.size }} supporting paper{% if page.papers_supporting.size != 1 %}s{% endif %}{% if page.last_updated %} · updated {{ page.last_updated | date: "%b %-d, %Y" }}{% endif %}</span>
-    {% endif %}
-  </li>
+<div class="wiki-cat">
+{% for group in grouped %}
+  {% if group.name != "" %}
+  <details>
+    <summary>{{ group.name }}<span class="cat-count">&nbsp;({{ group.items | size }})</span></summary>
+    <ul>
+    {% assign sorted_items = group.items | sort: "title" %}
+    {% for page in sorted_items %}
+      <li>
+        <a href="{{ page.url }}">{{ page.title | default: page.name }}</a>{% if page.papers_supporting and page.papers_supporting.size > 0 %}<span class="meta">{{ page.papers_supporting.size }} paper{% if page.papers_supporting.size != 1 %}s{% endif %}</span>{% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </details>
+  {% endif %}
 {% endfor %}
-{% if topic_pages.size == 0 %}
-  <li><em>No topic pages yet.</em></li>
-{% endif %}
-</ul>
+</div>
 
-<p class="meta">
+<p class="meta" style="margin-top:18px;">
   ← <a href="/knowledge/">Back to Knowledge</a>
 </p>

@@ -5,6 +5,7 @@ topic_slug: genome_structure_evolution
 last_updated: 2026-04-21T18:35:32.812416+00:00
 papers_supporting: [10.1093/jhered/esad076, 8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
 permalink: /knowledge/topics/genome_structure_evolution/
+category: "Genome structure"
 ---
 # Genome Structure Evolution
 

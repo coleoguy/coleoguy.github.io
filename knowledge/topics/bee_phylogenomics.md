@@ -5,6 +5,7 @@ topic_slug: bee_phylogenomics
 last_updated: 2026-04-21T15:50:37.128592+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/bee_phylogenomics/
+category: "Insects & comparative genomics"
 ---
 # Bee Phylogenomics
 

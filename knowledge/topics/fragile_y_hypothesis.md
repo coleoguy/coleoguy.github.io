@@ -2,9 +2,10 @@
 layout: default
 title: "Fragile Y hypothesis"
 topic_slug: fragile_y_hypothesis
-last_updated: 2026-04-21T18:12:27.874256+00:00
-papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96ccfa84, 10.1002/ece3.73483, 10.1093/g3journal/jkaf217, 10.1534/genetics.117.300382, a73574bbaaa5fe6c06f620cd8793d044d3c5b758777b262d09e80b49d181b465]
+last_updated: 2026-04-21T18:44:03.899384+00:00
+papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96ccfa84, 10.1002/ece3.73483, 10.1093/g3journal/jkaf217, 10.1534/genetics.117.300382, 7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150f528, a73574bbaaa5fe6c06f620cd8793d044d3c5b758777b262d09e80b49d181b465]
 permalink: /knowledge/topics/fragile_y_hypothesis/
+category: "Sex chromosomes"
 ---
 # Fragile Y Hypothesis
 
@@ -34,20 +35,23 @@ Empirical genomic work in Coleoptera is beginning to provide direct molecular ev
 - [Drivers of achiasmatic meiosis: sexual antagonism versus heteromorphy-dependent aneuploidy across sex-chromosome divergence., Finding 2](/knowledge/papers/10_1093_g3journal_jkaf217/#finding-2): Selective driver of achiasmy shifts from SA selection to heteromorphy-dependent aneuploidy as sex chromosomes diverge.
 - [Drivers of achiasmatic meiosis: sexual antagonism versus heteromorphy-dependent aneuploidy across sex-chromosome divergence., Finding 3](/knowledge/papers/10_1093_g3journal_jkaf217/#finding-3): Under the aneuploidy regime, autosomes are more permissive than X chromosomes for achiasmy invasion due to greater male residence time.
 - [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (*Cheirotonus formosanus*): Discovery of a Putative Y-Linked Scaffold and Demographic History., Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1): Rare empirical genomic evidence of a highly reduced beetle Y scaffold (~1.1 Mbp) consistent with advanced Y degeneration.
+- [2020 probability, Finding 1](/knowledge/papers/2020_probability/#finding-1): In Drosophila, the observed proportion of sex-chromosome–autosome (SA) fusions is only 0.155 versus an expected 0.43, with non-overlapping credible intervals — an empirical result that complicates the assumption that SA selection universally drives recombination suppression.
 
 ## Contradictions / open disagreements
 
-The 3.5× stability estimate from [2014d, Finding 1](/knowledge/papers/2014d/#finding-1) rests on phylogenetic inference from a sparse supermatrix and a Markov model of karyotype evolution; taxa with poorly sampled cytogenetics could bias state assignments. Similarly, the within-Adephaga test in [2015a, Finding 2](/knowledge/papers/2015a/#finding-2) assumes a single background rate of Y loss across the entire suborder; if loss rates vary for reasons other than meiotic mechanism (e.g., lineage-specific demography or karyotypic constraints), the expected counts are biased and the inference weakens.
+The 3.5× stability estimate from [2014d, Finding 1](/knowledge/papers/2014d/#finding-1) rests on phylogenetic inference from a sparse supermatrix and a Markov model of karyotype evolution; taxa with poorly sampled cytogenetics could bias state assignments. Similarly, the within-Adephaga test in [2015a, Finding 2](/knowledge/papers/2015a/#finding-2) assumes a single background rate of Y loss across the entire suborder; if loss rates vary for reasons other than meiotic mechanism, the expected counts are biased and the inference weakens.
 
 The Turner syndrome figure used in [2015a, Finding 3](/knowledge/papers/2015a/#finding-3) comes from older cytogenetic surveys with ascertainment limitations; the 3% conception frequency conflates paternal meiotic non-disjunction with maternal errors and post-zygotic X-chromosome loss events, so it only indirectly measures Y mis-segregation rate specifically.
 
-The two modeling frameworks share deterministic, symmetric-fitness assumptions and do not incorporate genetic drift; quantitative thresholds may not transfer to small-N_e populations where drift could overwhelm selection on mildly deleterious inversions. The achiasmy model attributes the counterintuitive permissiveness of autosomes relative to X chromosomes under aneuploidy selection to male residence time, but ploidy and linkage structure also differ, and the paper does not formally isolate residence time as the sole causal mechanism.
+A more fundamental challenge to the SA-driven arm of the hypothesis comes from [2020 probability, Finding 1](/knowledge/papers/2020_probability/#finding-1): Drosophila show far fewer sex-chromosome–autosome fusions than expected under a null model of SA selection (observed 0.155 vs. expected 0.43, non-overlapping credible intervals). If SA selection were the dominant short-term driver of recombination suppression, one would predict an excess — not a deficit — of such fusions. The finding suggests that either the SA premise does not generalize across taxa, or that Drosophila-specific features (achiasmatic male meiosis, highly degenerate Y, small chromosome number) make this clade a poor representative of the general case. Disentangling these alternatives requires broader comparative analysis.
+
+The two SA-inversion modeling frameworks share deterministic, symmetric-fitness assumptions and do not incorporate genetic drift; quantitative thresholds may not transfer to small-*N*e populations where drift could overwhelm selection on mildly deleterious inversions. The achiasmy model attributes the counterintuitive permissiveness of autosomes relative to X chromosomes under aneuploidy selection to male residence time, but ploidy and linkage structure also differ, and the paper does not formally isolate residence time as the sole causal mechanism.
 
 The *C. formosanus* Y scaffold was characterized from a single male and female using read-depth alone; Y-linkage inferred without PCR validation or broader population sampling could partly reflect repeat artifacts or male-biased heterochromatin rather than a bona fide degenerate Y.
 
 ## Tealc's citation-neighborhood suggestions
 
-Empirical studies directly measuring PAR size and aneuploidy rates across taxa with known Y-turnover histories would allow the core negative correlation posited by the fragile Y hypothesis to be rigorously quantified rather than inferred from indirect proxies. Work documenting the genomic distribution of achiasmy across lineages with varying sex-chromosome age would provide a natural test of the staged SA→aneuploidy model. Additional beetle reference genomes with Y scaffolds — especially taxa spanning a range of Y-degeneration stages — would allow the *C. formosanus* result to be placed in comparative context and the 3.5× empirical estimate to be revisited with denser taxon sampling.
+Empirical studies directly measuring PAR size and aneuploidy rates across taxa with known Y-turnover histories would allow the core negative correlation posited by the fragile Y hypothesis to be rigorously quantified rather than inferred from indirect proxies. Work documenting the genomic distribution of achiasmy across lineages with varying sex-chromosome age would provide a natural test of the staged SA→aneuploidy model. Additional beetle reference genomes with Y scaffolds — especially taxa spanning a range of Y-degeneration stages — would allow the *C. formosanus* result to be placed in comparative context and the 3.5× empirical estimate to be revisited with denser taxon sampling. Comparative analyses of SA-fusion rates across other clades with well-characterized sex chromosomes (beyond Drosophila) are needed to determine whether the fusion deficit is clade-specific or reflects a broader limitation of SA-based models.
 
 ## Related on the Blackmon Lab site
 
@@ -56,3 +60,4 @@ Empirical studies directly measuring PAR size and aneuploidy rates across taxa w
 - [Paper detail page — Blackmon & Brandvain (SA-inversion modeling)](/knowledge/papers/10_1534_genetics_117_300382/)
 - [Paper detail page — Drivers of achiasmatic meiosis](/knowledge/papers/10_1093_g3journal_jkaf217/)
 - [Paper detail page — Cheirotonus formosanus genome](/knowledge/papers/10_1002_ece3_73483/)
+- [Paper detail page — 2020 probability (SA-fusion rates in Drosophila)](/knowledge/papers/2020_probability/)
