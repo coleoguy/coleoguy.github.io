@@ -1,0 +1,45 @@
+---
+layout: default
+title: "2019-mammals"
+doi: 
+fingerprint_sha256: 2868f9fb2c04a641393569fdd996eb3a6385c0c5ef19eff83448aea96d7cfbc9
+authors: ""
+journal: ""
+year: 
+topics: [chromosome_number_evolution, diversification_rates, karyotype_evolution, meiotic_drive]
+tier: canon
+ingested_at: 2026-04-21T18:26:50.683206+00:00
+permalink: /knowledge/papers/2019_mammals/
+---
+
+# 2019-mammals
+
+## Summary
+
+_Ingested 2026-04-21. 2 findings extracted and verified._
+
+## Findings worth citing
+
+<a id="finding-1"></a>
+### Finding 1 — Karyotype morphology (matched vs. mismatched) in mammals shows no detectable effect on speciation or extinction rates under a BiSSE analysis.
+
+> These results suggest that mammals with matched or mismatched karyotypes do not have detectably different net diversification rates.
+— p. 7
+
+*Why this is citable:* This directly addresses the long-standing chromosomal speciation hypothesis in mammals and provides a citable negative result against karyotype-driven diversification at macroevolutionary scales.
+
+*Counter / limitation:* BiSSE is known to produce high false-positive rates on phylogenies with diversification rate heterogeneity, and the authors themselves show elevated false-positive rates for diversification inference on the cetacean tree in their simulations.
+
+*Topics:* [karyotype_evolution](/knowledge/topics/karyotype_evolution/), [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/), [diversification_rates](/knowledge/topics/diversification_rates/), [meiotic_drive](/knowledge/topics/meiotic_drive/)
+
+<a id="finding-2"></a>
+### Finding 2 — Switches in meiotic drive polarity occur at widely varying rates across mammal subclades, from a mean waiting time of ~10.8 million years in Cetartiodactyla to ~90.9 million years in Primates.
+
+> We found the highest rate of polarity switching in Cetartio- dactyla, where the mean waiting time for a transition was 10.8 mil- lion years (Fig. 5A). The lowest rate of polarity switching was in
+— p. 8–9
+
+*Why this is citable:* This quantifies how often meiotic drive polarity is inferred to flip across major mammalian subclades, providing citable rate estimates for Cetartiodactyla (~10.8 Myr mean waiting time) and Primates (~90.9 Myr) from the subclade chromePlus analyses.
+
+*Counter / limitation:* The Primate value is described as a 'median' waiting time in the text (page 9: 'the median rate was almost an order of magnitude longer at 90.9 million years'), not a 'mean', so the finding_text slightly misstates the statistic for Primates. Additionally, these rates are inferred from q12 transition parameters on trees representing only 12–30% of extant species per clade, limiting precision.
+
+*Topics:* [karyotype_evolution](/knowledge/topics/karyotype_evolution/), [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/), [meiotic_drive](/knowledge/topics/meiotic_drive/), [diversification_rates](/knowledge/topics/diversification_rates/)

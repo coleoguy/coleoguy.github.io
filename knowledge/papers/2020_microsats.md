@@ -6,9 +6,9 @@ fingerprint_sha256: e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00f
 authors: ""
 journal: ""
 year: 
-topics: [centromere_type, genome_dynamics, holocentric_chromosomes, insect_genomics, microsatellite_evolution]
+topics: [centromere_evolution, chromosome_number_evolution, genome_structure_evolution, microsatellite_evolution]
 tier: canon
-ingested_at: 2026-04-21T16:43:12.648281+00:00
+ingested_at: 2026-04-21T18:34:28.268828+00:00
 permalink: /knowledge/papers/2020_microsats/
 ---
 
@@ -16,18 +16,42 @@ permalink: /knowledge/papers/2020_microsats/
 
 ## Summary
 
-_Ingested 2026-04-21. 1 findings extracted and verified._
+_Ingested 2026-04-21. 3 findings extracted and verified._
 
 ## Findings worth citing
 
 <a id="finding-1"></a>
-### Finding 1 — Insect species with monocentric chromosomes exhibit higher rates of microsatellite evolution than species with holocentric chromosomes, despite having similar total microsatellite content.
+### Finding 1 — Diploid chromosome number shows no significant relationship with either microsatellite content or rate of microsatellite evolution across insects.
 
-> Out of the 100 posterior distribution trees, 99 favored a two-rate model. The rate estimates for microsatellite evolution were higher in lineages with monocentric chromosomes for all trees, including the one tree that did not support a two-rate model as significantly better
+> We found no signiﬁcant relationship between chromosome number and rates of microsatellite evolution (Figure 3C) or microsatellite content (Figure 3D).
+— p. 8
+
+*Why this is citable:* Directly refutes the intuitive prediction that more chromosomes (and thus more centromeres/telomeres) yield more microsatellite content, useful for grounding negative results in karyotype–genome content correlations.
+
+*Counter / limitation:* The analysis uses whole-genome assemblies that poorly capture centromeric/telomeric heterochromatin, so a real association concentrated in those regions could be missed; the authors acknowledge this limitation explicitly.
+
+*Topics:* [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/), [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/)
+
+<a id="finding-2"></a>
+### Finding 2 — Genome size positively correlates with microsatellite content across insects, with 96 of 100 phylogenies yielding a significant positive relationship.
+
+> when we tested genome size as the predictor variable for microsatellite content, 96 of 100 phylogenies produced a signiﬁcant result (Figure 4A). For 99 of the models, the slope of this relationship was positive, indicating that increased genome size is associated with increased microsatellite content.
+— p. 8
+
+*Why this is citable:* Provides a quantitative, phylogenetically corrected confirmation in insects of the genome-size/repeat-content scaling relationship, supporting the proportional model of genome size evolution.
+
+*Counter / limitation:* The correlational design cannot distinguish whether microsatellite expansion drives genome size changes or whether both respond to a common insertion/deletion process, as the authors note.
+
+*Topics:* [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/)
+
+<a id="finding-3"></a>
+### Finding 3 — Insect species with monocentric chromosomes evolve microsatellite content at significantly higher rates than species with holocentric chromosomes, despite showing no significant difference in total microsatellite content.
+
+> Out of the 100 posterior distribution trees, 99 favored a two-rate model. The rate estimates for microsatellite evolution were higher in lineages with monocentric chromosomes for all trees, including the one tree that did not support a two-rate model as signiﬁcantly better
 — p. 7
 
-*Why this is citable:* This is the paper's central comparative finding linking centromere architecture to the rate (not content) of microsatellite evolution across insects, directly citable for hypotheses about how chromosome type shapes genome dynamics. The paper explicitly finds higher rates in monocentric lineages while finding no significant difference in total microsatellite content between centromere types.
+*Why this is citable:* This is the paper's central comparative result linking centromere architecture to rates of microsatellite evolution in insects: 99 of 100 posterior trees favor a two-rate model, with consistently higher rates in monocentric lineages. Directly citable for claims about how centromere type influences the tempo of repetitive DNA evolution, while noting no associated difference in total microsatellite content.
 
-*Counter / limitation:* The authors themselves warn that Diptera and Hymenoptera likely drive much of the monocentric rate signal, and that Coleoptera (also monocentric) has the lowest rate of any order studied—meaning monocentricity per se may not be the causal driver. The authors explicitly compare this confound to BiSSE false-positive inflation, where a small portion of a phylogeny with strong signal can make any binary trait mapped onto that region appear correlated with high rates.
+*Counter / limitation:* The authors explicitly caution that the signal is likely driven by a few monocentric orders (Diptera, Hymenoptera), while Coleoptera—also monocentric—has the lowest rate of any order studied. The binary holocentric/monocentric contrast is therefore confounded with clade-specific factors, and the paper itself warns this pattern is analogous to the inflated false-positive problem documented under BiSSE models.
 
-*Topics:* [microsatellite_evolution](/knowledge/topics/microsatellite_evolution/), [centromere_type](/knowledge/topics/centromere_type/), [holocentric_chromosomes](/knowledge/topics/holocentric_chromosomes/), [genome_dynamics](/knowledge/topics/genome_dynamics/), [insect_genomics](/knowledge/topics/insect_genomics/)
+*Topics:* [microsatellite_evolution](/knowledge/topics/microsatellite_evolution/), [centromere_evolution](/knowledge/topics/centromere_evolution/), [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/)

@@ -1,0 +1,35 @@
+---
+layout: default
+title: "Conservation Genetics"
+topic_slug: conservation_genetics
+last_updated: 2026-04-21T18:32:24.999366+00:00
+papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114bb78]
+permalink: /knowledge/topics/conservation_genetics/
+---
+# Conservation Genetics
+
+## Current understanding
+
+A recurring challenge in conservation genetics is accurately translating molecular diversity estimates into biologically meaningful parameters — particularly effective population size (Ne) — that can guide management decisions. A key assumption underlying many Ne estimators is that sampled populations are panmictic, but real populations are often spatially structured, fragmented, or distributed across environmental gradients. Violating this assumption can produce severely misleading results.
+
+One well-documented source of bias is **ancestral isolation-by-distance (IBD)**: shared ancestry accumulated across a geographically structured range inflates pairwise nucleotide divergence (π₁₂) between sampled populations. When a standard panmictic formula is applied to that divergence to back-calculate Ne, the resulting estimate can far exceed the true census size. For example, under low but nonzero migration (m = 0.001) in a linear stepping-stone model, end-of-range species show estimated ancestral Ne of roughly 7,370 — more than **seven times** the true census size of 1,000 individuals — while centrally located populations are far less affected (Ne ≈ 1,255) [2020 ghost of a structured, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1). This "ghost" of historical structure lingers in coalescent genealogies long after the demographic event that created it, making it invisible to approaches that treat all divergence as attributable to contemporary population size alone.
+
+For conservation practitioners, the implication is significant: populations at the **edges of species' ranges** — which are often of particular conservation interest due to their potential adaptive significance or fragmentation — are precisely those most likely to yield inflated Ne estimates when standard methods are used without accounting for spatial structure. Acting on such estimates could lead managers to conclude that a population is much larger and more genetically diverse than it truly is, potentially understating extinction risk.
+
+## Supporting evidence
+
+- [2020 ghost of a structured, Finding 1](/knowledge/papers/2020_ghost_of_a_structured/#finding-1): In a simulated stepping-stone model (TD/ND = 50, m = 0.001, Nc = 1,000), ancestral IBD drives estimated Ne for end-of-range populations to ~7,370, a roughly 7-fold inflation over census size. Center populations are comparatively robust (Ne ≈ 1,255), highlighting that geographic sampling position matters enormously for coalescent-based Ne inference.
+
+## Contradictions / open disagreements
+
+The inflation documented above is a consequence of applying a **panmictic estimator** to data generated under a structured model. Structured coalescent frameworks, isolation-with-migration (IM) models, or spatially explicit demographic models that explicitly account for population connectivity would not suffer from the same bias. The concern is therefore specific to common-practice shortcuts rather than a universal failure of Ne estimation. Additionally, the magnitude of inflation is sensitive to the TD/ND ratio and the migration rate assumed; other parameter combinations may produce more modest or more extreme distortions, and empirical validation across diverse taxa is still needed.
+
+## Tealc's citation-neighborhood suggestions
+
+- Waples & Do (2010) — practical guides for Ne estimation in fragmented populations.
+- Städler et al. (2009) — evaluation of isolation-with-migration models for distinguishing ancestral structure from contemporary size change.
+- Palstra & Ruzzante (2008) — meta-analysis of Ne/Nc ratios across species, providing empirical context for simulation-derived inflation factors.
+
+## Related on the Blackmon Lab site
+
+- [Ghost of a Structured Past (paper page)](/knowledge/papers/2020_ghost_of_a_structured/)
