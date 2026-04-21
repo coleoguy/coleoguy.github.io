@@ -43,3 +43,25 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 *Counter / limitation:* Based on only 13 parthenogenetic species within a single order (Phasmatodea) and on ancestral reconstructions of reproductive mode, so generality to other clades and robustness to sampling is limited.
 
 *Topics:* [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/), [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1098/rspb.2020.1388](https://doi.org/10.1098/rspb.2020.1388)
+
+## Related papers on this site
+
+- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, sex_chromosome_evolution)
+- [Drift drives the evolution of chromosome number I: The impac…](/knowledge/papers/2024_drift_beetles/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Drift drives the evolution of chromosome number II: The impa…](/knowledge/papers/2024_drift_carnivores/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Genome assembly of the southern pine beetle (Dendroctonus fr…](/knowledge/papers/2024_spb/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Worse than nothing at all: the inequality of fusions joining…](/knowledge/papers/2024_worse/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Blackmon & Demuth 2015](/knowledge/papers/2015a/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Blackmon et al. 2017](/knowledge/papers/2017_sex_chromosomesa/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Ruckman et al. 2020](/knowledge/papers/2020_holocentric/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [The probability of fusions joining sex chromosomes and autos…](/knowledge/papers/2020_probability/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+
+## Other papers by these authors
+
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

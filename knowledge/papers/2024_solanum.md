@@ -55,3 +55,11 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Counter / limitation:* This minimal cohort set cannot estimate higher-order epistatic interactions beyond two-partner effects, and small sample sizes within cohorts may reduce power to detect composite effects (as seen with areal ratio).
 
 *Topics:* [line_cross_analysis](/knowledge/topics/line_cross_analysis/), [genetic_architecture](/knowledge/topics/genetic_architecture/)
+
+<!-- tealc:related-start -->
+## Related papers on this site
+
+- [Wright was right: leveraging old data and new methods to ill…](/knowledge/papers/2024_wright/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Blackmon & Demuth 2016](/knowledge/papers/2016_saga/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/) — 2 shared topics (epistasis, line_cross_analysis)
+<!-- tealc:related-end -->

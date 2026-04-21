@@ -43,3 +43,12 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 *Counter / limitation:* Only 7% of neutral simulations reached ΔR magnitudes as extreme as the empirical data, so the false positive rate in isolation overstates concern when effect sizes are considered; also specific to the Carnivora tree topology.
 
 *Topics:* [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/), [comparative_methods](/knowledge/topics/comparative_methods/)
+
+<!-- tealc:related-start -->
+## Related papers on this site
+
+- [Drift drives the evolution of chromosome number I: The impac…](/knowledge/papers/2024_drift_beetles/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, selection_and_drift)
+- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Ruckman et al. 2020](/knowledge/papers/2020_holocentric/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Sylvester et al. 2020](/knowledge/papers/2020_polyneoptera/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+<!-- tealc:related-end -->

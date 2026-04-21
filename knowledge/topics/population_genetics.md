@@ -36,3 +36,6 @@ None known from current findings. The count of 83 overlapping genes is a snapsho
 
 - [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/) — source of the primary finding on this page.
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

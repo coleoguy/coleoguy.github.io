@@ -33,3 +33,6 @@ The analysis underlying Finding 1 is currently confined to a single species (*A.
 
 - [DirectRepeateR: An R package 2025](/knowledge/papers/2025_directrepeater/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

@@ -43,3 +43,20 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 *Counter / limitation:* The simulation uses only 20 unlinked biallelic loci with all dispersal alleles dominant and a specific allele-frequency architecture matching the empirical lines; different numbers of loci, linkage structures, dominance relationships, or starting allele frequencies could produce higher false-positive epistatic magnitudes and may not fully bracket the range of possible dispersion artifacts.
 
 *Topics:* [epistasis](/knowledge/topics/epistasis/), [line_cross_analysis](/knowledge/topics/line_cross_analysis/), [dispersal](/knowledge/topics/dispersal/), [quantitative_genetics](/knowledge/topics/quantitative_genetics/), [Tribolium](/knowledge/topics/Tribolium/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/jhered/esaa030](https://doi.org/10.1093/jhered/esaa030)
+
+## Related papers on this site
+
+- [Assessing the opportunity for selection to impact morphologi…](/knowledge/papers/2024_solanum/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Wright was right: leveraging old data and new methods to ill…](/knowledge/papers/2024_wright/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Blackmon & Demuth 2016](/knowledge/papers/2016_saga/) — 2 shared topics (epistasis, line_cross_analysis)
+
+## Other papers by these authors
+
+- [Ruckman SN](/knowledge/authors/ruckman_sn/)
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

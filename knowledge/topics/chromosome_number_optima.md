@@ -37,3 +37,6 @@ No direct contradictions exist among the currently folded-in findings. However, 
 
 - [Sex chromosome evolution](/sex-chromosome-evolution.html)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

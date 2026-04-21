@@ -55,3 +55,13 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Counter / limitation:* The Ne value of ~7370 is derived by applying the panmictic expectation (equation 5: Ne = (π12 − 2TDμ) / 4μ) to data generated under a structured model; this is the very source of the inflation, not a failure of a general Ne estimator. Methods that explicitly account for population structure (e.g., structured coalescent models) would not produce this bias. Additionally, the specific TD/ND ratio used matters: the paper reports this figure for TD/ND = 50 with m = 0.001, so the magnitude may differ for other parameter combinations.
 
 *Topics:* [effective_population_size](/knowledge/topics/effective_population_size/), [isolation_by_distance](/knowledge/topics/isolation_by_distance/), [conservation_genetics](/knowledge/topics/conservation_genetics/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/jhered/esaa042](https://doi.org/10.1093/jhered/esaa042)
+
+## Other papers by these authors
+
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

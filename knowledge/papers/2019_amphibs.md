@@ -31,3 +31,19 @@ _Ingested 2026-04-21. 1 findings extracted and verified._
 *Counter / limitation:* The counts are sampling-biased toward frogs and reflect accumulated literature rather than balanced phylogenetic coverage, so analyses drawing on the database must account for uneven taxonomic representation.
 
 *Topics:* [karyotype_database](/knowledge/topics/karyotype_database/), [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1007/s10577-019-09613-1](https://doi.org/10.1007/s10577-019-09613-1)
+
+## Related papers on this site
+
+- [Drift drives the evolution of chromosome number I: The impac…](/knowledge/papers/2024_drift_beetles/) — 2 shared topics (karyotype_database, karyotype_evolution_overview)
+
+## Other papers by these authors
+
+- [Jonika MM](/knowledge/authors/jonika_mm/)
+- [Lo J](/knowledge/authors/lo_j/)
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

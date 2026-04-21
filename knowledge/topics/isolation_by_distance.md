@@ -43,3 +43,6 @@ The quantitative findings above all come from a single simulation framework: a 1
 
 - [Hancock & Blackmon 2020](/knowledge/papers/2020_ghost_of_a_structured/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

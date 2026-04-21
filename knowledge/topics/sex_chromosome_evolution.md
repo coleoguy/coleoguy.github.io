@@ -83,3 +83,17 @@ The ancestral-state reconstruction ([Blackmon et al. 2017, Finding 1](/knowledge
 
 The field would benefit from empirical studies directly measuring PAR length and aneuploidy rates across
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/) — 7 shared papers
+- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 7 shared papers
+- [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/) — 3 shared papers
+- [Genome structure evolution](/knowledge/topics/genome_structure_evolution/) — 3 shared papers
+- [Sex-linkage mutation](/knowledge/topics/sex_linkage_mutation/) — 3 shared papers
+- [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 2 shared papers
+- [Karyotype database](/knowledge/topics/karyotype_database/) — 2 shared papers
+- [Karyotype Evolution](/knowledge/topics/karyotype_evolution/) — 2 shared papers
+- [Y-naught asymmetry](/knowledge/topics/y_naught_asymmetry/) — 2 shared papers
+<!-- tealc:related-end -->

@@ -35,3 +35,6 @@ The current evidence base consists of a single compound trait comparison from on
 
 - [Assessing the opportunity for 2024](/knowledge/papers/2024_solanum/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

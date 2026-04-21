@@ -55,3 +55,18 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Counter / limitation:* The simulations show the X–Y difference is small (e.g., 13% vs 8% above MDE in one additive scenario) and the two frequencies converge at fixation when s is between 0.3 and 0.7, making the asymmetry likely undetectable in empirical fusion counts against noise from Y degeneration, Y-chromosome size differences, or small sample sizes of documented fusions.
 
 *Topics:* [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/), [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/)
+
+<!-- tealc:related-start -->
+## Related papers on this site
+
+- [Blackmon & Demuth 2015](/knowledge/papers/2015a/) — 3 shared topics (fragile_y_hypothesis, karyotype_evolution_overview, sex_chromosome_evolution)
+- [The probability of fusions joining sex chromosomes and autos…](/knowledge/papers/2020_probability/) — 3 shared topics (fragile_y_hypothesis, karyotype_evolution_overview, sex_chromosome_evolution)
+- [Genome assembly of the southern pine beetle (Dendroctonus fr…](/knowledge/papers/2024_spb/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Blackmon & Demuth 2014](/knowledge/papers/2014d/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Blackmon & Brandvain 2017](/knowledge/papers/10_1534_genetics_117_300382/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Blackmon et al. 2017](/knowledge/papers/2017_sex_chromosomesa/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Sylvester et al. 2020](/knowledge/papers/2020_polyneoptera/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Barboza & Blackmon 2025](/knowledge/papers/10_1093_g3journal_jkaf217/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+<!-- tealc:related-end -->

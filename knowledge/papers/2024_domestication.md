@@ -55,3 +55,6 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Counter / limitation:* The paper itself cites Alfieri et al. 2023 as having genomically refuted at least one guineafowl × Phasianidae hybrid record; the remaining five inter-family records in this dataset lack molecular verification, so the 51 MY figure rests on literature-sourced hybrid reports that have not been independently confirmed at the genomic level.
 
 *Topics:* [reproductive_isolation](/knowledge/topics/reproductive_isolation/), [avian_hybridization](/knowledge/topics/avian_hybridization/), [Galliformes](/knowledge/topics/Galliformes/), [postzygotic_isolation](/knowledge/topics/postzygotic_isolation/)
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

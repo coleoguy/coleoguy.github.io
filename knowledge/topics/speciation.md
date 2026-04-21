@@ -34,3 +34,6 @@ The "continuous ring" framing of the greenish warbler system is partly complicat
 
 - [Ring Species and Speciation 2012](/knowledge/papers/2012a/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

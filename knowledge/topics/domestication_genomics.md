@@ -34,3 +34,6 @@ The primary internal tension in this literature concerns causality. The finding 
 
 - [Sex chromosome evolution](/sex-chromosome-evolution.html) — relevant because domestication events sometimes involve sex-linked loci under artificial selection.
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

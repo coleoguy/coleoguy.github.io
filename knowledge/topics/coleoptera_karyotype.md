@@ -31,3 +31,6 @@ The verbatim source quote documenting the upper bound (2n = 70 for *Dixus capito
 
 - [Blackmon & Demuth 2015](/knowledge/papers/2014b/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

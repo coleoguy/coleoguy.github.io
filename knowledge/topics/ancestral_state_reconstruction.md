@@ -36,3 +36,6 @@ The two models applied to Acari haplodiploidy yield divergent origin counts (7.9
 
 - [Blackmon et al. 2015](/knowledge/papers/2015_haplo/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

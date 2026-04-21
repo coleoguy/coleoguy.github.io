@@ -37,3 +37,6 @@ Additionally, the epistasis inference from line cross analysis depends on a simu
 
 - [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

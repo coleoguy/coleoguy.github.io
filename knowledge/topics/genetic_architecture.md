@@ -41,3 +41,6 @@ Additionally, the observation that compound traits behave additively while their
 
 - [Assessing the opportunity for 2024](/knowledge/papers/2024_solanum/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

@@ -31,3 +31,19 @@ _Ingested 2026-04-21. 1 findings extracted and verified._
 *Counter / limitation:* The reconstruction cannot distinguish XY from XO ancestry and relies on order-level prior probabilities with simplifying assumptions (e.g., fixing HD loss rate to zero), so fine-scale transition inferences remain uncertain.
 
 *Topics:* [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/), [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/)
+
+<!-- tealc:related-start -->
+## Related papers on this site
+
+- [Genome assembly of the southern pine beetle (Dendroctonus fr…](/knowledge/papers/2024_spb/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Worse than nothing at all: the inequality of fusions joining…](/knowledge/papers/2024_worse/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Blackmon & Demuth 2015](/knowledge/papers/2015a/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [Sylvester et al. 2020](/knowledge/papers/2020_polyneoptera/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+- [The probability of fusions joining sex chromosomes and autos…](/knowledge/papers/2020_probability/) — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)
+
+## Other papers by these authors
+
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+- [Ross L](/knowledge/authors/ross_l/)
+<!-- tealc:related-end -->

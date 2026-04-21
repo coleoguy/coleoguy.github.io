@@ -49,3 +49,10 @@ The out-of-the-X retrogenesis finding replicates an established pattern rather t
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
 - [Lo & Blackmon 2022](/knowledge/papers/2022_retrogenes/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 3 shared papers
+- [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/) — 2 shared papers
+<!-- tealc:related-end -->

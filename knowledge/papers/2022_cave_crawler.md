@@ -55,3 +55,13 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Counter / limitation:* The finding relies on a circadian transcription dataset (Mack et al. 2021) and FST outliers defined at the lowest 5% divergence threshold (Herman et al. 2018); changing either dataset or threshold could alter which genes qualify as double outliers. No functional validation of arpin's role in cavefish circadian or actin phenotypes is provided, so the biological inference remains correlative.
 
 *Topics:* [cavefish_genomics](/knowledge/topics/cavefish_genomics/), [circadian_rhythm_evolution](/knowledge/topics/circadian_rhythm_evolution/), [convergent_evolution](/knowledge/topics/convergent_evolution/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/g3journal/jkac132](https://doi.org/10.1093/g3journal/jkac132)
+
+## Other papers by these authors
+
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

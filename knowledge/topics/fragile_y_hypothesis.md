@@ -71,3 +71,13 @@ Empirical studies directly measuring PAR size and aneuploidy rates across taxa w
 - [Paper detail page — 2020 probability (SA-fusion rates in Drosophila)](/knowledge/papers/2020_probability/)
 - [Paper detail page — 2024 worse (PAR fusions under SA selection)](/knowledge/papers/2024_worse/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 7 shared papers
+- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 3 shared papers
+- [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/) — 2 shared papers
+- [Karyotype Evolution](/knowledge/topics/karyotype_evolution/) — 2 shared papers
+- [Sex-linkage mutation](/knowledge/topics/sex_linkage_mutation/) — 2 shared papers
+<!-- tealc:related-end -->

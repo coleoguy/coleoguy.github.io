@@ -39,3 +39,6 @@ Despite this evolutionary lability in drive polarity, there is no detectable mac
 
 - [Blackmon et al. 2019](/knowledge/papers/2019_mammals/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

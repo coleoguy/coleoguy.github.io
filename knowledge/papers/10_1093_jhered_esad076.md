@@ -63,3 +63,9 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 *Counter / limitation:* Taxon sampling is heavily biased toward social bees in Apidae and Halictidae, Stenotritidae is entirely absent, and only one Andrenidae genus (Andrena) is represented alongside Perdita, so the sister-group relationship and Andrenidae internal topology remain incompletely tested with available genome data.
 
 *Topics:* [bee_phylogenomics](/knowledge/topics/bee_phylogenomics/), [uce_phylogenetics](/knowledge/topics/uce_phylogenetics/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/jhered/esad076](https://doi.org/10.1093/jhered/esad076)
+<!-- tealc:related-end -->

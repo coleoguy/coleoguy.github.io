@@ -34,3 +34,6 @@ The biological inference that *arpin* plays a functional role in cavefish circad
 
 - Paper page: [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

@@ -52,3 +52,10 @@ Large-scale cytogenetic databases or comparative genomic surveys spanning multip
 - [Blackmon & Demuth 2014](/knowledge/papers/2014d/)
 - [Blackmon et al. 2019](/knowledge/papers/2019_mammals/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/) — 2 shared papers
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 2 shared papers
+<!-- tealc:related-end -->

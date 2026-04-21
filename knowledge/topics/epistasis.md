@@ -62,3 +62,9 @@ Together, these results suggest that epistasis in quantitative traits is (1) mor
 - [Assessing the opportunity for 2024](/knowledge/papers/2024_solanum/)
 - [Wright was right: leveraging 2024](/knowledge/papers/2024_wright/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Line Cross Analysis](/knowledge/topics/line_cross_analysis/) — 4 shared papers
+<!-- tealc:related-end -->

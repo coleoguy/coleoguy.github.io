@@ -36,3 +36,6 @@ A notable tension exists even within the greenish warbler example. Although the 
 
 - [Ring Species and Speciation 2012](/knowledge/papers/2012a/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

@@ -33,3 +33,6 @@ The h < 0.3 dominance threshold is derived from a symmetric fitness model that a
 
 - [2017-fragileY paper page](/knowledge/papers/10_1534_genetics_117_300382/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

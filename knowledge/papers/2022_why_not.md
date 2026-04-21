@@ -43,3 +43,9 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 *Counter / limitation:* This is a verbal/theoretical argument that synthesizes existing SA theory without new quantitative modeling; the relative strength of SA-driven fusion versus genetic drift in small populations is not formally estimated, and empirical support is limited to the XX/XO-to-XY case in Polyneoptera (Sylvester et al. 2020) rather than direct evidence from YO/WO systems.
 
 *Topics:* [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/), [sexually_antagonistic_selection](/knowledge/topics/sexually_antagonistic_selection/), [y_naught_asymmetry](/knowledge/topics/y_naught_asymmetry/)
+
+<!-- tealc:related-start -->
+## Related papers on this site
+
+- [Blackmon & Demuth 2015](/knowledge/papers/2015b/) — 3 shared topics (karyotype_database, sex_chromosome_evolution, y_naught_asymmetry)
+<!-- tealc:related-end -->

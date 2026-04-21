@@ -55,3 +55,9 @@ The five-cohort design demonstrated in the 2024 *Solanum* work ([Assessing the o
 - [Assessing the opportunity for 2024](/knowledge/papers/2024_solanum/)
 - [Wright was right: leveraging 2024](/knowledge/papers/2024_wright/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Epistasis](/knowledge/topics/epistasis/) — 4 shared papers
+<!-- tealc:related-end -->

@@ -39,3 +39,6 @@ The 700% overestimation figure and the T_D/N_D < 10 threshold both arise from a 
 
 - [Ghost of a Structured Ancestor (2020)](/knowledge/papers/2020_ghost_of_a_structured/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

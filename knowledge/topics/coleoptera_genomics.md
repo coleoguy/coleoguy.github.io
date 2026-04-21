@@ -57,3 +57,13 @@ Beetles (Coleoptera) are the most species-rich animal order, yet chromosome-leve
 - [Source paper: 2024 drift beetles — Ne and karyotype evolution in Coleoptera](/knowledge/papers/2024_drift_beetles/)
 - [Source paper: 2024 SPB — *Dendroctonus frontalis* genome](/knowledge/papers/2024_spb/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 3 shared papers
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 3 shared papers
+- [Conservation Genomics](/knowledge/topics/conservation_genomics/) — 2 shared papers
+- [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/) — 2 shared papers
+- [Genome Assembly](/knowledge/topics/genome_assembly/) — 2 shared papers
+<!-- tealc:related-end -->

@@ -31,3 +31,18 @@ _Ingested 2026-04-21. 1 findings extracted and verified._
 *Counter / limitation:* The 95% credible interval still overlaps zero, so this is a suggestive trend rather than a statistically supported result, and it depends on excluding polyploidy from the model.
 
 *Topics:* [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/), [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/)
+
+<!-- tealc:related-start -->
+## Related papers on this site
+
+- [Drift drives the evolution of chromosome number I: The impac…](/knowledge/papers/2024_drift_beetles/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Drift drives the evolution of chromosome number II: The impa…](/knowledge/papers/2024_drift_carnivores/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Sylvester et al. 2020](/knowledge/papers/2020_polyneoptera/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+
+## Other papers by these authors
+
+- [Ruckman SN](/knowledge/authors/ruckman_sn/)
+- [Jonika MM](/knowledge/authors/jonika_mm/)
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

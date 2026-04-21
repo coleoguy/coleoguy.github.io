@@ -52,3 +52,22 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Counter / limitation:* The residence-time explanation assumes that the sole driver of the autosome > X ordering is male exposure frequency, but the model also differs between these genomic regions in ploidy and linkage structure; the paper does not formally isolate residence time as the sole cause, so the attributed mechanism remains an inference rather than a proven result.
 
 *Topics:* [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/), [fragile_y_hypothesis](/knowledge/topics/fragile_y_hypothesis/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/g3journal/jkaf217](https://doi.org/10.1093/g3journal/jkaf217)
+
+## Related papers on this site
+
+- [Worse than nothing at all: the inequality of fusions joining…](/knowledge/papers/2024_worse/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Blackmon & Demuth 2014](/knowledge/papers/2014d/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Blackmon & Demuth 2015](/knowledge/papers/2015a/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Blackmon & Brandvain 2017](/knowledge/papers/10_1534_genetics_117_300382/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [The probability of fusions joining sex chromosomes and autos…](/knowledge/papers/2020_probability/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+
+## Other papers by these authors
+
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

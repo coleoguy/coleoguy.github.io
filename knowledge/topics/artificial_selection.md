@@ -37,3 +37,6 @@ No contradictory findings from other papers are currently indexed on this topic.
 
 - [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

@@ -42,3 +42,10 @@ The Blackmon Lab may wish to engage with the growing Earth BioGenome Project lit
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
 - [A reference quality genome 2024](/knowledge/papers/2024_chrysina/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/) — 2 shared papers
+- [Genome Assembly](/knowledge/topics/genome_assembly/) — 2 shared papers
+<!-- tealc:related-end -->

@@ -36,3 +36,6 @@ The magnitude of the epistatic excess detected in [Wright was right: leveraging 
 
 - [Paper page: 2024 Wright](/knowledge/papers/2024_wright/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

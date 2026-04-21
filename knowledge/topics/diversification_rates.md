@@ -40,3 +40,6 @@ Additionally, the meiotic drive polarity switching rates [Blackmon et al. 2019, 
 
 - [Blackmon et al. 2019](/knowledge/papers/2019_mammals/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

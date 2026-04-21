@@ -36,3 +36,6 @@ The inflation documented above is a consequence of applying a **panmictic estima
 
 - [Hancock & Blackmon 2020](/knowledge/papers/2020_ghost_of_a_structured/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

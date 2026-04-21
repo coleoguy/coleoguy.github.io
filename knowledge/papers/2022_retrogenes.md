@@ -43,3 +43,21 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 *Counter / limitation:* This is a re-analysis of an already well-established pattern rather than a novel discovery, and the p-value is reported only as approximately zero from 1,000 Monte Carlo iterations without effect-size decomposition.
 
 *Topics:* [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/), [sex_linkage_mutation](/knowledge/topics/sex_linkage_mutation/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.7717/peerj.12822](https://doi.org/10.7717/peerj.12822)
+
+## Related papers on this site
+
+- [Genome assembly of the southern pine beetle (Dendroctonus fr…](/knowledge/papers/2024_spb/) — 2 shared topics (genome_structure_evolution, sex_chromosome_evolution)
+- [Blackmon & Demuth 2015](/knowledge/papers/2015b/) — 2 shared topics (genome_structure_evolution, sex_chromosome_evolution)
+- [Blackmon & Brandvain 2017](/knowledge/papers/10_1534_genetics_117_300382/) — 2 shared topics (sex_chromosome_evolution, sex_linkage_mutation)
+- [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/) — 2 shared topics (sex_chromosome_evolution, sex_linkage_mutation)
+
+## Other papers by these authors
+
+- [Lo J](/knowledge/authors/lo_j/)
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

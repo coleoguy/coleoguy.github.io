@@ -90,3 +90,9 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 - [Wright was right: leveraging 2024](/knowledge/papers/2024_wright/)
 - [Genome assembly of the 2024](/knowledge/papers/2024_spb/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 3 shared papers
+<!-- tealc:related-end -->

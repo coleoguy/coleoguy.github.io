@@ -37,3 +37,6 @@ Additionally, CaveCrawler is species-specific; whether its design principles gen
 
 - [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

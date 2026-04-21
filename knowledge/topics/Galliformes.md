@@ -39,3 +39,6 @@ Together, these findings frame Galliformes as an order where both ecological man
 
 - [Domestication is associated with 2024](/knowledge/papers/2024_domestication/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

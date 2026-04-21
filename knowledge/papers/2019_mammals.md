@@ -43,3 +43,13 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 *Counter / limitation:* The Primate value is described as a 'median' waiting time in the text (page 9: 'the median rate was almost an order of magnitude longer at 90.9 million years'), not a 'mean', so the finding_text slightly misstates the statistic for Primates. Additionally, these rates are inferred from q12 transition parameters on trees representing only 12–30% of extant species per clade, limiting precision.
 
 *Topics:* [karyotype_evolution](/knowledge/topics/karyotype_evolution/), [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/), [meiotic_drive](/knowledge/topics/meiotic_drive/), [diversification_rates](/knowledge/topics/diversification_rates/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1111/evo.13682](https://doi.org/10.1111/evo.13682)
+
+## Other papers by these authors
+
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

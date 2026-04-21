@@ -67,3 +67,15 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 *Counter / limitation:* Only 136 of 1,065 Carabidae species could be included due to overlap between karyotype, phylogeny, and trait data, and wing scoring was sometimes imputed from genus-level frequencies, which could bias rate estimates.
 
 *Topics:* [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/), [selection_and_drift](/knowledge/topics/selection_and_drift/), [coleoptera_genomics](/knowledge/topics/coleoptera_genomics/)
+
+<!-- tealc:related-start -->
+## Related papers on this site
+
+- [Drift drives the evolution of chromosome number II: The impa…](/knowledge/papers/2024_drift_carnivores/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, selection_and_drift)
+- [Genome assembly of the southern pine beetle (Dendroctonus fr…](/knowledge/papers/2024_spb/) — 2 shared topics (coleoptera_genomics, karyotype_evolution_overview)
+- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Blackmon & Demuth 2015](/knowledge/papers/2015a/) — 2 shared topics (coleoptera_genomics, karyotype_evolution_overview)
+- [Perkins et al. 2019](/knowledge/papers/2019_amphibs/) — 2 shared topics (karyotype_database, karyotype_evolution_overview)
+- [Ruckman et al. 2020](/knowledge/papers/2020_holocentric/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Sylvester et al. 2020](/knowledge/papers/2020_polyneoptera/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+<!-- tealc:related-end -->

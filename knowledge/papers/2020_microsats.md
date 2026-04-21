@@ -55,3 +55,14 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Counter / limitation:* The authors explicitly caution that the signal is likely driven by a few monocentric orders (Diptera, Hymenoptera), while Coleoptera—also monocentric—has the lowest rate of any order studied. The binary holocentric/monocentric contrast is therefore confounded with clade-specific factors, and the paper itself warns this pattern is analogous to the inflated false-positive problem documented under BiSSE models.
 
 *Topics:* [microsatellite_evolution](/knowledge/topics/microsatellite_evolution/), [centromere_evolution](/knowledge/topics/centromere_evolution/), [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.3390/genes11080945](https://doi.org/10.3390/genes11080945)
+
+## Other papers by these authors
+
+- [Lo J](/knowledge/authors/lo_j/)
+- [Blackmon H](/knowledge/authors/blackmon_h/)
+<!-- tealc:related-end -->

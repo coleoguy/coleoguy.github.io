@@ -36,3 +36,6 @@ The primary unresolved issue is **causal direction**: the 2024 study cannot dist
 
 - [Domestication is associated with 2024](/knowledge/papers/2024_domestication/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

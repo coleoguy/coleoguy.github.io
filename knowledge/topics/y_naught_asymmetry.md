@@ -39,3 +39,10 @@ The SA-fusion argument for YO/WO instability [Why not Y naught 2022, Finding 1](
 - [Blackmon & Demuth 2015](/knowledge/papers/2015b/) — source of the neo-Y degeneration benchmark discussed above.
 - [Why not Y naught 2022](/knowledge/papers/2022_why_not/) — source of the SA-driven YO/WO instability argument.
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Karyotype database](/knowledge/topics/karyotype_database/) — 2 shared papers
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 2 shared papers
+<!-- tealc:related-end -->

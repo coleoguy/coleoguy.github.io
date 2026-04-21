@@ -34,3 +34,6 @@ The single-species scope of the current evidence is a notable limitation. The Mo
 
 - [Paper page: 2025 DirectRepeateR](/knowledge/papers/2025_directrepeater/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

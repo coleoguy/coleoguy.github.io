@@ -50,3 +50,10 @@ Across all systems, a deeper ambiguity remains: observed patterns are consistent
 - [Drift drives the evolution 2024](/knowledge/papers/2024_drift_carnivores/) — source paper with Carnivora karyotype evolution findings.
 - [DirectRepeateR: An R package 2025](/knowledge/papers/2025_directrepeater/) — source paper on direct-repeat depletion near exons in *A. aegypti*.
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 2 shared papers
+- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 2 shared papers
+<!-- tealc:related-end -->

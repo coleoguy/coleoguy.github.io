@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Knowledge · Blackmon Lab"
-description: "Living, auto-maintained wiki of the Blackmon Lab's citation neighborhood: papers, topics, and code repositories. Grounded findings with verbatim quotes, teaching-mode reasoning on every edit."
+description: "Living, auto-maintained wiki of the Blackmon Lab's citation neighborhood: topics, papers, and code repositories. Grounded findings with verbatim quotes, teaching-mode reasoning on every edit."
 permalink: /knowledge/
 canonical: "https://coleoguy.github.io/knowledge/"
 extra_head: |
@@ -86,30 +86,6 @@ extra_head: |
 {% assign repo_pages  = site.pages | where_exp: "p", "p.url contains '/knowledge/repos/'"  | where_exp: "p", "p.url != '/knowledge/repos/'"  | sort: "title" %}
 {% assign grouped = topic_pages | group_by: "category" | sort: "name" %}
 
-<!-- ── Papers ── -->
-<details class="layer">
-  <summary>
-    <span class="layer-summary-text">
-      <span class="sum-kicker">Papers</span>
-      <span class="sum-head">Citable findings extracted from individual papers</span>
-      <span class="sum-trail">Verbatim quotes with page references, the reasoning for why each finding matters, and the counter-argument or limitation to watch for. {{ paper_pages | size }} papers ingested.</span>
-    </span>
-  </summary>
-  <div class="layer-body">
-    {% if paper_pages.size == 0 %}
-      <p><em>No papers ingested yet. Tealc will populate this section as papers run through the pipeline.</em></p>
-    {% else %}
-      <ul class="wiki-papers-list">
-      {% for page in paper_pages %}
-        <li>
-          <a href="{{ page.url }}">{{ page.title | default: page.name }}</a><span class="pmeta">{% if page.authors %}{{ page.authors | split: "," | first | strip }}{% if page.authors contains "," %} et al.{% endif %}{% if page.year %} · {{ page.year }}{% endif %}{% endif %}{% if page.journal and page.journal != "" %} · {{ page.journal }}{% endif %}</span>
-        </li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  </div>
-</details>
-
 <!-- ── Topics ── -->
 <details class="layer">
   <summary>
@@ -140,6 +116,30 @@ extra_head: |
         {% endif %}
       {% endfor %}
       </div>
+    {% endif %}
+  </div>
+</details>
+
+<!-- ── Papers ── -->
+<details class="layer">
+  <summary>
+    <span class="layer-summary-text">
+      <span class="sum-kicker">Papers</span>
+      <span class="sum-head">Citable findings extracted from individual papers</span>
+      <span class="sum-trail">Verbatim quotes with page references, the reasoning for why each finding matters, and the counter-argument or limitation to watch for. {{ paper_pages | size }} papers ingested.</span>
+    </span>
+  </summary>
+  <div class="layer-body">
+    {% if paper_pages.size == 0 %}
+      <p><em>No papers ingested yet. Tealc will populate this section as papers run through the pipeline.</em></p>
+    {% else %}
+      <ul class="wiki-papers-list">
+      {% for page in paper_pages %}
+        <li>
+          <a href="{{ page.url }}">{{ page.title | default: page.name }}</a><span class="pmeta">{% if page.authors %}{{ page.authors | split: "," | first | strip }}{% if page.authors contains "," %} et al.{% endif %}{% if page.year %} · {{ page.year }}{% endif %}{% endif %}{% if page.journal and page.journal != "" %} · {{ page.journal }}{% endif %}</span>
+        </li>
+      {% endfor %}
+      </ul>
     {% endif %}
   </div>
 </details>

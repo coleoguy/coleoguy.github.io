@@ -35,3 +35,10 @@ Future work on this topic would benefit from comparative studies formally benchm
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
 - [Paper detail page: 2024 Chrysina](/knowledge/papers/2024_chrysina/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/) — 2 shared papers
+- [Conservation Genomics](/knowledge/topics/conservation_genomics/) — 2 shared papers
+<!-- tealc:related-end -->

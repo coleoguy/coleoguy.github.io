@@ -53,3 +53,11 @@ The Amphibian Karyotype Database's 2,124 records are heavily skewed toward frogs
 - [Paper: 2022 why not](/knowledge/papers/2022_why_not/)
 - [Paper: 2024 drift beetles](/knowledge/papers/2024_drift_beetles/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+## Related topics on this site
+
+- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 2 shared papers
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 2 shared papers
+- [Y-naught asymmetry](/knowledge/topics/y_naught_asymmetry/) — 2 shared papers
+<!-- tealc:related-end -->

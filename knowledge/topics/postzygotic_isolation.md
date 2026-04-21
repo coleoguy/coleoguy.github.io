@@ -33,3 +33,6 @@ One important caveat surrounds the 51 MY upper-bound figure itself. The source p
 
 - [Domestication is associated with 2024](/knowledge/papers/2024_domestication/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->
