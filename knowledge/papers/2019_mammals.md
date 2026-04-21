@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2019-mammals"
-doi: 
+title: "Meiotic drive shapes rates of karyotype evolution in mammals"
+doi: "10.1111/evo.13682"
 fingerprint_sha256: 2868f9fb2c04a641393569fdd996eb3a6385c0c5ef19eff83448aea96d7cfbc9
-authors: ""
-journal: ""
-year: 
+authors: "Heath Blackmon, Joshua Justison, Itay Mayrose, Emma E. Goldberg"
+journal: "Evolution"
+year: 2019
 topics: [chromosome_number_evolution, diversification_rates, karyotype_evolution, meiotic_drive]
 tier: canon
 ingested_at: 2026-04-21T18:26:50.683206+00:00
 permalink: /knowledge/papers/2019_mammals/
 ---
 
-# 2019-mammals
+# Meiotic drive shapes rates of karyotype evolution in mammals
 
 ## Summary
 

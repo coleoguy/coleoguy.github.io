@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2017 sex chromosomesa"
-doi: 
+title: "Sex Determination, Sex Chromosomes, and Karyotype Evolution in Insects"
+doi: ""
 fingerprint_sha256: f27df64e71adfbdf80f51dda1ec8b660a6fb871e76d8feb07659ebaa7c6da808
-authors: ""
+authors: "Blackmon H, Ross L, Bachtrog D"
 journal: ""
-year: 
+year: 2017
 topics: [karyotype_evolution_overview, sex_chromosome_evolution]
 tier: canon
 ingested_at: 2026-04-21T18:21:39.316410+00:00
 permalink: /knowledge/papers/2017_sex_chromosomesa/
 ---
 
-# 2017 sex chromosomesa
+# Sex Determination, Sex Chromosomes, and Karyotype Evolution in Insects
 
 ## Summary
 

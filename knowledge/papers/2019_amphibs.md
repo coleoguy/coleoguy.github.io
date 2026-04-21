@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2019 amphibs"
-doi: 
+title: "A database of amphibian karyotypes"
+doi: "10.1007/s10577-019-09613-1"
 fingerprint_sha256: 0f1bc39e2879ec58c1a6e091a838d1861975612f9a803dea779e9576fe264d44
-authors: ""
-journal: ""
-year: 
+authors: "Riddhi D. Perkins, Julio Rincones Gamboa, Michelle M Jonika, Johnathan Lo, Amy Shum, Richard H. Adams, Heath Blackmon"
+journal: "Chromosome Research"
+year: 2019
 topics: [karyotype_database, karyotype_evolution_overview]
 tier: canon
 ingested_at: 2026-04-21T18:24:48.409184+00:00
 permalink: /knowledge/papers/2019_amphibs/
 ---
 
-# 2019 amphibs
+# A database of amphibian karyotypes
 
 ## Summary
 

@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2015 haplo"
-doi: 
+title: "The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability"
+doi: "10.1111/evo.12792"
 fingerprint_sha256: 1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca
-authors: ""
-journal: ""
-year: 
+authors: "Heath Blackmon, Nate B. Hardy, Laura Ross"
+journal: "Evolution"
+year: 2015
 topics: [ancestral_state_reconstruction, chromosome_number_evolution, haplodiploidy_evolution, karyotype_evolution_overview, sex_chromosome_evolution]
 tier: canon
 ingested_at: 2026-04-21T18:07:24.536949+00:00
 permalink: /knowledge/papers/2015_haplo/
 ---
 
-# 2015 haplo
+# The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability
 
 ## Summary
 

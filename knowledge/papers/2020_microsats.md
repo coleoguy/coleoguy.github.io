@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2020 microsats"
-doi: 
+title: "Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution"
+doi: "10.3390/genes11080945"
 fingerprint_sha256: e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035
-authors: ""
-journal: ""
-year: 
+authors: "Michelle Jonika, Johnathan Lo, Heath Blackmon"
+journal: "Genes"
+year: 2020
 topics: [centromere_evolution, chromosome_number_evolution, genome_structure_evolution, microsatellite_evolution]
 tier: canon
 ingested_at: 2026-04-21T18:34:28.268828+00:00
 permalink: /knowledge/papers/2020_microsats/
 ---
 
-# 2020 microsats
+# Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution
 
 ## Summary
 

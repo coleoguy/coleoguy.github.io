@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2020-march of beetles"
-doi: 
+title: "The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum"
+doi: "10.1093/jhered/esaa030"
 fingerprint_sha256: acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe02b19
-authors: ""
-journal: ""
-year: 
+authors: "Sarah N Ruckman, Heath Blackmon"
+journal: "Journal of Heredity"
+year: 2020
 topics: [Tribolium, artificial_selection, dispersal, epistasis, line_cross_analysis, quantitative_genetics]
 tier: canon
 ingested_at: 2026-04-21T18:48:23.761498+00:00
 permalink: /knowledge/papers/2020_march_of_beetles/
 ---
 
-# 2020-march of beetles
+# The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum
 
 ## Summary
 

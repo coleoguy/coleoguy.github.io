@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2020 ghost of a structured"
-doi: 
+title: "Ghosts of a Structured Past: Impacts of Ancestral Patterns of Isolation-by-Distance on Divergence-Time Estimation"
+doi: "10.1093/jhered/esaa042"
 fingerprint_sha256: f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114bb78
-authors: ""
-journal: ""
-year: 
+authors: "Zachary B Hancock, Heath Blackmon"
+journal: "Journal of Heredity"
+year: 2020
 topics: [coalescent_simulation, conservation_genetics, divergence_time_estimation, effective_population_size, isolation_by_distance]
 tier: canon
 ingested_at: 2026-04-21T18:30:32.948914+00:00
 permalink: /knowledge/papers/2020_ghost_of_a_structured/
 ---
 
-# 2020 ghost of a structured
+# Ghosts of a Structured Past: Impacts of Ancestral Patterns of Isolation-by-Distance on Divergence-Time Estimation
 
 ## Summary
 

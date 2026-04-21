@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2020 probability"
-doi: 
+title: "The probability of fusions joining sex chromosomes and autosomes: Sex Autosome Fusions"
+doi: "10.1098/rsbl.2020.0648"
 fingerprint_sha256: 7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150f528
 authors: ""
-journal: ""
-year: 
+journal: "Biology Letters"
+year: 2020
 topics: [chromosome_fusion, fragile_y_hypothesis, karyotype_evolution_overview, sex_chromosome_evolution, sexual_antagonism]
 tier: canon
 ingested_at: 2026-04-21T18:41:47.253486+00:00
 permalink: /knowledge/papers/2020_probability/
 ---
 
-# 2020 probability
+# The probability of fusions joining sex chromosomes and autosomes: Sex Autosome Fusions
 
 ## Summary
 

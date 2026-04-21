@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "2020 polyneoptera"
-doi: 
+title: "Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects"
+doi: "10.1098/rspb.2020.1388"
 fingerprint_sha256: 6e7c688c4f2e3fb47506b929ceb3f93edfad9c61210cfd2602ddcc57bf66d5be
-authors: ""
-journal: ""
-year: 
+authors: "Terrence Sylvester, Carl E. Hjelmen, Shawn J. Hanrahan, Paul A. Lenhart, J. Spencer Johnston, Heath Blackmon"
+journal: "Proceedings of the Royal Society B"
+year: 2020
 topics: [chromosome_number_evolution, karyotype_evolution_overview, sex_chromosome_evolution]
 tier: canon
 ingested_at: 2026-04-21T18:37:44.478626+00:00
 permalink: /knowledge/papers/2020_polyneoptera/
 ---
 
-# 2020 polyneoptera
+# Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects
 
 ## Summary
 
