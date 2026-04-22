@@ -9,7 +9,7 @@ year:
 topics: [Galliformes, avian_hybridization, domestication, domestication_genomics, postzygotic_isolation, reproductive_isolation, sex_chromosome_evolution]
 tier: canon
 ingested_at: 2026-04-21T19:12:07.181997+00:00
-permalink: /knowledge/papers/2024_domestication/
+permalink: /knowledge/papers/10_1093_jhered_esad059/
 ---
 
 # Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes)

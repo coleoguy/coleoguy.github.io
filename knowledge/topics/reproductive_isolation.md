@@ -20,15 +20,15 @@ Together these patterns suggest that reproductive isolation is not a purely cloc
 
 ## Supporting evidence
 
-The most direct quantitative evidence comes from a comparative analysis of Galliformes in which domestication status was regressed against hybrid compatibility scores after phylogenetic correction. [Domestication is associated with 2024, Finding 1](/knowledge/papers/2024_domestication/#finding-1) reports a statistically significant relationship (F₁,₇₄ = 5.43, R² = 0.06, P = 0.02), indicating that domesticated species tend to retain greater reproductive compatibility with congeners even when shared ancestry is accounted for. The effect size is small, however, meaning divergence time remains the dominant predictor of isolation.
+The most direct quantitative evidence comes from a comparative analysis of Galliformes in which domestication status was regressed against hybrid compatibility scores after phylogenetic correction. [Domestication is associated with 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad059/#finding-1) reports a statistically significant relationship (F₁,₇₄ = 5.43, R² = 0.06, P = 0.02), indicating that domesticated species tend to retain greater reproductive compatibility with congeners even when shared ancestry is accounted for. The effect size is small, however, meaning divergence time remains the dominant predictor of isolation.
 
-The empirical upper bound of avian hybridization in this dataset is documented by [Domestication is associated with 2024, Finding 2](/knowledge/papers/2024_domestication/#finding-2): all five inter-family hybridization records involve the helmeted guineafowl (*Numida meleagris*) crossing with Phasianidae species at a maximum divergence of ~51 million years, and all resulting offspring are sterile. This establishes a concrete phylogenetic threshold beyond which complete postzygotic isolation — manifesting as sterility rather than hybrid inviability — is consistently observed.
+The empirical upper bound of avian hybridization in this dataset is documented by [Domestication is associated with 2024, Finding 2](/knowledge/papers/10_1093_jhered_esad059/#finding-2): all five inter-family hybridization records involve the helmeted guineafowl (*Numida meleagris*) crossing with Phasianidae species at a maximum divergence of ~51 million years, and all resulting offspring are sterile. This establishes a concrete phylogenetic threshold beyond which complete postzygotic isolation — manifesting as sterility rather than hybrid inviability — is consistently observed.
 
 ## Contradictions / open disagreements
 
-**Causality of the domestication–compatibility link.** The finding that domestication correlates with reduced reproductive isolation ([Domestication is associated with 2024, Finding 1](/knowledge/papers/2024_domestication/#finding-1)) is inherently correlational. It cannot distinguish whether domestication itself erodes isolating mechanisms from whether species already predisposed to hybridize (e.g., due to less diverged genomes or weaker prezygotic barriers) are preferentially selected for domestication. The R² of 0.06 also leaves the vast majority of variance unexplained.
+**Causality of the domestication–compatibility link.** The finding that domestication correlates with reduced reproductive isolation ([Domestication is associated with 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad059/#finding-1)) is inherently correlational. It cannot distinguish whether domestication itself erodes isolating mechanisms from whether species already predisposed to hybridize (e.g., due to less diverged genomes or weaker prezygotic barriers) are preferentially selected for domestication. The R² of 0.06 also leaves the vast majority of variance unexplained.
 
-**Reliability of inter-family hybrid records.** The 51 MY hybridization ceiling ([Domestication is associated with 2024, Finding 2](/knowledge/papers/2024_domestication/#finding-2)) rests on literature-sourced hybrid reports. The same paper notes that Alfieri et al. 2023 genomically refuted at least one guineafowl × Phasianidae hybrid record, raising questions about whether the remaining five inter-family records have been independently verified at the molecular level.
+**Reliability of inter-family hybrid records.** The 51 MY hybridization ceiling ([Domestication is associated with 2024, Finding 2](/knowledge/papers/10_1093_jhered_esad059/#finding-2)) rests on literature-sourced hybrid reports. The same paper notes that Alfieri et al. 2023 genomically refuted at least one guineafowl × Phasianidae hybrid record, raising questions about whether the remaining five inter-family records have been independently verified at the molecular level.
 
 **Domestication index validity.** The proxy for domestication degree relies on text-mining a single aviculture magazine, which may not capture the full spectrum of domestication intensity across Galliformes.
 
@@ -40,7 +40,7 @@ The empirical upper bound of avian hybridization in this dataset is documented b
 
 ## Related on the Blackmon Lab site
 
-- [Domestication is associated with 2024](/knowledge/papers/2024_domestication/)
+- [Domestication is associated with 2024](/knowledge/papers/10_1093_jhered_esad059/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

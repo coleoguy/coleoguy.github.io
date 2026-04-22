@@ -12,13 +12,13 @@ category: "Bioinformatics & tools"
 
 ## Current understanding
 
-Bioinformatics tools increasingly take the form of interactive web applications that lower the barrier to cross-study data integration. A prominent example from the cavefish literature is **CaveCrawler**, a Shiny-based web analysis suite purpose-built for *Astyanax mexicanus* (the Mexican tetra). CaveCrawler aggregates transcriptomic data, population genetics statistics, Gene Ontology (GO) term annotations, and genome architecture information from multiple independent studies into a single queryable interface, allowing researchers to draw biological inferences from cross-study patterns that would be difficult to detect by analyzing each dataset in isolation. ([Perry et al. 2022, Finding 1](/knowledge/papers/2022_cave_crawler/#finding-1))
+Bioinformatics tools increasingly take the form of interactive web applications that lower the barrier to cross-study data integration. A prominent example from the cavefish literature is **CaveCrawler**, a Shiny-based web analysis suite purpose-built for *Astyanax mexicanus* (the Mexican tetra). CaveCrawler aggregates transcriptomic data, population genetics statistics, Gene Ontology (GO) term annotations, and genome architecture information from multiple independent studies into a single queryable interface, allowing researchers to draw biological inferences from cross-study patterns that would be difficult to detect by analyzing each dataset in isolation. ([Perry et al. 2022, Finding 1](/knowledge/papers/10_1093_g3journal_jkac132/#finding-1))
 
 This kind of model-organism-specific database reflects a broader trend in which community resources are built around interactive frameworks (here, R Shiny) rather than static data repositories. The integration of GO terms is particularly notable because it allows functional hypotheses to be generated directly from population-level and expression-level signals without requiring users to perform their own annotation pipelines.
 
 ## Supporting evidence
 
-- **CaveCrawler as a multi-omics integration platform:** The tool combines population genetics and transcriptomic data from multiple Mexican tetra populations with GO term information to enable unique biological inferences from cross-study patterns. ([Perry et al. 2022, Finding 1](/knowledge/papers/2022_cave_crawler/#finding-1))
+- **CaveCrawler as a multi-omics integration platform:** The tool combines population genetics and transcriptomic data from multiple Mexican tetra populations with GO term information to enable unique biological inferences from cross-study patterns. ([Perry et al. 2022, Finding 1](/knowledge/papers/10_1093_g3journal_jkac132/#finding-1))
 
 ## Contradictions / open disagreements
 
@@ -31,7 +31,7 @@ None known. CaveCrawler is the only tool represented in the current findings. Ad
 
 ## Related on the Blackmon Lab site
 
-- [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/)
+- [Perry et al. 2022](/knowledge/papers/10_1093_g3journal_jkac132/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

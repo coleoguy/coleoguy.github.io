@@ -13,11 +13,11 @@ permalink: /knowledge/authors/demuth_jp/
 
 ## Papers in the lab wiki
 
-- [An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: Moving beyond the joint-scaling test for line cross analysis](/knowledge/papers/2016_saga/) — 2016
-- [Coleoptera Karyotype Database](/knowledge/papers/2014b/) — 2015
-- [Genomic origins of insect sex chromosomes](/knowledge/papers/2015b/) — 2015
-- [The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution](/knowledge/papers/2015a/) — 2015
-- [Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis](/knowledge/papers/2014d/) — 2014
+- [An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: Moving beyond the joint-scaling test for line cross analysis](/knowledge/papers/10_1111_evo_12844/) — 2016
+- [Coleoptera Karyotype Database](/knowledge/papers/10_1649_0010_065x_69_1_174/) — 2015
+- [Genomic origins of insect sex chromosomes](/knowledge/papers/10_1016_j_cois_2014_12_003/) — 2015
+- [The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution](/knowledge/papers/10_1002_bies_201500040/) — 2015
+- [Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis](/knowledge/papers/10_1534_genetics_114_164269/) — 2014
 
 ## Topics this author contributes to
 

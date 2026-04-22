@@ -18,11 +18,11 @@ The leading hypothesis is that diffuse centromere activity in holocentric system
 
 ## Supporting evidence
 
-The central comparative result comes from a Bayesian analysis across insects in which 99 out of 100 posterior distribution trees favored a two-rate model — one rate for monocentric lineages and another for holocentric lineages — over a single-rate model. Rate estimates were consistently higher in monocentric lineages across all trees examined, including the single tree that did not meet the threshold for a significantly better fit [Jonika et al. 2020, Finding 1](/knowledge/papers/2020_microsats/#finding-1). Crucially, this rate difference was not accompanied by any significant difference in total microsatellite content between the two chromosome types, pointing specifically to evolutionary tempo rather than equilibrium abundance as the variable linked to centromere architecture [Jonika et al. 2020, Finding 1](/knowledge/papers/2020_microsats/#finding-1).
+The central comparative result comes from a Bayesian analysis across insects in which 99 out of 100 posterior distribution trees favored a two-rate model — one rate for monocentric lineages and another for holocentric lineages — over a single-rate model. Rate estimates were consistently higher in monocentric lineages across all trees examined, including the single tree that did not meet the threshold for a significantly better fit [Jonika et al. 2020, Finding 1](/knowledge/papers/10_3390_genes11080945/#finding-1). Crucially, this rate difference was not accompanied by any significant difference in total microsatellite content between the two chromosome types, pointing specifically to evolutionary tempo rather than equilibrium abundance as the variable linked to centromere architecture [Jonika et al. 2020, Finding 1](/knowledge/papers/10_3390_genes11080945/#finding-1).
 
 ## Contradictions / open disagreements
 
-The monocentric/holocentric rate contrast is complicated by strong order-level heterogeneity. The authors of the 2020 microsats study note that Diptera and Hymenoptera likely contribute disproportionately to the elevated monocentric rate signal, while Coleoptera — also monocentric — has the lowest evolutionary rate of any order in the dataset. The authors explicitly invoke a BiSSE false-positive analogy: when a small portion of a phylogeny carries an extreme signal, any binary trait mapped onto that region can appear spuriously correlated with the rate difference. This means the association between monocentricity and elevated microsatellite evolution rates may reflect clade-specific factors (e.g., life history, effective population size, or recombination landscape in Diptera/Hymenoptera) rather than centromere architecture per se. [Jonika et al. 2020, Finding 1](/knowledge/papers/2020_microsats/#finding-1)
+The monocentric/holocentric rate contrast is complicated by strong order-level heterogeneity. The authors of the 2020 microsats study note that Diptera and Hymenoptera likely contribute disproportionately to the elevated monocentric rate signal, while Coleoptera — also monocentric — has the lowest evolutionary rate of any order in the dataset. The authors explicitly invoke a BiSSE false-positive analogy: when a small portion of a phylogeny carries an extreme signal, any binary trait mapped onto that region can appear spuriously correlated with the rate difference. This means the association between monocentricity and elevated microsatellite evolution rates may reflect clade-specific factors (e.g., life history, effective population size, or recombination landscape in Diptera/Hymenoptera) rather than centromere architecture per se. [Jonika et al. 2020, Finding 1](/knowledge/papers/10_3390_genes11080945/#finding-1)
 
 ## Tealc's citation-neighborhood suggestions
 
@@ -33,7 +33,7 @@ The monocentric/holocentric rate contrast is complicated by strong order-level h
 
 ## Related on the Blackmon Lab site
 
-- [Jonika et al. 2020](/knowledge/papers/2020_microsats/)
+- [Jonika et al. 2020](/knowledge/papers/10_3390_genes11080945/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

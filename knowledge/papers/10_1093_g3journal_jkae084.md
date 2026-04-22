@@ -9,7 +9,7 @@ year:
 topics: [coleoptera_genomics, conservation_genomics, genome_assembly]
 tier: canon
 ingested_at: 2026-04-21T19:09:19.879957+00:00
-permalink: /knowledge/papers/2024_chrysina/
+permalink: /knowledge/papers/10_1093_g3journal_jkae084/
 ---
 
 # A reference quality genome assembly for the jewel scarab Chrysina gloriosa

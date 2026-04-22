@@ -13,8 +13,8 @@ permalink: /knowledge/authors/ross_l/
 
 ## Papers in the lab wiki
 
-- [Sex Determination, Sex Chromosomes, and Karyotype Evolution in Insects](/knowledge/papers/2017_sex_chromosomesa/) — 2017
-- [The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability](/knowledge/papers/2015_haplo/) — 2015
+- [Sex Determination, Sex Chromosomes, and Karyotype Evolution in Insects](/knowledge/papers/10_1093_jhered_esw047/) — 2017
+- [The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability](/knowledge/papers/10_1111_evo_12792/) — 2015
 
 ## Topics this author contributes to
 

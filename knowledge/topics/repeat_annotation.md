@@ -14,11 +14,11 @@ permalink: /knowledge/topics/repeat_annotation/
 
 Repeat annotation — the identification and cataloguing of repetitive DNA elements within a genome — is increasingly recognized as essential not only for genome assembly quality but also for understanding mutational hazards posed by repetitive sequences near functional elements. A key class of repeats relevant to genome stability are **direct repeats**: pairs of identical or near-identical sequences oriented in the same direction. When a direct repeat flanks a coding exon, it creates a substrate for single-strand annealing (SSA) and related repair pathways that can delete the intervening sequence, including the exon itself.
 
-A central prediction of the SSA-mediated mutational hazard hypothesis is that purifying selection should have eroded direct repeats from the vicinity of protein-coding sequence over evolutionary time. Genome-wide repeat annotation provides the empirical framework needed to test this prediction quantitatively. Using Monte Carlo simulation as a null model, [DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/2025_directrepeater/#finding-1) showed that in *Aedes aegypti*, only 5,782 of 80,498 exons are flanked by direct repeats — roughly seven-fold fewer than the ~40,000 expected under a random placement model. This striking depletion supports the view that repeat context around exons is non-random and shaped by selection, with practical implications for how annotators should interpret repeat distributions in assembled genomes.
+A central prediction of the SSA-mediated mutational hazard hypothesis is that purifying selection should have eroded direct repeats from the vicinity of protein-coding sequence over evolutionary time. Genome-wide repeat annotation provides the empirical framework needed to test this prediction quantitatively. Using Monte Carlo simulation as a null model, [DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/10_12688_f1000research_170810_1/#finding-1) showed that in *Aedes aegypti*, only 5,782 of 80,498 exons are flanked by direct repeats — roughly seven-fold fewer than the ~40,000 expected under a random placement model. This striking depletion supports the view that repeat context around exons is non-random and shaped by selection, with practical implications for how annotators should interpret repeat distributions in assembled genomes.
 
 ## Supporting evidence
 
-- [DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/2025_directrepeater/#finding-1): In *A. aegypti*, 5,782 exons out of 80,498 are flanked by direct repeats, versus ~40,000 expected from simulation — a roughly 7-fold depletion consistent with purifying selection eliminating SSA-hazardous repeat configurations near coding sequence.
+- [DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/10_12688_f1000research_170810_1/#finding-1): In *A. aegypti*, 5,782 exons out of 80,498 are flanked by direct repeats, versus ~40,000 expected from simulation — a roughly 7-fold depletion consistent with purifying selection eliminating SSA-hazardous repeat configurations near coding sequence.
 
 ## Contradictions / open disagreements
 
@@ -32,7 +32,7 @@ The single-species scope of the current evidence is a notable limitation. The Mo
 
 ## Related on the Blackmon Lab site
 
-- [Paper page: 2025 DirectRepeateR](/knowledge/papers/2025_directrepeater/)
+- [Paper page: 2025 DirectRepeateR](/knowledge/papers/10_12688_f1000research_170810_1/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

@@ -60,11 +60,11 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 ## Related papers on this site
 
-- [Worse than nothing at all: the inequality of fusions joining…](/knowledge/papers/2024_worse/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
-- [Blackmon & Demuth 2014](/knowledge/papers/2014d/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
-- [Blackmon & Demuth 2015](/knowledge/papers/2015a/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Worse than nothing at all: the inequality of fusions joining…](/knowledge/papers/10_7717_peerj_17740/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Blackmon & Demuth 2014](/knowledge/papers/10_1534_genetics_114_164269/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [Blackmon & Demuth 2015](/knowledge/papers/10_1002_bies_201500040/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
 - [Blackmon & Brandvain 2017](/knowledge/papers/10_1534_genetics_117_300382/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
-- [The probability of fusions joining sex chromosomes and autos…](/knowledge/papers/2020_probability/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
+- [The probability of fusions joining sex chromosomes and autos…](/knowledge/papers/10_1098_rsbl_2020_0648/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/) — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)
 
 ## Other papers by these authors

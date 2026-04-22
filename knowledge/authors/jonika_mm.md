@@ -13,9 +13,9 @@ permalink: /knowledge/authors/jonika_mm/
 
 ## Papers in the lab wiki
 
-- [2020-holocentric](/knowledge/papers/2020_holocentric/) — 2020
-- [Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution](/knowledge/papers/2020_microsats/) — 2020
-- [A database of amphibian karyotypes](/knowledge/papers/2019_amphibs/) — 2019
+- [2020-holocentric](/knowledge/papers/10_1371_journal_pgen_1009076/) — 2020
+- [Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution](/knowledge/papers/10_3390_genes11080945/) — 2020
+- [A database of amphibian karyotypes](/knowledge/papers/10_1007_s10577_019_09613_1/) — 2019
 
 ## Topics this author contributes to
 

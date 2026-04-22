@@ -18,7 +18,7 @@ Applied to *Aedes aegypti*, DirectRepeateR revealed a striking genome-wide deple
 
 ## Supporting evidence
 
-[DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/2025_directrepeater/#finding-1) reports that in the *A. aegypti* genome, 5,782 out of 80,498 exons were flanked by direct repeats, whereas the Monte Carlo null model predicted just under 40,000 — a ~7-fold deficit that supports the inference of purifying selection against SSA-prone genomic configurations near protein-coding sequence.
+[DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/10_12688_f1000research_170810_1/#finding-1) reports that in the *A. aegypti* genome, 5,782 out of 80,498 exons were flanked by direct repeats, whereas the Monte Carlo null model predicted just under 40,000 — a ~7-fold deficit that supports the inference of purifying selection against SSA-prone genomic configurations near protein-coding sequence.
 
 ## Contradictions / open disagreements
 
@@ -31,7 +31,7 @@ The analysis underlying Finding 1 is currently confined to a single species (*A.
 
 ## Related on the Blackmon Lab site
 
-- [DirectRepeateR: An R package 2025](/knowledge/papers/2025_directrepeater/)
+- [DirectRepeateR: An R package 2025](/knowledge/papers/10_12688_f1000research_170810_1/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

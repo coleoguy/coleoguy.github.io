@@ -9,7 +9,7 @@ year: 2020
 topics: [Tribolium, artificial_selection, dispersal, epistasis, line_cross_analysis, quantitative_genetics]
 tier: canon
 ingested_at: 2026-04-21T18:48:23.761498+00:00
-permalink: /knowledge/papers/2020_march_of_beetles/
+permalink: /knowledge/papers/10_1093_jhered_esaa030/
 ---
 
 # The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum
@@ -51,9 +51,9 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 
 ## Related papers on this site
 
-- [Assessing the opportunity for selection to impact morphologi…](/knowledge/papers/2024_solanum/) — 2 shared topics (epistasis, line_cross_analysis)
-- [Wright was right: leveraging old data and new methods to ill…](/knowledge/papers/2024_wright/) — 2 shared topics (epistasis, line_cross_analysis)
-- [Blackmon & Demuth 2016](/knowledge/papers/2016_saga/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Assessing the opportunity for selection to impact morphologi…](/knowledge/papers/10_7717_peerj_17985/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Wright was right: leveraging old data and new methods to ill…](/knowledge/papers/10_1093_evolut_qpae003/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Blackmon & Demuth 2016](/knowledge/papers/10_1111_evo_12844/) — 2 shared topics (epistasis, line_cross_analysis)
 
 ## Other papers by these authors
 

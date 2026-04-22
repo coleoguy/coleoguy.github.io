@@ -12,11 +12,11 @@ category: "Insects & Coleoptera"
 
 ## Current understanding
 
-Beetles (Order Coleoptera) display one of the broadest ranges of chromosome number variation among any animal order. A large-scale survey of 4,797 beetle karyotypes reveals that diploid chromosome numbers span an extraordinary range: the minimum recorded is 2n = 4, found in the elaterid *Chalcolepidius zonatus*, while the maximum reaches 2n = 70 in the adephagan *Dixus capito obscuroides* ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/2014b/#finding-1)). This roughly 17-fold spread across a single insect order highlights Coleoptera as a particularly compelling system for studying the mechanisms and tempo of karyotype evolution, including fusion, fission, and polyploidy events that reshape chromosome complements over macroevolutionary time.
+Beetles (Order Coleoptera) display one of the broadest ranges of chromosome number variation among any animal order. A large-scale survey of 4,797 beetle karyotypes reveals that diploid chromosome numbers span an extraordinary range: the minimum recorded is 2n = 4, found in the elaterid *Chalcolepidius zonatus*, while the maximum reaches 2n = 70 in the adephagan *Dixus capito obscuroides* ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/10_1649_0010_065x_69_1_174/#finding-1)). This roughly 17-fold spread across a single insect order highlights Coleoptera as a particularly compelling system for studying the mechanisms and tempo of karyotype evolution, including fusion, fission, and polyploidy events that reshape chromosome complements over macroevolutionary time.
 
 ## Supporting evidence
 
-The empirical bounds on Coleoptera diploid numbers come from a comprehensive database compiled across the order, making it one of the most data-rich karyotype surveys in insects. The contrast between the extreme low (2n = 4 in a polyphagan elaterid) and the extreme high (2n = 70 in an adephagan ground beetle relative) also hints that different beetle suborders may have followed distinct evolutionary trajectories in chromosome number — adephagans and polyphagans differ markedly in their modal and extreme values ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/2014b/#finding-1)).
+The empirical bounds on Coleoptera diploid numbers come from a comprehensive database compiled across the order, making it one of the most data-rich karyotype surveys in insects. The contrast between the extreme low (2n = 4 in a polyphagan elaterid) and the extreme high (2n = 70 in an adephagan ground beetle relative) also hints that different beetle suborders may have followed distinct evolutionary trajectories in chromosome number — adephagans and polyphagans differ markedly in their modal and extreme values ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/10_1649_0010_065x_69_1_174/#finding-1)).
 
 ## Contradictions / open disagreements
 
@@ -29,7 +29,7 @@ The verbatim source quote documenting the upper bound (2n = 70 for *Dixus capito
 
 ## Related on the Blackmon Lab site
 
-- [Blackmon & Demuth 2015](/knowledge/papers/2014b/)
+- [Blackmon & Demuth 2015](/knowledge/papers/10_1649_0010_065x_69_1_174/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

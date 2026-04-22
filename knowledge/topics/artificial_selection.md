@@ -14,13 +14,13 @@ category: "Quantitative genetics & epistasis"
 
 Artificial selection experiments provide a direct window into the additive genetic variance underlying traits of interest — how much heritable variation exists, how quickly populations respond, and whether selection hits a ceiling. Work in the flour beetle *Tribolium castaneum* illustrates a pattern commonly seen across taxa: rapid initial divergence between selected lines, followed by a marked deceleration as easily accessible genetic variation is exhausted.
 
-In a selection experiment targeting dispersal tendency in *T. castaneum*, the base population began with 25% dispersal. Within just three generations of bidirectional selection, the high-dispersal line (P2) climbed to 59% and the low-dispersal line (P1) fell to 5% — a striking early response demonstrating substantial additive genetic variance for this behavioral trait. By generation five, however, the rate of change had slowed considerably, with means reaching 70% and 18% for P2 and P1 respectively. The bulk of the divergence was achieved early, and further selection produced diminishing returns ([Ruckman & Blackmon 2020, Finding 1](/knowledge/papers/2020_march_of_beetles/#finding-1)).
+In a selection experiment targeting dispersal tendency in *T. castaneum*, the base population began with 25% dispersal. Within just three generations of bidirectional selection, the high-dispersal line (P2) climbed to 59% and the low-dispersal line (P1) fell to 5% — a striking early response demonstrating substantial additive genetic variance for this behavioral trait. By generation five, however, the rate of change had slowed considerably, with means reaching 70% and 18% for P2 and P1 respectively. The bulk of the divergence was achieved early, and further selection produced diminishing returns ([Ruckman & Blackmon 2020, Finding 1](/knowledge/papers/10_1093_jhered_esaa030/#finding-1)).
 
 This pattern — rapid early response followed by a plateau — is consistent with a finite pool of standing additive genetic variation that selection progressively depletes. It does not necessarily imply that no further response is possible; new mutations, frequency-dependent effects, or epistatic variation could sustain slower long-term change. Nevertheless, the practical implication is that the greatest power of artificial selection is often realized in the first few generations.
 
 ## Supporting evidence
 
-- [Ruckman & Blackmon 2020, Finding 1](/knowledge/papers/2020_march_of_beetles/#finding-1): Bidirectional artificial selection on dispersal in *T. castaneum* produced rapid divergence over three generations (25% → 59% high; 25% → 5% low) with little further change by generation five, quantifying both the speed and apparent limits of selection response for a behavioral life-history trait in beetles.
+- [Ruckman & Blackmon 2020, Finding 1](/knowledge/papers/10_1093_jhered_esaa030/#finding-1): Bidirectional artificial selection on dispersal in *T. castaneum* produced rapid divergence over three generations (25% → 59% high; 25% → 5% low) with little further change by generation five, quantifying both the speed and apparent limits of selection response for a behavioral life-history trait in beetles.
 
 ## Contradictions / open disagreements
 
@@ -35,7 +35,7 @@ No contradictory findings from other papers are currently indexed on this topic.
 
 ## Related on the Blackmon Lab site
 
-- [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/)
+- [Ruckman & Blackmon 2020](/knowledge/papers/10_1093_jhered_esaa030/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

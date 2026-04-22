@@ -9,7 +9,7 @@ year:
 topics: [chromosome_number_evolution, comparative_methods, karyotype_evolution_overview, selection_and_drift]
 tier: canon
 ingested_at: 2026-04-21T19:25:29.998059+00:00
-permalink: /knowledge/papers/2024_drift_carnivores/
+permalink: /knowledge/papers/10_1093_jhered_esae025/
 ---
 
 # Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora
@@ -47,8 +47,8 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 <!-- tealc:related-start -->
 ## Related papers on this site
 
-- [Drift drives the evolution of chromosome number I: The impac…](/knowledge/papers/2024_drift_beetles/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, selection_and_drift)
-- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
-- [Ruckman et al. 2020](/knowledge/papers/2020_holocentric/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
-- [Sylvester et al. 2020](/knowledge/papers/2020_polyneoptera/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Drift drives the evolution of chromosome number I: The impac…](/knowledge/papers/10_1093_jhered_esae001/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, selection_and_drift)
+- [Blackmon et al. 2015](/knowledge/papers/10_1111_evo_12792/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Ruckman et al. 2020](/knowledge/papers/10_1371_journal_pgen_1009076/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Sylvester et al. 2020](/knowledge/papers/10_1098_rspb_2020_1388/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
 <!-- tealc:related-end -->

@@ -22,7 +22,7 @@ Blackmon et al. provide quantitative parameter estimates for when Y-linked captu
 
 The dynamics on the X chromosome differ qualitatively. [Blackmon & Brandvain 2017, Finding 2](/knowledge/papers/10_1534_genetics_117_300382/#finding-2) demonstrates that when the male-beneficial allele is recessive (*h* < ~0.3), an X-linked inversion capturing the female-beneficial allele cannot fix; instead it is maintained as a stable polymorphism. This means that the genetic architecture of the sexually antagonistic locus — particularly allele dominance — determines not just the rate but the qualitative outcome (fixation vs. balanced polymorphism) of sex-linked inversions.
 
-A related but mechanistically distinct process also shapes which genes reside on the X. [Lo & Blackmon 2022, Finding 1](/knowledge/papers/2022_retrogenes/#finding-1) recovers the well-documented out-of-the-X excess of retrogenes in both humans and *D. melanogaster* with *p* ≈ 0, providing independent replication using the RetrogeneDB dataset. This pattern is consistent with MSCI silencing spermatogenesis genes during male meiosis and thereby selecting for retrocopy movement to autosomes — a complementary mechanism by which X chromosome gene content evolves over time, distinct from but potentially interacting with inversion dynamics.
+A related but mechanistically distinct process also shapes which genes reside on the X. [Lo & Blackmon 2022, Finding 1](/knowledge/papers/10_7717_peerj_12822/#finding-1) recovers the well-documented out-of-the-X excess of retrogenes in both humans and *D. melanogaster* with *p* ≈ 0, providing independent replication using the RetrogeneDB dataset. This pattern is consistent with MSCI silencing spermatogenesis genes during male meiosis and thereby selecting for retrocopy movement to autosomes — a complementary mechanism by which X chromosome gene content evolves over time, distinct from but potentially interacting with inversion dynamics.
 
 On the empirical side, genome assembly of the long-armed scarab *Cheirotonus formosanus* has yielded evidence about which genes actually reside on a beetle Y chromosome. [Chien et al. 2026, Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) reports that a putative Y-linked scaffold carries a gene model with JARID1/KDM5 family domain architecture, covered exclusively by male reads and absent from female data — interpreted as a KDM5-like demethylase on the Y. This parallels KDM5D on the mammalian Y chromosome, raising the possibility that sex-linkage of this gene family reflects convergent retention of a dosage-sensitive regulator rather than random accumulation of male-beneficial alleles.
 
@@ -47,7 +47,7 @@ The out-of-the-X retrogenesis finding replicates an established pattern rather t
 
 - [Blackmon & Brandvain 2017](/knowledge/papers/10_1534_genetics_117_300382/)
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/)
-- [Lo & Blackmon 2022](/knowledge/papers/2022_retrogenes/)
+- [Lo & Blackmon 2022](/knowledge/papers/10_7717_peerj_12822/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

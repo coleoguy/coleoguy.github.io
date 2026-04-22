@@ -14,13 +14,13 @@ category: "Speciation & macroevolution"
 
 Domestication is a long-studied process by which wild species are brought under human management and selectively bred, yet its consequences for reproductive compatibility with related wild taxa remain underexplored. One emerging hypothesis is that domestication may erode reproductive barriers — either by relaxing selection against hybridization, by actively selecting for traits (e.g., reduced aggression, altered mate preferences) that happen to facilitate interspecific crosses, or by selecting taxa that were already reproductively labile. Evidence from Galliformes (landfowl and allies) now provides a phylogenetically corrected test of this idea.
 
-A 2024 study of Galliform birds found that domestication status is significantly associated with greater reproductive compatibility across species pairs, even after accounting for shared evolutionary history and divergence time. The effect, while statistically reliable, is modest in magnitude: domestication explains only about 6% of variance in reproductive compatibility scores ([Domestication is associated with 2024, Finding 1](/knowledge/papers/2024_domestication/#finding-1)). This means that divergence time remains the dominant predictor of reproductive isolation, and domestication's influence — though real — is a secondary signal layered on top of the expected accumulation of barriers over time.
+A 2024 study of Galliform birds found that domestication status is significantly associated with greater reproductive compatibility across species pairs, even after accounting for shared evolutionary history and divergence time. The effect, while statistically reliable, is modest in magnitude: domestication explains only about 6% of variance in reproductive compatibility scores ([Domestication is associated with 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad059/#finding-1)). This means that divergence time remains the dominant predictor of reproductive isolation, and domestication's influence — though real — is a secondary signal layered on top of the expected accumulation of barriers over time.
 
 The practical implication is that domesticated Galliformes may be disproportionately prone to producing fertile hybrids with congeners, which has conservation relevance (e.g., genetic introgression into wild populations from escaped domestic birds) and evolutionary relevance (potential for speciation reversal or the maintenance of hybrid zones near human settlements).
 
 ## Supporting evidence
 
-The central quantitative result comes from a phylogenetically controlled regression across 76 Galliform species pairs: domestication significantly predicts reproductive compatibility (F₁,₇₄ = 5.43, R² = 0.06, P = 0.02), with the analysis shown to be robust to removal of extreme values and correction for potential biases [Domestication is associated with 2024, Finding 1](/knowledge/papers/2024_domestication/#finding-1). The domestication index used in the study was constructed by text-mining an aviculture magazine to score how frequently each species is reported in captive/managed contexts, providing a continuous rather than binary measure of domestication intensity.
+The central quantitative result comes from a phylogenetically controlled regression across 76 Galliform species pairs: domestication significantly predicts reproductive compatibility (F₁,₇₄ = 5.43, R² = 0.06, P = 0.02), with the analysis shown to be robust to removal of extreme values and correction for potential biases [Domestication is associated with 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad059/#finding-1). The domestication index used in the study was constructed by text-mining an aviculture magazine to score how frequently each species is reported in captive/managed contexts, providing a continuous rather than binary measure of domestication intensity.
 
 ## Contradictions / open disagreements
 
@@ -34,7 +34,7 @@ The primary unresolved issue is **causal direction**: the 2024 study cannot dist
 
 ## Related on the Blackmon Lab site
 
-- [Domestication is associated with 2024](/knowledge/papers/2024_domestication/)
+- [Domestication is associated with 2024](/knowledge/papers/10_1093_jhered_esad059/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

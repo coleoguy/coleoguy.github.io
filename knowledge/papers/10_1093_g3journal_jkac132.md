@@ -9,7 +9,7 @@ year: 2022
 topics: [bioinformatics_tools, cavefish_genomics, circadian_rhythm_evolution, convergent_evolution, model_organism_databases, population_genetics]
 tier: canon
 ingested_at: 2026-04-21T18:52:38.991252+00:00
-permalink: /knowledge/papers/2022_cave_crawler/
+permalink: /knowledge/papers/10_1093_g3journal_jkac132/
 ---
 
 # CaveCrawler: an interactive analysis suite for cavefish bioinformatics

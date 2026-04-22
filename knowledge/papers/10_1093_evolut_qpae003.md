@@ -9,7 +9,7 @@ year:
 topics: [epistasis, genome_structure_evolution, hybridization, life_history_evolution, line_cross_analysis, quantitative_genetics_methods]
 tier: canon
 ingested_at: 2026-04-21T20:33:57.904398+00:00
-permalink: /knowledge/papers/2024_wright/
+permalink: /knowledge/papers/10_1093_evolut_qpae003/
 ---
 
 # Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution
@@ -59,7 +59,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 <!-- tealc:related-start -->
 ## Related papers on this site
 
-- [Assessing the opportunity for selection to impact morphologi…](/knowledge/papers/2024_solanum/) — 2 shared topics (epistasis, line_cross_analysis)
-- [Blackmon & Demuth 2016](/knowledge/papers/2016_saga/) — 2 shared topics (epistasis, line_cross_analysis)
-- [Ruckman & Blackmon 2020](/knowledge/papers/2020_march_of_beetles/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Assessing the opportunity for selection to impact morphologi…](/knowledge/papers/10_7717_peerj_17985/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Blackmon & Demuth 2016](/knowledge/papers/10_1111_evo_12844/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Ruckman & Blackmon 2020](/knowledge/papers/10_1093_jhered_esaa030/) — 2 shared topics (epistasis, line_cross_analysis)
 <!-- tealc:related-end -->

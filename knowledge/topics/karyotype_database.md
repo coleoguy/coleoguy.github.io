@@ -14,28 +14,28 @@ category: "Karyotype evolution"
 
 Comprehensive karyotype databases aggregate cytogenetic records across the animal tree of life, enabling broad comparative analyses of sex determination and chromosome evolution. Several complementary resources illustrate both the power and the limits of this approach.
 
-At the broadest scale, a synthesis across 10,754 surveyed plant and animal species (excluding 1,453 species with multiple sex chromosomes likely arising from sex chromosome–autosome fusions) finds that 67% carry XX/XY systems and roughly 28% carry XX/XO systems, with only a single known species exhibiting a YO/WO univalent sex-specific chromosome ([Why not Y naught 2022, Finding 1](/knowledge/papers/2022_why_not/#finding-1)). This eukaryote-wide baseline establishes XX/XY as the dominant configuration by a wide margin.
+At the broadest scale, a synthesis across 10,754 surveyed plant and animal species (excluding 1,453 species with multiple sex chromosomes likely arising from sex chromosome–autosome fusions) finds that 67% carry XX/XY systems and roughly 28% carry XX/XO systems, with only a single known species exhibiting a YO/WO univalent sex-specific chromosome ([Why not Y naught 2022, Finding 1](/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1)). This eukaryote-wide baseline establishes XX/XY as the dominant configuration by a wide margin.
 
-For insects specifically, the Tree of Sex database underpins the finding that male heterogamety (XY or XO systems) is documented in 24 of 28 insect orders and encompasses approximately 77% of sexually reproducing insect species surveyed ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/2015b/#finding-1)). This figure is consistent with the broader eukaryote pattern and is critical for evaluating hypotheses about ancestral states and transition rates between sex-determination systems.
+For insects specifically, the Tree of Sex database underpins the finding that male heterogamety (XY or XO systems) is documented in 24 of 28 insect orders and encompasses approximately 77% of sexually reproducing insect species surveyed ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1)). This figure is consistent with the broader eukaryote pattern and is critical for evaluating hypotheses about ancestral states and transition rates between sex-determination systems.
 
-Within insects, beetles (Coleoptera) offer a particularly rich karyotype record. The two major suborders differ strikingly in their autosome number distributions: Adephaga range from 3 to 34 autosomes (mean 15.57), with a bimodal distribution peaking at 11 and 18 autosomes (accounting for 23% and 20% of Adephaga records, respectively), while Polyphaga range from 1 to 35 (mean 10.63) with a pronounced single mode at 9 autosomes that accounts for 29% of all Polyphaga records ([Drift drives the evolution 2024, Finding 1](/knowledge/papers/2024_drift_beetles/#finding-1)). These suborder-level statistics provide a quantitative scaffold for downstream tests of whether particular chromosome-number optima are maintained by selection or shaped by drift.
+Within insects, beetles (Coleoptera) offer a particularly rich karyotype record. The two major suborders differ strikingly in their autosome number distributions: Adephaga range from 3 to 34 autosomes (mean 15.57), with a bimodal distribution peaking at 11 and 18 autosomes (accounting for 23% and 20% of Adephaga records, respectively), while Polyphaga range from 1 to 35 (mean 10.63) with a pronounced single mode at 9 autosomes that accounts for 29% of all Polyphaga records ([Drift drives the evolution 2024, Finding 1](/knowledge/papers/10_1093_jhered_esae001/#finding-1)). These suborder-level statistics provide a quantitative scaffold for downstream tests of whether particular chromosome-number optima are maintained by selection or shaped by drift.
 
-For amphibians, a dedicated Amphibian Karyotype Database contains 2,124 records — more than double the records in the previous compilation published nearly 30 years earlier. The vast majority of records (1,833) cover frogs (Anura), while salamanders (Caudata) and caecilians (Gymnophiona) contribute only 246 and 45 records, respectively ([Perkins et al. 2019, Finding 1](/knowledge/papers/2019_amphibs/#finding-1)). This two-fold expansion makes the resource a substantially more useful foundation for macroevolutionary inference across tetrapods, even as it highlights how unevenly cytogenetic effort has been distributed.
+For amphibians, a dedicated Amphibian Karyotype Database contains 2,124 records — more than double the records in the previous compilation published nearly 30 years earlier. The vast majority of records (1,833) cover frogs (Anura), while salamanders (Caudata) and caecilians (Gymnophiona) contribute only 246 and 45 records, respectively ([Perkins et al. 2019, Finding 1](/knowledge/papers/10_1007_s10577_019_09613_1/#finding-1)). This two-fold expansion makes the resource a substantially more useful foundation for macroevolutionary inference across tetrapods, even as it highlights how unevenly cytogenetic effort has been distributed.
 
 All of these resources share a structural challenge: their scope reflects decades of cumulative karyotyping effort and therefore skews toward historically well-studied groups and detection methods. Female-heterogamety (ZW) systems are almost certainly underestimated because many classical protocols are less sensitive to heteromorphic W chromosomes.
 
 ## Supporting evidence
 
-- [Why not Y naught 2022, Finding 1](/knowledge/papers/2022_why_not/#finding-1): Among 10,754 surveyed species, 67% exhibit XX/XY and ~28% exhibit XX/XO sex chromosome systems, establishing XX/XY as the most common configuration across eukaryotes.
-- [Blackmon & Demuth 2015, Finding 1](/knowledge/papers/2015b/#finding-1): Male heterogamety (XY/XO) has been documented in 24 of 28 insect orders and encompasses 77% of sexually reproducing insect species investigated, establishing it as the most common sex-determination mode across insects.
-- [Perkins et al. 2019, Finding 1](/knowledge/papers/2019_amphibs/#finding-1): The Amphibian Karyotype Database contains 2,124 karyotype records — more than doubling the 1990 compilation — with 1,833 Anura, 246 Caudata, and 45 Gymnophiona records.
-- [Drift drives the evolution 2024, Finding 1](/knowledge/papers/2024_drift_beetles/#finding-1): In the Coleoptera karyotype dataset, Adephaga autosome counts range from 3 to 34 (mean 15.57, bimodal peaks at 11 and 18), while Polyphaga range from 1 to 35 (mean 10.63, single mode at 9 autosomes = 29% of records).
+- [Why not Y naught 2022, Finding 1](/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1): Among 10,754 surveyed species, 67% exhibit XX/XY and ~28% exhibit XX/XO sex chromosome systems, establishing XX/XY as the most common configuration across eukaryotes.
+- [Blackmon & Demuth 2015, Finding 1](/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1): Male heterogamety (XY/XO) has been documented in 24 of 28 insect orders and encompasses 77% of sexually reproducing insect species investigated, establishing it as the most common sex-determination mode across insects.
+- [Perkins et al. 2019, Finding 1](/knowledge/papers/10_1007_s10577_019_09613_1/#finding-1): The Amphibian Karyotype Database contains 2,124 karyotype records — more than doubling the 1990 compilation — with 1,833 Anura, 246 Caudata, and 45 Gymnophiona records.
+- [Drift drives the evolution 2024, Finding 1](/knowledge/papers/10_1093_jhered_esae001/#finding-1): In the Coleoptera karyotype dataset, Adephaga autosome counts range from 3 to 34 (mean 15.57, bimodal peaks at 11 and 18), while Polyphaga range from 1 to 35 (mean 10.63, single mode at 9 autosomes = 29% of records).
 
 ## Contradictions / open disagreements
 
-The cross-eukaryote 67%/28% split ([Why not Y naught 2022, Finding 1](/knowledge/papers/2022_why_not/#finding-1)) and the 77% insect male-heterogamety figure ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/2015b/#finding-1)) are broadly consistent, but both rest on taxonomically uneven sampling frames. The 2022 synthesis explicitly acknowledges that female heterogamety is "undoubtedly an under-estimate," meaning ZW prevalence could be substantially higher than current records suggest.
+The cross-eukaryote 67%/28% split ([Why not Y naught 2022, Finding 1](/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1)) and the 77% insect male-heterogamety figure ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1)) are broadly consistent, but both rest on taxonomically uneven sampling frames. The 2022 synthesis explicitly acknowledges that female heterogamety is "undoubtedly an under-estimate," meaning ZW prevalence could be substantially higher than current records suggest.
 
-The Coleoptera statistics ([Drift drives the evolution 2024, Finding 1](/knowledge/papers/2024_drift_beetles/#finding-1)) face an analogous sampling problem: family-level variance in chromosome number correlates with record count (r = 0.41), indicating that rare or understudied families are not adequately represented, so the reported means and modes may reflect karyotyping effort as much as biological reality.
+The Coleoptera statistics ([Drift drives the evolution 2024, Finding 1](/knowledge/papers/10_1093_jhered_esae001/#finding-1)) face an analogous sampling problem: family-level variance in chromosome number correlates with record count (r = 0.41), indicating that rare or understudied families are not adequately represented, so the reported means and modes may reflect karyotyping effort as much as biological reality.
 
 The Amphibian Karyotype Database's 2,124 records are heavily skewed toward frogs, with caecilians particularly undersampled (45 records). Any macroevolutionary inference built on these databases must account for ascertainment bias — both taxonomic and methodological.
 
@@ -48,10 +48,10 @@ The Amphibian Karyotype Database's 2,124 records are heavily skewed toward frogs
 
 ## Related on the Blackmon Lab site
 
-- [Blackmon & Demuth 2015](/knowledge/papers/2015b/)
-- [Paper: 2019 amphibs](/knowledge/papers/2019_amphibs/)
-- [Paper: 2022 why not](/knowledge/papers/2022_why_not/)
-- [Paper: 2024 drift beetles](/knowledge/papers/2024_drift_beetles/)
+- [Blackmon & Demuth 2015](/knowledge/papers/10_1016_j_cois_2014_12_003/)
+- [Paper: 2019 amphibs](/knowledge/papers/10_1007_s10577_019_09613_1/)
+- [Paper: 2022 why not](/knowledge/papers/10_1038_s41437_022_00543_z/)
+- [Paper: 2024 drift beetles](/knowledge/papers/10_1093_jhered_esae001/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

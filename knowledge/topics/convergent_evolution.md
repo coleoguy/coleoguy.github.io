@@ -16,13 +16,13 @@ Convergent evolution — the independent origin of similar traits in separate li
 
 The Mexican cavefish *Astyanax mexicanus* has become a premier system for studying convergent evolution because multiple geographically distinct cave populations (e.g., Pachón, Molino, Tinaja) have independently evolved overlapping suites of traits — including eye reduction, pigment loss, and altered circadian rhythms — from surface-dwelling ancestors. By treating each cave-versus-surface population pair as a replicate, researchers can screen for genomic and transcriptomic signatures that appear in all replicates, providing statistical evidence of convergent molecular evolution rather than shared ancestry.
 
-A bioinformatic approach demonstrated in the CaveCrawler tool exploits exactly this logic: candidate genes are flagged as "double outliers" when they appear as FST outliers (unusually low divergence relative to surface fish) *and* are differentially expressed in the phenotype of interest across every cave-surface comparison tested. Applying this framework to circadian regulation, [Perry et al. 2022, Finding 1](/knowledge/papers/2022_cave_crawler/#finding-1) identified *arpin* — a negative regulator of actin dynamics — as a double outlier in all three Pachón, Molino, and Tinaja versus Río Choy surface fish comparisons. This makes *arpin* a high-priority candidate for functional investigation into how actin regulation might interface with circadian or behavioral evolution in cave environments.
+A bioinformatic approach demonstrated in the CaveCrawler tool exploits exactly this logic: candidate genes are flagged as "double outliers" when they appear as FST outliers (unusually low divergence relative to surface fish) *and* are differentially expressed in the phenotype of interest across every cave-surface comparison tested. Applying this framework to circadian regulation, [Perry et al. 2022, Finding 1](/knowledge/papers/10_1093_g3journal_jkac132/#finding-1) identified *arpin* — a negative regulator of actin dynamics — as a double outlier in all three Pachón, Molino, and Tinaja versus Río Choy surface fish comparisons. This makes *arpin* a high-priority candidate for functional investigation into how actin regulation might interface with circadian or behavioral evolution in cave environments.
 
 It is important to note that this identification is correlative: neither the FST outlier threshold nor the expression dataset has been experimentally validated to confirm *arpin*'s causal role in cavefish phenotypes. The finding is best understood as a proof-of-principle for convergence-screening methodology rather than a definitive mechanistic claim.
 
 ## Supporting evidence
 
-- [Perry et al. 2022, Finding 1](/knowledge/papers/2022_cave_crawler/#finding-1): *arpin*, a negative regulator of actin, was identified as both an FST outlier and differentially expressed in circadian regulation across all three independent cave population comparisons (Pachón, Molino, and Tinaja vs. Río Choy surface fish), making it a candidate gene for convergent molecular evolution in cavefish.
+- [Perry et al. 2022, Finding 1](/knowledge/papers/10_1093_g3journal_jkac132/#finding-1): *arpin*, a negative regulator of actin, was identified as both an FST outlier and differentially expressed in circadian regulation across all three independent cave population comparisons (Pachón, Molino, and Tinaja vs. Río Choy surface fish), making it a candidate gene for convergent molecular evolution in cavefish.
 
 ## Contradictions / open disagreements
 
@@ -36,7 +36,7 @@ The convergence inference rests on FST outliers defined at the lowest 5% diverge
 
 ## Related on the Blackmon Lab site
 
-- [Perry et al. 2022](/knowledge/papers/2022_cave_crawler/)
+- [Perry et al. 2022](/knowledge/papers/10_1093_g3journal_jkac132/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

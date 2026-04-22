@@ -14,15 +14,15 @@ category: "Speciation & macroevolution"
 
 Speciation — the process by which populations diverge into reproductively isolated lineages — can be studied along a continuum from geographic variation to full reproductive isolation. One of the most instructive natural systems for visualizing this continuum is the concept of a **ring species**, in which a chain of interbreeding populations encircles a geographic barrier; at the ends of the ring, populations that have diverged sufficiently meet in sympatry without interbreeding, effectively illustrating speciation-in-progress without a hard geographic break.
 
-The greenish warbler (*Phylloscopus trochiloides*) is widely regarded as the best remaining empirical example of this phenomenon. Its six named subspecies form a ring around the Tibetan Plateau, and in central Siberia the two terminal northern forms, *P. t. plumbeitarsus* and *P. t. viridanus*, co-occur sympatrically yet do not interbreed — behavior consistent with completed speciation — even though a chain of intermediate, interbreeding populations connects them through southern Asia ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/2012a/#finding-1)). This system has been especially valuable for linking ecological divergence, song divergence, and genetic differentiation to reproductive isolation, because the entire gradient from panmixia to isolation is preserved in a single, spatially structured species complex.
+The greenish warbler (*Phylloscopus trochiloides*) is widely regarded as the best remaining empirical example of this phenomenon. Its six named subspecies form a ring around the Tibetan Plateau, and in central Siberia the two terminal northern forms, *P. t. plumbeitarsus* and *P. t. viridanus*, co-occur sympatrically yet do not interbreed — behavior consistent with completed speciation — even though a chain of intermediate, interbreeding populations connects them through southern Asia ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1)). This system has been especially valuable for linking ecological divergence, song divergence, and genetic differentiation to reproductive isolation, because the entire gradient from panmixia to isolation is preserved in a single, spatially structured species complex.
 
 ## Supporting evidence
 
-- [Ring Species and Speciation 2012, Finding 1](/knowledge/papers/2012a/#finding-1): The greenish warbler (*Phylloscopus trochiloides*) represents the strongest extant case of a ring species, with sympatric non-interbreeding northern subspecies connected by a ring of populations around the Tibetan Plateau. This finding underpins the use of the system as a model for studying how continuous geographic and ecological variation can produce discrete reproductive isolation.
+- [Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1): The greenish warbler (*Phylloscopus trochiloides*) represents the strongest extant case of a ring species, with sympatric non-interbreeding northern subspecies connected by a ring of populations around the Tibetan Plateau. This finding underpins the use of the system as a model for studying how continuous geographic and ecological variation can produce discrete reproductive isolation.
 
 ## Contradictions / open disagreements
 
-The "continuous ring" framing of the greenish warbler system is partly complicated by a well-documented gap in the northeastern portion of the ring, in northeastern China, attributed at least in part to recent deforestation ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/2012a/#finding-1)). If the ring is not fully continuous, the system is a less clean natural experiment than often claimed, and the degree to which historical continuity can be inferred remains debated. Broader questions — such as whether any true ring species exist in nature, and whether the ring species model is a common or exceptional route to speciation — remain open and require additional taxonomic and genomic investigation.
+The "continuous ring" framing of the greenish warbler system is partly complicated by a well-documented gap in the northeastern portion of the ring, in northeastern China, attributed at least in part to recent deforestation ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1)). If the ring is not fully continuous, the system is a less clean natural experiment than often claimed, and the degree to which historical continuity can be inferred remains debated. Broader questions — such as whether any true ring species exist in nature, and whether the ring species model is a common or exceptional route to speciation — remain open and require additional taxonomic and genomic investigation.
 
 ## Tealc's citation-neighborhood suggestions
 
@@ -32,7 +32,7 @@ The "continuous ring" framing of the greenish warbler system is partly complicat
 
 ## Related on the Blackmon Lab site
 
-- [Ring Species and Speciation 2012](/knowledge/papers/2012a/)
+- [Ring Species and Speciation 2012](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

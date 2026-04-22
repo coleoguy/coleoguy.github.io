@@ -9,7 +9,7 @@ year:
 topics: [chromosome_number_evolution, chromosome_number_optima, coleoptera_genomics, karyotype_database, karyotype_evolution_overview, selection_and_drift]
 tier: canon
 ingested_at: 2026-04-21T19:18:06.043241+00:00
-permalink: /knowledge/papers/2024_drift_beetles/
+permalink: /knowledge/papers/10_1093_jhered_esae001/
 ---
 
 # Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera
@@ -71,11 +71,11 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 <!-- tealc:related-start -->
 ## Related papers on this site
 
-- [Drift drives the evolution of chromosome number II: The impa…](/knowledge/papers/2024_drift_carnivores/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, selection_and_drift)
-- [Genome assembly of the southern pine beetle (Dendroctonus fr…](/knowledge/papers/2024_spb/) — 2 shared topics (coleoptera_genomics, karyotype_evolution_overview)
-- [Blackmon et al. 2015](/knowledge/papers/2015_haplo/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
-- [Blackmon & Demuth 2015](/knowledge/papers/2015a/) — 2 shared topics (coleoptera_genomics, karyotype_evolution_overview)
-- [Perkins et al. 2019](/knowledge/papers/2019_amphibs/) — 2 shared topics (karyotype_database, karyotype_evolution_overview)
-- [Ruckman et al. 2020](/knowledge/papers/2020_holocentric/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
-- [Sylvester et al. 2020](/knowledge/papers/2020_polyneoptera/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Drift drives the evolution of chromosome number II: The impa…](/knowledge/papers/10_1093_jhered_esae025/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, selection_and_drift)
+- [Genome assembly of the southern pine beetle (Dendroctonus fr…](/knowledge/papers/10_1098_rsos_240755/) — 2 shared topics (coleoptera_genomics, karyotype_evolution_overview)
+- [Blackmon et al. 2015](/knowledge/papers/10_1111_evo_12792/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Blackmon & Demuth 2015](/knowledge/papers/10_1002_bies_201500040/) — 2 shared topics (coleoptera_genomics, karyotype_evolution_overview)
+- [Perkins et al. 2019](/knowledge/papers/10_1007_s10577_019_09613_1/) — 2 shared topics (karyotype_database, karyotype_evolution_overview)
+- [Ruckman et al. 2020](/knowledge/papers/10_1371_journal_pgen_1009076/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Sylvester et al. 2020](/knowledge/papers/10_1098_rspb_2020_1388/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
 <!-- tealc:related-end -->

@@ -13,9 +13,9 @@ permalink: /knowledge/authors/lo_j/
 
 ## Papers in the lab wiki
 
-- [Retrogene survival is not impacted by linkage relationships](/knowledge/papers/2022_retrogenes/) — 2022
-- [Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution](/knowledge/papers/2020_microsats/) — 2020
-- [A database of amphibian karyotypes](/knowledge/papers/2019_amphibs/) — 2019
+- [Retrogene survival is not impacted by linkage relationships](/knowledge/papers/10_7717_peerj_12822/) — 2022
+- [Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution](/knowledge/papers/10_3390_genes11080945/) — 2020
+- [A database of amphibian karyotypes](/knowledge/papers/10_1007_s10577_019_09613_1/) — 2019
 
 ## Topics this author contributes to
 

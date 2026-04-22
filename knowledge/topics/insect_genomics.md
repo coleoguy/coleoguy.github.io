@@ -18,7 +18,7 @@ The signal for this rate difference is strong at the phylogenetic level — 99 o
 
 ## Supporting evidence
 
-The core comparative finding comes from [Jonika et al. 2020, Finding 1](/knowledge/papers/2020_microsats/#finding-1), which reports that phylogenetic model comparison strongly supports distinct microsatellite evolution rates in monocentric versus holocentric insect lineages, with monocentric lineages consistently showing higher rates across the sampled posterior distribution of trees.
+The core comparative finding comes from [Jonika et al. 2020, Finding 1](/knowledge/papers/10_3390_genes11080945/#finding-1), which reports that phylogenetic model comparison strongly supports distinct microsatellite evolution rates in monocentric versus holocentric insect lineages, with monocentric lineages consistently showing higher rates across the sampled posterior distribution of trees.
 
 ## Contradictions / open disagreements
 
@@ -32,7 +32,7 @@ The main internal tension in current evidence is between the **phylogenetic rate
 
 ## Related on the Blackmon Lab site
 
-- [Jonika et al. 2020](/knowledge/papers/2020_microsats/)
+- [Jonika et al. 2020](/knowledge/papers/10_3390_genes11080945/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

@@ -15,23 +15,23 @@ permalink: /knowledge/authors/blackmon_h/
 
 - [Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (Cheirotonus formosanus): Discovery of a Putative Y-Linked Scaffold and Demographic History](/knowledge/papers/10_1002_ece3_73483/) — 2026
 - [Drivers of achiasmatic meiosis: sexual antagonism versus heteromorphy-dependent aneuploidy across sex-chromosome divergence.](/knowledge/papers/10_1093_g3journal_jkaf217/) — 2025
-- [CaveCrawler: an interactive analysis suite for cavefish bioinformatics](/knowledge/papers/2022_cave_crawler/) — 2022
-- [Retrogene survival is not impacted by linkage relationships](/knowledge/papers/2022_retrogenes/) — 2022
-- [2020-holocentric](/knowledge/papers/2020_holocentric/) — 2020
-- [Ghosts of a Structured Past: Impacts of Ancestral Patterns of Isolation-by-Distance on Divergence-Time Estimation](/knowledge/papers/2020_ghost_of_a_structured/) — 2020
-- [Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects](/knowledge/papers/2020_polyneoptera/) — 2020
-- [Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution](/knowledge/papers/2020_microsats/) — 2020
-- [The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum](/knowledge/papers/2020_march_of_beetles/) — 2020
-- [A database of amphibian karyotypes](/knowledge/papers/2019_amphibs/) — 2019
-- [Meiotic drive shapes rates of karyotype evolution in mammals](/knowledge/papers/2019_mammals/) — 2019
+- [CaveCrawler: an interactive analysis suite for cavefish bioinformatics](/knowledge/papers/10_1093_g3journal_jkac132/) — 2022
+- [Retrogene survival is not impacted by linkage relationships](/knowledge/papers/10_7717_peerj_12822/) — 2022
+- [2020-holocentric](/knowledge/papers/10_1371_journal_pgen_1009076/) — 2020
+- [Ghosts of a Structured Past: Impacts of Ancestral Patterns of Isolation-by-Distance on Divergence-Time Estimation](/knowledge/papers/10_1093_jhered_esaa042/) — 2020
+- [Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects](/knowledge/papers/10_1098_rspb_2020_1388/) — 2020
+- [Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution](/knowledge/papers/10_3390_genes11080945/) — 2020
+- [The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum](/knowledge/papers/10_1093_jhered_esaa030/) — 2020
+- [A database of amphibian karyotypes](/knowledge/papers/10_1007_s10577_019_09613_1/) — 2019
+- [Meiotic drive shapes rates of karyotype evolution in mammals](/knowledge/papers/10_1111_evo_13682/) — 2019
 - [Long-Term Fragility of Y Chromosomes Is Dominated by Short-Term Resolution of Sexual Antagonism.](/knowledge/papers/10_1534_genetics_117_300382/) — 2017
-- [Sex Determination, Sex Chromosomes, and Karyotype Evolution in Insects](/knowledge/papers/2017_sex_chromosomesa/) — 2017
-- [An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: Moving beyond the joint-scaling test for line cross analysis](/knowledge/papers/2016_saga/) — 2016
-- [Coleoptera Karyotype Database](/knowledge/papers/2014b/) — 2015
-- [Genomic origins of insect sex chromosomes](/knowledge/papers/2015b/) — 2015
-- [The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability](/knowledge/papers/2015_haplo/) — 2015
-- [The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution](/knowledge/papers/2015a/) — 2015
-- [Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis](/knowledge/papers/2014d/) — 2014
+- [Sex Determination, Sex Chromosomes, and Karyotype Evolution in Insects](/knowledge/papers/10_1093_jhered_esw047/) — 2017
+- [An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: Moving beyond the joint-scaling test for line cross analysis](/knowledge/papers/10_1111_evo_12844/) — 2016
+- [Coleoptera Karyotype Database](/knowledge/papers/10_1649_0010_065x_69_1_174/) — 2015
+- [Genomic origins of insect sex chromosomes](/knowledge/papers/10_1016_j_cois_2014_12_003/) — 2015
+- [The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability](/knowledge/papers/10_1111_evo_12792/) — 2015
+- [The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution](/knowledge/papers/10_1002_bies_201500040/) — 2015
+- [Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis](/knowledge/papers/10_1534_genetics_114_164269/) — 2014
 
 ## Topics this author contributes to
 

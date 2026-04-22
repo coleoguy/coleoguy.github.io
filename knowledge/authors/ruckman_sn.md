@@ -13,8 +13,8 @@ permalink: /knowledge/authors/ruckman_sn/
 
 ## Papers in the lab wiki
 
-- [2020-holocentric](/knowledge/papers/2020_holocentric/) — 2020
-- [The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum](/knowledge/papers/2020_march_of_beetles/) — 2020
+- [2020-holocentric](/knowledge/papers/10_1371_journal_pgen_1009076/) — 2020
+- [The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum](/knowledge/papers/10_1093_jhered_esaa030/) — 2020
 
 ## Topics this author contributes to
 

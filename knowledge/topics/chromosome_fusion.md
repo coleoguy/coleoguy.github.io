@@ -14,13 +14,13 @@ category: "Karyotype evolution"
 
 Chromosome fusions — the joining of two previously separate chromosomes into one — are a recurrent and non-random feature of karyotype evolution. A central question in the field is whether all classes of fusion (sex chromosome–autosome, autosome–autosome, and sex chromosome–sex chromosome) occur at equal frequencies, or whether particular classes are over- or under-represented relative to what neutral chromosome dynamics would predict.
 
-Work on *Habronattus* jumping spiders provides a compelling case study. Across the phylogeny, 8 of 10 inferred chromosome fusions involve a sex chromosome fusing with an autosome (SA-fusions). To evaluate whether this pattern is surprising under a null model, a probabilistic framework can be applied: if fusion partners are drawn at random in proportion to the available chromosome types, what is the probability of observing 8 or more SA-fusions out of 10? The answer is p < 10⁻⁵ — a result that converts a long-standing qualitative observation into a statistically rigorous finding. [The probability of fusions 2020, Finding 1](/knowledge/papers/2020_probability/#finding-1)
+Work on *Habronattus* jumping spiders provides a compelling case study. Across the phylogeny, 8 of 10 inferred chromosome fusions involve a sex chromosome fusing with an autosome (SA-fusions). To evaluate whether this pattern is surprising under a null model, a probabilistic framework can be applied: if fusion partners are drawn at random in proportion to the available chromosome types, what is the probability of observing 8 or more SA-fusions out of 10? The answer is p < 10⁻⁵ — a result that converts a long-standing qualitative observation into a statistically rigorous finding. [The probability of fusions 2020, Finding 1](/knowledge/papers/10_1098_rsbl_2020_0648/#finding-1)
 
 This excess suggests that sex chromosomes are disproportionately likely to participate in fusions, possibly because newly formed neo-sex chromosomes can suppress recombination and facilitate the co-inheritance of sexually antagonistic alleles, or because the unique chromatin environment of sex chromosomes makes them more prone to the structural rearrangements that lead to fusion. The null model used to generate this test assumes a single ancestral karyotype (XXO, 2n=26 autosomes) reconstructed by ancestral state estimation, making the exact p-value contingent on that reconstruction but providing a replicable quantitative benchmark.
 
 ## Supporting evidence
 
-- An excess of sex chromosome–autosome fusions in *Habronattus* spiders is statistically supported at p < 10⁻⁵ under a null model in which fusion partners are drawn at random from the available pool of chromosomes. [The probability of fusions 2020, Finding 1](/knowledge/papers/2020_probability/#finding-1)
+- An excess of sex chromosome–autosome fusions in *Habronattus* spiders is statistically supported at p < 10⁻⁵ under a null model in which fusion partners are drawn at random from the available pool of chromosomes. [The probability of fusions 2020, Finding 1](/knowledge/papers/10_1098_rsbl_2020_0648/#finding-1)
 
 ## Contradictions / open disagreements
 
@@ -33,7 +33,7 @@ None known from the currently indexed findings. The main outstanding uncertainty
 
 ## Related on the Blackmon Lab site
 
-- [The probability of fusions 2020](/knowledge/papers/2020_probability/)
+- [The probability of fusions 2020](/knowledge/papers/10_1098_rsbl_2020_0648/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

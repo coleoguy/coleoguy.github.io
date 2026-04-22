@@ -18,7 +18,7 @@ Importantly, effect size can serve as a partial corrective. Although raw false-p
 
 ## Supporting evidence
 
-- [Drift drives the evolution 2024, Finding 1](/knowledge/papers/2024_drift_carnivores/#finding-1): Using neutral simulations on the Carnivora phylogeny, this study directly quantified the false-positive susceptibility of chromePlus-style inference, finding that 22% of neutral traits appeared associated with elevated fusion rates and 33% with elevated fission rates.
+- [Drift drives the evolution 2024, Finding 1](/knowledge/papers/10_1093_jhered_esae025/#finding-1): Using neutral simulations on the Carnivora phylogeny, this study directly quantified the false-positive susceptibility of chromePlus-style inference, finding that 22% of neutral traits appeared associated with elevated fusion rates and 33% with elevated fission rates.
 
 ## Contradictions / open disagreements
 
@@ -31,7 +31,7 @@ The finding raises a tension between the headline false-positive rates and the m
 
 ## Related on the Blackmon Lab site
 
-- [Drift drives the evolution 2024](/knowledge/papers/2024_drift_carnivores/)
+- [Drift drives the evolution 2024](/knowledge/papers/10_1093_jhered_esae025/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->
