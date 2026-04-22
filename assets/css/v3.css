@@ -767,3 +767,190 @@ footer.colophon .endpoints a {
   line-height: 1.6;
 }
 .news-entry .news-body a { color: var(--accent); }
+
+/* ─────────────────────────────────────────────────────────
+   Wikipedia-feel prototype — scoped to /knowledge/ pages
+   Body gets class="wiki" from the Jekyll layout when
+   page.url contains '/knowledge/'. All rules are scoped
+   to body.wiki so nothing else on the site is affected.
+   ───────────────────────────────────────────────────────── */
+body.wiki {
+  --wiki-link: #0645ad;
+  --wiki-link-visited: #0b0080;
+  --wiki-rule: #a2a9b1;
+  --wiki-frame: #ffffff;
+  --wiki-toc-bg: #f8f9fa;
+  --wiki-sans: 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, sans-serif;
+  --wiki-serif: 'Linux Libertine', 'Georgia', 'Times New Roman', Times, serif;
+}
+:root[data-theme="dark"] body.wiki {
+  --wiki-link: #8ab4f8;
+  --wiki-link-visited: #c58af9;
+  --wiki-rule: #463a32;
+  --wiki-frame: var(--paper-raised);
+  --wiki-toc-bg: var(--paper-sunk);
+}
+
+/* Frame the article column like a Wikipedia content pane */
+body.wiki main.column {
+  background: var(--wiki-frame);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  margin: 20px 20px 60px 0;
+  padding: 28px 40px 80px;
+  max-width: 920px;
+  font-family: var(--wiki-serif);
+  font-size: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  body.wiki main.column {
+    margin: 0;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 20px 22px 60px;
+  }
+}
+
+/* Titles — serif, thin rule under H1 and H2 */
+body.wiki main.column h1,
+body.wiki main.column h1.title {
+  font-family: var(--wiki-serif);
+  font-weight: 400;
+  font-size: 1.95rem;
+  line-height: 1.25;
+  border-bottom: 1px solid var(--wiki-rule);
+  padding: 0 0 6px;
+  margin: 0 0 16px;
+  letter-spacing: -0.005em;
+}
+body.wiki main.column h2 {
+  font-family: var(--wiki-serif);
+  font-weight: 400;
+  font-size: 1.45rem;
+  line-height: 1.3;
+  border-bottom: 1px solid var(--wiki-rule);
+  padding-bottom: 3px;
+  margin: 30px 0 12px;
+}
+body.wiki main.column h3 {
+  font-family: var(--wiki-sans);
+  font-weight: 700;
+  font-size: 1.08rem;
+  margin: 22px 0 8px;
+}
+
+/* Section numbering, filled in by the TOC script */
+body.wiki main.column h2[data-section-num]::before {
+  content: attr(data-section-num) "  ";
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-size: 0.9em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Paragraph rhythm and lead-paragraph emphasis */
+body.wiki main.column p { margin: 0 0 0.9em; }
+body.wiki main.column > p:first-of-type,
+body.wiki main.column h1 + p,
+body.wiki main.column h1.title + p {
+  font-size: 1.04em;
+}
+
+/* Links — Wikipedia blue inside the article body only;
+   sidebar, crumbs, chrome keep brand maroon */
+body.wiki main.column a {
+  color: var(--wiki-link);
+  text-decoration: none;
+}
+body.wiki main.column a:hover { text-decoration: underline; }
+body.wiki main.column a:visited { color: var(--wiki-link-visited); }
+
+/* External-link arrow (off-site URLs) */
+body.wiki main.column a[href^="http://"]:not([href*="coleoguy.github.io"])::after,
+body.wiki main.column a[href^="https://"]:not([href*="coleoguy.github.io"])::after {
+  content: "↗";
+  font-size: 0.78em;
+  margin: 0 1px 0 2px;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+
+/* Lists */
+body.wiki main.column ul,
+body.wiki main.column ol { padding-left: 1.8em; margin: 0 0 1em; }
+body.wiki main.column li { margin-bottom: 0.25em; }
+
+/* Inline code */
+body.wiki main.column code {
+  background: var(--wiki-toc-bg);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0 4px;
+  font-size: 0.88em;
+}
+
+/* Blockquotes rendered like Wikipedia's quote style */
+body.wiki main.column blockquote {
+  border-left: 3px solid var(--wiki-rule);
+  margin: 0 0 1em;
+  padding: 2px 0 2px 14px;
+  color: var(--ink-dim);
+}
+
+/* Auto-generated Contents box */
+body.wiki .wiki-toc {
+  display: table;
+  background: var(--wiki-toc-bg);
+  border: 1px solid var(--rule);
+  padding: 10px 18px 12px;
+  margin: 14px 0 24px;
+  font-family: var(--wiki-sans);
+  font-size: 0.92rem;
+  min-width: 260px;
+}
+body.wiki .wiki-toc-head {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-family: var(--wiki-serif);
+  color: var(--ink);
+}
+body.wiki .wiki-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: wtoc;
+}
+body.wiki .wiki-toc ol li {
+  counter-increment: wtoc;
+  margin: 0;
+  padding: 1px 0;
+  line-height: 1.45;
+}
+body.wiki .wiki-toc ol li::before {
+  content: counter(wtoc) " ";
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  margin-right: 4px;
+}
+body.wiki .wiki-toc ol li a {
+  color: var(--wiki-link);
+  text-decoration: none;
+}
+body.wiki .wiki-toc ol li a:hover { text-decoration: underline; }
+
+/* Toggle: the user may hide the ToC via the "hide" link */
+body.wiki .wiki-toc-toggle {
+  float: right;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  font-family: var(--wiki-sans);
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 8px;
+}
+body.wiki .wiki-toc.collapsed ol { display: none; }
+body.wiki .wiki-toc.collapsed { padding-bottom: 8px; }

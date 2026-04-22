@@ -27,7 +27,7 @@
 {{ page.extra_head }}
 </head>
 
-<body>
+<body{% if page.url contains '/knowledge/' %} class="wiki"{% endif %}>
 
 <div class="chrome">
   <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
