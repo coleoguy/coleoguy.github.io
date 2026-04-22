@@ -1,15 +1,16 @@
 ---
 layout: default
 title: "Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes)"
-doi: 
+doi: "10.1093/jhered/esad059"
 fingerprint_sha256: cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6
-authors: ""
-journal: ""
-year: 
+authors: "James M. Alfieri, Reina Hingoranee, Giridhar Athrey, Heath Blackmon"
+journal: "Journal of Heredity"
+year: 2023
 topics: [Galliformes, avian_hybridization, domestication, domestication_genomics, postzygotic_isolation, reproductive_isolation, sex_chromosome_evolution]
 tier: canon
 ingested_at: 2026-04-21T19:12:07.181997+00:00
 permalink: /knowledge/papers/10_1093_jhered_esad059/
+pdf: /pdfs/10_1093_jhered_esad059.pdf
 ---
 
 # Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes)

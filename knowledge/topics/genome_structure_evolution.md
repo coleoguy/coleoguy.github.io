@@ -2,10 +2,10 @@
 layout: default
 title: "Genome structure evolution"
 topic_slug: genome_structure_evolution
-last_updated: 2026-04-21T20:46:55.095783+00:00
-papers_supporting: [10.1093/jhered/esad076, 3780c17c37d408cf1151745b75b70eea040ad4a9fa24b5d3ba4a327fa493df88, 8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, 8ec28241e312e0da2ddec048ec265c68f9b8c4b63678fb482d9e31d34a5690d6, 9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b, baf57990bb1ab651800c9fa0878d6cc56f78093176f5b6ae7ef64f25fc8ba126, e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
-category: "Genome structure"
+last_updated: 2026-04-22T13:01:33.301375+00:00
+papers_supporting: [10.1093/bioinformatics/btp324, 10.1093/jhered/esad076, 10.1534/genetics.116.192690, 3780c17c37d408cf1151745b75b70eea040ad4a9fa24b5d3ba4a327fa493df88, 8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, 8ec28241e312e0da2ddec048ec265c68f9b8c4b63678fb482d9e31d34a5690d6, 9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b, baf57990bb1ab651800c9fa0878d6cc56f78093176f5b6ae7ef64f25fc8ba126, e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
 permalink: /knowledge/topics/genome_structure_evolution/
+category: "Genome structure"
 ---
 <!-- tealc:auto-start -->
 # Genome Structure Evolution
@@ -24,9 +24,13 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 
 **Centromere architecture and the tempo of microsatellite evolution.** Although total microsatellite content does not differ significantly between lineages with monocentric and holocentric chromosomes, the *rate* at which that content evolves does: 99 of 100 posterior-distribution trees favored a two-rate model with consistently higher rates in monocentric lineages ([Jonika et al. 2020, Finding 3](/knowledge/papers/10_3390_genes11080945/#finding-3)). Diploid chromosome number has no significant relationship with either microsatellite content or its rate of evolution, refuting the intuitive prediction that species with more chromosomes would accumulate more microsatellite sequence ([Jonika et al. 2020, Finding 1](/knowledge/papers/10_3390_genes11080945/#finding-1)).
 
+**Recombination landscape as an evolvable genome trait.** The scale at which crossovers are distributed across chromosomes is itself subject to macroevolutionary change. Across 112 mammalian species, the chromosomal constraint on recombination — whether a crossover is required per arm or only per chromosome — has shifted independently multiple times during mammalian evolution ([10.1534/genetics.116.192690, Finding 1](/knowledge/papers/10_1534_genetics_116_192690/#finding-1)). This means the recombination architecture cannot be treated as a fixed property of a lineage; it is a genome-structural character with its own evolutionary history. Whether these shifts in crossover-distribution scale covary with chromosome number evolution, karyotype stability, or sex chromosome turnover remains an open question.
+
 **Chromosomal identity and sex chromosome origins.** Comparative genomics across major insect orders reveals that sex chromosomes have independent evolutionary origins: the X chromosomes of *Drosophila melanogaster* and *Anopheles gambiae* share a region of homology, yet that region is not homologous to the X of *Tribolium castaneum* or the Z of *Bombyx mori* ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1)). Genome structural evolution therefore operates simultaneously at multiple scales, from microsatellite dynamics within lineages to wholesale chromosomal remodeling across deep divergences.
 
 **Epistatic architecture and trait divergence.** Beyond structural organization, the genetic interactions encoded within genomes also vary systematically across the tree of life. Animals exhibit significantly greater epistatic contributions to trait divergence than plants (mean difference of −0.08, empirical p-value = .01), a pattern relevant to understanding how Bateson–Dobzhansky–Muller incompatibilities may differ between kingdoms ([Wright was right: leveraging 2024, Finding 1](/knowledge/papers/10_1093_evolut_qpae003/#finding-1)).
+
+**Sequencing and alignment infrastructure.** Inference about genome structure increasingly depends on the short-read alignment tools used to generate the raw data. BWA, based on the Burrows-Wheeler transform, achieves 88.9% confident mapping on real 51 bp Illumina paired-end reads (98.8% in consistent pairs) — outperforming MAQ (86.1% confident, 98.7% paired) while using 23× fewer CPU hours (4.0 vs. 94.9) ([Fast and accurate short read alignment with Burrows-Wheeler transform., Finding 1](/knowledge/papers/10_1093_bioinformatics_btp324/#finding-1)). A critical scalability advantage of the BWT approach is that memory footprint is independent of read count — approximately 2.3 GB for single-end mapping regardless of dataset size — whereas MAQ's memory scales linearly with reads ([Fast and accurate short read alignment with Burrows-Wheeler transform., Finding 2](/knowledge/papers/10_1093_bioinformatics_btp324/#finding-2)). The default seeding heuristic (restricting allowed mismatches to the first 32 bp) delivers a 2.5× speedup on 70 bp reads while increasing alignment error rate only modestly, from 0.08% to 0.11% ([Fast and accurate short read alignment with Burrows-Wheeler transform., Finding 3](/knowledge/papers/10_1093_bioinformatics_btp324/#finding-3)).
 
 ## Supporting evidence
 
@@ -50,6 +54,14 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 
 - [Genome assembly of the 2024, Finding 2](/knowledge/papers/10_1098_rsos_240755/#finding-2): *Dendroctonus* species average ~13,400 annotated genes vs. ~17,000 in other beetles; ~2,300-gene deficit persists after correcting for TE-derived gene-model inflation in non-*Dendroctonus* assemblies.
 
+- [10.1534/genetics.116.192690, Finding 1](/knowledge/papers/10_1534_genetics_116_192690/#finding-1): Across 112 mammalian species, the physical scale of the crossover distribution has shifted independently multiple times from one crossover per chromosome arm to one per chromosome, establishing recombination architecture as an evolvable genome-structural trait.
+
+- [Fast and accurate short read alignment with Burrows-Wheeler transform., Finding 1](/knowledge/papers/10_1093_bioinformatics_btp324/#finding-1): BWA achieves 88.9% confident mapping and 98.8% consistent pairs on real 51 bp Illumina data in 4.0 CPU hours, vs. MAQ's 86.1% / 98.7% in 94.9 CPU hours.
+
+- [Fast and accurate short read alignment with Burrows-Wheeler transform., Finding 2](/knowledge/papers/10_1093_bioinformatics_btp324/#finding-2): BWA's memory footprint (~2.3 GB single-end) is independent of read count; MAQ's scales linearly with it.
+
+- [Fast and accurate short read alignment with Burrows-Wheeler transform., Finding 3](/knowledge/papers/10_1093_bioinformatics_btp324/#finding-3): Seeding (first 32 bp) delivers 2.5× speedup on 70 bp reads with alignment error rising only from 0.08% to 0.11%.
+
 ## Contradictions / open disagreements
 
 - **Direct-repeat depletion: selection or composition?** The ~7-fold depletion of exons flanked by direct repeats in *A. aegypti* is interpreted as purifying selection against SSA-mediated deletion hazards, but the Monte Carlo null does not control for GC content, chromatin accessibility, or recombination landscape. The depletion could partly reflect compositional or structural differences between genic and intergenic regions rather than selection alone. The analysis is also limited to a single species, and the paper was awaiting peer review at time of writing ([DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/10_12688_f1000research_170810_1/#finding-1)).
@@ -70,6 +82,10 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 
 - **Animal–plant epistasis contrast vs. mating-system confound**: The finding that animals show greater epistatic contributions to trait divergence than plants ([Wright was right: leveraging 2024, Finding 1](/knowledge/papers/10_1093_evolut_qpae003/#finding-1)) may be confounded by the plant sample being dominated by domesticated crop crosses and selfing species, which could suppress detectable epistasis independently of any genuine kingdom-level difference.
 
+- **Crossover-scale shifts: tree quality and sex bias**: The inference that crossover-distribution scale has shifted independently multiple times across Mammalia relies on a supertree assembled manually with polytomies at poorly resolved nodes and no branch lengths. Additionally, 83.9% of crossover data are from males only; if the arm-to-chromosome shift differs between sexes — as heterochiasmy would predict — the inferred number and placement of transitions is correspondingly uncertain ([10.1534/genetics.116.192690, Finding 1](/knowledge/papers/10_1534_genetics_116_192690/#finding-1)).
+
+- **BWA benchmark generalizability**: The accuracy and speed figures for BWA are drawn from a single individual (NA12750) at a single read length (51 bp) on a human genome; the 2.3 GB memory figure is specific to the ~3 Gb human reference. Performance on larger, more repetitive, or polyploid genomes — precisely the genomes of greatest interest for insect comparative work — may differ materially ([Fast and accurate short read alignment with Burrows-Wheeler transform., Finding 1](/knowledge/papers/10_1093_bioinformatics_btp324/#finding-1); [Finding 2](/knowledge/papers/10_1093_bioinformatics_btp324/#finding-2)).
+
 ## Tealc's citation-neighborhood suggestions
 
 - Multi-species direct-repeat surveys across Diptera and other orders would test whether the SSA-mediated depletion signal observed in *A. aegypti* is general or lineage-specific; paired analysis with recombination maps and GC-content would address current confounders.
@@ -79,6 +95,9 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 - Manual-curation-based gene annotation pipelines for additional *Dendroctonus* species would help confirm whether the reduced gene complement is a genuine lineage-wide characteristic.
 - Analyses integrating retrocopy chromosomal location data with sex chromosome content could test whether retroposition preferentially moves genes on or off sex chromosomes.
 - Analyses of epistatic architecture in wild-collected plant crosses with outbreeding mating systems would help disentangle mating system from kingdom-level effects on epistasis.
+- BWA performance benchmarks on non-model insect genomes with highly fragmented repeats, large genome sizes, or high heterozygosity are lacking; such data would clarify whether the mapping-rate and memory figures from the human benchmark translate to the organisms typically studied by this lab.
+- Formal ancestral-state reconstruction of crossover-distribution scale in mammals, using dated supertrees with branch lengths and sex-disaggregated data, would sharpen the count and timing of transitions identified by Blackmon & Brandvain 2017.
+- Testing whether crossover-distribution scale shifts covary with chromosome number change or sex chromosome turnover rates in mammals would connect this finding to the broader karyotype-evolution literature.
 
 ## Related on the Blackmon Lab site
 
@@ -89,6 +108,8 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 - [Lo & Blackmon 2022](/knowledge/papers/10_7717_peerj_12822/)
 - [Wright was right: leveraging 2024](/knowledge/papers/10_1093_evolut_qpae003/)
 - [Genome assembly of the 2024](/knowledge/papers/10_1098_rsos_240755/)
+- [10.1534/genetics.116.192690 (Blackmon & Brandvain 2017)](/knowledge/papers/10_1534_genetics_116_192690/)
+- [Fast and accurate short read alignment with Burrows-Wheeler transform. (Li & Durbin 2009)](/knowledge/papers/10_1093_bioinformatics_btp324/)
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->

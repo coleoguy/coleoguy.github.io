@@ -10,6 +10,7 @@ topics: [bee_genomics, bee_phylogenomics, conservation_genomics, genome_structur
 tier: canon
 ingested_at: 2026-04-21T15:32:57.285271+00:00
 permalink: /knowledge/papers/10_1093_jhered_esad076/
+pdf: /pdfs/10_1093_jhered_esad076.pdf
 ---
 
 # Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern.

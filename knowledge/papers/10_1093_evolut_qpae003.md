@@ -1,15 +1,16 @@
 ---
 layout: default
 title: "Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution"
-doi: 
+doi: "10.1093/evolut/qpae003"
 fingerprint_sha256: 9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b
-authors: ""
-journal: ""
-year: 
+authors: "J. B. Burch, Maximos Chin, Brian E. Fontenot, Sabyasachi Mandal"
+journal: "Evolution"
+year: 2024
 topics: [epistasis, genome_structure_evolution, hybridization, life_history_evolution, line_cross_analysis, quantitative_genetics_methods]
 tier: canon
 ingested_at: 2026-04-21T20:33:57.904398+00:00
 permalink: /knowledge/papers/10_1093_evolut_qpae003/
+pdf: /pdfs/10_1093_evolut_qpae003.pdf
 ---
 
 # Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution

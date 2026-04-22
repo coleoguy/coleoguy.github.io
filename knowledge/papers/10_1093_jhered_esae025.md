@@ -1,15 +1,16 @@
 ---
 layout: default
 title: "Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora"
-doi: 
+doi: "10.1093/jhered/esae025"
 fingerprint_sha256: f9fb8e258c7b62f338b299e9c6fcbeb81259e1aef5f75ea3c782100d90b4a19c
-authors: ""
-journal: ""
-year: 
+authors: "Michelle M. Jonika, Kayla Wilhoit, Maximos Chin, Abhimanyu Arekere"
+journal: "Journal of Heredity"
+year: 2024
 topics: [chromosome_number_evolution, comparative_methods, karyotype_evolution_overview, selection_and_drift]
 tier: canon
 ingested_at: 2026-04-21T19:25:29.998059+00:00
 permalink: /knowledge/papers/10_1093_jhered_esae025/
+pdf: /pdfs/10_1093_jhered_esae025.pdf
 ---
 
 # Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora

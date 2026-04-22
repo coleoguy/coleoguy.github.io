@@ -1,15 +1,16 @@
 ---
 layout: default
 title: "Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera"
-doi: 
+doi: "10.1093/jhered/esae001"
 fingerprint_sha256: fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3d80e
-authors: ""
-journal: ""
-year: 
+authors: "Heath Blackmon, Michelle M. Jonika, James M. Alfieri, Leen Fardoun"
+journal: "Journal of Heredity"
+year: 2024
 topics: [chromosome_number_evolution, chromosome_number_optima, coleoptera_genomics, karyotype_database, karyotype_evolution_overview, selection_and_drift]
 tier: canon
 ingested_at: 2026-04-21T19:18:06.043241+00:00
 permalink: /knowledge/papers/10_1093_jhered_esae001/
+pdf: /pdfs/10_1093_jhered_esae001.pdf
 ---
 
 # Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera

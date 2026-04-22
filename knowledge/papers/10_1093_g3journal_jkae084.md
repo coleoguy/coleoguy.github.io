@@ -1,15 +1,16 @@
 ---
 layout: default
 title: "A reference quality genome assembly for the jewel scarab Chrysina gloriosa"
-doi: 
+doi: "10.1093/g3journal/jkae084"
 fingerprint_sha256: 31776037050f6b89b93887fa1b80196fd30073325900b9b38adb091f0516948d
-authors: ""
-journal: ""
-year: 
+authors: "Terrence Sylvester, Zachary Hoover, Carl E. Hjelmen, Michelle M. Jonika"
+journal: "G3 Genes Genomes Genetics"
+year: 2024
 topics: [coleoptera_genomics, conservation_genomics, genome_assembly]
 tier: canon
 ingested_at: 2026-04-21T19:09:19.879957+00:00
 permalink: /knowledge/papers/10_1093_g3journal_jkae084/
+pdf: /pdfs/10_1093_g3journal_jkae084.pdf
 ---
 
 # A reference quality genome assembly for the jewel scarab Chrysina gloriosa
