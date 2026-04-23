@@ -6,9 +6,29 @@ last_updated: 2026-04-22T13:34:13.058805+00:00
 papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96ccfa84, 10.1002/ece3.73483, 10.1007/978-1-4939-8775-7_2, 10.1017/s0016672300014051, 10.1038/nature08441, 10.1093/g3journal/jkaf217, 10.1371/journal.pgen.1005237, 10.1534/genetics.117.300382, 1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca, 6e7c688c4f2e3fb47506b929ceb3f93edfad9c61210cfd2602ddcc57bf66d5be, 7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150f528, 8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, 8ec28241e312e0da2ddec048ec265c68f9b8c4b63678fb482d9e31d34a5690d6, a4b0b03e15616954490c13ea4d103ee11a9801d0bd20d37a97376a3d936114eb, a73574bbaaa5fe6c06f620cd8793d044d3c5b758777b262d09e80b49d181b465, baf57990bb1ab651800c9fa0878d6cc56f78093176f5b6ae7ef64f25fc8ba126, c6c1f45b84f53c5ec0361e367e8fab7bf3b8963db5c451a3256e09d2aed98732, cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6, f27df64e71adfbdf80f51dda1ec8b660a6fb871e76d8feb07659ebaa7c6da808]
 permalink: /knowledge/topics/sex_chromosome_evolution/
 category: "Sex chromosomes"
+reading_level_student: 10
+reading_level_researcher: 15
+editor_frozen: false
 ---
-<!-- tealc:auto-start -->
+
 # Sex Chromosome Evolution
+
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Sex chromosomes evolve from ordinary autosomes through a process heavily shaped by sexual antagonism — the tension between alleles that benefit one sex at a cost to the other. At the broadest scale, across 10,754 surveyed plant and animal species (excluding multi-sex-chromosome systems), 67% exhibit XX/XY systems and ~28% exhibit XX/XO systems; only a single species is known to have a YO/WO univalent sex-specific chromosome ([Why not Y naught 2022, Finding 1](/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1)). Within insects specifically, male heterogamety (XY or XO) has been documented in 24 of 28 insect orders, encompassing 77% of sexually reproducing insect species investigated ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1)), and likelihood-based ancestral state reconstruction across a >13,000-species database places the probability of male heterogamety at the insect root at 100% ([Blackmon et al. 2017, Finding 1](/knowledge/papers/10_1093_jhered_esw047/#finding-1)).
+
+</div>
+<div data-register="student" markdown="1">
+
+Sex chromosomes — the X, Y, Z, and W chromosomes that differ between sexes — start out as ordinary [autosomes](/knowledge/concepts/autosome/) (non-sex chromosomes) and change over time through a process driven largely by [sexual antagonism](/knowledge/concepts/sexual_antagonism/) (genetic conflict between what benefits males versus what benefits females). A survey of 10,754 plant and animal species showed that 67% have an XX/XY system (where males carry a Y chromosome) and ~28% have an XX/XO system (where males simply lack a second sex chromosome); only one species is known to have a YO/WO system in which the sex-specific chromosome exists without a partner ([Why not Y naught 2022, Finding 1](/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1)). Looking at insects in particular, [male heterogamety](/knowledge/concepts/heterogamety/) (XY or XO males) has been found in 24 of 28 insect orders, covering 77% of sexually reproducing insect species studied ([Blackmon & Demuth 2015, Finding 1](/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1)). A statistical reconstruction of ancestral states across a database of more than 13,000 insect species puts the probability of male heterogamety at the root of all insects at 100% — meaning the very first insects almost certainly had males that were XY or XO ([Blackmon et al. 2017, Finding 1](/knowledge/papers/10_1093_jhered_esw047/#finding-1)).
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
+<!-- tealc:auto-start -->
 
 ## Current understanding
 

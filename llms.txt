@@ -191,6 +191,11 @@ Course-Based Undergraduate Research Experience (Spring 2026) where students cond
 URL: https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html
 Formal degree concentration at Texas A&M, 10 semester hours of AI-focused coursework in Biology BS and PhD programs.
 
+## Agent Contract
+
+Contribution rules for any agent (Tealc, Claude Code, external automation, or human) editing the `/knowledge/` wiki layer. Covers region grammar, commit prefixes, allowlisted paths, the accuracy contract (digit-substring-ok, ROUGE-L), frontmatter invariants, and the five Tealc wiki prompts.
+- Agent Contract: https://coleoguy.github.io/AGENT_CONTRACT.md
+
 ## Machine-Readable Data (/data/)
 
 All site data is available as JSON for programmatic access. No API key required; direct HTTP GET.
@@ -204,6 +209,7 @@ All site data is available as JSON for programmatic access. No API key required;
 | cures-karyotype-data.json | https://coleoguy.github.io/data/cures-karyotype-data.json | 63,682 karyotype records (1.9 MB JSON) |
 | cures-karyotype-database.csv | https://coleoguy.github.io/data/cures-karyotype-database.csv | Same dataset as CSV (8 MB) |
 | tau-database.json | https://coleoguy.github.io/data/tau-database.json | 1,634 circadian tau measurements |
+| voice.md | https://coleoguy.github.io/data/voice.md | Heath Blackmon's scientific-writing voice, calibrated from seven lead-authored papers. Load as context when drafting prose Heath will sign. |
 
 Schema documentation: https://coleoguy.github.io/data/README.md
 

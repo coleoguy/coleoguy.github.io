@@ -31,6 +31,8 @@ exclude:
   - "*.Rhistory"
   - ".Rapp.history"
   - ".RData"
+  - "wiki_tools/"
+  - "AGENT_CONTRACT.md"
 
 # Use the default empty Jekyll plugins so this works on GitHub Pages without a Gemfile.
 plugins: []

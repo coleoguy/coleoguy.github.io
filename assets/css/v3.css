@@ -954,3 +954,128 @@ body.wiki .wiki-toc-toggle {
 }
 body.wiki .wiki-toc.collapsed ol { display: none; }
 body.wiki .wiki-toc.collapsed { padding-bottom: 8px; }
+
+/* Register toggle (Student / Researcher) — injected above .wiki-lead */
+body.wiki .wiki-register-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 8px 0 12px;
+  font-family: var(--wiki-sans);
+  font-size: 0.82rem;
+  color: var(--ink-dim);
+}
+body.wiki .wiki-register-toggle .wiki-register-label {
+  margin-right: 6px;
+  color: var(--ink-faint);
+}
+body.wiki .wiki-register-toggle button {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--wiki-link);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 2px 8px;
+  cursor: pointer;
+  line-height: 1.3;
+}
+body.wiki .wiki-register-toggle button:hover { background: var(--wiki-toc-bg); }
+body.wiki .wiki-register-toggle button[aria-pressed="true"] {
+  background: var(--wiki-link);
+  border-color: var(--wiki-link);
+  color: var(--wiki-frame);
+  cursor: default;
+}
+
+/* Paired-register visibility — default: researcher shown, student hidden.
+   surface_composer.py emits both variants inside .wiki-lead. */
+body.wiki .wiki-lead [data-register="student"] { display: none; }
+body.wiki .wiki-lead [data-register="researcher"] { display: block; }
+body.wiki .wiki-lead[data-active="student"] [data-register="student"] { display: block; }
+body.wiki .wiki-lead[data-active="student"] [data-register="researcher"] { display: none; }
+
+/* Click-to-edit overlay */
+.edit-user {
+  position: relative;
+  outline: 2px dashed rgba(46,125,50,0.6);
+  padding: 8px 10px;
+  border-radius: 4px;
+  min-height: 1.4em;
+}
+.edit-user:focus {
+  outline: 2px solid rgba(46,125,50,0.9);
+  box-shadow: 0 0 0 3px rgba(46,125,50,0.15);
+}
+.edit-tealc {
+  position: relative;
+  outline: 2px dashed rgba(178,106,0,0.5);
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.edit-badge {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--paper-raised);
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+}
+.edit-badge-user  { color: #2e7d32; }
+.edit-badge-tealc { color: #b26a00; }
+@keyframes edit-flash-ok  { 0%,100%{background:transparent} 20%{background:rgba(46,125,50,0.25)} }
+@keyframes edit-flash-err { 0%,100%{background:transparent} 20%{background:rgba(200,30,30,0.25)} }
+.edit-save-flash-ok  { animation: edit-flash-ok  1s ease; }
+.edit-save-flash-err { animation: edit-flash-err 1s ease; }
+.edit-propose-modal {
+  margin-top: 12px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  padding: 12px;
+  background: var(--paper-raised);
+}
+.edit-propose-modal textarea,
+.edit-propose-modal input[type="text"] {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 6px 8px;
+  background: var(--paper-sunk);
+  color: var(--ink);
+  margin-bottom: 8px;
+  resize: vertical;
+}
+.edit-propose-modal button {
+  font-size: 0.82rem;
+  padding: 4px 10px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  background: var(--paper-raised);
+  color: var(--ink);
+  cursor: pointer;
+}
+.edit-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: #fef9c3;
+  color: #713f12;
+  border-bottom: 1px solid #fbbf24;
+}
+.edit-banner-error { background: #fee2e2; color: #7f1d1d; border-color: #f87171; }
+:root[data-theme="dark"] .edit-user  { outline-color: rgba(102,187,106,0.5); }
+:root[data-theme="dark"] .edit-tealc { outline-color: rgba(255,183,77,0.4); }
+:root[data-theme="dark"] .edit-badge { background: var(--paper-raised); }
+:root[data-theme="dark"] .edit-banner { background:#422006; color:#fef3c7; border-color:#92400e; }
+:root[data-theme="dark"] .edit-banner-error { background:#450a0a; color:#fecaca; border-color:#7f1d1d; }

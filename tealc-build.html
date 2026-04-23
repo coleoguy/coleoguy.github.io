@@ -32,7 +32,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
       </summary>
       <div class="layer-body">
         <p>
-          Two Python processes share a single SQLite database and auto-start on Mac login. The first is a <a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit</a> chat UI backed by a <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a> ReAct loop: you talk to it, it uses tools, it remembers. The second is an <a href="https://apscheduler.readthedocs.io/" target="_blank" rel="noopener">APScheduler</a> background daemon: it runs 42 scheduled jobs on a cron-like schedule without you doing anything. Both processes read and write the same SQLite file safely using WAL (Write-Ahead Logging) mode, so they never block each other. Google Drive stores configuration, memory, and credentials so the whole thing is portable across machines.
+          Two Python processes share a single SQLite database and auto-start on Mac login. The first is a <a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit</a> chat UI backed by a <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a> ReAct loop: you talk to it, it uses tools, it remembers. The second is an <a href="https://apscheduler.readthedocs.io/" target="_blank" rel="noopener">APScheduler</a> background daemon: it runs 49 scheduled jobs on a cron-like schedule without you doing anything. Both processes read and write the same SQLite file safely using WAL (Write-Ahead Logging) mode, so they never block each other. Google Drive stores configuration, memory, and credentials so the whole thing is portable across machines.
         </p>
       </div>
     </details>
@@ -71,7 +71,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
 ├── app.py                    # Chainlit UI entry point
 ├── agent/
 │   ├── graph.py              # LangGraph ReAct loop + system prompt
-│   ├── tools.py              # All tool definitions (122 tools)
+│   ├── tools.py              # All tool definitions (139 tools)
 │   ├── scheduler.py          # APScheduler entry point + schema migrations
 │   ├── privacy.py            # Aquarium privacy classifier
 │   ├── notify.py             # Desktop + email notifications
@@ -79,7 +79,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
 │       ├── __init__.py       # @tracked() decorator for job telemetry
 │       └── *.py              # One file per scheduled job
 ├── data/
-│   ├── agent.db              # SQLite database (30 tables + FTS5)
+│   ├── agent.db              # SQLite database (45 tables)
 │   ├── config.json           # Runtime config (folder IDs, email, hours)
 │   ├── deadlines.json        # Grant/manuscript deadlines (you edit this)
 │   ├── lab_people.json       # Privacy denylist + student seed data
@@ -100,7 +100,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 1</span>
           <span class="sum-head">Install dependencies</span>
-          <span class="sum-trail">A venv and nine packages — chainlit, langgraph, anthropic, apscheduler, google-auth, aiosqlite, mammoth, pypdf, httpx.</span>
+          <span class="sum-trail">A venv and pip install — chainlit, langgraph, langgraph-checkpoint-sqlite, langchain-anthropic, langchain-core, langchain-google-community, google-auth, aiosqlite, mammoth, pypdf, duckduckgo-search, feedparser, and more.</span>
         </span>
       </summary>
       <div class="layer-body">
@@ -111,14 +111,21 @@ pip install -r requirements.txt</code></pre>
         <p>Key packages and why each one matters:</p>
         <ul>
           <li><strong>chainlit</strong> -- the chat UI. Handles WebSocket connections, step display (shows every tool call to the user), and session management.</li>
-          <li><strong>langgraph</strong> -- the agent loop. LangGraph's ReAct implementation handles the think-act-observe cycle cleanly. Use <code>AsyncSqliteSaver</code> from <code>langgraph.checkpoint.sqlite.aio</code> to persist conversation state in SQLite so the agent remembers across restarts.</li>
-          <li><strong>anthropic</strong> -- the Claude API client. LangGraph uses it through <code>langchain_anthropic.ChatAnthropic</code>.</li>
-          <li><strong>apscheduler</strong> -- the background scheduler. Use <code>AsyncIOScheduler</code> with <code>CronTrigger</code> and <code>IntervalTrigger</code> for the 42 jobs.</li>
-          <li><strong>google-auth, google-api-python-client, google-auth-oauthlib</strong> -- Google APIs. One set of OAuth credentials covers Gmail, Calendar, Drive, Docs, and Sheets.</li>
+          <li><strong>langgraph</strong> -- the agent loop. LangGraph's ReAct implementation handles the think-act-observe cycle cleanly.</li>
+          <li><strong>langgraph-checkpoint-sqlite</strong> -- persists conversation state in SQLite so the agent remembers across restarts. Use <code>AsyncSqliteSaver</code> from <code>langgraph.checkpoint.sqlite.aio</code>.</li>
+          <li><strong>langchain-anthropic</strong> -- LangGraph uses Claude through <code>langchain_anthropic.ChatAnthropic</code>.</li>
+          <li><strong>langchain-core, langchain-google-community</strong> -- core abstractions and Google-service integrations used throughout the tool layer.</li>
+          <li><strong>anthropic</strong> -- the Claude API client, also used directly for batch jobs and critic calls.</li>
+          <li><strong>apscheduler</strong> -- the background scheduler. Use <code>AsyncIOScheduler</code> with <code>CronTrigger</code> and <code>IntervalTrigger</code> for the 49 jobs.</li>
+          <li><strong>google-auth, google-api-python-client, google-auth-oauthlib, google-auth-httplib2</strong> -- Google APIs. One set of OAuth credentials covers Gmail, Calendar, Drive, Docs, and Sheets.</li>
           <li><strong>aiosqlite</strong> -- async SQLite access, required for LangGraph checkpointing and tool calls that need to not block the event loop.</li>
           <li><strong>mammoth</strong> -- reads .docx files into clean text, preserving tracked changes and comments. Essential for reading manuscript drafts.</li>
           <li><strong>pypdf</strong> -- reads PDFs. Used for reading grant PDFs and paper PDFs in Drive.</li>
-          <li><strong>httpx</strong> -- async HTTP client for literature APIs (OpenAlex, bioRxiv, Europe PMC).</li>
+          <li><strong>python-docx</strong> -- creates and edits Word documents programmatically.</li>
+          <li><strong>duckduckgo-search</strong> -- web search without an API key. Used by the executive loop and research tools.</li>
+          <li><strong>feedparser</strong> -- parses RSS feeds for the grant radar and literature monitoring jobs.</li>
+          <li><strong>requests</strong> -- synchronous HTTP for simpler one-shot API calls where async is not needed.</li>
+          <li><strong>python-dotenv</strong> -- loads the <code>.env</code> file. Use an explicit path so launchd finds it when starting from <code>/</code>.</li>
         </ul>
       </div>
     </details>
@@ -180,9 +187,11 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
     <pre><code>{
   "tealc_drafts_folder_id": "Google Drive folder ID for overnight drafts",
   "heath_email": "you@yourinstitution.edu",
-  "working_hours_start": 8,
-  "working_hours_end": 20,
-  "timezone": "America/Chicago"
+  "working_hours_central": "8-20",
+  "goals_sheet_id": "Google Sheets spreadsheet ID for the goals portfolio",
+  "ntfy_quiet_hours_central": "22-7",
+  "ntfy_max_per_day": 20,
+  "ntfy_min_interval_minutes": 15
 }</code></pre>
 
     <p><strong>data/deadlines.json</strong> -- grant and manuscript deadlines you maintain manually:</p>
@@ -231,12 +240,12 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 5</span>
           <span class="sum-head">Initialize the database</span>
-          <span class="sum-trail">30 tables plus FTS5 index, created on first scheduler run. Five are load-bearing.</span>
+          <span class="sum-trail">45 tables, created on first scheduler run. Five are load-bearing.</span>
         </span>
       </summary>
       <div class="layer-body">
         <p>
-          The scheduler module handles schema creation and migrations on first run. There is no separate migration command to run. When you start the scheduler for the first time, it creates all 30 tables if they do not exist. The key tables to understand:
+          The scheduler module handles schema creation and migrations on first run. There is no separate migration command to run. When you start the scheduler for the first time, it creates all 45 tables if they do not exist. The key tables to understand:
         </p>
         <ul>
           <li><strong>current_context</strong> -- single row, updated every 10 minutes. Gives the executive loop a sub-second read on idle class, open intentions, unsurfaced briefings, next deadline. Never query everything from scratch when you can maintain a rolling snapshot.</li>
@@ -253,12 +262,12 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 6</span>
           <span class="sum-head">Write the system prompt</span>
-          <span class="sum-trail">433 lines, 11 named sections. The most important file in the project.</span>
+          <span class="sum-trail">642 lines, 9 major sections. The most important file in the project.</span>
         </span>
       </summary>
       <div class="layer-body">
         <p>
-          The system prompt is the most important file in the project. Tealc's is 433 lines with 11 named sections: identity, operating constraints, tool inventory, goal layer protocol, memory protocol, overnight science protocol, executive loop protocol, privacy protocol, communication style, R execution protocol, and prohibited actions. Some principles that matter:
+          The system prompt is the most important file in the project. Tealc's is 642 lines with 9 major ALLCAPS sections: WHO HEATH IS, RESEARCH IDENTITY, HOW TO BEHAVE, PUBLIC AQUARIUM AWARENESS, OVERNIGHT SCIENCE, PENDING INTENTIONS, STUDENTS, GOALS, and RESEARCH PROJECTS. Some principles that matter:
         </p>
         <ul>
           <li>State the agent's identity and scope clearly in the first section. What it is for, what it is not for, whose interests it serves.</li>
@@ -465,7 +474,7 @@ launchctl load ~/Library/LaunchAgents/com.blackmonlab.tealc-chainlit.plist</code
           The architecture generalizes beyond a biology lab. The pieces that are domain-specific are the system prompt, the grant sources list, the known sheets, and the R preamble. Everything else -- the dual-process SQLite coordination, the executive loop, the goals sheet sync, the briefing infrastructure, the launchd setup -- is reusable as-is.
         </p>
         <p>
-          The design choices that matter most regardless of domain: keep the executive loop in advisor mode for at least a month before promoting any action class; build the briefing infrastructure before the jobs (a job that cannot surface its output is invisible); make the privacy gate explicit rather than relying on the model's judgment in a hot path; keep the overnight jobs idle-gated so they never interrupt active work; and use on-demand export for any bidirectional sheet sync rather than a polling job (polling hits quota limits). The cost of running this full system — 42 scheduled jobs, morning briefing, email triage, overnight science layer, adversarial critic, cost telemetry — is roughly $60–80/month at current Claude API pricing, dominated by the overnight science jobs and the adversarial critic pass on each output.
+          The design choices that matter most regardless of domain: keep the executive loop in advisor mode for at least a month before promoting any action class; build the briefing infrastructure before the jobs (a job that cannot surface its output is invisible); make the privacy gate explicit rather than relying on the model's judgment in a hot path; keep the overnight jobs idle-gated so they never interrupt active work; and use on-demand export for any bidirectional sheet sync rather than a polling job (polling hits quota limits). The cost of running this full system — 49 scheduled jobs, morning briefing, email triage, overnight science layer, adversarial critic, cost telemetry — is roughly $60–80/month at current Claude API pricing, dominated by the overnight science jobs and the adversarial critic pass on each output.
         </p>
       </div>
     </details>

@@ -1,5 +1,14 @@
 # Blackmon Lab, Full content snapshot for LLMs
 
+## Agent Contract
+
+For agents editing /knowledge/ pages: see AGENT_CONTRACT.md at the repo root.
+This document governs region grammar, commit prefixes, allowlisted paths,
+the accuracy contract (digit-substring-ok, ROUGE-L ≥ 0.35), and frontmatter invariants.
+URL: https://coleoguy.github.io/AGENT_CONTRACT.md
+
+
+
 > Plain-text snapshot of the public pages of https://coleoguy.github.io
 > Generated for LLM/agent consumption. For machine-readable per-page metadata, see llms.txt.
 > Updated: 2026-04-16

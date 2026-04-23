@@ -14,11 +14,11 @@ category: "Speciation & macroevolution"
 
 Ultraconserved elements (UCEs) have emerged as a powerful class of molecular markers for resolving deep and shallow phylogenetic relationships across diverse animal lineages. Their near-universal presence across genomes, combined with flanking regions that carry phylogenetically informative variation, makes UCE-based phylogenomics particularly well-suited for large-scale comparative analyses. Within the Hymenoptera, UCE data have been applied to untangle the complex relationships among bees (Apoidea), a group whose phylogenomics has historically been hampered by taxon sampling gaps and limited genomic resources.
 
-A recent phylogenomic analysis leveraging 119 Apoidea genomes used UCE data to produce a well-resolved tree in which the vast majority of nodes received 100% ultrafast bootstrap support. A notable outcome of this analysis was the placement of *Perdita meconis* — representing the first Panurginae genome contributed to Apoidea phylogenetic datasets — as the sister lineage to *Andrena* within family Andrenidae (subfamily Andreninae). This finding helps clarify the internal structure of Andrenidae and demonstrates the utility of UCE-based approaches for integrating newly sequenced genomes into existing phylogenomic frameworks. See [Schweizer et al. 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1) for details.
+A recent phylogenomic analysis leveraging 119 Apoidea genomes used UCE data to produce a well-resolved tree in which the vast majority of nodes received 100% ultrafast bootstrap support. A notable outcome of this analysis was the placement of *Perdita meconis* — representing the first Panurginae genome contributed to Apoidea phylogenetic datasets — as the sister lineage to *Andrena* within family Andrenidae (subfamily Andreninae). This finding helps clarify the internal structure of Andrenidae and demonstrates the utility of UCE-based approaches for integrating newly sequenced genomes into existing phylogenomic frameworks. See [Schweizer et al. 2024, Finding 4](/knowledge/papers/10_1093_jhered_esad076/#finding-4) for details.
 
 ## Supporting evidence
 
-- [Schweizer et al. 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1): UCE-based phylogenomic analysis of 119 Apoidea genomes resolves *Perdita meconis* as sister to *Andrena* within Andrenidae, with most nodes at 100% ultrafast bootstrap support.
+- [Schweizer et al. 2024, Finding 4](/knowledge/papers/10_1093_jhered_esad076/#finding-4): UCE-based phylogenomic analysis of 119 Apoidea genomes resolves *Perdita meconis* as sister to *Andrena* within Andrenidae, with most nodes at 100% ultrafast bootstrap support.
 
 ## Contradictions / open disagreements
 

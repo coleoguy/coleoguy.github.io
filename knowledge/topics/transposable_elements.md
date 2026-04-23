@@ -14,11 +14,11 @@ category: "Genome structure"
 
 Transposable elements (TEs) and other repetitive sequences are a major component of eukaryotic genomes, yet their abundance and classification vary widely across taxa. A key challenge in TE biology is that repeat libraries built primarily from model organisms (e.g., *Drosophila*) leave large fractions of repeats unclassified in non-model species, obscuring the true diversity and activity of TE families.
 
-Data from non-model insects are beginning to fill this gap. In the Mojave poppy bee (*Perdita meconis*), a solitary specialist bee of conservation concern, repetitive elements account for 37.3% of the genome. Within that repeat content, retroelements contribute 6.07% and DNA transposons 4.38%, but a striking 24.87% — nearly two-thirds of all repeat content — remains unclassified. This pattern, reported by [Schweizer et al. 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1), underscores how poorly current repeat databases represent the full TE landscape in Hymenoptera and other non-model arthropods.
+Data from non-model insects are beginning to fill this gap. In the Mojave poppy bee (*Perdita meconis*), a solitary specialist bee of conservation concern, repetitive elements account for 37.3% of the genome. Within that repeat content, retroelements contribute 6.07% and DNA transposons 4.38%, but a striking 24.87% — nearly two-thirds of all repeat content — remains unclassified. This pattern, reported by [Schweizer et al. 2024, Finding 2](/knowledge/papers/10_1093_jhered_esad076/#finding-2), underscores how poorly current repeat databases represent the full TE landscape in Hymenoptera and other non-model arthropods.
 
 ## Supporting evidence
 
-- **Repeat content in *Perdita meconis*:** RepeatModeler masked 37.3% of the *P. meconis* genome, with interspersed repeats broken down as retroelements (6.07%), DNA transposons (4.38%), rolling circles (0.24%), and unclassified repeats (24.87%). See [Schweizer et al. 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1).
+- **Repeat content in *Perdita meconis*:** RepeatModeler masked 37.3% of the *P. meconis* genome, with interspersed repeats broken down as retroelements (6.07%), DNA transposons (4.38%), rolling circles (0.24%), and unclassified repeats (24.87%). See [Schweizer et al. 2024, Finding 2](/knowledge/papers/10_1093_jhered_esad076/#finding-2).
 
 ## Contradictions / open disagreements
 
