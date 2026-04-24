@@ -6,7 +6,8 @@ last_updated: 2026-04-21T18:05:29.582154+00:00
 papers_supporting: [a73574bbaaa5fe6c06f620cd8793d044d3c5b758777b262d09e80b49d181b465]
 permalink: /knowledge/topics/coleoptera/
 category: "Insects & Coleoptera"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Coleoptera
 
 <!-- tealc:freshness-start -->

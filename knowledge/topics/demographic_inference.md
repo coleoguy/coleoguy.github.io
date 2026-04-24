@@ -6,7 +6,8 @@ last_updated: 2026-04-21T15:54:51.025773+00:00
 papers_supporting: [10.1002/ece3.73483]
 permalink: /knowledge/topics/demographic_inference/
 category: "Population genetics"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Demographic Inference
 
 <!-- tealc:freshness-start -->

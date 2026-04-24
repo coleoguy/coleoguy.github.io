@@ -6,7 +6,8 @@ last_updated: 2026-04-21T17:22:02.182857+00:00
 papers_supporting: [2da8fb1b5d5f08ca9dccde3a6e1600c4ff6cbfdcb564fa6fd3617d6502e2feff]
 permalink: /knowledge/topics/speciation/
 category: "Speciation & macroevolution"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Speciation
 
 <!-- tealc:freshness-start -->

@@ -6,7 +6,8 @@ last_updated: 2026-04-21T20:35:11.360645+00:00
 papers_supporting: [9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b]
 permalink: /knowledge/topics/hybridization/
 category: "Speciation & macroevolution"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Hybridization
 
 <!-- tealc:freshness-start -->

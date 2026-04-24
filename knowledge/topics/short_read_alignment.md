@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:38:49.433857+00:00
 papers_supporting: [10.1093/bioinformatics/btp324]
 permalink: /knowledge/topics/short_read_alignment/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Short Read Alignment
 
 <!-- tealc:freshness-start -->

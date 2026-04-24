@@ -6,7 +6,8 @@ last_updated: 2026-04-21T21:20:18.851341+00:00
 papers_supporting: [7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150f528]
 permalink: /knowledge/topics/sexual_antagonism/
 category: "Sex chromosomes"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Sexual Antagonism
 
 <!-- tealc:freshness-start -->

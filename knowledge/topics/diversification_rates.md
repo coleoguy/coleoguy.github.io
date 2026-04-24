@@ -6,7 +6,8 @@ last_updated: 2026-04-21T18:28:09.906467+00:00
 papers_supporting: [2868f9fb2c04a641393569fdd996eb3a6385c0c5ef19eff83448aea96d7cfbc9]
 permalink: /knowledge/topics/diversification_rates/
 category: "Speciation & macroevolution"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Diversification Rates
 
 <!-- tealc:freshness-start -->

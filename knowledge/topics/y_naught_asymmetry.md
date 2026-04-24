@@ -6,7 +6,8 @@ last_updated: 2026-04-21T19:07:28.366224+00:00
 papers_supporting: [8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, a4b0b03e15616954490c13ea4d103ee11a9801d0bd20d37a97376a3d936114eb]
 permalink: /knowledge/topics/y_naught_asymmetry/
 category: "Sex chromosomes"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Y-naught asymmetry
 
 <!-- tealc:freshness-start -->

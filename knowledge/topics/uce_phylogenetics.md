@@ -6,7 +6,8 @@ last_updated: 2026-04-21T15:52:11.388204+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/uce_phylogenetics/
 category: "Speciation & macroevolution"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # UCE Phylogenetics
 
 <!-- tealc:freshness-start -->

@@ -6,7 +6,8 @@ last_updated: 2026-04-21T15:50:37.128592+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/bee_phylogenomics/
 category: "Insects & Coleoptera"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Bee Phylogenomics
 
 <!-- tealc:freshness-start -->

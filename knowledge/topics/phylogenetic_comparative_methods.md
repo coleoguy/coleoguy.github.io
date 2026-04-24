@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:14:13.911745+00:00
 papers_supporting: [10.1093/sysbio/syu131]
 permalink: /knowledge/topics/phylogenetic_comparative_methods/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Phylogenetic Comparative Methods
 
 <!-- tealc:freshness-start -->

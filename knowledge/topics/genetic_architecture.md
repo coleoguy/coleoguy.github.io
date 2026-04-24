@@ -6,7 +6,8 @@ last_updated: 2026-04-21T19:34:30.739636+00:00
 papers_supporting: [50ffa26858c4ac0cc040432925613a01d371c052da7ba3e3b12f8becd9ade8b0]
 permalink: /knowledge/topics/genetic_architecture/
 category: "Genome structure"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Genetic Architecture
 
 <!-- tealc:freshness-start -->

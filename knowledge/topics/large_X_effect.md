@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:51:57.438550+00:00
 papers_supporting: [10.1038/nature08441]
 permalink: /knowledge/topics/large_X_effect/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Large X Effect
 
 <!-- tealc:freshness-start -->

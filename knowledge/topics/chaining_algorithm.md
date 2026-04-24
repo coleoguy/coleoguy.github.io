@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:09:41.861401+00:00
 papers_supporting: [10.1093/bioinformatics/bty191]
 permalink: /knowledge/topics/chaining_algorithm/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Chaining Algorithm
 
 <!-- tealc:freshness-start -->

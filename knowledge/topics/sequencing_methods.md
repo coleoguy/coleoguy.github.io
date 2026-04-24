@@ -6,7 +6,8 @@ last_updated: 2026-04-21T15:51:34.219052+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/sequencing_methods/
 category: "Population genetics"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Sequencing Methods
 
 <!-- tealc:freshness-start -->

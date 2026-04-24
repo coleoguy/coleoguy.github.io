@@ -6,7 +6,8 @@ last_updated: 2026-04-21T18:09:23.149613+00:00
 papers_supporting: [1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca]
 permalink: /knowledge/topics/haplodiploidy_evolution/
 category: "Sex chromosomes"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Haplodiploidy Evolution
 
 <!-- tealc:freshness-start -->

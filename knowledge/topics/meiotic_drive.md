@@ -6,7 +6,8 @@ last_updated: 2026-04-21T18:28:34.512409+00:00
 papers_supporting: [2868f9fb2c04a641393569fdd996eb3a6385c0c5ef19eff83448aea96d7cfbc9]
 permalink: /knowledge/topics/meiotic_drive/
 category: "Sex chromosomes"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Meiotic Drive
 
 <!-- tealc:freshness-start -->

@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:51:11.565991+00:00
 papers_supporting: [10.1038/nature08441]
 permalink: /knowledge/topics/QTL_mapping/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # QTL Mapping
 
 <!-- tealc:freshness-start -->

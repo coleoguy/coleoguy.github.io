@@ -6,7 +6,8 @@ last_updated: 2026-04-21T20:36:41.242454+00:00
 papers_supporting: [9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b]
 permalink: /knowledge/topics/quantitative_genetics_methods/
 category: "Quantitative genetics & epistasis"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Quantitative Genetics Methods
 
 <!-- tealc:freshness-start -->

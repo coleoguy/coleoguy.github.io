@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:34:11.992359+00:00
 papers_supporting: [10.1017/s0016672300014051]
 permalink: /knowledge/topics/selection_theory/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Selection Theory
 
 <!-- tealc:freshness-start -->

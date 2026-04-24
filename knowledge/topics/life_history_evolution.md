@@ -6,7 +6,8 @@ last_updated: 2026-04-21T20:34:54.236677+00:00
 papers_supporting: [9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b]
 permalink: /knowledge/topics/life_history_evolution/
 category: "Speciation & macroevolution"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Life History Evolution
 
 <!-- tealc:freshness-start -->

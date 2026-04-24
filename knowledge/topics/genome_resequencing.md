@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:39:23.362868+00:00
 papers_supporting: [10.1093/bioinformatics/btp324]
 permalink: /knowledge/topics/genome_resequencing/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Genome Resequencing
 
 <!-- tealc:freshness-start -->

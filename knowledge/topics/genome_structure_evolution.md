@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:01:33.301375+00:00
 papers_supporting: [10.1093/bioinformatics/btp324, 10.1093/jhered/esad076, 10.1534/genetics.116.192690, 3780c17c37d408cf1151745b75b70eea040ad4a9fa24b5d3ba4a327fa493df88, 8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, 8ec28241e312e0da2ddec048ec265c68f9b8c4b63678fb482d9e31d34a5690d6, 9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b, baf57990bb1ab651800c9fa0878d6cc56f78093176f5b6ae7ef64f25fc8ba126, e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
 permalink: /knowledge/topics/genome_structure_evolution/
 category: "Genome structure"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Genome Structure Evolution
 
 <!-- tealc:freshness-start -->

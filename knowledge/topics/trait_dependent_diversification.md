@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:13:52.436752+00:00
 papers_supporting: [10.1093/sysbio/syu131]
 permalink: /knowledge/topics/trait_dependent_diversification/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Trait Dependent Diversification
 
 <!-- tealc:freshness-start -->

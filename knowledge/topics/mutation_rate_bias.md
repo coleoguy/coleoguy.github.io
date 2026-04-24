@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:46:19.785997+00:00
 papers_supporting: [10.1371/journal.pgen.1005237]
 permalink: /knowledge/topics/mutation_rate_bias/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Mutation Rate Bias
 
 <!-- tealc:freshness-start -->

@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:50:50.473913+00:00
 papers_supporting: [10.1038/nature08441]
 permalink: /knowledge/topics/speciation_genetics/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Speciation Genetics
 
 <!-- tealc:freshness-start -->

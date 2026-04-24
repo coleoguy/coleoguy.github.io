@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:35:29.736668+00:00
 papers_supporting: [10.1007/978-1-4939-8775-7_2, e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
 permalink: /knowledge/topics/insect_genomics/
 category: "Insects & Coleoptera"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Insect Genomics
 
 <!-- tealc:freshness-start -->

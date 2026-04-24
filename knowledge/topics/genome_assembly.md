@@ -6,7 +6,8 @@ last_updated: 2026-04-21T19:10:10.973996+00:00
 papers_supporting: [10.1002/ece3.73483, 31776037050f6b89b93887fa1b80196fd30073325900b9b38adb091f0516948d]
 permalink: /knowledge/topics/genome_assembly/
 category: "Genome structure"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Genome Assembly
 
 <!-- tealc:freshness-start -->

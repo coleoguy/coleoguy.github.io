@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:38:29.697504+00:00
 papers_supporting: [0f1bc39e2879ec58c1a6e091a838d1861975612f9a803dea779e9576fe264d44, 10.1093/bioinformatics/btp324, 8d80b92951d823f89e08809b32fd3ca88f579a921d623a23f8cb3c8f588e19b5, a4b0b03e15616954490c13ea4d103ee11a9801d0bd20d37a97376a3d936114eb, fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3d80e]
 permalink: /knowledge/topics/karyotype_database/
 category: "Karyotype evolution"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Karyotype Database
 
 <!-- tealc:freshness-start -->

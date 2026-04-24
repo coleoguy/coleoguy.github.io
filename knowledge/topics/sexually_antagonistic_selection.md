@@ -6,7 +6,8 @@ last_updated: 2026-04-21T19:07:10.312161+00:00
 papers_supporting: [a4b0b03e15616954490c13ea4d103ee11a9801d0bd20d37a97376a3d936114eb]
 permalink: /knowledge/topics/sexually_antagonistic_selection/
 category: "Sex chromosomes"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Sexually Antagonistic Selection
 
 <!-- tealc:freshness-start -->

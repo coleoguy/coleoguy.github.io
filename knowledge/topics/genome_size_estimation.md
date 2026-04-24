@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:34:36.725061+00:00
 papers_supporting: [10.1007/978-1-4939-8775-7_2]
 permalink: /knowledge/topics/genome_size_estimation/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Genome Size Estimation
 
 <!-- tealc:freshness-start -->

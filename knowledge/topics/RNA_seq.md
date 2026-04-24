@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:08:59.678373+00:00
 papers_supporting: [10.1093/bioinformatics/bty191]
 permalink: /knowledge/topics/RNA_seq/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # RNA-seq
 
 <!-- tealc:freshness-start -->

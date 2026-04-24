@@ -6,7 +6,8 @@ last_updated: 2026-04-22T12:32:48.769306+00:00
 papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96ccfa84, 0f1bc39e2879ec58c1a6e091a838d1861975612f9a803dea779e9576fe264d44, 10.1017/s0016672300014051, 1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca, 6e7c688c4f2e3fb47506b929ceb3f93edfad9c61210cfd2602ddcc57bf66d5be, 7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150f528, baf57990bb1ab651800c9fa0878d6cc56f78093176f5b6ae7ef64f25fc8ba126, c6c1f45b84f53c5ec0361e367e8fab7bf3b8963db5c451a3256e09d2aed98732, f27df64e71adfbdf80f51dda1ec8b660a6fb871e76d8feb07659ebaa7c6da808, f9fb8e258c7b62f338b299e9c6fcbeb81259e1aef5f75ea3c782100d90b4a19c, fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3d80e, sha256:0bc1262ecd509b5dec83643b93ac536d5495bffa47aa309736b5e3153aa38a47]
 permalink: /knowledge/topics/karyotype_evolution_overview/
 category: "Karyotype evolution"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Karyotype evolution overview
 
 <!-- tealc:freshness-start -->

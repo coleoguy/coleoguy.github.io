@@ -6,7 +6,8 @@ last_updated: 2026-04-21T19:15:15.776263+00:00
 papers_supporting: [cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6]
 permalink: /knowledge/topics/Galliformes/
 category: "Speciation & macroevolution"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Galliformes
 
 <!-- tealc:freshness-start -->

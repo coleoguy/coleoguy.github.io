@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:08:43.714460+00:00
 papers_supporting: [10.1093/bioinformatics/bty191]
 permalink: /knowledge/topics/long_read_sequencing/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Long Read Sequencing
 
 <!-- tealc:freshness-start -->

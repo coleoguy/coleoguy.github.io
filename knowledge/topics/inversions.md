@@ -6,7 +6,8 @@ last_updated: 2026-04-21T21:20:34.597977+00:00
 papers_supporting: []
 permalink: /knowledge/topics/inversions/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Inversions
 
 <!-- tealc:freshness-start -->

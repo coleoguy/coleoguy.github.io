@@ -6,7 +6,8 @@ last_updated: 2026-04-22T13:08:23.180260+00:00
 papers_supporting: [10.1093/bioinformatics/bty191]
 permalink: /knowledge/topics/sequence_alignment/
 category: "Bioinformatics & tools"
----<!-- tealc:auto-start -->
+---
+<!-- tealc:auto-start -->
 # Sequence Alignment
 
 <!-- tealc:freshness-start -->
