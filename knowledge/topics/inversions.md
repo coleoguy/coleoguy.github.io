@@ -7,6 +7,31 @@ papers_supporting: []
 permalink: /knowledge/topics/inversions/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Chromosomal inversions play a central role in sex chromosome evolution by suppressing recombination and allowing the accumulation of sexually antagonistic alleles. However, the fate of an inversion—whether it fixes in a population or persists as a polymorphism—depends critically on the dominance relationships of the alleles it captures.
+
+Theory predicts a strong asymmetry between inversions on the X and Y chromosomes. A Y-linked inversion capturing a male-beneficial allele can spread readily because it is always expressed in males. The situation for X-linked inversions is more complex. When a female-beneficial allele is captured by an X-chromosome inversion, its fate is governed by the dominance of the opposing male-beneficial allele. Specifically, when the male-beneficial allele is sufficiently recessive (dominance coefficient h < 0.3), the X-linked inversion cannot fix; instead, it is maintained as a stable polymorphism in the population. This result provides a mechanistic explanation for why inversions might accumulate asymmetrically on Y chromosomes relative to X chromosomes, and for why sexually antagonistic variation can be stably maintained on sex chromosomes under particular dominance regimes. See [Blackmon & Brandvain 2017, Finding 1](/knowledge/papers/10_1534_genetics_117_300382/#finding-1).
+
+</div>
+<div data-register="student" markdown="1">
+
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+[Chromosomal inversions](/knowledge/concepts/chromosomal-inversion/) are chunks of DNA that flip and reattach backward on a chromosome. They matter a lot for [sex chromosome evolution](/knowledge/concepts/sex-chromosome-evolution/) because they stop DNA recombination in that region, which lets [sexually antagonistic alleles](/knowledge/concepts/sexual-antagonism/)—genes that help one sex but hurt the other—pile up. But whether an inversion actually spreads through a population or stays rare depends on how [dominant](/knowledge/concepts/dominance/) its alleles are.
+
+Math predicts a big difference between inversions on the Y chromosome and the X chromosome. A Y-linked inversion carrying a male-beneficial allele spreads easily because males always express it (they have only one copy). X-linked inversions are trickier. When a female-beneficial allele rides on an X-chromosome inversion, what happens depends on how recessive the opposing male-beneficial allele is. Specifically, when that male-beneficial allele is recessive enough (dominance coefficient h < 0.3), the X-linked inversion cannot take over the population—instead, it stays at intermediate frequencies. This helps explain why Y chromosomes might accumulate more inversions than X chromosomes, and why sexually antagonistic variation can stick around on sex chromosomes when dominance relationships are just right. See [Blackmon & Brandvain 2017, Finding 1](/knowledge/papers/10_1534_genetics_117_300382/#finding-1).
+
+</div>
+</div>
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Inversions
 
@@ -34,7 +59,7 @@ Theory predicts a strong asymmetry between inversions on the X and Y chromosomes
 
 ## Contradictions / open disagreements
 
-The h < 0.3 dominance threshold is derived from a symmetric fitness model that assumes complete recombination suppression within the inversion. Under asymmetric selection coefficients or partial recombination suppression, the boundary between fixation and stable polymorphism could shift substantially or disappear altogether. Broader parameter exploration is needed before this threshold can be treated as a robust empirical prediction.
+The h < 0.3 dominance threshold is derived from a symmetric fitness model that assumes complete recombination suppression within the inversion. Under asymmetric selection coefficients or partial recombination suppression, the boundary between fixation and stable polymorphism could shift substantially or disappear altogether. Broader parameter exploration is needed before this threshold can be treated as a generalizable empirical prediction.
 
 ## Tealc's citation-neighborhood suggestions
 

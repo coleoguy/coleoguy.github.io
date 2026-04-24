@@ -7,6 +7,31 @@ papers_supporting: [e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00f
 permalink: /knowledge/topics/genome_dynamics/
 category: "Genome structure"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Genome dynamics — the rates at which genomic elements arise, expand, contract, and turn over across lineages — are increasingly understood to be shaped not only by mutation and drift but also by large-scale features of chromosome architecture. One striking illustration of this comes from comparative work in insects: centromere organization appears to modulate how fast microsatellite loci evolve, even when total microsatellite content remains roughly constant across lineages.
+
+Specifically, species with monocentric chromosomes (where centromeric activity is confined to a single locus per chromosome) show higher rates of microsatellite evolution than species with holocentric chromosomes (where centromeric activity is distributed along the chromosome length). This rate difference is robust across the posterior distribution of phylogenies examined, with 99 out of 100 trees favoring a two-rate model and consistently placing the higher rate in monocentric lineages. Crucially, this divergence in evolutionary rate occurs in the absence of a detectable difference in total microsatellite content between centromere types, suggesting that architecture influences the *tempo* of change more than the equilibrium *amount* of repetitive sequence. See [Jonika et al. 2020, Finding 3](/knowledge/papers/10_3390_genes11080945/#finding-3) for the primary evidence.
+
+The mechanistic explanation remains speculative. Holocentric chromosomes may buffer against the spread or contraction of tandem repeats because recombination and segregation dynamics differ fundamentally when centromeric function is distributed. Alternatively, the life-history or population-genetic correlates of holocentricity (common in some hemipteran and lepidopteran lineages) could reduce the fixation probability of microsatellite variants independently of centromere mechanics.
+
+</div>
+<div data-register="student" markdown="1">
+
+How fast do repetitive DNA sequences change across evolution? Scientists studying insects discovered that the answer depends partly on how chromosomes are organized at the centromere — the region that helps pull chromosomes apart during cell division.
+
+Insects come in two types. Some species have [monocentric chromosomes](/knowledge/concepts/monocentric-chromosomes/) (where the centromere is concentrated in one spot per chromosome), while others have [holocentric chromosomes](/knowledge/concepts/holocentric-chromosomes/) (where centromeric activity is spread along the entire chromosome length). When researchers compared how fast short repetitive DNA sequences called [microsatellites](/knowledge/concepts/microsatellites/) evolve in these two groups, they found something striking: monocentric species show higher rates of microsatellite evolution than holocentric species. This pattern held up in 99 out of 100 evolutionary trees examined, consistently placing the higher rate in monocentric lineages.
+
+Here's the puzzle: even though monocentric species evolve microsatellites faster, they don't actually *have* more microsatellites overall. The total amount of repetitive sequence stays about the same. This suggests that chromosome architecture affects *how fast* these sequences change, not *how much* of them piles up. See [Jonika et al. 2020, Finding 3](/knowledge/papers/10_3390_genes11080945/#finding-3) for the main evidence.
+
+Why does centromere type matter? The leading hypothesis is that when centromeric function is spread out (as in holocentric chromosomes), the rules for how DNA gets recombined and segregated work differently, which may slow down the spread or shrinkage of tandem repeats. Alternatively, species with holocentric chromosomes might simply have different life histories or population genetics that make it harder for microsatellite changes to become permanent in the population, independent of centromere mechanics.
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Genome Dynamics
 

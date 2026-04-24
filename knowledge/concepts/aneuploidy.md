@@ -2,7 +2,7 @@
 layout: default
 title: "Aneuploidy"
 concept_slug: aneuploidy
-aliases: ["aneuploidy", "aneuploid", "aneuploidy rate", "Y aneuploidy", "chromosome mis-segregation", "meiotic non-disjunction"]
+aliases: ["aneuploidy", "aneuploidies", "aneuploid", "aneuploidy rate", "aneuploidy rates", "Y aneuploidy", "chromosome mis-segregation", "meiotic non-disjunction", "non-disjunction", "nondisjunction"]
 prerequisites: []
 appears_in_topics: [sex_chromosome_evolution, fragile_y_hypothesis]
 related_concepts: [par, achiasmy, recombination-suppression, holocentric-chromosome]

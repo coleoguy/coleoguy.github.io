@@ -7,6 +7,38 @@ papers_supporting: [10.1093/bioinformatics/bty191]
 permalink: /knowledge/topics/long_read_sequencing/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Long-read sequencing platforms — PacBio HiFi and Oxford Nanopore (ONT) — have become central to chromosome-level genome assembly and transcriptome characterization. Unlike short reads, long reads can span repetitive regions and large introns, but they introduce new computational demands: aligners must handle higher per-read error rates, and spliced alignment of cDNA reads requires accurate intron boundary detection across reads that can be kilobases long.
+
+Minimap2 addresses both problems. For spliced alignment of long noisy RNA reads, it achieves 94.0% exact intron accuracy on real ONT mouse cDNA data, compared to 83.8% for GMAP and 87.9% for SpAln — and it does this more than 40 times faster than either alternative ([10.1093/bioinformatics/bty191, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1)). That speed margin matters in practice: large transcriptome datasets that would require days with GMAP can be processed in hours.
+
+For genomic alignment, the accuracy advantage is traceable to minimap2's chaining step rather than downstream base-level dynamic programming. The chaining algorithm alone outperforms all other long-read mappers tested, meaning that downstream DP alignment is primarily a refinement rather than the primary source of correctness ([10.1093/bioinformatics/bty191, Finding 2](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-2)). This matters for researchers extending or benchmarking the tool: the algorithmic bottleneck is chaining, not alignment.
+
+Together, these results position minimap2 as the default choice for long-read mapping in both genomic and transcriptomic contexts. The bottleneck in long-read projects is increasingly not the aligner's speed or accuracy — it is deciding which comparisons and which species to prioritize.
+
+</div>
+<div data-register="student" markdown="1">
+
+<div class="wiki-lead" data-register="student" markdown="1">
+
+Long-read sequencing — using tools like PacBio HiFi and Oxford Nanopore — can read much longer stretches of DNA than traditional methods, making it easier to assemble whole [chromosomes](/knowledge/concepts/chromosome/) and study how genes are expressed. But long reads have a tradeoff: they contain more errors than short reads, and aligning them to a reference requires handling [introns](/knowledge/concepts/intron/) (the non-coding sections of genes) that can be thousands of letters long.
+
+Minimap2 is an alignment tool that solves both problems. When aligning RNA reads from mouse data, minimap2 correctly identifies intron boundaries 94.0% of the time, compared to 83.8% for GMAP and 87.9% for SpAln — and it runs more than 40 times faster than either competing tool ([10.1093/bioinformatics/bty191, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1)). In practice, this speed matters: datasets that take days to analyze with GMAP can finish in hours with minimap2.
+
+When aligning DNA sequences, minimap2's accuracy comes mainly from its chaining step — the algorithm that groups small matching segments together — rather than from fine-tuning at the base level afterward. In fact, the chaining step alone outperforms every other long-read mapper tested ([10.1093/bioinformatics/bty191, Finding 2](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-2)). This tells researchers where the real computational challenge lies: improving chaining is where you get gains, not tweaking the later alignment stages.
+
+Because minimap2 is so fast and accurate for both DNA and RNA alignment, it has become the standard tool for long-read projects. The limiting step for most projects now is not the aligner itself — it is deciding which comparisons and which species to focus on.
+
+</div>
+<!-- tealc:lead-end -->
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Long Read Sequencing
 

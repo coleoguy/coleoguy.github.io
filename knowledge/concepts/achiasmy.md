@@ -2,7 +2,7 @@
 layout: default
 title: "Achiasmy"
 concept_slug: achiasmy
-aliases: ["achiasmy", "achiasmatic", "achiasmatic meiosis", "achiasmate", "crossover suppression", "holokinetic compensation"]
+aliases: ["achiasmy", "achiasmatic", "achiasmatic meiosis", "achiasmate", "achiasmy-causing", "chiasma", "chiasmata", "chiasmatic", "obligate crossover", "crossover suppression", "holokinetic compensation"]
 prerequisites: [par, recombination-suppression]
 appears_in_topics: [sex_chromosome_evolution, fragile_y_hypothesis]
 related_concepts: [par, recombination-suppression, aneuploidy, holocentric-chromosome]

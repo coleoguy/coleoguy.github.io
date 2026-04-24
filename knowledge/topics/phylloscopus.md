@@ -7,6 +7,35 @@ papers_supporting: [2da8fb1b5d5f08ca9dccde3a6e1600c4ff6cbfdcb564fa6fd3617d6502e2
 permalink: /knowledge/topics/phylloscopus/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+*Phylloscopus* is a large genus of Old World leaf warblers that has become central to research on speciation, ecological divergence, and ring species dynamics. Among its members, *Phylloscopus trochiloides* (the greenish warbler) holds particular theoretical importance: it is widely regarded as the best-preserved example of a true ring species. The species comprises six named subspecies distributed in a ring around the Tibetan Plateau. At the northern end of this ring, two broadly distributed forms — *P. t. plumbeitarsus* and *P. t. viridanus* — meet in central Siberia, where they live sympatrically but do not interbreed, behaving as reproductively isolated species despite being connected by a chain of intermediate, intergrading populations spanning the rest of the ring ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1)).
+
+This configuration makes the greenish warbler a powerful natural experiment: divergence accumulates gradually around the ring, yet the endpoints have crossed the threshold into full reproductive isolation. The system has therefore been used to study how continuous geographic variation can give rise to discrete species boundaries, and how ecological and acoustic traits diverge in parallel with genetic differentiation.
+
+It is worth noting a significant caveat: a large gap exists in the ring distribution in northeastern China, attributed to recent deforestation. This gap means the ring is not fully continuous in the strict sense, and the characterization of *P. trochiloides* as the "best remaining example" partly reflects the scarcity of other intact ring species rather than an ideally complete system ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1)).
+
+</div>
+<div data-register="student" markdown="1">
+
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+*Phylloscopus* is a large group of leaf warblers found across the Old World that scientists study to understand how new species form. One member, *Phylloscopus trochiloides* (the greenish warbler), is especially famous: it is widely considered the best-preserved example of a [ring species](/knowledge/concepts/ring-species/) — a population that forms a loop around a geographic barrier, like the Tibetan Plateau. The greenish warbler has six named subspecies arranged in this ring. At the northern end, two forms — *P. t. plumbeitarsus* and *P. t. viridanus* — live together in central Siberia without breeding with each other, even though they are connected by a chain of intermediate populations that gradually blend into one another around the rest of the ring ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1)).
+
+This setup lets scientists ask a powerful question: how does gradual change around the ring add up to create reproductive isolation — the barrier that defines separate species — at the ring's endpoints? The greenish warbler shows that [ecological](/knowledge/concepts/ecological-divergence/) traits, bird songs, and genetic differences can all change together as you move around the ring, eventually leading to populations that no longer interbreed.
+
+However, there is an important limitation: a large gap exists in the ring distribution in northeastern China due to recent deforestation. This means the ring is not fully continuous, and the greenish warbler's reputation as the "best remaining example" partly reflects how rare intact ring species actually are rather than representing a perfectly complete system ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1)).
+
+</div>
+</div>
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Phylloscopus
 

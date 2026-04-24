@@ -8,6 +8,11 @@
         "achiasmatic",
         "achiasmatic meiosis",
         "achiasmate",
+        "achiasmy-causing",
+        "chiasma",
+        "chiasmata",
+        "chiasmatic",
+        "obligate crossover",
         "crossover suppression",
         "holokinetic compensation"
       ],
@@ -36,11 +41,15 @@
       "title": "Aneuploidy",
       "aliases": [
         "aneuploidy",
+        "aneuploidies",
         "aneuploid",
         "aneuploidy rate",
+        "aneuploidy rates",
         "Y aneuploidy",
         "chromosome mis-segregation",
-        "meiotic non-disjunction"
+        "meiotic non-disjunction",
+        "non-disjunction",
+        "nondisjunction"
       ],
       "definition": "Aneuploidy is the condition of having an incorrect number of chromosomes in a cell, typically caused by chromosomes failing to separate properly during meiosis (non-disjunction).",
       "analogy": "Aneuploidy is what happens when you're packing matched pairs of socks into two bags and one sock ends up in the wrong bag — the result is imbalanced and usually causes problems.",
@@ -73,6 +82,17 @@
       "url": "/knowledge/concepts/bisse/"
     },
     {
+      "slug": "centromere",
+      "title": "Centromere",
+      "aliases": [
+        "centromeres",
+        "kinetochore"
+      ],
+      "definition": "The centromere is the chromosomal region where the kinetochore assembles and spindle microtubules attach to pull sister chromatids apart during cell division.",
+      "analogy": "The centromere is the handle of the chromosome: without it, the spindle has nothing to grip, and the chromosome goes nowhere.",
+      "url": "/knowledge/concepts/centromere/"
+    },
+    {
       "slug": "chromosome-fusion",
       "title": "Chromosome Fusion",
       "aliases": [
@@ -100,6 +120,20 @@
       "definition": "Demiploidy (often called haplodiploidy) is a reproductive system in which females develop from fertilized diploid eggs while males develop from unfertilized haploid eggs, so males have only one copy of every chromosome.",
       "analogy": "In a demipoloid system, think of males as walking around with only half a library — they have one copy of every book, while females have the full two-copy collection, and males came from the extra library copy that was never checked out.",
       "url": "/knowledge/concepts/demiploidy/"
+    },
+    {
+      "slug": "dobzhansky-muller-incompatibility",
+      "title": "Dobzhansky-Muller incompatibility",
+      "aliases": [
+        "DM incompatibility",
+        "DMI",
+        "Dobzhansky-Muller model",
+        "Bateson-Dobzhansky-Muller incompatibility",
+        "BDM"
+      ],
+      "definition": "A Dobzhansky-Muller incompatibility is a negative epistatic interaction between alleles at two or more loci, each of which was neutral or beneficial in its own lineage but which together cause reduced fitness when brought into a hybrid genome.",
+      "analogy": "Two software modules developed by separate teams each work fine on their own operating system, but crash when run together on a machine that carries both.",
+      "url": "/knowledge/concepts/dobzhansky-muller-incompatibility/"
     },
     {
       "slug": "dysploidy",
@@ -131,6 +165,18 @@
       "definition": "Effective population size (Ne) is the size of an idealized population that would experience the same rate of genetic drift as the actual population, accounting for unequal sex ratios, variation in reproductive success, and population structure.",
       "analogy": "Ne is like the \"effective crew\" count on a ship — even if 100 people are aboard, if only 10 are doing the navigation, the ship behaves as if its navigating crew is 10, not 100, when it comes to making course-change errors (genetic drift).",
       "url": "/knowledge/concepts/effective-population-size/"
+    },
+    {
+      "slug": "genetic-drift",
+      "title": "Genetic drift",
+      "aliases": [
+        "drift",
+        "stochastic allele frequency change",
+        "random genetic drift"
+      ],
+      "definition": "Genetic drift is the stochastic change in allele frequencies that arises because offspring in finite populations sample alleles from a finite pool of parents.",
+      "analogy": "Genetic drift is like drawing colored marbles from a bag without replacement: the color frequencies in the next generation depend partly on luck, and a small bag makes luck matter more.",
+      "url": "/knowledge/concepts/genetic-drift/"
     },
     {
       "slug": "haldane-rule",
@@ -167,8 +213,7 @@
         "holocentric chromosomes",
         "holocentric",
         "holokinetic",
-        "diffuse centromere",
-        "monocentric"
+        "diffuse centromere"
       ],
       "definition": "A holocentric chromosome has centromere activity distributed along its entire length rather than restricted to a single point, so spindle fibers can attach anywhere along the chromosome during cell division.",
       "analogy": "In a monocentric chromosome the spindle hooks onto one specific handle; in a holocentric chromosome the entire surface is covered in handles — any spindle fiber can grab anywhere, making the chromosome more tolerant of fragmentation and fission events.",
@@ -188,6 +233,25 @@
       "definition": "Hybrid sterility is the failure of hybrids between two species or populations to reproduce, caused by incompatible gene combinations (Dobzhansky-Muller incompatibilities) that do not disrupt either parent but are deleterious when combined.",
       "analogy": "Hybrid sterility is like two machines from different manufacturers that each work fine on their own but jam or break when you connect them together — the parts are incompatible even though each part is internally coherent.",
       "url": "/knowledge/concepts/hybrid-sterility/"
+    },
+    {
+      "slug": "index",
+      "title": "Concepts · Blackmon Lab wiki",
+      "aliases": [],
+      "definition": "",
+      "analogy": "",
+      "url": "/knowledge/concepts/"
+    },
+    {
+      "slug": "karyotype",
+      "title": "Karyotype",
+      "aliases": [
+        "karyotypes",
+        "chromosome complement"
+      ],
+      "definition": "A karyotype is the full chromosome complement of an organism, characterized by chromosome number, size, shape, and, where applicable, banding pattern.",
+      "analogy": "A karyotype is like a floor plan of a genome: it tells you how many rooms there are, how large each one is, and where the load-bearing walls (centromeres) sit, without yet revealing what is inside any room.",
+      "url": "/knowledge/concepts/karyotype/"
     },
     {
       "slug": "mk-model",
@@ -218,6 +282,17 @@
       "url": "/knowledge/concepts/msci/"
     },
     {
+      "slug": "mullers-ratchet",
+      "title": "Muller's ratchet",
+      "aliases": [
+        "Muller's ratchet",
+        "ratchet"
+      ],
+      "definition": "Muller's ratchet is the irreversible accumulation of deleterious mutations in a non-recombining genome or genomic region, because once the class of individuals carrying the fewest deleterious mutations is lost to drift, it cannot be recovered.",
+      "analogy": "Muller's ratchet is a downhill ratchet where each click can only move in one direction: every time drift removes the least-loaded class, the minimum possible mutation load rises and never falls back.",
+      "url": "/knowledge/concepts/mullers-ratchet/"
+    },
+    {
       "slug": "neo-sex-chromosome",
       "title": "Neo-Sex Chromosome",
       "aliases": [
@@ -239,8 +314,12 @@
       "aliases": [
         "pseudoautosomal region",
         "PAR",
+        "PARs",
         "pseudoautosomal",
-        "recombining region"
+        "pseudoautosomal boundary",
+        "recombining region",
+        "PAR size",
+        "non-PAR"
       ],
       "definition": "The pseudoautosomal region (PAR) is the segment of the sex chromosomes where X and Y (or Z and W) still recombine with each other — behaving like autosomes despite sitting on sex chromosomes.",
       "analogy": "The PAR is the small strip of shared border where two otherwise sovereign territories still freely exchange people; everything outside it is locked down and unique to one side.",

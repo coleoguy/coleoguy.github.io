@@ -7,6 +7,35 @@ papers_supporting: [3780c17c37d408cf1151745b75b70eea040ad4a9fa24b5d3ba4a327fa493
 category: "Bioinformatics & tools"
 permalink: /knowledge/topics/repeat_annotation/
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Repeat annotation — the identification and cataloguing of repetitive DNA elements within a genome — is increasingly recognized as essential not only for genome assembly quality but also for understanding mutational hazards posed by repetitive sequences near functional elements. A key class of repeats relevant to genome stability are **direct repeats**: pairs of identical or near-identical sequences oriented in the same direction. When a direct repeat flanks a coding exon, it creates a substrate for single-strand annealing (SSA) and related repair pathways that can delete the intervening sequence, including the exon itself.
+
+A central prediction of the SSA-mediated mutational hazard hypothesis is that purifying selection should have eroded direct repeats from the vicinity of protein-coding sequence over evolutionary time. Genome-wide repeat annotation provides the empirical framework needed to test this prediction quantitatively. Using Monte Carlo simulation as a null model, [DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/10_12688_f1000research_170810_1/#finding-1) showed that in *Aedes aegypti*, only 5,782 of 80,498 exons are flanked by direct repeats — roughly seven-fold fewer than the ~40,000 expected under a random placement model. This striking depletion supports the view that repeat context around exons is non-random and shaped by selection, with practical implications for how annotators should interpret repeat distributions in assembled genomes.
+
+</div>
+<div data-register="student" markdown="1">
+
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+DNA is full of repetitive sequences — chunks of genetic code that repeat themselves multiple times throughout a genome. Scientists who study genomes need to find and catalog these [repeats](/knowledge/concepts/repetitive-dna/) carefully, because repeats matter not just for reading the genome correctly, but also because they can cause dangerous mutations.
+
+One important type of repeat is called a [direct repeat](/knowledge/concepts/direct-repeat/) — two copies of the same or nearly identical DNA sequence pointing in the same direction. When a direct repeat sits on either side of a gene, it can trigger a repair process called [single-strand annealing (SSA)](/knowledge/concepts/single-strand-annealing/) that accidentally deletes everything between the repeats — including the gene itself. 
+
+If this deletion process is genuinely dangerous, evolution should have weeded out direct repeats sitting next to genes over time. To test this idea, [DirectRepeateR: An R package 2025, Finding 1](/knowledge/papers/10_12688_f1000research_170810_1/#finding-1) counted how many genes in the mosquito *Aedes aegypti* are actually flanked by direct repeats. They found only 5,782 out of 80,498 genes have this dangerous repeat arrangement — about seven times fewer than random chance would predict (~40,000). This huge shortfall shows that repeat placement around genes is not random; instead, it looks like selection has actively removed these risky repeats. Understanding this pattern helps scientists better interpret where repeats show up in newly assembled genomes.
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Repeat Annotation
 

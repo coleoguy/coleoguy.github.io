@@ -7,6 +7,37 @@ papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114
 permalink: /knowledge/topics/conservation_genetics/
 category: "Population genetics"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+A recurring challenge in conservation genetics is accurately translating molecular diversity estimates into biologically meaningful parameters — particularly effective population size (Ne) — that can guide management decisions. A key assumption underlying many Ne estimators is that sampled populations are panmictic, but real populations are often spatially structured, fragmented, or distributed across environmental gradients. Violating this assumption can produce severely misleading results.
+
+One well-documented source of bias is **ancestral isolation-by-distance (IBD)**: shared ancestry accumulated across a geographically structured range inflates pairwise nucleotide divergence (π₁₂) between sampled populations. When a standard panmictic formula is applied to that divergence to back-calculate Ne, the resulting estimate can far exceed the true census size. For example, under low but nonzero migration (m = 0.001) in a linear stepping-stone model, end-of-range species show estimated ancestral Ne of roughly 7,370 — more than **seven times** the true census size of 1,000 individuals — while centrally located populations are far less affected (Ne ≈ 1,255) [Hancock & Blackmon 2020, Finding 1](/knowledge/papers/10_1093_jhered_esaa042/#finding-1). This "ghost" of historical structure lingers in coalescent genealogies long after the demographic event that created it, making it invisible to approaches that treat all divergence as attributable to contemporary population size alone.
+
+For conservation practitioners, the implication is significant: populations at the **edges of species' ranges** — which are often of particular conservation interest due to their potential adaptive significance or fragmentation — are precisely those most likely to yield inflated Ne estimates when standard methods are used without accounting for spatial structure. Acting on such estimates could lead managers to conclude that a population is much larger and more genetically diverse than it truly is, potentially understating extinction risk.
+
+</div>
+<div data-register="student" markdown="1">
+
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+When conservation biologists want to know how many individuals are actually breeding in a population, they often use DNA to estimate [effective population size](/knowledge/concepts/effective-population-size/) (Ne). This works well if a population is well-mixed — if individuals can breed randomly with anyone else in the group. But real populations are messy. They spread across landscapes, get divided by mountains or rivers, and don't always mix evenly. When you ignore this structure and use standard formulas on DNA data, you can get wildly wrong answers.
+
+A major culprit is [ancestral isolation-by-distance](/knowledge/concepts/isolation-by-distance/) (IBD): as populations stay separated for generations, they accumulate small genetic differences in different regions. These differences make it look like the population was always much bigger than it actually was. For example, imagine a species spread along a linear range with very little movement between neighborhoods (migration rate m = 0.001). If you sample from the edge of that range and use a standard panmictic formula, you might estimate an ancestral Ne of roughly 7,370 — more than **seven times** the real population of 1,000 individuals. Animals in the middle of the range show far less bias (Ne ≈ 1,255) [Hancock & Blackmon 2020, Finding 1](/knowledge/papers/10_1093_jhered_esaa042/#finding-1).
+
+The problem matters for conservation because populations at the edges of a species' range — often the ones managers care about most — are hit hardest by this inflation. Relying on inflated estimates could trick managers into thinking a struggling population is healthier and more genetically diverse than it really is, masking real extinction risk.
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Conservation Genetics
 

@@ -38,7 +38,7 @@ Together, these results suggest that epistasis in quantitative traits is (1) mor
 
 - Across 22 re-analyzed empirical LCA datasets, SAGA identified 11 epistatic CGEs (in 9 datasets) with variable importance > 0.5 that the joint-scaling test had not identified, directly quantifying the detection gap. [Blackmon & Demuth 2016, Finding 1](/knowledge/papers/10_1111_evo_12844/#finding-1)
 
-- Of 1,606 LCA datasets analyzed under SAGA, 81% met information-theoretic thresholds; the remaining ~19% did not, indicating that a non-trivial fraction of legacy LCA inferences may lack robust support under rigorous model selection. [Wright was right: leveraging 2024, Finding 3](/knowledge/papers/10_1093_evolut_qpae003/#finding-3)
+- Of 1,606 LCA datasets analyzed under SAGA, 81% met information-theoretic thresholds; the remaining ~19% did not, indicating that a non-trivial fraction of legacy LCA inferences may lack support under rigorous model selection. [Wright was right: leveraging 2024, Finding 3](/knowledge/papers/10_1093_evolut_qpae003/#finding-3)
 
 - Life-history traits showed a greater proportion of epistatic contribution to trait divergence than morphological traits (mean difference 0.06, p = .024) across 488 species-trait pairings, supporting classical expectations about fitness-trait architecture. [Wright was right: leveraging 2024, Finding 1](/knowledge/papers/10_1093_evolut_qpae003/#finding-1)
 

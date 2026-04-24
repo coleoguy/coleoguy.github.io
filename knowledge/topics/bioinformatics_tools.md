@@ -7,6 +7,37 @@ papers_supporting: [10.1093/bioinformatics/bty191, 74e7bc680605ee2207a1f5cf31811
 permalink: /knowledge/topics/bioinformatics_tools/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Bioinformatics tools in this literature fall into two broad categories: interactive web applications that aggregate multi-study data for a specific model organism, and high-performance alignment algorithms designed to handle the error profiles of long-read sequencing platforms. Both categories share a common design pressure — they must extract reliable signal from noisy, heterogeneous data faster than the alternatives.
+
+**CaveCrawler** exemplifies the web-application category. It is a Shiny-based suite purpose-built for *Astyanax mexicanus* (the Mexican tetra) that pulls together transcriptomic data, population genetics statistics, Gene Ontology annotations, and genome architecture from multiple independent studies into a single interface. The integration of GO terms directly alongside population-level signals is what distinguishes it from a static data repository: users can generate functional hypotheses without running their own annotation pipelines. ([Perry et al. 2022, Finding 1](/knowledge/papers/10_1093_g3journal_jkac132/#finding-1))
+
+**Minimap2** represents the algorithm-first category. For spliced alignment of long, noisy Oxford Nanopore (ONT) reads, it achieves 94.0% exact intron accuracy on a real mouse cDNA dataset, against 83.8% for GMAP and 87.9% for SpAln — and does so more than 40 times faster than either competitor. ([10.1093/bioinformatics/bty191, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1)) That accuracy advantage is not primarily driven by the downstream base-level dynamic programming step. The chaining algorithm alone outperforms all other long-read mappers tested before any base-level alignment is applied, which matters for anyone evaluating the tool's design or extending it to new sequencing contexts. ([10.1093/bioinformatics/bty191, Finding 2](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-2))
+
+</div>
+<div data-register="student" markdown="1">
+
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+Bioinformatics tools help scientists work with genetic data, and they come in two main flavors: web applications that combine data from many studies for a specific organism, and fast computer programs designed to read long DNA sequences accurately despite their errors. Both types face the same challenge — they need to find real biological signals hidden in messy, mixed data as quickly as possible.
+
+**CaveCrawler** is a web application built specifically for the Mexican tetra (*Astyanax mexicanus*). It brings together gene expression data, population genetics information, gene function annotations, and genome details from multiple research projects into one searchable interface. What makes it different from just a data storage site is that you can explore gene functions alongside population-level patterns without running your own computer programs to assign those functions. ([Perry et al. 2022, Finding 1](/knowledge/papers/10_1093_g3journal_jkac132/#finding-1))
+
+**Minimap2** is a fast computer program for reading long, error-prone DNA sequences from Oxford Nanopore machines. When tested on real mouse genes, it correctly identifies 94.0% of splice sites — the junctions where genes are assembled — beating the competing program GMAP at 83.8% accuracy and SpAln at 87.9%, while running more than 40 times faster than either one. ([10.1093/bioinformatics/bty191, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1)) This speed advantage does not come entirely from the final step of polishing the alignment. The chain-finding algorithm that works earlier in the process outperforms all other long-read programs on its own, which means the core design is genuinely effective and could work well for new types of sequencing machines. ([10.1093/bioinformatics/bty191, Finding 2](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-2))
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Bioinformatics Tools
 

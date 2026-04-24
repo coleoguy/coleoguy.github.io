@@ -7,6 +7,37 @@ papers_supporting: [10.1002/ece3.73483]
 permalink: /knowledge/topics/demographic_inference/
 category: "Population genetics"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Demographic inference from genomic data allows researchers to reconstruct the population history of species — including shifts in effective population size (Ne), bottlenecks, and patterns of inbreeding — even when sampling is limited to a handful of individuals or a single genome. Two complementary approaches are increasingly applied in conservation genomics of non-model organisms: pairwise sequentially Markovian coalescent (PSMC) analysis of whole-genome heterozygosity, and runs-of-homozygosity (ROH) analysis to decompose ancient versus recent reductions in Ne.
+
+A key methodological question is whether PSMC trajectories are robust across sequencing platforms and between sexes. Work on the endangered *Cheirotonus formosanus* (long-armed scarab) provides direct evidence that they are: [Chien et al. 2026, Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) showed that PSMC trajectories reconstructed from independently sequenced male (PacBio HiFi) and female (Illumina) genomes are nearly identical, with overlapping bootstrap intervals. This platform-agnosticism is practically important for conservation programs where only opportunistically collected samples may be available.
+
+ROH analysis offers a complementary temporal lens. In *C. formosanus*, the ROH landscape is dominated by short segments (<1 Mbp), with medium-length segments (1–5 Mbp) present in some individuals but a complete absence of very long segments (>5 Mbp). As documented in [Chien et al. 2026, Finding 2](/knowledge/papers/10_1002_ece3_73483/#finding-2), this pattern is characteristic of historical bottlenecks or long-term persistence at low ancestral Ne, rather than recent consanguineous mating. The medium-length segments hint at localized recent inbreeding within demes, adding resolution that PSMC alone — which cannot reliably address the last ~10 kya — cannot provide.
+
+Together, these two approaches illustrate a general principle: short ROH diagnose ancient demographic restriction, long ROH diagnose recent inbreeding, and PSMC captures broad multi-generational trends. Their concordance in a single endangered beetle provides a useful proof-of-concept for applying multi-method demographic inference to non-model invertebrates with limited genomic resources.
+
+</div>
+<div data-register="student" markdown="1">
+
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+Scientists can piece together the population history of species by studying their genomes — even when they have only a few DNA samples to work with. They can figure out how many individuals lived in a population at different times in the past, spot population crashes, and detect inbreeding. Two methods work especially well for conservation of rare animals: [pairwise sequentially Markovian coalescent](/knowledge/concepts/pairwise-sequentially-markovian-coalescent/) (PSMC) analysis, which looks at genetic diversity within a single genome, and [runs-of-homozygosity](/knowledge/concepts/runs-of-homozygosity/) (ROH) analysis, which finds stretches of DNA where both copies are identical.
+
+A practical question for scientists is whether these methods give the same answer regardless of how the DNA was sequenced or whether it came from a male or female. [Chien et al. 2026, Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) tested this using an endangered beetle called the long-armed scarab (*Cheirotonus formosanus*). They sequenced a male's genome using one technology (PacBio HiFi) and a female's genome using another (Illumina), then ran PSMC on both. The results were nearly identical — the population-history curves overlapped almost perfectly. This is good news for conservation work, where scientists often have to use whatever DNA samples they can find.
+
+ROH analysis adds a second perspective. In *C. formosanus*, most homozygous stretches were short (less than 1 million base pairs), some were medium-sized (1–5 million base pairs), but none were very long (over 5 million base pairs). [Chien et al. 2026, Finding 2](/knowledge/papers/10_1002_ece3_73483/#finding-2) showed this pattern points to an ancient population crash or centuries of low population size, not recent inbreeding. The medium-length segments hint at some recent inbreeding within isolated local groups. Together, PSMC and ROH tell complementary stories: short stretches reveal ancient bottlenecks, long stretches reveal recent inbreeding, and PSMC shows broad population trends over many generations.
+
+</div>
+</div>
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Demographic Inference
 

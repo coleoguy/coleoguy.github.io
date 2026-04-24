@@ -7,6 +7,35 @@ papers_supporting: [10.1093/sysbio/syu131]
 permalink: /knowledge/topics/trait_dependent_diversification/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Methods that test whether a binary character state is associated with shifts in speciation or extinction rates — BiSSE being the most widely used — are vulnerable to a specific and severe failure mode: elevated Type I error driven by background diversification heterogeneity in the phylogeny, entirely independent of any real trait effect. The problem is not subtle. On the empirical cetacean phylogeny, more than 77% of 400 neutral character datasets simulated with no state-dependent diversification at all returned a statistically significant BiSSE result (p < 0.05), and 58% cleared the p < 0.001 threshold ([10.1093/sysbio/syu131, Finding 1](/knowledge/papers/10_1093_sysbio_syu131/#finding-1)). That phylogeny is not pathological — it has a well-documented dolphin radiation, the kind of diversification heterogeneity present in most large empirical trees.
+
+The taxon-name-length experiment makes the case as cleanly as possible: across vertebrate subtrees, a character defined purely by the number of letters in a species' binomial showed a significant correlation with speciation rate in more than 69% of trees, climbing toward 100% for ray-finned fishes ([10.1093/sysbio/syu131, Finding 2](/knowledge/papers/10_1093_sysbio_syu131/#finding-2)). Name length cannot cause speciation. The false positives cannot be attributed to biological confounding. They reflect the mismatch between what BiSSE's likelihood assumes — a single pair of diversification rates per character state — and the rate variation actually present in large, empirically estimated phylogenies.
+
+The implication is that a large fraction of published BiSSE-based conclusions may be spurious, and any single significant result from an unmodified BiSSE analysis on a diverse clade warrants skepticism. Whether hidden-state extensions (HiSSE, MuSSE variants) adequately correct the problem, and whether model-adequacy tests can be made routine enough to be trusted across the breadth of empirical applications, remain open questions.
+
+</div>
+<div data-register="student" markdown="1">
+
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+When biologists want to know whether a trait — like body size or coloration — affects how quickly a group of organisms splits into new species, they often use a statistical method called [BiSSE](/knowledge/concepts/bisse/) (Binary State Speciation and Extinction). The method compares how fast species diversify when they have one version of the trait versus another. The problem is that BiSSE can give false positives — it can say a trait matters when it actually doesn't.
+
+The failure happens because real phylogenies (evolutionary family trees) have uneven branching: some groups radiate (split rapidly) while others don't, and BiSSE doesn't account for this messy reality well enough. On a real dolphin phylogeny, more than 77% of 400 fake datasets with no trait effect at all still came back statistically significant (p < 0.05), and 58% crossed the even stricter p < 0.001 threshold ([10.1093/sysbio/syu131, Finding 1](/knowledge/papers/10_1093_sysbio_syu131/#finding-1)). That dolphin tree is not unusual — it just has the kind of [diversification](/knowledge/concepts/diversification/) bumps that most big real trees do.
+
+The cleanest proof comes from an odd experiment: researchers defined a character purely by how many letters are in a species' scientific name. Across vertebrate subtrees, name length showed a significant link to speciation rate in more than 69% of trees, rising toward 100% for ray-finned fishes ([10.1093/sysbio/syu131, Finding 2](/knowledge/papers/10_1093_sysbio_syu131/#finding-2)). Name length cannot cause speciation. This shows the false positives come from BiSSE's poor fit to real trees, not from hidden biology. Many published results using BiSSE may be wrong.
+
+</div>
+</div>
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Trait Dependent Diversification
 

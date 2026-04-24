@@ -7,6 +7,31 @@ papers_supporting: [2da8fb1b5d5f08ca9dccde3a6e1600c4ff6cbfdcb564fa6fd3617d6502e2
 permalink: /knowledge/topics/avian_evolution/
 category: "Speciation & macroevolution"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Birds have served as model organisms for studying speciation, and few cases have proven more illuminating than ring species — populations that demonstrate, in geographic space, the gradual accumulation of reproductive isolation that normally takes deep time to observe. The greenish warbler (*Phylloscopus trochiloides*) is the most cited living example of this phenomenon. Its six named subspecies are distributed in a ring around the Tibetan Plateau, and in central Siberia the two northernmost forms — *P. t. plumbeitarsus* and *P. t. viridanus* — meet in sympatry without interbreeding, effectively behaving as distinct species at their zone of secondary contact even though gene flow connects them through the rest of the ring. This system provides direct evidence that gradual divergence along a geographic gradient can yield complete reproductive isolation, illustrating speciation as a continuous rather than discrete process ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1)).
+
+It is important to note, however, that the ring is not fully intact. A significant gap exists in northeastern China, likely the result of recent deforestation, meaning the supposedly unbroken chain of intermediate populations must be inferred rather than directly observed across the entire range. This caveat tempers the strength of the inference that can be drawn from the greenish warbler system alone.
+
+</div>
+<div data-register="student" markdown="1">
+
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+Birds are excellent for studying how new species form, and one of the best examples is a [ring species](/knowledge/concepts/ring-species/) — a group of populations spread around a geographic area in a way that shows how reproductive isolation builds up over space instead of time. The greenish warbler (*Phylloscopus trochiloides*) is the most famous living example. Its six named subspecies form a ring around the Tibetan Plateau. In central Siberia, the two northernmost forms — *P. t. plumbeitarsus* and *P. t. viridanus* — live side by side without breeding together, acting like separate species even though they are connected by other populations around the ring. This system shows that gradual change across geography can create complete reproductive isolation, proving that [speciation](/knowledge/concepts/speciation/) happens as a slow, continuous process rather than a sudden jump ([Ring Species and Speciation 2012, Finding 1](/knowledge/papers/10_1002_9780470015902_a0001751_pub3/#finding-1)).
+
+However, the ring is not completely unbroken. A large gap exists in northeastern China, probably from recent deforestation. This means the chain of intermediate populations that supposedly connects everything cannot be directly observed across the whole range — we have to infer it instead. This limitation weakens the conclusions we can draw from the greenish warbler system alone.
+
+</div>
+</div>
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Avian Evolution
 

@@ -7,6 +7,27 @@ papers_supporting: [10.1002/ece3.73483, 10.1534/genetics.117.300382, 8ec28241e31
 permalink: /knowledge/topics/sex_linkage_mutation/
 category: "Sex chromosomes"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+The evolution of sex-linked regions is driven, in large part, by the spread of chromosomal inversions that capture sexually antagonistic alleles and link them to the sex-determining region (SDR). A key theoretical framework holds that this process operates asymmetrically between the X and Y: Y-linked inversions tend to fix (and thereby initiate long-term Y degeneration), while X-linked inversions are more likely to be maintained as stable polymorphisms, depending critically on the dominance of the male-beneficial allele in conflict.
+
+Under this model, the short-term "solution" to sexual antagonism — locking a male-beneficial allele onto the Y — carries a long-term cost. Because Y chromosome inversions suppress recombination, they inevitably expand a non-recombining region, predisposing the Y to the mutational decay described by the fragile-Y hypothesis. Complementing inversion-based expansion, a separate process shapes X chromosome gene content in the opposite direction: meiotic sex chromosome inactivation (MSCI) creates selection pressure for male-expressed genes to retropose off the X entirely, generating an observable out-of-the-X excess of retrogenes. Empirical work is also beginning to reveal which gene families end up sex-linked as these processes unfold, and a striking pattern of convergence is emerging: demethylases of the KDM5/JARID1 family appear on the Y chromosome independently in both mammals and beetles.
+
+</div>
+<div data-register="student" markdown="1">
+
+Here is the student lead for this topic:
+
+Sex chromosomes evolve when [chromosomal inversions](/knowledge/concepts/chromosomal-inversion/) capture alleles that help one sex but hurt the other — a situation called [sexual antagonism](/knowledge/concepts/sexual-antagonism/). These inversions lock beneficial alleles onto the Y chromosome, linking them to the sex-determining region (SDR). The problem is asymmetrical: Y-linked inversions tend to permanently fix in place (and then start a long-term process of Y degeneration), while X-linked inversions are more likely to stay as stable variations in the population, depending on how dominant the male-beneficial allele is.
+
+This short-term fix has a long-term cost. Y chromosome inversions stop [recombination](/knowledge/concepts/recombination/) in their region, which lets harmful mutations pile up over time — a process called the [fragile-Y hypothesis](/knowledge/concepts/fragile-y-hypothesis/). Meanwhile, the X chromosome changes in the opposite way. During [meiotic sex chromosome inactivation](/knowledge/concepts/meiotic-sex-chromosome-inactivation/) (MSCI), male genes face pressure to jump off the X chromosome entirely and relocate elsewhere in the genome. This creates an observable excess of retrogenes (copies of genes that moved) off the X. As these processes play out, certain gene families consistently end up sex-linked across different species — a striking pattern of [convergence](/knowledge/concepts/convergence/). For example, demethylases of the KDM5/JARID1 family appear on the Y chromosome independently in both mammals and beetles, suggesting this is a predictable outcome of how sex chromosomes evolve.
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Sex-linkage mutation
 

@@ -28,7 +28,7 @@ High-quality reference genomes are increasingly available for bees, enabling com
 
 ## Supporting evidence
 
-The *P. meconis* genome provides the first genomic reference for the largest bee genus in North America, opening avenues for studying host-plant specialization, population structure, and the evolutionary genomics of Andrenidae more broadly. The assembly's depth of coverage (~49×) and BUSCO completeness situate it among high-quality insect genomes, despite being contig-level rather than chromosome-scale. [Schweizer et al. 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1)
+The *P. meconis* genome provides the first genomic reference for the largest bee genus in North America, enabling studies of host-plant specialization, population structure, and the evolutionary genomics of Andrenidae more broadly. The assembly's depth of coverage (~49×) and BUSCO completeness situate it among high-quality insect genomes, despite being contig-level rather than chromosome-scale. [Schweizer et al. 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1)
 
 ## Contradictions / open disagreements
 
@@ -36,7 +36,7 @@ The assembly lacks HiC scaffolding, meaning it does not reach chromosome-level c
 
 ## Tealc's citation-neighborhood suggestions
 
-- Chromosome-level genome assemblies for other Andrenidae or solitary bee genera would provide the scaffolding context needed to resolve synteny questions flagged by the *P. meconis* dot plots.
+- Chromosome-level genome assemblies for other Andrenidae or solitary bee genera would provide the comparative context needed to resolve synteny questions flagged by the *P. meconis* dot plots.
 - Population genomics studies of oligolectic bees using reduced-representation or whole-genome resequencing would be natural consumers of this reference.
 - BUSCO benchmarking papers and Hymenoptera-specific ortholog databases underpin the completeness assessment and should be cited alongside this assembly.
 

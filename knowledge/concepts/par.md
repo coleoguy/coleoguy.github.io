@@ -2,7 +2,7 @@
 layout: default
 title: "Pseudoautosomal Region"
 concept_slug: par
-aliases: ["pseudoautosomal region", "PAR", "pseudoautosomal", "recombining region"]
+aliases: ["pseudoautosomal region", "PAR", "PARs", "pseudoautosomal", "pseudoautosomal boundary", "recombining region", "PAR size", "non-PAR"]
 prerequisites: [heterogamety, recombination-suppression]
 appears_in_topics: [sex_chromosome_evolution, fragile_y_hypothesis]
 related_concepts: [recombination-suppression, heterogamety, achiasmy]

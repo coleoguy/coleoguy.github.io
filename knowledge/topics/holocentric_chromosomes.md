@@ -7,6 +7,35 @@ papers_supporting: [e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00f
 permalink: /knowledge/topics/holocentric_chromosomes/
 category: "Karyotype evolution"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+Holocentric chromosomes — chromosomes in which centromere activity is distributed along the entire chromosome length rather than restricted to a single locus — are found in several insect lineages (notably many Hemiptera and Lepidoptera) as well as in nematodes and some plant groups. The contrast between holocentric and monocentric (point centromere) architectures offers a natural comparative experiment for understanding how chromosome organization shapes genome dynamics.
+
+One notable genomic consequence of this architectural difference involves microsatellite evolution. Across insects, lineages with monocentric chromosomes show higher *rates* of microsatellite evolution than lineages with holocentric chromosomes, even though the two groups do not differ substantially in total microsatellite content. This suggests that centromere type is associated with how quickly microsatellite arrays turn over and diversify, rather than simply how much repetitive sequence accumulates. [Jonika et al. 2020, Finding 1](/knowledge/papers/10_3390_genes11080945/#finding-1)
+
+The mechanistic explanation for this rate difference remains speculative. One hypothesis is that the diffuse centromere activity in holocentric species constrains the expansion and contraction of repetitive elements because larger-scale chromosomal rearrangements — which can facilitate microsatellite proliferation — carry different fitness consequences when centromere function is distributed rather than localized.
+
+</div>
+<div data-register="student" markdown="1">
+
+<div class="wiki-lead" data-active="student">
+<div data-register="student" markdown="1">
+
+Some chromosomes have a single control point called a [centromere](/knowledge/concepts/centromere/) where DNA molecules attach during cell division. Others, called [holocentric chromosomes](/knowledge/concepts/holocentric-chromosome/), have this control function spread out along their entire length instead of concentrated in one spot. You can find holocentric chromosomes in many insects (especially true bugs and butterflies), roundworms, and some plants.
+
+Scientists can use the difference between these two chromosome types—[holocentric](/knowledge/concepts/holocentric-chromosome/) versus single-point centromeres—to test how chromosome organization affects the way genomes change and evolve. One important difference shows up in [microsatellites](/knowledge/concepts/microsatellite/) (short repeating DNA sequences scattered throughout the genome). Insects with single-point centromeres evolve microsatellites faster than insects with holocentric chromosomes, even though both groups have roughly the same *total amount* of microsatellite DNA. This tells us that centromere type controls *how quickly* these repeating sequences change, not just how much of them piles up. [Jonika et al. 2020, Finding 1](/knowledge/papers/10_3390_genes11080945/#finding-1)
+
+Why this difference exists is still unclear. One idea is that having a centromere spread across the whole chromosome limits how much chromosomes can rearrange, because large rearrangements—which normally help microsatellites multiply—would be more damaging when the centromere function is distributed everywhere instead of locked in one place.
+
+</div>
+</div>
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # Holocentric Chromosomes
 

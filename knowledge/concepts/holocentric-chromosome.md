@@ -2,7 +2,7 @@
 layout: default
 title: "Holocentric Chromosome"
 concept_slug: holocentric-chromosome
-aliases: ["holocentric chromosome", "holocentric chromosomes", "holocentric", "holokinetic", "diffuse centromere", "monocentric"]
+aliases: ["holocentric chromosome", "holocentric chromosomes", "holocentric", "holokinetic", "diffuse centromere"]
 prerequisites: [autosome]
 appears_in_topics: [holocentric_chromosomes, karyotype_evolution_overview, chromosome_number_evolution]
 related_concepts: [achiasmy, aneuploidy, dysploidy]

@@ -7,6 +7,33 @@ papers_supporting: [10.1093/bioinformatics/bty191]
 permalink: /knowledge/topics/RNA_seq/
 category: "Bioinformatics & tools"
 ---
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher" markdown="1">
+
+RNA-seq spans a wide methodological range, from short Illumina reads that count transcripts with high throughput to long noisy reads from Oxford Nanopore Technology (ONT) or PacBio SMRT platforms that can resolve full-length isoforms and splice junctions in a single pass. The choice of aligner matters substantially, especially for long-read data where base-level error rates are high and read lengths cross multiple exon boundaries.
+
+For spliced alignment of long, noisy reads, minimap2 stands out on real data. On a mouse cDNA dataset sequenced with R9.4 ONT chemistry, minimap2 achieves 94.0% exact intron accuracy, compared with 83.8% for GMAP and 87.9% for SpAln — while running more than 40× faster than either alternative. That combination of accuracy and speed makes it the practical default for long-read RNA-seq workflows aimed at characterizing gene structure or cataloguing alternative splicing. See [10.1093/bioinformatics/bty191, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1).
+
+Whether these advantages extend cleanly to SMRT reads or to future ONT chemistries with lower raw error rates is not yet settled. GMAP and SpAln were designed for low-error inputs, so their performance gap against minimap2 may narrow as read quality improves — or widen as read lengths increase.
+
+</div>
+<div data-register="student" markdown="1">
+
+<!-- tealc:lead-student-only -->
+
+When scientists sequence RNA, they can use fast but short reads from Illumina machines, or slower but longer reads from Oxford Nanopore Technology (ONT) or PacBio that can capture entire genes in one piece. Picking the right [aligner](/knowledge/concepts/sequence-aligner/) — the software that matches reads to a reference genome — makes a big difference, especially with long reads that have many errors and span multiple [exons](/knowledge/concepts/exon/).
+
+For lining up long, noisy reads to find [splice junctions](/knowledge/concepts/splice-junction/), minimap2 performs best in real experiments. On a mouse dataset sequenced with R9.4 ONT chemistry, minimap2 correctly identified 94.0% of introns exactly, versus 83.8% for GMAP and 87.9% for SpAln — and ran more than 40× faster than either tool. This combination of accuracy and speed makes minimap2 the practical choice for long-read RNA-seq work when you want to understand gene structure or find [alternative splicing](/knowledge/concepts/alternative-splicing/) events. See [10.1093/bioinformatics/bty191, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1).
+
+However, it is unclear whether minimap2's advantage holds up with SMRT reads or with improved ONT chemistries that have fewer errors. GMAP and SpAln were built for accurate reads, so they might close the gap against minimap2 as read quality improves — or the gap might widen as reads get longer.
+
+<!-- tealc:lead-student-only-end -->
+
+</div>
+</div>
+<!-- tealc:lead-end -->
+
 <!-- tealc:auto-start -->
 # RNA-seq
 
