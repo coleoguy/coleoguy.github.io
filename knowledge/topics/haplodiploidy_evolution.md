@@ -6,9 +6,20 @@ last_updated: 2026-04-21T18:09:23.149613+00:00
 papers_supporting: [1c95b7d3177f643f9388933de21d260747900051b120cf7a0774e24799ba33ca]
 permalink: /knowledge/topics/haplodiploidy_evolution/
 category: "Sex chromosomes"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Haplodiploidy Evolution
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">1 source</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

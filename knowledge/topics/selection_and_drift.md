@@ -6,9 +6,20 @@ last_updated: 2026-04-22T12:45:57.677661+00:00
 papers_supporting: [10.1017/s0016672300014051, 10.1371/journal.pgen.1005237, 3780c17c37d408cf1151745b75b70eea040ad4a9fa24b5d3ba4a327fa493df88, f9fb8e258c7b62f338b299e9c6fcbeb81259e1aef5f75ea3c782100d90b4a19c, fa8d0869c6d351d791f46d2b041f9c1589e106dfa4d3f3d2ebbc59e1e3b3d80e]
 permalink: /knowledge/topics/selection_and_drift/
 category: "Quantitative genetics & epistasis"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Selection and Drift
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-22</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">5 sources</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

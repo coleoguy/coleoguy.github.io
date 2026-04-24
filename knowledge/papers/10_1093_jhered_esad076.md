@@ -12,8 +12,19 @@ ingested_at: 2026-04-21T15:32:57.285271+00:00
 permalink: /knowledge/papers/10_1093_jhered_esad076/
 pdf: /pdfs/10_1093_jhered_esad076.pdf
 ---
-
 # Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern.
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">4 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint 91daa4cf</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

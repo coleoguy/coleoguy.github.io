@@ -11,8 +11,19 @@ tier: canon
 ingested_at: 2026-04-21T18:30:32.948914+00:00
 permalink: /knowledge/papers/10_1093_jhered_esaa042/
 ---
-
 # Ghosts of a Structured Past: Impacts of Ancestral Patterns of Isolation-by-Distance on Divergence-Time Estimation
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">3 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint f27c2afd</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

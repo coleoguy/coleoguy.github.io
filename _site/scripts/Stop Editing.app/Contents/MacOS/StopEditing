@@ -1,0 +1,46 @@
+#!/bin/bash
+# Stop Editing — kills Jekyll (4000) + edit server (4711).
+# Mirrors Stop Tealc.app's pattern: direct-kill + osascript notification.
+# No Terminal needed; lsof/kill don't touch protected filesystem locations.
+
+JEKYLL_KILLED="no"
+EDIT_KILLED="no"
+
+# Kill via PID files if present (scripts/edit-start.sh writes them)
+for spec in "jekyll:/tmp/coleoguy-jekyll.pid" "edit:/tmp/coleoguy-edit.pid"; do
+    name="${spec%%:*}"
+    f="${spec##*:}"
+    if [ -f "$f" ]; then
+        pid="$(cat "$f" 2>/dev/null)"
+        if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
+            kill "$pid" 2>/dev/null
+            if [ "$name" = "jekyll" ]; then JEKYLL_KILLED="yes"; else EDIT_KILLED="yes"; fi
+        fi
+        rm -f "$f"
+    fi
+done
+
+# Belt-and-suspenders — anything still listening on either port
+for port in 4000 4711; do
+    PIDS=$(lsof -ti:"$port" 2>/dev/null)
+    if [ -n "$PIDS" ]; then
+        kill $PIDS 2>/dev/null
+        sleep 1
+        REMAINING=$(lsof -ti:"$port" 2>/dev/null)
+        [ -n "$REMAINING" ] && kill -9 $REMAINING 2>/dev/null
+        if [ "$port" = "4000" ]; then JEKYLL_KILLED="yes"; else EDIT_KILLED="yes"; fi
+    fi
+done
+
+# Compose notification message
+if [ "$JEKYLL_KILLED" = "yes" ] && [ "$EDIT_KILLED" = "yes" ]; then
+    MSG="Jekyll and edit server stopped"
+elif [ "$JEKYLL_KILLED" = "yes" ]; then
+    MSG="Jekyll stopped (edit server was not running)"
+elif [ "$EDIT_KILLED" = "yes" ]; then
+    MSG="Edit server stopped (Jekyll was not running)"
+else
+    MSG="Nothing to stop"
+fi
+
+osascript -e "display notification \"$MSG\" with title \"Edit Lab Site\""

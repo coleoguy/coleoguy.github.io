@@ -6,9 +6,20 @@ last_updated: 2026-04-21T18:49:05.654684+00:00
 papers_supporting: [acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe02b19]
 permalink: /knowledge/topics/artificial_selection/
 category: "Quantitative genetics & epistasis"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Artificial Selection
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">1 source</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

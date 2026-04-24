@@ -285,3 +285,116 @@
       .catch(() => {});
   }
 })();
+
+/* Wikipedia-feel TOC — runs only on body.wiki.
+   Collects H2s inside <main>, stamps each with data-section-num
+   and an id, injects a Contents box above the first section. */
+(function wikiTOC() {
+  if (!document.body.classList.contains('wiki')) return;
+  const main = document.getElementById('content');
+  if (!main) return;
+
+  const heads = main.querySelectorAll('h2');
+  if (heads.length < 2) return;
+
+  const slugify = (s) => s.trim().toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60) || 'section';
+
+  heads.forEach((h, i) => {
+    if (!h.id) h.id = 'sec-' + slugify(h.textContent);
+    h.setAttribute('data-section-num', i + 1);
+  });
+
+  const toc = document.createElement('aside');
+  toc.className = 'wiki-toc';
+  toc.setAttribute('aria-label', 'Contents');
+
+  const headRow = document.createElement('div');
+  headRow.className = 'wiki-toc-head';
+  headRow.textContent = 'Contents';
+
+  const toggle = document.createElement('a');
+  toggle.href = '#';
+  toggle.className = 'wiki-toc-toggle';
+  toggle.textContent = '[hide]';
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const collapsed = toc.classList.toggle('collapsed');
+    toggle.textContent = collapsed ? '[show]' : '[hide]';
+  });
+  headRow.appendChild(toggle);
+
+  const ol = document.createElement('ol');
+  heads.forEach((h) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    ol.appendChild(li);
+  });
+
+  toc.appendChild(headRow);
+  toc.appendChild(ol);
+  heads[0].parentNode.insertBefore(toc, heads[0]);
+})();
+
+/* Wiki register toggle — Student / Researcher reading modes.
+   Runs only on body.wiki. Looks for containers with paired
+   [data-register="student"] and [data-register="researcher"]
+   children (topic-page leads produced by surface_composer).
+   Persists preference to localStorage, default "researcher". */
+(function wikiRegisterToggle() {
+  if (!document.body.classList.contains('wiki')) return;
+  const main = document.getElementById('content');
+  if (!main) return;
+
+  const containers = main.querySelectorAll('.wiki-lead');
+  if (containers.length === 0) return;
+
+  const STORAGE_KEY = 'wiki-register-pref';
+  let pref = 'researcher';
+  try { pref = localStorage.getItem(STORAGE_KEY) || 'researcher'; } catch (_) {}
+  if (pref !== 'student' && pref !== 'researcher') pref = 'researcher';
+
+  containers.forEach((container) => {
+    const hasStudent = container.querySelector('[data-register="student"]');
+    const hasResearcher = container.querySelector('[data-register="researcher"]');
+    if (!hasStudent || !hasResearcher) return;
+
+    container.setAttribute('data-active', pref);
+
+    const toggle = document.createElement('div');
+    toggle.className = 'wiki-register-toggle';
+    toggle.setAttribute('role', 'radiogroup');
+    toggle.setAttribute('aria-label', 'Reading register');
+    toggle.innerHTML =
+      '<span class="wiki-register-label">Read as:</span>' +
+      '<button type="button" role="radio" data-register-btn="student">Student</button>' +
+      '<button type="button" role="radio" data-register-btn="researcher">Researcher</button>';
+
+    const btns = toggle.querySelectorAll('[data-register-btn]');
+    const sync = () => btns.forEach((b) => {
+      const on = b.dataset.registerBtn === container.getAttribute('data-active');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+    sync();
+
+    btns.forEach((b) => b.addEventListener('click', (e) => {
+      e.preventDefault();
+      const next = b.dataset.registerBtn;
+      document.querySelectorAll('.wiki-lead').forEach((c) => c.setAttribute('data-active', next));
+      document.querySelectorAll('.wiki-register-toggle [data-register-btn]').forEach((otherBtn) => {
+        const on = otherBtn.dataset.registerBtn === next;
+        otherBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        otherBtn.setAttribute('aria-checked', on ? 'true' : 'false');
+      });
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (_) {}
+    }));
+
+    container.parentNode.insertBefore(toggle, container);
+  });
+})();

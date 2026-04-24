@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Inadequacy</title>
+<meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:title" content="Model Inadequacy">
+<meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body class="wiki">
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Science</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; drift</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI in science</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/tealc-build.html">Build your own</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Data &amp; tools</span>
+      <ul>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+<!-- tealc:auto-start -->
+<h1 id="model-inadequacy">Model Inadequacy</h1>
+
+<h2 id="current-understanding">Current understanding</h2>
+
+<p>Model inadequacy, in the context of trait-dependent diversification, is the failure of a statistical model to capture the data-generating process well enough to produce reliable inferences — even when the data are perfectly clean and the analysis is executed correctly. The problem is distinct from model misspecification in a narrow technical sense: a model can pass likelihood-ratio tests and still generate false positives at rates that make the results scientifically uninterpretable.</p>
+
+<p>The clearest demonstration of this failure comes from BiSSE (Binary State Speciation and Extinction). The model assumes that diversification rates are constant within each character state, but real phylogenies routinely contain rate heterogeneity that has nothing to do with the focal trait. When that background heterogeneity is present, BiSSE exploits it and assigns it to whatever binary character happens to be loaded. On the empirical cetacean phylogeny — a tree with well-documented diversification rate variation driven by the dolphin radiation — <a href="/knowledge/papers/10_1093_sysbio_syu131/#finding-1">10.1093/sysbio/syu131, Finding 1</a> showed that more than 77% of 400 neutral character datasets simulated with no state-dependent diversification returned a statistically significant BiSSE result (p &lt; 0.05), and 58% rejected the character-independent model at p &lt; 0.001. A false positive rate of that magnitude means individual BiSSE p-values carry almost no evidential weight on trees with heterogeneous diversification.</p>
+
+<p>The taxon name length result makes this point even harder to dismiss. Taxon name length cannot cause speciation. It has no evolutionary meaning. Yet <a href="/knowledge/papers/10_1093_sysbio_syu131/#finding-2">10.1093/sysbio/syu131, Finding 2</a> found that across vertebrate subtrees, more than 69% showed a significant association between name length and speciation rate under BiSSE, and among ray-finned fishes the figure approached 100% — 60 of 61 subtrees. Any biological confound is excluded by design, leaving rate heterogeneity in the tree as the only explanation. The model is picking up signal; that signal just has nothing to do with the question being asked.</p>
+
+<p>These results set a hard baseline: before interpreting any BiSSE finding as evidence of a trait’s effect on diversification, the false positive rate on that specific tree — under that tree’s actual diversification dynamics — needs to be characterized directly.</p>
+
+<h2 id="supporting-evidence">Supporting evidence</h2>
+
+<ul>
+  <li><a href="/knowledge/papers/10_1093_sysbio_syu131/#finding-1">10.1093/sysbio/syu131, Finding 1</a>: On the cetacean phylogeny, &gt;77% of neutral character simulations returned p &lt; 0.05 under BiSSE; 58% returned p &lt; 0.001.</li>
+  <li><a href="/knowledge/papers/10_1093_sysbio_syu131/#finding-2">10.1093/sysbio/syu131, Finding 2</a>: Taxon name length — biologically meaningless — yielded significant BiSSE associations in &gt;69% of vertebrate subtrees and ~100% of ray-finned fish subtrees.</li>
+</ul>
+
+<h2 id="contradictions--open-disagreements">Contradictions / open disagreements</h2>
+
+<p>The cetacean phylogeny result may overstate the general problem. That tree has unusually strong diversification heterogeneity (the dolphin radiation), and false positive rates on more rate-homogeneous trees are likely lower. Whether the problem is severe enough to disqualify BiSSE results across vertebrates broadly, or only on clades with known rate shifts, remains an open empirical question. The taxon name length test is nearly a clean null, but taxon names do carry phylogenetic signal through shared prefixes among congeners, so the false positive rate it measures is not purely attributable to tree-level rate heterogeneity.</p>
+
+<h2 id="tealcs-citation-neighborhood-suggestions">Tealc’s citation-neighborhood suggestions</h2>
+
+<p>Hidden-state extensions of BiSSE (HiSSE) were developed specifically to address the rate-heterogeneity confound flagged here; papers introducing and evaluating those methods would round out this topic. Simulation studies that characterize the false positive rate of BiSSE as a function of tree shape and rate heterogeneity magnitude would also help contextualize how broadly these findings generalize.</p>
+
+<h2 id="related-on-the-blackmon-lab-site">Related on the Blackmon Lab site</h2>
+
+<ul>
+  <li><a href="/knowledge/papers/10_1093_sysbio_syu131/">Paper: 10.1093/sysbio/syu131</a>
+<!-- tealc:auto-end --></li>
+</ul>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
+
+</body>
+</html>

@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Knowledge · Blackmon Lab</title>
-<meta name="description" content="Living, auto-maintained wiki of the Blackmon Lab's citation neighborhood: papers, topics, and code repositories. Grounded findings with verbatim quotes, teaching-mode reasoning on every edit.">
+<meta name="description" content="Living, auto-maintained wiki of the Blackmon Lab's citation neighborhood: topics, papers, and code repositories. Grounded findings with verbatim quotes, teaching-mode reasoning on every edit.">
 <meta property="og:title" content="Knowledge · Blackmon Lab">
-<meta property="og:description" content="Living, auto-maintained wiki of the Blackmon Lab's citation neighborhood: papers, topics, and code repositories. Grounded findings with verbatim quotes, teaching-mode reasoning on every edit.">
+<meta property="og:description" content="Living, auto-maintained wiki of the Blackmon Lab's citation neighborhood: topics, papers, and code repositories. Grounded findings with verbatim quotes, teaching-mode reasoning on every edit.">
 <meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Blackmon Lab">
@@ -24,6 +24,66 @@
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+<style>
+  /* ── compact paper list ── */
+  .wiki-papers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .wiki-papers-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .wiki-papers-list li:last-child { border-bottom: none; }
+  .wiki-papers-list .pmeta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-left: 6px;
+  }
+
+  /* ── nested topic category accordions ── */
+  .wiki-cat details {
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+  .wiki-cat summary {
+    padding: 8px 14px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+  .wiki-cat summary::-webkit-details-marker { display: none; }
+  .wiki-cat summary::before {
+    content: "▶";
+    font-size: 9px;
+    color: var(--ink-faint);
+    transition: transform 0.15s;
+    flex-shrink: 0;
+  }
+  .wiki-cat details[open] summary::before { transform: rotate(90deg); }
+  .wiki-cat .cat-count { font-weight: 400; color: var(--ink-faint); font-size: 12px; }
+  .wiki-cat ul { margin: 0; padding: 4px 14px 10px 32px; list-style: disc; }
+  .wiki-cat li { padding: 3px 0; font-size: 14px; }
+  .wiki-cat li .meta { font-size: 12px; color: var(--ink-faint); margin-left: 6px; }
+
+  /* ── repo list ── */
+  .wiki-repo-list { list-style: none; padding: 0; margin: 0; }
+  .wiki-repo-list li { padding: 5px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+  .wiki-repo-list li:last-child { border-bottom: none; }
+  .wiki-repo-list .rmeta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); margin-left: 6px; }
+</style>
 
 </head>
 
@@ -45,6 +105,18 @@
 
   <ul class="tree" role="tree">
     <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
       <span>Science</span>
       <ul>
         <li><a href="/karyotype.html">Karyotype evolution</a></li>
@@ -57,22 +129,6 @@
         <li><a href="/fragile-y.html">The fragile Y</a></li>
         <li><a href="/y-naught.html">Why not Y naught?</a></li>
         <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
-      </ul>
-    </li>
-    <li>
-      <span>Data &amp; tools</span>
-      <ul>
-        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
-        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
-        <li><a href="/epistasis-database.html">Epistasis database</a></li>
-        <li><a href="/tau_database.html">Tau database</a></li>
-        <li><a href="/citation-network.html">Citation network</a></li>
-        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
-        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
-        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
-        <li><a href="/subpages/evobir.html">evobiR</a></li>
-        <li><a href="/data/" target="_blank">/data exports</a></li>
-        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
       </ul>
     </li>
     <li>
@@ -93,18 +149,26 @@
         <li><a href="/subpages/biol682.html">BIOL 682</a></li>
         <li><a href="/subpages/grad101.html">Grad 101</a></li>
         <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
       </ul>
     </li>
     <li>
-      <span>Lab</span>
+      <span>Data &amp; tools</span>
       <ul>
-        <li><a href="/team.html">Team</a></li>
-        <li><a href="/publications.html">Publications</a></li>
-        <li><a href="/news.html">News</a></li>
-        <li><a href="/calendar.html">Calendar</a></li>
-        <li><a href="/join.html">Join the lab</a></li>
-        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
-        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
       </ul>
     </li>
   </ul>
@@ -127,53 +191,661 @@
   thinking, not a replacement for the literature.
 </p>
 
-<h2>Sections</h2>
+<!-- ── Topics ── -->
+<details class="layer">
+  <summary>
+    <span class="layer-summary-text">
+      <span class="sum-kicker">Topics</span>
+      <span class="sum-head">State-of-understanding pages synthesized across many papers</span>
+      <span class="sum-trail">Updated each time a new paper with findings tagged to that topic is ingested. Contradictions between papers are flagged explicitly. 91 topics across 8 areas.</span>
+    </span>
+  </summary>
+  <div class="layer-body">
+    
+      <div class="wiki-cat">
+      
+        
+        <details>
+          <summary>Bioinformatics &amp; tools<span class="cat-count">&nbsp;(27)</span></summary>
+          <ul>
+          
+          
+            <li>
+              <a href="/knowledge/topics/bioinformatics_methods/">Bioinformatics Methods</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/bioinformatics_tools/">Bioinformatics Tools</a><span class="meta">2 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/BiSSE/">Bisse</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/cavefish_genomics/">Cavefish Genomics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/chaining_algorithm/">Chaining Algorithm</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/circadian_rhythm_evolution/">Circadian rhythm evolution</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/flow_cytometry/">Flow Cytometry</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/genome_resequencing/">Genome Resequencing</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/genome_size_estimation/">Genome Size Estimation</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/hybrid_sterility/">Hybrid Sterility</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/inversions/">Inversions</a>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/large_X_effect/">Large X Effect</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/long_read_sequencing/">Long Read Sequencing</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/model_inadequacy/">Model Inadequacy</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/model_organism_databases/">Model Organism Databases</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/mutation_rate_bias/">Mutation Rate Bias</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/phylogenetic_comparative_methods/">Phylogenetic Comparative Methods</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/QTL_mapping/">Qtl Mapping</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/repeat_annotation/">Repeat Annotation</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/RNA_seq/">Rna Seq</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/selection_theory/">Selection Theory</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/sequence_alignment/">Sequence Alignment</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/short_read_alignment/">Short Read Alignment</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/software_tools/">Software Tools</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/speciation_genetics/">Speciation Genetics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/trait_dependent_diversification/">Trait Dependent Diversification</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/type_I_error/">Type I Error</a><span class="meta">1 paper</span>
+            </li>
+          
+          </ul>
+        </details>
+        
+      
+        
+        <details>
+          <summary>Genome structure<span class="cat-count">&nbsp;(6)</span></summary>
+          <ul>
+          
+          
+            <li>
+              <a href="/knowledge/topics/genetic_architecture/">Genetic Architecture</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/genome_assembly/">Genome Assembly</a><span class="meta">2 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/genome_dynamics/">Genome Dynamics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/genome_structure_evolution/">Genome structure evolution</a><span class="meta">9 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/microsatellite_evolution/">Microsatellite Evolution</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/transposable_elements/">Transposable Elements</a><span class="meta">1 paper</span>
+            </li>
+          
+          </ul>
+        </details>
+        
+      
+        
+        <details>
+          <summary>Insects &amp; Coleoptera<span class="cat-count">&nbsp;(7)</span></summary>
+          <ul>
+          
+          
+            <li>
+              <a href="/knowledge/topics/bee_genomics/">Bee Genomics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/bee_phylogenomics/">Bee Phylogenomics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/coleoptera/">Coleoptera</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/coleoptera_karyotype/">Coleoptera Karyotype</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/coleoptera_genomics/">Coleoptera genomics</a><span class="meta">5 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/insect_genomics/">Insect Genomics</a><span class="meta">2 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/Tribolium/">Tribolium</a><span class="meta">1 paper</span>
+            </li>
+          
+          </ul>
+        </details>
+        
+      
+        
+        <details>
+          <summary>Karyotype evolution<span class="cat-count">&nbsp;(9)</span></summary>
+          <ul>
+          
+          
+            <li>
+              <a href="/knowledge/topics/centromere_evolution/">Centromere Evolution</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/centromere_type/">Centromere Type</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/chromosome_fusion/">Chromosome Fusion</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/chromosome_number_evolution/">Chromosome number evolution</a><span class="meta">10 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/chromosome_number_optima/">Chromosome number optima</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/holocentric_chromosomes/">Holocentric Chromosomes</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/karyotype_evolution/">Karyotype Evolution</a><span class="meta">6 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/karyotype_database/">Karyotype database</a><span class="meta">5 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/karyotype_evolution_overview/">Karyotype evolution overview</a><span class="meta">12 papers</span>
+            </li>
+          
+          </ul>
+        </details>
+        
+      
+        
+        <details>
+          <summary>Population genetics<span class="cat-count">&nbsp;(9)</span></summary>
+          <ul>
+          
+          
+            <li>
+              <a href="/knowledge/topics/coalescent_simulation/">Coalescent Simulation</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/conservation_genetics/">Conservation Genetics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/conservation_genomics/">Conservation Genomics</a><span class="meta">3 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/demographic_inference/">Demographic Inference</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/divergence_time_estimation/">Divergence Time Estimation</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/effective_population_size/">Effective Population Size</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/isolation_by_distance/">Isolation By Distance</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/population_genetics/">Population Genetics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/sequencing_methods/">Sequencing Methods</a><span class="meta">1 paper</span>
+            </li>
+          
+          </ul>
+        </details>
+        
+      
+        
+        <details>
+          <summary>Quantitative genetics &amp; epistasis<span class="cat-count">&nbsp;(10)</span></summary>
+          <ul>
+          
+          
+            <li>
+              <a href="/knowledge/topics/ancestral_state_reconstruction/">Ancestral State Reconstruction</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/artificial_selection/">Artificial Selection</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/comparative_methods/">Comparative Methods</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/dispersal/">Dispersal</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/epistasis/">Epistasis</a><span class="meta">4 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/line_cross_analysis/">Line Cross Analysis</a><span class="meta">4 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/quantitative_genetics/">Quantitative Genetics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/quantitative_genetics_methods/">Quantitative Genetics Methods</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/selection_and_drift/">Selection and drift</a><span class="meta">5 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/trait_definition/">Trait Definition</a><span class="meta">1 paper</span>
+            </li>
+          
+          </ul>
+        </details>
+        
+      
+        
+        <details>
+          <summary>Sex chromosomes<span class="cat-count">&nbsp;(8)</span></summary>
+          <ul>
+          
+          
+            <li>
+              <a href="/knowledge/topics/fragile_y_hypothesis/">Fragile Y hypothesis</a><span class="meta">7 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/haplodiploidy_evolution/">Haplodiploidy Evolution</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/meiotic_drive/">Meiotic Drive</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/sex_chromosome_evolution/">Sex chromosome evolution</a><span class="meta">19 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/sex_linkage_mutation/">Sex-linkage mutation</a><span class="meta">3 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/sexual_antagonism/">Sexual Antagonism</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/sexually_antagonistic_selection/">Sexually Antagonistic Selection</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/y_naught_asymmetry/">Y-naught asymmetry</a><span class="meta">2 papers</span>
+            </li>
+          
+          </ul>
+        </details>
+        
+      
+        
+        <details>
+          <summary>Speciation &amp; macroevolution<span class="cat-count">&nbsp;(15)</span></summary>
+          <ul>
+          
+          
+            <li>
+              <a href="/knowledge/topics/avian_evolution/">Avian Evolution</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/avian_hybridization/">Avian Hybridization</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/convergent_evolution/">Convergent Evolution</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/diversification_rates/">Diversification Rates</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/domestication/">Domestication</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/domestication_genomics/">Domestication genomics</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/Galliformes/">Galliformes</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/hybridization/">Hybridization</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/life_history_evolution/">Life History Evolution</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/phylloscopus/">Phylloscopus</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/postzygotic_isolation/">Postzygotic Isolation</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/reproductive_isolation/">Reproductive Isolation</a><span class="meta">2 papers</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/ring_species/">Ring Species</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/speciation/">Speciation</a><span class="meta">1 paper</span>
+            </li>
+          
+            <li>
+              <a href="/knowledge/topics/uce_phylogenetics/">Uce Phylogenetics</a><span class="meta">1 paper</span>
+            </li>
+          
+          </ul>
+        </details>
+        
+      
+      </div>
+    
+  </div>
+</details>
 
-<h3><a href="/knowledge/papers/">Papers</a></h3>
+<!-- ── Papers ── -->
+<details class="layer">
+  <summary>
+    <span class="layer-summary-text">
+      <span class="sum-kicker">Papers</span>
+      <span class="sum-head">Citable findings extracted from individual papers</span>
+      <span class="sum-trail">Verbatim quotes with page references, the reasoning for why each finding matters, and the counter-argument or limitation to watch for. 40 papers ingested.</span>
+    </span>
+  </summary>
+  <div class="layer-body">
+    
+      <ul class="wiki-papers-list">
+      
+        <li>
+          <a href="/knowledge/papers/10_1002_ece3_73483/">Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (Cheirotonus formosanus): Discovery of a Putative Y-Linked Scaffold and Demographic History</a><span class="pmeta">Chien S et al. · 2026</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_12688_f1000research_170810_1/">DirectRepeateR: An R package for annotating direct repeats in genome assemblies</a><span class="pmeta">Copeland M et al. · 2025 · F1000Research</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_g3journal_jkaf217/">Drivers of achiasmatic meiosis: sexual antagonism versus heteromorphy-dependent aneuploidy across sex-chromosome divergence.</a><span class="pmeta">Barboza A et al. · 2025</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_7717_peerj_17740/">Worse than nothing at all: the inequality of fusions joining autosomes to the PAR and non-PAR portions of sex chromosomes</a><span class="pmeta">Wilhoit K et al. · 2024 · PeerJ</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1098_rsos_240755/">Genome assembly of the southern pine beetle (Dendroctonus frontalis Zimmerman) reveals the origins of gene content reduction in Dendroctonus</a><span class="pmeta">Copeland M et al. · 2024 · Royal Society Open Science</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_jhered_esae025/">Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora</a><span class="pmeta">Michelle M. Jonika et al. · 2024 · Journal of Heredity</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_jhered_esae001/">Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera</a><span class="pmeta">Heath Blackmon et al. · 2024 · Journal of Heredity</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_jhered_esad076/">Reference genome for the Mojave poppy bee (Perdita meconis), a specialist pollinator of conservation concern.</a><span class="pmeta">Schweizer RM et al. · 2024</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_g3journal_jkae084/">A reference quality genome assembly for the jewel scarab Chrysina gloriosa</a><span class="pmeta">Terrence Sylvester et al. · 2024 · G3 Genes Genomes Genetics</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_evolut_qpae003/">Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution</a><span class="pmeta">J. B. Burch et al. · 2024 · Evolution</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_7717_peerj_17985/">Assessing the opportunity for selection to impact morphological traits in crosses between two <i>Solanum</i> species</a><span class="pmeta">Jorja Burch et al. · 2024 · PeerJ</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_jhered_esad059/">Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes)</a><span class="pmeta">James M. Alfieri et al. · 2023 · Journal of Heredity</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_g3journal_jkac132/">CaveCrawler: an interactive analysis suite for cavefish bioinformatics</a><span class="pmeta">Annabel Perry et al. · 2022 · G3 Genes|Genomes|Genetics</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_7717_peerj_12822/">Retrogene survival is not impacted by linkage relationships</a><span class="pmeta">Johnathan Lo et al. · 2022 · PeerJ</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1038_s41437_022_00543_z/">Why not Y naught</a><span class="pmeta">Michelle M. Jonika et al. · 2022 · Heredity</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1098_rspb_2020_1388/">Lineage-specific patterns of chromosome evolution are the rule not the exception in Polyneoptera insects</a><span class="pmeta">Terrence Sylvester et al. · 2020 · Proceedings of the Royal Society B</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1098_rsbl_2020_0648/">The probability of fusions joining sex chromosomes and autosomes: Sex Autosome Fusions</a><span class="pmeta"> · 2020 · Biology Letters</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_jhered_esaa042/">Ghosts of a Structured Past: Impacts of Ancestral Patterns of Isolation-by-Distance on Divergence-Time Estimation</a><span class="pmeta">Zachary B Hancock et al. · 2020 · Journal of Heredity</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_jhered_esaa030/">The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum</a><span class="pmeta">Sarah N Ruckman et al. · 2020 · Journal of Heredity</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1371_journal_pgen_1009076/">Chromosome number evolves at equal rates in holocentric and monocentric clades</a><span class="pmeta">Sarah N. Ruckman et al. · 2020 · PLOS Genetics</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_3390_genes11080945/">Mode and Tempo of Microsatellite Evolution across 300 Million Years of Insect Evolution</a><span class="pmeta">Michelle Jonika et al. · 2020 · Genes</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1007_s10577_019_09613_1/">A database of amphibian karyotypes</a><span class="pmeta">Riddhi D. Perkins et al. · 2019 · Chromosome Research</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1111_evo_13682/">Meiotic drive shapes rates of karyotype evolution in mammals</a><span class="pmeta">Heath Blackmon et al. · 2019 · Evolution</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_jhered_esw047/">Sex Determination, Sex Chromosomes, and Karyotype Evolution in Insects</a><span class="pmeta">Blackmon H et al. · 2017</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1534_genetics_117_300382/">Long-Term Fragility of Y Chromosomes Is Dominated by Short-Term Resolution of Sexual Antagonism.</a><span class="pmeta">Blackmon H et al. · 2017</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1111_evo_12844/">An information-theoretic approach to estimating the composite genetic effects contributing to variation among generation means: Moving beyond the joint-scaling test for line cross analysis</a><span class="pmeta">Blackmon H et al. · 2016 · Evolution</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1016_j_cois_2014_12_003/">Genomic origins of insect sex chromosomes</a><span class="pmeta">Heath Blackmon et al. · 2015 · Current Opinion in Insect Science</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1371_journal_pgen_1005237/">Y fuse? Sex chromosome fusions in fishes and reptiles.</a><span class="pmeta">Pennell MW et al. · 2015</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1111_evo_12792/">The evolutionary dynamics of haplodiploidy: genome architecture and haploid viability</a><span class="pmeta">Heath Blackmon et al. · 2015 · Evolution</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1002_bies_201500040/">The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution</a><span class="pmeta">Heath Blackmon et al. · 2015 · BioEssays</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1649_0010_065x_69_1_174/">Coleoptera Karyotype Database</a><span class="pmeta">Heath Blackmon et al. · 2015 · The Coleopterists Bulletin</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1534_genetics_114_164269/">Estimating tempo and mode of Y chromosome turnover: explaining Y chromosome loss with the fragile Y hypothesis</a><span class="pmeta">Blackmon H et al. · 2014 · Genetics</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1002_9780470015902_a0001751_pub3/">Ring Species and Speciation</a><span class="pmeta"> · 2012</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1038_nature08441/">A role for a neo-sex chromosome in stickleback speciation.</a><span class="pmeta">Kitano J et al. · 2009</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_bioinformatics_btp324/">Fast and accurate short read alignment with Burrows-Wheeler transform.</a><span class="pmeta">Li H et al. · 2009</span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1534_genetics_116_192690/">10.1534/genetics.116.192690</a><span class="pmeta"></span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_sysbio_syu131/">10.1093/sysbio/syu131</a><span class="pmeta"></span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1017_s0016672300014051/">10.1017/s0016672300014051</a><span class="pmeta"></span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1007_978_1_4939_8775_7_2/">10.1007/978-1-4939-8775-7_2</a><span class="pmeta"></span>
+        </li>
+      
+        <li>
+          <a href="/knowledge/papers/10_1093_bioinformatics_bty191/">10.1093/bioinformatics/bty191</a><span class="pmeta"></span>
+        </li>
+      
+      </ul>
+    
+  </div>
+</details>
 
-<p>
-  Citable findings extracted from individual papers — verbatim quotes with page
-  references, the reasoning for why each finding is worth citing, and the
-  counter-argument or limitation to watch for.
-</p>
-
-<ul>
-
-
-  <li><em>No papers ingested yet. Tealc will populate this section as the first seed paper runs through the pipeline.</em></li>
-
-</ul>
-
-<h3><a href="/knowledge/topics/">Topics</a></h3>
-
-<p>
-  State-of-understanding pages — synthesized from findings across many papers,
-  updated each time a new paper lands that touches the topic. Contradictions
-  between papers are flagged explicitly rather than averaged away.
-</p>
-
-<ul>
-
-
-  <li><em>No topic pages yet.</em></li>
-
-</ul>
-
-<h3><a href="/knowledge/repos/">Repositories</a></h3>
-
-<p>
-  Watched GitHub repositories — the lab's own code plus an explicit allowlist of
-  collaborator and student repos. Each repo page shows recent activity, open
-  issues, and the papers whose code lives there. Private repos never render here;
-  they live in the private notebook.
-</p>
-
-<ul>
-
-
-  <li><em>No repos synced yet.</em></li>
-
-</ul>
+<!-- ── Repositories ── -->
+<details class="layer">
+  <summary>
+    <span class="layer-summary-text">
+      <span class="sum-kicker">Repositories</span>
+      <span class="sum-head">Watched GitHub repositories — lab code and key collaborator repos</span>
+      <span class="sum-trail">Each repo page shows README summary, recent commit activity, and cross-links to the papers whose analyses live in that code. Private repos never render here.</span>
+    </span>
+  </summary>
+  <div class="layer-body">
+    
+      <p><em>No repositories synced yet.</em></p>
+    
+  </div>
+</details>
 
 <hr />
 
@@ -198,6 +870,8 @@
 <div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
 
 <script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
 
 </body>
 </html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epistasis</title>
+<meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:title" content="Epistasis">
+<meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body class="wiki">
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Science</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; drift</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI in science</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/tealc-build.html">Build your own</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Data &amp; tools</span>
+      <ul>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+<!-- tealc:auto-start -->
+<h1 id="epistasis">Epistasis</h1>
+
+<h2 id="current-understanding">Current understanding</h2>
+
+<p>Epistasis — the phenomenon in which the effect of one locus depends on the genotypic state at one or more other loci — is a central but methodologically contested feature of quantitative genetics. Detecting epistatic composite genetic effects (CGEs) in line-cross analyses (LCA) has historically relied on the joint-scaling (J-S) test, a hypothesis-testing framework that evaluates whether additive and dominance parameters alone are sufficient to explain observed means across crosses. Growing evidence suggests this approach systematically underdetects epistasis relative to information-theoretic alternatives.</p>
+
+<p>Using the SAGA (Statistically Appropriate Genetic Architecture) framework, which applies information-theoretic model selection rather than null-hypothesis significance testing, re-analysis of 22 empirical LCA datasets revealed that 11 epistatic CGEs across 9 datasets carried high variable importance (vi &gt; 0.5) yet were never flagged by the J-S test. <a href="/knowledge/papers/10_1111_evo_12844/#finding-1">Blackmon &amp; Demuth 2016, Finding 1</a> This detection gap is now contextualized by a much larger synthesis: across 1,606 LCA datasets analyzed under SAGA, roughly 19% failed to meet information-theoretic thresholds, meaning they yielded no genetic effects with sufficient support under model averaging — a result that raises concerns about the reliability of legacy forward-selection inferences. <a href="/knowledge/papers/10_1093_evolut_qpae003/#finding-3">Wright was right: leveraging 2024, Finding 3</a></p>
+
+<p>A separate concern is whether LCA inferences of epistasis are real or merely artifacts of incomplete allele fixation in the parental lines — a problem called allelic dispersion. Forward-time simulations specifically designed to test this artifact in <em>Tribolium castaneum</em> dispersal lines show that dispersion can produce spurious epistatic signals, but only at magnitudes far smaller than what is observed empirically. Simulated datasets produced an epistatic-to-additive ratio of only 0–0.33, whereas the empirical dataset yielded a ratio of 5.27 — a roughly 16-fold difference — strongly suggesting that inferred epistasis in that system reflects genuine genetic architecture. <a href="/knowledge/papers/10_1093_jhered_esaa030/#finding-2">Ruckman &amp; Blackmon 2020, Finding 2</a></p>
+
+<p>The prevalence of epistasis extends beyond specific systems and into broad cross-taxonomic patterns. Across 488 species-trait pairings, life-history traits show a significantly greater epistatic contribution to trait divergence than morphological traits (mean difference of 0.06, empirical p-value = .024), broadly consistent with the classical prediction that fitness-associated traits harbor more nonadditive variance. <a href="/knowledge/papers/10_1093_evolut_qpae003/#finding-1">Wright was right: leveraging 2024, Finding 1</a> At the same time, animals exhibit greater epistatic contributions to trait divergence than plants (mean difference of −0.08, empirical p-value = .01), pointing to a taxonomic dimension in how genetic architecture is organized. <a href="/knowledge/papers/10_1093_evolut_qpae003/#finding-2">Wright was right: leveraging 2024, Finding 2</a> Within plants specifically, <em>Solanum pennellii</em> × <em>S. lycopersicum</em> crosses found that four of eight morphological traits had epistatic contributions exceeding 50%, underscoring that even in the plant clade, epistasis can dominate trait divergence in particular lineages. <a href="/knowledge/papers/10_7717_peerj_17985/#finding-1">Assessing the opportunity for 2024, Finding 1</a></p>
+
+<p>Together, these results suggest that epistasis in quantitative traits is (1) more prevalent than J-S-based studies imply, (2) not easily explained away as a methodological artifact of how selection lines are constructed, (3) detectable across phylogenetically disparate systems, and (4) structured by both trait category and broad taxonomic membership.</p>
+
+<h2 id="supporting-evidence">Supporting evidence</h2>
+
+<ul>
+  <li>
+    <p>Across 22 re-analyzed empirical LCA datasets, SAGA identified 11 epistatic CGEs (in 9 datasets) with variable importance &gt; 0.5 that the joint-scaling test had not identified, directly quantifying the detection gap. <a href="/knowledge/papers/10_1111_evo_12844/#finding-1">Blackmon &amp; Demuth 2016, Finding 1</a></p>
+  </li>
+  <li>
+    <p>Of 1,606 LCA datasets analyzed under SAGA, 81% met information-theoretic thresholds; the remaining ~19% did not, indicating that a non-trivial fraction of legacy LCA inferences may lack robust support under rigorous model selection. <a href="/knowledge/papers/10_1093_evolut_qpae003/#finding-3">Wright was right: leveraging 2024, Finding 3</a></p>
+  </li>
+  <li>
+    <p>Life-history traits showed a greater proportion of epistatic contribution to trait divergence than morphological traits (mean difference 0.06, p = .024) across 488 species-trait pairings, supporting classical expectations about fitness-trait architecture. <a href="/knowledge/papers/10_1093_evolut_qpae003/#finding-1">Wright was right: leveraging 2024, Finding 1</a></p>
+  </li>
+  <li>
+    <p>Animals exhibited significantly higher epistatic contributions to trait divergence than plants (mean difference −0.08, p = .01) in the same large-scale survey. <a href="/knowledge/papers/10_1093_evolut_qpae003/#finding-2">Wright was right: leveraging 2024, Finding 2</a></p>
+  </li>
+  <li>
+    <p>Forward-time simulations of allelic dispersion in short-term artificial selection lines yielded an epistatic:additive ratio of 0–0.33, far below the empirically observed ratio of 5.27 in <em>T. castaneum</em> dispersal, indicating that dispersion artifacts alone cannot explain large empirical epistatic signals. <a href="/knowledge/papers/10_1093_jhered_esaa030/#finding-2">Ruckman &amp; Blackmon 2020, Finding 2</a></p>
+  </li>
+  <li>
+    <p>In <em>S. pennellii</em> × <em>S. lycopersicum</em> crosses, four of eight morphological traits had epistatic contributions greater than 0.5, indicating epistasis-dominated genetic architectures for leaf shape and size traits. <a href="/knowledge/papers/10_7717_peerj_17985/#finding-1">Assessing the opportunity for 2024, Finding 1</a></p>
+  </li>
+</ul>
+
+<h2 id="contradictions--open-disagreements">Contradictions / open disagreements</h2>
+
+<p><strong>Detection philosophy.</strong> The J-S test and SAGA operate under fundamentally different inferential philosophies. The 11 “missed” epistatic effects from the 2016 SAGA re-analysis were identified using a vi &gt; 0.5 threshold chosen by the authors, not tied to a controlled false-discovery rate. A researcher committed to significance-based inference could argue that J-S is not missing real epistasis but is correctly withholding support for marginal effects. The 19% dataset failure rate under SAGA likewise conflates “not supported under this framework” with “false positive,” which may overstate the implication for legacy work.</p>
+
+<p><strong>Simulation scope.</strong> The simulation-based dismissal of allelic dispersion uses 20 unlinked biallelic loci with all dispersal alleles dominant, matched to specific empirical lines. Different numbers of loci, linkage structures, dominance relationships, or starting allele frequencies could produce higher false-positive epistatic magnitudes.</p>
+
+<p><strong>Taxonomic confounds in the plant–animal comparison.</strong> The finding that animals show greater epistatic contributions than plants is plausible but potentially confounded: the plant sample is dominated by domesticated crop crosses and selfing species, which may have reduced standing genetic variation and thus lower detectable epistasis, confounding the clade comparison with mating system and domestication history. <a href="/knowledge/papers/10_1093_evolut_qpae003/#finding-2">Wright was right: leveraging 2024, Finding 2</a></p>
+
+<p><strong>Trait-category subjectivity.</strong> The life-history vs. morphological contrast (mean difference 0.06) is small in absolute terms, and the assignment of traits to categories involves subjective judgment. LCA is known to be conservative in detecting epistasis under sparse data, so the true contrast could be under- or overestimated. <a href="/knowledge/papers/10_1093_evolut_qpae003/#finding-1">Wright was right: leveraging 2024, Finding 1</a></p>
+
+<p><strong>Hybridization artifacts in plant LCA.</strong> The Solanum finding rests on only five cohorts from two parental strains. LCA can infer epistasis arising from novel multi-locus genotypes created by crossing that would never co-occur during natural divergence, meaning signals may partly reflect properties of hybrid genotype space.</p>
+
+<h2 id="tealcs-citation-neighborhood-suggestions">Tealc’s citation-neighborhood suggestions</h2>
+
+<ul>
+  <li>Lynch &amp; Walsh (1998) <em>Genetics and Analysis of Quantitative Traits</em> — canonical treatment of composite genetic effects in LCA, against which SAGA results should be benchmarked.</li>
+  <li>Burnham &amp; Anderson (2002) <em>Model Selection and Multimodel Inference</em> — foundational text for the AIC-based variable importance framework used by SAGA.</li>
+  <li>Crnokrak &amp; Roff (1995) — original empirical paper predicting that fitness-associated traits harbor more nonadditive variance; the 2024 wright findings directly test this prediction at scale.</li>
+  <li>Demuth &amp; Wade (2007a/b) — primary source for the majority of the originally re-analyzed 22 datasets; relevant for assessing the representativeness of the convenience sample.</li>
+</ul>
+
+<h2 id="related-on-the-blackmon-lab-site">Related on the Blackmon Lab site</h2>
+
+<ul>
+  <li><a href="/knowledge/papers/10_1111_evo_12844/">Blackmon &amp; Demuth 2016</a></li>
+  <li><a href="/knowledge/papers/10_1093_jhered_esaa030/">Ruckman &amp; Blackmon 2020</a></li>
+  <li><a href="/knowledge/papers/10_7717_peerj_17985/">Assessing the opportunity for 2024</a></li>
+  <li><a href="/knowledge/papers/10_1093_evolut_qpae003/">Wright was right: leveraging 2024</a>
+<!-- tealc:auto-end --></li>
+</ul>
+
+<!-- tealc:related-start -->
+<h2 id="related-topics-on-this-site">Related topics on this site</h2>
+
+<ul>
+  <li><a href="/knowledge/topics/line_cross_analysis/">Line Cross Analysis</a> — 4 shared papers
+<!-- tealc:related-end --></li>
+</ul>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
+
+</body>
+</html>

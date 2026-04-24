@@ -6,9 +6,20 @@ last_updated: 2026-04-21T17:24:42.719205+00:00
 papers_supporting: [30b906720b2f4fc5c7b3d85404312dd14cd178f0f94585de42189e9712f1ef22]
 permalink: /knowledge/topics/coleoptera_karyotype/
 category: "Insects & Coleoptera"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Coleoptera Karyotype
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">1 source</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

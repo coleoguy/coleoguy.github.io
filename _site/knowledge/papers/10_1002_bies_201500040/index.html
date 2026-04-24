@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution</title>
+<meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:title" content="The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution">
+<meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body class="wiki">
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Science</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; drift</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI in science</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/tealc-build.html">Build your own</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Data &amp; tools</span>
+      <ul>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+<h1 id="the-fragile-y-hypothesis-y-chromosome-aneuploidy-as-a-selective-pressure-in-sex-chromosome-and-meiotic-mechanism-evolution">The fragile Y hypothesis: Y chromosome aneuploidy as a selective pressure in sex chromosome and meiotic mechanism evolution</h1>
+
+<h2 id="summary">Summary</h2>
+
+<p><em>Ingested 2026-04-21. 3 findings extracted and verified.</em></p>
+
+<h2 id="findings-worth-citing">Findings worth citing</h2>
+
+<p><a id="finding-1"></a></p>
+<h3 id="finding-1--the-fragile-y-hypothesis-proposes-a-negative-correlation-between-the-size-of-the-recombining-region-par-and-the-rate-of-y-chromosome-aneuploidy-in-species-with-chiasmatic-meiosis">Finding 1 — The fragile Y hypothesis proposes a negative correlation between the size of the recombining region (PAR) and the rate of Y-chromosome aneuploidy in species with chiasmatic meiosis.</h3>
+
+<blockquote>
+  <p>The fragile Y hypothesis proposes that in species with chiasmatic meiosis the rate of Y-chromosome aneuploidy and the size of the recombining region have a negative correlation.
+— p. 942</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> This is the core theoretical claim of the paper and is the canonical statement cited by downstream work on sex chromosome turnover, PAR evolution, and meiotic mechanism evolution.</p>
+
+<p><em>Counter / limitation:</em> The hypothesis is largely supported by correlational phylogenetic patterns and indirect proxies (chromosome number for PAR size); direct measurements of PAR size and aneuploidy rates across species are sparse, so the correlation remains to be rigorously quantified.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/fragile_y_hypothesis/">fragile_y_hypothesis</a>, <a href="/knowledge/topics/sex_chromosome_evolution/">sex_chromosome_evolution</a></p>
+
+<p><a id="finding-2"></a></p>
+<h3 id="finding-2--achiasmatic-clades-within-adephaga-exhibit-significantly-fewer-xo-taxa-than-expected-with-trechitae-showing-3-observed-xo-species-versus-16-expected-and-cicindelinaecolyrinae-showing-1-observed-versus-6-expected-under-the-overall-adephaga-rate-of-y-loss">Finding 2 — Achiasmatic clades within Adephaga exhibit significantly fewer XO taxa than expected, with Trechitae showing 3 observed XO species versus 16 expected and Cicindelinae+Colyrinae showing 1 observed versus 6 expected under the overall Adephaga rate of Y loss.</h3>
+
+<blockquote>
+  <p>Among the 45 taxa within Trechitae, simulations suggest we should expect 16 XO species; however, only three are observed and only 8% of simulations resulted in three or fewer XO taxa. We ﬁnd a similar pattern in Cicindelinae þ Colyrinae. Among the 21 taxa, only one is XO but simulations suggest we should expect six and only 5% of simulations results in one or zero XO taxa.
+— p. 946</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> This quantitative within-suborder comparison grounds the claim that alternative segregation mechanisms reduce Y loss rates, central to arguments linking meiotic mechanism evolution to sex chromosome stability.</p>
+
+<p><em>Counter / limitation:</em> The test assumes a single background rate of Y loss across all Adephaga; if loss rates vary for reasons other than meiotic mechanism (e.g. lineage-specific demography or karyotypic constraints), the ‘expected’ counts are biased and the inference weakens.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/fragile_y_hypothesis/">fragile_y_hypothesis</a>, <a href="/knowledge/topics/karyotype_evolution_overview/">karyotype_evolution_overview</a>, <a href="/knowledge/topics/coleoptera_genomics/">coleoptera_genomics</a></p>
+
+<p><a id="finding-3"></a></p>
+<h3 id="finding-3--turner-syndrome-xo-occurs-in-approximately-3-of-human-conceptions-and-causes-about-99-prenatal-mortality-indicating-a-high-rate-of-y-mis-segregation-in-humans-despite-recent-arguments-for-long-term-y-stability">Finding 3 — Turner syndrome (XO) occurs in approximately 3% of human conceptions and causes about 99% prenatal mortality, indicating a high rate of Y mis-segregation in humans despite recent arguments for long-term Y stability.</h3>
+
+<blockquote>
+  <p>TS occurs in /C24 3% of all conceptions, a high frequency for a mutation that acts effectively as a dominant lethal (TS causes 99% prenatal mortality)
+— p. 948</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> This quantitative anchor grounds the paper’s argument that humans already experience high rates of Y mis-segregation pressure, used to challenge recent claims of long-term human Y stability. The 3% conception frequency paired with 99% prenatal mortality illustrates the severe selective cost of ongoing Y aneuploidy in humans.</p>
+
+<p><em>Counter / limitation:</em> The 3% conception figure comes from older cytogenetic surveys with ascertainment limitations, and Turner syndrome incidence conflates paternal meiotic non-disjunction with maternal errors and post-zygotic X-chromosome loss events, so it only indirectly measures Y mis-segregation rate specifically. The paper itself notes that most TS survivors are mosaic, further complicating interpretation.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/fragile_y_hypothesis/">fragile_y_hypothesis</a>, <a href="/knowledge/topics/sex_chromosome_evolution/">sex_chromosome_evolution</a></p>
+
+<!-- tealc:related-start -->
+<h2 id="read-the-paper">Read the paper</h2>
+
+<p><a href="https://doi.org/10.1002/bies.201500040">doi.org/10.1002/bies.201500040</a></p>
+
+<h2 id="related-papers-on-this-site">Related papers on this site</h2>
+
+<ul>
+  <li><a href="/knowledge/papers/10_1098_rsos_240755/">Genome assembly of the southern pine beetle (Dendroctonus fr…</a> — 3 shared topics (coleoptera_genomics, karyotype_evolution_overview, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_7717_peerj_17740/">Worse than nothing at all: the inequality of fusions joining…</a> — 3 shared topics (fragile_y_hypothesis, karyotype_evolution_overview, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1098_rsbl_2020_0648/">The probability of fusions joining sex chromosomes and autos…</a> — 3 shared topics (fragile_y_hypothesis, karyotype_evolution_overview, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1002_ece3_73483/">Chien et al. 2026</a> — 3 shared topics (coleoptera_genomics, fragile_y_hypothesis, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1093_jhered_esae001/">Drift drives the evolution of chromosome number I: The impac…</a> — 2 shared topics (coleoptera_genomics, karyotype_evolution_overview)</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_114_164269/">Blackmon &amp; Demuth 2014</a> — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1111_evo_12792/">Blackmon et al. 2015</a> — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_117_300382/">Blackmon &amp; Brandvain 2017</a> — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1093_jhered_esw047/">Blackmon et al. 2017</a> — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1098_rspb_2020_1388/">Sylvester et al. 2020</a> — 2 shared topics (karyotype_evolution_overview, sex_chromosome_evolution)</li>
+</ul>
+
+<h2 id="other-papers-by-these-authors">Other papers by these authors</h2>
+
+<ul>
+  <li><a href="/knowledge/authors/blackmon_h/">Blackmon H</a></li>
+  <li><a href="/knowledge/authors/demuth_jp/">Demuth JP</a>
+<!-- tealc:related-end --></li>
+</ul>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
+
+</body>
+</html>

@@ -6,9 +6,20 @@ last_updated: 2026-04-22T12:50:25.486983+00:00
 papers_supporting: [10.1038/nature08441, cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6]
 permalink: /knowledge/topics/reproductive_isolation/
 category: "Speciation & macroevolution"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Reproductive Isolation
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-22</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">2 sources</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

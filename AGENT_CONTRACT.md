@@ -1,7 +1,27 @@
 # Agent Contract — Blackmon Lab Knowledge Wiki
 
-**Version:** 1.0 (Phase 2 foundation)
+**Version:** 5.0 (V5 — teaching-grade wiki with concepts, methods, projects, contradictions, open questions)
 **Applies to:** `/knowledge/` and adjacent machine-readable files in `coleoguy.github.io`
+
+---
+
+## What V5 adds over V1
+
+V5 expands the wiki from a topic-and-paper corpus into a full teaching resource with six content surfaces, three client-side pedagogy features, and per-page provenance. New surfaces:
+
+- `/knowledge/concepts/<slug>/` — per-jargon definition cards with hover tooltips on first-mention across topic pages
+- `/knowledge/methods/<slug>/` — method reference pages with runnable R / Python code + when-to-use-it / gotchas
+- `/knowledge/projects/<id>/` — auto-mirrored from `research_projects` table (Tealc's `projects_mirror.py`, daily 4am CT)
+- `/knowledge/questions/` — auto-mirrored from `hypothesis_proposals` table (Tealc's `open_questions_index.py`, daily 6am)
+- `/knowledge/contradictions/` — aggregated `## Contradictions` sections from topic pages (Tealc's `contradictions_index.py`, daily 5am)
+
+Per-page features:
+
+- **Freshness banner** under every H1 (`<!-- tealc:freshness-start --> ... <!-- tealc:freshness-end -->`) — shows composed-date, source count, last-reviewed date for topic pages; ingested-date + fingerprint + finding-count for paper pages
+- **Dual-register lead** — paired `<div data-register="researcher">` / `<div data-register="student">` blocks inside `<!-- tealc:lead-start --> ... <!-- tealc:lead-end -->`. JS toggle reads `localStorage`, defaults researcher. Numeric parity required between registers by the validator.
+- **Concept hover tooltips** — first-mention of any term in `/knowledge/data/concepts.json` gets auto-wrapped into a `.concept-link` by `assets/js/concept-tooltips.js`
+- **Inline quiz** — `assets/js/wiki-quiz.js` generates 3–5 fill-in-the-blank MC questions from the page's inline citations
+- **Anki flashcard export** — `assets/js/wiki-flashcards.js` emits tab-separated text for Anki's File → Import
 
 ---
 

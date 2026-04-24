@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sex chromosome evolution</title>
+<meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:title" content="Sex chromosome evolution">
+<meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body class="wiki">
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Science</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; drift</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI in science</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/tealc-build.html">Build your own</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Data &amp; tools</span>
+      <ul>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+<h1 id="sex-chromosome-evolution">Sex Chromosome Evolution</h1>
+
+<!-- tealc:lead-start -->
+<div class="wiki-lead" data-active="researcher">
+<div data-register="researcher">
+
+    <p>Sex chromosomes evolve from ordinary autosomes through a process heavily shaped by sexual antagonism — the tension between alleles that benefit one sex at a cost to the other. At the broadest scale, across 10,754 surveyed plant and animal species (excluding multi-sex-chromosome systems), 67% exhibit XX/XY systems and ~28% exhibit XX/XO systems; only a single species is known to have a YO/WO univalent sex-specific chromosome (<a href="/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1">Why not Y naught 2022, Finding 1</a>). Within insects specifically, male heterogamety (XY or XO) has been documented in 24 of 28 insect orders, encompassing 77% of sexually reproducing insect species investigated (<a href="/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>), and likelihood-based ancestral state reconstruction across a &gt;13,000-species database places the probability of male heterogamety at the insect root at 100% (<a href="/knowledge/papers/10_1093_jhered_esw047/#finding-1">Blackmon et al. 2017, Finding 1</a>).</p>
+
+  </div>
+<div data-register="student">
+
+    <p>Sex chromosomes — the X, Y, Z, and W chromosomes that differ between sexes — start out as ordinary <a href="/knowledge/concepts/autosome/">autosomes</a> (non-sex chromosomes) and change over time through a process driven largely by <a href="/knowledge/concepts/sexual_antagonism/">sexual antagonism</a> (genetic conflict between what benefits males versus what benefits females). A survey of 10,754 plant and animal species showed that 67% have an XX/XY system (where males carry a Y chromosome) and ~28% have an XX/XO system (where males simply lack a second sex chromosome); only one species is known to have a YO/WO system in which the sex-specific chromosome exists without a partner (<a href="/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1">Why not Y naught 2022, Finding 1</a>). Looking at insects in particular, <a href="/knowledge/concepts/heterogamety/">male heterogamety</a> (XY or XO males) has been found in 24 of 28 insect orders, covering 77% of sexually reproducing insect species studied (<a href="/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>). A statistical reconstruction of ancestral states across a database of more than 13,000 insect species puts the probability of male heterogamety at the root of all insects at 100% — meaning the very first insects almost certainly had males that were XY or XO (<a href="/knowledge/papers/10_1093_jhered_esw047/#finding-1">Blackmon et al. 2017, Finding 1</a>).</p>
+
+  </div>
+</div>
+<!-- tealc:lead-end -->
+
+<!-- tealc:auto-start -->
+
+<h2 id="current-understanding">Current understanding</h2>
+
+<p>Sex chromosomes evolve from ordinary autosomes through a process heavily shaped by sexual antagonism — the tension between alleles that benefit one sex at a cost to the other. At the broadest scale, across 10,754 surveyed plant and animal species (excluding multi-sex-chromosome systems), 67% exhibit XX/XY systems and ~28% exhibit XX/XO systems; only a single species is known to have a YO/WO univalent sex-specific chromosome (<a href="/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1">Why not Y naught 2022, Finding 1</a>). Within insects specifically, male heterogamety (XY or XO) has been documented in 24 of 28 insect orders, encompassing 77% of sexually reproducing insect species investigated (<a href="/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>), and likelihood-based ancestral state reconstruction across a &gt;13,000-species database places the probability of male heterogamety at the insect root at 100% (<a href="/knowledge/papers/10_1093_jhered_esw047/#finding-1">Blackmon et al. 2017, Finding 1</a>).</p>
+
+<p>The near-absence of YO/WO univalent systems is not coincidental: sexually antagonistic selection favoring fusions between autosomes carrying SA loci and a univalent Y or W chromosome would convert such systems into conventional XY or ZW systems (<a href="/knowledge/papers/10_1038_s41437_022_00543_z/#finding-2">Why not Y naught 2022, Finding 2</a>). The analytic foundations for why SA selection favors such fusions were worked out by Charlesworth &amp; Charlesworth (1980): a necessary condition is that alleles at the autosomal locus are maintained at different frequencies in the two sexes, and under that framework Y-autosome fusions are predicted to increase in frequency at approximately three times the initial rate of X-autosome fusions (<a href="/knowledge/papers/10_1017_s0016672300014051/#finding-1">10.1017/s0016672300014051, Finding 1</a>; <a href="/knowledge/papers/10_1017_s0016672300014051/#finding-2">10.1017/s0016672300014051, Finding 2</a>). Simulation work recovers a qualitatively similar but quantitatively smaller asymmetry for non-PAR fusions (<a href="/knowledge/papers/10_7717_peerj_17740/#finding-3">Worse than nothing at 2024, Finding 3</a>).</p>
+
+<p>The empirical scale of this asymmetry is striking. In fishes, 41% of XY species have fused sex chromosomes versus only 5% of ZW species; in reptiles the numbers are 33% versus 3% (Fisher’s exact test P &lt; 0.001 in both cases) (<a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-1">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 1</a>). Phylogenetic Markov chain analyses that account for shared evolutionary history confirm that Y-autosome fusions establish at a higher rate than X-, Z-, or W-autosome fusions across both clades (<a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-2">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 2</a>). The leading mechanistic explanation from that same study, however, is not SA selection but rather that fusions are slightly deleterious and fix on the Y disproportionately due to male-biased mutation rates and the reduced effective population size of the Y chromosome (<a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-3">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 3</a>) — a conclusion in tension with the SA-fusion framework.</p>
+
+<p>Not all fusions are equally favored under SA models. Only non-PAR fusions are advantaged; fusions to the PAR are actively disfavored because obligate PAR recombination reconstitutes maladaptive genotypes each generation (<a href="/knowledge/papers/10_7717_peerj_17740/#finding-1">Worse than nothing at 2024, Finding 1</a>; <a href="/knowledge/papers/10_7717_peerj_17740/#finding-2">Worse than nothing at 2024, Finding 2</a>). Whether SA selection drives an <em>excess</em> of sex-chromosome–autosome fusions is also clade-specific: <em>Drosophila</em> show a pronounced deficit of SA-fusions (observed proportion 0.155, CI 0.12–0.22, vs. null 0.43) (<a href="/knowledge/papers/10_1098_rsbl_2020_0648/#finding-1">The probability of fusions 2020, Finding 1</a>), while <em>Habronattus</em> jumping spiders show a highly significant excess (8 of 10 fusions are SA-fusions, p &lt; 10⁻⁵) (<a href="/knowledge/papers/10_1098_rsbl_2020_0648/#finding-2">The probability of fusions 2020, Finding 2</a>).</p>
+
+<p>X–autosome fusions are documented as a major route of neo-sex chromosome origin. In Polyneoptera, 94% (16/17) of genera containing both XO and XY species show lower mean autosome numbers in XY species (<a href="/knowledge/papers/10_1098_rspb_2020_1388/#finding-1">Sylvester et al. 2020, Finding 1</a>), and in Adephaga beetles at least 49% of Y-chromosome gains co-occur with reductions in autosome number (<a href="/knowledge/papers/10_1534_genetics_114_164269/#finding-2">Blackmon &amp; Demuth 2014, Finding 2</a>). Quantifying sex chromosome sizes empirically requires care: because a flow-cytometric 1C value for a heterogametic individual is the average of two genetically distinct gametes, recovering individual X and Y (or Z and W) sizes demands doubling and subtracting the sex-class estimates — a correction that applies equally to X/O, X/Y, and Z/W systems (<a href="/knowledge/papers/10_1007_978_1_4939_8775_7_2/#finding-1">10.1007/978-1-4939-8775-7_2, Finding 1</a>).</p>
+
+<p>Once a neo-sex chromosome forms, Y degeneration can be rapid. In <em>Drosophila miranda</em>, a Y–autosome fusion ~1–2 million years ago generated a neo-Y that has already lost or pseudogenized 40% of its ancestral autosomal genes and accumulated transposable elements (<a href="/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-2">Blackmon &amp; Demuth 2015, Finding 2</a>). The hemizygous X triggers meiotic sex chromosome inactivation (MSCI), creating strong selection to export X-linked genes to autosomes — reflected in a statistically confirmed out-of-the-X excess of retrogenes in both humans and <em>Drosophila</em> (p ≈ 0 from Monte Carlo tests) (<a href="/knowledge/papers/10_7717_peerj_12822/#finding-1">Lo &amp; Blackmon 2022, Finding 1</a>).</p>
+
+<p>Beyond internal degeneration dynamics, young neo-sex chromosomes can accumulate speciation loci remarkably quickly. In threespine sticklebacks, the neo-X chromosome (derived from an autosomal fusion to LG19) carries QTLs for male courtship display traits — dorsal pricking behavior and first dorsal spine length — that contribute to behavioral reproductive isolation between Japan Sea and Pacific Ocean forms (<a href="/knowledge/papers/10_1038_nature08441/#finding-1">A role for a neo-sex chromosome in stickleback speciation., Finding 1</a>). Hybrid male sterility, however, maps to the ancestral X (LG19) but not to the neo-X, suggesting that chromosome age and the degree of degeneration determine which categories of reproductive barrier accumulate on a given sex chromosome (<a href="/knowledge/papers/10_1038_nature08441/#finding-2">A role for a neo-sex chromosome in stickleback speciation., Finding 2</a>). This age-dependent partitioning of speciation effects has not yet been tested systematically across other systems.</p>
+
+<p>The theoretical lynchpin explaining Y loss is the <em>fragile-Y hypothesis</em>: PAR size and Y aneuploidy rate are negatively correlated in species with chiasmatic meiosis, so a larger PAR accelerates Y degeneration (<a href="/knowledge/papers/10_1002_bies_201500040/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>). Polyphaga Xy+ systems, which are entirely non-recombining, lose the Y approximately 3.5× less frequently than XY-PAR systems (<a href="/knowledge/papers/10_1534_genetics_114_164269/#finding-1">Blackmon &amp; Demuth 2014, Finding 1</a>). Y inversions fix under broader parameters and lower selection coefficients than comparable X-linked inversions (<a href="/knowledge/papers/10_1534_genetics_117_300382/#finding-1">Blackmon &amp; Brandvain 2017, Finding 1</a>); specifically, SA selection can fix Y inversions that increase aneuploidy by ~4–6% when the male-beneficial allele is dominant and s ≥ 0.2 (<a href="/knowledge/papers/10_1534_genetics_117_300382/#finding-2">Blackmon &amp; Brandvain 2017, Finding 2</a>). When the male-beneficial allele is recessive (h &lt; ~0.3), X inversions capturing a female-beneficial allele instead persist as stable polymorphisms rather than fixing (<a href="/knowledge/papers/10_1534_genetics_117_300382/#finding-3">Blackmon &amp; Brandvain 2017, Finding 3</a>), helping explain the asymmetric accumulation of inversions on Y relative to X.</p>
+
+<p>Achiasmy-causing mutations fix ~4× faster on the Y than on the X and ~18× faster than on autosomes under sexual antagonism (<a href="/knowledge/papers/10_1093_g3journal_jkaf217/#finding-1">Barboza &amp; Blackmon 2025, Finding 1</a>), with the dominant selective driver shifting from sexual antagonism in young systems to heteromorphy-dependent aneuploidy in highly diverged ones (<a href="/knowledge/papers/10_1093_g3journal_jkaf217/#finding-2">Barboza &amp; Blackmon 2025, Finding 2</a>). Empirical grounding comes from <em>Cheirotonus formosanus</em>, where a 1.1 Mbp scaffold with near-zero female coverage and ~0.5× male coverage represents one of the first characterized beetle Y scaffolds (<a href="/knowledge/papers/10_1002_ece3_73483/#finding-1">Chien et al. 2026, Finding 1</a>), and from haplodiploid mites, which carry ~2n=5 fewer chromosomes than diplodiploid relatives (<a href="/knowledge/papers/10_1111_evo_12792/#finding-1">Blackmon et al. 2015, Finding 1</a>).</p>
+
+<p>The insect sex chromosomes recovered across these studies did not descend from a single common ancestor. The X chromosomes of <em>D. melanogaster</em>, <em>A. gambiae</em>, <em>T. castaneum</em>, and the Z of <em>B. mori</em> are each homologous to unique autosomes in the other species (<a href="/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-3">Blackmon &amp; Demuth 2015, Finding 3</a>). Within beetles, the nine ancestral Coleopteran Stevens elements are conserved across the southern pine beetle (SPB), mountain pine beetle (MPB), and <em>T. castaneum</em>, and the putative SPB X chromosome is syntenic with the neoX of <em>Dendroctonus ponderosae</em> (<a href="/knowledge/papers/10_1098_rsos_240755/#finding-1">Genome assembly of the 2024, Finding 1</a>) — some bark beetle sex chromosomes share an autosomal precursor while others represent derived rearrangements.</p>
+
+<h2 id="supporting-evidence">Supporting evidence</h2>
+
+<ul>
+  <li><a href="/knowledge/papers/10_1017_s0016672300014051/#finding-1">10.1017/s0016672300014051, Finding 1</a>: Sex-differential allele frequencies at the autosomal locus are the necessary condition for SA selection to favor a sex-chromosome–autosome fusion.</li>
+  <li><a href="/knowledge/papers/10_1017_s0016672300014051/#finding-2">10.1017/s0016672300014051, Finding 2</a>: Y-autosome fusions increase at ~3× the initial rate of X-autosome fusions under equivalent parameter values.</li>
+  <li><a href="/knowledge/papers/10_1038_s41437_022_00543_z/#finding-1">Why not Y naught 2022, Finding 1</a>: Across 10,754 species, 67% are XX/XY, ~28% are XX/XO, and only one YO/WO univalent system is known.</li>
+  <li><a href="/knowledge/papers/10_1038_s41437_022_00543_z/#finding-2">Why not Y naught 2022, Finding 2</a>: SA-driven fusions between autosomes and univalent Y/W chromosomes would convert YO/WO systems to XY/ZW, explaining their near-absence.</li>
+  <li><a href="/knowledge/papers/10_1093_jhered_esw047/#finding-1">Blackmon et al. 2017, Finding 1</a>: Ancestral-state reconstruction places 100% posterior probability on male heterogamety at the insect root.</li>
+  <li><a href="/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>: Male heterogamety documented in 24/28 insect orders, encompassing 77% of sexually reproducing insect species investigated.</li>
+  <li><a href="/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-2">Blackmon &amp; Demuth 2015, Finding 2</a>: <em>D. miranda</em> neo-Y (~1–2 Mya) has pseudogenized or lost 40% of ancestral autosomal genes and accumulated transposable elements.</li>
+  <li><a href="/knowledge/papers/10_1016_j_cois_2014_12_003/#finding-3">Blackmon &amp; Demuth 2015, Finding 3</a>: X chromosomes of <em>D. melanogaster</em>, <em>A. gambiae</em>, <em>T. castaneum</em>, and the Z of <em>B. mori</em> are each homologous to unique autosomes — independent origins of insect sex chromosomes.</li>
+  <li><a href="/knowledge/papers/10_7717_peerj_12822/#finding-1">Lo &amp; Blackmon 2022, Finding 1</a>: Out-of-the-X excess of retrogenes confirmed in humans and <em>D. melanogaster</em> with p ≈ 0 (Monte Carlo), validating the MSCI hypothesis.</li>
+  <li><a href="/knowledge/papers/10_1002_bies_201500040/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>: Canonical statement of the fragile-Y hypothesis — PAR size and Y aneuploidy rate are negatively correlated in chiasmatic species.</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_114_164269/#finding-1">Blackmon &amp; Demuth 2014, Finding 1</a>: Polyphaga Xy+ systems lose the Y ~3.5× less frequently than XY-PAR systems.</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_114_164269/#finding-2">Blackmon &amp; Demuth 2014, Finding 2</a>: Adephaga Y chromosomes turn over at ~0.57 gains and losses per 100 Myr; ≥49% of gains co-occur with autosome-number reductions consistent with X–autosome fusions.</li>
+  <li><a href="/knowledge/papers/10_1098_rspb_2020_1388/#finding-1">Sylvester et al. 2020, Finding 1</a>: In Polyneoptera, 94% (16/17) of genera with both XO and XY species show lower mean autosome numbers in XY species, supporting fusions as the dominant route for XO→XY transitions.</li>
+  <li><a href="/knowledge/papers/10_1098_rsbl_2020_0648/#finding-1">The probability of fusions 2020, Finding 1</a>: <em>Drosophila</em> show a significant deficit of SA-fusions (observed 0.155, CI 0.12–0.22) vs. null (0.43, CI 0.42–0.44).</li>
+  <li><a href="/knowledge/papers/10_1098_rsbl_2020_0648/#finding-2">The probability of fusions 2020, Finding 2</a>: <em>Habronattus</em> show a statistically significant excess of SA-fusions (8/10 observed, p &lt; 10⁻⁵).</li>
+  <li><a href="/knowledge/papers/10_7717_peerj_17740/#finding-1">Worse than nothing at 2024, Finding 1</a>: Non-PAR fusions are favored under sexual antagonism while PAR fusions are disfavored due to obligate PAR recombination.</li>
+  <li><a href="/knowledge/papers/10_7717_peerj_17740/#finding-2">Worse than nothing at 2024, Finding 2</a>: A PAR fusion under sexually antagonistic selection is predicted to be more detrimental than no fusion at all.</li>
+  <li><a href="/knowledge/papers/10_7717_peerj_17740/#finding-3">Worse than nothing at 2024, Finding 3</a>: Y-autosome non-PAR fusions reach marginally higher fixation frequencies than X-autosome fusions because X fusions spend only one-third of their time in males.</li>
+  <li><a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-1">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 1</a>: In fishes, 41% of XY species vs. 5% of ZW species have fused sex chromosomes (P &lt; 0.001); in reptiles, 33% vs. 3% (P &lt; 0.001).</li>
+  <li><a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-2">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 2</a>: Phylogenetic MCMC analyses confirm Y-A fusions establish at a higher rate than X-A, Z-A, or W-A fusions in both fishes and squamates.</li>
+  <li><a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-3">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 3</a>: The most plausible mechanism is slightly deleterious fusions fixing on the Y via drift, driven by male-biased mutation rates and reduced Y effective population size — not SA selection.</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_117_300382/#finding-1">Blackmon &amp; Brandvain 2017, Finding 1</a>: Y inversions fix under broader parameters and lower selection coefficients than comparable X chromosome inversions.</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_117_300382/#finding-2">Blackmon &amp; Brandvain 2017, Finding 2</a>: SA selection can fix Y inversions that increase aneuploidy by ~4–6% when the male-beneficial allele is dominant and s ≥ 0.2.</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_117_300382/#finding-3">Blackmon &amp; Brandvain 2017, Finding 3</a>: When h &lt; ~0.3, X inversions capturing a female-beneficial allele persist as stable polymorphisms rather than fixing.</li>
+  <li><a href="/knowledge/papers/10_1111_evo_12792/#finding-1">Blackmon et al. 2015, Finding 1</a>: Haplodiploid mite species have ~2n=5 fewer chromosomes than diplodiploid relatives (PMCMC &lt; 0.001).</li>
+  <li><a href="/knowledge/papers/10_1093_g3journal_jkaf217/#finding-1">Barboza &amp; Blackmon 2025, Finding 1</a>: Achiasmy mutations fix ~4× faster on the Y than X and ~18× faster than on autosomes under sexual antagonism.</li>
+  <li><a href="/knowledge/papers/10_1093_g3journal_jkaf217/#finding-2">Barboza &amp; Blackmon 2025, Finding 2</a>: Dominant driver of achiasmy shifts from sexual antagonism (young/homomorphic) to aneuploidy (highly diverged/heteromorphic).</li>
+  <li><a href="/knowledge/papers/10_1002_ece3_73483/#finding-1">Chien et al. 2026, Finding 1</a>: A 1.1 Mbp putative Y-linked scaffold in <em>C. formosanus</em> shows ~0.5× male coverage and near-zero female coverage.</li>
+  <li><a href="/knowledge/papers/10_1002_ece3_73483/#finding-2">Chien et al. 2026, Finding 2</a>: A KDM5-like demethylase gene on the putative Y scaffold is covered only by male reads, paralleling <em>KDM5D</em> sex-linkage in mammals.</li>
+  <li><a href="/knowledge/papers/10_1098_rsos_240755/#finding-1">Genome assembly of the 2024, Finding 1</a>: The SPB putative X chromosome is syntenic with the neoX of <em>D. ponderosae</em>, and the nine ancestral Coleopteran Stevens elements are conserved across SPB, MPB, and <em>T. castaneum</em>.</li>
+  <li><a href="/knowledge/papers/10_1093_jhered_esad059/#finding-1">Domestication is associated with 2024, Finding 1</a>: In Galliformes, domestication is significantly associated with reduced reproductive isolation after phylogenetic correction (F₁,₇₄ = 5.43, R² = 0.06, P = 0.02).</li>
+  <li><a href="/knowledge/papers/10_1038_nature08441/#finding-1">A role for a neo-sex chromosome in stickleback speciation., Finding 1</a>: The stickleback neo-X harbors QTLs for male courtship display traits (dorsal pricking behavior, first dorsal spine length) contributing to behavioral reproductive isolation between Japan Sea and Pacific Ocean forms.</li>
+  <li><a href="/knowledge/papers/10_1038_nature08441/#finding-2">A role for a neo-sex chromosome in stickleback speciation., Finding 2</a>: Hybrid male sterility maps to the ancestral X (LG19) but not the neo-X; chromosome age and/or degeneration level appears to determine which reproductive barriers accumulate on a given sex chromosome.</li>
+  <li><a href="/knowledge/papers/10_1007_978_1_4939_8775_7_2/#finding-1">10.1007/978-1-4939-8775-7_2, Finding 1</a>: Flow-cytometric 1C values in heterogametic individuals are averages of two gamete types; recovering X, Y, Z, W
+<!-- tealc:auto-end --></li>
+</ul>
+
+<!-- tealc:related-start -->
+<h2 id="related-topics-on-this-site">Related topics on this site</h2>
+
+<ul>
+  <li><a href="/knowledge/topics/fragile_y_hypothesis/">Fragile Y hypothesis</a> — 7 shared papers</li>
+  <li><a href="/knowledge/topics/karyotype_evolution_overview/">Karyotype evolution overview</a> — 7 shared papers</li>
+  <li><a href="/knowledge/topics/coleoptera_genomics/">Coleoptera genomics</a> — 3 shared papers</li>
+  <li><a href="/knowledge/topics/genome_structure_evolution/">Genome structure evolution</a> — 3 shared papers</li>
+  <li><a href="/knowledge/topics/sex_linkage_mutation/">Sex-linkage mutation</a> — 3 shared papers</li>
+  <li><a href="/knowledge/topics/chromosome_number_evolution/">Chromosome number evolution</a> — 2 shared papers</li>
+  <li><a href="/knowledge/topics/karyotype_database/">Karyotype database</a> — 2 shared papers</li>
+  <li><a href="/knowledge/topics/karyotype_evolution/">Karyotype Evolution</a> — 2 shared papers</li>
+  <li><a href="/knowledge/topics/y_naught_asymmetry/">Y-naught asymmetry</a> — 2 shared papers
+<!-- tealc:related-end --></li>
+</ul>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circadian rhythm evolution</title>
+<meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:title" content="Circadian rhythm evolution">
+<meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body class="wiki">
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Science</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; drift</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI in science</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/tealc-build.html">Build your own</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Data &amp; tools</span>
+      <ul>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+<!-- tealc:auto-start -->
+<h1 id="circadian-rhythm-evolution">Circadian rhythm evolution</h1>
+
+<h2 id="current-understanding">Current understanding</h2>
+
+<p>Circadian rhythms — the endogenous ~24-hour molecular clocks that coordinate behavior, physiology, and gene expression — are evolutionarily ancient, yet their genetic architecture can be reshaped rapidly under novel selection pressures. Cave environments, which lack light–dark cycles, offer a natural experiment: populations that colonize caves are released from the selective constraint that normally stabilizes circadian timekeeping, and the molecular components of the clock can diverge or degrade over time. Identifying which specific genes drive this divergence requires integrating population-genetic signals of selection with transcriptomic evidence of altered circadian regulation.</p>
+
+<p>One promising computational approach to this problem is to cross-reference FST outlier scans — which flag genomic regions unusually differentiated between cave and surface populations — with circadian transcription datasets. Applied to the Mexican cavefish <em>Astyanax mexicanus</em>, this strategy has identified candidate genes showing convergent molecular evolution across independently derived cave populations.</p>
+
+<h2 id="supporting-evidence">Supporting evidence</h2>
+
+<p>A key proof-of-principle comes from the CaveCrawler tool, which integrated FST outlier data (Herman et al. 2018) with a circadian transcription dataset (Mack et al. 2021) across three independent cave populations (Pachón, Molino, and Tinaja) compared to surface fish from Río Choy. The gene <em>arpin</em> — a negative regulator of actin dynamics — emerged as a “double outlier” in all three cave-versus-surface comparisons, meaning it showed both elevated population-genetic differentiation and differential expression in a circadian context. A second gene, <em>cyp26a1</em>, achieved double-outlier status in two of the three pairings (Pachón and Tinaja versus Río Choy). The convergence of <em>arpin</em>’s signal across three independently colonized cave systems strengthens the inference that its divergence is not merely stochastic drift but may reflect shared adaptive or degenerative pressures on circadian regulation in cave environments. See <a href="/knowledge/papers/10_1093_g3journal_jkac132/#finding-3">Perry et al. 2022, Finding 3</a> for full details.</p>
+
+<h2 id="contradictions--open-disagreements">Contradictions / open disagreements</h2>
+
+<p>The biological inference that <em>arpin</em> plays a functional role in cavefish circadian evolution remains correlative. The double-outlier status depends on both the choice of FST threshold (lowest 5% divergence in Herman et al. 2018) and the specific circadian transcription dataset used; altering either input could change the candidate gene list. No functional validation — e.g., knockouts, rescue experiments, or behavioral circadian assays — has been reported for <em>arpin</em> in this context. Additionally, <em>arpin</em>’s canonical function is in actin regulation, so its appearance in a circadian screen may reflect pleiotropic effects or limitations of the transcription dataset rather than a primary role in clock evolution. These uncertainties should be resolved before <em>arpin</em> is treated as a confirmed circadian evolution gene in cavefish.</p>
+
+<h2 id="tealcs-citation-neighborhood-suggestions">Tealc’s citation-neighborhood suggestions</h2>
+
+<ul>
+  <li>Functional studies of <em>Astyanax mexicanus</em> circadian behavior (e.g., free-running period assays in cave versus surface fish) would complement the bioinformatic candidate list.</li>
+  <li>Work on <em>arpin</em> and Arp2/3 complex regulation in other systems could help evaluate whether actin dynamics plausibly intersect with circadian clock machinery.</li>
+  <li>QTL mapping studies of circadian phenotypes in <em>A. mexicanus</em> cave × surface hybrids could test whether the <em>arpin</em> locus co-localizes with behavioral or molecular clock divergence.</li>
+</ul>
+
+<h2 id="related-on-the-blackmon-lab-site">Related on the Blackmon Lab site</h2>
+
+<ul>
+  <li>Paper page: <a href="/knowledge/papers/10_1093_g3journal_jkac132/">Perry et al. 2022</a>
+<!-- tealc:auto-end --></li>
+</ul>
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
+
+</body>
+</html>

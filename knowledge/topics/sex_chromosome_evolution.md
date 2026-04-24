@@ -10,8 +10,19 @@ reading_level_student: 10
 reading_level_researcher: 15
 editor_frozen: false
 ---
-
 # Sex Chromosome Evolution
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-22</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">19 sources</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">

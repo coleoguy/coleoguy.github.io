@@ -259,6 +259,18 @@
 
   <ul class="tree" role="tree">
     <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
       <span>Science</span>
       <ul>
         <li><a href="/karyotype.html">Karyotype evolution</a></li>
@@ -271,22 +283,6 @@
         <li><a href="/fragile-y.html">The fragile Y</a></li>
         <li><a href="/y-naught.html">Why not Y naught?</a></li>
         <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
-      </ul>
-    </li>
-    <li>
-      <span>Data &amp; tools</span>
-      <ul>
-        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
-        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
-        <li><a href="/epistasis-database.html">Epistasis database</a></li>
-        <li><a href="/tau_database.html">Tau database</a></li>
-        <li><a href="/citation-network.html">Citation network</a></li>
-        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
-        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
-        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
-        <li><a href="/subpages/evobir.html">evobiR</a></li>
-        <li><a href="/data/" target="_blank">/data exports</a></li>
-        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
       </ul>
     </li>
     <li>
@@ -307,18 +303,26 @@
         <li><a href="/subpages/biol682.html">BIOL 682</a></li>
         <li><a href="/subpages/grad101.html">Grad 101</a></li>
         <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
       </ul>
     </li>
     <li>
-      <span>Lab</span>
+      <span>Data &amp; tools</span>
       <ul>
-        <li><a href="/team.html">Team</a></li>
-        <li><a href="/publications.html">Publications</a></li>
-        <li><a href="/news.html">News</a></li>
-        <li><a href="/calendar.html">Calendar</a></li>
-        <li><a href="/join.html">Join the lab</a></li>
-        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
-        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
       </ul>
     </li>
   </ul>
@@ -580,24 +584,42 @@
       </div>
     </div>
 
-    <p class="section-text" style="margin-top: 30px;">In R, chromePlus wraps MCMC inference around these models, returning posterior distributions over rate parameters. You can compare models (e.g., rates equal vs rates free between binary trait states) using Bayes factors from the MCMC output.</p>
+    <p class="section-text" style="margin-top: 30px;">In practice, chromePlus builds a <em>constrained likelihood</em> on top of <code>diversitree</code>'s Markov-model machinery: you hand it a species-by-state probability matrix, it returns a likelihood function with the chromPlus rate structure (asc, desc, pol, dem in each binary state, plus A&harr;B transitions) wired in. That likelihood plugs straight into <code>diversitree::mcmc()</code>, and the posterior samples it returns can then be visualised with <code>plotChromeplus()</code>. Model comparison (e.g., rates equal vs rates free between binary-trait states) is done by refitting under a tighter <code>constrain</code> list and comparing the resulting posteriors.</p>
 
     <div class="code-block">
-      <span class="comment"># Install chromePlus from GitHub</span><br>
-      <span class="keyword">devtools</span>::<span class="keyword">install_github</span>(<span class="string">"coleoguy/chromePlus"</span>)<br>
+      <span class="comment"># Install chromePlus and its diversitree backend</span><br>
+      <span class="keyword">install.packages</span>(<span class="string">"remotes"</span>)<br>
+      <span class="keyword">remotes</span>::<span class="keyword">install_github</span>(<span class="string">"coleoguy/chromePlus"</span>)<br>
       <span class="keyword">library</span>(<span class="string">"chromePlus"</span>)<br>
+      <span class="keyword">library</span>(<span class="string">"diversitree"</span>)<br>
       <br>
-      <span class="comment"># Simulate chromosome evolution on a tree</span><br>
-      <span class="comment"># tree: phylo object; start: ancestral chr number; rates: c(gain, loss, poly, demi)</span><br>
-      <span class="keyword">sim</span> &lt;- <span class="keyword">simChrom</span>(<span class="string">tree</span>, <span class="string">pars = c(0.1, 0.1, 0.01, 0.001)</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">root.value = 8</span>, <span class="string">chrRange = c(1, 50)</span>)<br>
+      <span class="comment"># dat: data.frame(species, haploid_chrom, prob_state_A)</span><br>
+      <span class="comment"># tree: phylo object with tip.label matching dat$species</span><br>
       <br>
-      <span class="comment"># Fit a model allowing a binary trait to modulate rates</span><br>
-      <span class="keyword">fit</span> &lt;- <span class="keyword">makeSSEchrom</span>(<span class="string">tree</span>, <span class="string">chr.data</span>, <span class="string">trait.data</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">model = "chromPlus"</span>)<br>
+      <span class="comment"># 1. Build a probability matrix over chromosome states x binary states</span><br>
+      <span class="keyword">pmat</span> &lt;- <span class="keyword">datatoMatrix</span>(x = dat, range = <span class="keyword">c</span>(5, 25),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hyper = TRUE,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state.names = <span class="keyword">c</span>(<span class="string">"A"</span>, <span class="string">"B"</span>))<br>
       <br>
-      <span class="comment"># Plot MCMC results</span><br>
-      <span class="keyword">plotChromeplus</span>(<span class="string">fit</span>)
+      <span class="comment"># 2. Build a diversitree mkn likelihood from the matrix</span><br>
+      <span class="keyword">lik</span> &lt;- <span class="keyword">make.mkn</span>(tree, pmat, strict = <span class="keyword">FALSE</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;control = <span class="keyword">list</span>(method = <span class="string">"ode"</span>))<br>
+      <br>
+      <span class="comment"># 3. Constrain it to the chromPlus rate scheme</span><br>
+      <span class="comment"># Parameter names come out as asc.A, desc.A, pol.A, dem.A,</span><br>
+      <span class="comment"># asc.B, desc.B, pol.B, dem.B, tran.A.to.B, tran.B.to.A</span><br>
+      <span class="keyword">con.lik</span> &lt;- <span class="keyword">constrainMkn</span>(data = pmat, lik = lik,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state.names = <span class="keyword">c</span>(<span class="string">"A"</span>, <span class="string">"B"</span>))<br>
+      <br>
+      <span class="comment"># 4. Run MCMC through diversitree</span><br>
+      <span class="keyword">inits</span> &lt;- <span class="keyword">startVals</span>(n = 10, min = 0, max = 0.2)<br>
+      <span class="keyword">post</span> &lt;- <span class="keyword">mcmc</span>(con.lik, x.init = inits, nsteps = 2000, w = 0.1)<br>
+      <br>
+      <span class="comment"># 5. Plot posterior densities of the gain rate in each state</span><br>
+      <span class="keyword">plotChromeplus</span>(data = post[, <span class="keyword">c</span>(<span class="string">"asc.A"</span>, <span class="string">"asc.B"</span>)],<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors = <span class="keyword">c</span>(<span class="string">"#fb923c"</span>, <span class="string">"#500000"</span>),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_title = <span class="string">"chromosome gain rate"</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main_title = <span class="string">"Gain rate in state A vs B"</span>)
     </div>
 
     <h2>Maximum likelihood vs Bayesian inference</h2>
@@ -675,6 +697,8 @@
 <div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
 
 <script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
 <script>
 (function () {
   // Theme-aware color resolver. Reads CSS variables from the root so colors

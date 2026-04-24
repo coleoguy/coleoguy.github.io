@@ -6,9 +6,20 @@ last_updated: 2026-04-21T18:05:29.582154+00:00
 papers_supporting: [a73574bbaaa5fe6c06f620cd8793d044d3c5b758777b262d09e80b49d181b465]
 permalink: /knowledge/topics/coleoptera/
 category: "Insects & Coleoptera"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Coleoptera
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">1 source</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

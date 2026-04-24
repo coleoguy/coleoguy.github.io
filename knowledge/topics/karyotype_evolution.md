@@ -6,9 +6,20 @@ last_updated: 2026-04-22T12:58:05.499717+00:00
 papers_supporting: [10.1002/ece3.73483, 10.1017/s0016672300014051, 10.1371/journal.pgen.1005237, 10.1534/genetics.116.192690, 2868f9fb2c04a641393569fdd996eb3a6385c0c5ef19eff83448aea96d7cfbc9, a73574bbaaa5fe6c06f620cd8793d044d3c5b758777b262d09e80b49d181b465]
 permalink: /knowledge/topics/karyotype_evolution/
 category: "Karyotype evolution"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Karyotype Evolution
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-22</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">6 sources</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

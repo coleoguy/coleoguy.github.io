@@ -12,8 +12,19 @@ ingested_at: 2026-04-21T19:12:07.181997+00:00
 permalink: /knowledge/papers/10_1093_jhered_esad059/
 pdf: /pdfs/10_1093_jhered_esad059.pdf
 ---
-
 # Domestication is associated with increased interspecific hybrid compatibility in landfowl (order: Galliformes)
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">3 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint cba233ba</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

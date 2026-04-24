@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (Cheirotonus formosanus): Discovery of a Putative Y-Linked Scaffold and Demographic History</title>
+<meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:title" content="Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (Cheirotonus formosanus): Discovery of a Putative Y-Linked Scaffold and Demographic History">
+<meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body class="wiki">
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Science</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; drift</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI in science</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/tealc-build.html">Build your own</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Data &amp; tools</span>
+      <ul>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+<h1 id="chromosome-level-reference-genome-of-an-endemic-endangered-long-armed-scarab-cheirotonus-formosanus-discovery-of-a-putative-y-linked-scaffold-and-demographic-history">Chromosome-Level Reference Genome of an Endemic, Endangered Long-Armed Scarab (Cheirotonus formosanus): Discovery of a Putative Y-Linked Scaffold and Demographic History</h1>
+
+<h2 id="summary">Summary</h2>
+
+<p><em>Ingested 2026-04-21. 5 findings extracted and verified.</em></p>
+
+<h2 id="findings-worth-citing">Findings worth citing</h2>
+
+<p><a id="finding-1"></a></p>
+<h3 id="finding-1--a-chromosome-quotient-analysis-identified-a-11-mbp-putative-y-linked-scaffold-in-c-formosanus-with-femalemale-read-depth-ratios-near-0-and-male-coverage-at-05-of-autosomal-depth-consistent-with-hemizygous-single-copy-y-sequence">Finding 1 — A chromosome-quotient analysis identified a 1.1 Mbp putative Y-linked scaffold in C. formosanus with female:male read-depth ratios near 0 and male coverage at ~0.5× of autosomal depth, consistent with hemizygous single-copy Y sequence.</h3>
+
+<blockquote>
+  <p>The 13th scaffold (1.1 Mbp) exhibited a high frequency of ratios near 0 and was classified as Y‐linked (Figure 5 ). The male normalized depth on this scaffold averaged ~0.5×, consistent with hemizygous, single‐copy Y sequence in males</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> One of the few assembled beetle Y chromosomes, directly relevant to questions about Y-chromosome size, gene content, and fragile-Y dynamics in Coleoptera where Ys are typically punctiform and hard to assemble.</p>
+
+<p><em>Counter / limitation:</em> Y-linkage was inferred from a single male and single female by coverage alone, without PCR or broader population validation, so some of the 1.1 Mbp scaffold could reflect repeat artifacts or male-biased heterochromatic sequence rather than a true Y chromosome.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/sex_chromosome_evolution/">sex_chromosome_evolution</a>, <a href="/knowledge/topics/fragile_y_hypothesis/">fragile_y_hypothesis</a>, <a href="/knowledge/topics/coleoptera_genomics/">coleoptera_genomics</a></p>
+
+<p><a id="finding-2"></a></p>
+<h3 id="finding-2--the-putative-y-linked-scaffold-contains-a-gene-model-with-jarid1kdm5-family-architecture-covered-by-male-reads-but-absent-from-female-data-suggesting-a-kdm5-like-demethylase-is-y-linked-in-this-beetle">Finding 2 — The putative Y-linked scaffold contains a gene model with JARID1/KDM5 family architecture covered by male reads but absent from female data, suggesting a KDM5-like demethylase is Y-linked in this beetle.</h3>
+
+<blockquote>
+  <p>InterProScan domain annotations indicate one of these models has the JARID1/KDM5 family architecture. This gene model is covered by male reads but is absent in female data. Because InterProScan reports domain architecture rather than gene names, and because KDM5 family members have paralogs with sex‐linked distribution in other taxa (e.g., KDM5D on the mammalian Y chromosome), we interpret this as KDM5 like demethylase on the Y</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> Identifies a candidate conserved Y-linked gene in beetles, which is notable because beetle Y chromosomes are gene-poor and poorly characterized; parallels KDM5D on mammalian Ys and is citable evidence for convergent sex-linkage of this gene family.</p>
+
+<p><em>Counter / limitation:</em> The assignment rests on domain architecture from InterProScan rather than orthology-based gene naming and lacks experimental validation, so the gene may not be a true KDM5 ortholog or may be a paralog rather than the sex-determining lineage copy.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/sex_chromosome_evolution/">sex_chromosome_evolution</a>, <a href="/knowledge/topics/sex_linkage_mutation/">sex_linkage_mutation</a>, <a href="/knowledge/topics/coleoptera_genomics/">coleoptera_genomics</a></p>
+
+<p><a id="finding-3"></a></p>
+<h3 id="finding-3--psmc-trajectories-from-an-independently-sequenced-male-pacbio-hifi-and-female-illumina-c-formosanus-genome-are-nearly-identical-showing-that-broad-long-term-ne-signals-can-be-recovered-robustly-from-single-high-quality-whole-genomes-across-sequencing-platforms">Finding 3 — PSMC trajectories from an independently sequenced male (PacBio HiFi) and female (Illumina) C. formosanus genome are nearly identical, showing that broad long-term Ne signals can be recovered robustly from single high-quality whole genomes across sequencing platforms.</h3>
+
+<blockquote>
+  <p>We reconstructed past N e from two C. formosanus genomes (male: PacBio HiFi; female: Illumina). The two trajectories are nearly identical and their bootstrap overlap, indicating that the signal is robust across sequencing platforms.</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> Supports methodological claims that single-genome PSMC inference is robust in non-model invertebrates and platform-agnostic, relevant to conservation genomics workflows where samples are limited.</p>
+
+<p><em>Counter / limitation:</em> n=2 (one male, one female) from the same endemic population is a weak test of platform concordance, and PSMC cannot resolve the last ~10 kya, limiting claims about recent demography.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/coleoptera_genomics/">coleoptera_genomics</a>, <a href="/knowledge/topics/demographic_inference/">demographic_inference</a></p>
+
+<p><a id="finding-4"></a></p>
+<h3 id="finding-4--the-cheirotonus-formosanus-chromosome-level-assembly-recovers-10-major-scaffolds-consistent-with-the-ancestral-coleopteran-karyotype-of-2n20-9aaxy-supporting-conserved-karyotype-structure-in-euchirinae">Finding 4 — The Cheirotonus formosanus chromosome-level assembly recovers 10 major scaffolds consistent with the ancestral coleopteran karyotype of 2n=20 (9AA+XY), supporting conserved karyotype structure in Euchirinae.</h3>
+
+<blockquote>
+  <p>The final corrected contact map displayed 10 primary large scaffolds, including 9 autosomes and X chromosomes. This genetic architecture is highly consistent with known cytogenetic data for the group. The majority of Coleoptera possess a diploid number of 2 n = 20 (9AA + XY)</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> Provides a new chromosome-level genome for C. formosanus where Hi-C scaffolding recovered 10 major scaffolds (9 autosomes + X), consistent with the modal beetle karyotype (2n=20, 9AA+XY) and cytogenetic data for the related subfamily Euchirinae, useful for comparative karyotype evolution in Scarabaeidae.</p>
+
+<p><em>Counter / limitation:</em> The 2n=20 assignment is inferred indirectly from scaffold number and Hi-C contact patterns rather than direct cytogenetic counts on C. formosanus; the paper does not present new cytogenetic data for this species, so the claim rests on consistency with relatives rather than direct evidence.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/karyotype_evolution/">karyotype_evolution</a>, <a href="/knowledge/topics/coleoptera_genomics/">coleoptera_genomics</a>, <a href="/knowledge/topics/genome_assembly/">genome_assembly</a></p>
+
+<p><a id="finding-5"></a></p>
+<h3 id="finding-5--runs-of-homozygosity-analysis-in-c-formosanus-shows-a-genome-dominated-by-short-roh-1-mbp-with-a-total-absence-of-segments-5-mbp-indicating-long-term-historical-low-ne-rather-than-recent-consanguineous-mating">Finding 5 — Runs-of-homozygosity analysis in C. formosanus shows a genome dominated by short ROH (&lt;1 Mbp) with a total absence of segments &gt;5 Mbp, indicating long-term historical low Ne rather than recent consanguineous mating.</h3>
+
+<blockquote>
+  <p>Analysis of ROH revealed a landscape dominated by short segments (&lt; 1 Mbp), a pattern characteristic of historical bottlenecks or long‐term persistence at a low ancestral N e (Figure 8 ). While the majority of the genomic homozygosity is comprised of these shorter fragments, we identified medium‐length segments (1–5 Mbp) in several individuals, indicating recent inbreeding events within localized demes. Notably, we found a total absence of very long segments (&gt; 5 Mbp)</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> Directly relevant for conservation genomics interpretation of C. formosanus: the ROH length distribution distinguishes ancient demographic restriction from recent consanguineous mating, supporting a specific class of inference about how ROH length categories diagnose demographic history in endangered species with limited genomic resources.</p>
+
+<p><em>Counter / limitation:</em> ROH inference used reduced-representation ddRAD data (n=46) rather than whole-genome resequencing; the paper itself acknowledges this limitation and notes that the ddRAD dataset likely lacks sufficient coverage to fully exploit linkage information, meaning absence of &gt;5 Mbp ROH could partly reflect data sparsity rather than true demography.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/demographic_inference/">demographic_inference</a>, <a href="/knowledge/topics/conservation_genomics/">conservation_genomics</a>, <a href="/knowledge/topics/coleoptera_genomics/">coleoptera_genomics</a></p>
+
+<!-- tealc:related-start -->
+<h2 id="read-the-paper">Read the paper</h2>
+
+<p><a href="https://doi.org/10.1002/ece3.73483">doi.org/10.1002/ece3.73483</a></p>
+
+<h2 id="related-papers-on-this-site">Related papers on this site</h2>
+
+<ul>
+  <li><a href="/knowledge/papers/10_1093_g3journal_jkae084/">A reference quality genome assembly for the jewel scarab Chr…</a> — 3 shared topics (coleoptera_genomics, conservation_genomics, genome_assembly)</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_114_164269/">Blackmon &amp; Demuth 2014</a> — 3 shared topics (fragile_y_hypothesis, karyotype_evolution, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1002_bies_201500040/">Blackmon &amp; Demuth 2015</a> — 3 shared topics (coleoptera_genomics, fragile_y_hypothesis, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_117_300382/">Blackmon &amp; Brandvain 2017</a> — 3 shared topics (fragile_y_hypothesis, sex_chromosome_evolution, sex_linkage_mutation)</li>
+  <li><a href="/knowledge/papers/10_1098_rsos_240755/">Genome assembly of the southern pine beetle (Dendroctonus fr…</a> — 2 shared topics (coleoptera_genomics, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_7717_peerj_17740/">Worse than nothing at all: the inequality of fusions joining…</a> — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1098_rsbl_2020_0648/">The probability of fusions joining sex chromosomes and autos…</a> — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_7717_peerj_12822/">Lo &amp; Blackmon 2022</a> — 2 shared topics (sex_chromosome_evolution, sex_linkage_mutation)</li>
+  <li><a href="/knowledge/papers/10_1093_g3journal_jkaf217/">Barboza &amp; Blackmon 2025</a> — 2 shared topics (fragile_y_hypothesis, sex_chromosome_evolution)</li>
+</ul>
+
+<h2 id="other-papers-by-these-authors">Other papers by these authors</h2>
+
+<ul>
+  <li><a href="/knowledge/authors/blackmon_h/">Blackmon H</a>
+<!-- tealc:related-end --></li>
+</ul>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
+
+</body>
+</html>

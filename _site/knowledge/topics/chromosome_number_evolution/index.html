@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chromosome number evolution</title>
+<meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:title" content="Chromosome number evolution">
+<meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body class="wiki">
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Science</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; drift</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI in science</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/tealc-build.html">Build your own</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Data &amp; tools</span>
+      <ul>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+<!-- tealc:auto-start -->
+<h1 id="chromosome-number-evolution">Chromosome number evolution</h1>
+
+<h2 id="current-understanding">Current understanding</h2>
+
+<p>Chromosome number is one of the most dynamic features of eukaryotic genomes, varying enormously even within single orders. In beetles (Coleoptera), which offer the most extensively documented karyotypic record among insects, this variation spans more than an order of magnitude. A database of 4,797 beetle karyotypes reveals that diploid numbers range from as few as 4 chromosomes in the elaterid <em>Chalcolepidius zonatus</em> to as many as 70 in the adephagan <em>Dixus capito obscuroides</em> <a href="/knowledge/papers/10_1649_0010_065x_69_1_174/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>. This ~17-fold span within a single insect order underscores that chromosome number is far from a fixed species trait — fusions, fissions, and polyploidization can each reshape karyotypes repeatedly over macroevolutionary time.</p>
+
+<p>How we <em>measure</em> the rate of these changes matters enormously. Phylogenetic model-based rate estimates and the older tradition of scaled-variance estimates derived from fossil ages are not interchangeable: across nine beetle clades with data suitable for both approaches, the two methods show no significant correlation (Kendall’s τ = 0.11, P = 0.76) <a href="/knowledge/papers/10_1093_jhered_esae001/#finding-2">Drift drives the evolution 2024, Finding 2</a>. This disagreement raises serious doubts about the comparability of rate estimates produced by different analytical traditions, and suggests that conclusions drawn from the older scaled-variance literature should be treated with caution alongside phylogenetic model-based results.</p>
+
+<p>A recurring question is whether the <em>magnitude</em> of chromosome number change is governed by natural selection or by genetic drift. Evidence from Carnivora supports a drift-based model: lineages with small range sizes — used as a proxy for reduced effective population size — show higher rates of both chromosomal fusions and fissions than large-range lineages, with 95% credible intervals for the difference entirely above zero (ΔR fusion = 0.101, CI 0.062–0.141; ΔR fission = 0.163, CI 0.116–0.207) <a href="/knowledge/papers/10_1093_jhered_esae025/#finding-1">Drift drives the evolution 2024, Finding 1</a>. This pattern is consistent with the fixation of mildly deleterious or nearly neutral rearrangements being accelerated in small populations, and extends similar drift-based inferences from insects into a vertebrate order.</p>
+
+<p>Not all fusions are created equal, however. When the identity of the chromosomes involved is taken into account, a striking asymmetry emerges: Y-autosome fusions establish at a significantly higher rate than X-autosome, Z-autosome, or W-autosome fusions in both fishes and squamate reptiles, even after accounting for shared evolutionary history via phylogenetic Markov chain analyses <a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-1">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 1</a>. This rate asymmetry likely reflects the reduced recombination and distinct selective environment of the Y chromosome, which may make Y-autosome fusions more readily fixed — or alternatively, less readily lost — than their X-autosome counterparts.</p>
+
+<p>A related mechanistic question concerns chromosome architecture: does having holocentric rather than monocentric chromosomes alter how karyotypes evolve? A Bayesian analysis excluding polyploidy found that 83% of the posterior distribution of the fission rate difference between holocentric and monocentric clades lies above zero, hinting at a weak elevation of fission rates in holocentric lineages — though the 95% credible interval still overlaps zero <a href="/knowledge/papers/10_1371_journal_pgen_1009076/#finding-1">Ruckman et al. 2020, Finding 1</a>. This tentative signal is biologically plausible because holocentric chromosomes distribute centromeric activity along their length, potentially reducing the fitness cost of fission events, but it falls short of statistical support under current sampling.</p>
+
+<p>Beyond simply cataloguing range, a key question is whether chromosome number changes are directional and whether they interact with major transitions in reproductive systems. Evidence from mites (Acari) suggests a striking link: haplodiploid species have significantly lower chromosome numbers than their diplodiploid relatives — approximately 2n = 5 fewer chromosomes on average — and this association holds under both taxonomic and phylogenetic models <a href="/knowledge/papers/10_1111_evo_12792/#finding-1">Blackmon et al. 2015, Finding 1</a>. Ancestral-state reconstructions indicate that karyotype reduction preceded the origin of haplodiploidy rather than following it: across an estimated 7.9–12.9 independent origins of haplodiploidy in Acari, the mean diploid number at origin nodes was 18.4, significantly below the null expectation of 20.2 <a href="/knowledge/papers/10_1111_evo_12792/#finding-2">Blackmon et al. 2015, Finding 2</a>. This temporal ordering is consistent with Bull’s haploid-viability hypothesis. The repeated, largely irreversible nature of haplodiploidy origins further suggests that once chromosome number is reduced and haplodiploidy established, the system becomes evolutionarily stable <a href="/knowledge/papers/10_1111_evo_12792/#finding-3">Blackmon et al. 2015, Finding 3</a>.</p>
+
+<p>Reproductive mode also shapes which <em>type</em> of karyotypic change predominates. In stick insects (Phasmatodea), rates of polyploidy are significantly elevated in asexually reproducing lineages relative to sexually reproducing ones, while rates of chromosomal fusion and fission do not differ between reproductive modes <a href="/knowledge/papers/10_1098_rspb_2020_1388/#finding-1">Sylvester et al. 2020, Finding 1</a>. This suggests that sex acts as a specific brake on polyploidy — perhaps because polyploids face meiotic incompatibilities when crossing with diploids — rather than suppressing structural rearrangements wholesale.</p>
+
+<p>In mammals, a BiSSE analysis comparing mammals with matched versus mismatched karyotypes finds no detectable difference in net diversification rates between these states <a href="/knowledge/papers/10_1111_evo_13682/#finding-1">Blackmon et al. 2019, Finding 1</a>, providing a notable negative result against the chromosomal speciation hypothesis at macroevolutionary scales. The same study reveals that the rate at which meiotic drive polarity switches varies dramatically across mammalian subclades: Cetartiodactyla show the highest switching rate, with a mean waiting time of approximately 10.8 million years per transition, while Primates show the lowest, at a median of ~90.9 million years <a href="/knowledge/papers/10_1111_evo_13682/#finding-2">Blackmon et al. 2019, Finding 2</a>.</p>
+
+<p>Chromosome number and recombination architecture are further intertwined in ways that are themselves evolutionarily labile. Across 112 mammalian species, the physical scale of the meiotic crossover distribution has shifted independently multiple times — from one crossover per chromosome arm to one crossover per chromosome — during mammalian evolution <a href="/knowledge/papers/10_1534_genetics_116_192690/#finding-1">10.1534/genetics.116.192690, Finding 1</a>. This means that the chromosomal constraint on where and how often recombination occurs is not a fixed parameter but an evolvable trait, a consideration that any comparative analysis of chromosome-number change in mammals must account for.</p>
+
+<p>One might intuitively expect that organisms with more chromosomes would accumulate more microsatellite sequence. Across insects, however, diploid chromosome number shows no significant relationship with either microsatellite content or rate of microsatellite evolution <a href="/knowledge/papers/10_3390_genes11080945/#finding-1">Jonika et al. 2020, Finding 1</a>, decoupling karyotypic complexity from a major class of repetitive-element dynamics.</p>
+
+<h2 id="supporting-evidence">Supporting evidence</h2>
+
+<p>The empirical bounds of karyotype variation in Coleoptera — 2n = 4 to 2n = 70 — are drawn from the largest compiled beetle karyotype database to date, encompassing 4,797 karyotypes across the order <a href="/knowledge/papers/10_1649_0010_065x_69_1_174/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>.</p>
+
+<p>Across nine beetle clades with fossil-calibrated data, phylogenetic model-based chromosome evolution rate estimates and traditional scaled-variance estimates are uncorrelated (Kendall’s τ = 0.11, P = 0.76) <a href="/knowledge/papers/10_1093_jhered_esae001/#finding-2">Drift drives the evolution 2024, Finding 2</a>, calling into question the use of scaled-variance figures as proxies for model-based rates.</p>
+
+<p>In Carnivora, chromePlus analyses show that small-range (low-Ne) lineages have significantly elevated fusion and fission rates relative to large-range lineages (ΔR fusion = 0.101, CI 0.062–0.141; ΔR fission = 0.163, CI 0.116–0.207), consistent with drift-driven karyotype evolution <a href="/knowledge/papers/10_1093_jhered_esae025/#finding-1">Drift drives the evolution 2024, Finding 1</a>. Importantly, neutral simulations on the same phylogeny revealed false positive rates of 22% for fusion associations and 33% for fission associations under this framework <a href="/knowledge/papers/10_1093_jhered_esae025/#finding-2">Drift drives the evolution 2024, Finding 2</a>, though only 7% of neutral simulations matched the magnitude of the empirical effect.</p>
+
+<p>Phylogenetic Markov chain analyses across fish and squamate reptile phylogenies show that Y-autosome fusions establish at a higher rate than X-autosome, Z-autosome, or W-autosome fusions <a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-1">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 1</a>, a pattern robust to shared ancestry.</p>
+
+<p>In a Bayesian comparative analysis of holocentric and monocentric clades, 83% of the posterior distribution of the fission rate difference (ΔR γ) lies above zero when polyploidy is excluded from the model, suggesting a possible weak elevation of fission rates in holocentric lineages — though the 95% credible interval overlaps zero <a href="/knowledge/papers/10_1371_journal_pgen_1009076/#finding-1">Ruckman et al. 2020, Finding 1</a>.</p>
+
+<p>In mites, both a taxonomic and a phylogenetic mixed model confirm that haplodiploid species carry approximately 2n = 5 fewer chromosomes than diplodiploid species (P &lt; 0.001) <a href="/knowledge/papers/10_1111_evo_12792/#finding-1">Blackmon et al. 2015, Finding 1</a>. Stochastic character mapping places haplodiploidy origins at nodes with a mean diploid number of 18.4, significantly lower than the null expectation of 20.2 (P = 0.017) <a href="/knowledge/papers/10_1111_evo_12792/#finding-2">Blackmon et al. 2015, Finding 2</a>, with only limited evidence for reversions to diplodiploidy <a href="/knowledge/papers/10_1111_evo_12792/#finding-3">Blackmon et al. 2015, Finding 3</a>.</p>
+
+<p>In Phasmatodea, comparative phylogenetic analysis shows that polyploidy rates are significantly higher in asexual lineages while fusion and fission rates are indistinguishable between sexual and asexual taxa <a href="/knowledge/papers/10_1098_rspb_2020_1388/#finding-1">Sylvester et al. 2020, Finding 1</a>.</p>
+
+<p>For mammals, BiSSE analyses across a broad phylogeny detect no difference in speciation or extinction rates tied to karyotype morphology <a href="/knowledge/papers/10_1111_evo_13682/#finding-1">Blackmon et al. 2019, Finding 1</a>. Subclade chromePlus analyses quantify meiotic drive polarity switching at a mean of ~10.8 million years per transition in Cetartiodactyla and a median of ~90.9 million years in Primates <a href="/knowledge/papers/10_1111_evo_13682/#finding-2">Blackmon et al. 2019, Finding 2</a>.</p>
+
+<p>A phylogenetic meta-analysis of 112 mammalian species finds that the scale of the meiotic crossover distribution — whether recombination is constrained to one event per chromosome arm or one per chromosome — has shifted multiple independent times across mammalian history <a href="/knowledge/papers/10_1534_genetics_116_192690/#finding-1">10.1534/genetics.116.192690, Finding 1</a>. This establishes recombination architecture itself as an evolvable trait relevant to any comparative study of chromosome-number dynamics.</p>
+
+<p>Across a broader insect phylogeny, phylogenetic comparative analyses find no significant association between diploid chromosome number and either microsatellite content or microsatellite evolutionary rate <a href="/knowledge/papers/10_3390_genes11080945/#finding-1">Jonika et al. 2020, Finding 1</a>.</p>
+
+<h2 id="contradictions--open-disagreements">Contradictions / open disagreements</h2>
+
+<p><strong>Scaled-variance vs. model-based rate estimates.</strong> The most direct methodological tension in this literature is the finding that scaled-variance and phylogenetic model-based estimates of chromosome evolution rate are uncorrelated across nine beetle clades <a href="/knowledge/papers/10_1093_jhered_esae001/#finding-2">Drift drives the evolution 2024, Finding 2</a>. Because scaled-variance estimates appear throughout the older comparative karyology literature, this discordance means that historical rate comparisons may not be reliable guides to model-based rate variation. The caveat is that the comparison covers only nine clades with usable fossil data, and poor insect fossil records may unfairly handicap the scaled-variance approach.</p>
+
+<p><strong>Y-A fusion rate asymmetry — detection bias.</strong> The excess of Y-autosome fusions over X-autosome fusions in fishes and squamates <a href="/knowledge/papers/10_1371_journal_pgen_1005237/#finding-1">Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 1</a> depends on karyotypically detectable multiple sex chromosome systems. X-A fusions that generate neo-Y chromosomes could be lost without detection in the hemizygous sex, potentially inflating the apparent Y-A excess by making X-A fusions appear more ephemeral than Y-A fusions rather than genuinely less common at origin.</p>
+
+<p><strong>Holocentric chromosomes and fission rates — suggestive but unsupported.</strong> The 2020 holocentric study reports that 83% of the posterior for the fission rate difference lies above zero <a href="/knowledge/papers/10_1371_journal_pgen_1009076/#finding-1">Ruckman et al. 2020, Finding 1</a>, but the 95% credible interval still overlaps zero and the result is conditional on excluding polyploidy from the model. This leaves open whether holocentricity genuinely elevates fission rates or whether the signal reflects model mis-specification or limited taxon sampling.</p>
+
+<p><strong>False positive risk in chromePlus trait-dependent models.</strong> The Carnivora drift analysis finds elevated fusion and fission rates in small-range lineages <a href="/knowledge/papers/10_1093_jhered_esae025/#finding-1">Drift drives the evolution 2024, Finding 1</a>, but neutral simulations on the same phylogeny yield false positive rates of 22–33% <a href="/knowledge/papers/10_1093_jhered_esae025/#finding-2">Drift drives the evolution 2024, Finding 2</a>. Although only 7% of neutral runs matched the empirical effect magnitude, users of chromePlus-style models — including the mammalian meiotic drive analyses <a href="/knowledge/papers/10_1111_evo_13682/#finding-2">Blackmon et al. 2019, Finding 2</a> — should interpret point estimates cautiously when effect sizes are modest. Range size is also a coarse, discretized proxy for effective population size.</p>
+
+<p><strong>BiSSE reliability for the mammalian null result.</strong> The finding that karyotype morphology has no detectable effect on mammalian diversification rates <a href="/knowledge/papers/10_1111_evo_13682/#finding-1">Blackmon et al. 2019, Finding 1</a> rests on BiSSE, a method known to produce elevated false-positive — and potentially false-negative — rates when diversification is heterogeneous across the tree. The null result may reflect limited statistical power rather than a true absence of karyotype-driven diversification.</p>
+
+<p><strong>Crossover-scale transitions — supertree and sex-bias limitations.</strong> The inferred multiple independent shifts in crossover scale across mammals <a href="/knowledge/papers/10_1534_genetics_116_192690/#finding-1">10.1534/genetics.116.192690, Finding 1</a> rely on an informal supertree with polytomies, absent branch lengths, and data drawn overwhelmingly from males (~83.9% of observations). The number and placement of inferred transitions could shift substantially once well-resolved, branch-length-calibrated phylogenies and female recombination data are incorporated.</p>
+
+<p><strong>Mite-specificity of the haplodiploidy–karyotype link.</strong> The 2015 Acari study is restricted to mites. Other invertebrate clades with low chromosome numbers have not evolved haplodiploidy, limiting the generality of the chromosome-reduction-first story.</p>
+
+<p><strong>Phasmatodea sampling for asexual polyploidy.</strong> The elevated polyploidy rate in asexual lineages <a href="/knowledge/papers/10_1098_rspb_2020_1388/#finding-1">Sylvester et al. 2020, Finding 1</a> is based on only 13 parthenogenetic species within a single order, with additional uncertainty from ancestral reconstructions of reproductive mode.</p>
+
+<p><strong>Upper bound for Coleoptera.</strong> The value of 2n = 70 for <em>Dixus capito obscuroides</em> is drawn from a large database; independent verification against primary sources is advisable <a href="/knowledge/papers/10_1649_0010_065x_69_1_174/#finding-1">Blackmon &amp; Demuth 2015, Finding 1</a>.</p>
+
+<p><strong>Meiotic drive switching rates in Primates.</strong> The reported ~90.9 million year figure is a median waiting time, and the inferred rates rely on trees representing only 12–30% of extant species per clade <a href="/knowledge/papers/10_1111_evo_13682/#finding-2">Blackmon et al. 2019, Finding 2</a>.</p>
+
+<p><strong>Chromosome number and microsatellite content — assembly-coverage caveat.</strong> The null result <a href="/knowledge/papers/10_3390_genes11080945/#finding-1">Jonika et al. 2020, Finding 1</a> relies on assemblies that typically underrepresent centromeric and telomeric heterochromatin, so a real association concentrated near chromosome structural features could be masked.</p>
+
+<h2 id="tealcs-citation-neighborhood-suggestions">Tealc’s citation-neighborhood suggestions</h2>
+
+<ul>
+  <li>Studies applying ancestral-state reconstruction (e.g., ChromEvol) would complement the empirical range data with rate estimates and direction of change across broader insect and mammalian phylogenies.</li>
+  <li>Comparative work on holocentric chromosomes in Lepidoptera or Hemiptera with larger taxon sampling could revisit whether the suggestive fission-rate elevation in holocentric lineages reaches statistical support with better-powered analyses.</li>
+  <li>Tests of Bull’s haploid-viability hypothesis in non-Acari haplodiploid clades (Hymenoptera, some scale insects) would help establish whether the chromosome-reduction-first pattern generalizes.</li>
+  <li>Hidden-state diversification models (e.g., HiSSE) applied to the mammalian karyotype dataset could address the BiSSE power concerns and provide a more robust test of the chromosomal speciation hypothesis.</li>
+  <li>Long-read assembly studies that adequately resolve centromeric and telomeric repeats would provide a more rigorous test of whether chromosome number predicts localized microsatellite enrichment.</li>
+  <li>Broader sampling of asexual arthropod and plant lineages would help determine whether the elevated polyploidy rate in asexual Phasmatodea reflects a general consequence of parthenogenesis or an order-specific pattern.</li>
+  <li>Additional fossil-calibrated beetle clades would help establish whether the scaled-variance vs. model-based rate discordance found in nine clades holds more broadly.</li>
+  <li>Direct Ne estimates (e.g., from population genomic data) for Carnivoran lineages would provide a more rigorous test of drift-driven karyotype evolution than range size alone.</li>
+  <li>Population genomic studies of species with known X-A versus Y-A fusions could directly test whether X-A-derived neo-Y chromosomes are lost at higher rates, addressing the detection-bias concern in the Y-autosome fusion asymmetry.</li>
+  <li>Phylogenetic analyses of crossover-scale transitions with branch-length-calibrated supertrees and female recombination data would sharpen inference on how often the per-arm vs. per-chromosome crossover constraint has shifted across mammals.</li>
+</ul>
+
+<h2 id="related-on-the-blackmon-lab-site">Related on the Blackmon Lab site</h2>
+
+<ul>
+  <li><a href="/knowledge/papers/10_1371_journal_pgen_1009076/">Ruckman et al. 2020</a></li>
+  <li><a href="/knowledge/papers/10_1093_jhered_esae025/">Drift drives the evolution 2024</a></li>
+  <li><a href="/knowledge/papers/10_1093_jhered_esae001/">Drift drives the evolution 2024</a></li>
+  <li><a href="/knowledge/papers/10_1649_0010_065x_69_1_174/">Blackmon &amp; Demuth 2015</a></li>
+  <li><a href="/knowledge/papers/10_1111_evo_12792/">Blackmon et al. 2015</a></li>
+  <li><a href="/knowledge/papers/10_1111_evo_13682/">Blackmon et al. 2019</a></li>
+  <li><a href="/knowledge/papers/10_3390_genes11080945/">Jonika et al. 2020</a></li>
+  <li><a href="/knowledge/papers/10_1098_rspb_2020_1388/">Sylvester et al. 2020</a></li>
+  <li><a href="/knowledge/papers/10_1371_journal_pgen_1005237/">Y fuse? Sex chromosome fusions in fishes and reptiles. (Pennell et al. 2015)</a></li>
+  <li><a href="/knowledge/papers/10_1534_genetics_116_192690/">Blackmon &amp; Brandvain (genetics.116.192690)</a>
+<!-- tealc:auto-end --></li>
+</ul>
+
+<!-- tealc:related-start -->
+<h2 id="related-topics-on-this-site">Related topics on this site</h2>
+
+<ul>
+  <li><a href="/knowledge/topics/karyotype_evolution_overview/">Karyotype evolution overview</a> — 5 shared papers</li>
+  <li><a href="/knowledge/topics/selection_and_drift/">Selection and drift</a> — 2 shared papers</li>
+  <li><a href="/knowledge/topics/sex_chromosome_evolution/">Sex chromosome evolution</a> — 2 shared papers
+<!-- tealc:related-end --></li>
+</ul>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
+
+</body>
+</html>

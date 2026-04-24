@@ -17,6 +17,7 @@ If you are an agent or a script, start with `index.json`. It lists every file wi
 | `undergrad-papers.json` | `undergrad-papers.html` | 8 | add as undergrad-led papers publish |
 | `prompts.json` | `subpages/Prompting.html` | 7 | pull from github.com/coleoguy/prompting |
 | `publications.json` | `publications.html` | 57 (snapshot) | re-snapshot from ORCID (script below) |
+| `voice.md` | agent context — any draft Heath will sign | — | regenerate from an expanded lead-authored corpus |
 
 ### Databases
 
@@ -141,6 +142,16 @@ Burch, B.D., Alexander, E.P., Fu, Y., and Blackmon, H. (2024). Information theor
 ## Six karyotype databases
 
 The files `karyotypes-coleoptera.csv`, `karyotypes-diptera.csv`, `karyotypes-amphibia.csv`, `karyotypes-mammalia.csv`, `karyotypes-drosophila.csv`, and `karyotypes-polyneoptera.csv` are the raw CSVs behind the clade cards on [coleoguy.github.io/karyotypes/](https://coleoguy.github.io/karyotypes/index.html). Each CSV has its own column set because the databases were built at different times for different projects; `karyotypes-six-index.json` lists them in one place with columns and primary publication for each. Coleoptera ships with a separate `karyotypes-coleoptera-citations.csv` file of primary sources.
+
+## voice.md
+
+A portable style calibration of Heath Blackmon's scientific-writing voice, distilled from seven lead-authored papers (four *Genetics* / *Evolution* / *J Heredity* articles, a sole-authored newsletter piece, a first-author review, and one mentee-led paper as a lab-norm signal). Intended to be loaded as context by any agent drafting prose that Heath will sign: manuscripts, cover letters, grant sections, lab-site pages.
+
+The file groups rules by scale (sentence, paragraph, section, word) and anchors every rule to verbatim passages from the source papers so that an agent pattern-matches on real examples rather than on an abstract summary. It also names explicit anti-patterns — rhetorical moves that are absent from the corpus and that a generic "good scientific writing" guide would otherwise incorrectly suggest.
+
+Not appropriate for: prose another author is signing, editing someone else's work, or lab-site prose that needs the compressed declarative mode of the hand-written HTML pages.
+
+Regenerate when the lead-authored corpus expands or when recent writing diverges from the rules in the file.
 
 ## License
 

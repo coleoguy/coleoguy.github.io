@@ -11,8 +11,19 @@ tier: canon
 ingested_at: 2026-04-22T12:36:29.408666+00:00
 permalink: /knowledge/papers/10_1093_bioinformatics_btp324/
 ---
-
 # Fast and accurate short read alignment with Burrows-Wheeler transform.
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-22</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">4 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint a3d9f7f0</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

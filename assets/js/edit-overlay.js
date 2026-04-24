@@ -16,6 +16,30 @@
   'use strict';
 
   // ------------------------------------------------------------------
+  // Keyboard toggle — ⌘⇧E (macOS) / Ctrl+Shift+E toggles ?edit=1 on the
+  // current URL. Registered before the guards so it works on any page,
+  // even when the overlay is otherwise inert. Harmless on prod: toggling
+  // `?edit=1` on GitHub Pages just reloads with a no-op overlay.
+  // ------------------------------------------------------------------
+  document.addEventListener('keydown', function (e) {
+    if (!e.shiftKey) return;
+    if ((e.key || '').toLowerCase() !== 'e') return;
+    var isMac = /Mac|iPhone|iPad/.test(navigator.platform || '');
+    var mod = isMac ? e.metaKey : e.ctrlKey;
+    if (!mod) return;
+    // Ignore when a modifier-conflict is likely (typing inside a field
+    // with a composed shortcut)
+    e.preventDefault();
+    var url = new URL(location.href);
+    if (url.searchParams.get('edit') === '1') {
+      url.searchParams.delete('edit');
+    } else {
+      url.searchParams.set('edit', '1');
+    }
+    location.href = url.toString();
+  });
+
+  // ------------------------------------------------------------------
   // Guards: only run on localhost with ?edit=1
   // ------------------------------------------------------------------
   const isLocalhost = (
@@ -31,15 +55,17 @@
 
   // Derive the relative path for the current page (Jekyll permalink -> .md)
   function pageRelPath() {
-    // e.g. /knowledge/topics/sex_chromosome_evolution/  =>
-    //       knowledge/topics/sex_chromosome_evolution.md
-    let p = location.pathname.replace(/\/$/, '');
-    if (!p || p === '') return null;
-    // Strip leading slash
-    p = p.replace(/^\//, '');
-    // If it already ends in .md, use as-is; otherwise append .md
-    if (!p.endsWith('.md')) p = p + '.md';
-    return p;
+    // Map the browser URL to the source filename under the repo root.
+    //   /                                    -> index.html
+    //   /lead-investigator.html              -> lead-investigator.html
+    //   /subpages/biol682.html               -> subpages/biol682.html
+    //   /knowledge/topics/sex_chromosome_evolution/
+    //     (Jekyll permalink)                 -> knowledge/topics/sex_chromosome_evolution.md
+    let p = location.pathname.replace(/\/$/, '');  // strip trailing /
+    if (!p || p === '') return 'index.html';       // homepage
+    p = p.replace(/^\//, '');                      // strip leading /
+    if (p.endsWith('.html') || p.endsWith('.md')) return p;
+    return p + '.md';
   }
 
   // ------------------------------------------------------------------

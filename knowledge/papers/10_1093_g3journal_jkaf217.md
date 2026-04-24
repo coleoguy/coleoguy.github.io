@@ -11,8 +11,19 @@ tier: canon
 ingested_at: 2026-04-21T15:32:58.690079+00:00
 permalink: /knowledge/papers/10_1093_g3journal_jkaf217/
 ---
-
 # Drivers of achiasmatic meiosis: sexual antagonism versus heteromorphy-dependent aneuploidy across sex-chromosome divergence.
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">3 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint e2bf42dd</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

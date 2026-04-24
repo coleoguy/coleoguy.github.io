@@ -12,8 +12,19 @@ ingested_at: 2026-04-21T19:09:19.879957+00:00
 permalink: /knowledge/papers/10_1093_g3journal_jkae084/
 pdf: /pdfs/10_1093_g3journal_jkae084.pdf
 ---
-
 # A reference quality genome assembly for the jewel scarab Chrysina gloriosa
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">1 finding extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint 31776037</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

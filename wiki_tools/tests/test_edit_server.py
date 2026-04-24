@@ -182,6 +182,52 @@ class TestPathAllowlist(unittest.TestCase):
     def test_path_traversal_rejected(self):
         self.assertFalse(edit_server._path_is_allowed("../../../etc/passwd"))
 
+    # -----------------------------------------------------------------
+    # Deny-list policy (expanded): any .html/.md in the repo is editable
+    # UNLESS it lives under a denied dir or is a denied exact filename.
+    # -----------------------------------------------------------------
+    def test_root_html_page_allowed(self):
+        self.assertTrue(edit_server._path_is_allowed("index.html"))
+
+    def test_root_lead_investigator_allowed(self):
+        self.assertTrue(edit_server._path_is_allowed("lead-investigator.html"))
+
+    def test_subpages_html_allowed(self):
+        self.assertTrue(edit_server._path_is_allowed("subpages/biol682.html"))
+
+    def test_phylo_methods_html_allowed(self):
+        self.assertTrue(edit_server._path_is_allowed("phylo-methods/discrete.html"))
+
+    def test_karyotypes_html_allowed(self):
+        self.assertTrue(edit_server._path_is_allowed("karyotypes/index.html"))
+
+    def test_todo_md_rejected(self):
+        # TODO.md at root is a dev-facing file, not site content.
+        self.assertFalse(edit_server._path_is_allowed("TODO.md"))
+
+    def test_wiki_v1_plan_rejected(self):
+        self.assertFalse(edit_server._path_is_allowed("WIKI_V1_PLAN.md"))
+
+    def test_layouts_rejected(self):
+        self.assertFalse(edit_server._path_is_allowed("_layouts/default.html"))
+
+    def test_includes_rejected(self):
+        self.assertFalse(edit_server._path_is_allowed("_includes/sidebar.html"))
+
+    def test_wiki_tools_rejected(self):
+        self.assertFalse(edit_server._path_is_allowed("wiki_tools/edit_server.py"))
+
+    def test_site_build_output_rejected(self):
+        self.assertFalse(edit_server._path_is_allowed("_site/index.html"))
+
+    def test_scripts_rejected(self):
+        self.assertFalse(edit_server._path_is_allowed("scripts/edit-start.sh"))
+
+    def test_karyotype_data_rejected(self):
+        # Auto-generated under subpages/karyotype-data/
+        self.assertFalse(edit_server._path_is_allowed(
+            "subpages/karyotype-data/coleoptera.html"))
+
 
 # ---------------------------------------------------------------------------
 # 3. region_grammar_ok integration — PATCH that would corrupt grammar is rejected

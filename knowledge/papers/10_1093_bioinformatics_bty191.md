@@ -11,8 +11,19 @@ tier: canon
 ingested_at: 2026-04-22T13:08:03.864894+00:00
 permalink: /knowledge/papers/10_1093_bioinformatics_bty191/
 ---
-
 # 10.1093/bioinformatics/bty191
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-22</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">2 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint e7bd86e8</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

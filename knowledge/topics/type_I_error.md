@@ -6,9 +6,20 @@ last_updated: 2026-04-22T13:13:24.679735+00:00
 papers_supporting: [10.1093/sysbio/syu131]
 permalink: /knowledge/topics/type_I_error/
 category: "Bioinformatics & tools"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Type I Error
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-22</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">1 source</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

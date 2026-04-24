@@ -12,8 +12,19 @@ ingested_at: 2026-04-21T19:25:29.998059+00:00
 permalink: /knowledge/papers/10_1093_jhered_esae025/
 pdf: /pdfs/10_1093_jhered_esae025.pdf
 ---
-
 # Drift drives the evolution of chromosome number II: The impact of range size on genome evolution in Carnivora
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">2 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint f9fb8e25</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

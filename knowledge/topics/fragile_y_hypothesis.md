@@ -6,9 +6,20 @@ last_updated: 2026-04-21T21:19:47.870287+00:00
 papers_supporting: [0235cb8484d2982c4d4f1d13c021c95aedc035bc7214dcfec49ec3ea96ccfa84, 10.1002/ece3.73483, 10.1093/g3journal/jkaf217, 10.1534/genetics.117.300382, 7252cf3de80be73c6e55d9e0bef2de22e8ff5c91259b24d33e52edebf150f528, a73574bbaaa5fe6c06f620cd8793d044d3c5b758777b262d09e80b49d181b465, c6c1f45b84f53c5ec0361e367e8fab7bf3b8963db5c451a3256e09d2aed98732]
 permalink: /knowledge/topics/fragile_y_hypothesis/
 category: "Sex chromosomes"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Fragile Y Hypothesis
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">7 sources</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

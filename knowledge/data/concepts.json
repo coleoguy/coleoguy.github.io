@@ -1,0 +1,371 @@
+{
+  "concepts": [
+    {
+      "slug": "achiasmy",
+      "title": "Achiasmy",
+      "aliases": [
+        "achiasmy",
+        "achiasmatic",
+        "achiasmatic meiosis",
+        "achiasmate",
+        "crossover suppression",
+        "holokinetic compensation"
+      ],
+      "definition": "Achiasmy is the complete absence of crossovers (chiasmata) during meiosis in one sex, eliminating the obligate crossover that normally tethers homologous chromosomes together during their segregation.",
+      "analogy": "Achiasmy is like removing the velcro between chromosome pairs during meiosis: they must still separate correctly, but they do so without the physical connection that normally ensures the pair stays together long enough to be pulled to opposite poles.",
+      "url": "/knowledge/concepts/achiasmy/"
+    },
+    {
+      "slug": "ancestral-state-reconstruction",
+      "title": "Ancestral State Reconstruction",
+      "aliases": [
+        "ancestral state reconstruction",
+        "ancestral state",
+        "ancestral reconstruction",
+        "ASR",
+        "stochastic character mapping",
+        "SIMMAP",
+        "ancestral character state"
+      ],
+      "definition": "Ancestral state reconstruction (ASR) is a phylogenetic method for inferring the most probable trait values of ancestral species given a tree topology, branch lengths, a model of trait evolution, and the observed trait values at the tips.",
+      "analogy": "ASR is like working backwards from the stories your grandchildren tell about a great-grandparent you never met — you triangulate what she was probably like from the pattern of traits distributed across her surviving descendants.",
+      "url": "/knowledge/concepts/ancestral-state-reconstruction/"
+    },
+    {
+      "slug": "aneuploidy",
+      "title": "Aneuploidy",
+      "aliases": [
+        "aneuploidy",
+        "aneuploid",
+        "aneuploidy rate",
+        "Y aneuploidy",
+        "chromosome mis-segregation",
+        "meiotic non-disjunction"
+      ],
+      "definition": "Aneuploidy is the condition of having an incorrect number of chromosomes in a cell, typically caused by chromosomes failing to separate properly during meiosis (non-disjunction).",
+      "analogy": "Aneuploidy is what happens when you're packing matched pairs of socks into two bags and one sock ends up in the wrong bag — the result is imbalanced and usually causes problems.",
+      "url": "/knowledge/concepts/aneuploidy/"
+    },
+    {
+      "slug": "autosome",
+      "title": "Autosome",
+      "aliases": [
+        "autosome",
+        "autosomes",
+        "autosomal"
+      ],
+      "definition": "An autosome is any chromosome that is present in the same number and form in both sexes — every chromosome except the sex chromosomes.",
+      "analogy": "If you imagine a car where most parts are identical between two models, autosomes are all the shared parts; the sex chromosomes are the optional add-on that differs between the two versions.",
+      "url": "/knowledge/concepts/autosome/"
+    },
+    {
+      "slug": "bisse",
+      "title": "BiSSE",
+      "aliases": [
+        "BiSSE",
+        "Binary State Speciation and Extinction",
+        "state-dependent diversification",
+        "trait-dependent diversification",
+        "HiSSE"
+      ],
+      "definition": "BiSSE (Binary State Speciation and Extinction) is a phylogenetic model that jointly estimates speciation and extinction rates for each state of a binary trait, testing whether the trait causes lineage diversification to differ between the two states.",
+      "analogy": "BiSSE is like trying to determine whether left-handed vs. right-handed boxers win more bouts, using only the tournament bracket — but if the tournament has dramatic seeding biases, you'll find handedness \"matters\" even when it's coin-flipped.",
+      "url": "/knowledge/concepts/bisse/"
+    },
+    {
+      "slug": "chromosome-fusion",
+      "title": "Chromosome Fusion",
+      "aliases": [
+        "chromosome fusion",
+        "chromosomal fusion",
+        "Robertsonian fusion",
+        "centric fusion",
+        "chromosome-autosome fusion",
+        "fusions"
+      ],
+      "definition": "A chromosome fusion is a structural rearrangement that joins two previously separate chromosomes into one, reducing the total chromosome number by one and creating a new, longer chromosome.",
+      "analogy": "A chromosome fusion is like taping two separate rulers end-to-end into a single longer ruler — the total measuring capacity is unchanged but the count of rulers goes down by one.",
+      "url": "/knowledge/concepts/chromosome-fusion/"
+    },
+    {
+      "slug": "demiploidy",
+      "title": "Demiploidy",
+      "aliases": [
+        "demiploidy",
+        "demipoloid",
+        "hemiploidy",
+        "haplodiploidy",
+        "haplodiploid"
+      ],
+      "definition": "Demiploidy (often called haplodiploidy) is a reproductive system in which females develop from fertilized diploid eggs while males develop from unfertilized haploid eggs, so males have only one copy of every chromosome.",
+      "analogy": "In a demipoloid system, think of males as walking around with only half a library — they have one copy of every book, while females have the full two-copy collection, and males came from the extra library copy that was never checked out.",
+      "url": "/knowledge/concepts/demiploidy/"
+    },
+    {
+      "slug": "dysploidy",
+      "title": "Dysploidy",
+      "aliases": [
+        "dysploidy",
+        "dysploid",
+        "descending dysploidy",
+        "ascending dysploidy",
+        "chromosome number change",
+        "aneusomy",
+        "fission",
+        "chromosome fission"
+      ],
+      "definition": "Dysploidy is a change in chromosome number by one or a small number of whole chromosomes through fusion (reducing count) or fission (increasing count) — as opposed to polyploidy, which multiplies the entire genome.",
+      "analogy": "Dysploidy is like dividing a bookshelf by pulling one book off and splitting it into two thin volumes (fission) or gluing two thin books together (fusion) — the library changes in unit count, but you have roughly the same total text.",
+      "url": "/knowledge/concepts/dysploidy/"
+    },
+    {
+      "slug": "effective-population-size",
+      "title": "Effective Population Size",
+      "aliases": [
+        "effective population size",
+        "Ne",
+        "effective size",
+        "census size",
+        "population size"
+      ],
+      "definition": "Effective population size (Ne) is the size of an idealized population that would experience the same rate of genetic drift as the actual population, accounting for unequal sex ratios, variation in reproductive success, and population structure.",
+      "analogy": "Ne is like the \"effective crew\" count on a ship — even if 100 people are aboard, if only 10 are doing the navigation, the ship behaves as if its navigating crew is 10, not 100, when it comes to making course-change errors (genetic drift).",
+      "url": "/knowledge/concepts/effective-population-size/"
+    },
+    {
+      "slug": "haldane-rule",
+      "title": "Haldane's Rule",
+      "aliases": [
+        "Haldane's rule",
+        "Haldane rule",
+        "large X effect",
+        "large-X effect"
+      ],
+      "definition": "Haldane's rule states that when only one sex is sterile or inviable in interspecific hybrids, it is disproportionately the heterogametic sex (XY males or ZW females).",
+      "analogy": "Haldane's rule is like noticing that in a room full of paired roommates who are incompatible, it's overwhelmingly the person who doesn't have a matching roommate type (the odd-chromosome-out) who can't function.",
+      "url": "/knowledge/concepts/haldane-rule/"
+    },
+    {
+      "slug": "heterogamety",
+      "title": "Heterogamety",
+      "aliases": [
+        "heterogametic sex",
+        "heterogametic",
+        "heterogamety",
+        "male heterogamety",
+        "female heterogamety"
+      ],
+      "definition": "A species is *heterogametic* in one sex when that sex produces two different kinds of gametes, one carrying each of two distinct sex chromosomes (e.g., X-bearing and Y-bearing sperm in XY males).",
+      "analogy": "Think of coin-flipping: in mammals every sperm a father makes carries either an X or a Y, and that coin flip at fertilization determines the offspring's sex.",
+      "url": "/knowledge/concepts/heterogamety/"
+    },
+    {
+      "slug": "holocentric-chromosome",
+      "title": "Holocentric Chromosome",
+      "aliases": [
+        "holocentric chromosome",
+        "holocentric chromosomes",
+        "holocentric",
+        "holokinetic",
+        "diffuse centromere",
+        "monocentric"
+      ],
+      "definition": "A holocentric chromosome has centromere activity distributed along its entire length rather than restricted to a single point, so spindle fibers can attach anywhere along the chromosome during cell division.",
+      "analogy": "In a monocentric chromosome the spindle hooks onto one specific handle; in a holocentric chromosome the entire surface is covered in handles — any spindle fiber can grab anywhere, making the chromosome more tolerant of fragmentation and fission events.",
+      "url": "/knowledge/concepts/holocentric-chromosome/"
+    },
+    {
+      "slug": "hybrid-sterility",
+      "title": "Hybrid Sterility",
+      "aliases": [
+        "hybrid sterility",
+        "hybrid male sterility",
+        "postzygotic isolation",
+        "Dobzhansky-Muller incompatibility",
+        "DMI",
+        "reproductive isolation"
+      ],
+      "definition": "Hybrid sterility is the failure of hybrids between two species or populations to reproduce, caused by incompatible gene combinations (Dobzhansky-Muller incompatibilities) that do not disrupt either parent but are deleterious when combined.",
+      "analogy": "Hybrid sterility is like two machines from different manufacturers that each work fine on their own but jam or break when you connect them together — the parts are incompatible even though each part is internally coherent.",
+      "url": "/knowledge/concepts/hybrid-sterility/"
+    },
+    {
+      "slug": "mk-model",
+      "title": "Mk Model",
+      "aliases": [
+        "Mk model",
+        "Markov model",
+        "Markov k-state model",
+        "continuous-time Markov chain",
+        "CTMC",
+        "equal-rates model",
+        "ARD model"
+      ],
+      "definition": "The Mk model is a continuous-time Markov chain for discrete trait evolution on a phylogeny, where each trait state can transition to any other at a rate governed by a rate matrix Q, and likelihood is computed by integrating over all possible ancestral histories.",
+      "analogy": "The Mk model treats trait evolution like a random walk where a ball in one state can roll to any adjacent state at a fixed rate — the phylogeny is the track, and the observed tip states let you infer the rates and likely starting points.",
+      "url": "/knowledge/concepts/mk-model/"
+    },
+    {
+      "slug": "msci",
+      "title": "Meiotic Sex Chromosome Inactivation",
+      "aliases": [
+        "meiotic sex chromosome inactivation",
+        "MSCI",
+        "meiotic silencing"
+      ],
+      "definition": "Meiotic sex chromosome inactivation (MSCI) is the transcriptional silencing of the X and Y chromosomes during male meiosis, which creates strong selection for X-linked genes to relocate — via retrotransposition — to autosomes.",
+      "analogy": "MSCI is like closing a factory during a key production shift: genes on the X that are needed for sperm development must find alternative locations (autosomes) to keep operating while the factory is shut.",
+      "url": "/knowledge/concepts/msci/"
+    },
+    {
+      "slug": "neo-sex-chromosome",
+      "title": "Neo-Sex Chromosome",
+      "aliases": [
+        "neo-sex chromosome",
+        "neo-sex chromosomes",
+        "neo-Y",
+        "neo-X",
+        "neo-W",
+        "neo-Z",
+        "newly formed sex chromosome"
+      ],
+      "definition": "A neo-sex chromosome is a newly derived sex chromosome formed when an autosome fuses with, or is recruited as a replacement for, an existing sex chromosome — starting a fresh cycle of sex chromosome evolution.",
+      "analogy": "A neo-sex chromosome is like a newly hired employee placed in a specialized department: once there, they quickly acquire the specialized characteristics (and limitations) of that department, often losing skills they had in the general workforce.",
+      "url": "/knowledge/concepts/neo-sex-chromosome/"
+    },
+    {
+      "slug": "par",
+      "title": "Pseudoautosomal Region",
+      "aliases": [
+        "pseudoautosomal region",
+        "PAR",
+        "pseudoautosomal",
+        "recombining region"
+      ],
+      "definition": "The pseudoautosomal region (PAR) is the segment of the sex chromosomes where X and Y (or Z and W) still recombine with each other — behaving like autosomes despite sitting on sex chromosomes.",
+      "analogy": "The PAR is the small strip of shared border where two otherwise sovereign territories still freely exchange people; everything outside it is locked down and unique to one side.",
+      "url": "/knowledge/concepts/par/"
+    },
+    {
+      "slug": "polyploidy",
+      "title": "Polyploidy",
+      "aliases": [
+        "polyploidy",
+        "polyploid",
+        "polyploidization",
+        "whole genome duplication",
+        "WGD",
+        "allopolyploidy",
+        "autopolyploidy"
+      ],
+      "definition": "Polyploidy is the state of having more than two complete sets of chromosomes in a cell — typically arising from whole-genome duplication or hybridization between species with different chromosome complements.",
+      "analogy": "Polyploidy is like accidentally making two complete photocopies of a book and binding them together into one volume: the result has redundant content and must be reorganized before it can function as a clean, single book.",
+      "url": "/knowledge/concepts/polyploidy/"
+    },
+    {
+      "slug": "recombination-suppression",
+      "title": "Recombination Suppression",
+      "aliases": [
+        "recombination suppression",
+        "recombination-suppression",
+        "suppressed recombination",
+        "absence of recombination",
+        "crossover suppression in sex chromosomes",
+        "non-recombining region",
+        "sex-limited region"
+      ],
+      "definition": "Recombination suppression in sex chromosomes is the evolutionary reduction or elimination of crossovers between X and Y (or Z and W) in the sex-limited region, which allows sexually antagonistic alleles to remain sex-linked but also traps deleterious mutations and starts the Y degeneration cycle.",
+      "analogy": "Recombination suppression is like putting up a wall between two halves of a city — alleles on each side can no longer be mixed, which initially benefits the sex whose alleles are locked in, but over time the walled-off side (the Y) accumulates junk that cannot be cleaned out.",
+      "url": "/knowledge/concepts/recombination-suppression/"
+    },
+    {
+      "slug": "retrogene",
+      "title": "Retrogene",
+      "aliases": [
+        "retrogene",
+        "retrogenes",
+        "retrocopy",
+        "retroposed gene",
+        "retrocopied gene",
+        "out-of-the-X"
+      ],
+      "definition": "A retrogene is an mRNA-derived copy of a gene that has been reverse-transcribed and reinserted into the genome at a new location — typically losing introns and regulatory elements in the process.",
+      "analogy": "A retrogene is like a photocopy of a document made at one office and taped up at another: the copy lacks the original's binder tabs (introns) and official stamps (promoters), but it can still be read if the new location provides the right context.",
+      "url": "/knowledge/concepts/retrogene/"
+    },
+    {
+      "slug": "robertsonian-translocation",
+      "title": "Robertsonian Translocation",
+      "aliases": [
+        "Robertsonian translocation",
+        "Robertsonian",
+        "rob translocation",
+        "centric fusion translocation",
+        "tandem fusion"
+      ],
+      "definition": "A Robertsonian translocation is a specific type of chromosome fusion where two acrocentric (short-armed) chromosomes join at their centromeres, producing a single metacentric chromosome and often a tiny fragment that is usually lost.",
+      "analogy": "A Robertsonian translocation is like pushing two T-shaped structures together at their bases — you get one large structure and a tiny fragment that falls away, reducing the chromosome count by approximately one.",
+      "url": "/knowledge/concepts/robertsonian-translocation/"
+    },
+    {
+      "slug": "sa-fusion",
+      "title": "SA Fusion",
+      "aliases": [
+        "SA fusion",
+        "sex chromosome-autosome fusion",
+        "sex-autosome fusion",
+        "SA-fusion",
+        "sexually antagonistic fusion"
+      ],
+      "definition": "An SA fusion is a chromosomal fusion between a sex chromosome and an autosome that is favored by selection because it links a sexually antagonistic allele (one that benefits one sex at the other's expense) to the sex-determining region.",
+      "analogy": "Imagine two companies merging so that a profitable division (a male-benefit gene) always goes to the male headquarters — the merger is favored because it stops the profitable division from ever being sent to the female office.",
+      "url": "/knowledge/concepts/sa-fusion/"
+    },
+    {
+      "slug": "sex-determination",
+      "title": "Sex Determination",
+      "aliases": [
+        "sex determination",
+        "sex determining region",
+        "SDR",
+        "sex chromosome system",
+        "environmental sex determination",
+        "genetic sex determination",
+        "GSD",
+        "ESD"
+      ],
+      "definition": "Sex determination is the developmental process by which an organism's sex is established — either through genetic mechanisms (GSD), environmental cues (ESD), or a combination, with the sex-determining region (SDR) on a sex chromosome serving as the genetic trigger in GSD species.",
+      "analogy": "Sex determination is the master switch in a factory's production line — in genetically determined systems, the switch is a specific chromosomal sequence; in environmentally determined ones, temperature or social context flips the switch; but either way, once thrown, the entire developmental program is redirected.",
+      "url": "/knowledge/concepts/sex-determination/"
+    },
+    {
+      "slug": "sexual-antagonism",
+      "title": "Sexual Antagonism",
+      "aliases": [
+        "sexual antagonism",
+        "sexually antagonistic",
+        "intralocus sexual conflict",
+        "sexual conflict",
+        "SA locus",
+        "SA allele",
+        "sexually antagonistic selection"
+      ],
+      "definition": "Sexual antagonism occurs when an allele at a locus increases the fitness of one sex while decreasing the fitness of the other — creating an evolutionary tug-of-war between males and females at the same gene.",
+      "analogy": "An SA allele is like a recipe ingredient that makes a dish taste great for one diner but terrible for another at the same table — natural selection cannot simultaneously satisfy both.",
+      "url": "/knowledge/concepts/sexual-antagonism/"
+    },
+    {
+      "slug": "simmap",
+      "title": "SIMMAP",
+      "aliases": [
+        "SIMMAP",
+        "stochastic character mapping",
+        "stochastic mapping",
+        "Bayesian stochastic mapping"
+      ],
+      "definition": "SIMMAP (Stochastic Mapping) is a Bayesian method that samples complete histories of character-state transitions mapped continuously onto each branch of a phylogeny, providing a posterior distribution over the number and timing of each transition.",
+      "analogy": "SIMMAP is like asking not just \"what state was an ancestor in?\" but \"draw me a full movie of how the trait changed across the whole tree, accounting for uncertainty\" — you get thousands of such movies and summarize them statistically.",
+      "url": "/knowledge/concepts/simmap/"
+    }
+  ]
+}

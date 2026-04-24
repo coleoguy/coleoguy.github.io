@@ -6,9 +6,20 @@ last_updated: 2026-04-21T17:21:42.935373+00:00
 papers_supporting: [2da8fb1b5d5f08ca9dccde3a6e1600c4ff6cbfdcb564fa6fd3617d6502e2feff]
 permalink: /knowledge/topics/ring_species/
 category: "Speciation & macroevolution"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Ring Species
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">1 source</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

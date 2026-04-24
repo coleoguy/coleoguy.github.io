@@ -6,9 +6,20 @@ last_updated: 2026-04-21T20:34:36.416433+00:00
 papers_supporting: [02a1144372eea7637a416bdecad69c824db50c3d41a6f0df6417a02d719dbee2, 50ffa26858c4ac0cc040432925613a01d371c052da7ba3e3b12f8becd9ade8b0, 9b26073c4ef21e4b81ec477d50cc357c4809ccb79b53507cb54707da1d48856b, acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe02b19]
 permalink: /knowledge/topics/epistasis/
 category: "Quantitative genetics & epistasis"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Epistasis
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">4 sources</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

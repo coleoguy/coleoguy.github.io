@@ -12,8 +12,19 @@ ingested_at: 2026-04-21T19:18:06.043241+00:00
 permalink: /knowledge/papers/10_1093_jhered_esae001/
 pdf: /pdfs/10_1093_jhered_esae001.pdf
 ---
-
 # Drift drives the evolution of chromosome number I: The impact of trait transitions on genome evolution in Coleoptera
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">4 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint fa8d0869</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

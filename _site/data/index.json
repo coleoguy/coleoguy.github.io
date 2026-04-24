@@ -1,7 +1,7 @@
 {
   "name": "Blackmon Lab open data",
   "description": "Machine-readable snapshots of the data that powers coleoguy.github.io. Everything here is CC BY 4.0. See LICENSE for terms and README.md for the human-readable walkthrough.",
-  "updated_at": "2026-04-19",
+  "updated_at": "2026-04-22",
   "license": "CC BY 4.0",
   "license_file": "LICENSE",
   "contact": "blackmon@tamu.edu",
@@ -173,6 +173,13 @@
       "format": "json",
       "records": 1960,
       "backs_page": "tau_database.html"
+    },
+    {
+      "file": "voice.md",
+      "description": "Calibration of Heath Blackmon's scientific-writing voice, derived from seven lead-authored papers. Intended as a portable context file for any agent drafting prose that Heath will sign. Rules are falsifiable and anchored to verbatim passages.",
+      "format": "markdown",
+      "source": "Seven PDFs under /pdfs/ selected by Heath on 2026-04-22; analysis by Claude (Opus 4.7).",
+      "refresh": "regenerate when the lead-authored corpus grows or when observed writing diverges from the rules"
     }
   ]
 }

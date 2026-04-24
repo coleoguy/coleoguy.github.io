@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrogene survival is not impacted by linkage relationships</title>
+<meta name="description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:title" content="Retrogene survival is not impacted by linkage relationships">
+<meta property="og:description" content="The Blackmon Lab studies genome structure evolution across the tree of life using computational, comparative, and experimental approaches at Texas A&M University.">
+<meta property="og:image" content="https://coleoguy.github.io/assets/img/slide-beetle.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blackmon Lab">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="author" content="Heath Blackmon">
+<link rel="icon" href="/assets/img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/v3.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4J0HZ3LNQX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4J0HZ3LNQX');</script>
+
+</head>
+
+<body class="wiki">
+
+<div class="chrome">
+  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
+</div>
+
+<div class="shell">
+
+  <aside class="sidebar" aria-label="Site navigation">
+  <div class="brand">
+    <span class="root-dot"></span>
+    <a href="/index.html" class="brand-name">Blackmon Lab</a>
+    <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
+  </div>
+
+  <ul class="tree" role="tree">
+    <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Science</span>
+      <ul>
+        <li><a href="/karyotype.html">Karyotype evolution</a></li>
+        <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
+        <li><a href="/genome-structure-evolution.html">Genome structure</a></li>
+        <li><a href="/selection.html">Selection &amp; drift</a></li>
+        <li><a href="/epistasis-line-cross.html">Epistasis</a></li>
+        <li><a href="/chromosome-evolution-history.html">History of the field</a></li>
+        <li><a href="/coleoptera-genomics.html">Beetles</a></li>
+        <li><a href="/fragile-y.html">The fragile Y</a></li>
+        <li><a href="/y-naught.html">Why not Y naught?</a></li>
+        <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>AI in science</span>
+      <ul>
+        <li><a href="/ai.html">Overview</a></li>
+        <li><a href="/traittrawler.html">TraitTrawler</a></li>
+        <li><a href="/lead-investigator.html">Tealc</a></li>
+        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/tealc-build.html">Build your own</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Teaching</span>
+      <ul>
+        <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
+        <li><a href="/subpages/biol682.html">BIOL 682</a></li>
+        <li><a href="/subpages/grad101.html">Grad 101</a></li>
+        <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Data &amp; tools</span>
+      <ul>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+
+  <!-- ── Main reading column ─────────────────────────────── -->
+  <main class="column" id="content">
+<h1 id="retrogene-survival-is-not-impacted-by-linkage-relationships">Retrogene survival is not impacted by linkage relationships</h1>
+
+<h2 id="summary">Summary</h2>
+
+<p><em>Ingested 2026-04-21. 2 findings extracted and verified.</em></p>
+
+<h2 id="findings-worth-citing">Findings worth citing</h2>
+
+<p><a id="finding-1"></a></p>
+<h3 id="finding-1--the-authors-compiled-4426-retrocopies-106-retrogenes-paired-with-1431-parental-genes-in-humans-and-82-retrocopies-81-retrogenes-paired-with-64-parental-genes-in-drosophila-melanogaster-from-retrogenedb-for-their-analysis">Finding 1 — The authors compiled 4,426 retrocopies (106 retrogenes) paired with 1,431 parental genes in humans and 82 retrocopies (81 retrogenes) paired with 64 parental genes in Drosophila melanogaster from RetrogeneDB for their analysis.</h3>
+
+<blockquote>
+  <p>After removing retrocopies with missing information (IDs, protein-coding status, etc), a total of 4,426 retrocopies were found for humans, with 106 retrogenes. Retrocopies were paired with 1,431 parental genes with 809 unique network partners. In D. melanogaster,8 2 retrocopies were found, 81 of which were retrogenes.
+— p. 5</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> Provides the specific dataset sizes used, which is the quantitative basis anyone citing this study’s null result would need to assess statistical power and scope.</p>
+
+<p><em>Counter / limitation:</em> The human vs. Drosophila retrocopy counts are highly asymmetric and the authors acknowledge this reflects differences in prior data collection effort rather than true pseudogenization rates, limiting cross-species comparability.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/genome_structure_evolution/">genome_structure_evolution</a></p>
+
+<p><a id="finding-2"></a></p>
+<h3 id="finding-2--the-well-documented-out-of-the-x-excess-of-retrogenes-is-recovered-in-both-humans-and-d-melanogaster-with-p--0-validating-the-dataset-while-also-motivating-its-exclusion-from-linkage-tests">Finding 2 — The well-documented out-of-the-X excess of retrogenes is recovered in both humans and D. melanogaster with p ≈ 0, validating the dataset while also motivating its exclusion from linkage tests.</h3>
+
+<blockquote>
+  <p>After calculating the test statistic from our data, signi ﬁcant results were found in both species, with p ∼ 0( Fig. S1).
+— p. 6</p>
+</blockquote>
+
+<p><em>Why this is citable:</em> Independent re-confirmation of the classic out-of-the-X pattern using RetrogeneDB data is useful as a citable replication that bolsters the meiotic sex chromosome inactivation hypothesis.</p>
+
+<p><em>Counter / limitation:</em> This is a re-analysis of an already well-established pattern rather than a novel discovery, and the p-value is reported only as approximately zero from 1,000 Monte Carlo iterations without effect-size decomposition.</p>
+
+<p><em>Topics:</em> <a href="/knowledge/topics/sex_chromosome_evolution/">sex_chromosome_evolution</a>, <a href="/knowledge/topics/sex_linkage_mutation/">sex_linkage_mutation</a></p>
+
+<!-- tealc:related-start -->
+<h2 id="read-the-paper">Read the paper</h2>
+
+<p><a href="https://doi.org/10.7717/peerj.12822">doi.org/10.7717/peerj.12822</a></p>
+
+<h2 id="related-papers-on-this-site">Related papers on this site</h2>
+
+<ul>
+  <li><a href="/knowledge/papers/10_1098_rsos_240755/">Genome assembly of the southern pine beetle (Dendroctonus fr…</a> — 2 shared topics (genome_structure_evolution, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1016_j_cois_2014_12_003/">Blackmon &amp; Demuth 2015</a> — 2 shared topics (genome_structure_evolution, sex_chromosome_evolution)</li>
+  <li><a href="/knowledge/papers/10_1534_genetics_117_300382/">Blackmon &amp; Brandvain 2017</a> — 2 shared topics (sex_chromosome_evolution, sex_linkage_mutation)</li>
+  <li><a href="/knowledge/papers/10_1002_ece3_73483/">Chien et al. 2026</a> — 2 shared topics (sex_chromosome_evolution, sex_linkage_mutation)</li>
+</ul>
+
+<h2 id="other-papers-by-these-authors">Other papers by these authors</h2>
+
+<ul>
+  <li><a href="/knowledge/authors/lo_j/">Lo J</a></li>
+  <li><a href="/knowledge/authors/blackmon_h/">Blackmon H</a>
+<!-- tealc:related-end --></li>
+</ul>
+
+  </main>
+</div>
+
+<!-- Command palette -->
+<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+  <div class="palette">
+    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
+    <div class="palette-results" id="palette-results"></div>
+  </div>
+</div>
+
+<!-- Ask-the-lab toast -->
+<div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
+
+<script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
+
+</body>
+</html>

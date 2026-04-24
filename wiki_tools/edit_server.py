@@ -42,18 +42,46 @@ PORT = 4711
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-ALLOWED_PATH_PREFIXES: tuple[str, ...] = (
-    "knowledge/topics/",
-    "knowledge/papers/",
-    "knowledge/concepts/",
-    "knowledge/methods/",
-    "knowledge/courses/",
-    "knowledge/projects/",
-    "knowledge/questions/",
-    "knowledge/paths/",
-    "knowledge/contradictions/",
+# Editable content pattern: any .html or .md file in the repo EXCEPT files
+# under these deny-listed directories. This is a deny-list rather than an
+# explicit allowlist so every content page (homepage, team, ai.html,
+# subpages/*, phylo-methods/*, knowledge/*) is editable once it carries
+# the region markers, without requiring per-file allowlist entries.
+DENIED_PATH_PREFIXES: tuple[str, ...] = (
+    "_site/",             # Jekyll build output — ephemeral
+    "_includes/",         # Layout templates — breaks all pages if edited
+    "_layouts/",          # Layout templates
+    "_data/",             # Jekyll data files
+    "_drafts/",           # Jekyll drafts
+    "assets/",            # CSS, JS, images, fonts
+    "wiki_tools/",        # Python source for this server
+    "data/",              # runtime DB + JSON + logs
+    "scripts/",           # shell launchers and .app bundles
+    "app/",
+    ".git/",
+    ".claude/",
+    "node_modules/",
+    "deprecated/",
+    "subpages/karyotype-data/",  # auto-generated, large, should be pipeline-written only
 )
-ALLOWED_EXACT_PATHS: tuple[str, ...] = ("AGENT_CONTRACT.md",)
+ALLOWED_EXTENSIONS: tuple[str, ...] = (".html", ".md")
+
+# Developer-facing metadata files at the repo root that users shouldn't
+# edit via the overlay — they're for humans reading on GitHub / CI.
+# Note: AGENT_CONTRACT.md is intentionally editable (external collaborator
+# contract; kept in the repo root so agents can amend it through the
+# normal review flow).
+DENIED_EXACT_PATHS: tuple[str, ...] = (
+    "README.md",
+    "TODO.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "WIKI_V1_PLAN.md",
+)
+
+# Kept for backward-compat with tests that imported these names.
+ALLOWED_PATH_PREFIXES: tuple[str, ...] = ()
+ALLOWED_EXACT_PATHS: tuple[str, ...] = ()
 
 PROPOSALS_DIR = REPO_ROOT / "data" / "wiki_proposals"
 AUDIT_LOG = PROPOSALS_DIR / "audit.log"
@@ -69,10 +97,27 @@ _FILE_LOCK = threading.Lock()
 # ---------------------------------------------------------------------------
 
 def _path_is_allowed(rel_path: str) -> bool:
-    """Return True if rel_path is in the write allowlist."""
-    if rel_path in ALLOWED_EXACT_PATHS:
-        return True
-    return any(rel_path.startswith(prefix) for prefix in ALLOWED_PATH_PREFIXES)
+    """Return True if rel_path is writable by the overlay.
+
+    Policy (deny-list): any .html / .md file in the repo EXCEPT files under
+    DENIED_PATH_PREFIXES (templates, assets, build output, code, runtime
+    data). Path traversal is caught in _resolve_safe; this function only
+    covers the allowlist semantics.
+    """
+    # Reject path traversal attempts (also caught by _resolve_safe; cheap
+    # upfront guard that keeps the code readable).
+    if rel_path.startswith("/") or ".." in rel_path.split("/"):
+        return False
+    # Deny-list: templates, assets, code, build output.
+    if any(rel_path.startswith(p) for p in DENIED_PATH_PREFIXES):
+        return False
+    # Deny specific developer-facing files at repo root.
+    if rel_path in DENIED_EXACT_PATHS:
+        return False
+    # Only content file extensions.
+    if not rel_path.endswith(ALLOWED_EXTENSIONS):
+        return False
+    return True
 
 
 def _resolve_safe(rel_path: str) -> Path | None:

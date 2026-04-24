@@ -45,6 +45,18 @@
 
   <ul class="tree" role="tree">
     <li>
+      <span>Lab</span>
+      <ul>
+        <li><a href="/team.html">Team</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/calendar.html">Calendar</a></li>
+        <li><a href="/join.html">Join the lab</a></li>
+        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+      </ul>
+    </li>
+    <li>
       <span>Science</span>
       <ul>
         <li><a href="/karyotype.html">Karyotype evolution</a></li>
@@ -57,22 +69,6 @@
         <li><a href="/fragile-y.html">The fragile Y</a></li>
         <li><a href="/y-naught.html">Why not Y naught?</a></li>
         <li><a href="/both-sides-are-right.html">Both sides are right</a></li>
-      </ul>
-    </li>
-    <li>
-      <span>Data &amp; tools</span>
-      <ul>
-        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
-        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
-        <li><a href="/epistasis-database.html">Epistasis database</a></li>
-        <li><a href="/tau_database.html">Tau database</a></li>
-        <li><a href="/citation-network.html">Citation network</a></li>
-        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
-        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
-        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
-        <li><a href="/subpages/evobir.html">evobiR</a></li>
-        <li><a href="/data/" target="_blank">/data exports</a></li>
-        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
       </ul>
     </li>
     <li>
@@ -93,18 +89,26 @@
         <li><a href="/subpages/biol682.html">BIOL 682</a></li>
         <li><a href="/subpages/grad101.html">Grad 101</a></li>
         <li><a href="/subpages/AI-Tools.html">AI tools guide</a></li>
+        <li><a href="/knowledge/">Lab wiki</a></li>
+        <li><a href="/knowledge/projects/">Active projects</a></li>
+        <li><a href="/knowledge/questions/">Open questions</a></li>
+        <li><a href="/knowledge/contradictions/">Contradictions board</a></li>
       </ul>
     </li>
     <li>
-      <span>Lab</span>
+      <span>Data &amp; tools</span>
       <ul>
-        <li><a href="/team.html">Team</a></li>
-        <li><a href="/publications.html">Publications</a></li>
-        <li><a href="/news.html">News</a></li>
-        <li><a href="/calendar.html">Calendar</a></li>
-        <li><a href="/join.html">Join the lab</a></li>
-        <li><a href="/undergrad-papers.html">Undergrad papers</a></li>
-        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
+        <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
+        <li><a href="/epistasis-database.html">Epistasis database</a></li>
+        <li><a href="/tau_database.html">Tau database</a></li>
+        <li><a href="/citation-network.html">Citation network</a></li>
+        <li><a href="/phylo-explorer.html">Tree explorer</a></li>
+        <li><a href="/subpages/popgen-sim.html">Pop-gen simulator</a></li>
+        <li><a href="/phylo-methods/index.html">PCM guide</a></li>
+        <li><a href="/subpages/evobir.html">evobiR</a></li>
+        <li><a href="/data/" target="_blank">/data exports</a></li>
+        <li><a href="/llms.txt" target="_blank">llms.txt</a></li>
       </ul>
     </li>
   </ul>
@@ -121,11 +125,6 @@
       This is the technical guide for replicating what the Blackmon Lab built: an always-on autonomous research agent that handles email triage, grant monitoring, literature synthesis, R analyses, and overnight drafting, running continuously on a Mac via launchd. The guide covers the full stack, every configuration file, how to wire up Google APIs, and how to add your own tools and scheduled jobs. The code is not yet public; this guide is for the architecture and concepts so that others can build something similar.
     </p>
 
-    <h2>What you are building</h2>
-    <p>
-      Two Python processes share a single SQLite database and auto-start on Mac login. The first is a <a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit</a> chat UI backed by a <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a> ReAct loop: you talk to it, it uses tools, it remembers. The second is an <a href="https://apscheduler.readthedocs.io/" target="_blank" rel="noopener">APScheduler</a> background daemon: it runs 42 scheduled jobs on a cron-like schedule without you doing anything. Both processes read and write the same SQLite file safely using WAL (Write-Ahead Logging) mode, so they never block each other. Google Drive stores configuration, memory, and credentials so the whole thing is portable across machines.
-    </p>
-
     <div class="agent-box">
       <span class="agent-line"><span class="agent-tag">Core stack</span>Python 3.11 · Chainlit · LangGraph · APScheduler · SQLite (WAL) · Claude API (Anthropic)</span>
       <span class="agent-line"><span class="agent-tag">Google APIs</span>Gmail · Calendar · Drive · Docs · Sheets (all via OAuth 2.0 service account or user credentials)</span>
@@ -133,23 +132,58 @@
       <span class="agent-line"><span class="agent-tag">Hosting</span>Runs locally on Mac; Cloudflare Worker for the public activity feed (optional)</span>
     </div>
 
-    <h2>Prerequisites</h2>
-    <ul>
-      <li>Mac running macOS 13 or later (launchd is macOS-specific; Linux users can substitute systemd)</li>
-      <li>Python 3.11+ installed (recommend <a href="https://github.com/pyenv/pyenv" target="_blank" rel="noopener">pyenv</a> for version management)</li>
-      <li>An <a href="https://console.anthropic.com/" target="_blank" rel="noopener">Anthropic API account</a> with access to Claude Sonnet, Opus, and Haiku models</li>
-      <li>A Google account with Google Cloud Console access for API credentials</li>
-      <li>A Cloudflare account (free tier is fine) if you want a public activity feed</li>
-      <li>R installed at a known path if you want R execution tools (<code>brew install r</code>)</li>
-    </ul>
+    <p class="tealc-feed-label" style="margin-top:28px;">Every section below is collapsed by default. Click a row to open it.</p>
 
-    <h2>Directory structure</h2>
-    <p>Keep the project directory in a location that syncs to Google Drive. This is what makes the agent portable: move to a new Mac, clone the Drive folder, run the launchd installer, and the agent picks up where it left off including all memory.</p>
-    <pre><code>00-Lab-Agent/
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Overview</span>
+          <span class="sum-head">What you are building</span>
+          <span class="sum-trail">Two Python processes, one SQLite database, launchd auto-start, Drive-synced state.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          Two Python processes share a single SQLite database and auto-start on Mac login. The first is a <a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit</a> chat UI backed by a <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a> ReAct loop: you talk to it, it uses tools, it remembers. The second is an <a href="https://apscheduler.readthedocs.io/" target="_blank" rel="noopener">APScheduler</a> background daemon: it runs 49 scheduled jobs on a cron-like schedule without you doing anything. Both processes read and write the same SQLite file safely using WAL (Write-Ahead Logging) mode, so they never block each other. Google Drive stores configuration, memory, and credentials so the whole thing is portable across machines.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Prerequisites</span>
+          <span class="sum-head">What you need before you start</span>
+          <span class="sum-trail">Mac, Python 3.11+, Anthropic + Google API accounts, optional Cloudflare and R.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <ul>
+          <li>Mac running macOS 13 or later (launchd is macOS-specific; Linux users can substitute systemd)</li>
+          <li>Python 3.11+ installed (recommend <a href="https://github.com/pyenv/pyenv" target="_blank" rel="noopener">pyenv</a> for version management)</li>
+          <li>An <a href="https://console.anthropic.com/" target="_blank" rel="noopener">Anthropic API account</a> with access to Claude Sonnet, Opus, and Haiku models</li>
+          <li>A Google account with Google Cloud Console access for API credentials</li>
+          <li>A Cloudflare account (free tier is fine) if you want a public activity feed</li>
+          <li>R installed at a known path if you want R execution tools (<code>brew install r</code>)</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Layout</span>
+          <span class="sum-head">Directory structure</span>
+          <span class="sum-trail">One folder, synced to Drive. Clone it on a new Mac and the agent picks up where it left off.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>Keep the project directory in a location that syncs to Google Drive. This is what makes the agent portable: move to a new Mac, clone the Drive folder, run the launchd installer, and the agent picks up where it left off including all memory.</p>
+        <pre><code>00-Lab-Agent/
 ├── app.py                    # Chainlit UI entry point
 ├── agent/
 │   ├── graph.py              # LangGraph ReAct loop + system prompt
-│   ├── tools.py              # All tool definitions (122 tools)
+│   ├── tools.py              # All tool definitions (139 tools)
 │   ├── scheduler.py          # APScheduler entry point + schema migrations
 │   ├── privacy.py            # Aquarium privacy classifier
 │   ├── notify.py             # Desktop + email notifications
@@ -157,7 +191,7 @@
 │       ├── __init__.py       # @tracked() decorator for job telemetry
 │       └── *.py              # One file per scheduled job
 ├── data/
-│   ├── agent.db              # SQLite database (30 tables + FTS5)
+│   ├── agent.db              # SQLite database (45 tables)
 │   ├── config.json           # Runtime config (folder IDs, email, hours)
 │   ├── deadlines.json        # Grant/manuscript deadlines (you edit this)
 │   ├── lab_people.json       # Privacy denylist + student seed data
@@ -170,57 +204,106 @@
 │   └── stop_scheduler.sh     # Kill via PID file
 ├── requirements.txt
 └── .env                      # ANTHROPIC_API_KEY + Worker URL/secret</code></pre>
+      </div>
+    </details>
 
-    <h2>Step 1: Install dependencies</h2>
-    <pre><code>cd ~/path/to/00-Lab-Agent
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 1</span>
+          <span class="sum-head">Install dependencies</span>
+          <span class="sum-trail">A venv and pip install — chainlit, langgraph, langgraph-checkpoint-sqlite, langchain-anthropic, langchain-core, langchain-google-community, google-auth, aiosqlite, mammoth, pypdf, duckduckgo-search, feedparser, and more.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <pre><code>cd ~/path/to/00-Lab-Agent
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt</code></pre>
-    <p>Key packages and why each one matters:</p>
-    <ul>
-      <li><strong>chainlit</strong> -- the chat UI. Handles WebSocket connections, step display (shows every tool call to the user), and session management.</li>
-      <li><strong>langgraph</strong> -- the agent loop. LangGraph's ReAct implementation handles the think-act-observe cycle cleanly. Use <code>AsyncSqliteSaver</code> from <code>langgraph.checkpoint.sqlite.aio</code> to persist conversation state in SQLite so the agent remembers across restarts.</li>
-      <li><strong>anthropic</strong> -- the Claude API client. LangGraph uses it through <code>langchain_anthropic.ChatAnthropic</code>.</li>
-      <li><strong>apscheduler</strong> -- the background scheduler. Use <code>AsyncIOScheduler</code> with <code>CronTrigger</code> and <code>IntervalTrigger</code> for the 42 jobs.</li>
-      <li><strong>google-auth, google-api-python-client, google-auth-oauthlib</strong> -- Google APIs. One set of OAuth credentials covers Gmail, Calendar, Drive, Docs, and Sheets.</li>
-      <li><strong>aiosqlite</strong> -- async SQLite access, required for LangGraph checkpointing and tool calls that need to not block the event loop.</li>
-      <li><strong>mammoth</strong> -- reads .docx files into clean text, preserving tracked changes and comments. Essential for reading manuscript drafts.</li>
-      <li><strong>pypdf</strong> -- reads PDFs. Used for reading grant PDFs and paper PDFs in Drive.</li>
-      <li><strong>httpx</strong> -- async HTTP client for literature APIs (OpenAlex, bioRxiv, Europe PMC).</li>
-    </ul>
+        <p>Key packages and why each one matters:</p>
+        <ul>
+          <li><strong>chainlit</strong> -- the chat UI. Handles WebSocket connections, step display (shows every tool call to the user), and session management.</li>
+          <li><strong>langgraph</strong> -- the agent loop. LangGraph's ReAct implementation handles the think-act-observe cycle cleanly.</li>
+          <li><strong>langgraph-checkpoint-sqlite</strong> -- persists conversation state in SQLite so the agent remembers across restarts. Use <code>AsyncSqliteSaver</code> from <code>langgraph.checkpoint.sqlite.aio</code>.</li>
+          <li><strong>langchain-anthropic</strong> -- LangGraph uses Claude through <code>langchain_anthropic.ChatAnthropic</code>.</li>
+          <li><strong>langchain-core, langchain-google-community</strong> -- core abstractions and Google-service integrations used throughout the tool layer.</li>
+          <li><strong>anthropic</strong> -- the Claude API client, also used directly for batch jobs and critic calls.</li>
+          <li><strong>apscheduler</strong> -- the background scheduler. Use <code>AsyncIOScheduler</code> with <code>CronTrigger</code> and <code>IntervalTrigger</code> for the 49 jobs.</li>
+          <li><strong>google-auth, google-api-python-client, google-auth-oauthlib, google-auth-httplib2</strong> -- Google APIs. One set of OAuth credentials covers Gmail, Calendar, Drive, Docs, and Sheets.</li>
+          <li><strong>aiosqlite</strong> -- async SQLite access, required for LangGraph checkpointing and tool calls that need to not block the event loop.</li>
+          <li><strong>mammoth</strong> -- reads .docx files into clean text, preserving tracked changes and comments. Essential for reading manuscript drafts.</li>
+          <li><strong>pypdf</strong> -- reads PDFs. Used for reading grant PDFs and paper PDFs in Drive.</li>
+          <li><strong>python-docx</strong> -- creates and edits Word documents programmatically.</li>
+          <li><strong>duckduckgo-search</strong> -- web search without an API key. Used by the executive loop and research tools.</li>
+          <li><strong>feedparser</strong> -- parses RSS feeds for the grant radar and literature monitoring jobs.</li>
+          <li><strong>requests</strong> -- synchronous HTTP for simpler one-shot API calls where async is not needed.</li>
+          <li><strong>python-dotenv</strong> -- loads the <code>.env</code> file. Use an explicit path so launchd finds it when starting from <code>/</code>.</li>
+        </ul>
+      </div>
+    </details>
 
-    <h2>Step 2: Set up Google OAuth</h2>
-    <p>
-      All five Google APIs (Gmail, Calendar, Drive, Docs, Sheets) share one OAuth 2.0 credential set. Go to <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>, create a project, enable the five APIs, and create an OAuth 2.0 Client ID credential for a Desktop application. Download the <code>credentials.json</code> file into the project root.
-    </p>
-    <p>
-      On first run, the OAuth flow opens a browser for you to approve access. After approval, a <code>token.json</code> file is written alongside <code>credentials.json</code>. That token refreshes automatically. The scopes you need:
-    </p>
-    <pre><code>https://www.googleapis.com/auth/gmail.modify
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 2</span>
+          <span class="sum-head">Set up Google OAuth</span>
+          <span class="sum-trail">One OAuth 2.0 Desktop credential covers Gmail, Calendar, Drive, Docs, and Sheets.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          All five Google APIs (Gmail, Calendar, Drive, Docs, Sheets) share one OAuth 2.0 credential set. Go to <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>, create a project, enable the five APIs, and create an OAuth 2.0 Client ID credential for a Desktop application. Download the <code>credentials.json</code> file into the project root.
+        </p>
+        <p>
+          On first run, the OAuth flow opens a browser for you to approve access. After approval, a <code>token.json</code> file is written alongside <code>credentials.json</code>. That token refreshes automatically. The scopes you need:
+        </p>
+        <pre><code>https://www.googleapis.com/auth/gmail.modify
 https://www.googleapis.com/auth/calendar
 https://www.googleapis.com/auth/drive
 https://www.googleapis.com/auth/documents
 https://www.googleapis.com/auth/spreadsheets</code></pre>
-    <p>
-      Keep <code>credentials.json</code> and <code>token.json</code> out of git. If you are using the Google Drive sync for portability, store them in the Drive folder alongside the code so a new machine can pick them up without re-running the OAuth flow.
-    </p>
+        <p>
+          Keep <code>credentials.json</code> and <code>token.json</code> out of git. If you are using the Google Drive sync for portability, store them in the Drive folder alongside the code so a new machine can pick them up without re-running the OAuth flow.
+        </p>
+      </div>
+    </details>
 
-    <h2>Step 3: Configure the .env file</h2>
-    <pre><code>ANTHROPIC_API_KEY=sk-ant-...
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 3</span>
+          <span class="sum-head">Configure the .env file</span>
+          <span class="sum-trail">ANTHROPIC_API_KEY plus optional Worker URL. Load with an explicit path — launchd starts from /.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <pre><code>ANTHROPIC_API_KEY=sk-ant-...
 AQUARIUM_WORKER_URL=https://your-worker.workers.dev   # optional
 AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
-    <p>
-      The agent loads this with <code>load_dotenv(os.path.join(_HERE, ".env"))</code> using an explicit path, not the current working directory. This matters because launchd starts processes from <code>/</code> by default, and a bare <code>load_dotenv()</code> call will silently fail.
-    </p>
+        <p>
+          The agent loads this with <code>load_dotenv(os.path.join(_HERE, ".env"))</code> using an explicit path, not the current working directory. This matters because launchd starts processes from <code>/</code> by default, and a bare <code>load_dotenv()</code> call will silently fail.
+        </p>
+      </div>
+    </details>
 
-    <h2>Step 4: Configure data files</h2>
-    <p><strong>data/config.json</strong> -- runtime settings the agent reads at startup:</p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 4</span>
+          <span class="sum-head">Configure data files</span>
+          <span class="sum-trail">Five JSON files control runtime: config, deadlines, known sheets, lab people, grant sources.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p><strong>data/config.json</strong> -- runtime settings the agent reads at startup:</p>
     <pre><code>{
   "tealc_drafts_folder_id": "Google Drive folder ID for overnight drafts",
   "heath_email": "you@yourinstitution.edu",
-  "working_hours_start": 8,
-  "working_hours_end": 20,
-  "timezone": "America/Chicago"
+  "working_hours_central": "8-20",
+  "goals_sheet_id": "Google Sheets spreadsheet ID for the goals portfolio",
+  "ntfy_quiet_hours_central": "22-7",
+  "ntfy_max_per_day": 20,
+  "ntfy_min_interval_minutes": 15
 }</code></pre>
 
     <p><strong>data/deadlines.json</strong> -- grant and manuscript deadlines you maintain manually:</p>
@@ -254,94 +337,164 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
   ]
 }</code></pre>
 
-    <p><strong>data/grant_sources.json</strong> -- RSS feeds and URLs the grant radar job scans every Monday:</p>
-    <pre><code>{
+        <p><strong>data/grant_sources.json</strong> -- RSS feeds and URLs the grant radar job scans every Monday:</p>
+        <pre><code>{
   "rss_feeds": [
     "https://www.nsf.gov/rss/rss_www_funding_pgm_annc_inf.xml",
     "https://grants.nih.gov/rss/rss_awards_query.cgi?query=evolution"
   ]
 }</code></pre>
+      </div>
+    </details>
 
-    <h2>Step 5: Initialize the database</h2>
-    <p>
-      The scheduler module handles schema creation and migrations on first run. There is no separate migration command to run. When you start the scheduler for the first time, it creates all 30 tables if they do not exist. The key tables to understand:
-    </p>
-    <ul>
-      <li><strong>current_context</strong> -- single row, updated every 10 minutes. Gives the executive loop a sub-second read on idle class, open intentions, unsurfaced briefings, next deadline. Never query everything from scratch when you can maintain a rolling snapshot.</li>
-      <li><strong>briefings</strong> -- output queue for scheduler jobs. Every job that wants to surface something to the user inserts a row here. The Chainlit UI reads unsurfaced briefings on chat open and displays them.</li>
-      <li><strong>executive_decisions</strong> -- Haiku's decision log. Every 15 minutes, insert one row with action, reasoning, confidence, and <code>executed=0</code>. Never set <code>executed=1</code> until you have reviewed at least a week of decisions for that action class.</li>
-      <li><strong>intentions</strong> -- persistent to-do queue. Survives restarts. Both the chat and the executive loop can write here.</li>
-      <li><strong>session_summaries</strong> + FTS5 index -- long-term conversation memory. Summarize every session on close and at 30-minute intervals. The FTS5 index makes keyword search across months of conversation fast.</li>
-    </ul>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 5</span>
+          <span class="sum-head">Initialize the database</span>
+          <span class="sum-trail">45 tables, created on first scheduler run. Five are load-bearing.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The scheduler module handles schema creation and migrations on first run. There is no separate migration command to run. When you start the scheduler for the first time, it creates all 45 tables if they do not exist. The key tables to understand:
+        </p>
+        <ul>
+          <li><strong>current_context</strong> -- single row, updated every 10 minutes. Gives the executive loop a sub-second read on idle class, open intentions, unsurfaced briefings, next deadline. Never query everything from scratch when you can maintain a rolling snapshot.</li>
+          <li><strong>briefings</strong> -- output queue for scheduler jobs. Every job that wants to surface something to the user inserts a row here. The Chainlit UI reads unsurfaced briefings on chat open and displays them.</li>
+          <li><strong>executive_decisions</strong> -- Haiku's decision log. Every 15 minutes, insert one row with action, reasoning, confidence, and <code>executed=0</code>. Never set <code>executed=1</code> until you have reviewed at least a week of decisions for that action class.</li>
+          <li><strong>intentions</strong> -- persistent to-do queue. Survives restarts. Both the chat and the executive loop can write here.</li>
+          <li><strong>session_summaries</strong> + FTS5 index -- long-term conversation memory. Summarize every session on close and at 30-minute intervals. The FTS5 index makes keyword search across months of conversation fast.</li>
+        </ul>
+      </div>
+    </details>
 
-    <h2>Step 6: Write the system prompt</h2>
-    <p>
-      The system prompt is the most important file in the project. Tealc's is 433 lines with 11 named sections: identity, operating constraints, tool inventory, goal layer protocol, memory protocol, overnight science protocol, executive loop protocol, privacy protocol, communication style, R execution protocol, and prohibited actions. Some principles that matter:
-    </p>
-    <ul>
-      <li>State the agent's identity and scope clearly in the first section. What it is for, what it is not for, whose interests it serves.</li>
-      <li>List every tool by name with a one-line description and a note on when to use it. The model cannot look up tool definitions mid-conversation; it relies on the system prompt to know what is available.</li>
-      <li>Write explicit protocols for the things that go wrong. Draft-only on email. Never overwrite existing research text. Advisor mode first. The system prompt is not documentation; it is instruction.</li>
-      <li>Keep the goal layer protocol concrete: when the user mentions a new research direction, ask three questions (time horizon, importance, success metric) before writing anything to the goals sheet. Vague commitments compound.</li>
-      <li>Specify the privacy rules exactly. The model should know, without tool use, whether a given action is safe to surface in the public feed. Explicit enumeration beats judgment calls in a hot path.</li>
-    </ul>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 6</span>
+          <span class="sum-head">Write the system prompt</span>
+          <span class="sum-trail">642 lines, 9 major sections. The most important file in the project.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The system prompt is the most important file in the project. Tealc's is 642 lines with 9 major ALLCAPS sections: WHO HEATH IS, RESEARCH IDENTITY, HOW TO BEHAVE, PUBLIC AQUARIUM AWARENESS, OVERNIGHT SCIENCE, PENDING INTENTIONS, STUDENTS, GOALS, and RESEARCH PROJECTS. Some principles that matter:
+        </p>
+        <ul>
+          <li>State the agent's identity and scope clearly in the first section. What it is for, what it is not for, whose interests it serves.</li>
+          <li>List every tool by name with a one-line description and a note on when to use it. The model cannot look up tool definitions mid-conversation; it relies on the system prompt to know what is available.</li>
+          <li>Write explicit protocols for the things that go wrong. Draft-only on email. Never overwrite existing research text. Advisor mode first. The system prompt is not documentation; it is instruction.</li>
+          <li>Keep the goal layer protocol concrete: when the user mentions a new research direction, ask three questions (time horizon, importance, success metric) before writing anything to the goals sheet. Vague commitments compound.</li>
+          <li>Specify the privacy rules exactly. The model should know, without tool use, whether a given action is safe to surface in the public feed. Explicit enumeration beats judgment calls in a hot path.</li>
+        </ul>
+      </div>
+    </details>
 
-    <h2>Step 7: Structure the tools</h2>
-    <p>
-      Organize tools into logical groups and keep each tool definition close to 10-15 lines: a docstring, typed parameters, one clear job, one return format. Tools that write should confirm before writing when called from chat (show diff, wait for approval) but can write directly when called from scheduled jobs. The distinction matters: a job running at 2am cannot ask for approval. Build that into the tool signature or the caller convention, not as ad hoc logic.
-    </p>
-    <p>
-      The tool groups that ended up mattering most for a research lab: literature search (OpenAlex is the best free source; it has citation counts, abstracts, open-access links, and a clean REST API), Gmail drafting (never send, always draft), calendar read/write, Google Docs read and append, Sheets read/write with a safety pattern, R script execution with timestamped working directories, student tracking, and the goals/intentions/memory tools that make the agent coherent across sessions.
-    </p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 7</span>
+          <span class="sum-head">Structure the tools</span>
+          <span class="sum-trail">10–15 lines per tool. Chat tools confirm before writing; job tools write directly — jobs at 2am cannot ask.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          Organize tools into logical groups and keep each tool definition close to 10-15 lines: a docstring, typed parameters, one clear job, one return format. Tools that write should confirm before writing when called from chat (show diff, wait for approval) but can write directly when called from scheduled jobs. The distinction matters: a job running at 2am cannot ask for approval. Build that into the tool signature or the caller convention, not as ad hoc logic.
+        </p>
+        <p>
+          The tool groups that ended up mattering most for a research lab: literature search (OpenAlex is the best free source; it has citation counts, abstracts, open-access links, and a clean REST API), Gmail drafting (never send, always draft), calendar read/write, Google Docs read and append, Sheets read/write with a safety pattern, R script execution with timestamped working directories, student tracking, and the goals/intentions/memory tools that make the agent coherent across sessions.
+        </p>
+      </div>
+    </details>
 
-    <h2>Step 8: Build the executive loop</h2>
-    <p>
-      The executive loop is a scheduled job that runs every 15 minutes. It reads the <code>current_context</code> row, the top 3 active goals and their nearest milestones, and a compact history of recent decisions. It calls Haiku (not Sonnet; this runs 96 times a day and cost matters) with a structured output schema and one instruction: pick one action from an allowed list, explain why, assign a confidence score. Insert the result into <code>executive_decisions</code> with <code>executed=0</code>.
-    </p>
-    <p>
-      The allowed actions list is the safety mechanism. Start with a very short list: surface a briefing, add an intention, refresh context. After a week of reviewing decisions and confirming the model's judgment looks sound, add one more class. Tealc currently has 16 defined action classes, including deadline escalation, overdue milestone flagging, VIP email reply drafting, stale briefing surfacing, and idle-triggered grant drafting. Never add "send email" or "delete anything" to the autonomous list. The executive loop should feel like a trusted colleague who flags things and prepares options, not one who acts without asking.
-    </p>
-    <p>
-      Make the loop idle-class-aware from day one. Read the <code>idle_class</code> field from <code>current_context</code> and use it to gate what the loop is allowed to do: nothing heavier than a briefing nudge when the lab is active, heavier background work when idle for 4+ hours, full science-job runway when deep-idle for 24+ hours. This prevents the loop from competing with active work and makes the overnight jobs feel like a gift rather than an interruption.
-    </p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 8</span>
+          <span class="sum-head">Build the executive loop</span>
+          <span class="sum-trail">Haiku decides one action every 15 minutes from a fixed allowed list. Idle-class-aware from day one.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The executive loop is a scheduled job that runs every 15 minutes. It reads the <code>current_context</code> row, the top 3 active goals and their nearest milestones, and a compact history of recent decisions. It calls Haiku (not Sonnet; this runs 96 times a day and cost matters) with a structured output schema and one instruction: pick one action from an allowed list, explain why, assign a confidence score. Insert the result into <code>executive_decisions</code> with <code>executed=0</code>.
+        </p>
+        <p>
+          The allowed actions list is the safety mechanism. Start with a very short list: surface a briefing, add an intention, refresh context. After a week of reviewing decisions and confirming the model's judgment looks sound, add one more class. Tealc currently has 16 defined action classes, including deadline escalation, overdue milestone flagging, VIP email reply drafting, stale briefing surfacing, and idle-triggered grant drafting. Never add "send email" or "delete anything" to the autonomous list. The executive loop should feel like a trusted colleague who flags things and prepares options, not one who acts without asking.
+        </p>
+        <p>
+          Make the loop idle-class-aware from day one. Read the <code>idle_class</code> field from <code>current_context</code> and use it to gate what the loop is allowed to do: nothing heavier than a briefing nudge when the lab is active, heavier background work when idle for 4+ hours, full science-job runway when deep-idle for 24+ hours. This prevents the loop from competing with active work and makes the overnight jobs feel like a gift rather than an interruption.
+        </p>
+      </div>
+    </details>
 
-    <h2>Step 9: Build the overnight science jobs</h2>
-    <p>
-      Each overnight science job follows the same pattern: check <code>idle_class</code> from <code>current_context</code>, bail immediately if not <code>deep_idle</code> (or <code>idle</code>, depending on job weight), do the work, write output to a dedicated table, insert a briefing row so Heath sees the result in the morning. The idle gate prevents the jobs from running during active work hours even if they are on the schedule.
-    </p>
-    <p>
-      For the literature synthesis job, the key design decision was per-project scope: each active research project in the goals sheet has a list of search keywords. The job fetches the most recent 7 days of OpenAlex results for each keyword, scores papers for relevance, and summarizes the top finds. Results go into a <code>literature_notes</code> table keyed by project. After a few weeks this builds into an annotated bibliography the agent can reference during drafting.
-    </p>
-    <p>
-      For R and Python execution, the key is isolation: each run gets a timestamped working directory, the script is written there first, then executed, then the output is captured. For R, a preamble script is prepended automatically to load standard libraries (ape, phytools, geiger, diversitree, tidyverse). For Python, the environment has pandas, numpy, matplotlib, scipy, sklearn, seaborn, and statsmodels. Results go into an <code>analysis_runs</code> table with the full script, stdout, stderr, and an interpretation by Sonnet.
-    </p>
-    <p>
-      An exploratory analysis job (Friday 3am) implements lightweight AI-scientist behavior: it picks one active project with a data directory, writes a 30–60 line Python script, runs it, interprets the result, and surfaces a briefing with the output. This is distinct from the queued-analysis job (Sunday 4am, R scripts derived from a project's stated <code>next_analysis</code>). Both feed the same <code>analysis_runs</code> table and both produce briefings tagged for morning review.
-    </p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 9</span>
+          <span class="sum-head">Build the overnight science jobs</span>
+          <span class="sum-trail">Literature synthesis, grant drafting, queued R analyses, exploratory Python. All idle-gated.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          Each overnight science job follows the same pattern: check <code>idle_class</code> from <code>current_context</code>, bail immediately if not <code>deep_idle</code> (or <code>idle</code>, depending on job weight), do the work, write output to a dedicated table, insert a briefing row so Heath sees the result in the morning. The idle gate prevents the jobs from running during active work hours even if they are on the schedule.
+        </p>
+        <p>
+          For the literature synthesis job, the key design decision was per-project scope: each active research project in the goals sheet has a list of search keywords. The job fetches the most recent 7 days of OpenAlex results for each keyword, scores papers for relevance, and summarizes the top finds. Results go into a <code>literature_notes</code> table keyed by project. After a few weeks this builds into an annotated bibliography the agent can reference during drafting.
+        </p>
+        <p>
+          For R and Python execution, the key is isolation: each run gets a timestamped working directory, the script is written there first, then executed, then the output is captured. For R, a preamble script is prepended automatically to load standard libraries (ape, phytools, geiger, diversitree, tidyverse). For Python, the environment has pandas, numpy, matplotlib, scipy, sklearn, seaborn, and statsmodels. Results go into an <code>analysis_runs</code> table with the full script, stdout, stderr, and an interpretation by Sonnet.
+        </p>
+        <p>
+          An exploratory analysis job (Friday 3am) implements lightweight AI-scientist behavior: it picks one active project with a data directory, writes a 30–60 line Python script, runs it, interprets the result, and surfaces a briefing with the output. This is distinct from the queued-analysis job (Sunday 4am, R scripts derived from a project's stated <code>next_analysis</code>). Both feed the same <code>analysis_runs</code> table and both produce briefings tagged for morning review.
+        </p>
+      </div>
+    </details>
 
-    <h2>Step 9b: Add the v2 rigor layer (recommended)</h2>
-    <p>
-      Once your overnight jobs are producing output, the next problem is trust: how do you know the drafts are any good before you read them? The v2 rigor layer adds three things that address this systematically.
-    </p>
-    <p>
-      <strong>Output ledger.</strong> Every research artifact produced by a scheduled job is logged to an <code>output_ledger</code> table before it enters the briefing queue. Each entry stores: job name, model used, prompt hash, input data SHA256, output text, a timestamp, and a <code>critic_score</code> field initialized to null. Nothing reaches Heath's morning briefing without a ledger entry. This gives you a complete provenance trail for every draft, hypothesis, and analysis result.
-    </p>
-    <p>
-      <strong>Adversarial critic.</strong> After each ledger entry is written, a critic job passes the output to Opus 4.7 with prompt-cached rubrics for your domain. The rubric scores four dimensions 1–5: factual support (are claims backed by cited evidence?), citation accuracy, hype (does the framing overstate what the data show?), and biological plausibility. Scores and flagged claims are written back to the ledger row. The morning briefing includes the critic score next to each draft so Heath knows before reading whether the output is likely solid or needs heavy review. Start with Haiku for the critic if cost is a concern; upgrade to Opus when you want stricter evaluation.
-    </p>
-    <p>
-      <strong>Reproducibility bundles.</strong> For every analysis run (R or Python), write a tar.gz bundle containing: the script, the input data manifest (file paths + SHA256 hashes), sessionInfo (for R) or pip freeze (for Python), and a plain-language reproduction instruction. Store bundles in a <code>bundles/</code> subdirectory. Any result can then be reproduced from the bundle alone, without relying on the agent's memory of what it did.
-    </p>
-    <p>
-      <strong>Cost telemetry.</strong> Track every API call with input tokens, output tokens, cache hit rate, and estimated USD cost. A weekly summary job aggregates these and writes a line to the briefing: "Science layer cost this week: $X.XX. Cache hit rate: Y%." This keeps costs visible and catches runaway jobs early. With prompt caching enabled on your domain rubrics and system prompt, expect 50–70% cache hit rates on the critic and overnight jobs.
-    </p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 9b</span>
+          <span class="sum-head">Add the v2 rigor layer (recommended)</span>
+          <span class="sum-trail">Output ledger, adversarial critic, reproducibility bundles, cost telemetry. Every draft scored before Heath reads it.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          Once your overnight jobs are producing output, the next problem is trust: how do you know the drafts are any good before you read them? The v2 rigor layer adds three things that address this systematically.
+        </p>
+        <p>
+          <strong>Output ledger.</strong> Every research artifact produced by a scheduled job is logged to an <code>output_ledger</code> table before it enters the briefing queue. Each entry stores: job name, model used, prompt hash, input data SHA256, output text, a timestamp, and a <code>critic_score</code> field initialized to null. Nothing reaches Heath's morning briefing without a ledger entry. This gives you a complete provenance trail for every draft, hypothesis, and analysis result.
+        </p>
+        <p>
+          <strong>Adversarial critic.</strong> After each ledger entry is written, a critic job passes the output to Opus 4.7 with prompt-cached rubrics for your domain. The rubric scores four dimensions 1–5: factual support (are claims backed by cited evidence?), citation accuracy, hype (does the framing overstate what the data show?), and biological plausibility. Scores and flagged claims are written back to the ledger row. The morning briefing includes the critic score next to each draft so Heath knows before reading whether the output is likely solid or needs heavy review. Start with Haiku for the critic if cost is a concern; upgrade to Opus when you want stricter evaluation.
+        </p>
+        <p>
+          <strong>Reproducibility bundles.</strong> For every analysis run (R or Python), write a tar.gz bundle containing: the script, the input data manifest (file paths + SHA256 hashes), sessionInfo (for R) or pip freeze (for Python), and a plain-language reproduction instruction. Store bundles in a <code>bundles/</code> subdirectory. Any result can then be reproduced from the bundle alone, without relying on the agent's memory of what it did.
+        </p>
+        <p>
+          <strong>Cost telemetry.</strong> Track every API call with input tokens, output tokens, cache hit rate, and estimated USD cost. A weekly summary job aggregates these and writes a line to the briefing: "Science layer cost this week: $X.XX. Cache hit rate: Y%." This keeps costs visible and catches runaway jobs early. With prompt caching enabled on your domain rubrics and system prompt, expect 50–70% cache hit rates on the critic and overnight jobs.
+        </p>
+      </div>
+    </details>
 
-    <h2>Step 10: Set up launchd auto-start</h2>
-    <p>
-      Two launchd plists keep the agent running across login, sleep, and restart. Write them into <code>~/Library/LaunchAgents/</code> and load them with <code>launchctl load</code>. One plist starts the Chainlit UI; one starts the scheduler daemon.
-    </p>
-    <p>Example plist for the scheduler:</p>
-    <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 10</span>
+          <span class="sum-head">Set up launchd auto-start</span>
+          <span class="sum-trail">Two plists in ~/Library/LaunchAgents/ — one for the Chainlit UI, one for the scheduler.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          Two launchd plists keep the agent running across login, sleep, and restart. Write them into <code>~/Library/LaunchAgents/</code> and load them with <code>launchctl load</code>. One plist starts the Chainlit UI; one starts the scheduler daemon.
+        </p>
+        <p>Example plist for the scheduler:</p>
+        <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
     "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
 &lt;plist version="1.0"&gt;
@@ -366,45 +519,77 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
   &lt;string&gt;/path/to/00-Lab-Agent/data/scheduler_err.log&lt;/string&gt;
 &lt;/dict&gt;
 &lt;/plist&gt;</code></pre>
-    <p>
-      Set <code>WorkingDirectory</code> to the project root. Set <code>KeepAlive</code> to true so launchd restarts the process if it crashes. Use the full path to the virtualenv Python binary. Load both plists with:
-    </p>
-    <pre><code>launchctl load ~/Library/LaunchAgents/com.blackmonlab.tealc-scheduler.plist
+        <p>
+          Set <code>WorkingDirectory</code> to the project root. Set <code>KeepAlive</code> to true so launchd restarts the process if it crashes. Use the full path to the virtualenv Python binary. Load both plists with:
+        </p>
+        <pre><code>launchctl load ~/Library/LaunchAgents/com.blackmonlab.tealc-scheduler.plist
 launchctl load ~/Library/LaunchAgents/com.blackmonlab.tealc-chainlit.plist</code></pre>
-    <p>
-      Verify with <code>launchctl list | grep tealc</code>. The scheduler writes a heartbeat timestamp to <code>data/scheduler_heartbeat.json</code> every 60 seconds; check that file to confirm the daemon is alive.
-    </p>
+        <p>
+          Verify with <code>launchctl list | grep tealc</code>. The scheduler writes a heartbeat timestamp to <code>data/scheduler_heartbeat.json</code> every 60 seconds; check that file to confirm the daemon is alive.
+        </p>
+      </div>
+    </details>
 
-    <h2>Step 11: Set up the Goals Sheet</h2>
-    <p>
-      The Goals Sheet is a Google Spreadsheet with five tabs: Goals, Milestones, Today, Decisions, and Research Projects. The schema for the Goals tab:
-    </p>
-    <pre><code>goal_id | title | description | importance (1-5) | status | deadline | notes | last_updated</code></pre>
-    <p>
-      The importance score (1 = highest) is what the executive loop and conflict detection use. The Today tab is a single column of prioritized actions the daily plan job writes at 6:30am. Heath can edit it before standing up. The Research Projects tab has the fields the overnight science jobs read: <code>project_id</code>, <code>keywords</code>, <code>current_hypothesis</code>, <code>next_analysis</code>, <code>linked_artifact_id</code>, <code>data_dir</code>, <code>output_dir</code>.
-    </p>
-    <p>
-      <strong>Do not use a polling sync job for the Goals Sheet.</strong> An earlier version of Tealc ran a bidirectional sync every five minutes, which hit Google Sheets API quota limits (429 errors) under normal lab activity. The current approach is on-demand: the agent exports the full goal portfolio to Sheets only when explicitly asked (via the <code>export_state_to_sheet</code> tool), and reads from Sheets on startup and after edits. This is more reliable and keeps the API footprint small.
-    </p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 11</span>
+          <span class="sum-head">Set up the Goals Sheet</span>
+          <span class="sum-trail">Five tabs, importance-scored goals, on-demand export. Do not use a polling sync — it hits quota.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The Goals Sheet is a Google Spreadsheet with five tabs: Goals, Milestones, Today, Decisions, and Research Projects. The schema for the Goals tab:
+        </p>
+        <pre><code>goal_id | title | description | importance (1-5) | status | deadline | notes | last_updated</code></pre>
+        <p>
+          The importance score (1 = highest) is what the executive loop and conflict detection use. The Today tab is a single column of prioritized actions the daily plan job writes at 6:30am. Heath can edit it before standing up. The Research Projects tab has the fields the overnight science jobs read: <code>project_id</code>, <code>keywords</code>, <code>current_hypothesis</code>, <code>next_analysis</code>, <code>linked_artifact_id</code>, <code>data_dir</code>, <code>output_dir</code>.
+        </p>
+        <p>
+          <strong>Do not use a polling sync job for the Goals Sheet.</strong> An earlier version of Tealc ran a bidirectional sync every five minutes, which hit Google Sheets API quota limits (429 errors) under normal lab activity. The current approach is on-demand: the agent exports the full goal portfolio to Sheets only when explicitly asked (via the <code>export_state_to_sheet</code> tool), and reads from Sheets on startup and after edits. This is more reliable and keeps the API footprint small.
+        </p>
+      </div>
+    </details>
 
-    <h2>Step 12: Set up the public aquarium (optional)</h2>
-    <p>
-      The aquarium is a Cloudflare Worker that stores and serves Tealc's recent activity publicly. The agent PUTs a JSON blob to the Worker after each tool call; the website fetches from it. The Worker stores only the last 50 events in a KV store.
-    </p>
-    <p>
-      The privacy gate in <code>agent/privacy.py</code> classifies every tool call before it is pushed. The rule: research tools (literature search, web search, citation tracking, lab website read) publish their query. Everything else gets a generic description ("read file", "checked calendar", "drafted email"). Student names, email content, and file names are never published.
-    </p>
-    <p>
-      If you do not want a public feed, skip the Cloudflare Worker entirely. The aquarium push is wrapped in a try/except that logs failures to a file and never raises. The agent operates identically without it.
-    </p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Step 12</span>
+          <span class="sum-head">Set up the public aquarium (optional)</span>
+          <span class="sum-trail">Cloudflare Worker, 50-event KV store, privacy gate. Skip entirely if you do not want a public feed.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The aquarium is a Cloudflare Worker that stores and serves Tealc's recent activity publicly. The agent PUTs a JSON blob to the Worker after each tool call; the website fetches from it. The Worker stores only the last 50 events in a KV store.
+        </p>
+        <p>
+          The privacy gate in <code>agent/privacy.py</code> classifies every tool call before it is pushed. The rule: research tools (literature search, web search, citation tracking, lab website read) publish their query. Everything else gets a generic description ("read file", "checked calendar", "drafted email"). Student names, email content, and file names are never published.
+        </p>
+        <p>
+          If you do not want a public feed, skip the Cloudflare Worker entirely. The aquarium push is wrapped in a try/except that logs failures to a file and never raises. The agent operates identically without it.
+        </p>
+      </div>
+    </details>
 
-    <h2>Adapting this for your lab</h2>
-    <p>
-      The architecture generalizes beyond a biology lab. The pieces that are domain-specific are the system prompt, the grant sources list, the known sheets, and the R preamble. Everything else -- the dual-process SQLite coordination, the executive loop, the goals sheet sync, the briefing infrastructure, the launchd setup -- is reusable as-is.
-    </p>
-    <p>
-      The design choices that matter most regardless of domain: keep the executive loop in advisor mode for at least a month before promoting any action class; build the briefing infrastructure before the jobs (a job that cannot surface its output is invisible); make the privacy gate explicit rather than relying on the model's judgment in a hot path; keep the overnight jobs idle-gated so they never interrupt active work; and use on-demand export for any bidirectional sheet sync rather than a polling job (polling hits quota limits). The cost of running this full system — 42 scheduled jobs, morning briefing, email triage, overnight science layer, adversarial critic, cost telemetry — is roughly $60–80/month at current Claude API pricing, dominated by the overnight science jobs and the adversarial critic pass on each output.
-    </p>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Generalize</span>
+          <span class="sum-head">Adapting this for your lab</span>
+          <span class="sum-trail">Domain-specific: system prompt, grant sources, known sheets, R preamble. Everything else is reusable.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The architecture generalizes beyond a biology lab. The pieces that are domain-specific are the system prompt, the grant sources list, the known sheets, and the R preamble. Everything else -- the dual-process SQLite coordination, the executive loop, the goals sheet sync, the briefing infrastructure, the launchd setup -- is reusable as-is.
+        </p>
+        <p>
+          The design choices that matter most regardless of domain: keep the executive loop in advisor mode for at least a month before promoting any action class; build the briefing infrastructure before the jobs (a job that cannot surface its output is invisible); make the privacy gate explicit rather than relying on the model's judgment in a hot path; keep the overnight jobs idle-gated so they never interrupt active work; and use on-demand export for any bidirectional sheet sync rather than a polling job (polling hits quota limits). The cost of running this full system — 49 scheduled jobs, morning briefing, email triage, overnight science layer, adversarial critic, cost telemetry — is roughly $60–80/month at current Claude API pricing, dominated by the overnight science jobs and the adversarial critic pass on each output.
+        </p>
+      </div>
+    </details>
 
     <div class="layer-body" style="padding-left:0;margin-top:36px;">
       <div class="layer-links">
@@ -442,6 +627,8 @@ launchctl load ~/Library/LaunchAgents/com.blackmonlab.tealc-chainlit.plist</code
 <div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>
 
 <script src="/assets/js/v3.js"></script>
+
+<script src="/assets/js/edit-overlay.js" defer></script>
 
 </body>
 </html>

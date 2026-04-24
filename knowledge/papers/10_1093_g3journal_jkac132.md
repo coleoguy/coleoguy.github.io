@@ -11,8 +11,19 @@ tier: canon
 ingested_at: 2026-04-21T18:52:38.991252+00:00
 permalink: /knowledge/papers/10_1093_g3journal_jkac132/
 ---
-
 # CaveCrawler: an interactive analysis suite for cavefish bioinformatics
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">3 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint 74e7bc68</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

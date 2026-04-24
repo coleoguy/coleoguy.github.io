@@ -11,8 +11,19 @@ tier: canon
 ingested_at: 2026-04-21T18:48:23.761498+00:00
 permalink: /knowledge/papers/10_1093_jhered_esaa030/
 ---
-
 # The March of the Beetles: Epistatic Components Dominate Divergence in Dispersal Tendency in Tribolium castaneum
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">2 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint acf19af8</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 

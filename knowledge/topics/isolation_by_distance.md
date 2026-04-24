@@ -6,9 +6,20 @@ last_updated: 2026-04-21T18:31:21.933720+00:00
 papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114bb78]
 permalink: /knowledge/topics/isolation_by_distance/
 category: "Population genetics"
----
-<!-- tealc:auto-start -->
+---<!-- tealc:auto-start -->
 # Isolation By Distance
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Page provenance">
+<span class="wf-label">Composed by Tealc</span>
+<span class="wf-date">2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">1 source</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">Last reviewed by Heath: never</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Current understanding
 

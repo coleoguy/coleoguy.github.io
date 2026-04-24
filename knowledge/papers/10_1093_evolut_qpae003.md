@@ -12,8 +12,19 @@ ingested_at: 2026-04-21T20:33:57.904398+00:00
 permalink: /knowledge/papers/10_1093_evolut_qpae003/
 pdf: /pdfs/10_1093_evolut_qpae003.pdf
 ---
-
 # Wright was right: leveraging old data and new methods to illustrate the critical role of epistasis in genetics and evolution
+
+<!-- tealc:freshness-start -->
+<aside class="wiki-freshness" aria-label="Source paper provenance">
+<span class="wf-label">Source paper</span>
+<span class="wf-date">ingested 2026-04-21</span>
+<span class="wf-dot">·</span>
+<span class="wf-sources">3 findings extracted</span>
+<span class="wf-dot">·</span>
+<span class="wf-review">fingerprint 9b26073c</span>
+</aside>
+<!-- tealc:freshness-end -->
+
 
 ## Summary
 
