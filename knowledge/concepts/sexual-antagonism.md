@@ -33,5 +33,45 @@ permalink: /knowledge/concepts/sexual-antagonism/
 **Next, learn about:** [SA fusion](/knowledge/concepts/sa-fusion/), [recombination suppression](/knowledge/concepts/recombination-suppression/)
 <!-- tealc:card-end -->
 
+<!-- tealc:explainer-start -->
+## Background
+
+Sexual antagonism was formalized as a population-genetic concept by William R. Rice (1984), who showed that alleles beneficial to one sex but harmful to the other can persist as stable polymorphisms. Rice's key insight was that sex chromosomes are the natural battleground for these loci: because one sex chromosome is transmitted exclusively through one sex, it shelters alleles that benefit that sex even when those alleles are costly in the other. This dynamic produces feminization pressure on the X (recessive female-beneficial alleles accumulate there) and masculinization pressure on the Y (male-beneficial alleles accumulate, sheltered from female selection). Blackmon and Brandvain (2017, *Genetics* 207: 1621-1629) built the lab's central treatment of SA, showing analytically how SA selection shapes PAR boundaries, inversion accumulation, and aneuploidy rates. That paper is the primary framing for how we think about SA in the lab.
+
+## How it works
+
+We distinguish two forms of sexual conflict. Intralocus conflict is the situation Rice (1984) described: a single locus where the same allele is pulled in opposite directions by selection in males and females simultaneously. Interlocus conflict involves separate loci whose products interact antagonistically across sexes. This wiki focuses on intralocus conflict because it is the form most directly tied to sex chromosome evolution.
+
+SA selection favors sex-linkage in a predictable way. A recessive male-beneficial allele accumulates on the X because hemizygous males express it fully while females (mostly heterozygous) pay only a partial cost. A dominant male-beneficial allele is favored on the Y, where female carriers do not exist. This asymmetry means autosomes near SA loci experience selection for fusion to a sex chromosome. Blackmon and Demuth (2014, *Genetics* 197: 561-572) showed that this "SA fusion" dynamic predicts a non-random bias toward sex chromosome-autosome fusions over autosome-autosome fusions. SA-driven inversions also suppress recombination: once an inversion links an SA allele to a sex-determining region, the suppressed region diverges, forming a new evolutionary stratum. Repeated bouts of suppression extend outward over time, producing the stratified structure we observe in old sex chromosomes.
+
+## A worked example
+
+In *Habronattus* jumping spiders, 8 of the 10 chromosomal fusions detected in the clade involve a sex chromosome (Blackmon and Demuth 2014). Under a null model where each fusion is equally likely to involve any chromosome pair, the probability of observing 8 or more sex-chromosome fusions out of 10 is p < 10^-5. We find the same directional bias in Coleoptera: in the suborder Adephaga, fusions involving the X chromosome are substantially more frequent than fusions involving only autosomes (Blackmon and Demuth 2014). In *Drosophila melanogaster*, quantitative genetic studies have identified fitness trade-offs where alleles that increase male mating success reduce female fecundity, confirming that SA loci segregate in natural populations at measurable frequencies.
+
+## Common misconceptions
+
+- **SA is about fitness, not behavior.** SA is a statement about allele fitness: the same allele raises fitness in one sex and lowers it in the other. The behavior that produced the conflict is irrelevant to the population genetics.
+- **SA does not require sexual dimorphism.** An SA polymorphism can persist in a population where males and females look identical. The conflict operates at the allele-fitness level.
+- **Weak SA selection can still drive chromosome change.** Blackmon and Brandvain (2017) show that even mild SA selection (s on the order of 0.01 or less) can shift PAR boundaries and drive inversion accumulation over evolutionary time.
+- **SA fusions and SA inversions are distinct.** A fusion changes chromosome number by attaching an autosome to a sex chromosome. An inversion suppresses recombination without changing chromosome number. Both are driven by SA selection but leave different karyotypic signatures.
+- **SA does not always resolve in favor of one sex.** More commonly, the conflict is partly resolved by sex-limited expression or sex-biased regulatory divergence, with the underlying SA polymorphism persisting or cycling.
+
+## How to spot it in papers
+
+- **Sex-by-genotype fitness interaction plots.** The clearest SA signature is a crossing pattern: one genotype has higher fitness in males, the other in females. Look for fitness (survival, fecundity, mating success) reported by sex and genotype simultaneously.
+- **SA locus mapping.** QTL studies that map fitness components separately in each sex and test for sex-by-QTL interactions identify candidate SA regions. An SA locus shows opposite sign of effect in males and females.
+- **Non-random fusion bias toward sex chromosomes.** A statistically significant excess of sex chromosome-autosome fusions over autosome-autosome fusions is consistent with SA-driven fusion accumulation (tested against a null proportional to chromosome number, as in Blackmon and Demuth 2014).
+- **Evolutionary strata with divergent sex-linked sequence.** SA-driven recombination suppression leaves a divergence gradient along the sex chromosome: older strata have higher dS between X- and Y-linked paralogs.
+- **PAR boundary shifts across related taxa.** Progressively shrinking pseudoautosomal regions across a clade suggest repeated SA-driven inversion accumulation; look for tests that co-vary PAR size with SA intensity proxies.
+
+## Further reading
+
+Within the wiki:
+
+- [SA fusion](/knowledge/concepts/sa-fusion/) -- the chromosome-level outcome of SA selection; covers fusion bias predictions and the Coleoptera and spider evidence.
+- [Recombination suppression](/knowledge/concepts/recombination-suppression/) -- how SA loci drive inversions that halt recombination and generate evolutionary strata.
+- [Blackmon and Brandvain 2017](/knowledge/papers/10_1534_genetics_117_300382/) -- the lab's primary theoretical treatment of SA selection, PAR dynamics, and aneuploidy rates.
+<!-- tealc:explainer-end -->
+
 <!-- user-start -->
 <!-- user-end -->
