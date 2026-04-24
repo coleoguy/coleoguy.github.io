@@ -1108,50 +1108,6 @@ body.wiki .wiki-freshness .wf-review {
 }
 body.wiki .wiki-freshness .wf-dot { opacity: 0.4; }
 
-/* Quiz + flashcards (V5) */
-.wiki-quiz-cta-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin: 2rem 0 1rem; }
-.wiki-quiz-cta, .flashcard-cta {
-  font-family: var(--font-mono); font-size: 0.75rem; font-variant: small-caps;
-  letter-spacing: 0.04em; color: var(--accent); background: var(--accent-dim);
-  border: 1px solid var(--accent); border-radius: 999px; padding: 5px 14px;
-  cursor: pointer; transition: background 0.15s, color 0.15s;
-}
-.wiki-quiz-cta:hover, .flashcard-cta:hover { background: var(--accent); color: var(--paper); }
-.wiki-quiz-cta:disabled, .flashcard-cta:disabled { opacity: 0.5; cursor: wait; }
-.wiki-quiz { font-family: var(--font-text); font-size: 1rem; margin: 1.5rem 0; }
-.wiki-quiz h2 { font-size: 1.1rem; margin-bottom: 1rem; }
-.wq-question {
-  border-left: 3px solid var(--rule-strong); padding: 0.75rem 1rem;
-  margin-bottom: 1.25rem; background: var(--paper-raised); border-radius: 0 4px 4px 0;
-}
-.wq-heading { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); margin-bottom: 0.4rem; }
-.wq-prompt { margin-bottom: 0.75rem; }
-.wq-choices { display: flex; flex-direction: column; gap: 8px; margin-bottom: 0.75rem; }
-.wq-choice { cursor: pointer; display: flex; align-items: baseline; gap: 6px; }
-.wq-choice input[type="radio"] { flex-shrink: 0; }
-.wq-check-btn {
-  font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 12px;
-  background: var(--paper-sunk); border: 1px solid var(--rule-strong); border-radius: 4px; cursor: pointer;
-}
-.wq-check-btn:disabled { opacity: 0.5; cursor: default; }
-.wq-answer { display: none; margin-top: 0.6rem; padding: 0.5rem 0.75rem; border-radius: 4px; border: 1px solid var(--rule); font-size: 0.9rem; }
-.wq-answer.show { display: block; }
-.wq-verbatim { font-style: italic; color: var(--ink-dim); font-size: 0.85rem; margin-top: 0.4rem; }
-.wq-correct { background: rgba(34,197,94,0.1); }
-.wq-choice.wq-correct { color: #166534; font-weight: 600; }
-.wq-choice.wq-wrong { color: #991b1b; text-decoration: line-through; }
-.wq-empty, .wq-loading { color: var(--ink-faint); font-style: italic; padding: 0.5rem 0; }
-.wq-reset-btn { margin-top: 0.5rem; }
-:root[data-theme="dark"] .wq-choice.wq-correct { color: #86efac; }
-:root[data-theme="dark"] .wq-choice.wq-wrong { color: #fca5a5; }
-.flashcard-toast {
-  position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--ink); color: var(--paper);
-  font-family: var(--font-mono); font-size: 0.78rem; padding: 10px 16px; border-radius: 6px;
-  max-width: 340px; opacity: 0; transform: translateY(8px);
-  transition: opacity 0.25s, transform 0.25s; z-index: 9999; pointer-events: none;
-}
-.flashcard-toast.show { opacity: 1; transform: translateY(0); }
-
 /* Concept tooltips (V5) — wiki-scoped dotted-underline links that reveal
    a 350px-wide floating card on hover / focus. Data from
    /knowledge/data/concepts.json, rendered by concept-tooltips.js. */

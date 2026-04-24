@@ -33,7 +33,6 @@ Live mirror of the lab's active research projects from Tealc's operational DB.
 | [Cornmeal aritficial selection](/knowledge/projects/p_031/) | active | — | 2026-04-20T00:55:27.277711+00:00 |
 | [Crab invasiveness](/knowledge/projects/p_017/) | active | — | 2026-04-20T00:55:27.275411+00:00 |
 | [Crotalus and other new genomes retro survey](/knowledge/projects/p_086/) | active | — | 2026-04-20T00:57:32.849096+00:00 |
-| [DARPA Biological Technologies](/knowledge/projects/p_128/) | active | DARPA Biological Technologies proposal — early concept; hypothesis under… | 2026-04-21T13:48:12.163488+00:00 |
 | [DFE infernces](/knowledge/projects/p_085/) | active | — | 2026-04-20T00:57:32.848992+00:00 |
 | [DR characterization](/knowledge/projects/p_046/) | active | Dosage compensation or differential regulation (DR) mechanisms can be… | 2026-04-20T01:23:57.961186+00:00 |
 | [Direct Repeat Characterization](/knowledge/projects/p_033/) | active | — | 2026-04-20T00:55:27.277926+00:00 |
@@ -46,12 +45,8 @@ Live mirror of the lab's active research projects from Tealc's operational DB.
 | [Fungi chromosome number](/knowledge/projects/p_089/) | active | — | 2026-04-20T00:57:32.849637+00:00 |
 | [Fusion Probabilities](/knowledge/projects/p_091/) | active | The probability of chromosomal fusion events varies predictably across taxa and… | 2026-04-21T13:49:20.799683+00:00 |
 | [Genomes of Jewels](/knowledge/projects/p_011/) | active | The X chromosome of Chrysina scarab beetles exhibits distinct evolutionary… | 2026-04-21T04:32:49.660573+00:00 |
-| [Google.org grant — AI agents for biology + AI literacy](/knowledge/projects/p_124/) | active | AI agents — properly designed with the right rails — can amplify biological… | 2026-04-21T20:52:31.800694+00:00 |
 | [Medea Model](/knowledge/projects/p_084/) | active | — | 2026-04-20T00:57:32.848881+00:00 |
 | [Mouse Sperm Single Cell](/knowledge/projects/p_061/) | active | — | 2026-04-20T00:57:32.844002+00:00 |
-| [NASA C2 — Exobiology concept](/knowledge/projects/p_127/) | active | NASA Exobiology proposal — concept stage; full hypothesis TBD. | 2026-04-21T04:32:49.660573+00:00 |
-| [NIH MIRA R35 renewal](/knowledge/projects/p_125/) | active | Comparative phylogenetic + theoretical + genomic methods integrated across… | 2026-04-21T04:32:49.660573+00:00 |
-| [NSF STAR DEB — Project description](/knowledge/projects/p_126/) | active | NSF STAR DEB project — see project description for hypothesis. | 2026-04-21T04:32:49.660573+00:00 |
 | [OSR Populations](/knowledge/projects/p_079/) | active | — | 2026-04-20T00:57:32.846315+00:00 |
 | [Odonata](/knowledge/projects/p_020/) | active | Chromosome number evolution in Odonata is dominated by Robertsonian fusions… | 2026-04-21T04:32:49.660573+00:00 |
 | [Opsin Gene Clustering](/knowledge/projects/p_019/) | active | — | 2026-04-20T00:55:27.275669+00:00 |
@@ -66,7 +61,6 @@ Live mirror of the lab's active research projects from Tealc's operational DB.
 | [Teaching-research integration model paper](/knowledge/projects/p_132/) | active | A structured course-based undergraduate research experience (CURE) that pairs… | 2026-04-21T01:28:15.028059+00:00 |
 | [The rate and shape of evolution under Domestication](/knowledge/projects/p_071/) | active | — | 2026-04-20T00:57:32.845492+00:00 |
 | [Tomatoes - Strains](/knowledge/projects/p_060/) | active | Two tomato strains (P1 and P2) differ in fruit development time and other… | 2026-04-21T04:34:54.962836+00:00 |
-| [Utpal MitoNuclear collaborative grant](/knowledge/projects/p_130/) | active | Mito-nuclear coevolution leaves detectable signatures in genome architecture;… | 2026-04-21T04:32:49.660573+00:00 |
 | [Worm Chromes](/knowledge/projects/p_083/) | active | — | 2026-04-20T00:57:32.848755+00:00 |
 | [cladogenetic vs anagenetic models of chromosome evolution](/knowledge/projects/p_065/) | active | — | 2026-04-20T00:57:32.844540+00:00 |
 | [cross species chromosome painting](/knowledge/projects/p_087/) | active | — | 2026-04-20T00:57:32.849205+00:00 |

@@ -10,7 +10,7 @@ last_updated: 2026-04-23
 
 91 topic pages, auto-maintained by Tealc from paper-finding extractions. Every claim traces to a verbatim quote in a cited paper.
 
-See also: [Papers](/knowledge/papers/) · [Concepts](/knowledge/concepts/) · [Methods](/knowledge/methods/) · [Contradictions](/knowledge/contradictions/) · [Open questions](/knowledge/questions/) · [Active projects](/knowledge/projects/)
+See also: [Papers](/knowledge/papers/) · [Concepts](/knowledge/concepts/) · [Methods](/knowledge/methods/) · [Contradictions](/knowledge/contradictions/) · [Active projects](/knowledge/projects/)
 
 ## Bioinformatics & tools
 
