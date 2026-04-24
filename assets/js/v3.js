@@ -28,11 +28,11 @@
     try { return JSON.parse(localStorage.getItem(TREE_KEY)) || []; } catch(e) { return []; }
   }
   function treeSaveOpen() {
-    const names = [...document.querySelectorAll('.tree > li.open > span')].map(s => s.textContent.trim());
+    const names = [...document.querySelectorAll('.tree li.open > span')].map(s => s.textContent.trim());
     try { localStorage.setItem(TREE_KEY, JSON.stringify(names)); } catch(e) {}
   }
   const savedOpen = treeGetOpen();
-  document.querySelectorAll('.tree > li > span').forEach(span => {
+  document.querySelectorAll('.tree li > span').forEach(span => {
     const li = span.parentElement;
     const ul = li.querySelector(':scope > ul');
     if (!ul) return;

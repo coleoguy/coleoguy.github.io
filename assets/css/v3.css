@@ -237,14 +237,14 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   background: var(--accent);
 }
 
-/* Collapsible tree categories — all start open, click to collapse */
-.tree > li > ul { display: none; }
-.tree > li.open > ul { display: block; }
-.tree > li > span {
+/* Collapsible tree categories — any depth, click to collapse */
+.tree li > ul { display: none; }
+.tree li.open > ul { display: block; }
+.tree li > span {
   cursor: pointer;
   user-select: none;
 }
-.tree > li > span::before {
+.tree li > span::before {
   content: '+';
   font-family: var(--font-mono);
   font-size: 10px;
@@ -253,7 +253,7 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   display: inline-block;
   width: 8px;
 }
-.tree > li.open > span::before { content: '−'; }
+.tree li.open > span::before { content: '−'; }
 
 /* Main reading column */
 main.column {

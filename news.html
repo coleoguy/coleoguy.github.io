@@ -1,20 +1,103 @@
 ---
 layout: default
-title: "News · Blackmon Lab"
-description: "Blackmon Lab, Texas A&M Biology. Evolution studied broadly, through autonomous AI agents and open machine-readable datasets."
+title: "News &amp; calendar · Blackmon Lab"
+description: "Blackmon Lab, Texas A&M Biology. Lab meeting time, Zoom room, Heath's weekly calendar, and recent lab news."
 canonical: "https://coleoguy.github.io/news.html"
 alternate: "https://coleoguy.github.io/data/news.json"
+extra_head: |
+  <style>
+    .meet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 22px 0 32px;
+    }
+    @media (max-width: 700px) { .meet-grid { grid-template-columns: 1fr; } }
+    .meet-card {
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .meet-card .label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+    .meet-card .big {
+      font-size: 18px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .meet-card .detail {
+      font-size: 14px;
+      color: var(--ink-dim);
+      line-height: 1.5;
+    }
+    .meet-card a {
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .meet-card a:hover { text-decoration: underline; }
+    .cal-frame-wrap {
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--paper-raised);
+      margin: 10px 0 22px;
+    }
+    .cal-frame-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 640px;
+      border: none;
+    }
+    .cal-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin-top: 6px;
+    }
+  </style>
 ---
 
 
 <!-- user-start -->
-    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; NEWS</div>
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; NEWS &amp; CALENDAR</div>
 
-    <h1 class="title">Lab news</h1>
+    <h1 class="title">News &amp; calendar.</h1>
 
     <p class="lede">
-      What we've been up to. Publications, defenses, grant work, fieldwork, and the occasional honest update about what broke.
+      Lab meeting time, the lab's Zoom room, Heath's weekly calendar, and recent updates. Grab a slot on the calendar or drop into office hours using the Zoom link below.
     </p>
+
+    <div class="meet-grid">
+      <div class="meet-card">
+        <div class="label">Weekly lab meeting</div>
+        <div class="big">Fridays at 11:00 AM</div>
+        <div class="detail">In person: BSBW 425. Remote attendance: use the Zoom room on the right. If we're discussing a paper, come with at least one question or comment.</div>
+      </div>
+      <div class="meet-card">
+        <div class="label">Lab Zoom room</div>
+        <div class="big"><a href="https://tamu.zoom.us/j/580704236" target="_blank" rel="noopener">tamu.zoom.us/j/580704236</a></div>
+        <div class="detail">Meeting ID: 580 704 236. Used for lab meetings, one-on-ones with Heath, and remote office hours.</div>
+      </div>
+    </div>
+
+    <h2>Heath's weekly calendar</h2>
+    <p>Public slots on the calendar are open for scheduling. Email <a href="mailto:blackmon@tamu.edu">blackmon@tamu.edu</a> to claim one. Grayed-out blocks are already booked.</p>
+
+    <div class="cal-frame-wrap">
+      <iframe loading="lazy" title="Dr. Blackmon's weekly calendar" src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=640&amp;wkst=1&amp;bgcolor=%23faf6ec&amp;src=coleoguy%40gmail.com&amp;color=%23500000&amp;ctz=America%2FChicago"></iframe>
+    </div>
+    <p class="cal-meta">Times shown in America/Chicago. View or subscribe to the live calendar in <a href="https://calendar.google.com/calendar/u/0?cid=coleoguy@gmail.com" target="_blank" rel="noopener">Google Calendar</a>.</p>
+
+    <h2>Recent news</h2>
+    <p>What we've been up to: publications, defenses, grant work, fieldwork, and the occasional honest update about what broke.</p>
 
     <div id="recent-news" data-limit="50"></div>
 
