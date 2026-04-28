@@ -2,7 +2,7 @@
 layout: default
 title: "Contradictions and open disagreements"
 permalink: /knowledge/contradictions/
-last_updated: 2026-04-24T01:28:30.553087+00:00
+last_updated: 2026-04-28T10:00:00.012735+00:00
 ---
 
 # Contradictions and open disagreements across lab topics
@@ -61,11 +61,7 @@ The sterility QTL experiment involved weakly fertile F1 males and a backcross of
 
 ### [Inversions](/knowledge/topics/inversions/)
 
-The h < 0.3 dominance threshold is derived from a symmetric fitness model that assumes complete recombination suppression within the inversion. Under asymmetric selection coefficients or partial recombination suppression, the boundary between fixation and stable polymorphism could shift substantially or disappear altogether. Broader parameter exploration is needed before this threshold can be treated as a robust empirical prediction.
-
-### [Large X Effect](/knowledge/topics/large_X_effect/)
-
-The sterility QTL mapping in Kitano et al. 2009 was conducted on a small backcross panel of weakly fertile F1 hybrid males (n = 76). The failure to detect a neo-X effect on sterility could therefore reflect limited statistical power rather than a true biological absence. Broader mapping populations, or crosses using more diverged neo-X-bearing strains, would be needed to rule out the null statistically. More broadly, whether the pattern generalizes beyond sticklebacks — whether young neo-sex chromosomes consistently lack sterility loci while carrying behavioral loci — remains untested across taxa.
+The h < 0.3 dominance threshold is derived from a symmetric fitness model that assumes complete recombination suppression within the inversion. Under asymmetric selection coefficients or partial recombination suppression, the boundary between fixation and stable polymorphism could shift substantially or disappear altogether. Broader parameter exploration is needed before this threshold can be treated as a generalizable empirical prediction.
 
 ### [Long Read Sequencing](/knowledge/topics/long_read_sequencing/)
 
@@ -445,11 +441,21 @@ The *C. formosanus* Y scaffold was characterized from a single male and female u
 
 The number of inferred origins is sensitive to dataset construction: origin counts differed notably between 109-taxon and 87-species-level datasets, reflecting the difficulty of matching tip taxa at genus and family levels in a group as diverse as Acari. Additionally, whether reversions are possible remains unresolved — the two-rate model technically allows them, but the empirical support collapses when the single anomalous tip is reconsidered. These analytical dependencies mean the canonical estimate of 7.9–12.9 origins should be treated as a well-motivated range rather than a precise count ([Blackmon et al. 2015, Finding 3](/knowledge/papers/10_1111_evo_12792/#finding-3)).
 
+### [Large X Effect](/knowledge/topics/large_X_effect/)
+
+The sterility QTL mapping in Kitano et al. 2009 was conducted on a small backcross panel of weakly fertile F1 hybrid males (n = 76). The failure to detect a neo-X effect on sterility could therefore reflect limited statistical power rather than a true biological absence. Broader mapping populations, or crosses using more diverged neo-X-bearing strains, would be needed to rule out the null statistically. More broadly, whether the pattern generalizes beyond sticklebacks — whether young neo-sex chromosomes consistently lack sterility loci while carrying behavioral loci — remains untested across taxa.
+
 ### [Meiotic Drive](/knowledge/topics/meiotic_drive/)
 
 **BiSSE reliability vs. null diversification result.** The negative finding on karyotype-driven diversification rests on BiSSE, a method known to produce elevated false-positive rates when diversification is heterogeneous across the tree. The authors themselves document inflated false-positive rates in simulations on the cetacean tree. It is therefore possible that the method lacks power to detect a real effect, or alternatively that spurious rate variation in other regions of the tree obscures a true signal. The finding should be interpreted as "no detectable effect" rather than a strong refutation of the chromosomal speciation hypothesis [Blackmon et al. 2019, Finding 1](/knowledge/papers/10_1111_evo_13682/#finding-1).
 
 **Mean vs. median for Primate switching rate.** The ~90.9 Myr figure for Primates is reported as a *median* waiting time in the source text, not a mean, creating a minor inconsistency in how the statistic is described. Given that transition-rate distributions are typically right-skewed, the mean could differ substantially, and rates inferred from trees sampling only 12–30% of extant species per clade carry additional uncertainty [Blackmon et al. 2019, Finding 2](/knowledge/papers/10_1111_evo_13682/#finding-2).
+
+### [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/)
+
+- **SA selection vs. drift-on-Y as the mechanism for Y-autosome fusion excess.** The SA framework ([Why not Y naught 2022, Finding 2](/knowledge/papers/10_1038_s41437_022_00543_z/#finding-2); [The probability of fusions 2020, Finding 2](/knowledge/papers/10_1098_rsbl_2020_0648/#finding-2)) attributes the observed Y-bias in fusions to sexually antagonistic selection capturing male-beneficial autosomal alleles on the Y. The fish and reptile survey ([Y fuse? Sex chromosome fusions in fishes and reptiles., Finding 3](/knowledge/papers/10_1371_journal_pgen_1005237/#finding-3)) instead argues that most such fusions are slightly deleterious and fix disproportionately on the Y because of male-biased mutation and the Y's reduced effective population size — i.e., drift rather than selection. The two mechanisms predict the same directional asymmetry but make opposite predictions about fitness consequences and parameter dependencies.
+- **Drosophila SA-fusion deficit vs. the theoretical prediction of an SA-fusion excess.** If SA selection were the dominant driver of sex-chromosome–autosome fusions, SA-fusions should be overrepresented. *Drosophila* instead show a significant deficit (observed 0.155, CI 0.12–0.22, vs. null 0.43; [The probability of fusions 2020, Finding 1](/knowledge/papers/10_1098_rsbl_2020_0648/#finding-1)), while *Habronattus* match the prediction ([The probability of fusions 2020, Finding 2](/knowledge/papers/10_1098_rsbl_2020_0648/#finding-2)). The clade-specific direction of the signal is not explained by any single model on this page.
+- **Charlesworth & Charlesworth (1980) 3× prediction vs. empirical fusion rates.** The analytic model predicts Y-autosome fusions should increase at ~3× the initial rate of X-autosome fusions ([10.1017/s0016672300014051, Finding 2](/knowledge/papers/10_1017_s0016672300014051/#finding-2)). Simulation under the non-PAR case recovers a qualitatively similar but quantitatively smaller asymmetry ([Worse than nothing at 2024, Finding 3](/knowledge/papers/10_7717_peerj_17740/#finding-3)), and empirical surveys in *Drosophila* and mammals do not consistently recover the predicted 3× ratio — leaving the quantitative prediction of the foundational SA-fusion model unconfirmed.
 
 ### [Sex-linkage mutation](/knowledge/topics/sex_linkage_mutation/)
 
