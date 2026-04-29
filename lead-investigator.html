@@ -14,6 +14,10 @@ canonical: "https://coleoguy.github.io/lead-investigator.html"
       Tealc is not a chatbot you summon. It is the lab's always-on autonomous member. It auto-starts on login, runs without supervision, and has access to the lab's full operational surface: email, calendar, Drive, literature databases, student records, grant feeds, R execution.
     </p>
 
+    <div class="layer-links" style="margin-bottom:24px;">
+      <a href="https://github.com/coleoguy/tealc" target="_blank" rel="noopener">tealc on GitHub &rarr;</a>
+    </div>
+
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
@@ -34,8 +38,12 @@ canonical: "https://coleoguy.github.io/lead-investigator.html"
 
     <div class="stats-row">
       <div class="stat">
-        <div class="stat-num">139</div>
+        <div class="stat-num">158</div>
         <span class="stat-label">Tools wired in</span>
+      </div>
+      <div class="stat">
+        <div class="stat-num">59</div>
+        <span class="stat-label">Scheduled jobs</span>
       </div>
       <div class="stat">
         <div class="stat-num">15 min</div>
@@ -45,15 +53,11 @@ canonical: "https://coleoguy.github.io/lead-investigator.html"
         <div class="stat-num">Always-on</div>
         <span class="stat-label">launchd auto-start, never idles</span>
       </div>
-      <div class="stat">
-        <div class="stat-num">Open</div>
-        <span class="stat-label">Every action in the public feed</span>
-      </div>
     </div>
 
     <div class="agent-box">
       <span class="agent-line"><span class="agent-tag">Scope</span>autonomous lab member: handles lower-tier knowledge work during the day, does science overnight — literature synthesis, grant and manuscript drafting, R + Python analyses, hypothesis generation, adversarial self-critique</span>
-      <span class="agent-line"><span class="agent-tag">Stack</span>Claude (Sonnet 4.6 default, Opus 4.7 on demand + critic, Haiku 4.5 for executive loop and batch jobs) · LangGraph ReAct loop · Chainlit UI · APScheduler · SQLite state · 49 scheduled jobs</span>
+      <span class="agent-line"><span class="agent-tag">Stack</span>Claude (Sonnet 4.6 default, Opus 4.7 on demand + critic, Haiku 4.5 for executive loop and batch jobs) · LangGraph ReAct loop · Chainlit UI · APScheduler · SQLite state · 59 scheduled jobs · 158 tools</span>
       <span class="agent-line"><span class="agent-tag">Portability</span>code, memory, and credentials sync through Google Drive; runs on any Mac via launchd auto-start</span>
       <span class="agent-line"><span class="agent-tag">Rules</span>draft-only on email · advisor mode first, autonomous only after explicit sign-off · every action in the public feed</span>
     </div>

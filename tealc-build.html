@@ -11,8 +11,12 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
     <h1 class="title">Build your own Tealc</h1>
 
     <p class="lede">
-      This is the technical guide for replicating what the Blackmon Lab built: an always-on autonomous research agent that handles email triage, grant monitoring, literature synthesis, R analyses, and overnight drafting, running continuously on a Mac via launchd. The guide covers the full stack, every configuration file, how to wire up Google APIs, and how to add your own tools and scheduled jobs. The code is not yet public; this guide is for the architecture and concepts so that others can build something similar.
+      This is the technical guide for replicating what the Blackmon Lab built: an always-on autonomous research agent that handles email triage, grant monitoring, literature synthesis, R analyses, and overnight drafting, running continuously on a Mac via launchd. The guide covers the full stack, every configuration file, how to wire up Google APIs, and how to add your own tools and scheduled jobs. The source code is open on GitHub at <a href="https://github.com/coleoguy/tealc" target="_blank" rel="noopener">coleoguy/tealc</a> — but read the repo's <code>Status</code> section first: it is fitted to the Blackmon Lab's specific Drive layout, students, grants, and writing voice, and several jobs will not run for anyone else without significant rewiring. Treat it as one worked example, not a turnkey template.
     </p>
+
+    <div class="layer-links" style="margin-bottom:24px;">
+      <a href="https://github.com/coleoguy/tealc" target="_blank" rel="noopener">tealc on GitHub &rarr;</a>
+    </div>
 
     <div class="agent-box">
       <span class="agent-line"><span class="agent-tag">Core stack</span>Python 3.11 · Chainlit · LangGraph · APScheduler · SQLite (WAL) · Claude API (Anthropic)</span>
@@ -33,7 +37,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
       </summary>
       <div class="layer-body">
         <p>
-          Two Python processes share a single SQLite database and auto-start on Mac login. The first is a <a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit</a> chat UI backed by a <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a> ReAct loop: you talk to it, it uses tools, it remembers. The second is an <a href="https://apscheduler.readthedocs.io/" target="_blank" rel="noopener">APScheduler</a> background daemon: it runs 49 scheduled jobs on a cron-like schedule without you doing anything. Both processes read and write the same SQLite file safely using WAL (Write-Ahead Logging) mode, so they never block each other. Google Drive stores configuration, memory, and credentials so the whole thing is portable across machines.
+          Two Python processes share a single SQLite database and auto-start on Mac login. The first is a <a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit</a> chat UI backed by a <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a> ReAct loop: you talk to it, it uses tools, it remembers. The second is an <a href="https://apscheduler.readthedocs.io/" target="_blank" rel="noopener">APScheduler</a> background daemon: it runs 59 scheduled jobs on a cron-like schedule without you doing anything. Both processes read and write the same SQLite file safely using WAL (Write-Ahead Logging) mode, so they never block each other. Google Drive stores configuration, memory, and credentials so the whole thing is portable across machines.
         </p>
       </div>
     </details>
@@ -72,7 +76,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
 ├── app.py                    # Chainlit UI entry point
 ├── agent/
 │   ├── graph.py              # LangGraph ReAct loop + system prompt
-│   ├── tools.py              # All tool definitions (139 tools)
+│   ├── tools.py              # All tool definitions (158 tools)
 │   ├── scheduler.py          # APScheduler entry point + schema migrations
 │   ├── privacy.py            # Aquarium privacy classifier
 │   ├── notify.py             # Desktop + email notifications
@@ -117,7 +121,7 @@ pip install -r requirements.txt</code></pre>
           <li><strong>langchain-anthropic</strong> -- LangGraph uses Claude through <code>langchain_anthropic.ChatAnthropic</code>.</li>
           <li><strong>langchain-core, langchain-google-community</strong> -- core abstractions and Google-service integrations used throughout the tool layer.</li>
           <li><strong>anthropic</strong> -- the Claude API client, also used directly for batch jobs and critic calls.</li>
-          <li><strong>apscheduler</strong> -- the background scheduler. Use <code>AsyncIOScheduler</code> with <code>CronTrigger</code> and <code>IntervalTrigger</code> for the 49 jobs.</li>
+          <li><strong>apscheduler</strong> -- the background scheduler. Use <code>AsyncIOScheduler</code> with <code>CronTrigger</code> and <code>IntervalTrigger</code> for the 59 jobs.</li>
           <li><strong>google-auth, google-api-python-client, google-auth-oauthlib, google-auth-httplib2</strong> -- Google APIs. One set of OAuth credentials covers Gmail, Calendar, Drive, Docs, and Sheets.</li>
           <li><strong>aiosqlite</strong> -- async SQLite access, required for LangGraph checkpointing and tool calls that need to not block the event loop.</li>
           <li><strong>mammoth</strong> -- reads .docx files into clean text, preserving tracked changes and comments. Essential for reading manuscript drafts.</li>
@@ -475,7 +479,7 @@ launchctl load ~/Library/LaunchAgents/com.blackmonlab.tealc-chainlit.plist</code
           The architecture generalizes beyond a biology lab. The pieces that are domain-specific are the system prompt, the grant sources list, the known sheets, and the R preamble. Everything else -- the dual-process SQLite coordination, the executive loop, the goals sheet sync, the briefing infrastructure, the launchd setup -- is reusable as-is.
         </p>
         <p>
-          The design choices that matter most regardless of domain: keep the executive loop in advisor mode for at least a month before promoting any action class; build the briefing infrastructure before the jobs (a job that cannot surface its output is invisible); make the privacy gate explicit rather than relying on the model's judgment in a hot path; keep the overnight jobs idle-gated so they never interrupt active work; and use on-demand export for any bidirectional sheet sync rather than a polling job (polling hits quota limits). The cost of running this full system — 49 scheduled jobs, morning briefing, email triage, overnight science layer, adversarial critic, cost telemetry — is roughly $60–80/month at current Claude API pricing, dominated by the overnight science jobs and the adversarial critic pass on each output.
+          The design choices that matter most regardless of domain: keep the executive loop in advisor mode for at least a month before promoting any action class; build the briefing infrastructure before the jobs (a job that cannot surface its output is invisible); make the privacy gate explicit rather than relying on the model's judgment in a hot path; keep the overnight jobs idle-gated so they never interrupt active work; and use on-demand export for any bidirectional sheet sync rather than a polling job (polling hits quota limits). The cost of running this full system — 59 scheduled jobs, morning briefing, email triage, overnight science layer, adversarial critic, cost telemetry — is roughly $60–80/month at current Claude API pricing, dominated by the overnight science jobs and the adversarial critic pass on each output.
         </p>
       </div>
     </details>

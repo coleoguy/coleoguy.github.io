@@ -17,15 +17,15 @@ canonical: "https://coleoguy.github.io/traittrawler.html"
 
     <div class="stats-row">
       <div class="stat">
-        <div class="stat-num">v6.1</div>
+        <div class="stat-num">v6.2</div>
         <span class="stat-label">Current version</span>
       </div>
       <div class="stat">
-        <div class="stat-num">8</div>
+        <div class="stat-num">11</div>
         <span class="stat-label">Specialist subagents</span>
       </div>
       <div class="stat">
-        <div class="stat-num">15</div>
+        <div class="stat-num">24</div>
         <span class="stat-label">Deterministic Python scripts</span>
       </div>
       <div class="stat">
@@ -73,13 +73,30 @@ canonical: "https://coleoguy.github.io/traittrawler.html"
         <span class="layer-summary-text">
           <span class="sum-kicker">How it works</span>
           <span class="sum-head">An 8-phase state machine with deterministic gates at each step</span>
-          <span class="sum-trail">A Manager subagent orchestrates specialists: triage on Haiku, extraction on Opus, verification on Sonnet.</span>
+          <span class="sum-trail">A Manager subagent orchestrates specialists: triage on Haiku, extraction on Opus, verification on Sonnet — with CoVe blind re-extraction as the critic.</span>
         </span>
       </summary>
       <div class="layer-body">
         <p>The pipeline runs as an 8-phase state machine inside Claude Code. A Manager subagent orchestrates specialist subagents, each running on the model appropriate to its task: Haiku 4.5 for fast relevance triage, Opus 4.7 at maximum effort for extraction and final adjudication, Sonnet 4.6 for semantic verification. The Manager stays lean; it never reads PDFs directly, only tracks state and dispatches subagents. This keeps the main context from filling across 500-paper runs.</p>
-        <p>Within the extraction loop, each paper goes through: triage → extraction (text + image at 2576px for table and figure pages) → grounding verification → semantic verification (with escalation to an Opus advisor for ambiguous claims) → schema validation → project-specific hooks → optional adjudication. Only papers that clear every gate write to the CSV. The rest are logged with reasons.</p>
-        <p>The pipeline narrates at declared checkpoints and runs autonomously between them. You can leave it running and come back to a partially completed database, a review queue of flagged records, and a session report summarizing coverage and failure patterns.</p>
+        <p>Within the extraction loop, each paper goes through: a deterministic code-execution prefilter that narrows the PDF to pages with trait signal (so triage reads kilobytes, not tens of kilobytes), triage → extraction (text + image at 2576px for table and figure pages) → grounding verification → Chain-of-Verification (the critic blindly re-extracts the value from the verbatim quote without seeing the extractor's proposed answer, then compares — this beats rubric scoring by roughly twenty F1 points on scientific information extraction) → escalation to an Opus advisor on uncertainty → schema validation → project-specific hooks → optional adjudication. Only papers that clear every gate write to the CSV. The rest are logged with reasons.</p>
+        <p>The pipeline narrates at declared checkpoints and runs autonomously between them. The Manager writes a compact checkpoint to disk every ten batches and reads it back first thing on every turn, so a 500-paper run can survive Claude Code's auto-compaction without losing track of where it is. You can leave it running and come back to a partially completed database, a review queue of flagged records, and a session report summarizing coverage and failure patterns.</p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">What's new in v6.2</span>
+          <span class="sum-head">CoVe verifier, code-execution triage prefilter, compaction-safe Manager</span>
+          <span class="sum-trail">Three changes that make the pipeline measurably more accurate, an order of magnitude cheaper at triage, and resilient across long autonomous runs.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p><strong>Chain-of-Verification critic.</strong> The semantic verifier no longer rubric-scores the extractor's proposed value. It blindly re-extracts the trait from the verbatim quote without seeing the original answer and then compares. The published evidence (Dhuliawala et al. 2023 and the 2025 VeriCoT follow-up) shows this beats rubric-style verifiers by roughly twenty F1 points on scientific IE specifically because the critic does not anchor on the draft. Both extractions are recorded in the ledger as part of the audit trail.</p>
+        <p><strong>Code-execution triage prefilter.</strong> Anthropic's Code Execution with MCP pattern showed that running deterministic code before sending data to a model can cut token usage by an order of magnitude. The prefilter applies that here: it parses the PDF, runs a regex/keyword filter built from the project's trait profile, and returns only the pages that carry signal plus a small surrounding context. Haiku triages roughly two to five thousand tokens per paper instead of twenty to eighty thousand, with no loss of recall on relevant pages.</p>
+        <p><strong>Compaction-safe Manager.</strong> Long autonomous runs eventually trigger Claude Code's context compaction, which historically corrupted the Manager's sense of where it was in the pipeline. The Manager now writes a chronological plain-markdown checkpoint to <code>state/manager_checkpoint.md</code> every ten batches and reads it back as the first thing on every turn. The session log accumulates as an append-only narrative. The Manager's effective memory now lives on disk, not in context.</p>
+        <p><strong>Adaptive self-consistency.</strong> The verifier's thinking effort scales with claim difficulty rather than running at a fixed level on every claim. Easy claims get a quick check; ambiguous ones get full reasoning and may escalate to the Opus advisor. Aggregate cost goes down without sacrificing accuracy on the cases that matter.</p>
+        <p>Operational improvements in this release: parallelized IO-bound Python work for batch scaling, fuzzy PDF pairing on bootstrap so renamed files still match curated rows, a migration preflight that audits a project's state before upgrading, and a dialogue-first bootstrap that walks the user through curated-data ingestion conversationally rather than by config file.</p>
       </div>
     </details>
 
