@@ -1,0 +1,186 @@
+---
+layout: default
+title: "Verification Evidence · Blackmon Lab"
+description: "Verification material for grant reviewers. Every claim made in our Google.org Impact Challenge: AI for Science application is backed by an artifact reachable from this page."
+canonical: "https://coleoguy.github.io/google-evidence.html"
+extra_head: |
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    .evidence-section {
+      margin: 28px 0;
+      padding: 18px 22px;
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+    }
+    .evidence-section h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 8px;
+    }
+    .evidence-claim {
+      font-size: 13px;
+      font-family: var(--font-mono);
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 14px 0 6px;
+    }
+    .evidence-list { margin: 6px 0 14px 0; padding-left: 22px; }
+    .evidence-list li { margin: 6px 0; line-height: 1.5; }
+    .evidence-list code {
+      font-size: 12px;
+      background: var(--paper-sunk);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .evidence-note {
+      font-size: 13px;
+      color: var(--ink-dim);
+      font-style: italic;
+      margin: 6px 0 0 0;
+    }
+    .review-banner {
+      background: linear-gradient(135deg, var(--accent-dim), var(--paper-raised));
+      border: 1px solid var(--rule-strong);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 20px 0 28px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
+---
+
+
+<!-- user-start -->
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; VERIFICATION EVIDENCE</div>
+
+    <h1 class="title">Verification evidence for the Google.org AI for Science application.</h1>
+
+    <p class="lede">
+      This page exists to make every claim in our application directly verifiable. Every artifact below is reachable in one click. The page is not linked from elsewhere on the site; the URL appears only in the application itself.
+    </p>
+
+    <div class="review-banner">
+      <strong>For reviewers:</strong> Each section names a claim made in the application and the public artifacts that back it. If something is not as you expect, please reach out to <a href="mailto:blackmon@tamu.edu">blackmon@tamu.edu</a>.
+    </div>
+
+    <!-- ============================== -->
+    <div class="evidence-section">
+      <h2>1. TealC is running today (not "we will build")</h2>
+
+      <div class="evidence-claim">Application claim</div>
+      <p>TealC is an autonomous lab member running 49 scheduled jobs on a 15-minute executive loop, drafting analyses overnight under an adversarial Opus 4.7 critic, with every tool call public.</p>
+
+      <div class="evidence-claim">Verify</div>
+      <ul class="evidence-list">
+        <li><a href="tealc.html">Live console (rolling tool-call feed)</a> — visit during US business hours to see active runs.</li>
+        <li><a href="https://github.com/coleoguy/tealc">github.com/coleoguy/tealc</a> — source code, MIT license, README, architecture documentation.</li>
+        <li><a href="lead-investigator.html">Full TealC description</a> — architecture, scaffolding, rigor layer, falsifiability instrument.</li>
+        <li><a href="tealc-build.html">"Build Your Own TealC" guidance</a> — how an external researcher deploys a TealC instance.</li>
+      </ul>
+    </div>
+
+    <!-- ============================== -->
+    <div class="evidence-section">
+      <h2>2. TraitTrawler is validated across kingdoms</h2>
+
+      <div class="evidence-claim">Application claim</div>
+      <p>Multi-agent extractor with mandatory deterministic verbatim-quote validation. 6,059 records / 4,959 species (Coleoptera, 91.7% HAC and 96.2% SCS agreement vs. a hand-curated benchmark); 1,960 records across 7 kingdoms (circadian tau); zero core-architecture changes between domains.</p>
+
+      <div class="evidence-claim">Verify</div>
+      <ul class="evidence-list">
+        <li><a href="https://github.com/coleoguy/TraitTrawler">github.com/coleoguy/TraitTrawler</a> — open-source code, MIT license, full validation pipeline.</li>
+        <li><a href="traittrawler.html">TraitTrawler overview page</a> — current week's triage and extraction summary.</li>
+        <li><a href="tau_database.html">Cross-kingdom tau database</a> — interactive web resource, 1,960 records, 175 species, 7 kingdoms.</li>
+        <li><a href="cures-karyotype-database.html">Coleoptera karyotype database</a> — public benchmark dataset.</li>
+        <li>Methods paper bioRxiv preprint: <em>link to be added on submission</em>.</li>
+      </ul>
+    </div>
+
+    <!-- ============================== -->
+    <div class="evidence-section">
+      <h2>3. The CURE produces publishable science</h2>
+
+      <div class="evidence-claim">Application claim</div>
+      <p>Spring 2026: 51 undergraduate researchers, 36 public posters at the annual undergraduate research session, 30 manuscripts in preparation targeted for November 2026 submission. Fall 2025 cohort produced Copeland &amp; Blackmon, "Chromosome number evolves at rates spanning seven orders of magnitude across eukaryotes," submitted to Science.</p>
+
+      <div class="evidence-claim">Verify</div>
+      <ul class="evidence-list">
+        <li><a href="biolai-cure.html">Biology &amp; AI CURE page</a> — Spring 2026 cohort, 51 student projects, methods stack.</li>
+        <li><a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v2">Copeland &amp; Blackmon bioRxiv preprint</a> — full Science-targeted manuscript, 63,682 karyotypes across 55 monophyletic eukaryotic clades.</li>
+        <li><a href="cure_posters/">Spring 2026 cohort posters</a> — every poster from the public undergraduate research session.</li>
+        <li><a href="undergrad-papers.html">Lab undergraduate publication record</a> — 8 first-author + 6 co-author papers across 12 undergraduates.</li>
+      </ul>
+    </div>
+
+    <!-- ============================== -->
+    <div class="evidence-section">
+      <h2>4. Approved AI-in-Biology degree concentrations</h2>
+
+      <div class="evidence-claim">Application claim</div>
+      <p>Approved BS and PhD AI-in-Biology concentrations launch Fall 2026 at Texas A&amp;M, the first formal AI degree tracks at any R1 biology department.</p>
+
+      <div class="evidence-claim">Verify</div>
+      <ul class="evidence-list">
+        <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html">TAMU Biology AI Concentration (official department page)</a></li>
+      </ul>
+    </div>
+
+    <!-- ============================== -->
+    <div class="evidence-section">
+      <h2>5. External beta-test commitments (outside TAMU)</h2>
+
+      <div class="evidence-claim">Application claim</div>
+      <p>Three external researchers across three institution types have agreed to be the first beta-test sites for TealC outside TAMU.</p>
+
+      <div class="evidence-claim">Verify</div>
+      <ul class="evidence-list">
+        <li><strong>Richard Adams</strong>, University of Arkansas (R1) — <a href="https://radamsrha.github.io/">radamsrha.github.io</a></li>
+        <li><strong>Carl Hjelmen</strong>, Utah Valley University (primarily undergraduate institution) — <a href="https://cehjelmen.github.io/">cehjelmen.github.io</a></li>
+        <li><strong>Jeffery Demuth</strong>, University of Texas at Arlington (R1, Hispanic-Serving Institution) — <a href="https://demuthlab.uta.edu/">demuthlab.uta.edu</a></li>
+      </ul>
+      <p class="evidence-note">Together these cover three reviewer-relevant institution types: R1, primarily undergraduate, and federally designated minority-serving institution.</p>
+    </div>
+
+    <!-- ============================== -->
+    <div class="evidence-section">
+      <h2>6. Institutional and program partners</h2>
+
+      <div class="evidence-claim">Application claim</div>
+      <p>Existing institutional partnerships supporting the project: Google AI for Education Accelerator (Gemini and NotebookLM deployed system-wide at TAMU), Wilton CUREs Excellence Endowment (perpetuity funding for the CURE), Texas A&amp;M Institute of Data Science (TAMIDS, HPRC compute and AI convening), and an active $20,000 application under review through Anthropic's AI for Science program.</p>
+
+      <div class="evidence-claim">Verify</div>
+      <ul class="evidence-list">
+        <li><a href="https://edu.google.com/intl/ALL_us/for-higher-ed/">Google AI for Education</a> (TAMU is a participating institution in the Accelerator program).</li>
+        <li><a href="https://tamids.tamu.edu/">Texas A&amp;M Institute of Data Science</a></li>
+        <li><a href="https://www.anthropic.com/research-program">Anthropic AI for Science program</a> — application status: under review.</li>
+      </ul>
+    </div>
+
+    <!-- ============================== -->
+    <div class="evidence-section">
+      <h2>7. Open scientific infrastructure (broader portfolio)</h2>
+
+      <div class="evidence-claim">Application claim</div>
+      <p>The lab maintains a portfolio of open infrastructure beyond this grant: six public karyotype databases, a Tree of Sex database, an epistasis database, the evobiR R package, and machine-readable site exports.</p>
+
+      <div class="evidence-claim">Verify</div>
+      <ul class="evidence-list">
+        <li><a href="karyotypes/index.html">Karyotype databases</a> — six datasets, ~20,000 species.</li>
+        <li><a href="epistasis-database.html">Epistasis database</a></li>
+        <li><a href="subpages/evobir.html">evobiR R package</a></li>
+        <li><a href="data/">/data exports</a> — JSON exports for every database.</li>
+        <li><a href="llms.txt">llms.txt</a> and <a href="llms-full.txt">llms-full.txt</a> — agent-readable site dumps.</li>
+        <li><a href="https://scholar.google.com/citations?user=H1xfCsEAAAAJ">PI publications (Google Scholar)</a></li>
+      </ul>
+    </div>
+
+    <p class="evidence-note" style="margin-top: 32px;">
+      Last updated: April 2026. If a link does not resolve as expected, please contact <a href="mailto:blackmon@tamu.edu">blackmon@tamu.edu</a>.
+    </p>
+
+<!-- user-end -->
