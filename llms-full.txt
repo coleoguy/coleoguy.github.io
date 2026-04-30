@@ -11,7 +11,7 @@ URL: https://coleoguy.github.io/AGENT_CONTRACT.md
 
 > Plain-text snapshot of the public pages of https://coleoguy.github.io
 > Generated for LLM/agent consumption. For machine-readable per-page metadata, see llms.txt.
-> Updated: 2026-04-16
+> Updated: 2026-04-30
 
 This file consolidates the visible text content of every major page on the site so
 language model agents can cite, summarize, or answer questions without rendering JS.
@@ -215,9 +215,9 @@ All databases, code, and workflows are published openly so other comparative bio
 ### Research projects
 Active and recent projects using AI tools in the lab.
 TraitTrawler
-A general-purpose autonomous literature-mining pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref, retrieves full-text PDFs through a 12-source cascade, and extracts structured trait data with mandatory double-entry verification before writing validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade. https://github.com/coleoguy/TraitTrawler
-Tealc (the lab's AI agent)
-The lab's in-house AI agent, built on Claude (Sonnet 4.6 default, Opus 4.7 on demand) plus LangGraph, with persistent SQLite memory and 15 tools wired in: literature search (Europe PMC, bioRxiv, OpenAlex), citation tracking, Gmail read and draft (never sends unprompted), Google Calendar read, Google Drive search and file read, local file read, and persistent notes. Today it functions as an administrative assistant that can also do real literature work. Currently reactive; the next phase is always-on with a morning-briefing scheduler. Mid-term phases add R and Python execution, Google Docs write-back, manuscript review, journal targeting, and student milestone tracking. Long-arc goal is a lead investigator: an agent that can carry an evolutionary-biology project from question to manuscript with optional human judgment at the critical checkpoints. Live activity feed at https://coleoguy.github.io/tealc.html ; full writeup at https://coleoguy.github.io/lead-investigator.html .
+A general-purpose autonomous literature-mining pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref, retrieves full-text PDFs through a 12-source cascade, and extracts structured trait data with mandatory double-entry verification before writing validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade. Open-source under MIT and deployable on any researcher's laptop with a Claude API account. https://github.com/coleoguy/TraitTrawler
+Tealc (the lab's autonomous member)
+An always-on autonomous lab member built on Claude (Sonnet 4.6 default, Opus 4.7 on demand and as adversarial critic, Haiku 4.5 for batch work) on a LangGraph ReAct loop with Chainlit UI, APScheduler, and SQLite state. 158 tools and 59 scheduled jobs cover Gmail draft (never sends unprompted), Calendar read and write, Drive, Docs and Sheets write-back, R and Python execution, Europe PMC and OpenAlex search, citation tracking, student tracker, grant radar, output ledger with SHA256 provenance, adversarial Opus critic, and cost telemetry. An executive loop fires every fifteen minutes; overnight jobs synthesize literature, draft grant sections, run R analyses, and propose hypotheses, with every output passing an adversarial critic that scores support, citation accuracy, hype, and biological plausibility before reaching review. The code is open-source under MIT. Any researcher with a Claude API account can run their own at roughly $60 per month for trainee scope, up to $200 per month for a 20+ person lab. Public live console at https://coleoguy.github.io/tealc.html ; full writeup at https://coleoguy.github.io/lead-investigator.html ; build guide at https://coleoguy.github.io/tealc-build.html ; source at https://github.com/coleoguy/tealc .
 RateScape
 Penalized likelihood method for estimating branch-specific rate scalars on phylogenies. We used AI tools throughout method development, simulation, and manuscript writing. Planned application to pathogen drug-resistance rate estimation (NHGRI PAR-25-228).
 Karyotype Databases
