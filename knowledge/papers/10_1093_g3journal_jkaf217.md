@@ -40,7 +40,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* This is a deterministic population-genetic model result with specific parameter assumptions (e.g., fixed μ, δ, symmetric fitness), so the exact fold-differences may not translate to finite populations or alternate dominance/linkage regimes.
 
-*Topics:* [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/), [fragile_y_hypothesis](/knowledge/topics/fragile_y_hypothesis/)
+*Topics:* [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/), [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/)
 
 <a id="finding-2"></a>
 ### Finding 2 — The primary selective force driving achiasmy shifts across sex-chromosome divergence, with sexual antagonism dominating in young homomorphic systems and heteromorphy-dependent aneuploidy dominating in highly diverged systems.
@@ -51,7 +51,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The prediction relies on unspecified functional forms of SA(L,s,h) and k(L); the authors acknowledge that exact functional forms are unknown, making this a theoretically motivated hypothesis rather than empirically validated.
 
-*Topics:* [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/), [fragile_y_hypothesis](/knowledge/topics/fragile_y_hypothesis/)
+*Topics:* [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/), [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/)
 
 <a id="finding-3"></a>
 ### Finding 3 — Under heteromorphy-dependent aneuploidy selection, autosomes permit broader invasion of achiasmy mutations than X chromosomes because of higher male residence time.
@@ -62,7 +62,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The residence-time explanation assumes that the sole driver of the autosome > X ordering is male exposure frequency, but the model also differs between these genomic regions in ploidy and linkage structure; the paper does not formally isolate residence time as the sole cause, so the attributed mechanism remains an inference rather than a proven result.
 
-*Topics:* [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/), [fragile_y_hypothesis](/knowledge/topics/fragile_y_hypothesis/)
+*Topics:* [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/), [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/)
 
 <!-- tealc:related-start -->
 ## Read the paper

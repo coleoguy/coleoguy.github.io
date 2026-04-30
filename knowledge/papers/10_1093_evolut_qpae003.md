@@ -42,7 +42,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The effect size (0.06) is small, the trait categorization into 'life history' vs. 'morphological' is subjective, and LCA is known to be conservative in detecting epistasis under sparse data, so the true contrast could be under- or overestimated.
 
-*Topics:* [epistasis](/knowledge/topics/epistasis/), [life_history_evolution](/knowledge/topics/life_history_evolution/)
+*Topics:* [Epistasis](/knowledge/topics/epistasis/), [Life History Evolution](/knowledge/topics/life_history_evolution/)
 
 <a id="finding-2"></a>
 ### Finding 2 — Animals exhibit greater epistatic contributions to trait divergence than plants.
@@ -54,7 +54,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The plant sample is dominated by domesticated crop crosses and selfing species, which may have reduced standing genetic variation and thus lower detectable epistasis, potentially confounding the clade comparison with mating system.
 
-*Topics:* [epistasis](/knowledge/topics/epistasis/), [hybridization](/knowledge/topics/hybridization/), [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/)
+*Topics:* [Epistasis](/knowledge/topics/epistasis/), [Hybridization](/knowledge/topics/hybridization/), [Genome structure evolution](/knowledge/topics/genome_structure_evolution/)
 
 <a id="finding-3"></a>
 ### Finding 3 — Traditional joint-scaling LCA ignores model selection uncertainty and roughly 19% of datasets yield no genetic effects meeting strict information-theoretic criteria, indicating a substantial false-positive risk in older analyses.
@@ -66,7 +66,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The 19% failure rate reflects datasets that lack sufficient statistical power or cohort diversity under SAGA's criteria—not necessarily that prior inferences were false positives. The variable-importance cutoff of 0.5 and 95% CI exclusion of zero are themselves chosen thresholds; different criteria would yield different failure rates. The finding conflates 'not supported under this framework' with 'false positive,' which overstates the implication.
 
-*Topics:* [line_cross_analysis](/knowledge/topics/line_cross_analysis/), [quantitative_genetics_methods](/knowledge/topics/quantitative_genetics_methods/), [epistasis](/knowledge/topics/epistasis/)
+*Topics:* [Line Cross Analysis](/knowledge/topics/line_cross_analysis/), [Quantitative Genetics Methods](/knowledge/topics/quantitative_genetics_methods/), [Epistasis](/knowledge/topics/epistasis/)
 
 <!-- tealc:related-start -->
 ## Related papers on this site

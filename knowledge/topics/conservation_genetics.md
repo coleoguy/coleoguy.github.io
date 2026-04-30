@@ -6,6 +6,7 @@ last_updated: 2026-04-21T18:32:24.999366+00:00
 papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114bb78]
 permalink: /knowledge/topics/conservation_genetics/
 category: "Population genetics"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -26,7 +27,7 @@ For conservation practitioners, the implication is significant: populations at t
 
 When conservation biologists want to know how many individuals are actually breeding in a population, they often use DNA to estimate [effective population size](/knowledge/concepts/effective-population-size/) (Ne). This works well if a population is well-mixed — if individuals can breed randomly with anyone else in the group. But real populations are messy. They spread across landscapes, get divided by mountains or rivers, and don't always mix evenly. When you ignore this structure and use standard formulas on DNA data, you can get wildly wrong answers.
 
-A major culprit is [ancestral isolation-by-distance](/knowledge/concepts/isolation-by-distance/) (IBD): as populations stay separated for generations, they accumulate small genetic differences in different regions. These differences make it look like the population was always much bigger than it actually was. For example, imagine a species spread along a linear range with very little movement between neighborhoods (migration rate m = 0.001). If you sample from the edge of that range and use a standard panmictic formula, you might estimate an ancestral Ne of roughly 7,370 — more than **seven times** the real population of 1,000 individuals. Animals in the middle of the range show far less bias (Ne ≈ 1,255) [Hancock & Blackmon 2020, Finding 1](/knowledge/papers/10_1093_jhered_esaa042/#finding-1).
+A major culprit is [ancestral isolation-by-distance](/knowledge/topics/isolation_by_distance/) (IBD): as populations stay separated for generations, they accumulate small genetic differences in different regions. These differences make it look like the population was always much bigger than it actually was. For example, imagine a species spread along a linear range with very little movement between neighborhoods (migration rate m = 0.001). If you sample from the edge of that range and use a standard panmictic formula, you might estimate an ancestral Ne of roughly 7,370 — more than **seven times** the real population of 1,000 individuals. Animals in the middle of the range show far less bias (Ne ≈ 1,255) [Hancock & Blackmon 2020, Finding 1](/knowledge/papers/10_1093_jhered_esaa042/#finding-1).
 
 The problem matters for conservation because populations at the edges of a species' range — often the ones managers care about most — are hit hardest by this inflation. Relying on inflated estimates could trick managers into thinking a struggling population is healthier and more genetically diverse than it really is, masking real extinction risk.
 

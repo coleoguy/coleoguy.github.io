@@ -6,6 +6,7 @@ last_updated: 2026-04-21T18:31:40.674698+00:00
 papers_supporting: [f27c2afdfa103056f78a31587504db0cd2ede6ba343c3c727ddac8c4f114bb78]
 permalink: /knowledge/topics/coalescent_simulation/
 category: "Population genetics"
+editor_frozen: true
 ---
 <!-- tealc:auto-start -->
 # Coalescent Simulation
@@ -23,6 +24,8 @@ category: "Population genetics"
 
 
 ## Current understanding
+
+The Blackmon Lab has used coalescent simulation in [Hancock & Blackmon 2020](/knowledge/papers/10_1093_jhered_esaa042/) to test how ancestral isolation-by-distance biases divergence-time estimation.
 
 Coalescent simulation is widely used to evaluate the performance of phylogenetic and population-genetic inference methods under controlled demographic scenarios. A key insight emerging from simulation work is that violations of the standard coalescent assumption — that ancestral populations are well-mixed and panmictic — can introduce severe bias into divergence time estimates, even when modern populations appear distinct.
 

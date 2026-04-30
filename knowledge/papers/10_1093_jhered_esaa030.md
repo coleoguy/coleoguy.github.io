@@ -41,7 +41,7 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 
 *Counter / limitation:* Only 3 replicates per selection direction were used from a single source population; generation 4 data are absent due to a confounding procedural error (delayed phenotyping), so the apparent plateau between generations 3 and 5 rests on only two data points and one transitional generation is uninterpretable.
 
-*Topics:* [dispersal](/knowledge/topics/dispersal/), [artificial_selection](/knowledge/topics/artificial_selection/), [quantitative_genetics](/knowledge/topics/quantitative_genetics/), [Tribolium](/knowledge/topics/Tribolium/)
+*Topics:* [Dispersal](/knowledge/topics/dispersal/), [Artificial Selection](/knowledge/topics/artificial_selection/), [Quantitative Genetics](/knowledge/topics/quantitative_genetics/), [Tribolium](/knowledge/topics/Tribolium/)
 
 <a id="finding-2"></a>
 ### Finding 2 — Forward-time simulations show that allelic dispersion among parental lines can produce spurious inferences of epistasis in line cross analysis, but only at magnitudes far smaller (epistatic:additive ratio 0–0.33) than observed empirically (ratio 5.27).
@@ -53,7 +53,7 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 
 *Counter / limitation:* The simulation uses only 20 unlinked biallelic loci with all dispersal alleles dominant and a specific allele-frequency architecture matching the empirical lines; different numbers of loci, linkage structures, dominance relationships, or starting allele frequencies could produce higher false-positive epistatic magnitudes and may not fully bracket the range of possible dispersion artifacts.
 
-*Topics:* [epistasis](/knowledge/topics/epistasis/), [line_cross_analysis](/knowledge/topics/line_cross_analysis/), [dispersal](/knowledge/topics/dispersal/), [quantitative_genetics](/knowledge/topics/quantitative_genetics/), [Tribolium](/knowledge/topics/Tribolium/)
+*Topics:* [Epistasis](/knowledge/topics/epistasis/), [Line Cross Analysis](/knowledge/topics/line_cross_analysis/), [Dispersal](/knowledge/topics/dispersal/), [Quantitative Genetics](/knowledge/topics/quantitative_genetics/), [Tribolium](/knowledge/topics/Tribolium/)
 
 <!-- tealc:related-start -->
 ## Read the paper

@@ -6,6 +6,7 @@ last_updated: 2026-04-21T16:43:54.737004+00:00
 papers_supporting: [e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
 permalink: /knowledge/topics/centromere_type/
 category: "Karyotype evolution"
+editor_frozen: true
 ---
 <!-- tealc:auto-start -->
 # Centromere Type
@@ -24,7 +25,7 @@ category: "Karyotype evolution"
 
 ## Current understanding
 
-Chromosomes in eukaryotes differ fundamentally in how centromere function is distributed along the chromosome. **Monocentric** chromosomes concentrate centromere activity at a single, defined locus, while **holocentric** chromosomes distribute spindle-attachment activity along the entire chromosome length. This architectural difference has long been hypothesized to have downstream consequences for chromosome stability, segregation fidelity, and the evolution of repetitive sequences embedded in the genome.
+Chromosomes in eukaryotes differ fundamentally in how centromere function is distributed along the chromosome. **<span data-no-concept-tooltips>Monocentric</span>** chromosomes concentrate centromere activity at a single, defined locus, while **[holocentric](/knowledge/concepts/holocentric-chromosome/)** chromosomes distribute spindle-attachment activity along the entire chromosome length. This architectural difference has long been hypothesized to have downstream consequences for chromosome stability, segregation fidelity, and the evolution of repetitive sequences embedded in the genome.
 
 Comparative work across insects has begun to reveal one such downstream consequence: centromere type is associated with differences in the *rate* of microsatellite evolution, even when total microsatellite content is similar between the two chromosome types. Monocentric insect lineages show consistently higher rates of microsatellite gain and loss than holocentric lineages — a pattern supported across nearly all sampled posterior trees in a Bayesian comparative analysis. This suggests that the physical organization of the centromere, or traits correlated with it, shapes how rapidly short tandem repeats turn over across the genome. [Jonika et al. 2020, Finding 3](/knowledge/papers/10_3390_genes11080945/#finding-3)
 
@@ -32,7 +33,7 @@ The mechanistic explanation remains unresolved. One candidate is that holocentri
 
 ## Supporting evidence
 
-The strongest direct evidence comes from a phylogenetically controlled comparison of microsatellite evolution rates in insects with monocentric versus holocentric chromosomes. Using Bayesian ancestral state reconstructions mapped onto insect phylogenies, a two-rate model (one rate for monocentric, one for holocentric lineages) was strongly favored over a single-rate model in 99 out of 100 posterior trees, with monocentric lineages consistently showing the higher rate. Crucially, total microsatellite content did not differ significantly between the two centromere types, isolating rate — not abundance — as the relevant dimension. [Jonika et al. 2020, Finding 3](/knowledge/papers/10_3390_genes11080945/#finding-3)
+The strongest direct evidence comes from a phylogenetically controlled comparison of microsatellite evolution rates in insects with monocentric versus holocentric chromosomes. Using Bayesian [ancestral state reconstructions](/knowledge/methods/ancestral-state-reconstruction/) mapped onto insect phylogenies, a two-rate model (one rate for monocentric, one for holocentric lineages) was strongly favored over a single-rate model in 99 out of 100 posterior trees, with monocentric lineages consistently showing the higher rate. Crucially, total microsatellite content did not differ significantly between the two centromere types, isolating rate — not abundance — as the relevant dimension. [Jonika et al. 2020, Finding 3](/knowledge/papers/10_3390_genes11080945/#finding-3)
 
 ## Contradictions / open disagreements
 

@@ -2,7 +2,7 @@
 layout: default
 title: "Demiploidy"
 concept_slug: demiploidy
-aliases: ["demiploidy", "demipoloid", "hemiploidy", "haplodiploidy", "haplodiploid"]
+aliases: ["demiploidy", "demipoloid", "hemiploidy"]
 prerequisites: [polyploidy, autosome]
 appears_in_topics: [karyotype_evolution_overview, haplodiploidy_evolution, chromosome_number_evolution]
 related_concepts: [polyploidy, dysploidy, effective-population-size]
@@ -10,11 +10,12 @@ primary_citation: "10_1111_evo_12792#finding-1"
 difficulty: advanced
 last_updated: 2026-04-23
 permalink: /knowledge/concepts/demiploidy/
+editor_frozen: true
 ---
 <!-- tealc:card-start -->
 # Demiploidy
 
-**One-sentence definition.** Demiploidy (often called haplodiploidy) is a reproductive system in which females develop from fertilized diploid eggs while males develop from unfertilized haploid eggs, so males have only one copy of every chromosome.
+**One-sentence definition.** Demiploidy is a karyotype state in which an organism (or one sex of an organism) carries only half the typical complement of chromosomes — distinct from haplodiploidy, which is a reproductive system in which males develop from unfertilized haploid eggs and females from fertilized diploid eggs.
 
 **One-sentence analogy.** In a demipoloid system, think of males as walking around with only half a library — they have one copy of every book, while females have the full two-copy collection, and males came from the extra library copy that was never checked out.
 

@@ -6,6 +6,7 @@ last_updated: 2026-04-21T19:10:34.295972+00:00
 papers_supporting: [10.1002/ece3.73483, 10.1093/jhered/esad076, 31776037050f6b89b93887fa1b80196fd30073325900b9b38adb091f0516948d]
 permalink: /knowledge/topics/conservation_genomics/
 category: "Population genetics"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -21,7 +22,7 @@ Recent work across three invertebrate systems demonstrates that chromosome-scale
 <div class="wiki-lead" data-active="student">
 <div data-register="student" markdown="1">
 
-Conservation genomics — the use of DNA sequencing to study and protect endangered species — increasingly depends on high-quality reference genomes to understand how populations are structured, which traits help species survive in specific environments, and what extinction risks they face. This is especially important for rare or hard-to-study animals like specialist bees and endemic beetles, which are ecologically vital but severely threatened by habitat loss and climate change. Beyond just getting a good genome sequence, conservationists also need to interpret patterns of genomic [homozygosity](/knowledge/concepts/homozygosity/) — repeated stretches where an organism has identical genetic copies — to figure out whether a population shrank long ago or recently experienced inbreeding among individuals alive today.
+Conservation genomics — the use of DNA sequencing to study and protect endangered species — increasingly depends on high-quality reference genomes to understand how populations are structured, which traits help species survive in specific environments, and what extinction risks they face. This is especially important for rare or hard-to-study animals like specialist bees and endemic beetles, which are ecologically vital but severely threatened by habitat loss and climate change. Beyond just getting a good genome sequence, conservationists also need to interpret patterns of genomic homozygosity — repeated stretches where an organism has identical genetic copies — to figure out whether a population shrank long ago or recently experienced inbreeding among individuals alive today.
 
 Recent work on three invertebrate species shows that chromosome-scale reference genomes — complete DNA sequences organized by chromosome — are now achievable even when sampling is difficult. The *Perdita meconis* (Mojave poppy bee) genome is 327 Mb with a contig N50 of 17.5 Mb and 95.5% complete Hymenoptera BUSCOs, made from just one specimen using PacBio HiFi technology — [Schweizer et al. 2024, Finding 1](/knowledge/papers/10_1093_jhered_esad076/#finding-1). The endangered long-armed scarab *Cheirotonus formosanus* has a chromosome-level assembly that supports demographic inference via ROH (runs of homozygosity) analysis — [Chien et al. 2026, Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1). And the jewel scarab *Chrysina gloriosa* adds a third example: a chromosome-level assembly spanning 642 MB across 454 scaffolds, with the 10 largest scaffolds capturing 98% of the genome, a scaffold N50 of 72 MB, and a BUSCO score of 95.5% — [A reference quality genome 2024, Finding 1](/knowledge/papers/10_1093_g3journal_jkae084/#finding-1). Together, these three successes show that high-quality genomes are now achievable for conservation-relevant beetles and bee species.
 

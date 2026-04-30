@@ -41,7 +41,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The 700% figure comes from a specific simulation scenario (m=0.001, TD/ND=1) with a fixed 10-deme linear stepping stone; empirical systems may not match these parameters, and the result is SNAPP-specific rather than a general property of all coalescent methods.
 
-*Topics:* [divergence_time_estimation](/knowledge/topics/divergence_time_estimation/), [isolation_by_distance](/knowledge/topics/isolation_by_distance/), [coalescent_simulation](/knowledge/topics/coalescent_simulation/)
+*Topics:* [Divergence Time Estimation](/knowledge/topics/divergence_time_estimation/), [Isolation by Distance](/knowledge/topics/isolation_by_distance/), [Coalescent Simulation](/knowledge/topics/coalescent_simulation/)
 
 <a id="finding-2"></a>
 ### Finding 2 — Divergence-time overestimation due to ancestral IBD becomes severe specifically when the ratio of divergence time to ancestral population size falls below 10 and migration is low.
@@ -53,7 +53,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The threshold was derived from simulations with 10 demes and specific migration rates (0.1, 0.01, 0.001); empirical systems with different deme numbers, geometries, or continuous habitats may have different critical ratios.
 
-*Topics:* [divergence_time_estimation](/knowledge/topics/divergence_time_estimation/), [isolation_by_distance](/knowledge/topics/isolation_by_distance/)
+*Topics:* [Divergence Time Estimation](/knowledge/topics/divergence_time_estimation/), [Isolation by Distance](/knowledge/topics/isolation_by_distance/)
 
 <a id="finding-3"></a>
 ### Finding 3 — Ancestral IBD inflates estimated effective population size relative to census size, with mean ancestral Ne reaching ~7370 versus Nc = 1000 at m = 0.001 when sampling end species.
@@ -65,7 +65,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The Ne value of ~7370 is derived by applying the panmictic expectation (equation 5: Ne = (π12 − 2TDμ) / 4μ) to data generated under a structured model; this is the very source of the inflation, not a failure of a general Ne estimator. Methods that explicitly account for population structure (e.g., structured coalescent models) would not produce this bias. Additionally, the specific TD/ND ratio used matters: the paper reports this figure for TD/ND = 50 with m = 0.001, so the magnitude may differ for other parameter combinations.
 
-*Topics:* [effective_population_size](/knowledge/topics/effective_population_size/), [isolation_by_distance](/knowledge/topics/isolation_by_distance/), [conservation_genetics](/knowledge/topics/conservation_genetics/)
+*Topics:* [Effective Population Size](/knowledge/topics/effective_population_size/), [Isolation by Distance](/knowledge/topics/isolation_by_distance/), [Conservation Genetics](/knowledge/topics/conservation_genetics/)
 
 <!-- tealc:related-start -->
 ## Read the paper

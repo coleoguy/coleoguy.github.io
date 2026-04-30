@@ -159,12 +159,18 @@ code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
   color: var(--ink);
   text-decoration: none;
 }
+/* Explicit dark-mode override — base 'a { color: var(--accent); }' rule was bleeding through */
+:root[data-theme="dark"] .brand .brand-name { color: var(--ink); }
+:root[data-theme="dark"] .brand .brand-name:hover { color: var(--accent-hover); }
 .brand .brand-affil {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--ink-faint);
+  color: var(--ink-dim);
   margin-left: auto;
 }
+:root[data-theme="dark"] .brand .brand-affil { color: var(--ink-dim); }
+:root[data-theme="dark"] .brand .brand-affil a { color: var(--ink-dim); }
+:root[data-theme="dark"] .brand .brand-affil a:hover { color: var(--accent-hover); }
 
 /* Phylogenetic tree */
 .tree, .tree ul { list-style: none; }

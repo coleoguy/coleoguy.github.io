@@ -6,6 +6,7 @@ last_updated: 2026-04-21T18:49:05.654684+00:00
 papers_supporting: [acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe02b19]
 permalink: /knowledge/topics/artificial_selection/
 category: "Quantitative genetics & epistasis"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -54,6 +55,8 @@ This pattern — fast response at first, then a plateau — suggests a limited p
 
 
 ## Current understanding
+
+Artificial selection is the deliberate breeding of organisms by humans to favor specific heritable traits, in contrast to natural selection where the differential reproduction is driven by environmental fitness.
 
 Artificial selection experiments provide a direct window into the additive genetic variance underlying traits of interest — how much heritable variation exists, how quickly populations respond, and whether selection hits a ceiling. Work in the flour beetle *Tribolium castaneum* illustrates a pattern commonly seen across taxa: rapid initial divergence between selected lines, followed by a marked deceleration as easily accessible genetic variation is exhausted.
 

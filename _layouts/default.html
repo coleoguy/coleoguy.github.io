@@ -40,6 +40,24 @@
 
   <!-- ── Main reading column ─────────────────────────────── -->
   <main class="column{% if page.wide %} wide{% endif %}" id="content">
+{%- comment -%}
+  Auto-breadcrumb for wiki pages. Wiki pages are auto-generated and don't have
+  hand-written .crumb divs in the markdown body. This block synthesizes one
+  from page.url so deep navigation inside /knowledge/ has a way out.
+{%- endcomment -%}
+{%- if page.url contains '/knowledge/' and page.url != '/knowledge/' -%}
+  {%- assign url_parts = page.url | split: '/' -%}
+  <div class="crumb">
+    <a href="/index.html">HOME</a> &rsaquo;
+    <a href="/knowledge/">WIKI</a>
+    {%- if url_parts[2] and url_parts[2] != "" -%}
+      &rsaquo; <a href="/knowledge/{{ url_parts[2] }}/">{{ url_parts[2] | upcase }}</a>
+    {%- endif -%}
+    {%- if url_parts[3] and url_parts[3] != "" -%}
+      &rsaquo; {{ url_parts[3] | replace: '_', ' ' | upcase }}
+    {%- endif -%}
+  </div>
+{%- endif -%}
 {{ content }}
   </main>
 </div>

@@ -42,7 +42,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The R² is only 0.06, the analysis is correlational (cannot distinguish whether reproductively labile species are preferentially domesticated), and the domestication index relies on text-mining of a single aviculture magazine as a proxy.
 
-*Topics:* [domestication_genomics](/knowledge/topics/domestication_genomics/), [sex_chromosome_evolution](/knowledge/topics/sex_chromosome_evolution/)
+*Topics:* [Domestication genomics](/knowledge/topics/domestication_genomics/), [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/)
 
 <a id="finding-2"></a>
 ### Finding 2 — In Galliformes, domestication is significantly associated with reduced reproductive isolation after phylogenetic correction, though the effect is small relative to divergence time.
@@ -54,7 +54,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The R² is only 0.06, the analysis is correlational (cannot distinguish whether reproductively labile species are preferentially domesticated), and the domestication index relies on text-mining of a single aviculture magazine as a proxy.
 
-*Topics:* [domestication](/knowledge/topics/domestication/), [reproductive_isolation](/knowledge/topics/reproductive_isolation/), [avian_hybridization](/knowledge/topics/avian_hybridization/), [Galliformes](/knowledge/topics/Galliformes/)
+*Topics:* [Domestication](/knowledge/topics/domestication/), [Reproductive Isolation](/knowledge/topics/reproductive_isolation/), [Avian Hybridization](/knowledge/topics/avian_hybridization/), [Galliformes](/knowledge/topics/Galliformes/)
 
 <a id="finding-3"></a>
 ### Finding 3 — Among birds, the inter-family hybrids between helmeted guineafowl and Phasianidae species at ~51 MY divergence represent the most diverged known avian hybrids, all producing sterile offspring.
@@ -66,7 +66,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The paper itself cites Alfieri et al. 2023 as having genomically refuted at least one guineafowl × Phasianidae hybrid record; the remaining five inter-family records in this dataset lack molecular verification, so the 51 MY figure rests on literature-sourced hybrid reports that have not been independently confirmed at the genomic level.
 
-*Topics:* [reproductive_isolation](/knowledge/topics/reproductive_isolation/), [avian_hybridization](/knowledge/topics/avian_hybridization/), [Galliformes](/knowledge/topics/Galliformes/), [postzygotic_isolation](/knowledge/topics/postzygotic_isolation/)
+*Topics:* [Reproductive Isolation](/knowledge/topics/reproductive_isolation/), [Avian Hybridization](/knowledge/topics/avian_hybridization/), [Galliformes](/knowledge/topics/Galliformes/), [Postzygotic Isolation](/knowledge/topics/postzygotic_isolation/)
 
 <!-- tealc:related-start -->
 <!-- tealc:related-end -->

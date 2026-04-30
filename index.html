@@ -15,10 +15,15 @@ extra_head: |
       width: 100%;
       height: auto;
     }
+    /* Theme-swapped logo: show the maroon logo in light mode, white logo in dark mode. */
+    :root[data-theme="dark"] .hero-mark-img.light-only { display: none; }
+    :root[data-theme="light"] .hero-mark-img.dark-only { display: none; }
+    /* Fallback when no data-theme is set yet (initial paint) */
+    :root:not([data-theme="dark"]) .hero-mark-img.dark-only { display: none; }
     .hero-mark figcaption {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--ink-faint);
+      color: var(--ink-dim);
       margin-top: 8px;
       letter-spacing: 0.03em;
     }
@@ -49,11 +54,12 @@ extra_head: |
     <div class="crumb"><a href="index.html">Blackmon Lab</a> · <a href="https://www.tamu.edu/" target="_blank" rel="noopener">Texas A&amp;M</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Department of Biology</a> · Est. 2017</div>
 
     <figure class="hero-mark" aria-label="Blackmon Lab logo">
-      <img src="assets/img/blackmon_logo.png" alt="Blackmon Lab logo with beetle illustration" class="hero-mark-img">
+      <img src="assets/img/blackmon_logo.png" alt="Blackmon Lab logo with beetle illustration" class="hero-mark-img light-only">
+      <img src="assets/img/blackmon_white.png" alt="Blackmon Lab logo with beetle illustration" class="hero-mark-img dark-only">
       <figcaption>Beetle artwork by Meghann McConnell.</figcaption>
     </figure>
 
-    <h1 class="title">Evolution studied broadly. AI in service of the biology.</h1>
+    <h1 class="title">Evolution studied broadly. AI in service of biology.</h1>
 
     <p class="lede">
       We are a biology lab at Texas A&amp;M. We study how evolution works across the tree of life: genome structure, sex chromosomes, karyotypes, morphology, behavior, adaptation. Underneath that is a layer of AI agents we've built to pull and organize data from the literature at comparative scale, and a deliberate effort to put undergraduates on real research problems from their first semester.

@@ -42,7 +42,7 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 
 *Counter / limitation:* Range size is an indirect proxy for effective population size and was discretized at the median; simulated neutral traits produced false positive rates of 22–33%, so the inference depends on the magnitude of the observed effect exceeding typical false positives.
 
-*Topics:* [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/), [selection_and_drift](/knowledge/topics/selection_and_drift/), [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/)
+*Topics:* [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/), [Selection and drift](/knowledge/topics/selection_and_drift/), [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/)
 
 <a id="finding-2"></a>
 ### Finding 2 — Analysis of neutral simulated binary traits on the Carnivora phylogeny yielded false positive rates of 22% for fusion and 33% for fission under the chromePlus framework.
@@ -54,7 +54,7 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 
 *Counter / limitation:* Only 7% of neutral simulations reached ΔR magnitudes as extreme as the empirical data, so the false positive rate in isolation overstates concern when effect sizes are considered; also specific to the Carnivora tree topology.
 
-*Topics:* [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/), [comparative_methods](/knowledge/topics/comparative_methods/)
+*Topics:* [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/), [Comparative Methods](/knowledge/topics/comparative_methods/)
 
 <!-- tealc:related-start -->
 ## Related papers on this site

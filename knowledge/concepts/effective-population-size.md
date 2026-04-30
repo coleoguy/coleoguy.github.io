@@ -10,6 +10,7 @@ primary_citation: "10_1093_jhered_esae001#finding-1"
 difficulty: intermediate
 last_updated: 2026-04-23
 permalink: /knowledge/concepts/effective-population-size/
+editor_frozen: true
 ---
 <!-- tealc:card-start -->
 # Effective Population Size
@@ -51,7 +52,7 @@ These Ne differences connect to the lab's drift-driven framing of chromosome num
 
 ## A worked example
 
-In Blackmon et al. (2024, *Journal of Heredity*), we divided beetle clades in Polyphaga into low-, medium-, and high-Ne bins based on traits that reduce effective population size. Low-Ne clades showed mean fusion rates of 0.05 to 0.11 per lineage per million years; medium- and high-Ne clades all showed mean fusion rates below 0.025. The 95% credible interval for the difference is entirely positive. This result holds after accounting for differences in mutation rate between lineages, which suggests the Ne effect on drift, not a correlated mutation rate difference, drives the pattern. A parallel result appears in Carnivora: species with small geographic ranges, a proxy for small Ne, show elevated rates of both fusions and fissions with credible intervals entirely above zero.
+In [Blackmon et al. (2024, *Journal of Heredity*)](/knowledge/papers/10_1093_jhered_esae001/), we divided beetle clades in Polyphaga into low-, medium-, and high-Ne bins based on traits that reduce effective population size. Low-Ne clades showed mean fusion rates of 0.05 to 0.11 per lineage per million years; medium- and high-Ne clades all showed mean fusion rates below 0.025. The 95% credible interval for the difference is entirely positive. This result holds after accounting for differences in mutation rate between lineages, which suggests the Ne effect on drift, not a correlated mutation rate difference, drives the pattern. A parallel result appears in Carnivora: species with small geographic ranges, a proxy for small Ne, show elevated rates of both fusions and fissions with credible intervals entirely above zero.
 
 ## Common misconceptions
 

@@ -41,7 +41,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The tool's utility depends on ongoing curation and data submission; if the repository is not maintained or updated, its value as a citable resource diminishes. Also, it is specific to A. mexicanus and not a general-purpose tool.
 
-*Topics:* [cavefish_genomics](/knowledge/topics/cavefish_genomics/), [bioinformatics_tools](/knowledge/topics/bioinformatics_tools/), [model_organism_databases](/knowledge/topics/model_organism_databases/)
+*Topics:* [Cavefish Genomics](/knowledge/topics/cavefish_genomics/), [Bioinformatics Tools](/knowledge/topics/bioinformatics_tools/), [Model Organism Databases](/knowledge/topics/model_organism_databases/)
 
 <a id="finding-2"></a>
 ### Finding 2 — Of 1,140 genes with published FST values, only 83 had both FST and logFC measurements available from prior studies on A. mexicanus.
@@ -53,7 +53,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The count reflects the specific studies included at the time of publication and will change as more data are added; it is a snapshot, not a stable property of A. mexicanus genomics.
 
-*Topics:* [cavefish_genomics](/knowledge/topics/cavefish_genomics/), [population_genetics](/knowledge/topics/population_genetics/)
+*Topics:* [Cavefish Genomics](/knowledge/topics/cavefish_genomics/), [Population Genetics](/knowledge/topics/population_genetics/)
 
 <a id="finding-3"></a>
 ### Finding 3 — The gene arpin, a negative regulator of actin, was identified as both an FST outlier and differentially expressed in circadian regulation across all three Pachón, Molino, and Tinaja versus Río Choy surface fish comparisons.
@@ -65,7 +65,7 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 
 *Counter / limitation:* The finding relies on a circadian transcription dataset (Mack et al. 2021) and FST outliers defined at the lowest 5% divergence threshold (Herman et al. 2018); changing either dataset or threshold could alter which genes qualify as double outliers. No functional validation of arpin's role in cavefish circadian or actin phenotypes is provided, so the biological inference remains correlative.
 
-*Topics:* [cavefish_genomics](/knowledge/topics/cavefish_genomics/), [circadian_rhythm_evolution](/knowledge/topics/circadian_rhythm_evolution/), [convergent_evolution](/knowledge/topics/convergent_evolution/)
+*Topics:* [Cavefish Genomics](/knowledge/topics/cavefish_genomics/), [Circadian rhythm evolution](/knowledge/topics/circadian_rhythm_evolution/), [Convergent Evolution](/knowledge/topics/convergent_evolution/)
 
 <!-- tealc:related-start -->
 ## Read the paper

@@ -6,6 +6,7 @@ last_updated: 2026-04-21T18:54:01.797045+00:00
 papers_supporting: [74e7bc680605ee2207a1f5cf31811de0fef84fed56357b0bbe6d6ba1443f9925]
 permalink: /knowledge/topics/population_genetics/
 category: "Population genetics"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -24,9 +25,9 @@ This data-integration bottleneck motivates the development of tools like CaveCra
 <div class="wiki-lead" data-active="student">
 <div data-register="student" markdown="1">
 
-[Population genetics](/knowledge/concepts/population-genetics/) studies how the frequency of genetic variants (alleles) changes within groups of organisms and between different populations. Scientists use several tools to understand what drives these changes—including [natural selection](/knowledge/concepts/natural-selection/), random genetic drift, gene flow between populations, and mutation. One widely used measurement is [FST](/knowledge/concepts/fst/), which tells us how genetically different two populations are from each other. When FST values are unusually high or low at certain genes, it can signal that those genes are under [selection](/knowledge/concepts/selection/).
+Population genetics studies how the frequency of genetic variants (alleles) changes within groups of organisms and between different populations. Scientists use several tools to understand what drives these changes—including natural selection, random genetic drift, gene flow between populations, and mutation. One widely used measurement is FST, which tells us how genetically different two populations are from each other. When FST values are unusually high or low at certain genes, it can signal that those genes are under selection.
 
-Scientists also measure how genes are turned on or off in different conditions using [gene expression](/knowledge/concepts/gene-expression/) analysis, which produces numbers called log-fold changes (logFC). Combining FST data (showing which genes differ between populations) with expression data (showing which genes are active) is powerful but difficult—especially when studying newly popular model organisms where data are scattered across many separate studies.
+Scientists also measure how genes are turned on or off in different conditions using gene expression analysis, which produces numbers called log-fold changes (logFC). Combining FST data (showing which genes differ between populations) with expression data (showing which genes are active) is powerful but difficult—especially when studying newly popular model organisms where data are scattered across many separate studies.
 
 A striking example comes from research on the Mexican cavefish *Astyanax mexicanus*, used to study how fish adapt to caves. Even though scientists have published a lot of genomic work on this species, the overlap between different studies is surprisingly small: of 1,140 genes with published FST values, only 83 had both FST and logFC measurements available from prior studies [Perry et al. 2022, Finding 1](/knowledge/papers/10_1093_g3journal_jkac132/#finding-1). This fragmentation shows a real problem in population genetics—research results sit in separate places, making it hard to combine them without special tools.
 
@@ -66,10 +67,6 @@ This data-integration bottleneck motivates the development of tools like CaveCra
 ## Supporting evidence
 
 - [Perry et al. 2022, Finding 1](/knowledge/papers/10_1093_g3journal_jkac132/#finding-1) — Of 1,140 genes with published FST values in *A. mexicanus*, only 83 had both FST outlier status and logFC measurements available from prior studies, quantifying the fragmented nature of population genomic data in this system.
-
-## Contradictions / open disagreements
-
-None known from current findings. The count of 83 overlapping genes is a snapshot tied to the studies included at the time of publication; as more data are deposited and integrated, this figure will change, but no contradicting claim about the degree of overlap has been identified in the supplied findings.
 
 ## Tealc's citation-neighborhood suggestions
 

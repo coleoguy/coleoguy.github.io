@@ -6,6 +6,7 @@ last_updated: 2026-04-21T18:48:47.126708+00:00
 papers_supporting: [acf19af8d6f8703b16fd377afd2ea26b12e00f435318e00d8d13bbbc5fe02b19]
 permalink: /knowledge/topics/dispersal/
 category: "Quantitative genetics & epistasis"
+editor_frozen: true
 ---
 <!-- tealc:auto-start -->
 # Dispersal

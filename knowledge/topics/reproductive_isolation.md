@@ -6,9 +6,12 @@ last_updated: 2026-04-22T12:50:25.486983+00:00
 papers_supporting: [10.1038/nature08441, cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6]
 permalink: /knowledge/topics/reproductive_isolation/
 category: "Speciation & macroevolution"
+editor_frozen: true
 ---
 <!-- tealc:auto-start -->
 # Reproductive Isolation
+
+*Note: this page overlaps significantly with related avian/galliform topic pages. Consolidation into a single "Galliform hybridization" topic is being considered.*
 
 <!-- tealc:freshness-start -->
 <aside class="wiki-freshness" aria-label="Page provenance">

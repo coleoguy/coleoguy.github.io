@@ -42,7 +42,7 @@ _Ingested 2026-04-21. 1 findings extracted and verified._
 
 *Counter / limitation:* The assembly (642 MB) is notably smaller than the flow-cytometry-based genome size estimate (850 MB), and the paper acknowledges this likely reflects unassembled repetitive content; additionally, the assembly is derived from a single female specimen, so structural variation across individuals and populations is uncaptured.
 
-*Topics:* [coleoptera_genomics](/knowledge/topics/coleoptera_genomics/), [genome_assembly](/knowledge/topics/genome_assembly/), [conservation_genomics](/knowledge/topics/conservation_genomics/)
+*Topics:* [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/), [Genome Assembly](/knowledge/topics/genome_assembly/), [Conservation Genomics](/knowledge/topics/conservation_genomics/)
 
 <!-- tealc:related-start -->
 ## Related papers on this site

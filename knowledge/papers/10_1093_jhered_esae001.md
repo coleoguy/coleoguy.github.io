@@ -42,7 +42,7 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 
 *Counter / limitation:* Ne classes were assigned categorically from four proxy traits without direct Ne estimation, and some clades (e.g. Calathus) had as few as 15–16 species, so results may be driven by a few outlier taxa rather than true clade-wide rates.
 
-*Topics:* [selection_and_drift](/knowledge/topics/selection_and_drift/), [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/), [coleoptera_genomics](/knowledge/topics/coleoptera_genomics/)
+*Topics:* [Selection and drift](/knowledge/topics/selection_and_drift/), [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/), [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/)
 
 <a id="finding-2"></a>
 ### Finding 2 — Phylogenetic model-based estimates of chromosome evolution rate are not correlated with traditional scaled-variance estimates derived from fossil ages (Kendall's τ = 0.11, P = 0.76).
@@ -54,7 +54,7 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 
 *Counter / limitation:* The comparison is based on only nine clades with available fossil data, and the authors themselves note that poor fossil records in insects may penalize the scaled-variance method more than other taxa — so the lack of correlation may not generalize.
 
-*Topics:* [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/), [chromosome_number_evolution](/knowledge/topics/chromosome_number_evolution/)
+*Topics:* [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/), [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/)
 
 <a id="finding-3"></a>
 ### Finding 3 — The Coleoptera karyotype dataset shows Adephaga autosome counts range from 3 to 34 (mean 15.57) with a bimodal distribution peaking at 11 and 18, while Polyphaga ranges from 1 to 35 (mean 10.63) with a single mode at 9 autosomes accounting for 29% of species.
@@ -66,7 +66,7 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 
 *Counter / limitation:* Sampling is uneven across families — family variance in chromosome number correlates with record count (r = 0.41), indicating that rare or understudied families are not adequately represented in these summaries.
 
-*Topics:* [chromosome_number_optima](/knowledge/topics/chromosome_number_optima/), [coleoptera_genomics](/knowledge/topics/coleoptera_genomics/), [karyotype_database](/knowledge/topics/karyotype_database/)
+*Topics:* [Chromosome number optima](/knowledge/topics/chromosome_number_optima/), [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/), [Karyotype database](/knowledge/topics/karyotype_database/)
 
 <a id="finding-4"></a>
 ### Finding 4 — In Carabidae, wingless lineages show higher rates of chromosome number increase than winged lineages, with the credible interval for the fission rate difference entirely positive (0.005 to 0.044).
@@ -78,7 +78,7 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 
 *Counter / limitation:* Only 136 of 1,065 Carabidae species could be included due to overlap between karyotype, phylogeny, and trait data, and wing scoring was sometimes imputed from genus-level frequencies, which could bias rate estimates.
 
-*Topics:* [karyotype_evolution_overview](/knowledge/topics/karyotype_evolution_overview/), [selection_and_drift](/knowledge/topics/selection_and_drift/), [coleoptera_genomics](/knowledge/topics/coleoptera_genomics/)
+*Topics:* [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/), [Selection and drift](/knowledge/topics/selection_and_drift/), [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/)
 
 <!-- tealc:related-start -->
 ## Related papers on this site

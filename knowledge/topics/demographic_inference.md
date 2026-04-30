@@ -6,6 +6,7 @@ last_updated: 2026-04-21T15:54:51.025773+00:00
 papers_supporting: [10.1002/ece3.73483]
 permalink: /knowledge/topics/demographic_inference/
 category: "Population genetics"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -25,7 +26,7 @@ Together, these two approaches illustrate a general principle: short ROH diagnos
 <div class="wiki-lead" data-active="student">
 <div data-register="student" markdown="1">
 
-Scientists can piece together the population history of species by studying their genomes — even when they have only a few DNA samples to work with. They can figure out how many individuals lived in a population at different times in the past, spot population crashes, and detect inbreeding. Two methods work especially well for conservation of rare animals: [pairwise sequentially Markovian coalescent](/knowledge/concepts/pairwise-sequentially-markovian-coalescent/) (PSMC) analysis, which looks at genetic diversity within a single genome, and [runs-of-homozygosity](/knowledge/concepts/runs-of-homozygosity/) (ROH) analysis, which finds stretches of DNA where both copies are identical.
+Scientists can piece together the population history of species by studying their genomes — even when they have only a few DNA samples to work with. They can figure out how many individuals lived in a population at different times in the past, spot population crashes, and detect inbreeding. Two methods work especially well for conservation of rare animals: pairwise sequentially Markovian coalescent (PSMC) analysis, which looks at genetic diversity within a single genome, and runs-of-homozygosity (ROH) analysis, which finds stretches of DNA where both copies are identical.
 
 A practical question for scientists is whether these methods give the same answer regardless of how the DNA was sequenced or whether it came from a male or female. [Chien et al. 2026, Finding 1](/knowledge/papers/10_1002_ece3_73483/#finding-1) tested this using an endangered beetle called the long-armed scarab (*Cheirotonus formosanus*). They sequenced a male's genome using one technology (PacBio HiFi) and a female's genome using another (Illumina), then ran PSMC on both. The results were nearly identical — the population-history curves overlapped almost perfectly. This is good news for conservation work, where scientists often have to use whatever DNA samples they can find.
 

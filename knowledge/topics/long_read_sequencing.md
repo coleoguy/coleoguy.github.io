@@ -6,6 +6,7 @@ last_updated: 2026-04-22T13:08:43.714460+00:00
 papers_supporting: [10.1093/bioinformatics/bty191]
 permalink: /knowledge/topics/long_read_sequencing/
 category: "Bioinformatics & tools"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -66,8 +67,8 @@ Together, these results position minimap2 as the default choice for long-read ma
 
 ## Supporting evidence
 
-- [10.1093/bioinformatics/bty191, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1): Minimap2 achieves 94.0% exact intron accuracy on real ONT mouse cDNA reads vs. 83.8% (GMAP) and 87.9% (SpAln), while running >40× faster.
-- [10.1093/bioinformatics/bty191, Finding 2](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-2): For genomic long-read alignment, minimap2's chaining step alone exceeds the accuracy of all other mappers tested, with downstream base-level DP serving as a refinement.
+- [Li 2018, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1): Minimap2 achieves 94.0% exact intron accuracy on real ONT mouse cDNA reads vs. 83.8% (GMAP) and 87.9% (SpAln), while running >40× faster.
+- [Li 2018, Finding 2](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-2): For genomic long-read alignment, minimap2's chaining step alone exceeds the accuracy of all other mappers tested, with downstream base-level DP serving as a refinement.
 
 ## Contradictions / open disagreements
 

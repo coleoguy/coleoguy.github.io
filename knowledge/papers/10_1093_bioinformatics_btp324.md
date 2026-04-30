@@ -40,7 +40,7 @@ _Ingested 2026-04-22. 4 findings extracted and verified._
 
 *Counter / limitation:* The real-data evaluation uses a single individual (NA12750) and a single read length (51 bp); performance on different organisms, read lengths, or higher-diversity populations may differ substantially.
 
-*Topics:* [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/)
+*Topics:* [Genome structure evolution](/knowledge/topics/genome_structure_evolution/)
 
 <a id="finding-2"></a>
 ### Finding 2 — BWA requires approximately 2.3 GB of memory for single-end mapping, independent of the number of reads, whereas MAQ's memory footprint scales linearly with read count.
@@ -51,7 +51,7 @@ _Ingested 2026-04-22. 4 findings extracted and verified._
 
 *Counter / limitation:* Memory requirements depend on genome size; the 2.3 GB figure applies specifically to the ~3 Gb human genome, and may not generalize to larger or polyploid genomes where BWT index construction itself becomes a bottleneck.
 
-*Topics:* [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/), [karyotype_database](/knowledge/topics/karyotype_database/)
+*Topics:* [Genome structure evolution](/knowledge/topics/genome_structure_evolution/), [Karyotype database](/knowledge/topics/karyotype_database/)
 
 <a id="finding-3"></a>
 ### Finding 3 — Using seeding (restricting allowed differences in the first 32 bp) makes BWA 2.5× faster for 70 bp reads while increasing alignment error rate only modestly from 0.08% to 0.11%.
@@ -62,7 +62,7 @@ _Ingested 2026-04-22. 4 findings extracted and verified._
 
 *Counter / limitation:* The error rate increase from seeding is characterized only on simulated 70 bp reads with a specific error model (2% uniform base error, 0.09% SNP rate); performance under higher indel rates or with longer reads may show greater accuracy loss.
 
-*Topics:* [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/)
+*Topics:* [Genome structure evolution](/knowledge/topics/genome_structure_evolution/)
 
 <a id="finding-4"></a>
 ### Finding 4 — BWA is 6–18× faster than MAQ while achieving similar alignment accuracy for short reads mapped to the human genome.
@@ -73,4 +73,4 @@ _Ingested 2026-04-22. 4 findings extracted and verified._
 
 *Counter / limitation:* Benchmarks were run on a single core of one specific processor (2.5 GHz Xeon E5420) with simulated data; real-world speedups may differ with different hardware, read lengths, or genome complexity. Additionally, the abstract states 10–20× while the results section reports 6–18×, suggesting the range depends on the read-length range considered.
 
-*Topics:* [short_read_alignment](/knowledge/topics/short_read_alignment/), [bioinformatics_methods](/knowledge/topics/bioinformatics_methods/), [genome_resequencing](/knowledge/topics/genome_resequencing/)
+*Topics:* [Short Read Alignment](/knowledge/topics/short_read_alignment/), [Bioinformatics Methods](/knowledge/topics/bioinformatics_methods/), [Genome Resequencing](/knowledge/topics/genome_resequencing/)

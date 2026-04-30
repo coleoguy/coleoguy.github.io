@@ -6,9 +6,12 @@ last_updated: 2026-04-21T15:50:19.463662+00:00
 papers_supporting: [10.1093/jhered/esad076]
 permalink: /knowledge/topics/bee_genomics/
 category: "Insects & Coleoptera"
+editor_frozen: true
 ---
 <!-- tealc:auto-start -->
 # Bee Genomics
+
+*Note: this page summarizes findings from one external bee study (Mojave poppy bee). It does not reflect bees the Blackmon Lab actively studies; replace with lab-relevant case studies in a future revision.*
 
 <!-- tealc:freshness-start -->
 <aside class="wiki-freshness" aria-label="Page provenance">

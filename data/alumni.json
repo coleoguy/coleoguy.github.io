@@ -35,8 +35,10 @@
       "year_joined": null,
       "year_left": null,
       "degree_or_outcome": null,
-      "current_position": "Postdoc, UT Austin",
-      "subsequent_positions": [],
+      "current_position": "Faculty, University of Iowa",
+      "subsequent_positions": [
+        "Postdoc, UT Austin"
+      ],
       "listed_under_group": "Postdocs",
       "link": "https://jamiealfieri.github.io/"
     },

@@ -6,6 +6,7 @@ last_updated: 2026-04-22T13:34:36.725061+00:00
 papers_supporting: [10.1007/978-1-4939-8775-7_2]
 permalink: /knowledge/topics/genome_size_estimation/
 category: "Bioinformatics & tools"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -84,5 +85,5 @@ The 10% saturation-time inflation figure for *Aedes* is a single illustrative ex
 
 ## Related on the Blackmon Lab site
 
-- [Paper page: 10.1007/978-1-4939-8775-7_2](/knowledge/papers/10_1007_978_1_4939_8775_7_2/)
+- [Book chapter, 2018](/knowledge/papers/10_1007_978_1_4939_8775_7_2/)
 <!-- tealc:auto-end -->

@@ -41,7 +41,7 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 
 *Counter / limitation:* The assembly is contig-level without HiC scaffolding, so it is not a true chromosome-level reference and may contain misassemblies as indicated by the dot plots against Andrena and Apis.
 
-*Topics:* [bee_genomics](/knowledge/topics/bee_genomics/), [conservation_genomics](/knowledge/topics/conservation_genomics/)
+*Topics:* [Bee Genomics](/knowledge/topics/bee_genomics/), [Conservation Genomics](/knowledge/topics/conservation_genomics/)
 
 <a id="finding-2"></a>
 ### Finding 2 — Repetitive elements comprise 37.3% of the Perdita meconis genome, with 24.87% being unclassified repeats and smaller contributions from retroelements (6.07%) and DNA transposons (4.38%).
@@ -52,7 +52,7 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 
 *Counter / limitation:* The high fraction of unclassified repeats (nearly two-thirds of repeat content) indicates the annotation is limited by available repeat libraries, so specific TE family abundances are unreliable.
 
-*Topics:* [genome_structure_evolution](/knowledge/topics/genome_structure_evolution/), [transposable_elements](/knowledge/topics/transposable_elements/)
+*Topics:* [Genome structure evolution](/knowledge/topics/genome_structure_evolution/), [Transposable Elements](/knowledge/topics/transposable_elements/)
 
 <a id="finding-3"></a>
 ### Finding 3 — A high-quality HiFi reference genome can be generated from a single sub-7 mm insect specimen that was freeze-killed at −20 °C rather than snap-frozen, demonstrating feasibility of genome assembly from suboptimally preserved field samples.
@@ -63,7 +63,7 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 
 *Counter / limitation:* A single anecdotal success does not establish general reliability; the study still failed to obtain HiC-compatible samples, and outcomes likely depend on species, body size, and exact storage duration.
 
-*Topics:* [conservation_genomics](/knowledge/topics/conservation_genomics/), [sequencing_methods](/knowledge/topics/sequencing_methods/)
+*Topics:* [Conservation Genomics](/knowledge/topics/conservation_genomics/), [Sequencing Methods](/knowledge/topics/sequencing_methods/)
 
 <a id="finding-4"></a>
 ### Finding 4 — UCE-based phylogenomic analysis of 119 Apoidea genomes resolves Perdita meconis as sister to Andrena within Andrenidae, with most nodes receiving 100% ultrafast bootstrap support.
@@ -74,7 +74,7 @@ _Ingested 2026-04-21. 4 findings extracted and verified._
 
 *Counter / limitation:* Taxon sampling is heavily biased toward social bees in Apidae and Halictidae, Stenotritidae is entirely absent, and only one Andrenidae genus (Andrena) is represented alongside Perdita, so the sister-group relationship and Andrenidae internal topology remain incompletely tested with available genome data.
 
-*Topics:* [bee_phylogenomics](/knowledge/topics/bee_phylogenomics/), [uce_phylogenetics](/knowledge/topics/uce_phylogenetics/)
+*Topics:* [Bee Phylogenomics](/knowledge/topics/bee_phylogenomics/), [Uce Phylogenetics](/knowledge/topics/uce_phylogenetics/)
 
 <!-- tealc:related-start -->
 ## Read the paper

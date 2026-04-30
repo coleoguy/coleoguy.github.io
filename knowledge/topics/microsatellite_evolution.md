@@ -6,6 +6,7 @@ last_updated: 2026-04-21T18:35:48.070767+00:00
 papers_supporting: [e886b99fe0f9dcc1f5682cefed91eaf32c1cf8360d4865524975c201c00fd035]
 permalink: /knowledge/topics/microsatellite_evolution/
 category: "Genome structure"
+editor_frozen: true
 ---
 <!-- tealc:auto-start -->
 # Microsatellite Evolution
@@ -24,7 +25,7 @@ category: "Genome structure"
 
 ## Current understanding
 
-Microsatellites — short tandem repeat sequences scattered throughout eukaryotic genomes — vary not only in abundance but also in how rapidly they turn over across lineages. A key insight from comparative genomics in insects is that the *rate* of microsatellite evolution, rather than total microsatellite content, appears to differ systematically between species with different centromere architectures. Insect lineages with monocentric chromosomes (where centromere activity is localized to a discrete region) show higher rates of microsatellite evolution than lineages with holocentric chromosomes (where centromere activity is distributed along the chromosome), even though both groups carry statistically indistinguishable total amounts of microsatellite sequence. This decoupling of content from rate suggests that the mechanisms governing microsatellite expansion and contraction — not simply steady-state repeat abundance — are shaped by fundamental features of chromosome organization.
+Microsatellites — short tandem repeat sequences scattered throughout eukaryotic genomes — vary not only in abundance but also in how rapidly they turn over across lineages. A key insight from comparative genomics in insects is that the *rate* of microsatellite evolution (*defined here as the per-generation expected change in repeat-unit count, μSSR, typically 10⁻³ to 10⁻⁴ per locus*), rather than total microsatellite content, appears to differ systematically between species with different centromere architectures. Insect lineages with monocentric chromosomes (where centromere activity is localized to a discrete region) show higher rates of microsatellite evolution than lineages with holocentric chromosomes (where centromere activity is distributed along the chromosome), even though both groups carry statistically indistinguishable total amounts of microsatellite sequence. This decoupling of content from rate suggests that the mechanisms governing microsatellite expansion and contraction — not simply steady-state repeat abundance — are shaped by fundamental features of chromosome organization.
 
 The leading hypothesis is that diffuse centromere activity in holocentric systems may constrain repeat dynamics across the chromosome, while concentrated centromeres in monocentric systems leave more of the chromosome free to accumulate mutational changes in repeat tracts. The mechanistic link, however, remains unclear. Critically, the phylogenetic signal is not uniform across monocentric orders: Coleoptera, despite being monocentric, displays the lowest microsatellite evolutionary rate of any insect order examined. This heterogeneity cautions against treating centromere type as a simple causal switch, and raises the possibility that the elevated monocentric rate is driven largely by Diptera and Hymenoptera rather than by centromere architecture per se.
 

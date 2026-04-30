@@ -25,10 +25,8 @@
       "title": "Ancestral State Reconstruction",
       "aliases": [
         "ancestral state reconstruction",
-        "ancestral state",
         "ancestral reconstruction",
         "ASR",
-        "stochastic character mapping",
         "SIMMAP",
         "ancestral character state"
       ],
@@ -145,7 +143,6 @@
         "ascending dysploidy",
         "chromosome number change",
         "aneusomy",
-        "fission",
         "chromosome fission"
       ],
       "definition": "Dysploidy is a change in chromosome number by one or a small number of whole chromosomes through fusion (reducing count) or fission (increasing count) — as opposed to polyploidy, which multiplies the entire genome.",

@@ -6,19 +6,20 @@ last_updated: 2026-04-21T19:10:10.973996+00:00
 papers_supporting: [10.1002/ece3.73483, 31776037050f6b89b93887fa1b80196fd30073325900b9b38adb091f0516948d]
 permalink: /knowledge/topics/genome_assembly/
 category: "Genome structure"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
 <div data-register="researcher" markdown="1">
 
-Chromosome-level genome assemblies — those in which sequencing contigs are scaffolded into chromosome-scale sequences — have become an essential tool for connecting raw sequence data to cytogenetic and evolutionary inference. A high-quality assembly allows researchers to count chromosomes, identify sex-linked scaffolds, and compare genome architecture across taxa without relying solely on traditional karyotyping. The quality of such assemblies is typically validated by cross-referencing scaffold counts and sizes against established cytogenetic data, and by computing completeness metrics such as BUSCO scores. A recurring finding is that a small number of large scaffolds capture the vast majority of genomic content, with hundreds of smaller scaffolds representing residual, often repetitive, sequence.
+Chromosome-level genome assemblies — those in which sequencing contigs are scaffolded into chromosome-scale sequences — have become an essential tool for connecting raw sequence data to cytogenetic and evolutionary inference. A high-quality assembly resolves chromosome-level scaffolds, which can support inference about karyotype structure when combined with cytogenetic data, and also enables identification of sex-linked scaffolds and comparison of genome architecture across taxa. The quality of such assemblies is typically validated by cross-referencing scaffold counts and sizes against established cytogenetic data, and by computing completeness metrics such as BUSCO scores. A recurring finding is that a small number of large scaffolds capture the vast majority of genomic content, with hundreds of smaller scaffolds representing residual, often repetitive, sequence.
 
 </div>
 <div data-register="student" markdown="1">
 
 <div class="wiki-lead" data-active="student">
 
-Chromosome-level [genome assemblies](/knowledge/concepts/genome-assembly/) are DNA sequences organized into chromosome-scale pieces — a major step up from the fragmented sequences that come directly from DNA-sequencing machines. When scientists can arrange these pieces into full chromosomes, they can count how many chromosomes an organism has, figure out which ones carry sex-determining genes, and compare the layout of genomes across different species. This is much faster and more detailed than the traditional method of staining and examining chromosomes under a microscope.
+Chromosome-level [genome assemblies](/knowledge/concepts/genome-assembly/) are DNA sequences organized into chromosome-scale pieces — a major step up from the fragmented sequences that come directly from DNA-sequencing machines. When scientists can arrange these pieces into full chromosomes, the chromosome-scale scaffolds support inference about karyotype structure when combined with cytogenetic data, and also help identify which chromosomes carry sex-determining genes and how genome layout compares across species. (Direct chromosome counts still come from cytogenetic karyotyping rather than the assembly itself.)
 
 Scientists check whether their assemblies are correct by comparing the number and size of scaffolds (the organized pieces) against what cytogenetics — the study of chromosomes — already knows about that organism. They also calculate completeness scores, like BUSCO scores, to measure how much of the genome they've actually captured. One consistent pattern shows up: a small number of very large scaffolds hold most of the genetic information, while hundreds of smaller scaffolds contain leftover sequences that are often repetitive stretches of DNA.
 
@@ -45,7 +46,7 @@ Scientists check whether their assemblies are correct by comparing the number an
 
 ## Current understanding
 
-Chromosome-level genome assemblies — those in which sequencing contigs are scaffolded into chromosome-scale sequences — have become an essential tool for connecting raw sequence data to cytogenetic and evolutionary inference. A high-quality assembly allows researchers to count chromosomes, identify sex-linked scaffolds, and compare genome architecture across taxa without relying solely on traditional karyotyping. The quality of such assemblies is typically validated by cross-referencing scaffold counts and sizes against established cytogenetic data, and by computing completeness metrics such as BUSCO scores. A recurring finding is that a small number of large scaffolds capture the vast majority of genomic content, with hundreds of smaller scaffolds representing residual, often repetitive, sequence.
+Chromosome-level genome assemblies — those in which sequencing contigs are scaffolded into chromosome-scale sequences — have become an essential tool for connecting raw sequence data to cytogenetic and evolutionary inference. A high-quality assembly resolves chromosome-level scaffolds, which can support inference about karyotype structure when combined with cytogenetic data, and also enables identification of sex-linked scaffolds and comparison of genome architecture across taxa. The quality of such assemblies is typically validated by cross-referencing scaffold counts and sizes against established cytogenetic data, and by computing completeness metrics such as BUSCO scores. A recurring finding is that a small number of large scaffolds capture the vast majority of genomic content, with hundreds of smaller scaffolds representing residual, often repetitive, sequence.
 
 ## Supporting evidence
 

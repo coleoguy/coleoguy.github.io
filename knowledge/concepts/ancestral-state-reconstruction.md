@@ -2,7 +2,7 @@
 layout: default
 title: "Ancestral State Reconstruction"
 concept_slug: ancestral-state-reconstruction
-aliases: ["ancestral state reconstruction", "ancestral state", "ancestral reconstruction", "ASR", "stochastic character mapping", "SIMMAP", "ancestral character state"]
+aliases: ["ancestral state reconstruction", "ancestral reconstruction", "ASR", "ancestral character state"]
 prerequisites: [mk-model]
 appears_in_topics: [ancestral_state_reconstruction, sex_chromosome_evolution, karyotype_evolution_overview]
 related_concepts: [mk-model, simmap, bisse]

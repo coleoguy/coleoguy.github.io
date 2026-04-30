@@ -6,9 +6,12 @@ last_updated: 2026-04-21T17:21:42.935373+00:00
 papers_supporting: [2da8fb1b5d5f08ca9dccde3a6e1600c4ff6cbfdcb564fa6fd3617d6502e2feff]
 permalink: /knowledge/topics/ring_species/
 category: "Speciation & macroevolution"
+editor_frozen: true
 ---
 <!-- tealc:auto-start -->
 # Ring Species
+
+*Note: this page overlaps significantly with [phylloscopus, speciation, avian_evolution] — consolidation is being considered.*
 
 <!-- tealc:freshness-start -->
 <aside class="wiki-freshness" aria-label="Page provenance">

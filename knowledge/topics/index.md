@@ -4,6 +4,7 @@ title: "Topics · Blackmon Lab wiki"
 description: "All wiki topic pages, grouped by category. Every page is auto-maintained by Tealc from paper-finding extractions."
 permalink: /knowledge/topics/
 last_updated: 2026-04-23
+editor_frozen: true
 ---
 
 # Topics
@@ -75,14 +76,16 @@ See also: [Papers](/knowledge/papers/) · [Concepts](/knowledge/concepts/) · [M
 
 ## Population genetics
 
-- [Coalescent Simulation](/knowledge/topics/coalescent_simulation/)
+<!-- Ordered conceptually rather than alphabetically: foundations → inference → application. -->
+
+- [Population Genetics](/knowledge/topics/population_genetics/)
+- [Effective Population Size](/knowledge/topics/effective_population_size/)
+- [Isolation by Distance](/knowledge/topics/isolation_by_distance/)
+- [Divergence Time Estimation](/knowledge/topics/divergence_time_estimation/)
+- [Demographic Inference](/knowledge/topics/demographic_inference/)
 - [Conservation Genetics](/knowledge/topics/conservation_genetics/)
 - [Conservation Genomics](/knowledge/topics/conservation_genomics/)
-- [Demographic Inference](/knowledge/topics/demographic_inference/)
-- [Divergence Time Estimation](/knowledge/topics/divergence_time_estimation/)
-- [Effective Population Size](/knowledge/topics/effective_population_size/)
-- [Isolation By Distance](/knowledge/topics/isolation_by_distance/)
-- [Population Genetics](/knowledge/topics/population_genetics/)
+- [Coalescent Simulation](/knowledge/topics/coalescent_simulation/)
 - [Sequencing Methods](/knowledge/topics/sequencing_methods/)
 
 ## Quantitative genetics & epistasis

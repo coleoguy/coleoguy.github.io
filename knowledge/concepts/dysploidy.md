@@ -2,7 +2,7 @@
 layout: default
 title: "Dysploidy"
 concept_slug: dysploidy
-aliases: ["dysploidy", "dysploid", "descending dysploidy", "ascending dysploidy", "chromosome number change", "aneusomy", "fission", "chromosome fission"]
+aliases: ["dysploidy", "dysploid", "descending dysploidy", "ascending dysploidy", "chromosome number change", "aneusomy", "chromosome fission"]
 prerequisites: [autosome, aneuploidy]
 appears_in_topics: [karyotype_evolution_overview, chromosome_number_evolution, chromosome_number_optima]
 related_concepts: [polyploidy, robertsonian-translocation, chromosome-fusion, effective-population-size]

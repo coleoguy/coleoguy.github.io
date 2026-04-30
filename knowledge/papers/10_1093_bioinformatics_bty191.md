@@ -41,7 +41,7 @@ _Ingested 2026-04-22. 2 findings extracted and verified._
 
 *Counter / limitation:* The comparison is limited to a single mouse cDNA dataset with R9.4 ONT chemistry, and the authors themselves note that GMAP and SpAln were not optimized for noisy reads, meaning their performance with tuned parameters could be higher; the finding may not generalize to SMRT or future ONT chemistries.
 
-*Topics:* [sequence_alignment](/knowledge/topics/sequence_alignment/), [long_read_sequencing](/knowledge/topics/long_read_sequencing/), [RNA_seq](/knowledge/topics/RNA_seq/), [bioinformatics_tools](/knowledge/topics/bioinformatics_tools/)
+*Topics:* [Sequence Alignment](/knowledge/topics/sequence_alignment/), [Long Read Sequencing](/knowledge/topics/long_read_sequencing/), [RNA_seq](/knowledge/topics/RNA_seq/), [Bioinformatics Tools](/knowledge/topics/bioinformatics_tools/)
 
 <a id="finding-2"></a>
 ### Finding 2 — For long-read genomic alignment, minimap2's chaining algorithm alone is more accurate than all other long-read mappers tested, before any base-level alignment is applied.
@@ -53,4 +53,4 @@ _Ingested 2026-04-22. 2 findings extracted and verified._
 
 *Counter / limitation:* The chaining-accuracy claim is based on unpublished supplementary data ('data not shown'), making independent verification impossible; additionally, the comparison is limited to simulated human reads, which may not reflect performance on more repeat-rich, non-human, or highly divergent genomes.
 
-*Topics:* [sequence_alignment](/knowledge/topics/sequence_alignment/), [long_read_sequencing](/knowledge/topics/long_read_sequencing/), [chaining_algorithm](/knowledge/topics/chaining_algorithm/), [bioinformatics_tools](/knowledge/topics/bioinformatics_tools/)
+*Topics:* [Sequence Alignment](/knowledge/topics/sequence_alignment/), [Long Read Sequencing](/knowledge/topics/long_read_sequencing/), [Chaining Algorithm](/knowledge/topics/chaining_algorithm/), [Bioinformatics Tools](/knowledge/topics/bioinformatics_tools/)

@@ -6,6 +6,7 @@ last_updated: 2026-04-21T19:15:15.776263+00:00
 papers_supporting: [cba233ba0d923900792e5c1069a4873f2db67551fa8556c62e2e1d7a874403f6]
 permalink: /knowledge/topics/Galliformes/
 category: "Speciation & macroevolution"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -37,6 +38,8 @@ Together, these findings show that Galliformes is an order where both human mana
 
 <!-- tealc:auto-start -->
 # Galliformes
+
+*Note: this page overlaps significantly with related avian/galliform topic pages. Consolidation into a single "Galliform hybridization" topic is being considered.*
 
 <!-- tealc:freshness-start -->
 <aside class="wiki-freshness" aria-label="Page provenance">

@@ -6,6 +6,7 @@ last_updated: 2026-04-21T17:22:39.009919+00:00
 papers_supporting: [2da8fb1b5d5f08ca9dccde3a6e1600c4ff6cbfdcb564fa6fd3617d6502e2feff]
 permalink: /knowledge/topics/avian_evolution/
 category: "Speciation & macroevolution"
+editor_frozen: true
 ---
 <!-- tealc:lead-start -->
 <div class="wiki-lead" data-active="researcher">
@@ -34,6 +35,10 @@ However, the ring is not completely unbroken. A large gap exists in northeastern
 
 <!-- tealc:auto-start -->
 # Avian Evolution
+
+*Note: this page currently covers ring-species evolution as one case study. The page name suggests broader scope; consider renaming or expanding in a future revision.*
+
+*Note: this page overlaps significantly with [phylloscopus, ring_species, speciation] — consolidation is being considered.*
 
 <!-- tealc:freshness-start -->
 <aside class="wiki-freshness" aria-label="Page provenance">
