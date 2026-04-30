@@ -13,7 +13,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
     <h1 class="title">Build your own Tealc</h1>
 
     <p class="lede">
-      This is the technical guide for replicating what the Blackmon Lab built: an always-on autonomous research agent that handles email triage, grant monitoring, literature synthesis, R analyses, and overnight drafting, running continuously on a Mac via launchd. The guide covers the full stack, every configuration file, how to wire up Google APIs, and how to add your own tools and scheduled jobs. The source code is open on GitHub at <a href="https://github.com/coleoguy/tealc" target="_blank" rel="noopener">coleoguy/tealc</a> — but read the repo's <code>Status</code> section first: it is fitted to the Blackmon Lab's specific Drive layout, students, grants, and writing voice, and several jobs will not run for anyone else without significant rewiring. Treat it as one worked example, not a turnkey template.
+      This is the technical guide for replicating what the Blackmon Lab built: an always-on autonomous research agent that handles email triage, grant monitoring, literature synthesis, R analyses, and overnight drafting, running continuously on a Mac via launchd. The guide covers the full stack, every configuration file, how to wire up Google APIs, and how to add your own tools and scheduled jobs. The source code is open on GitHub at <a href="https://github.com/coleoguy/tealc" target="_blank" rel="noopener">coleoguy/tealc</a>, but read the repo's <code>Status</code> section first: it is fitted to the Blackmon Lab's specific Drive layout, students, grants, and writing voice, and several jobs will not run for anyone else without significant rewiring. Treat it as one worked example, not a turnkey template.
     </p>
 
     <div class="layer-links" style="margin-bottom:24px;">
@@ -107,7 +107,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 1</span>
           <span class="sum-head">Install dependencies</span>
-          <span class="sum-trail">A venv and pip install — chainlit, langgraph, langgraph-checkpoint-sqlite, langchain-anthropic, langchain-core, langchain-google-community, google-auth, aiosqlite, mammoth, pypdf, duckduckgo-search, feedparser, and more.</span>
+          <span class="sum-trail">A venv and pip install: chainlit, langgraph, langgraph-checkpoint-sqlite, langchain-anthropic, langchain-core, langchain-google-community, google-auth, aiosqlite, mammoth, pypdf, duckduckgo-search, feedparser, and more.</span>
         </span>
       </summary>
       <div class="layer-body">
@@ -168,7 +168,7 @@ https://www.googleapis.com/auth/spreadsheets</code></pre>
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 3</span>
           <span class="sum-head">Configure the .env file</span>
-          <span class="sum-trail">ANTHROPIC_API_KEY plus optional Worker URL. Load with an explicit path — launchd starts from /.</span>
+          <span class="sum-trail">ANTHROPIC_API_KEY plus optional Worker URL. Load with an explicit path; launchd starts from /.</span>
         </span>
       </summary>
       <div class="layer-body">
@@ -274,7 +274,7 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
       </summary>
       <div class="layer-body">
         <p>
-          The system prompt is the most important file in the project. Tealc's is 642 lines with 9 major ALLCAPS sections: WHO HEATH IS, RESEARCH IDENTITY, HOW TO BEHAVE, PUBLIC AQUARIUM AWARENESS, OVERNIGHT SCIENCE, PENDING INTENTIONS, STUDENTS, GOALS, and RESEARCH PROJECTS. Some principles that matter:
+          Tealc's system prompt runs 642 lines across 9 ALLCAPS sections: WHO HEATH IS, RESEARCH IDENTITY, HOW TO BEHAVE, PUBLIC AQUARIUM AWARENESS, OVERNIGHT SCIENCE, PENDING INTENTIONS, STUDENTS, GOALS, and RESEARCH PROJECTS. Some principles that matter:
         </p>
         <ul>
           <li>State the agent's identity and scope clearly in the first section. What it is for, what it is not for, whose interests it serves.</li>
@@ -291,7 +291,7 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 7</span>
           <span class="sum-head">Structure the tools</span>
-          <span class="sum-trail">10–15 lines per tool. Chat tools confirm before writing; job tools write directly — jobs at 2am cannot ask.</span>
+          <span class="sum-trail">10–15 lines per tool. Chat tools confirm before writing; job tools write directly. Jobs at 2am cannot ask.</span>
         </span>
       </summary>
       <div class="layer-body">
@@ -317,7 +317,7 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
           The executive loop is a scheduled job that runs every 15 minutes. It reads the <code>current_context</code> row, the top 3 active goals and their nearest milestones, and a compact history of recent decisions. It calls Haiku (not Sonnet; this runs 96 times a day and cost matters) with a structured output schema and one instruction: pick one action from an allowed list, explain why, assign a confidence score. Insert the result into <code>executive_decisions</code> with <code>executed=0</code>.
         </p>
         <p>
-          The allowed actions list is the safety mechanism. Start with a very short list: surface a briefing, add an intention, refresh context. After a week of reviewing decisions and confirming the model's judgment looks sound, add one more class. Tealc currently has 16 defined action classes, including deadline escalation, overdue milestone flagging, VIP email reply drafting, stale briefing surfacing, and idle-triggered grant drafting. Never add "send email" or "delete anything" to the autonomous list. The executive loop should feel like a trusted colleague who flags things and prepares options, not one who acts without asking.
+          The allowed actions list is the safety mechanism. Start with a short list: surface a briefing, add an intention, refresh context. After a week of reviewing decisions and confirming the model's judgment looks sound, add one more class. Tealc currently has 16 defined action classes, including deadline escalation, overdue milestone flagging, VIP email reply drafting, stale briefing surfacing, and idle-triggered grant drafting. Never add "send email" or "delete anything" to the autonomous list. The executive loop should feel like a trusted colleague who flags things and prepares options, not one who acts without asking.
         </p>
         <p>
           Make the loop idle-class-aware from day one. Read the <code>idle_class</code> field from <code>current_context</code> and use it to gate what the loop is allowed to do: nothing heavier than a briefing nudge when the lab is active, heavier background work when idle for 4+ hours, full science-job runway when deep-idle for 24+ hours. This prevents the loop from competing with active work and makes the overnight jobs feel like a gift rather than an interruption.
@@ -381,7 +381,7 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 10</span>
           <span class="sum-head">Set up launchd auto-start</span>
-          <span class="sum-trail">Two plists in ~/Library/LaunchAgents/ — one for the Chainlit UI, one for the scheduler.</span>
+          <span class="sum-trail">Two plists in ~/Library/LaunchAgents/: one for the Chainlit UI, one for the scheduler.</span>
         </span>
       </summary>
       <div class="layer-body">
@@ -430,7 +430,7 @@ launchctl load ~/Library/LaunchAgents/com.blackmonlab.tealc-chainlit.plist</code
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 11</span>
           <span class="sum-head">Set up the Goals Sheet</span>
-          <span class="sum-trail">Five tabs, importance-scored goals, on-demand export. Do not use a polling sync — it hits quota.</span>
+          <span class="sum-trail">Five tabs, importance-scored goals, on-demand export. Do not use a polling sync; it hits quota.</span>
         </span>
       </summary>
       <div class="layer-body">
@@ -481,7 +481,7 @@ launchctl load ~/Library/LaunchAgents/com.blackmonlab.tealc-chainlit.plist</code
           The architecture generalizes beyond a biology lab. The pieces that are domain-specific are the system prompt, the grant sources list, the known sheets, and the R preamble. Everything else -- the dual-process SQLite coordination, the executive loop, the goals sheet sync, the briefing infrastructure, the launchd setup -- is reusable as-is.
         </p>
         <p>
-          The design choices that matter most regardless of domain: keep the executive loop in advisor mode for at least a month before promoting any action class; build the briefing infrastructure before the jobs (a job that cannot surface its output is invisible); make the privacy gate explicit rather than relying on the model's judgment in a hot path; keep the overnight jobs idle-gated so they never interrupt active work; and use on-demand export for any bidirectional sheet sync rather than a polling job (polling hits quota limits). The cost of running this full system — 59 scheduled jobs, morning briefing, email triage, overnight science layer, adversarial critic, cost telemetry — is roughly $60–80/month at current Claude API pricing, dominated by the overnight science jobs and the adversarial critic pass on each output.
+          The design choices that matter most regardless of domain: keep the executive loop in advisor mode for at least a month before promoting any action class; build the briefing infrastructure before the jobs (a job that cannot surface its output is invisible); make the privacy gate explicit rather than relying on the model's judgment in a hot path; keep the overnight jobs idle-gated so they never interrupt active work; and use on-demand export for any bidirectional sheet sync rather than a polling job (polling hits quota limits). The cost of running this full system (59 scheduled jobs, morning briefing, email triage, overnight science layer, adversarial critic, cost telemetry) is roughly $60–80/month at current Claude API pricing, dominated by the overnight science jobs and the adversarial critic pass on each output.
         </p>
       </div>
     </details>
