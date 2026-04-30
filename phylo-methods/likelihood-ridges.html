@@ -473,13 +473,13 @@ extra_scripts: |
     <h1 class="title">Likelihood ridges in discrete trait models.</h1>
 
     <p class="lede">
-      Maximum likelihood estimation of discrete trait models has a well-known identifiability problem. When transition rates become very high relative to tree depth, the tip states converge on the stationary distribution and the likelihood becomes nearly flat across a huge range of rates. This page shows why, when it matters, and what to do about it.
+      Maximum likelihood estimation of discrete trait models has a well-known identifiability problem. When transition rates become high relative to tree depth, the tip states converge on the stationary distribution and the likelihood becomes nearly flat across a huge range of rates. This page shows why, when it matters, and what to do about it.
     </p>
 
     <h2>The core problem</h2>
 
     <p class="section-text">
-      Maximum likelihood estimation of <a href="discrete.html" style="color: var(--accent); text-decoration: underline;">discrete trait models</a> comes with a well-known identifiability problem. When transition rates become very high relative to tree depth, something surprising happens: trait states get "scrambled" across the phylogeny. Every lineage rapidly visits every state many times, and the phylogenetic signal gets washed out.
+      Maximum likelihood estimation of <a href="discrete.html" style="color: var(--accent); text-decoration: underline;">discrete trait models</a> comes with a well-known identifiability problem. When transition rates become high relative to tree depth, something surprising happens: trait states get "scrambled" across the phylogeny. Every lineage rapidly visits every state many times, and the phylogenetic signal gets washed out.
     </p>
 
     <p class="section-text">
@@ -629,7 +629,7 @@ extra_scripts: |
     <p class="section-text">
       The solutions (priors, multiple starts, penalization, and bounds) all aim to break the ridge by adding external information or constraints. In practice, <span class="highlight-text">Bayesian MCMC with an informative prior is the most reliable approach</span> because it explicitly encodes what you know (or want to assume) about plausible rate ranges.
     </p>
-    <p class="section-text">One nuance worth stating clearly. MCMC with an <strong>uninformative</strong> prior (e.g., Uniform(0, &infin;) or Exponential with very large mean) will <em>still wander up the ridge</em>, because the likelihood is genuinely flat there and the prior offers no counter-pressure. Switching to Bayesian methods is not the fix on its own. What matters is a meaningfully informative prior: an Exponential with mean equal to the expected number of transitions per million years for the trait class, or a tight Lognormal centered on a biologically plausible rate. Without that, MCMC and ML can give the same misleading answer. Likewise, the multiple-starting-points strategy works because different starts sample different regions of the ridge; from any one starting point the optimizer converges deterministically. See Revell &amp; Harmon (2008, <em>Evol. Bioinform.</em>) and Harmon (2019, <em>Phylogenetic Comparative Methods</em>) for explicit treatments of these issues.</p>
+    <p class="section-text">One nuance worth stating clearly. MCMC with an <strong>uninformative</strong> prior (e.g., Uniform(0, &infin;) or Exponential with large mean) will <em>still wander up the ridge</em>, because the likelihood is genuinely flat there and the prior offers no counter-pressure. Switching to Bayesian methods is not the fix on its own. What matters is a meaningfully informative prior: an Exponential with mean equal to the expected number of transitions per million years for the trait class, or a tight Lognormal centered on a biologically plausible rate. Without that, MCMC and ML can give the same misleading answer. Likewise, the multiple-starting-points strategy works because different starts sample different regions of the ridge; from any one starting point the optimizer converges deterministically. See Revell &amp; Harmon (2008, <em>Evol. Bioinform.</em>) and Harmon (2019, <em>Phylogenetic Comparative Methods</em>) for explicit treatments of these issues.</p>
     <p class="section-text">When in doubt, compare results across methods and always sanity-check your rate estimates.</p>
 
     <footer class="colophon">
