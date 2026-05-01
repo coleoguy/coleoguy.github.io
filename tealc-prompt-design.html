@@ -1,0 +1,311 @@
+---
+layout: default
+title: "Designing Tealc's system prompt · Blackmon Lab"
+description: "How the Blackmon Lab tuned Tealc's system prompt against Anthropic's 2026 prompting guidance: XML structure, the skeptical-reviewer stance, two real safety rules instead of five 'non-negotiables', dynamic priorities, and prompt caching."
+canonical: "https://coleoguy.github.io/tealc-prompt-design.html"
+---
+
+<!-- user-start -->
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; <a href="lead-investigator.html">TEALC</a> &rsaquo; <a href="tealc-build.html">BUILD</a> &rsaquo; PROMPT DESIGN</div>
+
+    <h1 class="title">Designing Tealc's system prompt</h1>
+
+    <p class="lede">
+      Tealc's system prompt was originally a 715-line ALLCAPS wall that grew section-by-section as we added features. By April 2026 it had hit a wall: rules conflicted, attention was diffuse, and every change risked colliding with something written six months earlier. This page is the design diary of the rewrite — what we kept, what we cut, and what we changed based on Anthropic's 2026 prompting guidance and a few research patterns from the agent-evaluation literature. The full prompt source lives in <a href="https://github.com/coleoguy/tealc/blob/main/agent/graph.py" target="_blank" rel="noopener">agent/graph.py</a>; this page is the &ldquo;why&rdquo;.
+    </p>
+
+    <div class="layer-links" style="margin-bottom:24px;">
+      <a href="tealc-build.html"><strong>&larr; Build your own Tealc</strong></a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://github.com/coleoguy/tealc/blob/main/agent/graph.py" target="_blank" rel="noopener"><strong>graph.py on GitHub &rarr;</strong></a>
+    </div>
+
+    <div class="agent-box">
+      <span class="agent-line"><span class="agent-tag">Static prefix</span>~12,290 tokens, cached via <code>cache_control: ephemeral</code></span>
+      <span class="agent-line"><span class="agent-tag">Dynamic suffix</span>~820 tokens, loaded fresh per chat-start (priorities, drive layout, personality, preferences)</span>
+      <span class="agent-line"><span class="agent-tag">Structure</span>13 XML-tagged semantic blocks</span>
+      <span class="agent-line"><span class="agent-tag">Models</span>Claude Sonnet 4.6 by default, Opus 4.7 on demand</span>
+      <span class="agent-line"><span class="agent-tag">Net change vs. prior version</span>~3,900 tokens removed (-24%); 5 &ldquo;non-negotiable&rdquo; rules collapsed to 2 actual safety rules + 6 workflows</span>
+    </div>
+
+    <p class="tealc-feed-label" style="margin-top:28px;">Every section below is collapsed by default. Click a row to open it.</p>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Premise</span>
+          <span class="sum-head">Why a system prompt is not documentation</span>
+          <span class="sum-trail">Every byte either steers behavior or burns attention.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The temptation with a long-running agent is to keep adding context: explain how every tool works, list every edge case, document every decision the agent has ever made. The system prompt becomes a runbook. Anthropic's guidance is the opposite: <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">treat the prompt like onboarding a new colleague</a>, not a reference manual. The model has finite attention; every paragraph competes with every other paragraph for that attention. Long, repetitive prompts dilute the rules that actually matter.
+        </p>
+        <p>
+          The rewrite started from one question: which lines, if removed, would change Tealc's behavior in a way we'd notice? Anything that didn't pass that test got cut. The 104-tool catalog inside the prompt &mdash; one line per tool with a one-sentence description &mdash; got cut entirely, because LangGraph already passes <code>@tool</code> docstrings to the API as native tool schemas. The prompt was duplicating information the model already had.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Structure</span>
+          <span class="sum-head">XML tags, not section dividers</span>
+          <span class="sum-trail">The model parses structure. Visual ASCII art is just text.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The previous prompt used heavy <code>═══════</code> divider lines to mark sections. To a human reader, those scream &ldquo;new section&rdquo;. To the model, they're just unicode box-drawing characters. Anthropic's guidance is explicit: <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">&ldquo;XML tags help Claude parse complex prompts unambiguously, especially when your prompt mixes instructions, context, examples, and variable inputs.&rdquo;</a>
+        </p>
+        <p>
+          The rewrite wraps the major thematic blocks in semantic XML tags: <code>&lt;persona&gt;</code>, <code>&lt;stance&gt;</code>, <code>&lt;review_default&gt;</code>, <code>&lt;uncertainty&gt;</code>, <code>&lt;heath_profile&gt;</code>, <code>&lt;lab&gt;</code>, <code>&lt;behavior&gt;</code>, <code>&lt;tool_routing&gt;</code>, <code>&lt;scheduled_jobs&gt;</code>, <code>&lt;state&gt;</code>, <code>&lt;safety_rules&gt;</code>, <code>&lt;workflows&gt;</code>, <code>&lt;integrations&gt;</code>. Inside the safety/workflow blocks, individual rules use nested tags &mdash; <code>&lt;rule id=&quot;data_resource_preflight&quot;&gt;</code>, <code>&lt;workflow id=&quot;hypothesis_proposal&quot;&gt;</code>, <code>&lt;reason&gt;</code>, <code>&lt;example&gt;</code> &mdash; mirroring the patterns Anthropic uses in its <a href="https://platform.claude.com/docs/en/release-notes/system-prompts" target="_blank" rel="noopener">own published Claude system prompts</a>.
+        </p>
+        <p>
+          This is not cosmetic. The model uses XML tags as attention anchors when it needs to find a specific rule mid-reasoning. With dividers, it has to scan prose. With tags, it can route directly.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Persona</span>
+          <span class="sum-head">Character via behavioral constraints, not adjectives</span>
+          <span class="sum-trail">&ldquo;Brilliant, organized, direct&rdquo; is decoration. Anti-sycophancy is a behavior.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          Anthropic's published system prompts for claude.ai don't describe Claude with adjectives. They describe what Claude does and doesn't do. Lines like <em>&ldquo;does not need to apologize when the person is unnecessarily rude&rdquo;</em>, <em>&ldquo;willing to push back on users and be honest, but does so constructively&rdquo;</em>, <em>&ldquo;never thanks the person merely for reaching out&rdquo;</em> &mdash; these are concrete behavioral constraints. Reading those lines, you can predict what Claude will and won't do in a specific situation. Reading &ldquo;you are warm and direct&rdquo;, you can't.
+        </p>
+        <p>
+          Tealc's <code>&lt;persona&gt;</code> block keeps a short identity statement (lab member, knows your work, runs on Sonnet 4.6 / Opus 4.7), then defers all the actual character work to three behavioral blocks immediately after:
+        </p>
+        <ul>
+          <li><code>&lt;stance&gt;</code> &mdash; the default reading is skeptical. First job on any draft, claim, or piece of code is to find the weakest link, not to validate. Skip validation-forward openers (&ldquo;great question&rdquo;, &ldquo;I'd be happy to&rdquo;) and the words &ldquo;genuinely&rdquo;, &ldquo;honestly&rdquo;, &ldquo;straightforward&rdquo; &mdash; the latter is lifted directly from Anthropic's own anti-sycophancy phrasing.</li>
+          <li><code>&lt;review_default&gt;</code> &mdash; when reviewing writing or code, report every issue including low-severity and uncertain ones, tagged with severity + confidence. <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">Anthropic's own guidance</a> on code-review harnesses warns that &ldquo;be conservative&rdquo; and &ldquo;don't nitpick&rdquo; cause Claude 4.7 to silently drop real findings: precision rises, recall collapses. Coverage at the finding stage with a downstream filter is the better pattern.</li>
+          <li><code>&lt;uncertainty&gt;</code> &mdash; calibration as a habit. Every hypothesis or draft gets a confidence label, the strongest counter-argument the model can generate, and one experiment that would change its mind. &ldquo;I think&rdquo; and &ldquo;my guess is&rdquo; instead of bare assertion. Never invent paths, IDs, citations, or facts &mdash; investigate first or say &ldquo;I don't know&rdquo;.</li>
+        </ul>
+        <p>
+          Combined token cost: about 165 tokens. Influences every assistant turn for the life of the prompt. Highest-leverage 165 tokens in the file.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Stance</span>
+          <span class="sum-head">Why the default reading is skeptical</span>
+          <span class="sum-trail">Adversarial-critic patterns improve factual accuracy ~23%.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The default frame for most LLM assistants is helpfulness, which in practice slides into validation: hedge the disagreement, soften the critique, agree with the user's framing. For a research lab, that's exactly wrong. The most useful behavior from a colleague is the one that catches the bad idea before it becomes a published preprint.
+        </p>
+        <p>
+          The agent-evaluation literature has a name for this pattern: the <em>adversarial critic</em> or <em>skeptical internal reviewer</em>. <a href="https://openreview.net/forum?id=06ZvHHBR0i" target="_blank" rel="noopener">Multi-agent debate research</a> reports ~23% improvements in factual accuracy when one agent's outputs are routed through a second agent prompted specifically to find errors, unsupported assumptions, and guideline violations. Commercial systems for <a href="https://arxiv.org/html/2602.13213v1" target="_blank" rel="noopener">underwriting decisions with adversarial self-critique</a> use the same shape: a generator produces a draft, a critic is told to verify or reject every claim, and the final output reflects what survived.
+        </p>
+        <p>
+          Tealc bakes that shape into the default. The <code>&lt;stance&gt;</code> block tells the model that its first job, on any input, is to find the weakest link &mdash; not because the user is wrong, but because that's the higher form of help. The system already runs an explicit critic pass on hypothesis proposals and grant drafts (Tier 0 smoke filter &rarr; Haiku type classifier &rarr; Sonnet/Opus type-aware critic, see the <a href="https://github.com/coleoguy/tealc/blob/main/agent/hypothesis_pipeline.py" target="_blank" rel="noopener">hypothesis pipeline</a>); the stance block extends the same posture to in-chat work where there's no formal pipeline.
+        </p>
+        <p>
+          The cost of skepticism in this domain is small. The cost of a confidently wrong hypothesis attached to the wrong citation is substantial. The April 2026 Fragile-Y preregistration incident &mdash; where Tealc proposed a hypothesis already tested in a paper it cited as supporting &mdash; is the failure mode that motivated the explicit wiki-consultation rule and, more broadly, the skeptical default.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Language</span>
+          <span class="sum-head">Five &ldquo;non-negotiables&rdquo; collapsed to two</span>
+          <span class="sum-trail">When everything is non-negotiable, nothing is.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The previous prompt had five rules tagged <code>(non-negotiable)</code> and dozens of <code>MUST</code> / <code>NEVER</code> / <code>DO NOT</code> imperatives. <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">Anthropic's own guidance</a> on Claude 4.6+ models is explicit about why this backfires:
+        </p>
+        <blockquote>
+          <em>&ldquo;Claude Opus 4.5 and Claude Opus 4.6 are also more responsive to the system prompt than previous models. If your prompts were designed to reduce undertriggering on tools or skills, these models may now overtrigger. The fix is to dial back any aggressive language. Where you might have said 'CRITICAL: You MUST use this tool when&hellip;', you can use more normal prompting like 'Use this tool when&hellip;'&rdquo;</em>
+        </blockquote>
+        <p>
+          The rewrite reserves the <code>&lt;safety_rules&gt;</code> block for two genuinely load-bearing rules that are also backed by code-level guards: the data-resource preflight (must call <code>require_data_resource</code> before emitting analysis code that reads a lab database) and the destructive-action confirm (preview-then-confirm on the three irreversible Google Doc / Sheets / Calendar tools). The other three former &ldquo;non-negotiables&rdquo; &mdash; voice-matching for extended prose, wiki consultation before hypothesis proposals, the email-trash two-step &mdash; moved into <code>&lt;workflows&gt;</code> with calmer language, where they belong as quality and process rules rather than safety gates.
+        </p>
+        <p>
+          The two safety rules each ship with a <code>&lt;reason&gt;</code> block citing the actual incident the rule prevents. Anthropic's guidance again: <em>&ldquo;providing context or motivation behind your instructions&hellip; helps Claude generalize from the explanation.&rdquo;</em> Bare imperatives are weaker than imperatives with their causal story attached.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Examples</span>
+          <span class="sum-head">Five worked examples beat fifty bullet rules</span>
+          <span class="sum-trail">&ldquo;One of the most reliable ways to steer Claude's output.&rdquo;</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The previous prompt had zero <code>&lt;example&gt;</code> blocks across 715 lines. Anthropic's <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">guidance</a> on few-shot examples is unambiguous: <em>&ldquo;Examples are one of the most reliable ways to steer Claude's output format, tone, and structure. A few well-crafted examples (known as few-shot or multishot prompting) can dramatically improve accuracy and consistency.&rdquo;</em> The recommendation is 3&ndash;5 examples wrapped in <code>&lt;example&gt;</code> tags.
+        </p>
+        <p>
+          The rewrite adds 5 worked examples inside the safety / workflow blocks &mdash; one each for the data-resource preflight (showing both the success path and the error path), the destructive-action confirm flow, the hypothesis-proposal wiki-consultation flow, the extended-prose voice-exemplar flow, and the email-trash two-step. Each example is short (4&ndash;8 lines, formatted as a mini-dialogue) and shows the desired call sequence with the expected tool returns inline. They cost about 400 tokens combined and replace what would otherwise need 1500+ tokens of prose to convey.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Caching</span>
+          <span class="sum-head">Static prefix, dynamic suffix</span>
+          <span class="sum-trail">Two content blocks, one cache breakpoint, ~90% off on cached tokens.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          Anthropic's prompt-caching feature lets you mark a prefix of the system prompt with <code>cache_control: {type: "ephemeral"}</code>. On subsequent API calls with the same prefix, the cached portion bills at roughly 10% of the normal input-token rate. For a 12k-token static prompt called dozens of times a day, that's real money.
+        </p>
+        <p>
+          The catch: the cache is invalidated by any change in the prefix. If you put both the static prompt and dynamic per-chat-start data (today's priorities, this week's preferences, the live Drive layout) into one cached block, every chat-start invalidates the cache and you get zero benefit.
+        </p>
+        <p>
+          The fix is to split the system message into two content blocks. Block one is the ~12,290-token static prefix &mdash; persona, behavioral rules, lab profile, workflows, integrations &mdash; with <code>cache_control: ephemeral</code> attached. Block two is the ~820-token dynamic suffix &mdash; loaded fresh from the SQLite goals table, the personality sliders file, and the weekly preference consolidation &mdash; without <code>cache_control</code>. The static prefix stays cached across chat-starts even when the dynamic suffix changes. <a href="https://github.com/coleoguy/tealc/blob/main/agent/graph.py" target="_blank" rel="noopener">graph.py</a>'s <code>build_graph()</code> function constructs the message that way.
+        </p>
+        <p>
+          The dynamic suffix matters for a separate reason: it removes a stale-data risk. The previous prompt had <code>URGENT PRIORITIES RIGHT NOW (April 2026)</code> hardcoded with hand-typed deadlines. Six weeks later, those deadlines were stale and Tealc was still anchored to them. Replacing that block with a <code>_load_urgent_priorities()</code> function that queries the goals table at chat-start means priorities auto-refresh whenever the table is updated, with no prompt edit required.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Tools</span>
+          <span class="sum-head">Tool descriptions belong in tools, not the prompt</span>
+          <span class="sum-trail">~3,900 tokens reclaimed by deleting the catalog.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The biggest single-section win came from deleting the in-prompt tool catalog &mdash; 104 lines of <code>- tool_name: one-line description</code> that had accumulated over months. The reason it was there at all: with earlier models, listing tools in the system prompt improved tool-selection accuracy. With Claude 4.6 and 4.7, that's no longer needed.
+        </p>
+        <p>
+          LangGraph already passes each <code>@tool</code>-decorated function's docstring to the API as a native tool schema. The model sees the tool name, parameters, and description through the proper structured channel. Duplicating that in the system prompt as plain prose adds tokens without adding information.
+        </p>
+        <p>
+          What does still belong in the prompt is the small set of <em>routing</em> rules that aren't obvious from a docstring: when to call <code>describe_capabilities</code> vs. answering from memory; when to call <code>find_resource</code> before falling back to <code>search_drive</code>; the cross-references to the <code>&lt;safety_rules&gt;</code> and <code>&lt;workflows&gt;</code> blocks for tools that have preconditions. That's now a ~15-line <code>&lt;tool_routing&gt;</code> block instead of a 105-line catalog.
+        </p>
+        <p>
+          Anthropic's <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a> piece is direct about this: <em>&ldquo;Tool definitions and specifications should be given just as much prompt engineering attention as your overall prompts.&rdquo;</em> Engineering effort that was going into the in-prompt catalog now goes into the tool docstrings themselves.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Always-on</span>
+          <span class="sum-head">What always-on agents need that one-shot prompts don't</span>
+          <span class="sum-trail">Calibration, transparency, and stopping conditions over cleverness.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          A chatbot prompt and an always-on agent prompt have different priorities. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Anthropic's guidance for agentic systems</a> emphasizes three principles: simplicity, transparency, and clear interfaces. Tealc's prompt tries to honor each:
+        </p>
+        <ul>
+          <li><strong>Simplicity.</strong> Reserve agentic structure for problems that need it. Don't add a rule unless its absence has caused a real failure. The five-to-two collapse on safety rules came from this principle.</li>
+          <li><strong>Transparency.</strong> The <code>&lt;persona&gt;</code> block tells Tealc to acknowledge scope on complex requests &mdash; one sentence before the first tool call, naming what's about to happen. The <code>&lt;uncertainty&gt;</code> block tells it to surface confidence and counter-arguments rather than presenting conclusions as settled. Both make the agent's reasoning visible to the human reading along.</li>
+          <li><strong>Clear interfaces.</strong> Tools have detailed docstrings with parameter types and constraints. Tools with preconditions (must call X before Y) have the precondition in the <code>&lt;safety_rules&gt;</code> or <code>&lt;workflows&gt;</code> block, so it's enforceable both by the model's reading and (for the safety rules) by code-level guards in the tool implementation itself.</li>
+        </ul>
+        <p>
+          Stopping conditions matter too. The hard guards are in code, not just in prose: destructive operations require a second call with <code>confirmed=True</code> after a preview; the <code>recursion_limit</code> on the LangGraph loop is set explicitly; the email-trash function re-checks the protected-sender blocklist regardless of what the caller said. The prompt-side rules are the first line of defense; the code-side guards are the catch.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">What we cut</span>
+          <span class="sum-head">The deliberately-not-included list</span>
+          <span class="sum-trail">Removing things is most of the work.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <ul>
+          <li><strong>The 104-tool catalog.</strong> Tool schemas come from <code>@tool</code> docstrings. Listing tools in the prompt was duplicate.</li>
+          <li><strong>Hardcoded urgent priorities.</strong> Deadlines go stale. Now loaded dynamically from the <code>goals</code> table at chat-start.</li>
+          <li><strong>The &ldquo;V2 / V3 / V4 / V5 / V6 / V7 / V8&rdquo; section labels.</strong> These were historical strata from when the prompt grew feature-by-feature. The model doesn't care which version added which rule; the labels were noise. Sections now have thematic names without version prefixes.</li>
+          <li><strong>Aggressive markers.</strong> <code>(non-negotiable)</code> tags went from five to two. <code>MUST</code> / <code>NEVER</code> / <code>DO NOT</code> imperatives became regular prose almost everywhere. Anthropic's own guidance: dial back, the newer models follow softer language more reliably.</li>
+          <li><strong>Repeated rules.</strong> Voice-matching was mentioned in three places, drafting policy in two, service-decline in two. Each rule now lives in exactly one place; cross-references go to the canonical home.</li>
+          <li><strong>Validation-forward language.</strong> The <code>&lt;stance&gt;</code> block bans phrases like &ldquo;great question&rdquo; and the words &ldquo;genuinely&rdquo;, &ldquo;honestly&rdquo;, &ldquo;straightforward&rdquo;. Lifted directly from <a href="https://platform.claude.com/docs/en/release-notes/system-prompts" target="_blank" rel="noopener">Anthropic's own published Claude system prompts</a>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Outcomes</span>
+          <span class="sum-head">What changed in practice</span>
+          <span class="sum-trail">Honest accounting, not a victory lap.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          We're early enough in the rewrite that the right framing is &ldquo;tracking it&rdquo; rather than &ldquo;shipped it&rdquo;. Things we expect to see, and will be measuring against the v2 critic scores and the Reviewer Circle correlations:
+        </p>
+        <ul>
+          <li><strong>Less validation-forward chatter.</strong> Fewer responses opening with &ldquo;Great question!&rdquo; or hedging the disagreement. We expect this immediately on Sonnet, where the baseline tone is warmer; Opus 4.7 was already there per Anthropic's tone notes.</li>
+          <li><strong>More explicit confidence on hypotheses and drafts.</strong> The <code>&lt;uncertainty&gt;</code> block asks for confidence, counter-argument, and a falsification path on every claim. The output ledger captures these per-artifact, so we can audit how often Tealc actually does it after the rewrite vs. before.</li>
+          <li><strong>Cheaper chat-starts.</strong> Static prefix is cached at ~90% off. Dynamic suffix is small. After the first chat-start of the day primes the cache, subsequent starts should be substantially cheaper. We track this in <code>get_cost_summary</code>.</li>
+          <li><strong>Fewer stale priorities.</strong> The hardcoded April 2026 priorities are gone. The dynamic loader pulls live priorities from the goals table, so the agent's frame matches the agent's data without manual prompt edits.</li>
+          <li><strong>Easier evolution.</strong> Adding a workflow now means adding one <code>&lt;workflow id=&quot;&hellip;&quot;&gt;</code> block, ideally with a <code>&lt;reason&gt;</code> and an <code>&lt;example&gt;</code>. No version-section archaeology required.</li>
+        </ul>
+        <p>
+          What we're not claiming: that the prompt is now &ldquo;optimal&rdquo;. It's a single design pass against a published guidance document and a small set of research patterns. The honest version is that we'll see how it behaves over the next several months and iterate from there. The instrumentation is in place: weekly self-review, output-ledger critic scores, Reviewer Circle blinded scores, cost telemetry.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">References</span>
+          <span class="sum-head">Sources cited above, in one place</span>
+          <span class="sum-trail">Anthropic guidance + agent-evaluation research.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p><strong>Anthropic guidance (primary references):</strong></p>
+        <ul>
+          <li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">Prompting best practices for Claude</a> &mdash; Anthropic's living reference for Claude 4.7 / 4.6 prompt engineering. Sections cited above include &ldquo;Be clear and direct&rdquo;, &ldquo;Add context to improve performance&rdquo;, &ldquo;Use examples effectively&rdquo;, &ldquo;Structure prompts with XML tags&rdquo;, &ldquo;Tone and writing style&rdquo;, &ldquo;Tool use triggering&rdquo;, &ldquo;More literal instruction following&rdquo;, &ldquo;Code review harnesses&rdquo;, and &ldquo;Long context prompting&rdquo;.</li>
+          <li><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a> &mdash; Anthropic's design principles for agentic systems: simplicity, transparency, clear interfaces, and the &ldquo;tools deserve as much engineering as prompts&rdquo; rule.</li>
+          <li><a href="https://platform.claude.com/docs/en/release-notes/system-prompts" target="_blank" rel="noopener">Claude system prompts (release notes)</a> &mdash; Anthropic's officially published system prompts for claude.ai. Source for the &ldquo;character via behavioral constraints&rdquo; pattern and the anti-sycophancy phrasing (&ldquo;does not want to foster over-reliance&rdquo;, &ldquo;avoids saying genuinely / honestly / straightforward&rdquo;).</li>
+          <li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Prompt engineering overview</a> &mdash; index page for Anthropic's prompt-engineering documentation.</li>
+        </ul>
+        <p><strong>Agent-evaluation and adversarial-critic research:</strong></p>
+        <ul>
+          <li><a href="https://openreview.net/forum?id=06ZvHHBR0i" target="_blank" rel="noopener">Adversarial Multi-Agent Evaluation of Large Language Models through Iterative Debate</a> &mdash; OpenReview. Source for the ~23% factual-accuracy improvement when generation is paired with adversarial critique.</li>
+          <li><a href="https://arxiv.org/html/2602.13213v1" target="_blank" rel="noopener">Agentic AI for Commercial Insurance Underwriting with Adversarial Self-Critique</a> &mdash; arXiv. Worked example of the &ldquo;skeptical internal reviewer&rdquo; pattern in a high-stakes domain.</li>
+          <li><a href="https://www.promptingguide.ai/research/llm-agents" target="_blank" rel="noopener">LLM Agents</a> &mdash; Prompt Engineering Guide. Background on agent profiling, persona, and the role of the system prompt in defining agent behavior.</li>
+        </ul>
+        <p><strong>Tealc-specific:</strong></p>
+        <ul>
+          <li><a href="https://github.com/coleoguy/tealc/blob/main/agent/graph.py" target="_blank" rel="noopener">agent/graph.py on GitHub</a> &mdash; the prompt source itself, including the <code>build_graph()</code> function that wires the static-prefix / dynamic-suffix split.</li>
+          <li><a href="tealc-build.html">Build your own Tealc</a> &mdash; the broader architectural walkthrough that this page complements.</li>
+          <li><a href="tealc.html">Tealc · live</a> &mdash; the public activity feed.</li>
+        </ul>
+      </div>
+    </details>
+
+<!-- user-end -->
