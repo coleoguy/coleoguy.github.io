@@ -2,7 +2,7 @@
 layout: default
 title: "Open research questions"
 permalink: /knowledge/questions/
-last_updated: 2026-04-30T11:00:00.021097+00:00
+last_updated: 2026-05-01T11:00:00.021064+00:00
 ---
 
 # Open research questions

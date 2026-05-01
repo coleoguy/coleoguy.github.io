@@ -21,11 +21,12 @@ canonical: "https://coleoguy.github.io/tealc-prompt-design.html"
     </div>
 
     <div class="agent-box">
-      <span class="agent-line"><span class="agent-tag">Static prefix</span>~12,290 tokens, cached via <code>cache_control: ephemeral</code></span>
+      <span class="agent-line"><span class="agent-tag">Static prefix</span>~12,700 tokens, cached via <code>cache_control: ephemeral</code></span>
       <span class="agent-line"><span class="agent-tag">Dynamic suffix</span>~820 tokens, loaded fresh per chat-start (priorities, drive layout, personality, preferences)</span>
-      <span class="agent-line"><span class="agent-tag">Structure</span>13 XML-tagged semantic blocks</span>
-      <span class="agent-line"><span class="agent-tag">Models</span>Claude Sonnet 4.6 by default, Opus 4.7 on demand</span>
-      <span class="agent-line"><span class="agent-tag">Net change vs. prior version</span>~3,900 tokens removed (-24%); 5 &ldquo;non-negotiable&rdquo; rules collapsed to 2 actual safety rules + 6 workflows</span>
+      <span class="agent-line"><span class="agent-tag">On-demand</span>6 SKILL.md files, 1.5&ndash;3K tokens each, loaded only when triggered</span>
+      <span class="agent-line"><span class="agent-tag">Structure</span>14 XML-tagged semantic blocks (persona, stance, review_default, uncertainty, skills, heath_profile, lab, behavior, tool_routing, state, safety_rules, workflows, scheduled_jobs, integrations)</span>
+      <span class="agent-line"><span class="agent-tag">Models</span>Claude Sonnet 4.6 by default, Opus 4.7 on demand; adaptive thinking with <code>effort=high</code> for the chat agent</span>
+      <span class="agent-line"><span class="agent-tag">Net change vs. prior version</span>~3,900 tokens removed (-24%); 5 &ldquo;non-negotiable&rdquo; rules collapsed to 2 actual safety rules + 6 workflows; tool catalog moved into API tool schemas</span>
     </div>
 
     <p class="tealc-feed-label" style="margin-top:28px;">Every section below is collapsed by default. Click a row to open it.</p>
@@ -280,6 +281,37 @@ canonical: "https://coleoguy.github.io/tealc-prompt-design.html"
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
+          <span class="sum-kicker">Iteration</span>
+          <span class="sum-head">What landed after first publication</span>
+          <span class="sum-trail">Skills system, SCIENTIST_MODE preamble, Memory tool scaffolding, project-session helpers, adaptive thinking.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>
+          The first version of this page covered the prompt rewrite itself. A few weeks later, several Anthropic-side primitives had matured enough to wire into the harness. None of these change the prompt's design philosophy &mdash; they extend it.
+        </p>
+
+        <p><strong>Six on-demand Skills.</strong> Big chunks of domain-specific knowledge moved out of the static prompt and into <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">SKILL.md files</a> under <code>agent/skills/</code>: <code>karyotype-databases</code>, <code>r-comparative-phylogenetics</code>, <code>wiki-authoring</code>, <code>grant-section-drafter</code>, <code>hypothesis-pipeline-rubric</code>, <code>voice-matching</code>. Each is 1.5&ndash;3K tokens of body content; only the ~100-token metadata sits in the system prompt at all times. The chat agent reads the relevant SKILL.md once per session, only when triggered. Anthropic's <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank" rel="noopener">Skills architecture post</a> describes the progressive-disclosure pattern. Net result: the system prompt stays compact while the agent has access to ~10K tokens of focused playbooks on demand.</p>
+
+        <p><strong>SCIENTIST_MODE preamble for artifact-grade jobs.</strong> The chat agent now defaults to skeptical reviewing &mdash; but the scheduled jobs that <em>produce</em> the artifacts the chat agent later reviews didn't share that stance. A shared ~200-token preamble in <code>agent/jobs/__init__.py</code> now prepends to the system prompts of the eight artifact-grade jobs (grant drafter, hypothesis generator, literature synthesis, comparative-analysis interpreter, recognition-impact, recognition-pipeline-health, cross-project synthesis, weekly review). It enforces calibration, anti-hype word list, distinguish-hypothesis-from-finding, distinguish-correlation-from-causation, and a no-fabrication rule. Per-job prompts add domain-specific rubric on top &mdash; the literature synthesis job, for example, now requires explicit <code>claims_vs_findings</code>, <code>correlation_vs_causation</code>, and <code>limitations</code> fields in its JSON output. The asymmetry is intentional: the chat is the critic, the jobs are the producers, and the preamble enforces a calibration floor on the producers without making them as adversarial as the chat.</p>
+
+        <p><strong>Anthropic Memory tool scaffolding.</strong> A subclass of <code>BetaAbstractMemoryTool</code> at <code>agent/memory_backend.py</code>, file-backed at <code>~/Library/Application Support/tealc/memories/</code> (outside Google Drive sync to avoid the corruption modes that hit the SQLite live store). All six commands implemented (view / create / str_replace / insert / delete / rename) with path-traversal protection, atomic writes, and size caps. Native registration in <code>build_graph</code> deferred &mdash; the <code>memory_20250818</code> beta-tool format needs a langchain-anthropic shim that doesn't exist yet.</p>
+
+        <p><strong>Multi-session continuity helpers.</strong> Anthropic's <a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noopener">multi-session harness pattern</a> applied to research projects. Each project gets a <code>progress.md</code> log + optional <code>feature_list.json</code>, stored at <code>~/Library/Application Support/tealc/memories/projects/&lt;project_id&gt;/</code>. Two new tools, <code>start_project_session</code> and <code>end_project_session</code>, bookend extended work on a specific project &mdash; the agent reads the progress log at the start and appends a timestamped entry at the end. For something like a multi-week grant or paper revision, this is the missing layer between the per-chat thread and the long-horizon SQLite project tables.</p>
+
+        <p><strong>Adaptive thinking with effort tuning.</strong> The chat agent now requests <code>thinking={"type": "adaptive"}</code> with <code>output_config={"effort": "high"}</code> via <code>ChatAnthropic</code>'s <code>model_kwargs</code>. Per-job effort tiers live in <code>agent/model_router.py</code>'s <code>EFFORT_TIERS</code>: <code>xhigh</code> for cross-project synthesis and formal hypothesis pass, <code>high</code> for the chat agent and grant drafter, <code>medium</code> for everyday synthesis jobs, <code>low</code> for email-triage classification and paper-of-the-day summaries. The router function returns a <code>(model, effort)</code> NamedTuple so the per-job effort threading is mechanical &mdash; that wiring is in progress at time of writing.</p>
+
+        <p><strong>Optional Langfuse observability.</strong> A new <code>agent/observability.py</code> module exposes a <code>@traced</code> decorator that captures Anthropic API calls (input, output, usage, cost, latency) into <a href="https://langfuse.com/" target="_blank" rel="noopener">Langfuse</a> as OpenTelemetry spans. Pure no-op when langfuse isn't installed or env vars aren't set &mdash; nothing breaks. The intended use cases: prompt-regression detection across model upgrades, per-tool cost dashboards that don't depend on the agent summarizing them, and LLM-as-judge regression suites for the prompts that produce research artifacts. <code>pip install langfuse</code> + three env vars to enable.</p>
+
+        <p>
+          The pattern across all five additions is the same: rather than trying to make the system prompt do more, off-load domain knowledge and bookkeeping to better-shaped primitives so the prompt itself stays focused on stance, behavior, and the small set of rules that actually steer output. Anthropic's <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">effective context engineering</a> post calls this just-in-time context, and it's the design lesson that ties everything together.
+        </p>
+      </div>
+    </details>
+
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
           <span class="sum-kicker">References</span>
           <span class="sum-head">Sources cited above, in one place</span>
           <span class="sum-trail">Anthropic guidance + agent-evaluation research.</span>
@@ -292,6 +324,13 @@ canonical: "https://coleoguy.github.io/tealc-prompt-design.html"
           <li><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a> &mdash; Anthropic's design principles for agentic systems: simplicity, transparency, clear interfaces, and the &ldquo;tools deserve as much engineering as prompts&rdquo; rule.</li>
           <li><a href="https://platform.claude.com/docs/en/release-notes/system-prompts" target="_blank" rel="noopener">Claude system prompts (release notes)</a> &mdash; Anthropic's officially published system prompts for claude.ai. Source for the &ldquo;character via behavioral constraints&rdquo; pattern and the anti-sycophancy phrasing (&ldquo;does not want to foster over-reliance&rdquo;, &ldquo;avoids saying genuinely / honestly / straightforward&rdquo;).</li>
           <li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Prompt engineering overview</a> &mdash; index page for Anthropic's prompt-engineering documentation.</li>
+          <li><a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">Agent Skills overview</a> &mdash; the SKILL.md format and progressive-disclosure pattern.</li>
+          <li><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank" rel="noopener">Equipping agents for the real world with Agent Skills</a> &mdash; the architectural argument for skills over inline prompt content.</li>
+          <li><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool" target="_blank" rel="noopener">Memory tool docs</a> &mdash; the <code>/memories</code> filesystem primitive Tealc subclasses.</li>
+          <li><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noopener">Effective harnesses for long-running agents</a> &mdash; the multi-session pattern (progress.md + feature_list.json + init.sh).</li>
+          <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Effective context engineering for AI agents</a> &mdash; just-in-time context, the design lesson behind off-loading from the system prompt.</li>
+          <li><a href="https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking" target="_blank" rel="noopener">Adaptive thinking + effort parameter</a> &mdash; how Claude 4.6+ tunes reasoning depth.</li>
+          <li><a href="https://langfuse.com/integrations/frameworks/claude-agent-sdk" target="_blank" rel="noopener">Langfuse + Claude Agent SDK</a> &mdash; observability integration referenced by the optional <code>@traced</code> decorator.</li>
         </ul>
         <p><strong>Agent-evaluation and adversarial-critic research:</strong></p>
         <ul>

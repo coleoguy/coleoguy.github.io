@@ -269,20 +269,24 @@ AQUARIUM_WORKER_SECRET=your-secret-here               # optional</code></pre>
         <span class="layer-summary-text">
           <span class="sum-kicker">Step 6</span>
           <span class="sum-head">Write the system prompt</span>
-          <span class="sum-trail">642 lines, 9 major sections. The most important file in the project.</span>
+          <span class="sum-trail">~13k tokens of XML-structured prompt + 6 on-demand SKILL.md files for progressive disclosure.</span>
         </span>
       </summary>
       <div class="layer-body">
         <p>
-          Tealc's system prompt runs 642 lines across 9 ALLCAPS sections: WHO HEATH IS, RESEARCH IDENTITY, HOW TO BEHAVE, PUBLIC AQUARIUM AWARENESS, OVERNIGHT SCIENCE, PENDING INTENTIONS, STUDENTS, GOALS, and RESEARCH PROJECTS. Some principles that matter:
+          Tealc's system prompt is the most important file in the project. It is now organized as a set of XML-tagged semantic blocks: <code>&lt;persona&gt;</code>, <code>&lt;stance&gt;</code>, <code>&lt;review_default&gt;</code>, <code>&lt;uncertainty&gt;</code>, <code>&lt;skills&gt;</code>, <code>&lt;heath_profile&gt;</code>, <code>&lt;lab&gt;</code>, <code>&lt;behavior&gt;</code>, <code>&lt;tool_routing&gt;</code>, <code>&lt;state&gt;</code>, <code>&lt;safety_rules&gt;</code>, <code>&lt;workflows&gt;</code>, <code>&lt;scheduled_jobs&gt;</code>, <code>&lt;integrations&gt;</code>. Some principles that matter:
         </p>
         <ul>
-          <li>State the agent's identity and scope clearly in the first section. What it is for, what it is not for, whose interests it serves.</li>
-          <li>List every tool by name with a one-line description and a note on when to use it. The model cannot look up tool definitions mid-conversation; it relies on the system prompt to know what is available.</li>
-          <li>Write explicit protocols for the things that go wrong. Draft-only on email. Never overwrite existing research text. Advisor mode first. The system prompt is not documentation; it is instruction.</li>
-          <li>Keep the goal layer protocol concrete: when the user mentions a new research direction, ask three questions (time horizon, importance, success metric) before writing anything to the goals sheet. Vague commitments compound.</li>
-          <li>Specify the privacy rules exactly. The model should know, without tool use, whether a given action is safe to surface in the public feed. Explicit enumeration beats judgment calls in a hot path.</li>
+          <li>State the agent's identity and stance clearly at the top. The first ~165 tokens (persona + stance + review_default + uncertainty) sets the default behavior for every subsequent turn.</li>
+          <li>Don't list every tool in the system prompt &mdash; let the API tool schemas do that work. The previous version had 104 tool descriptions inline; deleting them reclaimed ~3,900 tokens with no loss in tool-selection quality.</li>
+          <li>Write explicit protocols for the things that have already gone wrong, not for hypothetical risks. Each rule in <code>&lt;safety_rules&gt;</code> ships with a <code>&lt;reason&gt;</code> citing the actual failure it prevents.</li>
+          <li>Use <code>&lt;example&gt;</code> blocks for behavioral rules. Anthropic's research shows few-shot examples are one of the most reliable ways to steer model behavior.</li>
+          <li>Split static and dynamic content. The static prefix (persona, lab profile, workflows) is cached via <code>cache_control: ephemeral</code>; the dynamic suffix (priorities, preferences, drive layout) is loaded fresh each chat-start. Prompt caching pays roughly 90% off on the cached portion.</li>
+          <li>For domain-specific knowledge (R templates, karyotype DB schemas, wiki authoring rules), use <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">Anthropic Skills</a> &mdash; SKILL.md files loaded on demand. The system prompt only needs ~100 tokens per skill (the metadata) and the model reads the full skill body via filesystem access only when relevant. The Blackmon Lab ships six: karyotype-databases, r-comparative-phylogenetics, wiki-authoring, grant-section-drafter, hypothesis-pipeline-rubric, voice-matching.</li>
         </ul>
+        <p style="margin-top:14px;">
+          For the deeper design rationale &mdash; XML structure, the skeptical-reviewer stance, dialed-back imperative language, dynamic priorities, prompt caching, the SCIENTIST_MODE preamble that artifact-grade scheduled jobs share, and the research grounding behind each choice &mdash; see the companion page <a href="tealc-prompt-design.html"><strong>Designing Tealc's system prompt &rarr;</strong></a>.
+        </p>
       </div>
     </details>
 
