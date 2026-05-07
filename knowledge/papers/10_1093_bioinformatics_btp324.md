@@ -74,3 +74,13 @@ _Ingested 2026-04-22. 4 findings extracted and verified._
 *Counter / limitation:* Benchmarks were run on a single core of one specific processor (2.5 GHz Xeon E5420) with simulated data; real-world speedups may differ with different hardware, read lengths, or genome complexity. Additionally, the abstract states 10–20× while the results section reports 6–18×, suggesting the range depends on the read-length range considered.
 
 *Topics:* [Short Read Alignment](/knowledge/topics/short_read_alignment/), [Bioinformatics Methods](/knowledge/topics/bioinformatics_methods/), [Genome Resequencing](/knowledge/topics/genome_resequencing/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/bioinformatics/btp324](https://doi.org/10.1093/bioinformatics/btp324)
+
+## Related papers on this site
+
+- [Blackmon & Demuth 2015](/knowledge/papers/10_1016_j_cois_2014_12_003/) — 2 shared topics (genome_structure_evolution, karyotype_database)
+<!-- tealc:related-end -->

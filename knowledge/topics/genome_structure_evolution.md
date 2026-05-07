@@ -131,4 +131,6 @@ The architecture of insect genomes reflects a dynamic interplay between repetiti
 ## Related topics on this site
 
 - [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 3 shared papers
+- [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 2 shared papers
+- [Karyotype database](/knowledge/topics/karyotype_database/) — 2 shared papers
 <!-- tealc:related-end -->

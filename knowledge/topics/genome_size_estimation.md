@@ -87,3 +87,6 @@ The 10% saturation-time inflation figure for *Aedes* is a single illustrative ex
 
 - [Book chapter, 2018](/knowledge/papers/10_1007_978_1_4939_8775_7_2/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

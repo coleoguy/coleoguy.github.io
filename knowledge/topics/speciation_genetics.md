@@ -84,3 +84,6 @@ The QTL study in Kitano et al. 2009 used a single backcross design with 76 males
 
 - [Paper page: A role for a neo-sex chromosome in stickleback speciation.](/knowledge/papers/10_1038_nature08441/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

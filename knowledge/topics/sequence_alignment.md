@@ -71,3 +71,6 @@ The chaining-accuracy superiority claim in Finding 2 is reported as "data not sh
 
 - [Minimap2 paper page](/knowledge/papers/10_1093_bioinformatics_bty191/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

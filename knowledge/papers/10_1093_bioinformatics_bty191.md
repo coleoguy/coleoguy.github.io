@@ -54,3 +54,9 @@ _Ingested 2026-04-22. 2 findings extracted and verified._
 *Counter / limitation:* The chaining-accuracy claim is based on unpublished supplementary data ('data not shown'), making independent verification impossible; additionally, the comparison is limited to simulated human reads, which may not reflect performance on more repeat-rich, non-human, or highly divergent genomes.
 
 *Topics:* [Sequence Alignment](/knowledge/topics/sequence_alignment/), [Long Read Sequencing](/knowledge/topics/long_read_sequencing/), [Chaining Algorithm](/knowledge/topics/chaining_algorithm/), [Bioinformatics Tools](/knowledge/topics/bioinformatics_tools/)
+
+<!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/bioinformatics/bty191](https://doi.org/10.1093/bioinformatics/bty191)
+<!-- tealc:related-end -->

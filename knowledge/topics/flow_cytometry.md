@@ -86,3 +86,6 @@ Studies comparing 1C values between sexes in heterogametic insects — particula
 
 - [Paper page: 10.1007/978-1-4939-8775-7_2](/knowledge/papers/10_1007_978_1_4939_8775_7_2/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

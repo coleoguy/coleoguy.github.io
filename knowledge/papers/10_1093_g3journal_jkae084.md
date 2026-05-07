@@ -45,7 +45,15 @@ _Ingested 2026-04-21. 1 findings extracted and verified._
 *Topics:* [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/), [Genome Assembly](/knowledge/topics/genome_assembly/), [Conservation Genomics](/knowledge/topics/conservation_genomics/)
 
 <!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/g3journal/jkae084](https://doi.org/10.1093/g3journal/jkae084)
+
 ## Related papers on this site
 
 - [Chien et al. 2026](/knowledge/papers/10_1002_ece3_73483/) — 3 shared topics (coleoptera_genomics, conservation_genomics, genome_assembly)
+
+## Other papers by these authors
+
+- [Jonika MM](/knowledge/authors/jonika_mm/)
 <!-- tealc:related-end -->

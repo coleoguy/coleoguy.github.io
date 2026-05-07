@@ -46,3 +46,6 @@ The original benchmark figures carry a noted internal inconsistency: the abstrac
 
 - [BWA paper detail page](/knowledge/papers/10_1093_bioinformatics_btp324/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

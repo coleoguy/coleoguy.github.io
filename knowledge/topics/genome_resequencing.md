@@ -47,3 +47,6 @@ The Li & Durbin (2009) benchmarks were run on a single processor core using simu
 
 - [Li & Durbin 2009 paper page](/knowledge/papers/10_1093_bioinformatics_btp324/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

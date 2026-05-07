@@ -57,10 +57,20 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 *Topics:* [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/), [Comparative Methods](/knowledge/topics/comparative_methods/)
 
 <!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/jhered/esae025](https://doi.org/10.1093/jhered/esae025)
+
 ## Related papers on this site
 
-- [Drift drives the evolution of chromosome number I: The impac…](/knowledge/papers/10_1093_jhered_esae001/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, selection_and_drift)
+- [Blackmon et al. 2024](/knowledge/papers/10_1093_jhered_esae001/) — 3 shared topics (chromosome_number_evolution, karyotype_evolution_overview, selection_and_drift)
+- [Charlesworth & Charlesworth 1980](/knowledge/papers/10_1017_s0016672300014051/) — 2 shared topics (karyotype_evolution_overview, selection_and_drift)
 - [Blackmon et al. 2015](/knowledge/papers/10_1111_evo_12792/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
-- [Ruckman et al. 2020](/knowledge/papers/10_1371_journal_pgen_1009076/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Pennell et al. 2015](/knowledge/papers/10_1371_journal_pgen_1005237/) — 2 shared topics (chromosome_number_evolution, selection_and_drift)
 - [Sylvester et al. 2020](/knowledge/papers/10_1098_rspb_2020_1388/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+- [Ruckman et al. 2020](/knowledge/papers/10_1371_journal_pgen_1009076/) — 2 shared topics (chromosome_number_evolution, karyotype_evolution_overview)
+
+## Other papers by these authors
+
+- [Jonika MM](/knowledge/authors/jonika_mm/)
 <!-- tealc:related-end -->

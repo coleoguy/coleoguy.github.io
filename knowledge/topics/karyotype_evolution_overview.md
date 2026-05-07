@@ -112,10 +112,10 @@ Additional sample-size caveats: the uncorrelation between phylogenetic and scale
 <!-- tealc:related-start -->
 ## Related topics on this site
 
-- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 7 shared papers
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 8 shared papers
 - [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 5 shared papers
 - [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/) — 3 shared papers
 - [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/) — 3 shared papers
+- [Selection and drift](/knowledge/topics/selection_and_drift/) — 3 shared papers
 - [Karyotype database](/knowledge/topics/karyotype_database/) — 2 shared papers
-- [Selection and drift](/knowledge/topics/selection_and_drift/) — 2 shared papers
 <!-- tealc:related-end -->

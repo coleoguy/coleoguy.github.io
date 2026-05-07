@@ -85,6 +85,8 @@ Large-scale cytogenetic databases spanning multiple coleopteran suborders would 
 <!-- tealc:related-start -->
 ## Related topics on this site
 
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 4 shared papers
+- [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 3 shared papers
 - [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/) — 2 shared papers
-- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 2 shared papers
+- [Selection and drift](/knowledge/topics/selection_and_drift/) — 2 shared papers
 <!-- tealc:related-end -->

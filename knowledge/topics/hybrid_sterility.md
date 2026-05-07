@@ -47,3 +47,6 @@ The sterility QTL experiment involved weakly fertile F1 males and a backcross of
 
 - [Paper: A role for a neo-sex chromosome in stickleback speciation.](/knowledge/papers/10_1038_nature08441/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

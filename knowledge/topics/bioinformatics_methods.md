@@ -44,3 +44,6 @@ Papers benchmarking BWA against Bowtie, SOAP2, and later tools (e.g., BWA-MEM) o
 
 - [Paper page: Fast and accurate short read alignment with Burrows-Wheeler transform.](/knowledge/papers/10_1093_bioinformatics_btp324/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

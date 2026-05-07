@@ -63,4 +63,7 @@ The stickleback evidence links sex chromosome structure directly to speciation. 
 <!-- tealc:auto-end -->
 
 <!-- tealc:related-start -->
+## Related topics on this site
+
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 2 shared papers
 <!-- tealc:related-end -->

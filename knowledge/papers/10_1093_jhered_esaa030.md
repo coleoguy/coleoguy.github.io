@@ -62,9 +62,9 @@ _Ingested 2026-04-21. 2 findings extracted and verified._
 
 ## Related papers on this site
 
-- [Assessing the opportunity for selection to impact morphologi…](/knowledge/papers/10_7717_peerj_17985/) — 2 shared topics (epistasis, line_cross_analysis)
-- [Wright was right: leveraging old data and new methods to ill…](/knowledge/papers/10_1093_evolut_qpae003/) — 2 shared topics (epistasis, line_cross_analysis)
 - [Blackmon & Demuth 2016](/knowledge/papers/10_1111_evo_12844/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Burch et al. 2024](/knowledge/papers/10_1093_evolut_qpae003/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Burch et al. 2024](/knowledge/papers/10_7717_peerj_17985/) — 2 shared topics (epistasis, line_cross_analysis)
 
 ## Other papers by these authors
 

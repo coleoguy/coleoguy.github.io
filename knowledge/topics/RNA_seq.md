@@ -74,3 +74,6 @@ The minimap2 benchmark is limited to a single species and a single ONT chemistry
 
 - [Minimap2 paper page](/knowledge/papers/10_1093_bioinformatics_bty191/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

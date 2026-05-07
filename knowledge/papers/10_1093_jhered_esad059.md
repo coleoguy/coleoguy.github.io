@@ -69,4 +69,15 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Topics:* [Reproductive Isolation](/knowledge/topics/reproductive_isolation/), [Avian Hybridization](/knowledge/topics/avian_hybridization/), [Galliformes](/knowledge/topics/Galliformes/), [Postzygotic Isolation](/knowledge/topics/postzygotic_isolation/)
 
 <!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/jhered/esad059](https://doi.org/10.1093/jhered/esad059)
+
+## Related papers on this site
+
+- [Kitano et al. 2009](/knowledge/papers/10_1038_nature08441/) — 2 shared topics (reproductive_isolation, sex_chromosome_evolution)
+
+## Other papers by these authors
+
+- [Blackmon H](/knowledge/authors/blackmon_h/)
 <!-- tealc:related-end -->

@@ -122,6 +122,8 @@ Across a broader insect phylogeny, phylogenetic comparative analyses find no sig
 ## Related topics on this site
 
 - [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 5 shared papers
-- [Selection and drift](/knowledge/topics/selection_and_drift/) — 2 shared papers
-- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 2 shared papers
+- [Karyotype Evolution](/knowledge/topics/karyotype_evolution/) — 3 shared papers
+- [Selection and drift](/knowledge/topics/selection_and_drift/) — 3 shared papers
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 3 shared papers
+- [Genome structure evolution](/knowledge/topics/genome_structure_evolution/) — 2 shared papers
 <!-- tealc:related-end -->

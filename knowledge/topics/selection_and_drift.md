@@ -80,6 +80,8 @@ Across all systems, a deeper ambiguity persists: observed patterns are consisten
 <!-- tealc:related-start -->
 ## Related topics on this site
 
-- [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 2 shared papers
-- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 2 shared papers
+- [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 3 shared papers
+- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 3 shared papers
+- [Karyotype Evolution](/knowledge/topics/karyotype_evolution/) — 2 shared papers
+- [Sex chromosome evolution](/knowledge/topics/sex_chromosome_evolution/) — 2 shared papers
 <!-- tealc:related-end -->

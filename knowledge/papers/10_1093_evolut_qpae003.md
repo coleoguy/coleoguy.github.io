@@ -69,9 +69,13 @@ _Ingested 2026-04-21. 3 findings extracted and verified._
 *Topics:* [Line Cross Analysis](/knowledge/topics/line_cross_analysis/), [Quantitative Genetics Methods](/knowledge/topics/quantitative_genetics_methods/), [Epistasis](/knowledge/topics/epistasis/)
 
 <!-- tealc:related-start -->
+## Read the paper
+
+[doi.org/10.1093/evolut/qpae003](https://doi.org/10.1093/evolut/qpae003)
+
 ## Related papers on this site
 
-- [Assessing the opportunity for selection to impact morphologi…](/knowledge/papers/10_7717_peerj_17985/) — 2 shared topics (epistasis, line_cross_analysis)
 - [Blackmon & Demuth 2016](/knowledge/papers/10_1111_evo_12844/) — 2 shared topics (epistasis, line_cross_analysis)
 - [Ruckman & Blackmon 2020](/knowledge/papers/10_1093_jhered_esaa030/) — 2 shared topics (epistasis, line_cross_analysis)
+- [Burch et al. 2024](/knowledge/papers/10_7717_peerj_17985/) — 2 shared topics (epistasis, line_cross_analysis)
 <!-- tealc:related-end -->

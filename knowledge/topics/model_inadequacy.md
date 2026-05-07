@@ -49,3 +49,6 @@ Hidden-state extensions of BiSSE (HiSSE) were developed specifically to address 
 
 - [Paper: 10.1093/sysbio/syu131](/knowledge/papers/10_1093_sysbio_syu131/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

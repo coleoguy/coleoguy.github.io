@@ -74,3 +74,6 @@ The sterility QTL mapping in Kitano et al. 2009 was conducted on a small backcro
 
 - [Paper: A role for a neo-sex chromosome in stickleback speciation.](/knowledge/papers/10_1038_nature08441/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

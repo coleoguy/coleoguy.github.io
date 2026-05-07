@@ -83,3 +83,6 @@ The spliced-alignment benchmark (Finding 1) uses a single mouse cDNA dataset seq
 
 - [Paper page: minimap2 (Li 2018)](/knowledge/papers/10_1093_bioinformatics_bty191/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->

@@ -111,13 +111,15 @@ The insect sex chromosomes recovered across these studies did not descend from a
 <!-- tealc:related-start -->
 ## Related topics on this site
 
+- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 8 shared papers
 - [Fragile Y hypothesis](/knowledge/topics/fragile_y_hypothesis/) — 7 shared papers
-- [Karyotype evolution overview](/knowledge/topics/karyotype_evolution_overview/) — 7 shared papers
+- [Karyotype Evolution](/knowledge/topics/karyotype_evolution/) — 4 shared papers
+- [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 3 shared papers
 - [Coleoptera genomics](/knowledge/topics/coleoptera_genomics/) — 3 shared papers
 - [Genome structure evolution](/knowledge/topics/genome_structure_evolution/) — 3 shared papers
 - [Sex-linkage mutation](/knowledge/topics/sex_linkage_mutation/) — 3 shared papers
-- [Chromosome number evolution](/knowledge/topics/chromosome_number_evolution/) — 2 shared papers
 - [Karyotype database](/knowledge/topics/karyotype_database/) — 2 shared papers
-- [Karyotype Evolution](/knowledge/topics/karyotype_evolution/) — 2 shared papers
+- [Reproductive Isolation](/knowledge/topics/reproductive_isolation/) — 2 shared papers
+- [Selection and drift](/knowledge/topics/selection_and_drift/) — 2 shared papers
 - [Y-naught asymmetry](/knowledge/topics/y_naught_asymmetry/) — 2 shared papers
 <!-- tealc:related-end -->

@@ -45,3 +45,6 @@ The male-biased mutation inference in Pennell et al. leans on human translocatio
 
 - [Y fuse? Sex chromosome fusions in fishes and reptiles.](/knowledge/papers/10_1371_journal_pgen_1005237/)
 <!-- tealc:auto-end -->
+
+<!-- tealc:related-start -->
+<!-- tealc:related-end -->
