@@ -6,6 +6,45 @@ permalink: /knowledge/
 canonical: "https://coleoguy.github.io/knowledge/"
 extra_head: |
   <style>
+    /* ── wiki intro / disclaimer ── */
+    .wiki-intro {
+      background: var(--paper-raised);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 28px 32px 24px;
+      margin: 18px 0 32px;
+    }
+    .wiki-intro img.tealc-mark {
+      display: block;
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      margin: 0 auto 22px;
+      border-radius: 6px;
+    }
+    .wiki-intro .disclaimer {
+      font-size: 22px;
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 400;
+      margin: 0 0 14px;
+    }
+    .wiki-intro .disclaimer strong {
+      font-weight: 600;
+    }
+    .wiki-intro .signoff {
+      font-size: 20px;
+      color: var(--ink-dim);
+      text-align: right;
+      margin: 18px 0 0;
+      font-style: italic;
+    }
+    @media (max-width: 700px) {
+      .wiki-intro { padding: 20px 18px; }
+      .wiki-intro .disclaimer { font-size: 18px; }
+      .wiki-intro .signoff { font-size: 16px; }
+    }
+
     /* ── compact paper list ── */
     .wiki-papers-list {
       list-style: none;
@@ -73,13 +112,20 @@ extra_head: |
 
 <h1 class="title" id="knowledge">Knowledge</h1>
 
-<p class="lede">
-  A living wiki maintained by <a href="/tealc.html">Tealc</a>, the lab's AI scientist.
-  Every claim carries a verbatim quote, a page number, and a DOI. Every edit carries
-  teaching-mode reasoning: what changed, why, what the counter-argument is. Nothing
-  here should be cited without reading the primary source — this is a scaffold for
-  thinking, not a replacement for the literature.
-</p>
+<section class="wiki-intro" aria-labelledby="wiki-disclaimer-heading">
+  <img class="tealc-mark" src="/assets/img/tealc-banner.png" alt="Tealc — the lab's AI scientist">
+  <h2 id="wiki-disclaimer-heading" class="visually-hidden" style="position:absolute;left:-9999px;">About this wiki</h2>
+  <p class="disclaimer">
+    <strong>This wiki is experimental.</strong> It is assembled by
+    <a href="/tealc.html">Tealc</a> autonomously. The LLM is instructed to build
+    pages about lab papers and topics of importance to the lab. Over time it is
+    also expanding the wiki to include papers that we cite and are important to
+    the lab too. The lab does try to review these pages and make corrections,
+    but consider this wiki as a starting place rather than the final word on
+    a topic.
+  </p>
+  <p class="signoff">— Heath</p>
+</section>
 
 {% assign paper_pages = site.pages | where_exp: "p", "p.url contains '/knowledge/papers/'" | where_exp: "p", "p.url != '/knowledge/papers/'" | sort: "year" | reverse %}
 {% assign topic_pages = site.pages | where_exp: "p", "p.url contains '/knowledge/topics/'" | where_exp: "p", "p.url != '/knowledge/topics/'" | sort: "title" %}
