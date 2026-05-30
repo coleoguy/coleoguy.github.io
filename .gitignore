@@ -9,6 +9,9 @@
 *.swo
 *~
 
+# Jekyll build output (GitHub Pages regenerates this from source)
+_site/
+
 # Local-only dev notes
 next-session-tasks.md
 context.md

@@ -33,6 +33,7 @@ exclude:
   - ".RData"
   - "wiki_tools/"
   - "AGENT_CONTRACT.md"
+  - "drafts/"
 
 # Use the default empty Jekyll plugins so this works on GitHub Pages without a Gemfile.
 plugins: []
