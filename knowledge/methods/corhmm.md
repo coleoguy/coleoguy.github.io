@@ -14,17 +14,17 @@ permalink: /knowledge/methods/corhmm/
 # corHMM — Hidden Rates Model for Discrete Traits
 
 <!-- tealc:method-start -->
-**What it does.** corHMM fits [hidden Markov models](/knowledge/concepts/hidden-markov-model/) to discrete character data on a phylogeny using [maximum likelihood](/knowledge/concepts/maximum-likelihood/). The core insight is that observed character states can be modeled as emissions from a larger latent state space — "hidden rate classes" — allowing different lineages to evolve the same observed trait at different underlying rates without requiring an a priori grouping. Inputs are a rooted phylogenetic tree and a data frame of tip-state assignments; outputs are transition rate matrices, ancestral state reconstructions, and model likelihoods. The canonical implementation is the `corHMM` R package (Beaulieu et al. 2013; Boyko & Beaulieu 2021).
+**What it does.** corHMM fits hidden Markov models to discrete character data on a phylogeny using maximum likelihood. The core insight is that observed character states can be modeled as emissions from a larger latent state space — "hidden rate classes" — allowing different lineages to evolve the same observed trait at different underlying rates without requiring an a priori grouping. Inputs are a rooted phylogenetic tree and a data frame of tip-state assignments; outputs are transition rate matrices, ancestral state reconstructions, and model likelihoods. The canonical implementation is the `corHMM` R package (Beaulieu et al. 2013; Boyko & Beaulieu 2021).
 
 **When to use it.**
-- You suspect [rate heterogeneity](/knowledge/concepts/rate-heterogeneity/) in trait evolution but lack an obvious predictor variable to partition lineages.
+- You suspect rate heterogeneity in trait evolution but lack an obvious predictor variable to partition lineages.
 - You want to compare models of correlated character evolution (e.g., sex-chromosome and trait co-evolution) under a rigorous likelihood framework.
 - Your discrete trait has two or more states and the phylogeny has at least tens of tips — the method is flexible from moderate (~50) to large trees.
 - You need ancestral state reconstructions that account for hidden rate variation rather than forcing a single-rate MK model.
 - You want to test ordered or custom state-transition structures via user-specified rate index matrices.
 
 **When NOT to use it.**
-- Avoid it when you are primarily interested in the joint effect of [diversification rate](/knowledge/concepts/diversification-rate/) shifts on trait evolution — use [HiSSE](/knowledge/concepts/hisse/) instead, which explicitly models speciation and extinction.
+- Avoid it when you are primarily interested in the joint effect of diversification rate shifts on trait evolution — use HiSSE instead, which explicitly models speciation and extinction.
 - Do not use the default hidden-rates parameterization when your tree is very small (<20 tips); the additional latent states are poorly estimated and likelihoods are unreliable.
 - If your character is continuous rather than discrete, corHMM is inappropriate — use `OUwie` or a similar continuous-trait model.
 - Do not treat model selection solely by AIC when all candidate models are nested and parameter counts differ dramatically; run likelihood-ratio tests or use AICc for small trees.

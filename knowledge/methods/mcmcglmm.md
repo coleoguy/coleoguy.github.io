@@ -18,7 +18,7 @@ permalink: /knowledge/methods/mcmcglmm/
 
 **When to use it.**
 - You have species-level (or individual-level) trait data and a phylogeny and want to account for phylogenetic non-independence while estimating fixed-effect coefficients.
-- You need to partition variance into phylogenetic and residual components to estimate [phylogenetic signal](/knowledge/concepts/phylogenetic-signal/) (λ or *H²*) in a mixed-model framework.
+- You need to partition variance into phylogenetic and residual components to estimate phylogenetic signal (λ or *H²*) in a mixed-model framework.
 - Your response variable is non-Gaussian — e.g. binary presence/absence, counts, or ordinal scores — where PGLS-based methods break down.
 - You want to fit multi-response (multivariate) models and estimate phylogenetic correlations among traits simultaneously.
 - You have incomplete data (missing responses for some taxa) that you would otherwise have to drop before running a standard PGLS.

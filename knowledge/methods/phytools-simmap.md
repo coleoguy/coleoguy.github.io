@@ -18,14 +18,14 @@ permalink: /knowledge/methods/phytools-simmap/
 
 **When to use it.**
 - You need branch-length-weighted summaries of ancestral state occupancy (e.g., total time spent in a state across the tree) rather than point reconstructions.
-- You are computing [correlated evolution](/knowledge/concepts/correlated-evolution/) tests that require a character history painted onto branches (e.g., feeding into `evol.vcv` or sister-clade comparisons).
+- You are computing correlated evolution tests that require a character history painted onto branches (e.g., feeding into `evol.vcv` or sister-clade comparisons).
 - You want to propagate uncertainty in transition-rate estimation into downstream analyses by using a posterior sample of rate matrices (pass `Q="mcmc"` or supply a rate posterior from `fitMk`).
 - You have a relatively well-resolved, time-calibrated tree and ≥ 2 discrete states with non-negligible representation at the tips.
 - You need compatibility with the broader phytools/ape ecosystem for plotting or further modeling.
 
 **When NOT to use it.**
 - Your trait has more than ~6–8 states and a small tree (< 50 tips): rate estimation becomes unreliable and mapping noise dominates signal.
-- You suspect [diversification](/knowledge/concepts/diversification/) rates differ among states — SIMMAP ignores state-dependent speciation/extinction; use `hisse` or `diversitree` instead.
+- You suspect diversification rates differ among states — SIMMAP ignores state-dependent speciation/extinction; use `hisse` or `diversitree` instead.
 - Tip sampling is heavily biased toward one state; the Markov model will confidently paint unrealistic histories without a sampling-fraction correction.
 - You need a fully Bayesian joint estimate of tree topology, rates, and histories simultaneously — use BEAST/RevBayes rather than post-hoc mapping.
 <!-- tealc:method-end -->

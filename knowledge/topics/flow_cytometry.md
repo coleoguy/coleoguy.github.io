@@ -26,7 +26,7 @@ Together, these two issues mean that published 1C values — especially for larg
 <div class="wiki-lead" data-active="student">
 <div data-register="student" markdown="1">
 
-Flow cytometry is the main technique scientists use to measure [genome size](/knowledge/concepts/genome-size/) — the total amount of DNA in a cell, called the 1C value. The basic idea is simple: add a glowing dye that sticks to DNA, measure how bright the cell gets compared to a cell with a known genome size, and do the math. But two common mistakes can completely mess up your results if you're not careful.
+Flow cytometry is the main technique scientists use to measure genome size — the total amount of DNA in a cell, called the 1C value. The basic idea is simple: add a glowing dye that sticks to DNA, measure how bright the cell gets compared to a cell with a known genome size, and do the math. But two common mistakes can completely mess up your results if you're not careful.
 
 The first problem is **sex chromosomes**. When an organism has different sex chromosomes (like X and Y in males, or Z and W in some birds), the flow cytometer picks up the *average* fluorescence from both types of sex cells the organism makes. That average number is not the real genome size — it mixes up information from two different chromosome sets. To fix this, you have to use a math trick called doubling-and-subtraction. For example, in an X/Y system, you calculate: X − Y = (2A + XX) − (2A + XY), where A is the part of the genome both sexes share. If you skip this step, any number you get for the size of sex chromosomes will be systematically wrong. ([10.1007/978-1-4939-8775-7_2, Finding 1](/knowledge/papers/10_1007_978_1_4939_8775_7_2/#finding-1))
 

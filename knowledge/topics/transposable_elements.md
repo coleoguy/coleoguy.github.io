@@ -21,7 +21,7 @@ Data from non-model insects are beginning to fill this gap. In the Mojave poppy 
 
 <div class="wiki-lead" data-active="student">
 
-[Transposable elements](/knowledge/concepts/transposable-elements/) (TEs) and other repetitive sequences make up a large share of eukaryotic genomes, but their types and amounts differ a lot between species. The main challenge in studying TEs is that scientists have built their identification libraries mostly from a few well-studied organisms like *Drosophila* fruit flies. These libraries miss many repeats in less-studied species, which means we don't fully understand how diverse and active TEs really are.
+Transposable elements (TEs) and other repetitive sequences make up a large share of eukaryotic genomes, but their types and amounts differ a lot between species. The main challenge in studying TEs is that scientists have built their identification libraries mostly from a few well-studied organisms like *Drosophila* fruit flies. These libraries miss many repeats in less-studied species, which means we don't fully understand how diverse and active TEs really are.
 
 New data from non-model insects are starting to show us what we've been missing. In the Mojave poppy bee (*Perdita meconis*), a solitary bee that scientists care about preserving, repetitive elements make up 37.3% of the genome. Of that repeat content, retroelements contribute 6.07% and DNA transposons 4.38%, but a striking 24.87% — nearly two-thirds of all repeat content — stays unclassified. This finding, reported by [Schweizer et al. 2024, Finding 2](/knowledge/papers/10_1093_jhered_esad076/#finding-2), shows us how much current repeat databases are missing when it comes to bees, beetles, and other non-model arthropods.
 

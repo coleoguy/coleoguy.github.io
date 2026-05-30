@@ -14,7 +14,7 @@ permalink: /knowledge/methods/treepl/
 # treePL — Divergence-time dating at scale
 
 <!-- tealc:method-start -->
-**What it does.** treePL estimates [divergence times](/knowledge/concepts/divergence-time-estimation/) on a fixed, ultrametric or non-ultrametric phylogeny using a [penalized likelihood](/knowledge/concepts/penalized-likelihood/) framework. It takes a rooted tree with branch lengths (typically substitutions/site), one or more [fossil calibrations](/knowledge/concepts/fossil-calibrations/) as node-age constraints, and a smoothing parameter λ that controls rate autocorrelation across the tree. The output is a time-calibrated (ultrametric) tree with estimated node ages. The canonical C++ implementation is the standalone `treePL` binary, and it scales to trees with thousands of tips — far beyond what Bayesian alternatives typically handle in reasonable wall-clock time.
+**What it does.** treePL estimates divergence times on a fixed, ultrametric or non-ultrametric phylogeny using a penalized likelihood framework. It takes a rooted tree with branch lengths (typically substitutions/site), one or more fossil calibrations as node-age constraints, and a smoothing parameter λ that controls rate autocorrelation across the tree. The output is a time-calibrated (ultrametric) tree with estimated node ages. The canonical C++ implementation is the standalone `treePL` binary, and it scales to trees with thousands of tips — far beyond what Bayesian alternatives typically handle in reasonable wall-clock time.
 
 **When to use it.**
 - Your tree has hundreds to tens of thousands of tips and Bayesian node-dating (e.g., BEAST2, MCMCTree) is computationally prohibitive.

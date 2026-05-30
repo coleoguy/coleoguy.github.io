@@ -14,14 +14,14 @@ permalink: /knowledge/methods/ou-models/
 # Ornstein-Uhlenbeck continuous-trait models
 
 <!-- tealc:method-start -->
-**What it does.** The [Ornstein-Uhlenbeck (OU) model](/knowledge/concepts/ornstein-uhlenbeck-model/) fits a likelihood-based continuous-time stochastic process to trait values measured at the tips of a phylogeny, estimating three core parameters: the rate of random drift (σ²), the strength of pull toward an optimum (α), and the optimum trait value itself (θ). When multiple selective regimes are mapped onto the tree, each regime can carry its own θ (and optionally its own α and σ²), allowing tests of adaptive convergence or divergence. The canonical R implementations are `ouch` (Butler & King 2004) and `geiger` (via `fitContinuous`).
+**What it does.** The Ornstein-Uhlenbeck (OU) model fits a likelihood-based continuous-time stochastic process to trait values measured at the tips of a phylogeny, estimating three core parameters: the rate of random drift (σ²), the strength of pull toward an optimum (α), and the optimum trait value itself (θ). When multiple selective regimes are mapped onto the tree, each regime can carry its own θ (and optionally its own α and σ²), allowing tests of adaptive convergence or divergence. The canonical R implementations are `ouch` (Butler & King 2004) and `geiger` (via `fitContinuous`).
 
 **When to use it.**
 
-- You have continuous trait measurements at tips and want to test whether [stabilizing selection](/knowledge/concepts/stabilizing-selection/) has constrained trait evolution around one or more optima, rather than allowing unconstrained Brownian drift.
+- You have continuous trait measurements at tips and want to test whether stabilizing selection has constrained trait evolution around one or more optima, rather than allowing unconstrained Brownian drift.
 - You have an a priori hypothesis about selective regimes (e.g., ecology, sex, body size class) already painted onto the tree, and want to compare multi-regime OU models against a single-optimum or Brownian baseline using AIC or likelihood ratio tests.
 - Trait distributions among related taxa appear overdispersed or underdispersed relative to Brownian motion predictions — OU can absorb that signal.
-- You need a null-model anchor for downstream comparative analyses (e.g., correlating residuals, correcting for [phylogenetic signal](/knowledge/concepts/phylogenetic-signal/)).
+- You need a null-model anchor for downstream comparative analyses (e.g., correlating residuals, correcting for phylogenetic signal).
 - Trees are time-calibrated (ultrametric) — a prerequisite for all continuous-trait OU fitting in both `ouch` and `geiger`.
 
 **When NOT to use it.**

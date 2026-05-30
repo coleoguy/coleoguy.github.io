@@ -2,7 +2,7 @@
 layout: default
 title: "Research projects"
 permalink: /knowledge/projects/
-last_updated: 2026-05-23T09:00:00.031060+00:00
+last_updated: 2026-05-30T18:56:55.799926+00:00
 ---
 
 # Research projects

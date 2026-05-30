@@ -25,7 +25,7 @@ Together, these results position minimap2 as the default choice for long-read ma
 
 <div class="wiki-lead" data-register="student" markdown="1">
 
-Long-read sequencing — using tools like PacBio HiFi and Oxford Nanopore — can read much longer stretches of DNA than traditional methods, making it easier to assemble whole [chromosomes](/knowledge/concepts/chromosome/) and study how genes are expressed. But long reads have a tradeoff: they contain more errors than short reads, and aligning them to a reference requires handling [introns](/knowledge/concepts/intron/) (the non-coding sections of genes) that can be thousands of letters long.
+Long-read sequencing — using tools like PacBio HiFi and Oxford Nanopore — can read much longer stretches of DNA than traditional methods, making it easier to assemble whole chromosomes and study how genes are expressed. But long reads have a tradeoff: they contain more errors than short reads, and aligning them to a reference requires handling introns (the non-coding sections of genes) that can be thousands of letters long.
 
 Minimap2 is an alignment tool that solves both problems. When aligning RNA reads from mouse data, minimap2 correctly identifies intron boundaries 94.0% of the time, compared to 83.8% for GMAP and 87.9% for SpAln — and it runs more than 40 times faster than either competing tool ([10.1093/bioinformatics/bty191, Finding 1](/knowledge/papers/10_1093_bioinformatics_bty191/#finding-1)). In practice, this speed matters: datasets that take days to analyze with GMAP can finish in hours with minimap2.
 

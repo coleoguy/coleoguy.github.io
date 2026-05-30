@@ -14,19 +14,19 @@ permalink: /knowledge/methods/beast/
 # BEAST2 — Bayesian Evolutionary Analysis Sampling Trees
 
 <!-- tealc:method-start -->
-**What it does.** BEAST2 is a Bayesian [Markov chain Monte Carlo (MCMC)](/knowledge/concepts/markov-chain-monte-carlo/) framework that simultaneously estimates phylogenetic trees, divergence times, and evolutionary model parameters from molecular sequence data. It expects aligned DNA, RNA, or amino-acid sequences (optionally partitioned) and one or more [fossil calibrations](/knowledge/concepts/fossil-calibration/) or tip-date information to anchor the time axis. The model space spans substitution models, molecular clocks (strict, relaxed, or local), and tree priors including coalescent, birth-death, and fossilized birth-death variants. The canonical implementation is the Java application BEAST2 (v2.x), extending the original BEAST1 codebase with a modular package system managed through the BEAUti GUI or XML configuration files.
+**What it does.** BEAST2 is a Bayesian Markov chain Monte Carlo (MCMC) framework that simultaneously estimates phylogenetic trees, divergence times, and evolutionary model parameters from molecular sequence data. It expects aligned DNA, RNA, or amino-acid sequences (optionally partitioned) and one or more fossil calibrations or tip-date information to anchor the time axis. The model space spans substitution models, molecular clocks (strict, relaxed, or local), and tree priors including coalescent, birth-death, and fossilized birth-death variants. The canonical implementation is the Java application BEAST2 (v2.x), extending the original BEAST1 codebase with a modular package system managed through the BEAUti GUI or XML configuration files.
 
 **When to use it.**
-- You need a time-calibrated [phylogeny](/knowledge/concepts/phylogeny/) and want principled uncertainty propagation across both topology and divergence dates.
+- You need a time-calibrated phylogeny and want principled uncertainty propagation across both topology and divergence dates.
 - Your data include tip-dated sequences (e.g., ancient DNA, serial viral isolates) where sampling times directly inform the clock rate.
-- You are fitting a [birth-death speciation model](/knowledge/concepts/birth-death-model/) and want to co-estimate diversification parameters with the tree.
+- You are fitting a birth-death speciation model and want to co-estimate diversification parameters with the tree.
 - You have partitioned loci (e.g., mitochondrial + nuclear) that warrant separate substitution models linked under a shared clock.
 - Downstream analysis requires a full posterior distribution of trees rather than a single consensus tree (e.g., ancestral-state reconstruction under uncertainty).
 
 **When NOT to use it.**
-- You have hundreds to thousands of taxa and limited compute: BEAST2's MCMC scales poorly above ~500 tips without substantial thinning or parallelisation — consider [RAxML](/knowledge/methods/raxml/) or [IQ-TREE](/knowledge/methods/iq-tree/) for topology inference, then apply dating post-hoc with TreePL.
+- You have hundreds to thousands of taxa and limited compute: BEAST2's MCMC scales poorly above ~500 tips without substantial thinning or parallelisation — consider [RAxML](/knowledge/methods/raxml/) or [IQ-TREE](/knowledge/methods/iqtree/) for topology inference, then apply dating post-hoc with TreePL.
 - Your alignment is not confidently homologous or is very short per partition; poor alignment quality propagates directly into posterior divergence time estimates with no internal warning.
-- You need a quick [maximum-likelihood](/knowledge/concepts/maximum-likelihood/) topology and have no clock signal — BEAST2 is slower and more complex than necessary.
+- You need a quick maximum-likelihood topology and have no clock signal — BEAST2 is slower and more complex than necessary.
 - Your tree prior is a pure coalescent but your samples span deep time: birth-death priors are more appropriate for interspecific data, and using the wrong prior inflates apparent precision.
 <!-- tealc:method-end -->
 
@@ -98,7 +98,7 @@ permalink: /knowledge/methods/beast/
 <!-- tealc:gotchas-start -->
 ## Gotchas we've hit
 
-- **Low ESS despite long chains.** If Tracer reports effective sample sizes below 200 for clock rate or tree height, the chain has not mixed — increase `chainLength`, add more operators via BEAUti's operator tuning panel, or switch to a [relaxed clock](/knowledge/concepts/relaxed-molecular-clock/) if the strict-clock assumption is violated.
+- **Low ESS despite long chains.** If Tracer reports effective sample sizes below 200 for clock rate or tree height, the chain has not mixed — increase `chainLength`, add more operators via BEAUti's operator tuning panel, or switch to a relaxed clock if the strict-clock assumption is violated.
 - **Improper calibration placement inflates divergence times.** Placing a fossil calibration as a *stem* prior when the fossil is crown-group (or vice versa) systematically biases all divergence estimates; verify clade membership against your topology before running.
 - **Partition-clock misspecification with partitioned data.** Linking clocks across very rate-heterogeneous partitions (e.g., mtDNA + nuclear introns) suppresses real rate variation and compresses HPD intervals artificially — allow an independent or UCLN clock per partition.
 - **XML version incompatibility across BEAST2 packages.** Third-party packages (e.g., BDSKY, SA, ORC) pin to specific BEAST2 core versions; loading an XML built for v2.5 under v2.7 silently drops operator blocks unless the package versions are explicitly matched in the XML header.

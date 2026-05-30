@@ -14,17 +14,17 @@ permalink: /knowledge/methods/revbayes/
 # RevBayes — Probabilistic Graphical Model Phylogenetics
 
 <!-- tealc:method-start -->
-**What it does.** RevBayes performs fully Bayesian inference of phylogenetic trees and evolutionary model parameters using [Markov chain Monte Carlo (MCMC)](/knowledge/concepts/markov-chain-monte-carlo/). Users specify models as explicit [probabilistic graphical models](/knowledge/concepts/probabilistic-graphical-models/) in the Rev scripting language, which means every node in the model graph — substitution rates, branch lengths, clock rates, diversification parameters — is a first-class random variable with a declared prior. The canonical implementation is the C++ engine with a Rev front end; inputs are aligned sequence matrices (or morphological matrices) plus any fossil/tip-date information, and the output is a posterior sample of trees and model parameters.
+**What it does.** RevBayes performs fully Bayesian inference of phylogenetic trees and evolutionary model parameters using Markov chain Monte Carlo (MCMC). Users specify models as explicit probabilistic graphical models in the Rev scripting language, which means every node in the model graph — substitution rates, branch lengths, clock rates, diversification parameters — is a first-class random variable with a declared prior. The canonical implementation is the C++ engine with a Rev front end; inputs are aligned sequence matrices (or morphological matrices) plus any fossil/tip-date information, and the output is a posterior sample of trees and model parameters.
 
 **When to use it.**
 - You need to compose a novel model that no point-and-click program exposes (e.g. a relaxed-clock model layered on top of a biogeographic dispersal process).
 - Your analysis requires joint inference across multiple data partitions with unlinked topologies or clock rates.
 - You want full posterior uncertainty on divergence times, diversification rates, or ancestral states rather than a point estimate.
-- You are running a trait-evolution or state-dependent speciation/extinction model ([SSE](/knowledge/concepts/state-dependent-speciation-extinction/)) and need a transparent, auditable model specification.
+- You are running a trait-evolution or state-dependent speciation/extinction model (SSE) and need a transparent, auditable model specification.
 - Reproducibility is essential: Rev scripts fully document the model, priors, and MCMC settings in a single plain-text file.
 
 **When NOT to use it.**
-- You need maximum-likelihood trees quickly for a large dataset (>10 k tips, routine gene-tree estimation) — use [IQ-TREE](/knowledge/topics/iq_tree/) instead.
+- You need maximum-likelihood trees quickly for a large dataset (>10 k tips, routine gene-tree estimation) — use [IQ-TREE](/knowledge/methods/iqtree/) instead.
 - Your team has no scripting experience and the analysis fits a standard model: [MrBayes](https://nbisweden.github.io/MrBayes/) or BEAST2 offer GUI-driven workflows with less overhead.
 - You are running very large-scale divergence-time dating with hundreds of fossils and tight deadlines; BEAST2's StarBEAST3 pipeline is more optimized for that specific workflow.
 - Convergence diagnostics show persistent poor mixing and you lack the compute to run long chains — consider simplifying the model or switching to variational Bayes approaches.
