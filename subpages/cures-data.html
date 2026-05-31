@@ -227,9 +227,6 @@ ggplot(final_df, aes(x = reorder(file, haploid, median, na.rm = TRUE), y = haplo
   labs(x = "file", y = "haploid", title = "Boxplot + jitter by file") +
   theme_minimal()</div>
       <div class="tut-code output">## `geom_boxplot()` removes missing values</div>
-      <div class="tut-fig">
-        <img src="cures-data_files/figure-html/unnamed-chunk-4-1.png" alt="Boxplot with jitter of haploid numbers by file" width="576" height="384">
-      </div>
 
       <div class="tut-code"># 2) Density plot (good for looking at distribution shape)
 ggplot(final_df, aes(x = haploid, fill = file)) +
@@ -237,9 +234,6 @@ ggplot(final_df, aes(x = haploid, fill = file)) +
   labs(x = "haploid", y = "Density", title = "Density plot by file", fill = "File") +
   theme_minimal()</div>
       <div class="tut-code output">## Warning: Groups with fewer than two observations have been dropped</div>
-      <div class="tut-fig">
-        <img src="cures-data_files/figure-html/unnamed-chunk-4-2.png" alt="Density plot of haploid numbers by file" width="576" height="384">
-      </div>
 
       <div class="tut-code"># 3) Violin plot (like a box plot but shows distribution)
 ggplot(final_df, aes(x = reorder(file, haploid, median, na.rm = TRUE), y = haploid)) +
@@ -249,9 +243,6 @@ ggplot(final_df, aes(x = reorder(file, haploid, median, na.rm = TRUE), y = haplo
   labs(x = "file", y = "haploid", title = "Violin plot by file") +
   theme_minimal()</div>
       <div class="tut-code output">## `geom_violin()` removes missing values</div>
-      <div class="tut-fig">
-        <img src="cures-data_files/figure-html/unnamed-chunk-4-3.png" alt="Violin plot of haploid numbers by file" width="576" height="384">
-      </div>
 
       <div class="tut-code"># 4) Histogram faceted by file
 ggplot(final_df, aes(x = haploid, fill = "#FF6B6B")) +
@@ -261,18 +252,12 @@ ggplot(final_df, aes(x = haploid, fill = "#FF6B6B")) +
   theme_minimal() +
   theme(legend.position = "none")</div>
       <div class="tut-code output">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</div>
-      <div class="tut-fig">
-        <img src="cures-data_files/figure-html/unnamed-chunk-4-4.png" alt="Histogram of haploid numbers faceted by file" width="576" height="384">
-      </div>
 
       <div class="tut-code"># 5) Cumulative distribution
 ggplot(final_df, aes(x = haploid, color = file)) +
   stat_ecdf() +
   labs(x = "haploid", y = "Cumulative probability", title = "Cumulative distribution by file", color = "File") +
   theme_minimal()</div>
-      <div class="tut-fig">
-        <img src="cures-data_files/figure-html/unnamed-chunk-4-5.png" alt="Cumulative distribution of haploid numbers by file" width="576" height="384">
-      </div>
 
       <div class="tut-code"># 6) Ridge plot using ggridges (good for looking at distributions across groups)
 ggplot(final_df, aes(x = haploid, y = file, fill = after_stat(x))) +
@@ -280,9 +265,6 @@ ggplot(final_df, aes(x = haploid, y = file, fill = after_stat(x))) +
   labs(x = "haploid", title = "Ridge plot by file", fill = "haploid") +
   theme_minimal() +
   theme(axis.title.y = element_blank())</div>
-      <div class="tut-fig">
-        <img src="cures-data_files/figure-html/unnamed-chunk-4-6.png" alt="Ridge plot of haploid numbers by file" width="576" height="384">
-      </div>
     </div>
 
     <div class="tut-section" id="visualizations">
