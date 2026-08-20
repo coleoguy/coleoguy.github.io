@@ -12,6 +12,13 @@
 # Jekyll build output (GitHub Pages regenerates this from source)
 _site/
 
+# Jekyll incremental-build cache. Machine-specific and 300KB+; a stale copy
+# written by a different Ruby or Jekyll makes --incremental serve broken pages.
+.jekyll-metadata
+
+# Local static preview bundle (generated, not source)
+blackmon-site-preview.zip
+
 # Local-only dev notes
 next-session-tasks.md
 context.md

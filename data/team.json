@@ -1,7 +1,7 @@
 {
   "name": "Blackmon Lab team",
   "description": "Current members of the Blackmon Lab at Texas A&M University, Department of Biology.",
-  "updated_at": "2026-04-19",
+  "updated_at": "2026-08-18",
   "license": "CC BY 4.0",
   "contact": "blackmon@tamu.edu",
   "site_page": "https://coleoguy.github.io/team.html",
@@ -19,21 +19,6 @@
       "orcid": "0000-0002-5433-4036",
       "github": "coleoguy",
       "email": "blackmon@tamu.edu"
-    },
-    {
-      "name": "Andres Barboza Pereira",
-      "role": "grad student",
-      "year_joined": 2023,
-      "project_tags": [
-        "theoretical evolution",
-        "population genetics",
-        "bioinformatics",
-        "scarab genomes",
-        "Chondrichthyes conservation"
-      ],
-      "orcid": null,
-      "github": "andresdbp",
-      "email": null
     },
     {
       "name": "Kiedon Bryant",
@@ -73,20 +58,6 @@
       "email": null
     },
     {
-      "name": "Megan Copeland",
-      "role": "grad student",
-      "year_joined": 2022,
-      "project_tags": [
-        "genome structure",
-        "genomics",
-        "bioinformatics",
-        "forensics"
-      ],
-      "orcid": null,
-      "github": "megan-copeland",
-      "email": null
-    },
-    {
       "name": "Kaya Harper",
       "role": "grad student",
       "year_joined": 2023,
@@ -98,20 +69,6 @@
       ],
       "orcid": null,
       "github": "kayaharper",
-      "email": null
-    },
-    {
-      "name": "Meghann McConnell",
-      "role": "post-bacc",
-      "year_joined": 2025,
-      "project_tags": [
-        "phylogenetic comparative methods",
-        "chromosome number evolution",
-        "alternative meiosis",
-        "trait evolution models"
-      ],
-      "orcid": null,
-      "github": null,
       "email": null
     },
     {
@@ -127,13 +84,13 @@
       "email": null
     },
     {
-      "name": "Kenzie Laird",
-      "role": "staff",
-      "year_joined": null,
+      "name": "Anna Burnett",
+      "role": "undergraduate",
+      "year_joined": 2026,
       "project_tags": [
-        "model organism care",
-        "discrete trait PCMs",
-        "Betta aggression"
+        "sleep evolution",
+        "comparative phylogenetics",
+        "trait databases"
       ],
       "orcid": null,
       "github": null,
@@ -177,24 +134,6 @@
     },
     {
       "name": "Mallory Murphy",
-      "role": "undergraduate",
-      "year_joined": null,
-      "project_tags": [],
-      "orcid": null,
-      "github": null,
-      "email": null
-    },
-    {
-      "name": "Tewobola Olasehinde",
-      "role": "undergraduate",
-      "year_joined": null,
-      "project_tags": [],
-      "orcid": null,
-      "github": null,
-      "email": null
-    },
-    {
-      "name": "Gabe Rodriguez",
       "role": "undergraduate",
       "year_joined": null,
       "project_tags": [],

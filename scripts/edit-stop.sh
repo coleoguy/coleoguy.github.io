@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-# Stop the Jekyll + click-to-edit processes started by edit-start.sh.
+# Stop the Jekyll, edit-server, and Python-preview processes started by
+# edit-start.sh.
 
 PID_JEKYLL="/tmp/coleoguy-jekyll.pid"
 PID_EDIT="/tmp/coleoguy-edit.pid"
+PID_PREVIEW="/tmp/coleoguy-preview.pid"
 
 stopped_any=0
-for spec in "jekyll:$PID_JEKYLL" "edit-server:$PID_EDIT"; do
+for spec in "jekyll:$PID_JEKYLL" "edit-server:$PID_EDIT" "preview:$PID_PREVIEW"; do
   name="${spec%%:*}"
   f="${spec##*:}"
   if [ -f "$f" ]; then
@@ -19,7 +21,7 @@ for spec in "jekyll:$PID_JEKYLL" "edit-server:$PID_EDIT"; do
 done
 
 # Belt-and-suspenders: also kill anything still listening on our ports.
-for port in 4000 4711; do
+for port in 4000 4711 4010; do
   leftover=$(lsof -tiTCP:"$port" -sTCP:LISTEN 2>/dev/null || true)
   if [ -n "$leftover" ]; then
     echo "  ✓ killed leftover process on port $port (PID $leftover)"

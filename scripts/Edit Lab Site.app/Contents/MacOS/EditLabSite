@@ -1,22 +1,38 @@
 #!/bin/bash
-# Edit Lab Site launcher — mirrors Start Tealc.app's pattern.
-# Opens edit-start.sh inside a Terminal window (so TCC works via the
-# already-trusted Terminal.app), then opens the browser once the edit
-# server is responding. If already running, just opens the browser.
+# Edit Lab Site launcher.
+#
+# Previous behavior: waited on the edit server's health endpoint, then opened
+# the browser unconditionally. If Jekyll had died, Safari/Chrome opened onto a
+# dead port 4000 and showed "unable to reach site" with no explanation, while
+# the Terminal window scrolled the real error out of view. This version waits
+# on the thing the browser actually needs (Jekyll on 4000) and simply does not
+# open a browser if the server never came up, leaving the error on screen.
 
 REPO="/Users/blackmon/Desktop/GitHub/coleoguy.github.io"
 EDIT_URL="http://127.0.0.1:4000/knowledge/topics/sex_chromosome_evolution/?edit=1"
-HEALTH="http://127.0.0.1:4711/health"
+JEKYLL_ROOT="http://127.0.0.1:4000/"
 
-# If editing is already live, just open the browser.
-if curl -sf --max-time 2 "$HEALTH" >/dev/null 2>&1; then
+PREVIEW_ROOT="http://127.0.0.1:4010/index.html"
+
+port_up() {
+    code="$(curl -sf -o /dev/null -w '%{http_code}' --max-time 2 "$1" 2>/dev/null)"
+    case "$code" in 200|302|304) return 0 ;; *) return 1 ;; esac
+}
+
+jekyll_up()  { port_up "$JEKYLL_ROOT"; }
+# With no Ruby installed, edit-start.sh falls back to the Python preview on
+# 4010 and opens the browser itself. Treat that as success too, otherwise this
+# launcher reports failure over a preview that is in fact running.
+preview_up() { port_up "$PREVIEW_ROOT"; }
+
+# Already serving? Just open the browser.
+if jekyll_up; then
     open "$EDIT_URL"
     exit 0
 fi
 
-# Launch edit-start.sh in a new Terminal window. The window stays open
-# tailing the logs; closing it stops the servers via the SIGHUP trap in
-# edit-start.sh's caller workflow.
+# Launch the start script in a Terminal window. The window stays open so any
+# error remains readable; closing it stops the servers.
 osascript <<EOF
 tell application "Terminal"
     activate
@@ -24,12 +40,20 @@ tell application "Terminal"
 end tell
 EOF
 
-# Wait up to 30s for the edit server to bind, then open the browser.
-for i in {1..30}; do
+# Wait up to 120s. A cold build of the full site including the wiki is slow,
+# and opening the browser early is what produced the confusing error page.
+for i in $(seq 1 120); do
     sleep 1
-    if curl -sf --max-time 1 "$HEALTH" >/dev/null 2>&1; then
-        break
+    if jekyll_up; then
+        open "$EDIT_URL"
+        exit 0
+    fi
+    if preview_up; then
+        exit 0   # edit-start.sh already opened the preview in the browser
     fi
 done
 
-open "$EDIT_URL"
+# Never came up. Do not open a browser onto a dead port; the Terminal window
+# that is already in front has the actual error.
+osascript -e 'display notification "Jekyll did not start. See the Terminal window for the error." with title "Edit Lab Site"' 2>/dev/null
+exit 1
