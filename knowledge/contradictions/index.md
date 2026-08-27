@@ -2,7 +2,7 @@
 layout: default
 title: "Contradictions and open disagreements"
 permalink: /knowledge/contradictions/
-last_updated: 2026-05-31T10:00:00.013464+00:00
+last_updated: 2026-08-27T10:00:00.017584+00:00
 ---
 
 # Contradictions and open disagreements across lab topics
