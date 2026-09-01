@@ -4,79 +4,109 @@
 
 # =============================================================================
 # INTRO TO R: MATH, DATA TYPES, DATA STRUCTURES, CONTROL FLOW
-# Live coding session
 # =============================================================================
-# Everything below is scaffolding. We fill it in together.
 # Rule for today: if you cannot explain what a line does, stop me.
 
 # =============================================================================
 # 0. ORIENTATION
 # =============================================================================
-# The console vs. the script. Why we never work in the console alone.
-
-# Running code: ctrl/cmd + enter, and what "the cursor line" means.
-
-# getwd(), and why hard-coded absolute paths ruin reproducibility.
-
-# Comments: everything after # is ignored. 
+# Console vs. script. We work in the script so the work is reproducible.
+# Run a line: ctrl/cmd + enter.
+# Everything after # is ignored.
 
 # =============================================================================
 # 1. R AS A CALCULATOR
 # =============================================================================
 
-# Arithmetic: + - * / ^
+3 + 5
+3 - 7
+3 * 2
+5 / 2
+4^2
+7 %% 3           # remainder. We use this later for even/odd
+7 %/% 3          # integer division
 
-# Integer division and modulus: %/% and %%
-# We will use %% later to test even/odd and to wrap around a vector.
+# Precedence is real. Parentheses cost nothing.
+2 + 3 * 4
+(2 + 3) * 4
 
-# Operator precedence, and why parentheses cost nothing.
+sqrt(81)
+exp(1)
+log(100)         # natural log by default
+log(100, base = 10)
+abs(-3)
+round(3.14159, 2)
 
-# Built-in functions: sqrt, exp, log, abs, round
-# log(x) is natural log by default. log(x, base = 10) vs log10(x).
+# Special values.
+1 / 0            # Inf
+0 / 0            # NaN
+NA               # missing
+NULL             # absent
 
-# Function arguments: by position vs. by name. Why named arguments age better.
+# Arguments by position vs. by name. These three are identical.
+matrix(data = 1:12, nrow = 4, ncol = 3)
+matrix(1:12, 4, 3)
+matrix(ncol = 3, data = 1:12, nrow = 4)
+# This one is different. Position is fragile, names age well.
+matrix(1:12, 3, 4)
 
 # =============================================================================
 # 2. ASSIGNMENT AND OBJECTS
 # =============================================================================
 
-# The assignment operator: <-
-# Also = and ->. Which one to use and why the class standard is <-.
+foo <- 5         # class standard
+foo = 4          # legal, avoid
+6 -> foo         # legal, avoid harder
+foo
 
-# Naming rules and naming conventions. Names are documentation.
+# Case sensitivity bites.
+Foo <- 100
+foo
+Foo
 
-# Objects persist in the environment. ls(), rm(), rm(list = ls())
-
-# Case sensitivity. x and X are different objects.
+ls()             # what is in the environment
+rm(foo)
+ls()
+rm(list = ls())  # clean slate
 
 # =============================================================================
 # 3. DATA TYPES
 # =============================================================================
 
-# The five we care about: numeric, character, logical, factor
+# numeric, integer, character, logical, factor
+x <- 1:10
+y <- c("heath", "jen", "LT")
+z <- c(TRUE, FALSE, TRUE)
 
-# numeric: the default. 
+class(x); class(y); class(z)
+is.numeric(x)
+is.numeric(y)
 
-# character: quotes. Single vs. double quotes are equivalent.
+# A vector holds ONE type. R promotes to keep that true.
+# Hierarchy: logical -> integer -> double -> character
+c(5, 8, TRUE, FALSE)          # logicals become 1 and 0
+c("heath", 5, TRUE)           # everything becomes character
 
-# logical: TRUE / FALSE (and the dangerous shortcuts T / F).
-# Why T <- FALSE is legal and why that should terrify you.
+# Coercion you asked for, and coercion you did not.
+as.numeric("42")
+as.numeric("banana")          # NA plus a warning is R telling you it gave up
+as.character(1:3)
+as.logical(c(0, 1, 2))
 
-# Interrogating type: is.numeric(), is.character(), etc.
+# Logicals are numbers. Counting is summing. Use this constantly.
+sum(c(TRUE, FALSE, TRUE, TRUE))
+mean(x > 5)                   # proportion of x greater than 5
 
-# Coercion: as.numeric(), as.character(), as.logical()
+# factor: an integer vector plus a levels attribute
+site <- factor(c("north", "south", "north", "east"))
+site
+levels(site)
+as.integer(site)              # the codes, not the labels
 
-# Silent coercion vs. coercion with a warning.
-
-# as.numeric("banana") and what NA-with-a-warning is telling you.
-
-# The coercion hierarchy: logical -> integer -> character
-# A vector holds ONE type. R will happily promote everything to keep that true.
-
-# Arithmetic on logicals: sum(c(TRUE, FALSE, TRUE))
-# This is the single most useful idiom in the whole language. Counting is summing.
-
-# factor: a stored integer vector plus a levels attribute.
+# The classic disaster: a factor of numbers.
+nums <- factor(c(10, 20, 30))
+as.numeric(nums)              # 1 2 3, not 10 20 30
+as.numeric(as.character(nums))# what you meant
 
 # =============================================================================
 # 4. DATA STRUCTURES
@@ -86,51 +116,84 @@
 # 4a. VECTORS (1D, one type)
 # -----------------------------------------------------------------------------
 
-# c() to combine. c() is the workhorse of R.
+c(1, 5, 9)
+1:10
+seq(0, 1, by = 0.25)
+seq(0, 1, length.out = 5)
+seq_len(5)
+rep("Heath", 3)
+rep(c("a", "b"), times = 3)
+rep(c("a", "b"), each = 3)
 
-# Sequences: 1:10, seq(), seq_len(), seq_along()
+x <- c(10, 20, 30, 40, 50)
+length(x)
+names(x) <- c("a", "b", "c", "d", "e")
+x
 
-# Repetition: rep() with times, each, length.out
+# Four ways to index.
+x[2]                  # position
+x[-2]                 # drop a position
+x[c(TRUE, FALSE, TRUE, FALSE, TRUE)]   # logical: this is filtering
+x["c"]                # by name
 
-# length(), names(), and naming elements of a vector
+x[3] <- 99            # mutable by position
+x
+x[8] <- 1             # growing past the end is legal, slow, and fills NA
+x
 
-# INDEXING with [ ]
-#   positive integers: pull those positions
-#   negative integers: drop those positions
-#   logical vector: pull where TRUE  (this is filtering)
-#   character: pull by name
-# One-based indexing. If you come from Python, this is your tax.
+# Vectorization. No loop required.
+v <- 1:10
+v * 2
+v + v
+v^2
 
-# Assignment into an index: x[3] <- 99. Vectors are mutable by position.
+# Recycling: shorter operand is reused.
+v + c(0, 100)         # silent, lengths divide evenly
+v + c(0, 100, 200)    # warning, they do not
 
-# Growing a vector by assigning past the end. Legal, and slow. Note it, avoid it.
+# Logical filtering, the workhorse idiom.
+v %% 2 == 0
+v[v %% 2 == 0]        # evens
+v[v %% 2 != 0]        # odds
+which(v > 7)          # positions, not values
+any(v > 7); all(v > 7)
 
-# VECTORIZATION: x * 2, x + y
-# No loop required. This is the R way of thinking.
-
-# Recycling: what happens when lengths differ, and when R warns vs. stays silent.
-# Recycling is a feature and a footgun.
-
-# Vector summaries: sum, mean, median, var, sd, min, max, range, length
-# na.rm = TRUE and why you should always know whether you needed it.
-
-# Comparison operators return logical vectors: >, <, >=, <=, ==, !=
+# Summaries, and the NA question.
+w <- c(4, 8, NA, 15, 16)
+mean(w)
+mean(w, na.rm = TRUE)
+sum(w, na.rm = TRUE); sd(w, na.rm = TRUE); range(w, na.rm = TRUE)
+is.na(w)
+sum(is.na(w))         # how many are missing
 
 # -----------------------------------------------------------------------------
 # 4b. MATRIX (2D, one type)
 # -----------------------------------------------------------------------------
 
-# matrix(data, nrow, ncol, byrow)
-# byrow = FALSE is the default. Fill order matters and it will bite you.
+a <- matrix(1:12, nrow = 4, ncol = 3)
+a
+matrix(1:12, nrow = 4, byrow = TRUE)   # fill order matters
 
-# nrow(), ncol(), rownames(), colnames()
+dim(a)
+nrow(a)
+ncol(a)
+rownames(a) <- paste0("r", 1:4)
+colnames(a) <- c("x", "y", "z")
+a
 
-# Indexing: m[i, j], m[i, ], m[, j]
-# The drop argument: m[, 1] gives a vector
+a[2, 3]               # one cell
+a[2, ]                # row 2, returned as a vector
+a[, "y"]              # column y by name
+a[, 1, drop = FALSE]  # keep it a matrix
 
-# Building from vectors: rbind(), cbind()
+rbind(a, c(0, 0, 0))
+cbind(a, w = 13:16)
 
-# Row and column summaries: rowSums, colSums, rowMeans, colMeans
+rowSums(a); colMeans(a)
+
+a * 2                 # elementwise
+a %*% t(a)            # matrix multiplication
+
 
 # -----------------------------------------------------------------------------
 # 4c. LIST (1D, any types, can nest)
