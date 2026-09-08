@@ -171,13 +171,18 @@ sum(is.na(w))         # how many are missing
 # -----------------------------------------------------------------------------
 
 a <- matrix(1:12, nrow = 4, ncol = 3)
-a
+a <- matrix(data = 1:12, nrow = 4, ncol = 3)
+b <- matrix(4,  3, 1:12)
+a == b
 matrix(1:12, nrow = 4, byrow = TRUE)   # fill order matters
 
-dim(a)
 nrow(a)
 ncol(a)
 rownames(a) <- paste0("r", 1:4)
+
+paste0("r", 1:4)
+paste("r", 1:4)
+
 colnames(a) <- c("x", "y", "z")
 a
 
@@ -207,6 +212,16 @@ a %*% t(a)            # matrix multiplication
 #   x$name -> the element by name
 # "The train car vs. what is inside the train car."
 
+
+students <- list()
+students[[1]] <- c("dan","john","cindy")
+students[[2]] <- c(89, 78, 97)
+students[[3]] <- matrix(1:12, 3,4)
+students[[4]] <- c("bob", "Pam")
+x <- students[4]
+y <- students[[4]]
+
+
 # -----------------------------------------------------------------------------
 # 4d. DATA.FRAME (2D, columns of any type, equal length)
 # -----------------------------------------------------------------------------
@@ -223,6 +238,17 @@ a %*% t(a)            # matrix multiplication
 # Filtering rows with a logical vector. Base R subsetting, no packages needed.
 
 # Built-in data to play with: mtcars, iris
+
+gradebook <- data.frame(students = c("bob","sandy"),
+                        grades = c(59, 89),
+                        passing = rep(NA, 2))
+
+gradebook[,2] >= 70
+
+gradebook[,3] <- gradebook[,2] >= 70
+gradebook$passing <- gradebook$grades >= 70
+foo <- as.data.frame(matrix(1:12,3,4))
+bar <- matrix(1:12,3,4)
 
 # -----------------------------------------------------------------------------
 # 4e. STRUCTURE CHEAT SHEET
@@ -255,17 +281,53 @@ a %*% t(a)            # matrix multiplication
 # PREALLOCATE the result. Growing a vector inside a loop reallocates every pass.
 # Time both with system.time() so the cost is visible, not theoretical.
 
+for(i in 1:10){
+  # all the stuff you want to do over and over
+  print(i)
+}
+
+
+
 # -----------------------------------------------------------------------------
 # 5c. WHILE LOOPS
 # -----------------------------------------------------------------------------
+# Sets a seed for reproducibility
+set.seed(5)
+# this sets working to true so the while loop can begin to run
+working <- TRUE
+# this sets up a counter to track draws
+counter <- 0
+# this begins the while loop as long as working is true
+while(working){
+  # this incremenmts the counter by 1
+  counter <- counter + 1
+  # this is the real work of the loop making a draw from a normal dist
+  x <- rnorm(1)
+  # this if statement sees whether we drew a value we are targeting
+  if(x > 3){
+    # this prints the draw number and value that met our conditions
+    print(paste0(counter, ": ", x))
+    # this sets working to falsse so the loop can stop
+    working <- F
+  }
+  # this gives us an intermediate status indicator so we know what is happening
+  if(counter %% 10 == 0){
+    print(counter)
+  }
+}
 
-# while (condition) { }
-# Use when the number of iterations is not known in advance.
+# write a for loop that prints odd numbers and 
+# even numbers between 1 and 1000 based on some choice you make
 
-# You are responsible for making the condition eventually FALSE.
-# Infinite loops, and the escape hatch (Esc / the stop button).
+for(i in 1:1000){
+  if(i %% 2 != 0){
+    print(i)
+  }
+}
 
-# A safety counter as a habit: cap iterations so a bad condition fails loudly.
+
+
+
 
 # =============================================================================
 # 6. RANDOM NUMBERS (setup for the challenge)
@@ -273,12 +335,42 @@ a %*% t(a)            # matrix multiplication
 
 # sample(x, size, replace = TRUE)
 # Rolling a die is sample(1:6, 1). Rolling five dice is one call, not five.
+set.seed(1)
+sample(1:10, size=10, replace=T)
+sample(3, 1)
+rnorm(5, mean=20, sd=.01)
+
+rpois(10, 3)
+hist(rexp(1000, 10))
+runif(10)
 
 # set.seed(): reproducibility. Same seed, same "random" numbers.
 # Every simulation in a paper should be seeded.
+#
+#
+#
+#
+# 
+# =============================================================================
+# 7. Reading and writing files
+# =============================================================================
+# read.csv() write.csv
+data(iris)
+iris
+write.csv(iris, file="r-iris.csv", row.names = F)
+myiris <- read.csv("r-iris.csv")
+# 
+# =============================================================================
+# 8. base plotting
+# =============================================================================
+# plot, hist, pars
+# 
+plot(iris$Sepal.Width ~ iris$Petal.Length)
+hist(rexp(1000))
+plot(density(rexp(1000)))
 
 # =============================================================================
-# 7. CHALLENGE 1: YAHTZEE
+# 9. CHALLENGE 1: YAHTZEE
 # =============================================================================
 # Goal: simulate the game well enough to answer questions with data instead of
 # intuition. Build it in pieces, test each piece, then assemble.
@@ -289,23 +381,27 @@ a %*% t(a)            # matrix multiplication
 # -----------------------------------------------------------------------------
 # STEP 1: roll five dice
 # -----------------------------------------------------------------------------
-# One call to sample(). Confirm the result is length 5 and values are 1 to 6.
 #
 # -----------------------------------------------------------------------------
-# STEP 2: a single hand
+# STEP 2: first roll
 # -----------------------------------------------------------------------------
-# Many ways to write this. Clarity beats cleverness.
-# Roll all 5 dice
-# Figure out the number of dice that did not land on 6 and reroll those
-# Count total number of sixes and detect a Yahtzee
-# Continue this process until you get a Yahtzee and keep count of attempts
+#
 #
 # -----------------------------------------------------------------------------
-# STEP 3: estimate P(Yahtzee on one roll) by simulation
+# STEP 3: second roll
+# -----------------------------------------------------------------------------
+#
+#
+# -----------------------------------------------------------------------------
+# STEP 4: evaluate rolls
+# -----------------------------------------------------------------------------
+#
+# -----------------------------------------------------------------------------
+# STEP 5: estimate P(Yahtzee on a given turn) by simulation
 # -----------------------------------------------------------------------------
 # Loop many trials, store the result
 #
 # =============================================================================
-# 8. CLOSING
+# 10. CLOSING
 # =============================================================================
-# ?function and help(). example(). The documentation is the primary source.
+# help()
