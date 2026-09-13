@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Tealc · live · Blackmon Lab"
-description: "Live activity feed for Tealc, the Blackmon Lab AI agent. Shows the most recent tool calls, searches, file reads, and notes. Refreshes every 30 seconds."
+title: "Published activity · Blackmon Lab"
+description: "Activity intentionally shared for public viewing, separate from the private Lab OS status monitor."
 canonical: "https://coleoguy.github.io/tealc.html"
 extra_head: |
   <style>
@@ -22,9 +22,7 @@ extra_head: |
     .tealc-status-left { display: flex; align-items: center; gap: 12px; }
     .tealc-dot {
       width: 10px; height: 10px; border-radius: 50%;
-      background: #34d399;
-      box-shadow: 0 0 8px #34d399;
-      animation: tealcPulse 2s infinite;
+      background: var(--ink-faint);
       flex-shrink: 0;
     }
     .tealc-dot.offline {
@@ -78,131 +76,88 @@ extra_head: |
   </style>
 extra_scripts: |
   <script>
-  // Tealc live feed: fetches from Cloudflare Worker, shows status + recent tool calls
+  // This endpoint contains intentionally published activity, never private monitor data.
   (function() {
     const WORKER_URL = 'https://tealc-aquarium.blackmon.workers.dev';
-    const ICONS = {
-      search:   "🔍",
-      cite:     "📊",
-      email:    "✉",
-      calendar: "📅",
-      drive:    "📁",
-      read:     "📄",
-      note:     "📝",
-      clock:    "🕐",
-      tool:     "⚙",
-    };
-  
-    function timeAgo(isoStr) {
-      const diff = Math.floor((Date.now() - new Date(isoStr)) / 1000);
-      if (diff < 60)    return diff + "s ago";
-      if (diff < 3600)  return Math.floor(diff/60) + "m ago";
-      if (diff < 86400) return Math.floor(diff/3600) + "h ago";
-      return Math.floor(diff/86400) + "d ago";
+    const ICONS = { search: '🔍', cite: '📊', email: '✉', calendar: '📅', drive: '📁', read: '📄', note: '📝', clock: '🕐', tool: '⚙' };
+    function readableDate(value) {
+      const date = new Date(value);
+      return Number.isFinite(date.getTime()) ? date.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : 'Date unavailable';
     }
-  
-    function localTime(isoStr) {
-      return new Date(isoStr).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    function emptyState(feed, message) {
+      const empty = document.createElement('div');
+      empty.className = 'tealc-empty'; empty.textContent = message;
+      feed.replaceChildren(empty);
     }
-  
     async function load() {
-      const dot = document.getElementById("statusDot");
-      const statusText = document.getElementById("statusText");
-      const lastSeen = document.getElementById("lastSeen");
-      const feed = document.getElementById("feed");
-  
+      const statusText = document.getElementById('statusText');
+      const lastSeen = document.getElementById('lastSeen');
+      const feed = document.getElementById('feed');
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
       try {
-        const res = await fetch(WORKER_URL + "?_=" + Date.now());
-        if (!res.ok) throw new Error("not found");
-        const data = await res.json();
-  
-        const ageSeconds = (Date.now() - new Date(data.last_updated)) / 1000;
-        const isRecent = ageSeconds < 600;
-  
-        if (isRecent) {
-          dot.classList.remove("offline");
-          statusText.textContent = "Online · Tealc is active";
-        } else {
-          dot.classList.add("offline");
-          statusText.textContent = "Offline · showing last known state";
-        }
-        lastSeen.textContent = "Last active " + timeAgo(data.last_updated);
-  
-        const events = data.recent_activity || [];
-        if (events.length === 0) {
-          feed.innerHTML = '<div class="tealc-empty">No activity recorded yet.</div>';
-          return;
-        }
-  
-        feed.innerHTML = events.map(function(e, i) {
-          return '<div class="tealc-event" style="animation-delay:' + (i * 30) + 'ms">' +
-                 '<span class="tealc-event-icon">' + (ICONS[e.type] || "⚙") + '</span>' +
-                 '<div class="tealc-event-body">' +
-                 '<div class="tealc-event-desc">' + e.description + '</div>' +
-                 '<div class="tealc-event-time">' + localTime(e.time) + ' · ' + timeAgo(e.time) + '</div>' +
-                 '</div></div>';
-        }).join("");
-  
-      } catch (err) {
-        dot.classList.add("offline");
-        statusText.textContent = "Offline";
-        lastSeen.textContent = "Could not load activity log";
-        feed.innerHTML = '<div class="tealc-empty">Tealc is offline. The last known state will appear here when he reconnects.</div>';
-      }
+        const response = await fetch(WORKER_URL, { signal: controller.signal, cache: 'no-store' });
+        if (!response.ok) throw new Error('Unavailable');
+        const data = await response.json();
+        if (!data || typeof data !== 'object') throw new Error('Invalid published activity');
+        const events = Array.isArray(data.recent_activity) ? data.recent_activity.filter(event => event && typeof event.description === 'string').slice(0, 30) : [];
+        statusText.textContent = events.length ? 'Published activity' : 'No published activity available';
+        lastSeen.textContent = data.last_updated ? 'Last published update: ' + readableDate(data.last_updated) : 'Publication date unavailable';
+        if (!events.length) { emptyState(feed, 'No activity has been published here.'); return; }
+        const fragment = document.createDocumentFragment();
+        events.forEach(event => {
+          const row = document.createElement('div'); row.className = 'tealc-event';
+          const icon = document.createElement('span'); icon.className = 'tealc-event-icon'; icon.textContent = ICONS[event.type] || '⚙'; icon.setAttribute('aria-hidden', 'true');
+          const body = document.createElement('div'); body.className = 'tealc-event-body';
+          const description = document.createElement('div'); description.className = 'tealc-event-desc'; description.textContent = event.description;
+          const time = document.createElement('div'); time.className = 'tealc-event-time'; time.textContent = readableDate(event.time);
+          body.append(description, time); row.append(icon, body); fragment.appendChild(row);
+        });
+        feed.replaceChildren(fragment);
+      } catch (_) {
+        statusText.textContent = 'Published activity could not be loaded';
+        lastSeen.textContent = 'This does not indicate the status of the private monitor.';
+        emptyState(feed, 'The public activity feed is unavailable. Please try again later.');
+      } finally { clearTimeout(timeout); }
     }
-  
     load();
-    setInterval(load, 30000);
+    setInterval(() => { if (!document.hidden) load(); }, 30000);
   })();
   </script>
 ---
 
 
 <!-- user-start -->
-    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; <a href="lead-investigator.html">TEALC</a> &rsaquo; LIVE</div>
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; <a href="lead-investigator.html">LAB OS</a> &rsaquo; PUBLISHED ACTIVITY</div>
 
-    <img src="assets/img/tealc-banner.png" alt="TEALC: An Agent Harness for Biology Labs" style="display:block; width:100%; height:auto; margin: 16px 0 24px; border-radius:6px;">
-
-    <h1 class="title">Tealc, live</h1>
+    <h1 class="title">Published activity</h1>
 
     <p class="lede">
-      What <a href="lead-investigator.html">Tealc</a> is actually doing right now. The feed below is a rolling log of the agent's most recent tool calls: literature searches, file reads, email drafts, calendar checks, notes. The status dot is green while Tealc has been active in the last ten minutes; otherwise the page shows the last known state. Refreshes every thirty seconds.
+      This page shows activity intentionally shared for public viewing. It is separate from the PI's <a href="lead-investigator.html">private status monitor</a>. The last update indicates publication time, not whether a background process is healthy or whether work is complete. This page checks for updates every thirty seconds.
     </p>
 
     <div class="tealc-status">
       <div class="tealc-status-left">
-        <span class="tealc-dot" id="statusDot"></span>
-        <span class="tealc-status-text" id="statusText">Loading…</span>
+        <span class="tealc-dot" id="statusDot" aria-hidden="true"></span>
+        <span class="tealc-status-text" id="statusText" role="status">Loading…</span>
       </div>
       <span class="tealc-last-seen" id="lastSeen"></span>
     </div>
 
-    <div class="tealc-feed-label">Recent activity</div>
+    <div class="tealc-feed-label">Published entries</div>
     <div class="tealc-feed" id="feed">
       <div class="tealc-empty">Loading activity…</div>
     </div>
 
     <details class="layer" style="margin-top:36px;">
-      <summary>
-        <span class="layer-summary-text">
-          <span class="sum-kicker">Under the hood</span>
-          <span class="sum-head">Stack, tool inventory, operating rules</span>
-          <span class="sum-trail">Sonnet 4.6 / Opus 4.7 / Haiku 4.5 · 158 tools · 59 scheduled jobs · draft-only, never grows service load.</span>
-        </span>
-      </summary>
-      <div class="layer-body">
-        <div class="agent-box">
-          <span class="agent-line"><span class="agent-tag">Stack</span>Claude (Sonnet 4.6 default · Opus 4.7 on demand · Haiku 4.5 for batch jobs) · LangGraph ReAct loop · Chainlit UI · APScheduler · SQLite state</span>
-          <span class="agent-line"><span class="agent-tag">Tools</span>158 tools: literature search · citation tracking · Gmail draft · calendar read/write · Drive · Docs/Sheets write-back · R + Python execution · student tracker · grant radar · goals · intentions · overnight science · output ledger · adversarial critic · cost telemetry</span>
-          <span class="agent-line"><span class="agent-tag">Rules</span>never sends email unprompted · never grows service load · every action visible in this feed</span>
-        </div>
-      </div>
+      <summary><span class="layer-summary-text"><span class="sum-kicker">About this page</span><span class="sum-head">Public activity and private work have different roles</span><span class="sum-trail">Tealc is the execution framework behind the PI's Lab OS workspace.</span></span></summary>
+      <div class="layer-body"><p>The PI uses the private monitor for project status, people, commitments, and decisions. This public page is a separate publication surface; it does not provide a complete operational log or access to the private workspace.</p></div>
     </details>
 
     <div class="layer-body" style="padding-left:0;">
       <div class="layer-links">
-        <a href="lead-investigator.html">What Tealc is, in full &rarr;</a>
-        <a href="tealc-build.html"><strong>Build your own Tealc &rarr;</strong></a>
+        <a href="lead-investigator.html">Lab OS design &rarr;</a>
+        <a href="tealc-build.html"><strong>Tealc implementation history &rarr;</strong></a>
         <a href="ai.html">AI in the lab, overview &rarr;</a>
         <a href="traittrawler.html">TraitTrawler &rarr;</a>
       </div>

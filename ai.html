@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "AI in the lab · Blackmon Lab"
-description: "How the Blackmon Lab uses AI: literature-mining agents, an agent running a research project end-to-end, agent-readable publishing, and courses that put undergraduates on real problems."
+description: "How the Blackmon Lab uses AI for literature mining, a private PI status workspace, open data, and undergraduate research."
 canonical: "https://coleoguy.github.io/ai.html"
 ---
 
@@ -12,11 +12,11 @@ canonical: "https://coleoguy.github.io/ai.html"
     <h1 class="title">AI in service of biology.</h1>
 
     <p class="lede">
-      Most of evolutionary biology is a data problem. Five projects in the lab use AI agents to read the literature, pull structured data out of it, and help with the comparative work that follows. Two of those agents run autonomously, always on. One is an experiment in handing a full research problem to an agent and letting it run. We expect it to fail in interesting ways and that is the point.
+      Most of evolutionary biology is a data problem. Five projects in the lab use AI agents to read the literature, pull structured data out of it, and help with the comparative work that follows. The work includes literature mining, a private lab-management workspace, and experiments in agent-assisted research. Researchers review the results and decide what is useful.
     </p>
 
     <p class="lede">
-      Both autonomous agents are open-source under MIT. Any researcher with a Claude API account can deploy them on a laptop, undergrad to senior PI, with no university IT in the loop.
+      The TraitTrawler and Tealc source repositories are open-source under MIT. They are worked examples that researchers can adapt to their own data, tools, and institution; the lab's private operational records are separate.
     </p>
 
     <p class="ai-role-note">AI handles search, extraction, and verification at scale. Researchers supply the questions, the skepticism, and the judgment.</p>
@@ -28,7 +28,7 @@ canonical: "https://coleoguy.github.io/ai.html"
       </div>
       <div class="stat">
         <div class="stat-num">2</div>
-        <span class="stat-label">Always-on autonomous agents online</span>
+        <span class="stat-label">Agent frameworks in use</span>
       </div>
       <div class="stat">
         <div class="stat-num">6</div>
@@ -42,13 +42,13 @@ canonical: "https://coleoguy.github.io/ai.html"
 
     <div class="agent-box" id="agent-box">
       <span class="agent-line"><span class="agent-tag">TraitTrawler</span>v6.2: 11 specialist subagents, 24 deterministic Python gates, Chain-of-Verification critic, code-execution triage prefilter</span>
-      <span class="agent-line"><span class="agent-tag">Tealc</span>Always-on autonomous lab member; 158 tools, 59 scheduled jobs, v2 rigor layer, executive loop and overnight science active</span>
+      <span class="agent-line"><span class="agent-tag">Lab OS</span><a href="lead-investigator.html">A private PI status workspace</a>, supported by coordinated background agents and shared project memory</span>
       <span class="agent-line"><span class="agent-tag">llms.txt</span>166KB machine-readable site snapshot for agents</span>
     </div>
 
     <!-- ── Projects ───────────────────────────────── -->
     <h2>Projects</h2>
-    <p>Five projects are active. Two are always-on autonomous agents; one is an experiment in handing an agent a full research problem; one is a teaching tool built almost entirely by AI-assisted coding.</p>
+    <p>The projects below span literature mining, lab management, open publishing, and tools for teaching and research.</p>
 
     <details class="layer">
       <summary>
@@ -69,18 +69,18 @@ canonical: "https://coleoguy.github.io/ai.html"
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">AI as lead investigator</span>
-          <span class="sum-head">Can an agent carry a research problem start to finish?</span>
-          <span class="sum-trail">Growing out of TraitTrawler: the same scaffolding, pointed at the whole research arc.</span>
+          <span class="sum-kicker">Lab management</span>
+          <span class="sum-head">A status workspace for the PI</span>
+          <span class="sum-trail">Projects, people, commitments, and decisions, with detail available when it is needed.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>TraitTrawler proved an agent can extract structured trait data from the literature at scale. The natural next question is whether one can reason about it. We are building an experiment to find out, designing scaffolding that lets a Claude-powered agent carry a research problem from hypotheses through comparative analysis to a manuscript draft. We are still stress-testing each step and every breakdown teaches us where the next version needs work. The goal is not a robot PI. It is a collaborator that can do the programming and literature triage that would otherwise take a lab of students and postdocs.</p>
+        <p>The status monitor is the PI's main working interface. It brings together project updates, next actions, student meetings, and work awaiting a decision. Research, mentoring, teaching, administration, and service remain distinct areas, so the PI can focus on one part of the lab at a time.</p>
+        <p>A chief-of-staff role coordinates research, student support, and grants and administration. The roles share project memory and record task ownership and completion. Tealc runs the background jobs and tools; the monitor presents their useful results alongside the PI's own updates.</p>
+        <p>We are evaluating whether the system helps commitments get completed and information stay current. A scheduled job or a polished draft does not by itself establish a useful result.</p>
         <div class="layer-links">
-          <a href="lead-investigator.html">What Tealc is, in full &rarr;</a>
-          <a href="tealc-build.html"><strong>Build your own Tealc &rarr;</strong></a>
-          <a href="tealc.html">Tealc live console &rarr;</a>
-          <a href="research.html">Research program &rarr;</a>
+          <a href="lead-investigator.html">Lab OS: design and implementation &rarr;</a>
+          <a href="tealc-build.html">Tealc implementation history &rarr;</a>
         </div>
       </div>
     </details>

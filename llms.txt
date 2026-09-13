@@ -47,8 +47,8 @@ Heath Blackmon, Ph.D., Associate Head, Department of Biology, Texas A&M Universi
 - Karyotype Evolution (research overview): https://coleoguy.github.io/karyotype.html
 - AI Agents Overview: https://coleoguy.github.io/ai.html
 - TraitTrawler (literature-mining agent): https://coleoguy.github.io/traittrawler.html
-- Tealc (the lab's AI agent): https://coleoguy.github.io/lead-investigator.html
-- Tealc live (activity feed): https://coleoguy.github.io/tealc.html
+- Lab OS (private PI workspace design): https://coleoguy.github.io/lead-investigator.html
+- Published activity (separate public feed): https://coleoguy.github.io/tealc.html
 - Undergrad Papers: https://coleoguy.github.io/undergrad-papers.html
 - Bio & AI CURE: https://coleoguy.github.io/biolai-cure.html
 - AI Concentration: https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html
@@ -178,10 +178,12 @@ URL: https://coleoguy.github.io/ai.html
 URL: https://github.com/coleoguy/TraitTrawler
 A general-purpose autonomous pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref for scientific papers, retrieves full-text PDFs through a 12-source cascade (DOI content negotiation, PMC, Unpaywall, OpenAlex, publisher URLs, Europe PMC, Semantic Scholar, CORE, bioRxiv/medRxiv, Internet Archive, DOAJ, browser-based institutional access), extracts structured trait data with mandatory double-entry verification, and writes validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade.
 
-### Tealc, the lab's AI agent
+### Lab OS, the private PI status workspace
 URL: https://coleoguy.github.io/lead-investigator.html
-Live feed: https://coleoguy.github.io/tealc.html
-The lab's in-house AI agent, built on Claude (Sonnet 4.6 default, Opus 4.7 on demand) plus LangGraph with persistent SQLite memory. Fifteen tools wired in: literature search (Europe PMC, bioRxiv, OpenAlex), citation tracking, Gmail read and draft (never sends unprompted), Google Calendar read, Google Drive search and file read, local file read, and persistent notes. Today it functions as an administrative assistant that can also do real literature work. Currently reactive; next phase is always-on with a morning-briefing scheduler. Mid-term phases add R and Python execution, Google Docs write-back, manuscript review, and student milestone tracking. Long-arc goal is a lead investigator: an agent that carries an evolutionary-biology project from question to manuscript with optional human judgment at the critical checkpoints.
+Published activity: https://coleoguy.github.io/tealc.html
+Implementation history: https://coleoguy.github.io/tealc-build.html
+Description updated: 2026-09-12
+The PI's main interaction is a private status monitor for projects, people, commitments, and decisions. A chief-of-staff role coordinates research, student support, and grants and administration. These roles share project memory and record task ownership and completion. Tealc provides the background execution framework and tools; chat remains available for conversational requests. The active database and mutable runtime memory stay outside Drive synchronization. Private tasks, student records, email, project statuses, and portraits are not part of this public website. The system is being evaluated for useful follow-through and reliable records, not autonomy or raw job counts.
 
 ### Biology and AI CURE
 URL: https://coleoguy.github.io/biolai-cure.html

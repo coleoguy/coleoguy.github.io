@@ -6,9 +6,13 @@ canonical: "https://coleoguy.github.io/tealc-prompt-design.html"
 ---
 
 <!-- user-start -->
-    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; <a href="lead-investigator.html">TEALC</a> &rsaquo; <a href="tealc-build.html">BUILD</a> &rsaquo; PROMPT DESIGN</div>
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; <a href="lead-investigator.html">LAB OS</a> &rsaquo; <a href="tealc-build.html">BUILD</a> &rsaquo; PROMPT DESIGN</div>
 
     <h1 class="title">Designing Tealc's system prompt</h1>
+    <aside class="implementation-note" aria-label="Implementation history">
+      <strong>Implementation history · reviewed September 2026</strong>
+      <p>This article documents an earlier Tealc design. The current PI workflow begins in the private status monitor. Model names, schedules, and setup examples below describe that earlier version; check the maintained source and deployment instructions before installing it. <a href="lead-investigator.html">Current Lab OS design &rarr;</a></p>
+    </aside>
 
     <p class="lede">
       Tealc's system prompt was originally a 715-line ALLCAPS wall that grew section-by-section as we added features. By April 2026 it had hit a wall: rules conflicted, attention was diffuse, and every change risked colliding with something written six months earlier. This page is the design diary of the rewrite — what we kept, what we cut, and what we changed based on Anthropic's 2026 prompting guidance and a few research patterns from the agent-evaluation literature. The full prompt source lives in <a href="https://github.com/coleoguy/tealc/blob/main/agent/graph.py" target="_blank" rel="noopener">agent/graph.py</a>; this page is the &ldquo;why&rdquo;.

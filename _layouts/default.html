@@ -34,6 +34,8 @@
   <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
 </div>
 
+<a class="skip-link" href="#content">Skip to content</a>
+
 <div class="shell">
 
   {% include sidebar.html %}
@@ -63,12 +65,13 @@
 </div>
 
 <!-- Command palette -->
-<div class="palette-overlay" id="palette-overlay" onclick="if (event.target === this) closePalette();">
+<dialog class="palette-overlay" id="palette-overlay" aria-labelledby="palette-label">
   <div class="palette">
-    <input type="text" id="palette-input" placeholder="Jump to…" autocomplete="off">
-    <div class="palette-results" id="palette-results"></div>
+    <div class="palette-heading"><label id="palette-label" for="palette-input">Find a page</label><button type="button" class="palette-close" onclick="closePalette()" aria-label="Close page search">Close</button></div>
+    <input type="search" id="palette-input" placeholder="Search pages and topics…" autocomplete="off" aria-controls="palette-results">
+    <div class="palette-results" id="palette-results" aria-label="Matching pages"></div>
   </div>
-</div>
+</dialog>
 
 <!-- Ask-the-lab toast -->
 <div class="ask-toast" id="ask-toast">Question copied. Paste it into the NotebookLM tab.</div>

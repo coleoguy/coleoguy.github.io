@@ -1,13 +1,13 @@
-<aside class="sidebar" aria-label="Site navigation">
+<nav class="sidebar" id="site-navigation" aria-label="Site navigation">
   <div class="brand">
     <span class="root-dot"></span>
     <a href="/index.html" class="brand-name">Blackmon Lab</a>
     <span class="brand-affil"><a href="https://www.tamu.edu/" target="_blank" rel="noopener">TAMU</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Biology</a></span>
   </div>
 
-  <ul class="tree" role="tree">
+  <ul class="tree">
     <li>
-      <span>Lab</span>
+      <button type="button" class="tree-toggle" aria-expanded="false">Lab</button>
       <ul>
         <li><a href="/team.html">Team</a></li>
         <li><a href="/publications.html">Publications</a></li>
@@ -17,23 +17,23 @@
       </ul>
     </li>
     <li>
-      <span>AI in science</span>
+      <button type="button" class="tree-toggle" aria-expanded="false">AI in science</button>
       <ul>
         <li><a href="/ai.html">Overview</a></li>
         <li><a href="/traittrawler.html">TraitTrawler</a></li>
-        <li><a href="/lead-investigator.html">Tealc</a></li>
-        <li><a href="/tealc.html">Tealc live</a></li>
+        <li><a href="/lead-investigator.html">Lab OS</a></li>
+        <li><a href="/tealc-build.html">Implementation notes</a></li>
       </ul>
     </li>
     <li>
-      <span>Teaching</span>
+      <button type="button" class="tree-toggle" aria-expanded="false">Teaching</button>
       <ul>
         <li><a href="/subpages/cures.html">BIOL 491 — Computational Biology CURE</a></li>
         <li><a href="/subpages/biol498.html">BIOL 498 — AI Enabled Research in Biology</a></li>
         <li><a href="/subpages/biol682.html">BIOL 682 — Writing, reviewing, responding</a></li>
         <li><a href="/subpages/expdes.html">BIOL 683 — Experimental Design</a></li>
         <li>
-          <span>Resources</span>
+          <button type="button" class="tree-toggle" aria-expanded="false">Resources</button>
           <ul>
             <li><a href="/biolai-cure.html">Biology &amp; AI CURE</a></li>
             <li><a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">AI concentration</a></li>
@@ -45,7 +45,7 @@
       </ul>
     </li>
     <li>
-      <span>Science Guides</span>
+      <button type="button" class="tree-toggle" aria-expanded="false">Science Guides</button>
       <ul>
         <li><a href="/karyotype.html">Karyotype evolution</a></li>
         <li><a href="/sex-chromosome-evolution.html">Sex chromosomes</a></li>
@@ -61,7 +61,7 @@
       </ul>
     </li>
     <li>
-      <span>Data &amp; tools</span>
+      <button type="button" class="tree-toggle" aria-expanded="false">Data &amp; tools</button>
       <ul>
         <li><a href="/karyotypes/index.html">Karyotype databases</a></li>
         <li><a href="/cures-karyotype-database.html">CUREs karyotypes</a></li>
@@ -77,4 +77,4 @@
       </ul>
     </li>
   </ul>
-</aside>
+</nav>

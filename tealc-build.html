@@ -1,16 +1,20 @@
 ---
 layout: default
-title: "Build your own Tealc · Blackmon Lab"
-description: "A technical walkthrough for replicating the Blackmon Lab's always-on AI research agent: stack, configuration, Google OAuth, launchd auto-start, custom tools, and scheduled science jobs."
+title: "Tealc implementation history · Blackmon Lab"
+description: "Historical technical notes on the Tealc execution framework, with links to the current Lab OS design."
 canonical: "https://coleoguy.github.io/tealc-build.html"
 ---
 
 <!-- user-start -->
-    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; <a href="lead-investigator.html">TEALC</a> &rsaquo; BUILD YOUR OWN</div>
+    <div class="crumb"><a href="index.html">HOME</a> &rsaquo; AI AGENTS &rsaquo; <a href="lead-investigator.html">LAB OS</a> &rsaquo; BUILD YOUR OWN</div>
 
     <img src="assets/img/tealc-banner.png" alt="TEALC: An Agent Harness for Biology Labs" style="display:block; width:100%; height:auto; margin: 16px 0 24px; border-radius:6px;">
 
     <h1 class="title">Build your own Tealc</h1>
+    <aside class="implementation-note" aria-label="Implementation history">
+      <strong>Implementation history · reviewed September 2026</strong>
+      <p>This article documents an earlier Tealc design. The current PI workflow begins in the private status monitor. Model names, schedules, and setup examples below describe that earlier version; check the maintained source and deployment instructions before installing it. <a href="lead-investigator.html">Current Lab OS design &rarr;</a></p>
+    </aside>
 
     <p class="lede">
       This is the technical guide for replicating what the Blackmon Lab built: an always-on autonomous research agent that handles email triage, grant monitoring, literature synthesis, R analyses, and overnight drafting, running continuously on a Mac via launchd. The guide covers the full stack, every configuration file, how to wire up Google APIs, and how to add your own tools and scheduled jobs. The source code is open on GitHub at <a href="https://github.com/coleoguy/tealc" target="_blank" rel="noopener">coleoguy/tealc</a>, but read the repo's <code>Status</code> section first: it is fitted to the Blackmon Lab's specific Drive layout, students, grants, and writing voice, and several jobs will not run for anyone else without significant rewiring. Treat it as one worked example, not a turnkey template.
@@ -34,12 +38,12 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
         <span class="layer-summary-text">
           <span class="sum-kicker">Overview</span>
           <span class="sum-head">What you are building</span>
-          <span class="sum-trail">Two Python processes, one SQLite database, launchd auto-start, Drive-synced state.</span>
+          <span class="sum-trail">The earlier chat and scheduler design, with shared local SQLite state.</span>
         </span>
       </summary>
       <div class="layer-body">
         <p>
-          Two Python processes share a single SQLite database and auto-start on Mac login. The first is a <a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit</a> chat UI backed by a <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a> ReAct loop: you talk to it, it uses tools, it remembers. The second is an <a href="https://apscheduler.readthedocs.io/" target="_blank" rel="noopener">APScheduler</a> background daemon: it runs 59 scheduled jobs on a cron-like schedule without you doing anything. Both processes read and write the same SQLite file safely using WAL (Write-Ahead Logging) mode, so they never block each other. Google Drive stores configuration, memory, and credentials so the whole thing is portable across machines.
+          Two Python processes share a single SQLite database and auto-start on Mac login. The first is a <a href="https://docs.chainlit.io/" target="_blank" rel="noopener">Chainlit</a> chat UI backed by a <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a> ReAct loop: you talk to it, it uses tools, it remembers. The second is an <a href="https://apscheduler.readthedocs.io/" target="_blank" rel="noopener">APScheduler</a> background daemon: it runs 59 scheduled jobs on a cron-like schedule without you doing anything. Both processes use the same local SQLite database with WAL (Write-Ahead Logging). Writes still require concurrency handling. Keep the active database and mutable memory outside file-sync folders; use consistent database backups for recovery and migration.
         </p>
       </div>
     </details>
@@ -69,11 +73,11 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
         <span class="layer-summary-text">
           <span class="sum-kicker">Layout</span>
           <span class="sum-head">Directory structure</span>
-          <span class="sum-trail">One folder, synced to Drive. Clone it on a new Mac and the agent picks up where it left off.</span>
+          <span class="sum-trail">Source files and mutable runtime state have separate storage requirements.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Keep the project directory in a location that syncs to Google Drive. This is what makes the agent portable: move to a new Mac, clone the Drive folder, run the launchd installer, and the agent picks up where it left off including all memory.</p>
+        <p>This historical source layout is shown for orientation. In a current installation, keep the active database, runtime memory, and private configuration outside synchronized or publicly served folders. Recover those records from a consistent backup when moving machines; copying source code alone does not migrate runtime state.</p>
         <pre><code>00-Lab-Agent/
 ├── app.py                    # Chainlit UI entry point
 ├── agent/
@@ -86,7 +90,6 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
 │       ├── __init__.py       # @tracked() decorator for job telemetry
 │       └── *.py              # One file per scheduled job
 ├── data/
-│   ├── agent.db              # SQLite database (45 tables)
 │   ├── config.json           # Runtime config (folder IDs, email, hours)
 │   ├── deadlines.json        # Grant/manuscript deadlines (you edit this)
 │   ├── lab_people.json       # Privacy denylist + student seed data
@@ -97,8 +100,7 @@ canonical: "https://coleoguy.github.io/tealc-build.html"
 │   ├── install_launchd.sh    # Writes and loads both plist files
 │   ├── start_scheduler.sh    # nohup start with PID file
 │   └── stop_scheduler.sh     # Kill via PID file
-├── requirements.txt
-└── .env                      # ANTHROPIC_API_KEY + Worker URL/secret</code></pre>
+└── requirements.txt          # Environment-specific secrets live separately</code></pre>
       </div>
     </details>
 
@@ -147,10 +149,10 @@ pip install -r requirements.txt</code></pre>
       </summary>
       <div class="layer-body">
         <p>
-          All five Google APIs (Gmail, Calendar, Drive, Docs, Sheets) share one OAuth 2.0 credential set. Go to <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>, create a project, enable the five APIs, and create an OAuth 2.0 Client ID credential for a Desktop application. Download the <code>credentials.json</code> file into the project root.
+          All five Google APIs (Gmail, Calendar, Drive, Docs, Sheets) share one OAuth 2.0 credential set. Go to <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>, create a project, enable the five APIs, and create an OAuth 2.0 Client ID credential for a Desktop application. Save the downloaded OAuth client file in the private credential location configured by your installation.
         </p>
         <p>
-          On first run, the OAuth flow opens a browser for you to approve access. After approval, a <code>token.json</code> file is written alongside <code>credentials.json</code>. That token refreshes automatically. The scopes you need:
+          On first run, the OAuth flow opens a browser for you to approve access. After approval, the installation stores a refresh token in its configured private credential location. Reauthorization may be needed if access expires or is revoked. The scopes you need:
         </p>
         <pre><code>https://www.googleapis.com/auth/gmail.modify
 https://www.googleapis.com/auth/calendar
@@ -158,7 +160,7 @@ https://www.googleapis.com/auth/drive
 https://www.googleapis.com/auth/documents
 https://www.googleapis.com/auth/spreadsheets</code></pre>
         <p>
-          Keep <code>credentials.json</code> and <code>token.json</code> out of git. If you are using the Google Drive sync for portability, store them in the Drive folder alongside the code so a new machine can pick them up without re-running the OAuth flow.
+          Keep OAuth credentials and refresh tokens out of git, public web roots, and shared folders. Use a private location with access limited to the account running the service. Configure that location through the maintained installer rather than copying tokens between synchronized folders.
         </p>
       </div>
     </details>

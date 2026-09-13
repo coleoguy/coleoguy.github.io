@@ -11,7 +11,8 @@ URL: https://coleoguy.github.io/AGENT_CONTRACT.md
 
 > Plain-text snapshot of the public pages of https://coleoguy.github.io
 > Generated for LLM/agent consumption. For machine-readable per-page metadata, see llms.txt.
-> Updated: 2026-04-30
+> Original snapshot: 2026-04-30
+> Lab OS description updated: 2026-09-12; other sections retain their original snapshot date.
 
 This file consolidates the visible text content of every major page on the site so
 language model agents can cite, summarize, or answer questions without rendering JS.
@@ -200,8 +201,8 @@ We use AI tools to accelerate research in evolutionary biology. Our work spans a
 We use AI as a research tool, not just a productivity shortcut. That means autonomous pipelines with validated outputs, workflows that scale to problems a single lab couldn't otherwise tackle, and curricula that give students practical skills alongside the critical thinking to evaluate AI outputs.
 **Autonomous agents**
 Software agents that search databases, triage papers, extract structured data, and generate new queries based on what they find. They run unattended and pick up where they left off across sessions.
-**AI as lead investigator**
-We are testing whether a Claude-powered agent can act as principal investigator on a complete research project: forming hypotheses, selecting comparative methods, running analyses, and drafting a manuscript. The goal is to understand where AI reasoning works in biology and where it fails.
+**A private PI workspace**
+The Lab OS status monitor brings projects, people, commitments, and decisions together. Coordinated background agents prepare information for review; researchers supply the scientific judgment.
 **AI-literate biologists**
 Biology students need practical fluency with AI tools alongside the critical thinking to evaluate their outputs. We have built curricula at the undergraduate and graduate levels at Texas A&M to develop both.
 **Data at scale**
@@ -209,14 +210,14 @@ Cytogenetics data from the past 80 years are scattered across hundreds of journa
 **Validated outputs**
 Every AI extraction gets a confidence score. Flagged records are routed to domain experts. Validation is built into the pipeline design, not added as an afterthought.
 **Open and reproducible**
-All databases, code, and workflows are published openly so other comparative biology labs can replicate and build on them.
+Public datasets and research tools are published so other comparative biology labs can use them. Private operational records stay separate.
 
 ### Research projects
 Active and recent projects using AI tools in the lab.
 TraitTrawler
 A general-purpose autonomous literature-mining pipeline that searches PubMed, OpenAlex, bioRxiv, and Crossref, retrieves full-text PDFs through a 12-source cascade, and extracts structured trait data with mandatory double-entry verification before writing validated records to CSV. Generalizes the lab's earlier domain-specific karyotype agent to any trait, any clade. Open-source under MIT and deployable on any researcher's laptop with a Claude API account. https://github.com/coleoguy/TraitTrawler
-Tealc (the lab's autonomous member)
-An always-on autonomous lab member built on Claude (Sonnet 4.6 default, Opus 4.7 on demand and as adversarial critic, Haiku 4.5 for batch work) on a LangGraph ReAct loop with Chainlit UI, APScheduler, and SQLite state. 158 tools and 59 scheduled jobs cover Gmail draft (never sends unprompted), Calendar read and write, Drive, Docs and Sheets write-back, R and Python execution, Europe PMC and OpenAlex search, citation tracking, student tracker, grant radar, output ledger with SHA256 provenance, adversarial Opus critic, and cost telemetry. An executive loop fires every fifteen minutes; overnight jobs synthesize literature, draft grant sections, run R analyses, and propose hypotheses, with every output passing an adversarial critic that scores support, citation accuracy, hype, and biological plausibility before reaching review. The code is open-source under MIT. Any researcher with a Claude API account can run their own at roughly $60 per month for trainee scope, up to $200 per month for a 20+ person lab. Public live console at https://coleoguy.github.io/tealc.html ; full writeup at https://coleoguy.github.io/lead-investigator.html ; build guide at https://coleoguy.github.io/tealc-build.html ; source at https://github.com/coleoguy/tealc .
+Lab OS (private PI status workspace)
+The PI's main interaction is a private status monitor for projects, people, commitments, and decisions. A chief-of-staff role coordinates research, student support, and grants and administration. These roles share project memory and record task ownership and completion. Tealc provides the background execution framework and tools; chat remains available for conversational requests. The active database and mutable runtime memory stay outside Drive synchronization. Private tasks, student records, email, project statuses, and portraits are not part of this public website. The system is being evaluated for useful follow-through and reliable records, not autonomy or raw job counts. Public design: https://coleoguy.github.io/lead-investigator.html ; separate published activity: https://coleoguy.github.io/tealc.html ; implementation history: https://coleoguy.github.io/tealc-build.html ; Tealc source: https://github.com/coleoguy/tealc .
 RateScape
 Penalized likelihood method for estimating branch-specific rate scalars on phylogenies. We used AI tools throughout method development, simulation, and manuscript writing. Planned application to pathogen drug-resistance rate estimation (NHGRI PAR-25-228).
 Karyotype Databases
