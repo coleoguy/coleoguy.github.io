@@ -56,8 +56,40 @@
     button.addEventListener('click', () => { sync(!li.classList.contains('open')); treeSaveOpen(); });
   });
 
+  // A second close control avoids scrolling back through long disclosures.
+  document.querySelectorAll('details.layer, details.home-section, details.labos-role').forEach(details => {
+    const summary = details.querySelector(':scope > summary');
+    const body = details.querySelector(':scope > .layer-body, :scope > .home-section-body, :scope > .labos-role-body');
+    if (!summary || !body || body.querySelector('.layer-close')) return;
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 'layer-close';
+    button.textContent = 'Close details ↑';
+    button.addEventListener('click', () => {
+      details.open = false;
+      summary.focus({preventScroll: true});
+      summary.scrollIntoView({block: 'nearest'});
+    });
+    body.appendChild(button);
+  });
+
+  // In-page destination links reveal the requested disclosure before navigation.
+  function revealSection(hash) {
+    if (!hash || hash === '#') return;
+    let id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch (_) { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    let section = target.closest('details');
+    while (section) { section.open = true; section = section.parentElement.closest('details'); }
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => revealSection(link.hash));
+  });
+  window.addEventListener('hashchange', () => revealSection(window.location.hash));
+  revealSection(window.location.hash);
+
   // Command palette
-  const PAL_ITEMS = [];
+  const PAL_ITEMS = [{label: 'Home', cat: 'Lab', href: '/index.html'}];
   document.querySelectorAll('.tree li a[href]').forEach(a => {
     const parent = a.closest('li').parentElement.closest('li');
     const cat = parent ? (parent.querySelector(':scope > .tree-toggle')?.textContent || '') : '';
@@ -316,7 +348,8 @@
     });
     window.addEventListener('resize', () => { if (window.innerWidth > 900) closeNav(false); });
 
-    mainCol.insertBefore(openBtn, mainCol.firstChild);
+    if (chrome) chrome.insertBefore(openBtn, chrome.firstChild);
+    else mainCol.insertBefore(openBtn, mainCol.firstChild);
   })();
 
   // News feed (fires only if the page has a target)

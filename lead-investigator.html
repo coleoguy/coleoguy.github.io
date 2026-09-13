@@ -1,66 +1,121 @@
 ---
 layout: default
 title: "Lab OS · Blackmon Lab"
-description: "A private status workspace, shared project memory, and coordinated background agents support PI decisions and follow-through in the Blackmon Lab."
+description: "A private PI workspace and four coordinated roles support decisions, project memory, and follow-through in the Blackmon Lab."
 canonical: "https://coleoguy.github.io/lead-investigator.html"
+extra_head: |
+  <style>
+    .labos-meta { color: var(--ink-dim); font: 11px var(--font-mono); margin: 0 0 18px; }
+    .labos-team { margin: 24px 0 34px; }
+    .labos-team figcaption { color: var(--ink-dim); font-size: 13px; margin-top: 14px; }
+    .labos-pi { text-align: center; padding: 12px 18px; background: var(--paper-sunk); border: 1px solid var(--rule); }
+    .labos-pi strong { display: block; font-size: 19px; }
+    .labos-pi span { font: 11px var(--font-mono); color: var(--ink-dim); }
+    .labos-connector { text-align: center; font: 10px var(--font-mono); color: var(--ink-dim); padding: 12px; }
+    .labos-connector::before { content: ''; display: block; width: 1px; height: 16px; background: var(--rule-strong); margin: -12px auto 7px; }
+    .labos-role { border: 1px solid var(--rule); border-top: 3px solid var(--rule-strong); background: var(--paper-raised); min-width: 0; align-self: start; }
+    .labos-chief { border-top-color: var(--accent); }
+    .labos-role summary { display: block; list-style: none; padding: 17px; cursor: pointer; }
+    .labos-role summary::-webkit-details-marker { display: none; }
+    .labos-role summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .labos-role summary strong { display: block; font-size: 23px; line-height: 1.2; }
+    .labos-role summary .labos-area { display: block; color: var(--ink-dim); font-size: 14px; margin: 4px 0 12px; line-height: 1.4; }
+    .labos-toggle { display: block; font: 10px var(--font-mono); color: var(--accent); }
+    .labos-toggle::before { content: '+ '; }
+    .labos-role[open] .labos-toggle::before { content: '− '; }
+    .labos-role .labos-role-body { padding: 0 17px 6px; font-size: 14px; }
+    .labos-reports { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .labos-record { padding: 15px 18px; border: 1px solid var(--rule); background: var(--paper-sunk); margin-top: 16px; }
+    .labos-record strong { display: block; font-size: 15px; }
+    .labos-record p { font-size: 13px; color: var(--ink-dim); margin: 4px 0 0; }
+    .labos-steps { list-style: none; counter-reset: steps; padding: 0; margin: 18px 0 26px; }
+    .labos-steps li { counter-increment: steps; position: relative; padding: 0 0 18px 42px; }
+    .labos-steps li::before { content: '0' counter(steps); position: absolute; left: 0; top: 2px; font: 12px var(--font-mono); color: var(--accent); }
+    .labos-steps strong { display: block; font-size: 16px; }
+    .labos-steps p { margin: 3px 0 0; color: var(--ink-dim); font-size: 14px; }
+    @media (max-width: 640px) {
+      .labos-reports { grid-template-columns: 1fr; gap: 10px; }
+      .labos-role summary { padding: 14px 17px; }
+      .labos-role summary strong { font-size: 21px; }
+      .labos-role summary .labos-area { margin-bottom: 7px; }
+    }
+  </style>
 ---
 
 <!-- user-start -->
     <div class="crumb"><a href="index.html">HOME</a> &rsaquo; <a href="ai.html">AI IN THE LAB</a> &rsaquo; LAB OS</div>
+    <p class="labos-meta">DESIGN NOTES · Updated September 13, 2026</p>
     <h1 class="title">Lab OS: the work, in one place</h1>
-    <p class="lede">The PI works from a private status monitor. Projects, people, commitments, and decisions can be reviewed there, with details available when they are needed. A status update becomes part of the project's shared context, so subsequent work begins from the latest recorded decision.</p>
-    <p class="lede">Behind the monitor, a chief-of-staff role coordinates research, student support, and grants and administration. The roles share project memory and maintain task ownership and completion records. Tealc provides the execution framework: scheduled jobs, tools, and the underlying records.</p>
-    <p class="ai-role-note">The monitor is a private working surface. This page describes its design; live tasks, student records, email, and project status remain private.</p>
+    <p class="lede">A lab runs on decisions and follow-through. Our private status monitor brings projects, people, commitments, and the next useful action into one workspace. Heath sets priorities, reviews the context, and records decisions there.</p>
+    <p class="ai-role-note">This is a public guide to the design. The working monitor and its operational records remain private.</p>
+
+    <h2>One team, four roles</h2>
+    <p>Jack coordinates three specialist roles. They use the same working records, with an owner for each responsibility. Their names identify areas of responsibility within one Lab OS installation.</p>
+
+    <figure class="labos-team" aria-label="Lab OS reporting structure">
+      <div class="labos-pi"><strong>Heath Blackmon</strong><span>Principal investigator · direction and decisions</span></div>
+      <div class="labos-connector">Jack reports to Heath</div>
+      <details class="labos-role labos-chief">
+        <summary><strong>Jack</strong><span class="labos-area">Chief of staff · priorities and follow-through</span><span class="labos-toggle">Responsibilities</span></summary>
+        <div class="labos-role-body"><p>Coordinates the team, brings work awaiting a decision to Heath, and keeps ownership and next actions explicit. Jack reports to Heath; scientific and personnel decisions remain with the PI.</p></div>
+      </details>
+      <div class="labos-connector">Sam, Daniel, and Tealc report to Jack</div>
+      <div class="labos-reports">
+        <details class="labos-role">
+          <summary><strong>Sam</strong><span class="labos-area">Research &amp; funding</span><span class="labos-toggle">Responsibilities</span></summary>
+          <div class="labos-role-body"><p>Research, literature, scientific quality, and the scientific substance of funding proposals. Prepares material for review and keeps its sources and uncertainties visible.</p></div>
+        </details>
+        <details class="labos-role">
+          <summary><strong>Daniel</strong><span class="labos-area">People &amp; teaching</span><span class="labos-toggle">Responsibilities</span></summary>
+          <div class="labos-role-body"><p>Mentoring, student preparation, meeting context, and teaching support. Helps turn discussions into recorded commitments. Teaching support is currently on demand.</p></div>
+        </details>
+        <details class="labos-role">
+          <summary><strong>Tealc</strong><span class="labos-area">Operations &amp; reliability</span><span class="labos-toggle">Responsibilities</span></summary>
+          <div class="labos-role-body"><p>Email and calendar preparation, administrative and service logistics, and the reliability of background work. Handles funding logistics alongside Sam's scientific work.</p></div>
+        </details>
+      </div>
+      <div class="labos-record"><strong>Shared memory · owned tasks · completion evidence</strong><p>One local runtime and private database connect these roles to the same projects and working records.</p></div>
+      <figcaption>Open a role to read its remit. This illustration shows the organization, not live agent activity.</figcaption>
+    </figure>
 
     <h2>The PI workflow</h2>
-    <p>Start with what needs a decision, then open a project or person for context. Update the status, clarify the next action, or record what was completed. The system should make the next useful step easier to find.</p>
+    <ol class="labos-steps">
+      <li><strong>Find what needs attention.</strong><p>Review an area of work, then open a project or person for context. Research, mentoring, teaching, funding, administration, and service have distinct views.</p></li>
+      <li><strong>Decide and record.</strong><p>Update the project status, clarify the next action, or record a completion. The latest status becomes part of the project's shared context.</p></li>
+      <li><strong>Return to the same record.</strong><p>Background preparation and subsequent work use that context. Ownership and completion evidence help distinguish a finished task from a job that simply ran.</p></li>
+    </ol>
 
     <details class="layer">
-      <summary><span class="layer-summary-text"><span class="sum-kicker">Focus</span><span class="sum-head">Review one area at a time</span><span class="sum-trail">Projects, people, and commitments have their own views.</span></span></summary>
+      <summary><span class="layer-summary-text"><span class="sum-kicker">Focus</span><span class="sum-head">Details when they are useful</span><span class="sum-trail">Expandable views, adjustable priorities, and personal progress feedback.</span></span></summary>
       <div class="layer-body">
-        <p>Research, mentoring, teaching, administration, service, and grants create different kinds of work. Separate views keep those areas easy to find. Summaries lead to details, and the PI can update a record without working through an agent conversation first.</p>
-        <p>Priority weights make the PI's allocation of attention explicit. Progress and XP provide feedback on recorded completions; they are a personal motivation tool, not a measure of scientific quality.</p>
+        <p>The status monitor is the PI's main working interface. Summaries lead to details, and a status can be updated without starting an agent conversation. Chat remains available when a request benefits from discussion.</p>
+        <p>Priority weights make the allocation of attention explicit, including research, mentoring, teaching, funding, administration, and service. Progress and XP provide personal feedback on recorded completions. They do not measure scientific quality.</p>
       </div>
     </details>
 
     <details class="layer">
-      <summary><span class="layer-summary-text"><span class="sum-kicker">Coordination</span><span class="sum-head">A chief of staff and three specialist roles</span><span class="sum-trail">One owner per responsibility, with the PI setting direction.</span></span></summary>
+      <summary><span class="layer-summary-text"><span class="sum-kicker">Continuity</span><span class="sum-head">Context that survives a conversation</span><span class="sum-trail">Project status, next actions, meetings, and evidence stay connected.</span></span></summary>
       <div class="layer-body">
-        <p>The chief of staff reports to the PI and coordinates three direct reports: research, student support, and grants and administration. The roles organize background work and bring decisions back to the PI.</p>
-        <p>Shared project memory lets each role use the same recorded context. Tasks carry an owner, next action, and state. Completion records preserve what was done and the evidence attached to it.</p>
+        <p>Each project's context file begins with its recorded status. Updating that status in the monitor replaces the first status line while preserving the remaining context. Tasks retain an owner and state; completion records preserve the result and its evidence.</p>
+        <p>Missing or uncertain information should remain visible until the underlying record is updated. An old email, a missing update, or a successful job run alone does not establish that a project has progressed.</p>
       </div>
     </details>
 
     <details class="layer">
-      <summary><span class="layer-summary-text"><span class="sum-kicker">Continuity</span><span class="sum-head">Keep the record current</span><span class="sum-trail">Project status, next actions, meetings, and follow-through survive a conversation.</span></span></summary>
+      <summary><span class="layer-summary-text"><span class="sum-kicker">Implementation</span><span class="sum-head">Private records and recoverable changes</span><span class="sum-trail">Shared local state, backups, and a separate public website.</span></span></summary>
       <div class="layer-body">
-        <p>Each project's context file begins with its recorded status. A status update in the monitor replaces that line, preserving the rest of the context. Task assignments and student meeting records keep commitments visible across sessions.</p>
-        <p>Information can be stale, missing, or uncertain. Those states should remain visible until the underlying record is updated. The system should not turn an old email or an absent update into a confident claim about a project's progress.</p>
+        <p>The monitor and background jobs share the existing local runtime and private database. The active database and mutable runtime memory stay outside Drive synchronization. Backups and installation checks provide a recovery path for changes.</p>
+        <p>The monitor and its database are not mirrored here. This public website is for selected, reviewed research material and teaching resources. Published project summaries are separate snapshots; they should not be used as the live operational record.</p>
+        <p>The earlier Tealc articles document the system's development. Tealc is now the operations role within Lab OS; older repository names and implementation details remain part of that history.</p>
+        <div class="layer-links"><a href="tealc-build.html">Implementation history &rarr;</a><a href="tealc-prompt-design.html">Prompt-design history &rarr;</a><a href="https://github.com/coleoguy/tealc" target="_blank" rel="noopener">Earlier source repository &rarr;</a></div>
       </div>
     </details>
 
     <details class="layer">
-      <summary><span class="layer-summary-text"><span class="sum-kicker">Background work</span><span class="sum-head">Preparation that returns to a reviewable record</span><span class="sum-trail">Scheduled work supports the monitor instead of competing for attention.</span></span></summary>
+      <summary><span class="layer-summary-text"><span class="sum-kicker">Current limits</span><span class="sum-head">Useful follow-through is the test</span><span class="sum-trail">A working organization, with delivery improvements still in progress.</span></span></summary>
       <div class="layer-body">
-        <p>Background jobs prepare daily plans, student agendas, and candidate next actions. Research and writing tools can prepare material for review. A useful output has a source, an owner, and a place in the working record.</p>
-        <p>Tealc remains the execution framework. Chat is available for requests that benefit from a conversation; the status monitor is the PI's main place to find and manage the work.</p>
-      </div>
-    </details>
-
-    <details class="layer">
-      <summary><span class="layer-summary-text"><span class="sum-kicker">Implementation</span><span class="sum-head">Private records and a recoverable local installation</span><span class="sum-trail">Local mutable state, backups, and explicit boundaries around public material.</span></span></summary>
-      <div class="layer-body">
-        <p>The private monitor and background jobs share local records. The active database and mutable runtime memory are kept outside Drive synchronization. Backups provide a recovery path, and code changes are checked against the installation before being applied.</p>
-        <p>The public lab website serves research, teaching resources, and material approved for publication. It does not mirror the PI workspace. The earlier Tealc articles below document how the execution framework developed; their dated implementation details should be checked against maintained deployment instructions.</p>
-        <div class="layer-links"><a href="tealc-build.html">Tealc implementation history &rarr;</a><a href="tealc-prompt-design.html">Prompt-design history &rarr;</a><a href="https://github.com/coleoguy/tealc" target="_blank" rel="noopener">Tealc source &rarr;</a></div>
-      </div>
-    </details>
-
-    <details class="layer">
-      <summary><span class="layer-summary-text"><span class="sum-kicker">Evaluation</span><span class="sum-head">Does it improve follow-through?</span><span class="sum-trail">Useful completions and reliable records matter more than job counts.</span></span></summary>
-      <div class="layer-body">
-        <p>We are evaluating whether this arrangement makes commitments easier to track, reduces repeated context gathering, and helps the PI notice work awaiting a decision. Research drafts still need scientific judgment. More automation, more tokens, or a higher XP total cannot establish that a result is correct.</p>
-        <p>The design will change as we learn where people lose their place, where records become stale, and which background outputs are useful enough to keep.</p>
+        <p>The four-role organization is installed. Reliable delivery of important papers into the PI briefing is still being improved. Teaching support is on demand, without a dedicated teaching schedule. Consolidation of overlapping external schedules is not yet complete.</p>
+        <p>We are evaluating whether the system reduces repeated context gathering, makes commitments easier to track, and helps the PI notice work awaiting a decision. Drafts and analyses still require scientific review. More jobs or a higher XP total cannot establish that a result is correct.</p>
       </div>
     </details>
 

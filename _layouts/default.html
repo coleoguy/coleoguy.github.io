@@ -24,13 +24,19 @@
 
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_id }}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.ga_id }}');</script>
+<noscript><style>
+.chrome { display: none; }
+.tree li > ul { display: block; }
+.tree li > .tree-toggle::before { content: ''; }
+@media (max-width: 900px) { .sidebar { display: block; position: static; max-height: none; border-right: 0; border-bottom: 1px solid var(--rule); } }
+</style></noscript>
 {{ page.extra_head }}
 </head>
 
 <body{% if page.url contains '/knowledge/' %} class="wiki"{% endif %}>
 
 <div class="chrome">
-  <button class="shortcut-hint" onclick="openPalette()">Jump <kbd>⌘K</kbd></button>
+  <button class="shortcut-hint" onclick="openPalette()" aria-label="Search site pages">Search <kbd>⌘K</kbd></button>
   <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">☾</button>
 </div>
 

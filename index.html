@@ -27,6 +27,67 @@ extra_head: |
       margin-top: 8px;
       letter-spacing: 0.03em;
     }
+    .home-hero { margin: 18px 0 32px; }
+    .hero-mark { margin: 0 0 24px; }
+    .hero-mark-img { max-width: 260px; }
+    .home-eyebrow { font: 11px var(--font-mono); letter-spacing: .09em; text-transform: uppercase; color: var(--accent); margin-bottom: 13px; }
+    .home-hero .title { max-width: 19ch; font-size: clamp(2.1rem, 4.6vw, 3.5rem); line-height: 1.08; letter-spacing: -.035em; margin: 0 0 20px; }
+    .home-hero .lede { max-width: 58ch; font-size: 18px; line-height: 1.65; margin: 0; }
+    .home-routes { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 28px; margin: 26px 0 38px; border-top: 1px solid var(--rule-strong); }
+    .home-route { display: block; position: relative; padding: 19px 26px 20px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
+    .home-route strong { display: block; font-weight: 600; font-size: 23px; margin-bottom: 5px; }
+    .home-route span { display: block; color: var(--ink-dim); font-size: 14px; line-height: 1.5; }
+    .home-route::after { content: '↗'; position: absolute; right: 1px; top: 20px; color: var(--accent); font-size: 22px; }
+    .home-route:hover strong { color: var(--accent); }
+    .home-route:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+    .home-feature { padding: 25px 28px; background: var(--paper-sunk); border-left: 3px solid var(--accent); margin: 28px 0 38px; }
+    .home-feature h2 { border: 0; padding: 0; margin: 0 0 13px; font-size: 25px; line-height: 1.25; }
+    .home-feature p { color: var(--ink-dim); }
+    .home-feature .home-eyebrow { color: var(--accent); margin-bottom: 12px; }
+    .home-feature-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 18px; font-size: 14px; }
+    .home-section { border-top: 1px solid var(--rule-strong); margin: 0; }
+    .home-section:last-of-type { border-bottom: 1px solid var(--rule-strong); }
+    .home-section > summary { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; padding: 22px 0; cursor: pointer; list-style: none; }
+    .home-section > summary::-webkit-details-marker { display: none; }
+    .home-section > summary::after { content: '+'; grid-column: 2; grid-row: 1 / span 2; align-self: center; font: 22px var(--font-mono); color: var(--accent); }
+    .home-section[open] > summary::after { content: '−'; }
+    .home-section > summary strong { font-size: 23px; font-weight: 600; line-height: 1.3; }
+    .home-section > summary span { color: var(--ink-dim); font-size: 15px; line-height: 1.5; }
+    .home-section > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .home-section-body { padding: 0 0 24px; }
+    .home-section-body > p { margin-bottom: 17px; }
+    .home-section .layer:last-child { margin-bottom: 0; }
+    .home-people { margin: 36px 0; }
+    .home-people h2 { border: none; margin: 0 0 12px; padding: 0; font-size: 25px; }
+    .home-people p { color: var(--ink-dim); max-width: 62ch; }
+    .home-assistant { margin: 32px 0; }
+    .home-assistant > summary { cursor: pointer; color: var(--accent); padding: 9px 0; }
+    .home-assistant .ask-bar { margin-top: 12px; }
+    .home-hero { display: grid; grid-template-columns: minmax(0,1fr) 160px; gap: 0 24px; margin-bottom: 22px; }
+    .home-hero .hero-mark { grid-column: 2; grid-row: 1 / span 2; margin: 0; align-self: center; }
+    .home-hero .hero-mark-img { max-width: 160px; }
+    .home-hero figcaption { font-size: 9px; line-height: 1.45; }
+    .home-hero .home-eyebrow { grid-column: 1; align-self: end; }
+    .home-hero .title { grid-column: 1; font-size: clamp(2rem,3.3vw,2.7rem); margin-bottom: 0; }
+    .home-hero .lede { grid-column: 1 / -1; padding-top: 22px; font-size: 17px; line-height: 1.55; }
+    @media (max-width: 650px) {
+      .home-hero { grid-template-columns: minmax(0,1fr) 110px; gap: 0 18px; }
+      .home-hero .hero-mark { grid-row: 1; }
+      .home-hero .hero-mark-img { max-width: 110px; }
+      .home-hero .home-eyebrow { align-self: center; line-height: 1.7; }
+      .home-hero .title { grid-column: 1 / -1; margin-top: 22px; }
+    }
+    @media (max-width: 520px) {
+      .hero-mark-img { max-width: 225px; }
+      .home-routes { gap: 0 18px; }
+      .home-route { padding-right: 20px; }
+      .home-route strong { font-size: 20px; }
+      .home-route span { font-size: 13px; }
+      .home-feature { padding: 21px 19px; }
+      .home-feature h2 { font-size: 22px; }
+      .home-section > summary { gap: 7px 16px; }
+      .home-section > summary strong { font-size: 21px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -51,65 +112,45 @@ extra_head: |
 
 
 <!-- user-start -->
-    <div class="crumb"><a href="index.html">Blackmon Lab</a> · <a href="https://www.tamu.edu/" target="_blank" rel="noopener">Texas A&amp;M</a> · <a href="https://artsci.tamu.edu/biology/index.html" target="_blank" rel="noopener">Department of Biology</a> · Est. 2017</div>
+    <div class="crumb"><a href="https://www.tamu.edu/">Texas A&amp;M University</a> · <a href="https://artsci.tamu.edu/biology/index.html">Department of Biology</a></div>
 
-    <figure class="hero-mark" aria-label="Blackmon Lab logo">
-      <img src="assets/img/blackmon_logo.png" alt="Blackmon Lab logo with beetle illustration" class="hero-mark-img light-only">
-      <img src="assets/img/blackmon_black.png" alt="Blackmon Lab logo with beetle illustration" class="hero-mark-img dark-only">
-      <figcaption>Beetle artwork by Meghann McConnell.</figcaption>
-    </figure>
+    <header class="home-hero">
+      <figure class="hero-mark" aria-label="Blackmon Lab logo">
+        <img src="assets/img/blackmon_logo.png" alt="Blackmon Lab logo with beetle illustration" class="hero-mark-img light-only">
+        <img src="assets/img/blackmon_black.png" alt="Blackmon Lab logo with beetle illustration" class="hero-mark-img dark-only">
+        <figcaption>Beetle artwork by Meghann McConnell.</figcaption>
+      </figure>
+      <p class="home-eyebrow">Evolution · Genomes · Biodiversity</p>
+      <h1 class="title">How does evolution shape the genome?</h1>
+      <p class="lede">We study chromosomes, genetic interactions, and adaptation across the tree of life. At Texas A&amp;M, we bring comparative data, evolutionary theory, and hands-on student research together to understand biological diversity.</p>
+    </header>
 
-    <h1 class="title">Evolution studied broadly. AI in service of biology.</h1>
+    <nav class="home-routes" aria-label="Explore the lab">
+      <a class="home-route" href="research.html"><strong>Research</strong><span>Questions, discoveries, and publications.</span></a>
+      <a class="home-route" href="team.html"><strong>People</strong><span>Meet our researchers, students, and alumni.</span></a>
+      <a class="home-route" href="#teaching"><strong>Teaching</strong><span>Courses, research experiences, and guides.</span></a>
+      <a class="home-route" href="resources.html"><strong>Data &amp; tools</strong><span>Explore datasets and analytical software.</span></a>
+    </nav>
 
-    <p class="lede">
-      We are a biology lab at Texas A&amp;M. We study how evolution works across the tree of life: genome structure, sex chromosomes, karyotypes, morphology, behavior, adaptation. Underneath that is a layer of AI agents we've built to pull and organize data from the literature at comparative scale, and a deliberate effort to put undergraduates on real research problems from their first semester.
-    </p>
-
-    <div class="stats-row">
-      <div class="stat">
-        <div class="stat-num" id="stat-pubs">65+</div>
-        <span class="stat-label">Peer-reviewed papers</span>
+    <section class="home-feature" aria-labelledby="featured-research">
+      <p class="home-eyebrow">Research spotlight · April 2026 preprint</p>
+      <h2 id="featured-research">Rethinking chromosomal stasis</h2>
+      <p>A comparative study of 63,682 karyotypes across 55 eukaryotic clades asks why chromosome numbers change rapidly in some lineages and remain stable in others.</p>
+      <div class="home-feature-links">
+        <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank" rel="noopener">Read the preprint &rarr;</a>
+        <a href="cures-karyotype-database.html">Explore the data &rarr;</a>
       </div>
-      <div class="stat">
-        <div class="stat-num">63,682</div>
-        <span class="stat-label">Karyotypes in CUREs DB</span>
-      </div>
-      <div class="stat">
-        <div class="stat-num">58</div>
-        <span class="stat-label">Undergrads trained in Biol &amp; AI CUREs</span>
-      </div>
-      <div class="stat">
-        <div class="stat-num">6</div>
-        <span class="stat-label">Open databases</span>
-      </div>
-      <div class="stat">
-        <div class="stat-num">3</div>
-        <span class="stat-label">Genomes published, 8 in progress</span>
-      </div>
-    </div>
+    </section>
 
-    <div class="agent-box" id="agent-box">
-      <span class="agent-line"><span class="agent-tag">TraitTrawler</span>v6.2: 11 specialist subagents, 24 deterministic Python gates, Chain-of-Verification critic, code-execution triage prefilter</span>
-      <span class="agent-line"><span class="agent-tag">Fall 2025 CURE</span>Dataset compiled and submitted as preprint to bioRxiv (Copeland et al. 2026)</span>
-      <span class="agent-line"><span class="agent-tag">Spring 2026 CURE</span>33 posters presented April 23rd</span>
-      <span class="agent-line"><span class="agent-tag">Lab OS</span><a href="lead-investigator.html">A private PI status workspace</a>, supported by coordinated background agents and shared project memory</span>
-      <span class="agent-line"><span class="agent-tag">llms.txt</span>166KB machine-readable site snapshot for agents</span>
-    </div>
+    <section class="home-people" aria-labelledby="people-heading">
+      <h2 id="people-heading">A lab built around people and questions</h2>
+      <p>Led by Heath Blackmon, our team brings graduate students, undergraduate researchers, and research staff into evolutionary biology. Students work on original questions through both lab projects and course-based research.</p>
+      <div class="home-feature-links"><a href="team.html">Meet the team &rarr;</a><a href="join.html">Working with us &rarr;</a></div>
+    </section>
 
-    <div class="ask-bar">
-      <label for="ask-input" class="ask-label">Quick question about the lab</label>
-      <form class="ask-form" id="ask-form" onsubmit="return askTheLab(event);">
-        <input type="text" id="ask-input" placeholder="How do I join the lab?" autocomplete="off">
-        <button type="submit" id="ask-submit" aria-label="Send">&rarr;</button>
-      </form>
-      <div id="ask-answer" class="ask-answer"></div>
-      <p class="ask-note">To explore the lab's publications in depth: <a href="https://notebooklm.google.com/notebook/6a3182b5-d5fe-471e-8513-a68c672d8f28" target="blackmon-notebooklm" rel="noopener">Dig into the lab's research →</a></p>
-    </div>
-
-    <!-- ── What we work on ────────────────────────────── -->
-    <h2>What we work on</h2>
-    <p>Five overlapping programs. The through-line is asking quantitative questions across the tree of life that the traditional, single-lab, single-trait approach can't handle.</p>
-
+    <details class="home-section" id="research-themes">
+      <summary><strong>Explore our research</strong><span>Chromosomes, sex determination, adaptation, and genetic interactions.</span></summary>
+      <div class="home-section-body">
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
@@ -123,7 +164,7 @@ extra_head: |
         <div class="layer-links">
           <a href="karyotype.html">Full program &rarr;</a>
           <a href="cures-karyotype-database.html">CUREs database &rarr;</a>
-          <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank">2026 preprint &rarr;</a>
+          <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank" rel="noopener">2026 preprint &rarr;</a>
         </div>
       </div>
     </details>
@@ -172,7 +213,7 @@ extra_head: |
         </span>
       </summary>
       <div class="layer-body">
-        <p>We re-analyzed over 1,600 line-cross datasets spanning plants and animals using an information-theoretic framework (SAGA) we built for this kind of work. Epistasis was detected in the majority of crosses. That settles a decades-old Fisher-vs-Wright debate empirically, and it reshapes how we think about the response to selection.</p>
+        <p>We re-analyzed over 1,600 line-cross datasets spanning plants and animals using an information-theoretic framework (SAGA) we built for this kind of work. Epistasis was detected in the majority of crosses. These results inform the long-running debate about the role of genetic interactions in the response to selection.</p>
         <div class="layer-links">
           <a href="epistasis-line-cross.html">Full guide &rarr;</a>
           <a href="epistasis-database.html">Epistasis database &rarr;</a>
@@ -198,68 +239,20 @@ extra_head: |
       </div>
     </details>
 
-    <!-- ── How we work with AI ────────────────────────── -->
-    <h2>How we work with AI</h2>
-    <p>Three projects running right now, plus a deliberate choice about how we publish everything else.</p>
-
-    <details class="layer">
-      <summary>
-        <span class="layer-summary-text">
-          <span class="sum-kicker">TraitTrawler</span>
-          <span class="sum-head">A literature-mining agent pointed at any trait, any clade</span>
-          <span class="sum-trail">Search four sources, 12-source PDF cascade, double-entry verification before a row gets written.</span>
-        </span>
-      </summary>
-      <div class="layer-body">
-        <p>A general-purpose pipeline for building trait datasets from the primary literature. Starts from a keyword search across PubMed, OpenAlex, bioRxiv, and Crossref. Retrieves full-text PDFs through a 12-source cascade. Extracts structured trait data with mandatory double-entry verification (two independent extractions must agree). Writes to CSV only when validated. Generalizes from version one, which was built only to collect karyotype data, to any trait at any phylogenetic scale.</p>
-        <div class="layer-links">
-          <a href="https://github.com/coleoguy/TraitTrawler" target="_blank">TraitTrawler on GitHub &rarr;</a>
-        </div>
       </div>
     </details>
 
-    <details class="layer">
-      <summary>
-        <span class="layer-summary-text">
-          <span class="sum-kicker">Lab OS</span>
-          <span class="sum-head">One place to review the work</span>
-          <span class="sum-trail">A private status workspace for projects, people, commitments, and PI decisions.</span>
-        </span>
-      </summary>
-      <div class="layer-body">
-        <p>The PI works from a status monitor that brings project updates, student meetings, and work awaiting a decision into one place. Coordinated background agents prepare information for that review, using shared project memory and explicit task ownership. Tealc supplies the execution framework behind the monitor.</p>
-        <div class="layer-links">
-          <a href="lead-investigator.html">How we organize the lab &rarr;</a>
-        </div>
+    <details class="home-section" id="publications-news">
+      <summary><strong>Publications &amp; lab news</strong><span>Recent work, with links to the papers and their data.</span></summary>
+      <div class="home-section-body">
+        <div id="recent-pubs"></div>
+        <div class="home-feature-links"><a href="publications.html">All publications &rarr;</a><a href="news.html">Lab news &rarr;</a></div>
       </div>
     </details>
 
-    <details class="layer">
-      <summary>
-        <span class="layer-summary-text">
-          <span class="sum-kicker">Agent-readable lab</span>
-          <span class="sum-head">Everything we publish is meant to be readable by other researchers' agents</span>
-          <span class="sum-trail">llms.txt, llms-full.txt, JSON exports for every database, JSON-LD on every page, an open /data directory.</span>
-        </span>
-      </summary>
-      <div class="layer-body">
-        <p>If AI tools can read our work, they can use it to help other researchers. So we publish everything in formats agents can consume: <code>llms.txt</code> and a longer <code>llms-full.txt</code> as a single-file snapshot of the whole site; JSON exports of every database; structured JSON-LD on every page; and an open <code>data/</code> directory. It is a small amount of extra effort per page and it costs nothing to readers who do not care.</p>
-        <div class="layer-links">
-          <a href="llms.txt" target="_blank">llms.txt &rarr;</a>
-          <a href="llms-full.txt" target="_blank">llms-full.txt &rarr;</a>
-          <a href="data/" target="_blank">Raw exports &rarr;</a>
-        </div>
-      </div>
-    </details>
-
-    <blockquote class="pullquote">
-      Useful AI in biology isn't a black box that answers your question. It's an agent that reads the same papers you do, does the grunt work you shouldn't have to, and leaves a trail you can audit.
-    </blockquote>
-
-    <!-- ── Teaching ──────────────────────────────────── -->
-    <h2>How we teach</h2>
-    <p>Undergraduates run real projects here. They are named authors on the papers. A large share of our students publish before they graduate.</p>
-
+    <details class="home-section" id="teaching">
+      <summary><strong>Learning through research</strong><span>Undergraduate research, Biology &amp; AI, and open teaching materials.</span></summary>
+      <div class="home-section-body">
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
@@ -269,7 +262,7 @@ extra_head: |
         </span>
       </summary>
       <div class="layer-body">
-        <p>A course-based undergraduate research experience where each student picks a clade, extracts data with agents, runs comparative analyses, and writes up their results. The spring 2026 cohort wrapped up this spring and several of their projects are tracking toward publication.</p>
+        <p>A course-based undergraduate research experience where each student picks a clade, extracts data with agents, runs comparative analyses, and writes up their results. The spring 2026 cohort presented its research in April; the course page documents student projects.</p>
         <div class="layer-links">
           <a href="biolai-cure.html">Meet the cohort &rarr;</a>
         </div>
@@ -287,7 +280,7 @@ extra_head: |
       <div class="layer-body">
         <p>A concentration we built with Texas A&amp;M Biology to give students a formal credential alongside their degree. Required courses cover AI fundamentals, computational biology, data literacy, and critical evaluation of model outputs. Designed so it ages well as the tools change.</p>
         <div class="layer-links">
-          <a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank">View concentration &rarr;</a>
+          <a href="https://artsci.tamu.edu/biology/academics/undergraduate/concentration-ai-in-biology.html" target="_blank" rel="noopener">View concentration &rarr;</a>
         </div>
       </div>
     </details>
@@ -297,7 +290,7 @@ extra_head: |
         <span class="layer-summary-text">
           <span class="sum-kicker">Open teaching materials</span>
           <span class="sum-head">Guides for grad students, prompting, experimental design, phylogenetics</span>
-          <span class="sum-trail">Everything we use internally is online.</span>
+          <span class="sum-trail">Guides, readings, and reusable course materials.</span>
         </span>
       </summary>
       <div class="layer-body">
@@ -310,49 +303,25 @@ extra_head: |
       </div>
     </details>
 
-    <!-- ── Latest ────────────────────────────────────── -->
-    <h2>Latest from the lab</h2>
-
-    <details class="layer">
-      <summary>
-        <span class="layer-summary-text">
-          <span class="sum-kicker">April 2026 · bioRxiv preprint</span>
-          <span class="sum-head">Dismantling chromosomal stasis across the eukaryotic tree of life</span>
-          <span class="sum-trail">Copeland, McConnell, Barboza et al.</span>
-        </span>
-      </summary>
-      <div class="layer-body">
-        <p>63,682 karyotypes, 55 eukaryotic clades. Dysploidy rates vary by a factor of 844. Birds, long treated as the textbook example of chromosomal stasis, exceed the global median once microchromosome dynamics are accounted for. Chromosomal stasis tracks life history, not taxonomic group.</p>
-        <div class="layer-links">
-          <a href="https://www.biorxiv.org/content/10.64898/2026.04.14.718287v1" target="_blank">Read on bioRxiv &rarr;</a>
-          <a href="cures-karyotype-database.html">Explore the data &rarr;</a>
-        </div>
       </div>
     </details>
 
-    <div id="recent-pubs"></div>
-
-    <p style="margin-top: 18px; font-family: var(--font-mono); font-size: 13px;">
-      <a href="publications.html">All publications &rarr;</a> &nbsp;·&nbsp;
-      <a href="news.html">All lab news &rarr;</a>
-    </p>
-
-    <!-- ── People ─────────────────────────────────────── -->
-    <h2>Who we are</h2>
-
+    <details class="home-section" id="ai-research">
+      <summary><strong>AI in service of biology</strong><span>Tools for literature mining, reproducible data, and organizing lab work.</span></summary>
+      <div class="home-section-body">
+        <p>We build AI-assisted tools around scientific questions, with explicit checks and records that researchers can inspect.</p>
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">Principal investigator</span>
-          <span class="sum-head">Heath Blackmon, Associate Professor of Biology</span>
-          <span class="sum-trail">Associate Department Head for Graduate Studies. PhD with Jeff Demuth (UTA, 2015). Postdoc with Emma Goldberg and Yaniv Brandvain (Minnesota).</span>
+          <span class="sum-kicker">TraitTrawler</span>
+          <span class="sum-head">A literature-mining agent pointed at any trait, any clade</span>
+          <span class="sum-trail">Search four sources, 12-source PDF cascade, double-entry verification before a row gets written.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>I opened the lab in 2017. My background is in theoretical population genetics and cytogenetics, and most of my field time is spent chasing scarab beetles. I also chair the TAMU EEB interdisciplinary doctoral program.</p>
+        <p>A general-purpose pipeline for building trait datasets from the primary literature. Starts from a keyword search across PubMed, OpenAlex, bioRxiv, and Crossref. Retrieves full-text PDFs through a 12-source cascade. Extracts structured trait data with mandatory double-entry verification (two independent extractions must agree). Writes to CSV only when validated. Generalizes from version one, which was built only to collect karyotype data, to any trait at any phylogenetic scale.</p>
         <div class="layer-links">
-          <a href="blackmon-cv.pdf" target="_blank">CV &rarr;</a>
-          <a href="https://scholar.google.com/citations?user=ytApUl0AAAAJ" target="_blank">Google Scholar &rarr;</a>
+          <a href="https://github.com/coleoguy/TraitTrawler" target="_blank" rel="noopener">TraitTrawler on GitHub &rarr;</a>
         </div>
       </div>
     </details>
@@ -360,22 +329,43 @@ extra_head: |
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
-          <span class="sum-kicker">The team</span>
-          <span class="sum-head">14 current members, more than half undergraduates</span>
-          <span class="sum-trail">1 PI, 4 PhD students, 1 research staff, 8 undergraduate researchers.</span>
+          <span class="sum-kicker">Lab OS</span>
+          <span class="sum-head">One place to review the work</span>
+          <span class="sum-trail">A private status workspace for projects, people, commitments, and PI decisions.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Nobody in this lab is working on a warmed-over PI-assigned project. Students (including first-year undergraduates) are put on questions where their contribution is real and authorable. The alumni list is long now, and it's the thing I'm most proud of.</p>
+        <p>The PI works from a status monitor that brings project updates, student meetings, and work awaiting a decision into one place. Coordinated background agents prepare information for that review, using shared project memory and explicit task ownership. One local runtime supports four roles: Jack coordinates priorities and reports to the PI; Sam handles research and funding substance; Daniel supports mentoring and teaching; and Tealc handles operations. Sam, Daniel, and Tealc report to Jack. The system is still being developed, including how it selects and delivers relevant papers.</p>
         <div class="layer-links">
-          <a href="team.html">Full team &rarr;</a>
+          <a href="lead-investigator.html">How we organize the lab &rarr;</a>
         </div>
       </div>
     </details>
 
-    <!-- ── Working with us ────────────────────────────── -->
-    <h2>Working with us</h2>
+    <details class="layer">
+      <summary>
+        <span class="layer-summary-text">
+          <span class="sum-kicker">Agent-readable lab</span>
+          <span class="sum-head">Open formats for people and research tools</span>
+          <span class="sum-trail">llms.txt, llms-full.txt, JSON exports for every database, JSON-LD on every page, an open /data directory.</span>
+        </span>
+      </summary>
+      <div class="layer-body">
+        <p>If AI tools can read our work, they can use it to help other researchers. So we publish everything in formats agents can consume: <code>llms.txt</code> and a longer <code>llms-full.txt</code> as a single-file snapshot of the whole site; JSON exports of every database; structured JSON-LD on every page; and an open <code>data/</code> directory. It is a small amount of extra effort per page and it costs nothing to readers who do not care.</p>
+        <div class="layer-links">
+          <a href="llms.txt" target="_blank" rel="noopener">llms.txt &rarr;</a>
+          <a href="llms-full.txt" target="_blank" rel="noopener">llms-full.txt &rarr;</a>
+          <a href="data/" target="_blank" rel="noopener">Raw exports &rarr;</a>
+        </div>
+      </div>
+    </details>
 
+      </div>
+    </details>
+
+    <details class="home-section" id="working-with-us">
+      <summary><strong>Working with us</strong><span>Information for prospective students, collaborators, and data users.</span></summary>
+      <div class="home-section-body">
     <details class="layer">
       <summary>
         <span class="layer-summary-text">
@@ -401,7 +391,7 @@ extra_head: |
         </span>
       </summary>
       <div class="layer-body">
-        <p>Enroll in the CURE for a course-based way to join, or email directly with a short pitch for a project you'd like to work on. We accept undergraduates every semester. Lab member expectations (10 hrs/week, lab-meeting participation, taking ownership of projects) apply from day one.</p>
+        <p>Enroll in the CURE for a course-based way to join, or email directly with a short pitch for a project you'd like to work on. Contact us about current opportunities. Lab member expectations (10 hrs/week, lab-meeting participation, taking ownership of projects) apply from day one.</p>
         <div class="layer-links">
           <a href="biolai-cure.html">Biology &amp; AI CURE &rarr;</a>
           <a href="join.html">Lab expectations &rarr;</a>
@@ -413,17 +403,34 @@ extra_head: |
       <summary>
         <span class="layer-summary-text">
           <span class="sum-kicker">Collaborators and data users</span>
-          <span class="sum-head">The data are yours. The code is yours. Cite us and go.</span>
+          <span class="sum-head">Find datasets, code, and opportunities to collaborate</span>
           <span class="sum-trail">If you want TraitTrawler pointed at your clade, let's talk.</span>
         </span>
       </summary>
       <div class="layer-body">
-        <p>Every dataset the lab produces is machine-readable and licensed for reuse. If you want to collaborate on a project that uses one of these agents (especially TraitTrawler on a new clade or trait) we are actively looking for partners. Email is the fastest path.</p>
+        <p>Our data pages provide machine-readable datasets and information about their sources and reuse. If you want to collaborate on a project that uses one of these agents (especially TraitTrawler on a new clade or trait) we are actively looking for partners. Email is the fastest path.</p>
         <div class="layer-links">
           <a href="mailto:blackmon@tamu.edu">Email Heath &rarr;</a>
-          <a href="data/" target="_blank">Raw data exports &rarr;</a>
+          <a href="data/" target="_blank" rel="noopener">Raw data exports &rarr;</a>
         </div>
       </div>
+    </details>
+
+      </div>
+    </details>
+
+    <details class="home-assistant">
+      <summary>Have a question about the lab?</summary>
+    <div class="ask-bar">
+      <label for="ask-input" class="ask-label">Quick question about the lab</label>
+      <form class="ask-form" id="ask-form" onsubmit="return askTheLab(event);">
+        <input type="text" id="ask-input" placeholder="How do I join the lab?" autocomplete="off">
+        <button type="submit" id="ask-submit" aria-label="Send">&rarr;</button>
+      </form>
+      <div id="ask-answer" class="ask-answer"></div>
+      <p class="ask-note">To explore the lab's publications in depth: <a href="https://notebooklm.google.com/notebook/6a3182b5-d5fe-471e-8513-a68c672d8f28" target="blackmon-notebooklm" rel="noopener">Dig into the lab's research →</a></p>
+    </div>
+
     </details>
 
     <footer class="colophon">
