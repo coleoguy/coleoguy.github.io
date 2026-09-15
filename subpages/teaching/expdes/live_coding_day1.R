@@ -369,39 +369,49 @@ plot(iris$Sepal.Width ~ iris$Petal.Length)
 hist(rexp(1000))
 plot(density(rexp(1000)))
 
-# =============================================================================
-# 9. CHALLENGE 1: YAHTZEE
-# =============================================================================
-# Goal: simulate the game well enough to answer questions with data instead of
-# intuition. Build it in pieces, test each piece, then assemble.
-#
-# Question: Whats the average number of hands you have to play to get a Yahtzee
-# rolling 5 sixes
-#
-# -----------------------------------------------------------------------------
-# STEP 1: roll five dice
-# -----------------------------------------------------------------------------
-#
-# -----------------------------------------------------------------------------
-# STEP 2: first roll
-# -----------------------------------------------------------------------------
-#
-#
-# -----------------------------------------------------------------------------
-# STEP 3: second roll
-# -----------------------------------------------------------------------------
-#
-#
-# -----------------------------------------------------------------------------
-# STEP 4: evaluate rolls
-# -----------------------------------------------------------------------------
-#
-# -----------------------------------------------------------------------------
-# STEP 5: estimate P(Yahtzee on a given turn) by simulation
-# -----------------------------------------------------------------------------
-# Loop many trials, store the result
-#
-# =============================================================================
-# 10. CLOSING
-# =============================================================================
-# help()
+# 9. Simulation
+
+# create a variable "rolls"
+rolls <- c()
+# for loop min 1000
+for(i in 1:1000000){
+  # roll 6 dice use sample
+  # sum dice and record the value
+  rolls[i] <- sum(sample(x=1:6, size=6, replace=T))
+}
+
+# histogram
+hist(rolls)
+
+sum(rolls >= 36)
+
+
+
+lake1 <- rexp(10000, rate=1)
+lake2 <- rexp(10000, rate=1.2)
+samp1 <- sample(x = lake1, size = 100)
+samp2 <- sample(x = lake2, size = 100)
+obs.stat <- mean(samp1) - mean(samp2)
+
+
+null.stat <- c()
+# a loop to repeat 1000 times
+for(i in 1:1000000){
+  # take two samples from combined lakes
+  # our stat (diff in means)
+  null.stat[i] <- mean(sample(c(lake1, lake2), size=100)) - 
+    mean(sample(c(lake1, lake2), size=100))
+}
+
+plot(density(null.stat))
+abline(v=obs.stat, col="red")
+pval <- sum(null.stat >= obs.stat)/length(null.stat)
+# compare our obs stat to null dist of the stat
+
+
+
+
+
+
+
+
