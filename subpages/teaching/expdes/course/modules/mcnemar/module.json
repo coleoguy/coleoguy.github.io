@@ -1,0 +1,85 @@
+{
+  "id": "mcnemar",
+  "title": "McNemar test",
+  "family": "Paired binary outcomes",
+  "biology": "Antibody detection before and after an exposure season",
+  "design": "The same 80 wild mice are sampled twice.",
+  "data_characteristics": [
+    "A binary response at two times",
+    "Each mouse supplies a matched pair",
+    "Discordant pairs determine evidence for a change"
+  ],
+  "other_examples": [
+    "Diagnostic results from two assays",
+    "Presence before and after treatment",
+    "Two yes/no preferences from each animal"
+  ],
+  "question": "Does the marginal probability of antibody detection change between visits?",
+  "null": "The probability of changing from negative to positive equals that of changing from positive to negative.",
+  "options": [
+    "Build a paired 2 \u00d7 2 table: before by after.",
+    "correct = FALSE uses the uncorrected approximation.",
+    "Use binom.test on discordant pairs for an exact version."
+  ],
+  "assumptions": [
+    "Pairs are independent across mice.",
+    "Measurements are correctly matched within mice.",
+    "The asymptotic test needs enough discordant pairs."
+  ],
+  "parametric": [
+    "Use a repeated-measures logistic model for predictors or more times.",
+    "Use GEE when a population-average effect is the target."
+  ],
+  "nonparametric": [
+    "Use the exact binomial test on discordant pairs when counts are small.",
+    "A two-proportion test would discard the pairing."
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "barplot",
+      "note": "Focus on the discordant pairs that drive the test."
+    },
+    {
+      "arg": "names.arg",
+      "note": "Describe the direction of change."
+    },
+    {
+      "arg": "text",
+      "note": "Label the observed transition counts."
+    },
+    {
+      "arg": "mtext",
+      "note": "Report the number of unchanged pairs."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(3107)\nd <- data.frame(mouse = 1:80, before = rbinom(80, 1, .45))\nd$after <- rbinom(80, 1, ifelse(d$before == 1, .85, .35))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(5, 5, 3, 1), las = 1)\ncounts <- c(\"Positive \u2192 negative\" = lost, \"Negative \u2192 positive\" = gained)\nbars <- barplot(counts, col = c(\"#b96735\", \"#126887\"), border = NA,\n                ylim = c(0, max(counts) * 1.25), ylab = \"Discordant mouse pairs\")\ntext(bars, counts, labels = counts, pos = 3, cex = 1.2)\nmtext(paste(sum(diag(tab)), \"mice unchanged; paired measurements stay together\"),\n      side = 3, cex = .9)",
+  "code_analysis": "tab <- table(factor(d$before, levels = 0:1),\n             factor(d$after, levels = 0:1))\nfit <- mcnemar.test(tab, correct = FALSE)\ngained <- tab[1, 2]\nlost <- tab[2, 1]\nexact <- binom.test(gained, gained + lost, p = .5)\nchange <- mean(d$after) - mean(d$before)",
+  "practice": "Which two cells would be exchanged if the visits were reversed, and would a two-sided p-value change?",
+  "seed": 3107,
+  "generating_model": "Generate 80 independent mice. Before status is Bernoulli(0.45). Conditional after positivity is 0.85 for a previously positive mouse and 0.35 for a previously negative mouse, producing correlated within-mouse measurements.",
+  "generating_truth": "Marginal after positivity is 0.45\u00d70.85 + 0.55\u00d70.35 = 0.575, a +0.125 change from before. Population gain and loss probabilities are 0.1925 and 0.0675, so the McNemar null is false.",
+  "columns": [
+    {
+      "name": "mouse",
+      "meaning": "Matched mouse identifier",
+      "unit": "none"
+    },
+    {
+      "name": "before",
+      "meaning": "Antibody detected at the first visit (1 = yes)",
+      "unit": "binary"
+    },
+    {
+      "name": "after",
+      "meaning": "Antibody detected at the second visit (1 = yes)",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "The information about a change is in discordant pairs. Keeping the mouse identity changes the appropriate test."
+}

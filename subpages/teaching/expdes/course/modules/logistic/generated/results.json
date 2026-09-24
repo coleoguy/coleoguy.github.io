@@ -1,0 +1,6 @@
+{
+  "preview": ["1 | 5.03366027772427 | 0", "2 | 4.56829151697457 | 0", "3 | 6.65665970183909 | 0", "4 | 5.46810280717909 | 0", "5 | 7.20037802867591 | 0"],
+  "summary": ["Divergence coefficient: -0.464", "Odds ratio per percentage point: 0.629", "95% Wald CI for odds ratio: 0.528 to 0.749", "Likelihood-ratio p = 6.573e-09"],
+  "report": "Each additional percentage point of divergence multiplied modeled viability odds by 0.63 (95% Wald CI 0.53–0.75; likelihood-ratio p = 6.57e-09). The curve translates odds into probabilities; this association alone does not establish causation.",
+  "full_output": "\nCall:\nglm(formula = viable ~ divergence, family = binomial, data = d)\n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)    \n(Intercept)  1.99600    0.41934   4.760 1.94e-06 ***\ndivergence  -0.46382    0.08915  -5.203 1.96e-07 ***\n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 221.78  on 159  degrees of freedom\nResidual deviance: 188.12  on 158  degrees of freedom\nAIC: 192.12\n\nNumber of Fisher Scoring iterations: 4\n"
+}

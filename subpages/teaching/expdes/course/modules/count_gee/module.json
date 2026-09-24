@@ -1,0 +1,97 @@
+{
+  "id": "count_gee",
+  "title": "Count and rate GEE",
+  "family": "Dependent observations",
+  "biology": "Microbial ecologists count bacterial colonies in repeated water samples from experimental pond mesocosms.",
+  "design": "Ninety independent mesocosms, 45 per temperature treatment, are sampled at weeks 0–3. Each sample has a known plated volume.",
+  "data_characteristics": [
+    "A count response with measured exposure",
+    "Repeated samples within independent mesocosms",
+    "A population-average mean-rate comparison"
+  ],
+  "other_examples": [
+    "Repeated parasite egg counts per gram of feces",
+    "Mutation counts per callable base across clustered samples",
+    "Repeated insect captures per trap-hour within sites"
+  ],
+  "question": "Does warming change the population-average colony rate after accounting for week and sampled volume?",
+  "null": "The warming coefficient is zero: population-average colony rates are equal at the same week and exposure.",
+  "options": [
+    "id identifies mesocosms; keep their rows together",
+    "offset(log(volume_ml)) converts a count model to a rate comparison",
+    "Choose corstr; std.err = \"san.se\" uses robust sandwich uncertainty"
+  ],
+  "assumptions": [
+    "Mesocosms are independent; repeated samples are dependent",
+    "The marginal log-mean model and exposure are appropriate",
+    "Robust inference needs enough independent mesocosms"
+  ],
+  "parametric": [
+    "Change the time trend or working correlation to fit the design",
+    "A count GLMM models rates conditional on a cluster random effect"
+  ],
+  "nonparametric": [
+    "A cluster bootstrap resamples whole mesocosms",
+    "Rank methods answer a different ordering question; they do not replace this adjusted mean-rate model"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "aes(group = mesocosm)",
+      "note": "Connect repeated samples from the same mesocosm"
+    },
+    {
+      "arg": "alpha / linewidth",
+      "note": "Keep individual trajectories faint behind group trends"
+    },
+    {
+      "arg": "data = observed",
+      "note": "Overlay observed group rates from total counts / total volume"
+    },
+    {
+      "arg": "scale_color_manual",
+      "note": "Use stable colors for ambient and warmed conditions"
+    }
+  ],
+  "packages": [
+    "geepack",
+    "ggplot2",
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(1401)\nmesocosm <- rep(1:90, each = 4)\nweek <- rep(0:3, 90)\ntreatment <- rep(rep(c(\"Ambient\", \"Warm\"), each = 45), each = 4)\nvolume_ml <- runif(360, .5, 1.5)\nshared_rate <- rgamma(90, shape = 2, rate = 2)\nmu <- volume_ml * exp(2.2 + .45 * (treatment == \"Warm\") + .1 * week)\ncolonies <- rpois(360, mu * shared_rate[mesocosm])\nd <- data.frame(mesocosm, week, treatment, volume_ml, colonies)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "observed <- aggregate(cbind(colonies, volume_ml) ~ treatment + week, d, sum)\nobserved$rate <- observed$colonies / observed$volume_ml\np <- ggplot(d, aes(week, colonies / volume_ml, color = treatment)) +\n  geom_line(aes(group = mesocosm), alpha = .12, linewidth = .5) +\n  geom_line(data = observed, aes(y = rate, group = treatment), linewidth = 1.4) +\n  geom_point(data = observed, aes(y = rate), size = 3.4) +\n  scale_color_manual(values = c(Ambient = \"#246A73\", Warm = \"#B7663E\")) +\n  scale_x_continuous(breaks = 0:3) +\n  labs(x = \"Week\", y = \"Colonies per mL\", color = \"Temperature\",\n       caption = \"Faint lines: mesocosms. Thick lines: observed group rates.\") +\n  theme_classic(base_size = 18) + theme(legend.position = \"top\")\nprint(p)",
+  "code_analysis": "d$treatment <- factor(d$treatment, levels = c(\"Ambient\", \"Warm\"))\nd <- d[order(d$mesocosm, d$week), ]\nfit <- geepack::geeglm(colonies ~ treatment + week + offset(log(volume_ml)),\n  id = mesocosm, data = d, family = poisson(link = \"log\"),\n  corstr = \"exchangeable\", std.err = \"san.se\")\nb <- coef(fit)[\"treatmentWarm\"]\nse <- sqrt(vcov(fit)[\"treatmentWarm\", \"treatmentWarm\"])\nrate_ratio <- exp(b)\nci <- exp(b + c(-1, 1) * 1.96 * se)\np_value <- 2 * pnorm(abs(b / se), lower.tail = FALSE)",
+  "practice": "If sampled volume differs among visits, why should the model include an exposure offset instead of comparing raw counts?",
+  "seed": 1401,
+  "generating_model": "Ninety independent mesocosms (45 Ambient, 45 Warm) are sampled at weeks 0, 1, 2, and 3. Each volume is Uniform(0.5, 1.5) mL. The marginal expected count is mu = volume × exp(2.2 + 0.45 × Warm + 0.1 × week). Each mesocosm has one independent Gamma(shape 2, rate 2) multiplier, with mean 1 and variance 0.5. Conditional counts are independent Poisson(mu × multiplier), so repeated observations share the multiplier. No rounding or censoring is added.",
+  "generating_truth": "The exact population-average Warm / Ambient rate ratio is exp(0.45), approximately 1.568; the equal-rate null is false. Each week multiplies the marginal rate by exp(0.1), approximately 1.105. Marginal count variance is mu + 0.5 × mu squared. The working exchangeable correlation is approximate, while the specified marginal mean is exact.",
+  "columns": [
+    {
+      "name": "mesocosm",
+      "meaning": "Independent experimental mesocosm and repeated-sample cluster",
+      "unit": "ID"
+    },
+    {
+      "name": "week",
+      "meaning": "Sampling time since experiment began",
+      "unit": "week"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Assigned ambient or warmed temperature",
+      "unit": "category"
+    },
+    {
+      "name": "volume_ml",
+      "meaning": "Sampled/plated water volume: the count exposure",
+      "unit": "mL"
+    },
+    {
+      "name": "colonies",
+      "meaning": "Observed colony count in the plated sample",
+      "unit": "count"
+    }
+  ],
+  "teaching_point": "GEE estimates a population-average rate ratio and uses mesocosms as independent units. The offset accounts for exposure; robust uncertainty accommodates the extra variation and repeated observations."
+}

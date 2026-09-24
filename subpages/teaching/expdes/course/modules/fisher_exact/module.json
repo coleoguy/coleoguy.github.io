@@ -1,0 +1,85 @@
+{
+  "id": "fisher_exact",
+  "title": "Fisher exact test",
+  "family": "Proportions and categories",
+  "biology": "Survival of rare resistant and susceptible clones",
+  "design": "Two small independent clone groups; binary survival after exposure.",
+  "data_characteristics": [
+    "Two categorical variables in a 2 \u00d7 2 table",
+    "Small counts, including possibly empty cells",
+    "The target is an association, expressed as an odds ratio"
+  ],
+  "other_examples": [
+    "Rare infection in two hosts",
+    "Mutation presence in two strains",
+    "Hatching in small captive crosses"
+  ],
+  "question": "Are survival odds associated with clone type?",
+  "null": "The population odds ratio for clone type and survival is 1.",
+  "options": [
+    "Check the row and column order before interpreting the odds ratio.",
+    "alternative = \"two.sided\" tests association in either direction.",
+    "The confidence interval is for the odds ratio."
+  ],
+  "assumptions": [
+    "Each clone contributes one independent observation.",
+    "Outcomes belong to exactly one table cell.",
+    "Use an appropriate paired analysis for matched clones."
+  ],
+  "parametric": [
+    "Logistic regression can add predictors; sparse-data methods may be needed.",
+    "More observations improve precision when the interval is wide."
+  ],
+  "nonparametric": [
+    "Fisher\u2019s test already provides exact conditional inference.",
+    "Use an exact paired test for discordant matched pairs."
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "beside = TRUE",
+      "note": "Show each group\u2019s two outcome counts."
+    },
+    {
+      "arg": "col",
+      "note": "Link outcome colors to the legend."
+    },
+    {
+      "arg": "text",
+      "note": "Put small counts directly on the bars."
+    },
+    {
+      "arg": "ylim",
+      "note": "Leave label space above the bars."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(3106)\nd <- data.frame(clone = 1:24,\n  type = rep(c(\"Susceptible\", \"Resistant\"), each = 12))\nd$survived <- rbinom(24, 1, rep(c(.20, .65), each = 12))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(4, 5, 2, 1), las = 1)\nbars <- barplot(t(tab), beside = TRUE, border = NA,\n  col = c(\"#d5d5d5\", \"#126887\"), ylim = c(0, max(tab) + 3),\n  names.arg = rownames(tab), ylab = \"Clones\")\ntext(bars, t(tab), labels = c(t(tab)), pos = 3)\nlegend(\"topright\", c(\"Died\", \"Survived\"),\n       fill = c(\"#d5d5d5\", \"#126887\"), bty = \"n\")",
+  "code_analysis": "tab <- table(factor(d$type, levels = c(\"Susceptible\", \"Resistant\")),\n             factor(d$survived, levels = c(0, 1)))\nfit <- fisher.test(tab, alternative = \"two.sided\")\nodds_ratio <- unname(fit$estimate)\nci <- fit$conf.int",
+  "practice": "Why is an odds ratio of 3 not the same as a threefold survival probability?",
+  "seed": 3106,
+  "generating_model": "Generate 12 independent susceptible clones with survival probability 0.20 and 12 independent resistant clones with probability 0.65. Each contributes one Bernoulli outcome; small table cells are intentional.",
+  "generating_truth": "The resistant-to-susceptible population survival odds ratio is (0.65/0.35)/(0.20/0.80), approximately 7.43. The odds-ratio-one null is false.",
+  "columns": [
+    {
+      "name": "clone",
+      "meaning": "Unique independent clone identifier",
+      "unit": "none"
+    },
+    {
+      "name": "type",
+      "meaning": "Susceptible or Resistant clone type",
+      "unit": "none"
+    },
+    {
+      "name": "survived",
+      "meaning": "1 = survived exposure; 0 = died",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "Exact inference handles sparse counts, but it cannot create the precision missing from a small sample."
+}

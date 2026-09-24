@@ -1,0 +1,80 @@
+{
+  "id": "shapiro",
+  "title": "Shapiro–Wilk and graphical checks",
+  "family": "Variance and diagnostics",
+  "biology": "Cell biologists examine the distribution of time to lysis among independent cultured cells.",
+  "design": "One lysis time for each independently treated culture; use a diagnostic to investigate shape.",
+  "data_characteristics": [
+    "One continuous variable",
+    "A distributional diagnostic, not the biological comparison",
+    "For models, examine residuals rather than pooled responses"
+  ],
+  "other_examples": [
+    "Approximate normality of paired differences",
+    "Shape of independent measurement errors",
+    "Distribution of a continuous trait within a group"
+  ],
+  "question": "Is a normal model a reasonable working description of these lysis times?",
+  "null": "The independent observations come from a normal distribution.",
+  "options": [
+    "shapiro.test accepts 3–5000 observations",
+    "Use a Q–Q plot alongside the test",
+    "Choose an analysis for the scientific target, not a p-value gate"
+  ],
+  "assumptions": [
+    "Observations are independent",
+    "A normal population is the reference",
+    "Diagnostic sensitivity changes with sample size"
+  ],
+  "parametric": [
+    "Model positive skew with log-normal or gamma errors",
+    "Consider a meaningful transformation and check its new interpretation"
+  ],
+  "nonparametric": [
+    "Ranks can address a different distributional question",
+    "Bootstrap uncertainty can retain the mean target"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "qqnorm",
+      "note": "Compare observed to normal quantiles"
+    },
+    {
+      "arg": "qqline",
+      "note": "Add a quartile-based reference line"
+    },
+    {
+      "arg": "pch / col",
+      "note": "Keep observations visually distinct"
+    },
+    {
+      "arg": "ylab",
+      "note": "Keep the response and units explicit"
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Would a nonsignificant Shapiro–Wilk result prove that these known log-normal data are normal?",
+  "code_simulate": "set.seed(1111)\nd <- data.frame(culture = 1:36,\n                lysis_minutes = rlnorm(36, log(45), .5))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "qqnorm(d$lysis_minutes, pch = 21, bg = \"#246A73\", col = \"white\",\n       main = \"\", xlab = \"Theoretical normal quantiles\", ylab = \"Lysis time (minutes)\")\nqqline(d$lysis_minutes, col = \"#B7663E\", lwd = 2)",
+  "code_analysis": "fit <- shapiro.test(d$lysis_minutes)",
+  "seed": 1111,
+  "generating_model": "36 independent lysis times follow a log-normal distribution with meanlog log(45) and log-scale SD 0.5.",
+  "generating_truth": "The population is log-normal and positively skewed, not normal. The population geometric mean is 45 minutes.",
+  "columns": [
+    {
+      "name": "culture",
+      "meaning": "Independent culture identifier",
+      "unit": "none"
+    },
+    {
+      "name": "lysis_minutes",
+      "meaning": "Time until lysis",
+      "unit": "minutes"
+    }
+  ],
+  "teaching_point": "A diagnostic explains how a working model misses the data; its p-value should not automatically select the scientific analysis."
+}

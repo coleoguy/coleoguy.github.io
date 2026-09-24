@@ -1,0 +1,85 @@
+{
+  "id": "poisson_exact",
+  "title": "Exact Poisson rate test",
+  "family": "Counts and exposure",
+  "biology": "De novo mutations in sequenced microbial lineages",
+  "design": "Independent lineages have different amounts of callable sequence.",
+  "data_characteristics": [
+    "Nonnegative mutation counts",
+    "Known exposure: callable megabases",
+    "Target: mutations per megabase, compared with a benchmark"
+  ],
+  "other_examples": [
+    "Colonies per milliliter",
+    "Rare events per observation hour",
+    "Parasites per surveyed area"
+  ],
+  "question": "Does the mutation rate differ from 0.25 mutations per callable megabase?",
+  "null": "The common mutation rate is 0.25 per callable megabase.",
+  "options": [
+    "x = total events; T = total exposure",
+    "r = the null rate in the same exposure units",
+    "alternative = \"two.sided\" compares either direction"
+  ],
+  "assumptions": [
+    "Events follow a Poisson process at a common rate.",
+    "Lineages contribute independent counts.",
+    "Exposure is measured correctly; extra heterogeneity can inflate variance."
+  ],
+  "parametric": [
+    "Use a Poisson GLM with log-exposure offset for predictors.",
+    "Use negative binomial or quasi-Poisson for extra variation."
+  ],
+  "nonparametric": [
+    "A lineage-level bootstrap can estimate rate uncertainty with many lineages.",
+    "A count rank test does not automatically compare rates when exposures differ."
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "abline(a = 0, b = rate)",
+      "note": "A rate becomes a count-versus-exposure slope."
+    },
+    {
+      "arg": "pch / col",
+      "note": "Use readable points with modest transparency."
+    },
+    {
+      "arg": "legend",
+      "note": "Distinguish the null and estimated rates."
+    },
+    {
+      "arg": "xlab",
+      "note": "Show exposure units explicitly."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(3109)\nd <- data.frame(lineage = 1:60, megabases = runif(60, 8, 20))\nd$mutations <- rpois(60, .40 * d$megabases)\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(5, 5, 2, 1), las = 1)\nplot(d$megabases, d$mutations, pch = 16, col = \"#126887AA\", bty = \"n\",\n     xlab = \"Callable sequence (megabases)\", ylab = \"Mutation count\",\n     xlim = c(0, max(d$megabases)), ylim = c(0, max(d$mutations) + 1))\nabline(a = 0, b = .25, lty = 2, col = \"#777777\", lwd = 2)\nabline(a = 0, b = rate, col = \"#126887\", lwd = 3)\nlegend(\"topleft\", c(\"Null rate = 0.25\", \"Estimated rate\"),\n       lty = c(2, 1), lwd = c(2, 3), col = c(\"#777777\", \"#126887\"), bty = \"n\")",
+  "code_analysis": "fit <- poisson.test(sum(d$mutations), T = sum(d$megabases),\n                    r = .25, alternative = \"two.sided\")\nrate <- sum(d$mutations) / sum(d$megabases)\nci <- fit$conf.int",
+  "practice": "How would the estimated rate and its units change if exposure were entered in kilobases?",
+  "seed": 3109,
+  "generating_model": "Generate 60 independent lineages with callable sequence Uniform(8,20) megabases. Each count is Poisson with mean 0.40 \u00d7 callable megabases. The population rate is constant across lineages and exposure is unrounded.",
+  "generating_truth": "The true rate is 0.40 mutations/Mb rather than the null rate 0.25/Mb. The population rate ratio to the null is 1.6.",
+  "columns": [
+    {
+      "name": "lineage",
+      "meaning": "Unique independent microbial lineage",
+      "unit": "none"
+    },
+    {
+      "name": "megabases",
+      "meaning": "Callable sequence exposure",
+      "unit": "Mb"
+    },
+    {
+      "name": "mutations",
+      "meaning": "Observed de novo mutations",
+      "unit": "count"
+    }
+  ],
+  "teaching_point": "A count becomes a rate only after the exposure and its units are supplied."
+}

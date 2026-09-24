@@ -1,0 +1,85 @@
+{
+  "id": "kaplan_meier",
+  "title": "Kaplan–Meier survival estimation",
+  "family": "Time to event",
+  "biology": "Ecologists follow seedling survival until death or final observation.",
+  "design": "120 independent seedlings; follow-up ends at different times.",
+  "data_characteristics": [
+    "Event time in days",
+    "event = 1 death; 0 right-censored",
+    "Independent individuals"
+  ],
+  "other_examples": [
+    "Time to germination",
+    "Time to infection",
+    "Time to pupation"
+  ],
+  "question": "What fraction of seedlings remain alive at day 40?",
+  "null": "No null hypothesis: the target is the survival probability over time.",
+  "options": [
+    "Surv(days, event) retains censoring",
+    "conf.type = \"log-log\" constructs bounded intervals",
+    "times = 40 requests a biologically meaningful time"
+  ],
+  "assumptions": [
+    "Independent seedlings",
+    "Censoring is unrelated to future survival within the population",
+    "Correct event and follow-up recording"
+  ],
+  "parametric": [
+    "A parametric survival model estimates a smooth curve if its distribution fits"
+  ],
+  "nonparametric": [
+    "Kaplan–Meier is already nonparametric",
+    "Log-rank adds a group-comparison question"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "mark.time",
+      "note": "Mark censored observations"
+    },
+    {
+      "arg": "conf.int",
+      "note": "Draw uncertainty limits"
+    },
+    {
+      "arg": "xlim",
+      "note": "Show the follow-up period"
+    },
+    {
+      "arg": "abline(v=40)",
+      "note": "Highlight the requested time"
+    }
+  ],
+  "packages": [
+    "survival",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "What information does a censored seedling contribute?",
+  "code_simulate": "set.seed(2110)\nd <- data.frame(seedling = 1:120)\nevent_time <- rexp(120, rate = .018)\nfollow_up <- runif(120, 35, 100)\nd$days <- pmin(event_time, follow_up)\nd$event <- as.integer(event_time <= follow_up)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(5, 5, 2, 1), las = 1, bty = \"l\", cex = 1.15)\nplot(fit, col = \"#246A73\", lwd = 2.5, conf.int = TRUE,\n     mark.time = TRUE, xlab = \"Days since establishment\",\n     ylab = \"Estimated survival probability\", xlim = c(0, 100))\nabline(v = 40, lty = 3, col = \"#B7663E\")\nlegend(\"topright\", c(\"Survival estimate\", \"95% confidence limits\", \"Censored observation\"),\n       col = c(\"#246A73\", \"#246A73\", \"#246A73\"),\n       lty = c(1, 2, NA), pch = c(NA, NA, 3), bty = \"n\")",
+  "code_analysis": "fit <- survival::survfit(survival::Surv(days, event) ~ 1,\n                         data = d, conf.type = \"log-log\")\nat_day40 <- summary(fit, times = 40)\nprint(at_day40)",
+  "seed": 2110,
+  "generating_model": "120 independent event times are drawn from an exponential distribution with death rate 0.018/day. Each independent final follow-up time is Uniform(35, 100) days. Observed days = minimum(event time, follow-up); event = 1 when the event occurs by follow-up and 0 otherwise. Times remain unrounded. Censoring is independent by construction.",
+  "generating_truth": "The population survival function is exp(−0.018 × days); true day-40 survival is exp(−0.72) ≈ 0.487. This is an estimation target, not a null hypothesis.",
+  "columns": [
+    {
+      "name": "seedling",
+      "meaning": "Independent seedling identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "days",
+      "meaning": "Observed event or censoring time",
+      "unit": "day"
+    },
+    {
+      "name": "event",
+      "meaning": "1 death; 0 right-censored",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "Censored observations contribute until follow-up ends; no invented p-value is needed for estimation."
+}

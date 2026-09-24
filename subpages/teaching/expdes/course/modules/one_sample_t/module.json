@@ -1,0 +1,81 @@
+{
+  "id": "one_sample_t",
+  "title": "One-sample t test",
+  "family": "Means",
+  "biology": "Cell biologists measure oxygen consumption in independently cultured cell lines.",
+  "design": "One measurement from each of 24 independent cultures; compare with a prespecified reference of 10 nmol/min.",
+  "data_characteristics": [
+    "One continuous response",
+    "One independent sample",
+    "A fixed reference mean"
+  ],
+  "other_examples": [
+    "Enzyme activity versus a reference",
+    "Leaf nitrogen versus a target",
+    "Offspring size versus a historical mean"
+  ],
+  "question": "Is mean oxygen consumption different from 10 nmol/min?",
+  "null": "The population mean is 10 nmol/min.",
+  "options": [
+    "mu = 10 sets the scientific reference",
+    "alternative = \"two.sided\" allows either direction",
+    "conf.level = .95 sets interval coverage"
+  ],
+  "assumptions": [
+    "Independent cultures",
+    "No extreme outliers; normality matters more at small n",
+    "Reference value treated as known"
+  ],
+  "parametric": [
+    "Investigate unusual values; retain genuine biology",
+    "Model log values only if a ratio/geometric mean answers the question"
+  ],
+  "nonparametric": [
+    "Sign test targets the median, not the mean",
+    "A bootstrap mean interval retains the mean target"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "method",
+      "note": "How observations are spread sideways"
+    },
+    {
+      "arg": "pch / cex",
+      "note": "Point symbol and size"
+    },
+    {
+      "arg": "horizontal",
+      "note": "Put the measured response on the x-axis"
+    },
+    {
+      "arg": "abline(v=...)",
+      "note": "Draw the reference value"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "If the reference were 11 rather than 10, what would change in the hypothesis and R call?",
+  "code_simulate": "set.seed(1101)\nd <- data.frame(culture = 1:24,\n                oxygen = rnorm(24, mean = 10.8, sd = 1.5))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "beeswarm(d$oxygen, horizontal = TRUE, method = \"swarm\",\n         pch = 21, bg = \"#246A73\", col = \"white\", cex = 1.6,\n         xlab = \"Oxygen consumption (nmol/min)\", ylab = \"\", yaxt = \"n\")\nabline(v = 10, lty = 2, col = \"#B7663E\", lwd = 2)\nlegend(\"topleft\", \"Reference mean = 10\", lty = 2,\n       col = \"#B7663E\", bty = \"n\")",
+  "code_analysis": "fit <- t.test(d$oxygen, mu = 10,\n              alternative = \"two.sided\", conf.level = .95)",
+  "seed": 1101,
+  "generating_model": "24 independent oxygen-consumption values are drawn from Normal(mean 10.8, SD 1.5). Each row is one culture.",
+  "generating_truth": "The population mean is 10.8 nmol/min, so the reference-mean null of 10 is false; the true mean difference is +0.8.",
+  "columns": [
+    {
+      "name": "culture",
+      "meaning": "Independent culture identifier",
+      "unit": "none"
+    },
+    {
+      "name": "oxygen",
+      "meaning": "Oxygen consumption",
+      "unit": "nmol/min"
+    }
+  ],
+  "teaching_point": "The reference must express the biological question; the test is about a population mean."
+}

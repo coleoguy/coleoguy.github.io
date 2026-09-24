@@ -1,0 +1,81 @@
+{
+  "id": "one_way_anova",
+  "title": "One-way ANOVA",
+  "family": "ANOVA",
+  "biology": "Ecologists compare seedling biomass under three independent soil treatments.",
+  "design": "Twenty-five independently assigned pots per soil treatment; one biomass value per pot.",
+  "data_characteristics": [
+    "One continuous response",
+    "Three or more independent groups",
+    "Compare population means"
+  ],
+  "other_examples": [
+    "Mean development time across diets",
+    "Mean enzyme activity across treatments",
+    "Mean trait values across populations"
+  ],
+  "question": "Are mean seedling biomasses equal across the three soils?",
+  "null": "All soil-treatment population means are equal.",
+  "options": [
+    "aov uses a shared within-group variance",
+    "oneway.test(var.equal = FALSE) uses Welch ANOVA",
+    "An omnibus result does not identify a particular pair"
+  ],
+  "assumptions": [
+    "Independent pots",
+    "Approximately normal errors, especially at small n",
+    "Ordinary ANOVA assumes equal group variances"
+  ],
+  "parametric": [
+    "Welch ANOVA allows unequal group variances",
+    "Transform only if the new scale answers the scientific question"
+  ],
+  "nonparametric": [
+    "Kruskal–Wallis compares group distributions using ranks",
+    "Use adjusted follow-up comparisons that match the chosen method"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "response ~ group",
+      "note": "Arrange observations by treatment"
+    },
+    {
+      "arg": "bg",
+      "note": "Use one persistent color per treatment"
+    },
+    {
+      "arg": "points",
+      "note": "Mark group means"
+    },
+    {
+      "arg": "segments",
+      "note": "Show clearly labeled confidence intervals for means"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "If you care only about Loam versus Sand, what follow-up quantity should you estimate?",
+  "code_simulate": "set.seed(1117)\nd <- data.frame(soil = rep(c(\"Sand\", \"Loam\", \"Clay\"), each = 25),\n                biomass_g = c(rnorm(25, 4.5, .85), rnorm(25, 5.4, .85),\n                              rnorm(25, 5.1, .85)))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "beeswarm(biomass_g ~ soil, data = d, pch = 21,\n         bg = c(\"#246A73\", \"#B7663E\", \"#73649A\"), col = \"white\", cex = 1.2,\n         xlab = \"Soil treatment\", ylab = \"Seedling biomass (g)\")\nmeans <- tapply(d$biomass_g, d$soil, mean)\nse <- tapply(d$biomass_g, d$soil, sd) / sqrt(table(d$soil))\nhalf <- qt(.975, df = table(d$soil) - 1) * se\nsegments(1:3, means - half, 1:3, means + half, lwd = 3)\npoints(1:3, means, pch = 18, cex = 2)\nlegend(\"topleft\", \"Mean and 95% CI\", pch = 18, bty = \"n\")",
+  "code_analysis": "d$soil <- factor(d$soil, levels = c(\"Sand\", \"Loam\", \"Clay\"))\nfit <- aov(biomass_g ~ soil, data = d)\nanova_table <- summary(fit)[[1]]\nwelch <- oneway.test(biomass_g ~ soil, data = d,\n                    var.equal = FALSE)",
+  "seed": 1117,
+  "generating_model": "25 independent biomass values per soil come from normal distributions: Sand mean 4.5, Loam mean 5.4, Clay mean 5.1 g; every group has SD 0.85 g.",
+  "generating_truth": "The equal-means null is false. All three populations share variance 0.85 squared; Loam minus Sand is truly 0.9 g.",
+  "columns": [
+    {
+      "name": "soil",
+      "meaning": "Assigned soil treatment",
+      "unit": "category"
+    },
+    {
+      "name": "biomass_g",
+      "meaning": "Seedling biomass from one independent pot",
+      "unit": "g"
+    }
+  ],
+  "teaching_point": "The omnibus equal-means question differs from a scientific question about one particular contrast."
+}

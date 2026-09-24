@@ -1,0 +1,6 @@
+{
+  "preview": [" culture lysis_minutes", "       1      43.09351", "       2      87.17562", "       3      61.96152", "       4      80.96814"],
+  "summary": ["Shapiro–Wilk W = 0.937; p = 0.04064; n = 36", "Curvature in the Q–Q plot indicates a shape mismatch.", "A nonsignificant result would not establish normality."],
+  "report": "For the 36 lysis times, Shapiro–Wilk W = 0.937, p = 0.04064. Use the Q–Q plot to understand the mismatch; this diagnostic alone does not choose the scientific test or show that a mean comparison is invalid.",
+  "full_output": "\n\tShapiro-Wilk normality test\n\ndata:  d$lysis_minutes\nW = 0.93687, p-value = 0.04064\n"
+}

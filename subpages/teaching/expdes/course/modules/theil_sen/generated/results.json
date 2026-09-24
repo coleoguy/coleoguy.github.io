@@ -1,0 +1,6 @@
+{
+  "preview": [" assay   temp_c activity", "     1 25.61605 45.04250", "     2 19.70680 35.56085", "     3 23.09819 38.79565", "     4 18.94864 37.20150"],
+  "summary": ["Theil–Sen slope = 1.408 U/mL per degree C", "95% pairs-bootstrap interval: 1.184 to 1.618", "Finite original pairwise slopes = 780; bootstrap replicates = 999", "The interval is approximate; no exact test p-value is reported."],
+  "report": "The robust slope was 1.408 U/mL per degree C, with a 95% percentile pairs-bootstrap interval of 1.184 to 1.618 (999 replicates). This estimates a linear location trend resistant to extreme responses; its interval is approximate and is not an exact slope test.",
+  "full_output": "intercept     slope \n 7.832577  1.407600 \n    2.5%    97.5% \n1.183998 1.618227 \n[1] 999"
+}

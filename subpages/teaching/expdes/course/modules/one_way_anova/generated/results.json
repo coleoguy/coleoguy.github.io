@@ -1,0 +1,6 @@
+{
+  "preview": [" soil biomass_g", " Sand  1.986656", " Sand  3.194575", " Sand  3.816050", " Sand  5.405235"],
+  "summary": ["Ordinary ANOVA F(2, 72) = 11.59; p = 4.335e-05", "Welch ANOVA F = 8.89; denominator df = 46.37; p = 0.0005408", "Observed means (g): Sand 4.28; Loam 5.28; Clay 5.08", "Neither omnibus test identifies a specific differing pair."],
+  "report": "Mean seedling biomass was compared across soils with ordinary ANOVA: F(2, 72) = 11.59, p = 4.335e-05. Welch ANOVA, which relaxes equal variances, gave p = 0.0005408. Use a planned contrast or adjusted pairwise comparisons to answer which means differ.",
+  "full_output": "            Df Sum Sq Mean Sq F value   Pr(>F)    \nsoil         2  14.14   7.068   11.59 4.34e-05 ***\nResiduals   72  43.92   0.610                     \n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n\n\tOne-way analysis of means (not assuming equal variances)\n\ndata:  biomass_g and soil\nF = 8.8862, num df = 2.000, denom df = 46.371, p-value = 0.0005408\n"
+}

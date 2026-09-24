@@ -1,0 +1,6 @@
+{
+  "preview": [" fish change_seconds", "    1            1.3", "    2           -0.6", "    3           10.0", "    4            8.4"],
+  "summary": ["Positive changes: 18 of 30 nonzero differences", "Zero changes excluded: 0", "Median observed change = 1.25 seconds", "95% CI for positive-change probability: 0.41 to 0.77", "Exact two-sided p = 0.3616"],
+  "report": "18 of 30 nonzero changes were positive (exact sign-test p = 0.3616; 95% CI for the positive-change probability 0.41 to 0.77). The test asks about direction, not mean change; 0 exact zero differences were excluded.",
+  "full_output": "\n\tExact binomial test\n\ndata:  positive and length(nonzero)\nnumber of successes = 18, number of trials = 30, p-value = 0.3616\nalternative hypothesis: true probability of success is not equal to 0.5\n95 percent confidence interval:\n 0.4060349 0.7734424\nsample estimates:\nprobability of success \n                   0.6 \n"
+}

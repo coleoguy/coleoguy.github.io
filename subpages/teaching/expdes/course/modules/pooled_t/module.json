@@ -1,0 +1,81 @@
+{
+  "id": "pooled_t",
+  "title": "Pooled two-sample t test",
+  "family": "Means",
+  "biology": "Evolutionary biologists compare adult beetle body length from two rearing environments.",
+  "design": "Independent beetles in two rearing environments; a common population variance is a substantive model assumption.",
+  "data_characteristics": [
+    "Continuous response",
+    "Two independent groups",
+    "A shared population variance is assumed"
+  ],
+  "other_examples": [
+    "Control versus treated enzyme activity",
+    "Biomass in two habitats",
+    "Hormone concentration in two populations"
+  ],
+  "question": "Do mean body lengths differ between cool and warm environments?",
+  "null": "The two population means are equal.",
+  "options": [
+    "var.equal = TRUE requests the pooled t test",
+    "Factor order determines the difference sign",
+    "Choose the variance model deliberately; avoid a preliminary variance-test gate"
+  ],
+  "assumptions": [
+    "Independent beetles",
+    "Similar approximately normal population shapes at small n",
+    "Equal population variances"
+  ],
+  "parametric": [
+    "Welch tests the same mean-difference null without equal variances",
+    "Use a scientifically meaningful transformation for severe skew"
+  ],
+  "nonparametric": [
+    "Rank-sum changes the target to response distributions",
+    "A bootstrap interval can retain the mean-difference target"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "response ~ group",
+      "note": "Map measurements to groups"
+    },
+    {
+      "arg": "pwcol",
+      "note": "Use a color for each observation"
+    },
+    {
+      "arg": "corral",
+      "note": "Control overly wide swarms"
+    },
+    {
+      "arg": "points",
+      "note": "Add group means with a distinct symbol"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Which argument changes a Welch test into the pooled test, and what assumption have you added?",
+  "code_simulate": "set.seed(1118)\nd <- data.frame(environment = rep(c(\"Cool\", \"Warm\"), c(26, 30)),\n                length_mm = c(rnorm(26, 10, .65), rnorm(30, 10.7, .65)))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "beeswarm(length_mm ~ environment, data = d, pch = 21,\n         bg = c(\"#246A73\", \"#B7663E\"), col = \"white\", cex = 1.3,\n         xlab = \"Rearing environment\", ylab = \"Adult body length (mm)\")\npoints(1:2, tapply(d$length_mm, d$environment, mean), pch = 18, cex = 2)\nlegend(\"topleft\", \"Group mean\", pch = 18, bty = \"n\")",
+  "code_analysis": "d$environment <- factor(d$environment, levels = c(\"Cool\", \"Warm\"))\nfit <- t.test(length_mm ~ environment, data = d,\n              var.equal = TRUE, conf.level = .95)\ndifference <- mean(d$length_mm[d$environment == \"Cool\"]) -\n              mean(d$length_mm[d$environment == \"Warm\"])",
+  "seed": 1118,
+  "generating_model": "26 independent Cool beetles are Normal(10, 0.65 SD), and 30 independent Warm beetles are Normal(10.7, 0.65 SD).",
+  "generating_truth": "The true Cool minus Warm mean difference is -0.7 mm, and the two population variances are both 0.4225 mm squared.",
+  "columns": [
+    {
+      "name": "environment",
+      "meaning": "Independent rearing group",
+      "unit": "category"
+    },
+    {
+      "name": "length_mm",
+      "meaning": "Adult beetle body length",
+      "unit": "mm"
+    }
+  ],
+  "teaching_point": "Pooled and Welch t tests share the mean-difference null; their variance assumptions differ."
+}

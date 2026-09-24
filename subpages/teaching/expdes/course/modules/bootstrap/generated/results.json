@@ -1,0 +1,6 @@
+{
+  "preview": [" colony biomass_mg", "      1   5.622015", "      2  12.481955", "      3  11.103281", "      4  10.549377"],
+  "summary": ["Sample mean = 11.54 mg", "Percentile 95% CI = 10.15 to 13.07 mg", "4999 resamples of independent colonies"],
+  "report": "Mean colony biomass is 11.54 mg, with a percentile bootstrap 95% interval of 10.15 to 13.07 mg. The interval estimates uncertainty in the mean, not the spread of individual colonies.",
+  "full_output": "         mean    lower    upper\n2.5% 11.53829 10.14616 13.06527"
+}

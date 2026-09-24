@@ -1,0 +1,85 @@
+{
+  "id": "cochran_q",
+  "title": "Cochran\u2019s Q test",
+  "family": "Paired binary outcomes",
+  "biology": "Bee visits to three floral odors",
+  "design": "Each bee experiences all odors in randomized sessions with a washout.",
+  "data_characteristics": [
+    "Binary visit/no visit response",
+    "Three matched conditions for every bee",
+    "Independent bees; repeated responses within a bee"
+  ],
+  "other_examples": [
+    "Three diagnostic assays per sample",
+    "Detection under three protocols",
+    "Presence across three paired surveys"
+  ],
+  "question": "Are marginal visit probabilities equal for all three odors?",
+  "null": "The three odor conditions have equal marginal probabilities of a visit.",
+  "options": [
+    "Keep one row per bee in the matched outcome matrix.",
+    "Q uses a chi-square reference with k \u2212 1 degrees of freedom.",
+    "An omnibus result needs planned or adjusted follow-up comparisons."
+  ],
+  "assumptions": [
+    "Bees are independent of one another.",
+    "Each bee has a complete matched set.",
+    "Condition order and carryover are addressed by the design."
+  ],
+  "parametric": [
+    "Use repeated-measures logistic regression to model predictors.",
+    "Use binary GEE for population-average comparisons."
+  ],
+  "nonparametric": [
+    "Q is a nonparametric matched binary test.",
+    "Within-bee randomization can be used if justified by the design."
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "arrows",
+      "note": "Show separate probability intervals for each odor."
+    },
+    {
+      "arg": "ylim",
+      "note": "Use the full 0\u20131 scale."
+    },
+    {
+      "arg": "axis",
+      "note": "Name the repeated conditions."
+    },
+    {
+      "arg": "mtext",
+      "note": "Remind the reader that all conditions use the same bees."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(3108)\nbee_effect <- rnorm(60, 0, .8)\nd <- data.frame(bee = rep(1:60, each = 3),\n                odor = rep(c(\"A\", \"B\", \"C\"), 60))\nd$visit <- rbinom(180, 1,\n  plogis(-.7 + rep(bee_effect, each = 3) + rep(c(0, .5, 1), 60)))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(4, 5, 3, 1), las = 1)\nplot(1:k, rates, xlim = c(.5, k + .5), ylim = c(0, 1),\n     xaxt = \"n\", xlab = \"Floral odor\", ylab = \"Visit probability\", bty = \"n\",\n     pch = 21, bg = \"#126887\", cex = 2)\narrows(1:k, ci[1, ], 1:k, ci[2, ], code = 3, angle = 90, length = .1)\naxis(1, 1:k, colnames(wide))\nmtext(\"Same 60 bees in every condition; intervals describe each probability\",\n      side = 3, cex = .85)",
+  "code_analysis": "wide <- xtabs(visit ~ bee + odor, data = d)\nk <- ncol(wide)\nC <- colSums(wide)\nR <- rowSums(wide)\nQ <- (k - 1) * (k * sum(C^2) - sum(C)^2) /\n     (k * sum(R) - sum(R^2))\np_value <- pchisq(Q, df = k - 1, lower.tail = FALSE)\nrates <- C / nrow(wide)\nci <- sapply(1:k, function(j) binom.test(C[j], nrow(wide))$conf.int)",
+  "practice": "Why is an ordinary independence chi-square test inappropriate for these repeated visits?",
+  "seed": 3108,
+  "generating_model": "Generate 60 independent bees, each with a Normal(0, 0.8\u00b2) latent effect. Each bee encounters odors A, B, and C. Visit logits are -0.7 + bee effect + odor effect, with odor effects 0, 0.5, and 1. Outcomes are independent conditional on the bee effect but correlated within a bee marginally.",
+  "generating_truth": "Increasing odor effects produce strictly increasing marginal visit probabilities across A, B, and C. The equal-probabilities null is false; the latent log-odds differences are not themselves the marginal probability differences.",
+  "columns": [
+    {
+      "name": "bee",
+      "meaning": "Independent bee and repeated-measures identifier",
+      "unit": "none"
+    },
+    {
+      "name": "odor",
+      "meaning": "Repeated odor condition: A, B, or C",
+      "unit": "none"
+    },
+    {
+      "name": "visit",
+      "meaning": "1 = visit; 0 = no visit",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "A matched omnibus binary test uses complete sets of responses; a significant result does not identify which conditions differ."
+}

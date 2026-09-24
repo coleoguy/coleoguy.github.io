@@ -1,0 +1,87 @@
+{
+  "id": "ordinal_logistic",
+  "title": "Ordinal logistic regression",
+  "family": "Generalized linear models",
+  "biology": "Coral bleaching severity along a temperature gradient",
+  "design": "Independent coral fragments are assigned a four-level ordered bleaching score.",
+  "data_characteristics": [
+    "Ordered categories: none, mild, moderate, severe",
+    "Continuous temperature predictor",
+    "Distances between score levels are not assumed equal"
+  ],
+  "other_examples": [
+    "Ordered disease grades",
+    "Behavioral response intensity classes",
+    "Developmental stage ratings"
+  ],
+  "question": "Does temperature shift bleaching severity toward higher ordered categories?",
+  "null": "The common temperature coefficient is zero; the modeled severity distribution does not change with temperature.",
+  "options": [
+    "Mark the response as ordered in the correct direction.",
+    "link = \"logit\" fits cumulative proportional odds.",
+    "exp(coefficient) compares odds of higher versus lower severity."
+  ],
+  "assumptions": [
+    "Coral fragments are independent.",
+    "A common temperature effect across cumulative thresholds is plausible.",
+    "The predictor relationship on the logit scale is appropriate."
+  ],
+  "parametric": [
+    "Use partial proportional-odds or multinomial models if the common effect fails.",
+    "Use an ordinal mixed model for clustered fragments."
+  ],
+  "nonparametric": [
+    "Spearman association can address monotonic ordering with a different null.",
+    "A design-based permutation test must preserve the treatment structure."
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "color = severity",
+      "note": "Track each ordered category\u2019s probability."
+    },
+    {
+      "arg": "geom_line",
+      "note": "Show probabilities across the temperature gradient."
+    },
+    {
+      "arg": "scale_color_manual",
+      "note": "Use an ordered color progression."
+    },
+    {
+      "arg": "ylim(0, 1)",
+      "note": "Keep probabilities on their natural scale."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "ordinal",
+    "ggplot2"
+  ],
+  "code_simulate": "set.seed(3115)\nd <- data.frame(fragment = 1:180, temperature = runif(180, 26, 32))\nlatent <- .8 * (d$temperature - 28) + rlogis(180)\nd$severity <- cut(latent, c(-Inf, -1, .7, 2.2, Inf),\n                  labels = c(\"None\", \"Mild\", \"Moderate\", \"Severe\"))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot2::ggplot(plot_data, ggplot2::aes(temperature, probability,\n                                            color = severity)) +\n  ggplot2::geom_line(linewidth = 1.3) +\n  ggplot2::scale_color_manual(values = c(None = \"#6b8581\", Mild = \"#126887\",\n                                        Moderate = \"#b96735\", Severe = \"#682b35\")) +\n  ggplot2::ylim(0, 1) +\n  ggplot2::labs(x = \"Temperature (\u00b0C)\", y = \"Predicted category probability\",\n                color = \"Bleaching severity\") +\n  ggplot2::theme_classic(base_size = 17) +\n  ggplot2::theme(legend.position = \"top\")\nprint(p)",
+  "code_analysis": "d$severity <- ordered(d$severity, levels = c(\"None\", \"Mild\", \"Moderate\", \"Severe\"))\nfit <- ordinal::clm(severity ~ temperature, data = d, link = \"logit\")\nfit0 <- ordinal::clm(severity ~ 1, data = d, link = \"logit\")\nLR <- 2 * as.numeric(logLik(fit) - logLik(fit0))\np_value <- pchisq(LR, df = 1, lower.tail = FALSE)\nb <- fit$beta[\"temperature\"]\nse <- sqrt(vcov(fit)[\"temperature\", \"temperature\"])\nodds_ratio <- exp(b)\nci <- exp(b + c(-1, 1) * 1.96 * se)",
+  "practice": "Why would treating none/mild/moderate/severe as equally spaced numbers add an assumption?",
+  "seed": 3115,
+  "generating_model": "Generate 180 independent fragments with temperature Uniform(26,32) \u00b0C. Latent severity is 0.8 \u00d7 (temperature - 28) plus a standard logistic error. Cut at -1, 0.7, and 2.2 to obtain None, Mild, Moderate, Severe. Do not treat category spacing as numeric distance.",
+  "generating_truth": "The common temperature coefficient is 0.8, so each \u00b0C multiplies odds of higher versus lower severity by exp(0.8) \u2248 2.226 at every cumulative threshold. The zero-effect null is false and proportional odds holds by construction.",
+  "columns": [
+    {
+      "name": "fragment",
+      "meaning": "Unique independent coral fragment identifier",
+      "unit": "none"
+    },
+    {
+      "name": "temperature",
+      "meaning": "Experimental temperature",
+      "unit": "\u00b0C"
+    },
+    {
+      "name": "severity",
+      "meaning": "Ordered bleaching level: None < Mild < Moderate < Severe",
+      "unit": "none"
+    }
+  ],
+  "teaching_point": "Ordering carries information without assuming equal distances; the common effect across thresholds is the key model assumption."
+}

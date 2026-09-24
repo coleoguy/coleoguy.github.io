@@ -1,0 +1,97 @@
+{
+  "id": "count_glmm",
+  "title": "Count mixed model: Poisson and negative binomial",
+  "family": "Repeated and clustered data",
+  "biology": "Pollinator visits are repeatedly counted on plants in two habitats.",
+  "design": "48 plants observed on four days with unequal observation durations.",
+  "data_characteristics": [
+    "Nonnegative event counts",
+    "Exposure in minutes",
+    "Repeated plant IDs"
+  ],
+  "other_examples": [
+    "Parasites counted repeatedly in hosts",
+    "Mutations across repeated cell lines",
+    "Calls recorded repeatedly from territories"
+  ],
+  "question": "Does habitat change visit rate while accounting for repeated plants?",
+  "null": "The habitat coefficient is zero: its conditional visit-rate ratio is one.",
+  "options": [
+    "offset(log(minutes)) accounts for exposure",
+    "(1 | plant) models shared plant tendency",
+    "glmer.nb adds negative-binomial conditional variation"
+  ],
+  "assumptions": [
+    "Independent plants",
+    "Suitable conditional count and random-effect model",
+    "Exposure is measured and mean count scales with it"
+  ],
+  "parametric": [
+    "Check Poisson versus negative-binomial conditional variation",
+    "Add justified dependence or a biologically supported zero process"
+  ],
+  "nonparametric": [
+    "A valid cluster permutation keeps repeated plants together",
+    "Ranks discard the modeled mean-rate question"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "visits / minutes",
+      "note": "Plot rates for unequal effort"
+    },
+    {
+      "arg": "group = plant",
+      "note": "Preserve repeated units"
+    },
+    {
+      "arg": "alpha",
+      "note": "Reduce overlap"
+    },
+    {
+      "arg": "stat_summary",
+      "note": "Show observed habitat means"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "lme4",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Why do we model counts with an offset instead of fitting a Poisson model to rates?",
+  "code_simulate": "set.seed(2114)\nd <- expand.grid(day = 1:4, plant = 1:48)\nd$habitat <- rep(rep(c(\"Open\", \"Sheltered\"), each = 24), each = 4)\nd$minutes <- sample(20:60, nrow(d), replace = TRUE)\nindividual <- rnorm(48, 0, .45)\nrate <- exp(-2.0 + .55 * (d$habitat == \"Sheltered\") +\n              .06 * d$day + individual[d$plant])\nd$visits <- rnbinom(nrow(d), mu = d$minutes * rate, size = 5)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(day, visits / minutes, color = habitat)) +\n  geom_line(aes(group = plant), alpha = .18) +\n  geom_point(alpha = .35, size = 1.6) +\n  stat_summary(fun = mean, geom = \"line\", linewidth = 1.7) +\n  scale_color_manual(values = c(\"#246A73\", \"#B7663E\")) +\n  scale_x_continuous(breaks = 1:4) +\n  labs(x = \"Observation day\", y = \"Observed visits per minute\", color = \"Habitat\",\n       caption = \"Rates display unequal effort; the model analyzes counts with an exposure offset\") +\n  theme_classic(base_size = 16)\nprint(p)",
+  "code_analysis": "poisson_fit <- lme4::glmer(visits ~ habitat + day +\n  offset(log(minutes)) + (1 | plant), family = poisson, data = d,\n  control = lme4::glmerControl(optimizer = \"bobyqa\"))\nfit <- lme4::glmer.nb(visits ~ habitat + day +\n  offset(log(minutes)) + (1 | plant), data = d,\n  control = lme4::glmerControl(optimizer = \"bobyqa\"))\nsummary(fit)\nlog_ratio_ci <- confint(fit, parm = \"habitatSheltered\", method = \"Wald\")",
+  "seed": 2114,
+  "generating_model": "48 plants (24 per habitat) are observed on days 1–4. Observation duration is sampled uniformly from the integers 20–60 minutes. Plant intercepts are Normal(0, 0.45²). Log rate = −2 + 0.55 if sheltered + 0.06 × day + plant intercept. Counts are negative binomial with mean = minutes × rate and size = 5; conditional variance is mean + mean²/5. Repeated plants share the intercept.",
+  "generating_truth": "The conditional sheltered/open rate ratio is exp(0.55) ≈ 1.733; the habitat null is false. The generating distribution has extra variation beyond Poisson even after conditioning on the plant intercept.",
+  "columns": [
+    {
+      "name": "day",
+      "meaning": "Observation day",
+      "unit": "day"
+    },
+    {
+      "name": "plant",
+      "meaning": "Repeated plant identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "habitat",
+      "meaning": "Open or sheltered habitat",
+      "unit": "category"
+    },
+    {
+      "name": "minutes",
+      "meaning": "Observation exposure",
+      "unit": "minute"
+    },
+    {
+      "name": "visits",
+      "meaning": "Number of pollinator visits",
+      "unit": "count"
+    }
+  ],
+  "teaching_point": "Offsets retain count information while accounting for exposure; negative binomial and random effects address different variation sources."
+}

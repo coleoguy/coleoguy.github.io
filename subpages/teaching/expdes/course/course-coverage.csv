@@ -1,0 +1,64 @@
+module,title,family,first_slide,last_slide,seed,picker_cells,script,data,guide_anchor
+one_sample_t,One-sample t test,Means,28,35,1101,independent-continuous-reference,modules/one_sample_t/analysis.R,modules/one_sample_t/generated/data.csv,one_sample_t
+paired_t,Paired t test,Means,36,43,1103,repeated-continuous-pairs,modules/paired_t/analysis.R,modules/paired_t/generated/data.csv,paired_t
+sign_test,Sign test,Nonparametric alternatives,44,51,1104,independent-continuous-reference; independent-ordinal-reference; repeated-continuous-pairs; repeated-ordinal-pairs,modules/sign_test/analysis.R,modules/sign_test/generated/data.csv,sign_test
+signed_rank,Wilcoxon signed-rank test,Nonparametric alternatives,52,59,1105,independent-continuous-reference; independent-ordinal-reference; repeated-continuous-pairs; repeated-ordinal-pairs,modules/signed_rank/analysis.R,modules/signed_rank/generated/data.csv,signed_rank
+permutation_paired,Paired permutation test,Simulation and multivariate methods,60,67,240504,repeated-continuous-pairs; repeated-count-pairs,modules/permutation_paired/analysis.R,modules/permutation_paired/generated/data.csv,permutation_paired
+welch_t,Welch two-sample t test,Means,68,75,1102,independent-continuous-two_groups,modules/welch_t/analysis.R,modules/welch_t/generated/data.csv,welch_t
+pooled_t,Pooled two-sample t test,Means,76,83,1118,independent-continuous-two_groups,modules/pooled_t/analysis.R,modules/pooled_t/generated/data.csv,pooled_t
+rank_sum,Wilcoxon rank-sum test,Nonparametric alternatives,84,91,1106,independent-continuous-two_groups; independent-ordinal-two_groups,modules/rank_sum/analysis.R,modules/rank_sum/generated/data.csv,rank_sum
+permutation_independent,Independent-sample permutation test,Simulation and multivariate methods,92,99,240503,independent-continuous-two_groups,modules/permutation_independent/analysis.R,modules/permutation_independent/generated/data.csv,permutation_independent
+shapiro,Shapiro–Wilk and graphical checks,Variance and diagnostics,100,107,1111,,modules/shapiro/analysis.R,modules/shapiro/generated/data.csv,shapiro
+f_variance,F test of two variances,Variance and diagnostics,108,115,1109,,modules/f_variance/analysis.R,modules/f_variance/generated/data.csv,f_variance
+levene,Levene and Brown–Forsythe tests,Variance and diagnostics,116,123,1110,,modules/levene/analysis.R,modules/levene/generated/data.csv,levene
+one_way_anova,One-way ANOVA,ANOVA,124,131,1117,independent-continuous-many_groups,modules/one_way_anova/analysis.R,modules/one_way_anova/generated/data.csv,one_way_anova
+welch_anova,Welch one-way ANOVA,ANOVA,132,139,1119,independent-continuous-many_groups,modules/welch_anova/analysis.R,modules/welch_anova/generated/data.csv,welch_anova
+kruskal_wallis,Kruskal–Wallis test,Nonparametric alternatives,140,147,1107,independent-continuous-many_groups; independent-ordinal-many_groups,modules/kruskal_wallis/analysis.R,modules/kruskal_wallis/generated/data.csv,kruskal_wallis
+dunn,Dunn rank comparisons,Rank methods,148,155,2105,,modules/dunn/analysis.R,modules/dunn/generated/data.csv,dunn
+tukey,Tukey / Tukey–Kramer comparisons,ANOVA and contrasts,156,163,2104,,modules/tukey/analysis.R,modules/tukey/generated/data.csv,tukey
+fisher_lsd,Fisher least significant difference,ANOVA and contrasts,164,171,2104,,modules/fisher_lsd/analysis.R,modules/fisher_lsd/generated/data.csv,fisher_lsd
+scheffe,Scheffé contrasts,ANOVA and contrasts,172,179,2104,,modules/scheffe/analysis.R,modules/scheffe/generated/data.csv,scheffe
+factorial_anova,Factorial ANOVA: interactions,ANOVA and contrasts,180,187,2101,independent-continuous-many_predictors,modules/factorial_anova/analysis.R,modules/factorial_anova/generated/data.csv,factorial_anova
+ancova,ANCOVA: an adjusted group comparison,ANOVA and contrasts,188,195,2102,independent-continuous-many_predictors,modules/ancova/analysis.R,modules/ancova/generated/data.csv,ancova
+repeated_anova,Repeated-measures ANOVA,Repeated and clustered data,196,203,2103,repeated-continuous-repeated,modules/repeated_anova/analysis.R,modules/repeated_anova/generated/data.csv,repeated_anova
+friedman,Friedman test,Nonparametric alternatives,204,211,1108,repeated-continuous-repeated; repeated-ordinal-repeated,modules/friedman/analysis.R,modules/friedman/generated/data.csv,friedman
+pearson,Pearson correlation,Association,212,219,1112,independent-continuous-one_predictor,modules/pearson/analysis.R,modules/pearson/generated/data.csv,pearson
+spearman,Spearman rank correlation,Nonparametric alternatives,220,227,1113,independent-continuous-one_predictor; independent-ordinal-one_predictor,modules/spearman/analysis.R,modules/spearman/generated/data.csv,spearman
+simple_lm,Simple linear regression,Regression,228,235,1114,independent-continuous-one_predictor,modules/simple_lm/analysis.R,modules/simple_lm/generated/data.csv,simple_lm
+theil_sen,Theil–Sen robust slope,Regression,236,243,1116,,modules/theil_sen/analysis.R,modules/theil_sen/generated/data.csv,theil_sen
+multiple_lm,Multiple linear regression,Regression,244,251,1115,independent-continuous-many_predictors,modules/multiple_lm/analysis.R,modules/multiple_lm/generated/data.csv,multiple_lm
+binomial,Exact binomial test,Proportions and categories,252,259,3101,independent-binary-reference,modules/binomial/analysis.R,modules/binomial/generated/data.csv,binomial
+one_proportion,One-proportion test,Proportions and categories,260,267,3102,independent-binary-reference,modules/one_proportion/analysis.R,modules/one_proportion/generated/data.csv,one_proportion
+two_proportions,Two-proportion test,Proportions and categories,268,275,3103,independent-binary-two_groups,modules/two_proportions/analysis.R,modules/two_proportions/generated/data.csv,two_proportions
+chi_gof,Chi-square goodness-of-fit,Proportions and categories,276,283,3104,independent-nominal-reference,modules/chi_gof/analysis.R,modules/chi_gof/generated/data.csv,chi_gof
+chi_independence,Chi-square test of independence,Proportions and categories,284,291,3105,independent-binary-two_groups; independent-binary-many_groups; independent-nominal-two_groups; independent-nominal-many_groups,modules/chi_independence/analysis.R,modules/chi_independence/generated/data.csv,chi_independence
+fisher_exact,Fisher exact test,Proportions and categories,292,299,3106,independent-binary-two_groups; independent-nominal-two_groups; independent-nominal-many_groups,modules/fisher_exact/analysis.R,modules/fisher_exact/generated/data.csv,fisher_exact
+mcnemar,McNemar test,Paired binary outcomes,300,307,3107,repeated-binary-pairs,modules/mcnemar/analysis.R,modules/mcnemar/generated/data.csv,mcnemar
+cochran_q,Cochran’s Q test,Paired binary outcomes,308,315,3108,repeated-binary-repeated,modules/cochran_q/analysis.R,modules/cochran_q/generated/data.csv,cochran_q
+logistic,Logistic regression,Generalized linear models,316,323,3110,independent-binary-many_groups; independent-binary-one_predictor; independent-binary-many_predictors,modules/logistic/analysis.R,modules/logistic/generated/data.csv,logistic
+multinomial,Multinomial logistic regression,Generalized linear models,324,331,3114,independent-nominal-one_predictor; independent-nominal-many_predictors,modules/multinomial/analysis.R,modules/multinomial/generated/data.csv,multinomial
+ordinal_logistic,Ordinal logistic regression,Generalized linear models,332,339,3115,independent-ordinal-two_groups; independent-ordinal-many_groups; independent-ordinal-one_predictor; independent-ordinal-many_predictors,modules/ordinal_logistic/analysis.R,modules/ordinal_logistic/generated/data.csv,ordinal_logistic
+poisson_exact,Exact Poisson rate test,Counts and exposure,340,347,3109,independent-count-reference; independent-count-two_groups,modules/poisson_exact/analysis.R,modules/poisson_exact/generated/data.csv,poisson_exact
+poisson_glm,Poisson regression,Generalized linear models,348,355,3111,independent-count-two_groups; independent-count-many_groups; independent-count-one_predictor; independent-count-many_predictors,modules/poisson_glm/analysis.R,modules/poisson_glm/generated/data.csv,poisson_glm
+quasipoisson,Quasi-Poisson regression,Generalized linear models,356,363,3113,independent-count-many_groups,modules/quasipoisson/analysis.R,modules/quasipoisson/generated/data.csv,quasipoisson
+negbin_glm,Negative binomial regression,Generalized linear models,364,371,3112,independent-count-two_groups; independent-count-many_groups; independent-count-one_predictor; independent-count-many_predictors,modules/negbin_glm/analysis.R,modules/negbin_glm/generated/data.csv,negbin_glm
+linear_mixed,Linear mixed model,Repeated and clustered data,372,379,2106,independent-continuous-many_predictors; repeated-continuous-repeated; repeated-continuous-mixed,modules/linear_mixed/analysis.R,modules/linear_mixed/generated/data.csv,linear_mixed
+binary_glmm,Binary mixed model,Repeated and clustered data,380,387,2107,independent-binary-many_predictors; repeated-binary-repeated; repeated-binary-mixed,modules/binary_glmm/analysis.R,modules/binary_glmm/generated/data.csv,binary_glmm
+binary_gee,Binary generalized estimating equations,Dependent observations,388,395,3116,repeated-binary-repeated; repeated-binary-mixed,modules/binary_gee/analysis.R,modules/binary_gee/generated/data.csv,binary_gee
+count_gee,Count and rate GEE,Dependent observations,396,403,1401,repeated-count-pairs; repeated-count-repeated; repeated-count-mixed,modules/count_gee/analysis.R,modules/count_gee/generated/data.csv,count_gee
+count_glmm,Count mixed model: Poisson and negative binomial,Repeated and clustered data,404,411,2114,independent-count-many_predictors; repeated-count-pairs; repeated-count-repeated; repeated-count-mixed,modules/count_glmm/analysis.R,modules/count_glmm/generated/data.csv,count_glmm
+ordinal_mixed,Ordinal mixed model,Repeated and clustered data,412,419,2109,independent-ordinal-many_predictors; repeated-ordinal-repeated; repeated-ordinal-mixed,modules/ordinal_mixed/analysis.R,modules/ordinal_mixed/generated/data.csv,ordinal_mixed
+kaplan_meier,Kaplan–Meier survival estimation,Time to event,420,427,2110,independent-survival-reference,modules/kaplan_meier/analysis.R,modules/kaplan_meier/generated/data.csv,kaplan_meier
+log_rank,Log-rank survival comparison,Time to event,428,435,2111,independent-survival-two_groups; independent-survival-many_groups,modules/log_rank/analysis.R,modules/log_rank/generated/data.csv,log_rank
+stratified_logrank,Stratified log-rank test,Survival,436,443,240501,repeated-survival-pairs,modules/stratified_logrank/analysis.R,modules/stratified_logrank/generated/data.csv,stratified_logrank
+cox_ph,Cox proportional-hazards regression,Time to event,444,451,2112,independent-survival-one_predictor; independent-survival-many_predictors; repeated-survival-pairs; repeated-survival-repeated; repeated-survival-mixed,modules/cox_ph/analysis.R,modules/cox_ph/generated/data.csv,cox_ph
+parametric_survival,Parametric survival: accelerated failure time,Time to event,452,459,2113,independent-survival-one_predictor; independent-survival-many_predictors,modules/parametric_survival/analysis.R,modules/parametric_survival/generated/data.csv,parametric_survival
+shared_frailty,Shared-frailty survival model,Survival,460,467,240502,independent-survival-many_predictors; repeated-survival-mixed,modules/shared_frailty/analysis.R,modules/shared_frailty/generated/data.csv,shared_frailty
+bonferroni,Bonferroni correction,Multiple testing,468,475,240508,,modules/bonferroni/analysis.R,modules/bonferroni/generated/data.csv,bonferroni
+fdr,Benjamini–Hochberg FDR,Multiple testing,476,483,240509,,modules/fdr/analysis.R,modules/fdr/generated/data.csv,fdr
+monte_carlo,Monte Carlo null-model test,Simulation and multivariate methods,484,491,240505,,modules/monte_carlo/analysis.R,modules/monte_carlo/generated/data.csv,monte_carlo
+bootstrap,Bootstrap confidence interval,Simulation and multivariate methods,492,499,240507,,modules/bootstrap/analysis.R,modules/bootstrap/generated/data.csv,bootstrap
+sampling_coverage,Sampling variation and CI coverage,Simulation and multivariate methods,500,507,240506,,modules/sampling_coverage/analysis.R,modules/sampling_coverage/generated/data.csv,sampling_coverage
+pca,Principal component analysis,Multivariate exploration,508,515,240510,,modules/pca/analysis.R,modules/pca/generated/data.csv,pca
+mds,Classical multidimensional scaling,Multivariate exploration,516,523,240511,,modules/mds/analysis.R,modules/mds/generated/data.csv,mds
+lda,Linear discriminant analysis,Multivariate exploration,524,531,240512,,modules/lda/analysis.R,modules/lda/generated/data.csv,lda

@@ -1,0 +1,72 @@
+{
+  "question": "Would the observed group statistic be unusual under assignments permitted by the design?",
+  "null": "For ordinary group-label permutation, group labels are exchangeable under the null; in a randomized experiment, the sharp null is no treatment effect on any unit.",
+  "options": [
+    "Choose the statistic and permitted shuffles first; set.seed() records reproducibility.",
+    "With B random permutations, use (1 + number_at_least_as_extreme)/(B + 1)."
+  ],
+  "assumptions": [
+    "Exchangeability or a known randomization scheme; preserve any blocks and unequal assignment probabilities."
+  ],
+  "parametric": [
+    "Welch targets a mean difference while allowing unequal variances; ordinary label shuffling is not automatically valid for that null."
+  ],
+  "nonparametric": [
+    "Already a randomization/resampling method. Pair or block restrictions are essential when the design requires them."
+  ],
+  "id": "permutation_independent",
+  "title": "Independent-sample permutation test",
+  "seed": 240503,
+  "family": "Simulation and multivariate methods",
+  "plot_engine": "beeswarm",
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "beeswarm"
+  ],
+  "code_simulate": "set.seed(240503)\ngroup <- rep(c(\"Control\", \"Warm\"), each=25)\nd <- data.frame(group, growth_mm=rnorm(50, 8+1.1*(group==\"Warm\"), 1.8))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "beeswarm::beeswarm(growth_mm ~ group, data=d, pch=21,\n  bg=c(\"#146A85\", \"#C56B3B\"), cex=1.1,\n  xlab=\"Randomized condition\", ylab=\"Growth (mm)\")\npoints(1:2, tapply(d$growth_mm, d$group, mean), pch=18, cex=1.6)",
+  "code_analysis": "observed <- mean(d$growth_mm[d$group==\"Warm\"])-mean(d$growth_mm[d$group==\"Control\"])\nB <- 4999\nnull <- numeric(B)\nfor (i in 1:B) {\n  shuffled <- sample(d$group)\n  null[i] <- mean(d$growth_mm[shuffled==\"Warm\"])-mean(d$growth_mm[shuffled==\"Control\"])\n}\np_value <- (1+sum(abs(null)>=abs(observed)))/(B+1)\nresult <- data.frame(mean_difference=observed, permutations=B, p=p_value)",
+  "biology": "Independent insect larvae are randomly assigned to ambient or warm rearing.",
+  "design": "Two independent randomized groups; statistic is the mean difference.",
+  "data_characteristics": [
+    "Continuous growth measurement",
+    "One row per larva",
+    "Group labels can be reassigned under the null"
+  ],
+  "other_examples": [
+    "Fertilizer and biomass",
+    "Drug and enzyme activity",
+    "Resource treatment and fecundity"
+  ],
+  "generating_model": "25 independent values per group. Control growth is Normal(8, SD=1.8) mm; warm growth is Normal(9.1, SD=1.8) mm. No rounding or clipping.",
+  "generating_truth": "The simulated warm-minus-control mean difference is 1.1 mm; the same-distribution null is false.",
+  "columns": [
+    {
+      "name": "group",
+      "meaning": "Randomized treatment",
+      "unit": "category"
+    },
+    {
+      "name": "growth_mm",
+      "meaning": "Larval growth",
+      "unit": "mm"
+    }
+  ],
+  "teaching_point": "Choose the statistic for the scientific question, then shuffle in a way the design permits.",
+  "plot_args": [
+    {
+      "arg": "growth_mm ~ group",
+      "note": "Separates independent groups"
+    },
+    {
+      "arg": "pch=21 / bg",
+      "note": "Outlined points with treatment fills"
+    },
+    {
+      "arg": "points(...,pch=18)",
+      "note": "Adds a diamond at each mean"
+    }
+  ],
+  "practice": "Would shuffling individual leaves be valid if treatment was assigned to pots?"
+}

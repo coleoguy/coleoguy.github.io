@@ -1,0 +1,634 @@
+---
+title: "Statistical tests in biology"
+subtitle: "Choose the question. Match the null. Interpret the result."
+author: "Experimental Design · Heath Blackmon"
+output: !expr local({source('course_output.R'); 'course_powerpoint'})
+---
+
+```{r setup, include=FALSE}
+# Every knit recreates the datasets before analyzing them. No packages auto-install.
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+course_root <- dirname(normalizePath(knitr::current_input(dir = TRUE),
+                                    winslash = "/", mustWork = TRUE))
+if (!requireNamespace("jsonlite", quietly = TRUE))
+  stop("Run install_dependencies.R before knitting.")
+course_order <- jsonlite::fromJSON(file.path(course_root, "course-order.json"))
+source(file.path(course_root, "generate_data.R"), local = TRUE)
+generate_course_data(course_root, course_order, quiet = TRUE)
+course_modules <- setNames(lapply(course_order, function(id)
+  jsonlite::fromJSON(file.path(course_root, "modules", id, "module.json"),
+                     simplifyVector = FALSE)), course_order)
+course_results <- setNames(lapply(course_order, function(id)
+  jsonlite::fromJSON(file.path(course_root, "modules", id, "generated", "results.json"),
+                     simplifyVector = FALSE)), course_order)
+```
+
+## The route through every example {#course-route}
+
+- Describe the data and identify the independent biological unit.
+
+- State the scientific question and the test’s null.
+
+- Choose the options, check the important assumptions, then interpret the effect and uncertainty.
+
+::: notes
+
+The deck is a comprehensive course reference. Use its module links to move quickly. Each method has the same eight parts: data, simulation, plot, plot code, question/null/options, assumptions/responses, analysis/results, interpretation/practice. Biological examples are simulated and each has a separate runnable script.
+
+:::
+
+## Start with the question {#scientific-target}
+
+- A mean difference, a rank shift, a probability, and an association are different targets.
+
+- Say what result would answer the biological question before choosing a test.
+
+- Ask: “If this null were rejected, would that answer my question?”
+
+::: notes
+
+Use a concrete example: greater average parasite burden is a mean-count question; a higher chance of any infection is binary; a tendency for one group to rank higher is a rank question. The same dataset may support several questions, but their tests are not interchangeable.
+
+:::
+
+## What is one independent unit? {#experimental-unit}
+
+- The unit is the independently sampled or assigned animal, plant, culture, or population.
+
+- Repeated measurements and technical replicates do not create new independent units.
+
+- Keep IDs for pairs, individuals, cages, families, and populations.
+
+::: notes
+
+A dish receiving a treatment is the experimental unit when all seedlings in the dish receive that shared treatment. More measurements can improve measurement precision without increasing treatment replication. Mixed models account for appropriate dependence but cannot manufacture missing independent treatment replicates.
+
+:::
+
+## Design creates the comparison {#good-design}
+
+- Replicate independent units; randomize treatment assignment when possible.
+
+- Block or match known sources of variation and preserve that structure in analysis.
+
+- Use appropriate controls, consistent measurement, and blinding where practical.
+
+::: notes
+
+Separate random sampling, which helps population representation, from random treatment assignment, which supports a causal comparison under the design. Blocking is most helpful when a nuisance variable affects the response. Randomization does not guarantee that one realized sample is perfectly balanced.
+
+:::
+
+## Name the response and predictors {#data-roles}
+
+- Response: continuous, binary, count, unordered category, ordered category, or time to event.
+
+- Predictors: group, quantitative measurement, or several variables and interactions.
+
+- Then identify pairing, repeated measurements, clustering, exposure, and censoring.
+
+::: notes
+
+Numeric coding alone does not establish scale: labels 1, 2 and 3 can be unordered or ordered categories. A regression model assigns a response role; correlation treats the two measured variables symmetrically. Preserve units in the data dictionary.
+
+:::
+
+## Denominators change the data {#denominators-exposure}
+
+- 8 successes out of 10 trials differs from 80 out of 100: retain both counts.
+
+- 20 events in 10 minutes differs from 20 in 60 minutes: retain exposure.
+
+- A continuous fraction, such as time spent feeding, is not automatically binomial data.
+
+::: notes
+
+Binomial data are successes from known trials. Count-rate models can use an offset when mean count is proportional to measured exposure. Continuous fractions require a sampling model that matches how they were measured; an arcsine transformation is not a universal default.
+
+:::
+
+## See the observations before the test {#describe-first}
+
+- Plot individuals, groups, pairs, or trajectories in a way that shows the design.
+
+- Label biological units and distinguish spread from uncertainty.
+
+- Look for missing groups, recording errors, outliers, and patterns the model might miss.
+
+::: notes
+
+Do not remove genuine observations simply because they weaken a result. Investigate unusual observations, correct verified recording errors, and use a justified sensitivity analysis. A figure is a way to understand the data and model, not a decoration after testing.
+
+:::
+
+## SD, SE, and confidence intervals {#spread-uncertainty}
+
+- SD describes variation among observations.
+
+- SE describes sampling uncertainty in an estimate.
+
+- A confidence interval shows a range from an interval-producing procedure; state what quantity it covers.
+
+::: notes
+
+For an independent mean, SE = SD/sqrt(n). Correlated repeated rows do not justify plugging their row count into that expression. Repeated use of a valid 95% confidence-interval procedure covers the fixed population parameter in 95% of repetitions. A prediction interval describes a new observation and is different from a mean interval.
+
+:::
+
+## The null and the p-value {#null-p}
+
+- Write the null in biological language: equal means, zero slope, equal probabilities, or another stated target.
+
+- The p-value measures how unusual the result is under the null and the analysis assumptions.
+
+- A large p-value does not prove equality; a small p-value does not measure biological importance.
+
+::: notes
+
+A p-value is not the probability that the null is true. Specify a one-sided alternative only when that directional test was justified before inspecting the outcome. A two-sided test allows departures in either direction. Report the effect estimate and uncertainty alongside the test.
+
+:::
+
+## Test the contrast you care about {#matched-contrast}
+
+- Compare the actual group difference or slope and its confidence interval.
+
+- Overlapping group intervals are not a formal test of their difference.
+
+- An omnibus result says some groups differ; a contrast says which comparison is supported.
+
+::: notes
+
+Choose planned contrasts based on the scientific question. Do not teach every contrast as requiring a significant omnibus gate. If many comparisons are explored, define the family and use a suitable adjustment. The Fisher LSD chapter distinguishes its gate from stronger all-pairs protection.
+
+:::
+
+## Assumptions point to the next move {#assumptions-first}
+
+- Start with independence, matching, and how the observations were generated.
+
+- Then check the model feature that matters: shape, spread, linearity, count variation, or dependence.
+
+- First consider a suitable parametric model; then ask whether a nonparametric alternative answers the intended question.
+
+::: notes
+
+Normality tests are evidence, not an automatic switch. For a paired t test, inspect differences; for regression, inspect residuals rather than requiring normal predictors. Welch allows unequal variances while preserving a mean question. A rank alternative often changes the target. A transformation changes the scale on which a mean or model is interpreted.
+
+:::
+
+## Nonparametric does not mean no assumptions {#nonparametric-route}
+
+- Ranks can answer questions about ordering or location when mean-model assumptions are unsuitable.
+
+- Permutation schemes must preserve the randomization, pairing, or blocks.
+
+- State the new null explicitly before replacing the original method.
+
+::: notes
+
+Signed-rank requires meaningful difference magnitudes and a symmetric difference distribution for its usual location interpretation; a sign test uses direction. Mann–Whitney and Kruskal–Wallis are not unrestricted tests of medians. Permutation inference needs exchangeability or the actual assignment mechanism. The course gives these alternatives the same full example sequence as parametric methods.
+
+:::
+
+## Association, prediction, and causation {#association-causation}
+
+- Correlation describes association; regression estimates a specified response relationship.
+
+- Including a covariate changes the adjusted question.
+
+- A model alone does not turn observational data into a randomized experiment.
+
+::: notes
+
+Ask which predictors are plausible causes, consequences, or confounders before interpreting adjustment. Avoid extrapolating well beyond the observed predictor range. An interaction means an effect depends on another predictor. R² describes fitted variation, not causal validity or necessarily useful future prediction.
+
+:::
+
+## Power and multiple questions {#power-multiplicity}
+
+- Power depends on effect size, independent replication, variability, design, and the chosen test.
+
+- More tests create more opportunities for false positives; define the comparison family.
+
+- Compare procedures by simulation across repeated datasets, not by two p-values from one dataset.
+
+::: notes
+
+Type I error is rejection of a true null; Type II error is failure to reject a specified false null. Power is one minus the latter probability for a specified alternative. Bonferroni controls the chance of any false rejection in a family; BH targets the expected false-discovery proportion under its conditions. Simulation repetitions are not biological replicates.
+
+:::
+
+## Make the analysis reproducible {#reproducible-analysis}
+
+- Record set.seed(), the data-generating model, units, and package versions.
+
+- Save the data before analysis and report results computed from that saved file.
+
+- Check that the code, null, figure, and written interpretation describe the same analysis.
+
+::: notes
+
+Every module script in this course simulates its own dataset, saves data.csv, reads it back, and creates its plot and results. The course R Markdown reruns those scripts on each knit. An LLM can help explain code or output, but students still need to check the scientific target, data structure, options, and conclusions. The instructor guide distinguishes the known simulated population truth from realized estimates.
+
+:::
+
+## Pick a test: continuous measurement {#picker-independent-continuous}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Reference or description | Is the population mean 12 units? | [One-sample t](#one_sample_t); [Signed-rank](#signed_rank); [Sign](#sign_test) |
+| 2 groups | Do the environments differ in mean wing length? | [Welch t](#welch_t); [Pooled t](#pooled_t); [Rank-sum](#rank_sum); [Permutation](#permutation_independent) |
+| 3+ groups | Are all four population means equal? | [ANOVA](#one_way_anova); [Welch ANOVA](#welch_anova); [Kruskal–Wallis](#kruskal_wallis) |
+| 1 predictor | Predict horn length, or describe association between traits? | [Simple regression](#simple_lm); [Pearson](#pearson); [Spearman](#spearman) |
+| Multiple predictors | Which effects or interactions explain mean growth? | [Multiple LM](#multiple_lm); [Factorial ANOVA](#factorial_anova); [ANCOVA](#ancova); [LMM](#linear_mixed) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**independent-continuous-reference.** Enzyme activity in 30 independent cultures; reference = 12 units. Is the population mean 12 units? 
+
+**independent-continuous-two_groups.** Wing length in independent beetles from two rearing environments. Do the environments differ in mean wing length? 
+
+**independent-continuous-many_groups.** Plant biomass in independent pots assigned to four nutrient levels. Are all four population means equal? 
+
+**independent-continuous-one_predictor.** Body mass and horn length measured once in each independent beetle. Predict horn length, or describe association between traits? Regression assigns a response and a predictor. Correlation asks a symmetric association question.
+
+**independent-continuous-many_predictors.** Growth measured with genotype, temperature, and initial size recorded. Which effects or interactions explain mean growth? Use the repeated/clustered route when multiple rows share an individual, cage, or population.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Pick a test: binary / successes out of trials {#picker-independent-binary}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Reference or description | Does transmission probability differ from 0.5? | [Exact binomial](#binomial); [1 proportion](#one_proportion) |
+| 2 groups | Are infection probabilities equal? | [2 proportions](#two_proportions); [χ² independence](#chi_independence); [Fisher exact](#fisher_exact) |
+| 3+ groups | Is germination probability the same in all treatments? | [χ² independence](#chi_independence); [Logistic](#logistic) |
+| 1 predictor | Does survival probability change with divergence? | [Logistic](#logistic) |
+| Multiple predictors | Does a predictor affect survival after accounting for the others? | [Logistic](#logistic); [Binary GLMM](#binary_glmm) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**independent-binary-reference.** A marker is transmitted to 38 of 60 independent offspring. Does transmission probability differ from 0.5? 
+
+**independent-binary-two_groups.** Infection status is recorded for independent hosts in two habitats. Are infection probabilities equal? 
+
+**independent-binary-many_groups.** Germination success or failure is recorded for seeds in four treatments. Is germination probability the same in all treatments? If seeds share a dish, the dish can create dependence; keep its ID.
+
+**independent-binary-one_predictor.** Each hybrid survives or dies; parental genetic divergence is recorded. Does survival probability change with divergence? 
+
+**independent-binary-many_predictors.** Survival status with divergence, cross direction, and rearing temperature. Does a predictor affect survival after accounting for the others? Known trial denominators matter. A percent without a trial count may be continuous-fraction data, which need a different model.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Pick a test: count / events per exposure {#picker-independent-count}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Reference or description | Does the mutation rate differ from a reference rate? | [Exact Poisson](#poisson_exact) |
+| 2 groups | Are mean colonies per mL equal? | [Poisson GLM](#poisson_glm); [Negative binomial](#negbin_glm); [Exact Poisson](#poisson_exact) |
+| 3+ groups | Do conditional mean parasite counts differ among treatments? | [Poisson GLM](#poisson_glm); [Negative binomial](#negbin_glm); [Quasi-Poisson](#quasipoisson) |
+| 1 predictor | Does the expected visit rate change with flower number? | [Poisson GLM](#poisson_glm); [Negative binomial](#negbin_glm) |
+| Multiple predictors | Which predictors alter the conditional mean mutation rate? | [Poisson GLM](#poisson_glm); [Negative binomial](#negbin_glm); [Count GLMM](#count_glmm) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**independent-count-reference.** Mutations counted across a known number of sequenced base-generations. Does the mutation rate differ from a reference rate? 
+
+**independent-count-two_groups.** Colony counts in two media; plated volume recorded for each replicate. Are mean colonies per mL equal? 
+
+**independent-count-many_groups.** Parasite counts per host in four independent treatment groups. Do conditional mean parasite counts differ among treatments? 
+
+**independent-count-one_predictor.** Pollinator visits per plant versus flower number; observation minutes vary. Does the expected visit rate change with flower number? Include observation time as exposure when the mean count is proportional to time.
+
+**independent-count-many_predictors.** Mutation counts with genotype, stress, and sequenced exposure recorded. Which predictors alter the conditional mean mutation rate? If libraries, individuals, or populations contribute repeated rows, retain that cluster structure.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Pick a test: unordered categories (3+) {#picker-independent-nominal}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Reference or description | Do phenotype probabilities match the expected ratio? | [χ² goodness-of-fit](#chi_gof) |
+| 2 groups | Does nest-material distribution differ by habitat? | [χ² independence](#chi_independence); [Fisher exact](#fisher_exact) |
+| 3+ groups | Are site and feeding strategy independent? | [χ² independence](#chi_independence); [Fisher exact](#fisher_exact) |
+| 1 predictor | Does salinity change the probabilities of the morphs? | [Multinomial](#multinomial) |
+| Multiple predictors | Which predictors change guild probabilities? | [Multinomial](#multinomial) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**independent-nominal-reference.** Offspring fall into three phenotypes predicted in a 1:2:1 ratio. Do phenotype probabilities match the expected ratio? 
+
+**independent-nominal-two_groups.** Independent birds in two habitats choose among three nest materials. Does nest-material distribution differ by habitat? 
+
+**independent-nominal-many_groups.** Independent fish from four sites use three feeding strategies. Are site and feeding strategy independent? 
+
+**independent-nominal-one_predictor.** Three unordered bacterial colony morphs observed along a salinity gradient. Does salinity change the probabilities of the morphs? 
+
+**independent-nominal-many_predictors.** Pollinator guild with habitat, flower color, and floral size recorded. Which predictors change guild probabilities? Guild is unordered; assigning codes 1, 2, 3 does not make it a continuous response.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Pick a test: ordered categories {#picker-independent-ordinal}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Reference or description | Among scores not at the threshold, are higher and lower equally likely? | [Sign](#sign_test); [Signed-rank](#signed_rank) |
+| 2 groups | Does one group tend to have higher damage scores? | [Rank-sum](#rank_sum); [Ordinal model](#ordinal_logistic) |
+| 3+ groups | Do treatment groups differ in their rank/category distributions? | [Kruskal–Wallis](#kruskal_wallis); [Ordinal model](#ordinal_logistic) |
+| 1 predictor | Model category probabilities, or ask about monotone association? | [Ordinal model](#ordinal_logistic); [Spearman](#spearman) |
+| Multiple predictors | Which predictors shift scores after adjustment? | [Ordinal model](#ordinal_logistic); [CLMM](#ordinal_mixed) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**independent-ordinal-reference.** Lesion severity: none, mild, moderate, severe; compare with “moderate.” Among scores not at the threshold, are higher and lower equally likely? A sign test asks this specific threshold question. Use signed-rank only if numerical spacings are defensible, not merely category labels.
+
+**independent-ordinal-two_groups.** Independent leaves receive ordered damage scores in two treatments. Does one group tend to have higher damage scores? 
+
+**independent-ordinal-many_groups.** Ordered disease scores recorded in independent plants under four treatments. Do treatment groups differ in their rank/category distributions? 
+
+**independent-ordinal-one_predictor.** Ordered courtship intensity recorded along a hormone gradient. Model category probabilities, or ask about monotone association? 
+
+**independent-ordinal-many_predictors.** Ordered disease scores with genotype, temperature, and age recorded. Which predictors shift scores after adjustment? Use a cumulative-link mixed model when observations share an individual or cluster.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Pick a test: time to event + censoring {#picker-independent-survival}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Reference or description | What fraction remain alive over time? | [Kaplan–Meier](#kaplan_meier) |
+| 2 groups | Do the event-time distributions differ between cohorts? | [Log-rank](#log_rank) |
+| 3+ groups | Do any treatment survival curves differ? | [Log-rank](#log_rank) |
+| 1 predictor | Does seed mass alter event hazard? | [Cox PH](#cox_ph); [AFT](#parametric_survival) |
+| Multiple predictors | What are the adjusted hazard or time effects? | [Cox PH](#cox_ph); [AFT](#parametric_survival); [Frailty](#shared_frailty) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**independent-survival-reference.** Days to seedling death; some plants are still alive when follow-up ends. What fraction remain alive over time? Estimation is useful here; there is no required hypothesis test.
+
+**independent-survival-two_groups.** Time to pupation in two independent cohorts; some have not pupated yet. Do the event-time distributions differ between cohorts? 
+
+**independent-survival-many_groups.** Time to infection under four treatments with right-censored individuals. Do any treatment survival curves differ? 
+
+**independent-survival-one_predictor.** Time to germination versus seed mass, with ungerminated seeds censored. Does seed mass alter event hazard? Cox targets a hazard ratio; an AFT model targets a time ratio.
+
+**independent-survival-many_predictors.** Time to death with dose, sex, and population recorded. What are the adjusted hazard or time effects? Use a dependence-aware model when individuals share clusters; do not treat censored times as observed deaths.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Paired/repeated: continuous measurement {#picker-repeated-continuous}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Pairs / 2 measurements | Is the mean within-plant change zero? | [Paired t](#paired_t); [Signed-rank](#signed_rank); [Sign](#sign_test); [Paired permutation](#permutation_paired) |
+| 3+ repeated conditions | Do within-animal means differ across temperatures? | [Repeated ANOVA](#repeated_anova); [LMM](#linear_mixed); [Friedman](#friedman) |
+| Within + between predictors | Do growth trajectories differ while accounting for repeated larvae and families? | [LMM](#linear_mixed) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**repeated-continuous-pairs.** Photosynthesis measured before and after stress in the same plants. Is the mean within-plant change zero? 
+
+**repeated-continuous-repeated.** Oxygen consumption measured in every animal at four temperatures. Do within-animal means differ across temperatures? Nonparametric rank coverage follows the repeated-model assumptions; a change of method can change the null.
+
+**repeated-continuous-mixed.** Growth tracked through time in treated and control larvae from several families. Do growth trajectories differ while accounting for repeated larvae and families? 
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Paired/repeated: binary outcome {#picker-repeated-binary}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Pairs / 2 measurements | Are positive-to-negative and negative-to-positive changes equally likely? | [McNemar](#mcnemar) |
+| 3+ repeated conditions | Is response probability equal across conditions? | [Cochran Q](#cochran_q); [Binary GLMM](#binary_glmm); [Binary GEE](#binary_gee) |
+| Within + between predictors | How does disease probability change with time and treatment? | [Binary GLMM](#binary_glmm); [Binary GEE](#binary_gee) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**repeated-binary-pairs.** The same hosts tested for infection before and after treatment. Are positive-to-negative and negative-to-positive changes equally likely? 
+
+**repeated-binary-repeated.** The same flies scored as courting or not under three cue conditions. Is response probability equal across conditions? 
+
+**repeated-binary-mixed.** Weekly disease status in individuals assigned to treatment groups. How does disease probability change with time and treatment? GLMM gives effects conditional on random effects; GEE describes population-average effects.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Paired/repeated: ordered categories {#picker-repeated-ordinal}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Pairs / 2 measurements | Are upward and downward changes equally likely? | [Sign](#sign_test); [Signed-rank](#signed_rank) |
+| 3+ repeated conditions | Do conditions consistently rank differently within plants? | [Friedman](#friedman); [CLMM](#ordinal_mixed) |
+| Within + between predictors | Do predictors shift category probabilities within the repeated design? | [CLMM](#ordinal_mixed) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**repeated-ordinal-pairs.** The same fish receive ordered stress scores before and after an intervention. Are upward and downward changes equally likely? Signed-rank additionally needs meaningful difference sizes and a symmetric difference distribution.
+
+**repeated-ordinal-repeated.** The same plants receive ordered damage scores under four assay conditions. Do conditions consistently rank differently within plants? 
+
+**repeated-ordinal-mixed.** Weekly disease severity categories in treated and control plants from several lines. Do predictors shift category probabilities within the repeated design? 
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Paired/repeated: count / rate {#picker-repeated-count}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Pairs / 2 measurements | Does the within-host expected count or rate change? | [Count GLMM](#count_glmm); [Count GEE](#count_gee); [Paired permutation](#permutation_paired) |
+| 3+ repeated conditions | Do expected visit rates change across days? | [Count GLMM](#count_glmm); [Count GEE](#count_gee) |
+| Within + between predictors | How do treatment and time affect mutation rates across lines? | [Count GLMM](#count_glmm); [Count GEE](#count_gee) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**repeated-count-pairs.** Parasite counts in the same hosts before and after treatment. Does the within-host expected count or rate change? Record exposure if observation effort varies; arbitrary count ranks answer a different question.
+
+**repeated-count-repeated.** Visit counts from the same plants on four days; observation minutes recorded. Do expected visit rates change across days? 
+
+**repeated-count-mixed.** Repeated mutation counts from lines assigned to stress treatments. How do treatment and time affect mutation rates across lines? Retain line IDs and exposure; repeated sequencing samples are not new independent lines.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+## Paired/repeated: time to event + censoring {#picker-repeated-survival}
+
+| Predictor / design | Scientific target | Methods to consider |
+|---|---|---|
+| Pairs / 2 measurements | Do survival functions differ within the matched strata? | [Stratified log-rank](#stratified_logrank); [Cox PH](#cox_ph) |
+| 3+ repeated conditions | Is the scientific target first-event survival or recurrent events? | Define the event process; then [Cox framework](#cox_ph) / [frailty](#shared_frailty) |
+| Within + between predictors | How do predictors alter risk while accounting for enclosure dependence? | [Frailty](#shared_frailty); [Cox PH](#cox_ph) |
+
+::: notes
+
+Keep independent units and pairing/cluster IDs explicit; click a method to open its section.
+
+**repeated-survival-pairs.** Related genotypes matched in blocks, then followed to death under two treatments. Do survival functions differ within the matched strata? Matching defines strata. Two follow-up visits do not create two independent event times.
+
+**repeated-survival-repeated.** Animals checked repeatedly; some have one event, others can relapse. Is the scientific target first-event survival or recurrent events? Define the event process before choosing a test. There is no generic “repeated survival” test.
+
+**repeated-survival-mixed.** Time to infection in animals sharing enclosures and treatment predictors. How do predictors alter risk while accounting for enclosure dependence? Frailty models cluster heterogeneity; cluster-robust uncertainty and stratification make different assumptions.
+
+These are routes, not automatic substitutes. Check the method null and assumptions. A repeated-survival row needs an event-process definition; repeated follow-up checks are not independent event times.
+
+:::
+
+```{r module-slide-functions, include=FALSE}
+# Rendering helpers keep module.json as the source of truth for teaching text/code.
+bullets <- function(x) {
+  paste(paste0("- ", unlist(x)), collapse = "\n\n")
+}
+code_block <- function(x, language = "r") {
+  paste0("```", language, "\n", paste(unlist(x), collapse = "\n"), "\n```\n")
+}
+columns <- function(left, right, left_width = 62) {
+  paste0("::: columns\n\n::: {.column width=\"", left_width, "%\"}\n\n",
+         left, "\n\n:::\n\n::: {.column width=\"", 100 - left_width,
+         "%\"}\n\n", right, "\n\n:::\n\n:::\n\n")
+}
+notes <- function(x) paste0("::: notes\n\n", x, "\n\n:::\n\n")
+short_titles <- c(
+  one_sample_t = "One-sample t", sign_test = "Sign test",
+  signed_rank = "Signed-rank", paired_t = "Paired t",
+  permutation_paired = "Paired permutation", welch_t = "Welch t",
+  pooled_t = "Pooled t", rank_sum = "Rank-sum",
+  permutation_independent = "Independent permutation", shapiro = "Normality checks",
+  f_variance = "F test of variances", levene = "Levene / Brown–Forsythe",
+  one_way_anova = "One-way ANOVA", welch_anova = "Welch ANOVA",
+  kruskal_wallis = "Kruskal–Wallis", dunn = "Dunn comparisons",
+  tukey = "Tukey comparisons", fisher_lsd = "Fisher LSD", scheffe = "Scheffé contrasts",
+  factorial_anova = "Factorial ANOVA", ancova = "ANCOVA",
+  repeated_anova = "Repeated ANOVA", friedman = "Friedman",
+  pearson = "Pearson correlation", spearman = "Spearman correlation",
+  simple_lm = "Simple regression", theil_sen = "Theil–Sen slope",
+  multiple_lm = "Multiple regression", binomial = "Exact binomial",
+  one_proportion = "One proportion", two_proportions = "Two proportions",
+  chi_gof = "Chi-square goodness-of-fit", chi_independence = "Chi-square independence",
+  fisher_exact = "Fisher exact", mcnemar = "McNemar", cochran_q = "Cochran Q",
+  logistic = "Logistic regression", multinomial = "Multinomial regression",
+  ordinal_logistic = "Ordinal regression", poisson_exact = "Exact Poisson",
+  poisson_glm = "Poisson regression", quasipoisson = "Quasi-Poisson",
+  negbin_glm = "Negative binomial", linear_mixed = "Linear mixed model",
+  binary_glmm = "Binary mixed model", binary_gee = "Binary GEE",
+  count_gee = "Count GEE", count_glmm = "Count mixed model", ordinal_mixed = "Ordinal mixed model",
+  kaplan_meier = "Kaplan–Meier", log_rank = "Log-rank",
+  stratified_logrank = "Stratified log-rank", cox_ph = "Cox regression",
+  parametric_survival = "Parametric survival", shared_frailty = "Shared frailty",
+  bonferroni = "Bonferroni", fdr = "Benjamini–Hochberg FDR",
+  monte_carlo = "Monte Carlo test", bootstrap = "Bootstrap interval",
+  sampling_coverage = "Sampling and CI coverage", pca = "PCA", mds = "MDS", lda = "Discriminant analysis"
+)
+emit_module <- function(id) {
+  m <- course_modules[[id]]
+  r <- course_results[[id]]
+  title <- if (id %in% names(short_titles)) short_titles[[id]] else m$title
+  heading <- function(label, suffix = "") {
+    cat("\n\n## ", title, ": ", label, " {#", id, suffix, "}\n\n", sep = "")
+  }
+  guide <- paste(vapply(m$plot_args, function(a)
+    paste0("**", a$arg, "** — ", a$note), ""), collapse = "\n\n")
+  column_notes <- paste(vapply(m$columns, function(c)
+    paste0(c$name, ": ", c$meaning, " (", c$unit, ")"), ""), collapse = "\n\n")
+  # 1. Data structure and transfer to other biological examples.
+  heading("the data")
+  cat(columns(paste0(m$biology, "\n\n", bullets(m$data_characteristics)),
+              paste0("**Other data like these**\n\n", bullets(m$other_examples))))
+  cat(notes(paste(m$title, m$design, column_notes, sep = "\n\n")))
+  # 2. Read one saved row vertically so names and numbers remain legible.
+  heading("simulate and save", "-simulate")
+  first_row <- utils::read.csv(file.path(course_root, "modules", id, "generated", "data.csv"),
+                               nrows = 1, check.names = FALSE, stringsAsFactors = FALSE)
+  row_lines <- vapply(names(first_row), function(column) {
+    value <- first_row[[column]][1]
+    shown <- if (is.numeric(value)) format(value, digits = 4, trim = TRUE,
+                                          scientific = FALSE) else as.character(value)
+    paste0(column, ": ", shown)
+  }, "")
+  cat(columns(code_block(m$code_simulate),
+              paste0("**First saved row**\n\n", code_block(row_lines, ""))))
+  cat(notes(paste0("Seed: ", m$seed, "\n\nGenerating model: ", m$generating_model,
+                   "\n\nPopulation truth: ", m$generating_truth,
+                   "\n\nThe script writes data.csv before reading it for analysis. ",
+                   "output_dir or out_dir is the folder supplied to the standalone script.",
+                   "\n\nOriginal saved-data preview:\n\n", code_block(r$preview, ""))))
+  # 3. The figure and common argument choices.
+  heading("see the data", "-plot")
+  figure <- paste0("![", gsub("\\]", "", m$title),
+                   " — simulated biological data](modules/", id, "/generated/plot.png)")
+  cat(columns(figure, paste0("**", m$plot_engine, " arguments**\n\n", guide)))
+  cat(notes(paste0("This figure is generated from the saved CSV by modules/", id,
+                   "/analysis.R. ", m$teaching_point)))
+  # 4. Readable code beside the same argument guide.
+  heading("plot code", "-plot-code")
+  cat(columns(code_block(m$code_plot), paste0("**Arguments to change**\n\n", guide)))
+  cat(notes("This is an exact excerpt from analysis.R. Any preparation referenced by the excerpt appears in the complete companion script. The script opens a ragg PNG device before these lines and closes it afterward."))
+  # 5. The scientific target stays ahead of the test call.
+  heading("question and null", "-question")
+  cat(columns(paste0("**Scientific question**\n\n", m$question,
+                     "\n\n**Null / estimation target**\n\n", m$null),
+              paste0("**Relevant options**\n\n", bullets(m$options))))
+  cat(notes(paste0("Ask whether rejecting this null, or estimating this target, answers the biological question. ", m$teaching_point)))
+  # 6. Parametric responses are considered before nonparametric alternatives.
+  heading("assumptions", "-assumptions")
+  cat(columns(paste0("**What matters here**\n\n", bullets(m$assumptions)),
+              paste0("**Parametric responses**\n\n", bullets(m$parametric),
+                     "\n\n**Nonparametric responses**\n\n", bullets(m$nonparametric))))
+  cat(notes("Begin with the design. A model change should address a specific issue and preserve the scientific target where possible. A rank or permutation alternative has its own assumptions and may change the null; do not choose it solely from a normality-test p-value."))
+  # 7. Numerical results are loaded from this knit's newly executed script.
+  heading("run and read", "-analysis")
+  cat(columns(code_block(m$code_analysis),
+              paste0("**Generated results**\n\n", bullets(r$summary))))
+  cat(notes(paste0("Full executed model/test output:\n\n", code_block(r$full_output, ""))))
+  # 8. The interpretation and a short student decision/check.
+  heading("interpret", "-interpret")
+  cat(r$report, "\n\n**Discuss:** ", m$practice, "\n\n", sep = "")
+  cat(notes(paste0("Teaching point: ", m$teaching_point,
+                   "\n\nInstructor comparison with the simulated population: ", m$generating_truth,
+                   "\n\nThe reported estimate and p-value are calculated from this realized dataset; ",
+                   "they need not exactly match the known population effect.")))
+}
+```
+
+```{r all-method-modules, results='asis'}
+for (id in course_order) emit_module(id)
+```
+
+## Midterm plan {#midterm-plan}

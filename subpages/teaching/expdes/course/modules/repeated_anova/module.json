@@ -1,0 +1,86 @@
+{
+  "id": "repeated_anova",
+  "title": "Repeated-measures ANOVA",
+  "family": "Repeated and clustered data",
+  "biology": "Physiologists measure the same animals at four assay temperatures.",
+  "design": "Each of 24 animals provides all four measurements.",
+  "data_characteristics": [
+    "Continuous response",
+    "Four observations per animal",
+    "Subject ID defines pairing"
+  ],
+  "other_examples": [
+    "Photosynthesis across light levels",
+    "Hormones across sampling times",
+    "Enzyme activity across assay conditions"
+  ],
+  "question": "Are mean oxygen-use rates equal across temperatures within animals?",
+  "null": "All four population temperature means are equal.",
+  "options": [
+    "Error(subject/condition) preserves the within-animal design",
+    "Treat condition as a factor for a general timepoint comparison",
+    "The endpoint contrast is prespecified separately"
+  ],
+  "assumptions": [
+    "Independent animals",
+    "Sphericity for the usual repeated-measures F test",
+    "Appropriate residual behavior and complete measurements"
+  ],
+  "parametric": [
+    "Use a sphericity correction when needed",
+    "An LMM supports a more flexible covariance structure"
+  ],
+  "nonparametric": [
+    "Friedman compares within-subject ranks in complete blocks",
+    "A within-block permutation must preserve the assignment design"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "group = subject",
+      "note": "Connect measurements from the same animal"
+    },
+    {
+      "arg": "alpha",
+      "note": "Reduce line clutter"
+    },
+    {
+      "arg": "stat_summary",
+      "note": "Show the mean trajectory"
+    },
+    {
+      "arg": "breaks",
+      "note": "Label actual assay temperatures"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Why does ignoring subject ID create the wrong analysis?",
+  "code_simulate": "set.seed(2103)\nd <- expand.grid(temperature = c(15, 20, 25, 30), subject = 1:24)\nindividual <- rnorm(24, 0, 2)\nd$oxygen <- 8 + .35 * (d$temperature - 15) +\n  individual[d$subject] + rnorm(nrow(d), 0, 1.3)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(temperature, oxygen)) +\n  geom_line(aes(group = subject), color = \"#A9B5B8\", alpha = .55) +\n  geom_point(color = \"#246A73\", alpha = .6, size = 1.8) +\n  stat_summary(fun = mean, geom = \"line\", color = \"#B7663E\", linewidth = 1.7) +\n  stat_summary(fun = mean, geom = \"point\", color = \"#B7663E\", size = 3.5) +\n  scale_x_continuous(breaks = c(15, 20, 25, 30)) +\n  labs(x = \"Assay temperature (°C)\", y = \"Oxygen use (µmol/hour)\",\n       caption = \"Gray lines preserve individuals; orange line shows means\") +\n  theme_classic(base_size = 16)\nprint(p)",
+  "code_analysis": "fit <- aov(oxygen ~ condition + Error(subject/condition), data = d)\nsummary(fit)\nendpoints <- t.test(d$oxygen[d$temperature == 30],\n                   d$oxygen[d$temperature == 15], paired = TRUE)",
+  "seed": 2103,
+  "generating_model": "24 animals are measured at 15, 20, 25 and 30°C. Oxygen use = 8 + 0.35 × (temperature − 15) + an animal-specific Normal(0, 2²) intercept + independent Normal(0, 1.3²) observation error. Intercepts are shared within animals, producing repeated-measure dependence and a spherical covariance structure. No rounding is applied.",
+  "generating_truth": "Population means are 8, 9.75, 11.5 and 13.25 µmol/hour. The endpoint difference is 5.25 µmol/hour and the equal-means null is false.",
+  "columns": [
+    {
+      "name": "temperature",
+      "meaning": "Assay temperature",
+      "unit": "°C"
+    },
+    {
+      "name": "subject",
+      "meaning": "Animal measured at all four temperatures",
+      "unit": "ID"
+    },
+    {
+      "name": "oxygen",
+      "meaning": "Measured oxygen consumption",
+      "unit": "µmol/hour"
+    }
+  ],
+  "teaching_point": "The subject ID, not the row, defines independent replication."
+}

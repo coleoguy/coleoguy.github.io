@@ -1,0 +1,6 @@
+{
+  "preview": ["1 | 14.7936320584267 | 7", "2 | 19.4386634835973 | 6", "3 | 19.1721002459526 | 3", "4 | 12.0031125238165 | 4", "5 | 18.0816876189783 | 5"],
+  "summary": ["Events: 345; exposure: 845.0 Mb", "Rate: 0.408 mutations/Mb", "95% exact CI: 0.366 to 0.454", "Exact p = 3.246e-17"],
+  "report": "The mutation rate was 0.408 per callable Mb (95% exact CI 0.366–0.454; p = 3.25e-17 against 0.25/Mb). Pooling counts is justified here by the common-rate Poisson model.",
+  "full_output": "\n\tExact Poisson test\n\ndata:  sum(d$mutations) time base: sum(d$megabases)\nnumber of events = 345, time base = 844.99, p-value < 2.2e-16\nalternative hypothesis: true event rate is not equal to 0.25\n95 percent confidence interval:\n 0.3663373 0.4537273\nsample estimates:\nevent rate \n 0.4082887 \n"
+}

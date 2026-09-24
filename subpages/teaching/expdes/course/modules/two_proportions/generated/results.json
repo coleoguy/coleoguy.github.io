@@ -1,0 +1,6 @@
+{
+  "preview": ["Evolved | 1", "Evolved | 0", "Evolved | 1", "Evolved | 1", "Evolved | 0"],
+  "summary": ["Evolved: 78 / 110; ancestral: 61 / 110", "Difference (evolved − ancestral): 0.155", "95% CI for difference: 0.029 to 0.280", "Two-sided p = 0.01748"],
+  "report": "Evolved minus ancestral survival was 15.5 percentage points (95% CI 2.9 to 28.0; p = 0.0175). The interval for this difference answers the comparison directly.",
+  "full_output": "\n\t2-sample test for equality of proportions without continuity correction\n\ndata:  x out of n\nX-squared = 5.647, df = 1, p-value = 0.01748\nalternative hypothesis: two.sided\n95 percent confidence interval:\n 0.02872612 0.28036479\nsample estimates:\n   prop 1    prop 2 \n0.7090909 0.5545455 \n"
+}
