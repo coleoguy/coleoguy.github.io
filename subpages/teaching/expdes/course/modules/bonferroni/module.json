@@ -1,0 +1,78 @@
+{
+  "id": "bonferroni",
+  "title": "Bonferroni correction",
+  "seed": 240508,
+  "family": "Multiple testing",
+  "plot_engine": "base R",
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(240508)\ngene <- rep(1:40, each=24)\ntreated <- rep(rep(0:1, each=12), 40)\neffect <- rep(c(rep(1.1,8), rep(0,32)), each=24)\nd <- data.frame(gene, treated, expression=rnorm(960, 6+effect*treated, 1))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "plot(difference, -log10(p_value), pch=21,\n     bg=ifelse(adjusted<.05, \"#C56B3B\", \"#A7B6BD\"),\n     xlab=\"Treatment − control (log2 expression)\", ylab=\"−log10(unadjusted p)\")\nabline(v=0, lty=2, col=\"gray60\")\nlegend(\"topleft\", c(\"Passes adjustment\", \"Does not pass\"),\n       pch=21, pt.bg=c(\"#C56B3B\", \"#A7B6BD\"), bty=\"n\")",
+  "code_analysis": "p_value <- difference <- numeric(40)\nfor (i in 1:40) {\n  x <- d$expression[d$gene==i & d$treated==1]\n  y <- d$expression[d$gene==i & d$treated==0]\n  p_value[i] <- t.test(x,y)$p.value\n  difference[i] <- mean(x)-mean(y)\n}\nadjusted <- p.adjust(p_value, method=\"bonferroni\")\nresult <- data.frame(gene=1:40, difference, p_value, adjusted)",
+  "biology": "Compare gene expression between two conditions across 40 genes.",
+  "design": "Each gene comparison uses 12 independent samples per condition; simulation uses independent genes.",
+  "data_characteristics": [
+    "Many related hypotheses",
+    "One prespecified family of 40 tests",
+    "Effect sizes remain interpretable per gene"
+  ],
+  "other_examples": [
+    "Multiple candidate traits",
+    "Several planned endpoints",
+    "Many microbial taxa"
+  ],
+  "question": "Which gene differences are supported while controlling the chance of any false positive across the 40 comparisons?",
+  "null": "For each gene, the treatment and control population means are equal. The adjustment changes the error criterion, not those individual nulls.",
+  "options": [
+    "p.adjust(p_value, method=\"bonferroni\")",
+    "Define the family before viewing results",
+    "At adjusted p < .05, control familywise error at 5%"
+  ],
+  "assumptions": [
+    "Each input p-value is valid for its own null.",
+    "The family and error criterion match the scientific aim."
+  ],
+  "parametric": [
+    "Adjust valid p-values from the selected parametric tests."
+  ],
+  "nonparametric": [
+    "The same adjustment can be applied to valid rank-test or permutation p-values."
+  ],
+  "generating_model": "40 genes, each with 12 control and 12 treated independent Normal observations, SD=1 log2 unit. Controls have mean 6; the first 8 genes have treatment shift 1.1; the other 32 have shift 0. Genes are independent in this simulation.",
+  "generating_truth": "The first eight genes have true mean effects of 1.1 log2 units; the other 32 nulls are true.",
+  "columns": [
+    {
+      "name": "gene",
+      "meaning": "Gene comparison",
+      "unit": "ID"
+    },
+    {
+      "name": "treated",
+      "meaning": "Control=0, treated=1",
+      "unit": "indicator"
+    },
+    {
+      "name": "expression",
+      "meaning": "Expression measurement",
+      "unit": "log2 units"
+    }
+  ],
+  "teaching_point": "Bonferroni controls the chance of at least one false positive in the declared family; retain the gene effect sizes when interpreting discoveries.",
+  "plot_args": [
+    {
+      "arg": "-log10(p_value)",
+      "note": "Makes smaller p-values appear higher"
+    },
+    {
+      "arg": "bg=ifelse(...)",
+      "note": "Colors by the adjusted decision"
+    },
+    {
+      "arg": "abline(v=0)",
+      "note": "Marks zero expression difference"
+    }
+  ],
+  "practice": "Does a gene with a small adjusted p-value necessarily have a biologically large effect?"
+}

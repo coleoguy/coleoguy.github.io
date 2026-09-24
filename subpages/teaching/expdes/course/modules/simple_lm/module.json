@@ -1,0 +1,85 @@
+{
+  "id": "simple_lm",
+  "title": "Simple linear regression",
+  "family": "Regression",
+  "biology": "Plant ecologists grow seedlings under a gradient of nitrogen supply.",
+  "design": "Thirty-six independently assigned pots receive one nitrogen level and yield one biomass measurement.",
+  "data_characteristics": [
+    "One continuous response",
+    "One continuous predictor",
+    "A linear mean response and its slope"
+  ],
+  "other_examples": [
+    "Body size predicting horn size",
+    "Temperature predicting enzyme activity",
+    "Resource supply predicting growth"
+  ],
+  "question": "How much does mean seedling biomass change per additional mg of nitrogen?",
+  "null": "The population slope of mean biomass on nitrogen is zero.",
+  "options": [
+    "response ~ predictor defines the direction",
+    "confint(fit) gives coefficient intervals",
+    "confidence predicts a mean; prediction predicts a new pot"
+  ],
+  "assumptions": [
+    "Independent pot errors",
+    "Mean response roughly linear; inspect residuals",
+    "Similar residual variance; normal errors for small-sample intervals/tests"
+  ],
+  "parametric": [
+    "Transform or model curvature when scientifically useful",
+    "Use variance models/robust SEs for unequal residual spread"
+  ],
+  "nonparametric": [
+    "Theil–Sen provides a robust linear slope",
+    "Spearman answers a rank-association question instead of slope"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "polygon",
+      "note": "Draw a confidence band behind the points"
+    },
+    {
+      "arg": "lines / lty",
+      "note": "Distinguish fitted mean and prediction limits"
+    },
+    {
+      "arg": "points",
+      "note": "Keep all observed pots visible"
+    },
+    {
+      "arg": "legend",
+      "note": "Name each kind of uncertainty"
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Which interval answers what biomass a newly grown individual seedling may have?",
+  "code_simulate": "set.seed(1114)\nnitrogen <- runif(36, 0, 12)\nbiomass <- 2.2 + .42 * nitrogen + rnorm(36, 0, .8)\nd <- data.frame(pot = 1:36, nitrogen_mg = nitrogen, biomass_g = biomass)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "plot(d$nitrogen_mg, d$biomass_g, type = \"n\", ylim = range(new_pot),\n     xlab = \"Nitrogen supplied (mg)\", ylab = \"Seedling biomass (g)\")\npolygon(c(grid$nitrogen_mg, rev(grid$nitrogen_mg)),\n        c(mean_ci[, \"lwr\"], rev(mean_ci[, \"upr\"])), col = \"#246A7330\", border = NA)\nlines(grid$nitrogen_mg, mean_ci[, \"fit\"], col = \"#246A73\", lwd = 3)\nmatlines(grid$nitrogen_mg, new_pot[, c(\"lwr\", \"upr\")], lty = 2, col = \"#B7663E\")\npoints(d$nitrogen_mg, d$biomass_g, pch = 21, bg = \"#246A73\", col = \"white\", cex = 1.3)\nlegend(\"topleft\", c(\"Mean + 95% confidence band\", \"95% prediction limits\"),\n       lty = c(1, 2), col = c(\"#246A73\", \"#B7663E\"), bty = \"n\")",
+  "code_analysis": "fit <- lm(biomass_g ~ nitrogen_mg, data = d)\ncoefficients <- summary(fit)$coefficients\nci <- confint(fit)\ngrid <- data.frame(nitrogen_mg = seq(min(d$nitrogen_mg), max(d$nitrogen_mg), length.out = 100))\nmean_ci <- predict(fit, grid, interval = \"confidence\")\nnew_pot <- predict(fit, grid, interval = \"prediction\")",
+  "seed": 1114,
+  "generating_model": "36 nitrogen doses are Uniform(0, 12) mg. Independent biomass values follow 2.2 + 0.42*nitrogen + Normal(0, 0.8 SD).",
+  "generating_truth": "The conditional mean intercept is 2.2 g and slope is +0.42 g per mg nitrogen. The zero-slope null is false.",
+  "columns": [
+    {
+      "name": "pot",
+      "meaning": "Independent pot identifier",
+      "unit": "none"
+    },
+    {
+      "name": "nitrogen_mg",
+      "meaning": "Assigned nitrogen dose",
+      "unit": "mg"
+    },
+    {
+      "name": "biomass_g",
+      "meaning": "Seedling biomass",
+      "unit": "g"
+    }
+  ],
+  "teaching_point": "Choose confidence intervals for a mean response and prediction intervals for a new individual pot."
+}

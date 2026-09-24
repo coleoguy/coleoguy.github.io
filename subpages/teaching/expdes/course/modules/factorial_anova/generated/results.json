@@ -1,0 +1,6 @@
+{
+  "preview": [" replicate genotype heat   growth", "         1        A Cool 16.70898", "         2        A Cool 13.52018", "         3        A Cool 15.58859", "         4        A Cool 14.19103"],
+  "summary": ["Interaction = 4.30 mg/week", "95% CI 2.80 to 5.81", "t(84) = 5.69; p = 1.78e-07"],
+  "report": "The warm-minus-cool growth effect was 4.30 mg/week greater in genotype B than A (95% CI 2.80 to 5.81; p = 1.78e-07). The interaction asks whether the temperature effect depends on genotype; a single average temperature effect would hide this difference.",
+  "full_output": "\nCall:\nlm(formula = growth ~ genotype * heat, data = d)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.8521 -1.1843 -0.0363  1.0850  4.6476 \n\nCoefficients:\n                   Estimate Std. Error t value Pr(>|t|)    \n(Intercept)         14.9526     0.3779  39.567  < 2e-16 ***\ngenotypeB            0.2676     0.5344   0.501    0.618    \nheatWarm             0.7240     0.5344   1.355    0.179    \ngenotypeB:heatWarm   4.3035     0.7558   5.694 1.78e-07 ***\n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n\nResidual standard error: 1.773 on 84 degrees of freedom\nMultiple R-squared:  0.6099,\tAdjusted R-squared:  0.5959 \nF-statistic: 43.77 on 3 and 84 DF,  p-value: < 2.2e-16\n"
+}

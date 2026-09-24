@@ -1,0 +1,6 @@
+{
+  "preview": [" site salinity_ppt richness", "    1     2.095406       60", "    2     7.344500       42", "    3     3.973588       46", "    4     1.952997       62"],
+  "summary": ["Spearman rho = -0.752; n = 45", "S = 26599.8; asymptotic two-sided p = 2.549e-09", "The coefficient describes rank association, not a change in taxa per ppt."],
+  "report": "Salinity and bacterial richness had Spearman rho = -0.752 (two-sided p = 2.549e-09). This quantifies their monotonic rank association. It does not estimate a change in mean richness per unit salinity.",
+  "full_output": "\n\tSpearman's rank correlation rho\n\ndata:  d$salinity_ppt and d$richness\nS = 26600, p-value = 2.549e-09\nalternative hypothesis: true rho is not equal to 0\nsample estimates:\n       rho \n-0.7522922 \n"
+}

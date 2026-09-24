@@ -1,0 +1,85 @@
+{
+  "id": "theil_sen",
+  "title": "Theil–Sen robust slope",
+  "family": "Regression",
+  "biology": "Physiologists measure enzyme activity along a temperature gradient with occasional unusually high assays.",
+  "design": "Forty independent assay preparations contribute one temperature/activity pair each.",
+  "data_characteristics": [
+    "One continuous response and predictor",
+    "A roughly linear trend",
+    "A slope resistant to extreme response values"
+  ],
+  "other_examples": [
+    "Phenological date versus year",
+    "Growth versus resource supply",
+    "Morphological allometry on log scales"
+  ],
+  "question": "What is the robust linear change in enzyme activity per degree?",
+  "null": "The target is the robust linear activity–temperature slope; zero means no linear location trend.",
+  "options": [
+    "Use the median of all finite pairwise slopes",
+    "Resample complete pairs for a slope interval",
+    "This example uses a percentile bootstrap, not an exact p-value"
+  ],
+  "assumptions": [
+    "Independent assay preparations",
+    "A linear trend remains scientifically sensible",
+    "Bootstrap intervals are approximate; leverage can still matter"
+  ],
+  "parametric": [
+    "Fit a suitable error model if the conditional mean is the target",
+    "Check whether unusual assays are errors or genuine observations"
+  ],
+  "nonparametric": [
+    "Theil–Sen estimates a robust location trend",
+    "Spearman addresses monotonic association without slope units"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "pch / bg",
+      "note": "Show every assay, including unusual ones"
+    },
+    {
+      "arg": "abline",
+      "note": "Add the robust intercept and slope"
+    },
+    {
+      "arg": "lwd",
+      "note": "Keep the fitted trend legible"
+    },
+    {
+      "arg": "legend",
+      "note": "Label exactly which line is displayed"
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "How does a slope answer a different question from Spearman correlation?",
+  "code_simulate": "set.seed(1116)\ntemperature <- runif(40, 16, 30)\nactivity <- 8 + 1.4 * temperature + rt(40, df = 4) * 2\nactivity[c(5, 18)] <- activity[c(5, 18)] + 25\nd <- data.frame(assay = 1:40, temp_c = temperature, activity = activity)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "plot(d$temp_c, d$activity, pch = 21, bg = \"#246A73\", col = \"white\", cex = 1.4,\n     xlab = \"Assay temperature (degrees C)\", ylab = \"Enzyme activity (U/mL)\")\nabline(intercept, slope, col = \"#B7663E\", lwd = 3)\nlegend(\"topleft\", \"Theil–Sen fitted trend\", lty = 1, lwd = 3,\n       col = \"#B7663E\", bty = \"n\")",
+  "code_analysis": "pairs <- combn(seq_len(nrow(d)), 2)\nslopes <- (d$activity[pairs[2, ]] - d$activity[pairs[1, ]]) /\n          (d$temp_c[pairs[2, ]] - d$temp_c[pairs[1, ]])\nslope <- median(slopes)\nintercept <- median(d$activity - slope * d$temp_c)",
+  "seed": 1116,
+  "generating_model": "40 temperatures are Uniform(16, 30) degrees C. Core activity = 8 + 1.4*temperature + 2 times a Student t variable with 4 degrees of freedom. Assays 5 and 18 then receive an extra +25 U/mL.",
+  "generating_truth": "The underlying uncontaminated linear trend has slope 1.4 U/mL per degree C. Two deliberately elevated assays illustrate robustness; the bootstrap interval comes from the saved contaminated sample.",
+  "columns": [
+    {
+      "name": "assay",
+      "meaning": "Independent assay identifier",
+      "unit": "none"
+    },
+    {
+      "name": "temp_c",
+      "meaning": "Assay temperature",
+      "unit": "degrees C"
+    },
+    {
+      "name": "activity",
+      "meaning": "Enzyme activity",
+      "unit": "U/mL"
+    }
+  ],
+  "teaching_point": "A robust slope retains interpretable units while limiting extreme-response influence; uncertainty here is an approximate pairs-bootstrap interval."
+}

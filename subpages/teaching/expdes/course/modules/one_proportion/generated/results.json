@@ -1,0 +1,6 @@
+{
+  "preview": ["1 | 1", "2 | 1", "3 | 0", "4 | 0", "5 | 1"],
+  "summary": ["Germination: 70 / 120", "Estimated probability: 0.583", "95% score CI: 0.494 to 0.668", "Two-sided p = 0.06789"],
+  "report": "Germination was 58.3% (95% score CI 49.4–66.8%; p = 0.0679 against 50%). The test concerns this germination probability, not the mean of arbitrary continuous percentages.",
+  "full_output": "\n\t1-sample proportions test without continuity correction\n\ndata:  x out of nrow(d), null probability 0.5\nX-squared = 3.3333, df = 1, p-value = 0.06789\nalternative hypothesis: true p is not equal to 0.5\n95 percent confidence interval:\n 0.4938803 0.6676165\nsample estimates:\n        p \n0.5833333 \n"
+}

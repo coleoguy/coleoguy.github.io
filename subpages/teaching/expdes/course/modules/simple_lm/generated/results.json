@@ -1,0 +1,6 @@
+{
+  "preview": [" pot nitrogen_mg biomass_g", "   1    9.545618  5.992226", "   2    2.359066  4.640125", "   3    7.314201  6.118743", "   4    2.363184  3.585433"],
+  "summary": ["Slope = 0.414 g biomass per mg nitrogen", "95% slope CI: 0.329 to 0.499", "Slope t = 9.90; df = 34; p = 1.525e-11", "R-squared = 0.742"],
+  "report": "Each additional mg of nitrogen was associated with 0.414 g higher mean biomass (95% CI 0.329 to 0.499); slope t(34) = 9.90, p = 1.525e-11. The narrow band concerns mean biomass; the wider prediction limits concern a new individual pot.",
+  "full_output": "\nCall:\nlm(formula = biomass_g ~ nitrogen_mg, data = d)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-1.8507 -0.4546 -0.1079  0.4972  1.9486 \n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)    \n(Intercept)  2.21791    0.29034   7.639 7.05e-09 ***\nnitrogen_mg  0.41409    0.04185   9.896 1.52e-11 ***\n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n\nResidual standard error: 0.811 on 34 degrees of freedom\nMultiple R-squared:  0.7423,\tAdjusted R-squared:  0.7347 \nF-statistic: 97.93 on 1 and 34 DF,  p-value: 1.525e-11\n\n                2.5 %    97.5 %\n(Intercept) 1.6278685 2.8079514\nnitrogen_mg 0.3290528 0.4991331"
+}

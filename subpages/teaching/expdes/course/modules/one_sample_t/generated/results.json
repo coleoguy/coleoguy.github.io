@@ -1,0 +1,6 @@
+{
+  "preview": [" culture    oxygen", "       1  9.363654", "       2 10.462996", "       3  9.493642", "       4  6.730010"],
+  "summary": ["Mean = 10.75 nmol/min; n = 24", "95% CI for mean: 10.12 to 11.37", "t = 2.48; df = 23; p = 0.02107"],
+  "report": "Mean oxygen consumption was 10.75 nmol/min (95% CI 10.12 to 11.37); against the reference mean of 10, t(23) = 2.48, p = 0.02107. This tests a population mean, not whether every culture exceeds 10.",
+  "full_output": "\n\tOne Sample t-test\n\ndata:  d$oxygen\nt = 2.4762, df = 23, p-value = 0.02107\nalternative hypothesis: true mean is not equal to 10\n95 percent confidence interval:\n 10.12316 11.37336\nsample estimates:\nmean of x \n 10.74826 \n"
+}

@@ -1,0 +1,6 @@
+{
+  "preview": [" plant nutrient  biomass", "     1        A 6.670805", "     2        A 9.421266", "     3        A 6.285608", "     4        A 7.799042"],
+  "summary": ["Family: all six pairwise nutrient comparisons", "D minus C = 1.42 g", "Simultaneous 95% CI 0.04 to 2.80", "Tukey-adjusted p = 0.0415"],
+  "report": "Regime D exceeded C by 1.42 g (simultaneous 95% CI 0.04 to 2.80; Tukey-adjusted p = 0.0415). The interval and p-value account for all six pairwise comparisons; they do not protect every possible weighted contrast.",
+  "full_output": "            Df Sum Sq Mean Sq F value   Pr(>F)    \nnutrient     3  222.4   74.14   26.94 5.68e-12 ***\nResiduals   76  209.2    2.75                     \n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n  Tukey multiple comparisons of means\n    95% family-wise confidence level\n\nFit: aov(formula = biomass ~ nutrient, data = d)\n\n$nutrient\n        diff         lwr      upr     p adj\nB-A 1.037343 -0.34073261 2.415418 0.2056314\nC-A 2.905036  1.52696022 4.283111 0.0000025\nD-A 4.322102  2.94402599 5.700177 0.0000000\nC-B 1.867693  0.48961729 3.245768 0.0035291\nD-B 3.284759  1.90668306 4.662834 0.0000001\nD-C 1.417066  0.03899023 2.795141 0.0415003\n"
+}

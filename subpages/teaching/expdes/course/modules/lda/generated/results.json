@@ -1,0 +1,6 @@
+{
+  "preview": [" ecotype   body_mm  wing_mm femur_mm antenna_mm", "  Forest 11.346715 13.06098 5.640757   7.475622", "  Forest  9.949277 14.98767 4.180859   7.395974", "  Forest 13.155070 19.23823 5.574966   9.558507", "  Forest 12.155492 15.55765 5.688317   8.910027"],
+  "summary": ["Leave-one-out classification accuracy: 82.7%", "Three known ecotype labels used during training", "Equal group sizes in this example"],
+  "report": "Leave-one-out classification accuracy is 82.7% for these three ecotypes. This is a prediction exercise using known class labels, not an unsupervised discovery or a significance test.",
+  "full_output": "Call:\nlda(ecotype ~ body_mm + wing_mm + femur_mm + antenna_mm, data = d)\n\nPrior probabilities of groups:\n     Dune    Forest Grassland \n0.3333333 0.3333333 0.3333333 \n\nGroup means:\n           body_mm  wing_mm femur_mm antenna_mm\nDune      12.70929 17.02713 5.706581   7.915556\nForest    11.99869 15.71095 5.328634   8.397726\nGrassland 13.90283 17.92353 6.288135  10.870551\n\nCoefficients of linear discriminants:\n                   LD1         LD2\nbody_mm     1.01499407 -0.78013116\nwing_mm     0.10976514 -0.43360845\nfemur_mm    0.09092525 -0.08365976\nantenna_mm -1.89182813  0.50613401\n\nProportion of trace:\n   LD1    LD2 \n0.8823 0.1177 "
+}

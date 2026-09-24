@@ -1,0 +1,92 @@
+{
+  "id": "ordinal_mixed",
+  "title": "Ordinal mixed model",
+  "family": "Repeated and clustered data",
+  "biology": "Fish behavior is scored repeatedly using ordered stress categories.",
+  "design": "70 fish measured at three visits; treatment assigned between fish.",
+  "data_characteristics": [
+    "Ordered categories",
+    "Repeated fish IDs",
+    "Treatment plus visit"
+  ],
+  "other_examples": [
+    "Repeated disease severity",
+    "Damage scores within plant lines",
+    "Behavior scores within individuals"
+  ],
+  "question": "Does treatment shift repeated scores toward higher categories?",
+  "null": "The treatment coefficient is zero: its conditional cumulative odds ratio is one.",
+  "options": [
+    "ordered() defines the category sequence",
+    "link = \"logit\" gives proportional odds",
+    "(1 | fish) accounts for repeated fish"
+  ],
+  "assumptions": [
+    "Independent fish",
+    "A common treatment odds effect across thresholds",
+    "Suitable random effects and converged estimation"
+  ],
+  "parametric": [
+    "Use a more flexible ordinal model if threshold effects differ",
+    "Retain the response order when scientifically meaningful"
+  ],
+  "nonparametric": [
+    "Friedman suits complete within-fish condition comparisons",
+    "A sign test asks only about paired change direction"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "position = \"fill\"",
+      "note": "Show proportions within each group"
+    },
+    {
+      "arg": "facet_wrap",
+      "note": "Separate visits"
+    },
+    {
+      "arg": "scale_fill_manual",
+      "note": "Keep category colors consistent"
+    },
+    {
+      "arg": "ordered factor",
+      "note": "Keep severity in biological order"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "ordinal",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Why is subtracting the category codes not the same as measuring a change?",
+  "code_simulate": "set.seed(2109)\nd <- expand.grid(visit = 1:3, fish = 1:70)\nd$treatment <- rep(rep(c(\"Control\", \"Stress\"), each = 35), each = 3)\nindividual <- rnorm(70, 0, .8)\nlatent <- .8 * (d$treatment == \"Stress\") + .15 * d$visit +\n  individual[d$fish] + rlogis(nrow(d))\nd$score <- cut(latent, c(-Inf, -.8, .3, 1.3, Inf),\n               labels = c(\"None\", \"Mild\", \"Moderate\", \"High\"))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(treatment, fill = score)) +\n  geom_bar(position = \"fill\", width = .7) +\n  facet_wrap(~ visit, labeller = label_both) +\n  scale_fill_manual(values = c(\"#D9E8E7\", \"#73969B\", \"#D7A583\", \"#B7663E\"),\n                    drop = FALSE) +\n  labs(x = \"Treatment\", y = \"Observed fraction\", fill = \"Stress score\",\n       caption = \"Ordered categories retain their order; distances between labels are not assumed equal\") +\n  theme_classic(base_size = 16) + theme(legend.position = \"bottom\")\nprint(p)",
+  "code_analysis": "fit <- ordinal::clmm(score ~ treatment + visit + (1 | fish),\n                     data = d, link = \"logit\", Hess = TRUE)\nsummary(fit)\nb <- coef(summary(fit))[\"treatmentStress\", ]\nlog_or_ci <- b[1] + c(-1, 1) * qnorm(.975) * b[2]",
+  "seed": 2109,
+  "generating_model": "70 fish (35 per treatment) are scored at visits 1–3. Fish intercepts are Normal(0, 0.8²). Latent severity = 0.8 if stressed + 0.15 × visit + fish intercept + standard logistic error. Thresholds −0.8, 0.3 and 1.3 produce None, Mild, Moderate and High. The latent score is not saved; repeated scores share the fish intercept.",
+  "generating_truth": "The conditional common odds ratio for a higher score under stress is exp(0.8) ≈ 2.226. The treatment null is false. The simulated thresholds obey proportional odds.",
+  "columns": [
+    {
+      "name": "visit",
+      "meaning": "Scheduled repeated assessment",
+      "unit": "visit"
+    },
+    {
+      "name": "fish",
+      "meaning": "Repeated fish identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Control or stress assignment",
+      "unit": "category"
+    },
+    {
+      "name": "score",
+      "meaning": "Ordered behavior severity",
+      "unit": "ordered category"
+    }
+  ],
+  "teaching_point": "Use ordered category probabilities; arbitrary numerical category spacings are unnecessary."
+}

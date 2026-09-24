@@ -1,0 +1,6 @@
+{
+  "preview": [" environment length_mm", "        Cool  9.949494", "        Cool 10.115089", "        Cool 10.006459", "        Cool 11.635352"],
+  "summary": ["Cool - Warm mean difference = -1.02 mm", "95% CI: -1.44 to -0.61 mm", "Pooled t = -4.94; df = 54.00; p = 7.927e-06"],
+  "report": "Mean body length differed by -1.02 mm (Cool minus Warm; 95% CI -1.44 to -0.61). Pooled t = -4.94, df = 54.00, p = 7.927e-06. This analysis assumes equal population variances. Welch tests the same null without that assumption.",
+  "full_output": "\n\tTwo Sample t-test\n\ndata:  length_mm by environment\nt = -4.9399, df = 54, p-value = 7.927e-06\nalternative hypothesis: true difference in means between group Cool and group Warm is not equal to 0\n95 percent confidence interval:\n -1.4367878 -0.6072203\nsample estimates:\nmean in group Cool mean in group Warm \n          9.833382          10.855386 \n"
+}

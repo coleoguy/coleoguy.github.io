@@ -1,0 +1,6 @@
+{
+  "preview": [" plant  control   shaded", "     1 15.28146 12.68400", "     2 12.96687 11.61147", "     3 19.05530 19.78525", "     4 14.14044 12.48421"],
+  "summary": ["Shaded − control = -0.97 units", "Two-sided permutation p = 0.0006", "28 pairs; labels swap only within plants"],
+  "report": "Within plants, shading changed mean photosynthesis by -0.97 units (paired permutation p = 0.0006). Swaps preserve plant pairing.",
+  "full_output": "  mean_difference permutations     p\n1      -0.9724543         4999 6e-04"
+}

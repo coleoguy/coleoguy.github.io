@@ -1,0 +1,91 @@
+{
+  "id": "poisson_glm",
+  "title": "Poisson regression",
+  "family": "Generalized linear models",
+  "biology": "Coral recruit counts and live coral cover",
+  "design": "Independent transects differ in surveyed area and live coral cover.",
+  "data_characteristics": [
+    "Nonnegative counts per transect",
+    "Known area exposure in square meters",
+    "Continuous predictor: live coral cover (%)"
+  ],
+  "other_examples": [
+    "Mutations per callable base",
+    "Colonies per volume of medium",
+    "Encounters per hour of observation"
+  ],
+  "question": "Does recruit density change with live coral cover after accounting for surveyed area?",
+  "null": "The coral-cover coefficient is zero: recruit rate per square meter is unrelated to cover in this model.",
+  "options": [
+    "family = poisson(link = \"log\")",
+    "offset(log(area)) fixes the exposure coefficient at 1.",
+    "exp(10 * coefficient) is the rate ratio per 10 cover percentage points."
+  ],
+  "assumptions": [
+    "Transect counts are independent.",
+    "The mean rate has the specified log-linear relationship.",
+    "Conditional count variance is approximately the conditional mean."
+  ],
+  "parametric": [
+    "Use negative binomial or quasi-Poisson for overdispersion.",
+    "Add site effects or use a mixed count model for clustered transects."
+  ],
+  "nonparametric": [
+    "A bootstrap should resample independent transects or sites.",
+    "A rank test on raw counts does not adjust for unequal areas."
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "count / area",
+      "note": "Plot observed rates when exposures differ."
+    },
+    {
+      "arg": "geom_point(alpha)",
+      "note": "Reveal dense observations without hiding spread."
+    },
+    {
+      "arg": "geom_line",
+      "note": "Show the modeled rate at one unit of exposure."
+    },
+    {
+      "arg": "linewidth",
+      "note": "Make the fitted relationship easy to see."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "ggplot2"
+  ],
+  "code_simulate": "set.seed(3111)\nd <- data.frame(transect = 1:120, cover = runif(120, 0, 80),\n                area = runif(120, 2, 8))\nd$recruits <- rpois(120, d$area * exp(-.5 + .016 * d$cover))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot2::ggplot(d, ggplot2::aes(cover, recruits / area)) +\n  ggplot2::geom_point(alpha = .55, size = 2, color = \"#555555\") +\n  ggplot2::geom_line(data = grid, ggplot2::aes(y = rate),\n                    color = \"#126887\", linewidth = 1.3) +\n  ggplot2::labs(x = \"Live coral cover (%)\", y = \"Recruits per square meter\") +\n  ggplot2::theme_classic(base_size = 17)\nprint(p)",
+  "code_analysis": "fit <- glm(recruits ~ cover + offset(log(area)), data = d,\n           family = poisson)\np_value <- drop1(fit, test = \"Chisq\")[\"cover\", \"Pr(>Chi)\"]\nb <- coef(fit)[\"cover\"]\nse <- sqrt(vcov(fit)[\"cover\", \"cover\"])\nrate_ratio <- exp(10 * b)\nci <- exp(10 * (b + c(-1, 1) * 1.96 * se))\ndispersion <- sum(residuals(fit, type = \"pearson\")^2) / df.residual(fit)",
+  "practice": "Why should log(area) be an offset rather than an ordinary estimated slope when area is exposure?",
+  "seed": 3111,
+  "generating_model": "Generate 120 independent transects. Cover is Uniform(0,80) percentage points and area is independently Uniform(2,8) square meters. Recruit counts are Poisson(area \u00d7 exp(-0.5 + 0.016 \u00d7 cover)). No clustering or rounding is introduced.",
+  "generating_truth": "The true cover coefficient is 0.016. A 10-point cover increase multiplies recruit density by exp(0.16) \u2248 1.174. The zero-slope null is false, and the exposure coefficient is fixed at one.",
+  "columns": [
+    {
+      "name": "transect",
+      "meaning": "Unique independent transect identifier",
+      "unit": "none"
+    },
+    {
+      "name": "cover",
+      "meaning": "Live coral cover",
+      "unit": "percentage points"
+    },
+    {
+      "name": "area",
+      "meaning": "Surveyed transect area",
+      "unit": "m\u00b2"
+    },
+    {
+      "name": "recruits",
+      "meaning": "Observed coral recruits",
+      "unit": "count"
+    }
+  ],
+  "teaching_point": "The exposure offset separates a biological density difference from simply looking over a larger area."
+}

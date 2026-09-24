@@ -1,0 +1,80 @@
+{
+  "id": "sign_test",
+  "title": "Sign test",
+  "family": "Nonparametric alternatives",
+  "biology": "Behavioral biologists record the change in refuge-use time after a predator cue.",
+  "design": "Each independent fish is measured twice; the changes are skewed.",
+  "data_characteristics": [
+    "One continuous response or paired differences",
+    "A reference location, often zero",
+    "Uses signs and discards magnitudes"
+  ],
+  "other_examples": [
+    "Median lifespan versus a reference",
+    "Direction of paired expression changes",
+    "Before/after foraging time"
+  ],
+  "question": "Is an increase just as likely as a decrease in refuge-use time?",
+  "null": "Among nonzero changes, positive and negative changes are equally likely; for continuous differences, the median is zero.",
+  "options": [
+    "Subtract the reference first",
+    "Drop and report exact zero differences",
+    "binom.test tests the number of positive changes"
+  ],
+  "assumptions": [
+    "Independent fish",
+    "Pairing is retained in differences",
+    "Median interpretation assumes a continuous distribution"
+  ],
+  "parametric": [
+    "A paired t test answers a mean-change question",
+    "Model skew explicitly if the mean is the target"
+  ],
+  "nonparametric": [
+    "Sign test allows asymmetric differences",
+    "Signed-rank adds magnitude information but needs symmetry"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "reorder",
+      "note": "Order fish by their change"
+    },
+    {
+      "arg": "segments",
+      "note": "Draw each change from zero"
+    },
+    {
+      "arg": "abline(h=0)",
+      "note": "Mark the null reference"
+    },
+    {
+      "arg": "col",
+      "note": "Encode decrease versus increase"
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "If a few fish change by a very large amount, does that affect the sign test statistic?",
+  "code_simulate": "set.seed(1104)\nchange <- rgamma(30, shape = 1.4, scale = 5) - 3\nd <- data.frame(fish = 1:30, change_seconds = round(change, 1))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "values <- sort(d$change_seconds)\ncols <- ifelse(values > 0, \"#246A73\", \"#B7663E\")\nplot(seq_along(values), values, type = \"n\", xlab = \"Fish ordered by change\",\n     ylab = \"Change in refuge-use time (seconds)\")\nabline(h = 0, col = \"gray55\", lty = 2)\nsegments(seq_along(values), 0, seq_along(values), values, col = cols, lwd = 2)\npoints(seq_along(values), values, pch = 19, col = cols)",
+  "code_analysis": "nonzero <- d$change_seconds[d$change_seconds != 0]\npositive <- sum(nonzero > 0)\nfit <- binom.test(positive, length(nonzero), p = .5,\n                 alternative = \"two.sided\")",
+  "seed": 1104,
+  "generating_model": "30 independent changes are Gamma(shape 1.4, scale 5) minus 3 seconds, rounded to 0.1 seconds. Exact zeros, if present, are excluded from the sign comparison.",
+  "generating_truth": "Positive changes are more likely than negative changes. The unrounded mean is 4 seconds, but the sign test is about direction rather than that mean.",
+  "columns": [
+    {
+      "name": "fish",
+      "meaning": "Independent fish and pair identifier",
+      "unit": "none"
+    },
+    {
+      "name": "change_seconds",
+      "meaning": "After-minus-before refuge-use time",
+      "unit": "seconds"
+    }
+  ],
+  "teaching_point": "A sign test handles asymmetric differences by asking about the probability of a positive change."
+}

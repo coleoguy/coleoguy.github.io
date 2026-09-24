@@ -1,0 +1,85 @@
+{
+  "id": "paired_t",
+  "title": "Paired t test",
+  "family": "Means",
+  "biology": "Plant physiologists measure photosynthesis in the same leaves before and after heat stress.",
+  "design": "Twenty independent plants contribute one before/after pair each.",
+  "data_characteristics": [
+    "Continuous response measured twice",
+    "Independent pairs; dependent observations within pairs",
+    "Analyze one difference per plant"
+  ],
+  "other_examples": [
+    "Blood pressure before/after treatment",
+    "Bilateral organ measurements",
+    "Matched-site productivity"
+  ],
+  "question": "Is the mean within-plant change in photosynthesis zero?",
+  "null": "The population mean of after minus before differences is zero.",
+  "options": [
+    "paired = TRUE preserves matching",
+    "Keep the same pair order in both vectors",
+    "First minus second determines the change sign"
+  ],
+  "assumptions": [
+    "Pairs are independent",
+    "Differences are roughly normal at small n",
+    "Outlying differences warrant examination"
+  ],
+  "parametric": [
+    "Model paired differences directly",
+    "For multiple times use repeated-measures or mixed models"
+  ],
+  "nonparametric": [
+    "Signed-rank requires symmetric differences",
+    "Sign test needs no symmetry but targets direction/median"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "matplot / type=\"l\"",
+      "note": "Connect each plant’s paired measurements"
+    },
+    {
+      "arg": "lty / col",
+      "note": "Keep paired lines quiet"
+    },
+    {
+      "arg": "points",
+      "note": "Add raw observations"
+    },
+    {
+      "arg": "axis",
+      "note": "Label the two measurement occasions"
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Would treating the before and after vectors as independent answer the design correctly?",
+  "code_simulate": "set.seed(1103)\nbefore <- rnorm(20, 18, 2.2)\nafter <- before + rnorm(20, -1.3, 1.7)\nd <- data.frame(plant = 1:20, before = before, after = after)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "matplot(1:2, t(as.matrix(d[c(\"before\", \"after\")])), type = \"l\",\n        lty = 1, col = \"#00000033\", xaxt = \"n\", xlab = \"\",\n        ylab = expression(Photosynthesis~(mu*mol~CO[2]~m^{-2}~s^{-1})))\naxis(1, 1:2, c(\"Before heat\", \"After heat\"))\npoints(rep(1, nrow(d)), d$before, pch = 19, col = \"#246A73\")\npoints(rep(2, nrow(d)), d$after, pch = 19, col = \"#B7663E\")",
+  "code_analysis": "change <- d$after - d$before\nfit <- t.test(d$after, d$before, paired = TRUE,\n              alternative = \"two.sided\")",
+  "seed": 1103,
+  "generating_model": "20 independent baseline values come from Normal(18, 2.2 SD). Each after value is its own baseline plus an independent Normal(-1.3, 1.7 SD) change.",
+  "generating_truth": "The mean after-minus-before difference is -1.3 photosynthesis units, even if this sample provides limited evidence against zero.",
+  "columns": [
+    {
+      "name": "plant",
+      "meaning": "Independent plant and pair identifier",
+      "unit": "none"
+    },
+    {
+      "name": "before",
+      "meaning": "Photosynthesis before heat",
+      "unit": "micromol CO2 / m2 / s"
+    },
+    {
+      "name": "after",
+      "meaning": "Photosynthesis after heat",
+      "unit": "micromol CO2 / m2 / s"
+    }
+  ],
+  "teaching_point": "A large p-value does not make the simulated nonzero effect disappear; paired differences define the target."
+}

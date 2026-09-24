@@ -1,0 +1,6 @@
+{
+  "preview": [" gene on_X", "    1    0", "    2    0", "    3    1", "    4    0"],
+  "summary": ["Observed on X: 32 of 80", "Expected under null: 16.0", "Two-sided Monte Carlo p = 0.0002"],
+  "report": "32 of 80 genes were on X, compared with null expectation 16.0. The absolute count-deviation Monte Carlo test gives p = 0.0002. Here the null assigns each independent gene probability 0.20 of being on X.",
+  "full_output": "  observed_X expected_X monte_carlo_p\n1         32         16         2e-04"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "signed_rank",
+  "title": "Wilcoxon signed-rank test",
+  "family": "Nonparametric alternatives",
+  "biology": "Microbiologists compare log bacterial density before and after a treatment in matched cultures.",
+  "design": "Each independent culture contributes one difference; occasional large differences make ranks useful.",
+  "data_characteristics": [
+    "One sample versus a location or paired differences",
+    "Continuous differences with meaningful magnitudes",
+    "Symmetric differences for a location interpretation"
+  ],
+  "other_examples": [
+    "Paired log gene expression",
+    "Matched-site changes in biomass",
+    "Before/after physiological scores"
+  ],
+  "question": "Is the distribution of within-culture changes centered at zero?",
+  "null": "The difference distribution is symmetric about zero.",
+  "options": [
+    "paired = TRUE for matched measurements",
+    "exact = FALSE uses the large-sample approximation",
+    "conf.int = TRUE estimates a pseudomedian under the shift model"
+  ],
+  "assumptions": [
+    "Independent cultures/pairs",
+    "Approximately symmetric differences",
+    "Do not use ranks to repair mismatched pairs"
+  ],
+  "parametric": [
+    "Paired t test targets the mean difference",
+    "A model for heavy-tailed errors can preserve a mean/location target"
+  ],
+  "nonparametric": [
+    "Signed-rank uses ranks of absolute differences",
+    "If differences are asymmetric, use a sign test for direction/median"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "horizontal",
+      "note": "Display changes on one horizontal scale"
+    },
+    {
+      "arg": "pch",
+      "note": "Choose a filled point symbol"
+    },
+    {
+      "arg": "xlab",
+      "note": "State both transformation and units"
+    },
+    {
+      "arg": "abline(v=0)",
+      "note": "Mark no within-culture change"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Which alternative would you use if the distribution of paired differences were strongly asymmetric?",
+  "code_simulate": "set.seed(1105)\nbefore <- rnorm(28, 6, .4)\nafter <- before + .28 + .28 * rt(28, df = 4)\nd <- data.frame(culture = 1:28, before = before, after = after)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "beeswarm(change, horizontal = TRUE, pch = 21, bg = \"#73649A\",\n         col = \"white\", cex = 1.5, yaxt = \"n\", ylab = \"\",\n         xlab = \"After - before: log10 bacterial density (CFU/mL)\")\nabline(v = 0, lty = 2, col = \"#B7663E\", lwd = 2)",
+  "code_analysis": "change <- d$after - d$before\nfit <- wilcox.test(d$after, d$before, paired = TRUE,\n                   exact = FALSE, conf.int = TRUE)",
+  "seed": 1105,
+  "generating_model": "28 baselines come from Normal(6, 0.4 SD). Paired changes equal 0.28 + 0.28 times a Student t variable with 4 degrees of freedom; after equals before plus change.",
+  "generating_truth": "The symmetric difference distribution is centered at +0.28 log10 units; its zero-center null is false.",
+  "columns": [
+    {
+      "name": "culture",
+      "meaning": "Independent culture and pair identifier",
+      "unit": "none"
+    },
+    {
+      "name": "before",
+      "meaning": "Log10 bacterial density before treatment",
+      "unit": "log10 CFU/mL"
+    },
+    {
+      "name": "after",
+      "meaning": "Log10 bacterial density after treatment",
+      "unit": "log10 CFU/mL"
+    }
+  ],
+  "teaching_point": "Signed-rank is useful for symmetric heavy-tailed differences; sign is the simpler alternative when symmetry is doubtful."
+}

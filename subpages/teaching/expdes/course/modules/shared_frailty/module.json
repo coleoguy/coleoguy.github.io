@@ -1,0 +1,83 @@
+{
+  "question": "Does stress change larval death hazard after accounting for shared population conditions?",
+  "null": "The stress coefficient is zero: the hazard ratio conditional on population frailty is one.",
+  "options": [
+    "survival::coxph(Surv(time, event) ~ x + frailty(cluster_id), data = d)",
+    "Specify a plausible frailty distribution; inspect convergence and the cluster structure."
+  ],
+  "assumptions": [
+    "Independent clusters; a suitable shared-frailty structure and conditional proportional hazards.",
+    "Appropriate censoring; enough independent clusters."
+  ],
+  "parametric": [
+    "Stratified Cox allows separate baseline hazards; cluster-robust uncertainty adjusts precision without fitting a frailty distribution."
+  ],
+  "nonparametric": [
+    "Cluster-level resampling may assess uncertainty; simple rank tests discard the survival and clustering structure."
+  ],
+  "id": "shared_frailty",
+  "title": "Shared-frailty survival model",
+  "seed": 240502,
+  "family": "Survival",
+  "plot_engine": "base R",
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "survival"
+  ],
+  "code_simulate": "set.seed(240502)\npopulation <- rep(1:24, each=10)\nstress <- rep(rep(0:1, each=5), 24)\nfrailty <- rgamma(24, shape=2, rate=2)\nevent_time <- rexp(240, .04 * frailty[population] * exp(.5*stress))\nd <- data.frame(population, stress, time=pmin(event_time, 35), event=event_time<=35)\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "fit <- survival::survfit(survival::Surv(time, event) ~ stress, data=d)\nplot(fit, col=c(\"#146A85\", \"#C56B3B\"), lwd=3, conf.int=FALSE,\n     xlab=\"Days since exposure\", ylab=\"Probability still alive\", mark.time=TRUE)\nlegend(\"topright\", c(\"Control\", \"Stress\"), col=c(\"#146A85\", \"#C56B3B\"), lwd=3, bty=\"n\")",
+  "code_analysis": "result <- survival::coxph(survival::Surv(time, event) ~ stress + frailty(population), data=d)\nb <- coef(result)[\"stress\"]\nse <- sqrt(vcov(result)[\"stress\", \"stress\"])\nhr <- exp(b); ci <- exp(b+c(-1,1)*1.96*se)\np_value <- 2*pnorm(-abs(b/se))",
+  "biology": "Larvae from 24 populations experience a control or stress condition.",
+  "design": "Larvae share an unobserved population risk; time-to-death is censored at day 35.",
+  "data_characteristics": [
+    "Cluster ID retained",
+    "Time and censor indicator",
+    "Conditional treatment effect"
+  ],
+  "other_examples": [
+    "Animals within colonies",
+    "Plants within populations",
+    "Patients within centers"
+  ],
+  "generating_model": "24 population frailties follow Gamma(shape=2, rate=2), mean 1. Conditional event times are exponential with rate 0.04 × frailty × exp(0.5 × stress). Ten larvae per population; censoring at 35 days.",
+  "generating_truth": "The conditional stress hazard ratio is exp(0.5) ≈ 1.65; shared population variance is 0.5.",
+  "columns": [
+    {
+      "name": "population",
+      "meaning": "Shared risk group",
+      "unit": "ID"
+    },
+    {
+      "name": "stress",
+      "meaning": "Control=0, stress=1",
+      "unit": "indicator"
+    },
+    {
+      "name": "time",
+      "meaning": "Observed follow-up",
+      "unit": "days"
+    },
+    {
+      "name": "event",
+      "meaning": "Death observed",
+      "unit": "TRUE/FALSE"
+    }
+  ],
+  "teaching_point": "Frailty accounts for shared latent risk; it is different from giving each stratum its own baseline curve.",
+  "plot_args": [
+    {
+      "arg": "Surv(time,event)",
+      "note": "Uses follow-up and event status together"
+    },
+    {
+      "arg": "mark.time",
+      "note": "Shows right-censored observations"
+    },
+    {
+      "arg": "conf.int",
+      "note": "Controls interval display"
+    }
+  ],
+  "practice": "Why do 240 larvae not provide 240 independent population replicates?"
+}

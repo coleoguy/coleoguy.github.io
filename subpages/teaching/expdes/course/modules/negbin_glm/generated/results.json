@@ -1,0 +1,6 @@
+{
+  "preview": ["1 | 27.863254705444 | 7", "2 | 27.5214403253049 | 1", "3 | 29.7717737685889 | 4", "4 | 20.5594320036471 | 2", "5 | 21.0298875980079 | 2"],
+  "summary": ["Mean count ratio per 5 cm: 1.602", "95% Wald CI: 1.458 to 1.761", "Wald p = 1.634e-22", "Estimated negative-binomial theta: 2.292"],
+  "report": "A 5-cm increase in fish length multiplied expected parasite count by 1.60 (95% Wald CI 1.46–1.76; Wald p = 1.63e-22). Negative binomial variation allows more spread than a Poisson model.",
+  "full_output": "\nCall:\nMASS::glm.nb(formula = parasites ~ length_cm, data = d, init.theta = 2.292042228, \n    link = log)\n\nCoefficients:\n             Estimate Std. Error z value Pr(>|z|)    \n(Intercept) -0.617706   0.299553  -2.062   0.0392 *  \nlength_cm    0.094281   0.009658   9.762   <2e-16 ***\n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n\n(Dispersion parameter for Negative Binomial(2.292) family taken to be 1)\n\n    Null deviance: 234.38  on 129  degrees of freedom\nResidual deviance: 140.90  on 128  degrees of freedom\nAIC: 814.62\n\nNumber of Fisher Scoring iterations: 1\n\n\n              Theta:  2.292 \n          Std. Err.:  0.374 \n\n 2 x log-likelihood:  -808.615 "
+}

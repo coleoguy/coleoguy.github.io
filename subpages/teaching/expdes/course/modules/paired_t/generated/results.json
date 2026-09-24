@@ -1,0 +1,6 @@
+{
+  "preview": [" plant   before    after", "     1 18.12874 16.59089", "     2 19.70048 17.18796", "     3 17.09360 15.92467", "     4 19.16011 18.17996"],
+  "summary": ["Mean change (after - before) = -0.73", "95% CI for mean change: -1.52 to 0.07", "Paired t = -1.91; df = 19; p = 0.07128"],
+  "report": "Photosynthesis changed by a mean of -0.73 units after heat stress (95% CI -1.52 to 0.07); paired t(19) = -1.91, p = 0.07128. Pairing makes the biological unit the plant and the analyzed response its change.",
+  "full_output": "\n\tPaired t-test\n\ndata:  d$after and d$before\nt = -1.9105, df = 19, p-value = 0.07128\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -1.52238792  0.06942308\nsample estimates:\nmean difference \n     -0.7264824 \n"
+}
