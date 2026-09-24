@@ -31,3 +31,7 @@ These references support function options and statistical interpretation. The ru
 - [DescTools Cochran Q](https://search.r-project.org/CRAN/refmans/DescTools/html/CochranQTest.html)
 - [ordinal cumulative-link models](https://search.r-project.org/CRAN/refmans/ordinal/html/clm.html)
 - [geepack GEE](https://search.r-project.org/CRAN/refmans/geepack/html/geeglm.html)
+
+## Comic interludes
+
+Eight XKCD comics from the original lectures are reproduced unchanged with attribution. See [comic credits](assets/comics/ATTRIBUTION.md) for Randall Munroe’s original pages, CC BY-NC 2.5 licensing, and lecture provenance. The manifest `comics.json` records placement and accessible descriptions.

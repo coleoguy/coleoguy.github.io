@@ -37,7 +37,7 @@ Every method uses the same sequence: data and analogous examples; seeded simulat
 
 The goal is to choose a method whose null answers the scientific question and to interpret its result correctly. Parametric fixes precede nonparametric alternatives. A change to ranks, transformations, or a different model may also change the scientific target. PCA, MDS, bootstrap intervals, and Kaplan–Meier estimation are explicitly identified as estimation or exploration rather than given an invented test null.
 
-The slide picker covers all 45 cells of the earlier course matrix. The separate reveal board hides method names until a cell is selected. The final Midterm plan slide is intentionally blank.
+The slide picker covers all 45 cells of the earlier course matrix. The separate reveal board hides method names until a cell is selected. The final Midterm plan slide is intentionally blank. A maroon vertical stripe marks each method’s opening slide and the foundations, chooser, and midterm sections. Eight XKCD interludes from the original lectures mark natural topic transitions; their unchanged artwork, credits, and teaching notes are included in `assets/comics/` and `comics.json`.
 
 ## Reading with an LLM
 

@@ -91,6 +91,25 @@ Binomial data are successes from known trials. Count-rate models can use an offs
 
 :::
 
+
+## Scientific Paper Graph Quality {#xkcd-1945}
+
+![A deliberately qualitative graph jokes about graph quality in scientific papers over time.](assets/comics/xkcd-1945-scientific-paper-graph-quality.png){height=6in}
+
+[Randall Munroe / xkcd · https://xkcd.com/1945](https://xkcd.com/1945/) · [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)
+
+::: notes
+
+A useful figure shows the observations and labels the scale before we ask the test for a result.
+
+Comic: Scientific Paper Graph Quality. https://xkcd.com/1945/
+
+Original course source: lectures__exp-2.pptx, slide 1. Artwork reproduced unchanged. Randall Munroe / xkcd; Creative Commons Attribution-NonCommercial 2.5.
+
+Accessible description: A deliberately qualitative graph jokes about graph quality in scientific papers over time.
+
+:::
+
 ## See the observations before the test {#describe-first}
 
 - Plot individuals, groups, pairs, or trajectories in a way that shows the design.
@@ -495,6 +514,26 @@ These are routes, not automatic substitutes. Check the method null and assumptio
 
 :::
 
+
+
+
+## Boyfriend {#xkcd-539}
+
+![A box plot appears in a humorous argument over the phrase statistically significant other.](assets/comics/xkcd-539-boyfriend.png){height=6in}
+
+[Randall Munroe / xkcd · https://xkcd.com/539](https://xkcd.com/539/) · [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)
+
+::: notes
+
+An unusual-looking observation and a statistically significant test result are different claims; state the comparison first.
+
+Comic: Boyfriend. https://xkcd.com/539/
+
+Original course source: lectures__exp-1.pptx, slide 39. Artwork reproduced unchanged. Randall Munroe / xkcd; Creative Commons Attribution-NonCommercial 2.5.
+
+Accessible description: A box plot appears in a humorous argument over the phrase statistically significant other.
+
+:::
 
 
 
@@ -8109,6 +8148,26 @@ The reported estimate and p-value are calculated from this realized dataset; the
 
 
 
+## Correlation {#xkcd-552}
+
+![A statistics student questions whether the class caused a change in their view of correlation and causation.](assets/comics/xkcd-552-correlation.png){height=6in}
+
+[Randall Munroe / xkcd · https://xkcd.com/552](https://xkcd.com/552/) · [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)
+
+::: notes
+
+An association can answer whether two measurements vary together; it does not establish a causal effect.
+
+Comic: Correlation. https://xkcd.com/552/
+
+Original course source: lectures__exp-1.pptx, slide 1. Artwork reproduced unchanged. Randall Munroe / xkcd; Creative Commons Attribution-NonCommercial 2.5.
+
+Accessible description: A statistics student questions whether the class caused a change in their view of correlation and causation.
+
+:::
+
+
+
 ## Pearson correlation: the data {#pearson}
 
 ::: columns
@@ -8756,6 +8815,26 @@ Teaching point: Ranks can summarize a monotonic curve without claiming a constan
 Instructor comparison with the simulated population: The underlying mean response decreases nonlinearly with salinity, creating a negative monotonic association. No fixed numeric population Spearman coefficient was specified.
 
 The reported estimate and p-value are calculated from this realized dataset; they need not exactly match the known population effect.
+
+:::
+
+
+
+## Curve-Fitting {#xkcd-2048}
+
+![A grid of fitted curves parodies the messages scientists send with different model choices.](assets/comics/xkcd-2048-curve-fitting.png){height=6in}
+
+[Randall Munroe / xkcd · https://xkcd.com/2048](https://xkcd.com/2048/) · [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)
+
+::: notes
+
+Choose the model for the biological question, then check the fitted relationship rather than choosing a curve for its appearance.
+
+Comic: Curve-Fitting. https://xkcd.com/2048/
+
+Original course source: lectures__exp-6.pptx, slide 1. Artwork reproduced unchanged. Randall Munroe / xkcd; Creative Commons Attribution-NonCommercial 2.5.
+
+Accessible description: A grid of fitted curves parodies the messages scientists send with different model choices.
 
 :::
 
@@ -9784,6 +9863,26 @@ Teaching point: Read each coefficient conditionally on the other variables in th
 Instructor comparison with the simulated population: The true conditional body slope is 0.35 mm/mm and nutrition slope 0.16 mm/mg, with no interaction. Both zero-coefficient nulls are false.
 
 The reported estimate and p-value are calculated from this realized dataset; they need not exactly match the known population effect.
+
+:::
+
+
+
+## Conditional Risk {#xkcd-795}
+
+![People outside in a lightning storm confuse population risk with their own risk under current conditions.](assets/comics/xkcd-795-conditional-risk.png){height=6in}
+
+[Randall Munroe / xkcd · https://xkcd.com/795](https://xkcd.com/795/) · [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)
+
+::: notes
+
+Define the population and denominator: a probability for everyone need not describe a subgroup under different conditions.
+
+Comic: Conditional Risk. https://xkcd.com/795/
+
+Original course source: lectures__exp-5.pptx, slide 1. Artwork reproduced unchanged. Randall Munroe / xkcd; Creative Commons Attribution-NonCommercial 2.5.
+
+Accessible description: People outside in a lightning storm confuse population risk with their own risk under current conditions.
 
 :::
 
@@ -19311,6 +19410,26 @@ The reported estimate and p-value are calculated from this realized dataset; the
 
 
 
+## P-Values {#xkcd-1478}
+
+![A satirical p-value interpretation table shifts the analysis and language to chase statistical significance.](assets/comics/xkcd-1478-p-values.png){height=6in}
+
+[Randall Munroe / xkcd · https://xkcd.com/1478](https://xkcd.com/1478/) · [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)
+
+::: notes
+
+Choose the hypothesis family and reporting rule before looking at the results; a threshold is not a reason to shop for another analysis.
+
+Comic: P-Values. https://xkcd.com/1478/
+
+Original course source: lectures__exp1.pptx, slide 1. Artwork reproduced unchanged. Randall Munroe / xkcd; Creative Commons Attribution-NonCommercial 2.5.
+
+Accessible description: A satirical p-value interpretation table shifts the analysis and language to chase statistical significance.
+
+:::
+
+
+
 ## Bonferroni: the data {#bonferroni}
 
 ::: columns
@@ -20020,6 +20139,26 @@ Teaching point: BH controls the expected false-discovery proportion among select
 Instructor comparison with the simulated population: The first eight genes have true mean effects of 1.1 log2 units; the other 32 nulls are true.
 
 The reported estimate and p-value are calculated from this realized dataset; they need not exactly match the known population effect.
+
+:::
+
+
+
+## Replication Crisis {#xkcd-3117}
+
+![Researchers mistake repeated evidence of replication problems for a solved replication crisis.](assets/comics/xkcd-3117-replication-crisis.png){height=6in}
+
+[Randall Munroe / xkcd · https://xkcd.com/3117](https://xkcd.com/3117/) · [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)
+
+::: notes
+
+Repeated simulated experiments let us check how an analysis behaves when the generating truth is known.
+
+Comic: Replication Crisis. https://xkcd.com/3117/
+
+Original course source: lectures__exp-1.pptx, slide 50. Artwork reproduced unchanged. Randall Munroe / xkcd; Creative Commons Attribution-NonCommercial 2.5.
+
+Accessible description: Researchers mistake repeated evidence of replication problems for a solved replication crisis.
 
 :::
 
@@ -21940,6 +22079,26 @@ Teaching point: Larger B stabilizes the estimated coverage; larger n changes the
 Instructor comparison with the simulated population: The population mean is exactly 5 days; nominal 95% coverage is a procedure property to evaluate, not an imposed simulation result.
 
 The reported estimate and p-value are calculated from this realized dataset; they need not exactly match the known population effect.
+
+:::
+
+
+
+## Fruit axes {#xkcd-388}
+
+![Fruit is arranged on two axes representing tastiness and ease of eating.](assets/comics/xkcd-388-fruit-axes.png){height=6in}
+
+[Randall Munroe / xkcd · https://xkcd.com/388](https://xkcd.com/388/) · [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/)
+
+::: notes
+
+Start with what the axes mean; multivariate methods replace many measured axes with a smaller set of summaries.
+
+Comic: Fuck Grapefruit. https://xkcd.com/388/
+
+Original course source: lectures__exp-7.pptx, slide 1. Artwork reproduced unchanged. Randall Munroe / xkcd; Creative Commons Attribution-NonCommercial 2.5.
+
+Accessible description: Fruit is arranged on two axes representing tastiness and ease of eating.
 
 :::
 
