@@ -13,6 +13,20 @@ course_root <- dirname(normalizePath(knitr::current_input(dir = TRUE),
 if (!requireNamespace("jsonlite", quietly = TRUE))
   stop("Run install_dependencies.R before knitting.")
 course_order <- jsonlite::fromJSON(file.path(course_root, "course-order.json"))
+course_comics <- jsonlite::fromJSON(file.path(course_root, "comics.json"),
+                                   simplifyVector = FALSE)
+emit_comic <- function(comic) {
+  cat("\n\n## ", comic$slide_title, " {#", comic$id, "}\n\n", sep = "")
+  cat("![", comic$alt_text, "](", comic$path, "){height=6in}\n\n", sep = "")
+  cat("[Randall Munroe / xkcd · ", sub("/$", "", comic$url),
+      "](", comic$url, ") · [CC BY-NC 2.5](", comic$license_url, ")\n\n", sep = "")
+  cat("::: notes\n\n", comic$teaching_bridge, "\n\n",
+      "Comic: ", comic$title, ". ", comic$url, "\n\n",
+      "Original course source: ", comic$source_deck, ", slide ", comic$source_slide,
+      ". Artwork reproduced unchanged. ", comic$attribution, "; ", comic$license,
+      ".\n\nAccessible description: ", comic$alt_text, "\n\n:::\n\n", sep = "")
+}
+
 source(file.path(course_root, "generate_data.R"), local = TRUE)
 generate_course_data(course_root, course_order, quiet = TRUE)
 course_modules <- setNames(lapply(course_order, function(id)
@@ -106,6 +120,12 @@ Numeric coding alone does not establish scale: labels 1, 2 and 3 can be unordere
 Binomial data are successes from known trials. Count-rate models can use an offset when mean count is proportional to measured exposure. Continuous fractions require a sampling model that matches how they were measured; an arcsine transformation is not a universal default.
 
 :::
+
+```{r comic-plotting, results='asis'}
+for (comic in course_comics) {
+  if (identical(comic$before_foundation, "describe-first")) emit_comic(comic)
+}
+```
 
 ## See the observations before the test {#describe-first}
 
@@ -628,7 +648,12 @@ emit_module <- function(id) {
 ```
 
 ```{r all-method-modules, results='asis'}
-for (id in course_order) emit_module(id)
+for (id in course_order) {
+  for (comic in course_comics) {
+    if (identical(comic$before_module, id)) emit_comic(comic)
+  }
+  emit_module(id)
+}
 ```
 
 ## Midterm plan {#midterm-plan}

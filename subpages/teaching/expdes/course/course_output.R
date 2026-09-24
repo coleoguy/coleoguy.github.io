@@ -32,13 +32,22 @@ course_slide_anchors <- function(markdown_file, has_title = TRUE) {
 }
 
 course_fix_slide_links <- function(pptx_file, markdown_file, has_title = TRUE) {
-  for (package in c("xml2", "zip")) {
+  for (package in c("xml2", "zip", "jsonlite")) {
     if (!requireNamespace(package, quietly = TRUE))
       stop("Missing ", package, "; run install_dependencies.R first.")
   }
   pptx_file <- normalizePath(pptx_file, winslash = "/", mustWork = TRUE)
   markdown_file <- normalizePath(markdown_file, winslash = "/", mustWork = TRUE)
   anchors <- course_slide_anchors(markdown_file, has_title = has_title)
+  # Maroon edge marks the first slide of each teaching section.
+  section_ids <- c("course-route", "picker-independent-continuous", "midterm-plan",
+                   jsonlite::fromJSON(file.path(dirname(markdown_file), "course-order.json")))
+  section_slides <- unname(anchors[names(anchors) %in% section_ids])
+  comics <- jsonlite::fromJSON(file.path(dirname(markdown_file), "comics.json"),
+                               simplifyVector = FALSE)
+  comic_ids <- vapply(comics, function(x) x$id, "")
+  comic_slides <- unname(anchors[names(anchors) %in% comic_ids])
+  marker_xml <- '<p:sp xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:nvSpPr><p:cNvPr id="999" name="Section start marker" /><p:cNvSpPr><a:spLocks noGrp="1" /></p:cNvSpPr><p:nvPr /></p:nvSpPr><p:spPr><a:xfrm><a:off x="0" y="0" /><a:ext cx="228600" cy="6858000" /></a:xfrm><a:prstGeom prst="rect"><a:avLst /></a:prstGeom><a:solidFill><a:srgbClr val="500000" /></a:solidFill><a:ln w="0"><a:noFill /></a:ln></p:spPr></p:sp>'
   scratch <- tempfile("course-pptx-links-")
   dir.create(scratch)
   on.exit(unlink(scratch, recursive = TRUE), add = TRUE)
@@ -59,6 +68,69 @@ course_fix_slide_links <- function(pptx_file, markdown_file, has_title = TRUE) {
     slide_file <- file.path(slide_dir, sub("\\.rels$", "", basename(rel_file)))
     slide <- xml2::read_xml(slide_file)
     updated <- FALSE
+    slide_number <- as.integer(sub("^slide([0-9]+)\\.xml$", "\\1", basename(slide_file)))
+    if (slide_number %in% section_slides) {
+      p_ns <- "http://schemas.openxmlformats.org/presentationml/2006/main"
+      tree <- xml2::xml_find_first(slide, ".//p:spTree", ns = c(p = p_ns))
+      previous <- xml2::xml_find_all(tree,
+        "p:sp[p:nvSpPr/p:cNvPr[@name='Section start marker']]", ns = c(p = p_ns))
+      xml2::xml_remove(previous)
+      ids <- as.integer(xml2::xml_attr(xml2::xml_find_all(tree, ".//p:cNvPr", ns = c(p = p_ns)), "id"))
+      marker <- xml2::read_xml(marker_xml)
+      xml2::xml_set_attr(xml2::xml_find_first(marker, ".//p:cNvPr", ns = c(p = p_ns)),
+                        "id", as.character(max(ids, 0L, na.rm = TRUE) + 1L))
+      xml2::xml_add_child(tree, xml2::xml_root(marker))
+      updated <- TRUE
+    }
+    # Comic interludes use the whole slide so the original artwork remains readable.
+    if (slide_number %in% comic_slides) {
+      p_ns <- "http://schemas.openxmlformats.org/presentationml/2006/main"
+      ns <- c(p = p_ns, a = drawing_ns)
+      xml2::xml_set_attr(xml2::xml_root(slide), "showMasterSp", "0")
+      canvas <- xml2::xml_find_first(slide, "p:cSld", ns = ns)
+      xml2::xml_remove(xml2::xml_find_all(canvas, "p:bg", ns = ns))
+      background <- xml2::read_xml(paste0('<p:bg xmlns:p="', p_ns,
+        '" xmlns:a="', drawing_ns, '"><p:bgPr><a:solidFill><a:srgbClr val="FFFFFF"/>',
+        '</a:solidFill><a:effectLst/></p:bgPr></p:bg>'))
+      xml2::xml_add_child(canvas, xml2::xml_root(background), .where = 0)
+      shapes <- xml2::xml_find_all(slide, ".//p:spTree/p:sp", ns = ns)
+      for (shape in shapes) {
+        words <- paste(xml2::xml_text(xml2::xml_find_all(shape, ".//a:t", ns = ns)), collapse = "")
+        if (!grepl("Randall Munroe", words, fixed = TRUE)) {
+          xml2::xml_remove(shape)
+        } else {
+          properties <- xml2::xml_find_first(shape, "p:spPr", ns = ns)
+          xml2::xml_remove(xml2::xml_find_all(properties, "a:xfrm", ns = ns))
+          transform <- xml2::read_xml(paste0('<a:xfrm xmlns:a="', drawing_ns,
+            '"><a:off x="457200" y="6540500"/><a:ext cx="11277600" cy="228600"/></a:xfrm>'))
+          xml2::xml_add_child(properties, xml2::xml_root(transform), .where = 0)
+          bodies <- xml2::xml_find_all(shape, ".//a:bodyPr", ns = ns)
+          for (attribute in c("lIns", "rIns", "tIns", "bIns")) xml2::xml_set_attr(bodies, attribute, "0")
+          xml2::xml_set_attr(bodies, "anchor", "ctr")
+          for (paragraph in xml2::xml_find_all(shape, ".//a:p", ns = ns)) {
+            props <- xml2::xml_find_first(paragraph, "a:pPr", ns = ns)
+            if (inherits(props, "xml_missing")) props <- xml2::xml_add_child(paragraph, "a:pPr", .where = 0)
+            xml2::xml_set_attr(props, "algn", "ctr")
+            defaults <- xml2::xml_find_first(props, "a:defRPr", ns = ns)
+            if (inherits(defaults, "xml_missing")) defaults <- xml2::xml_add_child(props, "a:defRPr")
+            xml2::xml_set_attr(defaults, "sz", "1100")
+          }
+          xml2::xml_set_attr(xml2::xml_find_all(shape, ".//a:rPr | .//a:endParaRPr", ns = ns), "sz", "1100")
+        }
+      }
+      comic <- comics[[match(names(anchors)[anchors == slide_number], comic_ids)]]
+      ratio <- min(1184 / comic$width_px, 650 / comic$height_px)
+      width <- comic$width_px * ratio; height <- comic$height_px * ratio
+      for (picture in xml2::xml_find_all(slide, ".//p:spTree/p:pic", ns = ns)) {
+        offset <- xml2::xml_find_first(picture, "p:spPr/a:xfrm/a:off", ns = ns)
+        extent <- xml2::xml_find_first(picture, "p:spPr/a:xfrm/a:ext", ns = ns)
+        xml2::xml_set_attr(offset, "x", as.character(round((1280 - width) / 2 * 9525)))
+        xml2::xml_set_attr(offset, "y", as.character(round((20 + (650 - height) / 2) * 9525)))
+        xml2::xml_set_attr(extent, "cx", as.character(round(width * 9525)))
+        xml2::xml_set_attr(extent, "cy", as.character(round(height * 9525)))
+      }
+      updated <- TRUE
+    }
     # Pandoc emits native Courier runs for code; leave prose at the reference size.
     code_style <- "@typeface='Courier' or @typeface='Courier New' or @typeface='CourierNew'"
     code_runs <- xml2::xml_find_all(slide,
