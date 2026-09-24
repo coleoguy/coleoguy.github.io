@@ -393,32 +393,41 @@ conclusions</h3>
 <ul>
 <li><a href="#instructions" id="toc-instructions">Instructions</a></li>
 <li><a href="#download-the-datasets" id="toc-download-the-datasets">Download the datasets</a></li>
-<li><a href="#question-1.-fish-length-and-a-benchmark-12-points" id="toc-question-1.-fish-length-and-a-benchmark-12-points">Question 1.
-Fish length and a benchmark — 12 points</a></li>
-<li><a href="#question-2.-comparing-two-lakes-12-points" id="toc-question-2.-comparing-two-lakes-12-points">Question 2. Comparing
-two lakes — 12 points</a></li>
-<li><a href="#question-3.-blood-pressure-before-and-after-treatment-12-points" id="toc-question-3.-blood-pressure-before-and-after-treatment-12-points">Question
-3. Blood pressure before and after treatment — 12 points</a></li>
-<li><a href="#question-4.-a-justified-equal-variance-model-8-points" id="toc-question-4.-a-justified-equal-variance-model-8-points">Question
-4. A justified equal-variance model — 8 points</a></li>
-<li><a href="#question-5.-birth-sex-12-points" id="toc-question-5.-birth-sex-12-points">Question 5. Birth sex — 12
+<li><a href="#question-1.-what-is-a-p-value-4-points" id="toc-question-1.-what-is-a-p-value-4-points">Question 1. What is a
+p-value? — 4 points</a></li>
+<li><a href="#question-2.-what-is-an-alpha-value-4-points" id="toc-question-2.-what-is-an-alpha-value-4-points">Question 2. What is
+an alpha value? — 4 points</a></li>
+<li><a href="#question-3.-why-do-we-use-0.05-4-points" id="toc-question-3.-why-do-we-use-0.05-4-points">Question 3. Why do we
+use 0.05? — 4 points</a></li>
+<li><a href="#question-4.-interpreting-significance-4-points" id="toc-question-4.-interpreting-significance-4-points">Question 4.
+Interpreting significance — 4 points</a></li>
+<li><a href="#question-5.-fish-length-and-a-benchmark-10-points" id="toc-question-5.-fish-length-and-a-benchmark-10-points">Question 5.
+Fish length and a benchmark — 10 points</a></li>
+<li><a href="#question-6.-comparing-two-lakes-10-points" id="toc-question-6.-comparing-two-lakes-10-points">Question 6. Comparing
+two lakes — 10 points</a></li>
+<li><a href="#question-7.-blood-pressure-before-and-after-treatment-10-points" id="toc-question-7.-blood-pressure-before-and-after-treatment-10-points">Question
+7. Blood pressure before and after treatment — 10 points</a></li>
+<li><a href="#question-8.-a-justified-equal-variance-model-6-points" id="toc-question-8.-a-justified-equal-variance-model-6-points">Question
+8. A justified equal-variance model — 6 points</a></li>
+<li><a href="#question-9.-birth-sex-10-points" id="toc-question-9.-birth-sex-10-points">Question 9. Birth sex — 10
 points</a></li>
-<li><a href="#question-6.-fish-communities-overall-and-cell-by-cell-tests-14-points" id="toc-question-6.-fish-communities-overall-and-cell-by-cell-tests-14-points">Question
-6. Fish communities: overall and cell-by-cell tests — 14 points</a></li>
-<li><a href="#question-7.-association-between-two-measurements-12-points" id="toc-question-7.-association-between-two-measurements-12-points">Question
-7. Association between two measurements — 12 points</a></li>
-<li><a href="#question-8.-predicting-ventilation-rate-18-points" id="toc-question-8.-predicting-ventilation-rate-18-points">Question 8.
-Predicting ventilation rate — 18 points</a></li>
+<li><a href="#question-10.-fish-communities-overall-and-cell-by-cell-tests-14-points" id="toc-question-10.-fish-communities-overall-and-cell-by-cell-tests-14-points">Question
+10. Fish communities: overall and cell-by-cell tests — 14
+points</a></li>
+<li><a href="#question-11.-association-between-two-measurements-10-points" id="toc-question-11.-association-between-two-measurements-10-points">Question
+11. Association between two measurements — 10 points</a></li>
+<li><a href="#question-12.-predicting-ventilation-rate-14-points" id="toc-question-12.-predicting-ventilation-rate-14-points">Question 12.
+Predicting ventilation rate — 14 points</a></li>
 </ul>
 </div>
 
 <p><strong>Name:</strong> ____________________________</p>
 <div id="instructions" class="section level2">
 <h2>Instructions</h2>
-<p>Download the CSV linked in each question and use R to complete the
-analysis. <strong>Submit the requested numerical answers, figures, and
-written explanations.</strong> Label each answer by question and
-part.</p>
+<p>Answer Questions 1–4 in words. For Questions 5–12, download the CSV
+linked in each question and use R to complete the analysis.
+<strong>Submit the requested numerical answers, figures, and written
+explanations.</strong> Label each answer by question and part.</p>
 <ul>
 <li>Use a significance level of <strong>0.05</strong>, <strong>two-sided
 alternatives</strong>, and <strong>95% confidence intervals</strong>
@@ -442,30 +451,35 @@ separate study.</li>
 <tbody>
 <tr class="odd">
 <td align="left">1–4</td>
-<td align="left">t-tests</td>
-<td align="right">44</td>
+<td align="left">P-values, alpha, and interpretation</td>
+<td align="right">16</td>
 </tr>
 <tr class="even">
-<td align="left">5</td>
-<td align="left">Binomial test</td>
-<td align="right">12</td>
+<td align="left">5–8</td>
+<td align="left">t-tests</td>
+<td align="right">36</td>
 </tr>
 <tr class="odd">
-<td align="left">6</td>
+<td align="left">9</td>
+<td align="left">Binomial test</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
 <td align="left">Chi-square test</td>
 <td align="right">14</td>
 </tr>
-<tr class="even">
-<td align="left">7</td>
+<tr class="odd">
+<td align="left">11</td>
 <td align="left">Pearson correlation</td>
-<td align="right">12</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">Simple linear regression</td>
+<td align="right">14</td>
 </tr>
 <tr class="odd">
-<td align="left">8</td>
-<td align="left">Simple linear regression</td>
-<td align="right">18</td>
-</tr>
-<tr class="even">
 <td align="left"><strong>Total</strong></td>
 <td align="left"></td>
 <td align="right"><strong>100</strong></td>
@@ -479,8 +493,46 @@ separate study.</li>
 or download all eight datasets together.</p>
 <a href="Exam-data.zip" download="Exam-data.zip">Download all eight exam datasets (ZIP)</a>
 </div>
-<div id="question-1.-fish-length-and-a-benchmark-12-points" class="section level2">
-<h2>Question 1. Fish length and a benchmark — 12 points</h2>
+<div id="question-1.-what-is-a-p-value-4-points" class="section level2">
+<h2>Question 1. What is a p-value? — 4 points</h2>
+<div class="answer-space answer-long" aria-label="Space for your answer">
+
+</div>
+</div>
+<div id="question-2.-what-is-an-alpha-value-4-points" class="section level2">
+<h2>Question 2. What is an alpha value? — 4 points</h2>
+<p>Explain its role in hypothesis testing and how it differs from a
+p-value.</p>
+<div class="answer-space answer-long" aria-label="Space for your answer">
+
+</div>
+</div>
+<div id="question-3.-why-do-we-use-0.05-4-points" class="section level2">
+<h2>Question 3. Why do we use 0.05? — 4 points</h2>
+<p>Why is 0.05 often chosen as alpha? Is it a universal scientific rule?
+Give one reason a researcher might choose a different alpha value.</p>
+<div class="answer-space answer-long" aria-label="Space for your answer">
+
+</div>
+</div>
+<div id="question-4.-interpreting-significance-4-points" class="section level2">
+<h2>Question 4. Interpreting significance — 4 points</h2>
+<p><strong>a. (2 points)</strong> A study reports p = 0.03 using alpha =
+0.05. What statistical decision should the researcher make? Does this
+result alone establish that the effect is large or biologically
+important? Explain.</p>
+<div class="answer-space answer-long" aria-label="Space for your answer">
+
+</div>
+<p><strong>b. (2 points)</strong> Another study reports p = 0.20 using
+alpha = 0.05. What statistical decision should the researcher make? Does
+this result establish that there is no effect? Explain.</p>
+<div class="answer-space answer-long" aria-label="Space for your answer">
+
+</div>
+</div>
+<div id="question-5.-fish-length-and-a-benchmark-10-points" class="section level2">
+<h2>Question 5. Fish length and a benchmark — 10 points</h2>
 <p>Biologists independently sample 45 bluegill from Willow Lake. Each
 fish is measured once. They want to know whether the population mean
 total length differs from <strong>20 cm</strong>.</p>
@@ -503,22 +555,22 @@ freedom, and p-value.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
-<p><strong>d. (4 points)</strong> Give a conclusion at alpha = 0.05.
+<p><strong>d. (2 points)</strong> Give a conclusion at alpha = 0.05.
 Does your result establish that the population mean is exactly 20 cm?
 Explain.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
 </div>
-<div id="question-2.-comparing-two-lakes-12-points" class="section level2">
-<h2>Question 2. Comparing two lakes — 12 points</h2>
+<div id="question-6.-comparing-two-lakes-10-points" class="section level2">
+<h2>Question 6. Comparing two lakes — 10 points</h2>
 <p>Biologists measure 35 independently sampled bluegill from Willow Lake
 and 55 from Cedar Lake. These are different fish. There is no
 justification for assuming equal population variances.</p>
 <p>File: <code>06_lake_comparison.csv</code>. Columns:
 <code>fish_id</code>, <code>lake</code>, <code>length_cm</code>.</p>
 <a href="data/06_lake_comparison.csv" download="06_lake_comparison.csv">Download 06_lake_comparison.csv</a>
-<p><strong>a. (4 points)</strong> Choose the appropriate t-test and
+<p><strong>a. (2 points)</strong> Choose the appropriate t-test and
 explain how both the sampling design and the variance assumption support
 your choice.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
@@ -542,8 +594,8 @@ difference and state your conclusion at alpha = 0.05.</p>
 
 </div>
 </div>
-<div id="question-3.-blood-pressure-before-and-after-treatment-12-points" class="section level2">
-<h2>Question 3. Blood pressure before and after treatment — 12
+<div id="question-7.-blood-pressure-before-and-after-treatment-10-points" class="section level2">
+<h2>Question 7. Blood pressure before and after treatment — 10
 points</h2>
 <p>Systolic blood pressure is recorded for 30 people before and four
 weeks after starting amlodipine. Different people are independent, and
@@ -570,15 +622,15 @@ p-value.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
-<p><strong>d. (4 points)</strong> Explain what the sign of the
+<p><strong>d. (2 points)</strong> Explain what the sign of the
 difference means and state your statistical conclusion. Does this study
 alone establish that amlodipine caused the change? Why or why not?</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
 </div>
-<div id="question-4.-a-justified-equal-variance-model-8-points" class="section level2">
-<h2>Question 4. A justified equal-variance model — 8 points</h2>
+<div id="question-8.-a-justified-equal-variance-model-6-points" class="section level2">
+<h2>Question 8. A justified equal-variance model — 6 points</h2>
 <p>A separate study samples 40 independent bluegill from each lake. For
 this question, assume normal populations with <strong>equal population
 variances</strong>, justified independently of these observations. Use
@@ -592,21 +644,21 @@ alone would not justify that assumption.</p>
 <div class="answer-space answer-short" aria-label="Space for your answer">
 
 </div>
-<p><strong>b. (3 points)</strong> Test whether the population means
+<p><strong>b. (2 points)</strong> Test whether the population means
 differ. Use <strong>Willow minus Cedar</strong> and report the estimated
 difference, t statistic, degrees of freedom, and p-value.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
-<p><strong>c. (3 points)</strong> State your conclusion at alpha = 0.05.
+<p><strong>c. (2 points)</strong> State your conclusion at alpha = 0.05.
 Explain why failing to reject the null would not prove that the
 population means are equal.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
 </div>
-<div id="question-5.-birth-sex-12-points" class="section level2">
-<h2>Question 5. Birth sex — 12 points</h2>
+<div id="question-9.-birth-sex-10-points" class="section level2">
+<h2>Question 9. Birth sex — 10 points</h2>
 <p>A fictional registry contains 320 independent singleton births. Test
 whether the probability of a birth recorded as male differs from the
 specified teaching benchmark of <strong>0.50</strong>. Assume a common
@@ -616,7 +668,7 @@ sex ratio of every human population.</p>
 <code>birth_id</code>, <code>recorded_sex</code> (<code>Male</code> or
 <code>Female</code>).</p>
 <a href="data/10_birth_records.csv" download="10_birth_records.csv">Download 10_birth_records.csv</a>
-<p><strong>a. (3 points)</strong> Report the number of male births,
+<p><strong>a. (2 points)</strong> Report the number of male births,
 total births, and observed male proportion.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
@@ -626,7 +678,7 @@ hypotheses.</p>
 <div class="answer-space answer-short" aria-label="Space for your answer">
 
 </div>
-<p><strong>c. (5 points)</strong> Run an exact binomial test. Report its
+<p><strong>c. (4 points)</strong> Run an exact binomial test. Report its
 p-value and the 95% confidence interval for the male-birth
 probability.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
@@ -638,8 +690,8 @@ probability.</p>
 
 </div>
 </div>
-<div id="question-6.-fish-communities-overall-and-cell-by-cell-tests-14-points" class="section level2">
-<h2>Question 6. Fish communities: overall and cell-by-cell tests — 14
+<div id="question-10.-fish-communities-overall-and-cell-by-cell-tests-14-points" class="section level2">
+<h2>Question 10. Fish communities: overall and cell-by-cell tests — 14
 points</h2>
 <p>A survey records the species of <strong>25 independent fish from each
 lake</strong>. Each fish appears once, the same sampling protocol is
@@ -690,8 +742,8 @@ what multiplier would we use instead?</p>
 
 </div>
 </div>
-<div id="question-7.-association-between-two-measurements-12-points" class="section level2">
-<h2>Question 7. Association between two measurements — 12 points</h2>
+<div id="question-11.-association-between-two-measurements-10-points" class="section level2">
+<h2>Question 11. Association between two measurements — 10 points</h2>
 <p>Researchers measure total length and body depth on each of 36
 independently sampled fish. They want to assess the strength and
 direction of a <strong>linear association</strong> between these
@@ -700,7 +752,7 @@ measurements. Neither variable was experimentally manipulated.</p>
 <code>fish_id</code>, <code>length_cm</code>,
 <code>body_depth_cm</code>.</p>
 <a href="data/15_fish_measurements.csv" download="15_fish_measurements.csv">Download 15_fish_measurements.csv</a>
-<p><strong>a. (2 points)</strong> Make a scatterplot with length on the
+<p><strong>a. (1 point)</strong> Make a scatterplot with length on the
 horizontal axis and body depth on the vertical axis. Label the axes and
 units.</p>
 <div class="answer-space answer-short" aria-label="Space for your answer">
@@ -711,7 +763,7 @@ hypotheses for a Pearson correlation test.</p>
 <div class="answer-space answer-short" aria-label="Space for your answer">
 
 </div>
-<p><strong>c. (4 points)</strong> Report Pearson’s correlation
+<p><strong>c. (3 points)</strong> Report Pearson’s correlation
 coefficient, its 95% confidence interval, and the p-value.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
@@ -728,8 +780,8 @@ establish causation.</p>
 
 </div>
 </div>
-<div id="question-8.-predicting-ventilation-rate-18-points" class="section level2">
-<h2>Question 8. Predicting ventilation rate — 18 points</h2>
+<div id="question-12.-predicting-ventilation-rate-14-points" class="section level2">
+<h2>Question 12. Predicting ventilation rate — 14 points</h2>
 <p>Researchers record water temperature and opercular beats per minute
 for 36 fish, each measured once in a separate tank. Treat fish as
 independent. Use temperature as the explanatory variable and ventilation
@@ -739,24 +791,24 @@ degrees C</strong>.</p>
 <code>fish_id</code>, <code>water_temp_c</code>,
 <code>opercular_beats_min</code>.</p>
 <a href="data/16_fish_ventilation.csv" download="16_fish_ventilation.csv">Download 16_fish_ventilation.csv</a>
-<p><strong>a. (4 points)</strong> Fit a simple linear regression and
+<p><strong>a. (3 points)</strong> Fit a simple linear regression and
 write its fitted equation, including the estimated intercept and
 slope.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
-<p><strong>b. (3 points)</strong> Interpret the slope in biological
+<p><strong>b. (2 points)</strong> Interpret the slope in biological
 terms, including units.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
-<p><strong>c. (3 points)</strong> State the null and alternative
+<p><strong>c. (2 points)</strong> State the null and alternative
 hypotheses for the slope. Report the slope’s p-value and your conclusion
 at alpha = 0.05.</p>
 <div class="answer-space answer-long" aria-label="Space for your answer">
 
 </div>
-<p><strong>d. (2 points)</strong> Report and interpret R-squared.</p>
+<p><strong>d. (1 point)</strong> Report and interpret R-squared.</p>
 <div class="answer-space answer-short" aria-label="Space for your answer">
 
 </div>
