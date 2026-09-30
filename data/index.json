@@ -1,7 +1,7 @@
 {
   "name": "Blackmon Lab open data",
   "description": "Machine-readable snapshots of the data that powers coleoguy.github.io. Everything here is CC BY 4.0. See LICENSE for terms and README.md for the human-readable walkthrough.",
-  "updated_at": "2026-04-22",
+  "updated_at": "2026-09-30",
   "license": "CC BY 4.0",
   "license_file": "LICENSE",
   "contact": "blackmon@tamu.edu",
@@ -15,7 +15,7 @@
       "file": "publications.json",
       "description": "ORCID snapshot of Heath Blackmon's publications. Works array is sorted by year descending.",
       "format": "json",
-      "records": 57,
+      "records": 62,
       "backs_page": "publications.html",
       "source": "ORCID public API, ORCID 0000-0002-5433-4036",
       "refresh": "re-snapshot when a new publication appears (script in README.md)"
@@ -24,7 +24,7 @@
       "file": "team.json",
       "description": "Current members of the Blackmon Lab. Ordered PI, grad students, post-bacc, staff, undergrads.",
       "format": "json",
-      "records": 20,
+      "records": 18,
       "backs_page": "team.html",
       "refresh": "edit by hand when members join or leave"
     },
@@ -40,7 +40,7 @@
       "file": "news.json",
       "description": "Lab news cards. Drives the homepage feed and news.html. Most recent first.",
       "format": "json",
-      "records": 12,
+      "records": 25,
       "backs_page": "news.html",
       "refresh": "edit by hand"
     },
@@ -56,7 +56,7 @@
       "file": "undergrad-papers.json",
       "description": "Papers where the first author was an undergraduate researcher in the lab at time of submission.",
       "format": "json",
-      "records": 8,
+      "records": 9,
       "backs_page": "undergrad-papers.html",
       "refresh": "add entries as undergraduate-led papers are published"
     },
