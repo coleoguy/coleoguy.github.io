@@ -1,5 +1,29 @@
 [
   {
+    "date": "2026-09-25",
+    "title": "Sean Chien's Hercules beetle population genomics study published in Molecular Ecology",
+    "body": "Sean Chien, My-Hanh Le, Heath Blackmon, and Jen-Pan Huang report how habitat isolation and monsoon seasonality shape the genomes of western Hercules beetles across the sky islands of the American Southwest. The study connects demographic history and local adaptation with conservation planning. <a href=\"https://doi.org/10.1111/mec.70551\" target=\"_blank\" rel=\"noopener\">Read the paper</a>.",
+    "category": "publication",
+    "icon": "bi-bug",
+    "link": "https://doi.org/10.1111/mec.70551"
+  },
+  {
+    "date": "2026-08-31",
+    "title": "Sarah Schmalz publishes sex chromosome fusion model",
+    "body": "Sarah Schmalz and Heath Blackmon published \"A fixation-weighted null model for the proportion of sex chromosome-autosome fusions\" in <em>microPublication Biology</em>. The paper extends null expectations for chromosome fusions by incorporating their probability of fixation. <a href=\"https://doi.org/10.17912/micropub.biology.002109\" target=\"_blank\" rel=\"noopener\">Read the paper</a>.",
+    "category": "publication",
+    "icon": "bi-journal-text",
+    "link": "https://doi.org/10.17912/micropub.biology.002109"
+  },
+  {
+    "date": "2026-08-24",
+    "title": "TAMU Biology features Heath on AI-assisted lab management",
+    "body": "TAMU Biology highlighted Heath’s appearance on <em>AI in the Wild</em>, discussing how AI supports research workflows, lab administration, and student training. <a href=\"https://artsci.tamu.edu/biology/updates/blackmon-ai-lab-management.html\" target=\"_blank\" rel=\"noopener\">Read the department feature</a>.",
+    "category": "lab",
+    "icon": "bi-mic",
+    "link": "https://artsci.tamu.edu/biology/updates/blackmon-ai-lab-management.html"
+  },
+  {
     "date": "2026-08-14",
     "title": "Texas A&M features Andres and Heath on the university's Facebook page",
     "body": "Texas A&M highlighted the lab on its official Facebook page with a photo of Andres Barboza and Heath taken at summer commencement. A nice sendoff for a newly minted PhD.",
@@ -40,6 +64,14 @@
     "body": "Madison Anderson, visiting from Prairie View A&M University through the PVAMU summer research program, spent the summer studying how breeding system transitions shape chromosome number evolution in angiosperms. She presented her poster at the ILSB and is a coauthor on the manuscript now in preparation. Well done, Madison!",
     "category": "lab",
     "icon": "bi-flower1"
+  },
+  {
+    "date": "2026-05-11",
+    "title": "Beetle Wrangling: TAMU Biology features Sean Chien",
+    "body": "Anna Klein’s TAMU Biology feature follows Sean Chien’s fieldwork on western Hercules beetles in the sky islands of the American Southwest and explores how habitat isolation and climate change shape their future. <a href=\"https://artsci.tamu.edu/biology/updates/beetle-wrangling-sean-chien.html\" target=\"_blank\" rel=\"noopener\">Read the story</a>.",
+    "category": "lab",
+    "icon": "bi-bug",
+    "link": "https://artsci.tamu.edu/biology/updates/beetle-wrangling-sean-chien.html"
   },
   {
     "date": "2026-05-08",

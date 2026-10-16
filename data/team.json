@@ -1,7 +1,7 @@
 {
   "name": "Blackmon Lab team",
   "description": "Current members of the Blackmon Lab at Texas A&M University, Department of Biology.",
-  "updated_at": "2026-08-18",
+  "updated_at": "2026-09-30",
   "license": "CC BY 4.0",
   "contact": "blackmon@tamu.edu",
   "site_page": "https://coleoguy.github.io/team.html",
@@ -112,7 +112,8 @@
       "project_tags": [],
       "orcid": null,
       "github": null,
-      "email": null
+      "email": null,
+      "photo": "assets/img/olivia-deiterman.jpg"
     },
     {
       "name": "Riya Girish",
@@ -165,6 +166,46 @@
       "orcid": null,
       "github": null,
       "email": null
+    },
+    {
+      "name": "Kaitlyn Rieder",
+      "role": "postbac",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null,
+      "photo": "assets/img/kaitlyn-rieder.jpg"
+    },
+    {
+      "name": "Paige Maxa",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null,
+      "photo": "assets/img/paige-maxa.jpg"
+    },
+    {
+      "name": "Ezzah Zaheer",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null,
+      "photo": "assets/img/ezzah-zaheer.jpg"
+    },
+    {
+      "name": "MacKenzie Wilkerson",
+      "role": "undergraduate",
+      "year_joined": null,
+      "project_tags": [],
+      "orcid": null,
+      "github": null,
+      "email": null,
+      "photo": "assets/img/mackenzie-wilkerson.jpg"
     }
   ]
 }

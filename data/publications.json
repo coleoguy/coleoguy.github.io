@@ -4,6 +4,26 @@
  "works": [
   {
    "putCode": null,
+   "title": "Differential Demographic Trajectories and Polygenic Adaptation to Monsoon Seasonality in Sky Island Hercules Beetle Populations of the American Southwest",
+   "journal": "Molecular Ecology",
+   "year": "2026",
+   "type": "journal-article",
+   "doi": "10.1111/mec.70551",
+   "doiUrl": "https://doi.org/10.1111/mec.70551",
+   "authors": "Sean Chien, My-Hanh Le, Heath Blackmon, Jen-Pan Huang"
+  },
+  {
+   "putCode": null,
+   "title": "A fixation-weighted null model for the proportion of sex chromosome-autosome fusions",
+   "journal": "microPublication Biology",
+   "year": "2026",
+   "type": "journal-article",
+   "doi": "10.17912/micropub.biology.002109",
+   "doiUrl": "https://doi.org/10.17912/micropub.biology.002109",
+   "authors": "Sarah Schmalz, Heath Blackmon"
+  },
+  {
+   "putCode": null,
    "title": "Chromosomal rearrangements: tempo and mode of karyotype evolution in Scarabaeoidea",
    "journal": "Journal of Evolutionary Biology",
    "year": "2026",
@@ -603,5 +623,5 @@
    "authors": ""
   }
  ],
- "manual_additions": "2026-08-14: three 2026 works added by hand pending next ORCID sync"
+ "manual_additions": "2026-08-14: three 2026 works added by hand; 2026-09-30: Chien et al. (Molecular Ecology) and Schmalz & Blackmon (microPublication Biology) added from publisher records pending next ORCID sync"
 }
