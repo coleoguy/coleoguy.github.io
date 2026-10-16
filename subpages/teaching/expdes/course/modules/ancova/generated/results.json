@@ -1,0 +1,6 @@
+{
+  "preview": [" plant treatment  initial  biomass", "     1   Control 5.709542 11.31708", "     2   Control 7.877332 12.85633", "     3   Control 4.503380 11.12236", "     4   Control 5.569663 12.57494"],
+  "summary": ["Adjusted nutrient minus control = 2.65 g", "95% CI 1.84 to 3.45", "t(87) = 6.55; p = 3.797e-09"],
+  "report": "At the same initial height, nutrient-treated plants had 2.65 g greater mean biomass (95% CI 1.84 to 3.45; p = 3.797e-09). This fitted model assumes a common height slope; the adjusted treatment comparison is supported by overlapping height ranges.",
+  "full_output": "\nCall:\nlm(formula = biomass ~ treatment + initial, data = d)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-3.692 -1.195  0.030  1.050  4.634 \n\nCoefficients:\n                  Estimate Std. Error t value Pr(>|t|)    \n(Intercept)         2.1147     0.7830   2.701  0.00831 ** \ntreatmentNutrient   2.6479     0.4040   6.555  3.8e-09 ***\ninitial             1.4427     0.1212  11.900  < 2e-16 ***\n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n\nResidual standard error: 1.899 on 87 degrees of freedom\nMultiple R-squared:  0.6571,\tAdjusted R-squared:  0.6492 \nF-statistic: 83.35 on 2 and 87 DF,  p-value: < 2.2e-16\n"
+}

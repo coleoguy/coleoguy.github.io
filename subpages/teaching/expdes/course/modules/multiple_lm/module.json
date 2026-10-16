@@ -1,0 +1,91 @@
+{
+  "id": "multiple_lm",
+  "title": "Multiple linear regression",
+  "family": "Regression",
+  "biology": "Evolutionary biologists relate beetle horn length to body size and larval nutrition.",
+  "design": "Sixty independent beetles are raised across a nutrient gradient and measured as adults.",
+  "data_characteristics": [
+    "One continuous response",
+    "Two or more predictors",
+    "A conditional slope holding other predictors fixed"
+  ],
+  "other_examples": [
+    "Growth predicted by temperature and resources",
+    "Physiology predicted by size and treatment",
+    "Expression predicted by genotype and age"
+  ],
+  "question": "Does body size predict mean horn length after accounting for larval nutrition?",
+  "null": "The body-size coefficient is zero conditional on nutrition in the specified model.",
+  "options": [
+    "x1 + x2 gives additive effects",
+    "x1 * x2 also includes an interaction",
+    "anova(reduced, full) compares nested models fit to the same rows"
+  ],
+  "assumptions": [
+    "Independent beetles",
+    "Correct mean pattern and residual spread",
+    "Strong predictor collinearity limits separate interpretation"
+  ],
+  "parametric": [
+    "Include a justified interaction or curved term",
+    "Use robust SEs/variance models for unequal error variance"
+  ],
+  "nonparametric": [
+    "A design-respecting permutation can test a specified effect",
+    "Separate rank correlations do not replace an adjusted regression"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "color",
+      "note": "Map nutrition to a continuous color scale"
+    },
+    {
+      "arg": "scale_color_gradient",
+      "note": "Give low/high values clear colors"
+    },
+    {
+      "arg": "geom_point",
+      "note": "Show each beetle once"
+    },
+    {
+      "arg": "labs",
+      "note": "State response, predictor and color units"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "What does holding nutrition fixed mean when interpreting the body-size coefficient?",
+  "code_simulate": "set.seed(1115)\nbody <- runif(60, 7, 12)\nnutrition <- runif(60, 2, 10)\nhorn <- .4 + .35 * body + .16 * nutrition + rnorm(60, 0, .65)\nd <- data.frame(beetle = 1:60, body_mm = body, nutrition_mg = nutrition, horn_mm = horn)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(body_mm, horn_mm, color = nutrition_mg)) +\n  geom_point(size = 3.8, alpha = .9) +\n  scale_color_gradient(low = \"#C8DCE0\", high = \"#174D58\") +\n  labs(x = \"Adult body length (mm)\", y = \"Horn length (mm)\", color = \"Larval nutrition\n(mg)\") +\n  theme_classic(base_size = 18)\nprint(p)",
+  "code_analysis": "fit <- lm(horn_mm ~ body_mm + nutrition_mg, data = d)\nreduced <- lm(horn_mm ~ nutrition_mg, data = d)\ncomparison <- anova(reduced, fit)\ncoefficients <- summary(fit)$coefficients\nci <- confint(fit)",
+  "seed": 1115,
+  "generating_model": "60 independent body lengths are Uniform(7, 12) mm and nutrition values independently Uniform(2, 10) mg. Horn length = 0.4 + 0.35*body + 0.16*nutrition + Normal(0, 0.65 SD).",
+  "generating_truth": "The true conditional body slope is 0.35 mm/mm and nutrition slope 0.16 mm/mg, with no interaction. Both zero-coefficient nulls are false.",
+  "columns": [
+    {
+      "name": "beetle",
+      "meaning": "Independent beetle identifier",
+      "unit": "none"
+    },
+    {
+      "name": "body_mm",
+      "meaning": "Adult body length",
+      "unit": "mm"
+    },
+    {
+      "name": "nutrition_mg",
+      "meaning": "Larval nutrition amount",
+      "unit": "mg"
+    },
+    {
+      "name": "horn_mm",
+      "meaning": "Adult horn length",
+      "unit": "mm"
+    }
+  ],
+  "teaching_point": "Read each coefficient conditionally on the other variables in the stated model."
+}

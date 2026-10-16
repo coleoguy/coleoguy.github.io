@@ -1,0 +1,81 @@
+{
+  "id": "welch_t",
+  "title": "Welch two-sample t test",
+  "family": "Means",
+  "biology": "Evolutionary biologists compare adult beetle body length from two rearing environments.",
+  "design": "Independent beetles assigned to cool or warm rearing; each beetle measured once.",
+  "data_characteristics": [
+    "Continuous response",
+    "Two independent groups",
+    "Unequal variances allowed"
+  ],
+  "other_examples": [
+    "Control versus treated enzyme activity",
+    "Biomass in two habitats",
+    "Hormone concentration in two populations"
+  ],
+  "question": "Do mean body lengths differ between cool and warm environments?",
+  "null": "The two population means are equal.",
+  "options": [
+    "var.equal = FALSE uses Welch (default)",
+    "Factor order defines the reported difference",
+    "Use a paired test only for genuine pairs"
+  ],
+  "assumptions": [
+    "Independent beetles",
+    "No severe outliers; check small samples closely",
+    "Groups need not share a variance"
+  ],
+  "parametric": [
+    "Welch handles unequal variances",
+    "A scientifically sensible transformation may reduce strong skew"
+  ],
+  "nonparametric": [
+    "Rank-sum tests distributions; it is not a general test of means",
+    "A bootstrap interval can retain the mean-difference target"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "response ~ group",
+      "note": "Map measurements to groups"
+    },
+    {
+      "arg": "bg",
+      "note": "Use a color for each group"
+    },
+    {
+      "arg": "corral",
+      "note": "Control overly wide swarms"
+    },
+    {
+      "arg": "points",
+      "note": "Add group means with a distinct symbol"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "If the Warm group is more variable, do you need ranks to test a mean difference?",
+  "code_simulate": "set.seed(1102)\nd <- data.frame(environment = rep(c(\"Cool\", \"Warm\"), c(26, 30)),\n                length_mm = c(rnorm(26, 10, .65), rnorm(30, 10.7, 1.15)))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "beeswarm(length_mm ~ environment, data = d, pch = 21,\n         bg = c(\"#246A73\", \"#B7663E\"), col = \"white\", cex = 1.3,\n         xlab = \"Rearing environment\", ylab = \"Adult body length (mm)\")\npoints(1:2, tapply(d$length_mm, d$environment, mean), pch = 18, cex = 2)\nlegend(\"topleft\", \"Group mean\", pch = 18, bty = \"n\")",
+  "code_analysis": "d$environment <- factor(d$environment, levels = c(\"Cool\", \"Warm\"))\nfit <- t.test(length_mm ~ environment, data = d,\n              var.equal = FALSE, conf.level = .95)\ndifference <- mean(d$length_mm[d$environment == \"Cool\"]) -\n              mean(d$length_mm[d$environment == \"Warm\"])",
+  "seed": 1102,
+  "generating_model": "26 independent Cool lengths come from Normal(10, 0.65 SD), and 30 independent Warm lengths from Normal(10.7, 1.15 SD).",
+  "generating_truth": "The true Cool minus Warm mean difference is -0.7 mm. Variances differ (0.4225 versus 1.3225 mm squared).",
+  "columns": [
+    {
+      "name": "environment",
+      "meaning": "Independent rearing group",
+      "unit": "category"
+    },
+    {
+      "name": "length_mm",
+      "meaning": "Adult beetle body length",
+      "unit": "mm"
+    }
+  ],
+  "teaching_point": "Welch answers the equal-means question while allowing unequal group variances."
+}

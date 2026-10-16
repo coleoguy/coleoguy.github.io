@@ -1,0 +1,6 @@
+{
+  "preview": [" 1 | Susceptible | 0", " 2 | Susceptible | 0", " 3 | Susceptible | 0", " 4 | Susceptible | 1", " 5 | Susceptible | 0"],
+  "summary": ["Survivors: susceptible 2/12; resistant 7/12", "Survival odds ratio (resistant / susceptible): 6.395", "95% exact CI: 0.810 to 85.671", "Two-sided exact p = 0.08938"],
+  "report": "The resistant-to-susceptible survival odds ratio was 6.39 (95% exact CI 0.81–85.67; p = 0.0894). A wide interval reflects limited information from these small groups; odds are not probabilities.",
+  "full_output": "\n\tFisher's Exact Test for Count Data\n\ndata:  tab\np-value = 0.08938\nalternative hypothesis: true odds ratio is not equal to 1\n95 percent confidence interval:\n  0.8098091 85.6709653\nsample estimates:\nodds ratio \n  6.394505 \n"
+}

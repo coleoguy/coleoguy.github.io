@@ -1,0 +1,6 @@
+{
+  "preview": [" treatment damage", "   Control      2", "   Control      2", "   Control      4", "   Control      0"],
+  "summary": ["Kruskal–Wallis chi-square = 35.75; df = 2; p = 1.73e-08", "Observed medians: Control 2; Strain A 3; Strain B 4.5", "The omnibus result does not identify which pairs differ."],
+  "report": "Damage-score distributions were compared using Kruskal–Wallis: chi-square(2) = 35.75, p = 1.73e-08. An omnibus result concerns at least one group difference; it does not identify a particular pair or generally establish different medians.",
+  "full_output": "\n\tKruskal-Wallis rank sum test\n\ndata:  damage by treatment\nKruskal-Wallis chi-squared = 35.745, df = 2, p-value = 1.73e-08\n"
+}

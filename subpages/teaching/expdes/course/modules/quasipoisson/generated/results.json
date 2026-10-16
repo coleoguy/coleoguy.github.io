@@ -1,0 +1,6 @@
+{
+  "preview": ["Low | 1.1841021 |  7", "Low | 0.7388036 | 13", "Low | 0.8322714 |  8", "Low | 0.9698467 | 13", "Low | 0.7744541 | 10"],
+  "summary": ["High / low mean rate ratio: 1.351", "95% t-based CI: 1.117 to 1.633", "Dispersion multiplier: 3.953", "Quasi-Poisson t-test p = 0.002166"],
+  "report": "High-nutrient medium had 1.35 times the modeled colony rate of low-nutrient medium (95% t-based CI 1.12–1.63; p = 0.00217). Estimated dispersion 3.95 adjusts uncertainty for extra-Poisson variation.",
+  "full_output": "\nCall:\nglm(formula = colonies ~ medium + offset(log(volume_ml)), family = quasipoisson, \n    data = d)\n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)    \n(Intercept)  2.52196    0.07284  34.622  < 2e-16 ***\nmediumHigh   0.30075    0.09592   3.135  0.00217 ** \n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n\n(Dispersion parameter for quasipoisson family taken to be 3.953259)\n\n    Null deviance: 489.45  on 119  degrees of freedom\nResidual deviance: 450.13  on 118  degrees of freedom\nAIC: NA\n\nNumber of Fisher Scoring iterations: 4\n"
+}

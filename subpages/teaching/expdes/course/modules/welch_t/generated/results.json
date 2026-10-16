@@ -1,0 +1,6 @@
+{
+  "preview": [" environment length_mm", "        Cool  9.711176", "        Cool 10.244752", "        Cool 10.735937", "        Cool  9.850995"],
+  "summary": ["Cool - Warm mean difference = -1.01 mm", "95% CI: -1.49 to -0.53 mm", "Welch t = -4.21; df = 53.33; p = 9.973e-05"],
+  "report": "Mean body length differed by -1.01 mm (Cool minus Warm; 95% CI -1.49 to -0.53). Welch's t = -4.21, df = 53.33, p = 9.973e-05. Group ordering determines the sign; unequal group variances do not require switching to ranks.",
+  "full_output": "\n\tWelch Two Sample t-test\n\ndata:  length_mm by environment\nt = -4.2066, df = 53.33, p-value = 9.973e-05\nalternative hypothesis: true difference in means between group Cool and group Warm is not equal to 0\n95 percent confidence interval:\n -1.4937879 -0.5292964\nsample estimates:\nmean in group Cool mean in group Warm \n          9.763781          10.775323 \n"
+}

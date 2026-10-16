@@ -1,0 +1,6 @@
+{
+  "preview": [" leaf treatment   damage", "    1         A 2.385584", "    2         A 5.565609", "    3         A 2.182752", "    4         A 6.045659"],
+  "summary": ["Kruskal–Wallis p = 1.352e-05", "Highlighted pair: B - D", "Dunn z = -4.30", "Two-sided Holm-adjusted p = 0.0001018"],
+  "report": "Across the six rank comparisons, the highlighted B - D comparison had Dunn z = -4.30 and two-sided Holm-adjusted p = 0.0001018. This compares pooled rank tendencies; with unequal distribution shapes, it is not simply a test of equal medians. The smallest adjusted p-value is highlighted after protecting the full six-pair family.",
+  "full_output": "\n\tKruskal-Wallis rank sum test\n\ndata:  damage by treatment\nKruskal-Wallis chi-squared = 25.276, df = 3, p-value = 1.352e-05\n\n$chi2\n[1] 25.27627\n\n$Z\n[1]  0.5693239 -2.5682832 -3.1376070 -3.7322342 -4.3015580 -1.1639510\n\n$altP\n[1] 5.691364e-01 1.022036e-02 1.703331e-03 1.897889e-04 1.696014e-05\n[6] 2.444439e-01\n\n$altP.adjusted\n[1] 0.5691363809 0.0306610890 0.0068133231 0.0009489447 0.0001017608\n[6] 0.4888877458\n\n$comparisons\n[1] \"A - B\" \"A - C\" \"B - C\" \"A - D\" \"B - D\" \"C - D\"\n"
+}

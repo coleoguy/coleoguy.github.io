@@ -1,0 +1,6 @@
+{
+  "preview": ["Forest | Uninfected", "Forest | Uninfected", "Forest | Uninfected", "Forest | Uninfected", "Forest | Infected"],
+  "summary": ["Infection probabilities: Forest 0.14; Grassland 0.41; Urban 0.54", "Minimum expected count: 33.0", "Chi-square(2) = 32.153", "p = 1.042e-07; Cramer V = 0.345"],
+  "report": "Infection probabilities differed descriptively across habitats (Forest 14%, Grassland 41%, Urban 54%). The independence test gives chi-square(2) = 32.15, p = 1.04e-07; Cramer V = 0.35. This observational association does not establish a habitat effect.",
+  "full_output": "\n\tPearson's Chi-squared test\n\ndata:  tab\nX-squared = 32.153, df = 2, p-value = 1.042e-07\n"
+}

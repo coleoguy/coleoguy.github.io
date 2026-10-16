@@ -1,0 +1,6 @@
+{
+  "preview": ["  1 | 28.15313 | Moderate", "  2 | 28.30287 | None", "  3 | 27.62607 | None", "  4 | 27.56123 | Mild", "  5 | 31.16458 | Moderate"],
+  "summary": ["Common odds ratio per 1°C: 2.613", "95% Wald CI: 2.105 to 3.244", "Likelihood ratio = 97.836; df = 1", "p = 4.544e-23"],
+  "report": "Each 1°C increase multiplied the modeled odds of higher rather than lower bleaching severity by 2.61 (95% Wald CI 2.11–3.24; likelihood-ratio p = 4.54e-23), assuming the same temperature effect across thresholds.",
+  "full_output": "formula: severity ~ temperature\ndata:    d\n\n link  threshold nobs logLik  AIC    niter max.grad cond.H \n logit flexible  180  -200.34 408.69 5(0)  2.85e-11 1.3e+06\n\nCoefficients:\n            Estimate Std. Error z value Pr(>|z|)    \ntemperature   0.9606     0.1103    8.71   <2e-16 ***\n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\n\nThreshold coefficients:\n                Estimate Std. Error z value\nNone|Mild         25.935      3.098   8.373\nMild|Moderate     27.589      3.178   8.682\nModerate|Severe   29.316      3.273   8.957"
+}

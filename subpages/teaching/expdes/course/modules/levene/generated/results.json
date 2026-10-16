@@ -1,0 +1,6 @@
+{
+  "preview": [" medium diameter_mm", "    Low    3.980470", "    Low    4.612878", "    Low    3.647417", "    Low    3.983068"],
+  "summary": ["Brown–Forsythe F = 5.55; df = 2, 81; p = 0.005524", "Original Levene F = 9.72; p = 0.0001645", "Observed group SDs: Low 0.59; Medium 0.84; High 1.64"],
+  "report": "The median-centered Brown–Forsythe comparison gave F(2, 81) = 5.55, p = 0.005524. Inspect the distributions as well as the p-value: the procedure compares absolute deviations, which can reflect both spread and shape.",
+  "full_output": "Levene's Test for Homogeneity of Variance (center = median)\n      Df F value   Pr(>F)   \ngroup  2  5.5471 0.005524 **\n      81                    \n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1\nLevene's Test for Homogeneity of Variance (center = mean)\n      Df F value    Pr(>F)    \ngroup  2  9.7209 0.0001645 ***\n      81                      \n---\nSignif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"
+}

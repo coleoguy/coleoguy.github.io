@@ -1,0 +1,81 @@
+{
+  "id": "rank_sum",
+  "title": "Wilcoxon rank-sum test",
+  "family": "Nonparametric alternatives",
+  "biology": "Ecologists compare parasite burdens among fish from two independent lakes.",
+  "design": "Each fish is sampled once; counts are strongly skewed and tied.",
+  "data_characteristics": [
+    "Ordinal or continuous response, including ranked counts",
+    "Two independent groups",
+    "Uses relative ordering rather than raw distances"
+  ],
+  "other_examples": [
+    "Skewed enzyme concentrations",
+    "Ordinal disease scores in two treatments",
+    "Time-to-task completion without censoring"
+  ],
+  "question": "Do parasite-burden distributions differ between the two lakes?",
+  "null": "The two groups have the same response distribution.",
+  "options": [
+    "exact = FALSE handles these tied counts",
+    "correct = TRUE applies continuity correction",
+    "Location-shift interpretation needs similarly shaped distributions"
+  ],
+  "assumptions": [
+    "Independent fish and groups",
+    "Measurements can be meaningfully ranked",
+    "Different shapes/spreads can affect the result"
+  ],
+  "parametric": [
+    "Negative-binomial regression models the count response directly",
+    "Welch t tests a mean difference when that is the target"
+  ],
+  "nonparametric": [
+    "Rank-sum compares independent groups",
+    "Use signed-rank or sign for paired observations"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "aes",
+      "note": "Map lake and burden to axes"
+    },
+    {
+      "arg": "geom_jitter / width",
+      "note": "Separate overlapping observations horizontally"
+    },
+    {
+      "arg": "shape / alpha",
+      "note": "Set point appearance and transparency"
+    },
+    {
+      "arg": "stat_summary",
+      "note": "Add a labeled descriptive median"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "If your target is the ratio of mean parasite counts, would a rank-sum result answer that directly?",
+  "code_simulate": "set.seed(1106)\nd <- data.frame(lake = rep(c(\"Clear\", \"Reedy\"), each = 32),\n                parasites = c(rnbinom(32, mu = 5, size = 1.5),\n                              rnbinom(32, mu = 10, size = 1.5)))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(lake, parasites, color = lake)) +\n  geom_jitter(width = .12, height = 0, size = 2.7, alpha = .75) +\n  stat_summary(fun = median, geom = \"point\", shape = 18, size = 5, color = \"black\") +\n  scale_color_manual(values = c(\"#246A73\", \"#B7663E\")) +\n  labs(x = \"Lake\", y = \"Parasites per fish\", caption = \"Black diamonds: group medians\") +\n  theme_classic(base_size = 18) + theme(legend.position = \"none\")\nprint(p)",
+  "code_analysis": "fit <- wilcox.test(parasites ~ lake, data = d,\n                   exact = FALSE, correct = TRUE)",
+  "seed": 1106,
+  "generating_model": "32 independent fish per lake have negative-binomial parasite counts. Clear has mean 5 and Reedy mean 10, both with size parameter 1.5; variances are mean + mean squared / 1.5.",
+  "generating_truth": "The lake distributions differ, including their mean and spread. The same-distribution null is false; there is not a simple equal-shape location shift.",
+  "columns": [
+    {
+      "name": "lake",
+      "meaning": "Lake of independently sampled fish",
+      "unit": "category"
+    },
+    {
+      "name": "parasites",
+      "meaning": "Parasite burden of one fish",
+      "unit": "count"
+    }
+  ],
+  "teaching_point": "A rank-sum result can reflect distributional differences; the mean-count question also has a direct count-model route."
+}

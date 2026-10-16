@@ -1,0 +1,81 @@
+{
+  "id": "chi_independence",
+  "title": "Chi-square test of independence",
+  "family": "Proportions and categories",
+  "biology": "Infection across three lizard habitats",
+  "design": "Independent lizards sampled once in one of three habitats.",
+  "data_characteristics": [
+    "Two categorical variables: habitat and infection",
+    "Counts in a 3 \u00d7 2 contingency table",
+    "The target is an association between the variables"
+  ],
+  "other_examples": [
+    "Phenotype versus treatment",
+    "Flower color versus pollinator class",
+    "Genotype category versus disease status"
+  ],
+  "question": "Is infection status associated with habitat?",
+  "null": "Infection status and habitat are independent; infection probabilities are equal across habitats.",
+  "options": [
+    "Construct a table from paired categories on each lizard.",
+    "correct = FALSE is explicit; Yates correction only applies to 2 \u00d7 2.",
+    "Inspect expected counts, not only observed counts."
+  ],
+  "assumptions": [
+    "Lizards are independent.",
+    "Each lizard contributes to one table cell.",
+    "Expected counts support the chi-square approximation."
+  ],
+  "parametric": [
+    "Use logistic regression for infection with covariates.",
+    "Use a mixed logistic model if lizards share sampling sites."
+  ],
+  "nonparametric": [
+    "Use a Monte Carlo conditional test for sparse larger tables.",
+    "Fisher exact inference is an option for sparse tables."
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "position = \"fill\"",
+      "note": "Each habitat bar sums to one."
+    },
+    {
+      "arg": "scale_fill_manual",
+      "note": "Use the same outcome colors throughout."
+    },
+    {
+      "arg": "scale_y_continuous",
+      "note": "Label the axis as a probability."
+    },
+    {
+      "arg": "theme_classic",
+      "note": "Keep a clean background."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "ggplot2"
+  ],
+  "code_simulate": "set.seed(3105)\nd <- data.frame(habitat = rep(c(\"Forest\", \"Grassland\", \"Urban\"), each = 90))\nd$infection <- ifelse(rbinom(270, 1, rep(c(.25, .42, .55), each = 90)),\n                       \"Infected\", \"Uninfected\")\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot2::ggplot(d, ggplot2::aes(habitat, fill = infection)) +\n  ggplot2::geom_bar(position = \"fill\", width = .65) +\n  ggplot2::scale_fill_manual(values = c(Infected = \"#126887\", Uninfected = \"#d8d8d8\")) +\n  ggplot2::scale_y_continuous(limits = c(0, 1)) +\n  ggplot2::labs(x = \"Habitat\", y = \"Fraction of lizards\", fill = \"Status\") +\n  ggplot2::theme_classic(base_size = 17) +\n  ggplot2::theme(legend.position = \"top\")\nprint(p)",
+  "code_analysis": "tab <- table(d$habitat, d$infection)\nfit <- chisq.test(tab, correct = FALSE)\ncramers_v <- sqrt(as.numeric(fit$statistic) /\n                  (sum(tab) * min(nrow(tab)-1, ncol(tab)-1)))\nrates <- prop.table(tab, 1)[, \"Infected\"]",
+  "practice": "Why would treating several lizards from one cage as independent change the analysis?",
+  "seed": 3105,
+  "generating_model": "Generate 90 independent lizards from each of Forest, Grassland, and Urban habitats. Infection is Bernoulli with probabilities 0.25, 0.42, and 0.55, respectively. No site-level clustering is simulated.",
+  "generating_truth": "Infection probability depends on habitat, so the independence null is false. Urban minus forest infection probability is 0.30; the simulation does not assign causality to habitat.",
+  "columns": [
+    {
+      "name": "habitat",
+      "meaning": "Sampling habitat: Forest, Grassland, or Urban",
+      "unit": "none"
+    },
+    {
+      "name": "infection",
+      "meaning": "Infected or Uninfected status",
+      "unit": "none"
+    }
+  ],
+  "teaching_point": "A significant omnibus association does not establish a causal habitat effect or identify every differing pair."
+}

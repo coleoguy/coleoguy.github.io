@@ -1,0 +1,96 @@
+{
+  "id": "cox_ph",
+  "title": "Cox proportional-hazards regression",
+  "family": "Time to event",
+  "biology": "Seedling death times are related to protective dose and temperature.",
+  "design": "180 independent seedlings with right-censoring.",
+  "data_characteristics": [
+    "Event time plus censor indicator",
+    "Quantitative dose and temperature",
+    "Conditional hazard comparison"
+  ],
+  "other_examples": [
+    "Dose effects on time to infection",
+    "Body size effects on longevity",
+    "Habitat effects on germination hazard"
+  ],
+  "question": "Does dose alter death hazard after accounting for temperature?",
+  "null": "The dose coefficient is zero: the adjusted hazard ratio per dose unit is one.",
+  "options": [
+    "Surv(days, event) preserves censoring",
+    "dose + temperature adjusts for temperature",
+    "cox.zph examines the proportional-hazards structure"
+  ],
+  "assumptions": [
+    "Suitable covariate effects and censoring mechanism",
+    "A constant hazard ratio for ordinary coefficients",
+    "Independent seedlings; model dependence if present"
+  ],
+  "parametric": [
+    "Allow time-varying effects or justified strata",
+    "An AFT model targets a survival-time ratio"
+  ],
+  "nonparametric": [
+    "Cox leaves the baseline hazard unspecified",
+    "Log-rank supports a simpler group comparison"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "newdata",
+      "note": "Hold temperature fixed while varying dose"
+    },
+    {
+      "arg": "conf.int",
+      "note": "Choose whether uncertainty bands are drawn"
+    },
+    {
+      "arg": "col",
+      "note": "Distinguish predictor scenarios"
+    },
+    {
+      "arg": "mtext",
+      "note": "State what is held constant"
+    }
+  ],
+  "packages": [
+    "survival",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Explain why a hazard ratio of 0.6 does not mean 60% as many seedlings survive.",
+  "code_simulate": "set.seed(2112)\nd <- data.frame(seedling = 1:180, dose = runif(180, 0, 3),\n                temperature = rnorm(180, 25, 2))\nrate <- exp(log(.035) - .45 * d$dose + .12 * (d$temperature - 25))\nevent_time <- rexp(180, rate = rate)\nfollow_up <- runif(180, 45, 100)\nd$days <- pmin(event_time, follow_up)\nd$event <- as.integer(event_time <= follow_up)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(5, 5, 2, 1), las = 1, bty = \"l\", cex = 1.15)\nplot(curves, col = c(\"#246A73\", \"#73969B\", \"#B7663E\"), lwd = 2.5,\n     conf.int = FALSE, xlab = \"Days since exposure\",\n     ylab = \"Fitted survival probability\")\nlegend(\"topright\", c(\"Dose 0\", \"Dose 1.5\", \"Dose 3\"), lty = 1, lwd = 2.5,\n       col = c(\"#246A73\", \"#73969B\", \"#B7663E\"), bty = \"n\")\nmtext(\"Fitted curves at 25°C\", side = 3, line = .1, adj = 0)",
+  "code_analysis": "fit <- survival::coxph(survival::Surv(days, event) ~ dose + temperature,\n                       data = d, x = TRUE)\nsummary(fit)\nph_check <- survival::cox.zph(fit)\nhazard_ci <- exp(confint(fit)[\"dose\", ])",
+  "seed": 2112,
+  "generating_model": "180 seedlings have dose Uniform(0, 3) and temperature Normal(25, 2²)°C. Conditional event times are exponential with rate exp(log(0.035) − 0.45 × dose + 0.12 × (temperature − 25)). Independent censoring times are Uniform(45, 100) days. Save the minimum time and event indicator without rounding.",
+  "generating_truth": "The adjusted hazard ratio per dose unit is exp(−0.45) ≈ 0.638; per °C it is exp(0.12) ≈ 1.127. The dose null is false and proportional hazards holds in the generating model.",
+  "columns": [
+    {
+      "name": "seedling",
+      "meaning": "Independent seedling identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "dose",
+      "meaning": "Protective dose",
+      "unit": "dose unit"
+    },
+    {
+      "name": "temperature",
+      "meaning": "Rearing temperature",
+      "unit": "°C"
+    },
+    {
+      "name": "days",
+      "meaning": "Observed death or censoring time",
+      "unit": "day"
+    },
+    {
+      "name": "event",
+      "meaning": "1 death; 0 right-censored",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "A hazard ratio compares instantaneous event risk among individuals still at risk."
+}

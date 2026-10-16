@@ -1,0 +1,6 @@
+{
+  "preview": [" ecotype  body_mm  wing_mm femur_mm antenna_mm", "  Forest 11.26475 15.47408 6.017827   7.573212", "  Forest 12.29596 13.71508 6.000100   8.864468", "  Forest 10.58483 13.48461 5.152304   7.897169", "  Forest 12.05559 17.34693 5.790201   8.476954"],
+  "summary": ["PC1 accounts for 84.3% of variance", "PC2 accounts for 8.6%", "Variables centered and scaled"],
+  "report": "The first two principal components account for 92.9% of the standardized trait variance. Separation is descriptive; PCA does not test a population difference.",
+  "full_output": "Standard deviations (1, .., p=4):\n[1] 1.8360217 0.5857306 0.4563007 0.2788073\n\nRotation (n x k) = (4 x 4):\n                 PC1         PC2         PC3        PC4\nbody_mm    0.5283830 -0.09689995  0.05098935 -0.8419156\nwing_mm    0.4805746 -0.77094271 -0.17456589  0.3797659\nfemur_mm   0.5007526  0.30369527  0.74286006  0.3243069\nantenna_mm 0.4889849  0.55138637 -0.64427150  0.2044041"
+}

@@ -1,0 +1,81 @@
+{
+  "id": "f_variance",
+  "title": "F test of two variances",
+  "family": "Variance and diagnostics",
+  "biology": "Evolutionary developmental biologists compare variation in wing length between two inbred fly lines.",
+  "design": "Thirty independent flies per line are reared under a common environment.",
+  "data_characteristics": [
+    "Continuous response",
+    "Two independent groups",
+    "Variability is the scientific target"
+  ],
+  "other_examples": [
+    "Developmental variability in two genotypes",
+    "Variation in enzyme activity across two treatments",
+    "Body-size variability in two populations"
+  ],
+  "question": "Is wing-length variance the same in the two fly lines?",
+  "null": "The population variance ratio (Line A / Line B) is 1.",
+  "options": [
+    "ratio = 1 specifies equal variances",
+    "Factor order defines the numerator",
+    "alternative = \"two.sided\" detects either variance direction"
+  ],
+  "assumptions": [
+    "Independent observations",
+    "Both populations approximately normal",
+    "Highly sensitive to outliers and non-normality"
+  ],
+  "parametric": [
+    "If comparing means, use Welch without a variance pretest",
+    "Model group-specific variances when variability is the target"
+  ],
+  "nonparametric": [
+    "Brown–Forsythe is less sensitive to non-normality",
+    "Resample within groups for a variance-ratio interval"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "response ~ line",
+      "note": "Display the two distributions side by side"
+    },
+    {
+      "arg": "bg",
+      "note": "Give each group its own color"
+    },
+    {
+      "arg": "pch / cex",
+      "note": "Use visible, unobscured raw points"
+    },
+    {
+      "arg": "ylab",
+      "note": "Give the actual measurement units"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Could the variance test detect a difference even when the two population means are identical?",
+  "code_simulate": "set.seed(1109)\nd <- data.frame(line = rep(c(\"Line A\", \"Line B\"), each = 30),\n                wing_mm = c(rnorm(30, 2.6, .11), rnorm(30, 2.6, .21)))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "beeswarm(wing_mm ~ line, data = d, pch = 21,\n         bg = c(\"#246A73\", \"#B7663E\"), col = \"white\", cex = 1.3,\n         xlab = \"Fly line\", ylab = \"Wing length (mm)\")",
+  "code_analysis": "d$line <- factor(d$line, levels = c(\"Line A\", \"Line B\"))\nfit <- var.test(wing_mm ~ line, data = d, ratio = 1,\n                alternative = \"two.sided\", conf.level = .95)",
+  "seed": 1109,
+  "generating_model": "30 wing lengths per independent fly line come from normal distributions with shared mean 2.6 mm, SD 0.11 for Line A and SD 0.21 for Line B.",
+  "generating_truth": "Population means are equal, but the true variance ratio A/B is 0.11 squared / 0.21 squared, approximately 0.274.",
+  "columns": [
+    {
+      "name": "line",
+      "meaning": "Fly line",
+      "unit": "category"
+    },
+    {
+      "name": "wing_mm",
+      "meaning": "Wing length of one independent fly",
+      "unit": "mm"
+    }
+  ],
+  "teaching_point": "A variance question can have a different answer from a mean question; the exact F test depends strongly on normality."
+}

@@ -1,0 +1,6 @@
+{
+  "preview": [" bird  wing_mm  tail_mm", "    1 78.93843 53.92165", "    2 72.88988 57.83499", "    3 75.28451 58.11559", "    4 78.55287 59.64707"],
+  "summary": ["Pearson r = 0.700", "95% CI for population correlation: 0.512 to 0.824", "t = 6.43; df = 43; p = 8.606e-08"],
+  "report": "Wing and tail lengths had Pearson r = 0.700 (95% CI 0.512 to 0.824), p = 8.606e-08. This describes linear association within the sampled population; it does not establish that one trait causes the other.",
+  "full_output": "\n\tPearson's product-moment correlation\n\ndata:  d$wing_mm and d$tail_mm\nt = 6.4317, df = 43, p-value = 8.606e-08\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n 0.5119136 0.8243291\nsample estimates:\n      cor \n0.7002284 \n"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "pearson",
+  "title": "Pearson correlation",
+  "family": "Association",
+  "biology": "Evolutionary biologists measure wing and tail lengths in adult birds from a single population.",
+  "design": "Each independent bird contributes one pair of continuous traits.",
+  "data_characteristics": [
+    "Two continuous variables",
+    "Independent pairs of measurements",
+    "Strength of a linear association is the target"
+  ],
+  "other_examples": [
+    "Protein and transcript abundance",
+    "Leaf area and dry mass",
+    "Metabolic rate and organ size"
+  ],
+  "question": "Are wing and tail lengths linearly associated in this population?",
+  "null": "The population Pearson correlation is zero.",
+  "options": [
+    "method = \"pearson\" tests linear association",
+    "alternative = \"two.sided\" allows positive or negative",
+    "conf.level controls the correlation interval"
+  ],
+  "assumptions": [
+    "Independent birds",
+    "A linear pattern with no dominating outliers",
+    "Classical inference assumes approximately bivariate-normal observations"
+  ],
+  "parametric": [
+    "Regression models a directional mean response and covariates",
+    "Transform traits when a log-scale association is the question"
+  ],
+  "nonparametric": [
+    "Spearman assesses monotonic rank association",
+    "A bootstrap interval can retain Pearson correlation as the target"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "aes(x,y)",
+      "note": "Choose the two traits whose association is of interest"
+    },
+    {
+      "arg": "geom_point / alpha",
+      "note": "Display every bird while limiting overlap"
+    },
+    {
+      "arg": "shape / fill",
+      "note": "Use a filled symbol with a contrasting outline"
+    },
+    {
+      "arg": "labs",
+      "note": "Use trait names and measurement units"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Would swapping wing and tail in cor.test change r? Would it leave a regression slope unchanged?",
+  "code_simulate": "set.seed(1112)\nwing <- rnorm(45, 75, 5)\ntail <- 15 + .55 * wing + rnorm(45, 0, 3.5)\nd <- data.frame(bird = 1:45, wing_mm = wing, tail_mm = tail)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(wing_mm, tail_mm)) +\n  geom_point(shape = 21, fill = \"#246A73\", color = \"white\", size = 3.5, alpha = .85) +\n  labs(x = \"Wing length (mm)\", y = \"Tail length (mm)\") +\n  theme_classic(base_size = 18)\nprint(p)",
+  "code_analysis": "fit <- cor.test(d$wing_mm, d$tail_mm, method = \"pearson\",\n                alternative = \"two.sided\", conf.level = .95)",
+  "seed": 1112,
+  "generating_model": "45 independent wing lengths are Normal(75, 5 SD). Tail length is 15 + 0.55 times wing length + independent Normal(0, 3.5 SD) noise.",
+  "generating_truth": "The generating population Pearson correlation is 0.55*5 / sqrt((0.55*5)^2 + 3.5^2), approximately 0.618. It is not the observed sample correlation.",
+  "columns": [
+    {
+      "name": "bird",
+      "meaning": "Independent bird identifier",
+      "unit": "none"
+    },
+    {
+      "name": "wing_mm",
+      "meaning": "Wing length",
+      "unit": "mm"
+    },
+    {
+      "name": "tail_mm",
+      "meaning": "Tail length",
+      "unit": "mm"
+    }
+  ],
+  "teaching_point": "Correlation describes linear association symmetrically; causal direction and a slope are separate questions."
+}

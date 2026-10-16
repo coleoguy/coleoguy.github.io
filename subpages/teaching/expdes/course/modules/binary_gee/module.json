@@ -1,0 +1,92 @@
+{
+  "id": "binary_gee",
+  "title": "Binary generalized estimating equations",
+  "family": "Dependent observations",
+  "biology": "Repeated infection screening after vaccination",
+  "design": "80 independent animals are screened at four scheduled visits.",
+  "data_characteristics": [
+    "Binary outcome measured repeatedly",
+    "Rows within an animal are correlated",
+    "Target: population-average vaccination association, adjusted for week"
+  ],
+  "other_examples": [
+    "Repeated diagnostic positivity",
+    "Longitudinal presence/absence",
+    "Repeated binary behavior scores"
+  ],
+  "question": "Does population-average infection probability differ by vaccination after accounting for week?",
+  "null": "The population-average vaccination coefficient is zero, adjusting for week.",
+  "options": [
+    "id identifies the independent animal; sort rows by animal.",
+    "corstr = \"exchangeable\" specifies a working within-animal correlation.",
+    "Use robust sandwich uncertainty from the GEE fit."
+  ],
+  "assumptions": [
+    "Animals are independent of one another.",
+    "The marginal mean model and observation process are appropriate.",
+    "Enough independent animals are available for robust inference."
+  ],
+  "parametric": [
+    "A mixed logistic model estimates a conditional effect instead.",
+    "Revise the time trend or working correlation if the design suggests it."
+  ],
+  "nonparametric": [
+    "A cluster bootstrap must resample whole animals.",
+    "Use a simple paired binary test only when its design and question match."
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "group = vaccine",
+      "note": "Connect the visits within each treatment group."
+    },
+    {
+      "arg": "geom_point",
+      "note": "Show observed visit-specific proportions."
+    },
+    {
+      "arg": "geom_line",
+      "note": "Show the population pattern across visits."
+    },
+    {
+      "arg": "scale_y_continuous",
+      "note": "Keep the full probability scale."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "geepack",
+    "ggplot2"
+  ],
+  "code_simulate": "set.seed(3116)\nshared <- rep(rnorm(80), each = 4)\nd <- data.frame(animal = rep(1:80, each = 4),\n  week = rep(0:3, 80), vaccine = rep(rep(c(\"Control\", \"Vaccinated\"), each = 40), each = 4))\nz <- sqrt(.3) * shared + sqrt(.7) * rnorm(320)\np <- plogis(-.6 + .35 * d$week - .9 * (d$vaccine == \"Vaccinated\"))\nd$infected <- as.integer(pnorm(z) < p)\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot2::ggplot(observed, ggplot2::aes(week, infected,\n  color = vaccine, group = vaccine)) +\n  ggplot2::geom_line(linewidth = 1) + ggplot2::geom_point(size = 3) +\n  ggplot2::scale_color_manual(values = c(Control = \"#b96735\", Vaccinated = \"#126887\")) +\n  ggplot2::scale_y_continuous(limits = c(0, 1)) +\n  ggplot2::scale_x_continuous(breaks = 0:3) +\n  ggplot2::labs(x = \"Week\", y = \"Observed infection probability\", color = \"Group\") +\n  ggplot2::theme_classic(base_size = 17) +\n  ggplot2::theme(legend.position = \"top\")\nprint(p)",
+  "code_analysis": "d$vaccine <- factor(d$vaccine, levels = c(\"Control\", \"Vaccinated\"))\nd <- d[order(d$animal, d$week), ]\nfit <- geepack::geeglm(infected ~ vaccine + week, id = animal,\n  data = d, family = binomial, corstr = \"exchangeable\")\nb <- coef(fit)[\"vaccineVaccinated\"]\nse <- sqrt(vcov(fit)[\"vaccineVaccinated\", \"vaccineVaccinated\"])\nodds_ratio <- exp(b)\nci <- exp(b + c(-1, 1) * 1.96 * se)\np_value <- 2 * pnorm(abs(b / se), lower.tail = FALSE)",
+  "practice": "Would a mixed logistic model necessarily report the same vaccination odds ratio as this population-average model?",
+  "seed": 3116,
+  "generating_model": "Generate 80 independent animals, 40 per vaccination group, measured at weeks 0,1,2,3. Set the marginal infection probability to plogis(-0.6 + 0.35 \u00d7 week - 0.9 \u00d7 vaccinated). For each row, z = sqrt(0.3) \u00d7 shared animal Normal(0,1) + sqrt(0.7) \u00d7 independent Normal(0,1). Because each z is standard normal, pnorm(z) is marginally uniform. Infection is 1 when pnorm(z) is below the specified probability. The shared component creates dependence while preserving the exact marginal probabilities.",
+  "generating_truth": "The true population-average vaccination coefficient is -0.9 and odds ratio exp(-0.9) \u2248 0.407, adjusted for week. The no-group-effect null is false. The true marginal week coefficient is 0.35. A working exchangeable correlation is an approximation, while the marginal mean model is exact.",
+  "columns": [
+    {
+      "name": "animal",
+      "meaning": "Independent animal and clustering identifier",
+      "unit": "none"
+    },
+    {
+      "name": "week",
+      "meaning": "Scheduled visit time",
+      "unit": "weeks"
+    },
+    {
+      "name": "vaccine",
+      "meaning": "Control or Vaccinated group",
+      "unit": "none"
+    },
+    {
+      "name": "infected",
+      "meaning": "1 = infection detected; 0 = not detected",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "Choose between a population-average question and an individual-conditional question; repeated rows are not independent animals."
+}

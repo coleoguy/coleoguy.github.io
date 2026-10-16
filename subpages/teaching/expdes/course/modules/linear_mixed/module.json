@@ -1,0 +1,93 @@
+{
+  "id": "linear_mixed",
+  "title": "Linear mixed model",
+  "family": "Repeated and clustered data",
+  "biology": "Evolutionary biologists follow larval growth under two diets.",
+  "design": "36 larvae measured at weeks 0–3; diet assigned to larvae.",
+  "data_characteristics": [
+    "Continuous repeated response",
+    "Larva IDs define dependence",
+    "Individual starting masses and slopes"
+  ],
+  "other_examples": [
+    "Repeated plant growth",
+    "Hormone trajectories within animals",
+    "Fitness measurements within populations"
+  ],
+  "question": "Does diet change the mean growth slope?",
+  "null": "The population growth-slope difference between diets is zero.",
+  "options": [
+    "(week | larva) fits larval intercepts and slopes",
+    "treatment * week tests different diet trajectories",
+    "lmerTest uses Satterthwaite degrees of freedom here"
+  ],
+  "assumptions": [
+    "Independent larvae",
+    "Suitable random-effect and residual structure",
+    "Enough subjects; inspect convergence and singular fits"
+  ],
+  "parametric": [
+    "Model residual variance or time correlation when needed",
+    "Use ML for likelihood comparisons of different fixed-effect models"
+  ],
+  "nonparametric": [
+    "A cluster bootstrap resamples whole larvae",
+    "Friedman would answer a simpler complete-block rank question"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "group = larva",
+      "note": "Preserve individual trajectories"
+    },
+    {
+      "arg": "alpha",
+      "note": "Keep repeated lines unobtrusive"
+    },
+    {
+      "arg": "stat_summary",
+      "note": "Show observed diet means"
+    },
+    {
+      "arg": "linewidth",
+      "note": "Separate summary from individual lines"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "lme4",
+    "lmerTest",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "What does the random slope add beyond a random intercept?",
+  "code_simulate": "set.seed(2106)\nd <- expand.grid(week = 0:3, larva = 1:36)\nd$treatment <- rep(rep(c(\"Control\", \"Enriched\"), each = 18), each = 4)\nintercepts <- rnorm(36, 0, 2.3); slopes <- rnorm(36, 0, .7)\nd$mass <- 12 + 2 * d$week + .8 * (d$treatment == \"Enriched\") +\n  .9 * d$week * (d$treatment == \"Enriched\") + intercepts[d$larva] +\n  slopes[d$larva] * d$week + rnorm(nrow(d), 0, 1.1)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(week, mass, color = treatment)) +\n  geom_line(aes(group = larva), alpha = .23) +\n  geom_point(alpha = .35, size = 1.6) +\n  stat_summary(fun = mean, geom = \"line\", linewidth = 1.7) +\n  scale_color_manual(values = c(\"#246A73\", \"#B7663E\")) +\n  scale_x_continuous(breaks = 0:3) +\n  labs(x = \"Week\", y = \"Larval mass (mg)\", color = \"Diet\",\n       caption = \"Thin lines: individuals; thick lines: observed group means\") +\n  theme_classic(base_size = 16)\nprint(p)",
+  "code_analysis": "fit <- lmerTest::lmer(mass ~ treatment * week + (week | larva), data = d)\nsummary(fit, ddf = \"Satterthwaite\")\ntrend_ci <- confint(fit, parm = \"treatmentEnriched:week\", method = \"Wald\")",
+  "seed": 2106,
+  "generating_model": "36 larvae (18 per diet) are measured at weeks 0–3. Mass = 12 + 2 × week + 0.8 if enriched + 0.9 × week if enriched + a larval Normal(0, 2.3²) intercept + a larval Normal(0, 0.7²) slope × week + independent Normal(0, 1.1²) error. Simulated intercepts and slopes are independent. Repeated values share both effects; no rounding.",
+  "generating_truth": "The control slope is 2 mg/week; enrichment adds 0.9 mg/week. The diet-by-week null is false. Simulated random-intercept and slope SDs are 2.3 mg and 0.7 mg/week.",
+  "columns": [
+    {
+      "name": "week",
+      "meaning": "Time since baseline",
+      "unit": "week"
+    },
+    {
+      "name": "larva",
+      "meaning": "Repeated biological individual",
+      "unit": "ID"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Control or enriched diet",
+      "unit": "category"
+    },
+    {
+      "name": "mass",
+      "meaning": "Larval mass",
+      "unit": "mg"
+    }
+  ],
+  "teaching_point": "Random intercepts describe starting differences; random slopes describe trajectory differences."
+}

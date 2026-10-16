@@ -1,0 +1,77 @@
+{
+  "question": "Is the within-pair or within-block contrast unusual under the actual randomization?",
+  "null": "Under a paired randomized design, treatment assignment has no effect on any unit; permitted within-pair swaps are equally plausible.",
+  "options": [
+    "Swap labels within randomized pairs/blocks; never shuffle all rows together.",
+    "Use set.seed(), a stated statistic, and a finite-simulation p-value."
+  ],
+  "assumptions": [
+    "The assignment scheme permits the swaps.",
+    "For observational sign flips, a symmetric difference distribution is a separate justification."
+  ],
+  "parametric": [
+    "Paired t targets the mean change; mixed models add covariates and complex dependence."
+  ],
+  "nonparametric": [
+    "A sign test needs only change direction; signed-rank also uses meaningful symmetric differences."
+  ],
+  "id": "permutation_paired",
+  "title": "Paired permutation test",
+  "seed": 240504,
+  "family": "Simulation and multivariate methods",
+  "plot_engine": "base R",
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(240504)\nbaseline <- rnorm(28, 15, 2)\nd <- data.frame(plant=1:28, control=baseline+rnorm(28,0,1),\n                shaded=baseline-1.2+rnorm(28,0,1))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "matplot(c(1,2), t(as.matrix(d[c(\"control\",\"shaded\")])), type=\"l\", lty=1,\n        col=\"#99999980\", xaxt=\"n\", xlab=\"Leaf treatment\", ylab=\"Photosynthesis (units)\")\naxis(1, 1:2, c(\"Control\", \"Shaded\"))\npoints(rep(1,28), d$control, pch=16, col=\"#146A85\")\npoints(rep(2,28), d$shaded, pch=16, col=\"#C56B3B\")",
+  "code_analysis": "difference <- d$shaded-d$control\nobserved <- mean(difference)\nB <- 4999\nnull <- numeric(B)\nfor (i in 1:B) null[i] <- mean(difference * sample(c(-1,1), nrow(d), replace=TRUE))\np_value <- (1+sum(abs(null)>=abs(observed)))/(B+1)\nresult <- data.frame(mean_difference=observed, permutations=B, p=p_value)",
+  "biology": "Two comparable leaves per plant receive randomized control or shade treatment.",
+  "design": "Matched leaves within 28 independent plants; treatment labels are randomized within each plant.",
+  "data_characteristics": [
+    "Two matched observations per plant",
+    "One row per pair",
+    "Permutation preserves every pair"
+  ],
+  "other_examples": [
+    "Matched tissue preparations",
+    "Split-clutch treatments",
+    "Left/right organ experiments"
+  ],
+  "generating_model": "Plant baselines are Normal(15, SD=2). Independent leaf errors are Normal(0, SD=1). Shading subtracts 1.2 photosynthesis units.",
+  "generating_truth": "The true mean shaded-minus-control difference is −1.2; plants also differ in their shared baseline.",
+  "columns": [
+    {
+      "name": "plant",
+      "meaning": "Independent matched unit",
+      "unit": "ID"
+    },
+    {
+      "name": "control",
+      "meaning": "Control-leaf rate",
+      "unit": "photosynthesis units"
+    },
+    {
+      "name": "shaded",
+      "meaning": "Shaded-leaf rate",
+      "unit": "photosynthesis units"
+    }
+  ],
+  "teaching_point": "Swapping labels within a pair is equivalent to reversing the sign of that pair’s difference.",
+  "plot_args": [
+    {
+      "arg": "t(as.matrix(...))",
+      "note": "Connects two values from each plant"
+    },
+    {
+      "arg": "col=\"#99999980\"",
+      "note": "Light transparent paired lines"
+    },
+    {
+      "arg": "axis(1,...)",
+      "note": "Replaces numeric positions with treatment labels"
+    }
+  ],
+  "practice": "Why would shuffling all 56 leaf measurements destroy useful information?"
+}

@@ -1,0 +1,6 @@
+{
+  "preview": ["1 | 0", "2 | 0", "3 | 1", "4 | 1", "5 | 0"],
+  "summary": ["Native-host choices: 51 / 80", "Estimated probability: 0.637", "95% exact CI: 0.522 to 0.742", "Exact two-sided p = 0.01832"],
+  "report": "Native-host choice was 63.7% (95% exact CI 52.2–74.2%; p = 0.0183 against 50%). This estimates preference under the simulated choice conditions.",
+  "full_output": "\n\tExact binomial test\n\ndata:  x and nrow(d)\nnumber of successes = 51, number of trials = 80, p-value = 0.01832\nalternative hypothesis: true probability of success is not equal to 0.5\n95 percent confidence interval:\n 0.5223873 0.7421051\nsample estimates:\nprobability of success \n                0.6375 \n"
+}

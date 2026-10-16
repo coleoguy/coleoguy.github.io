@@ -1,0 +1,73 @@
+{
+  "id": "sampling_coverage",
+  "title": "Sampling variation and CI coverage",
+  "seed": 240506,
+  "family": "Simulation and multivariate methods",
+  "plot_engine": "base R",
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(240506)\nd <- data.frame(experiment=rep(1:1000, each=25),\n                waiting_days=rexp(25000, rate=.2))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "plot(NA, xlim=range(c(low[1:60], high[1:60])), ylim=c(1,60),\n     xlab=\"Mean waiting time and 95% t interval (days)\", ylab=\"Simulated experiment\")\nabline(v=5, lty=2, lwd=2)\nsegments(low[1:60], 1:60, high[1:60], 1:60,\n         col=ifelse(covered[1:60], \"#146A85\", \"#C56B3B\"), lwd=2)\npoints(estimate[1:60], 1:60, pch=16, cex=.5)",
+  "code_analysis": "low <- high <- estimate <- numeric(1000)\nfor (i in 1:1000) {\n  x <- d$waiting_days[d$experiment==i]\n  estimate[i] <- mean(x)\n  margin <- qt(.975, length(x)-1)*sd(x)/sqrt(length(x))\n  low[i] <- mean(x)-margin; high[i] <- mean(x)+margin\n}\ncovered <- low<=5 & high>=5\nresult <- data.frame(experiment=1:1000, estimate, low, high, covered)",
+  "biology": "Independent cell cultures differ in the waiting time to a developmental transition.",
+  "design": "Repeat a 25-cell sampling experiment 1000 times from a known population.",
+  "data_characteristics": [
+    "Positive, right-skewed waiting times",
+    "25 independent observations per experiment",
+    "Simulation replicates are repeated experiments"
+  ],
+  "other_examples": [
+    "Waiting time to colonization",
+    "Cell-cycle transition timing",
+    "Latency to a behavior"
+  ],
+  "question": "How often does a stated interval procedure cover the true population mean?",
+  "null": "This is a performance simulation, not a single hypothesis test. The known population mean is 5 days.",
+  "options": [
+    "Choose sample size n independently of simulation count B.",
+    "Evaluate the same interval procedure in every experiment.",
+    "Check coverage against the fixed generating parameter."
+  ],
+  "assumptions": [
+    "The simulated population reflects the scenario of interest.",
+    "Results describe this population, design and sample size."
+  ],
+  "parametric": [
+    "Change n or the population distribution to examine the t interval."
+  ],
+  "nonparametric": [
+    "Compare a bootstrap interval by repeating the entire sampling experiment."
+  ],
+  "generating_model": "1000 samples of 25 independent Exponential(rate=0.2/day) observations. Every sample uses a conventional two-sided 95% t interval for its mean.",
+  "generating_truth": "The population mean is exactly 5 days; nominal 95% coverage is a procedure property to evaluate, not an imposed simulation result.",
+  "columns": [
+    {
+      "name": "experiment",
+      "meaning": "Repeated simulated sample",
+      "unit": "ID"
+    },
+    {
+      "name": "waiting_days",
+      "meaning": "Time to transition",
+      "unit": "days"
+    }
+  ],
+  "teaching_point": "Larger B stabilizes the estimated coverage; larger n changes the experiment.",
+  "plot_args": [
+    {
+      "arg": "segments",
+      "note": "Draws each confidence interval"
+    },
+    {
+      "arg": "abline(v=5)",
+      "note": "Marks the known population mean"
+    },
+    {
+      "arg": "ifelse(covered,...)",
+      "note": "Colors intervals by whether they contain the truth"
+    }
+  ],
+  "practice": "Would increasing the number of simulations give an individual experiment more biological replication?"
+}

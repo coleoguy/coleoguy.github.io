@@ -1,0 +1,81 @@
+{
+  "id": "welch_anova",
+  "title": "Welch one-way ANOVA",
+  "family": "ANOVA",
+  "biology": "Ecologists compare seedling biomass under three independent soil treatments.",
+  "design": "Independent pots in three soil treatments; sample sizes and group variances differ.",
+  "data_characteristics": [
+    "Continuous response",
+    "Three or more independent groups",
+    "Unequal group variances and sizes allowed"
+  ],
+  "other_examples": [
+    "Mean development time across diets",
+    "Mean enzyme activity across treatments",
+    "Mean trait values across populations"
+  ],
+  "question": "Are mean seedling biomasses equal across the three soils?",
+  "null": "All soil-treatment population means are equal.",
+  "options": [
+    "oneway.test(..., var.equal = FALSE) uses Welch ANOVA",
+    "Factor levels define the groups",
+    "Use variance-robust follow-up comparisons for particular pairs"
+  ],
+  "assumptions": [
+    "Independent pots",
+    "No severe outliers; approximately normal errors at small n",
+    "Group variances may differ"
+  ],
+  "parametric": [
+    "Welch directly handles unequal variances",
+    "For adjusted pairwise means consider Games–Howell or planned robust contrasts"
+  ],
+  "nonparametric": [
+    "Kruskal–Wallis tests group distributions, not the same mean null",
+    "A bootstrap approach can retain the mean target"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "response ~ group",
+      "note": "Arrange observations by treatment"
+    },
+    {
+      "arg": "bg",
+      "note": "Use one persistent color per treatment"
+    },
+    {
+      "arg": "points",
+      "note": "Mark group means"
+    },
+    {
+      "arg": "segments",
+      "note": "Show clearly labeled confidence intervals for means"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Does unequal variance by itself require changing the scientific target from means to ranks?",
+  "code_simulate": "set.seed(1119)\nd <- data.frame(soil = rep(c(\"Sand\", \"Loam\", \"Clay\"), c(20, 26, 32)),\n                biomass_g = c(rnorm(20, 4.5, .6), rnorm(26, 5.4, 1.1),\n                              rnorm(32, 5.1, 1.5)))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "beeswarm(biomass_g ~ soil, data = d, pch = 21,\n         bg = c(\"#246A73\", \"#B7663E\", \"#73649A\"), col = \"white\", cex = 1.2,\n         xlab = \"Soil treatment\", ylab = \"Seedling biomass (g)\")\nmeans <- tapply(d$biomass_g, d$soil, mean)\nse <- tapply(d$biomass_g, d$soil, sd) / sqrt(table(d$soil))\nhalf <- qt(.975, df = table(d$soil) - 1) * se\nsegments(1:3, means - half, 1:3, means + half, lwd = 3)\npoints(1:3, means, pch = 18, cex = 2)\nlegend(\"topleft\", \"Mean and 95% CI\", pch = 18, bty = \"n\")",
+  "code_analysis": "d$soil <- factor(d$soil, levels = c(\"Sand\", \"Loam\", \"Clay\"))\nfit <- oneway.test(biomass_g ~ soil, data = d,\n                  var.equal = FALSE)",
+  "seed": 1119,
+  "generating_model": "Independent soil groups have different sample sizes and normal biomass distributions: Sand n=20, mean 4.5, SD 0.6; Loam n=26, mean 5.4, SD 1.1; Clay n=32, mean 5.1, SD 1.5.",
+  "generating_truth": "The true means differ, and variances differ (0.36, 1.21, and 2.25 g squared). Welch addresses the equal-means null without a shared variance.",
+  "columns": [
+    {
+      "name": "soil",
+      "meaning": "Assigned soil treatment",
+      "unit": "category"
+    },
+    {
+      "name": "biomass_g",
+      "meaning": "Seedling biomass from one independent pot",
+      "unit": "g"
+    }
+  ],
+  "teaching_point": "Unequal variances have a parametric solution that preserves the scientific question about means."
+}

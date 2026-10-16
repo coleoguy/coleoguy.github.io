@@ -1,0 +1,91 @@
+{
+  "id": "ancova",
+  "title": "ANCOVA: an adjusted group comparison",
+  "family": "ANOVA and contrasts",
+  "biology": "Plant ecologists compare nutrient treatment while accounting for initial plant height.",
+  "design": "90 independent plants; treatment groups overlap in initial height.",
+  "data_characteristics": [
+    "Continuous response",
+    "One factor plus a quantitative covariate",
+    "An adjusted mean comparison"
+  ],
+  "other_examples": [
+    "Group morphology adjusted for body size",
+    "Enzyme activity adjusted for temperature",
+    "Fitness adjusted for initial mass"
+  ],
+  "question": "Do treatments differ in mean biomass at the same initial height?",
+  "null": "The treatment mean difference is zero at a common initial height in the stated model.",
+  "options": [
+    "treatment + initial fits parallel slopes",
+    "treatment * initial allows different slopes",
+    "Factor reference sets the direction of the contrast"
+  ],
+  "assumptions": [
+    "Independent plants; appropriate residual spread",
+    "A suitable linear height relationship",
+    "Overlapping covariate ranges across treatments"
+  ],
+  "parametric": [
+    "Allow an interaction if slopes differ",
+    "Model unequal variance or a justified transformation"
+  ],
+  "nonparametric": [
+    "A covariate-aware permutation can test an adjusted effect",
+    "A rank-sum test would discard the height adjustment"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "aes(color = treatment)",
+      "note": "Distinguish groups"
+    },
+    {
+      "arg": "alpha",
+      "note": "Make overlap visible"
+    },
+    {
+      "arg": "geom_line(data=...)",
+      "note": "Draw the fitted model"
+    },
+    {
+      "arg": "labs",
+      "note": "State biological units"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Why is comparing raw group means a different question?",
+  "code_simulate": "set.seed(2102)\nd <- data.frame(plant = 1:90, treatment = rep(c(\"Control\", \"Nutrient\"), each = 45),\n                initial = runif(90, 3, 9))\nd$biomass <- with(d, 2 + 1.5 * initial +\n  2.4 * (treatment == \"Nutrient\") + rnorm(90, 0, 1.8))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(initial, biomass, color = treatment)) +\n  geom_point(size = 2.5, alpha = .7) +\n  geom_line(data = predictions, aes(y = fit), linewidth = 1.1) +\n  scale_color_manual(values = c(\"#246A73\", \"#B7663E\")) +\n  labs(x = \"Initial plant height (cm)\", y = \"Final dry biomass (g)\",\n       color = \"Treatment\", caption = \"Lines: fitted common-slope ANCOVA model\") +\n  theme_classic(base_size = 16)\nprint(p)",
+  "code_analysis": "fit <- lm(biomass ~ treatment + initial, data = d)\nsummary(fit)\nadjusted_ci <- confint(fit)[\"treatmentNutrient\", ]",
+  "seed": 2102,
+  "generating_model": "45 independent plants are assigned to each treatment. Initial height is Uniform(3, 9) cm. Biomass = 2 + 1.5 × initial height + 2.4 if nutrient-treated + independent Normal(0, 1.8²) error, in g. No rounding is applied.",
+  "generating_truth": "The nutrient treatment increases the population mean biomass by 2.4 g at any shared initial height. Both groups have slope 1.5 g/cm. The adjusted treatment null is false.",
+  "columns": [
+    {
+      "name": "plant",
+      "meaning": "Independent plant identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Control or nutrient addition",
+      "unit": "category"
+    },
+    {
+      "name": "initial",
+      "meaning": "Height before treatment",
+      "unit": "cm"
+    },
+    {
+      "name": "biomass",
+      "meaning": "Final dry biomass",
+      "unit": "g"
+    }
+  ],
+  "teaching_point": "The scientific comparison holds the covariate fixed; the raw mean comparison is different."
+}

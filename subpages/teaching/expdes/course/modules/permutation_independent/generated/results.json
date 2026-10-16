@@ -1,0 +1,6 @@
+{
+  "preview": ["   group growth_mm", " Control  7.975045", " Control  4.894258", " Control  9.026126", " Control  8.055585"],
+  "summary": ["Warm − control = 0.72 mm", "Two-sided Monte Carlo p = 0.187", "4999 permitted label shuffles"],
+  "report": "Mean growth was 0.72 mm higher under warming; the two-sided permutation p-value is 0.187 from 4999 random assignments. The shuffle must match the design.",
+  "full_output": "  mean_difference permutations     p\n1       0.7207885         4999 0.187"
+}

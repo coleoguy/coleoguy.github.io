@@ -1,0 +1,91 @@
+{
+  "id": "log_rank",
+  "title": "Log-rank survival comparison",
+  "family": "Time to event",
+  "biology": "Plant pathologists compare time to infection under three protective treatments.",
+  "design": "50 independent plants per treatment; some plants remain uninfected at final follow-up.",
+  "data_characteristics": [
+    "Time plus event indicator",
+    "Two or more independent groups",
+    "Right-censored observations retained"
+  ],
+  "other_examples": [
+    "Longevity across diets",
+    "Germination timing across treatments",
+    "Time to metamorphosis across environments"
+  ],
+  "question": "Are the infection-free survival curves equal across treatments?",
+  "null": "The groups have the same survival function over follow-up.",
+  "options": [
+    "rho = 0 requests the ordinary log-rank test",
+    "The same function handles two or more groups",
+    "Use a justified contrast procedure for specific follow-ups"
+  ],
+  "assumptions": [
+    "Independent plants",
+    "Noninformative censoring within each group",
+    "Crossing curves may make this comparison insensitive"
+  ],
+  "parametric": [
+    "Cox regression adds predictors",
+    "Time-varying effects or an AFT model may fit a different scientific target"
+  ],
+  "nonparametric": [
+    "Log-rank is already a nonparametric comparison",
+    "A fixed-time or restricted-mean comparison can ask a different prespecified question"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "mark.time",
+      "note": "Show censored observations"
+    },
+    {
+      "arg": "conf.int = FALSE",
+      "note": "Keep three curves readable"
+    },
+    {
+      "arg": "col",
+      "note": "Match group colors and legend"
+    },
+    {
+      "arg": "lwd",
+      "note": "Make step curves visible"
+    }
+  ],
+  "packages": [
+    "survival",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Why does a significant omnibus result not tell us every pair differs?",
+  "code_simulate": "set.seed(2111)\nd <- data.frame(plant = 1:150,\n                treatment = rep(c(\"Control\", \"Low\", \"High\"), each = 50))\nevent_time <- rexp(150, rate = rep(c(.045, .03, .018), each = 50))\nfollow_up <- runif(150, 40, 80)\nd$days <- pmin(event_time, follow_up)\nd$event <- as.integer(event_time <= follow_up)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(5, 5, 2, 1), las = 1, bty = \"l\", cex = 1.15)\nplot(fit, col = c(\"#246A73\", \"#73969B\", \"#B7663E\"), lwd = 2.5,\n     mark.time = TRUE, conf.int = FALSE,\n     xlab = \"Days since pathogen exposure\", ylab = \"Probability still uninfected\")\nlegend(\"topright\", levels(d$treatment), lty = 1, lwd = 2.5,\n       col = c(\"#246A73\", \"#73969B\", \"#B7663E\"), bty = \"n\")",
+  "code_analysis": "test <- survival::survdiff(survival::Surv(days, event) ~ treatment,\n                           data = d, rho = 0)\nfit <- survival::survfit(survival::Surv(days, event) ~ treatment, data = d)\np_value <- pchisq(test$chisq, df = length(test$n) - 1, lower.tail = FALSE)",
+  "seed": 2111,
+  "generating_model": "50 independent plants per group have exponential infection times with rates 0.045, 0.030 and 0.018/day in Control, Low and High treatment. Independent follow-up is Uniform(40, 80) days. Save the minimum time and an event indicator; no rounding. The construction gives proportional hazards and noninformative censoring.",
+  "generating_truth": "Equal survival is false: day-30 infection-free probabilities are exp(−1.35) ≈ 0.259, exp(−0.9) ≈ 0.407 and exp(−0.54) ≈ 0.583. The high/control hazard ratio is 0.4, though the log-rank test itself does not estimate it.",
+  "columns": [
+    {
+      "name": "plant",
+      "meaning": "Independent plant identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Protective treatment level",
+      "unit": "category"
+    },
+    {
+      "name": "days",
+      "meaning": "Time to infection or last follow-up",
+      "unit": "day"
+    },
+    {
+      "name": "event",
+      "meaning": "1 infection; 0 right-censored",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "An omnibus survival comparison is not a pairwise effect estimate."
+}

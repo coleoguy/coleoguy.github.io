@@ -1,0 +1,87 @@
+{
+  "id": "scheffe",
+  "title": "Scheffé contrasts",
+  "family": "ANOVA and contrasts",
+  "biology": "Plant growth is compared across four nutrient regimes.",
+  "design": "20 independent plants per regime; all procedures use the same simulated dataset.",
+  "data_characteristics": [
+    "Continuous response",
+    "Four independent groups",
+    "Define the comparison family"
+  ],
+  "other_examples": [
+    "Growth among microbial media",
+    "Expression among genotypes",
+    "Fitness among environments"
+  ],
+  "question": "Does the average of regimes C and D differ from the average of A and B?",
+  "null": "The contrast (μC + μD)/2 − (μA + μB)/2 is zero.",
+  "options": [
+    "Contrast weights sum to zero",
+    "adjust = \"scheffe\" protects a contrast family",
+    "scheffe.rank = 3 covers all contrasts of four means"
+  ],
+  "assumptions": [
+    "Independent plants",
+    "Normal-error ANOVA model with common variance",
+    "Specify the means and contrast family"
+  ],
+  "parametric": [
+    "Tukey is focused on pairwise comparisons",
+    "A smaller prespecified contrast family can use a targeted adjustment"
+  ],
+  "nonparametric": [
+    "A contrast-specific permutation must preserve the design",
+    "Dunn comparisons do not test this weighted mean contrast"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "bg",
+      "note": "Group fill colors"
+    },
+    {
+      "arg": "pch / cex",
+      "note": "Point symbol and size"
+    },
+    {
+      "arg": "points",
+      "note": "Add mean diamonds"
+    },
+    {
+      "arg": "xlab / ylab",
+      "note": "Name groups and units"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "emmeans",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Why can broader protection make an interval wider?",
+  "code_simulate": "set.seed(2104)\nd <- data.frame(plant = 1:80,\n                nutrient = rep(c(\"A\", \"B\", \"C\", \"D\"), each = 20))\nd$biomass <- rnorm(80, rep(c(8, 9, 11.3, 12.1), each = 20), 1.7)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(5, 5, 2, 1), las = 1, bty = \"l\", cex = 1.15)\nbeeswarm::beeswarm(biomass ~ nutrient, data = d,\n  pch = 21, bg = c(\"#246A73\", \"#73969B\", \"#D7A583\", \"#B7663E\"),\n  col = \"white\", cex = 1.25, xlab = \"Nutrient regime\",\n  ylab = \"Dry biomass (g)\")\npoints(1:4, tapply(d$biomass, d$nutrient, mean),\n       pch = 18, cex = 2, col = \"#172D34\")\nlegend(\"topleft\", \"Diamonds = means\", pch = 18, bty = \"n\")",
+  "code_analysis": "fit <- lm(biomass ~ nutrient, data = d)\nmeans <- emmeans::emmeans(fit, ~ nutrient)\ncontrast <- emmeans::contrast(means,\n  list(\"CD average minus AB average\" = c(-.5, -.5, .5, .5)))\ncomparison <- summary(contrast, infer = c(TRUE, TRUE),\n                      adjust = \"scheffe\", scheffe.rank = 3)",
+  "seed": 2104,
+  "generating_model": "20 independent plants per nutrient regime have normal biomass with means 8, 9, 11.3 and 12.1 g for A–D and a common SD of 1.7 g. Values are not rounded. The identical dataset is regenerated separately for each comparison procedure.",
+  "generating_truth": "Population means for A–D are 8, 9, 11.3 and 12.1 g; all distinct pairwise mean-equality nulls are false. The specified (C+D)/2 − (A+B)/2 contrast equals 3.2 g.",
+  "columns": [
+    {
+      "name": "plant",
+      "meaning": "Independent plant identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "nutrient",
+      "meaning": "Nutrient regime A–D",
+      "unit": "category"
+    },
+    {
+      "name": "biomass",
+      "meaning": "Dry biomass",
+      "unit": "g"
+    }
+  ],
+  "teaching_point": "A weighted contrast asks a specific biological question; Scheffé protects the larger all-contrast family."
+}

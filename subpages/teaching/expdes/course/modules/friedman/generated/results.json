@@ -1,0 +1,6 @@
+{
+  "preview": [" insect condition activity_score", "      1       Dim              6", "      1  Moderate              7", "      1    Bright              7", "      2       Dim              7"],
+  "summary": ["Independent blocks = 18; conditions = 3", "Friedman chi-square = 17.63; df = 2; p = 0.0001482", "Condition medians: Dim 5; Moderate 6; Bright 7"],
+  "report": "For 18 insects measured under all three conditions, the Friedman comparison gave chi-square(2) = 17.63, p = 0.0001482. This tests a systematic condition effect within insects; it does not identify which conditions differ.",
+  "full_output": "\n\tFriedman rank sum test\n\ndata:  activity_score and condition and insect\nFriedman chi-squared = 17.633, df = 2, p-value = 0.0001482\n"
+}

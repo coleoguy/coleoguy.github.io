@@ -1,0 +1,86 @@
+{
+  "id": "logistic",
+  "title": "Logistic regression",
+  "family": "Generalized linear models",
+  "biology": "Hybrid viability across parental divergence",
+  "design": "One independent hybrid offspring per cross.",
+  "data_characteristics": [
+    "Binary viability outcome",
+    "Continuous predictor: parental divergence (%)",
+    "Model a probability through log odds"
+  ],
+  "other_examples": [
+    "Infection versus dose",
+    "Germination versus temperature",
+    "Marker expression versus concentration"
+  ],
+  "question": "Does viability probability change with parental divergence?",
+  "null": "The divergence coefficient is zero: modeled viability odds do not change with divergence.",
+  "options": [
+    "family = binomial(link = \"logit\")",
+    "A 1-unit coefficient is a log odds change, not a probability change.",
+    "predict(..., type = \"response\") returns probabilities."
+  ],
+  "assumptions": [
+    "Offspring are independent in this simulation.",
+    "The specified predictor relationship is linear on the logit scale.",
+    "Separation or sparse outcomes can destabilize estimates."
+  ],
+  "parametric": [
+    "Add a justified nonlinear term if the logit relationship bends.",
+    "Use a mixed logistic model for several offspring per cross."
+  ],
+  "nonparametric": [
+    "A suitable randomization test must preserve the assignment structure.",
+    "There is no rank-test substitute that keeps this probability model and question."
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "geom_jitter(height)",
+      "note": "Separate overlapping binary outcomes slightly."
+    },
+    {
+      "arg": "geom_ribbon",
+      "note": "Display a confidence band for the modeled probability."
+    },
+    {
+      "arg": "type = \"link\"",
+      "note": "Compute intervals on the logit scale, then transform."
+    },
+    {
+      "arg": "coord_cartesian",
+      "note": "Keep the probability display near 0\u20131."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "ggplot2"
+  ],
+  "code_simulate": "set.seed(3110)\nd <- data.frame(cross = 1:160, divergence = runif(160, 0, 8))\nd$viable <- rbinom(160, 1, plogis(1.9 - .5 * d$divergence))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot2::ggplot(d, ggplot2::aes(divergence, viable)) +\n  ggplot2::geom_jitter(width = 0, height = .025, alpha = .35, color = \"#126887\") +\n  ggplot2::geom_ribbon(data = grid, ggplot2::aes(x = divergence, ymin = lower,\n    ymax = upper), inherit.aes = FALSE, fill = \"#126887\", alpha = .17) +\n  ggplot2::geom_line(data = grid, ggplot2::aes(y = probability),\n                    color = \"#126887\", linewidth = 1.2) +\n  ggplot2::coord_cartesian(ylim = c(-.04, 1.04)) +\n  ggplot2::labs(x = \"Parental divergence (%)\", y = \"Hybrid viability probability\") +\n  ggplot2::theme_classic(base_size = 17)\nprint(p)",
+  "code_analysis": "fit <- glm(viable ~ divergence, data = d, family = binomial)\ntest <- drop1(fit, test = \"Chisq\")\np_value <- test[\"divergence\", \"Pr(>Chi)\"]\nb <- coef(fit)[\"divergence\"]\nse <- sqrt(vcov(fit)[\"divergence\", \"divergence\"])\nodds_ratio <- exp(b)\nci <- exp(b + c(-1, 1) * 1.96 * se)",
+  "practice": "If several offspring came from each cross, what independent unit would the current analysis ignore?",
+  "seed": 3110,
+  "generating_model": "Generate 160 independent crosses with divergence Uniform(0,8) percentage points. One hybrid viability outcome per cross is Bernoulli with probability plogis(1.9 - 0.5 \u00d7 divergence). Predictors are not rounded.",
+  "generating_truth": "The true divergence coefficient is -0.5; viability odds are multiplied by exp(-0.5) \u2248 0.607 per divergence percentage point. The zero-slope null is false. The probability decline is nonlinear.",
+  "columns": [
+    {
+      "name": "cross",
+      "meaning": "Unique independent cross identifier",
+      "unit": "none"
+    },
+    {
+      "name": "divergence",
+      "meaning": "Parental divergence",
+      "unit": "percentage points"
+    },
+    {
+      "name": "viable",
+      "meaning": "1 = viable hybrid; 0 = nonviable",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "A coefficient describes log odds; translate to odds ratios or plotted probabilities to answer the biological question."
+}

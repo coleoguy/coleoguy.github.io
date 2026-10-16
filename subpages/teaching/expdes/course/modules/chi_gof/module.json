@@ -1,0 +1,80 @@
+{
+  "id": "chi_gof",
+  "title": "Chi-square goodness-of-fit",
+  "family": "Proportions and categories",
+  "biology": "Segregation in an F2 cross",
+  "design": "Each offspring is assigned to one of three genotypes.",
+  "data_characteristics": [
+    "One categorical response with three mutually exclusive outcomes",
+    "Observed counts, not percentages",
+    "Prespecified Mendelian probabilities: 1/4, 1/2, 1/4"
+  ],
+  "other_examples": [
+    "Flower morph ratios",
+    "Habitat use versus availability",
+    "Mutation classes versus a predicted spectrum"
+  ],
+  "question": "Do the genotype frequencies follow the expected 1:2:1 segregation ratio?",
+  "null": "Genotype probabilities are AA = 0.25, Aa = 0.50, and aa = 0.25.",
+  "options": [
+    "Supply p in exactly the table\u2019s category order.",
+    "Use counts as the first argument.",
+    "simulate.p.value = TRUE can calibrate sparse multinomial counts."
+  ],
+  "assumptions": [
+    "Offspring are independent for the intended model.",
+    "Categories are exhaustive and mutually exclusive.",
+    "Expected counts support the chi-square approximation."
+  ],
+  "parametric": [
+    "Use a multinomial model when probabilities depend on predictors.",
+    "If null probabilities were estimated, account for fitted parameters."
+  ],
+  "nonparametric": [
+    "Use Monte Carlo multinomial null simulation for sparse counts.",
+    "For only two outcomes, use an exact binomial test."
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "beside = TRUE",
+      "note": "Compare observed and expected counts side by side."
+    },
+    {
+      "arg": "names.arg",
+      "note": "Label the genotype categories."
+    },
+    {
+      "arg": "legend",
+      "note": "Identify observed versus expected bars."
+    },
+    {
+      "arg": "ylim",
+      "note": "Leave room for bar labels."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(3104)\nd <- data.frame(offspring = 1:240,\n  genotype = sample(c(\"AA\", \"Aa\", \"aa\"), 240, replace = TRUE,\n                    prob = c(.18, .54, .28)))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(4, 5, 2, 1), las = 1)\nbars <- barplot(rbind(Observed = observed, Expected = expected),\n                beside = TRUE, col = c(\"#126887\", \"#d7d7d7\"), border = NA,\n                ylim = c(0, max(observed, expected) * 1.22),\n                names.arg = names(observed), ylab = \"Offspring\", xlab = \"Genotype\")\ntext(bars, rbind(observed, expected), labels = c(rbind(observed, expected)),\n     pos = 3, cex = .85)\nlegend(\"topright\", c(\"Observed\", \"Expected under 1:2:1\"),\n       fill = c(\"#126887\", \"#d7d7d7\"), bty = \"n\")",
+  "code_analysis": "observed <- table(factor(d$genotype, levels = c(\"AA\", \"Aa\", \"aa\")))\nfit <- chisq.test(observed, p = c(.25, .50, .25))\nexpected <- as.numeric(fit$expected)\ndepartures <- observed / sum(observed) - c(.25, .50, .25)",
+  "practice": "Would equal expected counts answer the same question as a 1:2:1 expected ratio?",
+  "seed": 3104,
+  "generating_model": "Independently sample 240 offspring genotypes with probabilities AA = 0.18, Aa = 0.54, aa = 0.28. Test against the fixed Mendelian probabilities 0.25, 0.50, 0.25; no probabilities are estimated for the null.",
+  "generating_truth": "The simulated probabilities differ from 1:2:1 by -0.07, +0.04, and +0.03. The goodness-of-fit null is false.",
+  "columns": [
+    {
+      "name": "offspring",
+      "meaning": "Unique independent offspring identifier",
+      "unit": "none"
+    },
+    {
+      "name": "genotype",
+      "meaning": "AA, Aa, or aa genotype category",
+      "unit": "none"
+    }
+  ],
+  "teaching_point": "Expected counts encode the biological hypothesis. Equal expected counts would test a different hypothesis."
+}

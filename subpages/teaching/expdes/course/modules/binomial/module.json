@@ -1,0 +1,80 @@
+{
+  "id": "binomial",
+  "title": "Exact binomial test",
+  "family": "Proportions and categories",
+  "biology": "Host choice in a parasitoid wasp",
+  "design": "One independent choice per wasp; two equally available host species.",
+  "data_characteristics": [
+    "Binary outcome: native or introduced host",
+    "80 independent wasps; one trial each",
+    "Known null probability: 0.50"
+  ],
+  "other_examples": [
+    "Mendelian allele transmission",
+    "Seed germination against a target",
+    "Choice of one of two odors"
+  ],
+  "question": "Do wasps choose the native host with probability 0.50?",
+  "null": "The population probability of choosing the native host is 0.50.",
+  "options": [
+    "x = number of native-host choices; n = all choices",
+    "p = the probability specified by the null",
+    "alternative = \"two.sided\"; choose direction in advance"
+  ],
+  "assumptions": [
+    "Trials are independent.",
+    "The response has two possible outcomes.",
+    "The null uses the correct availability or expected probability."
+  ],
+  "parametric": [
+    "Use logistic regression if choice probability depends on predictors.",
+    "Use a mixed logistic model for repeated choices by the same wasp."
+  ],
+  "nonparametric": [
+    "The exact binomial test already handles small counts.",
+    "A design-based randomization test requires the treatment-assignment scheme."
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "ylim",
+      "note": "Keep the full 0\u20131 probability scale."
+    },
+    {
+      "arg": "abline(h = .5)",
+      "note": "Mark the null probability."
+    },
+    {
+      "arg": "arrows(code = 3)",
+      "note": "Draw both confidence-interval caps."
+    },
+    {
+      "arg": "pch / cex",
+      "note": "Choose the point shape and size."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(3101)\nd <- data.frame(wasp = 1:80,\n                native = rbinom(80, 1, 0.68))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(4, 5, 2, 1), las = 1)\nplot(1, estimate, xlim = c(0.5, 1.5), ylim = c(0, 1),\n     xaxt = \"n\", xlab = \"\", ylab = \"Probability of native-host choice\",\n     pch = 21, bg = \"#126887\", cex = 2.2, bty = \"n\")\narrows(1, ci[1], 1, ci[2], angle = 90, code = 3, length = .12, lwd = 2)\nabline(h = 0.5, lty = 2, col = \"#777777\")\naxis(1, 1, paste(nrow(d), \"wasps\"))\ntext(1.45, .53, \"Null = 0.50\", adj = 1, col = \"#666666\")",
+  "code_analysis": "x <- sum(d$native)\nfit <- binom.test(x, nrow(d), p = 0.5,\n                  alternative = \"two.sided\")\nestimate <- x / nrow(d)\nci <- fit$conf.int",
+  "practice": "If native hosts were offered twice as often, would a null probability of 0.50 still answer the intended question?",
+  "seed": 3101,
+  "generating_model": "Generate 80 independent Bernoulli choices, each with probability 0.68 of a native-host choice. Each wasp appears once. No rounding or dependence is introduced.",
+  "generating_truth": "The true native-host probability is 0.68, so the null probability 0.50 is false. The population difference from the null is +0.18.",
+  "columns": [
+    {
+      "name": "wasp",
+      "meaning": "Unique independent wasp identifier",
+      "unit": "none"
+    },
+    {
+      "name": "native",
+      "meaning": "1 = native host chosen; 0 = introduced host",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "The null probability comes from the scientific prediction, not automatically from the fact that there are two outcomes."
+}

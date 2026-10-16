@@ -1,0 +1,6 @@
+{
+  "preview": [" stratum treatment      time event", "       1   Control 30.000000 FALSE", "       1   Control 27.462231  TRUE", "       1   Control 30.000000 FALSE", "       1   Control  3.618851  TRUE"],
+  "summary": ["Stratified chi-square = 13.433", "p = 0.0002472", "12 rearing blocks; 120 larvae"],
+  "report": "After comparison within rearing blocks, chi-square = 13.43 (1 df), p = 0.000247. The test compares survival; estimate the direction and magnitude with survival curves or a suitable model.",
+  "full_output": "Call:\nsurvival::survdiff(formula = survival::Surv(time, event) ~ treatment + \n    strata(stratum), data = d)\n\n                   N Observed Expected (O-E)^2/E (O-E)^2/V\ntreatment=Control 60       42     58.5      4.64      13.4\ntreatment=Stress  60       54     37.5      7.23      13.4\n\n Chisq= 13.4  on 1 degrees of freedom, p= 2e-04 "
+}

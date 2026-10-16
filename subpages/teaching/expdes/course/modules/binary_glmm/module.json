@@ -1,0 +1,92 @@
+{
+  "id": "binary_glmm",
+  "title": "Binary mixed model",
+  "family": "Repeated and clustered data",
+  "biology": "Immunologists record repeated infection outcomes in vaccinated and control hosts.",
+  "design": "72 hosts with four weekly binary responses.",
+  "data_characteristics": [
+    "Binary outcome",
+    "Treatment plus time",
+    "Repeated host ID"
+  ],
+  "other_examples": [
+    "Repeated mating success",
+    "Seed germination within trays",
+    "Infection among individuals in populations"
+  ],
+  "question": "Does vaccination affect infection odds while accounting for repeated hosts?",
+  "null": "The vaccination coefficient is zero: its conditional odds ratio is one.",
+  "options": [
+    "family = binomial specifies a binary response",
+    "(1 | host) models shared host tendency",
+    "Wald intervals and z tests are approximate"
+  ],
+  "assumptions": [
+    "Independent hosts; dependence modeled within host",
+    "Suitable log-odds and random-effect model",
+    "Check convergence, separation, and remaining dependence"
+  ],
+  "parametric": [
+    "Add justified time effects or random slopes",
+    "GEE targets population-average effects instead"
+  ],
+  "nonparametric": [
+    "McNemar suits two paired binary measurements",
+    "Cochran’s Q suits simpler complete repeated conditions"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "stat_summary(fun = mean)",
+      "note": "The mean of 0/1 data is a proportion"
+    },
+    {
+      "arg": "color",
+      "note": "Separate treatments"
+    },
+    {
+      "arg": "limits = c(0,1)",
+      "note": "Use the full probability scale"
+    },
+    {
+      "arg": "breaks",
+      "note": "Show scheduled visits"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "lme4",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Why is exp(coefficient) an odds ratio rather than a probability difference?",
+  "code_simulate": "set.seed(2107)\nd <- expand.grid(week = 0:3, host = 1:72)\nd$treatment <- rep(rep(c(\"Control\", \"Vaccine\"), each = 36), each = 4)\nindividual <- rnorm(72, 0, .8)\nd$probability <- plogis(-.4 + .25 * d$week -\n  1.0 * (d$treatment == \"Vaccine\") + individual[d$host])\nd$infected <- rbinom(nrow(d), 1, d$probability)\nd$probability <- NULL\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(week, infected, color = treatment)) +\n  stat_summary(fun = mean, geom = \"line\", linewidth = 1.2) +\n  stat_summary(fun = mean, geom = \"point\", size = 3.5) +\n  scale_color_manual(values = c(\"#246A73\", \"#B7663E\")) +\n  scale_x_continuous(breaks = 0:3) +\n  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, .25)) +\n  labs(x = \"Week\", y = \"Observed fraction infected\", color = \"Treatment\",\n       caption = \"Observed fractions summarize repeated hosts; model effects are conditional\") +\n  theme_classic(base_size = 16)\nprint(p)",
+  "code_analysis": "fit <- lme4::glmer(infected ~ treatment + week + (1 | host),\n                   family = binomial, data = d,\n                   control = lme4::glmerControl(optimizer = \"bobyqa\"))\nsummary(fit)\nlog_or_ci <- confint(fit, parm = \"treatmentVaccine\", method = \"Wald\")",
+  "seed": 2107,
+  "generating_model": "72 hosts (36 per group) are scored at weeks 0–3. Host intercepts are Normal(0, 0.8²). The infection log odds equal −0.4 + 0.25 × week − 1.0 if vaccinated + host intercept. Independent Bernoulli outcomes are sampled conditional on those probabilities. Host intercepts create dependence across visits; latent probabilities are removed from the saved student dataset.",
+  "generating_truth": "The conditional vaccine odds ratio is exp(−1) ≈ 0.368; the week odds ratio is exp(0.25) ≈ 1.284. The vaccine null is false. These are conditional effects, not population-average odds ratios.",
+  "columns": [
+    {
+      "name": "week",
+      "meaning": "Scheduled visit relative to baseline",
+      "unit": "week"
+    },
+    {
+      "name": "host",
+      "meaning": "Repeated host identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Control or vaccine assignment",
+      "unit": "category"
+    },
+    {
+      "name": "infected",
+      "meaning": "Infection outcome: 1 infected, 0 not infected",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "Repeated binary outcomes need both a response distribution and a dependence model."
+}

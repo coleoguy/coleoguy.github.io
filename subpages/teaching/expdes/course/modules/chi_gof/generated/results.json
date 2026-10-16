@@ -1,0 +1,6 @@
+{
+  "preview": ["  1 | aa", "  2 | aa", "  3 | Aa", "  4 | AA", "  5 | Aa"],
+  "summary": ["Observed: 43, 128, 69", "Expected: 60, 120, 60", "Chi-square = 6.700; df = 2", "p = 0.03508"],
+  "report": "Observed genotype proportions were 0.179, 0.533, 0.287. The goodness-of-fit test gives chi-square(2) = 6.70, p = 0.0351 against the prespecified 1:2:1 ratio; the test does not identify a biological mechanism for the departure.",
+  "full_output": "\n\tChi-squared test for given probabilities\n\ndata:  observed\nX-squared = 6.7, df = 2, p-value = 0.03508\n"
+}

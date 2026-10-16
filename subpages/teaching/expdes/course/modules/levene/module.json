@@ -1,0 +1,82 @@
+{
+  "id": "levene",
+  "title": "Levene and Brown–Forsythe tests",
+  "family": "Variance and diagnostics",
+  "biology": "Microbiologists compare the variability of colony diameters across three nutrient media.",
+  "design": "Independent colonies are grown in separately inoculated culture wells; one colony measured per well.",
+  "data_characteristics": [
+    "Continuous response",
+    "Two or more independent groups",
+    "The spread, rather than the mean, is the target"
+  ],
+  "other_examples": [
+    "Developmental stability across genotypes",
+    "Assay reproducibility across treatments",
+    "Variation in growth among environments"
+  ],
+  "question": "Do population variances differ among nutrient media?",
+  "null": "The groups have equal variances; the test compares absolute deviations from their group centers.",
+  "options": [
+    "center = median gives Brown–Forsythe",
+    "center = mean gives original Levene",
+    "Treat the grouping variable as a factor"
+  ],
+  "assumptions": [
+    "Independent culture wells",
+    "Similar distribution shapes help a variance interpretation",
+    "Large differences in shape can also change absolute deviations"
+  ],
+  "parametric": [
+    "For mean comparisons, Welch already allows unequal variance",
+    "Model unequal residual variances directly when needed"
+  ],
+  "nonparametric": [
+    "Brown–Forsythe reduces sensitivity to tails",
+    "Bootstrap group SDs if uncertainty in spread is the objective"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "geom_boxplot / outlier.shape",
+      "note": "Show spread without duplicating outlier points"
+    },
+    {
+      "arg": "geom_jitter / width",
+      "note": "Retain individual observations"
+    },
+    {
+      "arg": "scale_fill_manual",
+      "note": "Keep treatment colors consistent"
+    },
+    {
+      "arg": "theme_classic",
+      "note": "Use clean axes and a white background"
+    }
+  ],
+  "packages": [
+    "car",
+    "ggplot2",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "If the research question concerns mean diameter, should a significant spread test force a rank test?",
+  "code_simulate": "set.seed(1110)\nd <- data.frame(medium = rep(c(\"Low\", \"Medium\", \"High\"), each = 28),\n                diameter_mm = c(rlnorm(28, log(4), .12),\n                rlnorm(28, log(4), .20), rlnorm(28, log(4), .35)))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(medium, diameter_mm, fill = medium)) +\n  geom_boxplot(width = .45, alpha = .28, outlier.shape = NA) +\n  geom_jitter(width = .12, height = 0, shape = 21, size = 2.5, alpha = .8) +\n  scale_fill_manual(values = c(\"#246A73\", \"#73649A\", \"#B7663E\")) +\n  labs(x = \"Nutrient medium\", y = \"Colony diameter (mm)\") +\n  theme_classic(base_size = 18) + theme(legend.position = \"none\")\nprint(p)",
+  "code_analysis": "d$medium <- factor(d$medium, levels = c(\"Low\", \"Medium\", \"High\"))\nbrown_forsythe <- leveneTest(diameter_mm ~ medium, data = d,\n                            center = median)\noriginal_levene <- leveneTest(diameter_mm ~ medium, data = d,\n                              center = mean)",
+  "seed": 1110,
+  "generating_model": "28 independently cultured colonies per medium have log-normal diameters. All have meanlog log(4); log-scale SD is 0.12, 0.20, or 0.35 for Low, Medium, and High medium.",
+  "generating_truth": "Group geometric means are 4 mm, but variances differ. Arithmetic means also vary slightly because log-normal means depend on log-scale spread.",
+  "columns": [
+    {
+      "name": "medium",
+      "meaning": "Nutrient medium",
+      "unit": "category"
+    },
+    {
+      "name": "diameter_mm",
+      "meaning": "Diameter of a colony from one independent well",
+      "unit": "mm"
+    }
+  ],
+  "teaching_point": "Median-centered Brown–Forsythe reduces sensitivity to long tails; it is not a required gate before Welch mean comparisons."
+}

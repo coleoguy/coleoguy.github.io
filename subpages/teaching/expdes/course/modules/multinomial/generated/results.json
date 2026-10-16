@@ -1,0 +1,6 @@
+{
+  "preview": ["Low | Surface", "Low | Shelter", "Low | Shelter", "Low | Shelter", "Low | Surface"],
+  "summary": ["Low-food probabilities: 0.217, 0.508, 0.275", "High-food probabilities: 0.475, 0.292, 0.233", "Likelihood ratio = 19.404; df = 2", "Joint p = 6.115e-05"],
+  "report": "Predicted probabilities for open/shelter/surface were 0.22/0.51/0.28 under low food and 0.48/0.29/0.23 under high food. The joint likelihood-ratio test gives chi-square(2) = 19.40, p = 6.11e-05; it tests the whole distribution of choices.",
+  "full_output": "Call:\nnnet::multinom(formula = choice ~ food, data = d, trace = FALSE)\n\nCoefficients:\n        (Intercept)   foodHigh\nShelter   0.8527665 -1.3404733\nSurface   0.2384121 -0.9492706\n\nStd. Errors:\n        (Intercept)  foodHigh\nShelter   0.2342112 0.3177579\nSurface   0.2622292 0.3493172\n\nResidual Deviance: 499.8932 \nAIC: 507.8932 "
+}

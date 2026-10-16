@@ -1,0 +1,38 @@
+---
+title: "Instructor dataset guide"
+subtitle: "Generating truth, models, and saved analysis results"
+output: html_document
+knit: (function(inputFile, encoding) { course_dir <- dirname(normalizePath(inputFile)); guide_environment <- new.env(parent = globalenv()); sys.source(file.path(course_dir, "build_instructor_guide.R"), envir = guide_environment); result <- guide_environment$build_instructor_guide(course_dir); result$html })
+---
+
+This source regenerates the instructor guide, its readable Markdown companion,
+and `dataset_catalog.csv` from **every** saved course module. It follows the
+dataset-bank organization of the original instructor guide: generating truth,
+full model and seed, question and design, null, columns, saved analysis output,
+and recreation code.
+
+Use **Knit** in RStudio to run the guide builder. The custom knit function above
+preserves the course's black title bands, light gray body, search index, and
+collapsible code/output. The guide builder needs only base R and `jsonlite`.
+
+Run the main course R Markdown first if you need to create or refresh datasets
+and results. This guide never resimulates data. It stops with an explicit list
+of problems if any discovered module lacks its metadata, CSV, plot, or full
+saved output.
+
+The same build can be run directly from the course folder:
+
+```{r build-guide, eval=FALSE}
+source("build_instructor_guide.R")
+build_instructor_guide(".")
+```
+
+Or from a terminal:
+
+```sh
+Rscript build_instructor_guide.R /absolute/path/to/course
+```
+
+The builder's default includes all `modules/*/module.json` files. Its optional
+`module_ids` argument is for an explicitly labeled development preview only;
+the course build must leave it unset to include every module.

@@ -1,0 +1,85 @@
+{
+  "id": "spearman",
+  "title": "Spearman rank correlation",
+  "family": "Nonparametric alternatives",
+  "biology": "Microbial ecologists compare soil salinity with bacterial richness across independent soil cores.",
+  "design": "Forty-five independent sites contribute one salinity and richness measurement each.",
+  "data_characteristics": [
+    "Two ordered or continuous variables",
+    "Independent measurement pairs",
+    "A monotonic association, possibly curved"
+  ],
+  "other_examples": [
+    "Ordinal condition score and body size",
+    "Dose and a saturating response",
+    "Ranked expression across tissues"
+  ],
+  "question": "Does bacterial richness tend to decline as salinity increases?",
+  "null": "The population Spearman rank correlation is zero.",
+  "options": [
+    "method = \"spearman\" uses ranks",
+    "exact = FALSE handles tied richness values",
+    "Choose a one-sided alternative only before seeing the data"
+  ],
+  "assumptions": [
+    "Independent sites",
+    "Meaningful rank order",
+    "Monotonic association is the target; zero does not rule out every pattern"
+  ],
+  "parametric": [
+    "Model the curved mean relationship directly if prediction is needed",
+    "A suitable transformation may linearize the mean"
+  ],
+  "nonparametric": [
+    "Spearman reduces the influence of extreme magnitudes",
+    "Nonmonotonic patterns require a different model or question"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "pch / bg",
+      "note": "Use readable filled symbols"
+    },
+    {
+      "arg": "xlab / ylab",
+      "note": "Name the original variables, not their ranks"
+    },
+    {
+      "arg": "col",
+      "note": "Separate point fill and outline"
+    },
+    {
+      "arg": "cex",
+      "note": "Keep the point size readable in a lecture room"
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Does rho tell you how many taxa are lost per additional ppt of salinity?",
+  "code_simulate": "set.seed(1113)\nsalinity <- runif(45, .5, 8)\nrichness <- round(90 - 25 * log(salinity + 1) + rnorm(45, 0, 7))\nd <- data.frame(site = 1:45, salinity_ppt = salinity, richness = richness)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "plot(d$salinity_ppt, d$richness, pch = 21, bg = \"#73649A\", col = \"white\",\n     cex = 1.4, xlab = \"Soil salinity (ppt)\", ylab = \"Bacterial richness (taxa)\")",
+  "code_analysis": "fit <- cor.test(d$salinity_ppt, d$richness,\n                method = \"spearman\", exact = FALSE,\n                alternative = \"two.sided\")",
+  "seed": 1113,
+  "generating_model": "45 independent site salinities are Uniform(0.5, 8). Richness is 90 - 25*log(salinity + 1) + Normal(0, 7 SD) noise, rounded to the nearest taxon.",
+  "generating_truth": "The underlying mean response decreases nonlinearly with salinity, creating a negative monotonic association. No fixed numeric population Spearman coefficient was specified.",
+  "columns": [
+    {
+      "name": "site",
+      "meaning": "Independent site identifier",
+      "unit": "none"
+    },
+    {
+      "name": "salinity_ppt",
+      "meaning": "Soil salinity",
+      "unit": "parts per thousand"
+    },
+    {
+      "name": "richness",
+      "meaning": "Observed bacterial taxon richness",
+      "unit": "taxa"
+    }
+  ],
+  "teaching_point": "Ranks can summarize a monotonic curve without claiming a constant change in the original response units."
+}

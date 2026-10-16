@@ -1,0 +1,87 @@
+{
+  "id": "dunn",
+  "title": "Dunn rank comparisons",
+  "family": "Rank methods",
+  "biology": "Ecologists compare skewed leaf-damage measurements among four treatments.",
+  "design": "21 independent leaves from different plants per treatment.",
+  "data_characteristics": [
+    "Continuous or ordered response",
+    "Independent groups",
+    "Pairwise pooled-rank comparisons"
+  ],
+  "other_examples": [
+    "Parasite burden across habitats",
+    "Ordered injury scores across treatments",
+    "Skewed behavioral responses across environments"
+  ],
+  "question": "Which pairs differ in their rank tendencies?",
+  "null": "For a chosen pair, pooled-rank tendencies are equal under the common-distribution null.",
+  "options": [
+    "method = \"holm\" adjusts the six comparisons",
+    "altp = TRUE prints ordinary two-sided p-values",
+    "kw = FALSE avoids repeating the omnibus calculation"
+  ],
+  "assumptions": [
+    "Independent leaves/plants",
+    "Rankable observations",
+    "Comparable shapes are needed for a simple location interpretation"
+  ],
+  "parametric": [
+    "If mean damage is the target, use an appropriate response model",
+    "Model scale changes rather than relabeling ranks as mean effects"
+  ],
+  "nonparametric": [
+    "This is already a rank procedure",
+    "A design-valid permutation can use a different prespecified statistic"
+  ],
+  "plot_engine": "beeswarm",
+  "plot_args": [
+    {
+      "arg": "beeswarm",
+      "note": "Show individual observations"
+    },
+    {
+      "arg": "bg",
+      "note": "Color treatment groups"
+    },
+    {
+      "arg": "points",
+      "note": "Add summary diamonds"
+    },
+    {
+      "arg": "ylab",
+      "note": "Keep original measurement units"
+    }
+  ],
+  "packages": [
+    "beeswarm",
+    "dunn.test",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Can this result be reported as a difference in mean damage?",
+  "code_simulate": "set.seed(2105)\nd <- data.frame(leaf = 1:84,\n                treatment = rep(c(\"A\", \"B\", \"C\", \"D\"), each = 21))\nd$damage <- rlnorm(84, rep(c(1.2, 1.3, 1.7, 1.9), each = 21), .48)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(5, 5, 2, 1), las = 1, bty = \"l\", cex = 1.15)\nbeeswarm::beeswarm(damage ~ treatment, data = d,\n  pch = 21, bg = c(\"#246A73\", \"#73969B\", \"#D7A583\", \"#B7663E\"),\n  col = \"white\", cex = 1.25, xlab = \"Treatment\",\n  ylab = \"Leaf area removed (mm²)\")\npoints(1:4, tapply(d$damage, d$treatment, median),\n       pch = 18, cex = 2, col = \"#172D34\")\nlegend(\"topleft\", \"Diamonds = sample medians\", pch = 18, bty = \"n\")",
+  "code_analysis": "overall <- kruskal.test(damage ~ treatment, data = d)\ncomparisons <- dunn.test::dunn.test(d$damage, d$treatment,\n  method = \"holm\", altp = TRUE, kw = FALSE, list = FALSE)",
+  "seed": 2105,
+  "generating_model": "21 independent leaves in each of four groups have log-normal damage. Log damage is Normal(mean, 0.48²), with means 1.2, 1.3, 1.7 and 1.9 for A–D. Damage remains positive and unrounded. All leaves come from different plants.",
+  "generating_truth": "Group distributions differ; their population medians are exp(1.2), exp(1.3), exp(1.7) and exp(1.9) mm². Dunn tests pooled-rank tendencies, not arithmetic mean equality. The distributions also differ in original-scale spread.",
+  "columns": [
+    {
+      "name": "leaf",
+      "meaning": "Independent leaf from a distinct plant",
+      "unit": "ID"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Treatment A–D",
+      "unit": "category"
+    },
+    {
+      "name": "damage",
+      "meaning": "Area removed from a leaf",
+      "unit": "mm²"
+    }
+  ],
+  "teaching_point": "After choosing a rank question, retain multiplicity protection for pairwise follow-ups."
+}

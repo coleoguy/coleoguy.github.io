@@ -1,0 +1,74 @@
+{
+  "id": "bootstrap",
+  "title": "Bootstrap confidence interval",
+  "seed": 240507,
+  "family": "Simulation and multivariate methods",
+  "plot_engine": "base R",
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(240507)\nd <- data.frame(colony=1:40, biomass_mg=rlnorm(40, log(12), .45))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "stripchart(d$biomass_mg, method=\"stack\", pch=21, bg=\"#146A85\",\n           xlab=\"Colony biomass (mg)\", main=\"Independent bacterial colonies\")\nabline(v=mean(d$biomass_mg), col=\"#C56B3B\", lwd=2)",
+  "code_analysis": "B <- 4999\nboot_mean <- numeric(B)\nfor (i in 1:B) boot_mean[i] <- mean(sample(d$biomass_mg, replace=TRUE))\nci <- quantile(boot_mean, c(.025,.975))\nresult <- data.frame(mean=mean(d$biomass_mg), lower=ci[1], upper=ci[2])",
+  "biology": "Estimate average biomass from independent bacterial colonies with a right-skewed distribution.",
+  "design": "One biomass measurement per independent colony.",
+  "data_characteristics": [
+    "Positive continuous measurements",
+    "Independent sampling units",
+    "Mean is the scientific target"
+  ],
+  "other_examples": [
+    "Fruit mass",
+    "Enzyme activity",
+    "Parasite biomass"
+  ],
+  "question": "How uncertain is the estimated mean biomass?",
+  "null": "No null is required for this confidence interval; the target is the population mean.",
+  "options": [
+    "Resample entire independent units with replacement.",
+    "Choose statistic, B and interval method explicitly.",
+    "Percentile is illustrated; it is not universally the best bootstrap interval."
+  ],
+  "assumptions": [
+    "The sample represents the population of interest.",
+    "Rows are independent units; cluster resampling is needed for clustered data.",
+    "Small or unrepresentative samples limit bootstrap performance."
+  ],
+  "parametric": [
+    "Use a suitable response model or a t interval when appropriate."
+  ],
+  "nonparametric": [
+    "Resample independent colonies; resample clusters or pairs intact when needed."
+  ],
+  "generating_model": "40 independent Lognormal(meanlog=log(12), sdlog=0.45) colony biomasses. The generating arithmetic mean is exp(log(12)+0.45^2/2), approximately 13.28 mg.",
+  "generating_truth": "The population arithmetic mean is approximately 13.28 mg; the interval may or may not cover it in one sample.",
+  "columns": [
+    {
+      "name": "colony",
+      "meaning": "Independent colony",
+      "unit": "ID"
+    },
+    {
+      "name": "biomass_mg",
+      "meaning": "Measured biomass",
+      "unit": "mg"
+    }
+  ],
+  "teaching_point": "Resampling changes the computational procedure, not what counts as an independent replicate.",
+  "plot_args": [
+    {
+      "arg": "method=\"stack\"",
+      "note": "Stacks nearby observations without hiding them"
+    },
+    {
+      "arg": "pch=21 / bg",
+      "note": "Outlined filled symbols"
+    },
+    {
+      "arg": "abline(v=mean(...))",
+      "note": "Marks the arithmetic mean"
+    }
+  ],
+  "practice": "Would resampling individual cells be appropriate if biomass was measured on whole colonies?"
+}

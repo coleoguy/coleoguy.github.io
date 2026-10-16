@@ -1,0 +1,82 @@
+{
+  "question": "Do matched groups differ in survival after accounting for the matching strata?",
+  "null": "Within the specified strata, groups have the same survival function.",
+  "options": [
+    "survival::survdiff(Surv(time, event) ~ group + strata(match), data = d, rho = 0)"
+  ],
+  "assumptions": [
+    "Matching/strata are defined by design; meaningful group comparisons occur within strata.",
+    "Appropriate censoring and independence between matched sets."
+  ],
+  "parametric": [
+    "Stratified Cox allows additional predictors and separate baseline hazards for strata."
+  ],
+  "nonparametric": [
+    "Already a stratified nonparametric comparison; a permutation must honor matching and the event/censoring design."
+  ],
+  "id": "stratified_logrank",
+  "title": "Stratified log-rank test",
+  "seed": 240501,
+  "family": "Survival",
+  "plot_engine": "base R",
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "survival"
+  ],
+  "code_simulate": "set.seed(240501)\nstratum <- rep(1:12, each=10)\ntreatment <- rep(rep(c(\"Control\", \"Stress\"), each=5), 12)\nrate <- rep(seq(.025, .08, length.out=12), each=10)\nevent_time <- rexp(120, rate * ifelse(treatment==\"Stress\", 1.6, 1))\nd <- data.frame(stratum, treatment, time=pmin(event_time, 30), event=event_time<=30)\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "fit <- survival::survfit(survival::Surv(time, event) ~ treatment, data=d)\nplot(fit, col=c(\"#146A85\", \"#C56B3B\"), lwd=3, conf.int=FALSE,\n     xlab=\"Days since exposure\", ylab=\"Probability still alive\", mark.time=TRUE)\nlegend(\"topright\", c(\"Control\", \"Stress\"), col=c(\"#146A85\", \"#C56B3B\"), lwd=3, bty=\"n\")",
+  "code_analysis": "result <- survival::survdiff(survival::Surv(time, event) ~ treatment + strata(stratum), data=d)\np_value <- pchisq(result$chisq, df=1, lower.tail=FALSE)",
+  "biology": "Larval survival under stress is compared within 12 rearing blocks.",
+  "design": "Independent larvae within known rearing blocks; administrative censoring at day 30.",
+  "data_characteristics": [
+    "Time plus event indicator",
+    "Two treatments in every block",
+    "Compare treatments within blocks"
+  ],
+  "other_examples": [
+    "Germination by collection site",
+    "Infection by matched host cohort",
+    "Survival by experimental batch"
+  ],
+  "generating_model": "120 independent exponential event times conditional on 12 fixed block rates evenly spaced from 0.025 to 0.08 per day. Stress multiplies every block rate by 1.6. Follow-up stops at 30 days.",
+  "generating_truth": "Stress has a true hazard ratio of 1.6 within each block; the within-block equality null is false.",
+  "columns": [
+    {
+      "name": "stratum",
+      "meaning": "Rearing block",
+      "unit": "ID"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Assigned condition",
+      "unit": "category"
+    },
+    {
+      "name": "time",
+      "meaning": "Observed event or censoring time",
+      "unit": "days"
+    },
+    {
+      "name": "event",
+      "meaning": "Event observed by day 30",
+      "unit": "TRUE/FALSE"
+    }
+  ],
+  "teaching_point": "Stratification permits different baseline survival across known blocks.",
+  "plot_args": [
+    {
+      "arg": "mark.time=TRUE",
+      "note": "Marks censoring times"
+    },
+    {
+      "arg": "conf.int=FALSE",
+      "note": "Keeps this teaching plot uncluttered"
+    },
+    {
+      "arg": "col / lwd",
+      "note": "Matches treatment colors and line widths"
+    }
+  ],
+  "practice": "What biological variation does stratification account for here?"
+}

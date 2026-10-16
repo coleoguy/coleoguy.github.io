@@ -1,0 +1,80 @@
+{
+  "id": "kruskal_wallis",
+  "title": "Kruskal–Wallis test",
+  "family": "Nonparametric alternatives",
+  "biology": "Plant pathologists score leaf damage in three independently assigned pathogen treatments.",
+  "design": "Twenty-four independent plants per treatment; ordinal damage scores run from 0 to 8.",
+  "data_characteristics": [
+    "Ordered response or a continuous response",
+    "Three or more independent groups",
+    "An omnibus rank comparison"
+  ],
+  "other_examples": [
+    "Skewed abundance across habitats",
+    "Disease-severity categories across treatments",
+    "Development time across diets"
+  ],
+  "question": "Do damage-score distributions differ among pathogen treatments?",
+  "null": "All groups share the same response distribution.",
+  "options": [
+    "Response must have a meaningful order",
+    "kruskal.test applies a tie correction",
+    "Follow a relevant omnibus result with adjusted planned/Dunn comparisons"
+  ],
+  "assumptions": [
+    "Independent plants",
+    "Groups defined before analysis",
+    "A common-shape shift model is needed for a median comparison"
+  ],
+  "parametric": [
+    "Ordinal regression uses the score categories explicitly",
+    "Welch ANOVA handles unequal variances for a mean question"
+  ],
+  "nonparametric": [
+    "Kruskal–Wallis extends rank-sum to several groups",
+    "Friedman handles complete matched blocks"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "jitter / amount",
+      "note": "Separate tied points without changing scores"
+    },
+    {
+      "arg": "pch / col",
+      "note": "Use group-specific point styling"
+    },
+    {
+      "arg": "axis",
+      "note": "Display the actual ordered score values"
+    },
+    {
+      "arg": "segments",
+      "note": "Add descriptive median marks"
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "A small omnibus p-value appears. Can you conclude that Strain A differs from Strain B?",
+  "code_simulate": "set.seed(1107)\nd <- data.frame(treatment = rep(c(\"Control\", \"Strain A\", \"Strain B\"), each = 24),\n                damage = c(rbinom(24, 8, .25), rbinom(24, 8, .40),\n                           rbinom(24, 8, .58)))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "x <- as.integer(d$treatment)\nplot(jitter(x, amount = .14), d$damage, pch = 21,\n     bg = c(\"#246A73\", \"#B7663E\", \"#73649A\")[x], col = \"white\",\n     xaxt = \"n\", yaxt = \"n\", xlim = c(.6, 3.4), xlab = \"Pathogen treatment\", ylab = \"Damage score\")\naxis(1, 1:3, levels(d$treatment)); axis(2, 0:8)\nmed <- tapply(d$damage, d$treatment, median)\nsegments(1:3 - .18, med, 1:3 + .18, med, lwd = 4)",
+  "code_analysis": "d$treatment <- factor(d$treatment, levels = c(\"Control\", \"Strain A\", \"Strain B\"))\nfit <- kruskal.test(damage ~ treatment, data = d)",
+  "seed": 1107,
+  "generating_model": "24 independent plants per group receive binomial damage scores with 8 trials and probabilities 0.25 (Control), 0.40 (Strain A), and 0.58 (Strain B). The score is used as an ordered severity scale.",
+  "generating_truth": "The score distributions differ across all three generating probabilities; expected scores are 2.0, 3.2, and 4.64. The equal-distributions null is false.",
+  "columns": [
+    {
+      "name": "treatment",
+      "meaning": "Assigned pathogen treatment",
+      "unit": "category"
+    },
+    {
+      "name": "damage",
+      "meaning": "Ordered leaf-damage score",
+      "unit": "score 0 to 8"
+    }
+  ],
+  "teaching_point": "An omnibus rank result identifies a group-level difference without choosing a pair."
+}

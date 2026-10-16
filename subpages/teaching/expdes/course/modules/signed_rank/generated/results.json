@@ -1,0 +1,6 @@
+{
+  "preview": [" culture   before    after", "       1 6.785938 7.184926", "       2 6.078931 5.861092", "       3 5.478518 5.659185", "       4 6.187042 6.519684"],
+  "summary": ["Pseudomedian change estimate = 0.249", "95% CI: 0.094 to 0.341", "V = 328.0; p = 0.004582"],
+  "report": "The estimated pseudomedian log10 density change was 0.249 (95% CI 0.094 to 0.341); signed-rank V = 328.0, p = 0.004582. Under a symmetric location-shift model this describes the common center of the differences; the procedure does not generally test a mean.",
+  "full_output": "\n\tWilcoxon signed rank test with continuity correction\n\ndata:  d$after and d$before\nV = 328, p-value = 0.004582\nalternative hypothesis: true location shift is not equal to 0\n95 percent confidence interval:\n 0.09375924 0.34088634\nsample estimates:\n(pseudo)median \n     0.2486103 \n"
+}

@@ -1,0 +1,6 @@
+{
+  "preview": ["  lake parasites", " Clear         7", " Clear         4", " Clear         0", " Clear         6"],
+  "summary": ["Observed medians: Clear 3.0; Reedy 8.0 parasites", "W = 362.5; asymptotic p = 0.04452", "Medians describe these data; the general null concerns distributions."],
+  "report": "Parasite burdens had observed medians 3.0 (Clear) and 8.0 (Reedy). The rank-sum comparison gave W = 362.5, p = 0.04452. This is evidence about the distributions; calling it a median test requires additional shape assumptions.",
+  "full_output": "\n\tWilcoxon rank sum test with continuity correction\n\ndata:  parasites by lake\nW = 362.5, p-value = 0.04452\nalternative hypothesis: true location shift is not equal to 0\n"
+}

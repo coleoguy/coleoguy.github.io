@@ -1,0 +1,80 @@
+{
+  "id": "two_proportions",
+  "title": "Two-proportion test",
+  "family": "Proportions and categories",
+  "biology": "Heat survival in evolved and ancestral yeast",
+  "design": "Independent cultures assigned to one genotype; survival is scored once.",
+  "data_characteristics": [
+    "Binary survival in two independent groups",
+    "Known number of trials in each group",
+    "The target is a difference in survival probabilities"
+  ],
+  "other_examples": [
+    "Vaccine uptake in two populations",
+    "Hatching success in two crosses",
+    "Rooting success under two treatments"
+  ],
+  "question": "Does survival probability differ between evolved and ancestral yeast?",
+  "null": "Evolved and ancestral cultures have equal survival probabilities.",
+  "options": [
+    "List successes and totals in the same group order.",
+    "correct = FALSE uses the uncorrected large-sample test.",
+    "The CI follows the first-minus-second group order."
+  ],
+  "assumptions": [
+    "Cultures are independent.",
+    "Expected cell counts support the large-sample approximation.",
+    "Use trials, not percentages without denominators."
+  ],
+  "parametric": [
+    "Use logistic regression to adjust for temperature or batch.",
+    "Use a binomial mixed model when cultures share batches."
+  ],
+  "nonparametric": [
+    "Use Fisher exact inference for sparse 2 \u00d7 2 tables.",
+    "Permutation of group labels requires exchangeable independent cultures."
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "ylim",
+      "note": "Display probabilities on 0\u20131."
+    },
+    {
+      "arg": "axis",
+      "note": "Keep the explicit group order."
+    },
+    {
+      "arg": "arrows",
+      "note": "Show separate 95% probability intervals."
+    },
+    {
+      "arg": "pch / bg",
+      "note": "Use filled symbols and restrained group colors."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(3103)\nd <- data.frame(group = rep(c(\"Evolved\", \"Ancestral\"), each = 110))\nd$survived <- rbinom(220, 1, rep(c(.72, .52), each = 110))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(4, 5, 2, 1), las = 1)\nplot(1:2, estimate, xlim = c(.5, 2.5), ylim = c(0, 1),\n     xaxt = \"n\", xlab = \"\", ylab = \"Survival probability\", bty = \"n\",\n     pch = 21, bg = c(\"#126887\", \"#b96735\"), cex = 2.2)\narrows(1:2, group_ci[1, ], 1:2, group_ci[2, ],\n       code = 3, angle = 90, length = .1, lwd = 2)\naxis(1, 1:2, groups)\nmtext(\"Intervals describe each probability; test the difference directly.\", 3,\n      cex = .85, col = \"#555555\")",
+  "code_analysis": "groups <- c(\"Evolved\", \"Ancestral\")\nx <- sapply(groups, function(g) sum(d$survived[d$group == g]))\nn <- sapply(groups, function(g) sum(d$group == g))\nfit <- prop.test(x, n, correct = FALSE)\nestimate <- x / n\ndifference <- estimate[1] - estimate[2]\nci <- fit$conf.int\ngroup_ci <- sapply(1:2, function(i) prop.test(x[i], n[i],\n                                            correct = FALSE)$conf.int)",
+  "practice": "If the groups contain 20 and 200 cultures, why are their denominators essential?",
+  "seed": 3103,
+  "generating_model": "Generate 110 independent evolved cultures and 110 independent ancestral cultures. Survival is Bernoulli with probabilities 0.72 and 0.52, respectively. No batching or pairing is introduced.",
+  "generating_truth": "Evolved minus ancestral survival probability is 0.20, so the equal-probabilities null is false. The corresponding population odds ratio is approximately 2.37.",
+  "columns": [
+    {
+      "name": "group",
+      "meaning": "Culture genotype: Evolved or Ancestral",
+      "unit": "none"
+    },
+    {
+      "name": "survived",
+      "meaning": "1 = survived heat; 0 = died",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "Keep group order explicit: the contrast is evolved minus ancestral, and its confidence interval addresses the actual comparison."
+}

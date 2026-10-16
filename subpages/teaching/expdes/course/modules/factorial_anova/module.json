@@ -1,0 +1,91 @@
+{
+  "id": "factorial_anova",
+  "title": "Factorial ANOVA: interactions",
+  "family": "ANOVA and contrasts",
+  "biology": "Beetle larvae from two genotypes are independently reared at two temperatures.",
+  "design": "22 independent larvae per genotype × temperature combination.",
+  "data_characteristics": [
+    "Continuous response: growth",
+    "Two categorical predictors",
+    "Independent treatment combinations"
+  ],
+  "other_examples": [
+    "Genotype × nutrient effects on biomass",
+    "Drug × pathogen strain effects",
+    "Light × water effects on photosynthesis"
+  ],
+  "question": "Does the temperature effect on mean growth depend on genotype?",
+  "null": "The warm-minus-cool mean growth difference is the same for genotypes A and B.",
+  "options": [
+    "genotype * heat includes both main effects and their interaction",
+    "The interaction coefficient is a difference of differences",
+    "Factor levels define the reference comparison"
+  ],
+  "assumptions": [
+    "Independent larvae",
+    "Appropriate residual distribution and comparable residual spread",
+    "Replicate each treatment combination"
+  ],
+  "parametric": [
+    "Model unequal residual spread if needed",
+    "Transform only when the transformed mean answers the question"
+  ],
+  "nonparametric": [
+    "A factorial permutation must preserve the design and tested term",
+    "Separate rank tests do not test the interaction"
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "position_jitterdodge",
+      "note": "Separate raw points within groups"
+    },
+    {
+      "arg": "alpha",
+      "note": "Reduce point overlap"
+    },
+    {
+      "arg": "stat_summary(fun = mean)",
+      "note": "Mark each mean"
+    },
+    {
+      "arg": "shape",
+      "note": "Use diamonds for summaries"
+    }
+  ],
+  "packages": [
+    "ggplot2",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Explain the interaction in words before reading its p-value.",
+  "code_simulate": "set.seed(2101)\nd <- expand.grid(replicate = 1:22, genotype = c(\"A\", \"B\"),\n                 heat = c(\"Cool\", \"Warm\"))\nd$growth <- with(d, 14 + 1.4 * (genotype == \"B\") +\n  2 * (heat == \"Warm\") + 2.3 * (genotype == \"B\" & heat == \"Warm\") +\n  rnorm(nrow(d), 0, 2.1))\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot(d, aes(heat, growth, color = genotype)) +\n  geom_point(position = position_jitterdodge(jitter.width = .13,\n    dodge.width = .35, seed = 21), alpha = .42, size = 2) +\n  stat_summary(fun = mean, geom = \"point\",\n    position = position_dodge(.35), size = 4, shape = 18) +\n  scale_color_manual(values = c(\"#246A73\", \"#B7663E\")) +\n  labs(x = \"Rearing temperature\", y = \"Larval growth (mg/week)\",\n       color = \"Genotype\", caption = \"Small points: individuals; diamonds: group means\") +\n  theme_classic(base_size = 16)\nprint(p)",
+  "code_analysis": "fit <- lm(growth ~ genotype * heat, data = d)\nsummary(fit)\ninteraction_ci <- confint(fit)[\"genotypeB:heatWarm\", ]",
+  "seed": 2101,
+  "generating_model": "There are 22 larvae in each of four genotype-by-temperature combinations. Growth = 14 + 1.4 if genotype B + 2 if warm + 2.3 if both genotype B and warm + independent Normal(0, 2.1²) error, in mg/week. Values are not rounded.",
+  "generating_truth": "The temperature effect is 2 mg/week in genotype A and 4.3 mg/week in B, so the interaction is 2.3 mg/week. The interaction null is false.",
+  "columns": [
+    {
+      "name": "replicate",
+      "meaning": "Larva number within a genotype/temperature combination",
+      "unit": "ID"
+    },
+    {
+      "name": "genotype",
+      "meaning": "Genotype A or B",
+      "unit": "category"
+    },
+    {
+      "name": "heat",
+      "meaning": "Cool or warm rearing condition",
+      "unit": "category"
+    },
+    {
+      "name": "growth",
+      "meaning": "Larval growth rate",
+      "unit": "mg/week"
+    }
+  ],
+  "teaching_point": "An interaction is a difference of differences: a main-effect summary can conceal it."
+}

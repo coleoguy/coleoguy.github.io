@@ -1,0 +1,91 @@
+{
+  "id": "parametric_survival",
+  "title": "Parametric survival: accelerated failure time",
+  "family": "Time to event",
+  "biology": "Botanists compare germination timing after control or cold treatment.",
+  "design": "140 independent seeds; some remain ungerminated at final follow-up.",
+  "data_characteristics": [
+    "Positive event time",
+    "Right-censoring",
+    "A time-ratio scientific target"
+  ],
+  "other_examples": [
+    "Developmental time under temperature",
+    "Time to infection under treatment",
+    "Longevity under different diets"
+  ],
+  "question": "Does cold treatment stretch the germination-time distribution?",
+  "null": "The treatment coefficient is zero: the cold/control time ratio is one.",
+  "options": [
+    "dist = \"weibull\" chooses the event-time family",
+    "exp(coefficient) gives the AFT time ratio",
+    "Surv retains seeds that are right-censored"
+  ],
+  "assumptions": [
+    "Independent seeds and appropriate censoring",
+    "A suitable Weibull time distribution",
+    "A common acceleration factor for treatment"
+  ],
+  "parametric": [
+    "Check other justified parametric time distributions",
+    "Cox changes the effect scale to a hazard ratio"
+  ],
+  "nonparametric": [
+    "Kaplan–Meier estimates survival without a time distribution",
+    "Log-rank tests equal survival curves"
+  ],
+  "plot_engine": "base R",
+  "plot_args": [
+    {
+      "arg": "lty",
+      "note": "Separate empirical steps from model curves"
+    },
+    {
+      "arg": "lines",
+      "note": "Overlay fitted survival curves"
+    },
+    {
+      "arg": "mark.time",
+      "note": "Keep censoring visible"
+    },
+    {
+      "arg": "legend",
+      "note": "Name both groups and line meanings"
+    }
+  ],
+  "packages": [
+    "survival",
+    "ragg",
+    "jsonlite"
+  ],
+  "practice": "Would an AFT time ratio above one speed up or delay germination?",
+  "code_simulate": "set.seed(2113)\nd <- data.frame(seed = 1:140,\n                treatment = rep(c(\"Control\", \"Cold\"), each = 70))\nlog_scale <- log(20) + .4 * (d$treatment == \"Cold\")\nevent_time <- rweibull(140, shape = 1.8, scale = exp(log_scale))\nfollow_up <- runif(140, 22, 50)\nd$days <- pmin(event_time, follow_up)\nd$event <- as.integer(event_time <= follow_up)\nwrite.csv(d, file.path(output_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "par(mar = c(5, 5, 2, 1), las = 1, bty = \"l\", cex = 1.15)\nplot(km, col = c(\"#246A73\", \"#B7663E\"), lty = 2, lwd = 1.4,\n     conf.int = FALSE, mark.time = TRUE, xlim = c(0, 60),\n     xlab = \"Days since sowing\", ylab = \"Probability not yet germinated\")\nlines(time_grid, survival_control, col = \"#246A73\", lwd = 2.5)\nlines(time_grid, survival_cold, col = \"#B7663E\", lwd = 2.5)\nlegend(\"topright\", c(\"Control\", \"Cold\", \"Weibull model\", \"Kaplan–Meier\"),\n       col = c(\"#246A73\", \"#B7663E\", \"#172D34\", \"#172D34\"),\n       lty = c(1, 1, 1, 2), lwd = c(2.5, 2.5, 2.5, 1.4), bty = \"n\")",
+  "code_analysis": "fit <- survival::survreg(survival::Surv(days, event) ~ treatment,\n                         data = d, dist = \"weibull\")\nsummary(fit)\ntime_ci <- exp(confint(fit)[\"treatmentCold\", ])",
+  "seed": 2113,
+  "generating_model": "140 independent seeds (70 per group) have Weibull germination times with shape 1.8 and scale exp(log(20) + 0.4 if Cold). Thus control scale is 20 days and cold scale is about 29.84 days. Independent censoring times are Uniform(22, 50) days. Save minimum time and event indicator without rounding.",
+  "generating_truth": "The population cold/control time ratio is exp(0.4) ≈ 1.492, so the equal-time null is false. The generating Weibull distribution matches the fitted AFT family.",
+  "columns": [
+    {
+      "name": "seed",
+      "meaning": "Independent seed identifier",
+      "unit": "ID"
+    },
+    {
+      "name": "treatment",
+      "meaning": "Control or cold pretreatment",
+      "unit": "category"
+    },
+    {
+      "name": "days",
+      "meaning": "Observed germination or censoring time",
+      "unit": "day"
+    },
+    {
+      "name": "event",
+      "meaning": "1 germinated; 0 right-censored",
+      "unit": "binary"
+    }
+  ],
+  "teaching_point": "An AFT coefficient becomes a time ratio; it is not interpreted as a Cox hazard ratio."
+}

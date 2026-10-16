@@ -1,0 +1,6 @@
+{
+  "preview": [" soil biomass_g", " Sand  4.656127", " Sand  4.690143", " Sand  4.865685", " Sand  4.259580"],
+  "summary": ["Welch ANOVA F = 13.65; df = 2, 49.85; p = 1.873e-05", "Group sample sizes: Sand 20; Loam 26; Clay 32", "Observed means (g): Sand 4.4; Loam 5.55; Clay 4.87", "Unequal variance is modeled; the omnibus test does not select a pair."],
+  "report": "Welch ANOVA compared mean biomass across soils while allowing unequal variances: F(2, 49.85) = 13.65, p = 1.873e-05. This answers the same equal-means question as ordinary ANOVA; a specific pair requires an appropriate adjusted follow-up.",
+  "full_output": "\n\tOne-way analysis of means (not assuming equal variances)\n\ndata:  biomass_g and soil\nF = 13.65, num df = 2.000, denom df = 49.854, p-value = 1.873e-05\n"
+}

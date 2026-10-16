@@ -1,0 +1,82 @@
+{
+  "id": "multinomial",
+  "title": "Multinomial logistic regression",
+  "family": "Generalized linear models",
+  "biology": "Fish use of three unordered feeding microhabitats",
+  "design": "Independent fish encounter either low or high food availability.",
+  "data_characteristics": [
+    "One unordered outcome with three categories",
+    "Two independent food-availability groups",
+    "Model all category probabilities jointly"
+  ],
+  "other_examples": [
+    "Colony morphology classes",
+    "Host species choice",
+    "Unordered cell fates"
+  ],
+  "question": "Does food availability change the distribution of feeding microhabitat choices?",
+  "null": "All nonreference food coefficients are zero; microhabitat probabilities are the same under low and high food.",
+  "options": [
+    "Choose the outcome reference category deliberately.",
+    "Fit the same data for the full and null models.",
+    "Use a joint likelihood-ratio test for the multi-coefficient predictor."
+  ],
+  "assumptions": [
+    "Fish contribute independent choices.",
+    "Categories are mutually exclusive and sufficiently populated.",
+    "The multinomial model\u2019s relative-odds structure is appropriate."
+  ],
+  "parametric": [
+    "Use a richer multinomial model for additional predictors.",
+    "Use a model for dependent choices when observations repeat."
+  ],
+  "nonparametric": [
+    "A contingency-table test answers the same no-association question with one categorical predictor.",
+    "A randomization test must follow the food-assignment design."
+  ],
+  "plot_engine": "ggplot2",
+  "plot_args": [
+    {
+      "arg": "position = \"fill\"",
+      "note": "Compare distributions of choices."
+    },
+    {
+      "arg": "scale_fill_manual",
+      "note": "Use distinct, consistent category colors."
+    },
+    {
+      "arg": "labs(fill)",
+      "note": "Name the biological response in the legend."
+    },
+    {
+      "arg": "width",
+      "note": "Leave breathing room between bars."
+    }
+  ],
+  "packages": [
+    "ragg",
+    "jsonlite",
+    "nnet",
+    "ggplot2"
+  ],
+  "code_simulate": "set.seed(3114)\nd <- data.frame(food = rep(c(\"Low\", \"High\"), each = 120))\nd$choice <- c(sample(c(\"Open\", \"Shelter\", \"Surface\"), 120, TRUE,\n                      prob = c(.25, .50, .25)),\n              sample(c(\"Open\", \"Shelter\", \"Surface\"), 120, TRUE,\n                      prob = c(.50, .30, .20)))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "p <- ggplot2::ggplot(d, ggplot2::aes(food, fill = choice)) +\n  ggplot2::geom_bar(position = \"fill\", width = .65) +\n  ggplot2::scale_fill_manual(values = c(Open = \"#126887\", Shelter = \"#b96735\",\n                                       Surface = \"#a4b3ad\")) +\n  ggplot2::labs(x = \"Food availability\", y = \"Choice probability\", fill = \"Microhabitat\") +\n  ggplot2::theme_classic(base_size = 17) +\n  ggplot2::theme(legend.position = \"top\")\nprint(p)",
+  "code_analysis": "d$food <- factor(d$food, levels = c(\"Low\", \"High\"))\nd$choice <- factor(d$choice, levels = c(\"Open\", \"Shelter\", \"Surface\"))\nfit <- nnet::multinom(choice ~ food, data = d, trace = FALSE)\nfit0 <- nnet::multinom(choice ~ 1, data = d, trace = FALSE)\nLR <- 2 * as.numeric(logLik(fit) - logLik(fit0))\ndf <- attr(logLik(fit), \"df\") - attr(logLik(fit0), \"df\")\np_value <- pchisq(LR, df, lower.tail = FALSE)",
+  "practice": "Why does one food predictor require two coefficients when the response has three unordered categories?",
+  "seed": 3114,
+  "generating_model": "Generate 120 independent fish choices under Low food with Open/Shelter/Surface probabilities 0.25/0.50/0.25 and 120 under High food with probabilities 0.50/0.30/0.20. Choices are unordered, mutually exclusive, and independent.",
+  "generating_truth": "The outcome distributions differ, so the joint no-food-effect null is false. Relative to Open, the food coefficients are log(0.30/0.50)-log(0.50/0.25) \u2248 -1.204 for Shelter and log(0.20/0.50)-log(0.25/0.25) \u2248 -0.916 for Surface.",
+  "columns": [
+    {
+      "name": "food",
+      "meaning": "Low or High food availability",
+      "unit": "none"
+    },
+    {
+      "name": "choice",
+      "meaning": "Open, Shelter, or Surface microhabitat",
+      "unit": "none"
+    }
+  ],
+  "teaching_point": "A categorical response with more than two levels requires a joint question across several coefficients."
+}

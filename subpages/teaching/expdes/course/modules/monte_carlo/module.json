@@ -1,0 +1,73 @@
+{
+  "id": "monte_carlo",
+  "title": "Monte Carlo null-model test",
+  "seed": 240505,
+  "family": "Simulation and multivariate methods",
+  "plot_engine": "base R",
+  "packages": [
+    "ragg",
+    "jsonlite"
+  ],
+  "code_simulate": "set.seed(240505)\nd <- data.frame(gene=1:80, on_X=rbinom(80, 1, .32))\nwrite.csv(d, file.path(out_dir, \"data.csv\"), row.names = FALSE)",
+  "code_plot": "barplot(c(sum(d$on_X==0),sum(d$on_X==1)), names.arg=c(\"Autosomes\", \"X chromosome\"),\n        col=c(\"#9AA6AC\",\"#146A85\"), border=NA, ylab=\"Candidate genes\")",
+  "code_analysis": "observed <- sum(d$on_X)\np0 <- .20; n <- nrow(d); B <- 9999\nnull <- rbinom(B, size=n, prob=p0)\np_value <- (1+sum(abs(null-n*p0)>=abs(observed-n*p0)))/(B+1)\nresult <- data.frame(observed_X=observed, expected_X=n*p0, monte_carlo_p=p_value)",
+  "biology": "Test whether candidate sex-determination genes are unusually concentrated on the X chromosome.",
+  "design": "A teaching null assigns independent genes to X with probability equal to its opportunity share.",
+  "data_characteristics": [
+    "One binary chromosome class per gene",
+    "Explicit null opportunity: 20%",
+    "Test statistic: deviation in number on X"
+  ],
+  "other_examples": [
+    "Mutations in genomic compartments",
+    "Colonization among equal-access patches",
+    "Offspring under a specified segregation model"
+  ],
+  "question": "Is chromosome occupancy inconsistent with the specified opportunity model?",
+  "null": "Each independent candidate gene has probability 0.20 of being on X.",
+  "options": [
+    "Specify the biological null model before simulation.",
+    "Choose the statistic and one- or two-sided extremeness rule.",
+    "Increase B for finer Monte Carlo precision."
+  ],
+  "assumptions": [
+    "The null opportunity model is biologically appropriate.",
+    "The simulation captures dependence; this simple example assumes independent genes."
+  ],
+  "parametric": [
+    "For independent binary assignments, compare with an exact binomial test."
+  ],
+  "nonparametric": [
+    "Randomize gene labels across eligible genomic positions when that matches the null."
+  ],
+  "generating_model": "80 independent Bernoulli indicators with true X probability 0.32. The tested null probability is 0.20; null simulation uses 9999 binomial draws.",
+  "generating_truth": "The true occupancy probability is 0.32, so the tested 0.20 null is false.",
+  "columns": [
+    {
+      "name": "gene",
+      "meaning": "Candidate gene",
+      "unit": "ID"
+    },
+    {
+      "name": "on_X",
+      "meaning": "X chromosome=1, other=0",
+      "unit": "indicator"
+    }
+  ],
+  "teaching_point": "A simulation test is only as useful as its biological null model.",
+  "plot_args": [
+    {
+      "arg": "names.arg",
+      "note": "Names chromosome categories"
+    },
+    {
+      "arg": "col",
+      "note": "Highlights X against autosomes"
+    },
+    {
+      "arg": "border=NA",
+      "note": "Removes unnecessary bar outlines"
+    }
+  ],
+  "practice": "How would linked genes change the null simulation?"
+}
