@@ -1,0 +1,64 @@
+{
+ "no": 4,
+ "date": "2026-10-19",
+ "weekday": "Monday",
+ "motto": "One paper worth the coffee. One thing people are talking about. One thing from outside the fence.",
+ "lead": {
+  "topic": "Chromosome number and karyotype evolution",
+  "headline": "When the gene trees disagree, count the fusions",
+  "deck": "Nuclear genes and plastomes gave two confident, incompatible answers for a stubborn node in Sapindales; three nested chromosomal fusions give a third, and make it stick.",
+  "authors": "An D, Hou L, et al., Liu J, Kang M",
+  "journal": "Molecular Phylogenetics and Evolution",
+  "pubdate": "17 Oct 2026",
+  "doi": "10.1016/j.ympev.2026.108754",
+  "url": "https://doi.org/10.1016/j.ympev.2026.108754",
+  "paragraphs": [
+   "Deep nodes in the plant tree are where sequence data goes to argue. Sapindales holds a textbook case: Biebersteiniaceae, a single genus of Central Asian herbs with an unusually low chromosome count (2n = 10), has been placed in several positions depending on which genes you read. Nuclear single-copy genes say one thing, plastomes say another, and both say it with high support. That is gene tree conflict from rapid ancient divergence and reticulation, not noise to average away. The usual response is to add loci; this paper adds a different kind of character.",
+   "An and colleagues assembled a chromosome-level genome for <em>Biebersteinia heterostemon</em>, built a species tree from collinear genes (the subset whose order is conserved across genomes), then reconstructed ancestral karyotypes across the order. The collinear-gene tree recovers a third topology, distinct from both earlier answers: Biebersteiniaceae sister to the Anacardiaceae, Meliaceae, and Rutaceae clade, with Sapindaceae outside that group and Nitrariaceae diverging first. The chromosomal evidence lines up node by node. One fusion is shared by Anacardiaceae, Meliaceae, and Rutaceae; a second is shared by those three plus Biebersteiniaceae; a third unites all of them with Sapindaceae and is absent in Nitrariaceae. Rearrangements are rare enough, and hard enough to reverse, to work as synapomorphies where nucleotides have saturated."
+  ],
+  "push": "Shared fusions are synapomorphies only if breakpoints are not reused. Fragile sites recur, and convergent fusions would deliver exactly this nested pattern. Ancestral karyotype reconstruction also presupposes a tree, so the chromosomal support is not fully independent of the topology it endorses. Test it: simulate breakpoint reuse, and sample a second <em>Biebersteinia</em> genome."
+ },
+ "people": [
+  {
+   "role": "First author",
+   "name": "Dafei An",
+   "bio": "Works in the State Key Laboratory of Herbage Innovation and Grassland Agro-Ecosystem, College of Ecology, Lanzhou University, the group that produced the assembly. The public footprint is thin: no lab page or personal site, and a publication record that reads as graduate work on plant genome assembly and karyotype reconstruction.",
+   "links": [
+    {
+     "label": "Scholar search",
+     "url": "https://scholar.google.com/scholar?q=%22Dafei+An%22+Lanzhou+genome"
+    }
+   ]
+  },
+  {
+   "role": "Last author",
+   "name": "Minghui Kang",
+   "bio": "Co-corresponding author at that same Lanzhou laboratory, which he shares with Jianquan Liu, one of China's most productive plant evolutionary genomicists. Kang's own output is comparative and population genomics of woody and herbaceous plants: assemblies, synteny, introgression.",
+   "links": [
+    {
+     "label": "Scholar search",
+     "url": "https://scholar.google.com/scholar?q=%22Minghui+Kang%22+Lanzhou+genome"
+    }
+   ]
+  }
+ ],
+ "slot2": {
+  "kind": "FIELDNOTES",
+  "kicker": "Field notes",
+  "topic": "In the news",
+  "headline": "The Jurassic swimmer matters less than its palate",
+  "cite": "Li Y, Li P, et al., Martin T, Luo Z-X. <em>Nature</em>, 13 Oct 2026. <a href=\"https://doi.org/10.1038/s41586-026-11107-0\">doi:10.1038/s41586-026-11107-0</a>",
+  "body": "A docodont from Inner Mongolia, <em>Megacauda sungei</em>, roughly 165 million years old and about half a meter long, with a paddle-like tail and the limb proportions of a swimmer. The anatomy that matters sits further forward: a soft palate separating mouth from pharynx, the arrangement that lets an animal breathe and swallow at once, and therefore the arrangement that makes suckling possible. The team reads it as an early step in rebuilding the mammalian pharynx, in place long before crown mammals. A Jurassic swimmer is good press; a Jurassic palate is the result.",
+  "url": "https://doi.org/10.1038/s41586-026-11107-0"
+ },
+ "slot3": {
+  "kind": "PAPER",
+  "kicker": "Far afield",
+  "topic": "A paper from outside the fence",
+  "headline": "NeuroD1 does not turn microglia into neurons",
+  "cite": "Li X, Li Y, et al., Peng B, Rao Y. <em>eLife</em>, 16 Oct 2026. <a href=\"https://doi.org/10.7554/eLife.112083\">doi:10.7554/eLife.112083</a>",
+  "body": "One transcription factor was reported to convert microglia into neurons, which launched a regenerative-medicine subfield and a long argument about whether the new neurons had ever been microglia. Li and colleagues drop the viral vectors: virus-free genetic lineage tracing, two-photon imaging of the same cells over time, single-cell RNA sequencing. The answer is clean. NeuroD1-expressing microglia stay microglia, in healthy brains and injured ones, and sustained expression kills them instead. The methodological lesson travels past neuroscience: viral labeling plus marker staining can manufacture a lineage transition that never happened.",
+  "url": "https://doi.org/10.7554/eLife.112083"
+ },
+ "tomorrow": "The wider campus (news from the academy)"
+}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EEB Daily No. 4: When the gene trees disagree, count the fusions</title>
+<meta name="description" content="Nuclear genes and plastomes gave two confident, incompatible answers for a stubborn node in Sapindales; three nested chromosomal fusions give a third, and make it stick.">
+<meta property="og:title" content="EEB Daily No. 4: When the gene trees disagree, count the fusions">
+<meta property="og:description" content="Nuclear genes and plastomes gave two confident, incompatible answers for a stubborn node in Sapindales; three nested chromosomal fusions give a third, and make it stick.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EEB Daily">
+<link rel="canonical" href="https://coleoguy.github.io/eeb-daily/issues/2026-10-19.html">
+<link rel="alternate" type="application/rss+xml" title="EEB Daily" href="https://coleoguy.github.io/eeb-daily/feed.xml">
+<link rel="icon" href="/assets/img/favicon.ico">
+<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15161A" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&family=Archivo+Narrow:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --paper: #FBFAF7; --raised: #FFFFFF; --ink: #141414; --ink-2: #4E4E4E; --ink-3: #7A7A76;
+  --rule: #141414; --hair: #CFCDC6; --accent: #7A1F1F; --tint: #F1EDE6; --link: #7A1F1F;
+  --display: "Newsreader", "Iowan Old Style", "Times New Roman", serif;
+  --body: "Newsreader", Georgia, serif;
+  --label: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15161A; --raised: #1C1D22; --ink: #ECE9E2; --ink-2: #B9B5AC; --ink-3: #8B877F;
+    --rule: #ECE9E2; --hair: #3A3B41; --accent: #E0837E; --tint: #23242A; --link: #E0837E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15161A; --raised: #1C1D22; --ink: #ECE9E2; --ink-2: #B9B5AC; --ink-3: #8B877F;
+  --rule: #ECE9E2; --hair: #3A3B41; --accent: #E0837E; --tint: #23242A; --link: #E0837E; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17.5px; line-height: 1.5;
+       padding: 0 max(18px, env(safe-area-inset-left)) max(28px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-right)); }
+a { color: var(--link); text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+p { margin: 0 0 0.85em; }
+em { font-style: italic; }
+sub { font-size: 0.7em; }
+.wrap { max-width: 560px; margin: 0 auto; }
+
+/* Nameplate */
+.nameplate { text-align: center; border-top: 4px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0 10px; margin-top: 14px; }
+.nameplate h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 12vw, 3.6rem); line-height: 0.95; letter-spacing: -0.015em; margin: 0; font-variation-settings: "opsz" 72; }
+.nameplate h1 a { color: inherit; text-decoration: none; }
+.ears { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px;
+        font-family: var(--label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); }
+.dateline { border-bottom: 3px solid var(--rule); padding: 6px 0 7px; margin-bottom: 22px; text-align: center;
+            font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--ink-2); text-wrap: balance; }
+
+/* Stories */
+.kicker { font-family: var(--label); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin: 0 0 6px; }
+.kicker .topic { color: var(--ink-2); font-weight: 500; }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.7rem, 7vw, 2.1rem); line-height: 1.1; margin: 0 0 10px; letter-spacing: -0.01em; text-wrap: balance; font-variation-settings: "opsz" 48; }
+.deck { font-family: var(--display); font-style: italic; font-size: 1.15rem; line-height: 1.35; color: var(--ink-2); margin: 0 0 12px; text-wrap: pretty; }
+.byline { font-family: var(--label); font-size: 0.82rem; letter-spacing: 0.02em; color: var(--ink-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 7px 0; margin: 0 0 16px; line-height: 1.45; }
+.byline b { color: var(--ink); font-weight: 600; }
+.byline .sep { color: var(--ink-3); padding: 0 6px; }
+.text p:first-of-type::first-letter { font-family: var(--display); font-weight: 700; font-size: 3.1em; float: left; line-height: 0.8; padding: 0.08em 0.1em 0 0; }
+.pushbox { background: var(--tint); padding: 12px 14px; margin: 6px 0 18px; border-radius: 3px; font-size: 1rem; line-height: 1.45; }
+.pushbox .lab, .why .lab { font-family: var(--label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--accent); display: block; margin-bottom: 3px; }
+
+.side { border-top: 1px solid var(--rule); padding-top: 10px; }
+.side .kicker { color: var(--ink); }
+.author { padding: 6px 0 10px; }
+.author + .author { border-top: 1px solid var(--hair); padding-top: 12px; }
+.author .role { font-family: var(--label); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+.author .name { font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.2; margin: 2px 0 5px; }
+.author p { font-size: 1rem; line-height: 1.45; margin: 0; }
+.links { font-family: var(--label); font-size: 0.82rem; letter-spacing: 0.02em; }
+.links a { color: var(--link); }
+
+.fold { border-top: 3px double var(--rule); margin: 26px 0 22px; }
+.story { margin-bottom: 26px; }
+.story + .story { border-top: 1px solid var(--hair); padding-top: 22px; }
+.story h3 { font-family: var(--display); font-weight: 600; font-size: 1.45rem; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.005em; text-wrap: balance; font-variation-settings: "opsz" 36; }
+.story .cite { font-family: var(--label); font-size: 0.82rem; color: var(--ink-2); margin: 0 0 10px; letter-spacing: 0.02em; line-height: 1.45; overflow-wrap: anywhere; }
+.story .body { font-size: 1.05rem; }
+.why { border-top: 1px solid var(--hair); padding-top: 8px; margin-top: 10px; font-size: 1rem; line-height: 1.45; }
+
+/* Footer */
+.colophon { border-top: 1px solid var(--rule); margin-top: 24px; padding-top: 12px; font-family: var(--label); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--ink-2); text-transform: uppercase; line-height: 1.7; }
+.colophon .nav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 8px; font-size: 0.82rem; }
+.colophon .nav a { color: var(--link); }
+.colophon .tiny { text-transform: none; letter-spacing: 0; font-size: 0.74rem; color: var(--ink-3); margin-top: 10px; }
+.colophon .tiny a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+
+/* Archive */
+.archive h2 { font-size: 1.6rem; margin: 0 0 18px; }
+.archive ol { list-style: none; padding: 0; margin: 0; }
+.archive li { border-top: 1px solid var(--hair); padding: 14px 0; }
+.archive li:last-child { border-bottom: 1px solid var(--hair); }
+.archive .meta { font-family: var(--label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); margin-bottom: 3px; }
+.archive .meta .num { color: var(--accent); font-weight: 700; }
+.archive .hl { font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; display: block; color: var(--ink); }
+.archive .hl:hover { color: var(--accent); }
+.archive .also { font-size: 0.92rem; color: var(--ink-2); margin: 5px 0 0; line-height: 1.4; }
+.archive .also b { font-family: var(--label); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-right: 4px; }
+
+/* Guide page */
+.guide h2 { font-size: 1.45rem; margin: 28px 0 10px; }
+.guide p, .guide li { font-size: 1.02rem; line-height: 1.5; }
+.guide ol, .guide ul { padding-left: 1.3em; margin: 0 0 1em; }
+.guide li { margin-bottom: 0.5em; }
+.guide code { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; font-size: 0.86em; background: var(--tint); padding: 1px 5px; border-radius: 3px; }
+.guide pre { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; font-size: 0.78rem; line-height: 1.5; background: var(--tint); padding: 14px; border-radius: 4px; overflow-x: auto; white-space: pre; margin: 0 0 1em; }
+.guide .files { font-family: var(--label); font-size: 0.92rem; }
+
+@media print {
+  @page { size: letter; margin: 0.6in; }
+  body { background: #fff; color: #000; font-size: 11pt; padding: 0; }
+  .wrap { max-width: none; }
+  .nameplate { margin-top: 0; }
+  .colophon .nav, .colophon .tiny { display: none; }
+  a { color: inherit; }
+  .story, .author, .pushbox { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="nameplate"><h1><a href="../">EEB Daily</a></h1><div class="ears"><span>Vol. 1, No. 4</span><span>Monday, October 19, 2026</span><span>Bryan, Texas</span></div></header>
+<div class="dateline">One paper worth the coffee. One thing people are talking about. One thing from outside the fence.</div>
+
+<section class="lead">
+<p class="kicker">The lead <span class="topic">&middot; Chromosome number and karyotype evolution</span></p>
+<h2>When the gene trees disagree, count the fusions</h2>
+<p class="deck">Nuclear genes and plastomes gave two confident, incompatible answers for a stubborn node in Sapindales; three nested chromosomal fusions give a third, and make it stick.</p>
+<div class="byline"><b>An D, Hou L, et al., Liu J, Kang M</b><span class="sep">&middot;</span><em>Molecular Phylogenetics and Evolution</em>, 17 Oct 2026<span class="sep">&middot;</span><a href="https://doi.org/10.1016/j.ympev.2026.108754">doi:10.1016/j.ympev.2026.108754</a></div>
+<div class="text"><p>Deep nodes in the plant tree are where sequence data goes to argue. Sapindales holds a textbook case: Biebersteiniaceae, a single genus of Central Asian herbs with an unusually low chromosome count (2n = 10), has been placed in several positions depending on which genes you read. Nuclear single-copy genes say one thing, plastomes say another, and both say it with high support. That is gene tree conflict from rapid ancient divergence and reticulation, not noise to average away. The usual response is to add loci; this paper adds a different kind of character.</p><p>An and colleagues assembled a chromosome-level genome for <em>Biebersteinia heterostemon</em>, built a species tree from collinear genes (the subset whose order is conserved across genomes), then reconstructed ancestral karyotypes across the order. The collinear-gene tree recovers a third topology, distinct from both earlier answers: Biebersteiniaceae sister to the Anacardiaceae, Meliaceae, and Rutaceae clade, with Sapindaceae outside that group and Nitrariaceae diverging first. The chromosomal evidence lines up node by node. One fusion is shared by Anacardiaceae, Meliaceae, and Rutaceae; a second is shared by those three plus Biebersteiniaceae; a third unites all of them with Sapindaceae and is absent in Nitrariaceae. Rearrangements are rare enough, and hard enough to reverse, to work as synapomorphies where nucleotides have saturated.</p></div>
+<div class="pushbox"><span class="lab">Where to push</span>Shared fusions are synapomorphies only if breakpoints are not reused. Fragile sites recur, and convergent fusions would deliver exactly this nested pattern. Ancestral karyotype reconstruction also presupposes a tree, so the chromosomal support is not fully independent of the topology it endorses. Test it: simulate breakpoint reuse, and sample a second <em>Biebersteinia</em> genome.</div>
+<aside class="side"><p class="kicker">Who wrote it</p>
+<div class="author"><div class="role">First author</div><div class="name">Dafei An</div><p>Works in the State Key Laboratory of Herbage Innovation and Grassland Agro-Ecosystem, College of Ecology, Lanzhou University, the group that produced the assembly. The public footprint is thin: no lab page or personal site, and a publication record that reads as graduate work on plant genome assembly and karyotype reconstruction. <span class="links"><a href="https://scholar.google.com/scholar?q=%22Dafei+An%22+Lanzhou+genome">Scholar search</a></span></p></div>
+<div class="author"><div class="role">Last author</div><div class="name">Minghui Kang</div><p>Co-corresponding author at that same Lanzhou laboratory, which he shares with Jianquan Liu, one of China's most productive plant evolutionary genomicists. Kang's own output is comparative and population genomics of woody and herbaceous plants: assemblies, synteny, introgression. <span class="links"><a href="https://scholar.google.com/scholar?q=%22Minghui+Kang%22+Lanzhou+genome">Scholar search</a></span></p></div>
+</aside>
+</section>
+<div class="fold"></div>
+<article class="story"><p class="kicker">Field notes <span class="topic">&middot; In the news</span></p>
+<h3>The Jurassic swimmer matters less than its palate</h3>
+<p class="cite">Li Y, Li P, et al., Martin T, Luo Z-X. <em>Nature</em>, 13 Oct 2026. <a href="https://doi.org/10.1038/s41586-026-11107-0">doi:10.1038/s41586-026-11107-0</a></p>
+<p class="body">A docodont from Inner Mongolia, <em>Megacauda sungei</em>, roughly 165 million years old and about half a meter long, with a paddle-like tail and the limb proportions of a swimmer. The anatomy that matters sits further forward: a soft palate separating mouth from pharynx, the arrangement that lets an animal breathe and swallow at once, and therefore the arrangement that makes suckling possible. The team reads it as an early step in rebuilding the mammalian pharynx, in place long before crown mammals. A Jurassic swimmer is good press; a Jurassic palate is the result.</p>
+</article>
+<article class="story"><p class="kicker">Far afield <span class="topic">&middot; A paper from outside the fence</span></p>
+<h3>NeuroD1 does not turn microglia into neurons</h3>
+<p class="cite">Li X, Li Y, et al., Peng B, Rao Y. <em>eLife</em>, 16 Oct 2026. <a href="https://doi.org/10.7554/eLife.112083">doi:10.7554/eLife.112083</a></p>
+<p class="body">One transcription factor was reported to convert microglia into neurons, which launched a regenerative-medicine subfield and a long argument about whether the new neurons had ever been microglia. Li and colleagues drop the viral vectors: virus-free genetic lineage tracing, two-photon imaging of the same cells over time, single-cell RNA sequencing. The answer is clean. NeuroD1-expressing microglia stay microglia, in healthy brains and injured ones, and sustained expression kills them instead. The methodological lesson travels past neuroscience: viral labeling plus marker staining can manufacture a lineage transition that never happened.</p>
+</article>
+<footer class="colophon"><div class="nav"><a href="../issues/2026-10-18.html">&larr; No. 3</a><a href="../archive/">All issues</a><a href="../issues/2026-10-21.html">No. 5 &rarr;</a></div><div>Produced nightly for the Blackmon lab, Texas A&amp;M Biology &middot; Paper discovery via PubMed &middot; Tomorrow: The wider campus (news from the academy)</div><div class="tiny">Written by Claude from the day's literature; read the linked sources before citing anything. <a href="../build-your-own.html">Build one for your own lab</a> &middot; <a href="../feed.xml">RSS</a></div></footer>
+</div>
+</body>
+</html>

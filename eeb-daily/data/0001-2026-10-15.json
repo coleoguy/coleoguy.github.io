@@ -1,0 +1,69 @@
+{
+ "no": 1,
+ "date": "2026-10-15",
+ "weekday": "Thursday",
+ "motto": "One paper worth the coffee. One thing people are talking about. One thing from outside the fence.",
+ "lead": {
+  "topic": "Sex chromosomes",
+  "headline": "Faster-X is not about big mutations",
+  "deck": "A new theory said large-effect mutations should drive adaptation on the X. Three genomes say they don't, and the dominance paradox is still standing.",
+  "authors": "Ruzicka F & Vicoso B",
+  "journal": "Genome Biology and Evolution",
+  "pubdate": "10 Oct 2026",
+  "doi": "10.1093/gbe/evag259",
+  "url": "https://doi.org/10.1093/gbe/evag259",
+  "paragraphs": [
+   "Two explanations for faster-X adaptation have carried the field for decades. Either beneficial mutations are partially recessive and get exposed to selection in hemizygous males, or the X enjoys a larger effective population size through sex differences in recombination or reproductive variance. The first collides with dominance theory, which predicts new beneficial mutations should be partially dominant. The second applies only to some taxa. Ruzicka and Vicoso test a third option built on Fisher's geometric model: mutations with large effects relative to the distance to the optimum should adapt faster on the X.",
+   "They proxy scaled effect size three ways (amino-acid dissimilarity, site conservation, gene age) and estimate X versus autosomal rates of adaptive nonsynonymous substitution within each effect class in <em>Drosophila melanogaster</em>, <em>Mus musculus</em>, and humans. Large-effect mutations behave as expected under purifying selection: more constraint, less positive selection. But the faster-X signal is not concentrated among them. The theory fails its first empirical test, cleanly, in all three lineages."
+  ],
+  "push": "The proxies are coarse stand-ins for distance to the optimum, and binning MK-style estimates by effect class leaves the dominance paradox where it was. The useful result is the negative one: faster-X still lacks a mechanism consistent with dominance theory. That is a theory problem, and it is open."
+ },
+ "people": [
+  {
+   "role": "First author",
+   "name": "Filip Ruzicka",
+   "bio": "Research fellow in the Vicoso group at ISTA. PhD at UCL with Max Reuter on sexually antagonistic variation in <em>Drosophila</em>; postdoc at Monash with Tim Connallon on sex differences and sex chromosomes. Now working on dominance in evolution.",
+   "links": [
+    {
+     "label": "Site",
+     "url": "https://filruzicka.github.io/bio/"
+    },
+    {
+     "label": "Scholar",
+     "url": "https://scholar.google.com/citations?user=NoQGfugAAAAJ&hl=en"
+    }
+   ]
+  },
+  {
+   "role": "Last author",
+   "name": "Beatriz Vicoso",
+   "bio": "Professor at ISTA since 2020. PhD Edinburgh 2010 in the Charlesworth orbit; postdoc at Berkeley with Doris Bachtrog. Known for faster-X theory and tests, Y degeneration, dosage compensation in Lepidoptera, and sex chromosome turnover across insects.",
+   "links": [
+    {
+     "label": "Group page",
+     "url": "https://ist.ac.at/en/research/vicoso-group/"
+    }
+   ]
+  }
+ ],
+ "slot2": {
+  "kind": "FIELDNOTES",
+  "kicker": "Field notes",
+  "topic": "In the news",
+  "headline": "A flightless bird that lived beside <em>Archaeopteryx</em>",
+  "cite": "Xu L, Wang M, et al., Zhou Z. <em>Nature</em> 658:690, 14 Oct 2026. <a href=\"https://www.nature.com/articles/s41586-026-10972-z\">nature.com</a>",
+  "body": "The IVPP group describes <em>Yuezhuornis yangyuanensis</em> from the Late Jurassic Zhenghe Fauna of southeastern China. It mixes avialan and troodontid-like cranial traits with a deinonychosaur-style hyperextensible second toe and markedly short forelimbs, which the authors read as a terrestrial, flightless lifestyle at the very base of birds. The claim with teeth: early avialans split into several ecological pathways at once, so powered flight was not the lone engine of early avian skeletal change. Expect pushback on the forelimb-to-flightlessness inference, and heavy coverage by the weekend.",
+  "url": "https://www.nature.com/articles/s41586-026-10972-z"
+ },
+ "slot3": {
+  "kind": "ACADEMIA",
+  "kicker": "The wider campus",
+  "topic": "Academia",
+  "headline": "OSTP floats four-year PhDs, \"just in time\" NSF and NIH forms, and Golden Tickets",
+  "cite": "Kratsios remarks, Science: A New Golden Age Summit, 8 Oct 2026. <a href=\"https://www.whitehouse.gov/releases/2026/10/remarks-by-director-michael-kratsios-at-the-science-a-new-golden-age-summit\">whitehouse.gov</a>",
+  "body": "Concrete items under the rhetoric: NSF and NIH plan to move more than half of their standard application forms to a just-in-time model; NSF is standing up an Office of Metascience with Golden Ticket and distributed-review pilots; NSF is funding a $47M four-year PhD program and a $50M bachelor-to-PhD program, with DOE adding $100M in four-year PhD fellowships; NIH launches R3PEATS, a $174M reproducibility initiative. No mechanics or solicitations yet.",
+  "url": "https://www.whitehouse.gov/releases/2026/10/remarks-by-director-michael-kratsios-at-the-science-a-new-golden-age-summit",
+  "why": "A federally funded four-year PhD template will reach your desk as a question about time-to-degree and stipends. Read it with the GRFP outlook: about 1,500 awards next cycle, down from nearly 2,600 (<a href=\"https://www.aip.org/fyi/nsf-graduate-research-fellowships-expected-to-fall-next-year\">AIP FYI</a>)."
+ },
+ "tomorrow": "Far afield (a paper from outside the fence)"
+}

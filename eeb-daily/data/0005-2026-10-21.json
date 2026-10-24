@@ -1,0 +1,65 @@
+{
+ "no": 5,
+ "date": "2026-10-21",
+ "weekday": "Wednesday",
+ "motto": "One paper worth the coffee. One thing people are talking about. One thing from outside the fence.",
+ "lead": {
+  "topic": "Phylogenetic comparative methods and macroevolutionary rates",
+  "headline": "Eighteen origins of gynomonoecy, one crowded receptacle",
+  "deck": "In a daisy genus where the textbook explanations do not apply, species that mix female and bisexual flowers in one head pack those flowers twice as densely and make smaller seeds.",
+  "authors": "Shaik Z, Bergh NG, Blanco-Gavaldà C, Verboom GA",
+  "journal": "New Phytologist",
+  "pubdate": "19 Oct 2026",
+  "doi": "10.1111/nph.71668",
+  "url": "https://doi.org/10.1111/nph.71668",
+  "paragraphs": [
+   "Gynomonoecy, a capitulum that carries pistillate flowers around a core of bisexual ones, has evolved again and again across Asteraceae, so something keeps paying for it. Two explanations carry the literature: peripheral female flowers become showy rays that pull in pollinators, or outer and inner achenes diverge in size and dispersal so the plant hedges across two seed types. <em>Helichrysum</em>, the everlastings, with its centre of diversity in southern Africa, has neither showy rays nor achene heteromorphism. If gynomonoecy keeps arising there anyway, a third cause is operating, and the obvious candidate is competition for resources inside the head itself.",
+   "Shaik and colleagues built a well-sampled, time-calibrated phylogeny of South African <em>Helichrysum</em>, measured flower packing density (flowers per unit receptacle area) and achene size across species, and ran phylogenetic generalised least squares against sexual system. Gynomonoecious species pack nearly twice as many flowers per unit area as hermaphroditic ones and set subtly but significantly smaller achenes. Ancestral state reconstruction puts hermaphroditism at the root and counts 18 independent origins of gynomonoecy. The reading: dense packing steepens the resource gradient across the head, first-maturing peripheral flowers claim resources before the centre does, and shedding male function at the margin is cheap once core pollen serves the whole capitulum."
+  ],
+  "push": "PGLS gives a correlation, not an order of events. With 18 origins there is enough replication to ask whether packing density rises before the sexual-system shift or after it, with a dependent-transitions model on a discretised density or a joint continuous-discrete model. Packing and achene size are also linked by geometry alone; smaller seeds fit more flowers regardless of selection."
+ },
+ "people": [
+  {
+   "role": "First author",
+   "name": "Zaynab Shaik",
+   "bio": "Researcher in the Department of Botany and Zoology, Stellenbosch University. PhD from the University of Gothenburg, defended October 2024, on extensions of the multispecies coalescent in Bayesian phylogenetics applied to the Stoebe clade of Gnaphalieae; earlier revisions of <em>Seriphium</em> and the Cape daisies with Bergh and Verboom. A taxonomist who builds the trees and then uses them.",
+   "links": [
+    {
+     "label": "Scholar search",
+     "url": "https://scholar.google.com/scholar?q=%22Zaynab+Shaik%22+Asteraceae"
+    }
+   ]
+  },
+  {
+   "role": "Last author",
+   "name": "Tony Verboom",
+   "bio": "Professor of Plant Taxonomy and Geography at the University of Gothenburg and Gothenburg Botanical Garden since 2024, after two decades at the University of Cape Town, where he directed the Bolus Herbarium and chaired Biological Sciences. PhD at UCT (2000), postdoc at Missouri-St. Louis. Known for Cape flora phylogenetics, biogeography, and grass evolution.",
+   "links": [
+    {
+     "label": "Gothenburg page",
+     "url": "https://www.gu.se/en/about/find-staff/tonyverboom"
+    }
+   ]
+  }
+ ],
+ "slot2": {
+  "kind": "FIELDNOTES",
+  "kicker": "Field notes",
+  "topic": "In the news",
+  "headline": "Mayflies and dragonflies are sisters after all",
+  "cite": "Cai C, Zhou C, et al. <em>PNAS</em>, 13 Oct 2026, via Phys.org and EurekAlert. <a href=\"https://doi.org/10.1073/pnas.2614706123\">doi:10.1073/pnas.2614706123</a>",
+  "body": "The Palaeoptera problem is a century old: do mayflies and dragonflies form a clade sister to the wing-folding Neoptera, or does one of them pair with Neoptera instead? A team led by Chenyang Cai (Nanjing Institute of Geology and Palaeontology) and Changfa Zhou (Nanjing Normal) sequenced 16 mayfly genomes, assembled supermatrices from more than 100 insects, and recover Palaeoptera under concatenation and coalescent models alike. About 40 percent of gene trees carry incomplete lineage sorting or estimation error from the rapid early radiation, which is why earlier studies split. Crown Pterygota dates to the Early Devonian; wing folding came later and powered the Neoptera radiation.",
+  "url": "https://doi.org/10.1073/pnas.2614706123"
+ },
+ "slot3": {
+  "kind": "ACADEMIA",
+  "kicker": "The wider campus",
+  "topic": "News from the academy",
+  "headline": "NIH funded 7,400 fewer grants than it did in 2024",
+  "cite": "Knott K. <em>Inside Higher Ed</em>, 16 Oct 2026, on a new AAMC analysis. <a href=\"https://insidehighered.com/news/quick-takes/2026/10/16/new-analysis-finds-nih-awarded-7400-fewer-grants\">insidehighered.com</a>",
+  "body": "The AAMC counts about 56,600 NIH awards in fiscal 2026 against 64,000 in fiscal 2024, a 12 percent drop, and a further slip from 58,500 in fiscal 2025. NIH obligated every dollar in both years, so the gap is mechanism rather than money: roughly $1.9 billion went to grants funded in full up front, which moves cash quickly but supports fewer projects, and hundreds of awards frozen or terminated in 2025 were never reinstated. AAMC's point is that spending the budget is not the same as sustaining the system.",
+  "url": "https://insidehighered.com/news/quick-takes/2026/10/16/new-analysis-finds-nih-awarded-7400-fewer-grants",
+  "why": "Fully-funded-up-front awards are spreading to NSF too. Fewer grants with lumpier timing make the admissions arithmetic for a graduate program, which keys off expected lab funding, harder to run a year in advance."
+ },
+ "tomorrow": "Far afield (a paper from outside the fence)"
+}

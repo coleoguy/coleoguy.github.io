@@ -1,0 +1,69 @@
+{
+ "no": 3,
+ "date": "2026-10-18",
+ "weekday": "Sunday",
+ "motto": "One paper worth the coffee. One thing people are talking about. One thing from outside the fence.",
+ "lead": {
+  "topic": "Genome biology and comparative genomics",
+  "headline": "Antifreeze was the easy part; transposons did the rest",
+  "deck": "A phased genome of an Antarctic plunderfish dates the clade's genomic growth, and the growth arrives in lineage-specific bursts rather than with the cold.",
+  "authors": "Martelossi J, Krasheninnikova K, et al., Clark MS, Bista I",
+  "journal": "Genome Biology",
+  "pubdate": "15 Oct 2026",
+  "doi": "10.1186/s13059-026-04293-7",
+  "url": "https://doi.org/10.1186/s13059-026-04293-7",
+  "paragraphs": [
+   "Notothenioids are the cleanest vertebrate case of a clade colonizing a new thermal world. One radiation, one ocean, and one famous innovation: antifreeze glycoproteins, built from a trypsinogen gene and amplified into tandem arrays that let fish hold water which should exclude them. The standard account stops at that locus. What it has lacked is a genome-scale ledger of everything else that moved while the clade diversified, and the haplotype resolution to ask whether the two copies of the array inside one fish even match.",
+   "Martelossi and colleagues phase a genome of <em>Harpagifer antarcticus</em> and read it against genomes across the clade. Haplotypic variability is low genome-wide, and the afgp haplotypes are near-identical apart from length variants, pointing to expansion by tandem duplication of gene pairs rather than accumulation of divergent copies. Macrosynteny holds across cryonotothenioids with group-specific fusions layered on. The timing is the result worth keeping: a slow ancestral expansion tracking historical cooling, then lineage-specific spikes of genomic gain and LINE-L2 transposition, plus ancestral diversifying selection and new conserved noncoding elements in antioxidant and proteostasis genes."
+  ],
+  "push": "Inferred genome gain is partly an assembly property: contiguity varies across this clade, and collapsed repeats depress gain exactly where assemblies are worst. Refit the rate model with assembly quality as a covariate. Then ask the harder question: do the transposition spikes sit on speciation events, or merely on the longest branches?"
+ },
+ "people": [
+  {
+   "role": "First author",
+   "name": "Jacopo Martelossi",
+   "bio": "Postdoctoral researcher at the Senckenberg Research Institute and Natural History Museum in Frankfurt. PhD at Bologna with Fabrizio Ghiselli on molluscan comparative genomics, after an MSc with Andrea Luchetti on stick insect phylogenetics. Known for work on the repetitive and noncoding genome: transposable element dynamics, and what they do to invertebrate genome size.",
+   "links": [
+    {
+     "label": "Profile",
+     "url": "https://cris.unibo.it/cris/rp/rp197999"
+    }
+   ]
+  },
+  {
+   "role": "Last author",
+   "name": "Iliana Bista",
+   "bio": "Group leader at Senckenberg in Frankfurt, within the LOEWE Centre for Translational Biodiversity Genomics. Previously Wellcome Sanger Institute and Cambridge, where she produced fish reference genomes for the Vertebrate Genomes Project. Earlier work was freshwater and marine eDNA metabarcoding, which is unusual training for a genome assembler and shows in the biodiversity framing.",
+   "links": [
+    {
+     "label": "Sanger",
+     "url": "https://www.sanger.ac.uk/person/bista-iliana"
+    },
+    {
+     "label": "Senckenberg",
+     "url": "https://tbg.senckenberg.de/de/meta-omics-group"
+    }
+   ]
+  }
+ ],
+ "slot2": {
+  "kind": "FIELDNOTES",
+  "kicker": "Field notes",
+  "topic": "In the news",
+  "headline": "A punched shoulder blade, and a burial laid over it",
+  "cite": "Pomeroy E, Hunt CO, et al., Barker G. <em>Scientific Reports</em>, 15 Oct 2026. <a href=\"https://doi.org/10.1038/s41598-026-69193-z\">doi:10.1038/s41598-026-69193-z</a>",
+  "body": "A new Neanderthal from Shanidar Cave in Iraq, roughly 75,000 years old, carries a round 1.5 cm hole through the left scapula with the bone plug driven inward. The team rules out gnawing and insect damage, and matches the wound geometry to experimental wooden spear impacts rather than stone-tipped ones: a strike aimed at the chest, around the time of death. The same individual had lived long with a split front tooth, and was then buried at a site with repeated burials. Violence, care, and funerary behavior in one skeleton. Shanidar 3 raised the same question decades ago, so expect argument over whether two cases are a pattern.",
+  "url": "https://doi.org/10.1038/s41598-026-69193-z"
+ },
+ "slot3": {
+  "kind": "ACADEMIA",
+  "kicker": "The wider campus",
+  "topic": "News from the academy",
+  "headline": "NSF's award count is down by a quarter, on purpose",
+  "cite": "Marquis L. <em>ASBMB Today</em>, 14 Oct 2026. <a href=\"https://www.asbmb.org/asbmb-today/policy/101426/nsf-faces-funding-cuts-and-policy-changes\">asbmb.org</a>",
+  "body": "NSF had made about 6,200 awards by Sept. 24 of this fiscal year, against 8,600 at the same point last year and more than 10,000 in each of the four years before that. A Sept. 10 agency memo explains the gap: money moves from investigator-initiated grants toward administration priorities, including a $1.5 billion X-Labs push and new Frontier Initiatives in AI, quantum, materials, and biological design. NSF's Sept. 1 integrity policy also dropped its explicit ban on political interference.",
+  "url": "https://www.asbmb.org/asbmb-today/policy/101426/nsf-faces-funding-cuts-and-policy-changes",
+  "why": "Fewer core awards with the same applicant pool means lower hit rates for the people you advise and recruit. Build that into stipend commitments and cohort size now, and tell students the odds changed for reasons that have nothing to do with their proposals."
+ },
+ "tomorrow": "Far afield (a paper from outside the fence)"
+}

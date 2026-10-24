@@ -1,0 +1,64 @@
+{
+ "no": 8,
+ "date": "2026-10-23",
+ "weekday": "Friday",
+ "motto": "One paper worth the coffee. One thing people are talking about. One thing from outside the fence.",
+ "lead": {
+  "topic": "Sex chromosome evolution: turnover and diversification",
+  "headline": "Catfish that keep rebuilding their sex chromosomes split into species faster",
+  "deck": "A genome-wide phylogeny of seventeen <em>Harttia</em> species shows the genus's multiple sex chromosome systems arose at least twice from a simple XY, and the lineages carrying them speciate at a higher rate.",
+  "authors": "Sassi FMC, de Souza FHS, Perez MF, Shams F, Ezaz T, Deon GA, Liehr T, Xu L, Cioffi MB",
+  "journal": "Biology Direct",
+  "pubdate": "21 Oct 2026",
+  "doi": "10.1186/s13062-026-00994-y",
+  "url": "https://doi.org/10.1186/s13062-026-00994-y",
+  "paragraphs": [
+   "Sex chromosome turnover is routine in fishes, and the open question is whether it rides along with diversification or drives it. The armored catfish genus <em>Harttia</em> holds the richest set of multiple sex chromosome systems known in any fish group, with X<sub>1</sub>X<sub>2</sub>Y and XY<sub>1</sub>Y<sub>2</sub> systems scattered among species whose karyotypes were described one at a time by the São Carlos cytogenetics school. Nobody had placed those systems on a dated, genome-wide tree, so nobody could ask whether lineages that remodel their sex chromosomes split more often than lineages that keep a simple XY.",
+   "Sassi, Cioffi and colleagues generated DArTseq SNPs for 17 species. The tree resolves three major clades that diversified within the last ten million years, in step with the reshuffling of Neotropical drainages. From 443 candidate sex-linked markers, the X<sub>1</sub>X<sub>2</sub>Y and XY<sub>1</sub>Y<sub>2</sub> systems come out as independent origins rather than one inherited system. Ancestral reconstruction puts the ancestral karyotype at 2n = 58 with a homomorphic XY; the multiple systems arise by lineage-specific fusions and rearrangements layered on it. State-dependent diversification models then return significantly higher speciation rates in clades carrying multiple sex chromosomes than in clades with simple systems."
+  ],
+  "push": "Seventeen tips is thin for any SSE model; at that size one trait-bearing clade can carry the whole signal, and the authors concede it. The next moves are hidden-state models on a Loricariidae-wide tree and a direct test of whether neo-sex-chromosome fusions cut hybrid fertility between sister species."
+ },
+ "people": [
+  {
+   "role": "First author",
+   "name": "Francisco de Menezes Cavalcante Sassi",
+   "bio": "Doctoral researcher trained in Marcelo Cioffi's Evolutionary Cytogenetics Lab at the Federal University of São Carlos, now listed at the UNESP Aquaculture Center (CAUNESP), with FAPESP support. His dissertation reconstructs the history of <em>Harttia</em> sex chromosomes; an earlier version of this work won the Horácio Schneider prize for animal genetics at the 2024 Brazilian Genetics Congress.",
+   "links": [
+    {
+     "label": "FAPESP profile",
+     "url": "https://agencia.fapesp.br/doutorando-da-ufscar-e-premiado-no-congresso-brasileiro-de-genetica/52949"
+    }
+   ]
+  },
+  {
+   "role": "Last author",
+   "name": "Marcelo de Bello Cioffi",
+   "bio": "Professor of Genetics and Evolution at UFSCar and coordinator of its Evolutionary Cytogenetics Lab, the fish cytogenetics school built around Luiz Bertollo, where he trained. Alexander von Humboldt alumnus with a long Jena partnership with Thomas Liehr (a coauthor here). Known for chromosome painting, repeat mapping and sex chromosome studies across Neotropical fishes.",
+   "links": [
+    {
+     "label": "Lab page",
+     "url": "https://www.lec.ufscar.br/history"
+    }
+   ]
+  }
+ ],
+ "slot2": {
+  "kind": "FIELDNOTES",
+  "kicker": "Field notes",
+  "topic": "In the news",
+  "headline": "Two bones, eighteen proteins, and at last a face for the Denisovans",
+  "cite": "Xing, Wu, Shao, Ge et al., Fu Q, <em>Nature</em>, 21 Oct 2026. <a href=\"https://www.nature.com/articles/s41586-026-11132-z\">nature.com/articles/s41586-026-11132-z</a> · <a href=\"https://www.nature.com/articles/d41586-026-03360-0\">News story</a>",
+  "body": "Qiaomei Fu's group at the IVPP in Beijing recovered 18 endogenous proteins from a parietal and a mandibular ramus excavated at Xujiayao, northern China, dated to 199 to 138 thousand years ago. One collagen variant, lysine at COL1A2 position 996 in 57 and 61 peptides, matches every known Denisovan and no Neanderthal or modern human, and a Bayesian tree over 2,074 amino acid positions places Xujiayao with Denisovans at over 99 percent posterior support. The authors then assign Dali, Jinniushan, Hualongdong and Xuchang to the same population: low, wide, thick-vaulted crania with braincases up to 1,700 ml. Expect pushback on one diagnostic site, eight proteins, and morphology inferred mostly from bones without molecules.",
+  "url": "https://www.nature.com/articles/s41586-026-11132-z"
+ },
+ "slot3": {
+  "kind": "PAPER",
+  "kicker": "Far afield",
+  "topic": "A paper from outside the fence",
+  "headline": "Bacterial insect toxins evolve by recombination, and drift keeps most of the map off limits",
+  "cite": "Kaiser S, Shahmohammadi N, et al., Bode HB, Hochberg GKA. <em>Nature Ecology &amp; Evolution</em>, 21 Oct 2026. <a href=\"https://doi.org/10.1038/s41559-026-03214-y\">doi:10.1038/s41559-026-03214-y</a>",
+  "body": "Non-ribosomal peptides, the family that includes penicillin, are built by modular synthetases that recombine so freely that ordinary phylogenetics and selection tests break down. Hochberg, Bode and colleagues took the GameXPeptides that entomopathogenic <em>Photorhabdus</em> and <em>Xenorhabdus</em> use to kill insects, built recombination-aware phylogenies, and resurrected ancestral synthetases. The reconstruction turns up dozens of unknown peptides and repeated structural convergence. Selection is detectable, but much of the diversity is drift, and recombination hotspots bias which module swaps occur at all, so the reachable peptide space is a narrow corridor rather than an open field. A clean demonstration that non-adaptive forces shape even nature's chemical weapons.",
+  "url": "https://doi.org/10.1038/s41559-026-03214-y"
+ },
+ "tomorrow": "The wider campus (news from the academy)"
+}

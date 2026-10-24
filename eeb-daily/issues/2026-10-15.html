@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EEB Daily No. 1: Faster-X is not about big mutations</title>
+<meta name="description" content="A new theory said large-effect mutations should drive adaptation on the X. Three genomes say they don&#x27;t, and the dominance paradox is still standing.">
+<meta property="og:title" content="EEB Daily No. 1: Faster-X is not about big mutations">
+<meta property="og:description" content="A new theory said large-effect mutations should drive adaptation on the X. Three genomes say they don&#x27;t, and the dominance paradox is still standing.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EEB Daily">
+<link rel="canonical" href="https://coleoguy.github.io/eeb-daily/issues/2026-10-15.html">
+<link rel="alternate" type="application/rss+xml" title="EEB Daily" href="https://coleoguy.github.io/eeb-daily/feed.xml">
+<link rel="icon" href="/assets/img/favicon.ico">
+<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15161A" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&family=Archivo+Narrow:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --paper: #FBFAF7; --raised: #FFFFFF; --ink: #141414; --ink-2: #4E4E4E; --ink-3: #7A7A76;
+  --rule: #141414; --hair: #CFCDC6; --accent: #7A1F1F; --tint: #F1EDE6; --link: #7A1F1F;
+  --display: "Newsreader", "Iowan Old Style", "Times New Roman", serif;
+  --body: "Newsreader", Georgia, serif;
+  --label: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15161A; --raised: #1C1D22; --ink: #ECE9E2; --ink-2: #B9B5AC; --ink-3: #8B877F;
+    --rule: #ECE9E2; --hair: #3A3B41; --accent: #E0837E; --tint: #23242A; --link: #E0837E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15161A; --raised: #1C1D22; --ink: #ECE9E2; --ink-2: #B9B5AC; --ink-3: #8B877F;
+  --rule: #ECE9E2; --hair: #3A3B41; --accent: #E0837E; --tint: #23242A; --link: #E0837E; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17.5px; line-height: 1.5;
+       padding: 0 max(18px, env(safe-area-inset-left)) max(28px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-right)); }
+a { color: var(--link); text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+p { margin: 0 0 0.85em; }
+em { font-style: italic; }
+sub { font-size: 0.7em; }
+.wrap { max-width: 560px; margin: 0 auto; }
+
+/* Nameplate */
+.nameplate { text-align: center; border-top: 4px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0 10px; margin-top: 14px; }
+.nameplate h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 12vw, 3.6rem); line-height: 0.95; letter-spacing: -0.015em; margin: 0; font-variation-settings: "opsz" 72; }
+.nameplate h1 a { color: inherit; text-decoration: none; }
+.ears { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px;
+        font-family: var(--label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); }
+.dateline { border-bottom: 3px solid var(--rule); padding: 6px 0 7px; margin-bottom: 22px; text-align: center;
+            font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--ink-2); text-wrap: balance; }
+
+/* Stories */
+.kicker { font-family: var(--label); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin: 0 0 6px; }
+.kicker .topic { color: var(--ink-2); font-weight: 500; }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.7rem, 7vw, 2.1rem); line-height: 1.1; margin: 0 0 10px; letter-spacing: -0.01em; text-wrap: balance; font-variation-settings: "opsz" 48; }
+.deck { font-family: var(--display); font-style: italic; font-size: 1.15rem; line-height: 1.35; color: var(--ink-2); margin: 0 0 12px; text-wrap: pretty; }
+.byline { font-family: var(--label); font-size: 0.82rem; letter-spacing: 0.02em; color: var(--ink-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 7px 0; margin: 0 0 16px; line-height: 1.45; }
+.byline b { color: var(--ink); font-weight: 600; }
+.byline .sep { color: var(--ink-3); padding: 0 6px; }
+.text p:first-of-type::first-letter { font-family: var(--display); font-weight: 700; font-size: 3.1em; float: left; line-height: 0.8; padding: 0.08em 0.1em 0 0; }
+.pushbox { background: var(--tint); padding: 12px 14px; margin: 6px 0 18px; border-radius: 3px; font-size: 1rem; line-height: 1.45; }
+.pushbox .lab, .why .lab { font-family: var(--label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--accent); display: block; margin-bottom: 3px; }
+
+.side { border-top: 1px solid var(--rule); padding-top: 10px; }
+.side .kicker { color: var(--ink); }
+.author { padding: 6px 0 10px; }
+.author + .author { border-top: 1px solid var(--hair); padding-top: 12px; }
+.author .role { font-family: var(--label); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+.author .name { font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.2; margin: 2px 0 5px; }
+.author p { font-size: 1rem; line-height: 1.45; margin: 0; }
+.links { font-family: var(--label); font-size: 0.82rem; letter-spacing: 0.02em; }
+.links a { color: var(--link); }
+
+.fold { border-top: 3px double var(--rule); margin: 26px 0 22px; }
+.story { margin-bottom: 26px; }
+.story + .story { border-top: 1px solid var(--hair); padding-top: 22px; }
+.story h3 { font-family: var(--display); font-weight: 600; font-size: 1.45rem; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.005em; text-wrap: balance; font-variation-settings: "opsz" 36; }
+.story .cite { font-family: var(--label); font-size: 0.82rem; color: var(--ink-2); margin: 0 0 10px; letter-spacing: 0.02em; line-height: 1.45; overflow-wrap: anywhere; }
+.story .body { font-size: 1.05rem; }
+.why { border-top: 1px solid var(--hair); padding-top: 8px; margin-top: 10px; font-size: 1rem; line-height: 1.45; }
+
+/* Footer */
+.colophon { border-top: 1px solid var(--rule); margin-top: 24px; padding-top: 12px; font-family: var(--label); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--ink-2); text-transform: uppercase; line-height: 1.7; }
+.colophon .nav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 8px; font-size: 0.82rem; }
+.colophon .nav a { color: var(--link); }
+.colophon .tiny { text-transform: none; letter-spacing: 0; font-size: 0.74rem; color: var(--ink-3); margin-top: 10px; }
+.colophon .tiny a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+
+/* Archive */
+.archive h2 { font-size: 1.6rem; margin: 0 0 18px; }
+.archive ol { list-style: none; padding: 0; margin: 0; }
+.archive li { border-top: 1px solid var(--hair); padding: 14px 0; }
+.archive li:last-child { border-bottom: 1px solid var(--hair); }
+.archive .meta { font-family: var(--label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); margin-bottom: 3px; }
+.archive .meta .num { color: var(--accent); font-weight: 700; }
+.archive .hl { font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; display: block; color: var(--ink); }
+.archive .hl:hover { color: var(--accent); }
+.archive .also { font-size: 0.92rem; color: var(--ink-2); margin: 5px 0 0; line-height: 1.4; }
+.archive .also b { font-family: var(--label); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-right: 4px; }
+
+/* Guide page */
+.guide h2 { font-size: 1.45rem; margin: 28px 0 10px; }
+.guide p, .guide li { font-size: 1.02rem; line-height: 1.5; }
+.guide ol, .guide ul { padding-left: 1.3em; margin: 0 0 1em; }
+.guide li { margin-bottom: 0.5em; }
+.guide code { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; font-size: 0.86em; background: var(--tint); padding: 1px 5px; border-radius: 3px; }
+.guide pre { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; font-size: 0.78rem; line-height: 1.5; background: var(--tint); padding: 14px; border-radius: 4px; overflow-x: auto; white-space: pre; margin: 0 0 1em; }
+.guide .files { font-family: var(--label); font-size: 0.92rem; }
+
+@media print {
+  @page { size: letter; margin: 0.6in; }
+  body { background: #fff; color: #000; font-size: 11pt; padding: 0; }
+  .wrap { max-width: none; }
+  .nameplate { margin-top: 0; }
+  .colophon .nav, .colophon .tiny { display: none; }
+  a { color: inherit; }
+  .story, .author, .pushbox { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="nameplate"><h1><a href="../">EEB Daily</a></h1><div class="ears"><span>Vol. 1, No. 1</span><span>Thursday, October 15, 2026</span><span>Bryan, Texas</span></div></header>
+<div class="dateline">One paper worth the coffee. One thing people are talking about. One thing from outside the fence.</div>
+
+<section class="lead">
+<p class="kicker">The lead <span class="topic">&middot; Sex chromosomes</span></p>
+<h2>Faster-X is not about big mutations</h2>
+<p class="deck">A new theory said large-effect mutations should drive adaptation on the X. Three genomes say they don't, and the dominance paradox is still standing.</p>
+<div class="byline"><b>Ruzicka F &amp; Vicoso B</b><span class="sep">&middot;</span><em>Genome Biology and Evolution</em>, 10 Oct 2026<span class="sep">&middot;</span><a href="https://doi.org/10.1093/gbe/evag259">doi:10.1093/gbe/evag259</a></div>
+<div class="text"><p>Two explanations for faster-X adaptation have carried the field for decades. Either beneficial mutations are partially recessive and get exposed to selection in hemizygous males, or the X enjoys a larger effective population size through sex differences in recombination or reproductive variance. The first collides with dominance theory, which predicts new beneficial mutations should be partially dominant. The second applies only to some taxa. Ruzicka and Vicoso test a third option built on Fisher's geometric model: mutations with large effects relative to the distance to the optimum should adapt faster on the X.</p><p>They proxy scaled effect size three ways (amino-acid dissimilarity, site conservation, gene age) and estimate X versus autosomal rates of adaptive nonsynonymous substitution within each effect class in <em>Drosophila melanogaster</em>, <em>Mus musculus</em>, and humans. Large-effect mutations behave as expected under purifying selection: more constraint, less positive selection. But the faster-X signal is not concentrated among them. The theory fails its first empirical test, cleanly, in all three lineages.</p></div>
+<div class="pushbox"><span class="lab">Where to push</span>The proxies are coarse stand-ins for distance to the optimum, and binning MK-style estimates by effect class leaves the dominance paradox where it was. The useful result is the negative one: faster-X still lacks a mechanism consistent with dominance theory. That is a theory problem, and it is open.</div>
+<aside class="side"><p class="kicker">Who wrote it</p>
+<div class="author"><div class="role">First author</div><div class="name">Filip Ruzicka</div><p>Research fellow in the Vicoso group at ISTA. PhD at UCL with Max Reuter on sexually antagonistic variation in <em>Drosophila</em>; postdoc at Monash with Tim Connallon on sex differences and sex chromosomes. Now working on dominance in evolution. <span class="links"><a href="https://filruzicka.github.io/bio/">Site</a> &middot; <a href="https://scholar.google.com/citations?user=NoQGfugAAAAJ&amp;hl=en">Scholar</a></span></p></div>
+<div class="author"><div class="role">Last author</div><div class="name">Beatriz Vicoso</div><p>Professor at ISTA since 2020. PhD Edinburgh 2010 in the Charlesworth orbit; postdoc at Berkeley with Doris Bachtrog. Known for faster-X theory and tests, Y degeneration, dosage compensation in Lepidoptera, and sex chromosome turnover across insects. <span class="links"><a href="https://ist.ac.at/en/research/vicoso-group/">Group page</a></span></p></div>
+</aside>
+</section>
+<div class="fold"></div>
+<article class="story"><p class="kicker">Field notes <span class="topic">&middot; In the news</span></p>
+<h3>A flightless bird that lived beside <em>Archaeopteryx</em></h3>
+<p class="cite">Xu L, Wang M, et al., Zhou Z. <em>Nature</em> 658:690, 14 Oct 2026. <a href="https://www.nature.com/articles/s41586-026-10972-z">nature.com</a></p>
+<p class="body">The IVPP group describes <em>Yuezhuornis yangyuanensis</em> from the Late Jurassic Zhenghe Fauna of southeastern China. It mixes avialan and troodontid-like cranial traits with a deinonychosaur-style hyperextensible second toe and markedly short forelimbs, which the authors read as a terrestrial, flightless lifestyle at the very base of birds. The claim with teeth: early avialans split into several ecological pathways at once, so powered flight was not the lone engine of early avian skeletal change. Expect pushback on the forelimb-to-flightlessness inference, and heavy coverage by the weekend.</p>
+</article>
+<article class="story"><p class="kicker">The wider campus <span class="topic">&middot; Academia</span></p>
+<h3>OSTP floats four-year PhDs, "just in time" NSF and NIH forms, and Golden Tickets</h3>
+<p class="cite">Kratsios remarks, Science: A New Golden Age Summit, 8 Oct 2026. <a href="https://www.whitehouse.gov/releases/2026/10/remarks-by-director-michael-kratsios-at-the-science-a-new-golden-age-summit">whitehouse.gov</a></p>
+<p class="body">Concrete items under the rhetoric: NSF and NIH plan to move more than half of their standard application forms to a just-in-time model; NSF is standing up an Office of Metascience with Golden Ticket and distributed-review pilots; NSF is funding a $47M four-year PhD program and a $50M bachelor-to-PhD program, with DOE adding $100M in four-year PhD fellowships; NIH launches R3PEATS, a $174M reproducibility initiative. No mechanics or solicitations yet.</p>
+<div class="why"><span class="lab">Why it matters</span>A federally funded four-year PhD template will reach your desk as a question about time-to-degree and stipends. Read it with the GRFP outlook: about 1,500 awards next cycle, down from nearly 2,600 (<a href="https://www.aip.org/fyi/nsf-graduate-research-fellowships-expected-to-fall-next-year">AIP FYI</a>).</div>
+</article>
+<footer class="colophon"><div class="nav"><a href="../archive/">All issues</a><a href="../issues/2026-10-17.html">No. 2 &rarr;</a></div><div>Produced nightly for the Blackmon lab, Texas A&amp;M Biology &middot; Paper discovery via PubMed &middot; Tomorrow: Far afield (a paper from outside the fence)</div><div class="tiny">Written by Claude from the day's literature; read the linked sources before citing anything. <a href="../build-your-own.html">Build one for your own lab</a> &middot; <a href="../feed.xml">RSS</a></div></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{
+ "no": 2,
+ "date": "2026-10-17",
+ "weekday": "Saturday",
+ "motto": "One paper worth the coffee. One thing people are talking about. One thing from outside the fence.",
+ "lead": {
+  "topic": "Comparative methods and rates",
+  "headline": "Wing shape and venation run on separate clocks",
+  "deck": "A self-supervised network reads morphology off raw wing images, and the characters it learns say hymenopteran wings are not tracking the ecology people assumed they track.",
+  "authors": "Peng A, Guan S, et al., Jouault C, Legendre F",
+  "journal": "Science Advances",
+  "pubdate": "14 Oct 2026",
+  "doi": "10.1126/sciadv.aef0605",
+  "url": "https://doi.org/10.1126/sciadv.aef0605",
+  "paragraphs": [
+   "Phenotype is the bottleneck in macroevolution. Sequence data scale; morphology does not, because characters get scored by hand, coded by judgment, and argued over for decades. Peng and colleagues go at that with HAIKA, a self-supervised residual channel-attention autoencoder that learns continuous morphological representations from unlabeled standardized images, then reports which image regions produced each dimension. The interpretability is the part that matters for comparative work: an embedding nobody can inspect is not a character, it is a number.",
+   "Trained on forewings across broad pterygote lineages, HAIKA beat most baseline deep learning models and conventional shape descriptors at clustering, dimensionality reduction, and morphological embedding. Turned on Hymenoptera, the learned characters improved morphology-based phylogenetic reconstruction, and then delivered the result worth arguing about: shape and venation evolve at decoupled rates, and neither aligns consistently with the ecological transitions the field organizes around. Parasitoidism and eusociality, the two shifts that structure how people narrate hymenopteran diversification, do not line up with the rate shifts in wing morphology. The wing is not reading the ecology."
+  ],
+  "push": "Learned characters are not independent of their training set, and the decoupling claim rests on modules the autoencoder inferred rather than on homology. The test is to refit the rate models on embeddings trained with Hymenoptera held out, and to let rates shift freely across branches instead of only at labeled ecological transitions."
+ },
+ "people": [
+  {
+   "role": "First author",
+   "name": "Ancheng Peng",
+   "bio": "Doctoral researcher working across ISYEB (MNHN, CNRS, Sorbonne) in Paris and the State Key Laboratory of Palaeobiology and Stratigraphy at NIGPAS in Nanjing, in the orbit of André Nel and Bo Wang. Comes in through computer vision rather than classical geometric morphometrics, and builds image-based pipelines that convert digitized insect collections into usable evolutionary characters. Thin public web presence so far.",
+   "links": [
+    {
+     "label": "ISYEB",
+     "url": "https://isyeb.mnhn.fr/en"
+    }
+   ]
+  },
+  {
+   "role": "Last author",
+   "name": "Frédéric Legendre",
+   "bio": "Maître de conférences (HDR) at MNHN Paris in ISYEB, leading the Evolution Fonctionnelle et Taxonomie team and curating the Dictyoptera collections. PhD 2007 at Paris VI with Philippe Grandcolas on cockroach and termite phylogeny and social evolution; postdoc at Missouri. Known for fossil-calibrated dictyopteran phylogenetics, the evolution of sociality and its link to diversification, and taxonomic bias in biodiversity data.",
+   "links": [
+    {
+     "label": "CV",
+     "url": "https://isyeb.mnhn.fr/sites/isyeb/files/cv/legendre_cv_2021.pdf"
+    },
+    {
+     "label": "ISYEB",
+     "url": "https://isyeb.mnhn.fr/en/participant/397"
+    }
+   ]
+  }
+ ],
+ "slot2": {
+  "kind": "FIELDNOTES",
+  "kicker": "Field notes",
+  "topic": "In the news",
+  "headline": "A drawer from 1924 held Europe's first megaraptoran",
+  "cite": "Morrison C, Scherer CR, et al., Barrett PM. <em>Royal Society Open Science</em> 13(10), 14 Oct 2026. <a href=\"https://doi.org/10.1098/rsos.260937\">doi:10.1098/rsos.260937</a>",
+  "body": "A braincase fragment collected on the Isle of Wight and shelved at the Natural History Museum since 1924 is now <em>Invictibellatrix amberina</em>, a three to four meter megaraptoran theropod from roughly 120 million years ago. Megaraptorans had been a Gondwanan story; this is the first from Europe. CT scanning plus phylogenetic analysis pinned the placement on an oval neural canal opening and an hourglass-shaped crest, and supports dispersal from Asia through Europe into Gondwana, with the clade dropping out of Laurasia while southern relatives reached nine meters. Expect a fight over how much a partial braincase can carry.",
+  "url": "https://doi.org/10.1098/rsos.260937"
+ },
+ "slot3": {
+  "kind": "PAPER",
+  "kicker": "Far afield",
+  "topic": "Outside the fence",
+  "headline": "An mRNA that regulates genes without being translated",
+  "cite": "Han L, Yuan Y, Liu Y, Li Y, Qi Y. <em>Science</em>, 15 Oct 2026. <a href=\"https://doi.org/10.1126/science.adz4903\">doi:10.1126/science.adz4903</a>",
+  "body": "Genome-wide mapping of RNA-chromatin contacts in plants turned up protein-coding transcripts parked at specific loci far from where their proteins act. Han and colleagues show two of them repress target transcription independently of the proteins they encode: one forms an RNA-DNA triplex at its targets, restricting root growth and promoting flowering, the other works through a triplex-independent route. The coding versus noncoding line was always a convenience, and this cuts it again. The evolutionary reading: a single sequence can be under selection as a protein template and as a cis-acting regulator at the same time.",
+  "url": "https://doi.org/10.1126/science.adz4903"
+ },
+ "tomorrow": "The wider campus (news from the academy)"
+}

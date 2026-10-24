@@ -1,0 +1,64 @@
+{
+ "no": 6,
+ "date": "2026-10-21",
+ "weekday": "Wednesday",
+ "motto": "One paper worth the coffee. One thing people are talking about. One thing from outside the fence.",
+ "lead": {
+  "topic": "Striking EEB paper: introgression and linked selection",
+  "headline": "A foreign block of genome establishes like a single allele",
+  "deck": "When an introgressed chunk carries many weakly selected loci, its odds of taking hold ignore recombination entirely; what recombination decides is how much of the block is left standing.",
+  "authors": "Foutel-Rodier F, Barton NH, Etheridge AM",
+  "journal": "Genetics",
+  "pubdate": "19 Oct 2026",
+  "doi": "10.1093/genetics/iyag280",
+  "url": "https://doi.org/10.1093/genetics/iyag280",
+  "paragraphs": [
+   "Hybridization hands a population a block of foreign genome, and that block carries not one allele but hundreds of weakly selected loci strung along a genetic map. Classical theory follows a single introduced allele; the barrier models of Bengtsson and Barton treated blocks as deleterious cargo at discrete loci. The question that matters for adaptive introgression, from archaic haplotypes in humans to wild-relative alleles in crops, is whether a block that is beneficial in aggregate can establish before recombination takes it apart, and how long the surviving fragments will be.",
+   "Foutel-Rodier, Barton and Etheridge model a continuous genome in which a block's selective effect is proportional to its map length, then use a diffusion approximation to follow the stochastic early phase. Under positive selection some part of the block survives indefinitely, but large blocks persist only when selection is stronger than recombination. The surprise is that the probability of a successful introgression does not depend on recombination at all: it equals the fixation probability of a single beneficial allele with the same total effect. Neutral or deleterious blocks are eventually lost, but far more slowly than a single allele, and what lingers is a scatter of very short fragments. The paper also computes how much deleterious background hitchhikes with one beneficial allele to fixation."
+  ],
+  "push": "Selection proportional to map length is a mean-field assumption: it averages over the real architecture, where a few large-effect loci sit in a sea of near-neutral ones. Epistasis between block and resident background, the Dobzhansky-Muller case, makes a fragment's effect depend on which loci it keeps, not on how long it is."
+ },
+ "people": [
+  {
+   "role": "First author",
+   "name": "Félix Foutel-Rodier",
+   "bio": "CNRS researcher (chargé de recherche) at MAP5, Université Paris Cité, since 2025. PhD in mathematics at LPSM, Sorbonne Université (2021) with Amaury Lambert and Emmanuel Schertzer; postdocs at UQAM and as a Glasstone Fellow in Oxford Statistics, where this collaboration with Etheridge began. Works on coalescents, branching processes and random trees applied to population genetics and epidemiology.",
+   "links": [
+    {
+     "label": "Personal site",
+     "url": "http://www.normalesup.org/~foutelrodier/"
+    }
+   ]
+  },
+  {
+   "role": "Last author",
+   "name": "Alison Etheridge",
+   "bio": "Professor of Probability at Oxford and Fellow of Magdalen College; FRS, OBE, elected to the US National Academy of Sciences in 2023, and first president of the Academy for the Mathematical Sciences. DPhil Oxford 1989 under David Edwards. Known for measure-valued diffusions and the spatial Lambda-Fleming-Viot process that solved the \"pain in the torus\". Her long partnership with Nick Barton, the middle author here, built much of modern spatial population genetics theory.",
+   "links": [
+    {
+     "label": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Alison_Etheridge"
+    }
+   ]
+  }
+ ],
+ "slot2": {
+  "kind": "FIELDNOTES",
+  "kicker": "Field notes",
+  "topic": "In the news",
+  "headline": "A Cambrian bottle with tentacles redraws the starfish family tree",
+  "cite": "He K, Mussini G, et al., Shu D. <em>Current Biology</em>, 19 Oct 2026, via Sci.News. <a href=\"https://doi.org/10.1016/j.cub.2026.08.053\">doi:10.1016/j.cub.2026.08.053</a>",
+  "body": "<em>Yujingia glutenotunica</em> is a bottle-shaped animal 8 to 22 mm long from the 518-million-year-old Maotianshan Shales of Yunnan, and a team led by Degan Shu (Northwest University) with Giovanni Mussini (Cambridge) places it at the base of Ambulacraria, the deuterostome branch that holds echinoderms and hemichordates. The fight is over the ancestor. The textbook version is a burrowing, worm-like hemichordate; <em>Yujingia</em> argues for a seafloor-dwelling tentacle feeder, closer to the echinoderm side of the split. If that holds, the hemichordate worm is the derived state, and an ecological fork between tentacle feeding and burrowing sent the two body plans down separate roads.",
+  "url": "https://doi.org/10.1016/j.cub.2026.08.053"
+ },
+ "slot3": {
+  "kind": "PAPER",
+  "kicker": "Far afield",
+  "topic": "A paper from outside the fence",
+  "headline": "A family switch, not one gene, shuts off axon growth in the maturing cortex",
+  "cite": "Kirk RW, Sun L, Xiao R, Clark EA, Nelson SB. <em>eLife</em>, 20 Oct 2026. <a href=\"https://doi.org/10.7554/eLife.106510\">doi:10.7554/eLife.106510</a>",
+  "body": "Mouse cortical neurons spend their first postnatal month trading axon outgrowth for synaptic refinement, and the transcriptional program behind that trade is far less mapped than the prenatal one. Sacha Nelson's lab at Brandeis paired chromatin accessibility with expression in two pyramidal-neuron subtypes, which pointed at the Krüppel-like factors. Multiplexed CRISPR interference then showed that a shift from KLF activators (Klf6, Klf7) to KLF repressors (Klf9, Klf13) works as a switch that first turns on, then turns off, a shared set of cytoskeletal targets. Paralog redundancy buffers the switch, which is why single knockdowns missed it and knocking down several at once did not.",
+  "url": "https://doi.org/10.7554/eLife.106510"
+ },
+ "tomorrow": "The wider campus (news from the academy)"
+}
