@@ -1,0 +1,65 @@
+{
+ "no": 7,
+ "date": "2026-10-22",
+ "weekday": "Thursday",
+ "motto": "One paper worth the coffee. One thing people are talking about. One thing from outside the fence.",
+ "lead": {
+  "topic": "Genome biology and comparative genomics: opsin gene families",
+  "headline": "Red opsins keep turning green, and the same four sites do the work",
+  "deck": "A third, overlooked LWS paralog in gobies joins the list of lineages that rebuilt green vision from a red-sensitive gene, and the substitutions behind it are the ones primates used.",
+  "authors": "Cortesi F, Escobar-Camacho D, Sommer GM, Luehrmann M, Hidber F, Deupi X, Carleton KL, Musilova Z",
+  "journal": "Molecular Ecology",
+  "pubdate": "Oct 2026",
+  "doi": "10.1111/mec.70592",
+  "url": "https://doi.org/10.1111/mec.70592",
+  "paragraphs": [
+   "Vertebrate colour vision runs on a handful of opsin gene families, and duplication followed by spectral tuning is the standard route to a new channel. Most teleosts carry one long-wavelength-sensitive gene, LWS1, and cover green with the RH2 family. A green-shifted LWS duplicate, LWS2, was known only from characins and osteoglossomorphs. The question for gene family evolution is whether such replacements are one-off accidents or a repeatable solution: does a lineage that swaps RH2 for a retuned LWS copy find the same molecular path?",
+   "Cortesi, Musilova and colleagues mined teleost genomes and sequenced retinal transcriptomes. Elopomorphs (eels and tarpons) turn out to retain LWS2 as well, and gobies carry a previously missed third paralog, LWS3, from a duplication in the teleost or percomorph ancestor. Structural modelling of twelve LWS proteins found convergent substitutions at four retinal-binding-pocket positions (214, 259, 261, 269) shared by teleost LWS2, goby LWS3 and human MWS, the primate duplicate that gave us green. In characins, mormyrids, gobies and primates the shifted copy has partly or wholly replaced RH2. Among gobies, <em>lws3</em> complements <em>lws1</em> in most species and dominates the opsin profile in sicydiines; in the whitebarred goby, <em>lws1</em> and <em>lws3</em> occupy separate members of the double cone, where <em>rh2</em> sits in other fishes."
+  ],
+  "push": "Convergence at four sites argues for a tightly constrained tuning landscape, but the evidence is twelve modelled proteins and one in situ species. The test is a measured spectral peak for LWS3 and dated <em>rh2</em> losses across the goby tree, which would turn a tidy pattern into an ordered sequence of gain, retuning and replacement."
+ },
+ "people": [
+  {
+   "role": "First author",
+   "name": "Fabio Cortesi",
+   "bio": "Group leader in the School of the Environment at the University of Queensland, working on the visual ecology of reef fishes. PhD in zoology at Basel (2014) in Walter Salzburger's group, then postdoctoral years with Justin Marshall at the Queensland Brain Institute on SNSF and UQ fellowships. Known for mapping opsin duplications across percomorphs and for showing how reef fish retune their eyes with development and habitat.",
+   "links": [
+    {
+     "label": "UQ profile",
+     "url": "https://biological-sciences.uq.edu.au/profile/22829/fabio-cortesi"
+    }
+   ]
+  },
+  {
+   "role": "Last author",
+   "name": "Zuzana Musilova",
+   "bio": "Heads the Fish Evolution Research Group in the Department of Zoology at Charles University, Prague, since 2015. PhD at the Czech Academy of Sciences, then four and a half years as a postdoc with Walter Salzburger in Basel, where she and Cortesi overlapped. ERC Consolidator grant (SensingDEEP, 2023). Known for the 2019 <em>Science</em> paper showing deep-sea fishes that see with many rod opsins.",
+   "links": [
+    {
+     "label": "Lab page",
+     "url": "https://kampusalbertov.cuni.cz/KAEN-95.html"
+    }
+   ]
+  }
+ ],
+ "slot2": {
+  "kind": "FIELDNOTES",
+  "kicker": "Field notes",
+  "topic": "In the news",
+  "headline": "A model trained on four million fossils says three of the big five were slow",
+  "cite": "<em>Nature</em> news, 20 Oct 2026. <a href=\"https://www.nature.com/articles/d41586-026-03316-4\">nature.com/articles/d41586-026-03316-4</a>",
+  "body": "The big five mass extinctions anchor every paleobiology syllabus, and the standard picture is a cliff in diversity at each boundary. <em>Nature</em> reports a machine-learning model trained on close to four million fossil occurrences that reconstructs Phanerozoic diversity at finer resolution than range-through counts allow, and its verdict is that three of the five were drawn out, with diversity sliding for millions of years before the boundary rather than collapsing at it. Expect the argument to centre on the Signor-Lipps effect: incomplete sampling makes abrupt events look gradual, and a model trained on the record inherits its gaps unless it corrects for them.",
+  "url": "https://www.nature.com/articles/d41586-026-03316-4"
+ },
+ "slot3": {
+  "kind": "ACADEMIA",
+  "kicker": "The wider campus",
+  "topic": "News from the academy",
+  "headline": "NSF's acting director is leaving, and the Senate still has not moved on his successor",
+  "cite": "Clare Zhang, AIP FYI, 21 Oct 2026. <a href=\"https://www.aip.org/fyi/nsf-acting-director-chief-of-staff-to-exit\">aip.org/fyi</a>",
+  "body": "Brian Stone, acting director since Sethuraman Panchanathan resigned in April 2025, leaves NSF at the end of 2026 after 26 years; acting chief of staff Rebecca Keiser, its first chief of research security, leaves at the end of October. Jim O'Neill, nominated for director early this year, has waited in the Senate since March without a hearing. If he is not confirmed by January 1, the agency will choose a new acting director with the White House. NSF has lost more than a third of its staff since January 2025.",
+  "url": "https://www.aip.org/fyi/nsf-acting-director-chief-of-staff-to-exit",
+  "why": "Stone's tenure covered the GRFP eligibility changes, more than a thousand terminations and the new industry-partnered fellowships. The spring GRFP and CAREER cycles will run under an acting director the White House helps pick, with a nominee the Senate has never questioned."
+ },
+ "tomorrow": "Far afield (a paper from outside the fence)"
+}
