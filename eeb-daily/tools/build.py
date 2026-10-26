@@ -10,6 +10,7 @@ Outputs (all under eeb-daily/):
   issues/YYYY-MM-DD.html     one page per issue (a repeated date gets a -b, -c suffix)
   archive/index.html         every issue, newest first
   feed.xml                   RSS 2.0, newest 30 issues
+  manifest.json              compact archive context for the cloud editor
 Usage: python3 eeb-daily/tools/build.py   (run from the repo root or anywhere)
 """
 import glob
@@ -19,6 +20,7 @@ import os
 import re
 from datetime import datetime, timezone
 from email.utils import format_datetime
+from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # .../eeb-daily
 SITE = "https://coleoguy.github.io/eeb-daily"
@@ -290,7 +292,7 @@ def render_issue(rec, issues, base, is_latest):
     body.append('<footer class="colophon">'
                 f'<div class="nav">{"".join(nav)}</div>'
                 f'<div>Produced nightly for the Blackmon lab, Texas A&amp;M Biology &middot; Paper discovery via PubMed{tomorrow}</div>'
-                f'<div class="tiny">Written by Claude from the day\'s literature; read the linked sources before citing anything. '
+                f'<div class="tiny">Written by {esc(rec.get("producer", "Claude"))} from the day\'s literature; read the linked sources before citing anything. '
                 f'<a href="{base}build-your-own.html">Build one for your own lab</a> &middot; <a href="{base}feed.xml">RSS</a></div>'
                 '</footer>')
     body.append(FOOT)
@@ -327,14 +329,42 @@ def render_feed(issues):
     for rec in list(reversed(issues))[:30]:
         L = rec["lead"]
         link = f'{SITE}/issues/{rec["slug"]}.html'
-        pub = format_datetime(datetime.strptime(rec["date"], "%Y-%m-%d").replace(hour=6, tzinfo=timezone.utc))
+        pub = format_datetime(datetime.strptime(rec["date"], "%Y-%m-%d").replace(hour=6, tzinfo=ZoneInfo("America/Chicago")))
         summary = strip_tags(L.get("deck") or L["paragraphs"][0])
         items.append(f"<item><title>{esc('No. ' + str(rec['no']) + ': ' + strip_tags(L['headline']))}</title><link>{link}</link>"
                      f"<guid>{link}</guid><pubDate>{pub}</pubDate><description>{esc(summary)}</description></item>")
-    now = format_datetime(datetime.now(timezone.utc))
+    now = format_datetime(datetime.strptime(issues[-1]["date"], "%Y-%m-%d").replace(hour=6, tzinfo=ZoneInfo("America/Chicago")))
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>EEB Daily</title>'
             f'<link>{SITE}/</link><description>Nightly one-page evolutionary biology newsletter from the Blackmon lab, Texas A&amp;M.</description>'
             f'<language>en-us</language><lastBuildDate>{now}</lastBuildDate>' + "".join(items) + '</channel></rss>\n')
+
+
+def render_manifest(issues):
+    """Expose only public archive facts, never the private editorial configuration."""
+    entries = []
+    urls, dois = set(), set()
+    for rec in issues:
+        lead, second, third = rec["lead"], rec["slot2"], rec["slot3"]
+        entries.append({
+            "path": "eeb-daily/data/" + rec["_file"],
+            "no": rec["no"], "date": rec["date"], "slug": rec["slug"],
+            "topic": lead.get("topic", ""), "lead_headline": strip_tags(lead["headline"]),
+            "lead_doi": lead.get("doi", ""), "lead_url": lead.get("url", ""),
+            "slot2_kind": second.get("kind", ""), "slot2_headline": strip_tags(second["headline"]),
+            "slot2_url": second.get("url", ""),
+            "slot3_kind": third.get("kind", ""), "slot3_headline": strip_tags(third["headline"]),
+            "slot3_url": third.get("url", ""), "history_subject": third.get("history_subject", ""),
+        })
+        for slot in (lead, second, third):
+            if slot.get("url"):
+                urls.add(slot["url"])
+            if isinstance(slot.get("doi"), str) and slot["doi"]:
+                dois.add(slot["doi"].lower())
+            match = re.search(r"(?:dx\.)?doi\.org/(10\.[^?#\s]+)", slot.get("url", ""), re.I)
+            if match:
+                dois.add(match.group(1).lower())
+    return {"schema_version": 1, "latest": {"no": issues[-1]["no"], "date": issues[-1]["date"]},
+            "issues": entries, "used_urls": sorted(urls), "used_dois": sorted(dois)}
 
 
 def main():
@@ -353,6 +383,9 @@ def main():
         fh.write(render_archive(issues))
     with open(os.path.join(ROOT, "feed.xml"), "w", encoding="utf-8") as fh:
         fh.write(render_feed(issues))
+    with open(os.path.join(ROOT, "manifest.json"), "w", encoding="utf-8") as fh:
+        json.dump(render_manifest(issues), fh, ensure_ascii=False, indent=2)
+        fh.write("\n")
     # The build-your-own guide shares the stylesheet, so it is rendered here from its body file.
     body_path = os.path.join(ROOT, "tools", "build-your-own.body.html")
     if os.path.exists(body_path):

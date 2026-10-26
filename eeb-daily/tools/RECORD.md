@@ -1,6 +1,6 @@
 # EEB Daily issue record
 
-One JSON file per issue in `eeb-daily/data/`, named `NNNN-YYYY-MM-DD.json` (zero-padded issue number, then the issue date). `tools/build.py` turns every record into the site. Strings marked *html* may contain inline `<em>`, `<sub>`, `<sup>`, `<a href>`; nothing else. No em dashes anywhere.
+One canonical JSON file per issue in `eeb-daily/data/`, named `NNNN-YYYY-MM-DD.json` (zero-padded issue number, then the issue date). The cloud editor submits new records to `eeb-daily/inbox/YYYY-MM-DD.json`; the publisher validates and accepts them before `tools/build.py` regenerates the site. Strings marked *html* may contain inline `<em>`, `<sub>`, `<sup>`, `<a href>`; nothing else. No em dashes anywhere.
 
 ```json
 {
@@ -39,7 +39,15 @@ One JSON file per issue in `eeb-daily/data/`, named `NNNN-YYYY-MM-DD.json` (zero
     "history_subject": "HISTORY only: the person or story, used to prevent repeats; omit otherwise",
     "url": "https://... primary source"
   },
-  "tomorrow": "Classic and Beyond biology"
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {"url": "https://...", "title": "Actual source title", "used_for": "lead", "evidence": "Brief facts checked in the source; disclose abstract-only access when applicable."},
+    {"url": "https://...", "title": "First author's institutional page", "used_for": "person_1", "evidence": "Verified public position and affiliation."},
+    {"url": "https://...", "title": "Last author's institutional page", "used_for": "person_2", "evidence": "Verified public position and affiliation."},
+    {"url": "https://...", "title": "Second paper", "used_for": "slot2", "evidence": "Verified citation and supporting result."},
+    {"url": "https://...", "title": "Story's primary source", "used_for": "slot3", "evidence": "Verified story and its date."}
+  ]
 }
 ```
 

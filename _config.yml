@@ -20,6 +20,8 @@ include:
   - sitemap.xml
 
 exclude:
+  - "eeb-daily/inbox/"
+  - "eeb-daily/tools/tests/"
   - README.md
   - "deprecated/"
   - "metazoa-patches/"

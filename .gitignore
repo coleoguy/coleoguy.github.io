@@ -1,5 +1,9 @@
 .fuse_hidden*
 
+# Python build/test caches
+__pycache__/
+*.py[cod]
+
 # OS / editor cruft
 .DS_Store
 .Rhistory
