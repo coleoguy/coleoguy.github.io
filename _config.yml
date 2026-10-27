@@ -21,7 +21,7 @@ include:
 
 exclude:
   - "eeb-daily/inbox/"
-  - "eeb-daily/tools/tests/"
+  - "eeb-daily/tools/"
   - README.md
   - "deprecated/"
   - "metazoa-patches/"

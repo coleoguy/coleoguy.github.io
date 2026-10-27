@@ -98,12 +98,6 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
 
-      - name: Build the entire lab website with Jekyll
-        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
-        with:
-          source: ./
-          destination: ./_site
-
       - name: Record the exact deployed snapshot
         env:
           SOURCE_SHA: ${{ steps.snapshot.outputs.source_sha }}
@@ -112,13 +106,21 @@ jobs:
           python3 - <<'PY'
           import json, os
           from pathlib import Path
-          marker = Path('_site/eeb-daily/deployment.json')
+          # Create this CI-only source file after the commit step. Jekyll copies
+          # it into the artifact; its container-owned _site is not writable here.
+          marker = Path('eeb-daily/deployment.json')
           marker.parent.mkdir(parents=True, exist_ok=True)
           marker.write_text(json.dumps({
               'source_sha': os.environ['SOURCE_SHA'],
               'latest_no': int(os.environ['LATEST_NO']),
           }) + '\n', encoding='utf-8')
           PY
+
+      - name: Build the entire lab website with Jekyll
+        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1
+        with:
+          source: ./
+          destination: ./_site
 
       - name: Upload the complete site
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
