@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 9,
-    "date": "2026-10-24"
+    "no": 10,
+    "date": "2026-10-26"
   },
   "issues": [
     {
@@ -157,6 +157,23 @@
       "slot3_headline": "A machine-written proof lands in number theory, and the checking has only started",
       "slot3_url": "https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0010-2026-10-26.json",
+      "no": 10,
+      "date": "2026-10-26",
+      "slug": "2026-10-26",
+      "topic": "Striking EEB paper: long-term asexuality and phylogenetic reconstruction",
+      "lead_headline": "Ancient asexuality can scramble a family tree",
+      "lead_doi": "10.1093/sysbio/syag079",
+      "lead_url": "https://doi.org/10.1093/sysbio/syag079",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Local rules build a world of shells",
+      "slot2_url": "https://doi.org/10.1073/pnas.2614478123",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "One positron becomes a precision physics laboratory",
+      "slot3_url": "https://doi.org/10.1103/gbkc-6nlj",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -166,11 +183,14 @@
     "https://doi.org/10.1038/s41586-026-11107-0",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1073/pnas.2605030123",
+    "https://doi.org/10.1073/pnas.2614478123",
     "https://doi.org/10.1073/pnas.2614706123",
     "https://doi.org/10.1086/284325",
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/genetics/iyag280",
+    "https://doi.org/10.1093/sysbio/syag079",
     "https://doi.org/10.1098/rsos.260937",
+    "https://doi.org/10.1103/gbkc-6nlj",
     "https://doi.org/10.1111/mec.70592",
     "https://doi.org/10.1111/nph.71668",
     "https://doi.org/10.1126/sciadv.aef0605",
@@ -195,11 +215,14 @@
     "10.1038/s41586-026-11107-0",
     "10.1038/s41598-026-69193-z",
     "10.1073/pnas.2605030123",
+    "10.1073/pnas.2614478123",
     "10.1073/pnas.2614706123",
     "10.1086/284325",
     "10.1093/gbe/evag259",
     "10.1093/genetics/iyag280",
+    "10.1093/sysbio/syag079",
     "10.1098/rsos.260937",
+    "10.1103/gbkc-6nlj",
     "10.1111/mec.70592",
     "10.1111/nph.71668",
     "10.1126/sciadv.aef0605",
