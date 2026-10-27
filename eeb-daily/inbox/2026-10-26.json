@@ -1,0 +1,123 @@
+{
+  "no": 10,
+  "date": "2026-10-26",
+  "weekday": "Monday",
+  "lead": {
+    "topic": "Striking EEB paper: long-term asexuality and phylogenetic reconstruction",
+    "headline": "Ancient asexuality can scramble a family tree",
+    "deck": "A ladder-shaped planarian phylogeny reflects unusual biology.",
+    "authors": "Benítez-Álvarez L, Tenaguillo-Arriola I, Leria L, Fernández R, Riutort M",
+    "journal": "Systematic Biology",
+    "pubdate": "24 Oct 2026",
+    "doi": "10.1093/sysbio/syag079",
+    "url": "https://doi.org/10.1093/sysbio/syag079",
+    "paragraphs": [
+      "A family tree usually groups individuals from the same population together. Earlier work on <em>Dugesia</em>, a genus of freshwater planarians, found something stranger: asexual individuals appeared separately on long branches, forming a ladder. These animals reproduce by fission, splitting into pieces that regenerate. The pattern raised a basic question. Had the reconstruction method been fooled, or had a long history without sexual reproduction changed the genetic signal itself? The answer matters because researchers routinely use branching trees to infer how populations and species are related.",
+      "Lisandra Benítez-Álvarez and colleagues revisited the problem using transcriptomes, which sample expressed genes, and nuclear markers. They compared phylogenetic analyses with genetic variation within individuals and examined explanations involving prolonged asexuality or hybridization. The authors report that the ladder persists as a biological signal. Comparisons with other fission-reproducing planarians support an ancient history, while retained ancestral genetic variants obscure the relationships that conventional trees try to recover. The study therefore connects a question about asexual survival to a practical problem in evolutionary inference: a tidy tree model can misrepresent a complicated genetic history."
+    ],
+    "push": "The next step is to ask how reliably competing histories can be distinguished. Simulations that vary the age of asexuality, ancestral diversity and hybrid ancestry could reveal when a ladder is diagnostic and when it is ambiguous. That would turn an intriguing pattern into a test with known limits."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Lisandra Benítez-Álvarez",
+      "bio": "Lisandra Benítez-Álvarez is listed as a laboratory technician in the Multicellgenome Lab at the Institute of Evolutionary Biology (CSIC-UPF). Her 2022 doctoral thesis at the Universitat de Barcelona examined diversification and dispersal in planarians, moving from individual genes to much larger genetic datasets. Her research connects molecular variation with evolutionary history.",
+      "links": [
+        {
+          "label": "Institute profile",
+          "url": "https://www.ibe.upf-csic.es/ruiz"
+        },
+        {
+          "label": "Doctoral thesis",
+          "url": "https://www.ub.edu/geisan/thesis-lisandra-benitez-alvarez-2022/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Marta Riutort",
+      "bio": "Marta Riutort is a full professor of genetics at the Universitat de Barcelona. Her Planarian Diversity and Evolution Lab studies how genetic variation reveals the origins and distributions of freshwater and terrestrial flatworms. Its work spans phylogeny, biodiversity and genomic data, with collaborations extending to seabirds and whales.",
+      "links": [
+        {
+          "label": "Lab members",
+          "url": "https://www.ub.edu/geisan/people/"
+        },
+        {
+          "label": "Research",
+          "url": "https://www.ub.edu/geisan/research/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Local rules build a world of shells",
+    "cite": "Liu H, Bhattacharya K, <em>PNAS</em>, 2026, <a href=\"https://doi.org/10.1073/pnas.2614478123\">10.1073/pnas.2614478123</a>",
+    "body": "Molluscs build an astonishing range of shells by adding material at the growing edge. Huan Liu and Kaushik Bhattacharya asked how a local growth rule could generate these entire shapes. Their model repeats a fixed rule that depends only on the edge's geometry. Mathematically, the resulting shell is traced by a Lie group, a continuous family of transformations, acting on the larval shell. The authors describe nearly all known shell forms with three ingredients: a scale, an orientation vector, and the initial edge curve. Relating these ingredients to a phylogeny gives a compact way to compare shell shapes and their evolution.",
+    "url": "https://doi.org/10.1073/pnas.2614478123"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "One positron becomes a precision physics laboratory",
+    "cite": "Myers TG, Soucy L, Sukra BAD, Sinha B, Gabrielse G, <em>Physical Review Letters</em>, 2026, <a href=\"https://doi.org/10.1103/gbkc-6nlj\">10.1103/gbkc-6nlj</a>; Viewpoint in <a href=\"https://physics.aps.org/articles/v19/132\"><em>Physics</em></a>",
+    "body": "A single positron, the electron's antimatter counterpart, can now be controlled one quantum jump at a time. Researchers at Northwestern University trapped a positron for months, cooled its motion, and detected changes in its cyclotron motion and spin without destroying it. The apparatus holds the particle inside a microwave cavity, which slows the decay of excited states enough to measure them. This is a platform for a future precision measurement, not that measurement itself. Comparing positron and electron magnetic moments could test CPT symmetry, which predicts equal magnitudes and opposite signs. The team opens a route to much sharper tests.",
+    "url": "https://doi.org/10.1103/gbkc-6nlj"
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/sysbio/advance-article-abstract/doi/10.1093/sysbio/syag079/8996800",
+      "title": "Publisher abstract: ancient asexuality in Dugesia",
+      "used_for": "lead",
+      "evidence": "Publisher abstract and metadata read. Published October 24, 2026. Full manuscript not accessed."
+    },
+    {
+      "url": "https://www.ibe.upf-csic.es/ruiz",
+      "title": "Multicellgenome Lab current members",
+      "used_for": "person_1",
+      "evidence": "Institute directory lists Lisandra Benitez Alvarez as a laboratory technician in the Multicellgenome Lab."
+    },
+    {
+      "url": "https://www.ub.edu/geisan/thesis-lisandra-benitez-alvarez-2022/",
+      "title": "Lisandra Benitez Alvarez doctoral thesis, 2022",
+      "used_for": "person_1",
+      "evidence": "University lab page identifies her 2022 thesis on diversification and dispersal in planarians using one to hundreds of genes."
+    },
+    {
+      "url": "https://www.ub.edu/geisan/people/",
+      "title": "Planarian Diversity and Evolution Lab members",
+      "used_for": "person_2",
+      "evidence": "University lab lists Marta Riutort as a full professor at Universitat de Barcelona."
+    },
+    {
+      "url": "https://www.ub.edu/geisan/research/",
+      "title": "Planarian Diversity and Evolution Lab research",
+      "used_for": "person_2",
+      "evidence": "Lab describes planarian genetic diversity, biodiversity and genomic research, with seabird and whale collaborations."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.21988",
+      "title": "Local growth laws determine global shape of molluscan shells",
+      "used_for": "slot2",
+      "evidence": "Author preprint describes local geometric growth, Lie-group shell representation, and scale, vector and edge-curve parameters."
+    },
+    {
+      "url": "https://api.crossref.org/works/10.1073/pnas.2614478123",
+      "title": "Publisher-deposited PNAS shell-paper metadata",
+      "used_for": "slot2",
+      "evidence": "Metadata confirms Huan Liu and Kaushik Bhattacharya, DOI and online publication October 23, 2026. October 27 is the print issue date."
+    },
+    {
+      "url": "https://journals.aps.org/prl/abstract/10.1103/gbkc-6nlj",
+      "title": "One-Positron Quantum Cyclotron",
+      "used_for": "slot3",
+      "evidence": "APS paper abstract and metadata confirm apparatus, authors, October 21 publication and prospective magnetic-moment/CPT test."
+    },
+    {
+      "url": "https://physics.aps.org/articles/v19/132",
+      "title": "APS Viewpoint on the one-positron quantum cyclotron",
+      "used_for": "slot3",
+      "evidence": "Publisher Viewpoint documents months-long confinement, quantum-jump and spin-flip detection, and states that a precision positron g-factor measurement has not yet been obtained."
+    }
+  ]
+}
