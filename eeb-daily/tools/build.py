@@ -291,7 +291,7 @@ def render_issue(rec, issues, base, is_latest):
     tomorrow = f' &middot; Tomorrow: {esc(rec["tomorrow"])}' if rec.get("tomorrow") else ""
     body.append('<footer class="colophon">'
                 f'<div class="nav">{"".join(nav)}</div>'
-                f'<div>Produced nightly for the Blackmon lab, Texas A&amp;M Biology &middot; Paper discovery via PubMed{tomorrow}</div>'
+                f'<div>Produced nightly for the Blackmon lab, Texas A&amp;M Biology &middot; Research from linked sources{tomorrow}</div>'
                 f'<div class="tiny">Written by {esc(rec.get("producer", "Claude"))} from the day\'s literature; read the linked sources before citing anything. '
                 f'<a href="{base}build-your-own.html">Build one for your own lab</a> &middot; <a href="{base}feed.xml">RSS</a></div>'
                 '</footer>')
