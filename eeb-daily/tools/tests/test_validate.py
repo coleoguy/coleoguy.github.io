@@ -117,14 +117,24 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(validate.validate_record(record, archive()), [])
 
     def test_unfinished_markup_cannot_be_completed_by_the_renderer(self):
-        # HTMLParser otherwise reports an unfinished opening tag as plain data.
-        # The renderer appends </h2>, which supplies '>' and activates the tag.
+        # Some HTMLParser versions emit unfinished tags as data; others discard
+        # them at EOF. Neither behavior proves the original fragment is safe:
+        # the renderer appends </h2>, supplying '>' and activating the tag.
         for value in ('<img src=x onerror=console.log(1)//', '<a href="https://example.org"',
-                      '<em', 'A comparison: 2 < 3', '<'):
+                      '<em', '</em', '<!-- unfinished', 'A comparison: 2 < 3', '<',
+                      '<em<a href="https://example.org">>'):
             with self.subTest(value=value):
                 record = candidate()
                 record["lead"]["headline"] = value
                 self.assertInvalid(record, "raw '<' outside a complete allowed HTML tag")
+
+    def test_complete_quoted_link_tokens_and_nested_formatting_are_allowed(self):
+        record = candidate()
+        record["lead"]["headline"] = (
+            "<EM>A <sub>2</sub> result</EM> with "
+            "<a href='https://example.org/path?x=1&amp;y=2'>a source</a>"
+        )
+        self.assertEqual(validate.validate_record(record, archive()), [])
 
     def test_escaped_angle_brackets_remain_harmless_text(self):
         record = candidate()

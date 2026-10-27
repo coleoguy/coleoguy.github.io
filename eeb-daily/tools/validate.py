@@ -22,6 +22,13 @@ WEEKDAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", 
 AUDIT_USES = {"lead", "person_1", "person_2", "slot2", "slot3"}
 DOI_RE = re.compile(r"10\.\d{4,9}/[^\s<>\"]+", re.I)
 TRACKING_PARAMS = {"fbclid", "gclid", "mc_cid", "mc_eid"}
+# This small lexical allowlist runs before HTMLParser. Recent Python versions
+# discard unfinished tags at EOF instead of passing them to handle_data, so
+# parser callbacks alone cannot prove that interpolating the original is safe.
+ALLOWED_TAG_TOKEN = re.compile(
+    r'''(?:</?(?:em|sub|sup)\s*>|</a\s*>|<a\s+href\s*=\s*(?:"[^"<>]*"|'[^'<>]*')\s*>)''',
+    re.IGNORECASE | re.ASCII,
+)
 
 
 def valid_url(value):
@@ -68,9 +75,7 @@ def normalize_url(value):
 class InlineHTML(HTMLParser):
     """The renderer interpolates inline HTML, so reject anything not explicitly allowed."""
     def __init__(self):
-        # Keep references separate from raw data. A raw, unfinished '<tag' can
-        # be completed by the renderer's following closing tag, whereas '&lt;'
-        # is harmless text and must remain distinguishable during validation.
+        # Keep harmless escaped angle brackets distinct from raw markup.
         super().__init__(convert_charrefs=False)
         self.problems = []
         self.stack = []
@@ -127,6 +132,8 @@ class InlineHTML(HTMLParser):
 
 def parse_inline(value):
     parser = InlineHTML()
+    if "<" in ALLOWED_TAG_TOKEN.sub("", value):
+        parser.problems.append("raw '<' outside a complete allowed HTML tag; use &lt; for text")
     try:
         parser.feed(value)
         parser.close()
