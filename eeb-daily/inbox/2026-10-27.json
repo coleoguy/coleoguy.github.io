@@ -1,0 +1,124 @@
+{
+  "no": 11,
+  "date": "2026-10-27",
+  "weekday": "Tuesday",
+  "lead": {
+    "topic": "Plant functional evolution: fern phloem anatomy",
+    "headline": "Fern sugar conduits narrowed through deep time",
+    "deck": "Living and fossil fern tissues reveal an evolutionary shift toward narrower sugar-transport cells, with consequences for flow still awaiting direct tests.",
+    "authors": "Fu Z, Cruz R, Jensen KH, Hetherington AJ",
+    "journal": "Nature Plants",
+    "pubdate": "26 Oct 2026",
+    "doi": "10.1038/s41477-026-02440-3",
+    "url": "https://doi.org/10.1038/s41477-026-02440-3",
+    "paragraphs": [
+      "Ferns distribute sugars through phloem, a network of living conducting cells called sieve elements. Zishan Fu and colleagues examined thin sections from 26 living fern species in 21 families, collecting more than 18,000 anatomical measurements, then compared those data with eight fossil species. Sieve-element radius varied widely among living ferns, contradicting the traditional picture of comparatively uniform phloem. Closely related species tended to have similar cell dimensions. Radius also covaried with leaf area and vascular anatomy, linking the dimensions of transport tissue to the size and organization of the structures it serves. The authors used phylogenetic comparative analyses rather than treating all species as independent observations.",
+      "Fossils offered an independent view of direction through time. Across several comparisons, extinct ferns had wider sieve elements than living relatives. Reconstructions from living species also suggested a shift toward smaller cells in later-diverging lineages, particularly polypods. A fluid-flow model translates narrower tubes into lower potential sugar conductivity, but that is not a direct measurement of sap transport. Pressure gradients, sieve pores, and plant dimensions could alter realized flow. The study establishes an anatomical evolutionary pattern more firmly than its ecological explanation. Whether the rise of flowering-plant forests favored reduced transport capacity in fern understories remains a hypothesis, not a demonstrated cause."
+    ],
+    "push": "Measure phloem flow in living fern species across the inferred radius gradient, then test whether pore geometry, viscosity and source-to-sink distance change the predicted relationship. Compare models that account explicitly for phylogenetic uncertainty and fossil preservation. Could the apparent long-term trend reflect changing fern body size rather than direct selection on sugar transport?"
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Zishan Fu",
+      "bio": "Zishan Fu completed a PhD at the University of Edinburgh in 2026, studying the anatomy and evolution of phloem in living and fossil ferns. Her thesis was supervised by Sandy Hetherington and Justin Goodrich. Her work combines microscopy, comparative analyses and fossil evidence. A current postdoctoral appointment was not independently confirmed.",
+      "links": [
+        {
+          "label": "Edinburgh lab alumni",
+          "url": "https://biology.ed.ac.uk/hetherington/people"
+        },
+        {
+          "label": "Doctoral thesis",
+          "url": "https://era.ed.ac.uk/items/41ef4892-fde4-42bf-8359-48457ed43a6c/full"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Alexander J. Hetherington",
+      "bio": "Alexander J. Hetherington is an evolutionary palaeobiologist at the University of Edinburgh and a research associate of the Royal Botanic Garden Edinburgh. His research joins fossil anatomy with developmental and genetic work in living plants to investigate the origin and diversification of land plants. His group also studies the evolution of roots and vascular tissues.",
+      "links": [
+        {
+          "label": "Royal Botanic Garden Edinburgh",
+          "url": "https://www.rbge.org.uk/science-and-conservation/science-staff-directory/research-associates/"
+        },
+        {
+          "label": "University of Edinburgh lab",
+          "url": "https://biology.ed.ac.uk/hetherington/people"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Weak selection can lose to chance",
+    "cite": "Ohta T. Slightly deleterious mutant substitutions in evolution. <em>Nature</em> 246:96–98 (1973). <a href=\"https://doi.org/10.1038/246096a0\">Original paper</a>.",
+    "body": "Ohta extended neutral theory by arguing that some mutations are mildly harmful yet can still spread through random genetic drift. Whether selection efficiently removes them depends on effective population size and the magnitude of their fitness effects. A mutation that is consistently eliminated in a large population may behave almost neutrally in a small one. Her 1973 paper assembled molecular observations and population-genetic arguments suggesting that slightly deleterious substitutions could be especially important in small populations and around speciation. The resulting nearly neutral framework remains central to interpreting molecular evolution, mutation accumulation and differences in the efficacy of selection across lineages.",
+    "url": "https://doi.org/10.1038/246096a0"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "A huge gas reservoir has almost no visible stars",
+    "cite": "Monaci M et al. <em>Monthly Notices of the Royal Astronomical Society</em> (online 1 Oct 2026). <a href=\"https://doi.org/10.1093/mnras/stag1874\">Original paper</a>.",
+    "body": "Two independent radio surveys, conducted with the Arecibo and FAST telescopes, detected neutral hydrogen associated with the same source, AGC 322753. Their signals have similar velocities and double-peaked profiles, consistent with rotating gas. The inferred hydrogen mass is around two billion solar masses, but deep optical images show no clear stellar counterpart. Artificial-galaxy tests suggest that any associated stars could have a mass below roughly fifty million solar masses. This makes the object an intriguing dark-galaxy candidate, not proof of a starless galaxy. The research was published October 1 and reported anew October 26. Deeper optical imaging and sharper radio maps are needed.",
+    "url": "https://doi.org/10.1093/mnras/stag1874"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41477-026-02440-3",
+      "title": "Fern phloem evolution records a trend of decreasing conductivity through geological time",
+      "used_for": "lead",
+      "evidence": "Read publisher full text, abstract, methods, fossil comparisons and modeling discussion. Verified publication 26 October 2026, four authors in order, DOI, 26 extant species, eight fossil species, 18,000+ measurements. Conductivity is modeled, not directly measured."
+    },
+    {
+      "url": "https://datashare.ed.ac.uk/items/4414020e-d21b-491b-9092-73f71525d472/full",
+      "title": "Codes and supplemental data for fern phloem evolution",
+      "used_for": "lead",
+      "evidence": "Verified public dataset authors, title and availability date; underlying analyses were not independently rerun."
+    },
+    {
+      "url": "https://biology.ed.ac.uk/hetherington/people",
+      "title": "People | Hetherington Lab",
+      "used_for": "person_1",
+      "evidence": "Verified Fu as 2026 PhD graduate and former lab member studying fern phloem; no current appointment established."
+    },
+    {
+      "url": "https://era.ed.ac.uk/items/41ef4892-fde4-42bf-8359-48457ed43a6c/full",
+      "title": "Anatomical, functional and genetic perspectives on phloem evolution in ferns",
+      "used_for": "person_1",
+      "evidence": "Verified Fu's PhD thesis, 2026 date and listed advisors; full thesis restricted until 2027."
+    },
+    {
+      "url": "https://www.rbge.org.uk/science-and-conservation/science-staff-directory/research-associates/",
+      "title": "Royal Botanic Garden Edinburgh research associates",
+      "used_for": "person_2",
+      "evidence": "Verified Hetherington listed as research associate and evolutionary palaeobiologist studying land-plant diversification."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41477-026-02440-3",
+      "title": "Fern phloem evolution: author affiliations",
+      "used_for": "person_2",
+      "evidence": "Verified University of Edinburgh, Royal Botanic Garden Edinburgh and National Museums Scotland affiliations for last author."
+    },
+    {
+      "url": "https://www.nature.com/articles/246096a0",
+      "title": "Slightly Deleterious Mutant Substitutions in Evolution",
+      "used_for": "slot2",
+      "evidence": "Checked Nature primary abstract, Ohta authorship, November 9 1973 date, DOI and pages. Full article is subscription-only; discussion limited to abstract and established interpretation."
+    },
+    {
+      "url": "https://academic.oup.com/mnras/advance-article/doi/10.1093/mnras/stag1874/8859321",
+      "title": "AGC 322753: A dark galaxy candidate detected by ALFALFA and FASHI",
+      "used_for": "slot3",
+      "evidence": "Read primary article abstract, methods and conclusions. Verified independent telescope signals, hydrogen mass, optical nondetection, stellar upper bound and online publication October 1 2026."
+    },
+    {
+      "url": "https://phys.org/news/2026-10-fast-arecibo-dark-galaxy-vast.html",
+      "title": "FAST and Arecibo point to possible dark galaxy with vast hydrogen reservoir",
+      "used_for": "slot3",
+      "evidence": "Verified new reporting date October 26 2026, distinguished from original October 1 paper publication."
+    }
+  ]
+}
