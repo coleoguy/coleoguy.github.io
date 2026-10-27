@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 10,
-    "date": "2026-10-26"
+    "no": 11,
+    "date": "2026-10-27"
   },
   "issues": [
     {
@@ -174,11 +174,30 @@
       "slot3_headline": "One positron becomes a precision physics laboratory",
       "slot3_url": "https://doi.org/10.1103/gbkc-6nlj",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0011-2026-10-27.json",
+      "no": 11,
+      "date": "2026-10-27",
+      "slug": "2026-10-27",
+      "topic": "Plant functional evolution: fern phloem anatomy",
+      "lead_headline": "Fern sugar conduits narrowed through deep time",
+      "lead_doi": "10.1038/s41477-026-02440-3",
+      "lead_url": "https://doi.org/10.1038/s41477-026-02440-3",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Weak selection can lose to chance",
+      "slot2_url": "https://doi.org/10.1038/246096a0",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "A huge gas reservoir has almost no visible stars",
+      "slot3_url": "https://doi.org/10.1093/mnras/stag1874",
+      "history_subject": ""
     }
   ],
   "used_urls": [
     "https://doi.org/10.1016/j.cub.2026.08.053",
     "https://doi.org/10.1016/j.ympev.2026.108754",
+    "https://doi.org/10.1038/246096a0",
+    "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41586-026-11107-0",
     "https://doi.org/10.1038/s41598-026-69193-z",
@@ -188,6 +207,7 @@
     "https://doi.org/10.1086/284325",
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/genetics/iyag280",
+    "https://doi.org/10.1093/mnras/stag1874",
     "https://doi.org/10.1093/sysbio/syag079",
     "https://doi.org/10.1098/rsos.260937",
     "https://doi.org/10.1103/gbkc-6nlj",
@@ -211,6 +231,8 @@
   "used_dois": [
     "10.1016/j.cub.2026.08.053",
     "10.1016/j.ympev.2026.108754",
+    "10.1038/246096a0",
+    "10.1038/s41477-026-02440-3",
     "10.1038/s41559-026-03214-y",
     "10.1038/s41586-026-11107-0",
     "10.1038/s41598-026-69193-z",
@@ -220,6 +242,7 @@
     "10.1086/284325",
     "10.1093/gbe/evag259",
     "10.1093/genetics/iyag280",
+    "10.1093/mnras/stag1874",
     "10.1093/sysbio/syag079",
     "10.1098/rsos.260937",
     "10.1103/gbkc-6nlj",
