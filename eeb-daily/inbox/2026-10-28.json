@@ -1,0 +1,118 @@
+{
+  "no": 12,
+  "date": "2026-10-28",
+  "weekday": "Wednesday",
+  "lead": {
+    "topic": "Sex chromosome evolution: maternal linkage, W degeneration and mitonuclear coevolution",
+    "headline": "Egg mimicry speeds the decay of a sex chromosome",
+    "deck": "In cuckoo finches, selection on maternally inherited egg colours is linked to W chromosome gene loss and rapid mitochondrial evolution.",
+    "authors": "Sorenson MD, Osipova E, Spottiswoode CN, Jamie GA, Dixit T, DaCosta JM, Sackton TB, Warren WC, Balakrishnan CN",
+    "journal": "Nature Ecology & Evolution",
+    "pubdate": "27 Oct 2026",
+    "doi": "10.1038/s41559-026-03216-w",
+    "url": "https://doi.org/10.1038/s41559-026-03216-w",
+    "paragraphs": [
+      "Brood-parasitic cuckoo finches lay eggs in other birds' nests, and hosts often reject eggs that do not resemble their own. Egg colour therefore becomes a target of a coevolutionary contest. In birds, females carry ZW sex chromosomes; the female-specific W and mitochondrial DNA both pass from mothers to daughters. Michael Sorenson and colleagues compared cuckoo finches with other songbirds to ask what happens when selection repeatedly favors egg-mimicking maternal lineages. Their genomic analysis reports accelerated gene loss and pseudogene formation on the W, along with excess accumulation of mildly harmful mitochondrial changes. The proposed mechanism is genetic hitchhiking: favored maternal lineages carry linked variation with them.",
+      "Unexpectedly, two egg-colour candidates, <em>ABCG2</em> and <em>FECH</em>, appear to have been recruited to the W while many other W genes were disappearing. The team also studied mitochondrial energy-producing protein complexes, where subunits encoded in different genomes must work together. In three-dimensional structural models, nuclear-encoded amino acids closer to mitochondrial-encoded residues changed faster, consistent with compensatory mitonuclear evolution. The result connects an ecological arms race to chromosome decay and protein evolution. But the paper's central tests rely on comparative genomic patterns and protein models, not direct assays showing that individual substitutions restore function. Historical host shifts and population structure remain alternative influences worth testing."
+    ],
+    "push": "Compare the W and mitochondrial genomes across host-specialist populations under models with and without host-associated population structure. Does the excess of mildly deleterious substitutions remain after accounting for demographic history? Test candidate compensatory substitutions in matched mitochondrial and nuclear protein backgrounds; spatial proximity and correlated change need not prove functional rescue."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Michael D. Sorenson",
+      "bio": "Michael D. Sorenson is a professor of biology at Boston University, where he studies brood parasitism, avian population genomics, and speciation following host shifts. He earned a PhD in ecology, evolution and behavior at the University of Minnesota in 1990 and completed postdoctoral research at the Smithsonian and University of Michigan.",
+      "links": [
+        {
+          "label": "Boston University biology profile",
+          "url": "https://www.bu.edu/biology/people/profiles/michael-d-sorenson/"
+        },
+        {
+          "label": "Ornithological society career award",
+          "url": "https://doi.org/10.1642/AUK-16-231.1"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Christopher N. Balakrishnan",
+      "bio": "Christopher N. Balakrishnan is listed as an adjunct associate professor in East Carolina University's biology department. He studies avian genomics, behavior, song learning and brood parasitism, drawing links between molecular and ecological evolution. His institutional affiliations on this paper also include the National Science Foundation and Smithsonian National Museum of Natural History.",
+      "links": [
+        {
+          "label": "East Carolina University faculty directory",
+          "url": "https://biology.ecu.edu/faculty/"
+        },
+        {
+          "label": "Nature paper author affiliations",
+          "url": "https://www.nature.com/articles/s41559-026-03216-w"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Stalled cholesterol recycling inflames the brain",
+    "cite": "Berghoff S.A. et al. <em>Nature Neuroscience</em> (online 26 Oct 2026). <a href=\"https://doi.org/10.1038/s41593-026-02489-5\">Original paper</a>.",
+    "body": "Myelin is the insulating sheath around nerve fibres, and microglia are immune cells that clear its damaged fragments. Comparing acute and chronic mouse models of demyelination, Berghoff and colleagues found that chronic injury traps cholesterol in microglial lysosomes, the cell's recycling compartments. Those cells showed persistent inflammatory activation and impaired lipid handling. The team combined single-cell RNA sequencing, microscopy and lipid measurements to characterize this state. Changing sterol metabolism with an experimental compound reduced inflammation and tissue damage and improved outcomes in mouse models. Related inflammatory cells were seen in human multiple sclerosis lesions, but no treatment benefit in people was established.",
+    "url": "https://doi.org/10.1038/s41593-026-02489-5"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Two rings circle a dead star",
+    "cite": "Gentile Fusillo N.P. et al. <em>Nature Astronomy</em> (online 26 Oct 2026). <a href=\"https://doi.org/10.1038/s41550-026-03004-3\">Original paper</a>.",
+    "body": "An aging Sun-like star can end as a white dwarf, surrounded by debris from planets that did not fully survive. Around WD J1328-1450, researchers used the Very Large Telescope's X-shooter instrument to detect four peaks in calcium emission lines where comparable gas discs normally show two. Their spectral model resolves the signal into two rotating rings separated by a gap. Magnesium emissions differ between rings, suggesting different source materials. The authors propose that two surviving rocky bodies maintain them, potentially one as large as Pluto, but neither body was directly imaged. The paper appeared October 26; the European Southern Observatory announced it October 27.",
+    "url": "https://doi.org/10.1038/s41550-026-03004-3"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41559-026-03216-w",
+      "title": "Maternal inheritance accelerates sex chromosome degeneration and mitonuclear coevolution in a brood parasitic bird",
+      "used_for": "lead",
+      "evidence": "Checked publisher publication date (27 Oct 2026), DOI, complete nine-author order, accessible abstract, figure captions and gene data description. Abstract reports W gene loss, slightly deleterious mitochondrial changes, two W-recruited egg-colour genes and structure-based amino-acid proximity tests. Full article text is subscription restricted, so methods and interpretation are reported at abstract level."
+    },
+    {
+      "url": "https://www.bu.edu/biology/people/profiles/michael-d-sorenson/",
+      "title": "Michael D. Sorenson | Boston University Biology",
+      "used_for": "person_1",
+      "evidence": "Verified current professor role and research on brood parasitism, population genomics and speciation."
+    },
+    {
+      "url": "https://doi.org/10.1642/AUK-16-231.1",
+      "title": "Elliott Coues Award 2016, to Michael Sorenson",
+      "used_for": "person_1",
+      "evidence": "Verified PhD at University of Minnesota in 1990 and postdoctoral work at Smithsonian and University of Michigan from society career account."
+    },
+    {
+      "url": "https://biology.ecu.edu/faculty/",
+      "title": "Biology Faculty | East Carolina University",
+      "used_for": "person_2",
+      "evidence": "Verified that the present faculty directory lists Christopher Balakrishnan as adjunct associate professor, avoiding an unsupported claim of full-time ECU appointment."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41559-026-03216-w",
+      "title": "Nature Ecology & Evolution author affiliations",
+      "used_for": "person_2",
+      "evidence": "Verified last author Balakrishnan and paper's listed affiliations with ECU Biology, NSF Division of Environmental Biology and Smithsonian National Museum of Natural History."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41593-026-02489-5",
+      "title": "Chronic progressive demyelination induces a microglial state with lysosomal dysfunction",
+      "used_for": "slot2",
+      "evidence": "Checked original publisher metadata and public indexed abstract and substantive article text: online 26 Oct 2026; genetic/toxic mouse comparisons, single-cell profiling, lysosomal cholesterol accumulation, compound effects in animal models and microglial markers in human lesions. Direct full-page opening redirected to identity login; no human treatment benefit claimed."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41550-026-03004-3",
+      "title": "A double debris disc around a white dwarf sculpted by two planetary bodies",
+      "used_for": "slot3",
+      "evidence": "Checked original Nature Astronomy article indexed full text, authors and 26 Oct 2026 date. X-shooter emission spectra show quadruple peaks, models infer two gas rings, differing magnesium levels and possible unseen planetary bodies, not directly imaged planets."
+    },
+    {
+      "url": "https://www.eso.org/public/news/eso2613/",
+      "title": "Dead star and planetary bodies: astronomers spot unique disc of debris that foretells Solar System's future",
+      "used_for": "slot3",
+      "evidence": "Opened observatory's primary news release dated 27 Oct 2026. Confirmed Very Large Telescope instrument, white dwarf ID, observational signatures and distinction between measured rings and hypothesized planetesimals."
+    }
+  ]
+}
