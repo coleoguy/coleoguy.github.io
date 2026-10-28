@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 11,
-    "date": "2026-10-27"
+    "no": 12,
+    "date": "2026-10-28"
   },
   "issues": [
     {
@@ -191,6 +191,23 @@
       "slot3_headline": "A huge gas reservoir has almost no visible stars",
       "slot3_url": "https://doi.org/10.1093/mnras/stag1874",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0012-2026-10-28.json",
+      "no": 12,
+      "date": "2026-10-28",
+      "slug": "2026-10-28",
+      "topic": "Sex chromosome evolution: maternal linkage, W degeneration and mitonuclear coevolution",
+      "lead_headline": "Egg mimicry speeds the decay of a sex chromosome",
+      "lead_doi": "10.1038/s41559-026-03216-w",
+      "lead_url": "https://doi.org/10.1038/s41559-026-03216-w",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Stalled cholesterol recycling inflames the brain",
+      "slot2_url": "https://doi.org/10.1038/s41593-026-02489-5",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Two rings circle a dead star",
+      "slot3_url": "https://doi.org/10.1038/s41550-026-03004-3",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -198,8 +215,11 @@
     "https://doi.org/10.1016/j.ympev.2026.108754",
     "https://doi.org/10.1038/246096a0",
     "https://doi.org/10.1038/s41477-026-02440-3",
+    "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41559-026-03214-y",
+    "https://doi.org/10.1038/s41559-026-03216-w",
     "https://doi.org/10.1038/s41586-026-11107-0",
+    "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1073/pnas.2605030123",
     "https://doi.org/10.1073/pnas.2614478123",
@@ -233,8 +253,11 @@
     "10.1016/j.ympev.2026.108754",
     "10.1038/246096a0",
     "10.1038/s41477-026-02440-3",
+    "10.1038/s41550-026-03004-3",
     "10.1038/s41559-026-03214-y",
+    "10.1038/s41559-026-03216-w",
     "10.1038/s41586-026-11107-0",
+    "10.1038/s41593-026-02489-5",
     "10.1038/s41598-026-69193-z",
     "10.1073/pnas.2605030123",
     "10.1073/pnas.2614478123",
