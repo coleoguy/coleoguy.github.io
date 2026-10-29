@@ -1,0 +1,102 @@
+{
+  "no": 13,
+  "date": "2026-10-29",
+  "weekday": "Thursday",
+  "lead": {
+    "topic": "Striking EEB paper: origins of eukaryotes and archaeal symbiosis",
+    "headline": "Close archaeal relatives of eukaryotes lack organelles",
+    "deck": "Two newly cultured relatives of eukaryotes challenge the idea that their archaeal ancestor already had complex internal membranes.",
+    "authors": "Imachi H, Nobu MK, Ishii S, Hashiguchi H, et al., Takai K",
+    "journal": "Nature",
+    "pubdate": "28 Oct 2026",
+    "doi": "10.1038/s41586-026-11170-7",
+    "url": "https://doi.org/10.1038/s41586-026-11170-7",
+    "paragraphs": [
+      "The origin of eukaryotic cells is often told as a partnership between an archaeal host and the bacterium that became the mitochondrion. But what did that host look like? Hiroyuki Imachi and colleagues cultivated two strains, HC1 and SC1, from Heimdallarchaeia, an archaeal group placed close to eukaryotes on genetic trees. Neither strain grew alone: each depended on microbes that consumed hydrogen, allowing it to obtain energy by breaking down peptides. This cooperation is called syntrophy. Microscopy showed simple cells with membrane protrusions and small vesicles, but no persistent membrane-bounded organelles comparable to those of modern eukaryotes.",
+      "The cells complicate an attractive shortcut in origin-of-life narratives: genes resembling eukaryotic machinery do not necessarily imply that the ancestral host already had a complex internal architecture. One strain carried genes associated with oxygen use, yet did not grow with oxygen on its own. It tolerated low oxygen only with aerobic partners, consistent with a role in detoxification rather than aerobic respiration. Because these are living relatives, not recovered ancestral cells, their shared traits constrain but cannot prove the ancient sequence of events. The results favor testing how intimate microbial partnerships, protrusions and changing oxygen exposure might have preceded compartmentalized cells."
+    ],
+    "push": "Could an archaeal host with protrusions physically capture a bacterial partner before evolving stable internal membranes? A tractable next test would compare membrane dynamics and gene expression in the new strains during contact with their hydrogen-consuming partners. Cultures under controlled oxygen gradients could also distinguish oxygen detoxification from respiration, rather than inferring physiology from genes alone."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Hiroyuki Imachi",
+      "bio": "Hiroyuki Imachi is a principal researcher at the Japan Agency for Marine-Earth Science and Technology (JAMSTEC). He earned engineering degrees, including a PhD, at Nagaoka University of Technology. His work focuses on culturing elusive microorganisms and understanding microbial ecology and evolution, including archaea relevant to the origin of complex cells.",
+      "links": [
+        {
+          "label": "JAMSTEC researcher profile",
+          "url": "https://www.jamstec.go.jp/sugar/e/members/personal/HiroyukiImachi.html"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Ken Takai",
+      "bio": "Ken Takai is a principal researcher at JAMSTEC and an ELSI Fellow specializing in geomicrobiology. He earned a PhD in fisheries science at Kyoto University. His research examines microbes in extreme environments, especially deep-sea hydrothermal systems, and connects microbial physiology with questions about Earth's early biosphere and life's origins.",
+      "links": [
+        {
+          "label": "Earth-Life Science Institute profile",
+          "url": "https://www.elsi.jp/en/members/researchers/ktakai/"
+        },
+        {
+          "label": "JAMSTEC researcher profile",
+          "url": "https://www.jamstec.go.jp/sugar/e/members/personal/KenTakai.html"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Chromatin remodeling redraws DNA loops",
+    "cite": "Debek S, Meydan C, Chin CR, et al. <em>Nature</em> (published online 28 Oct 2026). <a href=\"https://doi.org/10.1038/s41586-026-11197-w\">Original study</a>.",
+    "body": "DNA is folded into loops that bring regulatory sequences near genes. The proteins CTCF and cohesin help mark and maintain those loops, while SWI/SNF complexes reposition nucleosomes, the protein spools around which DNA wraps. Sonia Debek and colleagues disabled one SWI/SNF form, canonical BAF, in mammalian cells and found more CTCF and cohesin at previously inaccessible sites. Large regulatory domains split into smaller, more insulated units; long enhancer-to-promoter loops shifted toward shorter contacts. Another SWI/SNF form, PBAF, helped stabilize the new organization. Mouse experiments supported a functional consequence for cell proliferation. The study suggests chromatin remodeling changes not just which sites open, but the three-dimensional wiring of gene regulation.",
+    "url": "https://doi.org/10.1038/s41586-026-11197-w"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "A single molecule links spin and light",
+    "cite": "Roggors S, Unden T, Aubele A, et al. <em>Nature</em> 658, 1153–1159 (published online 28 Oct 2026). <a href=\"https://doi.org/10.1038/s41586-026-11147-6\">Original study</a>.",
+    "body": "Quantum networks need a way to store information locally and transmit it as light. Simon Roggors and colleagues embedded individual organic carbene molecules in closely matched crystals and controlled their electron spins with light and microwaves. They showed optical signals from single molecules, rather than a bulk average, and measured spin coherence lasting about 2.2 milliseconds under a protective pulse sequence at 4.5 kelvin. In effect, a chemically designed molecule can act as a tiny memory with an optical readout. No distant quantum network was demonstrated, and photon collection remains inefficient. Still, the work points toward molecular components that might be assembled and chemically tuned for future quantum links.",
+    "url": "https://doi.org/10.1038/s41586-026-11147-6"
+  },
+  "tomorrow": "Beyond EEB and History",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11170-7",
+      "title": "Eukaryotes’ closest relatives are internally simple syntrophic peptidotrophic archaea",
+      "used_for": "lead",
+      "evidence": "Checked Nature primary full-text excerpts of abstract, microscopy, syntrophy experiments, oxygen physiology and conclusion. Confirmed 28 Oct 2026 publication and DOI; first Hiroyuki Imachi and last Ken Takai. Two strains HC1 and SC1 depended on methanogenic partners, lacked persistent organelles, and HC1's oxygen tolerance with partners does not establish aerobic respiration. Modern strains are not direct ancestral observations."
+    },
+    {
+      "url": "https://www.jamstec.go.jp/sugar/e/members/personal/HiroyukiImachi.html",
+      "title": "Hiroyuki Imachi, JAMSTEC SUGAR researcher profile",
+      "used_for": "person_1",
+      "evidence": "Verified principal researcher at JAMSTEC since 2022, earlier senior-scientist position, degrees including PhD at Nagaoka University of Technology, and research interest in cultivation and microbial evolution."
+    },
+    {
+      "url": "https://www.elsi.jp/en/members/researchers/ktakai/",
+      "title": "Ken Takai, Earth-Life Science Institute researcher profile",
+      "used_for": "person_2",
+      "evidence": "Verified ELSI Fellow, JAMSTEC Principal Researcher, and geomicrobiology specialization."
+    },
+    {
+      "url": "https://mienaimono.jp/en/kouso_talk/6-1-2.html",
+      "title": "Seeing the invisible: interview with Ken Takai",
+      "used_for": "person_2",
+      "evidence": "Verified Kyoto University fisheries-science PhD and deep-sea extreme-microbe research. Used only public professional background."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11197-w",
+      "title": "SWI/SNF complexes shape 3D chromatin architecture through CTCF and cohesin",
+      "used_for": "slot2",
+      "evidence": "Read primary abstract and discussion; confirmed 28 Oct 2026 online publication and DOI. Loss of canonical BAF increases CTCF/cohesin occupancy, strengthens smaller insulated domains, shifts loop contacts, and has mouse-cell proliferation effects."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11147-6",
+      "title": "A single-molecule spin–photon interface",
+      "used_for": "slot3",
+      "evidence": "Checked primary abstract, spectroscopy results and discussion. Confirmed online publication 28 Oct 2026 and DOI. Single carbene molecular emitter, 2.2 ms spin coherence with dynamical decoupling at 4.5 K, and no actual distant quantum-network demonstration."
+    }
+  ]
+}
