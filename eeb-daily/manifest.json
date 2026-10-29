@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 12,
-    "date": "2026-10-28"
+    "no": 13,
+    "date": "2026-10-29"
   },
   "issues": [
     {
@@ -208,6 +208,23 @@
       "slot3_headline": "Two rings circle a dead star",
       "slot3_url": "https://doi.org/10.1038/s41550-026-03004-3",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0013-2026-10-29.json",
+      "no": 13,
+      "date": "2026-10-29",
+      "slug": "2026-10-29",
+      "topic": "Striking EEB paper: origins of eukaryotes and archaeal symbiosis",
+      "lead_headline": "Close archaeal relatives of eukaryotes lack organelles",
+      "lead_doi": "10.1038/s41586-026-11170-7",
+      "lead_url": "https://doi.org/10.1038/s41586-026-11170-7",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Chromatin remodeling redraws DNA loops",
+      "slot2_url": "https://doi.org/10.1038/s41586-026-11197-w",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "A single molecule links spin and light",
+      "slot3_url": "https://doi.org/10.1038/s41586-026-11147-6",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -219,6 +236,9 @@
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41559-026-03216-w",
     "https://doi.org/10.1038/s41586-026-11107-0",
+    "https://doi.org/10.1038/s41586-026-11147-6",
+    "https://doi.org/10.1038/s41586-026-11170-7",
+    "https://doi.org/10.1038/s41586-026-11197-w",
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1073/pnas.2605030123",
@@ -257,6 +277,9 @@
     "10.1038/s41559-026-03214-y",
     "10.1038/s41559-026-03216-w",
     "10.1038/s41586-026-11107-0",
+    "10.1038/s41586-026-11147-6",
+    "10.1038/s41586-026-11170-7",
+    "10.1038/s41586-026-11197-w",
     "10.1038/s41593-026-02489-5",
     "10.1038/s41598-026-69193-z",
     "10.1073/pnas.2605030123",
