@@ -1,0 +1,125 @@
+{
+  "no": 14,
+  "date": "2026-10-30",
+  "weekday": "Friday",
+  "lead": {
+    "topic": "Phylogenetic comparative methods and macroevolutionary rates",
+    "headline": "Water gives body size more room to shift",
+    "deck": "Across more than 21,000 vertebrates, inferred changes in favored body size were larger and more frequent in aquatic lineages than on land or in the air.",
+    "authors": "Pagel M, O'Donovan C, Meade A",
+    "journal": "Nature Communications",
+    "pubdate": "27 Oct 2026",
+    "doi": "10.1038/s41467-026-78289-z",
+    "url": "https://doi.org/10.1038/s41467-026-78289-z",
+    "paragraphs": [
+      "Can lineages with different histories evolve body size in similar ways? Mark Pagel, Ciara O'Donovan and Andrew Meade compared more than 21,000 vertebrate species, including mammals, birds, reptiles, fishes and amphibians. Their analysis treats an adaptive peak, the body size favored by selection in an ecological setting, as something that may move gradually or occasionally shift more sharply. These peaks are inferred from trait patterns and evolutionary relationships; the researchers did not measure natural selection directly. They asked whether species living in water, on land or in the air show recurring differences in the scale and frequency of those inferred changes.",
+      "The answer followed ecology more than ancestry. Estimated shifts toward larger or smaller favored body sizes were largest and most frequent in aquatic species, intermediate in terrestrial species, and smallest and least frequent in flying species. That ordering recurred across major vertebrate groups despite their different evolutionary histories. Independent data on body-size variation within populations showed the same broad aquatic-to-aerial ranking, which fits the idea of different opportunities for evolutionary change. This does not mean every aquatic lineage evolves faster, or that aquatic environments directly caused the pattern. The central result concerns rare changes in statistically inferred adaptive peaks over deep time."
+    ],
+    "push": "A useful next test would model habitat transitions alongside differences in body size, sampling, evolutionary variance and uncertainty in phylogenetic trees. Does the aquatic advantage survive those controls? Within-species estimates of selection in aquatic and terrestrial relatives could reveal whether inferred shifts in favored size correspond to actual changes in selective pressures."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Mark Pagel",
+      "bio": "Mark Pagel is professor of evolutionary biology and director of the Evolution Laboratory at the University of Reading. He develops statistical methods for studying trait evolution using evolutionary trees and has also investigated speciation, language evolution and cultural change. He was elected a Fellow of the Royal Society in 2011.",
+      "links": [
+        {
+          "label": "University of Reading profile",
+          "url": "https://www.reading.ac.uk/ecology/staff/mark-pagel"
+        },
+        {
+          "label": "Royal Society profile",
+          "url": "https://royalsociety.org/people/mark-pagel-12034/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Andrew Meade",
+      "bio": "Andrew Meade is an associate professor in computational biology at the University of Reading. His research includes phylogenetic inference, high-performance computing and Bayesian comparative methods. His university profile credits him with development of BayesTraits and BayesPhylogenies, and the Netherlands Institute for Advanced Study records that he earned his PhD at Reading.",
+      "links": [
+        {
+          "label": "University of Reading profile",
+          "url": "https://www.reading.ac.uk/ecology/staff/andrew-meade"
+        },
+        {
+          "label": "NIAS professional biography",
+          "url": "https://nias.knaw.nl/fellow/meade-andrew/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "A map reveals unexpected neighbors on immune cells",
+    "cite": "Floyd BM et al. <em>Nature Structural &amp; Molecular Biology</em> (2026). <a href=\"https://doi.org/10.1038/s41594-026-01914-4\">Original paper</a>.",
+    "body": "Cell membranes are often drawn as a scattered collection of receptors, but which proteins occupy the same neighborhoods? Brendan Floyd and colleagues used proximity labeling, which marks proteins near chosen targets, to map 85 antigens on human T cells and B lymphoblasts. Mass spectrometry identified nearby proteins, producing a map of cell-surface organization. Familiar groups, including the T cell receptor complex, emerged alongside unexpected clusters. The researchers also detected proteins typically associated with mitochondria at the cell surface. A machine-learning model identified the IL-10 receptor beta subunit as a regulator of type I interferon signaling, turning the map into testable biological predictions.",
+    "url": "https://doi.org/10.1038/s41594-026-01914-4"
+  },
+  "slot3": {
+    "kind": "HISTORY",
+    "headline": "McClintock found genes that would not stay put",
+    "cite": "Cold Spring Harbor Laboratory Archives. <a href=\"https://www.cshl.edu/personal-collections/barbara-mcclintock/\">Barbara McClintock collection and biography</a>.",
+    "body": "Before scientists could read DNA sequences, Barbara McClintock followed chromosome behavior and kernel colors in maize. She found genetic elements that could move to new chromosomal positions, changing how nearby genes behaved. She first noticed this unusual behavior in 1944, published key findings in 1950 and presented her theory of controlling elements at Cold Spring Harbor in 1951. Other geneticists respected her experiments but questioned the interpretation. Later molecular studies established that transposable elements also occur in organisms such as yeast, flies and humans. Earlier in her career, McClintock helped connect genetic crossing over with physical chromosome exchanges and described cycles of chromosome breakage and fusion. She received the 1983 Nobel Prize for the discovery of mobile genetic elements and died in 1992.",
+    "history_subject": "Barbara McClintock",
+    "url": "https://www.cshl.edu/personal-collections/barbara-mcclintock/"
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41467-026-78289-z",
+      "title": "Convergence in the size and frequency of macroevolutionary peak-shifts on the adaptive landscape in vertebrates",
+      "used_for": "lead",
+      "evidence": "Checked publisher-indexed primary abstract, first-to-last author order (Pagel, O'Donovan, Meade), DOI, early publication 27 October 2026, more than 21,000 species across five vertebrate classes, ecology ranking of inferred peak shifts, and independent within-population variance result. Direct full-text opening redirected to publisher sign-in; numerical and interpretive claims are confined to the accessible abstract."
+    },
+    {
+      "url": "https://www.nature.com/subjects/phylogenetics",
+      "title": "Phylogenetics latest research, Nature Portfolio",
+      "used_for": "lead",
+      "evidence": "Cross-checked article placement as an open-access Nature Communications research paper dated 27 October 2026; indexed page provided abstract when direct article opening redirected."
+    },
+    {
+      "url": "https://www.reading.ac.uk/ecology/staff/mark-pagel",
+      "title": "Mark Pagel, University of Reading staff profile",
+      "used_for": "person_1",
+      "evidence": "Verified current professor of evolutionary biology, director of Evolution Laboratory, research in phylogenetic models, speciation and language evolution, and election to Royal Society in 2011."
+    },
+    {
+      "url": "https://royalsociety.org/people/mark-pagel-12034/",
+      "title": "Professor Mark Pagel FRS, Royal Society",
+      "used_for": "person_1",
+      "evidence": "Independently confirmed Royal Society fellowship, research on comparative statistical models and evolutionary history."
+    },
+    {
+      "url": "https://www.reading.ac.uk/ecology/staff/andrew-meade",
+      "title": "Andrew Meade, University of Reading staff profile",
+      "used_for": "person_2",
+      "evidence": "Verified associate professor job title, computational biology, comparative methods, phylogenetic inference, high-performance computing, BayesTraits and BayesPhylogenies."
+    },
+    {
+      "url": "https://nias.knaw.nl/fellow/meade-andrew/",
+      "title": "Andrew Meade, Netherlands Institute for Advanced Study",
+      "used_for": "person_2",
+      "evidence": "Verified University of Reading doctoral degree and professional research in phylogenetics; profile dates to 2015, not used to claim current job title."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41594-026-01914-4",
+      "title": "A nanoscale map of the human cell surface proteome reveals spatial and functional organization",
+      "used_for": "slot2",
+      "evidence": "Checked publisher-indexed primary abstract and DOI; publication date 28 October 2026; proximity labeling of 85 surface antigens in human immune cells, mass-spectrometry map, mitochondrial-associated proteins at cell surface, and IL10RB/type I interferon finding. Direct full-text opening redirected to sign-in, so summary stays within abstract."
+    },
+    {
+      "url": "https://www.cshl.edu/personal-collections/barbara-mcclintock/",
+      "title": "Barbara McClintock, Cold Spring Harbor Laboratory Archives",
+      "used_for": "slot3",
+      "evidence": "Read institutional archival biography. Verified maize mobile-element discovery, 1944 observations, 1950 publication, 1951 presentation, contemporary reception, crossing-over and breakage-fusion-bridge work, Nobel award in 1983, and death in 1992."
+    },
+    {
+      "url": "https://mcclintock-lecture-series.research.cornell.edu/about-barbara-mcclintock/",
+      "title": "About Barbara McClintock, Cornell University",
+      "used_for": "slot3",
+      "evidence": "Cross-checked Cornell degrees, work on maize mobile elements and 1983 Nobel recognition; no present-day individuals characterized."
+    }
+  ]
+}
