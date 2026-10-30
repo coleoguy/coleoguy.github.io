@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 13,
-    "date": "2026-10-29"
+    "no": 14,
+    "date": "2026-10-30"
   },
   "issues": [
     {
@@ -225,12 +225,30 @@
       "slot3_headline": "A single molecule links spin and light",
       "slot3_url": "https://doi.org/10.1038/s41586-026-11147-6",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0014-2026-10-30.json",
+      "no": 14,
+      "date": "2026-10-30",
+      "slug": "2026-10-30",
+      "topic": "Phylogenetic comparative methods and macroevolutionary rates",
+      "lead_headline": "Water gives body size more room to shift",
+      "lead_doi": "10.1038/s41467-026-78289-z",
+      "lead_url": "https://doi.org/10.1038/s41467-026-78289-z",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "A map reveals unexpected neighbors on immune cells",
+      "slot2_url": "https://doi.org/10.1038/s41594-026-01914-4",
+      "slot3_kind": "HISTORY",
+      "slot3_headline": "McClintock found genes that would not stay put",
+      "slot3_url": "https://www.cshl.edu/personal-collections/barbara-mcclintock/",
+      "history_subject": "Barbara McClintock"
     }
   ],
   "used_urls": [
     "https://doi.org/10.1016/j.cub.2026.08.053",
     "https://doi.org/10.1016/j.ympev.2026.108754",
     "https://doi.org/10.1038/246096a0",
+    "https://doi.org/10.1038/s41467-026-78289-z",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41559-026-03214-y",
@@ -240,6 +258,7 @@
     "https://doi.org/10.1038/s41586-026-11170-7",
     "https://doi.org/10.1038/s41586-026-11197-w",
     "https://doi.org/10.1038/s41593-026-02489-5",
+    "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1073/pnas.2605030123",
     "https://doi.org/10.1073/pnas.2614478123",
@@ -262,6 +281,7 @@
     "https://insidehighered.com/news/quick-takes/2026/10/16/new-analysis-finds-nih-awarded-7400-fewer-grants",
     "https://www.aip.org/fyi/nsf-acting-director-chief-of-staff-to-exit",
     "https://www.asbmb.org/asbmb-today/policy/101426/nsf-faces-funding-cuts-and-policy-changes",
+    "https://www.cshl.edu/personal-collections/barbara-mcclintock/",
     "https://www.nature.com/articles/d41586-026-03316-4",
     "https://www.nature.com/articles/s41586-026-10972-z",
     "https://www.nature.com/articles/s41586-026-11132-z",
@@ -272,6 +292,7 @@
     "10.1016/j.cub.2026.08.053",
     "10.1016/j.ympev.2026.108754",
     "10.1038/246096a0",
+    "10.1038/s41467-026-78289-z",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41550-026-03004-3",
     "10.1038/s41559-026-03214-y",
@@ -281,6 +302,7 @@
     "10.1038/s41586-026-11170-7",
     "10.1038/s41586-026-11197-w",
     "10.1038/s41593-026-02489-5",
+    "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
     "10.1073/pnas.2605030123",
     "10.1073/pnas.2614478123",
