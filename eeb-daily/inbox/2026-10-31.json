@@ -1,0 +1,106 @@
+{
+  "no": 15,
+  "date": "2026-10-31",
+  "weekday": "Saturday",
+  "lead": {
+    "topic": "Striking EEB paper: microbial virus-host coevolution and CRISPR turnover",
+    "headline": "Microbial immune memories turn over across ecosystems",
+    "deck": "A census of nearly 800 million CRISPR spacers finds rapid turnover and warns that a viral match does not always identify a true host.",
+    "authors": "Roux S, Neri U, Bushnell B, Fremin BJ, George NA, Gophna U, Hug LA, Camargo AP, Wu D, Ivanova N, Kyrpides NC, Eloe-Fadrosh EA",
+    "journal": "Nature Microbiology",
+    "pubdate": "29 Oct 2026",
+    "doi": "10.1038/s41564-026-02480-7",
+    "url": "https://doi.org/10.1038/s41564-026-02480-7",
+    "paragraphs": [
+      "Microbes store short snippets of invading DNA in CRISPR arrays, molecular records that can guide defense against later viral attacks. Simon Roux and colleagues developed a method for extracting these 'spacers' from mixed-community DNA sequencing reads. They screened 467,018 publicly available metagenomes and recovered about 794 million spacers from 367,609 samples. The dataset contained roughly 410 million distinct sequences. Most were rare, and, among well-sampled repeat groups, most spacer sequences appeared in only one sample. In contrast, spacers that were common within a microbial population were more likely to persist across samples collected from the same location or host. The patterns suggest frequent acquisition, turnover, and selective retention.",
+      "Comparing spacers with viruses and plasmids yielded more than a billion sequence matches. These matches can reveal encounters with foreign DNA, but they are not straightforward host assignments. Some viruses matched immune records from distantly related microbes, especially viruses carrying diversity-generating retroelements that can modify proteins used to contact cells. The authors propose that viral DNA sometimes enters a non-host cell without completing infection, yet still contributes a spacer. That explanation remains inferential rather than experimentally established. Most well-supported virus matches implicated one microbial class. The dataset is also unevenly sampled, with many human gut metagenomes, limiting global generalizations."
+    ],
+    "push": "Pair time-series long-read metagenomes with cultured phages and host panels to measure both spacer turnover and successful infection. Does a virus with a diversity-generating retroelement leave CRISPR memories in cells it cannot replicate inside? The answer would distinguish genome entry from host range and strengthen the ecological inference drawn from sequence matches."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Simon Roux",
+      "bio": "Simon Roux leads the Viral Genomics group at the US Department of Energy Joint Genome Institute, part of Lawrence Berkeley National Laboratory. He earned a PhD in bioinformatics, ecology and evolutionary biology at Université Blaise Pascal in France. His group develops tools for viral genome discovery and studies how viruses interact with microbes in soil and freshwater.",
+      "links": [
+        {
+          "label": "DOE Joint Genome Institute profile",
+          "url": "https://jgi.doe.gov/who-we-are/simon-roux"
+        },
+        {
+          "label": "Berkeley Lab profile",
+          "url": "https://biosciences.lbl.gov/profiles/simon-roux/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Emiley A. Eloe-Fadrosh",
+      "bio": "Emiley Eloe-Fadrosh heads the Metagenome Program at the DOE Joint Genome Institute and leads the National Microbiome Data Collaborative. She earned a PhD in marine biology at Scripps Institution of Oceanography and trained as a postdoctoral researcher at the University of Maryland School of Medicine. Her research maps microbial and viral diversity using environmental sequence data.",
+      "links": [
+        {
+          "label": "DOE Joint Genome Institute profile",
+          "url": "https://jgi.doe.gov/who-we-are/emiley-eloe-fadrosh"
+        },
+        {
+          "label": "Berkeley Lab profile",
+          "url": "https://biosciences.lbl.gov/profiles/emiley-eloe-fadrosh/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "When brothers compete, daughters are worth more",
+    "cite": "W. D. Hamilton, <em>Science</em> 156, 477–488 (1967). <a href=\"https://doi.org/10.1126/science.156.3774.477\">Original paper</a>.",
+    "body": "Why are males and females commonly produced in similar numbers when one male could fertilize many females? In 1967 W. D. Hamilton used population-genetic theory to show why the answer changes when mating occurs among relatives. If brothers compete with one another for sisters in a small patch, mothers can increase their genetic contribution by producing a strongly female-biased brood, with enough sons to mate with the daughters. This is local mate competition, a departure from the usual one-to-one prediction. Work on parasitoid and fig wasps subsequently made these sex-ratio predictions a prominent test of adaptation.",
+    "url": "https://doi.org/10.1126/science.156.3774.477"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "An electron beam carves oxides one atom thick",
+    "cite": "Gao M et al., <em>Nature Materials</em> (29 Oct 2026). <a href=\"https://doi.org/10.1038/s41563-026-02793-2\">Original paper</a>.",
+    "body": "Researchers used a focused electron beam to remove halogen atoms from layered metal oxyhalides, producing free-standing metal oxide sheets only one atomic layer thick. They demonstrated the approach with chromium oxide and extended it to erbium and bismuth oxides. Some chromium oxide sheets formed single-crystal regions larger than 10,000 square nanometres, and the team patterned structures at micrometre scales. Calculations predict that monolayer chromium oxide is stable and could show antiferromagnetic order below 230 kelvin, but that magnetic state was not measured here. The method could enable engineered stacks and interfaces for studying unusual electronic and optical behavior.",
+    "url": "https://doi.org/10.1038/s41563-026-02793-2"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41564-026-02480-7",
+      "title": "Planetary-scale metagenomic analysis reveals CRISPR targeting dynamics across ecosystems",
+      "used_for": "lead",
+      "evidence": "Verified publisher author sequence, Nature Microbiology publication 29 October 2026 and DOI. Examined indexed publisher abstract, methods, results and discussion, including 467,018 screened metagenomes, 794,125,610 retained spacers in 367,609 samples, turnover patterns, cross-taxon matches and sampling bias. Direct page open returned an inaccessible sign-in redirect; no independent computational reanalysis."
+    },
+    {
+      "url": "https://jgi.doe.gov/who-we-are/simon-roux",
+      "title": "Simon Roux | DOE Joint Genome Institute",
+      "used_for": "person_1",
+      "evidence": "Read institute biography; verified current Viral Genomics Lead position, 2017 appointment, research program and PhD field and university."
+    },
+    {
+      "url": "https://jgi.doe.gov/who-we-are/emiley-eloe-fadrosh",
+      "title": "Emiley Eloe-Fadrosh | DOE Joint Genome Institute",
+      "used_for": "person_2",
+      "evidence": "Read institute biography; verified Metagenome Program Head, National Microbiome Data Collaborative role, Scripps PhD and University of Maryland postdoctoral training."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/6021675/",
+      "title": "Hamilton (1967), Extraordinary sex ratios | PubMed",
+      "used_for": "slot2",
+      "evidence": "Verified 28 April 1967 Science citation, W. D. Hamilton authorship, volume 156, pages 477-488 and DOI; bibliographic record has no complete abstract."
+    },
+    {
+      "url": "https://www.geneconvenevi.org/articles/extraordinary-sex-ratios/",
+      "title": "Extraordinary sex ratios | GeneConvene Virtual Institute",
+      "used_for": "slot2",
+      "evidence": "Checked archived original-paper opening on why natural selection can favor a 1:1 sex ratio. Cross-checked local mate competition explanation against published literature; publisher full text was inaccessible."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41563-026-02793-2",
+      "title": "Free-standing two-dimensional metal oxides at the single-atomic-layer limit",
+      "used_for": "slot3",
+      "evidence": "Read publisher abstract and metadata, verified 29 October 2026 publication, DOI, electron-beam dehalogenation, CrO/ErO/BiO demonstration, single-crystal CrO domains larger than 10,000 square nanometres, and that 230 K magnetic ordering is predicted rather than measured. Article body is subscription-only."
+    }
+  ]
+}
