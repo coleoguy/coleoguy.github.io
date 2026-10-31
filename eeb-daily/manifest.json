@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 14,
-    "date": "2026-10-30"
+    "no": 15,
+    "date": "2026-10-31"
   },
   "issues": [
     {
@@ -242,6 +242,23 @@
       "slot3_headline": "McClintock found genes that would not stay put",
       "slot3_url": "https://www.cshl.edu/personal-collections/barbara-mcclintock/",
       "history_subject": "Barbara McClintock"
+    },
+    {
+      "path": "eeb-daily/data/0015-2026-10-31.json",
+      "no": 15,
+      "date": "2026-10-31",
+      "slug": "2026-10-31",
+      "topic": "Striking EEB paper: microbial virus-host coevolution and CRISPR turnover",
+      "lead_headline": "Microbial immune memories turn over across ecosystems",
+      "lead_doi": "10.1038/s41564-026-02480-7",
+      "lead_url": "https://doi.org/10.1038/s41564-026-02480-7",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "When brothers compete, daughters are worth more",
+      "slot2_url": "https://doi.org/10.1126/science.156.3774.477",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "An electron beam carves oxides one atom thick",
+      "slot3_url": "https://doi.org/10.1038/s41563-026-02793-2",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -253,6 +270,8 @@
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41559-026-03216-w",
+    "https://doi.org/10.1038/s41563-026-02793-2",
+    "https://doi.org/10.1038/s41564-026-02480-7",
     "https://doi.org/10.1038/s41586-026-11107-0",
     "https://doi.org/10.1038/s41586-026-11147-6",
     "https://doi.org/10.1038/s41586-026-11170-7",
@@ -273,6 +292,7 @@
     "https://doi.org/10.1111/mec.70592",
     "https://doi.org/10.1111/nph.71668",
     "https://doi.org/10.1126/sciadv.aef0605",
+    "https://doi.org/10.1126/science.156.3774.477",
     "https://doi.org/10.1126/science.adz4903",
     "https://doi.org/10.1186/s13059-026-04293-7",
     "https://doi.org/10.1186/s13062-026-00994-y",
@@ -297,6 +317,8 @@
     "10.1038/s41550-026-03004-3",
     "10.1038/s41559-026-03214-y",
     "10.1038/s41559-026-03216-w",
+    "10.1038/s41563-026-02793-2",
+    "10.1038/s41564-026-02480-7",
     "10.1038/s41586-026-11107-0",
     "10.1038/s41586-026-11147-6",
     "10.1038/s41586-026-11170-7",
@@ -317,6 +339,7 @@
     "10.1111/mec.70592",
     "10.1111/nph.71668",
     "10.1126/sciadv.aef0605",
+    "10.1126/science.156.3774.477",
     "10.1126/science.adz4903",
     "10.1186/s13059-026-04293-7",
     "10.1186/s13062-026-00994-y",
