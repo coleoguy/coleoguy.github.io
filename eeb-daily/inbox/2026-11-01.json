@@ -1,0 +1,118 @@
+{
+  "no": 16,
+  "date": "2026-11-01",
+  "weekday": "Sunday",
+  "lead": {
+    "topic": "Sex determination and chromosome turnover: a new W-linked master regulator in frogs",
+    "headline": "Deleting one gene reverses frog sex",
+    "deck": "A newly evolved W-linked copy of <em>wnt3</em> is required for female development in African clawed frogs, and its knockout produces fertile males.",
+    "authors": "Evans BJ, Murphy HA, Porter SR, Wasonga DV, Knytl M, Bergelová B, Horb M",
+    "journal": "Genetics",
+    "pubdate": "29 Oct 2026",
+    "doi": "10.1093/genetics/iyag304",
+    "url": "https://doi.org/10.1093/genetics/iyag304",
+    "paragraphs": [
+      "Sex determination can change rapidly even though disturbing it risks sterility. In African clawed frogs, the chromosome that determines female development can differ between close relatives. Ben Evans and colleagues searched for the female-determining switch in <em>Xenopus borealis</em>, a species with its own distinctive W chromosome. Genomic and RNA data identified a female-specific duplicate of a familiar developmental gene, <em>wnt3</em>. The duplicate, called <em>wnt3-W</em>, was expressed specifically in developing female gonads, making it a candidate sex-determining gene rather than merely a passenger on the W. The team used genome editing to disable this copy and test its role directly.",
+      "The result was dramatic: 35 of 36 edited animals underwent complete female-to-male sex reversal. They developed male reproductive anatomy and testes, produced male mating calls, displayed male mating behavior and were fertile. That evidence shows <em>wnt3-W</em> is generally necessary for female development in this species. Comparisons with other clawed frogs suggest that the W-linked copy arose recently, after this species separated from its living relatives. Ordinary Wnt3 helps organize development and is not normally a sex switch, so its recruitment is a striking case of evolutionary repurposing. But gene deletion establishes necessity, not sufficiency. Whether adding <em>wnt3-W</em> alone can feminize a genetic male remains untested."
+    ],
+    "push": "Test sufficiency by adding <em>wnt3-W</em> to genetic males and mapping its earliest effects on gonad gene expression. Does the duplicate activate the established Wnt4 pathway, or does it act through another network? Comparing its regulatory activity across related frogs could reveal which developmental conditions permit a new master sex-determining gene to evolve."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Ben J. Evans",
+      "bio": "Ben J. Evans is a professor of biology at McMaster University, where he studies genome evolution, speciation and sex determination. He earned a doctorate in biological sciences at Columbia University. His group combines fieldwork, genome analysis and gene editing, with a longstanding focus on African clawed frogs and the turnover of sex chromosomes.",
+      "links": [
+        {
+          "label": "McMaster University profile",
+          "url": "https://experts.mcmaster.ca/people/evansb"
+        },
+        {
+          "label": "Evans Lab",
+          "url": "https://benevanslab.wordpress.com/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Marko E. Horb",
+      "bio": "Marko E. Horb is a senior scientist at the Marine Biological Laboratory in Woods Hole and directs the National Xenopus Resource. He earned a doctorate in cellular and developmental biology at Stony Brook University in 1998. His laboratory uses CRISPR genome editing to create frog models for studies of development and disease.",
+      "links": [
+        {
+          "label": "Marine Biological Laboratory faculty",
+          "url": "https://www.mbl.edu/research/faculty-directory/Marko%20Horb"
+        },
+        {
+          "label": "National Xenopus Resource",
+          "url": "https://www.orip.nih.gov/division-comparative-medicine/research-resources-directory/national-xenopus-resource-center"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Tumor cells nibble fat from their neighbors",
+    "cite": "Ogier C et al. <em>Nature Cancer</em> (published online 30 Oct 2026). <a href=\"https://doi.org/10.1038/s43018-026-01265-5\">Original paper</a>.",
+    "body": "Pancreatic tumors are packed with fibroblasts, connective-tissue cells that surround cancer cells even where working blood vessels are scarce. A study published October 30 found that these fibroblasts can supply tumor cells with cholesterol and other membrane lipids. Cancer cells form close contacts and take pieces of fibroblast membranes through trogocytosis, literally cell nibbling. Calcium influx activates the fibroblast protein ANO6, exposing a membrane signal that helps enable the transfer. Blocking ANO6 reduced tumor growth and immune suppression in the study's experimental systems. The finding points to a possible therapeutic target, not a treatment already demonstrated to work in patients.",
+    "url": "https://doi.org/10.1038/s43018-026-01265-5"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Higher-frequency pulses read qubits more gently",
+    "cite": "Dixit AV et al. <em>Physical Review Letters</em> 137, 180803 (30 Oct 2026). <a href=\"https://doi.org/10.1103/c84y-ggqs\">Original paper</a>.",
+    "body": "Reading a superconducting qubit is tricky because a measurement pulse can disturb the quantum state being measured. Akash Dixit and colleagues placed a readout cavity at 34.7 gigahertz, more than ten times the frequency of their 3.1-gigahertz qubit. This separation allowed strong millimeter-wave pulses while suppressing unwanted changes of state. Their device identified the qubit's state with greater than 99% fidelity using more than 100 photons, without a quantum-limited amplifier. The experiment, published October 30 in <em>Physical Review Letters</em>, demonstrates a promising measurement method. It does not establish error-free readout or a ready-to-deploy large quantum computer.",
+    "url": "https://doi.org/10.1103/c84y-ggqs"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/genetics/advance-article/doi/10.1093/genetics/iyag304/9004695",
+      "title": "A candidate genetic trigger of female sex determination in Marsabit clawed frogs (Xenopus borealis)",
+      "used_for": "lead",
+      "evidence": "Read the journal's published abstract, author list, affiliation metadata and date, 29 October 2026. Verified gene identity wnt3-W, female-specific expression, 35 of 36 edited animals with sex reversal, male traits and fertility, and phylogenetic evidence for recent W-linked origin. Accepted manuscript is PDF-only and full manuscript text was not accessible here; no full-methods claims were added."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42956010/",
+      "title": "PubMed bibliographic record for wnt3-W and Xenopus borealis",
+      "used_for": "lead",
+      "evidence": "Compared DOI and author order with the publisher entry through bibliographic search. Publisher abstract remains the basis for experimental details."
+    },
+    {
+      "url": "https://experts.mcmaster.ca/people/evansb",
+      "title": "Ben Evans | McMaster Experts",
+      "used_for": "person_1",
+      "evidence": "Verified professor of biology, Columbia University PhD in biological sciences, and research on genome evolution, frog sex chromosomes, bioinformatics and gene editing."
+    },
+    {
+      "url": "https://benevanslab.wordpress.com/",
+      "title": "Laboratory of Ben Evans",
+      "used_for": "person_1",
+      "evidence": "Verified laboratory focus on genome evolution, speciation and sex chromosome turnover, including Xenopus."
+    },
+    {
+      "url": "https://www.mbl.edu/research/faculty-directory/Marko%20Horb",
+      "title": "Marko Horb | Marine Biological Laboratory",
+      "used_for": "person_2",
+      "evidence": "Verified senior scientist and National Xenopus Resource director, Stony Brook PhD in 1998, and CRISPR frog-model research."
+    },
+    {
+      "url": "https://www.nature.com/articles/s43018-026-01265-5",
+      "title": "ANO6-mediated trogocytosis of cancer-associated fibroblasts promotes pancreatic cancer cell growth and immune suppression",
+      "used_for": "slot2",
+      "evidence": "Read the original open-access research page and abstract. Verified October 30 online date, calcium/ANO6-dependent fibroblast membrane transfer, cholesterol supply, experimental tumor growth and immune effects. No claim of proven patient benefit."
+    },
+    {
+      "url": "https://journals.aps.org/prl/abstract/10.1103/c84y-ggqs",
+      "title": "Millimeter Wave Readout of a Superconducting Qubit",
+      "used_for": "slot3",
+      "evidence": "Read primary journal abstract and citation: published October 30, 2026; 34.7-GHz readout cavity, 3.1-GHz qubit, greater than 99% measurement fidelity and more than 100 photons without a quantum-limited amplifier. Full article requires subscription."
+    },
+    {
+      "url": "https://physics.aps.org/articles/v19/s140",
+      "title": "Talking to Superconducting Qubits with Millimeter Waves",
+      "used_for": "slot3",
+      "evidence": "Cross-checked the accessible American Physical Society summary of the same October 30 experiment, including the measurement-disturbance tradeoff and proposed platform connections."
+    }
+  ]
+}
