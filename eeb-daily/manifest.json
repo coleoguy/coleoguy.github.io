@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 15,
-    "date": "2026-10-31"
+    "no": 16,
+    "date": "2026-11-01"
   },
   "issues": [
     {
@@ -259,6 +259,23 @@
       "slot3_headline": "An electron beam carves oxides one atom thick",
       "slot3_url": "https://doi.org/10.1038/s41563-026-02793-2",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0016-2026-11-01.json",
+      "no": 16,
+      "date": "2026-11-01",
+      "slug": "2026-11-01",
+      "topic": "Sex determination and chromosome turnover: a new W-linked master regulator in frogs",
+      "lead_headline": "Deleting one gene reverses frog sex",
+      "lead_doi": "10.1093/genetics/iyag304",
+      "lead_url": "https://doi.org/10.1093/genetics/iyag304",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Tumor cells nibble fat from their neighbors",
+      "slot2_url": "https://doi.org/10.1038/s43018-026-01265-5",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Higher-frequency pulses read qubits more gently",
+      "slot3_url": "https://doi.org/10.1103/c84y-ggqs",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -279,15 +296,18 @@
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
+    "https://doi.org/10.1038/s43018-026-01265-5",
     "https://doi.org/10.1073/pnas.2605030123",
     "https://doi.org/10.1073/pnas.2614478123",
     "https://doi.org/10.1073/pnas.2614706123",
     "https://doi.org/10.1086/284325",
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/genetics/iyag280",
+    "https://doi.org/10.1093/genetics/iyag304",
     "https://doi.org/10.1093/mnras/stag1874",
     "https://doi.org/10.1093/sysbio/syag079",
     "https://doi.org/10.1098/rsos.260937",
+    "https://doi.org/10.1103/c84y-ggqs",
     "https://doi.org/10.1103/gbkc-6nlj",
     "https://doi.org/10.1111/mec.70592",
     "https://doi.org/10.1111/nph.71668",
@@ -326,15 +346,18 @@
     "10.1038/s41593-026-02489-5",
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
+    "10.1038/s43018-026-01265-5",
     "10.1073/pnas.2605030123",
     "10.1073/pnas.2614478123",
     "10.1073/pnas.2614706123",
     "10.1086/284325",
     "10.1093/gbe/evag259",
     "10.1093/genetics/iyag280",
+    "10.1093/genetics/iyag304",
     "10.1093/mnras/stag1874",
     "10.1093/sysbio/syag079",
     "10.1098/rsos.260937",
+    "10.1103/c84y-ggqs",
     "10.1103/gbkc-6nlj",
     "10.1111/mec.70592",
     "10.1111/nph.71668",
