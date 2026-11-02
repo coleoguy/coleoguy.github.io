@@ -1,0 +1,128 @@
+{
+  "no": 17,
+  "date": "2026-11-02",
+  "weekday": "Monday",
+  "lead": {
+    "topic": "Chromosome evolution: centromere drive and structural supergenes",
+    "headline": "A selfish centromere builds an oversized chromosome",
+    "deck": "Monkeyflower genome assemblies reveal how a driving chromosome gathered rearrangements, repeated DNA and extra genes without yet revealing which change makes it cheat.",
+    "authors": "Stark-Dykema E, Finseth FR, Conner W, Plott CB, Fishman L",
+    "journal": "Genetics",
+    "pubdate": "31 Oct 2026",
+    "doi": "10.1093/genetics/iyag311",
+    "url": "https://doi.org/10.1093/genetics/iyag311",
+    "paragraphs": [
+      "A chromosome in the yellow monkeyflower can cheat Mendel's 50:50 inheritance rule. During female meiosis, only one of the resulting products ultimately contributes to an egg, giving selfish centromeres an opportunity to bias transmission. Evan Stark-Dykema and colleagues compared chromosome-scale genome assemblies representing three distinct haplotypes, or versions, of the meiotic drive region on chromosome 11. The driving version, called D, contains a centromere, carries fitness costs and nevertheless persists in wild populations. The new comparison asks how one selfish locus accumulated a large block of linked genetic changes.",
+      "Compared with nondriving chromosomes, D carries at least two major rearrangements, including an inversion that links arrays of centromeric satellite DNA while trapping more than 200 genes between them. Expansion of a particular repeat family makes the driving chromosome more than 50% longer than its counterparts. A roughly two-megabase region unique to D also contains about 37 additional genes acquired through duplication and relocation. The authors identify expanded repeats as candidates for driving biased segregation and linked genes as possible modifiers of that advantage. But comparative assemblies cannot establish which change actually causes the distortion; testing causality will require experiments that separate the repeat expansions from neighboring genes."
+    ],
+    "push": "Reconstruct the sequence of structural changes using additional driving and nondriving haplotypes from populations with different transmission biases. Then experimentally separate centromeric repeat expansions from candidate modifier genes. Which changes alter the fraction of eggs inheriting D, and which merely carry fitness costs? The proposed molecular mechanism remains to be demonstrated."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Evan Stark-Dykema",
+      "bio": "Evan Stark-Dykema studies selfish centromeres and meiotic drive in monkeyflowers at the University of Montana. The Fishman Lab lists him as a PhD candidate, and a 2025 university fellowship profile identifies Lila Fishman as his adviser in Ecology and Evolution. Before Montana, he worked as a lab manager at the University of Michigan.",
+      "links": [
+        {
+          "label": "Fishman Lab people",
+          "url": "https://www.fishmanlab.org/new-page"
+        },
+        {
+          "label": "University of Montana fellowship profile",
+          "url": "https://www.umt.edu/montana-institute-on-ecosystems/who-we-are/graduate-fellows/spring-2025/"
+        },
+        {
+          "label": "Former Michigan lab affiliation",
+          "url": "https://mueller.lab.medicine.umich.edu/people"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Lila Fishman",
+      "bio": "Lila Fishman is a professor in the University of Montana's Division of Biological and Biomedical Sciences. She earned a doctorate in ecology and evolutionary biology at Princeton University in 1997. Her group combines field studies, genetic crosses and genomics to investigate selfish chromosomes, reproductive incompatibilities, plant adaptation and the origins of species.",
+      "links": [
+        {
+          "label": "University of Montana faculty profile",
+          "url": "https://umimpact.umt.edu/en/persons/lila-fishman/"
+        },
+        {
+          "label": "Fishman Lab",
+          "url": "https://www.fishmanlab.org/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Oxytocin neurons help the body switch into motion",
+    "cite": "Vandendoren M et al. <em>eLife</em> 14:RP108212 (version of record, 30 Oct 2026). <a href=\"https://doi.org/10.7554/eLife.108212.4\">Primary paper</a>.",
+    "body": "Oxytocin is famous for social behavior, but a mouse study points to a more basic job: coordinating the switch from rest to activity. Vandendoren and colleagues monitored oxytocin-producing neurons in the hypothalamus while recording body temperature and behavior. Neural activity tracked transitions from cooler, quiet states toward heat production and arousal, even when mice were alone. Stimulating these neurons during low-temperature resting periods increased thermogenesis, followed by movement. The experiments support a role in changing physiological states, not simply social warmth. Reviewers note that the work does not yet isolate oxytocin release from possible co-released glutamate.",
+    "url": "https://doi.org/10.7554/eLife.108212.4"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Two black holes feed inside an early galaxy collision",
+    "cite": "Suh H et al. <em>Nature Astronomy</em> (online 30 Oct 2026). <a href=\"https://doi.org/10.1038/s41550-026-03008-z\">Primary paper</a>.",
+    "body": "Astronomers have identified two actively feeding supermassive black holes in a gas-rich collision from when the universe was about 1.3 billion years old. James Webb Space Telescope spectroscopy separated two bright galactic nuclei about 1.5 kiloparsecs apart in projection. Both show broad hydrogen emission associated with rapidly moving gas near growing black holes. Independent ALMA observations reveal corresponding cold-gas components, strengthening the merger interpretation. Published October 30, the study shows how dusty collisions might fuel early black-hole growth. The projected separation is not their true three-dimensional distance, and the observations cannot establish when the black holes will merge.",
+    "url": "https://doi.org/10.1038/s41550-026-03008-z"
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/genetics/advance-article-abstract/doi/10.1093/genetics/iyag311/9005936",
+      "title": "More than just a centromere: evolution of a structural supergene causing female meiotic drive in monkeyflowers",
+      "used_for": "lead",
+      "evidence": "Read primary publisher abstract and article metadata on 1 Nov 2026. Confirmed author order, GENETICS accepted-manuscript online date 31 Oct 2026 and DOI. Abstract reports three haplotypes, at least two rearrangements, >200 trapped genes, >50% chromosome length difference and ~37 duplicated or translocated genes in a 2 Mb D-specific region. Full manuscript was paywalled; candidate causal mechanisms are not functionally verified."
+    },
+    {
+      "url": "https://www.fishmanlab.org/new-page",
+      "title": "Fishman Lab: People",
+      "used_for": "person_1",
+      "evidence": "Verified Stark-Dykema is listed as a PhD candidate studying meiotic drive; lab page update date not provided, so status stated as a listing rather than independently reconfirmed."
+    },
+    {
+      "url": "https://www.umt.edu/montana-institute-on-ecosystems/who-we-are/graduate-fellows/spring-2025/",
+      "title": "University of Montana Institute on Ecosystems: Spring 2025 Fellows",
+      "used_for": "person_1",
+      "evidence": "Verified Ecology and Evolution program, named adviser Lila Fishman and project on centromeric meiotic drive. Page last updated Oct 22, 2025."
+    },
+    {
+      "url": "https://mueller.lab.medicine.umich.edu/people",
+      "title": "Mueller Lab: People",
+      "used_for": "person_1",
+      "evidence": "Former lab members page lists Evan Stark-Dykema as a previous lab manager and University of Montana as next predoctoral program."
+    },
+    {
+      "url": "https://umimpact.umt.edu/en/persons/lila-fishman/",
+      "title": "Lila Fishman: University of Montana faculty profile",
+      "used_for": "person_2",
+      "evidence": "Verified professor title, University of Montana division, Princeton doctorate awarded 1997 and research in selfish chromosome evolution, speciation and monkeyflower genomics."
+    },
+    {
+      "url": "https://www.fishmanlab.org/",
+      "title": "Fishman Lab: research program",
+      "used_for": "person_2",
+      "evidence": "Verified lab's use of Mimulus genetics and genomics to study population and species divergence."
+    },
+    {
+      "url": "https://elifesciences.org/articles/108212",
+      "title": "Oxytocin neurons signal state-dependent transitions from rest to thermogenesis and behavioral arousal",
+      "used_for": "slot2",
+      "evidence": "Read eLife full accessible primary text, abstract and editorial assessment. Verified version of record dated Oct 30, 2026, doi 10.7554/eLife.108212.4. In mice, hypothalamic oxytocin neuron activity tracks thermogenesis and arousal, stimulation during low-temperature rest raises thermogenesis then activity; co-released glutamate was not isolated."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41550-026-03008-z",
+      "title": "Rapid growth in a dual active galactic nucleus during a gas-rich merger at z approximately 4.5",
+      "used_for": "slot3",
+      "evidence": "Publisher abstract and metadata verified through indexed publisher page: Oct 30, 2026; LID-1166 at redshift ~4.5, projected ~1.5 kpc dual active nuclei, JWST broad H-alpha and ALMA cold gas. Direct publisher page retrieval redirected to sign-in."
+    },
+    {
+      "url": "https://arxiv.org/abs/2607.19491",
+      "title": "Rapid growth in a dual AGN during a gas-rich merger at z~4.5",
+      "used_for": "slot3",
+      "evidence": "Read authors' public preprint abstract on arXiv and verified first posted July 21, 2026; distinct from new Oct 30 journal publication. Its abstract independently corroborates JWST, ALMA, projected separation and inferred growth."
+    }
+  ]
+}
