@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 16,
-    "date": "2026-11-01"
+    "no": 17,
+    "date": "2026-11-02"
   },
   "issues": [
     {
@@ -276,6 +276,23 @@
       "slot3_headline": "Higher-frequency pulses read qubits more gently",
       "slot3_url": "https://doi.org/10.1103/c84y-ggqs",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0017-2026-11-02.json",
+      "no": 17,
+      "date": "2026-11-02",
+      "slug": "2026-11-02",
+      "topic": "Chromosome evolution: centromere drive and structural supergenes",
+      "lead_headline": "A selfish centromere builds an oversized chromosome",
+      "lead_doi": "10.1093/genetics/iyag311",
+      "lead_url": "https://doi.org/10.1093/genetics/iyag311",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Oxytocin neurons help the body switch into motion",
+      "slot2_url": "https://doi.org/10.7554/eLife.108212.4",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Two black holes feed inside an early galaxy collision",
+      "slot3_url": "https://doi.org/10.1038/s41550-026-03008-z",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -285,6 +302,7 @@
     "https://doi.org/10.1038/s41467-026-78289-z",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41550-026-03004-3",
+    "https://doi.org/10.1038/s41550-026-03008-z",
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41559-026-03216-w",
     "https://doi.org/10.1038/s41563-026-02793-2",
@@ -304,6 +322,7 @@
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/genetics/iyag280",
     "https://doi.org/10.1093/genetics/iyag304",
+    "https://doi.org/10.1093/genetics/iyag311",
     "https://doi.org/10.1093/mnras/stag1874",
     "https://doi.org/10.1093/sysbio/syag079",
     "https://doi.org/10.1098/rsos.260937",
@@ -317,6 +336,7 @@
     "https://doi.org/10.1186/s13059-026-04293-7",
     "https://doi.org/10.1186/s13062-026-00994-y",
     "https://doi.org/10.7554/eLife.106510",
+    "https://doi.org/10.7554/eLife.108212.4",
     "https://doi.org/10.7554/eLife.112083",
     "https://insidehighered.com/news/quick-takes/2026/10/16/new-analysis-finds-nih-awarded-7400-fewer-grants",
     "https://www.aip.org/fyi/nsf-acting-director-chief-of-staff-to-exit",
@@ -335,6 +355,7 @@
     "10.1038/s41467-026-78289-z",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41550-026-03004-3",
+    "10.1038/s41550-026-03008-z",
     "10.1038/s41559-026-03214-y",
     "10.1038/s41559-026-03216-w",
     "10.1038/s41563-026-02793-2",
@@ -354,6 +375,7 @@
     "10.1093/gbe/evag259",
     "10.1093/genetics/iyag280",
     "10.1093/genetics/iyag304",
+    "10.1093/genetics/iyag311",
     "10.1093/mnras/stag1874",
     "10.1093/sysbio/syag079",
     "10.1098/rsos.260937",
@@ -367,6 +389,7 @@
     "10.1186/s13059-026-04293-7",
     "10.1186/s13062-026-00994-y",
     "10.7554/elife.106510",
+    "10.7554/elife.108212.4",
     "10.7554/elife.112083"
   ]
 }
