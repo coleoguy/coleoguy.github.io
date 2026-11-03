@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 17,
-    "date": "2026-11-02"
+    "no": 18,
+    "date": "2026-11-03"
   },
   "issues": [
     {
@@ -293,13 +293,32 @@
       "slot3_headline": "Two black holes feed inside an early galaxy collision",
       "slot3_url": "https://doi.org/10.1038/s41550-026-03008-z",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0018-2026-11-03.json",
+      "no": 18,
+      "date": "2026-11-03",
+      "slug": "2026-11-03",
+      "topic": "Genome biology and comparative genomics: transposon-driven genome size evolution",
+      "lead_headline": "Jumping DNA can swell a genome, then shrink it",
+      "lead_doi": "10.1038/s41467-026-78884-0",
+      "lead_url": "https://doi.org/10.1038/s41467-026-78884-0",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Bacterial resistance existed before the virus arrived",
+      "slot2_url": "https://doi.org/10.1093/genetics/28.6.491",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "A thin film turns infrared light into visible signals",
+      "slot3_url": "https://doi.org/10.1038/s41377-026-02442-y",
+      "history_subject": ""
     }
   ],
   "used_urls": [
     "https://doi.org/10.1016/j.cub.2026.08.053",
     "https://doi.org/10.1016/j.ympev.2026.108754",
     "https://doi.org/10.1038/246096a0",
+    "https://doi.org/10.1038/s41377-026-02442-y",
     "https://doi.org/10.1038/s41467-026-78289-z",
+    "https://doi.org/10.1038/s41467-026-78884-0",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41550-026-03008-z",
@@ -320,6 +339,7 @@
     "https://doi.org/10.1073/pnas.2614706123",
     "https://doi.org/10.1086/284325",
     "https://doi.org/10.1093/gbe/evag259",
+    "https://doi.org/10.1093/genetics/28.6.491",
     "https://doi.org/10.1093/genetics/iyag280",
     "https://doi.org/10.1093/genetics/iyag304",
     "https://doi.org/10.1093/genetics/iyag311",
@@ -352,7 +372,9 @@
     "10.1016/j.cub.2026.08.053",
     "10.1016/j.ympev.2026.108754",
     "10.1038/246096a0",
+    "10.1038/s41377-026-02442-y",
     "10.1038/s41467-026-78289-z",
+    "10.1038/s41467-026-78884-0",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41550-026-03004-3",
     "10.1038/s41550-026-03008-z",
@@ -373,6 +395,7 @@
     "10.1073/pnas.2614706123",
     "10.1086/284325",
     "10.1093/gbe/evag259",
+    "10.1093/genetics/28.6.491",
     "10.1093/genetics/iyag280",
     "10.1093/genetics/iyag304",
     "10.1093/genetics/iyag311",
