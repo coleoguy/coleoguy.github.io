@@ -1,0 +1,130 @@
+{
+  "no": 18,
+  "date": "2026-11-03",
+  "weekday": "Tuesday",
+  "lead": {
+    "topic": "Genome biology and comparative genomics: transposon-driven genome size evolution",
+    "headline": "Jumping DNA can swell a genome, then shrink it",
+    "deck": "A new simulator reconstructs how mobile DNA can expand and contract genomes, suggesting that preventing transposon invasions may matter more than cleanup afterward.",
+    "authors": "Benson CW, Chen TH, Thomson SJ, Deng CH, Ou S",
+    "journal": "Nature Communications",
+    "pubdate": "2 Nov 2026",
+    "doi": "10.1038/s41467-026-78884-0",
+    "url": "https://doi.org/10.1038/s41467-026-78884-0",
+    "paragraphs": [
+      "Genome size can rise and fall without gaining or losing many genes. Much of the change comes from transposable elements, pieces of DNA that copy or move around chromosomes. Christopher Benson and colleagues introduced PrinTE, a forward-time program that simulates their insertion, deletion and sequence decay over many generations. It starts with a synthetic or observed genome, generates alternative evolutionary histories, and searches for parameter combinations that resemble a present-day genome. In a test using a simulated genome with known rates, the method recovered insertion and deletion settings to within 6%, even after searching a parameter range spanning four orders of magnitude.",
+      "The authors applied the framework to Arabidopsis and rust fungi, whose genomes differ sharply in size. Among Pucciniomycotina fungi, the removal of long terminal repeat retrotransposons by recombination leaves solo repeat fragments behind. Simulations suggested that this cleanup alone cannot reliably keep genomes small: avoiding invasion can matter more. For the myrtle rust fungus <em>Austropuccinia psidii</em>, they inferred an earlier expansion to a genome over one billion bases, followed by stronger deletion and possible contraction. That trajectory is a model-supported reconstruction, not a directly observed past. Results also depend on repeat annotation quality and assumed rates."
+    ],
+    "push": "Apply PrinTE to clades with independently dated transposon bursts and chromosome-scale assemblies. Can the same parameters explain both genome size and the age distribution of intact copies? Compare alternative annotation pipelines before interpreting a historical expansion as real. Experimental mutation-accumulation data could test whether inferred insertion and deletion rates are biologically plausible."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Christopher W. Benson",
+      "bio": "Christopher W. Benson is a postdoctoral scholar in the Ou Lab at The Ohio State University's Department of Molecular Genetics. He develops computational tools to study transposable elements and genome evolution, including the PrinTE simulator. His coauthored protocols also describe practical strategies for annotating repetitive DNA in maize. His doctoral training was not independently verified.",
+      "links": [
+        {
+          "label": "Ou Lab people",
+          "url": "https://www.ou-lab.org/people"
+        },
+        {
+          "label": "Published annotation protocol",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39237454/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Shujun Ou",
+      "bio": "Shujun Ou is an assistant professor of molecular genetics at The Ohio State University. He earned a PhD at Michigan State University and held postdoctoral appointments at the University of Iowa and Johns Hopkins University. His group develops genome-analysis tools and studies how mobile DNA contributes to genome structure and adaptation, particularly in plants.",
+      "links": [
+        {
+          "label": "Ohio State faculty profile",
+          "url": "https://mcdb.osu.edu/people/ou.195"
+        },
+        {
+          "label": "Ohio State appointment history",
+          "url": "https://molgen.osu.edu/news/new-faculty-hired-molecular-genetics"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Bacterial resistance existed before the virus arrived",
+    "cite": "Luria SE, Delbrück M. <em>Genetics</em> 28:491–511 (20 Nov 1943). <a href=\"https://doi.org/10.1093/genetics/28.6.491\">Original paper</a>.",
+    "body": "In 1943, Salvador Luria and Max Delbrück asked whether bacteria become resistant to viruses only after a viral attack, or whether resistant cells already exist. They grew many separate bacterial cultures and then challenged each with a bacteriophage, a virus that infects bacteria. Resistant survivors varied wildly between cultures. A mutation appearing early produced a jackpot of resistant descendants, while a late mutation yielded only a few. That uneven distribution matched random mutations arising before exposure, not resistance triggered by the virus. Their fluctuation test transformed bacterial genetics and became a foundation for measuring mutation rates and understanding selection.",
+    "url": "https://doi.org/10.1093/genetics/28.6.491"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "A thin film turns infrared light into visible signals",
+    "cite": "Li Y et al. <em>Light: Science &amp; Applications</em> 15:393 (2 Nov 2026). <a href=\"https://doi.org/10.1038/s41377-026-02442-y\">Original paper</a>.",
+    "body": "Thermal cameras normally need detectors that respond directly to infrared light. A team led by Yanyan Li instead built a thin-film converter that lets a silicon camera read a thermal signal through reflected green light. A silicon-nitride membrane absorbs 9.5-micrometer infrared radiation and warms a layered perovskite film, shifting its visible reflectance. The researchers imaged a laser-projected pattern and isolated miniature membrane pixels to keep heat from blurring neighboring readings. Their laboratory device is not yet a night-vision camera: it requires controlled illumination, an optical chopper and imaging optics. Still, it offers an experimentally demonstrated route toward cheaper infrared sensor arrays.",
+    "url": "https://doi.org/10.1038/s41377-026-02442-y"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41467-026-78884-0",
+      "title": "PrinTE: a forward simulation framework for studying the role of transposable elements in genome expansion and contraction",
+      "used_for": "lead",
+      "evidence": "Checked publisher-indexed abstract, introduction, results, author order and DOI. Confirmed online publication 2 Nov 2026, <6% parameter recovery, rust fungal analysis and model-based contraction scenario. Direct page open redirected to sign-in; the search-indexed primary text was accessible. Simulations were not rerun."
+    },
+    {
+      "url": "https://github.com/cwb14/PrinTE",
+      "title": "PrinTE project repository and README",
+      "used_for": "lead",
+      "evidence": "Read primary software documentation through GitHub connector. Confirmed forward simulation, grid search, annotation dependencies and stated emphasis on LTR retrotransposons; did not run code."
+    },
+    {
+      "url": "https://www.ou-lab.org/people",
+      "title": "Ou Lab: People",
+      "used_for": "person_1",
+      "evidence": "Read lab roster and verified Christopher Benson listed as postdoctoral scholar in the Ohio State Ou lab. No verified doctorate/adviser information was located."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39237454/",
+      "title": "Four Strategies for Whole-Genome Annotation of Transposable Elements and Repeats in Maize",
+      "used_for": "person_1",
+      "evidence": "Verified coauthored 2025 protocols paper on TE annotation and Ohio State affiliation."
+    },
+    {
+      "url": "https://mcdb.osu.edu/people/ou.195",
+      "title": "Shujun Ou, Ohio State MCDB faculty page",
+      "used_for": "person_2",
+      "evidence": "Verified assistant professor appointment, Ohio State department, Michigan State PhD and research focus."
+    },
+    {
+      "url": "https://molgen.osu.edu/news/new-faculty-hired-molecular-genetics",
+      "title": "New faculty hired in Molecular Genetics",
+      "used_for": "person_2",
+      "evidence": "Ohio State announcement from June 10 2022 verifies prior postdocs at Iowa and Johns Hopkins."
+    },
+    {
+      "url": "https://academic.oup.com/genetics/article-abstract/28/6/491/6033179",
+      "title": "Mutations of Bacteria from Virus Sensitivity to Virus Resistance",
+      "used_for": "slot2",
+      "evidence": "Publisher original article metadata verified Luria and Delbrück, GENETICS 28:491-511, publication 20 Nov 1943 and DOI; publisher full text restricted."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1209226/",
+      "title": "Original Luria and Delbrück 1943 article in PubMed Central",
+      "used_for": "slot2",
+      "evidence": "Checked the freely archived original PDF listing and metadata; original full text provided as PDF rather than HTML."
+    },
+    {
+      "url": "https://academic.oup.com/genetics/article/202/2/367/5930150",
+      "title": "Salvador Luria and Max Delbrück on Random Mutation and Fluctuation Tests",
+      "used_for": "slot2",
+      "evidence": "Read Genetics Society of America historical analysis of the original experiment: independent culture fluctuations and early mutation jackpots; 2016 commentary is secondary explanation."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41377-026-02442-y",
+      "title": "All-optical 2D perovskite photodetector arrays for pixelated long-wave infrared imaging",
+      "used_for": "slot3",
+      "evidence": "Checked indexed publisher full text and metadata: Li et al., Light: Science & Applications, 2 Nov 2026, 9.5-micrometer radiation, silicon-nitride/perovskite converter, visible CMOS readout, patterned laser laboratory demonstration and optical/chopper limitations."
+    }
+  ]
+}
