@@ -1,0 +1,112 @@
+{
+  "no": 19,
+  "date": "2026-11-04",
+  "weekday": "Wednesday",
+  "lead": {
+    "topic": "Striking EEB paper: cryptic bat diversity and conservation phylogenetics",
+    "headline": "Bat DNA reveals a hidden conservation crisis",
+    "deck": "Mitochondrial sequences uncover 95 candidate lineages, but their identity and projected extinction risk need more precise tests.",
+    "authors": "Esquivel DA, Penagos A, Feijó A, Ramos Pereira MJ",
+    "journal": "Nature Communications",
+    "pubdate": "03 Nov 2026",
+    "doi": "10.1038/s41467-026-78393-0",
+    "url": "https://doi.org/10.1038/s41467-026-78393-0",
+    "paragraphs": [
+      "Bat diversity may be hiding in the space between genetic lineages and named species. Diego Esquivel and colleagues assembled 12,813 mitochondrial DNA sequences from Neotropical bats, covering 191 recognized species across 65 genera. They built 63 phylogenies and applied genetic species-delimitation methods to flag 95 distinct lineages within 45 species complexes. A species complex is a set of closely related populations currently grouped under one name. These lineages could represent undescribed species, but a DNA barcode alone does not formally establish species boundaries. The candidates occur across all nine bat families sampled, rather than belonging to one unusual branch of the bat tree.",
+      "The team then combined distribution models, human landscape modification and climate scenarios to rank conservation priorities. Their analysis identified ten regional hotspots of hidden diversity and found substantial projected habitat losses for many species complexes by 2070. These are forecasts, not observed extinctions. Moreover, climate projections describe entire complexes, not the separate hidden lineages, whose precise ranges remain uncertain. Much of the evidence comes from one mitochondrial gene, and poorly sampled regions could contain diversity the study missed. The urgent conclusion is about research priorities: taxonomists need specimens, nuclear genetic evidence, acoustics and ecological data before these candidate lineages can be formally described and protected."
+    ],
+    "push": "Can independent nuclear loci, morphology and acoustic recordings confirm the proposed boundaries in the highest-priority bat complexes? A coordinated museum and field campaign could sample geographic gaps, estimate lineage-specific ranges and rerun extinction-risk models. Compare the conservation rankings before and after formal species delimitation to test whether mitochondrial-only assessments prioritize the right places."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Diego A. Esquivel",
+      "bio": "Diego A. Esquivel is a graduate researcher affiliated with the Federal University of Rio Grande do Sul in Brazil. His research investigates hidden diversity and evolutionary history in Neotropical bats using molecular and morphological data. The Feijó Lab lists him as a graduate collaborator co-advised by Maria João Ramos Pereira.",
+      "links": [
+        {
+          "label": "Feijó Lab profile",
+          "url": "https://www.thefeijolab.com/team"
+        },
+        {
+          "label": "Research paper affiliation",
+          "url": "https://www.nature.com/articles/s41467-026-78393-0"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Maria João Ramos Pereira",
+      "bio": "Maria João Ramos Pereira is a zoology professor at the Federal University of Rio Grande do Sul and an affiliated researcher at the University of Aveiro in Portugal. She leads work on the evolution, ecology and conservation of birds and mammals. Her training includes a PhD in ecology from the University of Lisbon.",
+      "links": [
+        {
+          "label": "International Mammalogical Congress biography",
+          "url": "https://14imc2027.com/site/imc2027/comissao-organizadora"
+        },
+        {
+          "label": "Feijó Lab collaborators",
+          "url": "https://www.thefeijolab.com/team"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Cancer cells share a survival signal after chemotherapy",
+    "cite": "Chen Y, Zhong Y, Tian X et al. <em>Nature Cell Biology</em>, published 3 November 2026. <a href=\"https://doi.org/10.1038/s41556-026-02101-9\">Original study</a>.",
+    "body": "Chemotherapy damages cancer-cell DNA, but that damage may help nearby tumor cells survive. Working with head and neck cancer models, Yang Chen and colleagues traced a distress signal from activated STING, an intracellular DNA sensor, to secretion of the inflammatory molecule TNF. TNF then activated the enzyme IKKβ in neighboring cells, which modified ATG9A and increased autophagy, the process cells use to recycle components. The team linked this pathway to drug resistance in experiments and found a corresponding association in patient samples. Blocking TNF improved treatment response in preclinical models; whether this helps patients remains untested.",
+    "url": "https://doi.org/10.1038/s41556-026-02101-9"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Deep conductivity may explain the ice giants' strange magnets",
+    "cite": "Yan C, Soderlund KM, Aurnou JM et al. <em>Communications Physics</em>, published 3 November 2026. <a href=\"https://doi.org/10.1038/s42005-026-02841-y\">Original study</a>.",
+    "body": "Uranus and Neptune have magnetic fields that are unusually tilted and complex compared with Earth's roughly bar-magnet-like field. Chi Yan and colleagues used computer simulations of electrically conducting fluids to investigate why. When electrical conductivity increased with depth, their models generated irregular magnetic patterns resembling features measured by Voyager 2. Models with uniform conductivity more often produced simpler, nearly axis-aligned fields. The simulations also predict changes in magnetic structure over time, although periods of relative stability are possible. These are model results, not new spacecraft measurements. Future observations could test whether the planets' fields actually vary as predicted.",
+    "url": "https://doi.org/10.1038/s42005-026-02841-y"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41467-026-78393-0",
+      "title": "Substantial Neotropical bat diversity likely remains undescribed and vulnerable to extinction",
+      "used_for": "lead",
+      "evidence": "Checked publisher search-indexed article abstract, results, discussion, methods, author order, DOI and 3 November 2026 publication date. Confirmed 12,813 COI sequences, 191 recognized species, 65 genera, 63 trees, 95 candidate lineages in 45 complexes, ten hotspots, and caveats about one gene and complex-wide range projections. Direct page open produced a web cache miss; analyses not rerun."
+    },
+    {
+      "url": "https://www.thefeijolab.com/team",
+      "title": "Feijó Lab: Team",
+      "used_for": "person_1",
+      "evidence": "Read the public lab roster; verified Diego Esquivel's UFRGS affiliation, graduate-student listing, bat systematics and morphological research interests, and listed co-advising relationship."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-026-78393-0",
+      "title": "Substantial Neotropical bat diversity: authors and affiliations",
+      "used_for": "person_1",
+      "evidence": "Checked first author name, present paper affiliation to UFRGS graduate program, and corresponding authorship metadata in publisher-indexed text."
+    },
+    {
+      "url": "https://14imc2027.com/site/imc2027/comissao-organizadora",
+      "title": "14th International Mammalogical Congress organizing committee",
+      "used_for": "person_2",
+      "evidence": "Checked public conference professional biography describing Ramos Pereira as UFRGS zoology professor, University of Aveiro CESAM affiliate, PhD in ecology from University of Lisbon, and leader of the bird and mammal lab; direct page open returned a cache miss."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-026-78393-0",
+      "title": "Substantial Neotropical bat diversity: institutional affiliations",
+      "used_for": "person_2",
+      "evidence": "Verified last-author order and current paper affiliations at the Federal University of Rio Grande do Sul and University of Aveiro."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41556-026-02101-9",
+      "title": "STING-dependent TNF signalling promotes IKKβ-mediated ATG9A phosphorylation and autophagy",
+      "used_for": "slot2",
+      "evidence": "Checked publisher abstract, figure descriptions, mechanistic results, model organism, patient association, DOI and 3 November 2026 online publication. Direct page open had cache miss, so conclusions rely on indexed publisher full-text excerpts; clinical benefit is not established."
+    },
+    {
+      "url": "https://www.nature.com/articles/s42005-026-02841-y",
+      "title": "Electrical conductivity structure drives anomalous and potentially time-varying magnetic fields at Uranus and Neptune",
+      "used_for": "slot3",
+      "evidence": "Checked publisher abstract and available results for conductivity gradient vs constant conductivity simulations, non-dipolar magnetic structure, time-variation prediction, DOI and 3 November 2026 publication; simulations not independently rerun and no new spacecraft observations claimed."
+    }
+  ]
+}
