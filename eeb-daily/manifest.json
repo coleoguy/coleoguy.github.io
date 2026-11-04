@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 18,
-    "date": "2026-11-03"
+    "no": 19,
+    "date": "2026-11-04"
   },
   "issues": [
     {
@@ -310,6 +310,23 @@
       "slot3_headline": "A thin film turns infrared light into visible signals",
       "slot3_url": "https://doi.org/10.1038/s41377-026-02442-y",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0019-2026-11-04.json",
+      "no": 19,
+      "date": "2026-11-04",
+      "slug": "2026-11-04",
+      "topic": "Striking EEB paper: cryptic bat diversity and conservation phylogenetics",
+      "lead_headline": "Bat DNA reveals a hidden conservation crisis",
+      "lead_doi": "10.1038/s41467-026-78393-0",
+      "lead_url": "https://doi.org/10.1038/s41467-026-78393-0",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Cancer cells share a survival signal after chemotherapy",
+      "slot2_url": "https://doi.org/10.1038/s41556-026-02101-9",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Deep conductivity may explain the ice giants' strange magnets",
+      "slot3_url": "https://doi.org/10.1038/s42005-026-02841-y",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -318,10 +335,12 @@
     "https://doi.org/10.1038/246096a0",
     "https://doi.org/10.1038/s41377-026-02442-y",
     "https://doi.org/10.1038/s41467-026-78289-z",
+    "https://doi.org/10.1038/s41467-026-78393-0",
     "https://doi.org/10.1038/s41467-026-78884-0",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41550-026-03008-z",
+    "https://doi.org/10.1038/s41556-026-02101-9",
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41559-026-03216-w",
     "https://doi.org/10.1038/s41563-026-02793-2",
@@ -333,6 +352,7 @@
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
+    "https://doi.org/10.1038/s42005-026-02841-y",
     "https://doi.org/10.1038/s43018-026-01265-5",
     "https://doi.org/10.1073/pnas.2605030123",
     "https://doi.org/10.1073/pnas.2614478123",
@@ -374,10 +394,12 @@
     "10.1038/246096a0",
     "10.1038/s41377-026-02442-y",
     "10.1038/s41467-026-78289-z",
+    "10.1038/s41467-026-78393-0",
     "10.1038/s41467-026-78884-0",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41550-026-03004-3",
     "10.1038/s41550-026-03008-z",
+    "10.1038/s41556-026-02101-9",
     "10.1038/s41559-026-03214-y",
     "10.1038/s41559-026-03216-w",
     "10.1038/s41563-026-02793-2",
@@ -389,6 +411,7 @@
     "10.1038/s41593-026-02489-5",
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
+    "10.1038/s42005-026-02841-y",
     "10.1038/s43018-026-01265-5",
     "10.1073/pnas.2605030123",
     "10.1073/pnas.2614478123",
