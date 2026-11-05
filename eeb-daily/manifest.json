@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 19,
-    "date": "2026-11-04"
+    "no": 20,
+    "date": "2026-11-05"
   },
   "issues": [
     {
@@ -327,6 +327,23 @@
       "slot3_headline": "Deep conductivity may explain the ice giants' strange magnets",
       "slot3_url": "https://doi.org/10.1038/s42005-026-02841-y",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0020-2026-11-05.json",
+      "no": 20,
+      "date": "2026-11-05",
+      "slug": "2026-11-05",
+      "topic": "Striking EEB paper: ecological context and evolution of courtship neural circuits",
+      "lead_headline": "Food smells switch on a fly's mating drive",
+      "lead_doi": "10.1038/s41586-026-11209-9",
+      "lead_url": "https://doi.org/10.1038/s41586-026-11209-9",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Gene pairs expose weak points in tuberculosis",
+      "slot2_url": "https://doi.org/10.1038/s41586-026-11212-0",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Gas above Mars hints at sleeping volcanoes",
+      "slot3_url": "https://doi.org/10.1126/sciadv.aeb9422",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -349,6 +366,8 @@
     "https://doi.org/10.1038/s41586-026-11147-6",
     "https://doi.org/10.1038/s41586-026-11170-7",
     "https://doi.org/10.1038/s41586-026-11197-w",
+    "https://doi.org/10.1038/s41586-026-11209-9",
+    "https://doi.org/10.1038/s41586-026-11212-0",
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
@@ -370,6 +389,7 @@
     "https://doi.org/10.1103/gbkc-6nlj",
     "https://doi.org/10.1111/mec.70592",
     "https://doi.org/10.1111/nph.71668",
+    "https://doi.org/10.1126/sciadv.aeb9422",
     "https://doi.org/10.1126/sciadv.aef0605",
     "https://doi.org/10.1126/science.156.3774.477",
     "https://doi.org/10.1126/science.adz4903",
@@ -408,6 +428,8 @@
     "10.1038/s41586-026-11147-6",
     "10.1038/s41586-026-11170-7",
     "10.1038/s41586-026-11197-w",
+    "10.1038/s41586-026-11209-9",
+    "10.1038/s41586-026-11212-0",
     "10.1038/s41593-026-02489-5",
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
@@ -429,6 +451,7 @@
     "10.1103/gbkc-6nlj",
     "10.1111/mec.70592",
     "10.1111/nph.71668",
+    "10.1126/sciadv.aeb9422",
     "10.1126/sciadv.aef0605",
     "10.1126/science.156.3774.477",
     "10.1126/science.adz4903",
