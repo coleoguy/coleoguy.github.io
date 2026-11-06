@@ -1,0 +1,137 @@
+{
+  "no": 21,
+  "date": "2026-11-06",
+  "weekday": "Friday",
+  "lead": {
+    "topic": "Sex chromosome evolution: independent loss of X-based sex determination",
+    "headline": "Scale insects lost their X twice",
+    "deck": "New insect genomes reveal two distinct ways an ancestral X chromosome can lose its role in determining sex.",
+    "authors": "Mongue AJ, Powell EC, Liesenfelt T, Grebler E, Markee A",
+    "journal": "Molecular Biology and Evolution",
+    "pubdate": "3 Nov 2026",
+    "doi": "10.1093/molbev/msag275",
+    "url": "https://doi.org/10.1093/molbev/msag275",
+    "paragraphs": [
+      "Sex chromosomes are usually presented as stable landmarks, but scale insects repeatedly abandoned the familiar X-based system. Andrew Mongue and colleagues sequenced 17 scale insect species to track transitions among ordinary chromosomal sex determination, paternal genome elimination, and self-fertilizing hermaphroditism. Under paternal genome elimination, males inherit two parental chromosome sets but silence or discard the paternal contribution. Comparing chromosome assemblies and related genes across a reconstructed family tree, the researchers inferred two independent losses of X-linked sex determination. One occurred in the monophlebid lineage containing hermaphrodites. The other preceded a radiation of families using paternal genome elimination.",
+      "The genomic routes were strikingly different. Among monophlebids, rearrangements began before the transition, ultimately merging former X material with two unusually large autosomes in hermaphrodites. In some paternal-genome-elimination lineages, the ancestral X remained recognizable despite losing its sex-determining role. In others, including mealybugs, its pieces were extensively rearranged. Surprisingly few ancestral gene families disappeared across these transitions. Strong differences in expression between males and females also appeared to predate turnover. Those patterns are consistent with several possible evolutionary pathways, not proof that sex-biased expression caused the system to change. The work separates the loss of chromosome identity from the loss of a chromosome's reproductive function."
+    ],
+    "push": "Test whether the expression differences inferred before turnover actually predict which lineages abandon X-based determination. Add genomes and sex-specific expression data from close relatives bracketing each transition. Could sex-determination genes move without much gene loss, and would experimentally altering their expression recreate any part of the transition?"
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Andrew J. Mongue",
+      "bio": "Andrew J. Mongue is an assistant professor in the University of Florida's Department of Entomology and Nematology and leads the Mongue Lab. His research uses insects to study why reproductive systems and differences between the sexes evolve. His group applies comparative genomics to nonmodel insects, including moths and scale insects.",
+      "links": [
+        {
+          "label": "Mongue Lab personnel",
+          "url": "https://monguelab.weebly.com/personnel.html"
+        },
+        {
+          "label": "UF faculty directory",
+          "url": "https://directory.ifas.ufl.edu/searchdir?Display=Standard&UnitCode=14&m=0&pageID=7"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Amanda Markee",
+      "bio": "Amanda Markee earned an MS at the University of Florida in 2023 after studying genomic and developmental variation in moth silk. She has managed molecular projects in the Kawahara Lab and worked on insect conservation genetics, taxonomy, phylogenetics and public science outreach. The Mongue Lab lists her as a former member.",
+      "links": [
+        {
+          "label": "Florida Museum alumni profile",
+          "url": "https://www.floridamuseum.ufl.edu/kawahara-lab/personnel/graduates/"
+        },
+        {
+          "label": "Mongue Lab personnel",
+          "url": "https://monguelab.weebly.com/personnel.html"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Fly-derived shells deliver gene editors to mouse muscle",
+    "cite": "Lash B, Strebinger D, Segel M et al. <em>Nature Communications</em>, 4 Nov 2026. <a href=\"https://doi.org/10.1038/s41467-026-79058-8\">Original article</a>.",
+    "body": "A protein descended from a fly transposable element has become an unexpected delivery vehicle for gene editing. Researchers assembled the Drosophila Arc1 protein into virus-like shells using purified components outside cells, then loaded them with RNA or Cas9 editing machinery. The particles entered mammalian cells through a receptor called SORCS2. When injected directly into the muscles of mice modeling Duchenne muscular dystrophy, the loaded shells produced up to 18% targeted exon skipping and restored some dystrophin protein. This is a proof of concept in mice, not a demonstrated treatment. Widespread delivery to muscle throughout the body remains a major obstacle.",
+    "url": "https://doi.org/10.1038/s41467-026-79058-8"
+  },
+  "slot3": {
+    "kind": "HISTORY",
+    "headline": "Mealworm chromosomes revealed the X and Y",
+    "cite": "Nettie Stevens, <em>Studies in Spermatogenesis</em> (1905). <a href=\"https://embryo.asu.edu/pages/studies-spermatogenesis-1905-nettie-maria-stevens\">Historical analysis, Arizona State University</a>.",
+    "body": "In 1905, Nettie Stevens examined dividing cells in the mealworm beetle and uncovered a physical explanation for inherited sex. Female cells carried twenty large chromosomes; male cells carried nineteen large ones and a small one. Eggs contributed a large chromosome, while sperm came in two types. Stevens reasoned that sperm carrying the smaller chromosome produced males, and sperm with its larger counterpart produced females. The pair later became known as X and Y. Her work at Bryn Mawr linked an observable chromosomal difference to a major biological trait, strengthening the emerging chromosome theory of inheritance. Edmund Beecher Wilson investigated related questions independently that year. Stevens died in 1912, but her evidence became foundational to modern genetics and sex-chromosome research.",
+    "history_subject": "Nettie Stevens",
+    "url": "https://embryo.asu.edu/pages/studies-spermatogenesis-1905-nettie-maria-stevens"
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/MBE/advance-articles",
+      "title": "Molecular Biology and Evolution advance articles",
+      "used_for": "lead",
+      "evidence": "Publisher confirms Leaving X: How scale insects repeatedly evolved alternatives to chromosomal sex determination, first author Andrew J Mongue, DOI 10.1093/molbev/msag275, and publication 3 November 2026. The full accepted manuscript was not accessible through the research browser."
+    },
+    {
+      "url": "https://visualize.jove.com/42976159-leaving-x-how-scale-insects-repeatedly-evolved-alternatives-to-chromosomal-sex-determination",
+      "title": "Leaving X: indexed article abstract",
+      "used_for": "lead",
+      "evidence": "The indexed published abstract supports sequencing of 17 scale insect species, two inferred X-system losses, contrasting chromosome fates, limited orthogroup losses and earlier sex-biased expression. Abstract is an index of the primary published paper, not its full text."
+    },
+    {
+      "url": "https://www.researchgate.net/publication/400440092_Leaving_X_How_scale_insects_evolved_alternatives_to_chromosomal_sex_determination",
+      "title": "Leaving X: author-posted preprint manuscript",
+      "used_for": "lead",
+      "evidence": "Inspected searchable February 2026 preprint text and full author order, and distinguished the preprint from the November 3 peer-reviewed journal release. Details beyond the journal abstract were avoided."
+    },
+    {
+      "url": "https://monguelab.weebly.com/personnel.html",
+      "title": "Mongue Lab personnel",
+      "used_for": "person_1",
+      "evidence": "Lab page verifies Andrew J Mongue as assistant professor and principal investigator, with an insect reproductive-systems research program."
+    },
+    {
+      "url": "https://directory.ifas.ufl.edu/searchdir?Display=Standard&UnitCode=14&m=0&pageID=7",
+      "title": "University of Florida IFAS faculty directory",
+      "used_for": "person_1",
+      "evidence": "University faculty directory confirms assistant professor appointment in entomology and nematology."
+    },
+    {
+      "url": "https://www.floridamuseum.ufl.edu/kawahara-lab/personnel/graduates/",
+      "title": "Kawahara Lab graduates, Florida Museum",
+      "used_for": "person_2",
+      "evidence": "Museum lab profile confirms Amanda Markee graduated with an MS in spring 2023 and documents genomics, molecular laboratory work and earlier conservation research; the page has historic language about current role, so no present appointment is asserted."
+    },
+    {
+      "url": "https://monguelab.weebly.com/personnel.html",
+      "title": "Mongue Lab personnel and former members",
+      "used_for": "person_2",
+      "evidence": "Mongue Lab lists Amanda Markee under former members; current employment remains unverified."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-026-79058-8",
+      "title": "In vitro-reconstituted Drosophila Arc capsids deliver gene editors to dystrophic muscle",
+      "used_for": "slot2",
+      "evidence": "Publisher confirms 4 November 2026 accepted journal publication, DOI, Arc1 capsid assembly, SORCS2 uptake and up to 18 percent exon skipping in mdx mice; direct access to full publisher body was limited."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13232152/",
+      "title": "In vitro-reconstituted Drosophila Arc capsids deliver gene editors to dystrophic muscle: earlier preprint",
+      "used_for": "slot2",
+      "evidence": "Accessible May 2026 preprint supplies experimental details and confirms experiments were in mice; the journal article was published separately in November."
+    },
+    {
+      "url": "https://embryo.asu.edu/pages/studies-spermatogenesis-1905-nettie-maria-stevens",
+      "title": "Studies in Spermatogenesis (1905), by Nettie Maria Stevens",
+      "used_for": "slot3",
+      "evidence": "Arizona State historical analysis verifies 1905 mealworm chromosomal observations, two kinds of sperm, egg contributions and context of Wilson's independent work."
+    },
+    {
+      "url": "https://carnegiescience.edu/news/object-3-nettie-stevens-grant",
+      "title": "Object 3: The Nettie Stevens Grant",
+      "used_for": "slot3",
+      "evidence": "Carnegie Science archives corroborate Stevens's 1904 research support, the 1905 report and her death in 1912."
+    }
+  ]
+}
