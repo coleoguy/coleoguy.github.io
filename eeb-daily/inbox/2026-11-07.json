@@ -1,0 +1,124 @@
+{
+  "no": 22,
+  "date": "2026-11-07",
+  "weekday": "Saturday",
+  "lead": {
+    "topic": "Striking EEB paper: fungal hybridization and cryptic genomic diversity",
+    "headline": "A fungal isolate carries genomes from two species",
+    "deck": "Reanalysis of two clinical fungal genomes reveals an interspecies hybrid and an unsampled parental lineage.",
+    "authors": "Redondo-Río Á, Gabaldón T",
+    "journal": "npj Fungal Science",
+    "pubdate": "5 Nov 2026",
+    "doi": "10.1038/s44512-026-00010-3",
+    "url": "https://doi.org/10.1038/s44512-026-00010-3",
+    "paragraphs": [
+      "A newly described fungal pathogen may be hiding two evolutionary histories inside one cell. Álvaro Redondo-Río and Toni Gabaldón revisited published genome assemblies from two clinical isolates labeled <em>Rhodosporidiobolus fluvialis</em>. One isolate had roughly twice the genome size of the other. That could suggest an ordinary diploid, but its two chromosome sets were much more different than expected for copies from the same species. The authors compared sequence matches, read coverage and phylogenetic trees, evolutionary family trees built from shared genes. Their analyses support an <em>allodiploid</em>: a hybrid carrying one chromosome set from each of two different species.",
+      "One subgenome resembled <em>R. fluvialis</em>, although its distance from the other clinical isolate raised questions about species boundaries. The second matched no sampled species closely, pointing to a missing parent in public genome databases. The investigators found little evidence of recombination between the subgenomes, and one region of the first subgenome hinted at an older episode of introgression, the movement of DNA across species boundaries. This is a reinterpretation of existing sequence data, not a demonstration that hybridization caused the fungus to infect people or resist drugs. It also exposes a practical problem: pathogen names based on a few marker sequences can conceal deeply divergent genomes."
+    ],
+    "push": "Sequence more isolates from clinical and environmental collections, especially potential relatives of the unsampled parental lineage. Then test whether the two subgenomes differ in expression, drug susceptibility or host interaction. A hybrid genome may explain unusual phenotypes, but only comparisons with nonhybrid relatives and experiments can separate that hypothesis from lineage-specific effects."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Álvaro Redondo-Río",
+      "bio": "Álvaro Redondo-Río is a bioinformatician affiliated with the Barcelona Supercomputing Center and IRB Barcelona. A university faculty profile also lists him as a collaborating professor at Universitat Internacional de Catalunya. He trained in biochemistry at the University of Córdoba and earned a master's degree in bioinformatics at Universidad Autónoma de Madrid. His research includes fungal hybrid genomes.",
+      "links": [
+        {
+          "label": "Universitat Internacional de Catalunya faculty profile",
+          "url": "https://www.uic.es/es/teacher/aredondod"
+        },
+        {
+          "label": "Previous peer-reviewed research and institutional affiliation",
+          "url": "https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1012864"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Toni Gabaldón",
+      "bio": "Toni Gabaldón is an ICREA Research Professor leading comparative genomics at IRB Barcelona and the Barcelona Supercomputing Center. After a PhD in medical sciences at Radboud University Nijmegen, he held an EMBO postdoctoral fellowship in Valencia and led a group at the Centre for Genomic Regulation. His research links genome evolution with the emergence and adaptation of fungal pathogens.",
+      "links": [
+        {
+          "label": "IRB Barcelona institutional biography",
+          "url": "https://www.irbbarcelona.org/en/research/toni-gabaldon"
+        },
+        {
+          "label": "ICREA professor biography",
+          "url": "https://www.icrea.cat/es/comunidad/icreas/17701/toni-gabaldon-estevan/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Inversions can protect locally adapted genes",
+    "cite": "Kirkpatrick M, Barton N. <em>Genetics</em> 173:419-434 (2006). <a href=\"https://doi.org/10.1534/genetics.105.047985\">Original paper</a>.",
+    "body": "Why do chromosome inversions sometimes spread even when they initially seem disruptive? Kirkpatrick and Barton modeled two populations exchanging migrants while adapting to different environments. An inversion flips a chromosome segment and suppresses recombination in carriers with different arrangements. Their analysis showed that an inversion capturing several locally beneficial alleles can be favored because it keeps those alleles together, even without epistasis, where gene combinations have nonadditive effects. The model helped establish recombination suppression as a route to local adaptation and reproductive divergence. Later studies explored this mechanism in natural inversion systems, and a 2018 correction amended one mathematical expression.",
+    "url": "https://doi.org/10.1534/genetics.105.047985"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "A new algorithm reveals planets hidden in starlight",
+    "cite": "Ferrer-Chavez R et al. <em>Nature</em> (published online 4 Nov 2026). <a href=\"https://doi.org/10.1038/s41586-026-11213-z\">Original paper</a>.",
+    "body": "Stars overwhelm the faint light from their planets, making direct imaging difficult even for the James Webb Space Telescope. Researchers introduced FLIP, a method that builds a physical model of a telescope's starlight pattern and tunes it with machine learning before subtracting the glare. Applied to existing Webb images, it recovered a previously known giant planet, 51 Eridani b, at a wavelength where standard processing had missed it. In the tested images, sensitivity improved by factors of roughly two to fifteen. This is a better way to see faint companions, not the discovery of a new planet or proof that Earth-like worlds can already be imaged.",
+    "url": "https://doi.org/10.1038/s41586-026-11213-z"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s44512-026-00010-3",
+      "title": "An inter-species hybrid in the emerging fungal pathogen Rhodosporidiobolus fluvialis",
+      "used_for": "lead",
+      "evidence": "Read accessible full open-access study and publisher metadata: two ordered authors, 5 Nov 2026 publication, DOI, isolate TZ579 allodiploid interpretation, read mapping, genome comparisons, ITS and 579-gene phylogeny; second parental species unsampled. No causation between hybridization and virulence demonstrated."
+    },
+    {
+      "url": "https://www.uic.es/es/teacher/aredondod",
+      "title": "REDONDO DEL RIO, Alvaro: professor profile, Universitat Internacional de Catalunya",
+      "used_for": "person_1",
+      "evidence": "Institutional faculty page lists collaborating professor and verifies University of Córdoba biochemistry degree and Universidad Autónoma de Madrid bioinformatics and computational biology master's."
+    },
+    {
+      "url": "https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1012864",
+      "title": "Insights into the origin, hybridisation and adaptation of Candida metapsilosis hybrid pathogens",
+      "used_for": "person_1",
+      "evidence": "Primary previous publication verifies Álvaro Redondo-Río as fungal hybridization researcher with BSC and IRB Barcelona affiliations."
+    },
+    {
+      "url": "https://www.irbbarcelona.org/en/research/toni-gabaldon",
+      "title": "Toni Gabaldon, IRB Barcelona",
+      "used_for": "person_2",
+      "evidence": "Institutional bio verifies ICREA professorship, joint IRB/BSC appointments, Radboud doctorate, postdoctoral work in Valencia, earlier CRG leadership and fungal-genome research."
+    },
+    {
+      "url": "https://www.icrea.cat/es/comunidad/icreas/17701/toni-gabaldon-estevan/",
+      "title": "Gabaldón Estevan, Toni, ICREA",
+      "used_for": "person_2",
+      "evidence": "ICREA institutional profile corroborates current research professorship, life-science group and molecular-evolution research trajectory."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1461441/",
+      "title": "Chromosome Inversions, Local Adaptation and Speciation",
+      "used_for": "slot2",
+      "evidence": "Read landmark theoretical model and abstract; Kirkpatrick and Barton 2006, Genetics 173:419-434, DOI 10.1534/genetics.105.047985; inversions can favor linked locally adapted alleles without requiring epistasis."
+    },
+    {
+      "url": "https://academic.oup.com/genetics/article/208/1/433/6066487",
+      "title": "Correction: Chromosome Inversions, Local Adaptation and Speciation",
+      "used_for": "slot2",
+      "evidence": "Publisher 2018 correction identifies an erroneous expression in the 2006 theory. No quantitative assertion based on that expression is repeated."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11213-z",
+      "title": "Imaging exoplanets below the telescope stability limit",
+      "used_for": "slot3",
+      "evidence": "Checked open Nature paper published online 4 Nov 2026, DOI, FLIP physics-based wavefront model and optimization, JWST NIRCam data, first 4.3-micron image of previously known 51 Eridani b, observed 2-15-fold sensitivity gains; no claim of Earth-like planet detection."
+    },
+    {
+      "url": "https://www.natureasia.com/en/info/press-releases/detail/9474",
+      "title": "Astronomy: Suppressing starlight to hunt exoplanets",
+      "used_for": "slot3",
+      "evidence": "Publisher press summary dated 5 Nov 2026 corroborates reported FLIP sensitivity and identifies 4 Nov as original online article date."
+    }
+  ]
+}
