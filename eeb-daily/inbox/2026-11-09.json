@@ -1,0 +1,102 @@
+{
+  "no": 24,
+  "date": "2026-11-09",
+  "weekday": "Monday",
+  "lead": {
+    "topic": "Sex chromosome regulation: dosage compensation and germline silencing",
+    "headline": "Sex chromosomes have no single regulatory solution",
+    "deck": "A new synthesis finds that the rules of dosage compensation and germline silencing vary widely across animals.",
+    "authors": "Mank JE, Schwander T",
+    "journal": "Evolution Letters",
+    "pubdate": "04 Nov 2026",
+    "doi": "10.1093/evlett/qrag043",
+    "url": "https://doi.org/10.1093/evlett/qrag043",
+    "paragraphs": [
+      "Sex chromosomes often lose genes on the Y or W, leaving the other sex chromosome with an unequal dose. The standard explanation is that dosage compensation restores balanced gene expression. But the expression of sex-linked genes can also change during the formation of sperm or eggs, sometimes through broad silencing. Judith Mank and Tanja Schwander review these phenomena together in <em>Evolution Letters</em>. Their starting point is a striking comparative fact: animals have repeatedly evolved sex chromosomes, yet the resulting regulatory systems differ in which tissues they act, how strongly they alter expression and whether they target individual genes or an entire chromosome.",
+      "The review separates well-established observations from unresolved evolutionary explanations. Equal expression between sexes does not necessarily mean that expression is balanced between the X chromosome and the autosomes. Suppression of sex chromosome expression during meiosis may also have multiple causes and consequences, rather than one universal function. Existing regulatory machinery might be recruited for a newly formed sex chromosome, and could persist or change after chromosome turnover. These ideas offer testable hypotheses, not new experimental results: the article synthesizes studies across animals. The authors argue that comparing nonmodel species and coupling genomic measurements with direct functional experiments are essential to understanding why these systems differ."
+    ],
+    "push": "Use independent sex chromosome turnovers as natural replicates. In closely related species with different sex determining chromosomes, measure expression separately in somatic tissue and defined germ-cell stages. Test whether the same regulators are recruited to the new chromosome, and whether an old chromosome retains regulatory marks after losing its sex determining role."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Judith E. Mank",
+      "bio": "Judith Mank is a professor of zoology at the University of British Columbia and interim director of its Biodiversity Research Centre for 2026 to 2027. Her group combines population genetics, comparative genomics and transcriptomics to study sexual conflict, sex chromosome formation and the evolution of differences between males and females.",
+      "links": [
+        {
+          "label": "UBC faculty profile",
+          "url": "https://biodiversity.ubc.ca/people/faculty/judith-mank"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Tanja Schwander",
+      "bio": "Tanja Schwander is a professor of evolutionary biology at the University of Lausanne. She studies unusual reproductive systems, especially in stick insects, to understand the evolution of sex and genetic conflict. She completed doctoral research at Lausanne under Laurent Keller and later worked at Simon Fraser University before establishing her research group.",
+      "links": [
+        {
+          "label": "University of Lausanne faculty feature",
+          "url": "https://wp.unil.ch/echosduvivant/2025/11/n19-sexe-dans-la-nature-la-diversite-cest-la-norme/"
+        },
+        {
+          "label": "UBC seminar biography",
+          "url": "https://biodiversity.ubc.ca/events/brs-tanja-schwander-origins-and-consequences-unorthodox-reproductive-modes-insights-stick"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Combining two cell models is not always better",
+    "cite": "Richter et al., <em>Nature Machine Intelligence</em> (2026). <a href=\"https://doi.org/10.1038/s42256-026-01328-3\">Research article</a>.",
+    "body": "A foundation model trained on cell gene expression and another trained on tissue images each capture useful biology. But what happens when their outputs are combined? Researchers compared ten methods of integrating these data across spatial transcriptomics datasets, where measurements are tied to tissue locations. They introduced a Synergistic Information Score to ask whether the combination reveals useful information beyond either input alone. Some tasks, such as predicting cell composition, were already well served by one modality. Others, including certain tissue niche classifications, benefited from methods that learned cross-modal interactions. The lesson is practical: multimodal AI needs complementary evidence, not merely more inputs.",
+    "url": "https://doi.org/10.1038/s42256-026-01328-3"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Interference makes a molecular state resist decay",
+    "cite": "Guthmann et al., <em>Nature Physics</em> (9 Nov 2026). <a href=\"https://doi.org/10.1038/s41567-026-03519-6\">Research paper</a>.",
+    "body": "An atom pair should normally break apart when its energy lies above the threshold for dissociation. Quantum interference offers a surprising exception: a bound state can remain localized inside a sea of scattering states. Researchers created this situation with ultracold lithium-6 atoms, using a periodically driven field to couple two tunable collision resonances. At a particular setting, two pathways interfered destructively, canceling the coupling that would otherwise let the molecular state decay. The atoms then became effectively transparent in collisions. This controlled realization of a bound state in the continuum offers a way to engineer interactions and losses in quantum systems.",
+    "url": "https://doi.org/10.1038/s41567-026-03519-6"
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/evlett/advance-article/doi/10.1093/evlett/qrag043/9011950?login=false",
+      "title": "Unsolved mysteries about the evolution of sex chromosome regulation",
+      "used_for": "lead",
+      "evidence": "Full review examined; published November 4 2026, authors Mank then Schwander. Synthesizes dosage compensation, germline downregulation, regulatory origins and turnover; not a new empirical experiment. Older than initial three-day search window."
+    },
+    {
+      "url": "https://biodiversity.ubc.ca/people/faculty/judith-mank",
+      "title": "Judith Mank, UBC Biodiversity Research Centre",
+      "used_for": "person_1",
+      "evidence": "Official current professor title, 2026-27 interim directorship, research interests and institutional affiliation."
+    },
+    {
+      "url": "https://wp.unil.ch/echosduvivant/2025/11/n19-sexe-dans-la-nature-la-diversite-cest-la-norme/",
+      "title": "University of Lausanne: Sexual diversity in nature",
+      "used_for": "person_2",
+      "evidence": "Institutional feature confirms professor of ecology and evolution studying unusual animal reproductive modes."
+    },
+    {
+      "url": "https://laurentkeller.ch/en/research/",
+      "title": "Laurent Keller laboratory: former doctoral students",
+      "used_for": "person_2",
+      "evidence": "Lists Schwander as a doctoral student in 2003-2007; historical training detail."
+    },
+    {
+      "url": "https://doi.org/10.1038/s42256-026-01328-3",
+      "title": "Multimodal cell foundation models require synergistic integration beyond alignment",
+      "used_for": "slot2",
+      "evidence": "Full paper and abstract read. Nature Machine Intelligence November 9 2026; ten fusion strategies, information synergy, spatial transcriptomics evaluation."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41567-026-03519-6",
+      "title": "Bound states in the continuum through quantum interference in ultracold atomic collisions",
+      "used_for": "slot3",
+      "evidence": "Open Nature Physics paper read, publication November 9 2026; ultracold lithium-6, driven coupling of Feshbach resonances, interference-induced bound state."
+    }
+  ]
+}
