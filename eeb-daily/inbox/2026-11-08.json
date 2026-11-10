@@ -1,0 +1,106 @@
+{
+  "no": 23,
+  "date": "2026-11-08",
+  "weekday": "Sunday",
+  "lead": {
+    "topic": "Evolutionary developmental biology: ancestral embryonic organizers",
+    "headline": "The chordate body plan has deeper roots",
+    "deck": "Experiments in a sea anemone suggest that embryonic organizer logic predates the origin of bilaterian animals.",
+    "authors": "Mikula Mrstakova S, Biswas P, Sengupta R, Klymets H, Machacova S, Kozmik Z, Kozmikova I",
+    "journal": "Nature Communications",
+    "pubdate": "06 Nov 2026",
+    "doi": "10.1038/s41467-026-78735-y",
+    "url": "https://doi.org/10.1038/s41467-026-78735-y",
+    "paragraphs": [
+      "Why do very different animals establish the main axes of their embryos using some of the same molecular signals? A new study compares the gastrula organizer, a region that helps pattern an early embryo, in the sea anemone <em>Nematostella</em> and chordates. The question is whether their similarities reflect a shared ancestral developmental program or independently assembled systems. The authors combine regulatory DNA tests across species with pathway perturbations, single-cell comparisons and transplantation experiments. This is a more demanding test of evolutionary homology than noticing that two animals express the same genes.",
+      "Regulatory sequences associated with <em>Nematostella</em> Bmp2/4 and Chordin expression also drove organizer-restricted activity in chordate embryos. Smad2/3 signaling was active in the anemone organizer and necessary for organizer-specific expression of those genes. Together these observations support the idea that core organizer logic existed before the split between cnidarians and bilaterians. The authors offer a model in which changes in organizer position and elongation of the body axis contributed to the origin of the chordate body plan. That evolutionary reconstruction remains an interpretation of the comparative evidence, not a direct observation of an ancestral embryo."
+    ],
+    "push": "Test which parts of this regulatory system remain interchangeable across a broader sample of cnidarians and bilaterians. Cross-species enhancer assays can reveal conserved inputs, but those inputs may operate in different cellular contexts. Pair regulatory tests with lineage tracing and perturbations to ask whether the proposed ancestral organizer also specified comparable cell fates."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Simona Mikula Mrstakova",
+      "bio": "Mikula Mrstakova studies developmental gene regulation, including the roles of Pax6 genes in medaka eye development. The new paper lists her with the Laboratory of Transcriptional Regulation at the Czech Academy of Sciences in Prague. A public zebrafish researcher directory also lists an association with the Young Lab at University College London.",
+      "links": [
+        {
+          "label": "ZFIN researcher profile",
+          "url": "https://zfin.org/ZDB-PERS-250916-1"
+        },
+        {
+          "label": "Institute seminar profile",
+          "url": "https://www.img.cas.cz/files/2024/02/20240306_Simona_Mikula_Mrstakova.pdf"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Iryna Kozmikova",
+      "bio": "Kozmikova is a researcher in the Laboratory of Transcriptional Regulation at the Institute of Molecular Genetics of the Czech Academy of Sciences. Her institute's research page identifies her as the evolutionary developmental biology team leader. That team investigates animal body plans, cell-fate specification and the evolution of developmental regulatory mechanisms.",
+      "links": [
+        {
+          "label": "Institute research page",
+          "url": "https://www.img.cas.cz/group/zbynek-kozmik/research/"
+        },
+        {
+          "label": "Institute staff profile",
+          "url": "https://www.img.cas.cz/?lang=en&populus_person=448"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Human B cells become an evolution machine",
+    "cite": "Bram et al., <em>Nature Communications</em> (2026). <a href=\"https://doi.org/10.1038/s41467-026-79127-y\">Research paper</a>.",
+    "body": "Antibody-producing B cells naturally mutate immunoglobulin genes at unusually high rates, allowing immune responses to explore many protein variants. Researchers adapted that mechanism into a platform called CODE-HB, which redirects somatic hypermutation toward an engineered, stable location outside the immunoglobulin genes in human B-cell lines. The system generates substitutions, insertions and deletions in proteins displayed on cell surfaces or produced inside cells. The team used it to evolve antibodies that neutralize avian influenza and viral escape variants. This is laboratory-directed evolution rather than a natural evolutionary history. Its broader promise is a reusable route to improving biological molecules directly in human cells.",
+    "url": "https://doi.org/10.1038/s41467-026-79127-y"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Trapped ions reproduce a quantum interference effect",
+    "cite": "Saner et al., <em>Nature Physics</em> (published 25 Sep 2026; reported 7 Nov 2026). <a href=\"https://doi.org/10.1038/s41567-026-03400-6\">Research paper</a>.",
+    "body": "A quantum experiment can simulate interactions that are hard to calculate on conventional computers. In research first published September 25 and newly reported November 7, physicists used trapped ions as a hybrid device: electronic states represented gauge fields and vibrations represented matter. They built a small loop and observed an Aharonov–Bohm interference effect, in which the motion of a particle depends on magnetic flux even when the available paths are otherwise equivalent. The result demonstrates the required matter-field coupling in a controlled simulator. It does not mean realistic particle physics calculations are already within reach, but it provides a building block for more ambitious simulations.",
+    "url": "https://doi.org/10.1038/s41567-026-03400-6"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://doi.org/10.1038/s41467-026-78735-y",
+      "title": "Pre-bilaterian roots of the chordate body plan",
+      "used_for": "lead",
+      "evidence": "Publisher full abstract and paper details checked: Nov 6 date, author order, experimental methods and qualified organizer homology interpretation; accessible abstract and article metadata."
+    },
+    {
+      "url": "https://zfin.org/ZDB-PERS-250916-1",
+      "title": "ZFIN: Simona Mikula Mrstakova",
+      "used_for": "person_1",
+      "evidence": "Professional profile lists Young Lab at UCL and previous Pax6 developmental publications; paper lists Czech Academy affiliation."
+    },
+    {
+      "url": "https://www.img.cas.cz/group/zbynek-kozmik/research/",
+      "title": "Institute of Molecular Genetics: Evo-Devo team",
+      "used_for": "person_2",
+      "evidence": "Institute identifies Kozmikova as evo-devo team PI and outlines body-plan and cell-fate research."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41467-026-79127-y",
+      "title": "Continuous directed evolution using engineered human B cell lines",
+      "used_for": "slot2",
+      "evidence": "Original Nature Communications abstract, authors and Nov 6 2026 online publication date verified."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41567-026-03400-6",
+      "title": "Aharonov–Bohm interference in a Z2 lattice gauge theory on a hybrid qubit–oscillator quantum computer",
+      "used_for": "slot3",
+      "evidence": "Original Nature Physics paper published September 25, 2026, rather than November; Nov 7 reporting checked separately."
+    },
+    {
+      "url": "https://phys.org/news/2026-11-paths-flux-ions-simulate-aharonovbohm.html",
+      "title": "Two paths, one flux: Trapped ions simulate Aharonov–Bohm interference",
+      "used_for": "slot3",
+      "evidence": "News report dated November 7 2026 on older original experiment."
+    }
+  ]
+}
