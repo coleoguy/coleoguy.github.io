@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 23,
-    "date": "2026-11-08"
+    "no": 24,
+    "date": "2026-11-09"
   },
   "issues": [
     {
@@ -395,6 +395,23 @@
       "slot3_headline": "Trapped ions reproduce a quantum interference effect",
       "slot3_url": "https://doi.org/10.1038/s41567-026-03400-6",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0024-2026-11-09.json",
+      "no": 24,
+      "date": "2026-11-09",
+      "slug": "2026-11-09",
+      "topic": "Sex chromosome regulation: dosage compensation and germline silencing",
+      "lead_headline": "Sex chromosomes have no single regulatory solution",
+      "lead_doi": "10.1093/evlett/qrag043",
+      "lead_url": "https://doi.org/10.1093/evlett/qrag043",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Combining two cell models is not always better",
+      "slot2_url": "https://doi.org/10.1038/s42256-026-01328-3",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Interference makes a molecular state resist decay",
+      "slot3_url": "https://doi.org/10.1038/s41567-026-03519-6",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -417,6 +434,7 @@
     "https://doi.org/10.1038/s41563-026-02793-2",
     "https://doi.org/10.1038/s41564-026-02480-7",
     "https://doi.org/10.1038/s41567-026-03400-6",
+    "https://doi.org/10.1038/s41567-026-03519-6",
     "https://doi.org/10.1038/s41586-026-11107-0",
     "https://doi.org/10.1038/s41586-026-11147-6",
     "https://doi.org/10.1038/s41586-026-11170-7",
@@ -428,12 +446,14 @@
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1038/s42005-026-02841-y",
+    "https://doi.org/10.1038/s42256-026-01328-3",
     "https://doi.org/10.1038/s43018-026-01265-5",
     "https://doi.org/10.1038/s44512-026-00010-3",
     "https://doi.org/10.1073/pnas.2605030123",
     "https://doi.org/10.1073/pnas.2614478123",
     "https://doi.org/10.1073/pnas.2614706123",
     "https://doi.org/10.1086/284325",
+    "https://doi.org/10.1093/evlett/qrag043",
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/genetics/28.6.491",
     "https://doi.org/10.1093/genetics/iyag280",
@@ -488,6 +508,7 @@
     "10.1038/s41563-026-02793-2",
     "10.1038/s41564-026-02480-7",
     "10.1038/s41567-026-03400-6",
+    "10.1038/s41567-026-03519-6",
     "10.1038/s41586-026-11107-0",
     "10.1038/s41586-026-11147-6",
     "10.1038/s41586-026-11170-7",
@@ -499,12 +520,14 @@
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
     "10.1038/s42005-026-02841-y",
+    "10.1038/s42256-026-01328-3",
     "10.1038/s43018-026-01265-5",
     "10.1038/s44512-026-00010-3",
     "10.1073/pnas.2605030123",
     "10.1073/pnas.2614478123",
     "10.1073/pnas.2614706123",
     "10.1086/284325",
+    "10.1093/evlett/qrag043",
     "10.1093/gbe/evag259",
     "10.1093/genetics/28.6.491",
     "10.1093/genetics/iyag280",
