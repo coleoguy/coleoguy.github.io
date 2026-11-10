@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 22,
-    "date": "2026-11-07"
+    "no": 23,
+    "date": "2026-11-08"
   },
   "issues": [
     {
@@ -378,6 +378,23 @@
       "slot3_headline": "A new algorithm reveals planets hidden in starlight",
       "slot3_url": "https://doi.org/10.1038/s41586-026-11213-z",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0023-2026-11-08.json",
+      "no": 23,
+      "date": "2026-11-08",
+      "slug": "2026-11-08",
+      "topic": "Evolutionary developmental biology: ancestral embryonic organizers",
+      "lead_headline": "The chordate body plan has deeper roots",
+      "lead_doi": "10.1038/s41467-026-78735-y",
+      "lead_url": "https://doi.org/10.1038/s41467-026-78735-y",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Human B cells become an evolution machine",
+      "slot2_url": "https://doi.org/10.1038/s41467-026-79127-y",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Trapped ions reproduce a quantum interference effect",
+      "slot3_url": "https://doi.org/10.1038/s41567-026-03400-6",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -387,8 +404,10 @@
     "https://doi.org/10.1038/s41377-026-02442-y",
     "https://doi.org/10.1038/s41467-026-78289-z",
     "https://doi.org/10.1038/s41467-026-78393-0",
+    "https://doi.org/10.1038/s41467-026-78735-y",
     "https://doi.org/10.1038/s41467-026-78884-0",
     "https://doi.org/10.1038/s41467-026-79058-8",
+    "https://doi.org/10.1038/s41467-026-79127-y",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41550-026-03008-z",
@@ -397,6 +416,7 @@
     "https://doi.org/10.1038/s41559-026-03216-w",
     "https://doi.org/10.1038/s41563-026-02793-2",
     "https://doi.org/10.1038/s41564-026-02480-7",
+    "https://doi.org/10.1038/s41567-026-03400-6",
     "https://doi.org/10.1038/s41586-026-11107-0",
     "https://doi.org/10.1038/s41586-026-11147-6",
     "https://doi.org/10.1038/s41586-026-11170-7",
@@ -455,8 +475,10 @@
     "10.1038/s41377-026-02442-y",
     "10.1038/s41467-026-78289-z",
     "10.1038/s41467-026-78393-0",
+    "10.1038/s41467-026-78735-y",
     "10.1038/s41467-026-78884-0",
     "10.1038/s41467-026-79058-8",
+    "10.1038/s41467-026-79127-y",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41550-026-03004-3",
     "10.1038/s41550-026-03008-z",
@@ -465,6 +487,7 @@
     "10.1038/s41559-026-03216-w",
     "10.1038/s41563-026-02793-2",
     "10.1038/s41564-026-02480-7",
+    "10.1038/s41567-026-03400-6",
     "10.1038/s41586-026-11107-0",
     "10.1038/s41586-026-11147-6",
     "10.1038/s41586-026-11170-7",
