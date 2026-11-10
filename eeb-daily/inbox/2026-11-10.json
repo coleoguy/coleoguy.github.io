@@ -1,0 +1,102 @@
+{
+  "no": 25,
+  "date": "2026-11-10",
+  "weekday": "Tuesday",
+  "lead": {
+    "topic": "Protist evolution: uncultivated branches of the eukaryotic tree",
+    "headline": "Most protist branches are still missing from our maps",
+    "deck": "A global search of environmental DNA exposes large gaps in the reference tree of microbial eukaryotes.",
+    "authors": "Romero-Gutiérrez MF, Krinos AI, Maurer-Alcala X, Burns JA, Stepanauskas R, Woyke T, Schulz F",
+    "journal": "Nature Communications",
+    "pubdate": "10 Nov 2026",
+    "doi": "10.1038/s41467-026-78712-5",
+    "url": "https://doi.org/10.1038/s41467-026-78712-5",
+    "paragraphs": [
+      "Protists, the diverse eukaryotes outside animals, plants and fungi, fill aquatic and terrestrial food webs. Yet their evolutionary tree has been built largely from organisms that researchers can culture or recognize. A new <em>Nature Communications</em> study asks how much diversity has escaped that sampling. Miguel Romero-Gutiérrez and colleagues surveyed more than 30,000 assembled environmental metagenomes, single-cell genomes and long-amplicon datasets, seeking long ribosomal RNA sequences that can help place uncultivated organisms on the eukaryotic tree. Unlike a survey that depends on amplifying one marker with a fixed primer pair, this approach draws heavily on sequences assembled directly from environmental genetic material.",
+      "The team recovered 157,956 long 18S ribosomal RNA sequences. After clustering and filtering the data, 81 percent of 9,543 protist groups at an 85 percent sequence identity threshold contained only environmental sequences, without a described representative. Their joint 18S and 28S analysis highlights poor coverage of several major lineages and identifies thirteen candidate deeply divergent branches. Those candidates are hypotheses about diversity, not thirteen formally described species. Linking some sequences to partial single-cell genomes and mapping their environmental occurrences begins to make these missing branches biologically tractable. The result changes where researchers should search next, while reminding us that sequence clusters are not equivalent to complete species inventories."
+    ],
+    "push": "Prioritize candidate branches represented by environmental sequences and partial genomes for targeted sampling. Combine long-read sequencing, microscopy and single-cell genomics to test whether each branch is genuinely distinct and to recover metabolic traits. Compare habitats and sampling approaches to determine whether the biggest gaps reflect ecological rarity or systematic biases in available reference collections."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Miguel F. Romero-Gutiérrez",
+      "bio": "Miguel Romero-Gutiérrez is affiliated with the Department of Energy Joint Genome Institute at Lawrence Berkeley National Laboratory. A JGI organizational chart places him in the New Lineages of Life group, which explores uncultivated microbes. In this study he led work using environmental genomic sequences to uncover overlooked protist diversity. His current job title and training were not independently verified.",
+      "links": [
+        {
+          "label": "DOE JGI staff organization chart",
+          "url": "https://jgi.doe.gov/wp-content/uploads/2024/10/Oct-2024-Org-Charts.pdf"
+        },
+        {
+          "label": "ORCID researcher record",
+          "url": "https://orcid.org/0000-0002-3799-717X"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Frederik Schulz",
+      "bio": "Frederik Schulz leads the New Lineages of Life group at the Department of Energy Joint Genome Institute. He earned a doctorate in microbial ecology and bioinformatics at the University of Vienna. His research uses metagenomics, single-cell genomics and phylogenomic analysis to discover unfamiliar microbes, viruses and the ecological roles of previously uncultivated lineages.",
+      "links": [
+        {
+          "label": "DOE JGI professional profile",
+          "url": "https://jgi.doe.gov/who-we-are/frederik-schulz"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Neutral mutations changed molecular evolution",
+    "cite": "Motoo Kimura, <em>Nature</em> (1968). <a href=\"https://doi.org/10.1038/217624a0\">Original paper</a>.",
+    "body": "When Motoo Kimura compared the estimated pace of protein substitutions across species with the size of genomes, he argued that too many changes would have to be fixed for positive selection to explain them all. His alternative was radical: much molecular evolution could result from random fixation of mutations that have little effect on fitness. The argument drew on available protein comparisons and population genetic calculations, not modern genome sequencing. It helped establish neutral theory as a central null model for molecular evolution. Later nearly neutral theory and genome-scale data refined the picture, showing that selection and drift both matter, with their relative importance varying across sites and populations.",
+    "url": "https://doi.org/10.1038/217624a0"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "A plasma burst can heat the fuel instead of merely disrupting it",
+    "cite": "Ida et al., <em>Communications Physics</em> (10 Nov 2026). <a href=\"https://doi.org/10.1038/s42005-026-02939-3\">Research paper</a>.",
+    "body": "Bursts in magnetically confined plasma are usually a headache for fusion research because they can disturb the hot fuel. Researchers working with Japan's Large Helical Device recorded a different effect: a burst driven by energetic particles transferred energy to ordinary ions. Rapid spectroscopy showed changes in the distribution of ion velocities within a tenth of a millisecond, followed by heating that persisted longer toward the plasma core. The study connects this behavior to wave-particle interactions and magnetic reconnection, two routes for transferring energy without ordinary collisions. This is a diagnostic result in an experimental plasma, not a demonstration of a commercially viable fusion reactor.",
+    "url": "https://doi.org/10.1038/s42005-026-02939-3"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://doi.org/10.1038/s41467-026-78712-5",
+      "title": "Global environmental genomics reveals vast uncultivated protist diversity and taxonomic blind spots",
+      "used_for": "lead",
+      "evidence": "Open peer-reviewed early-access Nature Communications paper, online Nov 10 2026. Verified seven authors and ordering, over 30,000 datasets, 157,956 18S sequences, 9,543 filtered 85-percent OTUs and 81-percent environmental-only share, thirteen candidate lineages. Early version subject to copyediting."
+    },
+    {
+      "url": "https://jgi.doe.gov/wp-content/uploads/2024/10/Oct-2024-Org-Charts.pdf",
+      "title": "DOE Joint Genome Institute organization chart, October 2024",
+      "used_for": "person_1",
+      "evidence": "Institutional professional listing places Miguel Romero Gutierrez in New Lineages of Life group; source dated 2024, current group affiliation also confirmed by 2026 paper, but exact current rank/training unknown."
+    },
+    {
+      "url": "https://jgi.doe.gov/who-we-are/frederik-schulz",
+      "title": "Frederik Schulz professional bio, DOE Joint Genome Institute",
+      "used_for": "person_2",
+      "evidence": "Verified group lead role, Vienna PhD, research emphasis and joined JGI in 2016."
+    },
+    {
+      "url": "https://doi.org/10.1038/217624a0",
+      "title": "Evolutionary Rate at the Molecular Level",
+      "used_for": "slot2",
+      "evidence": "Nature original published Feb 17 1968 with author Motoo Kimura, comparison of molecular substitution rates and argument that many substitutions are neutral; original publisher abstract plus archival scan."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/5637732/",
+      "title": "PubMed record of Kimura 1968",
+      "used_for": "slot2",
+      "evidence": "Verified original journal, citation date and DOI."
+    },
+    {
+      "url": "https://doi.org/10.1038/s42005-026-02939-3",
+      "title": "Direct observation of phase-space dynamics during energetic-particle-driven MHD bursts",
+      "used_for": "slot3",
+      "evidence": "Open Communications Physics paper published Nov 10 2026; Large Helical Device ion-velocity spectroscopy, 0.1 ms phase-space deformation, approximately 30-percent local parallel energy increase, delayed core heating and proposed wave-particle mechanisms."
+    }
+  ]
+}
