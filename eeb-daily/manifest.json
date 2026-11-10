@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 24,
-    "date": "2026-11-09"
+    "no": 25,
+    "date": "2026-11-10"
   },
   "issues": [
     {
@@ -412,15 +412,34 @@
       "slot3_headline": "Interference makes a molecular state resist decay",
       "slot3_url": "https://doi.org/10.1038/s41567-026-03519-6",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0025-2026-11-10.json",
+      "no": 25,
+      "date": "2026-11-10",
+      "slug": "2026-11-10",
+      "topic": "Protist evolution: uncultivated branches of the eukaryotic tree",
+      "lead_headline": "Most protist branches are still missing from our maps",
+      "lead_doi": "10.1038/s41467-026-78712-5",
+      "lead_url": "https://doi.org/10.1038/s41467-026-78712-5",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Neutral mutations changed molecular evolution",
+      "slot2_url": "https://doi.org/10.1038/217624a0",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "A plasma burst can heat the fuel instead of merely disrupting it",
+      "slot3_url": "https://doi.org/10.1038/s42005-026-02939-3",
+      "history_subject": ""
     }
   ],
   "used_urls": [
     "https://doi.org/10.1016/j.cub.2026.08.053",
     "https://doi.org/10.1016/j.ympev.2026.108754",
+    "https://doi.org/10.1038/217624a0",
     "https://doi.org/10.1038/246096a0",
     "https://doi.org/10.1038/s41377-026-02442-y",
     "https://doi.org/10.1038/s41467-026-78289-z",
     "https://doi.org/10.1038/s41467-026-78393-0",
+    "https://doi.org/10.1038/s41467-026-78712-5",
     "https://doi.org/10.1038/s41467-026-78735-y",
     "https://doi.org/10.1038/s41467-026-78884-0",
     "https://doi.org/10.1038/s41467-026-79058-8",
@@ -446,6 +465,7 @@
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1038/s42005-026-02841-y",
+    "https://doi.org/10.1038/s42005-026-02939-3",
     "https://doi.org/10.1038/s42256-026-01328-3",
     "https://doi.org/10.1038/s43018-026-01265-5",
     "https://doi.org/10.1038/s44512-026-00010-3",
@@ -491,10 +511,12 @@
   "used_dois": [
     "10.1016/j.cub.2026.08.053",
     "10.1016/j.ympev.2026.108754",
+    "10.1038/217624a0",
     "10.1038/246096a0",
     "10.1038/s41377-026-02442-y",
     "10.1038/s41467-026-78289-z",
     "10.1038/s41467-026-78393-0",
+    "10.1038/s41467-026-78712-5",
     "10.1038/s41467-026-78735-y",
     "10.1038/s41467-026-78884-0",
     "10.1038/s41467-026-79058-8",
@@ -520,6 +542,7 @@
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
     "10.1038/s42005-026-02841-y",
+    "10.1038/s42005-026-02939-3",
     "10.1038/s42256-026-01328-3",
     "10.1038/s43018-026-01265-5",
     "10.1038/s44512-026-00010-3",
