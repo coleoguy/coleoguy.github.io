@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 21,
-    "date": "2026-11-06"
+    "no": 22,
+    "date": "2026-11-07"
   },
   "issues": [
     {
@@ -361,6 +361,23 @@
       "slot3_headline": "Mealworm chromosomes revealed the X and Y",
       "slot3_url": "https://embryo.asu.edu/pages/studies-spermatogenesis-1905-nettie-maria-stevens",
       "history_subject": "Nettie Stevens"
+    },
+    {
+      "path": "eeb-daily/data/0022-2026-11-07.json",
+      "no": 22,
+      "date": "2026-11-07",
+      "slug": "2026-11-07",
+      "topic": "Striking EEB paper: fungal hybridization and cryptic genomic diversity",
+      "lead_headline": "A fungal isolate carries genomes from two species",
+      "lead_doi": "10.1038/s44512-026-00010-3",
+      "lead_url": "https://doi.org/10.1038/s44512-026-00010-3",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Inversions can protect locally adapted genes",
+      "slot2_url": "https://doi.org/10.1534/genetics.105.047985",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "A new algorithm reveals planets hidden in starlight",
+      "slot3_url": "https://doi.org/10.1038/s41586-026-11213-z",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -386,11 +403,13 @@
     "https://doi.org/10.1038/s41586-026-11197-w",
     "https://doi.org/10.1038/s41586-026-11209-9",
     "https://doi.org/10.1038/s41586-026-11212-0",
+    "https://doi.org/10.1038/s41586-026-11213-z",
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1038/s42005-026-02841-y",
     "https://doi.org/10.1038/s43018-026-01265-5",
+    "https://doi.org/10.1038/s44512-026-00010-3",
     "https://doi.org/10.1073/pnas.2605030123",
     "https://doi.org/10.1073/pnas.2614478123",
     "https://doi.org/10.1073/pnas.2614706123",
@@ -414,6 +433,7 @@
     "https://doi.org/10.1126/science.adz4903",
     "https://doi.org/10.1186/s13059-026-04293-7",
     "https://doi.org/10.1186/s13062-026-00994-y",
+    "https://doi.org/10.1534/genetics.105.047985",
     "https://doi.org/10.7554/eLife.106510",
     "https://doi.org/10.7554/eLife.108212.4",
     "https://doi.org/10.7554/eLife.112083",
@@ -451,11 +471,13 @@
     "10.1038/s41586-026-11197-w",
     "10.1038/s41586-026-11209-9",
     "10.1038/s41586-026-11212-0",
+    "10.1038/s41586-026-11213-z",
     "10.1038/s41593-026-02489-5",
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
     "10.1038/s42005-026-02841-y",
     "10.1038/s43018-026-01265-5",
+    "10.1038/s44512-026-00010-3",
     "10.1073/pnas.2605030123",
     "10.1073/pnas.2614478123",
     "10.1073/pnas.2614706123",
@@ -479,6 +501,7 @@
     "10.1126/science.adz4903",
     "10.1186/s13059-026-04293-7",
     "10.1186/s13062-026-00994-y",
+    "10.1534/genetics.105.047985",
     "10.7554/elife.106510",
     "10.7554/elife.108212.4",
     "10.7554/elife.112083"
