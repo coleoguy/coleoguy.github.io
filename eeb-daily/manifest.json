@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 25,
-    "date": "2026-11-10"
+    "no": 26,
+    "date": "2026-11-11"
   },
   "issues": [
     {
@@ -429,6 +429,23 @@
       "slot3_headline": "A plasma burst can heat the fuel instead of merely disrupting it",
       "slot3_url": "https://doi.org/10.1038/s42005-026-02939-3",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0026-2026-11-11.json",
+      "no": 26,
+      "date": "2026-11-11",
+      "slug": "2026-11-11",
+      "topic": "Population genetics: bottlenecks, genetic load and inbreeding",
+      "lead_headline": "A bottleneck does not guarantee genetic recovery",
+      "lead_doi": "10.1093/genetics/iyag321",
+      "lead_url": "https://doi.org/10.1093/genetics/iyag321",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "The brain's regions differ in how they combine information",
+      "slot2_url": "https://doi.org/10.1038/s41593-026-02514-7",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Tangled DNA makes a restless liquid beat in unison",
+      "slot3_url": "https://doi.org/10.1038/s41567-026-03505-y",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -453,6 +470,7 @@
     "https://doi.org/10.1038/s41563-026-02793-2",
     "https://doi.org/10.1038/s41564-026-02480-7",
     "https://doi.org/10.1038/s41567-026-03400-6",
+    "https://doi.org/10.1038/s41567-026-03505-y",
     "https://doi.org/10.1038/s41567-026-03519-6",
     "https://doi.org/10.1038/s41586-026-11107-0",
     "https://doi.org/10.1038/s41586-026-11147-6",
@@ -462,6 +480,7 @@
     "https://doi.org/10.1038/s41586-026-11212-0",
     "https://doi.org/10.1038/s41586-026-11213-z",
     "https://doi.org/10.1038/s41593-026-02489-5",
+    "https://doi.org/10.1038/s41593-026-02514-7",
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1038/s42005-026-02841-y",
@@ -479,6 +498,7 @@
     "https://doi.org/10.1093/genetics/iyag280",
     "https://doi.org/10.1093/genetics/iyag304",
     "https://doi.org/10.1093/genetics/iyag311",
+    "https://doi.org/10.1093/genetics/iyag321",
     "https://doi.org/10.1093/mnras/stag1874",
     "https://doi.org/10.1093/molbev/msag275",
     "https://doi.org/10.1093/sysbio/syag079",
@@ -530,6 +550,7 @@
     "10.1038/s41563-026-02793-2",
     "10.1038/s41564-026-02480-7",
     "10.1038/s41567-026-03400-6",
+    "10.1038/s41567-026-03505-y",
     "10.1038/s41567-026-03519-6",
     "10.1038/s41586-026-11107-0",
     "10.1038/s41586-026-11147-6",
@@ -539,6 +560,7 @@
     "10.1038/s41586-026-11212-0",
     "10.1038/s41586-026-11213-z",
     "10.1038/s41593-026-02489-5",
+    "10.1038/s41593-026-02514-7",
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
     "10.1038/s42005-026-02841-y",
@@ -556,6 +578,7 @@
     "10.1093/genetics/iyag280",
     "10.1093/genetics/iyag304",
     "10.1093/genetics/iyag311",
+    "10.1093/genetics/iyag321",
     "10.1093/mnras/stag1874",
     "10.1093/molbev/msag275",
     "10.1093/sysbio/syag079",
