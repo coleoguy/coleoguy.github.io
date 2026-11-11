@@ -1,0 +1,102 @@
+{
+  "no": 26,
+  "date": "2026-11-11",
+  "weekday": "Wednesday",
+  "lead": {
+    "topic": "Population genetics: bottlenecks, genetic load and inbreeding",
+    "headline": "A bottleneck does not guarantee genetic recovery",
+    "deck": "New theory separates the loss of inbreeding depression from the harder recovery of population fitness.",
+    "authors": "López-Cortegano E, Charlesworth B",
+    "journal": "Genetics",
+    "pubdate": "09 Nov 2026",
+    "doi": "10.1093/genetics/iyag321",
+    "url": "https://doi.org/10.1093/genetics/iyag321",
+    "paragraphs": [
+      "When a population suddenly shrinks, relatives are more likely to inherit the same variants, including harmful recessive mutations. These mutations can reduce survival or reproduction when both copies are harmful. Conservation geneticists therefore ask: does increased homozygosity expose damaging variants to selection strongly enough to remove them, and can average fitness eventually recover? Eugenio López-Cortegano and Brian Charlesworth address those questions with population genetic theory in <em>Genetics</em>. They consider a small, randomly mating population founded from a much larger population at mutation-selection-drift equilibrium, the long-term balance of mutation, selection and chance.",
+      "The authors combine computer simulations with approximate mathematical predictions for changes after the bottleneck. Their results show that purging can accelerate the loss of inbreeding depression, the extra fitness cost of mating between relatives. But an actual recovery in mean fitness requires mutations to be sufficiently recessive and selection to be strong enough relative to drift. Weakly harmful mutations instead produce declines in fitness and inbreeding depression broadly comparable to those expected from rising homozygosity under a neutral model, at least over the short periods studied. Reduced inbreeding depression, therefore, is not proof that a population has become genetically healthy. This is a theoretical result, not evidence that bottlenecked wild populations inevitably rebound."
+    ],
+    "push": "Extend the framework to populations whose sizes rebound after a crash, with linked loci and nonrandom mating. Across simulations, ask whether the decline of inbreeding depression predicts absolute fitness recovery or merely loss of segregating variation. Then test these divergent forecasts against pedigreed conservation populations with multigenerational survival and reproductive data."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Eugenio López-Cortegano",
+      "bio": "Eugenio López-Cortegano is a statistical geneticist whose research spans mutational load, genetic purging, conservation genetics and population breeding. The new paper lists affiliations with the University of Edinburgh's Institute of Ecology and Evolution and Aviagen Ltd. He earned a doctorate in population genetics at the Complutense University of Madrid in 2017.",
+      "links": [
+        {
+          "label": "Professional research profile",
+          "url": "https://elcortegano.gitlab.io/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Brian Charlesworth",
+      "bio": "Brian Charlesworth is a Senior Honorary Professorial Fellow at the University of Edinburgh and a leading population geneticist. After earning a doctorate in genetics at Cambridge in 1969, he did postdoctoral research with Richard Lewontin at the University of Chicago. His work addresses selection, recombination, drift and genome evolution.",
+      "links": [
+        {
+          "label": "University of Edinburgh profile",
+          "url": "https://www.ed.ac.uk/news/staff/appointments-awards/2010/b-charlesworth-210510"
+        },
+        {
+          "label": "Royal Society fellow profile",
+          "url": "https://royalsociety.org/people/brian-charlesworth-11211/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "The brain's regions differ in how they combine information",
+    "cite": "Ruff et al., <em>Nature Neuroscience</em> (10 Nov 2026). <a href=\"https://doi.org/10.1038/s41593-026-02514-7\">Research article</a>.",
+    "body": "Two regions of the brain may carry the same information but use it differently. Ruff and colleagues recorded neuronal populations in two rhesus monkeys judging the direction of moving dots while considering potential juice rewards. Visual area MT represented motion and reward largely separately; dorsolateral prefrontal cortex combined them in overlapping population patterns. A recurrent neural network generated predictions for stimulation experiments. Stimulating MT shifted judgments toward the represented motion direction, while stimulation of prefrontal cortex more often produced all-or-none, winner-take-all choices. Reading information from neural activity, the authors argue, does not establish what computation that tissue performs.",
+    "url": "https://doi.org/10.1038/s41593-026-02514-7"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Tangled DNA makes a restless liquid beat in unison",
+    "cite": "Levanon et al., <em>Nature Physics</em> (09 Nov 2026). <a href=\"https://doi.org/10.1038/s41567-026-03505-y\">Research article</a>.",
+    "body": "Can a liquid of randomly swirling molecular motors organize itself into a coordinated rhythm? In a <em>Nature Physics</em> experiment, researchers combined microtubules and kinesin motors with long strands of DNA. Initially, the motors drove irregular fluid motion. The motion stretched and tangled the DNA, building an elastic network that then fed back on the flow. Above a threshold DNA length, the mixture developed synchronized vortices spanning roughly two millimeters and reversing on timescales of tens of minutes. Shorter DNA strands did not produce stable oscillations. The work reveals mechanical self-organization without a chemical timing circuit, suggesting design principles for responsive soft materials.",
+    "url": "https://doi.org/10.1038/s41567-026-03505-y"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://doi.org/10.1093/genetics/iyag321",
+      "title": "The effect of a reduction in population size on mean fitness and inbreeding depression",
+      "used_for": "lead",
+      "evidence": "Publisher abstract of accepted manuscript checked: López-Cortegano and Charlesworth in that order, Genetics, online 9 Nov 2026, DOI verified. Model assumes randomly mating bottlenecked populations and combines simulations and analytic approximations. Abstract only examined; PDF manuscript was not read."
+    },
+    {
+      "url": "https://elcortegano.gitlab.io/",
+      "title": "Eugenio López-Cortegano, statistical geneticist",
+      "used_for": "person_1",
+      "evidence": "Research interests and Complutense University of Madrid doctorate in population genetics, 2017, verified on professional site. Edinburgh and Aviagen affiliations independently verified in publisher record."
+    },
+    {
+      "url": "https://www.ed.ac.uk/news/staff/appointments-awards/2010/b-charlesworth-210510",
+      "title": "Senior Honorary Professorial Fellow: Brian Charlesworth",
+      "used_for": "person_2",
+      "evidence": "Edinburgh university profile identifies honorary fellowship, Cambridge doctorate in 1969, and Richard Lewontin postdoctoral period. University source was indexed but direct page retrieval was restricted."
+    },
+    {
+      "url": "https://royalsociety.org/people/brian-charlesworth-11211/",
+      "title": "Professor Brian Charlesworth FRS",
+      "used_for": "person_2",
+      "evidence": "Royal Society professional biography corroborates research in population genetics, selection, recombination and genomic variation."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41593-026-02514-7",
+      "title": "Information formatting in neuronal populations predicts differential functional contributions to behavior",
+      "used_for": "slot2",
+      "evidence": "Nature Neuroscience article published 10 Nov 2026; publisher abstract and indexed article text confirm two monkeys, MT versus dlPFC formats, RNN predictions and causal stimulation outcomes."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41567-026-03505-y",
+      "title": "Active-flow-driven DNA remodelling generates millimetre-scale mechanical oscillations",
+      "used_for": "slot3",
+      "evidence": "Nature Physics open-access research article published 9 Nov 2026; indexed full text confirms motor-driven DNA entanglement, oscillating millimeter-scale flow, and polymer length threshold, not a biological clock."
+    }
+  ]
+}
