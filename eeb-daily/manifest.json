@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 26,
-    "date": "2026-11-11"
+    "no": 27,
+    "date": "2026-11-12"
   },
   "issues": [
     {
@@ -446,6 +446,23 @@
       "slot3_headline": "Tangled DNA makes a restless liquid beat in unison",
       "slot3_url": "https://doi.org/10.1038/s41567-026-03505-y",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0027-2026-11-12.json",
+      "no": 27,
+      "date": "2026-11-12",
+      "slug": "2026-11-12",
+      "topic": "Sex-specific macroevolution of lizard body size",
+      "lead_headline": "Male and female lizards change size at different speeds",
+      "lead_doi": "10.1093/evolut/qpag205",
+      "lead_url": "https://doi.org/10.1093/evolut/qpag205",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Immune cells decide whether brown fat burns fuel",
+      "slot2_url": "https://doi.org/10.1038/s41586-026-11308-7",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Uneven networks make materials absorb impacts",
+      "slot3_url": "https://doi.org/10.1038/s41586-026-11191-2",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -475,10 +492,12 @@
     "https://doi.org/10.1038/s41586-026-11107-0",
     "https://doi.org/10.1038/s41586-026-11147-6",
     "https://doi.org/10.1038/s41586-026-11170-7",
+    "https://doi.org/10.1038/s41586-026-11191-2",
     "https://doi.org/10.1038/s41586-026-11197-w",
     "https://doi.org/10.1038/s41586-026-11209-9",
     "https://doi.org/10.1038/s41586-026-11212-0",
     "https://doi.org/10.1038/s41586-026-11213-z",
+    "https://doi.org/10.1038/s41586-026-11308-7",
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41593-026-02514-7",
     "https://doi.org/10.1038/s41594-026-01914-4",
@@ -493,6 +512,7 @@
     "https://doi.org/10.1073/pnas.2614706123",
     "https://doi.org/10.1086/284325",
     "https://doi.org/10.1093/evlett/qrag043",
+    "https://doi.org/10.1093/evolut/qpag205",
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/genetics/28.6.491",
     "https://doi.org/10.1093/genetics/iyag280",
@@ -555,10 +575,12 @@
     "10.1038/s41586-026-11107-0",
     "10.1038/s41586-026-11147-6",
     "10.1038/s41586-026-11170-7",
+    "10.1038/s41586-026-11191-2",
     "10.1038/s41586-026-11197-w",
     "10.1038/s41586-026-11209-9",
     "10.1038/s41586-026-11212-0",
     "10.1038/s41586-026-11213-z",
+    "10.1038/s41586-026-11308-7",
     "10.1038/s41593-026-02489-5",
     "10.1038/s41593-026-02514-7",
     "10.1038/s41594-026-01914-4",
@@ -573,6 +595,7 @@
     "10.1073/pnas.2614706123",
     "10.1086/284325",
     "10.1093/evlett/qrag043",
+    "10.1093/evolut/qpag205",
     "10.1093/gbe/evag259",
     "10.1093/genetics/28.6.491",
     "10.1093/genetics/iyag280",
