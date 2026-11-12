@@ -1,0 +1,102 @@
+{
+  "no": 27,
+  "date": "2026-11-12",
+  "weekday": "Thursday",
+  "lead": {
+    "topic": "Sex-specific macroevolution of lizard body size",
+    "headline": "Male and female lizards change size at different speeds",
+    "deck": "Separating male and female traits reveals evolutionary patterns that a single measure of sexual dimorphism misses.",
+    "authors": "Rodríguez-Rodríguez JD, Villalobos F, Gonzalez-Voyer A, Velasco JA",
+    "journal": "Evolution",
+    "pubdate": "10 Nov 2026",
+    "doi": "10.1093/evolut/qpag205",
+    "url": "https://doi.org/10.1093/evolut/qpag205",
+    "paragraphs": [
+      "Male and female lizards can be strikingly different sizes, but the evolutionary history of that gap is not simply the history of body size. In a new <em>Evolution</em> study, Juan D. Rodríguez-Rodríguez and colleagues compared male and female body-size trajectories with the evolution of sexual size dimorphism, or SSD, across 2,476 squamate species. SSD is the difference in average size between the sexes. The researchers fitted evolutionary models for four diverse lizard families: anoles, chameleons, liolaemids and phrynosomatids. Rather than treating a species' size as one number, they followed size in each sex separately.",
+      "The analysis found that male body size generally evolved faster than female body size in three of the four focal families. Liolaemid lizards were the exception and showed the highest overall evolutionary rates. Yet male and female sizes had broadly similar patterns of disparity, meaning the spread of trait values across lineages, while disparity in SSD followed a different course. The contrasts also changed with the phylogenetic scale studied. These patterns caution against treating dimorphism as a simple proxy for selection on males or females. Comparative models identify differences in evolutionary history, not the forces that produced each change."
+    ],
+    "push": "Can the family-level pattern survive a model that allows different selective regimes in mountains, forests and deserts? A useful next test would pair sex-specific trait data with environmental histories and phylogenetic uncertainty, then ask where changes in male and female size actually precede shifts in dimorphism rather than simply accompany them."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Juan D. Rodríguez-Rodríguez",
+      "bio": "Juan D. Rodríguez-Rodríguez is listed with the Graduate Program in Biological Sciences and the Institute of Atmospheric Sciences and Climate Change at the National Autonomous University of Mexico. His work on this paper examines sex-specific body-size evolution using comparative phylogenetic analysis. Public sources do not establish his degree status or permanent appointment.",
+      "links": [
+        {
+          "label": "Published author affiliation",
+          "url": "https://doi.org/10.1093/evolut/qpag205"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Julián A. Velasco",
+      "bio": "Julián A. Velasco is a researcher at the National Autonomous University of Mexico's Institute of Atmospheric Sciences and Climate Change. Trained at Universidad del Valle in Colombia and awarded a doctorate by UNAM, he has held postdoctoral appointments in Guadalajara and at UNAM. He studies macroecology, biodiversity, climate and phylogenetic comparative methods.",
+      "links": [
+        {
+          "label": "Institutional biography",
+          "url": "https://www.atmosfera.unam.mx/ciencias-atmosfericas/cambio-climatico-y-radiacion-solar/julian-a-velasco-vinasco/"
+        },
+        {
+          "label": "Researcher website",
+          "url": "https://juvelas.github.io/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Immune cells decide whether brown fat burns fuel",
+    "cite": "Song et al., <em>Nature</em> (11 Nov 2026). <a href=\"https://doi.org/10.1038/s41586-026-11308-7\">Research article</a>.",
+    "body": "Brown fat helps mammals stay warm by burning chemical energy as heat, but not all its cells work equally hard. Song and colleagues found that nearby immune cells, including neutrophils and macrophages, release a signal called IL-1β that keeps some brown fat cells in a low-heat state. Cold suppresses that signal and allows cells to switch on UCP1, a protein involved in heat production. In mice, removing a downstream glucocorticoid receptor preserved heat generation after cold exposure. Older mice with excessive immune signaling also regained thermogenic activity when that pathway was inhibited. This maps a biological switch, not a treatment tested in people.",
+    "url": "https://doi.org/10.1038/s41586-026-11308-7"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Uneven networks make materials absorb impacts",
+    "cite": "Both et al., <em>Nature</em> (11 Nov 2026). <a href=\"https://doi.org/10.1038/s41586-026-11191-2\">Research article</a>.",
+    "body": "Most engineered cellular materials repeat the same microscopic building block. Both and colleagues built a different kind: a network whose struts vary widely in length, thickness and connectedness, much like veins in leaves. Their two-parameter design generated physical test structures and computer models with adjustable stiffness across directions and deformation distributed away from a single weak spot. Under dynamic loading, selected networks also dissipated more energy than comparison architectures. One demonstration routed stress away from a vulnerable embedded object. These are experiments on engineered prototypes, not proof that a commercially useful helmet exists, but they offer a flexible way to design protective and wave-controlling structures.",
+    "url": "https://doi.org/10.1038/s41586-026-11191-2"
+  },
+  "tomorrow": "Beyond EEB and History",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://doi.org/10.1093/evolut/qpag205",
+      "title": "Macroevolution of body size and sexual size dimorphism across lizards: distinct evolutionary patterns between the sexes",
+      "used_for": "lead",
+      "evidence": "Oxford Academic accepted manuscript listing and abstract checked: authors in publication order, 10 Nov 2026, DOI, 2,476 squamate species, four lizard families, male-size evolutionary rates and disparity patterns. Abstract accessible, full accepted-manuscript PDF not accessible; no unsupported numerical analyses claimed."
+    },
+    {
+      "url": "https://doi.org/10.1093/evolut/qpag205",
+      "title": "Rodríguez-Rodríguez author affiliation in Evolution",
+      "used_for": "person_1",
+      "evidence": "Publisher author listing confirms first-author name and affiliation to UNAM Graduate Program in Biological Sciences and Institute of Atmospheric Sciences and Climate Change. No separate professional biography found; degree and appointment not inferred."
+    },
+    {
+      "url": "https://www.atmosfera.unam.mx/ciencias-atmosfericas/cambio-climatico-y-radiacion-solar/julian-a-velasco-vinasco/",
+      "title": "Dr. Julián A. Velasco Vinasco, UNAM academic biography",
+      "used_for": "person_2",
+      "evidence": "Verified UNAM appointment, Universidad del Valle bachelor's and master's degrees, UNAM doctorate, postdoctoral institutions, fields of research."
+    },
+    {
+      "url": "https://juvelas.github.io/",
+      "title": "Julián A. Velasco personal professional website",
+      "used_for": "person_2",
+      "evidence": "Confirms full-time ICACC-UNAM researcher position and focus on macroecology, climate and phylogenetic comparative methods."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11308-7",
+      "title": "Bistable regulation of adipocyte heterogeneity governs thermogenesis",
+      "used_for": "slot2",
+      "evidence": "Nature full article and abstract: published 11 Nov 2026; IL-1β from immune cells, H6PD and glucocorticoid receptor pathway, cold-exposure and aged-mouse experiments. No human therapeutic claims."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11191-2",
+      "title": "Scale-rich network-based metamaterials",
+      "used_for": "slot3",
+      "evidence": "Nature full article and abstract: published online 11 Nov 2026, issue dated 12 Nov; network heterogeneity, simulated and fabricated structures, load response, energy absorption and wave behavior. Future protective-device applications not demonstrated."
+    }
+  ]
+}
