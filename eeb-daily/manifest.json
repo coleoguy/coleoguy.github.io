@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 27,
-    "date": "2026-11-12"
+    "no": 28,
+    "date": "2026-11-13"
   },
   "issues": [
     {
@@ -463,6 +463,23 @@
       "slot3_headline": "Uneven networks make materials absorb impacts",
       "slot3_url": "https://doi.org/10.1038/s41586-026-11191-2",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0028-2026-11-13.json",
+      "no": 28,
+      "date": "2026-11-13",
+      "slug": "2026-11-13",
+      "topic": "Genome-scale horizontal gene transfer and chromatin regulation",
+      "lead_headline": "Algal chromosomes persist inside mammalian cells",
+      "lead_doi": "10.1038/s41467-026-78753-w",
+      "lead_url": "https://doi.org/10.1038/s41467-026-78753-w",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Blue light switches off cellular recycling",
+      "slot2_url": "https://doi.org/10.1038/s41556-026-02124-2",
+      "slot3_kind": "HISTORY",
+      "slot3_headline": "Dayhoff turned protein sequences into evolutionary evidence",
+      "slot3_url": "https://embryo.asu.edu/pages/margaret-oakley-dayhoff-1925-1983",
+      "history_subject": "Margaret Oakley Dayhoff"
     }
   ],
   "used_urls": [
@@ -475,6 +492,7 @@
     "https://doi.org/10.1038/s41467-026-78393-0",
     "https://doi.org/10.1038/s41467-026-78712-5",
     "https://doi.org/10.1038/s41467-026-78735-y",
+    "https://doi.org/10.1038/s41467-026-78753-w",
     "https://doi.org/10.1038/s41467-026-78884-0",
     "https://doi.org/10.1038/s41467-026-79058-8",
     "https://doi.org/10.1038/s41467-026-79127-y",
@@ -482,6 +500,7 @@
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41550-026-03008-z",
     "https://doi.org/10.1038/s41556-026-02101-9",
+    "https://doi.org/10.1038/s41556-026-02124-2",
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41559-026-03216-w",
     "https://doi.org/10.1038/s41563-026-02793-2",
@@ -537,6 +556,7 @@
     "https://doi.org/10.7554/eLife.106510",
     "https://doi.org/10.7554/eLife.108212.4",
     "https://doi.org/10.7554/eLife.112083",
+    "https://embryo.asu.edu/pages/margaret-oakley-dayhoff-1925-1983",
     "https://embryo.asu.edu/pages/studies-spermatogenesis-1905-nettie-maria-stevens",
     "https://insidehighered.com/news/quick-takes/2026/10/16/new-analysis-finds-nih-awarded-7400-fewer-grants",
     "https://www.aip.org/fyi/nsf-acting-director-chief-of-staff-to-exit",
@@ -558,6 +578,7 @@
     "10.1038/s41467-026-78393-0",
     "10.1038/s41467-026-78712-5",
     "10.1038/s41467-026-78735-y",
+    "10.1038/s41467-026-78753-w",
     "10.1038/s41467-026-78884-0",
     "10.1038/s41467-026-79058-8",
     "10.1038/s41467-026-79127-y",
@@ -565,6 +586,7 @@
     "10.1038/s41550-026-03004-3",
     "10.1038/s41550-026-03008-z",
     "10.1038/s41556-026-02101-9",
+    "10.1038/s41556-026-02124-2",
     "10.1038/s41559-026-03214-y",
     "10.1038/s41559-026-03216-w",
     "10.1038/s41563-026-02793-2",
