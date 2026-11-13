@@ -1,0 +1,93 @@
+{
+  "no": 28,
+  "date": "2026-11-13",
+  "weekday": "Friday",
+  "lead": {
+    "topic": "Genome-scale horizontal gene transfer and chromatin regulation",
+    "headline": "Algal chromosomes persist inside mammalian cells",
+    "deck": "A laboratory fusion experiment shows that host epigenetic regulation can help foreign eukaryotic DNA survive for many generations.",
+    "authors": "Aoki R, Nishihara H, Sakamoto T, et al., Matsunaga S",
+    "journal": "Nature Communications",
+    "pubdate": "12 Nov 2026",
+    "doi": "10.1038/s41467-026-78753-w",
+    "url": "https://doi.org/10.1038/s41467-026-78753-w",
+    "paragraphs": [
+      "Horizontal gene transfer, the movement of DNA between species rather than from parent to offspring, is common in bacteria. But can an animal cell accommodate whole chromosomes from an evolutionarily distant eukaryote? Ryota Aoki and colleagues brought the tiny red alga <em>Cyanidioschyzon merolae</em> together with cultured Chinese hamster ovary cells. They used experimentally induced cell fusion, as well as a less efficient route involving cellular engulfment, to study how algal DNA entered mammalian nuclei. Live imaging followed the arrival of foreign DNA, while genome sequencing and chromosome imaging measured what survived.",
+      "Some hybrid cell lines retained more than 16 million bases of algal DNA, including chromosome-scale structures. Foreign material persisted through 95 generations without continued drug selection. Most algal genes remained silent; the imported DNA acquired repressive chromatin marks and increasing DNA methylation, chemical modifications associated with reduced gene activity. When the researchers disrupted the mammalian methylation enzyme DNMT3A, stable retention of transferred DNA decreased. That supports a role for host epigenetics in accommodating an unfamiliar genome. It does not establish that chromosome transfers routinely happen in wild animals, or that mammalian cells became photosynthetic. The striking result is the experimentally observed survival of foreign chromosomes, not a demonstrated natural evolutionary pathway."
+    ],
+    "push": "Could the same methylation-dependent retention occur when foreign DNA arrives without laboratory-induced fusion? A next step would compare engulfment, natural cell interactions and engineered fusion using matched donor chromosomes, then measure integration, loss and transcription over many generations. That would separate a plausible route for evolutionary innovation from a striking but specialized cell-culture phenomenon."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Ryota Aoki",
+      "bio": "Ryota Aoki is listed in the Matsunaga laboratory's 2026 directory as a visiting research collaborator associated with the University of Western Australia. His research connects experimental interactions between algal and mammalian cells with broader questions about endosymbiosis and genome acquisition. Public sources consulted did not establish his current academic rank or doctoral training.",
+      "links": [
+        {
+          "label": "University of Tokyo laboratory member directory (2026)",
+          "url": "https://www.park.itc.u-tokyo.ac.jp/matsunaga_lab/member.html"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Sachihiro Matsunaga",
+      "bio": "Sachihiro Matsunaga is a professor in the University of Tokyo's Graduate School of Frontier Sciences. He received his doctorate there in 1998 and subsequently researched at the University of North Carolina at Chapel Hill. His laboratory investigates chromatin dynamics, plant regeneration and synthetic biology, including experiments that bring together cells and genomes from distant species.",
+      "links": [
+        {
+          "label": "University of Tokyo faculty biography",
+          "url": "https://www.ib.k.u-tokyo.ac.jp/english/faculty/integrated_biology/matsunaga_sachihiro/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Blue light switches off cellular recycling",
+    "cite": "Mondal et al., <em>Nature Cell Biology</em> (12 Nov 2026). <a href=\"https://doi.org/10.1038/s41556-026-02124-2\">Research article</a>.",
+    "body": "Autophagy is the cellular recycling process that delivers worn-out components to lysosomes for breakdown. Studying its immediate effects has been difficult because drugs can act broadly and gene knockouts take time. Mondal and colleagues developed ASAP, a light-sensitive protein system that blocks the fusion of autophagosomes with lysosomes within five minutes of blue-light exposure. The effect can reverse after the light stops. Using rapid proteomic measurements, the team found that incomplete nuclear-pore protein complexes are normally cleared through autophagy. Without that clearance, these complexes accumulate in cytoplasmic processing bodies. This is a research tool demonstrated in experimental cells, not a clinical treatment.",
+    "url": "https://doi.org/10.1038/s41556-026-02124-2"
+  },
+  "slot3": {
+    "kind": "HISTORY",
+    "headline": "Dayhoff turned protein sequences into evolutionary evidence",
+    "cite": "Brewer, <em>Embryo Project Encyclopedia</em> (24 Oct 2026). <a href=\"https://embryo.asu.edu/pages/margaret-oakley-dayhoff-1925-1983\">Historical biography</a>.",
+    "body": "Margaret Oakley Dayhoff (1925–1983) helped invent the field now called bioinformatics. Trained in quantum chemistry, she recognized that computers could turn the growing collection of protein sequences into evidence about shared ancestry. Working at the National Biomedical Research Foundation, she and collaborators published the first <em>Atlas of Protein Sequence and Structure</em> in 1965, gathering 65 sequences from the scientific literature. A one-letter code made amino acid sequences easier to store and compare. Her group also developed point accepted mutation, or PAM, matrices to quantify amino acid substitutions among related proteins. Those tools supported sequence alignment and evolutionary inference. Today's enormous sequence databases and computational comparisons descend from that commitment to organizing biological information for reuse.",
+    "history_subject": "Margaret Oakley Dayhoff",
+    "url": "https://embryo.asu.edu/pages/margaret-oakley-dayhoff-1925-1983"
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41467-026-78753-w",
+      "title": "Epigenetic gatekeeping enables genome-scale horizontal gene transfer in eukaryotic cells",
+      "used_for": "lead",
+      "evidence": "Read open-access Nature Communications paper and abstract; verified online publication 12 Nov 2026, author order, DOI, Chinese hamster and C. merolae experiments, cell fusion versus engulfment, >16 Mb retained, 95 generations, heterochromatin and DNMT3A knockout. Findings are from engineered cell culture, not observed natural transfer."
+    },
+    {
+      "url": "https://www.park.itc.u-tokyo.ac.jp/matsunaga_lab/member.html",
+      "title": "Matsunaga laboratory members in 2026",
+      "used_for": "person_1",
+      "evidence": "University of Tokyo 2026 directory lists Ryota Aoki (青木 遼太) as visiting collaborative researcher associated with University of Western Australia; academic rank and degree not inferred."
+    },
+    {
+      "url": "https://www.ib.k.u-tokyo.ac.jp/english/faculty/integrated_biology/matsunaga_sachihiro/",
+      "title": "MATSUNAGA Sachihiro, University of Tokyo faculty profile",
+      "used_for": "person_2",
+      "evidence": "Verified professor appointment since 2020, University of Tokyo doctorate in 1998, subsequent University of North Carolina research period, work on plant epigenetics, chromatin and synthetic biology."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41556-026-02124-2",
+      "title": "The optogenetic tool ASAP acutely inhibits autophagy",
+      "used_for": "slot2",
+      "evidence": "Read full open-access Nature Cell Biology study; verified 12 Nov 2026 publication, five-minute blue-light inhibition of autophagic fusion, reversibility and nucleoporin complex behavior."
+    },
+    {
+      "url": "https://embryo.asu.edu/pages/margaret-oakley-dayhoff-1925-1983",
+      "title": "Margaret Oakley Dayhoff (1925–1983), Embryo Project Encyclopedia",
+      "used_for": "slot3",
+      "evidence": "Read Arizona State University's historical biography published 24 Oct 2026; verified Dayhoff dates, NBRF, 1965 Atlas with 65 sequences, one-letter amino acid code, PAM matrices and later influence. Avoided inconsistent chronology in one portion of the source."
+    }
+  ]
+}
