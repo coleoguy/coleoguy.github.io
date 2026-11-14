@@ -1,0 +1,108 @@
+{
+  "no": 29,
+  "date": "2026-11-14",
+  "weekday": "Saturday",
+  "lead": {
+    "topic": "Meiotic recombination and GC-biased genome evolution in ants",
+    "headline": "Ant chromosomes shuffle at extreme speed",
+    "deck": "A new map of California harvester ant chromosomes links exceptionally frequent crossovers to genome diversity and GC-rich DNA, without clear evidence of stronger protein-level selection.",
+    "authors": "Errbii M, Schrader L, Gadau J",
+    "journal": "Heredity",
+    "pubdate": "13 Nov 2026",
+    "doi": "10.1038/s41437-026-00901-1",
+    "url": "https://doi.org/10.1038/s41437-026-00901-1",
+    "paragraphs": [
+      "Ants, bees and wasps can reshuffle their chromosomes at extraordinary rates during meiosis. Mohammed Errbii and colleagues built a linkage map for the California harvester ant, <em>Pogonomyrmex californicus</em>, using DNA markers scored in 105 haploid males produced by one queen. Because each male carries a single maternal genome, switches between marker states reveal crossovers, the exchanges that occur between homologous chromosomes. The team anchored roughly 95% of the genome to 16 chromosomes and estimated a genome-wide recombination rate of 14.73 centimorgans per megabase, the highest reported for an ant.",
+      "Recombination was scarce in repeat-rich, gene-poor stretches but increased in gene-rich regions. More recombining regions also showed greater nucleotide diversity and higher GC content. At coding sites, rates of silent substitutions fell as recombination rose, while GC at third codon positions increased, a pattern consistent with GC-biased gene conversion favoring G and C bases during DNA repair. Yet local recombination was not robustly associated with protein-changing evolution or an estimate of selection efficacy. The findings therefore separate strong compositional effects from harder-to-detect effects on protein evolution. Crucially, these are correlations within one species, not experiments proving that recombination causes the patterns."
+    ],
+    "push": "Do high crossover rates change how efficiently selection removes harmful variants, or mainly reshape base composition? Compare multiple ant species with independently measured maps, similar demographic reconstructions and matched estimates of coding and noncoding diversity. Within species, tests that account for variation in mutation rate and linked selection could distinguish GC-biased repair from adaptive substitution."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Mohammed Errbii",
+      "bio": "University of Münster researcher Mohammed Errbii is listed by the university's graduate school as a doctoral student in molecular evolution and sociobiology. He earned a master's in microbial biotechnology from Sidi Mohamed Ben Abdellah University in Morocco. His research investigates how recombination and chromosomal rearrangements shape adaptation and population genomics in ants.",
+      "links": [
+        {
+          "label": "Münster graduate researcher profile",
+          "url": "https://www.uni-muenster.de/Evolution/mgse/people/mohammederrbii.html"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Jürgen Gadau",
+      "bio": "Jürgen Gadau is professor of molecular evolutionary biology at the University of Münster, studying the genetics and social evolution of ants, wasps and bees. He earned his doctorate at the University of Würzburg, completed postdoctoral work at UC Davis and previously held a professorship at Arizona State University. His group links behavior, genomes and adaptation.",
+      "links": [
+        {
+          "label": "Münster faculty profile",
+          "url": "https://www.uni-muenster.de/Evolution/molevolsocbio/juergengadau.shtml"
+        },
+        {
+          "label": "Research biography",
+          "url": "https://phil.uni-greifswald.de/institute/einrichtungen/ifzo/ifzo-neuigkeiten/ifzo-neuigkeiten-detailansicht/n/leben-wir-wirklich-im-anthropozaen-oder-nicht-vielmehr-im-myrmekozaen-249231-1/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Recombination frees genes from each other's fate",
+    "cite": "Felsenstein, <em>Genetics</em> (1 Oct 1974). <a href=\"https://doi.org/10.1093/genetics/78.2.737\">Original paper</a>.",
+    "body": "Why should sexual reproduction survive when it repeatedly breaks apart successful combinations of genes? In 1974, Joseph Felsenstein revisited a dispute between models that did and did not predict an advantage for recombination. His key distinction was population size: in finite populations, random genetic drift creates associations between linked alleles, even when the genes do not directly interact. Selection at one site can then interfere with selection nearby. Through analytical arguments and computer simulations, Felsenstein showed how recombination can relieve this interference and slow the buildup of harmful mutations, connecting the Fisher-Muller argument to Muller's ratchet. Later theory expanded how we study interference among linked sites.",
+    "url": "https://doi.org/10.1093/genetics/78.2.737"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "A circuit compiler cuts the cost of quantum error correction",
+    "cite": "Kuehnke et al., <em>npj Quantum Information</em> (12 Nov 2026). <a href=\"https://doi.org/10.1038/s41534-026-01404-x\">Research article</a>.",
+    "body": "Quantum computers encode information redundantly to catch errors, but error correction also makes even routine logic operations expensive. Kuehnke and colleagues developed a mathematical compiler that designs physical circuits for logical Clifford gates, an important class of quantum operations, while respecting which qubits a device can connect. Their optimization searches equivalent implementations and minimizes two-qubit gates. In tests on small error-detecting codes, the new circuits used fewer operations than a standard Qiskit approach. Simulations of another small code predicted improved logical-error performance, sometimes by more than fourfold compared with a teleportation-based design. These are software and simulation results, not a demonstrated improvement on a working quantum processor.",
+    "url": "https://doi.org/10.1038/s41534-026-01404-x"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41437-026-00901-1",
+      "title": "Extreme meiotic recombination in the ant Pogonomyrmex californicus is associated with genetic diversity and GC-biased sequence evolution",
+      "used_for": "lead",
+      "evidence": "Read open-access Heredity article, abstract, results and discussion; verified 13 Nov 2026 online date, author order, DOI, 105 haploid males, 16 linkage groups, 14.73 cM/Mb, 95% assembled chromosomes, high diversity and GC correlation, and lack of robust dN or omega association. Observational associations, not established causal effects."
+    },
+    {
+      "url": "https://www.uni-muenster.de/Evolution/mgse/people/mohammederrbii.html",
+      "title": "Mohammed Errbii, Münster Graduate School of Evolution",
+      "used_for": "person_1",
+      "evidence": "Institutional public profile identifies Errbii as PhD student at Münster with Moroccan master's training, research in recombination, chromosome rearrangements and ant population genomics; no completed PhD inferred."
+    },
+    {
+      "url": "https://www.uni-muenster.de/Evolution/molevolsocbio/juergengadau.shtml",
+      "title": "Jürgen Gadau, University of Münster",
+      "used_for": "person_2",
+      "evidence": "University faculty page confirms professorship in molecular evolutionary biology, PhD at Würzburg and research into sociobiology, social insect genomics and quantitative genetics."
+    },
+    {
+      "url": "https://phil.uni-greifswald.de/institute/einrichtungen/ifzo/ifzo-neuigkeiten/ifzo-neuigkeiten-detailansicht/n/leben-wir-wirklich-im-anthropozaen-oder-nicht-vielmehr-im-myrmekozaen-249231-1/",
+      "title": "Jürgen Rudolf Gadau: scientific speaker biography, University of Greifswald",
+      "used_for": "person_2",
+      "evidence": "University seminar biography dated 28 Jan 2026 confirms UC Davis postdoc, former Arizona State University professorship, and Münster appointment from 2016."
+    },
+    {
+      "url": "https://academic.oup.com/genetics/article-abstract/78/2/737/5991150",
+      "title": "The Evolutionary Advantage of Recombination, Joseph Felsenstein (1974)",
+      "used_for": "slot2",
+      "evidence": "Verified original Genetics publication 1 Oct 1974, DOI, author, discussion of finite population drift, linkage interference, simulation of adaptive substitutions and Muller ratchet; full journal text access limited to abstract."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1213231/",
+      "title": "The Evolutionary Advantage of Recombination, full-text archive",
+      "used_for": "slot2",
+      "evidence": "Confirmed archival public manuscript identity, author, journal, volume, pages, 1974 date and paper abstract; claims restricted to what abstract supports."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41534-026-01404-x",
+      "title": "Hardware-tailored logical Clifford circuits for stabilizer codes",
+      "used_for": "slot3",
+      "evidence": "Read open-access npj Quantum Information article, methods, figures and discussion; verified 12 Nov 2026 publication, author order and DOI, code-constrained logical Clifford compilation, lower gate count versus Qiskit and simulated up-to-fourfold-plus advantage versus teleportation in a small color code, not real-hardware demonstration."
+    }
+  ]
+}
