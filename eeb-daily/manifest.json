@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 28,
-    "date": "2026-11-13"
+    "no": 29,
+    "date": "2026-11-14"
   },
   "issues": [
     {
@@ -480,6 +480,23 @@
       "slot3_headline": "Dayhoff turned protein sequences into evolutionary evidence",
       "slot3_url": "https://embryo.asu.edu/pages/margaret-oakley-dayhoff-1925-1983",
       "history_subject": "Margaret Oakley Dayhoff"
+    },
+    {
+      "path": "eeb-daily/data/0029-2026-11-14.json",
+      "no": 29,
+      "date": "2026-11-14",
+      "slug": "2026-11-14",
+      "topic": "Meiotic recombination and GC-biased genome evolution in ants",
+      "lead_headline": "Ant chromosomes shuffle at extreme speed",
+      "lead_doi": "10.1038/s41437-026-00901-1",
+      "lead_url": "https://doi.org/10.1038/s41437-026-00901-1",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Recombination frees genes from each other's fate",
+      "slot2_url": "https://doi.org/10.1093/genetics/78.2.737",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "A circuit compiler cuts the cost of quantum error correction",
+      "slot3_url": "https://doi.org/10.1038/s41534-026-01404-x",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -488,6 +505,7 @@
     "https://doi.org/10.1038/217624a0",
     "https://doi.org/10.1038/246096a0",
     "https://doi.org/10.1038/s41377-026-02442-y",
+    "https://doi.org/10.1038/s41437-026-00901-1",
     "https://doi.org/10.1038/s41467-026-78289-z",
     "https://doi.org/10.1038/s41467-026-78393-0",
     "https://doi.org/10.1038/s41467-026-78712-5",
@@ -497,6 +515,7 @@
     "https://doi.org/10.1038/s41467-026-79058-8",
     "https://doi.org/10.1038/s41467-026-79127-y",
     "https://doi.org/10.1038/s41477-026-02440-3",
+    "https://doi.org/10.1038/s41534-026-01404-x",
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41550-026-03008-z",
     "https://doi.org/10.1038/s41556-026-02101-9",
@@ -534,6 +553,7 @@
     "https://doi.org/10.1093/evolut/qpag205",
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/genetics/28.6.491",
+    "https://doi.org/10.1093/genetics/78.2.737",
     "https://doi.org/10.1093/genetics/iyag280",
     "https://doi.org/10.1093/genetics/iyag304",
     "https://doi.org/10.1093/genetics/iyag311",
@@ -574,6 +594,7 @@
     "10.1038/217624a0",
     "10.1038/246096a0",
     "10.1038/s41377-026-02442-y",
+    "10.1038/s41437-026-00901-1",
     "10.1038/s41467-026-78289-z",
     "10.1038/s41467-026-78393-0",
     "10.1038/s41467-026-78712-5",
@@ -583,6 +604,7 @@
     "10.1038/s41467-026-79058-8",
     "10.1038/s41467-026-79127-y",
     "10.1038/s41477-026-02440-3",
+    "10.1038/s41534-026-01404-x",
     "10.1038/s41550-026-03004-3",
     "10.1038/s41550-026-03008-z",
     "10.1038/s41556-026-02101-9",
@@ -620,6 +642,7 @@
     "10.1093/evolut/qpag205",
     "10.1093/gbe/evag259",
     "10.1093/genetics/28.6.491",
+    "10.1093/genetics/78.2.737",
     "10.1093/genetics/iyag280",
     "10.1093/genetics/iyag304",
     "10.1093/genetics/iyag311",
