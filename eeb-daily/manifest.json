@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 29,
-    "date": "2026-11-14"
+    "no": 30,
+    "date": "2026-11-15"
   },
   "issues": [
     {
@@ -497,6 +497,23 @@
       "slot3_headline": "A circuit compiler cuts the cost of quantum error correction",
       "slot3_url": "https://doi.org/10.1038/s41534-026-01404-x",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0030-2026-11-15.json",
+      "no": 30,
+      "date": "2026-11-15",
+      "slug": "2026-11-15",
+      "topic": "Evolution of complex traits: firefly light-organ loss",
+      "lead_headline": "Losing a firefly's glow rewires more than one gene",
+      "lead_doi": "10.1038/s41467-026-78505-w",
+      "lead_url": "https://doi.org/10.1038/s41467-026-78505-w",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "An AI-ready library catalogs a billion microbial peptides",
+      "slot2_url": "https://doi.org/10.1038/s41467-026-79455-z",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "X-rays create the defects that keep a crystal glowing",
+      "slot3_url": "https://doi.org/10.1038/s41467-026-79525-2",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -508,12 +525,15 @@
     "https://doi.org/10.1038/s41437-026-00901-1",
     "https://doi.org/10.1038/s41467-026-78289-z",
     "https://doi.org/10.1038/s41467-026-78393-0",
+    "https://doi.org/10.1038/s41467-026-78505-w",
     "https://doi.org/10.1038/s41467-026-78712-5",
     "https://doi.org/10.1038/s41467-026-78735-y",
     "https://doi.org/10.1038/s41467-026-78753-w",
     "https://doi.org/10.1038/s41467-026-78884-0",
     "https://doi.org/10.1038/s41467-026-79058-8",
     "https://doi.org/10.1038/s41467-026-79127-y",
+    "https://doi.org/10.1038/s41467-026-79455-z",
+    "https://doi.org/10.1038/s41467-026-79525-2",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41534-026-01404-x",
     "https://doi.org/10.1038/s41550-026-03004-3",
@@ -597,12 +617,15 @@
     "10.1038/s41437-026-00901-1",
     "10.1038/s41467-026-78289-z",
     "10.1038/s41467-026-78393-0",
+    "10.1038/s41467-026-78505-w",
     "10.1038/s41467-026-78712-5",
     "10.1038/s41467-026-78735-y",
     "10.1038/s41467-026-78753-w",
     "10.1038/s41467-026-78884-0",
     "10.1038/s41467-026-79058-8",
     "10.1038/s41467-026-79127-y",
+    "10.1038/s41467-026-79455-z",
+    "10.1038/s41467-026-79525-2",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41534-026-01404-x",
     "10.1038/s41550-026-03004-3",
