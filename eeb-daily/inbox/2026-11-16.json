@@ -1,0 +1,112 @@
+{
+  "no": 31,
+  "date": "2026-11-16",
+  "weekday": "Monday",
+  "lead": {
+    "topic": "Mitonuclear epistasis and genotype-by-environment interactions",
+    "headline": "Small mitochondrial differences can have big effects",
+    "deck": "Fly crosses reveal that interactions among mitochondrial genomes, nuclear genomes and environmental stress can matter more than evolutionary distance alone.",
+    "authors": "Darwin LJ, Lemieux FA, Bachtel RZ, Blocker JH, Brown CP, Griffin AD, Lerman JD, Maule OC, Raynes Y, Rand DM",
+    "journal": "Nature Communications",
+    "pubdate": "14 Nov 2026",
+    "doi": "10.1038/s41467-026-79307-w",
+    "url": "https://doi.org/10.1038/s41467-026-79307-w",
+    "paragraphs": [
+      "Mitochondria carry small genomes, but most proteins that run their energy-producing machinery are encoded in the nucleus. A fly's physiology therefore depends on cooperation between two genetic compartments. Leah Darwin, David Rand and colleagues assembled a panel of 90 <em>Drosophila</em> mitochondrial-nuclear genotype combinations and measured four energy-demanding traits. Their design included mitochondrial variants sampled within species and across species. Surprisingly, interactions affecting traits were stronger for mitochondrial variation within species than for the more deeply diverged comparisons. Greater evolutionary distance did not simply translate into stronger genetic interaction effects.",
+      "The researchers then grew flies in the presence of rotenone, a chemical that inhibits mitochondrial Complex I, part of the machinery cells use to extract energy. Under that stress, phenotypes depended on interactions among mitochondrial genotype, nuclear genotype and environment. This matters because combinations of genes can perform differently as conditions change, even when their individual effects look modest. The authors interpret the pattern as compatible with stabilizing selection, which tends to preserve functioning trait combinations. That interpretation is not direct evidence of historical selective events. The experiment makes a broader point about epistasis: mitochondrial sequence divergence alone cannot tell us how strongly two genomes will interact in a living organism."
+    ],
+    "push": "Would the same within-species pattern survive in different nuclear backgrounds, temperatures or dietary conditions? A useful follow-up would compare replicated mitochondrial haplotypes sampled along a divergence gradient, with several nuclear genotypes and independently varied respiratory stress. That design could test whether the apparent distance paradox reflects purifying selection, environment-specific epistasis or sampling of mitochondrial variation."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Leah J. Darwin",
+      "bio": "Leah J. Darwin is an evolutionary geneticist whose published work is affiliated with Brown University's Center for Computational Molecular Biology and Department of Ecology, Evolution, and Organismal Biology. Brown lists her as a 2026 graduate of its computational biology training program. David Rand advised her doctoral research on mitochondrial-nuclear interactions and responses to metabolic stress.",
+      "links": [
+        {
+          "label": "Brown University graduate training record",
+          "url": "https://ccmb.brown.edu/nih-graduate-training-program/t32-trainees"
+        },
+        {
+          "label": "Brown symposium and advisor",
+          "url": "https://ccmb.brown.edu/news/2025-10-09/fall-2025-gsrs"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "David M. Rand",
+      "bio": "David M. Rand is Brown University's Stephen T. Olney Professor of Natural History and an evolutionary geneticist who studies how mitochondrial and nuclear genomes cooperate, conflict and influence fitness. He earned his PhD at Yale University in 1987. His laboratory uses fruit flies and other organisms to investigate epistasis, metabolism, aging and environmental adaptation.",
+      "links": [
+        {
+          "label": "Brown University faculty biography",
+          "url": "https://ccmb.brown.edu/people/david-rand"
+        },
+        {
+          "label": "Brown University academic training",
+          "url": "https://vivo.brown.edu/display/drand"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Switching on a surviving gene copy rescues neuron defects",
+    "cite": "Chen et al., <em>Nature Neuroscience</em> (13 Nov 2026). <a href=\"https://doi.org/10.1038/s41593-026-02504-9\">Research article</a>.",
+    "body": "A mutation that disables one copy of a gene can leave cells with too little of its product, a condition called haploinsufficiency. Chen and colleagues tested whether activating the surviving copy could reverse developmental defects associated with two autism-linked genes, <em>CHD8</em> and <em>SCN2A</em>. Rather than directly targeting gene promoters, they used CRISPR activation at enhancers, regulatory DNA sequences that help determine when and where genes work. In human stem-cell-derived neurons and cortical organoids, this increased expression in mutant cells and rescued several molecular and physiological abnormalities. These are experiments in cell models, not a treatment demonstrated in patients.",
+    "url": "https://doi.org/10.1038/s41593-026-02504-9"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Euclid opens a billion-object window on the cosmos",
+    "cite": "European Space Agency, 12 Nov 2026. <a href=\"https://www.esa.int/articles/about-us/directorates/science/euclid/euclid-lays-the-foundation-for-its-best-ever-3d-map-of-the-universe\">DR1-Foundation announcement</a>.",
+    "body": "On 12 November, the European Space Agency released Euclid's DR1-Foundation, its first major survey dataset: more than 900 million galaxies, about 60 million quasar candidates and roughly 15,000 candidate strong gravitational lenses. A gravitational lens appears when a foreground galaxy bends light from a more distant source. The release covers about 1,900 square degrees of sky and includes spectra from over 160 million sources. Those measurements will help astronomers reconstruct cosmic structure and test ideas about dark matter and dark energy. The dataset is an observational milestone, not a completed three-dimensional map or a new measurement resolving dark energy's nature.",
+    "url": "https://www.esa.int/articles/about-us/directorates/science/euclid/euclid-lays-the-foundation-for-its-best-ever-3d-map-of-the-universe"
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41467-026-79307-w",
+      "title": "Phenotypic variation in Drosophila complex traits is influenced more by genotype and environmental interactions than by mitonuclear coevolutionary history",
+      "used_for": "lead",
+      "evidence": "Publisher abstract and metadata verify first author Leah J. Darwin, last author David M. Rand, online date 14 Nov 2026, DOI, panel of 90 mitochondrial-nuclear genotypes, four metabolically demanding traits, stronger within-species interaction effects, rotenone challenge, and G-by-E plus G-by-G-by-E interactions. Full article HTML opening was blocked by publisher login, so numerical results beyond abstract were not inferred."
+    },
+    {
+      "url": "https://ccmb.brown.edu/nih-graduate-training-program/t32-trainees",
+      "title": "Brown University Center for Computational Molecular Biology T32 trainees",
+      "used_for": "person_1",
+      "evidence": "Brown lists Leah Darwin among past trainees, graduated in 2026; current postdoctoral or staff role is not verified."
+    },
+    {
+      "url": "https://ccmb.brown.edu/news/2025-10-09/fall-2025-gsrs",
+      "title": "Fall 2025 Graduate Student Research Symposium",
+      "used_for": "person_1",
+      "evidence": "Brown University identifies Leah Darwin as doctoral presenter advised by David Rand and documents her mitochondrial and nuclear genome research topic."
+    },
+    {
+      "url": "https://ccmb.brown.edu/people/david-rand",
+      "title": "David Rand, Brown University CCMB",
+      "used_for": "person_2",
+      "evidence": "Institution confirms Stephen T. Olney Professor of Natural History and affiliation with computational biology and evolutionary genetics."
+    },
+    {
+      "url": "https://vivo.brown.edu/display/drand",
+      "title": "David Rand academic profile, Brown University",
+      "used_for": "person_2",
+      "evidence": "Brown's institutional profile lists a Yale University PhD in 1987."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41593-026-02504-9",
+      "title": "Enhancer-targeted CRISPR-A rescues haploinsufficiency and mutant phenotypes in organoid models of autism",
+      "used_for": "slot2",
+      "evidence": "Read open-access publisher article; online date 13 Nov 2026, DOI, enhancer-directed gene activation of CHD8 and SCN2A and partial or full rescue of cellular and organoid phenotypes. Preclinical models, not human therapy."
+    },
+    {
+      "url": "https://www.esa.int/articles/about-us/directorates/science/euclid/euclid-lays-the-foundation-for-its-best-ever-3d-map-of-the-universe",
+      "title": "Euclid lays the foundation for its best-ever 3D map of the Universe",
+      "used_for": "slot3",
+      "evidence": "ESA primary announcement dated 12 Nov 2026 confirms DR1-Foundation release, more than 900 million galaxies, 60 million quasar candidates, approximately 15,000 strong-lensing candidates, 1900 square degrees surveyed and spectra from more than 160 million sources. Three-dimensional cosmological analysis is future work."
+    }
+  ]
+}
