@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 30,
-    "date": "2026-11-15"
+    "no": 31,
+    "date": "2026-11-16"
   },
   "issues": [
     {
@@ -514,6 +514,23 @@
       "slot3_headline": "X-rays create the defects that keep a crystal glowing",
       "slot3_url": "https://doi.org/10.1038/s41467-026-79525-2",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0031-2026-11-16.json",
+      "no": 31,
+      "date": "2026-11-16",
+      "slug": "2026-11-16",
+      "topic": "Mitonuclear epistasis and genotype-by-environment interactions",
+      "lead_headline": "Small mitochondrial differences can have big effects",
+      "lead_doi": "10.1038/s41467-026-79307-w",
+      "lead_url": "https://doi.org/10.1038/s41467-026-79307-w",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Switching on a surviving gene copy rescues neuron defects",
+      "slot2_url": "https://doi.org/10.1038/s41593-026-02504-9",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Euclid opens a billion-object window on the cosmos",
+      "slot3_url": "https://www.esa.int/articles/about-us/directorates/science/euclid/euclid-lays-the-foundation-for-its-best-ever-3d-map-of-the-universe",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -532,6 +549,7 @@
     "https://doi.org/10.1038/s41467-026-78884-0",
     "https://doi.org/10.1038/s41467-026-79058-8",
     "https://doi.org/10.1038/s41467-026-79127-y",
+    "https://doi.org/10.1038/s41467-026-79307-w",
     "https://doi.org/10.1038/s41467-026-79455-z",
     "https://doi.org/10.1038/s41467-026-79525-2",
     "https://doi.org/10.1038/s41477-026-02440-3",
@@ -557,6 +575,7 @@
     "https://doi.org/10.1038/s41586-026-11213-z",
     "https://doi.org/10.1038/s41586-026-11308-7",
     "https://doi.org/10.1038/s41593-026-02489-5",
+    "https://doi.org/10.1038/s41593-026-02504-9",
     "https://doi.org/10.1038/s41593-026-02514-7",
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
@@ -602,6 +621,7 @@
     "https://www.aip.org/fyi/nsf-acting-director-chief-of-staff-to-exit",
     "https://www.asbmb.org/asbmb-today/policy/101426/nsf-faces-funding-cuts-and-policy-changes",
     "https://www.cshl.edu/personal-collections/barbara-mcclintock/",
+    "https://www.esa.int/articles/about-us/directorates/science/euclid/euclid-lays-the-foundation-for-its-best-ever-3d-map-of-the-universe",
     "https://www.nature.com/articles/d41586-026-03316-4",
     "https://www.nature.com/articles/s41586-026-10972-z",
     "https://www.nature.com/articles/s41586-026-11132-z",
@@ -624,6 +644,7 @@
     "10.1038/s41467-026-78884-0",
     "10.1038/s41467-026-79058-8",
     "10.1038/s41467-026-79127-y",
+    "10.1038/s41467-026-79307-w",
     "10.1038/s41467-026-79455-z",
     "10.1038/s41467-026-79525-2",
     "10.1038/s41477-026-02440-3",
@@ -649,6 +670,7 @@
     "10.1038/s41586-026-11213-z",
     "10.1038/s41586-026-11308-7",
     "10.1038/s41593-026-02489-5",
+    "10.1038/s41593-026-02504-9",
     "10.1038/s41593-026-02514-7",
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
