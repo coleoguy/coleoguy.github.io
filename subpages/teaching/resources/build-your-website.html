@@ -1,0 +1,68 @@
+---
+layout: default
+title: "Build Your Website · Blackmon Lab"
+description: "A beginner-friendly workshop: choose a BootstrapMade template, customize it with a chatbot, and publish your academic website with GitHub Pages."
+canonical: "https://coleoguy.github.io/subpages/teaching/resources/build-your-website.html"
+---
+<style>
+.website-workshop {overflow-wrap:anywhere;}
+.website-workshop h2 {scroll-margin-top:5rem;}
+.workshop-toc {border:1px solid var(--rule);background:var(--paper-sunk);padding:1.25rem;margin:1.5rem 0;}
+.workshop-toc ol {padding-left:1.4rem;}
+.workshop-prompt {border-left:3px solid var(--accent);background:var(--paper-sunk);padding:1rem 1.25rem;margin:1.25rem 0;}
+.workshop-prompt p {margin:0;}
+@media print {.sidebar,.chrome,.palette-overlay,.ask-toast{display:none!important}.shell{display:block}.column{max-width:none;padding:0}.website-workshop{font-size:11pt}.workshop-prompt{break-inside:avoid}}
+</style>
+<div class="website-workshop">
+<div class="crumb"><a href="/index.html">Home</a> › Teaching › Resources › <strong>Build your website</strong></div>
+<h1 class="title">Build your academic website.</h1>
+<p class="lede">Choose a design you love. Make it yours with AI. Publish it with GitHub Pages.</p>
+<nav class="workshop-toc" aria-label="Tutorial contents"><strong>Jump to a step</strong><ol><li><a href="#1-plan-your-story">1. Plan your story</a></li><li><a href="#2-choose-a-template">2. Choose a template</a></li><li><a href="#3-understand-the-template-folder">3. Understand the template folder</a></li><li><a href="#4-let-a-chatbot-be-your-tutor-and-collaborator">4. Let a chatbot be your tutor and collaborator</a></li><li><a href="#5-create-your-github-repository">5. Create your GitHub repository</a></li><li><a href="#6-upload-the-whole-site-and-publish">6. Upload the whole site and publish</a></li><li><a href="#7-test-improve-and-share">7. Test, improve, and share</a></li><li><a href="#troubleshooting">Troubleshooting</a></li></ol></nav>
+<p><b>Pick a design you love. Make it yours with AI. Publish it free.</b></p>
+<p>In this workshop, you will choose a website template, use a chatbot as your personal web-design tutor, and publish a professional website with GitHub Pages. No prior coding experience or paid hosting required. Bring a laptop and internet access.</p>
+<h2 id="your-roadmap-approximately-90-minutes">Your roadmap | approximately 90 minutes</h2>
+<p><b>0–10:</b> Decide what your website should communicate. <b>10–25:</b> Browse and choose a template. <b>25–50:</b> Customize it with a chatbot. <b>50–70:</b> Publish to GitHub Pages. <b>70–90:</b> Test, improve, and share.</p>
+<h2 id="1-plan-your-story">1. Plan your story</h2>
+<p>Who is your audience: prospective research mentors, graduate programs, employers, collaborators, or the public? What should they remember? List your interests, two or three examples of work, and how you want to be contacted. A project, course, poster, internship, volunteer experience, or research question all count. You do not need publications.</p>
+<blockquote class="workshop-prompt"><p><b>Ask a chatbot:</b> “Help me plan my first professional website for [audience]. My interests and experience are [facts]. Suggest a short headline, bio, and three appropriate sections. Ask me questions if details are missing; do not invent results, credentials, publications, or affiliations.”</p></blockquote>
+<h2 id="2-choose-a-template">2. Choose a template</h2>
+<p>Browse the <a href="https://bootstrapmade.com/bootstrap-resume-cv-templates/">BootstrapMade resume and CV collection</a> or <a href="https://bootstrapmade.com/bootstrap-personal-templates/">personal website collection</a>. Open a few <b>Live Demo</b> previews. Pick a layout you like on both a phone and computer, not one whose example content resembles your career. A simple one-page layout is usually easiest. For example, compare <a href="https://bootstrapmade.com/personal-free-resume-bootstrap-template/">Personal</a> and <a href="https://bootstrapmade.com/laura-free-creative-bootstrap-theme/">Laura</a>.</p>
+<p>On your chosen template page, select <b>Download</b> and choose the free download if offered. You do not need to purchase a Pro plan for this exercise. Follow that page’s current prompts. Save the ZIP, then extract/unzip it. Open the extracted folder and find <b>index.html</b>, often alongside an <b>assets</b> folder. Open index.html in a browser to see the design.</p>
+<p><b>Free-template license:</b> BootstrapMade requires keeping its “Designed by BootstrapMade” footer credit intact. Review the current <a href="https://bootstrapmade.com/license/">license</a> yourself. Do not redistribute the template as your own product. Preserve the license and copyright files.</p>
+<h2 id="3-understand-the-template-folder">3. Understand the template folder</h2>
+<p>Think of <b>index.html</b> as the homepage, CSS as appearance, JavaScript as optional interactivity, and <b>assets</b> as the accompanying styles, images, fonts, and scripts. Your exact folder structure may differ. Preserve the template’s existing CSS, JavaScript, Bootstrap version, and asset paths; do not ask a chatbot to convert it into a single file or remove its dependencies. Keep the extracted folder together; uploading only index.html often produces an unstyled or broken site.</p>
+<p>Make a backup copy before editing. Use a code or plain-text editor such as VS Code, not a word processor. Some template features may rely on a server: GitHub Pages hosts static files, so PHP forms will not work there. Replace the contact form with a professional email link or remove it unless you arrange a compatible form service separately.</p>
+<h2 id="4-let-a-chatbot-be-your-tutor-and-collaborator">4. Let a chatbot be your tutor and collaborator</h2>
+<p>If your chatbot accepts files, upload the template ZIP or relevant files, subject to its file limits and the template license. Otherwise paste index.html in manageable parts, and share the folder structure and relevant CSS when needed. Never share passwords, tokens, private data, or unpublished confidential work.</p>
+<blockquote class="workshop-prompt"><p><b>Start here:</b> “I am a beginner making an academic website using this Bootstrap template. First inspect the files and explain the folder structure and how to preview the site. Then ask me what I want changed. Preserve the existing design, responsive behavior, working relative asset paths, and required BootstrapMade footer credit. Do not invent accomplishments or add a framework. Give me complete replacement files, exact filenames, and step-by-step instructions. My accurate information is: [facts].”</p></blockquote>
+<blockquote class="workshop-prompt"><p><b>Customize:</b> “Replace the example content with my information below. Remove sections I do not need, including fake testimonials, skill percentages, counters, and claims. Keep the credit footer. Tell me what files to replace and which images I need to supply. Do not change facts or create nonexistent links. [facts]”</p></blockquote>
+<blockquote class="workshop-prompt"><p><b>Polish:</b> “Make the site feel [three adjectives], with readable mobile typography and accessible contrast. Preserve the template structure and attribution. Explain each change and give complete files rather than snippets.”</p></blockquote>
+<p>Save the returned code in the matching file. If the chatbot returns only index.html, do not delete the other template folders. Refresh your local browser. Verify the chatbot’s facts and claims, and inspect your changes before publishing.</p>
+<h2 id="images-and-contact">Images and contact</h2>
+<p>Use your own images or properly licensed ones. Put them in the appropriate assets folder; match filenames and capitalization exactly, and add useful alternative text. A professional email link can look like <b>mailto:you@example.edu</b>. Photo, CV, and contact details are optional.</p>
+<h2 id="5-create-your-github-repository">5. Create your GitHub repository</h2>
+<p>Sign in at <a href="https://github.com">github.com</a> or create an account and verify your email. Select <b>+ → New repository</b>. For a personal homepage, use exactly <b>YOUR-USERNAME.github.io</b>, substituting your actual GitHub username. Choose <b>Public</b> and create the repository. GitHub Free supports Pages in public repositories.</p>
+<p>If you already have that repository, do not overwrite it. Instead make a new repository named, for example, <b>portfolio</b>. The site address will be <b>https://YOUR-USERNAME.github.io/portfolio/</b>. Use relative asset paths such as assets/img/photo.jpg, not a path starting with /, for portability.</p>
+<h2 id="6-upload-the-whole-site-and-publish">6. Upload the whole site and publish</h2>
+<p>1. In the repository choose <b>Add file → Upload files</b>, or the upload link in an empty repository. Open your extracted template folder and select the <b>contents</b>: index.html, assets, and any other files it needs. Do not upload the ZIP or an enclosing parent folder. Keep folder structure intact.</p>
+<p>2. Confirm that <b>index.html is at the top level</b> of the repository and assets appear beside it. Write a commit message such as “Add my site” and select <b>Commit changes</b>. A commit is a saved version. If the browser will not preserve folders or the upload is too large, upload smaller batches into the correct folders, or use GitHub Desktop to add the complete site folder and publish it to the repository. GitHub browser uploads allow up to 100 files per batch, with a 25 MiB limit per file.</p>
+<p>3. In the repository go to <b>Settings → Pages</b>. Under Build and deployment choose <b>Deploy from a branch</b>; select <b>main</b> and <b>/(root)</b>, then <b>Save</b>. If the branch is missing, first commit the files.</p>
+<p>4. Wait for deployment, then open the address shown in Settings → Pages. GitHub says publishing can take up to 10 minutes. Check the live site rather than assuming that uploading files published it.</p>
+<h2 id="public-means-public">Public means public</h2>
+<p>Your site and repository files are visible to anyone. Do not post a home address, student ID, personal phone, passwords, tokens, unpublished sensitive research, private information about others, or a CV with details you do not want public. Git history can preserve deleted content. Review every file before uploading.</p>
+<h2 id="7-test-improve-and-share">7. Test, improve, and share</h2>
+<p>Open the live site on a phone and laptop. Check the menu, project links, images, spelling, real contact details, and the template attribution. Remove placeholder content and unearned credentials. Navigate with the Tab key. Ask a partner: “Can you tell who I am and what I am interested in within ten seconds?”</p>
+<p>To update later, open a file in the repository and click the pencil, or upload revised files to the same locations. Commit changes and wait for redeployment. Share the live website URL, not merely the repository URL.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p><b>404:</b> Check the exact URL; include /portfolio/ for a project site. Verify Pages is configured for main and /(root), index.html is at the root, and deployment has completed.</p>
+<p><b>Plain page or missing images:</b> Upload the assets folder too. Match capitalization and check relative paths. A project site should usually use assets/... rather than /assets/....</p>
+<p><b>Changes not visible:</b> Confirm you committed to the publishing branch, wait for the deployment, check Actions for errors, and refresh.</p>
+<p><b>Contact form does nothing:</b> GitHub Pages does not execute PHP. Replace the form with an email link or explicitly set up a compatible external service.</p>
+<blockquote class="workshop-prompt"><p><b>Ask AI for help:</b> “My GitHub Pages site should show [expected], but shows [actual]. It is a BootstrapMade template. Here is the site URL, folder structure, exact error, and relevant code: [details]. Explain the simplest fix in beginner-friendly steps. Preserve my existing files and attribution. Never request credentials.”</p></blockquote>
+<h2 id="instructor-close">Instructor close</h2>
+<p>Have students exchange their live URLs and offer one concrete improvement. Finish with a functioning site or locally previewed draft, one accurate sentence about their interests, and a next step. Students who finish early can improve accessibility, projects, and mobile layout.</p>
+<h2 id="official-references">Official references</h2>
+<p><a href="https://docs.github.com/en/pages/quickstart">GitHub Pages quickstart</a> | <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">Create a Pages site</a> | <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">Configure publishing source</a><br/><a href="https://bootstrapmade.com/license/">BootstrapMade license</a> | <a href="https://bootstrapmade.com/bootstrap-resume-cv-templates/">Browse templates</a></p>
+<p><small>Updated November 17, 2026. Interface labels and service terms may change; use the linked official documentation for current details.</small></p>
+</div>
+<footer class="colophon"><span>Blackmon Lab · Department of Biology · Texas A&amp;M University</span></footer>
