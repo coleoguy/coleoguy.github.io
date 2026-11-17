@@ -1,0 +1,100 @@
+{
+  "no": 32,
+  "date": "2026-11-17",
+  "weekday": "Tuesday",
+  "lead": {
+    "topic": "Chromosome and centromere evolution in pig pan-genomes",
+    "headline": "Pig Y chromosomes reveal moving centromeres",
+    "deck": "Complete pig genomes reveal that even the chromosome's cell-division attachment site can shift across lineages.",
+    "authors": "Feng Y, Du H, Zhang J, Ma Y, Lu S, et al., Liu J",
+    "journal": "Nature Genetics",
+    "pubdate": "16 Nov 2026",
+    "doi": "10.1038/s41588-026-02829-y",
+    "url": "https://doi.org/10.1038/s41588-026-02829-y",
+    "paragraphs": [
+      "A centromere is the chromosome region where the machinery of cell division attaches. Its DNA is often so repetitive that genome assemblies leave it unfinished. Yu Feng and colleagues assembled three pig genomes from telomere to telomere, meaning from one chromosome end to the other, and another 16 high-quality genomes. With 12 Y-chromosome assemblies and maps of centromere-binding proteins, they could compare these difficult regions across breeds rather than rely on a single reference animal. They found that the position of the Y centromere varies among lineages, alongside changes in nearby repeated DNA.",
+      "The team also detected changing centromere positions on chromosome 1. A highly expressed gene, eEF1A1, sits near these regions and near rearrangement breakpoints in several mammals, making it a candidate link between transcription and chromosome fragility, not proof of causation. Their wider pan-genome, which combines variants across individuals, improved estimates of inherited trait variation. Experiments on AKR1B1 offered a possible connection between a regulatory insertion and tolerance of low oxygen. The broad lesson extends beyond pigs: fully assembling repetitive chromosomes can reveal evolutionary variation concealed by conventional reference genomes, while the proposed causes of that variation still require tests."
+    ],
+    "push": "Sequence and map centromere-binding proteins in wild and domestic pigs sampled across the same geographic regions. Does Y-centromere position track shared ancestry, repeat-array length, or domestication after those factors are separated? Test whether changing eEF1A1 transcription alters chromosome breakage instead of assuming a nearby active gene caused the rearrangements."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Yu Feng",
+      "bio": "Yu Feng is a genomics researcher and postdoctoral fellow at China Agricultural University in Beijing. His professional site lists a PhD in genomics from the Chinese Academy of Sciences' Institute of Zoology and earlier training in animal genetics. His research spans centromere evolution, comparative genomes and functional genomics.",
+      "links": [
+        {
+          "label": "Professional site",
+          "url": "https://fengyu0505.github.io/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Jianfeng Liu",
+      "bio": "Jianfeng Liu is a professor of animal genetics and breeding at China Agricultural University. His laboratory studies quantitative genetics, bioinformatics, livestock genomics and complex traits. He earned his PhD at China Agricultural University and completed postdoctoral training at the University of Missouri–Kansas City School of Medicine, according to his institutional biography.",
+      "links": [
+        {
+          "label": "China Agricultural University profile",
+          "url": "https://liulab.cau.edu.cn/art/2023/5/16/art_49165_959093.html"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Random chance joins natural selection",
+    "cite": "Sewall Wright, <em>Genetics</em> (1931), <a href=\"https://doi.org/10.1093/genetics/16.2.97\">Evolution in Mendelian Populations</a>.",
+    "body": "In 1931, Sewall Wright put mutation, natural selection, migration and genetic drift into a shared mathematical description of changing gene frequencies. Drift is random change caused by finite population size, not selection for a useful trait. Wright showed how population size and movement among groups can change evolutionary outcomes. He also imagined populations moving across an adaptive landscape of alternative genetic combinations. Later work, including Motoo Kimura's diffusion theory, built on Wright's mathematics. His proposed shifting-balance route to adaptation remains debated, but the paper still supplies much of the language and mathematical foundation of population genetics.",
+    "url": "https://doi.org/10.1093/genetics/16.2.97",
+    "doi": "10.1093/genetics/16.2.97"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Optics can steer information independently of light",
+    "cite": "Weimar et al., <em>Nature Materials</em> (16 Nov 2026), <a href=\"https://doi.org/10.1038/s41563-026-02789-y\">Controlling the flow of information in optical metrology</a>.",
+    "body": "Light carries energy, but does it carry useful measurement information along the same routes? A study published in <em>Nature Materials</em> on November 16 uses mathematical analysis and numerical simulations to show why the answer can be no. Fisher information describes how precisely measurements can estimate an unknown property, such as a nanoparticle's position. The researchers model its flow around scattering objects and show resonance, interference, diffraction and even vortices, sometimes unlike the energy flow. This suggests new ways to design illumination, nearby structures and detectors for better precision. The paper demonstrates a theoretical framework and modeled examples, not a deployed instrument's performance gain.",
+    "url": "https://doi.org/10.1038/s41563-026-02789-y",
+    "doi": "10.1038/s41563-026-02789-y"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41588-026-02829-y",
+      "title": "High-quality pig pan-genome resources illuminate centromere evolution and enhance genotype–phenotype mapping",
+      "used_for": "lead",
+      "evidence": "Read open-access article and results. Published 16 Nov 2026 in Nature Genetics. Checked first and last author, 3 complete and 16 other assemblies, 12 Y chromosomes, Y and chromosome 1 centromere shifts, eEF1A1 hypothesis, AKR1B1 experiments and pan-genome heritability findings."
+    },
+    {
+      "url": "https://fengyu0505.github.io/",
+      "title": "Dr. Yu Feng, genomics researcher",
+      "used_for": "person_1",
+      "evidence": "Public professional site lists current China Agricultural University postdoctoral role, genomics PhD at Institute of Zoology, prior animal genetics training and research topics."
+    },
+    {
+      "url": "https://liulab.cau.edu.cn/art/2023/5/16/art_49165_959093.html",
+      "title": "China Agricultural University Liu Team: Jianfeng Liu faculty profile",
+      "used_for": "person_2",
+      "evidence": "Public institutional biography confirms professor, animal genetics and breeding field, quantitative genetics and bioinformatics research, China Agricultural University PhD and University of Missouri–Kansas City postdoctoral work."
+    },
+    {
+      "url": "https://academic.oup.com/genetics/article-abstract/16/2/97/6045152",
+      "title": "Sewall Wright, Evolution in Mendelian Populations",
+      "used_for": "slot2",
+      "evidence": "Verified original citation, author, journal Genetics, publication 1 March 1931, volume 16 pages 97–159 and DOI; publisher has abstract-level access to original."
+    },
+    {
+      "url": "https://academic.oup.com/genetics/article/202/1/3/5930247",
+      "title": "The Evolution of Evolution: Review of Wright's Evolution in Mendelian Populations",
+      "used_for": "slot2",
+      "evidence": "Retrospective context checked for Wright's population genetics framework and later diffusion theory; shifting balance interpretation distinguished from settled results."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41563-026-02789-y",
+      "title": "Controlling the flow of information in optical metrology",
+      "used_for": "slot3",
+      "evidence": "Read open-access Nature Materials paper published 16 Nov 2026. Analytic theory and numerical examples show Fisher information flow can differ from optical energy flow and show wave-like features; applications remain projected."
+    }
+  ]
+}
