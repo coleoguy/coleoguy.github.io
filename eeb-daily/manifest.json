@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 31,
-    "date": "2026-11-16"
+    "no": 32,
+    "date": "2026-11-17"
   },
   "issues": [
     {
@@ -531,6 +531,23 @@
       "slot3_headline": "Euclid opens a billion-object window on the cosmos",
       "slot3_url": "https://www.esa.int/articles/about-us/directorates/science/euclid/euclid-lays-the-foundation-for-its-best-ever-3d-map-of-the-universe",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0032-2026-11-17.json",
+      "no": 32,
+      "date": "2026-11-17",
+      "slug": "2026-11-17",
+      "topic": "Chromosome and centromere evolution in pig pan-genomes",
+      "lead_headline": "Pig Y chromosomes reveal moving centromeres",
+      "lead_doi": "10.1038/s41588-026-02829-y",
+      "lead_url": "https://doi.org/10.1038/s41588-026-02829-y",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Random chance joins natural selection",
+      "slot2_url": "https://doi.org/10.1093/genetics/16.2.97",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Optics can steer information independently of light",
+      "slot3_url": "https://doi.org/10.1038/s41563-026-02789-y",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -560,6 +577,7 @@
     "https://doi.org/10.1038/s41556-026-02124-2",
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41559-026-03216-w",
+    "https://doi.org/10.1038/s41563-026-02789-y",
     "https://doi.org/10.1038/s41563-026-02793-2",
     "https://doi.org/10.1038/s41564-026-02480-7",
     "https://doi.org/10.1038/s41567-026-03400-6",
@@ -574,6 +592,7 @@
     "https://doi.org/10.1038/s41586-026-11212-0",
     "https://doi.org/10.1038/s41586-026-11213-z",
     "https://doi.org/10.1038/s41586-026-11308-7",
+    "https://doi.org/10.1038/s41588-026-02829-y",
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41593-026-02504-9",
     "https://doi.org/10.1038/s41593-026-02514-7",
@@ -591,6 +610,7 @@
     "https://doi.org/10.1093/evlett/qrag043",
     "https://doi.org/10.1093/evolut/qpag205",
     "https://doi.org/10.1093/gbe/evag259",
+    "https://doi.org/10.1093/genetics/16.2.97",
     "https://doi.org/10.1093/genetics/28.6.491",
     "https://doi.org/10.1093/genetics/78.2.737",
     "https://doi.org/10.1093/genetics/iyag280",
@@ -655,6 +675,7 @@
     "10.1038/s41556-026-02124-2",
     "10.1038/s41559-026-03214-y",
     "10.1038/s41559-026-03216-w",
+    "10.1038/s41563-026-02789-y",
     "10.1038/s41563-026-02793-2",
     "10.1038/s41564-026-02480-7",
     "10.1038/s41567-026-03400-6",
@@ -669,6 +690,7 @@
     "10.1038/s41586-026-11212-0",
     "10.1038/s41586-026-11213-z",
     "10.1038/s41586-026-11308-7",
+    "10.1038/s41588-026-02829-y",
     "10.1038/s41593-026-02489-5",
     "10.1038/s41593-026-02504-9",
     "10.1038/s41593-026-02514-7",
@@ -686,6 +708,7 @@
     "10.1093/evlett/qrag043",
     "10.1093/evolut/qpag205",
     "10.1093/gbe/evag259",
+    "10.1093/genetics/16.2.97",
     "10.1093/genetics/28.6.491",
     "10.1093/genetics/78.2.737",
     "10.1093/genetics/iyag280",
