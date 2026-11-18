@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 32,
-    "date": "2026-11-17"
+    "no": 33,
+    "date": "2026-11-18"
   },
   "issues": [
     {
@@ -548,6 +548,23 @@
       "slot3_headline": "Optics can steer information independently of light",
       "slot3_url": "https://doi.org/10.1038/s41563-026-02789-y",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0033-2026-11-18.json",
+      "no": 33,
+      "date": "2026-11-18",
+      "slug": "2026-11-18",
+      "topic": "Phylogenetic methods for cell-lineage timing with state-dependent mutation rates",
+      "lead_headline": "Cell family trees can tell time without one universal clock",
+      "lead_doi": "10.1093/molbev/msag281",
+      "lead_url": "https://doi.org/10.1093/molbev/msag281",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Brain immune cells help erase practiced movements",
+      "slot2_url": "https://doi.org/10.1038/s41593-026-02505-8",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Melting in two dimensions is a contest between energy and disorder",
+      "slot3_url": "https://doi.org/10.1038/s42005-026-02946-4",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -595,11 +612,13 @@
     "https://doi.org/10.1038/s41588-026-02829-y",
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41593-026-02504-9",
+    "https://doi.org/10.1038/s41593-026-02505-8",
     "https://doi.org/10.1038/s41593-026-02514-7",
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1038/s42005-026-02841-y",
     "https://doi.org/10.1038/s42005-026-02939-3",
+    "https://doi.org/10.1038/s42005-026-02946-4",
     "https://doi.org/10.1038/s42256-026-01328-3",
     "https://doi.org/10.1038/s43018-026-01265-5",
     "https://doi.org/10.1038/s44512-026-00010-3",
@@ -619,6 +638,7 @@
     "https://doi.org/10.1093/genetics/iyag321",
     "https://doi.org/10.1093/mnras/stag1874",
     "https://doi.org/10.1093/molbev/msag275",
+    "https://doi.org/10.1093/molbev/msag281",
     "https://doi.org/10.1093/sysbio/syag079",
     "https://doi.org/10.1098/rsos.260937",
     "https://doi.org/10.1103/c84y-ggqs",
@@ -693,11 +713,13 @@
     "10.1038/s41588-026-02829-y",
     "10.1038/s41593-026-02489-5",
     "10.1038/s41593-026-02504-9",
+    "10.1038/s41593-026-02505-8",
     "10.1038/s41593-026-02514-7",
     "10.1038/s41594-026-01914-4",
     "10.1038/s41598-026-69193-z",
     "10.1038/s42005-026-02841-y",
     "10.1038/s42005-026-02939-3",
+    "10.1038/s42005-026-02946-4",
     "10.1038/s42256-026-01328-3",
     "10.1038/s43018-026-01265-5",
     "10.1038/s44512-026-00010-3",
@@ -717,6 +739,7 @@
     "10.1093/genetics/iyag321",
     "10.1093/mnras/stag1874",
     "10.1093/molbev/msag275",
+    "10.1093/molbev/msag281",
     "10.1093/sysbio/syag079",
     "10.1098/rsos.260937",
     "10.1103/c84y-ggqs",
