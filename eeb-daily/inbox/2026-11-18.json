@@ -1,0 +1,114 @@
+{
+  "no": 33,
+  "date": "2026-11-18",
+  "weekday": "Wednesday",
+  "lead": {
+    "topic": "Phylogenetic methods for cell-lineage timing with state-dependent mutation rates",
+    "headline": "Cell family trees can tell time without one universal clock",
+    "deck": "A new Bayesian method dates immune-cell ancestry while allowing mutation rates to change with cell state.",
+    "authors": "Fielding JJ, Wu S, Melton HJ, Wang CZ, Fisk N, du Plessis L, Hoehn KB",
+    "journal": "Molecular Biology and Evolution",
+    "pubdate": "17 Nov 2026",
+    "doi": "10.1093/molbev/msag281",
+    "url": "https://doi.org/10.1093/molbev/msag281",
+    "paragraphs": [
+      "A family tree made from DNA normally measures branches in accumulated mutations. Converting those branches into elapsed time requires a molecular clock, an assumption about how quickly mutations accumulate. That assumption can be troublesome inside one body. Immune B cells acquire mutations during their response to pathogens, and mutation rates can depend on the cells' identities or genetic backgrounds. Jessie Fielding and colleagues introduce TyCHE, short for Type-linked Clocks for Heterogeneous Evolution, to estimate dated ancestry trees while letting evolutionary rates depend on discrete states such as cell type. The method uses Bayesian phylogenetics, which combines a model of evolution with uncertainty about tree histories.",
+      "The team tested the approach with SimBLE, a new simulator of B-cell lineage evolution, and reports improved accuracy in estimated time trees. They then applied it to memory B-cell differentiation during HIV infection, germinal-center responses after influenza vaccination, a glioma tumor lineage and bacterial infection. These applications illustrate a broad methodological point: different branches of one evolving population need not share a single mutation rate. TyCHE and SimBLE are available as open-source software compatible with BEAST2 and the Immcantation analysis ecosystem. The accepted manuscript reports the broad findings, not a universal guarantee of accuracy across datasets."
+    ],
+    "push": "A direct next test would simulate cell states that change faster than they can be sampled, then ask whether TyCHE still recovers correct dates. Compare its estimates with independently timed lineage experiments rather than only reconstructed trees. Can state-dependent clocks distinguish true migration between tissues from an unrecognized shift in mutation rate?"
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Jessie J. Fielding",
+      "bio": "Jessie Fielding is a research scientist in Dartmouth's Department of Biomedical Data Science and a member of the Hoehn lab. She earned a bachelor's degree in computer science and applied mathematics from Princeton University in 2021. Her research includes computational tools for modeling B-cell evolution, including work on the SimBLE simulator and the Dowser software ecosystem.",
+      "links": [
+        {
+          "label": "Hoehn lab team",
+          "url": "https://sites.dartmouth.edu/hoehn/team/"
+        },
+        {
+          "label": "Dartmouth research staff",
+          "url": "https://geiselmed.dartmouth.edu/bmds/staff/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Kenneth B. Hoehn",
+      "bio": "Kenneth Hoehn is an assistant professor of biomedical data science at Dartmouth and an investigator at Dartmouth Cancer Center. A computational immunologist, he studies B-cell evolutionary histories during vaccination, infection and immune disease. He completed doctoral training at Oxford in the Pybus lab and postdoctoral research in the Kleinstein lab at Yale, developing phylogenetic software for antibody lineages.",
+      "links": [
+        {
+          "label": "Dartmouth faculty profile",
+          "url": "https://graduate.dartmouth.edu/mcb/people/kenneth-hoehn"
+        },
+        {
+          "label": "Hoehn lab team",
+          "url": "https://sites.dartmouth.edu/hoehn/team/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Brain immune cells help erase practiced movements",
+    "cite": "Hu et al., <em>Nature Neuroscience</em> (17 Nov 2026). <a href=\"https://doi.org/10.1038/s41593-026-02505-8\">Research article</a>.",
+    "body": "Learning a movement involves changes to myelin, the insulating material wrapped around nerve fibers. In mice, Hu and colleagues find that declining motor memory is accompanied by microglia, the brain's immune cells, engulfing myelin sheaths associated with that memory. Reduced activity in memory-linked neurons lowers CD47, a molecular 'do not eat me' signal on myelin-producing cells. Removing CD47 accelerated both myelin loss and motor-memory decay; increasing CD47 had the opposite effect. The experiments suggest that forgetting can involve active cellular removal, not just fading neural signals. They do not establish that the same mechanism explains human forgetting.",
+    "url": "https://doi.org/10.1038/s41593-026-02505-8",
+    "doi": "10.1038/s41593-026-02505-8"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Melting in two dimensions is a contest between energy and disorder",
+    "cite": "Li, Ding and Ma, <em>Communications Physics</em> (16 Nov 2026). <a href=\"https://doi.org/10.1038/s42005-026-02946-4\">Research article</a>.",
+    "body": "A flat crystal need not melt in a single jump. Two-dimensional systems can pass through a hexatic phase, where particles lose long-range positional order but retain some directional organization. Li and colleagues analyze why melting sometimes happens gradually and sometimes through a sudden transition. Their framework separates energy, which favors some arrangements, from entropy, which counts possible arrangements, by examining the curvature of free energy. They identify conditions under which entropy favors an abrupt transition, and distinguish vibrational from configurational contributions. This is a proposed thermodynamic explanation of phase behavior, not proof that every real nanoscale material melts identically.",
+    "url": "https://doi.org/10.1038/s42005-026-02946-4",
+    "doi": "10.1038/s42005-026-02946-4"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msag281/9080661",
+      "title": "TyCHE enables time-resolved lineage tracing of B cells and other heterogeneously-evolving populations",
+      "used_for": "lead",
+      "evidence": "Publisher metadata and abstract checked: accepted manuscript published online 17 November 2026; exact author order, DOI, state-dependent Bayesian time trees, SimBLE simulations, four empirical applications, and software links. Publisher HTML supplies abstract only; detailed methods and numerical claims beyond it were not inferred."
+    },
+    {
+      "url": "https://geiselmed.dartmouth.edu/bmds/staff/",
+      "title": "Dartmouth Biomedical Data Science research staff",
+      "used_for": "person_1",
+      "evidence": "Institutional staff page confirms Jessie Fielding's research scientist/analyst/engineer role in biomedical data science."
+    },
+    {
+      "url": "https://sites.dartmouth.edu/hoehn/team/",
+      "title": "Hoehn lab team at Dartmouth",
+      "used_for": "person_1",
+      "evidence": "Public lab team profile indexed by search identifies Jessie Fielding's role, Princeton 2021 degree in computer science and applied mathematics, and prior software development; direct page returned gateway error on follow-up."
+    },
+    {
+      "url": "https://sites.dartmouth.edu/hoehn/team/",
+      "title": "Hoehn lab team at Dartmouth",
+      "used_for": "person_2",
+      "evidence": "Public professional profile indexed by search confirms Hoehn's Dartmouth assistant professorship, Oxford DPhil in Pybus lab, and Yale Kleinstein lab postdoctoral training; direct page returned gateway error on follow-up."
+    },
+    {
+      "url": "https://graduate.dartmouth.edu/mcb/people/kenneth-hoehn",
+      "title": "Kenneth Hoehn faculty profile, Dartmouth",
+      "used_for": "person_2",
+      "evidence": "Institutional faculty profile opened and checked: assistant professor of biomedical data science and computational immunology focusing on B-cell evolutionary lineages and immune conditions."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41593-026-02505-8",
+      "title": "Microglia mediate motor memory decay through activity-dependent phagocytosis of myelin sheaths",
+      "used_for": "slot2",
+      "evidence": "Publisher indexed article text and abstract checked: online 17 November 2026, mouse motor memory, microglial myelin uptake, CD47 knockout and overexpression, and study limitations. Direct HTML retrieval was redirected to publisher login; based on indexed publisher abstract."
+    },
+    {
+      "url": "https://www.nature.com/articles/s42005-026-02946-4",
+      "title": "Separating energy and entropy contributions in two-dimensional melting",
+      "used_for": "slot3",
+      "evidence": "Publisher indexed article abstract and metadata checked: online 16 November 2026, analysis of free-energy curvature, hexatic phase, first-order versus continuous melting, vibrational and configurational entropy. Direct HTML redirected to publisher login; no unsupported numerical claims made."
+    }
+  ]
+}
