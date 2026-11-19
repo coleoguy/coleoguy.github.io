@@ -1,0 +1,102 @@
+{
+  "no": 34,
+  "date": "2026-11-19",
+  "weekday": "Thursday",
+  "lead": {
+    "topic": "Evolution of giant DNA viruses and host transitions in animal guts",
+    "headline": "The gut harbors missing relatives of poxviruses",
+    "deck": "A worldwide metagenomic survey reveals large DNA viruses whose evolutionary history points to single-celled gut inhabitants.",
+    "authors": "Gaïa M, Guyet U, Ruscheweyh H-J, Eren AM, Sunagawa S, Koonin EV, Krupovic M, Delmont TO",
+    "journal": "Nature",
+    "pubdate": "18 Nov 2026",
+    "doi": "10.1038/s41586-026-11283-z",
+    "url": "https://doi.org/10.1038/s41586-026-11283-z",
+    "paragraphs": [
+      "Researchers searching environmental and animal-associated DNA have uncovered a major viral lineage hiding in digestive tracts. In 85,123 metagenomic assemblies, Gaïa and colleagues traced marker genes from large DNA viruses and identified a previously undescribed group they call egoviruses. The team reconstructed 12 complete viral genomes and many additional partial genomes, finding egovirus sequences in human, livestock and wild-animal samples across continents. Their family tree places egoviruses closest to poxviruses, a group that includes smallpox. Unlike the brick-shaped particles of poxviruses, egovirus particles are predicted, not observed, to have layered icosahedral shells.",
+      "The evolutionary twist concerns hosts. Instead of showing that egoviruses infect human cells, comparisons of viral and cellular genes point to anaerobic protists living in animal guts, especially ciliates and parabasalids. These gene-sharing signals support, but do not directly demonstrate, infection of those single-celled eukaryotes. The authors propose that ancestors of poxviruses may have occupied this gut niche before some descendants evolved the ability to infect animal cells. The findings link microbial ecology to a major transition in viral host range, while leaving the actual egovirus hosts, infectious particles and routes of transmission to be tested experimentally."
+    ],
+    "push": "Identify the cellular hosts directly. Can matched single-cell sequencing, imaging and controlled cultures connect an egovirus genome to a ciliate or parabasalid in the same gut sample? Establishing replication, rather than genomic co-occurrence or ancient gene transfer, would test the proposed ancestral niche. Comparative sampling across wild hosts could also challenge its inferred timing."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Morgan Gaïa",
+      "bio": "Morgan Gaïa is a permanent researcher in the Genomic Analysis of Eukaryotes team at Genoscope, France. He earned a microbiology PhD at Aix-Marseille University in Bernard La Scola's group. He subsequently worked with Patrick Forterre at Institut Pasteur and Paris-Saclay University. His research investigates giant-virus evolution, virus-eukaryote interactions and genomic diversity.",
+      "links": [
+        {
+          "label": "Genoscope researcher profile",
+          "url": "https://lage.genoscope.cns.fr/members/morgan-gaia/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Tom O. Delmont",
+      "bio": "Tom O. Delmont is a CNRS researcher at Genoscope in France, where he studies the ecology and evolution of planktonic bacteria, eukaryotes and viruses using Tara Oceans metagenomes. He previously held a postdoctoral position in A. Murat Eren's lab, contributing to the anvi'o platform. His research reconstructs genomes from complex environmental samples.",
+      "links": [
+        {
+          "label": "Genoscope researcher profile",
+          "url": "https://lage.genoscope.cns.fr/members/tom-delmont/"
+        },
+        {
+          "label": "Former lab profile",
+          "url": "https://merenlab.org/people/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "A shortened protein keeps female flies from courting",
+    "cite": "Peng et al., <em>Nature Communications</em> (18 Nov 2026), <a href=\"https://doi.org/10.1038/s41467-026-79460-2\">paper</a>.",
+    "body": "For decades, the fruitless gene has been known for producing proteins that help specify male courtship circuitry in fruit flies. Researchers now report a female-specific, truncated Fruitless protein that appears briefly during the pupal stage, when neural circuits are developing. It differs from the male proteins in both timing and cellular location. Experiments show the shortened form cooperates with the sex-determination factor Doublesex to suppress male-like courtship in females. Reducing this form in a particular group of neurons caused females to perform courtship behavior. The finding replaces a simple male-on, female-off view with sex-specific protein functions.",
+    "url": "https://doi.org/10.1038/s41467-026-79460-2"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Astronomers watch a companion star spiral into a giant",
+    "cite": "Karambelkar et al., <em>Nature</em> (18 Nov 2026), <a href=\"https://doi.org/10.1038/s41586-026-11221-z\">paper</a>.",
+    "body": "Binary stars sometimes tighten their orbits when one star swells into a giant and engulfs its companion. The shared gas envelope drags the smaller star inward, but astronomers had lacked direct evidence of that journey. Observations of the transient AT 2025abao in the Andromeda galaxy show a roughly seven-solar-mass giant brightening over seven years as a companion of about 0.7 solar masses spiralled through its outer layers. Spectra before and after the eruption support the common-envelope interpretation. The result captures a critical phase of stellar evolution, although whether the stars finally merged remains to be established.",
+    "url": "https://doi.org/10.1038/s41586-026-11221-z"
+  },
+  "tomorrow": "Beyond EEB and History",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11283-z",
+      "title": "Closest relatives of poxviruses prevail in human and animal guts worldwide",
+      "used_for": "lead",
+      "evidence": "Full Nature article and methods available: online 18 Nov 2026; authors in stated order; DOI; 85,123 assemblies, 12 complete genomes; gut prevalence; egovirus-poxvirus phylogeny and inferred rather than demonstrated hosts and virion structure."
+    },
+    {
+      "url": "https://lage.genoscope.cns.fr/members/morgan-gaia/",
+      "title": "Morgan Gaïa, Genomic Analysis of Eukaryotes",
+      "used_for": "person_1",
+      "evidence": "Public Genoscope biography confirms permanent researcher role, Aix-Marseille PhD in La Scola group, work with Patrick Forterre, and giant-virus research."
+    },
+    {
+      "url": "https://lage.genoscope.cns.fr/members/tom-delmont/",
+      "title": "Tom Delmont, Genomic Analysis of Eukaryotes",
+      "used_for": "person_2",
+      "evidence": "Public Genoscope biography confirms CNRS researcher at Genoscope and Tara Oceans metagenomic program."
+    },
+    {
+      "url": "https://merenlab.org/people/",
+      "title": "Meren Lab people, former member Tom O. Delmont",
+      "used_for": "person_2",
+      "evidence": "Former laboratory profile confirms postdoctoral research with A. Murat Eren and anvi'o development."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-026-79460-2",
+      "title": "A master gene for Drosophila male courtship prevents the behavior in females via a truncated protein",
+      "used_for": "slot2",
+      "evidence": "Publisher full abstract and article metadata: published online 18 Nov 2026; female pupal truncated Fruitless protein, cooperation with Doublesex and neuronal knockdown experiments."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11221-z",
+      "title": "An inspiral of a star inside a common envelope with its giant companion",
+      "used_for": "slot3",
+      "evidence": "Nature paper published 18 Nov 2026; observations, spectra and inferred 7-solar-mass giant and 0.7-solar-mass companion; inspiral evidenced while final merger remains uncertain."
+    }
+  ]
+}
