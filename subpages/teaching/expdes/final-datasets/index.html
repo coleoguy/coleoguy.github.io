@@ -1,0 +1,722 @@
+---
+layout: default
+title: "Final Exam Datasets · BIOL 683 · Blackmon Lab"
+description: "Browse and download simulated datasets for the BIOL 683 Experimental Design in Biology final exam."
+canonical: "https://coleoguy.github.io/subpages/teaching/expdes/final-datasets/"
+---
+<style>
+  .dataset-catalog { overflow-wrap: anywhere; }
+  .dataset-catalog [hidden] { display: none !important; }
+  .dataset-catalog h2 { scroll-margin-top: 5rem; }
+  .dataset-browser { margin: 1.5rem 0; padding: 1rem; border: 1px solid var(--rule); border-radius: 0.35rem; background: var(--paper-sunk); }
+  .dataset-browser label { display: block; margin-bottom: 0.3rem; font-weight: 700; }
+  .dataset-browser input { box-sizing: border-box; color: var(--ink); background: var(--paper); border: 1px solid var(--ink-dim); border-radius: 0.25rem; font: inherit; width: 100%; max-width: 34rem; padding: 0.55rem 0.65rem; }
+  .dataset-browser :is(a,input):focus-visible, .dataset-card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .dataset-browser output { display: block; margin: 0.45rem 0 0; color: var(--ink-dim); }
+  .dataset-fields ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0.4rem 0 0; padding: 0; }
+  .dataset-fields { margin-top: 1rem; }
+  .dataset-section { margin: 2rem 0; }
+  .dataset-cards { list-style: none; display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,18rem),1fr)); gap: 0.9rem; padding: 0; margin: 0.7rem 0 0; }
+  .dataset-card { display: flex; gap: 0.5rem; flex-direction: column; border: 1px solid var(--rule); border-radius: 0.35rem; background: var(--paper-sunk); padding: 1rem; }
+  .dataset-card h3 { font-size: 1.1rem; line-height: 1.28; margin: 0; }
+  .dataset-card p { margin: 0; }
+  .dataset-card-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.85rem; padding-top: 0.25rem; margin-top: auto !important; }
+  .dataset-card-links a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.15rem 0; }
+  .dataset-card-links .csv-link { border: 1px solid var(--rule); border-radius: 0.25rem; background: var(--accent-dim); font-weight: 600; padding: 0.15rem 0.55rem; }
+  .dataset-card-links .file-label { font-family: var(--font-mono, monospace); font-size: 0.875rem; }
+  .dataset-empty { padding: 1rem; border: 1px solid var(--rule); }
+</style>
+<div class="dataset-catalog" id="dataset-catalog">
+  <div class="crumb"><a href="/index.html">Home</a> &rsaquo; <a href="/subpages/expdes.html">Experimental Design</a> &rsaquo; <strong>Final exam datasets</strong></div>
+  <h1 class="title">Final exam datasets</h1>
+  <p class="lede">BIOL 683 &middot; Experimental Design in Biology &middot; Fall 2026</p>
+  <p>Choose a dataset below and click its filename to download the CSV. The README explains what each row and column represents. All 99 datasets are simulated.</p>
+  <div class="dataset-browser">
+    <div id="dataset-filter" hidden>
+      <label for="dataset-search">Find a dataset</label>
+      <input id="dataset-search" type="search" placeholder="Search by topic, organism, or filename" autocomplete="off" aria-controls="dataset-results">
+      <output id="dataset-count" aria-live="polite" aria-atomic="true" for="dataset-search">99 datasets</output>
+    </div>
+    <nav class="dataset-fields" aria-label="Dataset fields" id="dataset-fields">
+      <strong>Browse by field</strong>
+      <ul>
+        <li><a href="#datasets-animal-breeding">Animal Breeding (3)</a></li>
+        <li><a href="#datasets-anthropology">Anthropology (3)</a></li>
+        <li><a href="#datasets-biochemistry">Biochemistry (3)</a></li>
+        <li><a href="#datasets-biomedical-sciences">Biomedical Sciences (4)</a></li>
+        <li><a href="#datasets-cancer">Cancer (4)</a></li>
+        <li><a href="#datasets-cell-biology">Cell Biology (5)</a></li>
+        <li><a href="#datasets-circadian">Circadian Biology (4)</a></li>
+        <li><a href="#datasets-conservation">Conservation (3)</a></li>
+        <li><a href="#datasets-ecology">Ecology (4)</a></li>
+        <li><a href="#datasets-entomology">Entomology (5)</a></li>
+        <li><a href="#datasets-evolution">Evolution (4)</a></li>
+        <li><a href="#datasets-genetics">Genetics (8)</a></li>
+        <li><a href="#datasets-genomics">Genomics (4)</a></li>
+        <li><a href="#datasets-horticulture">Horticulture (4)</a></li>
+        <li><a href="#datasets-microbiology">Microbiology (10)</a></li>
+        <li><a href="#datasets-nutrition">Nutrition (3)</a></li>
+        <li><a href="#datasets-physiology">Physiology (4)</a></li>
+        <li><a href="#datasets-plant-breeding">Plant Breeding (4)</a></li>
+        <li><a href="#datasets-poultry-science">Poultry Science (3)</a></li>
+        <li><a href="#datasets-sleep">Sleep (4)</a></li>
+        <li><a href="#datasets-soil-science">Soil Science (3)</a></li>
+        <li><a href="#datasets-toxicology">Toxicology (7)</a></li>
+        <li><a href="#datasets-wildlife">Wildlife (3)</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="dataset-empty" id="dataset-empty" hidden>No datasets match your search. Try a broader term or clear the search field.</p>
+  <div id="dataset-results">
+    <section class="dataset-section" aria-labelledby="datasets-animal-breeding">
+      <h2 id="datasets-animal-breeding">Animal Breeding</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Lamb conformation under routine management</h3>
+          <p>This dataset records lamb hip height at a common age across recorded breed crosses in a managed flock.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/animal-breeding-1.csv" download aria-label="Download animal-breeding-1.csv"><span class="file-label">animal-breeding-1.csv</span></a><a href="data/animal-breeding-1-README.md" download aria-label="Download README for animal-breeding-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Eggshell integrity in laying hens</h3>
+          <p>This dataset records whether an egg remained uncracked after a standard handling test among hens assigned different nest linings.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/animal-breeding-2.csv" download aria-label="Download animal-breeding-2.csv"><span class="file-label">animal-breeding-2.csv</span></a><a href="data/animal-breeding-2-README.md" download aria-label="Download README for animal-breeding-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Fleece quality across sheep lines</h3>
+          <p>This dataset records mean wool fiber diameter across recorded breed lines sampled in the same season.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/animal-breeding-3.csv" download aria-label="Download animal-breeding-3.csv"><span class="file-label">animal-breeding-3.csv</span></a><a href="data/animal-breeding-3-README.md" download aria-label="Download README for animal-breeding-3">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-anthropology">
+      <h2 id="datasets-anthropology">Anthropology</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Replica stone tool mechanics</h3>
+          <p>This dataset records maximum force before edge failure in replica tools made with different materials.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/anthropology-1.csv" download aria-label="Download anthropology-1.csv"><span class="file-label">anthropology-1.csv</span></a><a href="data/anthropology-1-README.md" download aria-label="Download README for anthropology-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Surface preservation on experimental pottery</h3>
+          <p>This dataset records whether replica pottery developed visible rim pitting after burial in different media.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/anthropology-2.csv" download aria-label="Download anthropology-2.csv"><span class="file-label">anthropology-2.csv</span></a><a href="data/anthropology-2-README.md" download aria-label="Download README for anthropology-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Visibility of replica painted motifs</h3>
+          <p>This dataset records whether a painted motif could be recognized on replica panels made with different substrates.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/anthropology-3.csv" download aria-label="Download anthropology-3.csv"><span class="file-label">anthropology-3.csv</span></a><a href="data/anthropology-3-README.md" download aria-label="Download README for anthropology-3">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-biochemistry">
+      <h2 id="datasets-biochemistry">Biochemistry</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Spectral peak of leaf pigment extracts</h3>
+          <p>This dataset records wavelength of the dominant absorbance peak in leaf pigment extracts prepared with different solvent categories.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/biochemistry-1.csv" download aria-label="Download biochemistry-1.csv"><span class="file-label">biochemistry-1.csv</span></a><a href="data/biochemistry-1-README.md" download aria-label="Download README for biochemistry-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Food pigment peak detection</h3>
+          <p>This dataset records whether a food dye’s characteristic absorbance peak was detected in samples assigned different cuvette types.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/biochemistry-2.csv" download aria-label="Download biochemistry-2.csv"><span class="file-label">biochemistry-2.csv</span></a><a href="data/biochemistry-2-README.md" download aria-label="Download README for biochemistry-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Viscosity of edible polysaccharides</h3>
+          <p>This dataset records viscosity at a fixed shear setting across independently prepared edible polymer samples.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/biochemistry-3.csv" download aria-label="Download biochemistry-3.csv"><span class="file-label">biochemistry-3.csv</span></a><a href="data/biochemistry-3-README.md" download aria-label="Download README for biochemistry-3">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-biomedical-sciences">
+      <h2 id="datasets-biomedical-sciences">Biomedical Sciences</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Surface consistency of dental training casts</h3>
+          <p>This dataset records mean surface roughness of nonclinical dental training casts made with different mold materials.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/biomedical-sciences-1.csv" download aria-label="Download biomedical-sciences-1.csv"><span class="file-label">biomedical-sciences-1.csv</span></a><a href="data/biomedical-sciences-1-README.md" download aria-label="Download README for biomedical-sciences-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Label agreement in training ultrasound phantoms</h3>
+          <p>This dataset records whether a reader identified an embedded target in ultrasound practice images made with different presets.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/biomedical-sciences-2.csv" download aria-label="Download biomedical-sciences-2.csv"><span class="file-label">biomedical-sciences-2.csv</span></a><a href="data/biomedical-sciences-2-README.md" download aria-label="Download README for biomedical-sciences-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Flow resistance in teaching-lab tubing models</h3>
+          <p>This dataset records pressure drop in teaching-lab tubing assemblies fitted with different connector geometries.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/biomedical-sciences-3.csv" download aria-label="Download biomedical-sciences-3.csv"><span class="file-label">biomedical-sciences-3.csv</span></a><a href="data/biomedical-sciences-3-README.md" download aria-label="Download README for biomedical-sciences-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Artificial-skin imaging marker detection</h3>
+          <p>This dataset records whether an embedded calibration marker was detected in images of artificial-skin panels under different lighting.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/biomedical-sciences-4.csv" download aria-label="Download biomedical-sciences-4.csv"><span class="file-label">biomedical-sciences-4.csv</span></a><a href="data/biomedical-sciences-4-README.md" download aria-label="Download README for biomedical-sciences-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-cancer">
+      <h2 id="datasets-cancer">Cancer</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Biopsy morphology in a simulated tumor archive</h3>
+          <p>This dataset records median nuclear area in simulated tumor biopsy fields prepared with different staining protocols.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cancer-1.csv" download aria-label="Download cancer-1.csv"><span class="file-label">cancer-1.csv</span></a><a href="data/cancer-1-README.md" download aria-label="Download README for cancer-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Histology review of simulated breast specimens</h3>
+          <p>This dataset records whether a reviewer flagged an archived synthetic breast specimen slide for secondary review.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cancer-2.csv" download aria-label="Download cancer-2.csv"><span class="file-label">cancer-2.csv</span></a><a href="data/cancer-2-README.md" download aria-label="Download README for cancer-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Day-to-day features of tumor spheroid images</h3>
+          <p>This dataset records diameter at the study endpoint for tumor spheroids grown in independently prepared wells with different support matrices.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cancer-3.csv" download aria-label="Download cancer-3.csv"><span class="file-label">cancer-3.csv</span></a><a href="data/cancer-3-README.md" download aria-label="Download README for cancer-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Segmentation of simulated tumor image tiles</h3>
+          <p>This dataset records whether automated segmentation passed a boundary agreement criterion on synthetic tumor image tiles processed in different ways.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cancer-4.csv" download aria-label="Download cancer-4.csv"><span class="file-label">cancer-4.csv</span></a><a href="data/cancer-4-README.md" download aria-label="Download README for cancer-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-cell-biology">
+      <h2 id="datasets-cell-biology">Cell Biology</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Spreading of fibroblasts on adhesive surfaces</h3>
+          <p>This dataset records median projected fibroblast area in wells plated on different extracellular matrix coatings.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cell-biology-1.csv" download aria-label="Download cell-biology-1.csv"><span class="file-label">cell-biology-1.csv</span></a><a href="data/cell-biology-1-README.md" download aria-label="Download README for cell-biology-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Recovery of fluorescence after photobleaching</h3>
+          <p>This dataset records time for fluorescence to reach half of its fitted recovery plateau after photobleaching in cells with different membrane reporters.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cell-biology-2.csv" download aria-label="Download cell-biology-2.csv"><span class="file-label">cell-biology-2.csv</span></a><a href="data/cell-biology-2-README.md" download aria-label="Download README for cell-biology-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Nuclear localization in a reporter assay</h3>
+          <p>This dataset records whether fluorescence microscopy images met a nuclear-enrichment criterion across assigned collection times.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cell-biology-3.csv" download aria-label="Download cell-biology-3.csv"><span class="file-label">cell-biology-3.csv</span></a><a href="data/cell-biology-3-README.md" download aria-label="Download README for cell-biology-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Vesicle trafficking in cultured cells</h3>
+          <p>This dataset records median speed of tracked vesicles in cultured cells imaged at different stage-temperature settings.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cell-biology-4.csv" download aria-label="Download cell-biology-4.csv"><span class="file-label">cell-biology-4.csv</span></a><a href="data/cell-biology-4-README.md" download aria-label="Download README for cell-biology-4">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Organelle puncta in a microscopy screen</h3>
+          <p>This dataset records whether microscopy images from different teaching cell lines met a threshold for visible organelle puncta.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/cell-biology-5.csv" download aria-label="Download cell-biology-5.csv"><span class="file-label">cell-biology-5.csv</span></a><a href="data/cell-biology-5-README.md" download aria-label="Download README for cell-biology-5">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-circadian">
+      <h2 id="datasets-circadian">Circadian Biology</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Daily rhythms in activity timing</h3>
+          <p>This dataset records average timing of mouse activity onset relative to lights-off across assigned light schedules.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/circadian-1.csv" download aria-label="Download circadian-1.csv"><span class="file-label">circadian-1.csv</span></a><a href="data/circadian-1-README.md" download aria-label="Download README for circadian-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Delayed alignment after a shifted light schedule</h3>
+          <p>This dataset records whether fly vials met the activity-alignment criterion by day four after a shift in the light cycle.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/circadian-2.csv" download aria-label="Download circadian-2.csv"><span class="file-label">circadian-2.csv</span></a><a href="data/circadian-2-README.md" download aria-label="Download README for circadian-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Leaf movement rhythms in seedlings</h3>
+          <p>This dataset records estimated cycle length of seedling leaf movement after different dawn-light treatments.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/circadian-3.csv" download aria-label="Download circadian-3.csv"><span class="file-label">circadian-3.csv</span></a><a href="data/circadian-3-README.md" download aria-label="Download README for circadian-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Stable phase estimates from activity records</h3>
+          <p>This dataset records whether simulated wrist activity records met a stable activity-timing criterion across reported work schedules.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/circadian-4.csv" download aria-label="Download circadian-4.csv"><span class="file-label">circadian-4.csv</span></a><a href="data/circadian-4-README.md" download aria-label="Download README for circadian-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-conservation">
+      <h2 id="datasets-conservation">Conservation</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Measuring streambank recovery</h3>
+          <p>This dataset records native plant ground cover along stream reaches treated with different restoration approaches.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/conservation-1.csv" download aria-label="Download conservation-1.csv"><span class="file-label">conservation-1.csv</span></a><a href="data/conservation-1-README.md" download aria-label="Download README for conservation-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Use of artificial roost boxes</h3>
+          <p>This dataset records whether bats used newly installed roost boxes made with different materials.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/conservation-2.csv" download aria-label="Download conservation-2.csv"><span class="file-label">conservation-2.csv</span></a><a href="data/conservation-2-README.md" download aria-label="Download README for conservation-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Retention of sediment under dune fencing</h3>
+          <p>This dataset records change in mean sand surface elevation on dune plots fitted with different fence designs.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/conservation-3.csv" download aria-label="Download conservation-3.csv"><span class="file-label">conservation-3.csv</span></a><a href="data/conservation-3-README.md" download aria-label="Download README for conservation-3">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-ecology">
+      <h2 id="datasets-ecology">Ecology</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Leaf litter decay in forest patches</h3>
+          <p>This dataset records dry mass lost from standardized leaf litter after 90 days in different forest patches.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/ecology-1.csv" download aria-label="Download ecology-1.csv"><span class="file-label">ecology-1.csv</span></a><a href="data/ecology-1-README.md" download aria-label="Download README for ecology-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Native forb establishment in old fields</h3>
+          <p>This dataset records whether a focal native forb established by season’s end on old-field plots assigned different mulches.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/ecology-2.csv" download aria-label="Download ecology-2.csv"><span class="file-label">ecology-2.csv</span></a><a href="data/ecology-2-README.md" download aria-label="Download README for ecology-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Submerged plants in isolated ponds</h3>
+          <p>This dataset records mean submerged plant dry mass per square meter in ponds with recorded surrounding land cover.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/ecology-3.csv" download aria-label="Download ecology-3.csv"><span class="file-label">ecology-3.csv</span></a><a href="data/ecology-3-README.md" download aria-label="Download README for ecology-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Seedling persistence on alpine microsites</h3>
+          <p>This dataset records whether tagged seedlings in different alpine meadow microsites were still alive in late summer.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/ecology-4.csv" download aria-label="Download ecology-4.csv"><span class="file-label">ecology-4.csv</span></a><a href="data/ecology-4-README.md" download aria-label="Download README for ecology-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-entomology">
+      <h2 id="datasets-entomology">Entomology</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Walking speed in flour beetles</h3>
+          <p>This dataset records mean walking speed of flour beetles tested on different arena textures.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/entomology-1.csv" download aria-label="Download entomology-1.csv"><span class="file-label">entomology-1.csv</span></a><a href="data/entomology-1-README.md" download aria-label="Download README for entomology-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Moth orientation in a flight arena</h3>
+          <p>This dataset records whether an adult moth reached a marked sector after exposure to one of several visual cue patterns.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/entomology-2.csv" download aria-label="Download entomology-2.csv"><span class="file-label">entomology-2.csv</span></a><a href="data/entomology-2-README.md" download aria-label="Download README for entomology-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Firefly flash timing</h3>
+          <p>This dataset records mean interval between flashes in male fireflies from meadow plots with recorded shade conditions.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/entomology-3.csv" download aria-label="Download entomology-3.csv"><span class="file-label">entomology-3.csv</span></a><a href="data/entomology-3-README.md" download aria-label="Download README for entomology-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Solitary bee nesting choices</h3>
+          <p>This dataset records whether solitary bees nested in shelters with different entrance finishes.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/entomology-4.csv" download aria-label="Download entomology-4.csv"><span class="file-label">entomology-4.csv</span></a><a href="data/entomology-4-README.md" download aria-label="Download README for entomology-4">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Dragonfly wing flexibility</h3>
+          <p>This dataset records wingtip deflection under a standardized load in dragonflies of different observed pigmentation groups.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/entomology-5.csv" download aria-label="Download entomology-5.csv"><span class="file-label">entomology-5.csv</span></a><a href="data/entomology-5-README.md" download aria-label="Download README for entomology-5">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-evolution">
+      <h2 id="datasets-evolution">Evolution</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Shell geometry across shore zones</h3>
+          <p>This dataset records mean shell ridge height of periwinkles sampled across rocky-shore zones.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/evolution-1.csv" download aria-label="Download evolution-1.csv"><span class="file-label">evolution-1.csv</span></a><a href="data/evolution-1-README.md" download aria-label="Download README for evolution-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Seed dispersal from contrasting habitats</h3>
+          <p>This dataset records whether seeds collected from contrasting source habitats reached a target distance in a shared wind-tunnel assay.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/evolution-2.csv" download aria-label="Download evolution-2.csv"><span class="file-label">evolution-2.csv</span></a><a href="data/evolution-2-README.md" download aria-label="Download README for evolution-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Jaw mechanics in lake fish</h3>
+          <p>This dataset records lower-jaw closing mechanical advantage in lake fish grouped by observed feeding guild.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/evolution-3.csv" download aria-label="Download evolution-3.csv"><span class="file-label">evolution-3.csv</span></a><a href="data/evolution-3-README.md" download aria-label="Download README for evolution-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Flower form and pollen placement</h3>
+          <p>This dataset records whether a flower received pollen on its stigma after the first recorded bee visit, with floral form observed.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/evolution-4.csv" download aria-label="Download evolution-4.csv"><span class="file-label">evolution-4.csv</span></a><a href="data/evolution-4-README.md" download aria-label="Download README for evolution-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-genetics">
+      <h2 id="datasets-genetics">Genetics</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Pea flower opening time</h3>
+          <p>This dataset records days to first open flower for independently raised pea families with recorded seed-coat marker classes.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genetics-1.csv" download aria-label="Download genetics-1.csv"><span class="file-label">genetics-1.csv</span></a><a href="data/genetics-1-README.md" download aria-label="Download README for genetics-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Seedling leaf pattern in beans</h3>
+          <p>This dataset records whether the first true leaf showed mottling in common-bean seedlings with recorded inherited markers.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genetics-2.csv" download aria-label="Download genetics-2.csv"><span class="file-label">genetics-2.csv</span></a><a href="data/genetics-2-README.md" download aria-label="Download README for genetics-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Bristle length in fruit flies</h3>
+          <p>This dataset records thoracic bristle length in adult fruit flies from separate families with recorded eye marker classes.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genetics-3.csv" download aria-label="Download genetics-3.csv"><span class="file-label">genetics-3.csv</span></a><a href="data/genetics-3-README.md" download aria-label="Download README for genetics-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Barley awn phenotype</h3>
+          <p>This dataset records whether barley’s main spike had awns at maturity across common-garden maternal lines.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genetics-4.csv" download aria-label="Download genetics-4.csv"><span class="file-label">genetics-4.csv</span></a><a href="data/genetics-4-README.md" download aria-label="Download README for genetics-4">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Tomato fruit firmness</h3>
+          <p>This dataset records peak force in a fruit firmness test across separately raised tomato lines with recorded fruit colors.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genetics-5.csv" download aria-label="Download genetics-5.csv"><span class="file-label">genetics-5.csv</span></a><a href="data/genetics-5-README.md" download aria-label="Download README for genetics-5">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Clover leaflet marking</h3>
+          <p>This dataset records whether a pale chevron was visible on the central leaflet of clover plants from distinct maternal families.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genetics-6.csv" download aria-label="Download genetics-6.csv"><span class="file-label">genetics-6.csv</span></a><a href="data/genetics-6-README.md" download aria-label="Download README for genetics-6">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Shell banding in land snails</h3>
+          <p>This dataset records whether a narrow dark band was visible on the final shell whorl of land snails photographed in separate field patches.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genetics-7.csv" download aria-label="Download genetics-7.csv"><span class="file-label">genetics-7.csv</span></a><a href="data/genetics-7-README.md" download aria-label="Download README for genetics-7">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Radish root shape</h3>
+          <p>This dataset records ratio of root length to maximum width for independently grown radish families with observed leaf color markers.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genetics-8.csv" download aria-label="Download genetics-8.csv"><span class="file-label">genetics-8.csv</span></a><a href="data/genetics-8-README.md" download aria-label="Download README for genetics-8">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-genomics">
+      <h2 id="datasets-genomics">Genomics</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Mapped-read yield in plant archives</h3>
+          <p>This dataset records percentage of reads mapped to a reference for sequencing libraries from distinct archived birch specimens.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genomics-1.csv" download aria-label="Download genomics-1.csv"><span class="file-label">genomics-1.csv</span></a><a href="data/genomics-1-README.md" download aria-label="Download README for genomics-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>High-confidence orchid genotypes</h3>
+          <p>This dataset records whether a focal marker passed the genotype call confidence rule in sequencing libraries from different archived orchid plants.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genomics-2.csv" download aria-label="Download genomics-2.csv"><span class="file-label">genomics-2.csv</span></a><a href="data/genomics-2-README.md" download aria-label="Download README for genomics-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Genome-size estimates in fern accessions</h3>
+          <p>This dataset records estimated haploid genome DNA content for fern accessions representing separate populations with assessed ploidy.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genomics-3.csv" download aria-label="Download genomics-3.csv"><span class="file-label">genomics-3.csv</span></a><a href="data/genomics-3-README.md" download aria-label="Download README for genomics-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Reference-panel interval matches</h3>
+          <p>This dataset records whether a selected genomic interval matched a reference panel across independently sampled sunflower accessions.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/genomics-4.csv" download aria-label="Download genomics-4.csv"><span class="file-label">genomics-4.csv</span></a><a href="data/genomics-4-README.md" download aria-label="Download README for genomics-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-horticulture">
+      <h2 id="datasets-horticulture">Horticulture</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Postharvest firmness of greenhouse strawberries</h3>
+          <p>This dataset records postharvest firmness of strawberries from greenhouse plants grown in different potting media.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/horticulture-1.csv" download aria-label="Download horticulture-1.csv"><span class="file-label">horticulture-1.csv</span></a><a href="data/horticulture-1-README.md" download aria-label="Download README for horticulture-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>First bloom in container marigolds</h3>
+          <p>This dataset records whether container-grown marigolds had an open flower by day 30 under different shade cloths.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/horticulture-2.csv" download aria-label="Download horticulture-2.csv"><span class="file-label">horticulture-2.csv</span></a><a href="data/horticulture-2-README.md" download aria-label="Download README for horticulture-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Ornamental cutting establishment</h3>
+          <p>This dataset records whether individually potted ornamental cuttings developed both visible roots and a new leaf on different bench mats.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/horticulture-3.csv" download aria-label="Download horticulture-3.csv"><span class="file-label">horticulture-3.csv</span></a><a href="data/horticulture-3-README.md" download aria-label="Download README for horticulture-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Marketable leaf mass in greenhouse kale</h3>
+          <p>This dataset records fresh mass of marketable kale leaves from separately potted greenhouse plants receiving different mulches.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/horticulture-4.csv" download aria-label="Download horticulture-4.csv"><span class="file-label">horticulture-4.csv</span></a><a href="data/horticulture-4-README.md" download aria-label="Download README for horticulture-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-microbiology">
+      <h2 id="datasets-microbiology">Microbiology</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Yeast bud size under a classroom microscope</h3>
+          <p>This dataset records projected bud area in individual yeast cells imaged from different commercial baker’s yeast lots.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-1.csv" download aria-label="Download microbiology-1.csv"><span class="file-label">microbiology-1.csv</span></a><a href="data/microbiology-1-README.md" download aria-label="Download README for microbiology-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Visible budding in commercial yeast lots</h3>
+          <p>This dataset records whether an attached bud was visible in microscope images of yeast cells from different retail lots.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-2.csv" download aria-label="Download microbiology-2.csv"><span class="file-label">microbiology-2.csv</span></a><a href="data/microbiology-2-README.md" download aria-label="Download README for microbiology-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Pond diatom frustule width</h3>
+          <p>This dataset records maximum width of intact diatom frustules imaged from separately sampled ponds.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-3.csv" download aria-label="Download microbiology-3.csv"><span class="file-label">microbiology-3.csv</span></a><a href="data/microbiology-3-README.md" download aria-label="Download README for microbiology-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Green microalgae in park ponds</h3>
+          <p>This dataset records whether a common green algal form was seen in microscopy surveys of water samples from separate park ponds.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-4.csv" download aria-label="Download microbiology-4.csv"><span class="file-label">microbiology-4.csv</span></a><a href="data/microbiology-4-README.md" download aria-label="Download README for microbiology-4">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Diatom chain length in lake samples</h3>
+          <p>This dataset records mean diatom chain length in microscopy images from independently sampled lakes.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-5.csv" download aria-label="Download microbiology-5.csv"><span class="file-label">microbiology-5.csv</span></a><a href="data/microbiology-5-README.md" download aria-label="Download README for microbiology-5">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Kombucha label and dissolved solids</h3>
+          <p>This dataset records soluble solids measured by refractometer in sealed bottles from independent retail kombucha batches.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-6.csv" download aria-label="Download microbiology-6.csv"><span class="file-label">microbiology-6.csv</span></a><a href="data/microbiology-6-README.md" download aria-label="Download README for microbiology-6">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Sparkling cider bubble observations</h3>
+          <p>This dataset records whether a foam ring remained after a standardized pour of nonalcoholic sparkling cider from different commercial batches.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-7.csv" download aria-label="Download microbiology-7.csv"><span class="file-label">microbiology-7.csv</span></a><a href="data/microbiology-7-README.md" download aria-label="Download README for microbiology-7">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Diatom striation visibility</h3>
+          <p>This dataset records whether adjacent striae were distinguishable in images of diatom valves collected from separate freshwater sites.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-8.csv" download aria-label="Download microbiology-8.csv"><span class="file-label">microbiology-8.csv</span></a><a href="data/microbiology-8-README.md" download aria-label="Download README for microbiology-8">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Yogurt texture across retail lots</h3>
+          <p>This dataset records probe-measured yogurt firmness in unopened cups from independent retail lots.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-9.csv" download aria-label="Download microbiology-9.csv"><span class="file-label">microbiology-9.csv</span></a><a href="data/microbiology-9-README.md" download aria-label="Download README for microbiology-9">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Yeast cell outline agreement</h3>
+          <p>This dataset records whether two masked readers agreed on cell-outline classifications for commercial baker’s yeast images.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/microbiology-10.csv" download aria-label="Download microbiology-10.csv"><span class="file-label">microbiology-10.csv</span></a><a href="data/microbiology-10-README.md" download aria-label="Download README for microbiology-10">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-nutrition">
+      <h2 id="datasets-nutrition">Nutrition</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Fiber and sensory texture in cereal samples</h3>
+          <p>This dataset records mean sensory-panel texture scores for independent test batches made with different cereal grain bases.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/nutrition-1.csv" download aria-label="Download nutrition-1.csv"><span class="file-label">nutrition-1.csv</span></a><a href="data/nutrition-1-README.md" download aria-label="Download README for nutrition-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Menu item nutrient-density labeling</h3>
+          <p>This dataset records whether hypothetical menu items in different cuisine categories displayed a nutrient-quality badge.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/nutrition-2.csv" download aria-label="Download nutrition-2.csv"><span class="file-label">nutrition-2.csv</span></a><a href="data/nutrition-2-README.md" download aria-label="Download README for nutrition-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Viscosity of fortified plant-based drinks</h3>
+          <p>This dataset records standardized viscosity measurements of fortified drinks mixed from different plant-based beverage bases.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/nutrition-3.csv" download aria-label="Download nutrition-3.csv"><span class="file-label">nutrition-3.csv</span></a><a href="data/nutrition-3-README.md" download aria-label="Download README for nutrition-3">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-physiology">
+      <h2 id="datasets-physiology">Physiology</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Sprint recovery in a simulated exercise lab</h3>
+          <p>This dataset records drop in heart rate after exercise among simulated participants assigned different recovery postures.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/physiology-1.csv" download aria-label="Download physiology-1.csv"><span class="file-label">physiology-1.csv</span></a><a href="data/physiology-1-README.md" download aria-label="Download README for physiology-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Leaf water status after a short dry spell</h3>
+          <p>This dataset records midday leaf water potential after a dry spell in separate pots with different soil-surface covers.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/physiology-2.csv" download aria-label="Download physiology-2.csv"><span class="file-label">physiology-2.csv</span></a><a href="data/physiology-2-README.md" download aria-label="Download README for physiology-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Thermal preference in freshwater snails</h3>
+          <p>This dataset records whether a freshwater snail was on the cool side of a choice arena at the set scoring time.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/physiology-3.csv" download aria-label="Download physiology-3.csv"><span class="file-label">physiology-3.csv</span></a><a href="data/physiology-3-README.md" download aria-label="Download README for physiology-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Water loss by detached leaves</h3>
+          <p>This dataset records mass of water lost by detached leaves exposed to different air movement treatments for a fixed interval.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/physiology-4.csv" download aria-label="Download physiology-4.csv"><span class="file-label">physiology-4.csv</span></a><a href="data/physiology-4-README.md" download aria-label="Download README for physiology-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-plant-breeding">
+      <h2 id="datasets-plant-breeding">Plant Breeding</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Sorghum dry-lot seed size comparison</h3>
+          <p>This dataset records mass of a 1,000-grain sample from separate sorghum family plots assigned different row spacing.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/plant-breeding-1.csv" download aria-label="Download plant-breeding-1.csv"><span class="file-label">plant-breeding-1.csv</span></a><a href="data/plant-breeding-1-README.md" download aria-label="Download README for plant-breeding-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Standability in selected dry bean lines</h3>
+          <p>This dataset records whether at least 80% of each dry bean breeding plot remained upright at harvest under different support treatments.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/plant-breeding-2.csv" download aria-label="Download plant-breeding-2.csv"><span class="file-label">plant-breeding-2.csv</span></a><a href="data/plant-breeding-2-README.md" download aria-label="Download README for plant-breeding-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Winter survival among forage rye lines</h3>
+          <p>This dataset records whether at least 70% of each forage rye stand survived late winter across different seedbed finishes.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/plant-breeding-3.csv" download aria-label="Download plant-breeding-3.csv"><span class="file-label">plant-breeding-3.csv</span></a><a href="data/plant-breeding-3-README.md" download aria-label="Download README for plant-breeding-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Tomato color uniformity across breeding lines</h3>
+          <p>This dataset records variation in fruit color within greenhouse tomato plants from distinct lines grown with different support systems.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/plant-breeding-4.csv" download aria-label="Download plant-breeding-4.csv"><span class="file-label">plant-breeding-4.csv</span></a><a href="data/plant-breeding-4-README.md" download aria-label="Download README for plant-breeding-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-poultry-science">
+      <h2 id="datasets-poultry-science">Poultry Science</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Eggshell thickness in laying-hen housing</h3>
+          <p>This dataset records average thickness of eggshells from laying hens in separate pens with recorded housing types.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/poultry-science-1.csv" download aria-label="Download poultry-science-1.csv"><span class="file-label">poultry-science-1.csv</span></a><a href="data/poultry-science-1-README.md" download aria-label="Download README for poultry-science-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Floor-egg incidence and nest features</h3>
+          <p>This dataset records whether an egg laid outside the nest box was found in laying-hen pens with different recorded box layouts.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/poultry-science-2.csv" download aria-label="Download poultry-science-2.csv"><span class="file-label">poultry-science-2.csv</span></a><a href="data/poultry-science-2-README.md" download aria-label="Download README for poultry-science-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Egg mass variation across flock housing types</h3>
+          <p>This dataset records average egg mass in separate farm flocks housed in different formats.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/poultry-science-3.csv" download aria-label="Download poultry-science-3.csv"><span class="file-label">poultry-science-3.csv</span></a><a href="data/poultry-science-3-README.md" download aria-label="Download README for poultry-science-3">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-sleep">
+      <h2 id="datasets-sleep">Sleep</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Restorative sleep and next-morning vigilance</h3>
+          <p>This dataset records median morning vigilance-task reaction time in simulated volunteers assigned different task positions in the session.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/sleep-1.csv" download aria-label="Download sleep-1.csv"><span class="file-label">sleep-1.csv</span></a><a href="data/sleep-1-README.md" download aria-label="Download README for sleep-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Sleep onset in a study of evening light</h3>
+          <p>This dataset records whether simulated volunteers fell asleep within 20 minutes of lights-out after exposure to different evening display modes.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/sleep-2.csv" download aria-label="Download sleep-2.csv"><span class="file-label">sleep-2.csv</span></a><a href="data/sleep-2-README.md" download aria-label="Download README for sleep-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Nighttime movement in an observational sleep study</h3>
+          <p>This dataset records sleep fragmentation scores from simulated wrist activity records with observed work schedules and bedtime regularity.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/sleep-3.csv" download aria-label="Download sleep-3.csv"><span class="file-label">sleep-3.csv</span></a><a href="data/sleep-3-README.md" download aria-label="Download README for sleep-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Detection of a midday nap</h3>
+          <p>This dataset records whether sleep was detected during a scheduled nap opportunity under different room sound settings.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/sleep-4.csv" download aria-label="Download sleep-4.csv"><span class="file-label">sleep-4.csv</span></a><a href="data/sleep-4-README.md" download aria-label="Download README for sleep-4">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-soil-science">
+      <h2 id="datasets-soil-science">Soil Science</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Aggregate stability across dryland fields</h3>
+          <p>This dataset records percentage of dry soil mass retained as water-stable aggregates across samples from different dryland fields.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/soil-science-1.csv" download aria-label="Download soil-science-1.csv"><span class="file-label">soil-science-1.csv</span></a><a href="data/soil-science-1-README.md" download aria-label="Download README for soil-science-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Surface ponding after a storm</h3>
+          <p>This dataset records whether standing water was visible 24 hours after rain across fields with different observed surface management.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/soil-science-2.csv" download aria-label="Download soil-science-2.csv"><span class="file-label">soil-science-2.csv</span></a><a href="data/soil-science-2-README.md" download aria-label="Download README for soil-science-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Soil water retention in reconstructed profiles</h3>
+          <p>This dataset records volumetric soil water content after drainage in independently packed columns assigned different surface residues.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/soil-science-3.csv" download aria-label="Download soil-science-3.csv"><span class="file-label">soil-science-3.csv</span></a><a href="data/soil-science-3-README.md" download aria-label="Download README for soil-science-3">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-toxicology">
+      <h2 id="datasets-toxicology">Toxicology</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>Road-salt legacy in urban wetland soil</h3>
+          <p>This dataset records seedling root length in a standardized screen of soil cores from separate constructed wetlands.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/toxicology-1.csv" download aria-label="Download toxicology-1.csv"><span class="file-label">toxicology-1.csv</span></a><a href="data/toxicology-1-README.md" download aria-label="Download README for toxicology-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Physical sediment stress in model marsh seedlings</h3>
+          <p>This dataset records whether marsh seedlings showed a new leaf across trays assigned different settling media.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/toxicology-2.csv" download aria-label="Download toxicology-2.csv"><span class="file-label">toxicology-2.csv</span></a><a href="data/toxicology-2-README.md" download aria-label="Download README for toxicology-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Deicing runoff and leaf injury</h3>
+          <p>This dataset records whether ornamental plants showed visible leaf-edge injury in sampled roadside planting beds.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/toxicology-3.csv" download aria-label="Download toxicology-3.csv"><span class="file-label">toxicology-3.csv</span></a><a href="data/toxicology-3-README.md" download aria-label="Download README for toxicology-3">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Suspended sediment and freshwater leaf condition</h3>
+          <p>This dataset records percentage of sampled leaf area classified as yellow in simulated observation ponds.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/toxicology-4.csv" download aria-label="Download toxicology-4.csv"><span class="file-label">toxicology-4.csv</span></a><a href="data/toxicology-4-README.md" download aria-label="Download README for toxicology-4">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Salt accumulation and emergence in a pot assay</h3>
+          <p>This dataset records whether seedlings emerged by the end of a pot assay comparing different media in a simulated salinity-stress study.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/toxicology-5.csv" download aria-label="Download toxicology-5.csv"><span class="file-label">toxicology-5.csv</span></a><a href="data/toxicology-5-README.md" download aria-label="Download README for toxicology-5">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Sediment abrasiveness and leaf surface wear</h3>
+          <p>This dataset records amount of worn leaf surface on aquarium plants in a simulated comparison of sediment textures.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/toxicology-6.csv" download aria-label="Download toxicology-6.csv"><span class="file-label">toxicology-6.csv</span></a><a href="data/toxicology-6-README.md" download aria-label="Download README for toxicology-6">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Stormwater sediment and duckweed cover</h3>
+          <p>This dataset records percentage of water surface covered by duckweed across different surveyed stormwater rain gardens.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/toxicology-7.csv" download aria-label="Download toxicology-7.csv"><span class="file-label">toxicology-7.csv</span></a><a href="data/toxicology-7-README.md" download aria-label="Download README for toxicology-7">README</a></p>
+        </li>
+      </ul>
+    </section>
+    <section class="dataset-section" aria-labelledby="datasets-wildlife">
+      <h2 id="datasets-wildlife">Wildlife</h2>
+      <ul class="dataset-cards">
+        <li class="dataset-card">
+          <h3>River otter camera detections</h3>
+          <p>This dataset records whether a river otter was recorded during equal-length camera deployments on separate stream reaches.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/wildlife-1.csv" download aria-label="Download wildlife-1.csv"><span class="file-label">wildlife-1.csv</span></a><a href="data/wildlife-1-README.md" download aria-label="Download README for wildlife-1">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Songbird nest insulation</h3>
+          <p>This dataset records cooling rate of previously used songbird nests during a standardized bench test.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/wildlife-2.csv" download aria-label="Download wildlife-2.csv"><span class="file-label">wildlife-2.csv</span></a><a href="data/wildlife-2-README.md" download aria-label="Download README for wildlife-2">README</a></p>
+        </li>
+        <li class="dataset-card">
+          <h3>Foraging signs around acorn trays</h3>
+          <p>This dataset records whether cameras recorded squirrels feeding at acorn trays assigned different shade screens across separate woodlots.</p>
+          <p class="dataset-card-links"><a class="csv-link" href="data/wildlife-3.csv" download aria-label="Download wildlife-3.csv"><span class="file-label">wildlife-3.csv</span></a><a href="data/wildlife-3-README.md" download aria-label="Download README for wildlife-3">README</a></p>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
+<script>
+(() => {
+  const filter = document.getElementById('dataset-filter');
+  const search = document.getElementById('dataset-search');
+  const resultCount = document.getElementById('dataset-count');
+  const noResults = document.getElementById('dataset-empty');
+  const index = document.getElementById('dataset-fields');
+  const sections = Array.from(document.querySelectorAll('#dataset-results .dataset-section')).map(section => {
+    const field = section.querySelector('h2').textContent;
+    return {
+      section,
+      cards: Array.from(section.querySelectorAll('.dataset-card')).map(card => ({
+        card,
+        text: (field + ' ' + card.textContent).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ')
+      }))
+    };
+  });
+  const total = sections.reduce((sum, group) => sum + group.cards.length, 0);
+  function render() {
+    const tokens = search.value.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+    let count = 0;
+    sections.forEach(group => {
+      let matches = 0;
+      group.cards.forEach(item => {
+        const show = tokens.every(token => item.text.includes(token));
+        item.card.hidden = !show;
+        if (show) matches += 1;
+      });
+      group.section.hidden = matches === 0;
+      count += matches;
+    });
+    index.hidden = tokens.length > 0;
+    noResults.hidden = count > 0;
+    resultCount.textContent = tokens.length ? count + ' of ' + total + ' datasets' : total + ' datasets';
+  }
+  search.addEventListener('input', render);
+  filter.hidden = false;
+  render();
+})();
+</script>
