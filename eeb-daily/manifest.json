@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 33,
-    "date": "2026-11-18"
+    "no": 34,
+    "date": "2026-11-19"
   },
   "issues": [
     {
@@ -565,6 +565,23 @@
       "slot3_headline": "Melting in two dimensions is a contest between energy and disorder",
       "slot3_url": "https://doi.org/10.1038/s42005-026-02946-4",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0034-2026-11-19.json",
+      "no": 34,
+      "date": "2026-11-19",
+      "slug": "2026-11-19",
+      "topic": "Evolution of giant DNA viruses and host transitions in animal guts",
+      "lead_headline": "The gut harbors missing relatives of poxviruses",
+      "lead_doi": "10.1038/s41586-026-11283-z",
+      "lead_url": "https://doi.org/10.1038/s41586-026-11283-z",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "A shortened protein keeps female flies from courting",
+      "slot2_url": "https://doi.org/10.1038/s41467-026-79460-2",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Astronomers watch a companion star spiral into a giant",
+      "slot3_url": "https://doi.org/10.1038/s41586-026-11221-z",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -585,6 +602,7 @@
     "https://doi.org/10.1038/s41467-026-79127-y",
     "https://doi.org/10.1038/s41467-026-79307-w",
     "https://doi.org/10.1038/s41467-026-79455-z",
+    "https://doi.org/10.1038/s41467-026-79460-2",
     "https://doi.org/10.1038/s41467-026-79525-2",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41534-026-01404-x",
@@ -608,6 +626,8 @@
     "https://doi.org/10.1038/s41586-026-11209-9",
     "https://doi.org/10.1038/s41586-026-11212-0",
     "https://doi.org/10.1038/s41586-026-11213-z",
+    "https://doi.org/10.1038/s41586-026-11221-z",
+    "https://doi.org/10.1038/s41586-026-11283-z",
     "https://doi.org/10.1038/s41586-026-11308-7",
     "https://doi.org/10.1038/s41588-026-02829-y",
     "https://doi.org/10.1038/s41593-026-02489-5",
@@ -686,6 +706,7 @@
     "10.1038/s41467-026-79127-y",
     "10.1038/s41467-026-79307-w",
     "10.1038/s41467-026-79455-z",
+    "10.1038/s41467-026-79460-2",
     "10.1038/s41467-026-79525-2",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41534-026-01404-x",
@@ -709,6 +730,8 @@
     "10.1038/s41586-026-11209-9",
     "10.1038/s41586-026-11212-0",
     "10.1038/s41586-026-11213-z",
+    "10.1038/s41586-026-11221-z",
+    "10.1038/s41586-026-11283-z",
     "10.1038/s41586-026-11308-7",
     "10.1038/s41588-026-02829-y",
     "10.1038/s41593-026-02489-5",
