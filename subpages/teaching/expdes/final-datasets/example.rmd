@@ -1,0 +1,141 @@
+---
+output:
+  pdf_document:
+    latex_engine: pdflatex
+    fig_crop: false
+fontsize: 11pt
+papersize: letter
+geometry: "top=0.55in,bottom=0.53in,left=0.69in,right=0.69in"
+colorlinks: true
+header-includes:
+  - \renewcommand{\familydefault}{\sfdefault}
+  - \setlength{\parskip}{6pt}
+  - \setlength{\parindent}{0pt}
+  - \pagestyle{empty}
+---
+
+```{r setup, include=FALSE}
+# Download evolution-4.csv and save it beside this file before knitting.
+# https://coleoguy.github.io/subpages/teaching/expdes/final-datasets/data/evolution-4.csv
+# In RStudio, use Knit to PDF.
+# Outside RStudio: rmarkdown::render("example.rmd").
+# Model, diagnostics, and figure below use only base R.
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+                      dev = if (capabilities("cairo")) "cairo_pdf" else "pdf")
+d <- read.csv("evolution-4.csv")
+needed <- c("pollen_deposited", "floral_form", "nectar_depth_mm",
+            "plant_height_cm", "visit_start_hour")
+stopifnot(all(needed %in% names(d)), !anyNA(d[needed]),
+          all(d$pollen_deposited %in% 0:1),
+          setequal(d$floral_form, c("bell", "tube")))
+d$floral_form <- factor(d$floral_form, levels = c("bell", "tube"))
+n <- nrow(d)
+yes <- sum(d$pollen_deposited)
+by_form <- with(d, table(floral_form, pollen_deposited))
+
+# Centring keeps coefficients on their original scale (except height,
+# expressed per 5 cm for easier interpretation).
+depth_ref <- mean(d$nectar_depth_mm)
+height_ref <- mean(d$plant_height_cm)
+time_ref <- mean(d$visit_start_hour)
+d$depth <- d$nectar_depth_mm - depth_ref
+d$height5 <- (d$plant_height_cm - height_ref) / 5
+d$hour <- d$visit_start_hour - time_ref
+
+fit <- glm(pollen_deposited ~ floral_form + depth + height5 + hour,
+           data = d, family = binomial())
+stopifnot(fit$converged, all(is.finite(coef(fit))))
+f <- coef(fit)
+se <- sqrt(diag(vcov(fit)))
+z <- qnorm(.975)
+wald <- cbind(OR = exp(f), low = exp(f - z * se), high = exp(f + z * se))
+tests <- drop1(fit, test = "Chisq")
+p_text <- function(p) if (p < .001) "< 0.001" else sprintf("= %.3f", p)
+odds_text <- function(term) {
+  paste0(sprintf("%.2f", wald[term, "OR"]), "; 95% CI ",
+         sprintf("%.2f", wald[term, "low"]), "–",
+         sprintf("%.2f", wald[term, "high"]))
+}
+
+# Check curvature of all three quantitative predictors as a block,
+# whether the nectar-depth slope differs by form, and sensitivity
+# to the observation with the largest Cook's distance.
+curved <- update(fit, . ~ . + I(depth^2) + I(height5^2) + I(hour^2))
+interaction <- update(fit, . ~ . + floral_form:depth)
+p_curve <- anova(fit, curved, test = "Chisq")[2, "Pr(>Chi)"]
+p_interaction <- anova(fit, interaction, test = "Chisq")[2, "Pr(>Chi)"]
+cook <- cooks.distance(fit)
+influence_fit <- update(fit, data = d[-which.max(cook), , drop = FALSE])
+drop_or <- exp(coef(influence_fit)[c("floral_formtube", "depth")])
+
+# Conditional predictions: hold both covariates at their observed means.
+predict_prob <- function(depth_mm, form) {
+  nd <- data.frame(depth = depth_mm - depth_ref,
+                   floral_form = factor(form, levels = levels(d$floral_form)),
+                   height5 = 0, hour = 0)
+  pr <- predict(fit, newdata = nd, type = "link", se.fit = TRUE)
+  data.frame(depth_mm, p = plogis(pr$fit),
+             lo = plogis(pr$fit - z * pr$se.fit),
+             hi = plogis(pr$fit + z * pr$se.fit))
+}
+at_ref <- predict_prob(rep(depth_ref, 2), levels(d$floral_form))
+support <- tapply(d$nectar_depth_mm, d$floral_form, range)
+xmin <- max(vapply(support, min, numeric(1)))
+xmax <- min(vapply(support, max, numeric(1)))
+grid <- seq(xmin, xmax, length.out = 120)
+forms <- levels(d$floral_form)
+curves <- lapply(forms, function(g) predict_prob(grid, rep(g, length(grid))))
+```
+
+\noindent{\small\textbf{Dataset:} \texttt{evolution-4.csv}\hfill\textbf{Student:} Blackmon, Heath\par}
+\vspace{3pt}
+\noindent{\small\textbf{BIOL 683 | EXPERIMENTAL DESIGN IN BIOLOGY}\par}
+\vspace{3pt}
+\noindent{\LARGE\bfseries Flower shape, nectar depth, and pollen deposition\par}
+\vspace{4pt}\hrule\vspace{4pt}
+
+**Question and prediction.** Are floral form and nectar depth associated with pollen deposition after a bee visit? I predicted a higher probability of deposition in tube-shaped flowers, which may guide bees past the stigma, and a lower probability at greater depths if reaching deeper nectar reduces stigma contact.
+
+**Data and approach.** The dataset contains `r n` simulated first visits, each involving a different plant and bee, with `r yes` pollen detections (`r by_form["bell","1"]`/`r sum(by_form["bell",])` bell; `r by_form["tube","1"]`/`r sum(by_form["tube",])` tube). The response was pollen detected on the stigma (yes/no). Floral form was observed, not assigned. I fit a binomial logistic regression with floral form, nectar depth (mm), stem height (cm), and visit start time (local hours) as predictors. This model estimates deposition probability for a binary response; I assessed each predictor with a likelihood-ratio test and report adjusted odds ratios (ORs) with 95% Wald intervals.
+
+**Model checks.** Adding quadratic terms for the three continuous predictors did not improve fit (likelihood-ratio *p* `r p_text(p_curve)`), nor did allowing the nectar-depth slope to differ by form (*p* `r p_text(p_interaction)`). Removing the most influential visit (Cook’s *D* = `r sprintf("%.3f", max(cook))`) left the main associations in the same directions (tube OR `r sprintf("%.2f", drop_or[1])`; depth OR `r sprintf("%.2f", drop_or[2])`).
+
+**Results.** At the same nectar depth, stem height, and visit time, tube flowers had about four times the odds of deposition as bell flowers (OR `r odds_text("floral_formtube")`; *p* `r p_text(tests["floral_form","Pr(>Chi)"])`). Each additional mm of nectar depth was associated with `r round(100*(1-wald["depth","OR"]))`% lower odds (OR `r odds_text("depth")`; *p* `r p_text(tests["depth","Pr(>Chi)"])`). The estimates for stem height (per 5 cm: OR `r odds_text("height5")`) and visit time (per hour: OR `r odds_text("hour")`) were less conclusive; both intervals included 1.
+
+```{r deposition-figure, fig.width=6.95, fig.height=2.84, out.width="100%", fig.align="center"}
+cols <- c("#A14218", "#00617D")
+ln <- c(2, 1)
+op <- par(mar = c(3.15, 3.9, .48, .7), mgp = c(2.25, .64, 0), las = 1,
+          xaxs = "i", yaxs = "i", family = "sans",
+          tcl = -.23, fg = "#26343B", col.axis = "#26343B",
+          col.lab = "#26343B", cex.axis = .82, cex.lab = .91)
+plot(NA, xlim = c(4, 14), ylim = c(0, 1),
+     xlab = "Nectar depth (mm)", ylab = "Pollen deposition probability",
+     axes = FALSE)
+abline(h = seq(0, 1, by = .25), col = "#DCE2E4", lwd = .65)
+for (i in seq_along(forms)) {
+  q <- curves[[i]]
+  polygon(c(q$depth_mm, rev(q$depth_mm)), c(q$lo, rev(q$hi)),
+          col = adjustcolor(cols[i], alpha.f = .16), border = NA)
+  # Small marks at 0 and 1 show observed absences and detections.
+  # Slight vertical offsets separate shapes and keep marks inside the axes.
+  keep <- d$floral_form == forms[i]
+  off <- if (i == 1) .018 else .045
+  points(d$nectar_depth_mm[keep],
+         ifelse(d$pollen_deposited[keep] == 1, 1 - off, off),
+         pch = c(1, 17)[i], col = adjustcolor(cols[i], alpha.f = .55), cex = .46)
+  lines(q$depth_mm, q$p, col = cols[i], lty = ln[i], lwd = 2.15)
+}
+axis(1, at = seq(4, 14, 2))
+axis(2, at = seq(0, 1, .25), labels = c("0", "0.25", "0.50", "0.75", "1"))
+box(bty = "l", col = "#59666D")
+legend("topright", inset = c(.018, .07), legend = c("Bell", "Tube"),
+       col = cols, lty = ln, lwd = 2.15, pch = c(1, 17),
+       bty = "n", horiz = TRUE,
+       cex = .84, seg.len = 2.35)
+par(op)
+```
+
+**Figure 1.** Predicted deposition probability across nectar depths observed in both floral forms. Shading shows pointwise 95% confidence intervals. Marks at the bottom and top show visits without and with pollen detection, respectively. Predictions hold stem height and visit time at their sample means.
+
+**Biological interpretation.** At mean nectar depth (`r sprintf("%.1f", depth_ref)` mm), height, and visit time, predicted deposition was `r round(100*at_ref$p[2])`% for tube flowers versus `r round(100*at_ref$p[1])`% for bell flowers. Both associations matched the predictions, but the data are simulated and the design is observational. Differences in bee species or body size across flowers could confound these associations; these results do not establish a mechanism or a real-world effect.
