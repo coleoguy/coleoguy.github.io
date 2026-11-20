@@ -1,0 +1,125 @@
+{
+  "no": 35,
+  "date": "2026-11-20",
+  "weekday": "Friday",
+  "lead": {
+    "topic": "Epistasis and protein sequence evolution models",
+    "headline": "Gene interactions hide evolutionary distance",
+    "deck": "A continuous-time protein model shows how epistasis can slow sequence evolution without changing average rates at individual sites.",
+    "authors": "Pagnani A, Barrat-Charlaix P",
+    "journal": "Genome Biology and Evolution",
+    "pubdate": "17 Nov 2026",
+    "doi": "10.1093/gbe/evag281",
+    "url": "https://doi.org/10.1093/gbe/evag281",
+    "paragraphs": [
+      "Most evolutionary models treat each position in a protein as though its substitutions occur independently. That assumption misses epistasis: a mutation's effects depend on the amino acids at other positions. Andrea Pagnani and Pierre Barrat-Charlaix built a continuous-time simulation framework that allows positions to interact. Their model draws on a Potts model, a statistical description of which amino acid combinations tend to occur together, and simulates individual substitutions using the Gillespie algorithm. This lets researchers follow a protein sequence through evolutionary time while retaining the interdependencies learned from protein families.",
+      "Compared with models in which sites evolve independently, these simulations produced a counterintuitive result. Epistasis slowed evolutionary change overall, even though average substitution rates at individual positions were not altered. The apparent contradiction emerged because site-specific rates shifted with sequence context: some positions sometimes became effectively frozen and at other times changed rapidly. The team also found that standard methods could underestimate the evolutionary distance between sequences generated under epistasis. That matters for phylogenetics, where sequence differences are used to reconstruct evolutionary histories. The study demonstrates a modeling approach, not a new measurement of mutation rates across organisms; whether its biases strongly affect real phylogenies remains an empirical question."
+    ],
+    "push": "Test the effect on inference rather than simulation alone. If empirical protein alignments with strong residue coupling are analyzed under standard independent-site models and under models informed by those couplings, do branch lengths or divergence times shift consistently? Simulated benchmarks could separate error caused by epistasis from error caused by rate variation unrelated to interactions."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Andrea Pagnani",
+      "bio": "Andrea Pagnani is a full professor in the Department of Applied Science and Technology at Politecnico di Torino, Italy. His work connects statistical physics, computational biology and statistical inference, including models of protein sequences and interactions. He has led research on explainable protein design and belongs to the university's SmartData research community.",
+      "links": [
+        {
+          "label": "Politecnico di Torino faculty profile",
+          "url": "https://www.polito.it/en/staff?p=030845"
+        },
+        {
+          "label": "SmartData research profile",
+          "url": "https://smartdata.polito.it/members/andrea-pagnani/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Pierre Barrat-Charlaix",
+      "bio": "Pierre Barrat-Charlaix is a quantitative biologist at Sorbonne Université's computational, quantitative and synthetic biology laboratory in Paris. He earned a doctorate in computer science at Sorbonne Université in 2018 and was a postdoctoral researcher in Richard Neher's group from 2019 to 2023. His interests include influenza evolution, reassortment and models of interacting protein sites.",
+      "links": [
+        {
+          "label": "Researcher's professional website",
+          "url": "https://pierrebarrat.github.io/"
+        },
+        {
+          "label": "Former postdoctoral lab profile",
+          "url": "https://neherlab.org/pierre-barrat.html"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "A glucose-powered implant closes a nerve-immune feedback loop",
+    "cite": "Xiu et al., <em>Nature</em> (18 Nov 2026), <a href=\"https://doi.org/10.1038/s41586-026-11251-7\">paper</a>.",
+    "body": "An experimental implant uses glucose inside the body both as its energy source and as a signal to regulate nerve activity. The researchers designed an artificial neuroimmune feedback system that mimics aspects of the vagal reflex, a pathway linking the nervous and immune systems. It requires neither a battery nor wireless power. In rat models of two different forms of diabetes, the system reduced inflammatory responses and improved measures of glucose regulation. Those effects reportedly persisted after treatment stopped. The result is a demonstration in animals, not a validated human therapy, but it suggests a route toward self-powered devices that respond to changing physiology.",
+    "url": "https://doi.org/10.1038/s41586-026-11251-7"
+  },
+  "slot3": {
+    "kind": "HISTORY",
+    "headline": "Lynn Margulis made cooperation central to the origin of complex cells",
+    "cite": "Dolan, <em>Journal of Eukaryotic Microbiology</em> (2012), <a href=\"https://doi.org/10.1111/j.1550-7408.2012.00622.x\">in memoriam</a>.",
+    "body": "In 1967, Lynn Margulis published a synthesis arguing that major components of complex cells arose when formerly independent microorganisms entered long-lasting partnerships. The idea was initially resisted, although evidence for symbiotic origins had been proposed by earlier scientists. Over time, molecular and cellular evidence firmly established the bacterial ancestry of mitochondria and chloroplasts, helping transform how biologists explain the origin of eukaryotes. Margulis, who died in 2011, remained an energetic advocate of symbiosis as an evolutionary force. She also advanced broader claims, including a bacterial origin for eukaryotic flagella, that did not gain comparable evidential support. Her story illustrates both the value of revisiting neglected hypotheses and the need to test each proposed evolutionary merger separately.",
+    "history_subject": "Lynn Margulis",
+    "url": "https://doi.org/10.1111/j.1550-7408.2012.00622.x"
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://doi.org/10.1093/gbe/evag281",
+      "title": "Generative continuous time model reveals epistatic signatures in protein evolution",
+      "used_for": "lead",
+      "evidence": "Publisher metadata verified the two-author order, Genome Biology and Evolution DOI and online publication on 17 November 2026. The accessible abstract describes the Potts/Gillespie simulations, context-dependent rates and underestimated evolutionary distance; accepted manuscript full text was not accessible in the web view."
+    },
+    {
+      "url": "https://www.polito.it/en/staff?p=030845",
+      "title": "Andrea Pagnani, Politecnico di Torino faculty profile",
+      "used_for": "person_1",
+      "evidence": "Verified full professor appointment in DISAT and research in statistical physics, bioinformatics and inference."
+    },
+    {
+      "url": "https://smartdata.polito.it/members/andrea-pagnani/",
+      "title": "Andrea Pagnani, SmartData research profile",
+      "used_for": "person_1",
+      "evidence": "Verified statistical physics and protein-modeling research interests."
+    },
+    {
+      "url": "https://pierrebarrat.github.io/",
+      "title": "Pierre Barrat-Charlaix, professional research website",
+      "used_for": "person_2",
+      "evidence": "Verified research at Sorbonne Université in the CQSB laboratory, sequence-evolution modeling and influenza interests."
+    },
+    {
+      "url": "https://neherlab.org/pierre-barrat.html",
+      "title": "Pierre Barrat, former Neher lab profile",
+      "used_for": "person_2",
+      "evidence": "Verified postdoctoral membership from January 2019 to April 2023 and research with Richard Neher."
+    },
+    {
+      "url": "https://www.canal-u.tv/intervenants/barrat-charlaix-pierre-243032102",
+      "title": "Pierre Barrat-Charlaix, Canal-U professional profile",
+      "used_for": "person_2",
+      "evidence": "Verified 2018 doctorate in computer science at Sorbonne Université."
+    },
+    {
+      "url": "https://doi.org/10.1038/s41586-026-11251-7",
+      "title": "A glucose-powered artificial neuroimmune axis for metabolic control",
+      "used_for": "slot2",
+      "evidence": "Nature publisher abstract and DOI checked: online 18 November 2026, rat models of type 1 and type 2 diabetes, endogenous glucose power and improved immune/metabolic measures. Full paper is subscription preview only."
+    },
+    {
+      "url": "https://doi.org/10.1111/j.1550-7408.2012.00622.x",
+      "title": "In Memoriam: Lynn Margulis (1938-2011)",
+      "used_for": "slot3",
+      "evidence": "Scholarly memorial reviewed: 1967 synthesis, earlier contributors, mitochondrial and chloroplast symbiosis, controversial flagellar hypothesis and death in 2011."
+    },
+    {
+      "url": "https://science.nasa.gov/people/lynn-margulis/",
+      "title": "Lynn Margulis (1938-2011), NASA Science",
+      "used_for": "slot3",
+      "evidence": "Institutional biography confirmed lifetime, academic career and role in promoting symbiogenesis."
+    }
+  ]
+}
