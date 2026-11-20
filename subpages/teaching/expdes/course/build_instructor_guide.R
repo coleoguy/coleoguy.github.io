@@ -72,7 +72,7 @@ build_instructor_guide <- function(course_dir, output_dir = course_dir,
   }
   required_metadata <- c("id", "title", "family", "biology", "design", "question",
                          "null", "seed", "generating_model", "generating_truth",
-                         "columns", "teaching_point", "code_simulate", "code_analysis")
+                         "columns", "teaching_point", "code_simulate", "code_analysis", "assumptions")
   problems <- character()
   modules <- lapply(paths, function(path) {
     m <- jsonlite::fromJSON(path, simplifyVector = FALSE)
@@ -82,6 +82,12 @@ build_instructor_guide <- function(course_dir, output_dir = course_dir,
     }, logical(1))]
     if (length(missing_fields)) {
       problems <<- c(problems, paste0(id, ": missing metadata: ", paste(missing_fields, collapse = ", ")))
+    }
+    if (!is.null(m$assumptions) &&
+        (!is.list(m$assumptions) || !is.null(names(m$assumptions)) ||
+         !all(vapply(m$assumptions, function(a) is.character(a) && length(a) == 1L &&
+                       nzchar(trimws(a)), logical(1))))) {
+      problems <<- c(problems, paste0(id, ": assumptions must be a list of nonempty strings"))
     }
     if (!identical(text_value(m$id), id)) problems <<- c(problems, paste0(id, ": directory and metadata ID differ"))
     files <- file.path(dirname(path), c("generated/data.csv", "generated/results.json",
@@ -159,6 +165,7 @@ build_instructor_guide <- function(course_dir, output_dir = course_dir,
     "main{margin-left:272px;padding:36px 40px 75px;max-width:1740px}.page-band{background:#080808;color:white;padding:31px 36px;margin-bottom:26px}.page-band h1{font-size:clamp(30px,3vw,44px);font-weight:700;line-height:1.12;letter-spacing:-.025em;margin:10px 0 14px}.page-band p{color:#d1d1d1;margin:0}.intro,.index-panel,.notes{background:white;border:1px solid var(--line);padding:25px 30px;margin-bottom:26px}h2{font-size:25px;line-height:1.2;margin:0 0 17px}h3{font-size:17px;line-height:1.3;margin:24px 0 10px}p{margin:0 0 14px}p:last-child{margin-bottom:0}.intro-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px}.quiet{color:var(--muted);font-size:14px}.notice{padding:15px 18px;background:#edf4f4;border-left:4px solid var(--teal)}.tag{display:inline-block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:bold;color:var(--muted);margin-bottom:8px}.actions{display:flex;flex-wrap:wrap;gap:9px}.actions a{display:inline-block;border:1px solid #aebfc1;padding:6px 10px;border-radius:3px;text-decoration:none;font-size:13px;background:white}.actions a:hover{background:#edf4f4}",
     ".table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}th{text-align:left;font-weight:bold;background:#eee;border-bottom:2px solid #333;padding:10px 12px;vertical-align:bottom}td{padding:12px;border-bottom:1px solid #dedede;vertical-align:top;overflow-wrap:anywhere}.index-table{min-width:970px}.index-table th:first-child{width:18%}.index-table th:nth-child(2){width:22%}.index-table th:nth-child(5){width:22%}.index-table th:nth-child(6){width:22%}.index-table .compact{white-space:nowrap}.index-table .truth{color:#414141}.result-mini{margin-top:5px;color:#555;font-size:12px}.column-table th:first-child{width:21%}.column-table th:last-child{width:20%}.preview-table{font-family:Menlo,Consolas,monospace;font-size:12px}.preview-table th,.preview-table td{padding:8px 10px}",
     ".dataset{background:white;border:1px solid var(--line);margin:32px 0;scroll-margin-top:22px}.dataset-head{background:#0a0a0a;color:white;padding:23px 30px}.dataset-head h2{font-size:29px;margin:6px 0 0}.dataset-head .tag{color:#c8c8c8;margin:0}.dataset-body{padding:26px 30px 30px}.meta-line{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:#555;margin-bottom:17px}.scenario{font-size:19px;line-height:1.4;margin:20px 0 22px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.box{background:#f5f5f5;border:1px solid #dedede;padding:18px 20px}.box h3{margin:0 0 9px}.box .label{display:block;text-transform:uppercase;font-size:11px;letter-spacing:.08em;font-weight:bold;color:#666;margin-bottom:6px}.null-box{margin-top:15px;padding-top:13px;border-top:1px solid #ccc}.truth-box{border-left:4px solid var(--rust)}.design{padding:17px 0 3px}.result-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.8fr);gap:24px;align-items:start}.figure{margin:0}.figure img{width:100%;height:auto;display:block;border:1px solid #e0e0e0}.figure figcaption{font-size:12px;color:#666;margin-top:8px}.summary-list{padding-left:20px;margin:0 0 17px}.summary-list li{margin:0 0 8px}.report{padding:17px 20px;background:#edf4f4;border-left:4px solid var(--teal)}.teaching{padding:14px 17px;background:#f8f2ec;margin-top:16px;border-left:4px solid #b7663e}.teaching strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}",
+    ".assumptions{background:#edf4f4;border-left:4px solid var(--teal);padding:15px 18px;margin:14px 0 24px}.assumptions h3{margin:0 0 8px}.assumptions ul{padding-left:22px;margin:0}.assumptions li+li{margin-top:5px}",
     "details{border:1px solid var(--line);margin-top:14px;background:#fafafa}summary{padding:13px 16px;cursor:pointer;font-size:14px;font-weight:bold}details[open] summary{border-bottom:1px solid var(--line)}.detail-content{padding:17px 19px}pre{background:#f4f4f4;border:1px solid #dedede;padding:16px;overflow-x:auto;font:13px/1.5 Menlo,Consolas,monospace;tab-size:2;margin:0}code{font-family:Menlo,Consolas,monospace;font-size:.93em}.detail-content pre+p{margin-top:12px}.full-output{background:#fff}.back-top{display:inline-block;font-size:12px;margin-top:21px}.footer{font-size:12px;color:#666;margin-top:30px}[hidden]{display:none!important}",
     "@media(max-width:1100px){main{padding:25px 24px 60px}.intro-grid,.two-col{grid-template-columns:1fr}.result-layout{grid-template-columns:1fr}.dataset-head,.dataset-body{padding-left:24px;padding-right:24px}}",
     "@media(max-width:760px){.sidebar{position:relative;width:auto;max-height:360px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:18px 22px}.brand strong{font-size:22px}.sidebar nav{max-height:160px}.sidebar-tools{padding-top:10px}.sidebar ol{columns:2}main{margin-left:0;padding:20px 13px 40px}.page-band{padding:25px 22px}.intro,.index-panel,.notes{padding:22px}.dataset-head h2{font-size:25px}.dataset-body{padding:22px}.scenario{font-size:17px}.two-col{gap:14px}.index-table{min-width:900px}}",
@@ -187,7 +194,7 @@ build_instructor_guide <- function(course_dir, output_dir = course_dir,
       '<h1>Generating truth, models,<br>and analysis results</h1><p>', esc(subtitle), '</p></header>',
       '<section class="intro"><h2>Start here</h2><div class="intro-grid"><div><p>',
       'Use this guide to choose a biological example, see exactly how it was generated, and connect its scientific question to the null being tested. Every record is simulated.</p>',
-      '<p>The quick index links to each method’s CSV, full R script, plot, and saved output. The figures and numerical results come from those module files.</p>',
+      '<p>After the question and design, each worked example lists the assumptions to check. The quick index links to each method’s CSV, full R script, plot, and saved output. The figures and numerical results come from those module files.</p>',
       '<div class="actions"><a href="dataset_catalog.csv">Download the dataset catalog</a>',
       '<a href="Instructor-dataset-guide.md">Readable Markdown companion</a></div></div>',
       '<div class="notice"><p><strong>Generating truth and sample evidence are different.</strong></p>',
@@ -227,7 +234,9 @@ build_instructor_guide <- function(course_dir, output_dir = course_dir,
         esc(m$null), '</p></div></section><section class="box truth-box"><h3>Generating truth</h3><p>',
         esc(m$generating_truth), '</p><span class="label">Exact generating model</span><p>', esc(m$generating_model),
         '</p></section></div><p class="design"><strong>Design and independent unit:</strong> ', esc(m$design), '</p>',
-        '<h3>Columns in the saved CSV</h3><div class="table-wrap"><table class="column-table"><thead><tr>',
+        '<section class="assumptions"><h3>What to check: assumptions</h3><ul>',
+        paste0('<li>', esc(unlist(m$assumptions, use.names = FALSE)), '</li>', collapse = ""),
+        '</ul></section><h3>Columns in the saved CSV</h3><div class="table-wrap"><table class="column-table"><thead><tr>',
         '<th scope="col">Column</th><th scope="col">Meaning</th><th scope="col">Unit / type</th></tr></thead><tbody>')
     for (column in m$columns) {
       add('<tr><td><code>', esc(text_value(column$name)), '</code></td><td>', esc(text_value(column$meaning)),
@@ -294,7 +303,9 @@ build_instructor_guide <- function(course_dir, output_dir = course_dir,
       paste0("[Saved CSV](", x$csv, ") · [Full runnable R script](", x$script, ") · [Full-size plot](", x$plot, ")"), "",
       paste0("**Generating truth:** ", m$generating_truth), "", paste0("**Exact generating model:** ", m$generating_model), "",
       paste0("**Scientific question:** ", m$question), "", paste0("**Null being tested / estimation target:** ", m$null), "",
-      paste0("**Design and independent unit:** ", m$design), "", "### Columns", "",
+      paste0("**Design and independent unit:** ", m$design), "",
+      "### What to check: assumptions", "",
+      paste0("- ", unlist(m$assumptions, use.names = FALSE)), "", "### Columns", "",
       "| Column | Meaning | Unit / type |", "|---|---|---|")
     for (column in m$columns) markdown <- c(markdown, paste0("| ", md_cell(column$name), " | ", md_cell(column$meaning), " | ", md_cell(column$unit), " |"))
     markdown <- c(markdown, "", "### Analysis from the saved dataset", "",

@@ -8,7 +8,7 @@ knit: (function(inputFile, encoding) { course_dir <- dirname(normalizePath(input
 This source regenerates the instructor guide, its readable Markdown companion,
 and `dataset_catalog.csv` from **every** saved course module. It follows the
 dataset-bank organization of the original instructor guide: generating truth,
-full model and seed, question and design, null, columns, saved analysis output,
+full model and seed, question and design, null, method-specific assumptions, columns, saved analysis output,
 and recreation code.
 
 Use **Knit** in RStudio to run the guide builder. The custom knit function above

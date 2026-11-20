@@ -98,6 +98,12 @@ Cell biologists measure oxygen consumption in independently cultured cell lines.
 
 **Design and independent unit:** One measurement from each of 24 independent cultures; compare with a prespecified reference of 10 nmol/min.
 
+### What to check: assumptions
+
+- Independent cultures
+- No extreme outliers; normality matters more at small n
+- Reference value treated as known
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -181,6 +187,12 @@ Evolutionary biologists compare adult beetle body length from two rearing enviro
 **Null being tested / estimation target:** The two population means are equal.
 
 **Design and independent unit:** Independent beetles in two rearing environments; a common population variance is a substantive model assumption.
+
+### What to check: assumptions
+
+- Independent beetles
+- Similar approximately normal population shapes at small n
+- Equal population variances
 
 ### Columns
 
@@ -269,6 +281,12 @@ Evolutionary biologists compare adult beetle body length from two rearing enviro
 
 **Design and independent unit:** Independent beetles assigned to cool or warm rearing; each beetle measured once.
 
+### What to check: assumptions
+
+- Independent beetles
+- No severe outliers; check small samples closely
+- Groups need not share a variance
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -355,6 +373,12 @@ Plant physiologists measure photosynthesis in the same leaves before and after h
 **Null being tested / estimation target:** The population mean of after minus before differences is zero.
 
 **Design and independent unit:** Twenty independent plants contribute one before/after pair each.
+
+### What to check: assumptions
+
+- Pairs are independent
+- Differences are roughly normal at small n
+- Outlying differences warrant examination
 
 ### Columns
 
@@ -443,6 +467,12 @@ Evolutionary developmental biologists compare variation in wing length between t
 
 **Design and independent unit:** Thirty independent flies per line are reared under a common environment.
 
+### What to check: assumptions
+
+- Independent observations
+- Both populations approximately normal
+- Highly sensitive to outliers and non-normality
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -527,6 +557,12 @@ Microbiologists compare the variability of colony diameters across three nutrien
 **Null being tested / estimation target:** The groups have equal variances; the test compares absolute deviations from their group centers.
 
 **Design and independent unit:** Independent colonies are grown in separately inoculated culture wells; one colony measured per well.
+
+### What to check: assumptions
+
+- Independent culture wells
+- Similar distribution shapes help a variance interpretation
+- Large differences in shape can also change absolute deviations
 
 ### Columns
 
@@ -616,6 +652,12 @@ Cell biologists examine the distribution of time to lysis among independent cult
 
 **Design and independent unit:** One lysis time for each independently treated culture; use a diagnostic to investigate shape.
 
+### What to check: assumptions
+
+- Observations are independent
+- A normal population is the reference
+- Diagnostic sensitivity changes with sample size
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -692,6 +734,12 @@ Behavioral biologists record the change in refuge-use time after a predator cue.
 **Null being tested / estimation target:** Among nonzero changes, positive and negative changes are equally likely; for continuous differences, the median is zero.
 
 **Design and independent unit:** Each independent fish is measured twice; the changes are skewed.
+
+### What to check: assumptions
+
+- Independent fish
+- Pairing is retained in differences
+- Median interpretation assumes a continuous distribution
 
 ### Columns
 
@@ -781,6 +829,12 @@ Microbiologists compare log bacterial density before and after a treatment in ma
 
 **Design and independent unit:** Each independent culture contributes one difference; occasional large differences make ranks useful.
 
+### What to check: assumptions
+
+- Independent cultures/pairs
+- Approximately symmetric differences
+- Do not use ranks to repair mismatched pairs
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -868,6 +922,12 @@ Ecologists compare parasite burdens among fish from two independent lakes.
 
 **Design and independent unit:** Each fish is sampled once; counts are strongly skewed and tied.
 
+### What to check: assumptions
+
+- Independent fish and groups
+- Measurements can be meaningfully ranked
+- Different shapes/spreads can affect the result
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -947,6 +1007,12 @@ Ecologists compare seedling biomass under three independent soil treatments.
 **Null being tested / estimation target:** All soil-treatment population means are equal.
 
 **Design and independent unit:** Twenty-five independently assigned pots per soil treatment; one biomass value per pot.
+
+### What to check: assumptions
+
+- Independent pots
+- Approximately normal errors, especially at small n
+- Ordinary ANOVA assumes equal group variances
 
 ### Columns
 
@@ -1036,6 +1102,12 @@ Ecologists compare seedling biomass under three independent soil treatments.
 
 **Design and independent unit:** Independent pots in three soil treatments; sample sizes and group variances differ.
 
+### What to check: assumptions
+
+- Independent pots
+- No severe outliers; approximately normal errors at small n
+- Group variances may differ
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -1117,6 +1189,12 @@ Plant pathologists score leaf damage in three independently assigned pathogen tr
 
 **Design and independent unit:** Twenty-four independent plants per treatment; ordinal damage scores run from 0 to 8.
 
+### What to check: assumptions
+
+- Independent plants
+- Groups defined before analysis
+- A common-shape shift model is needed for a median comparison
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -1195,6 +1273,12 @@ Beetle larvae from two genotypes are independently reared at two temperatures.
 **Null being tested / estimation target:** The warm-minus-cool mean growth difference is the same for genotypes A and B.
 
 **Design and independent unit:** 22 independent larvae per genotype × temperature combination.
+
+### What to check: assumptions
+
+- Independent larvae
+- Appropriate residual distribution and comparable residual spread
+- Replicate each treatment combination
 
 ### Columns
 
@@ -1295,6 +1379,12 @@ Plant ecologists compare nutrient treatment while accounting for initial plant h
 
 **Design and independent unit:** 90 independent plants; treatment groups overlap in initial height.
 
+### What to check: assumptions
+
+- Independent plants; appropriate residual spread
+- A suitable linear height relationship
+- Overlapping covariate ranges across treatments
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -1392,6 +1482,12 @@ Physiologists measure the same animals at four assay temperatures.
 
 **Design and independent unit:** Each of 24 animals provides all four measurements.
 
+### What to check: assumptions
+
+- Independent animals
+- Sphericity for the usual repeated-measures F test
+- Appropriate residual behavior and complete measurements
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -1481,6 +1577,12 @@ Sensory biologists record activity scores from each insect under three light con
 
 **Design and independent unit:** Eighteen independent insects each complete all three conditions in randomized order.
 
+### What to check: assumptions
+
+- Independent insects/blocks
+- Comparable measurement across conditions
+- No unmodeled order/carryover explanation for the contrast
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -1563,6 +1665,12 @@ Plant growth is compared across four nutrient regimes.
 **Null being tested / estimation target:** For each pair, the two population means are equal.
 
 **Design and independent unit:** 20 independent plants per regime; all procedures use the same simulated dataset.
+
+### What to check: assumptions
+
+- Independent plants
+- ANOVA residual assumptions and common variance
+- Specify the family of comparisons
 
 ### Columns
 
@@ -1658,6 +1766,12 @@ Plant growth is compared across four nutrient regimes.
 **Null being tested / estimation target:** For a chosen pair, the two population means are equal.
 
 **Design and independent unit:** 20 independent plants per regime; all procedures use the same simulated dataset.
+
+### What to check: assumptions
+
+- Independent plants and common residual variance
+- Appropriate normal-error model
+- The gate does not guarantee broad familywise protection
 
 ### Columns
 
@@ -1771,6 +1885,12 @@ Plant growth is compared across four nutrient regimes.
 
 **Design and independent unit:** 20 independent plants per regime; all procedures use the same simulated dataset.
 
+### What to check: assumptions
+
+- Independent plants
+- Normal-error ANOVA model with common variance
+- Specify the means and contrast family
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -1879,6 +1999,12 @@ Ecologists compare skewed leaf-damage measurements among four treatments.
 
 **Design and independent unit:** 21 independent leaves from different plants per treatment.
 
+### What to check: assumptions
+
+- Independent leaves/plants
+- Rankable observations
+- Comparable shapes are needed for a simple location interpretation
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -1978,6 +2104,12 @@ Evolutionary biologists measure wing and tail lengths in adult birds from a sing
 
 **Design and independent unit:** Each independent bird contributes one pair of continuous traits.
 
+### What to check: assumptions
+
+- Independent birds
+- A linear pattern with no dominating outliers
+- Classical inference assumes approximately bivariate-normal observations
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -2064,6 +2196,12 @@ Microbial ecologists compare soil salinity with bacterial richness across indepe
 
 **Design and independent unit:** Forty-five independent sites contribute one salinity and richness measurement each.
 
+### What to check: assumptions
+
+- Independent sites
+- Meaningful rank order
+- Monotonic association is the target; zero does not rule out every pattern
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -2148,6 +2286,12 @@ Plant ecologists grow seedlings under a gradient of nitrogen supply.
 **Null being tested / estimation target:** The population slope of mean biomass on nitrogen is zero.
 
 **Design and independent unit:** Thirty-six independently assigned pots receive one nitrogen level and yield one biomass measurement.
+
+### What to check: assumptions
+
+- Independent pot errors
+- Mean response roughly linear; inspect residuals
+- Similar residual variance; normal errors for small-sample intervals/tests
 
 ### Columns
 
@@ -2249,6 +2393,12 @@ Evolutionary biologists relate beetle horn length to body size and larval nutrit
 **Null being tested / estimation target:** The body-size coefficient is zero conditional on nutrition in the specified model.
 
 **Design and independent unit:** Sixty independent beetles are raised across a nutrient gradient and measured as adults.
+
+### What to check: assumptions
+
+- Independent beetles
+- Correct mean pattern and residual spread
+- Strong predictor collinearity limits separate interpretation
 
 ### Columns
 
@@ -2355,6 +2505,12 @@ Physiologists measure enzyme activity along a temperature gradient with occasion
 
 **Design and independent unit:** Forty independent assay preparations contribute one temperature/activity pair each.
 
+### What to check: assumptions
+
+- Independent assay preparations
+- A linear trend remains scientifically sensible
+- Bootstrap intervals are approximate; leverage can still matter
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -2438,6 +2594,12 @@ Host choice in a parasitoid wasp
 **Null being tested / estimation target:** The population probability of choosing the native host is 0.50.
 
 **Design and independent unit:** One independent choice per wasp; two equally available host species.
+
+### What to check: assumptions
+
+- Trials are independent.
+- The response has two possible outcomes.
+- The null uses the correct availability or expected probability.
 
 ### Columns
 
@@ -2527,6 +2689,12 @@ Germination of salt-tolerant seeds
 
 **Design and independent unit:** One germination outcome per seed under a fixed salt treatment.
 
+### What to check: assumptions
+
+- Independent Bernoulli trials.
+- Expected successes and failures are sufficiently large.
+- Seeds sharing an unmodeled tray may be clustered.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -2614,6 +2782,12 @@ Heat survival in evolved and ancestral yeast
 **Null being tested / estimation target:** Evolved and ancestral cultures have equal survival probabilities.
 
 **Design and independent unit:** Independent cultures assigned to one genotype; survival is scored once.
+
+### What to check: assumptions
+
+- Cultures are independent.
+- Expected cell counts support the large-sample approximation.
+- Use trials, not percentages without denominators.
 
 ### Columns
 
@@ -2707,6 +2881,12 @@ Segregation in an F2 cross
 
 **Design and independent unit:** Each offspring is assigned to one of three genotypes.
 
+### What to check: assumptions
+
+- Offspring are independent for the intended model.
+- Categories are exhaustive and mutually exclusive.
+- Expected counts support the chi-square approximation.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -2788,6 +2968,12 @@ Infection across three lizard habitats
 **Null being tested / estimation target:** Infection status and habitat are independent; infection probabilities are equal across habitats.
 
 **Design and independent unit:** Independent lizards sampled once in one of three habitats.
+
+### What to check: assumptions
+
+- Lizards are independent.
+- Each lizard contributes to one table cell.
+- Expected counts support the chi-square approximation.
 
 ### Columns
 
@@ -2871,6 +3057,12 @@ Survival of rare resistant and susceptible clones
 **Null being tested / estimation target:** The population odds ratio for clone type and survival is 1.
 
 **Design and independent unit:** Two small independent clone groups; binary survival after exposure.
+
+### What to check: assumptions
+
+- Each clone contributes one independent observation.
+- Outcomes belong to exactly one table cell.
+- Use an appropriate paired analysis for matched clones.
 
 ### Columns
 
@@ -2961,6 +3153,12 @@ Antibody detection before and after an exposure season
 **Null being tested / estimation target:** The probability of changing from negative to positive equals that of changing from positive to negative.
 
 **Design and independent unit:** The same 80 wild mice are sampled twice.
+
+### What to check: assumptions
+
+- Pairs are independent across mice.
+- Measurements are correctly matched within mice.
+- The asymptotic test needs enough discordant pairs.
 
 ### Columns
 
@@ -3063,6 +3261,12 @@ Bee visits to three floral odors
 
 **Design and independent unit:** Each bee experiences all odors in randomized sessions with a washout.
 
+### What to check: assumptions
+
+- Bees are independent of one another.
+- Each bee has a complete matched set.
+- Condition order and carryover are addressed by the design.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -3159,6 +3363,12 @@ Hybrid viability across parental divergence
 **Null being tested / estimation target:** The divergence coefficient is zero: modeled viability odds do not change with divergence.
 
 **Design and independent unit:** One independent hybrid offspring per cross.
+
+### What to check: assumptions
+
+- Offspring are independent in this simulation.
+- The specified predictor relationship is linear on the logit scale.
+- Separation or sparse outcomes can destabilize estimates.
 
 ### Columns
 
@@ -3258,6 +3468,12 @@ De novo mutations in sequenced microbial lineages
 
 **Design and independent unit:** Independent lineages have different amounts of callable sequence.
 
+### What to check: assumptions
+
+- Events follow a Poisson process at a common rate.
+- Lineages contribute independent counts.
+- Exposure is measured correctly; extra heterogeneity can inflate variance.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -3345,6 +3561,12 @@ Coral recruit counts and live coral cover
 **Null being tested / estimation target:** The coral-cover coefficient is zero: recruit rate per square meter is unrelated to cover in this model.
 
 **Design and independent unit:** Independent transects differ in surveyed area and live coral cover.
+
+### What to check: assumptions
+
+- Transect counts are independent.
+- The mean rate has the specified log-linear relationship.
+- Conditional count variance is approximately the conditional mean.
 
 ### Columns
 
@@ -3447,6 +3669,12 @@ Bacterial colony counts with clumping
 **Null being tested / estimation target:** The high-medium coefficient is zero: mean colony rates are equal between media.
 
 **Design and independent unit:** Independent plated samples vary in medium and plated volume.
+
+### What to check: assumptions
+
+- Plated samples are independent.
+- The specified log-mean model is appropriate.
+- Variance is approximately a common multiple of the mean.
 
 ### Columns
 
@@ -3552,6 +3780,12 @@ Parasite abundance and fish body length
 
 **Design and independent unit:** Independent fish vary in body length; parasite burdens are highly variable.
 
+### What to check: assumptions
+
+- Fish are independent.
+- The log mean is modeled appropriately.
+- A negative binomial mean–variance pattern is plausible.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -3656,6 +3890,12 @@ Fish use of three unordered feeding microhabitats
 
 **Design and independent unit:** Independent fish encounter either low or high food availability.
 
+### What to check: assumptions
+
+- Fish contribute independent choices.
+- Categories are mutually exclusive and sufficiently populated.
+- The multinomial model’s relative-odds structure is appropriate.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -3751,6 +3991,12 @@ Coral bleaching severity along a temperature gradient
 **Null being tested / estimation target:** The common temperature coefficient is zero; the modeled severity distribution does not change with temperature.
 
 **Design and independent unit:** Independent coral fragments are assigned a four-level ordered bleaching score.
+
+### What to check: assumptions
+
+- Coral fragments are independent.
+- A common temperature effect across cumulative thresholds is plausible.
+- The predictor relationship on the logit scale is appropriate.
 
 ### Columns
 
@@ -3851,6 +4097,12 @@ Evolutionary biologists follow larval growth under two diets.
 **Null being tested / estimation target:** The population growth-slope difference between diets is zero.
 
 **Design and independent unit:** 36 larvae measured at weeks 0–3; diet assigned to larvae.
+
+### What to check: assumptions
+
+- Independent larvae
+- Suitable random-effect and residual structure
+- Enough subjects; inspect convergence and singular fits
 
 ### Columns
 
@@ -3963,6 +4215,12 @@ Immunologists record repeated infection outcomes in vaccinated and control hosts
 **Null being tested / estimation target:** The vaccination coefficient is zero: its conditional odds ratio is one.
 
 **Design and independent unit:** 72 hosts with four weekly binary responses.
+
+### What to check: assumptions
+
+- Independent hosts; dependence modeled within host
+- Suitable log-odds and random-effect model
+- Check convergence, separation, and remaining dependence
 
 ### Columns
 
@@ -4077,6 +4335,12 @@ Pollinator visits are repeatedly counted on plants in two habitats.
 **Null being tested / estimation target:** The habitat coefficient is zero: its conditional visit-rate ratio is one.
 
 **Design and independent unit:** 48 plants observed on four days with unequal observation durations.
+
+### What to check: assumptions
+
+- Independent plants
+- Suitable conditional count and random-effect model
+- Exposure is measured and mean count scales with it
 
 ### Columns
 
@@ -4227,6 +4491,12 @@ Fish behavior is scored repeatedly using ordered stress categories.
 
 **Design and independent unit:** 70 fish measured at three visits; treatment assigned between fish.
 
+### What to check: assumptions
+
+- Independent fish
+- A common treatment odds effect across thresholds
+- Suitable random effects and converged estimation
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -4334,6 +4604,12 @@ Repeated infection screening after vaccination
 **Null being tested / estimation target:** The population-average vaccination coefficient is zero, adjusting for week.
 
 **Design and independent unit:** 80 independent animals are screened at four scheduled visits.
+
+### What to check: assumptions
+
+- Animals are independent of one another.
+- The marginal mean model and observation process are appropriate.
+- Enough independent animals are available for robust inference.
 
 ### Columns
 
@@ -4445,6 +4721,12 @@ Ecologists follow seedling survival until death or final observation.
 **Null being tested / estimation target:** No null hypothesis: the target is the survival probability over time.
 
 **Design and independent unit:** 120 independent seedlings; follow-up ends at different times.
+
+### What to check: assumptions
+
+- Independent seedlings
+- Censoring is unrelated to future survival within the population
+- Correct event and follow-up recording
 
 ### Columns
 
@@ -4607,6 +4889,12 @@ Plant pathologists compare time to infection under three protective treatments.
 **Null being tested / estimation target:** The groups have the same survival function over follow-up.
 
 **Design and independent unit:** 50 independent plants per treatment; some plants remain uninfected at final follow-up.
+
+### What to check: assumptions
+
+- Independent plants
+- Noninformative censoring within each group
+- Crossing curves may make this comparison insensitive
 
 ### Columns
 
@@ -4824,6 +5112,11 @@ Larval survival under stress is compared within 12 rearing blocks.
 
 **Design and independent unit:** Independent larvae within known rearing blocks; administrative censoring at day 30.
 
+### What to check: assumptions
+
+- Matching/strata are defined by design; meaningful group comparisons occur within strata.
+- Appropriate censoring and independence between matched sets.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -4909,6 +5202,12 @@ Seedling death times are related to protective dose and temperature.
 **Null being tested / estimation target:** The dose coefficient is zero: the adjusted hazard ratio per dose unit is one.
 
 **Design and independent unit:** 180 independent seedlings with right-censoring.
+
+### What to check: assumptions
+
+- Suitable covariate effects and censoring mechanism
+- A constant hazard ratio for ordinary coefficients
+- Independent seedlings; model dependence if present
 
 ### Columns
 
@@ -5019,6 +5318,12 @@ Botanists compare germination timing after control or cold treatment.
 
 **Design and independent unit:** 140 independent seeds; some remain ungerminated at final follow-up.
 
+### What to check: assumptions
+
+- Independent seeds and appropriate censoring
+- A suitable Weibull time distribution
+- A common acceleration factor for treatment
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -5118,6 +5423,11 @@ Larvae from 24 populations experience a control or stress condition.
 
 **Design and independent unit:** Larvae share an unobserved population risk; time-to-death is censored at day 35.
 
+### What to check: assumptions
+
+- Independent clusters; a suitable shared-frailty structure and conditional proportional hazards.
+- Appropriate censoring; enough independent clusters.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -5211,6 +5521,10 @@ Independent insect larvae are randomly assigned to ambient or warm rearing.
 
 **Design and independent unit:** Two independent randomized groups; statistic is the mean difference.
 
+### What to check: assumptions
+
+- Exchangeability or a known randomization scheme; preserve any blocks and unequal assignment probabilities.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -5291,6 +5605,11 @@ Two comparable leaves per plant receive randomized control or shade treatment.
 **Null being tested / estimation target:** Under a paired randomized design, treatment assignment has no effect on any unit; permitted within-pair swaps are equally plausible.
 
 **Design and independent unit:** Matched leaves within 28 independent plants; treatment labels are randomized within each plant.
+
+### What to check: assumptions
+
+- The assignment scheme permits the swaps.
+- For observational sign flips, a symmetric difference distribution is a separate justification.
 
 ### Columns
 
@@ -5373,6 +5692,11 @@ Test whether candidate sex-determination genes are unusually concentrated on the
 
 **Design and independent unit:** A teaching null assigns independent genes to X with probability equal to its opportunity share.
 
+### What to check: assumptions
+
+- The null opportunity model is biologically appropriate.
+- The simulation captures dependence; this simple example assumes independent genes.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -5449,6 +5773,12 @@ Estimate average biomass from independent bacterial colonies with a right-skewed
 
 **Design and independent unit:** One biomass measurement per independent colony.
 
+### What to check: assumptions
+
+- The sample represents the population of interest.
+- Rows are independent units; cluster resampling is needed for clustered data.
+- Small or unrepresentative samples limit bootstrap performance.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -5524,6 +5854,11 @@ Independent cell cultures differ in the waiting time to a developmental transiti
 **Null being tested / estimation target:** This is a performance simulation, not a single hypothesis test. The known population mean is 5 days.
 
 **Design and independent unit:** Repeat a 25-cell sampling experiment 1000 times from a known population.
+
+### What to check: assumptions
+
+- The simulated population reflects the scenario of interest.
+- Results describe this population, design and sample size.
 
 ### Columns
 
@@ -6605,6 +6940,11 @@ Compare gene expression between two conditions across 40 genes.
 
 **Design and independent unit:** Each gene comparison uses 12 independent samples per condition; simulation uses independent genes.
 
+### What to check: assumptions
+
+- Each input p-value is valid for its own null.
+- The family and error criterion match the scientific aim.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -6727,6 +7067,12 @@ Compare gene expression between two conditions across 40 genes.
 **Null being tested / estimation target:** For each gene, the treatment and control population means are equal. The adjustment changes the error criterion, not those individual nulls.
 
 **Design and independent unit:** Each gene comparison uses 12 independent samples per condition; simulation uses independent genes.
+
+### What to check: assumptions
+
+- Each input p-value is valid for its own null.
+- The family and error criterion match the scientific aim.
+- BH needs independence or suitable positive dependence for its usual guarantee.
 
 ### Columns
 
@@ -6851,6 +7197,11 @@ Four correlated morphological traits are measured in beetles from three ecotypes
 
 **Design and independent unit:** 25 independent beetles per ecotype; four traits on each individual.
 
+### What to check: assumptions
+
+- Rows are comparable observations.
+- Scaling and linear combinations suit the question.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -6938,6 +7289,11 @@ Four correlated morphological traits are measured in beetles from three ecotypes
 **Null being tested / estimation target:** The target is a low-dimensional configuration that preserves the chosen distances; this map is not itself a hypothesis test.
 
 **Design and independent unit:** 25 independent beetles per ecotype; four traits on each individual.
+
+### What to check: assumptions
+
+- The chosen distance represents biological similarity.
+- A 2D view may distort higher-dimensional distances.
 
 ### Columns
 
@@ -7122,6 +7478,11 @@ Four correlated morphological traits are measured in beetles from three ecotypes
 
 **Design and independent unit:** 25 independent beetles per ecotype; four traits on each individual.
 
+### What to check: assumptions
+
+- Classes have approximately multivariate-normal predictors and a common covariance for the classical model.
+- Validation samples must be independent of model fitting.
+
 ### Columns
 
 | Column | Meaning | Unit / type |
@@ -7223,6 +7584,12 @@ Microbial ecologists count bacterial colonies in repeated water samples from exp
 **Null being tested / estimation target:** The warming coefficient is zero: population-average colony rates are equal at the same week and exposure.
 
 **Design and independent unit:** Ninety independent mesocosms, 45 per temperature treatment, are sampled at weeks 0–3. Each sample has a known plated volume.
+
+### What to check: assumptions
+
+- Mesocosms are independent; repeated samples are dependent
+- The marginal log-mean model and exposure are appropriate
+- Robust inference needs enough independent mesocosms
 
 ### Columns
 
@@ -7330,4 +7697,4 @@ source("build_instructor_guide.R")
 build_instructor_guide(".")
 ```
 
-Built 2026-09-23 22:54 CDT from 63 saved module datasets. All discovered modules are included.
+Built 2026-11-20 13:22 CST from 63 saved module datasets. All discovered modules are included.
