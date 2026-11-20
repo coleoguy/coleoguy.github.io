@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 34,
-    "date": "2026-11-19"
+    "no": 35,
+    "date": "2026-11-20"
   },
   "issues": [
     {
@@ -582,6 +582,23 @@
       "slot3_headline": "Astronomers watch a companion star spiral into a giant",
       "slot3_url": "https://doi.org/10.1038/s41586-026-11221-z",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0035-2026-11-20.json",
+      "no": 35,
+      "date": "2026-11-20",
+      "slug": "2026-11-20",
+      "topic": "Epistasis and protein sequence evolution models",
+      "lead_headline": "Gene interactions hide evolutionary distance",
+      "lead_doi": "10.1093/gbe/evag281",
+      "lead_url": "https://doi.org/10.1093/gbe/evag281",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "A glucose-powered implant closes a nerve-immune feedback loop",
+      "slot2_url": "https://doi.org/10.1038/s41586-026-11251-7",
+      "slot3_kind": "HISTORY",
+      "slot3_headline": "Lynn Margulis made cooperation central to the origin of complex cells",
+      "slot3_url": "https://doi.org/10.1111/j.1550-7408.2012.00622.x",
+      "history_subject": "Lynn Margulis"
     }
   ],
   "used_urls": [
@@ -627,6 +644,7 @@
     "https://doi.org/10.1038/s41586-026-11212-0",
     "https://doi.org/10.1038/s41586-026-11213-z",
     "https://doi.org/10.1038/s41586-026-11221-z",
+    "https://doi.org/10.1038/s41586-026-11251-7",
     "https://doi.org/10.1038/s41586-026-11283-z",
     "https://doi.org/10.1038/s41586-026-11308-7",
     "https://doi.org/10.1038/s41588-026-02829-y",
@@ -649,6 +667,7 @@
     "https://doi.org/10.1093/evlett/qrag043",
     "https://doi.org/10.1093/evolut/qpag205",
     "https://doi.org/10.1093/gbe/evag259",
+    "https://doi.org/10.1093/gbe/evag281",
     "https://doi.org/10.1093/genetics/16.2.97",
     "https://doi.org/10.1093/genetics/28.6.491",
     "https://doi.org/10.1093/genetics/78.2.737",
@@ -663,6 +682,7 @@
     "https://doi.org/10.1098/rsos.260937",
     "https://doi.org/10.1103/c84y-ggqs",
     "https://doi.org/10.1103/gbkc-6nlj",
+    "https://doi.org/10.1111/j.1550-7408.2012.00622.x",
     "https://doi.org/10.1111/mec.70592",
     "https://doi.org/10.1111/nph.71668",
     "https://doi.org/10.1126/sciadv.aeb9422",
@@ -731,6 +751,7 @@
     "10.1038/s41586-026-11212-0",
     "10.1038/s41586-026-11213-z",
     "10.1038/s41586-026-11221-z",
+    "10.1038/s41586-026-11251-7",
     "10.1038/s41586-026-11283-z",
     "10.1038/s41586-026-11308-7",
     "10.1038/s41588-026-02829-y",
@@ -753,6 +774,7 @@
     "10.1093/evlett/qrag043",
     "10.1093/evolut/qpag205",
     "10.1093/gbe/evag259",
+    "10.1093/gbe/evag281",
     "10.1093/genetics/16.2.97",
     "10.1093/genetics/28.6.491",
     "10.1093/genetics/78.2.737",
@@ -767,6 +789,7 @@
     "10.1098/rsos.260937",
     "10.1103/c84y-ggqs",
     "10.1103/gbkc-6nlj",
+    "10.1111/j.1550-7408.2012.00622.x",
     "10.1111/mec.70592",
     "10.1111/nph.71668",
     "10.1126/sciadv.aeb9422",

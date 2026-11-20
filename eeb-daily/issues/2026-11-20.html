@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EEB Daily No. 35: Gene interactions hide evolutionary distance</title>
+<meta name="description" content="A continuous-time protein model shows how epistasis can slow sequence evolution without changing average rates at individual sites.">
+<meta property="og:title" content="EEB Daily No. 35: Gene interactions hide evolutionary distance">
+<meta property="og:description" content="A continuous-time protein model shows how epistasis can slow sequence evolution without changing average rates at individual sites.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EEB Daily">
+<link rel="canonical" href="https://coleoguy.github.io/eeb-daily/issues/2026-11-20.html">
+<link rel="alternate" type="application/rss+xml" title="EEB Daily" href="https://coleoguy.github.io/eeb-daily/feed.xml">
+<link rel="icon" href="/assets/img/favicon.ico">
+<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15161A" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&family=Archivo+Narrow:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --paper: #FBFAF7; --raised: #FFFFFF; --ink: #141414; --ink-2: #4E4E4E; --ink-3: #7A7A76;
+  --rule: #141414; --hair: #CFCDC6; --accent: #7A1F1F; --tint: #F1EDE6; --link: #7A1F1F;
+  --display: "Newsreader", "Iowan Old Style", "Times New Roman", serif;
+  --body: "Newsreader", Georgia, serif;
+  --label: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15161A; --raised: #1C1D22; --ink: #ECE9E2; --ink-2: #B9B5AC; --ink-3: #8B877F;
+    --rule: #ECE9E2; --hair: #3A3B41; --accent: #E0837E; --tint: #23242A; --link: #E0837E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15161A; --raised: #1C1D22; --ink: #ECE9E2; --ink-2: #B9B5AC; --ink-3: #8B877F;
+  --rule: #ECE9E2; --hair: #3A3B41; --accent: #E0837E; --tint: #23242A; --link: #E0837E; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17.5px; line-height: 1.5;
+       padding: 0 max(18px, env(safe-area-inset-left)) max(28px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-right)); }
+a { color: var(--link); text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+p { margin: 0 0 0.85em; }
+em { font-style: italic; }
+sub { font-size: 0.7em; }
+.wrap { max-width: 560px; margin: 0 auto; }
+
+/* Nameplate */
+.nameplate { text-align: center; border-top: 4px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0 10px; margin-top: 14px; }
+.nameplate h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 12vw, 3.6rem); line-height: 0.95; letter-spacing: -0.015em; margin: 0; font-variation-settings: "opsz" 72; }
+.nameplate h1 a { color: inherit; text-decoration: none; }
+.ears { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px;
+        font-family: var(--label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); }
+.dateline { border-bottom: 3px solid var(--rule); padding: 6px 0 7px; margin-bottom: 22px; text-align: center;
+            font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--ink-2); text-wrap: balance; }
+
+/* Stories */
+.kicker { font-family: var(--label); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin: 0 0 6px; }
+.kicker .topic { color: var(--ink-2); font-weight: 500; }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.7rem, 7vw, 2.1rem); line-height: 1.1; margin: 0 0 10px; letter-spacing: -0.01em; text-wrap: balance; font-variation-settings: "opsz" 48; }
+.deck { font-family: var(--display); font-style: italic; font-size: 1.15rem; line-height: 1.35; color: var(--ink-2); margin: 0 0 12px; text-wrap: pretty; }
+.byline { font-family: var(--label); font-size: 0.82rem; letter-spacing: 0.02em; color: var(--ink-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 7px 0; margin: 0 0 16px; line-height: 1.45; }
+.byline b { color: var(--ink); font-weight: 600; }
+.byline .sep { color: var(--ink-3); padding: 0 6px; }
+.text p:first-of-type::first-letter { font-family: var(--display); font-weight: 700; font-size: 3.1em; float: left; line-height: 0.8; padding: 0.08em 0.1em 0 0; }
+.pushbox { background: var(--tint); padding: 12px 14px; margin: 6px 0 18px; border-radius: 3px; font-size: 1rem; line-height: 1.45; }
+.pushbox .lab, .why .lab { font-family: var(--label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--accent); display: block; margin-bottom: 3px; }
+
+.side { border-top: 1px solid var(--rule); padding-top: 10px; }
+.side .kicker { color: var(--ink); }
+.author { padding: 6px 0 10px; }
+.author + .author { border-top: 1px solid var(--hair); padding-top: 12px; }
+.author .role { font-family: var(--label); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+.author .name { font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.2; margin: 2px 0 5px; }
+.author p { font-size: 1rem; line-height: 1.45; margin: 0; }
+.links { font-family: var(--label); font-size: 0.82rem; letter-spacing: 0.02em; }
+.links a { color: var(--link); }
+
+.fold { border-top: 3px double var(--rule); margin: 26px 0 22px; }
+.story { margin-bottom: 26px; }
+.story + .story { border-top: 1px solid var(--hair); padding-top: 22px; }
+.story h3 { font-family: var(--display); font-weight: 600; font-size: 1.45rem; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.005em; text-wrap: balance; font-variation-settings: "opsz" 36; }
+.story .cite { font-family: var(--label); font-size: 0.82rem; color: var(--ink-2); margin: 0 0 10px; letter-spacing: 0.02em; line-height: 1.45; overflow-wrap: anywhere; }
+.story .body { font-size: 1.05rem; }
+.why { border-top: 1px solid var(--hair); padding-top: 8px; margin-top: 10px; font-size: 1rem; line-height: 1.45; }
+
+/* Footer */
+.colophon { border-top: 1px solid var(--rule); margin-top: 24px; padding-top: 12px; font-family: var(--label); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--ink-2); text-transform: uppercase; line-height: 1.7; }
+.colophon .nav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 8px; font-size: 0.82rem; }
+.colophon .nav a { color: var(--link); }
+.colophon .tiny { text-transform: none; letter-spacing: 0; font-size: 0.74rem; color: var(--ink-3); margin-top: 10px; }
+.colophon .tiny a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+
+/* Archive */
+.archive h2 { font-size: 1.6rem; margin: 0 0 18px; }
+.archive ol { list-style: none; padding: 0; margin: 0; }
+.archive li { border-top: 1px solid var(--hair); padding: 14px 0; }
+.archive li:last-child { border-bottom: 1px solid var(--hair); }
+.archive .meta { font-family: var(--label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); margin-bottom: 3px; }
+.archive .meta .num { color: var(--accent); font-weight: 700; }
+.archive .hl { font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; display: block; color: var(--ink); }
+.archive .hl:hover { color: var(--accent); }
+.archive .also { font-size: 0.92rem; color: var(--ink-2); margin: 5px 0 0; line-height: 1.4; }
+.archive .also b { font-family: var(--label); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-right: 4px; }
+
+/* Guide page */
+.guide h2 { font-size: 1.45rem; margin: 28px 0 10px; }
+.guide p, .guide li { font-size: 1.02rem; line-height: 1.5; }
+.guide ol, .guide ul { padding-left: 1.3em; margin: 0 0 1em; }
+.guide li { margin-bottom: 0.5em; }
+.guide code { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; font-size: 0.86em; background: var(--tint); padding: 1px 5px; border-radius: 3px; }
+.guide pre { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; font-size: 0.78rem; line-height: 1.5; background: var(--tint); padding: 14px; border-radius: 4px; overflow-x: auto; white-space: pre; margin: 0 0 1em; }
+.guide .files { font-family: var(--label); font-size: 0.92rem; }
+
+@media print {
+  @page { size: letter; margin: 0.6in; }
+  body { background: #fff; color: #000; font-size: 11pt; padding: 0; }
+  .wrap { max-width: none; }
+  .nameplate { margin-top: 0; }
+  .colophon .nav, .colophon .tiny { display: none; }
+  a { color: inherit; }
+  .story, .author, .pushbox { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="nameplate"><h1><a href="../">EEB Daily</a></h1><div class="ears"><span>Vol. 1, No. 35</span><span>Friday, November 20, 2026</span><span>Bryan, Texas</span></div></header>
+<div class="dateline">One paper worth the coffee. One paper from beyond the fence. One story from the wider world.</div>
+
+<section class="lead">
+<p class="kicker">The lead <span class="topic">&middot; Epistasis and protein sequence evolution models</span></p>
+<h2>Gene interactions hide evolutionary distance</h2>
+<p class="deck">A continuous-time protein model shows how epistasis can slow sequence evolution without changing average rates at individual sites.</p>
+<div class="byline"><b>Pagnani A, Barrat-Charlaix P</b><span class="sep">&middot;</span><em>Genome Biology and Evolution</em>, 17 Nov 2026<span class="sep">&middot;</span><a href="https://doi.org/10.1093/gbe/evag281">doi:10.1093/gbe/evag281</a></div>
+<div class="text"><p>Most evolutionary models treat each position in a protein as though its substitutions occur independently. That assumption misses epistasis: a mutation's effects depend on the amino acids at other positions. Andrea Pagnani and Pierre Barrat-Charlaix built a continuous-time simulation framework that allows positions to interact. Their model draws on a Potts model, a statistical description of which amino acid combinations tend to occur together, and simulates individual substitutions using the Gillespie algorithm. This lets researchers follow a protein sequence through evolutionary time while retaining the interdependencies learned from protein families.</p><p>Compared with models in which sites evolve independently, these simulations produced a counterintuitive result. Epistasis slowed evolutionary change overall, even though average substitution rates at individual positions were not altered. The apparent contradiction emerged because site-specific rates shifted with sequence context: some positions sometimes became effectively frozen and at other times changed rapidly. The team also found that standard methods could underestimate the evolutionary distance between sequences generated under epistasis. That matters for phylogenetics, where sequence differences are used to reconstruct evolutionary histories. The study demonstrates a modeling approach, not a new measurement of mutation rates across organisms; whether its biases strongly affect real phylogenies remains an empirical question.</p></div>
+<div class="pushbox"><span class="lab">Where to push</span>Test the effect on inference rather than simulation alone. If empirical protein alignments with strong residue coupling are analyzed under standard independent-site models and under models informed by those couplings, do branch lengths or divergence times shift consistently? Simulated benchmarks could separate error caused by epistasis from error caused by rate variation unrelated to interactions.</div>
+<aside class="side"><p class="kicker">Who wrote it</p>
+<div class="author"><div class="role">First author</div><div class="name">Andrea Pagnani</div><p>Andrea Pagnani is a full professor in the Department of Applied Science and Technology at Politecnico di Torino, Italy. His work connects statistical physics, computational biology and statistical inference, including models of protein sequences and interactions. He has led research on explainable protein design and belongs to the university's SmartData research community. <span class="links"><a href="https://www.polito.it/en/staff?p=030845">Politecnico di Torino faculty profile</a> &middot; <a href="https://smartdata.polito.it/members/andrea-pagnani/">SmartData research profile</a></span></p></div>
+<div class="author"><div class="role">Last author</div><div class="name">Pierre Barrat-Charlaix</div><p>Pierre Barrat-Charlaix is a quantitative biologist at Sorbonne Université's computational, quantitative and synthetic biology laboratory in Paris. He earned a doctorate in computer science at Sorbonne Université in 2018 and was a postdoctoral researcher in Richard Neher's group from 2019 to 2023. His interests include influenza evolution, reassortment and models of interacting protein sites. <span class="links"><a href="https://pierrebarrat.github.io/">Researcher&#x27;s professional website</a> &middot; <a href="https://neherlab.org/pierre-barrat.html">Former postdoctoral lab profile</a></span></p></div>
+</aside>
+</section>
+<div class="fold"></div>
+<article class="story"><p class="kicker">Beyond EEB <span class="topic">&middot; A paper from outside evolution and ecology</span></p>
+<h3>A glucose-powered implant closes a nerve-immune feedback loop</h3>
+<p class="cite">Xiu et al., <em>Nature</em> (18 Nov 2026), <a href="https://doi.org/10.1038/s41586-026-11251-7">paper</a>.</p>
+<p class="body">An experimental implant uses glucose inside the body both as its energy source and as a signal to regulate nerve activity. The researchers designed an artificial neuroimmune feedback system that mimics aspects of the vagal reflex, a pathway linking the nervous and immune systems. It requires neither a battery nor wireless power. In rat models of two different forms of diabetes, the system reduced inflammatory responses and improved measures of glucose regulation. Those effects reportedly persisted after treatment stopped. The result is a demonstration in animals, not a validated human therapy, but it suggests a route toward self-powered devices that respond to changing physiology.</p>
+</article>
+<article class="story"><p class="kicker">History <span class="topic">&middot; From the history of science</span></p>
+<h3>Lynn Margulis made cooperation central to the origin of complex cells</h3>
+<p class="cite">Dolan, <em>Journal of Eukaryotic Microbiology</em> (2012), <a href="https://doi.org/10.1111/j.1550-7408.2012.00622.x">in memoriam</a>.</p>
+<p class="body">In 1967, Lynn Margulis published a synthesis arguing that major components of complex cells arose when formerly independent microorganisms entered long-lasting partnerships. The idea was initially resisted, although evidence for symbiotic origins had been proposed by earlier scientists. Over time, molecular and cellular evidence firmly established the bacterial ancestry of mitochondria and chloroplasts, helping transform how biologists explain the origin of eukaryotes. Margulis, who died in 2011, remained an energetic advocate of symbiosis as an evolutionary force. She also advanced broader claims, including a bacterial origin for eukaryotic flagella, that did not gain comparable evidential support. Her story illustrates both the value of revisiting neglected hypotheses and the need to test each proposed evolutionary merger separately.</p>
+</article>
+<footer class="colophon"><div class="nav"><a href="../issues/2026-11-19.html">&larr; No. 34</a><a href="../archive/">All issues</a><a href="../">Latest &rarr;</a></div><div>Produced nightly for the Blackmon lab, Texas A&amp;M Biology &middot; Research from linked sources &middot; Tomorrow: Classic and Beyond biology</div><div class="tiny">Written by ChatGPT from the day's literature; read the linked sources before citing anything. <a href="../build-your-own.html">Build one for your own lab</a> &middot; <a href="../feed.xml">RSS</a></div></footer>
+</div>
+</body>
+</html>
