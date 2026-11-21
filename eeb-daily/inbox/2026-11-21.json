@@ -1,0 +1,118 @@
+{
+  "no": 36,
+  "date": "2026-11-21",
+  "weekday": "Saturday",
+  "lead": {
+    "topic": "Conservation evolution and amphibian host-pathogen immunity",
+    "headline": "Immunization can help frogs survive chytrid",
+    "deck": "A synthesis of 36 studies finds that some experimental immunization approaches reduce fungal infections or deaths in amphibians.",
+    "authors": "Chung MHJ, Duncan RP, Noble DWA, Scheele BC, Clulow S",
+    "journal": "Nature Ecology & Evolution",
+    "pubdate": "20 Nov 2026",
+    "doi": "10.1038/s41559-026-03221-z",
+    "url": "https://doi.org/10.1038/s41559-026-03221-z",
+    "paragraphs": [
+      "The chytrid fungus <em>Batrachochytrium dendrobatidis</em> has contributed to amphibian declines around the world, but protecting wild frogs from it remains difficult. Meng-Han Joseph Chung and colleagues asked whether experimental immunization can reduce the damage. They pooled 208 effect sizes from 36 studies involving 22 amphibian species. The studies compared animals that received some form of prior immunization with untreated animals after exposure to the fungus. Rather than treating protection as one outcome, the team separately assessed how often animals became infected, how heavily infected they were, and whether they died.",
+      "Immunization using live pathogens was associated with lower fungal loads and reduced mortality after re-exposure. Treatments using natural chemicals derived from the fungus reduced infection prevalence, the proportion of animals testing positive. Other immunization approaches did not produce statistically clear benefits across the assembled studies. Responses also differed with life stage, host group and timing during infection. This is important evidence that acquired protection is possible, not proof that a single vaccine works for every threatened frog. The authors suggest immunization could aid reintroductions, but outcomes in complex wild populations still need direct testing."
+    ],
+    "push": "The immediate test is persistence. If frogs are immunized before release, does protection survive metamorphosis, seasonal change and repeated exposure in natural ponds? A randomized release study could compare survival and infection in immunized and control cohorts while monitoring whether any benefit persists into the next generation, when offspring may be unprotected."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Meng-Han Joseph Chung",
+      "bio": "Meng-Han Joseph Chung is a postdoctoral research fellow in ecology and genomics at the University of Canberra. He earned his PhD at the Australian National University in 2023, studying fish life histories and sexual selection. His current work examines whether immunization can help threatened frogs resist chytrid disease, including across metamorphosis.",
+      "links": [
+        {
+          "label": "University of Canberra research profile",
+          "url": "https://researchprofiles.canberra.edu.au/en/persons/meng-han-joseph-chung/"
+        },
+        {
+          "label": "University of Canberra research news",
+          "url": "https://www.canberra.edu.au/about-uc/media/newsroom/2026/september/tracking-immunity-through-transformation-uc-researcher-awarded-max-day-fellowship-for-amphibian-conservation-research"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Simon Clulow",
+      "bio": "Simon Clulow is an associate professor in conservation ecology at the University of Canberra. He studies threatened amphibians and reptiles, invasive species, and wildlife disease. His team develops practical conservation interventions, including warm refuges that limit chytrid fungus and experimental immunization of frogs being returned to habitats where the disease persists.",
+      "links": [
+        {
+          "label": "University of Canberra research profile",
+          "url": "https://researchprofiles.canberra.edu.au/en/persons/simon-clulow/"
+        },
+        {
+          "label": "University of Canberra conservation project",
+          "url": "https://www.canberra.edu.au/about-uc/media/newsroom/2026/feb/uc-research-project-returns-extinct-frogs-to-the-act,-marks-major-milestone-in-global-fight-against-chytrid-fungus"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Evolution follows the genetic links between traits",
+    "cite": "Lande, <em>Evolution</em> (1979), <a href=\"https://doi.org/10.1111/j.1558-5646.1979.tb04694.x\">original paper</a>.",
+    "body": "Natural selection rarely acts on a single trait in isolation. In a 1979 paper, Russell Lande developed a quantitative genetic account of how correlated characters evolve together. The key insight is that response depends not just on selection for each trait but on the genetic variances and covariances connecting them. He applied the framework to brain and body size, using evidence from mouse selection experiments and mammalian comparisons to examine their joint evolutionary trajectories. The work helped establish multivariate quantitative genetics as a language for studying evolutionary constraint, correlated responses and the directions in which populations can most readily change.",
+    "url": "https://doi.org/10.1111/j.1558-5646.1979.tb04694.x"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "An elevator sends a message using gravity",
+    "cite": "Groszek et al., <em>Science Advances</em> (online 18 Nov 2026), <a href=\"https://doi.org/10.1126/sciadv.aee0802\">paper</a>.",
+    "body": "A physicist's unlikely transmitter was a university elevator. At the University of Queensland, researchers moved its 1.8-tonne counterweight between two positions to encode binary digits. A sensitive gravimeter on the other side of a brick wall detected the tiny changes in gravitational pull. The team reconstructed the word 'Gravity' across roughly 0.7 metres, transmitting one bit per minute. The experiment, published online on 18 November, demonstrates that ordinary walls cannot screen gravitational signals as they can some electromagnetic ones. It is far from a usable communication system: longer ranges and faster messages depend on proposed sensor improvements, not demonstrated performance.",
+    "url": "https://doi.org/10.1126/sciadv.aee0802"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41559-026-03221-z",
+      "title": "Meta-analysis shows that immunization reduces amphibian susceptibility to the chytrid fungus",
+      "used_for": "lead",
+      "evidence": "Publisher indexed abstract and metadata checked: 20 November 2026 online date, five-author order, 208 effect sizes from 36 studies and 22 species, and immunization-specific infection and mortality outcomes. Web full-page access was redirected to sign-in; claims limited to indexed abstract and figure descriptions."
+    },
+    {
+      "url": "https://researchprofiles.canberra.edu.au/en/persons/meng-han-joseph-chung/",
+      "title": "Meng-Han Joseph Chung, University of Canberra profile",
+      "used_for": "person_1",
+      "evidence": "Verified postdoctoral appointment, 2023 Australian National University PhD, former fish life-history work and current amphibian immunization research."
+    },
+    {
+      "url": "https://www.canberra.edu.au/about-uc/media/newsroom/2026/september/tracking-immunity-through-transformation-uc-researcher-awarded-max-day-fellowship-for-amphibian-conservation-research",
+      "title": "Tracking immunity through transformation, University of Canberra",
+      "used_for": "person_1",
+      "evidence": "September 2026 institutional report confirms amphibian immunization and metamorphosis research."
+    },
+    {
+      "url": "https://researchprofiles.canberra.edu.au/en/persons/simon-clulow/",
+      "title": "Simon Clulow, University of Canberra profile",
+      "used_for": "person_2",
+      "evidence": "Verified associate professorship in conservation ecology and institutional affiliation."
+    },
+    {
+      "url": "https://www.canberra.edu.au/about-uc/media/newsroom/2026/feb/uc-research-project-returns-extinct-frogs-to-the-act,-marks-major-milestone-in-global-fight-against-chytrid-fungus",
+      "title": "UC research project returns extinct frogs to the ACT",
+      "used_for": "person_2",
+      "evidence": "Institutional account of Clulow's work on frog reintroductions, immunization and warm refuges."
+    },
+    {
+      "url": "https://doi.org/10.1111/j.1558-5646.1979.tb04694.x",
+      "title": "Quantitative genetic analysis of multivariate evolution, applied to brain:body size allometry",
+      "used_for": "slot2",
+      "evidence": "Verified Lande as sole author, March 1979 original publication, Evolution 33:402-416 and genetic covariance treatment of linked trait responses. Publisher landing page lists publication history; full paper was not available in the browser."
+    },
+    {
+      "url": "https://doi.org/10.1126/sciadv.aee0802",
+      "title": "Unblockable communication with gravity",
+      "used_for": "slot3",
+      "evidence": "PubMed primary bibliographic indexing confirms Science Advances 12, eaee0802, online 18 November 2026 and DOI. Abstract verifies around 0.7 metres through a wall and one bit per minute."
+    },
+    {
+      "url": "https://news.uq.edu.au/2026-11-uq-researchers-send-unblockable-message-using-gravity",
+      "title": "UQ researchers send an unblockable message using gravity",
+      "used_for": "slot3",
+      "evidence": "University of Queensland first-party report published 19 November 2026 verifies 1.8-tonne counterweight, word transmitted and proposed sensor improvements as projections."
+    }
+  ]
+}
