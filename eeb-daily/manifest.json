@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 35,
-    "date": "2026-11-20"
+    "no": 36,
+    "date": "2026-11-21"
   },
   "issues": [
     {
@@ -599,6 +599,23 @@
       "slot3_headline": "Lynn Margulis made cooperation central to the origin of complex cells",
       "slot3_url": "https://doi.org/10.1111/j.1550-7408.2012.00622.x",
       "history_subject": "Lynn Margulis"
+    },
+    {
+      "path": "eeb-daily/data/0036-2026-11-21.json",
+      "no": 36,
+      "date": "2026-11-21",
+      "slug": "2026-11-21",
+      "topic": "Conservation evolution and amphibian host-pathogen immunity",
+      "lead_headline": "Immunization can help frogs survive chytrid",
+      "lead_doi": "10.1038/s41559-026-03221-z",
+      "lead_url": "https://doi.org/10.1038/s41559-026-03221-z",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Evolution follows the genetic links between traits",
+      "slot2_url": "https://doi.org/10.1111/j.1558-5646.1979.tb04694.x",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "An elevator sends a message using gravity",
+      "slot3_url": "https://doi.org/10.1126/sciadv.aee0802",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -629,6 +646,7 @@
     "https://doi.org/10.1038/s41556-026-02124-2",
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41559-026-03216-w",
+    "https://doi.org/10.1038/s41559-026-03221-z",
     "https://doi.org/10.1038/s41563-026-02789-y",
     "https://doi.org/10.1038/s41563-026-02793-2",
     "https://doi.org/10.1038/s41564-026-02480-7",
@@ -683,9 +701,11 @@
     "https://doi.org/10.1103/c84y-ggqs",
     "https://doi.org/10.1103/gbkc-6nlj",
     "https://doi.org/10.1111/j.1550-7408.2012.00622.x",
+    "https://doi.org/10.1111/j.1558-5646.1979.tb04694.x",
     "https://doi.org/10.1111/mec.70592",
     "https://doi.org/10.1111/nph.71668",
     "https://doi.org/10.1126/sciadv.aeb9422",
+    "https://doi.org/10.1126/sciadv.aee0802",
     "https://doi.org/10.1126/sciadv.aef0605",
     "https://doi.org/10.1126/science.156.3774.477",
     "https://doi.org/10.1126/science.adz4903",
@@ -736,6 +756,7 @@
     "10.1038/s41556-026-02124-2",
     "10.1038/s41559-026-03214-y",
     "10.1038/s41559-026-03216-w",
+    "10.1038/s41559-026-03221-z",
     "10.1038/s41563-026-02789-y",
     "10.1038/s41563-026-02793-2",
     "10.1038/s41564-026-02480-7",
@@ -790,9 +811,11 @@
     "10.1103/c84y-ggqs",
     "10.1103/gbkc-6nlj",
     "10.1111/j.1550-7408.2012.00622.x",
+    "10.1111/j.1558-5646.1979.tb04694.x",
     "10.1111/mec.70592",
     "10.1111/nph.71668",
     "10.1126/sciadv.aeb9422",
+    "10.1126/sciadv.aee0802",
     "10.1126/sciadv.aef0605",
     "10.1126/science.156.3774.477",
     "10.1126/science.adz4903",
