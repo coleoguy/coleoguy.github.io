@@ -1,0 +1,114 @@
+{
+  "no": 37,
+  "date": "2026-11-22",
+  "weekday": "Sunday",
+  "lead": {
+    "topic": "Population genomics: inferring inbreeding from sparse sequence data",
+    "headline": "Cheap genotypes still reveal inbreeding",
+    "deck": "Sparse genetic data can recover overall inbreeding even when the age of shared ancestry remains difficult to resolve.",
+    "authors": "Forneris N, Wragg D, Fischer D, Schoenebeck JJ, Clements DN, Iso-Touru T, Gautier M, Druet T",
+    "journal": "Heredity",
+    "pubdate": "19 Nov 2026",
+    "doi": "10.1038/s41437-026-00909-7",
+    "url": "https://doi.org/10.1038/s41437-026-00909-7",
+    "paragraphs": [
+      "When two copies of a DNA segment descend from the same ancestor, the segment is homozygous by descent (HBD). Long HBD tracts usually trace recent shared ancestors; short tracts can reflect more distant ancestry. That distinction matters when breeding programs or conservation managers need to measure inbreeding without paying for deep sequencing of every individual. Forneris and colleagues asked how reliably researchers can recover HBD from three cheaper genomic assays: small SNP panels, reduced-representation sequencing, and low-coverage whole-genome sequencing. They began with high-coverage genomes from 132 Holstein cattle, then computationally thinned the data to mimic each assay.",
+      "Using models that assign genomic stretches to multiple HBD length classes, the team recovered overall inbreeding coefficients with SNP panels of 6,000 markers, reduced-representation datasets of 15,000 SNPs, and sequencing depth as low as 0.1 times. The analyses also supported genome-wide and locus-specific estimates, but only the longest HBD tracts could be identified dependably. Tests with Nordic Red cattle and Labrador retrievers broadly confirmed the pattern using real economical data. The lesson is not that all ancestry can be reconstructed cheaply: model choice and the decision about which HBD classes to trust remain critical, particularly for distinguishing old from recent inbreeding."
+    ],
+    "push": "A useful follow-up would compare these thresholds in populations with lower diversity, strong population structure, or recent admixture. In small conservation populations, long HBD tracts might be common, but relatedness and marker ascertainment could differ from dairy cattle. Which sampling strategy gives the least biased prediction of deleterious recessive homozygosity per dollar spent?"
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Natalia Forneris",
+      "bio": "Natalia Soledad Forneris is a postdoctoral researcher in quantitative genetics and genomics at the University of Liège, where she studies inbreeding prediction and genomic diversity. She earned her doctorate at the University of Buenos Aires and previously worked on livestock genetic evaluation in Argentina. Her recent publications also develop the RZooRoH software for analyzing inbreeding.",
+      "links": [
+        {
+          "label": "University of Liège research team",
+          "url": "https://www.gigauag.uliege.be/cms/c_4766334/en/gigauag-members"
+        },
+        {
+          "label": "University of Liège publications",
+          "url": "https://orbi.uliege.be/handle/2268/348985"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Tom Druet",
+      "bio": "Tom Druet is a professor at the University of Liège and a research director of Belgium's F.R.S.-FNRS. He leads the university's quantitative genetics and genomics group. Trained in agricultural engineering and quantitative genetics at Gembloux, he develops statistical methods for using genomic data to study relatedness, inbreeding, and population variation in animals.",
+      "links": [
+        {
+          "label": "University of Liège directory biography",
+          "url": "https://www.uliege.be/cms/c_9054334/en/directory?uid=u204959"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Soft synthetic surfaces teach T cells to persist",
+    "cite": "Yang Y. et al., <a href=\"https://doi.org/10.1038/s41467-026-78131-6\"><em>Nature Communications</em> (2026)</a>.",
+    "url": "https://doi.org/10.1038/s41467-026-78131-6",
+    "body": "Immune cells pay attention not only to molecular signals but also to the mechanical behavior of the surface delivering them. Researchers built synthetic antigen-presenting cells that could relax after deformation at different rates while keeping stiffness and antigen density comparable. The faster-relaxing surfaces strengthened T-cell receptor and mTOR signaling and shifted expanded CD8 T cells toward metabolic states associated with better persistence and memory-like properties. In experimental melanoma and ovarian cancer models, the resulting engineered T cells survived longer and showed more durable antitumor activity. This is a manufacturing strategy demonstrated in laboratory and animal models, not evidence that it improves outcomes in patients."
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "An AI team designs crystals chemists can actually make",
+    "cite": "Inizan T. J. et al., <a href=\"https://doi.org/10.1038/s43588-026-01058-x\"><em>Nature Computational Science</em> (20 Nov 2026)</a>.",
+    "url": "https://doi.org/10.1038/s43588-026-01058-x",
+    "body": "Metal-organic frameworks are crystalline scaffolds built from metal nodes and organic linkers; their pores can capture carbon dioxide or harvest water. A team combined specialized AI agents into MOFGen: language models suggested chemical ingredients, a diffusion model generated atomic structures, physics-based tools checked their geometry, and synthesis predictors screened which designs might be made. The system explored hundreds of thousands of candidate frameworks, and chemists synthesized four AI-suggested materials. That physical validation matters because a plausible crystal on a computer is not necessarily manufacturable. The authors note that experiments still relied on human intervention and tested only a narrow slice of the computational designs."
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41437-026-00909-7",
+      "title": "Comparing whole-genome sequencing and cost-effective genotyping strategies for estimating homozygosity-by-descent",
+      "used_for": "lead",
+      "evidence": "Publisher article and abstract checked: eight author order, 19 November 2026 online publication, DOI, 132 Holsteins, low-cost genotyping thresholds, limitations of old HBD classes, Nordic Red and Labrador validation."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43058215/",
+      "title": "PubMed record for Forneris et al., Heredity",
+      "used_for": "lead",
+      "evidence": "Independent bibliographic record confirms 19 November 2026 article date, author order, journal, DOI and abstract."
+    },
+    {
+      "url": "https://www.gigauag.uliege.be/cms/c_4766334/en/gigauag-members",
+      "title": "University of Liège Unit of Animal Genomics team members",
+      "used_for": "person_1",
+      "evidence": "University team directory lists Natalia Soledad Forneris as postdoctoral researcher in Tom Druet's quantitative genetics and genomics team."
+    },
+    {
+      "url": "https://recherche.wallonie.be/files/E_Kiosque/02.publications/publications%20PDF/Portraits-de-chercheurs-volume-5_EN_web.pdf",
+      "title": "Public Service of Wallonia: Portraits of Researchers, Natalia Forneris",
+      "used_for": "person_1",
+      "evidence": "Public researcher profile describes PhD at University of Buenos Aires and previous livestock breeding genetics work; a 2023 profile, not evidence of current role."
+    },
+    {
+      "url": "https://orbi.uliege.be/handle/2268/348985",
+      "title": "University of Liège institutional repository: Updating the RZooRoH Package",
+      "used_for": "person_1",
+      "evidence": "2026 university repository entry confirms Forneris coauthored RZooRoH software research and affiliation to animal genomics unit."
+    },
+    {
+      "url": "https://www.uliege.be/cms/c_9054334/en/directory?uid=u204959",
+      "title": "University of Liège directory: Tom Druet",
+      "used_for": "person_2",
+      "evidence": "Official directory confirms professor and FNRS research director roles, Gembloux agricultural engineering and quantitative genetics doctoral training."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-026-78131-6",
+      "title": "Viscoelasticity of synthetic antigen presenting cells reprograms T cell metabolism for TCR-T cell manufacturing and therapy",
+      "used_for": "slot2",
+      "evidence": "Publisher paper reports 20 November 2026 publication, viscoelastic SynVAC comparisons, metabolic and memory-like T-cell changes, and preclinical melanoma and ovarian cancer model results."
+    },
+    {
+      "url": "https://www.nature.com/articles/s43588-026-01058-x",
+      "title": "System of agentic AI for the discovery of metal-organic frameworks",
+      "used_for": "slot3",
+      "evidence": "Primary full paper reports 20 November 2026 online date, composition and structure generation with distinct agents, hundreds of thousands of predictions, four synthesized materials, and human-in-the-loop limitations."
+    }
+  ]
+}
