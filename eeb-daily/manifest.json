@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 36,
-    "date": "2026-11-21"
+    "no": 37,
+    "date": "2026-11-22"
   },
   "issues": [
     {
@@ -616,6 +616,23 @@
       "slot3_headline": "An elevator sends a message using gravity",
       "slot3_url": "https://doi.org/10.1126/sciadv.aee0802",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0037-2026-11-22.json",
+      "no": 37,
+      "date": "2026-11-22",
+      "slug": "2026-11-22",
+      "topic": "Population genomics: inferring inbreeding from sparse sequence data",
+      "lead_headline": "Cheap genotypes still reveal inbreeding",
+      "lead_doi": "10.1038/s41437-026-00909-7",
+      "lead_url": "https://doi.org/10.1038/s41437-026-00909-7",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Soft synthetic surfaces teach T cells to persist",
+      "slot2_url": "https://doi.org/10.1038/s41467-026-78131-6",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "An AI team designs crystals chemists can actually make",
+      "slot3_url": "https://doi.org/10.1038/s43588-026-01058-x",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -625,6 +642,8 @@
     "https://doi.org/10.1038/246096a0",
     "https://doi.org/10.1038/s41377-026-02442-y",
     "https://doi.org/10.1038/s41437-026-00901-1",
+    "https://doi.org/10.1038/s41437-026-00909-7",
+    "https://doi.org/10.1038/s41467-026-78131-6",
     "https://doi.org/10.1038/s41467-026-78289-z",
     "https://doi.org/10.1038/s41467-026-78393-0",
     "https://doi.org/10.1038/s41467-026-78505-w",
@@ -677,6 +696,7 @@
     "https://doi.org/10.1038/s42005-026-02946-4",
     "https://doi.org/10.1038/s42256-026-01328-3",
     "https://doi.org/10.1038/s43018-026-01265-5",
+    "https://doi.org/10.1038/s43588-026-01058-x",
     "https://doi.org/10.1038/s44512-026-00010-3",
     "https://doi.org/10.1073/pnas.2605030123",
     "https://doi.org/10.1073/pnas.2614478123",
@@ -735,6 +755,8 @@
     "10.1038/246096a0",
     "10.1038/s41377-026-02442-y",
     "10.1038/s41437-026-00901-1",
+    "10.1038/s41437-026-00909-7",
+    "10.1038/s41467-026-78131-6",
     "10.1038/s41467-026-78289-z",
     "10.1038/s41467-026-78393-0",
     "10.1038/s41467-026-78505-w",
@@ -787,6 +809,7 @@
     "10.1038/s42005-026-02946-4",
     "10.1038/s42256-026-01328-3",
     "10.1038/s43018-026-01265-5",
+    "10.1038/s43588-026-01058-x",
     "10.1038/s44512-026-00010-3",
     "10.1073/pnas.2605030123",
     "10.1073/pnas.2614478123",
