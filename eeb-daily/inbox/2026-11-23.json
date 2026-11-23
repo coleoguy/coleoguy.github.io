@@ -1,0 +1,108 @@
+{
+  "no": 38,
+  "date": "2026-11-23",
+  "weekday": "Monday",
+  "lead": {
+    "topic": "Comparative genomics: rattlesnake venom genes and improved genome assembly",
+    "headline": "A better rattlesnake genome restores missing venom genes",
+    "deck": "A chromosome-scale reference recovers venom loci obscured by an earlier, fragmented genome assembly.",
+    "authors": "Gopalan SS, Ballard K, Francioli YZ, Guss HD, Card DC, Koludarov I, Perry BW, Schield DR, Saviola AJ, Adams RH, Mackessy SP, Castoe TA",
+    "journal": "Scientific Data",
+    "pubdate": "21 Nov 2026",
+    "doi": "10.1038/s41597-026-08647-5",
+    "url": "https://doi.org/10.1038/s41597-026-08647-5",
+    "paragraphs": [
+      "The prairie rattlesnake is a useful model for studying venom variation, hybridization and sex chromosome evolution, but its reference genome had a basic blind spot. The older assembly contained thousands of disconnected pieces and omitted some genes for abundant venom toxins. Siddharth Gopalan and colleagues rebuilt the reference using accurate long DNA reads, conventional short-read sequencing and a method that detects which stretches of DNA lie near one another inside the nucleus. They then used existing rattlesnake genomes to arrange the pieces into chromosome-scale sequences. This is a new genomic resource, not a demonstration that particular venom genes evolved under selection.",
+      "The updated 1.59-gigabase assembly contains 17 autosomes, the Z and W sex chromosomes and a complete mitochondrial genome, plus unplaced segments. The authors annotated 88 venom genes, compared with 50 in the previous reference, aided by venom-gland RNA data and searches for known gene relatives. That difference does not mean the snake gained 38 genes: many were previously missing or poorly annotated. Venom genes often occur in similar, repeated clusters, which are difficult to piece together using short sequence reads. The improved map should help researchers test how venom-gene copy number, regulatory neighborhoods and recombination shape variation among rattlesnake populations."
+    ],
+    "push": "A next step is to assemble genomes from several populations and related species without relying on one existing reference for chromosome ordering. Do the newly recovered toxin clusters vary in copy number or structure, and do those differences predict venom composition? Comparing independent assemblies would also expose any joins introduced by reference-guided scaffolding."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Siddharth S. Gopalan",
+      "bio": "Siddharth Gopalan is a postdoctoral research associate in Todd Castoe's laboratory at the University of Texas at Arlington. He completed a PhD in quantitative biology there in 2025 after studying genome biology and evolutionary biology at the University of Toronto. His research connects genomic regulation to venom variation and other animal traits.",
+      "links": [
+        {
+          "label": "Professional profile and CV",
+          "url": "https://sidg13.github.io/cv.html"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Todd A. Castoe",
+      "bio": "Todd Castoe is a professor of biology and associate dean for research at the University of Texas at Arlington. He earned his PhD at the University of Central Florida and completed postdoctoral research at the University of Colorado. His laboratory studies genome evolution, venom genes, chromosome structure, hybridization and regeneration in reptiles.",
+      "links": [
+        {
+          "label": "UTA faculty directory",
+          "url": "https://www.uta.edu/academics/schools-colleges/science/departments/biology/faculty-research/faculty"
+        },
+        {
+          "label": "Laboratory biography",
+          "url": "https://www.castoelaboratory.org/people/toddcastoe/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Damaged lysosomes trap drugs in protein clumps",
+    "cite": "Li X. et al., <a href=\"https://doi.org/10.1038/s41556-026-02119-z\"><em>Nature Cell Biology</em> (20 Nov 2026)</a>.",
+    "url": "https://doi.org/10.1038/s41556-026-02119-z",
+    "body": "Lysosomes are acidic cellular compartments that digest and recycle material. When their membranes are damaged, scientists often assume that material inside can escape into the cell. Xu Li and colleagues found another response: certain proteins rapidly gathered into dense condensates inside the injured compartments. Fluorescence imaging and electron tomography revealed these assemblies after several kinds of damage, and they dispersed when lysosomes recovered. The clumps could also trap antisense oligonucleotides, short therapeutic molecules designed to bind RNA, preventing some from reaching the cytoplasm. The experiments reveal a physical obstacle to drug delivery, not a demonstrated treatment for overcoming it."
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Atlantic moisture helped reshape the ancient Mediterranean",
+    "cite": "Sierro F. J. et al., <a href=\"https://doi.org/10.1038/s41561-026-02141-8\"><em>Nature Geoscience</em> (20 Nov 2026)</a>.",
+    "url": "https://doi.org/10.1038/s41561-026-02141-8",
+    "body": "During parts of the past million years, Mediterranean waters became fresher and poorly ventilated, allowing organic-rich mud called sapropel to build up on the seafloor. Researchers have often attributed these episodes mainly to stronger Nile discharge or local rainfall. Francisco Sierro and colleagues analyzed chemical indicators of winter precipitation in Atlantic sediments off Iberia and compared them with Mediterranean salinity records covering 350,000 years. Freshwater episodes lined up with wetter conditions on the Atlantic margin. The authors propose that changes in atmospheric pressure transported extra Atlantic moisture toward the Mediterranean, affecting seawater exchange and deep-water oxygen. The sediment records support this interpretation, but cannot isolate every contributing mechanism."
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41597-026-08647-5",
+      "title": "An improved genome and venom gene annotation for the Prairie Rattlesnake (Crotalus viridis)",
+      "used_for": "lead",
+      "evidence": "Publisher metadata verifies 21 November 2026 online date, full author order and DOI. Abstract reports a 1.59-Gb assembly, 17 autosomes, Z and W, and upgraded toxin annotations."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41597-026-08647-5_reference.pdf",
+      "title": "An improved genome and venom gene annotation for the Prairie Rattlesnake, accepted full manuscript",
+      "used_for": "lead",
+      "evidence": "Publisher full manuscript indexed text examined. Table 1 compares 88 versus 50 annotated venom genes and 42 versus 7,046 scaffolds; methods report PacBio HiFi, Illumina and reference-assisted scaffolding. Screenshot access was redirected; numerical claims confirmed in indexed manuscript text."
+    },
+    {
+      "url": "https://sidg13.github.io/cv.html",
+      "title": "Siddharth S. Gopalan: professional CV and research",
+      "used_for": "person_1",
+      "evidence": "Personal academic CV verifies June 2025 onward postdoctoral role at UT Arlington, 2025 quantitative biology PhD, University of Toronto undergraduate training and research methods."
+    },
+    {
+      "url": "https://www.uta.edu/academics/schools-colleges/science/departments/biology/faculty-research/faculty",
+      "title": "University of Texas at Arlington Biology faculty directory",
+      "used_for": "person_2",
+      "evidence": "Official department directory verifies Todd Castoe is professor of biology and associate dean for research."
+    },
+    {
+      "url": "https://www.castoelaboratory.org/people/toddcastoe/",
+      "title": "Todd Castoe laboratory biography",
+      "used_for": "person_2",
+      "evidence": "Lab profile lists University of Central Florida PhD, University of Colorado postdoctoral position and genome-evolution research."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41556-026-02119-z",
+      "title": "Endolysosomal damage promotes intraluminal protein condensate formation that limits cytosolic leakage",
+      "used_for": "slot2",
+      "evidence": "Nature Cell Biology publisher page verifies 20 November 2026 publication and abstract describing rapid intraluminal protein condensates, microscopy and trapping of antisense oligonucleotides; full article subscriber-only."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41561-026-02141-8",
+      "title": "Mediterranean low-salinity and anoxic sapropel events triggered by Atlantic atmospheric moisture",
+      "used_for": "slot3",
+      "evidence": "Nature Geoscience publisher-indexed abstract and metadata verify 20 November 2026 publication, 350-kyr Iberian sediment reconstruction, link between Atlantic winter moisture and Mediterranean freshening; full article access redirected."
+    }
+  ]
+}
