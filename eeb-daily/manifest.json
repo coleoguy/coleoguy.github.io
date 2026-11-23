@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 37,
-    "date": "2026-11-22"
+    "no": 38,
+    "date": "2026-11-23"
   },
   "issues": [
     {
@@ -633,6 +633,23 @@
       "slot3_headline": "An AI team designs crystals chemists can actually make",
       "slot3_url": "https://doi.org/10.1038/s43588-026-01058-x",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0038-2026-11-23.json",
+      "no": 38,
+      "date": "2026-11-23",
+      "slug": "2026-11-23",
+      "topic": "Comparative genomics: rattlesnake venom genes and improved genome assembly",
+      "lead_headline": "A better rattlesnake genome restores missing venom genes",
+      "lead_doi": "10.1038/s41597-026-08647-5",
+      "lead_url": "https://doi.org/10.1038/s41597-026-08647-5",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Damaged lysosomes trap drugs in protein clumps",
+      "slot2_url": "https://doi.org/10.1038/s41556-026-02119-z",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Atlantic moisture helped reshape the ancient Mediterranean",
+      "slot3_url": "https://doi.org/10.1038/s41561-026-02141-8",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -662,10 +679,12 @@
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41550-026-03008-z",
     "https://doi.org/10.1038/s41556-026-02101-9",
+    "https://doi.org/10.1038/s41556-026-02119-z",
     "https://doi.org/10.1038/s41556-026-02124-2",
     "https://doi.org/10.1038/s41559-026-03214-y",
     "https://doi.org/10.1038/s41559-026-03216-w",
     "https://doi.org/10.1038/s41559-026-03221-z",
+    "https://doi.org/10.1038/s41561-026-02141-8",
     "https://doi.org/10.1038/s41563-026-02789-y",
     "https://doi.org/10.1038/s41563-026-02793-2",
     "https://doi.org/10.1038/s41564-026-02480-7",
@@ -690,6 +709,7 @@
     "https://doi.org/10.1038/s41593-026-02505-8",
     "https://doi.org/10.1038/s41593-026-02514-7",
     "https://doi.org/10.1038/s41594-026-01914-4",
+    "https://doi.org/10.1038/s41597-026-08647-5",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1038/s42005-026-02841-y",
     "https://doi.org/10.1038/s42005-026-02939-3",
@@ -775,10 +795,12 @@
     "10.1038/s41550-026-03004-3",
     "10.1038/s41550-026-03008-z",
     "10.1038/s41556-026-02101-9",
+    "10.1038/s41556-026-02119-z",
     "10.1038/s41556-026-02124-2",
     "10.1038/s41559-026-03214-y",
     "10.1038/s41559-026-03216-w",
     "10.1038/s41559-026-03221-z",
+    "10.1038/s41561-026-02141-8",
     "10.1038/s41563-026-02789-y",
     "10.1038/s41563-026-02793-2",
     "10.1038/s41564-026-02480-7",
@@ -803,6 +825,7 @@
     "10.1038/s41593-026-02505-8",
     "10.1038/s41593-026-02514-7",
     "10.1038/s41594-026-01914-4",
+    "10.1038/s41597-026-08647-5",
     "10.1038/s41598-026-69193-z",
     "10.1038/s42005-026-02841-y",
     "10.1038/s42005-026-02939-3",

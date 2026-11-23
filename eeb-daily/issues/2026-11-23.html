@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EEB Daily No. 38: A better rattlesnake genome restores missing venom genes</title>
+<meta name="description" content="A chromosome-scale reference recovers venom loci obscured by an earlier, fragmented genome assembly.">
+<meta property="og:title" content="EEB Daily No. 38: A better rattlesnake genome restores missing venom genes">
+<meta property="og:description" content="A chromosome-scale reference recovers venom loci obscured by an earlier, fragmented genome assembly.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EEB Daily">
+<link rel="canonical" href="https://coleoguy.github.io/eeb-daily/issues/2026-11-23.html">
+<link rel="alternate" type="application/rss+xml" title="EEB Daily" href="https://coleoguy.github.io/eeb-daily/feed.xml">
+<link rel="icon" href="/assets/img/favicon.ico">
+<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15161A" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&family=Archivo+Narrow:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --paper: #FBFAF7; --raised: #FFFFFF; --ink: #141414; --ink-2: #4E4E4E; --ink-3: #7A7A76;
+  --rule: #141414; --hair: #CFCDC6; --accent: #7A1F1F; --tint: #F1EDE6; --link: #7A1F1F;
+  --display: "Newsreader", "Iowan Old Style", "Times New Roman", serif;
+  --body: "Newsreader", Georgia, serif;
+  --label: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15161A; --raised: #1C1D22; --ink: #ECE9E2; --ink-2: #B9B5AC; --ink-3: #8B877F;
+    --rule: #ECE9E2; --hair: #3A3B41; --accent: #E0837E; --tint: #23242A; --link: #E0837E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15161A; --raised: #1C1D22; --ink: #ECE9E2; --ink-2: #B9B5AC; --ink-3: #8B877F;
+  --rule: #ECE9E2; --hair: #3A3B41; --accent: #E0837E; --tint: #23242A; --link: #E0837E; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17.5px; line-height: 1.5;
+       padding: 0 max(18px, env(safe-area-inset-left)) max(28px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-right)); }
+a { color: var(--link); text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+p { margin: 0 0 0.85em; }
+em { font-style: italic; }
+sub { font-size: 0.7em; }
+.wrap { max-width: 560px; margin: 0 auto; }
+
+/* Nameplate */
+.nameplate { text-align: center; border-top: 4px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0 10px; margin-top: 14px; }
+.nameplate h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 12vw, 3.6rem); line-height: 0.95; letter-spacing: -0.015em; margin: 0; font-variation-settings: "opsz" 72; }
+.nameplate h1 a { color: inherit; text-decoration: none; }
+.ears { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px;
+        font-family: var(--label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); }
+.dateline { border-bottom: 3px solid var(--rule); padding: 6px 0 7px; margin-bottom: 22px; text-align: center;
+            font-family: var(--display); font-style: italic; font-size: 0.95rem; color: var(--ink-2); text-wrap: balance; }
+
+/* Stories */
+.kicker { font-family: var(--label); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin: 0 0 6px; }
+.kicker .topic { color: var(--ink-2); font-weight: 500; }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.7rem, 7vw, 2.1rem); line-height: 1.1; margin: 0 0 10px; letter-spacing: -0.01em; text-wrap: balance; font-variation-settings: "opsz" 48; }
+.deck { font-family: var(--display); font-style: italic; font-size: 1.15rem; line-height: 1.35; color: var(--ink-2); margin: 0 0 12px; text-wrap: pretty; }
+.byline { font-family: var(--label); font-size: 0.82rem; letter-spacing: 0.02em; color: var(--ink-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding: 7px 0; margin: 0 0 16px; line-height: 1.45; }
+.byline b { color: var(--ink); font-weight: 600; }
+.byline .sep { color: var(--ink-3); padding: 0 6px; }
+.text p:first-of-type::first-letter { font-family: var(--display); font-weight: 700; font-size: 3.1em; float: left; line-height: 0.8; padding: 0.08em 0.1em 0 0; }
+.pushbox { background: var(--tint); padding: 12px 14px; margin: 6px 0 18px; border-radius: 3px; font-size: 1rem; line-height: 1.45; }
+.pushbox .lab, .why .lab { font-family: var(--label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--accent); display: block; margin-bottom: 3px; }
+
+.side { border-top: 1px solid var(--rule); padding-top: 10px; }
+.side .kicker { color: var(--ink); }
+.author { padding: 6px 0 10px; }
+.author + .author { border-top: 1px solid var(--hair); padding-top: 12px; }
+.author .role { font-family: var(--label); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+.author .name { font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.2; margin: 2px 0 5px; }
+.author p { font-size: 1rem; line-height: 1.45; margin: 0; }
+.links { font-family: var(--label); font-size: 0.82rem; letter-spacing: 0.02em; }
+.links a { color: var(--link); }
+
+.fold { border-top: 3px double var(--rule); margin: 26px 0 22px; }
+.story { margin-bottom: 26px; }
+.story + .story { border-top: 1px solid var(--hair); padding-top: 22px; }
+.story h3 { font-family: var(--display); font-weight: 600; font-size: 1.45rem; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.005em; text-wrap: balance; font-variation-settings: "opsz" 36; }
+.story .cite { font-family: var(--label); font-size: 0.82rem; color: var(--ink-2); margin: 0 0 10px; letter-spacing: 0.02em; line-height: 1.45; overflow-wrap: anywhere; }
+.story .body { font-size: 1.05rem; }
+.why { border-top: 1px solid var(--hair); padding-top: 8px; margin-top: 10px; font-size: 1rem; line-height: 1.45; }
+
+/* Footer */
+.colophon { border-top: 1px solid var(--rule); margin-top: 24px; padding-top: 12px; font-family: var(--label); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--ink-2); text-transform: uppercase; line-height: 1.7; }
+.colophon .nav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 8px; font-size: 0.82rem; }
+.colophon .nav a { color: var(--link); }
+.colophon .tiny { text-transform: none; letter-spacing: 0; font-size: 0.74rem; color: var(--ink-3); margin-top: 10px; }
+.colophon .tiny a { color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; }
+
+/* Archive */
+.archive h2 { font-size: 1.6rem; margin: 0 0 18px; }
+.archive ol { list-style: none; padding: 0; margin: 0; }
+.archive li { border-top: 1px solid var(--hair); padding: 14px 0; }
+.archive li:last-child { border-bottom: 1px solid var(--hair); }
+.archive .meta { font-family: var(--label); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); margin-bottom: 3px; }
+.archive .meta .num { color: var(--accent); font-weight: 700; }
+.archive .hl { font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; display: block; color: var(--ink); }
+.archive .hl:hover { color: var(--accent); }
+.archive .also { font-size: 0.92rem; color: var(--ink-2); margin: 5px 0 0; line-height: 1.4; }
+.archive .also b { font-family: var(--label); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-right: 4px; }
+
+/* Guide page */
+.guide h2 { font-size: 1.45rem; margin: 28px 0 10px; }
+.guide p, .guide li { font-size: 1.02rem; line-height: 1.5; }
+.guide ol, .guide ul { padding-left: 1.3em; margin: 0 0 1em; }
+.guide li { margin-bottom: 0.5em; }
+.guide code { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; font-size: 0.86em; background: var(--tint); padding: 1px 5px; border-radius: 3px; }
+.guide pre { font-family: ui-monospace, "JetBrains Mono", Menlo, monospace; font-size: 0.78rem; line-height: 1.5; background: var(--tint); padding: 14px; border-radius: 4px; overflow-x: auto; white-space: pre; margin: 0 0 1em; }
+.guide .files { font-family: var(--label); font-size: 0.92rem; }
+
+@media print {
+  @page { size: letter; margin: 0.6in; }
+  body { background: #fff; color: #000; font-size: 11pt; padding: 0; }
+  .wrap { max-width: none; }
+  .nameplate { margin-top: 0; }
+  .colophon .nav, .colophon .tiny { display: none; }
+  a { color: inherit; }
+  .story, .author, .pushbox { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="nameplate"><h1><a href="../">EEB Daily</a></h1><div class="ears"><span>Vol. 1, No. 38</span><span>Monday, November 23, 2026</span><span>Bryan, Texas</span></div></header>
+<div class="dateline">One paper worth the coffee. One paper from beyond the fence. One story from the wider world.</div>
+
+<section class="lead">
+<p class="kicker">The lead <span class="topic">&middot; Comparative genomics: rattlesnake venom genes and improved genome assembly</span></p>
+<h2>A better rattlesnake genome restores missing venom genes</h2>
+<p class="deck">A chromosome-scale reference recovers venom loci obscured by an earlier, fragmented genome assembly.</p>
+<div class="byline"><b>Gopalan SS, Ballard K, Francioli YZ, Guss HD, Card DC, Koludarov I, Perry BW, Schield DR, Saviola AJ, Adams RH, Mackessy SP, Castoe TA</b><span class="sep">&middot;</span><em>Scientific Data</em>, 21 Nov 2026<span class="sep">&middot;</span><a href="https://doi.org/10.1038/s41597-026-08647-5">doi:10.1038/s41597-026-08647-5</a></div>
+<div class="text"><p>The prairie rattlesnake is a useful model for studying venom variation, hybridization and sex chromosome evolution, but its reference genome had a basic blind spot. The older assembly contained thousands of disconnected pieces and omitted some genes for abundant venom toxins. Siddharth Gopalan and colleagues rebuilt the reference using accurate long DNA reads, conventional short-read sequencing and a method that detects which stretches of DNA lie near one another inside the nucleus. They then used existing rattlesnake genomes to arrange the pieces into chromosome-scale sequences. This is a new genomic resource, not a demonstration that particular venom genes evolved under selection.</p><p>The updated 1.59-gigabase assembly contains 17 autosomes, the Z and W sex chromosomes and a complete mitochondrial genome, plus unplaced segments. The authors annotated 88 venom genes, compared with 50 in the previous reference, aided by venom-gland RNA data and searches for known gene relatives. That difference does not mean the snake gained 38 genes: many were previously missing or poorly annotated. Venom genes often occur in similar, repeated clusters, which are difficult to piece together using short sequence reads. The improved map should help researchers test how venom-gene copy number, regulatory neighborhoods and recombination shape variation among rattlesnake populations.</p></div>
+<div class="pushbox"><span class="lab">Where to push</span>A next step is to assemble genomes from several populations and related species without relying on one existing reference for chromosome ordering. Do the newly recovered toxin clusters vary in copy number or structure, and do those differences predict venom composition? Comparing independent assemblies would also expose any joins introduced by reference-guided scaffolding.</div>
+<aside class="side"><p class="kicker">Who wrote it</p>
+<div class="author"><div class="role">First author</div><div class="name">Siddharth S. Gopalan</div><p>Siddharth Gopalan is a postdoctoral research associate in Todd Castoe's laboratory at the University of Texas at Arlington. He completed a PhD in quantitative biology there in 2025 after studying genome biology and evolutionary biology at the University of Toronto. His research connects genomic regulation to venom variation and other animal traits. <span class="links"><a href="https://sidg13.github.io/cv.html">Professional profile and CV</a></span></p></div>
+<div class="author"><div class="role">Last author</div><div class="name">Todd A. Castoe</div><p>Todd Castoe is a professor of biology and associate dean for research at the University of Texas at Arlington. He earned his PhD at the University of Central Florida and completed postdoctoral research at the University of Colorado. His laboratory studies genome evolution, venom genes, chromosome structure, hybridization and regeneration in reptiles. <span class="links"><a href="https://www.uta.edu/academics/schools-colleges/science/departments/biology/faculty-research/faculty">UTA faculty directory</a> &middot; <a href="https://www.castoelaboratory.org/people/toddcastoe/">Laboratory biography</a></span></p></div>
+</aside>
+</section>
+<div class="fold"></div>
+<article class="story"><p class="kicker">Beyond EEB <span class="topic">&middot; A paper from outside evolution and ecology</span></p>
+<h3>Damaged lysosomes trap drugs in protein clumps</h3>
+<p class="cite">Li X. et al., <a href="https://doi.org/10.1038/s41556-026-02119-z"><em>Nature Cell Biology</em> (20 Nov 2026)</a>.</p>
+<p class="body">Lysosomes are acidic cellular compartments that digest and recycle material. When their membranes are damaged, scientists often assume that material inside can escape into the cell. Xu Li and colleagues found another response: certain proteins rapidly gathered into dense condensates inside the injured compartments. Fluorescence imaging and electron tomography revealed these assemblies after several kinds of damage, and they dispersed when lysosomes recovered. The clumps could also trap antisense oligonucleotides, short therapeutic molecules designed to bind RNA, preventing some from reaching the cytoplasm. The experiments reveal a physical obstacle to drug delivery, not a demonstrated treatment for overcoming it.</p>
+</article>
+<article class="story"><p class="kicker">Beyond biology <span class="topic">&middot; A result from outside biology</span></p>
+<h3>Atlantic moisture helped reshape the ancient Mediterranean</h3>
+<p class="cite">Sierro F. J. et al., <a href="https://doi.org/10.1038/s41561-026-02141-8"><em>Nature Geoscience</em> (20 Nov 2026)</a>.</p>
+<p class="body">During parts of the past million years, Mediterranean waters became fresher and poorly ventilated, allowing organic-rich mud called sapropel to build up on the seafloor. Researchers have often attributed these episodes mainly to stronger Nile discharge or local rainfall. Francisco Sierro and colleagues analyzed chemical indicators of winter precipitation in Atlantic sediments off Iberia and compared them with Mediterranean salinity records covering 350,000 years. Freshwater episodes lined up with wetter conditions on the Atlantic margin. The authors propose that changes in atmospheric pressure transported extra Atlantic moisture toward the Mediterranean, affecting seawater exchange and deep-water oxygen. The sediment records support this interpretation, but cannot isolate every contributing mechanism.</p>
+</article>
+<footer class="colophon"><div class="nav"><a href="../issues/2026-11-22.html">&larr; No. 37</a><a href="../archive/">All issues</a><a href="../">Latest &rarr;</a></div><div>Produced nightly for the Blackmon lab, Texas A&amp;M Biology &middot; Research from linked sources &middot; Tomorrow: Classic and Beyond biology</div><div class="tiny">Written by ChatGPT from the day's literature; read the linked sources before citing anything. <a href="../build-your-own.html">Build one for your own lab</a> &middot; <a href="../feed.xml">RSS</a></div></footer>
+</div>
+</body>
+</html>
