@@ -1,0 +1,138 @@
+{
+  "no": 39,
+  "date": "2026-11-24",
+  "weekday": "Tuesday",
+  "lead": {
+    "topic": "Evolutionary theory: host behavior and the evolution of virulence",
+    "headline": "Host movement changes the evolution of parasite harm",
+    "deck": "A theoretical study shows why accounting for host behavior changes predictions about the evolution of virulence.",
+    "authors": "Rodrigues AMM, Gardner A, Bailey NW",
+    "journal": "Evolution",
+    "pubdate": "20 Nov 2026",
+    "doi": "10.1093/evolut/qpag204",
+    "url": "https://doi.org/10.1093/evolut/qpag204",
+    "paragraphs": [
+      "Why do parasites harm their hosts to different degrees? Virulence is the harm an infection causes, and evolutionary theory has long considered the tension between a parasite's immediate success and the costs of damaging its host. António Rodrigues and colleagues revisit this problem by asking whether host movement can be treated as independent of infection. That assumption simplifies the mathematics, but it overlooks a familiar feature of disease: sick animals often move differently from healthy ones. The authors develop a theoretical extension of existing evolutionary models that explicitly recognizes this connection between behavior and ecology.",
+      "Their analysis predicts that selection can favor parasites that cause less damage when infection limits host mobility. The authors identify changes in local population demography and genetic relatedness as important parts of the explanation. The work is a reminder that the selective environment is not necessarily fixed. A trait can change the surroundings in which its own evolutionary consequences play out, a process called eco-evolutionary feedback. This is a theoretical result rather than evidence that every parasite behaves this way in nature. Its broader significance is that behavioral effects of disease belong in the same conceptual picture as survival and reproduction."
+    ],
+    "push": "How much of the apparent disagreement between studies of virulence comes from differences in what researchers mean by harm? A useful next step would be a synthesis of existing observational studies that separates behavioral effects from mortality, assesses the quality of the evidence, and identifies where the theoretical assumptions remain untested."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "António M. M. Rodrigues",
+      "bio": "Rodrigues is an assistant professor in the Department of Ecology and Conservation Biology at Texas A&M University. His Social Evolution and Ecology Lab uses mathematical models to study the evolution of cooperation, dispersal, life history and other social traits. His work draws on kin selection, population genetics and evolutionary game theory.",
+      "links": [
+        {
+          "label": "Research lab",
+          "url": "https://socialevoeco.github.io/"
+        },
+        {
+          "label": "Texas A&M EEB faculty",
+          "url": "https://eeb.tamu.edu/about/eeb-core-faculty-research-interests-and-themes/evolutionary-ecology/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Nathan W. Bailey",
+      "bio": "Bailey is professor of evolutionary biology at the University of St Andrews. His group combines experiments, genomic analyses and theory to understand behavior and adaptation. A major research system is Hawaiian field crickets, in which different changes to male wings have independently produced the loss of singing in response to natural selection.",
+      "links": [
+        {
+          "label": "University profile",
+          "url": "https://www.st-andrews.ac.uk/biology/people/nwb3/"
+        },
+        {
+          "label": "Bailey Lab",
+          "url": "https://www.flexiblephenotype.org/"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Discrete genes explain continuous traits",
+    "cite": "R. A. Fisher, <em>Transactions of the Royal Society of Edinburgh</em>, 1918. <a href=\"https://doi.org/10.1017/S0080456800012163\">Original paper</a>.",
+    "body": "A pea can be wrinkled or smooth, but human height spans a continuous range. How could both follow Mendel's rules? Fisher showed mathematically that variation at many individually inherited loci can generate continuous trait distributions. He also developed ways of partitioning variation into contributions from the environment, average effects of alleles, and dominance. His equations explained why different kinds of relatives resemble each other to different degrees. The resulting framework reconciled two competing traditions of genetics and became the foundation of quantitative genetics. A century later, genome-wide association studies could estimate many of the effects that Fisher had treated theoretically.",
+    "url": "https://doi.org/10.1017/S0080456800012163",
+    "doi": "10.1017/S0080456800012163"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Two quasars sit inside an enormous bubble of hot gas",
+    "cite": "Hall et al., <em>Nature Astronomy</em>, 18 Nov 2026. <a href=\"https://doi.org/10.1038/s41550-026-03025-y\">Paper</a>.",
+    "body": "Supermassive black holes do more than consume matter. When actively feeding, they can transfer energy to the gas surrounding their galaxies. Kirsten Hall and colleagues detected a bubble around two quasars from an era when the universe was only 2.8 billion years old. They used a distortion of the cosmic microwave background caused by its interaction with hot electrons to estimate the gas's thermal energy. The inferred energy is substantially larger than expected from gravitational heating alone. The observation supports the idea that quasar winds can suppress future star formation, although the study does not directly demonstrate that star formation has stopped.",
+    "url": "https://doi.org/10.1038/s41550-026-03025-y",
+    "doi": "10.1038/s41550-026-03025-y"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/evolut/advance-articles",
+      "title": "Evolution: Advance articles",
+      "used_for": "lead",
+      "evidence": "Publisher lists the accepted brief communication, online publication on 20 November 2026, DOI and summary. The article page was inaccessible; interpretation is restricted to the abstract and publisher summary."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43062313/",
+      "title": "Parasite impairment of host mobility favours reduced virulence",
+      "used_for": "lead",
+      "evidence": "Indexed abstract and metadata confirm the title, author order, affiliations, online date, DOI and qualitative model conclusions."
+    },
+    {
+      "url": "https://socialevoeco.github.io/",
+      "title": "Social Evolution and Ecology Lab",
+      "used_for": "person_1",
+      "evidence": "Public lab page identifies assistant professor role, modeling methods and social evolution research."
+    },
+    {
+      "url": "https://eeb.tamu.edu/about/eeb-core-faculty-research-interests-and-themes/evolutionary-ecology/",
+      "title": "Evolutionary Ecology, Texas A&M University",
+      "used_for": "person_1",
+      "evidence": "University roster confirms department, rank and research interests."
+    },
+    {
+      "url": "https://www.st-andrews.ac.uk/biology/people/nwb3/",
+      "title": "Prof Nathan Bailey, School of Biology",
+      "used_for": "person_2",
+      "evidence": "University profile confirms title, research areas and lab link."
+    },
+    {
+      "url": "https://www.flexiblephenotype.org/",
+      "title": "Bailey Lab",
+      "used_for": "person_2",
+      "evidence": "Public lab page describes methods and independently evolved loss of cricket song."
+    },
+    {
+      "url": "https://www.cambridge.org/core/journals/earth-and-environmental-science-transactions-of-royal-society-of-edinburgh/article/abs/xvthe-correlation-between-relatives-on-the-supposition-of-mendelian-inheritance/A60675052E0FB78C561F66C670BC75DE",
+      "title": "The Correlation between Relatives on the Supposition of Mendelian Inheritance",
+      "used_for": "slot2",
+      "evidence": "Publisher identifies Fisher's original paper and DOI; publisher metadata assigns the volume to 1919, while the conventional original publication year is 1918."
+    },
+    {
+      "url": "https://digital.library.adelaide.edu.au/items/5ed47714-2635-4af9-8409-cf7eb6f87c3b",
+      "title": "The Correlation Between Relatives on the Supposition of Mendelian Inheritance",
+      "used_for": "slot2",
+      "evidence": "University archive lists the original paper as published in 1918."
+    },
+    {
+      "url": "https://academic.oup.com/genetics/article/211/4/1125/5931511",
+      "title": "From R.A. Fisher’s 1918 Paper to GWAS a Century Later",
+      "used_for": "slot2",
+      "evidence": "Centenary review verifies variance decomposition, relative resemblance and the link to modern genome-wide association methods."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41550-026-03025-y",
+      "title": "Excess intergalactic heating around a dual quasar system 2.8 Gyr after the Big Bang",
+      "used_for": "slot3",
+      "evidence": "Publisher-indexed article and abstract confirm author, date, DOI, hot gas detection and interpretation. Direct page opening encountered an authentication redirect."
+    },
+    {
+      "url": "https://arxiv.org/abs/2611.23487",
+      "title": "Excess intergalactic heating around a dual quasar system 2.8 Gyr after the Big Bang",
+      "used_for": "slot3",
+      "evidence": "Author manuscript abstract independently confirms the observation and the interpretation as evidence of quasar feedback, rather than direct observation of star formation ending."
+    }
+  ]
+}
