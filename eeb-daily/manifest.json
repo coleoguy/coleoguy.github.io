@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 38,
-    "date": "2026-11-23"
+    "no": 39,
+    "date": "2026-11-24"
   },
   "issues": [
     {
@@ -650,11 +650,29 @@
       "slot3_headline": "Atlantic moisture helped reshape the ancient Mediterranean",
       "slot3_url": "https://doi.org/10.1038/s41561-026-02141-8",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0039-2026-11-24.json",
+      "no": 39,
+      "date": "2026-11-24",
+      "slug": "2026-11-24",
+      "topic": "Evolutionary theory: host behavior and the evolution of virulence",
+      "lead_headline": "Host movement changes the evolution of parasite harm",
+      "lead_doi": "10.1093/evolut/qpag204",
+      "lead_url": "https://doi.org/10.1093/evolut/qpag204",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Discrete genes explain continuous traits",
+      "slot2_url": "https://doi.org/10.1017/S0080456800012163",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Two quasars sit inside an enormous bubble of hot gas",
+      "slot3_url": "https://doi.org/10.1038/s41550-026-03025-y",
+      "history_subject": ""
     }
   ],
   "used_urls": [
     "https://doi.org/10.1016/j.cub.2026.08.053",
     "https://doi.org/10.1016/j.ympev.2026.108754",
+    "https://doi.org/10.1017/S0080456800012163",
     "https://doi.org/10.1038/217624a0",
     "https://doi.org/10.1038/246096a0",
     "https://doi.org/10.1038/s41377-026-02442-y",
@@ -678,6 +696,7 @@
     "https://doi.org/10.1038/s41534-026-01404-x",
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41550-026-03008-z",
+    "https://doi.org/10.1038/s41550-026-03025-y",
     "https://doi.org/10.1038/s41556-026-02101-9",
     "https://doi.org/10.1038/s41556-026-02119-z",
     "https://doi.org/10.1038/s41556-026-02124-2",
@@ -723,6 +742,7 @@
     "https://doi.org/10.1073/pnas.2614706123",
     "https://doi.org/10.1086/284325",
     "https://doi.org/10.1093/evlett/qrag043",
+    "https://doi.org/10.1093/evolut/qpag204",
     "https://doi.org/10.1093/evolut/qpag205",
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/gbe/evag281",
@@ -771,6 +791,7 @@
   "used_dois": [
     "10.1016/j.cub.2026.08.053",
     "10.1016/j.ympev.2026.108754",
+    "10.1017/s0080456800012163",
     "10.1038/217624a0",
     "10.1038/246096a0",
     "10.1038/s41377-026-02442-y",
@@ -794,6 +815,7 @@
     "10.1038/s41534-026-01404-x",
     "10.1038/s41550-026-03004-3",
     "10.1038/s41550-026-03008-z",
+    "10.1038/s41550-026-03025-y",
     "10.1038/s41556-026-02101-9",
     "10.1038/s41556-026-02119-z",
     "10.1038/s41556-026-02124-2",
@@ -839,6 +861,7 @@
     "10.1073/pnas.2614706123",
     "10.1086/284325",
     "10.1093/evlett/qrag043",
+    "10.1093/evolut/qpag204",
     "10.1093/evolut/qpag205",
     "10.1093/gbe/evag259",
     "10.1093/gbe/evag281",
