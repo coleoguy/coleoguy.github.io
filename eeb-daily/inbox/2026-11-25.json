@@ -1,0 +1,108 @@
+{
+  "no": 40,
+  "date": "2026-11-25",
+  "weekday": "Wednesday",
+  "lead": {
+    "topic": "Population genetics of mutation bias and competing adaptive alleles",
+    "headline": "Common mutations can beat fitter alternatives",
+    "deck": "New mathematical approximations explain when the supply of mutations outweighs their relative fitness advantages.",
+    "authors": "Park SC, Krug J",
+    "journal": "Genetics",
+    "pubdate": "24 Nov 2026",
+    "doi": "10.1093/genetics/iyag346",
+    "url": "https://doi.org/10.1093/genetics/iyag346",
+    "paragraphs": [
+      "Imagine two beneficial mutations that improve an organism's fitness, but one arises much more frequently than the other. Which is more likely to spread through a population? The answer depends on more than the size of their selective advantages. The Yampolsky-Stoltzfus model formalized this problem by showing that unequal mutation rates can influence the direction of adaptation even when mutations arise rarely relative to the strength of selection. Park and Krug revisit the model to understand what happens between the extremes of very low mutation supply and effectively infinite population size. Their target is the probability that the more frequently generated but less beneficial mutant wins the evolutionary race.",
+      "The authors derive two mathematical approximations for that probability. When the fitness difference between the mutants is large, they account for repeated introductions of the common mutant and the changing prospects of the rarer competitor as it encounters an increasingly adapted population. When the fitness difference is small, they instead use classical fixation theory to describe competition within a mixed population. Both approaches closely reproduce simulations of the underlying Wright-Fisher model. The analysis quantifies how the effect of mutation bias weakens as population size increases. Selection and mutation supply are therefore not interchangeable explanations for the same evolutionary outcome."
+    ],
+    "push": "Experimental evolution could test the prediction by varying population size while independently measuring the mutation rates and fitness effects of two competing beneficial alleles. Do the resulting fixation probabilities follow the analytical curves, or do departures caused by genetic background, recombination or environmental variation require a more elaborate model?"
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Su-Chan Park",
+      "bio": "Park is a physics professor and department chair at the Catholic University of Korea. He earned his doctorate at Seoul National University in 2003 and pursued postdoctoral research at the Korea Institute for Advanced Study and the University of Cologne. His work connects statistical physics, population genetics and nonequilibrium phase transitions.",
+      "links": [
+        {
+          "label": "University faculty profile",
+          "url": "https://physics.catholic.ac.kr/physics/faculty/faculty.do"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Joachim Krug",
+      "bio": "Krug is a professor at the University of Cologne's Institute for Biological Physics. He received his doctorate in theoretical physics from LMU Munich in 1989 and held postdoctoral appointments at IBM and Forschungszentrum Jülich. His group uses population genetic theory to investigate fitness landscapes, interacting mutations and the predictability of adaptation.",
+      "links": [
+        {
+          "label": "University profile",
+          "url": "https://cds.uni-koeln.de/people/associated-scientists/prof-dr-joachim-krug"
+        },
+        {
+          "label": "Training and research",
+          "url": "https://simons.berkeley.edu/people/joachim-krug"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "A molecular gateway lets leptin into the brain",
+    "cite": "Yang WM et al., <em>Nature Communications</em>, 23 Nov 2026, <a href=\"https://doi.org/10.1038/s41467-026-79556-9\">paper</a>.",
+    "body": "Leptin is a hormone that communicates information about energy stores to the brain. Yang and colleagues identify a partnership between the leptin receptor and a protein called LRP1 that helps leptin reach its destination. Removing either component from a group of mouse cells that includes cells at brain-fluid interfaces reduced leptin entry and produced excessive feeding and obesity. Administering leptin directly into the brain restored its appetite-suppressing effect, separating a transport failure from failure to respond to the hormone itself. The findings suggest that the regulation of access to the brain can be as important as hormone abundance.",
+    "url": "https://doi.org/10.1038/s41467-026-79556-9"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Laser light changes the chemistry of quantum diamonds",
+    "cite": "Li M et al., <em>Nature Communications</em>, 23 Nov 2026, <a href=\"https://doi.org/10.1038/s41467-026-79211-3\">paper</a>.",
+    "body": "An impurity in diamond can act as a microscopic quantum sensor, but its electrical charge affects its useful optical properties. Li and colleagues used laser light to oxidize the surfaces of tiny diamond pillars, modifying the charge state of defects containing silicon. They monitored fluorescence from the negatively charged defects while varying the intensity and energy of illumination. Their observations point to electrical charge carriers generated by the defects themselves as drivers of the chemical reaction at the surface. The change persists after illumination, offering a potential way to adjust individual quantum components without continually powering the adjustment.",
+    "url": "https://doi.org/10.1038/s41467-026-79211-3"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/genetics/advance-article-abstract/doi/10.1093/genetics/iyag346/9120393",
+      "title": "Mutation-biased adaptation: The Yampolsky-Stoltzfus model revisited",
+      "used_for": "lead",
+      "evidence": "Publisher metadata and complete abstract confirm author order, DOI, 24 November online date, two approximations, Wright-Fisher simulation agreement and the decline of mutation bias with population size. Accepted manuscript PDF is not accessible; claims restricted to the abstract."
+    },
+    {
+      "url": "https://physics.catholic.ac.kr/physics/faculty/faculty.do",
+      "title": "Catholic University of Korea physics faculty",
+      "used_for": "person_1",
+      "evidence": "Department faculty page confirms professorship, chair position, doctoral training, postdoctoral institutions and research interests."
+    },
+    {
+      "url": "https://cds.uni-koeln.de/people/associated-scientists/prof-dr-joachim-krug",
+      "title": "Prof. Dr. Joachim Krug",
+      "used_for": "person_2",
+      "evidence": "University of Cologne profile confirms affiliation and population genetic modeling research."
+    },
+    {
+      "url": "https://simons.berkeley.edu/people/joachim-krug",
+      "title": "Joachim Krug",
+      "used_for": "person_2",
+      "evidence": "Simons Institute biography confirms professorship, doctorate, postdoctoral institutions and research on interacting mutations."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-026-79556-9",
+      "title": "A leptin receptor and LRP1 complex in the choroid plexus and tanycytes mediates leptin entry into the mouse brain",
+      "used_for": "slot2",
+      "evidence": "Publisher-indexed abstract and metadata confirm online publication on 23 November, DOI, mouse cell deletion results and direct brain delivery rescue. Direct page open redirected to a sign-in service; abstract only."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-026-79211-3",
+      "title": "Photocatalytic control of diamond color center charge states via laser-induced surface oxidation",
+      "used_for": "slot3",
+      "evidence": "Publisher-indexed abstract confirms 23 November 2026 publication date, DOI, nonvolatile surface oxidation, fluorescence readout and charge carrier interpretation. Journal abstract supplemented by public author preprint."
+    },
+    {
+      "url": "https://arxiv.org/abs/2506.20714",
+      "title": "Photocatalytic Control of Diamond Color Center Charge States via Surface Oxidation",
+      "used_for": "slot3",
+      "evidence": "Author preprint posted 25 June 2025 provides accessible text supporting the new journal publication's mechanism and methods."
+    }
+  ]
+}
