@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 39,
-    "date": "2026-11-24"
+    "no": 40,
+    "date": "2026-11-25"
   },
   "issues": [
     {
@@ -667,6 +667,23 @@
       "slot3_headline": "Two quasars sit inside an enormous bubble of hot gas",
       "slot3_url": "https://doi.org/10.1038/s41550-026-03025-y",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0040-2026-11-25.json",
+      "no": 40,
+      "date": "2026-11-25",
+      "slug": "2026-11-25",
+      "topic": "Population genetics of mutation bias and competing adaptive alleles",
+      "lead_headline": "Common mutations can beat fitter alternatives",
+      "lead_doi": "10.1093/genetics/iyag346",
+      "lead_url": "https://doi.org/10.1093/genetics/iyag346",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "A molecular gateway lets leptin into the brain",
+      "slot2_url": "https://doi.org/10.1038/s41467-026-79556-9",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Laser light changes the chemistry of quantum diamonds",
+      "slot3_url": "https://doi.org/10.1038/s41467-026-79211-3",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -688,10 +705,12 @@
     "https://doi.org/10.1038/s41467-026-78884-0",
     "https://doi.org/10.1038/s41467-026-79058-8",
     "https://doi.org/10.1038/s41467-026-79127-y",
+    "https://doi.org/10.1038/s41467-026-79211-3",
     "https://doi.org/10.1038/s41467-026-79307-w",
     "https://doi.org/10.1038/s41467-026-79455-z",
     "https://doi.org/10.1038/s41467-026-79460-2",
     "https://doi.org/10.1038/s41467-026-79525-2",
+    "https://doi.org/10.1038/s41467-026-79556-9",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41534-026-01404-x",
     "https://doi.org/10.1038/s41550-026-03004-3",
@@ -753,6 +772,7 @@
     "https://doi.org/10.1093/genetics/iyag304",
     "https://doi.org/10.1093/genetics/iyag311",
     "https://doi.org/10.1093/genetics/iyag321",
+    "https://doi.org/10.1093/genetics/iyag346",
     "https://doi.org/10.1093/mnras/stag1874",
     "https://doi.org/10.1093/molbev/msag275",
     "https://doi.org/10.1093/molbev/msag281",
@@ -807,10 +827,12 @@
     "10.1038/s41467-026-78884-0",
     "10.1038/s41467-026-79058-8",
     "10.1038/s41467-026-79127-y",
+    "10.1038/s41467-026-79211-3",
     "10.1038/s41467-026-79307-w",
     "10.1038/s41467-026-79455-z",
     "10.1038/s41467-026-79460-2",
     "10.1038/s41467-026-79525-2",
+    "10.1038/s41467-026-79556-9",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41534-026-01404-x",
     "10.1038/s41550-026-03004-3",
@@ -872,6 +894,7 @@
     "10.1093/genetics/iyag304",
     "10.1093/genetics/iyag311",
     "10.1093/genetics/iyag321",
+    "10.1093/genetics/iyag346",
     "10.1093/mnras/stag1874",
     "10.1093/molbev/msag275",
     "10.1093/molbev/msag281",
