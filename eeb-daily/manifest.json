@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 40,
-    "date": "2026-11-25"
+    "no": 41,
+    "date": "2026-11-26"
   },
   "issues": [
     {
@@ -684,6 +684,23 @@
       "slot3_headline": "Laser light changes the chemistry of quantum diamonds",
       "slot3_url": "https://doi.org/10.1038/s41467-026-79211-3",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0041-2026-11-26.json",
+      "no": 41,
+      "date": "2026-11-26",
+      "slug": "2026-11-26",
+      "topic": "Evolutionary physiology and the evolution of phenotypic flexibility at high altitude",
+      "lead_headline": "Mountain mice evolve a quieter response to thin air",
+      "lead_doi": "10.1093/evolut/qpag208",
+      "lead_url": "https://doi.org/10.1093/evolut/qpag208",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "A fly's gut tells its brain to keep the food flowing",
+      "slot2_url": "https://doi.org/10.1038/s41586-026-11315-8",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "Electrons on frozen neon learn to work together",
+      "slot3_url": "https://doi.org/10.1038/s41567-026-03529-4",
+      "history_subject": ""
     }
   ],
   "used_urls": [
@@ -729,6 +746,7 @@
     "https://doi.org/10.1038/s41567-026-03400-6",
     "https://doi.org/10.1038/s41567-026-03505-y",
     "https://doi.org/10.1038/s41567-026-03519-6",
+    "https://doi.org/10.1038/s41567-026-03529-4",
     "https://doi.org/10.1038/s41586-026-11107-0",
     "https://doi.org/10.1038/s41586-026-11147-6",
     "https://doi.org/10.1038/s41586-026-11170-7",
@@ -741,6 +759,7 @@
     "https://doi.org/10.1038/s41586-026-11251-7",
     "https://doi.org/10.1038/s41586-026-11283-z",
     "https://doi.org/10.1038/s41586-026-11308-7",
+    "https://doi.org/10.1038/s41586-026-11315-8",
     "https://doi.org/10.1038/s41588-026-02829-y",
     "https://doi.org/10.1038/s41593-026-02489-5",
     "https://doi.org/10.1038/s41593-026-02504-9",
@@ -763,6 +782,7 @@
     "https://doi.org/10.1093/evlett/qrag043",
     "https://doi.org/10.1093/evolut/qpag204",
     "https://doi.org/10.1093/evolut/qpag205",
+    "https://doi.org/10.1093/evolut/qpag208",
     "https://doi.org/10.1093/gbe/evag259",
     "https://doi.org/10.1093/gbe/evag281",
     "https://doi.org/10.1093/genetics/16.2.97",
@@ -851,6 +871,7 @@
     "10.1038/s41567-026-03400-6",
     "10.1038/s41567-026-03505-y",
     "10.1038/s41567-026-03519-6",
+    "10.1038/s41567-026-03529-4",
     "10.1038/s41586-026-11107-0",
     "10.1038/s41586-026-11147-6",
     "10.1038/s41586-026-11170-7",
@@ -863,6 +884,7 @@
     "10.1038/s41586-026-11251-7",
     "10.1038/s41586-026-11283-z",
     "10.1038/s41586-026-11308-7",
+    "10.1038/s41586-026-11315-8",
     "10.1038/s41588-026-02829-y",
     "10.1038/s41593-026-02489-5",
     "10.1038/s41593-026-02504-9",
@@ -885,6 +907,7 @@
     "10.1093/evlett/qrag043",
     "10.1093/evolut/qpag204",
     "10.1093/evolut/qpag205",
+    "10.1093/evolut/qpag208",
     "10.1093/gbe/evag259",
     "10.1093/gbe/evag281",
     "10.1093/genetics/16.2.97",
