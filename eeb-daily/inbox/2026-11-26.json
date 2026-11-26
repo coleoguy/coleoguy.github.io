@@ -1,0 +1,92 @@
+{
+  "no": 41,
+  "date": "2026-11-26",
+  "weekday": "Thursday",
+  "lead": {
+    "topic": "Evolutionary physiology and the evolution of phenotypic flexibility at high altitude",
+    "headline": "Mountain mice evolve a quieter response to thin air",
+    "deck": "Across six deer mouse taxa, altitude predicted some changes in the flexibility of oxygen transport but not others.",
+    "authors": "Nimlos PJ, Senner NR, Wolf CJ, Cheviron ZA, Velotta JP",
+    "journal": "Evolution",
+    "pubdate": "23 Nov 2026",
+    "doi": "10.1093/evolut/qpag208",
+    "url": "https://doi.org/10.1093/evolut/qpag208",
+    "paragraphs": [
+      "A mouse moving uphill encounters less oxygen, and its body can respond by changing how it supplies oxygen to its tissues. But an inherited capacity to respond is not necessarily beneficial in every environment. Nimlos and colleagues examined phenotypic flexibility, the ability to reversibly alter a trait in response to environmental conditions, across six taxa of <em>Peromyscus</em> native to elevations ranging from sea level to 4,300 meters. They exposed the mice to simulated high altitude by reducing atmospheric pressure in the laboratory and compared responses at several levels of biological organization.",
+      "The researchers found little evidence that aerobic performance or tissue composition responded predictably across the elevation gradient. In contrast, some changes in skeletal muscle gene expression under low oxygen were associated with native elevation. Higher elevation taxa also showed smaller adjustments in red blood cell production and hemoglobin concentration. Skeletal muscle is important for producing heat by shivering, so its oxygen supply matters in cold mountain environments. The authors suggest that suppressing an initially harmful physiological response may be an important route to high altitude adaptation. Evolution can therefore change not only the value of a trait, but also how much it moves when the environment changes."
+    ],
+    "push": "Do highland lineages repeatedly evolve reduced blood responses through the same regulatory mechanisms? An experiment that compares multiple lineages under independently manipulated oxygen and temperature conditions could separate their effects. Measuring blood viscosity alongside oxygen delivery, thermogenic performance and fitness would help test whether reduced flexibility is itself adaptive."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Peter J. Nimlos",
+      "bio": "Nimlos is listed as a doctoral candidate in Jonathan Velotta's laboratory at the University of Denver. His work combines physiology and genomics to understand adaptation among deer mice inhabiting high elevations, with particular emphasis on how gene regulation evolves and whether different lineages converge on similar solutions.",
+      "links": [
+        {
+          "label": "Velotta Lab",
+          "url": "https://velottalab.com/who-we-are/"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Jonathan P. Velotta",
+      "bio": "Velotta is an associate professor at the University of Denver. He earned his doctorate at the University of Connecticut with Eric Schultz and pursued postdoctoral research with Zachary Cheviron at the University of Montana. His research integrates physiology and evolutionary genomics, including adaptation to mountains in mice and freshwater habitats in fishes.",
+      "links": [
+        {
+          "label": "University of Denver faculty profile",
+          "url": "https://science.du.edu/index.php/about/faculty-directory/jonathan-velotta"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "A fly's gut tells its brain to keep the food flowing",
+    "cite": "Cui et al., <a href=\"https://doi.org/10.1038/s41586-026-11315-8\"><em>Nature</em> (2026)</a>",
+    "body": "A fruit fly does not just taste sugar with its mouth. Sensory neurons in its foregut also detect ingested sugar and send information to the brain. Cui and colleagues combined neural activity imaging with maps of neuronal connections to identify a circuit that controls food movement. Brain neurons called IN1s inhibit motor neurons that normally act on muscles at the entrance to the crop, a food storage organ. Relaxing those muscles lets food enter the crop and helps sustain feeding. The circuit illustrates how the nervous system coordinates internal digestive movements with the behavior of eating.",
+    "url": "https://doi.org/10.1038/s41586-026-11315-8"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "Electrons on frozen neon learn to work together",
+    "cite": "Li et al., <a href=\"https://doi.org/10.1038/s41567-026-03529-4\"><em>Nature Physics</em> (2026)</a>",
+    "body": "Electrons held on the surface of solid neon can encode quantum information through their charge states. A useful quantum computer, however, needs operations involving pairs of qubits, the quantum equivalents of bits. Li and colleagues demonstrated two types of such operations by exploiting the interactions between nearby trapped electrons and controlling them with microwave signals. This provides evidence that individual electrons on neon can be operated as interacting quantum information units, rather than just in isolation. Designing traps that control their separation and coupling could help researchers build larger systems, although scalable computing remains a future goal.",
+    "url": "https://doi.org/10.1038/s41567-026-03529-4"
+  },
+  "tomorrow": "Beyond EEB and History",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/evolut/advance-article/doi/10.1093/evolut/qpag208/9116427",
+      "title": "Repeated evolution in deer mice from a gradient of native elevations",
+      "used_for": "lead",
+      "evidence": "Publisher metadata and abstract confirm author order, DOI, online accepted manuscript date of 23 November 2026, six taxa, 0 to 4,300 m, hypobaric acclimation, gene regulatory and hematological findings. Abstract-only access; no full-manuscript claims."
+    },
+    {
+      "url": "https://velottalab.com/who-we-are/",
+      "title": "Who we are",
+      "used_for": "person_1",
+      "evidence": "Lab page lists doctoral candidate status and research on deer mouse physiology, genomics, regulatory evolution and convergence."
+    },
+    {
+      "url": "https://science.du.edu/index.php/about/faculty-directory/jonathan-velotta",
+      "title": "Jonathan Velotta",
+      "used_for": "person_2",
+      "evidence": "University faculty profile confirms position, research focus, doctoral advisor and postdoctoral mentor."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-11315-8",
+      "title": "A gut-brain sensory-motor circuit regulates sugar ingestion in Drosophila",
+      "used_for": "slot2",
+      "evidence": "Publisher abstract, figure descriptions and metadata confirm 25 November 2026 publication, DOI, gut sensory input, IN1 inhibition of motor neurons, crop duct relaxation and food transfer."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41567-026-03529-4",
+      "title": "Coherent manipulation of interacting electron qubits on solid neon",
+      "used_for": "slot3",
+      "evidence": "Publisher abstract, figure descriptions and metadata confirm 25 November 2026 publication, coupled electrons, microwave-driven cross-resonance and bSWAP operations; future scalability is a prospect, not a demonstrated result."
+    }
+  ]
+}
