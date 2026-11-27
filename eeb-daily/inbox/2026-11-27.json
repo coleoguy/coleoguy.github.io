@@ -1,0 +1,125 @@
+{
+  "no": 42,
+  "date": "2026-11-27",
+  "weekday": "Friday",
+  "lead": {
+    "topic": "Sexual selection and the developmental architecture of sexually dimorphic weapons",
+    "headline": "The same growth pathways build unequal earwig weapons",
+    "deck": "Male and female earwigs share developmental relationships, but the male forceps respond much more strongly to conditions experienced during growth.",
+    "authors": "Ozkan C, Kelly CD",
+    "journal": "Journal of Evolutionary Biology",
+    "pubdate": "23 Nov 2026",
+    "doi": "10.1093/jeb/voag135",
+    "url": "https://doi.org/10.1093/jeb/voag135",
+    "paragraphs": [
+      "European earwigs (<em>Forficula auricularia</em> sensu lato) carry a pair of forceps at the rear of the abdomen. In males, these structures are sexually selected weapons. Why should the same anatomical structure respond differently to the environment in males and females? Céline Ozkan and Clint Kelly varied the nutritional quality of juvenile diets and the number of nymphs raised together. They used a Bayesian structural equation model, a statistical framework for estimating relationships among several connected variables, to distinguish associations involving development time, body size, forceps length and the length of the hardened forewings.",
+      "A diet with lower nutrient concentration shortened the forceps of both sexes, but the effect was larger in males. Group rearing also increased male forceps length more than female forceps length, even after accounting for body size. These differences were much less conspicuous in forewing length. The researchers found a stronger relationship between body size and forceps length in males, despite broadly comparable effects of the treatments on body size itself. The results fit an explanation in which the sexes share a developmental framework, but males magnify particular inputs to weapon growth. The statistical model does not itself identify the underlying genes."
+    ],
+    "push": "Compare the developmental response of forceps to diet across several earwig species with contrasting sexual dimorphism. Do species with exaggerated male weapons consistently amplify the same size-dependent and size-independent pathways? Combining family-based breeding designs with measurements of reproductive success could reveal whether these developmental relationships predict the evolutionary response to selection."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Céline Ozkan",
+      "bio": "Ozkan is a doctoral student in the Kelly lab at Université du Québec à Montréal. She previously completed a master's research internship from Université Claude Bernard Lyon 1. Her current research focuses on female mating behavior in earwigs, including repeatable behavioral differences, competition between sperm from different males, and how these affect paternity.",
+      "links": [
+        {
+          "label": "Kelly lab people",
+          "url": "https://kellylab.weebly.com/people.html"
+        },
+        {
+          "label": "QCBS research group",
+          "url": "https://qcbs.ca/member/?profile=188"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Clint D. Kelly",
+      "bio": "Kelly is a professor of biological sciences at Université du Québec à Montréal. He earned his doctorate at the University of Toronto with Darryl Gwynne and held postdoctoral fellowships with Michael Jennions at Australian National University and Shelley Adamo at Dalhousie. His research addresses mating systems, sexual dimorphism and reproductive trade-offs.",
+      "links": [
+        {
+          "label": "Lab biography",
+          "url": "https://kellylab.weebly.com/people.html"
+        },
+        {
+          "label": "QCBS profile",
+          "url": "https://qcbs.ca/member/?profile=188"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "BEYOND",
+    "headline": "Plant cells grow unexpected membrane fingers",
+    "cite": "Dickmann JEM et al., <a href=\"https://doi.org/10.1038/s41467-026-79550-1\"><em>Nature Communications</em> (2026)</a>",
+    "url": "https://doi.org/10.1038/s41467-026-79550-1",
+    "body": "Plant cells usually owe their shape to the rigid walls surrounding their membranes. Remove the wall and the resulting protoplast is often roughly spherical. Yet imaging experiments reveal that some protoplasts extend remarkably long, narrow membrane projections, dubbed phytopodia. The structures sometimes contain microtubules, and their shape can change with the surrounding solution's concentration. They do not require actin, a major component of the animal cell machinery responsible for many protrusions, and their motion is passive. They can also stick to artificial surfaces. Whether comparable structures occur in intact, walled plant tissues remains an intriguing question."
+  },
+  "slot3": {
+    "kind": "HISTORY",
+    "headline": "Wallace found evolution in the geography of insects",
+    "cite": "Alfred Russel Wallace, <a href=\"https://people.wku.edu/charles.smith/wallace/S043.htm\">1858 essay</a>; <a href=\"https://www.nhm.ac.uk/discover/who-was-alfred-russel-wallace.html\">Natural History Museum biography</a>",
+    "url": "https://people.wku.edu/charles.smith/wallace/S043.htm",
+    "history_subject": "Alfred Russel Wallace",
+    "body": "Alfred Russel Wallace (1823-1913) began collecting beetles with encouragement from naturalist Henry Walter Bates. Their Amazon expedition began in 1848, but a shipwreck destroyed most of Wallace's specimens and notes on his return. He set out again in 1854, this time for the Malay Archipelago. His observations of differences between neighboring islands helped establish the geographic boundary now called Wallace's Line. In 1858 he sent Charles Darwin an essay explaining how favorable variations could accumulate through differential survival. His essay and extracts from Darwin's writings were presented together at the Linnean Society that July. Wallace's contribution was not simply a parallel discovery of natural selection: his collecting and geographic observations also helped establish modern biogeography."
+  },
+  "tomorrow": "Classic and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://academic.oup.com/jeb/advance-article/doi/10.1093/jeb/voag135/9116678?searchresult=1",
+      "title": "Sexual dimorphism in weapons arises from amplification of shared developmental pathways",
+      "used_for": "lead",
+      "evidence": "Publisher metadata confirms author order, DOI, online publication on 23 November 2026 and accepted-manuscript status. Abstract verifies experimental treatments, model, and sex-specific associations. Full manuscript PDF was not accessible through the browser; claims are limited to the abstract."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43072104/",
+      "title": "Sexual dimorphism in weapons arises from amplification of shared developmental pathways",
+      "used_for": "lead",
+      "evidence": "Independent primary bibliographic record confirms authors, DOI, date and abstract."
+    },
+    {
+      "url": "https://kellylab.weebly.com/people.html",
+      "title": "People, Kelly lab",
+      "used_for": "person_1",
+      "evidence": "Lists Ozkan as a doctoral student, former master's intern from Lyon 1, and describes earwig mating behavior and paternity research."
+    },
+    {
+      "url": "https://qcbs.ca/member/?profile=188",
+      "title": "Clint Kelly, Quebec Centre for Biodiversity Science",
+      "used_for": "person_1",
+      "evidence": "Lists Ozkan's doctoral project beginning in 2026."
+    },
+    {
+      "url": "https://kellylab.weebly.com/people.html",
+      "title": "People, Kelly lab",
+      "used_for": "person_2",
+      "evidence": "Verifies PI's institutional role, doctoral supervisor and postdoctoral hosts."
+    },
+    {
+      "url": "https://qcbs.ca/member/?profile=188",
+      "title": "Clint Kelly, Quebec Centre for Biodiversity Science",
+      "used_for": "person_2",
+      "evidence": "Verifies professorship, education and research areas."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41467-026-79550-1",
+      "title": "Plant protoplasts display phytopodia",
+      "used_for": "slot2",
+      "evidence": "Publisher abstract and citation metadata confirm title, DOI, 26 November 2026 online publication, membrane projections, microtubules, osmolarity, actin independence and passive motion; direct full-text retrieval redirected to an inaccessible authentication page."
+    },
+    {
+      "url": "https://people.wku.edu/charles.smith/wallace/S043.htm",
+      "title": "On the Tendency of Varieties to Depart Indefinitely From the Original Type",
+      "used_for": "slot3",
+      "evidence": "Transcription of Wallace's original 1858 essay and editorial note verify the July 1858 presentation with Darwin's writings and the argument about selection."
+    },
+    {
+      "url": "https://www.nhm.ac.uk/discover/who-was-alfred-russel-wallace.html",
+      "title": "Who was Alfred Russel Wallace?",
+      "used_for": "slot3",
+      "evidence": "Museum biography verifies dates, Bates friendship, Amazon expedition and loss of specimens, Malay Archipelago fieldwork, geographic boundary and independent discovery."
+    }
+  ]
+}
