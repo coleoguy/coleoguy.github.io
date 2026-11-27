@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 41,
-    "date": "2026-11-26"
+    "no": 42,
+    "date": "2026-11-27"
   },
   "issues": [
     {
@@ -701,6 +701,23 @@
       "slot3_headline": "Electrons on frozen neon learn to work together",
       "slot3_url": "https://doi.org/10.1038/s41567-026-03529-4",
       "history_subject": ""
+    },
+    {
+      "path": "eeb-daily/data/0042-2026-11-27.json",
+      "no": 42,
+      "date": "2026-11-27",
+      "slug": "2026-11-27",
+      "topic": "Sexual selection and the developmental architecture of sexually dimorphic weapons",
+      "lead_headline": "The same growth pathways build unequal earwig weapons",
+      "lead_doi": "10.1093/jeb/voag135",
+      "lead_url": "https://doi.org/10.1093/jeb/voag135",
+      "slot2_kind": "BEYOND",
+      "slot2_headline": "Plant cells grow unexpected membrane fingers",
+      "slot2_url": "https://doi.org/10.1038/s41467-026-79550-1",
+      "slot3_kind": "HISTORY",
+      "slot3_headline": "Wallace found evolution in the geography of insects",
+      "slot3_url": "https://people.wku.edu/charles.smith/wallace/S043.htm",
+      "history_subject": "Alfred Russel Wallace"
     }
   ],
   "used_urls": [
@@ -727,6 +744,7 @@
     "https://doi.org/10.1038/s41467-026-79455-z",
     "https://doi.org/10.1038/s41467-026-79460-2",
     "https://doi.org/10.1038/s41467-026-79525-2",
+    "https://doi.org/10.1038/s41467-026-79550-1",
     "https://doi.org/10.1038/s41467-026-79556-9",
     "https://doi.org/10.1038/s41477-026-02440-3",
     "https://doi.org/10.1038/s41534-026-01404-x",
@@ -793,6 +811,7 @@
     "https://doi.org/10.1093/genetics/iyag311",
     "https://doi.org/10.1093/genetics/iyag321",
     "https://doi.org/10.1093/genetics/iyag346",
+    "https://doi.org/10.1093/jeb/voag135",
     "https://doi.org/10.1093/mnras/stag1874",
     "https://doi.org/10.1093/molbev/msag275",
     "https://doi.org/10.1093/molbev/msag281",
@@ -818,6 +837,7 @@
     "https://embryo.asu.edu/pages/margaret-oakley-dayhoff-1925-1983",
     "https://embryo.asu.edu/pages/studies-spermatogenesis-1905-nettie-maria-stevens",
     "https://insidehighered.com/news/quick-takes/2026/10/16/new-analysis-finds-nih-awarded-7400-fewer-grants",
+    "https://people.wku.edu/charles.smith/wallace/S043.htm",
     "https://www.aip.org/fyi/nsf-acting-director-chief-of-staff-to-exit",
     "https://www.asbmb.org/asbmb-today/policy/101426/nsf-faces-funding-cuts-and-policy-changes",
     "https://www.cshl.edu/personal-collections/barbara-mcclintock/",
@@ -852,6 +872,7 @@
     "10.1038/s41467-026-79455-z",
     "10.1038/s41467-026-79460-2",
     "10.1038/s41467-026-79525-2",
+    "10.1038/s41467-026-79550-1",
     "10.1038/s41467-026-79556-9",
     "10.1038/s41477-026-02440-3",
     "10.1038/s41534-026-01404-x",
@@ -918,6 +939,7 @@
     "10.1093/genetics/iyag311",
     "10.1093/genetics/iyag321",
     "10.1093/genetics/iyag346",
+    "10.1093/jeb/voag135",
     "10.1093/mnras/stag1874",
     "10.1093/molbev/msag275",
     "10.1093/molbev/msag281",
