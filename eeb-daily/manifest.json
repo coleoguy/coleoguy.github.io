@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "latest": {
-    "no": 42,
-    "date": "2026-11-27"
+    "no": 43,
+    "date": "2026-11-28"
   },
   "issues": [
     {
@@ -718,9 +718,27 @@
       "slot3_headline": "Wallace found evolution in the geography of insects",
       "slot3_url": "https://people.wku.edu/charles.smith/wallace/S043.htm",
       "history_subject": "Alfred Russel Wallace"
+    },
+    {
+      "path": "eeb-daily/data/0043-2026-11-28.json",
+      "no": 43,
+      "date": "2026-11-28",
+      "slug": "2026-11-28",
+      "topic": "Sex chromosome evolution: repeat-driven expansion of the avian Z chromosome",
+      "lead_headline": "Repeats make the toucan's Z chromosome unusually large",
+      "lead_doi": "10.1038/s41597-026-08658-2",
+      "lead_url": "https://doi.org/10.1038/s41597-026-08658-2",
+      "slot2_kind": "CLASSIC",
+      "slot2_headline": "Selection can favor helping relatives",
+      "slot2_url": "https://doi.org/10.1016/0022-5193(64)90038-4",
+      "slot3_kind": "SCIENCE",
+      "slot3_headline": "A remarkably faint supernova came from a faint stellar system",
+      "slot3_url": "https://doi.org/10.1038/s41550-026-03024-z",
+      "history_subject": ""
     }
   ],
   "used_urls": [
+    "https://doi.org/10.1016/0022-5193(64)90038-4",
     "https://doi.org/10.1016/j.cub.2026.08.053",
     "https://doi.org/10.1016/j.ympev.2026.108754",
     "https://doi.org/10.1017/S0080456800012163",
@@ -750,6 +768,7 @@
     "https://doi.org/10.1038/s41534-026-01404-x",
     "https://doi.org/10.1038/s41550-026-03004-3",
     "https://doi.org/10.1038/s41550-026-03008-z",
+    "https://doi.org/10.1038/s41550-026-03024-z",
     "https://doi.org/10.1038/s41550-026-03025-y",
     "https://doi.org/10.1038/s41556-026-02101-9",
     "https://doi.org/10.1038/s41556-026-02119-z",
@@ -785,6 +804,7 @@
     "https://doi.org/10.1038/s41593-026-02514-7",
     "https://doi.org/10.1038/s41594-026-01914-4",
     "https://doi.org/10.1038/s41597-026-08647-5",
+    "https://doi.org/10.1038/s41597-026-08658-2",
     "https://doi.org/10.1038/s41598-026-69193-z",
     "https://doi.org/10.1038/s42005-026-02841-y",
     "https://doi.org/10.1038/s42005-026-02939-3",
@@ -849,6 +869,7 @@
     "https://www.whitehouse.gov/releases/2026/10/remarks-by-director-michael-kratsios-at-the-science-a-new-golden-age-summit"
   ],
   "used_dois": [
+    "10.1016/0022-5193(64)90038-4",
     "10.1016/j.cub.2026.08.053",
     "10.1016/j.ympev.2026.108754",
     "10.1017/s0080456800012163",
@@ -878,6 +899,7 @@
     "10.1038/s41534-026-01404-x",
     "10.1038/s41550-026-03004-3",
     "10.1038/s41550-026-03008-z",
+    "10.1038/s41550-026-03024-z",
     "10.1038/s41550-026-03025-y",
     "10.1038/s41556-026-02101-9",
     "10.1038/s41556-026-02119-z",
@@ -913,6 +935,7 @@
     "10.1038/s41593-026-02514-7",
     "10.1038/s41594-026-01914-4",
     "10.1038/s41597-026-08647-5",
+    "10.1038/s41597-026-08658-2",
     "10.1038/s41598-026-69193-z",
     "10.1038/s42005-026-02841-y",
     "10.1038/s42005-026-02939-3",
