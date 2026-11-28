@@ -1,0 +1,120 @@
+{
+  "no": 43,
+  "date": "2026-11-28",
+  "weekday": "Saturday",
+  "lead": {
+    "topic": "Sex chromosome evolution: repeat-driven expansion of the avian Z chromosome",
+    "headline": "Repeats make the toucan's Z chromosome unusually large",
+    "deck": "A new chromosome-level genome and direct chromosome counts reveal how the toco toucan differs from the familiar avian genome.",
+    "authors": "Mota-Souza G, Xu L, Kretschmer R, Liehr T, Cioffi MB",
+    "journal": "Scientific Data",
+    "pubdate": "27 Nov 2026",
+    "doi": "10.1038/s41597-026-08658-2",
+    "url": "https://doi.org/10.1038/s41597-026-08658-2",
+    "paragraphs": [
+      "Bird chromosomes are often small and packed with genes, but toucans belong to a group with unusual genome architecture. Mota-Souza and colleagues assembled the genome of the toco toucan (<em>Ramphastos toco</em>) by combining long DNA reads with Hi-C, a technique that uses physical contacts between DNA fragments to help place sequences on chromosomes. They also examined stained chromosomes from cultured cells, settling conflicting chromosome counts. The bird has 112 chromosomes in its diploid complement, including 55 pairs of autosomes and two sex chromosomes in the female. The new reference includes sequences representing both the Z and W.",
+      "The Z is especially striking. At 113 million DNA bases, it is roughly 38% longer than the zebra finch Z, yet contains fewer protein-coding genes in the respective annotations. Almost half of the toucan Z consists of repetitive DNA. A comparison of gene order with the zebra finch revealed no evidence that the enlargement came from a fusion with another chromosome. Instead, repeat accumulation is the leading explanation. This distinction matters: chromosome size can change substantially without a corresponding gain in gene content or a change in the number of chromosomes."
+    ],
+    "push": "Compare chromosome-level genomes from toucans, barbets and woodpeckers to reconstruct when the Z expanded. Do particular repeat families proliferate disproportionately on the Z, or does genome-wide repeat accumulation explain the pattern? Mapping recombination across the Z could help distinguish increased repeat insertion from reduced efficiency of repeat removal."
+  },
+  "people": [
+    {
+      "role": "First author",
+      "name": "Guilherme Mota-Souza",
+      "bio": "Mota-Souza is a doctoral student at the Federal University of São Carlos in Brazil, where he earned a biotechnology degree. His research examines bird chromosome rearrangements and sex chromosome evolution. He has undertaken research visits with Thomas Liehr at Jena University Hospital and in Qi Zhou's laboratory at Zhejiang University.",
+      "links": [
+        {
+          "label": "FAPESP researcher profile",
+          "url": "https://bv.fapesp.br/pt/pesquisador/722345/guilherme-mota-souza/"
+        },
+        {
+          "label": "Lab members",
+          "url": "https://www.lec.ufscar.br/lab-members"
+        }
+      ]
+    },
+    {
+      "role": "Last author",
+      "name": "Marcelo de Bello Cioffi",
+      "bio": "Cioffi is an associate professor of genetics and evolution at the Federal University of São Carlos and leads its Evolutionary Cytogenetics Laboratory. He completed postdoctoral work under Luiz A. C. Bertollo. His group studies vertebrate chromosome evolution, repetitive DNA and sex chromosomes, and he coordinates Brazil's INCT-Peixes research institute.",
+      "links": [
+        {
+          "label": "University faculty profile",
+          "url": "https://www.dge.ufscar.br/docentes/docentes-atuais/marcelo-de-bello-cioffi"
+        },
+        {
+          "label": "Lab training history",
+          "url": "https://www.lec.ufscar.br/lab-alumni"
+        }
+      ]
+    }
+  ],
+  "slot2": {
+    "kind": "CLASSIC",
+    "headline": "Selection can favor helping relatives",
+    "cite": "Hamilton WD, <em>Journal of Theoretical Biology</em> (1964), <a href=\"https://doi.org/10.1016/0022-5193(64)90038-4\">paper</a>.",
+    "body": "Why would an allele spread if it makes its carrier sacrifice reproductive success? Hamilton modeled how genes can affect the reproduction of relatives as well as their carriers. Because relatives are more likely to share alleles by descent, helping them can contribute to an allele's transmission. He called the resulting quantity inclusive fitness. In the familiar simple formulation, an act that costs the actor c and benefits a recipient by b can be favored when rb exceeds c, with r representing relatedness. Later research extended these ideas to cooperation, conflict, dispersal and the evolution of social insects.",
+    "url": "https://doi.org/10.1016/0022-5193(64)90038-4",
+    "doi": "10.1016/0022-5193(64)90038-4"
+  },
+  "slot3": {
+    "kind": "SCIENCE",
+    "headline": "A remarkably faint supernova came from a faint stellar system",
+    "cite": "Zimmerman EA et al., <em>Nature Astronomy</em> (26 Nov 2026), <a href=\"https://doi.org/10.1038/s41550-026-03024-z\">paper</a>.",
+    "body": "Some thermonuclear supernovae are much dimmer than the explosions astronomers normally use to measure cosmic distances. Researchers studied SN 2024vjm, an exceptionally faint example of the Iax subclass. Images taken by the Euclid telescope before the explosion constrain the original stellar system to be even dimmer than previously identified Iax progenitor candidates. The evidence argues against an origin in a massive star. Observations also show that the expelled material expands slowly and remains relatively dense. The researchers propose that this helps explain why faint Iax explosions can fade more slowly than brighter examples, contrary to the usual brightness-decline trend.",
+    "url": "https://doi.org/10.1038/s41550-026-03024-z",
+    "doi": "10.1038/s41550-026-03024-z"
+  },
+  "tomorrow": "Beyond EEB and Beyond biology",
+  "producer": "ChatGPT",
+  "source_audit": [
+    {
+      "url": "https://www.nature.com/articles/s41597-026-08658-2",
+      "title": "A chromosome-level genome assembly of the Toco Toucan Ramphastos toco (Aves, Ramphastidae)",
+      "used_for": "lead",
+      "evidence": "Publisher-indexed article text supplied author order, DOI, publication date, abstract, cytogenetic analysis, scaffolding methods and Z chromosome synteny comparison; direct page retrieval redirected to authentication. Confirmed 2n=112, 113 Mb Z, 47.5% repeats and no Z fusion evidence in the comparison."
+    },
+    {
+      "url": "https://bv.fapesp.br/pt/pesquisador/722345/guilherme-mota-souza/",
+      "title": "Guilherme Mota Souza - Biblioteca Virtual da FAPESP",
+      "used_for": "person_1",
+      "evidence": "Public grant-agency profile confirms doctorate in progress, undergraduate biotechnology training, research on avian sex chromosomes and visits with Liehr and Zhou."
+    },
+    {
+      "url": "https://www.lec.ufscar.br/lab-members",
+      "title": "Evolutionary Cytogenetics Lab - Lab members",
+      "used_for": "person_1",
+      "evidence": "Lab member page confirms current doctoral status, biotechnology degree and research on avian chromosome rearrangements."
+    },
+    {
+      "url": "https://www.dge.ufscar.br/docentes/docentes-atuais/marcelo-de-bello-cioffi",
+      "title": "Marcelo de Bello Cioffi - Departamento de Genética e Evolução",
+      "used_for": "person_2",
+      "evidence": "Department profile confirms associate professor, institute coordination and comparative genomics, cytogenetics and sex chromosome research."
+    },
+    {
+      "url": "https://www.lec.ufscar.br/lab-alumni",
+      "title": "Evolutionary Cytogenetics Lab - Lab Alumni",
+      "used_for": "person_2",
+      "evidence": "Lab training history lists Cioffi's postdoctoral supervisor Luiz AC Bertollo."
+    },
+    {
+      "url": "https://scixplorer.org/abs/1964JThBi...7....1H/abstract",
+      "title": "The genetical evolution of social behaviour. I",
+      "used_for": "slot2",
+      "evidence": "Bibliographic record and original abstract confirm Hamilton, 1964, Journal of Theoretical Biology 7:1-16, DOI and inclusive fitness model; DOI resolver returned 403, so relied on indexed original abstract."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24686934/",
+      "title": "Hamilton's rule and the causes of social evolution",
+      "used_for": "slot2",
+      "evidence": "Review metadata and references confirm the classic DOI and subsequent social evolution research."
+    },
+    {
+      "url": "https://www.nature.com/articles/s41550-026-03024-z",
+      "title": "A faint progenitor system for the faint Iax supernova 2024vjm",
+      "used_for": "slot3",
+      "evidence": "Publisher-indexed abstract, figures and bibliographic metadata confirm publication 26 November 2026, pre-explosion Euclid image, progenitor limits, slow dense ejecta and proposed fading explanation; direct publisher fetch redirected to authentication."
+    }
+  ]
+}
